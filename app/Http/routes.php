@@ -16,12 +16,8 @@ $app->get('/', function () use ($app) {
 });
 
 $app->get('/shopping', 'Shopping\ShoppingController@index');
+$app->get('/shopping/category', 'Shopping\ShoppingController@getShoppingCategoryList');
+$app->get('/shopping/list', 'Shopping\ShoppingController@getShoppingProductList');
+$app->get('/shopping/product/{spu}', 'Shopping\ProductController@index');
 
-$app->get('/shopping/{id}', 'Shopping\ShoppingController@show');
-
-$app->post('/shopping', 'Shopping\ShoppingController@create');
-
-$app->put('/shopping/{id}', 'Shopping\ShoppingController@update');
-
-$app->delete('/shopping/{id}', 'Shopping\ShoppingController@destroy');
 
