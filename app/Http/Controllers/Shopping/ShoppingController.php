@@ -29,7 +29,7 @@ class ShoppingController extends ApiController
 		
 		$system = "product";	
 		$service = "product";
-		$result = $this->request('openapi', $system, $service, $params);
+		$result = $this->request('openapi', $system, $service, $params, 300, false);
 		//dd($result);
 		if($result['success']){
 			return View('shopping.list', ['categories'=>$result['data']['list']]);
@@ -57,7 +57,7 @@ class ShoppingController extends ApiController
 		
 		$system = "product";	
 		$service = "product";
-		$result = $this->request('openapi', $system, $service, $params);
+		$result = $this->request('openapi', $system, $service, $params, 300, false);
 		dd($result);
 		if($result['success']){
 			return $result;
@@ -69,7 +69,7 @@ class ShoppingController extends ApiController
 		$recid = $request->input('recid', 100);  
 		$pin = $request->input('pin', "xxx123");
 		$uuid = $request->input('uuid', "");
-		$cid = $request->input('cid', "");
+		$cid = $request->input('cid', "135");
 		$pagenum = $request->input('pagenum', 1);
 		$pagesize = $request->input('pagesize', 20);
 		$exp = $request->input('exp', "");
@@ -88,7 +88,7 @@ class ShoppingController extends ApiController
 		);
 		$system = "feed";	
 		$service = "rec";
-		$result = $this->request('openapi', $system, $service, $params);
+		$result = $this->request('openapi', $system, $service, $params, 300, false);
 		dd($result);
 		if($result['success']){
 			return $result;

@@ -19,5 +19,13 @@ $app->get('/shopping', 'Shopping\ShoppingController@index');
 $app->get('/shopping/category', 'Shopping\ShoppingController@getShoppingCategoryList');
 $app->get('/shopping/list', 'Shopping\ShoppingController@getShoppingProductList');
 $app->get('/shopping/product/{spu}', 'Shopping\ProductController@index');
+$app->get('/shopping/cart/amount', 'Shopping\CartController@getCartAmount');
+$app->get('/shopping/cart/list', 'Shopping\CartController@getCartList');
+$app->get('/shopping/cart/accountlist', 'Shopping\CartController@getCartAccountList');
+$app->get('/shopping/cart/savelist', 'Shopping\CartController@getCartSaveList');
+$app->get('/shopping/cart/addCart', 'Shopping\CartController@addCart');
+$app->get('/shopping/cart/alterQtty', 'Shopping\CartController@alterCartProQtty');
+$app->get('/shopping/cart/other', 'Shopping\CartController@other');
+
 
 
