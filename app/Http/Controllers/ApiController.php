@@ -45,7 +45,8 @@ abstract class ApiController extends Controller
         $result = "";
         if ($cacheTime > 0 && Cache::has($buildParams)) {
             $result = Cache::get($buildParams);
-        } else {
+        } 
+		if(empty($result) || "" == $result ) {
             $result = Net::api($this->ApiUrl[$ApiName], $system, $service, $buildParams, ['Cookie:frontend=' . $this->sessionId]);
             if ($cacheTime > 0) {
                 Cache::put($buildParams, $result, $cacheTime);
