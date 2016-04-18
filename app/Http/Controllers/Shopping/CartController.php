@@ -21,10 +21,13 @@ class CartController extends ApiController
 		$system = "cart";
 		$service = "cart";
 		$result = $this->request('openapi', $system, $service, $params, 300);
-		dd($result);
-		if($result['success']){
-			return $result;	
+		if(empty($result)){
+	 		$result['success'] = false;	
+			$result['error_msg'] = "Data access failed";
+			$result['data'] = array();
 		}
+		dd($result);
+		return $result;
 	}
 
 	public function getCartList(Request $request) 
@@ -40,10 +43,13 @@ class CartController extends ApiController
 		$system = "cart";
 		$service = "cart";
 		$result = $this->request('openapi', $system, $service, $params, 300);
-		dd($result);
-		if($result['success']){
-			return $result;
+		if(empty($result)){
+	 		$result['success'] = false;	
+			$result['error_msg'] = "Data access failed";
+			$result['data'] = array();
 		}
+		dd($result);
+		return $result;
 	}
 
 	public function getCartAccountList(Request $request)
@@ -63,10 +69,13 @@ class CartController extends ApiController
 		$system = "cart";
 		$service = "cart";
 		$result = $this->request('openapi', $system, $service, $params, 300);
-		dd($result);
-		if($result['success']){
-			return $result;
+		if(empty($result)){
+	 		$result['success'] = false;	
+			$result['error_msg'] = "Data access failed";
+			$result['data'] = array();
 		}
+		dd($result);
+		return $result;
 	}
 
 	public function getCartSaveList(Request $request)
@@ -82,10 +91,13 @@ class CartController extends ApiController
 		$system = "cart";
 		$service = "cart";
 		$result = $this->request('openapi', $system, $service, $params, 300);
-		dd($result);
-		if($result['success']){
-			return $result;
+		if(empty($result)){
+	 		$result['success'] = false;	
+			$result['error_msg'] = "Data access failed";
+			$result['data'] = array();
 		}
+		dd($result);
+		return $result;
 	}
 
 	public function addCart(Request $request)

@@ -16,10 +16,9 @@ $app->get('/', function () use ($app) {
 });
 
 $app->get('/shopping', 'Shopping\ShoppingController@index');
-$app->get('/shopping/category', 'Shopping\ShoppingController@getShoppingCategoryList');
-$app->get('/shopping/list', 'Shopping\ShoppingController@getShoppingProductList');
-$app->get('/shopping/product/{spu}', 'Shopping\ProductController@index');
-$app->get('/shopping/detail/{spu}', 'Shopping\ProductController@testindex');
+//$app->get('/shopping/category', 'Shopping\ShoppingController@getShoppingCategoryList');
+//$app->get('/shopping/list', 'Shopping\ShoppingController@getShoppingProductList');
+$app->get('/shopping/detail/{spu}', 'Shopping\ProductController@index');
 
 $app->get('/shopping/cart/amount', 'Shopping\CartController@getCartAmount');
 $app->get('/shopping/cart/list', 'Shopping\CartController@getCartList');
@@ -31,3 +30,6 @@ $app->get('/shopping/cart/other', 'Shopping\CartController@other');
 
 
 
+$app->get('/category', 'Shopping\ShoppingController@getShoppingCategoryList');
+$app->get('/products', 'Shopping\ShoppingController@getShoppingProductList');
+$app->get('/products/{spu}', 'Shopping\ProductController@getProductDetail');

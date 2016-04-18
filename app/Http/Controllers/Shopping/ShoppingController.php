@@ -1,5 +1,4 @@
-<?php
-
+<?php 
 namespace App\Http\Controllers\Shopping;
 
 use Illuminate\Http\Request;
@@ -31,9 +30,12 @@ class ShoppingController extends ApiController
 		$service = "product";
 		$result = $this->request('openapi', $system, $service, $params, 300, false);
 		//dd($result);
-		if($result['success']){
-			return View('shopping.list', ['categories'=>$result['data']['list']]);
+		if(empty($result)){
+			$result['success'] = false;
+			$result['error_msg'] = "Data access failed";
+			$result['data']['list'] = array();
 		}
+		return View('shopping.list', ['categories'=>$result['data']['list']]);
 	}
 
 	public function getShoppingCategoryList(Request $request)
@@ -58,10 +60,13 @@ class ShoppingController extends ApiController
 		$system = "product";	
 		$service = "product";
 		$result = $this->request('openapi', $system, $service, $params, 300, false);
-		dd($result);
-		if($result['success']){
-			return $result;
+		if(empty($result['success'])){
+			$result['success'] = false;
+			$result['error_msg'] = "Data access failed";
+			$result['data']['list'] = array();
 		}
+		dd($result);
+		return $result;
 	}
 
 	public function getShoppingProductList(Request $request)
@@ -89,9 +94,12 @@ class ShoppingController extends ApiController
 		$system = "feed";	
 		$service = "rec";
 		$result = $this->request('openapi', $system, $service, $params, 300, false);
-		dd($result);
-		if($result['success']){
-			return $result;
+		if(empty($result)){
+			$result['success'] = false;
+			$result['error_msg'] = "Data access failed";
+			$result['data']['list'] = array();
 		}
+		dd($result);
+		return $result;
 	}
 }

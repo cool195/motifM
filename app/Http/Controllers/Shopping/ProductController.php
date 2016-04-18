@@ -31,18 +31,19 @@ class ProductController extends ApiController
 		$system = "product";		
 		$service = "product";
 		$result = $this->request('openapi', $system, $service, $params, 300, false);
-		dd($result);
-		if($result['success'])
+		if(empty($result))
 		{
-			return $result;
+			$result['success'] = false;
+			$result['data'] = array();
+			$result['error_msg'] = "Data access failed";
 		}		
-		
+		return View('shopping.detail', ['data' => $result['data']]);
 	}
 
-	public function testindex(Request $request, $spu)		
+	public function getProductDetail(Request $request, $spu)		
 	{
 		$cmd = 'productdetail';	
-		$spu = 10000025;	
+		$spu = $request->input('spu', 10000025);	
 		$src = $request->input('src', "");
 		$ver = $request->input('ver', "");
 		$version = $request->input('version', 1.0);
@@ -62,10 +63,13 @@ class ProductController extends ApiController
 		$system = "product";		
 		$service = "product";
 		$result = $this->request('openapi', $system, $service, $params, 300, false);
-		if($result['success'])
-		{
-			return View('shopping.detail', ['data' => $result['data']]);
-		}		
-		
+		if(empty($result)){
+			$result['success'] = false;
+			$result['data'] = array();
+			$result['error_msg'] = "Data access failed";
+		}
+		dd($result);
+		return $result;
 	}
+
 }
