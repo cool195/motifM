@@ -29,5 +29,10 @@
         $(this).removeClass('in');
         $('body').removeClass('no-scroll');
     });
+    var options = {
+        closeOnOutsideClick: false,
+        closeOnCancel: false
+    };
+    $('[data-remodal-id=modal]').remodal(options);
 })(jQuery, Swiper);
 //# sourceMappingURL=shoppingDetail.js.map
