@@ -97,7 +97,7 @@
     // 获取分类
     (function category() {
         $.ajax({
-            url: 'http://motiflumen.evermarker.com/category'
+            url: '/category'
         }).done(function (data) {
             Category = data.data.list;
             // Tabs页码数组初始化
@@ -188,7 +188,7 @@
         loadingShow(ActiveTab);
         // ajax 请求加载数据
         $.ajax({
-            url: 'http://motiflumen.evermarker.com/products',
+            url: '/products',
             data: { pagenum: NextPage, pagesize: 20, cid: CurrentCid }
         }).done(function (data) {
             if (data.data.list.length === 0) {

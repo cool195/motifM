@@ -6,11 +6,13 @@
 'use strict';
 
 (function ($, Swiper) {
+    // 图片轮播
     var BaseImgSwiper = new Swiper('#baseImg-swiper', {
         pagination: '#baseImg-pagination',
         paginationType: 'fraction',
         loop: true
     });
+    // 全屏图片轮播
     var DetailImgSwiper = new Swiper('#detailImg-swiper', {
         pagination: '#detailImg-pagination',
         paginationType: 'fraction',
@@ -34,5 +36,20 @@
         closeOnCancel: false
     };
     $('[data-remodal-id=modal]').remodal(options);
+
+    function productDetailInfo() {
+        $.ajax({
+            url: '/products',
+            type: 'default GET (Other values: POST)',
+            dataType: 'default: Intelligent Guess (Other values: xml, json, script, or html)',
+            data: { param1: 'value1' }
+        }).done(function () {
+            console.log("success");
+        }).fail(function () {
+            console.log("error");
+        }).always(function () {
+            console.log("complete");
+        });
+    }
 })(jQuery, Swiper);
 //# sourceMappingURL=shoppingDetail.js.map
