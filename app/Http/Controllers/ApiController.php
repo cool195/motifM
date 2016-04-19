@@ -42,14 +42,15 @@ abstract class ApiController extends Controller
     protected function request($ApiName, $system, $service, array $params, $cacheTime = 0, $output = false)
     {
         $buildParams = http_build_query($params);
+		$key = md5($buildParams);
         $result = "";
-        if ($cacheTime > 0 && Cache::has($buildParams)) {
-            $result = Cache::get($buildParams);
+        if ($cacheTime > 0 && Cache::has($key)) {
+            $result = Cache::get($key);
         } 
 		if(empty($result) || "" == $result ) {
             $result = Net::api($this->ApiUrl[$ApiName], $system, $service, $buildParams, ['Cookie:frontend=' . $this->sessionId]);
             if ($cacheTime > 0) {
-                Cache::put($buildParams, $result, $cacheTime);
+                Cache::put($key, $result, $cacheTime);
             }
         }
         if ($output) {

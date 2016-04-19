@@ -28,7 +28,7 @@ class ShoppingController extends ApiController
 		
 		$system = "product";	
 		$service = "product";
-		$result = $this->request('openapi', $system, $service, $params, 300, false);
+		$result = $this->request('openapi', $system, $service, $params);
 		//dd($result);
 		if(empty($result)){
 			$result['success'] = false;
@@ -59,13 +59,12 @@ class ShoppingController extends ApiController
 		
 		$system = "product";	
 		$service = "product";
-		$result = $this->request('openapi', $system, $service, $params, 300, false);
+		$result = $this->request('openapi', $system, $service, $params);
 		if(empty($result['success'])){
 			$result['success'] = false;
 			$result['error_msg'] = "Data access failed";
 			$result['data']['list'] = array();
 		}
-		dd($result);
 		return $result;
 	}
 
@@ -94,13 +93,12 @@ class ShoppingController extends ApiController
 		);
 		$system = "feed";	
 		$service = "rec";
-		$result = $this->request('openapi', $system, $service, $params, 300, false);
+		$result = $this->request('openapi', $system, $service, $params);
 		if(empty($result)){
 			$result['success'] = false;
 			$result['error_msg'] = "Data access failed";
 			$result['data']['list'] = array();
 		}
-		dd($result);
 		return $result;
 	}
 }

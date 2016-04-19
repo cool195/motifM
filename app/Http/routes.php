@@ -34,9 +34,11 @@ $app->get('/shopping/addr/add', 'Shopping\AddressController@getUserAddr');
 $app->get('/shopping/addr/modify', 'Shopping\AddressController@modifyUserAddr');
 $app->get('/shopping/addr/mdefault', 'Shopping\AddressController@modifyUserDefaultAddr');
 $app->get('/shopping/addr/delete', 'Shopping\AddressController@delUserAddr');
-
-
 $app->get('/shopping/addr/country', 'Shopping\AddressController@getCountry');
+
+$app->get('/shopping/user/signup', 'Shopping\UserController@signup');
+$app->get('/shopping/user/login', 'Shopping\UserController@login');
+$app->get('/shopping/user/forget', 'Shopping\UserController@forgetPassword');
 
 $app->get('/category', 'Shopping\ShoppingController@getShoppingCategoryList');
 $app->get('/products', 'Shopping\ShoppingController@getShoppingProductList');

@@ -90,60 +90,6 @@
             <div class="swiper-slide" data-loading="">
                 <div class="container-fluid p-a-10x">
                     <div class="row">
-                        <div class="col-xs-6">
-                            <div class="productList-item">
-                                <div class="image-bg">
-                                    <div class="image-container">
-                                        <img class="img-fluid" src="/images/product/product1.jpg" alt="商品的名称">
-                                        <div class="price-off"><strong class="font-size-sm">OFF 49%</strong></div>
-                                    </div>
-                                </div>
-                                <div class="price-caption">
-                                    <span class="font-size-sm m-l-5x"><strong>$60.95</strong></span>
-                                    <span class="font-size-xs text-common text-throughLine m-l-5x">$125.95</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-xs-6">
-                            <div class="productList-item">
-                                <div class="image-bg">
-                                    <div class="image-container">
-                                        <img class="img-fluid" src="/images/product/product2.jpg" alt="商品的名称">
-                                        <div class="price-off"><strong class="font-size-sm">OFF 89%</strong></div>
-                                    </div>
-                                </div>
-                                <div class="price-caption">
-                                    <span class="font-size-sm text-primary m-l-5x"><strong>$60.95</strong></span>
-                                    <span class="font-size-xs text-throughLine m-l-5x">$125.95</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-xs-6">
-                            <div class="productList-item">
-                                <div class="image-bg">
-                                    <div class="image-container">
-                                        <img class="img-fluid" src="/images/product/product3.jpg" alt="商品的名称">
-                                    </div>
-                                </div>
-                                <div class="price-caption">
-                                    <span class="font-size-sm text-primary m-l-5x"><strong>$60.95</strong></span>
-                                    <span class="font-size-xs text-throughLine m-l-5x">$125.95</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-xs-6">
-                            <div class="productList-item">
-                                <div class="image-bg">
-                                    <div class="image-container">
-                                        <img class="img-fluid" src="/images/product/product4.jpg" alt="商品的名称">
-                                    </div>
-                                </div>
-                                <div class="price-caption">
-                                    <span class="font-size-sm text-primary m-l-5x"><strong>$60.95</strong></span>
-                                    <span class="font-size-xs text-throughLine m-l-5x">$125.95</span>
-                                </div>
-                            </div>
-                        </div>
                     </div>
                 </div>
                 <div class="loading" style="display: none">
@@ -231,7 +177,7 @@
          <div class="productList-item">
              <div class="image-bg">
                  <div class="image-container">
-                     <a href="http://motiflumen.evermarker.com/products/<%= list[i][spu] %>">
+                     <a href="/products/<%= list[i][spu] %>">
                          <img class="img-fluid" src="<%= list[i][main_img_url] %>" alt="<%= list[i][main_title] %>">
                          <% if (list[i][skuPrice][skuPromotion] !== undefined) %>
                          <div class="price-off">
