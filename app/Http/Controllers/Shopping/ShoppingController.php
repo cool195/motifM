@@ -77,8 +77,9 @@ class ShoppingController extends ApiController
 		$cid = $request->input('cid', "135");
 		$pagenum = $request->input('pagenum', 1);
 		$pagesize = $request->input('pagesize', 20);
-		$exp = $request->input('exp', "");
+		$extra = $request->input('extra', "");
 		$encode = $request->input("encode", "UTF-8"); 
+		$exp = $request->input('exp', "");
 		$token = $request->input("token", "1111");
 		$params = array(
 			'recid'=>$recid,

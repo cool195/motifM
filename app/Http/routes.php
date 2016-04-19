@@ -28,7 +28,15 @@ $app->get('/shopping/cart/addCart', 'Shopping\CartController@addCart');
 $app->get('/shopping/cart/alterQtty', 'Shopping\CartController@alterCartProQtty');
 $app->get('/shopping/cart/other', 'Shopping\CartController@other');
 
+$app->get('/shopping/addr/list', 'Shopping\AddressController@getUserAddrList');
+$app->get('/shopping/addr/default', 'Shopping\AddressController@getUserDefaultAddr');
+$app->get('/shopping/addr/add', 'Shopping\AddressController@getUserAddr');
+$app->get('/shopping/addr/modify', 'Shopping\AddressController@modifyUserAddr');
+$app->get('/shopping/addr/mdefault', 'Shopping\AddressController@modifyUserDefaultAddr');
+$app->get('/shopping/addr/delete', 'Shopping\AddressController@delUserAddr');
 
+
+$app->get('/shopping/addr/country', 'Shopping\AddressController@getCountry');
 
 $app->get('/category', 'Shopping\ShoppingController@getShoppingCategoryList');
 $app->get('/products', 'Shopping\ShoppingController@getShoppingProductList');
