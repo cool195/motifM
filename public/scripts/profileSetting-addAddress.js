@@ -1,17 +1,17 @@
-"use strict";
-
 /**
  * Created by zhaozhe on 16/5/23.
  */
 /*global jQuery*/
 
-// 开关按钮
+// 设置默认地址 开关按钮
+'use strict';
+
 (function ($) {
-    var btnPrimary = document.getElementById("btn-openClose");
-    var bgBtnPrimary = document.getElementById("bg-openClose");
-    bgBtnPrimary.onclick = function () {
-        bgBtnPrimary.className = bgBtnPrimary.className == "close" ? "open" : "close";
-        btnPrimary.className = btnPrimary.className == "btn-close" ? "btn-open" : "btn-close";
-    };
+    $('#bg-openClose').on('click', function () {
+        var classname = $(this).attr('class') === 'close' ? 'open' : 'close';
+        var btnclassname = $('#btn-openClose').attr('class') === 'btn-close' ? 'btn-open' : 'btn-close';
+        $(this).attr('class', classname);
+        $('#btn-openClose').attr('class', btnclassname);
+    });
 })(jQuery);
 //# sourceMappingURL=profileSetting-addAddress.js.map
