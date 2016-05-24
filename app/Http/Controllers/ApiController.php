@@ -26,13 +26,12 @@ abstract class ApiController extends Controller
 
     public function __construct()
     {
-
         if (Cache::has('frontend')) {
             $this->sessionId = Cache::get('frontend');
         } else {
-            $this->sessionId = md5(mt_rand());
+            $this->sessionId = md5(time());
             $expiresAt = Carbon::now()->addMinutes(30);
-            Cache::add('frontend', $this->sessionId, $expiresAt);
+            Cache::put('frontend', $this->sessionId, $expiresAt);
         }
     }
 
