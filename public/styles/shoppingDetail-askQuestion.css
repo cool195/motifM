@@ -1,0 +1,11 @@
+.message-info {
+  position: relative;
+}
+
+.message-info .message-wordNumber {
+  position: absolute;
+  bottom: .625rem;
+  right: .875rem;
+}
+
+/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNob3BwaW5nRGV0YWlsLWFza1F1ZXN0aW9uLnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQ0E7RUFDSSxtQkFBbUI7Q0FNdEI7O0FBUEQ7RUFHUSxtQkFBbUI7RUFDbkIsZ0JBQWdCO0VBQ2hCLGVBQWU7Q0FDbEIiLCJmaWxlIjoic2hvcHBpbmdEZXRhaWwtYXNrUXVlc3Rpb24uY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLy8g5o+Q5Lqk6Zeu6aKY5Y+N6aaI5L+h5oGvIGFzayBxdWVzdGlvblxuLm1lc3NhZ2UtaW5mbyB7XG4gICAgcG9zaXRpb246IHJlbGF0aXZlO1xuICAgIC5tZXNzYWdlLXdvcmROdW1iZXIge1xuICAgICAgICBwb3NpdGlvbjogYWJzb2x1dGU7XG4gICAgICAgIGJvdHRvbTogLjYyNXJlbTtcbiAgICAgICAgcmlnaHQ6IC44NzVyZW07XG4gICAgfVxufVxuIl0sInNvdXJjZVJvb3QiOiIvc291cmNlLyJ9 */

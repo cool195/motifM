@@ -10,15 +10,71 @@ class ShoppingController extends ApiController
 {
 	public function index(Request $request)	
 	{
-		$recid = $request->input('recid', '100');
-		$pin = $request->input('pin', 'xxx123');
-		$uuid = $request->input('uuid', '');
-		$cid = $request->input('cid', '');
-		$pagenum = $request->input('pagenum',1);
-		$pagesize = $request->input('pagesize',20);
-		$exp = $request->input('exp','');
-		$encode = $request->input('encode','UTF-8');
-		$token = $request->input('token','1111');
+		$cmd = $request->input('cmd', 'categorylist');	
+		$src = $request->input('src', "");
+		$ver = $request->input('ver', "");
+		$version = $request->input('version', 1.0);
+		$uuid = $request->input('uuid', "4560aecaa5dd9d92e169a402bb0cf71c74992f50");
+		$pin = $request->input('pin', "9ee2ddaadf134a988f62bea9705a4d8f");
+		$token = $request->input('token', "51afe0b7c5331d3df4920c46a0ee4ca2");
+		$params = array(
+			'cmd'=>$cmd, 
+			'src'=>$src,
+			'ver'=>$ver,
+			'version'=>$version,
+			'uuid'=>$uuid,
+			'pin'=>$pin,
+			'token'=>$token
+		);
+		
+		$system = "product";	
+		$service = "product";
+		$result = $this->request('openapi', $system, $service, $params);
+		//dd($result);
+		if($result['success']){
+			return View('shopping.list', ['categories'=>$result['data']['list']]);
+		}
+	}
+
+	public function getShoppingCategoryList(Request $request)
+	{
+		$cmd = $request->input('cmd', 'categorylist');	
+		$src = $request->input('src', "");
+		$ver = $request->input('ver', "");
+		$version = $request->input('version', 1.0);
+		$uuid = $request->input('uuid', "4560aecaa5dd9d92e169a402bb0cf71c74992f50");
+		$pin = $request->input('pin', "9ee2ddaadf134a988f62bea9705a4d8f");
+		$token = $request->input('token', "51afe0b7c5331d3df4920c46a0ee4ca2");
+		$params = array(
+			'cmd'=>$cmd, 
+			'src'=>$src,
+			'ver'=>$ver,
+			'version'=>$version,
+			'uuid'=>$uuid,
+			'pin'=>$pin,
+			'token'=>$token
+		);
+		
+		$system = "product";	
+		$service = "product";
+		$result = $this->request('openapi', $system, $service, $params);
+		dd($result);
+		if($result['success']){
+			return $result;
+		}
+	}
+
+	public function getShoppingProductList(Request $request)
+	{
+		$recid = $request->input('recid', 100);  
+		$pin = $request->input('pin', "xxx123");
+		$uuid = $request->input('uuid', "");
+		$cid = $request->input('cid', "");
+		$pagenum = $request->input('pagenum', 1);
+		$pagesize = $request->input('pagesize', 20);
+		$exp = $request->input('exp', "");
+		$encode = $request->input("encode", "UTF-8"); 
+		$token = $request->input("token", "1111");
 		$params = array(
 			'recid'=>$recid,
 			'pin'=>$pin,
@@ -32,38 +88,10 @@ class ShoppingController extends ApiController
 		);
 		$system = "feed";	
 		$service = "rec";
-
-		$result = $this->request('Hot',$system, $service, $params);
+		$result = $this->request('openapi', $system, $service, $params);
 		dd($result);
-	}
-
-	public function store()
-	{
-		dd("store");
-	}
-
-	public function create()
-	{
-		dd("create");
-	}
-
-	public function destroy($id)
-	{
-		dd("destroy" . $id);
-	}
-
-	public function update($id)
-	{
-		dd("update" . $id);
-	}
-
-	public function show($id)
-	{
-		dd("show" . $id);
-	}
-
-	public function edit($id)
-	{
-		dd("edit" . $id);
+		if($result['success']){
+			return $result;
+		}
 	}
 }

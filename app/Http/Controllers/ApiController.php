@@ -4,8 +4,12 @@ namespace App\Http\Controllers;
 
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+
+use Illuminate\support\Facades\Input;
 use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\Cookie;
 use App\Services\Net;
+
 
 
 abstract class ApiController extends Controller
@@ -19,7 +23,7 @@ abstract class ApiController extends Controller
      */
     protected $ApiUrl = [
         //接口名称
-        'Hot' => 'http://54.222.146.28',
+        'openapi' => 'http://54.222.146.28',
         //分类列表
         'Category' => 'http://54.222.146.28/product/product?cmd=categorylist&token=1001'
     ];

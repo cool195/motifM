@@ -1,0 +1,11 @@
+.message-info {
+  position: relative;
+}
+
+.message-info .message-wordNumber {
+  position: absolute;
+  bottom: .625rem;
+  right: .875rem;
+}
+
+/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIm9yZGVyQ2hlY2tvdXQtbWVzc2FnZS5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUNBO0VBQ0ksbUJBQW1CO0NBTXRCOztBQVBEO0VBR1EsbUJBQW1CO0VBQ25CLGdCQUFnQjtFQUNoQixlQUFlO0NBQ2xCIiwiZmlsZSI6Im9yZGVyQ2hlY2tvdXQtbWVzc2FnZS5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyIvLyDmj5DkuqTlpIfms6jkv6Hmga8gbWVzc2FnZSB0byB1c1xuLm1lc3NhZ2UtaW5mbyB7XG4gICAgcG9zaXRpb246IHJlbGF0aXZlO1xuICAgIC5tZXNzYWdlLXdvcmROdW1iZXIge1xuICAgICAgICBwb3NpdGlvbjogYWJzb2x1dGU7XG4gICAgICAgIGJvdHRvbTogLjYyNXJlbTtcbiAgICAgICAgcmlnaHQ6IC44NzVyZW07XG4gICAgfVxufVxuIl0sInNvdXJjZVJvb3QiOiIvc291cmNlLyJ9 */
