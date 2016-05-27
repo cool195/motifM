@@ -16,18 +16,14 @@
     <script src="/scripts/vendor/modernizr.js"></script>
 </head>
 <body class="body-navbarPadding">
-<!-- 头部导航 start-->
-	@include('navigator');
-<!-- 头部导航 end-->
-    <!-- 图片详情 -->
+@include('navigator')
+    <!-- 图片详情 --><!-- 弹出图片轮播 -->
     <div class="product-detailImg fade">
-        <!-- 弹出图片轮播 -->
         <div class="swiper-container" id="detailImg-swiper">
             <div class="swiper-wrapper">
-                <div class="swiper-slide"><img class="img-fluid" src="/images/product/productDetail1.png"></div>
-                <div class="swiper-slide"><img class="img-fluid" src="/images/product/productDetail2.png"></div>
-                <div class="swiper-slide"><img class="img-fluid" src="/images/product/productDetail3.png"></div>
-                <div class="swiper-slide"><img class="img-fluid" src="/images/product/productDetail4.png"></div>
+			@foreach($data['productImages'] as $image)
+             <div class="swiper-slide"><img class="img-fluid" src="{{ 'https://s3-us-west-1.amazonaws.com/emimagetest/n2/'.$image['img_path'] }}"></div>
+			@endforeach
             </div>
             <div class="swiper-pagination font-size-sm" id="detailImg-pagination"></div>
         </div>
@@ -40,10 +36,9 @@
             <!-- 页面上图片轮播 -->
             <div class="swiper-container" id="baseImg-swiper">
                 <div class="swiper-wrapper">
-                    <div class="swiper-slide"><img class="img-fluid" src="/images/product/productDetail1.png"></div>
-                    <div class="swiper-slide"><img class="img-fluid" src="/images/product/productDetail2.png"></div>
-                    <div class="swiper-slide"><img class="img-fluid" src="/images/product/productDetail3.png"></div>
-                    <div class="swiper-slide"><img class="img-fluid" src="/images/product/productDetail4.png"></div>
+					@foreach($data['productImages'] as $image)
+					 <div class="swiper-slide"><img class="img-fluid" src="{{ 'https://s3-us-west-1.amazonaws.com/emimagetest/n2/'.$image['img_path'] }}"></div>
+					@endforeach
                 </div>
                 <!-- 分页器 -->
                 <div class="swiper-pagination text-right p-r-20x font-size-sm" id="baseImg-pagination"></div>
@@ -53,23 +48,21 @@
         <!-- 产品 标题 简介 价格 基本信息 -->
         <article class="product-baseInfo bg-white m-b-10x">
             <div class="product-text">
-                <h6 class="text-main">Retro Rose Gold-plated Flower Shape Black CZ Inlaid Women’s Cocktail Ring</h6>
-                <p class="text-primary font-size-sm">It perfectly complements your outfits and showcases your sense of
-                                                     style and fashion.
-                </p>
+                <h6 class="text-main">{{$data['main_title']}}</h6>
+                <p class="text-primary font-size-sm">{{ $data['intro_short'] }}</p>
                 <p class="text-primary font-size-sm">
                     <span>Designer:</span>
-                    <a href="#" class="text-primary text-underLine">LovelyPepa</a>
+                    <a href="#" class="text-primary text-underLine">Zhaozhe</a>
                 </p>
             </div>
             <hr class="hr-light m-x-10x">
             <div class="product-price">
-                <span class="font-size-lx text-primary">$47.95</span>
-                <span class="font-size-sm text-common">＄69.95</span>
+                <span class="font-size-lx text-primary">$ {{ $data['skuPrice']['price'] }}</span>
+                <span class="font-size-sm text-common">＄{{ $data['skuPrice']['sale_price']  }}</span>
                 <span class="font-size-sm text-primary">(51% off)</span>
                 <a class="text-primary pull-xs-right" href="#"><i class="iconfont icon-share icon-size-xm"></i></a>
             </div>
-            <div class="text-warming font-size-xs p-x-15x">Warming: Women’s Ring</div>
+            <div class="text-warming font-size-xs p-x-15x">{{ $data['seo_describe'] }}</div>
         </article>
         <!-- 产品 其他信息 -->
         <section>
@@ -86,8 +79,8 @@
             </aside>
             <!-- 选择商品参数 -->
             <aside class="bg-white m-b-10x">
-                <a class="flex flex-alignCenter flex-fullJustified font-size-sm text-primary p-a-15x" href="#">
-                    Select
+                <a class="flex flex-alignCenter flex-fullJustified font-size-sm text-primary p-a-15x" data-remodal-target="modal" href="#">
+                    <span>Select</span>
                 <span class="flex flex-alignCenter flex-fullJustified">
                     <span class="m-r-10x">Size Color</span> <i class="iconfont icon-arrow-right icon-size-xm text-common"></i>
                 </span>
@@ -96,9 +89,7 @@
             <!-- 产品描述 -->
             <aside class="bg-white p-x-15x p-y-10x m-b-10x">
                 <p class="font-size-md text-main"><strong>Description</strong></p>
-                <p class="font-size-sm text-primary">Metal: Alloy/Gold-plated<br>
-                                                     Flower Dimension: 25*15 mm<br>
-                                                     About EverMarker :</p>
+                <p class="font-size-sm text-primary">{{ $data['seo_describe'] }} </p>
                 <a class="flex flex-alignCenter flex-fullJustified font-size-xs text-common" href="#">
                     show more
                     <i class="iconfont icon-arrow-bottom icon-size-xm text-common"></i>
@@ -110,7 +101,7 @@
                     Ask a Question <i class="iconfont icon-arrow-right icon-size-xm text-common"></i></a>
             </aside>
             <aside class="product-secondaryInfo">
-                <a class="flex flex-alignCenter flex-fullJustified font-size-sm text-primary p-a-15x" href="#">
+                <a class="flex flex-alignCenter flex-fullJustified font-size-sm text-primary p-a-15x">
                     Size Guide
                     <i class="iconfont icon-arrow-right icon-size-xm text-common"></i>
                 </a>
@@ -120,6 +111,7 @@
                     <i class="iconfont icon-arrow-right icon-size-xm text-common"></i>
                 </a>
             </aside>
+
             <!-- 版权信息 -->
             <!-- TODO -->
             <aside class="product-secondaryInfo p-a-15x">
@@ -128,8 +120,7 @@
                         <img class="media-object" src="/images/icon/icon-guarantee.png" srcset="/images/icon/icon-guarantee@2x.png 2x, /images/icon/icon-guarantee@3x.png 3x" alt="">
                     </div>
                     <div class="media-body media-middle">
-                        <p class="font-size-sm text-primary m-a-0 p-r-2">MOTIF guarantee quality merchandise and return
-                                                                         service</p>
+                        <p class="font-size-sm text-primary m-a-0 p-r-2">MOTIF guarantee quality merchandise and return service</p>
                     </div>
                 </div>
             </aside>
@@ -208,9 +199,135 @@
             </aside>
         </section>
     </section>
-<!-- 页脚 功能链接 Start-->
+
+    <!-- 弹出选择 size color Engraving -->
+    <!-- TODO remodal 有多余的样式 需要整理 -->
+    <div class="remodal p-a-0 modal-content" data-remodal-id="modal">
+        <form action="">
+            <div class="p-x-15x p-t-15x text-right">
+                <a data-remodal-action="close"><i class="iconfont icon-cross text-common icon-size-lg"></i>
+                </a>
+            </div>
+            <fieldset class="text-primary p-x-15x p-b-10x text-left">
+                <div class="font-size-sm"><strong>$748.00</strong></div>
+                <div class="font-size-sm">Select: Size, Color</div>
+            </fieldset>
+            <hr class="hr-base m-a-0">
+            <fieldset class="p-x-15x p-y-10x text-left">
+                <div class="container-fluid p-a-0">
+                    <div class="text-primary font-size-sm">Size</div>
+                    <div class="row">
+                        <div class="col-xs-3 p-t-10x">
+                            <label class="btn btn-block btn-cartUpdate btn-sm m-b-0" for="size-1">XS</label>
+                            <input type="radio" name="size" id="size-1" hidden>
+                        </div>
+                        <div class="col-xs-3 p-t-10x">
+                            <label class="btn btn-block btn-primary btn-sm m-b-0" for="size-2">X</label>
+                            <input type="radio" name="size" id="size-2" hidden>
+                        </div>
+                        <div class="col-xs-3 p-t-10x">
+                            <label class="btn btn-block btn-cartUpdate btn-sm m-b-0 disabled" for="size-3">S</label>
+                            <input type="radio" name="size" id="size-3" hidden>
+                        </div>
+                        <div class="col-xs-3 p-t-10x">
+                            <label class="btn btn-block btn-cartUpdate btn-sm m-b-0" for="size-4">M</label>
+                            <input type="radio" name="size" id="size-4" hidden>
+                        </div>
+                        <div class="col-xs-3 p-t-10x">
+                            <label class="btn btn-block btn-cartUpdate btn-sm m-b-0" for="size-5">L</label>
+                            <input type="radio" name="size" id="size-5" hidden>
+                        </div>
+                        <div class="col-xs-3 p-t-10x">
+                            <label class="btn btn-block btn-cartUpdate btn-sm m-b-0" for="size-6">XL</label>
+                            <input type="radio" name="size" id="size-6" hidden>
+                        </div>
+                        <div class="col-xs-3 p-t-10x">
+                            <label class="btn btn-block btn-cartUpdate btn-sm m-b-0" for="size-7">XXL</label>
+                            <input type="radio" name="size" id="size-7" hidden>
+                        </div>
+                    </div>
+                </div>
+            </fieldset>
+            <hr class="hr-base m-a-0">
+            <fieldset class="p-x-15x p-y-10x text-left">
+                <div class="text-primary font-size-sm">Color</div>
+                <div class="container-fluid p-a-0">
+                    <div class="row">
+                        <div class="col-xs-3 p-t-10x">
+                            <label class="btn btn-block btn-cartUpdate btn-sm">Red</label>
+                            <input type="radio" name="color" id="color-1" hidden>
+                        </div>
+                        <div class="col-xs-3 p-t-10x">
+                            <label class="btn btn-block btn-primary btn-sm">Pink</label>
+                            <input type="radio" name="color" id="color-2" hidden>
+                        </div>
+                        <div class="col-xs-3 p-t-10x">
+                            <label class="btn btn-block btn-cartUpdate btn-sm disabled">Yellow</label>
+                            <input type="radio" name="color" id="color-3" hidden>
+                        </div>
+                        <div class="col-xs-3 p-t-10x">
+                            <label class="btn btn-block btn-cartUpdate btn-sm">White</label>
+                            <input type="radio" name="color" id="color-4" hidden>
+                        </div>
+                        <div class="col-xs-3 p-t-10x">
+                            <label class="btn btn-block btn-cartUpdate btn-sm">Black</label>
+                            <input type="radio" name="color" id="color-5" hidden>
+                        </div>
+                        <div class="col-xs-3 p-t-10x">
+                            <label class="btn btn-block btn-cartUpdate btn-sm">Blue</label>
+                            <input type="radio" name="color" id="color-6" hidden>
+                        </div>
+                        <div class="col-xs-3 p-t-10x">
+                            <label class="btn btn-block btn-cartUpdate btn-sm">Orange</label>
+                            <input type="radio" name="color" id="color-7" hidden>
+                        </div>
+                    </div>
+                </div>
+            </fieldset>
+            <hr class="hr-base m-a-0">
+            <fieldset class="p-x-15x p-y-10x text-left">
+                <div class="text-primary font-size-sm m-b-10x">Ring Inside Engraving+＄4.5</div>
+                <div class="flex flex-fullJustified flex-alignCenter">
+                    <input class="input-engraving form-control font-size-sm" type="text">
+                    <span class="p-l-20x"><a href="#"><i class="iconfont icon-checkcircle text-common"></i></a></span>
+                </div>
+            </fieldset>
+            <hr class="hr-base m-a-0">
+            <fieldset class="p-x-15x p-y-10x text-left">
+                <div class="text-primary font-size-sm m-b-10x">gift package+＄4.5(optional)</div>
+                <div class="flex flex-fullJustified flex-alignCenter">
+                    <input class="input-engraving form-control font-size-sm" type="text">
+                    <span class="p-l-20x"><a href="#"><i class="iconfont icon-checkcircle text-common"></i></a></span>
+                </div>
+            </fieldset>
+            <hr class="hr-base m-a-0">
+            <fieldset class="p-x-15x p-y-10x">
+                <div class="flex flex-fullJustified flex-alignCenter">
+                    <span class="text-primary font-size-sm">Qty:</span>
+                    <div class="btn-group flex">
+                        <div class="btn btn-cartCount btn-sm disabled">-</div>
+                        <div class="btn btn-cartCount btn-sm">2</div>
+                        <div class="btn btn-cartCount btn-sm">+</div>
+                    </div>
+                </div>
+            </fieldset>
+            <hr class="hr-dark m-a-0">
+            <fieldset class="container-fluid p-a-15x">
+                <div class="row">
+                    <div class="col-xs-6">
+                        <a href="#" class="btn btn-primary-outline btn-block">Add To Bag</a>
+                    </div>
+                    <div class="col-xs-6">
+                        <a href="#" class="btn btn-primary btn-block">Buy Now</a>
+                    </div>
+                </div>
+            </fieldset>
+        </form>
+    </div>
+
+<!-- 页脚 功能链接 start-->
 	@include('footer')
-<!-- 页脚 功能链接 End-->
+<!-- 页脚 功能链接 end-->
 
 </body>
 <script src="scripts/vendor.js"></script>
