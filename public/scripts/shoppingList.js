@@ -189,7 +189,9 @@
             url: '/products',
             data: { pagenum: NextPage, pagesize: 20, cid: CurrentCid }
         }).done(function (data) {
-            if (data.data.list.length === 0) {
+            if (data.data === null || data.data === "") {
+                return;
+            } else if (data.data.list.length === 0) {
                 // 没有数据要加载
                 TabsPage[ActiveTab] = null;
                 return;
