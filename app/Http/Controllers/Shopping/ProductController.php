@@ -68,7 +68,6 @@ class ProductController extends ApiController
 			$result['data'] = array();
 			$result['error_msg'] = "Data access failed";
 		}
-		dd($result);
 		return $result;
 	}
 

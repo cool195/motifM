@@ -75,12 +75,22 @@
                     <span class="font-size-sm m-l-5x">HAIRJEWELRY</span>
                 </a>
             </li>-->
+			<?php $i = 0; ?> 
 			@foreach($categories as $c)	
-            <li class="nav-item swiper-slide" data-tabindex="">
-                <a class="nav-flex underLine-item text-primary m-x-15x p-y-10x p-l-20x iconimg-earrings inactive">
-                    <span class="font-size-sm m-l-5x">{{ $c['category_name'] }}</span>
-                </a>
-            </li>
+				@if( 0 == $i)
+					<li class="nav-item swiper-slide" data-tabindex="">
+						<a class="nav-flex underLine-item text-primary m-x-15x p-y-10x p-l-20x iconimg-earrings">
+							<span class="font-size-sm m-l-5x">{{ $c['category_name'] }}</span>
+						</a>
+					</li>
+				@else
+					<li class="nav-item swiper-slide" data-tabindex="">
+						<a class="nav-flex underLine-item text-primary m-x-15x p-y-10x p-l-20x iconimg-earrings inactive">
+							<span class="font-size-sm m-l-5x">{{ $c['category_name'] }}</span>
+						</a>
+					</li>
+				@endif
+			<?php $i++; ?>
 			@endforeach
         </ul>
     </nav>
