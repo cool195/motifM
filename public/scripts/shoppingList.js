@@ -153,8 +153,6 @@
         $(TabsContainerSwiper.slides[CurrentTab]).find('row').append(StageCache);
     }
 
-    /*global category_id*/
-
     /**
      * 加载商品列表, ajax请求
      * @need appendProductsList()
@@ -182,7 +180,7 @@
         var CurrentPage = TabsPage[ActiveTab],
             NextPage = ++CurrentPage;
         // 当前激活的分类ID
-        var CurrentCid = Category[ActiveTab][category_id];
+        var CurrentCid = Category[ActiveTab]['category_id'];
 
         // 显示加载动画
         loadingShow(ActiveTab);
