@@ -70,28 +70,22 @@ class ShoppingController extends ApiController
 
 	public function getShoppingProductList(Request $request)
 	{
-		$recid = $request->input('recid', 100);  
-		$pin = $request->input('pin', "xxx123");
-		$uuid = $request->input('uuid', "");
+		$recid = $request->input('recid', 100000);
+		$pin = $request->input('pin', "xuzhijie");
+		$uuid = $request->input('uuid', "xuzhijie");
 		$cid = $request->input('cid', "135");
 		$pagenum = $request->input('pagenum', 1);
 		$pagesize = $request->input('pagesize', 20);
-		$extra = $request->input('extra', "");
-		$encode = $request->input("encode", "UTF-8"); 
-		$exp = $request->input('exp', "");
-		$token = $request->input("token", "1111");
+		$extra = $request->input('extra_kv', "");
 		$params = array(
 			'recid'=>$recid,
 			'pin'=>$pin,
 			'uuid'=>$uuid,
 			'cid'=>$cid,
 			'pagenum'=>$pagenum,
-			'pagesize'=>$pagesize,
-			'exp'=>$exp,
-			'encode'=>$encode,
-			'token'=>$token
+			'pagesize'=>$pagesize
 		);
-		$system = "feed";	
+		$system = "";
 		$service = "rec";
 		$result = $this->request('openapi', $system, $service, $params);
 		if(empty($result)){
