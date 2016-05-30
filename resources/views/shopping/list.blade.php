@@ -67,7 +67,7 @@
                 <div class="image-container">
                     <a href="http://motiflumen.evermarker.com/products/@{{ $value.spu }}">
                         <img class="img-fluid" src="@{{ $value.main_image_url }}" alt="@{{ $value.main_title }}">
-                        @{{ if $value.skuPrice.skuPromotion !== undefined }}
+                        @{{ if $value.skuPrice.sale_price !== $value.skuPrice.price }}
                         <div class="price-off">
                             <strong class="font-size-sm">@{{ $value.skuPrice.skuPromotion.display }}</strong>
                         </div>
@@ -77,7 +77,7 @@
             </div>
             <div class="price-caption">
                 <span class="font-size-sm m-l-5x">
-                    <strong>$@{{ $value.skuPrice.sale_price }}</strong>
+                    <strong>$@{{ $value.skuPrice.price }}</strong>
                 </span>
                 @{{ if $value.skuPrice.skuPromotion !== undefined }}
                 <span class="font-size-xs text-common text-throughLine m-l-5x">$@{{ $value.skuPrice.price }}</span>
