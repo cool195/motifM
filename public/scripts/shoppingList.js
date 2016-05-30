@@ -187,7 +187,7 @@
         // ajax 请求加载数据
         $.ajax({
             url: '/products',
-            data: { pagenum: NextPage, pagesize: 20, cid: CurrentCid }
+            data: {pagenum: NextPage, pagesize: 20, cid: CurrentCid}
         }).done(function (data) {
             if (data.data === null || data.data === "") {
                 return;
@@ -197,17 +197,17 @@
                 return;
             }
             // 遍历模板 插入页面
-            appendProductsList(data.data.list, ActiveTab);
+            appendProductsList(data.data, ActiveTab);
             // TabsPage 选项卡加载页 页码+1
             TabsPage[ActiveTab]++;
         })
         // TODO failed 时的提示
-        .always(function () {
-            // 隐藏加载动画
-            loadingHide(ActiveTab);
-            // 请求结束, loading = false
-            $Current.data('loading', false);
-        });
+            .always(function () {
+                // 隐藏加载动画
+                loadingHide(ActiveTab);
+                // 请求结束, loading = false
+                $Current.data('loading', false);
+            });
     }
 
     // 为选项卡导航, 绑定一次性事件, 加载商品数据

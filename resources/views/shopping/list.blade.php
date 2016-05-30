@@ -37,7 +37,8 @@
                 </div>
             </li>
             <li class="nav-item nav-logo">
-                <a><img src="/images/logo/logo.png" srcset="/images/logo/logo@2x.png 2x,/images/logo/logo@3x.png 3x"></a>
+                <a><img src="/images/logo/logo.png"
+                        srcset="/images/logo/logo@2x.png 2x,/images/logo/logo@3x.png 3x"></a>
             </li>
             <li class="nav-item">
                 <div class="nav-shoppingCart">
@@ -104,10 +105,12 @@
         </div>
         <div class="field-items">
             <a href="#" class="btn btn-secondary btn-xs">
-                <img src="/images/icon/icon-appStore.png" srcset="/images/icon/icon-appStore@2x.png 2x, /images/icon/icon-appStore@3x.png 3x">
+                <img src="/images/icon/icon-appStore.png"
+                     srcset="/images/icon/icon-appStore@2x.png 2x, /images/icon/icon-appStore@3x.png 3x">
             </a>
             <a href="#" class="btn btn-secondary btn-xs">
-                <img src="/images/icon/icon-googlePlay.png" srcset="/images/icon/icon-googlePlay@2x.png 2x, /images/icon/icon-googlePlay@3x.png 3x">
+                <img src="/images/icon/icon-googlePlay.png"
+                     srcset="/images/icon/icon-googlePlay@2x.png 2x, /images/icon/icon-googlePlay@3x.png 3x">
             </a>
         </div>
     </div>
@@ -146,7 +149,7 @@
 </body>
 <!-- 模板 -->
 <template id="tpl-product">
-    @{{ each list as value index }}
+    @{{ each list }}
     <div class="col-xs-6">
         <div class="productList-item">
             <div class="image-bg">
