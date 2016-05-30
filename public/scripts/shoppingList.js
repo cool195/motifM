@@ -104,8 +104,6 @@
                 // Tabs页码数组初始化
                 tabsPageInit(Category.length);
                 console.log('获取分类成功');
-                // 首次打开 加载相应页面
-                tabsLoading();
             } else {
                 console.log('获取分类失败');
             }
@@ -188,7 +186,7 @@
         // ajax 请求加载数据
         $.ajax({
             url: '/products',
-            data: {pagenum: NextPage, pagesize: 20, cid: CurrentCid}
+            data: { pagenum: NextPage, pagesize: 20, cid: CurrentCid }
         }).done(function (data) {
             if (data.data === null || data.data === "") {
                 return;
@@ -203,12 +201,12 @@
             TabsPage[ActiveTab]++;
         })
         // TODO failed 时的提示
-            .always(function () {
-                // 隐藏加载动画
-                loadingHide(ActiveTab);
-                // 请求结束, loading = false
-                $Current.data('loading', false);
-            });
+        .always(function () {
+            // 隐藏加载动画
+            loadingHide(ActiveTab);
+            // 请求结束, loading = false
+            $Current.data('loading', false);
+        });
     }
 
     // 为选项卡导航, 绑定一次性事件, 加载商品数据
@@ -219,10 +217,10 @@
 
     // 为页面绑定 滚动条事件
     $(document).ready(function () {
-        $(window).scroll(function () {
-            pullLoading();
-            console.log('滚动条滚动');
-        });
+        $(window).scroll(pullLoading());
     });
+    window.onload = function () {
+        tabsLoading();
+    };
 })(jQuery, Swiper);
 //# sourceMappingURL=shoppingList.js.map
