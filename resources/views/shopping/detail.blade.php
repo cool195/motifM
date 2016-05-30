@@ -330,7 +330,7 @@
 <!-- 页脚 功能链接 end-->
 
 </body>
-<script src="scripts/vendor.js"></script>
+<script src="/scripts/vendor.js"></script>
 
 <script src="/scripts/shoppingDetail.js"></script>
 
