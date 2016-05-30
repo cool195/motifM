@@ -65,7 +65,7 @@
         <div class="productList-item">
             <div class="image-bg">
                 <div class="image-container">
-                    <a href="http://motiflumen.evermarker.com/products/@{{ $value.spu }}">
+                    <a href="/products/@{{ $value.spu }}">
                         <img class="img-fluid" src="@{{ $value.main_image_url }}" alt="@{{ $value.main_title }}">
                         @{{ if $value.skuPrice.sale_price !== $value.skuPrice.price }}
                         <div class="price-off">
