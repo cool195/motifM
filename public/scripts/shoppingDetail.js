@@ -77,17 +77,17 @@
     }
 
     // TODO 筛选 逻辑
-    function filterOptions(CurrentOptionID) {
-
-        var SpuID = Options[CurrentOptionID].skus;
+    function filterOptions(SpuID, SkuID) {
 
         $.each(Options, function (index, val) {
-            if (index) {}
-            // 获取 skus sku集合
-            var Skus = val.attr_type;
+            // 排除同一类别的 选项
+            if (index !== SpuID) {
+                // 同一类别的选项 val
+                var Skus = val;
 
-            for (var i = 0; i < Skus.length; i++) {
-                Skus[i];
+                for (var i = 0; i < Skus.length; i++) {
+                    Skus[i];
+                }
             }
         });
     };
