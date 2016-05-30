@@ -60,7 +60,7 @@
 </body>
 <!-- 模板 -->
 <template id="tpl-product">
-    @{{ each list as value index }}
+    @{{ each list }}
     <div class="col-xs-6">
         <div class="productList-item">
             <div class="image-bg">
