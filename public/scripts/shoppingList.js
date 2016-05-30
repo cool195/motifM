@@ -197,7 +197,7 @@
                 return;
             }
             // 遍历模板 插入页面
-            appendProductsList(data.data.list, ActiveTab);
+            appendProductsList(data.data, ActiveTab);
             // TabsPage 选项卡加载页 页码+1
             TabsPage[ActiveTab]++;
         })

@@ -9,7 +9,7 @@ class ShoppingController extends ApiController
 {
 	public function index(Request $request)	
 	{
-		$cmd = $request->input('cmd', 'categorylist');	
+		$cmd = $request->input('cmd', 'categorylist');
 		$src = $request->input('src', "");
 		$ver = $request->input('ver', "");
 		$version = $request->input('version', 1.0);
@@ -17,16 +17,16 @@ class ShoppingController extends ApiController
 		$pin = $request->input('pin', "9ee2ddaadf134a988f62bea9705a4d8f");
 		$token = $request->input('token', "51afe0b7c5331d3df4920c46a0ee4ca2");
 		$params = array(
-			'cmd'=>$cmd, 
-			'src'=>$src,
-			'ver'=>$ver,
-			'version'=>$version,
-			'uuid'=>$uuid,
-			'pin'=>$pin,
-			'token'=>$token
+			'cmd'=>$cmd,
+//			'src'=>$src,
+//			'ver'=>$ver,
+//			'version'=>$version,
+//			'uuid'=>$uuid,
+//			'pin'=>$pin,
+//			'token'=>$token
 		);
-		
-		$system = "product";	
+
+		$system = "";
 		$service = "product";
 		$result = $this->request('openapi', $system, $service, $params);
 		//dd($result);
@@ -49,15 +49,15 @@ class ShoppingController extends ApiController
 		$token = $request->input('token', "51afe0b7c5331d3df4920c46a0ee4ca2");
 		$params = array(
 			'cmd'=>$cmd, 
-			'src'=>$src,
-			'ver'=>$ver,
-			'version'=>$version,
-			'uuid'=>$uuid,
-			'pin'=>$pin,
-			'token'=>$token
+//			'src'=>$src,
+//			'ver'=>$ver,
+//			'version'=>$version,
+//			'uuid'=>$uuid,
+//			'pin'=>$pin,
+//			'token'=>$token
 		);
 		
-		$system = "product";	
+		$system = "";
 		$service = "product";
 		$result = $this->request('openapi', $system, $service, $params);
 		if(empty($result['success'])){

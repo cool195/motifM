@@ -23,9 +23,9 @@ abstract class ApiController extends Controller
      */
     protected $ApiUrl = [
         //接口名称
-        'openapi' => 'http://54.222.146.28',
+        'openapi' => 'http://192.168.0.230/',
         //分类列表
-        'Category' => 'http://54.222.146.28/product/product?cmd=categorylist&token=1001'
+        'Category' => 'http://192.168.0.230/product?cmd=categorylist&token=1001'
     ];
 
     public function __construct()
@@ -41,6 +41,7 @@ abstract class ApiController extends Controller
 
     protected function request($ApiName, $system, $service, array $params, $cacheTime = 0, $output = false)
     {
+
         $buildParams = http_build_query($params);
 		$key = md5($buildParams);
         $result = "";
