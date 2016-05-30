@@ -202,135 +202,135 @@
 
     <!-- 弹出选择 size color Engraving -->
     <!-- TODO remodal 有多余的样式 需要整理 -->
-    <div class="remodal p-a-0 modal-content" data-remodal-id="modal">
-        <form action="">
-            <div class="p-x-15x p-t-15x text-right">
-                <a data-remodal-action="close"><i class="iconfont icon-cross text-common icon-size-lg"></i>
-                </a>
-            </div>
-            <fieldset class="text-primary p-x-15x p-b-10x text-left">
-                <div class="font-size-sm"><strong>$748.00</strong></div>
-                <div class="font-size-sm">Select: Size, Color</div>
-            </fieldset>
-            <hr class="hr-base m-a-0">
-            <fieldset class="p-x-15x p-y-10x text-left">
-                <div class="container-fluid p-a-0">
-                    <div class="text-primary font-size-sm">Size</div>
-                    <div class="row">
-                        <div class="col-xs-3 p-t-10x">
-                            <label class="btn btn-block btn-cartUpdate btn-sm m-b-0" for="size-1">XS</label>
-                            <input type="radio" name="size" id="size-1" hidden>
-                        </div>
-                        <div class="col-xs-3 p-t-10x">
-                            <label class="btn btn-block btn-primary btn-sm m-b-0" for="size-2">X</label>
-                            <input type="radio" name="size" id="size-2" hidden>
-                        </div>
-                        <div class="col-xs-3 p-t-10x">
-                            <label class="btn btn-block btn-cartUpdate btn-sm m-b-0 disabled" for="size-3">S</label>
-                            <input type="radio" name="size" id="size-3" hidden>
-                        </div>
-                        <div class="col-xs-3 p-t-10x">
-                            <label class="btn btn-block btn-cartUpdate btn-sm m-b-0" for="size-4">M</label>
-                            <input type="radio" name="size" id="size-4" hidden>
-                        </div>
-                        <div class="col-xs-3 p-t-10x">
-                            <label class="btn btn-block btn-cartUpdate btn-sm m-b-0" for="size-5">L</label>
-                            <input type="radio" name="size" id="size-5" hidden>
-                        </div>
-                        <div class="col-xs-3 p-t-10x">
-                            <label class="btn btn-block btn-cartUpdate btn-sm m-b-0" for="size-6">XL</label>
-                            <input type="radio" name="size" id="size-6" hidden>
-                        </div>
-                        <div class="col-xs-3 p-t-10x">
-                            <label class="btn btn-block btn-cartUpdate btn-sm m-b-0" for="size-7">XXL</label>
-                            <input type="radio" name="size" id="size-7" hidden>
-                        </div>
-                    </div>
-                </div>
-            </fieldset>
-            <hr class="hr-base m-a-0">
-            <fieldset class="p-x-15x p-y-10x text-left">
-                <div class="text-primary font-size-sm">Color</div>
-                <div class="container-fluid p-a-0">
-                    <div class="row">
-                        <div class="col-xs-3 p-t-10x">
-                            <label class="btn btn-block btn-cartUpdate btn-sm">Red</label>
-                            <input type="radio" name="color" id="color-1" hidden>
-                        </div>
-                        <div class="col-xs-3 p-t-10x">
-                            <label class="btn btn-block btn-primary btn-sm">Pink</label>
-                            <input type="radio" name="color" id="color-2" hidden>
-                        </div>
-                        <div class="col-xs-3 p-t-10x">
-                            <label class="btn btn-block btn-cartUpdate btn-sm disabled">Yellow</label>
-                            <input type="radio" name="color" id="color-3" hidden>
-                        </div>
-                        <div class="col-xs-3 p-t-10x">
-                            <label class="btn btn-block btn-cartUpdate btn-sm">White</label>
-                            <input type="radio" name="color" id="color-4" hidden>
-                        </div>
-                        <div class="col-xs-3 p-t-10x">
-                            <label class="btn btn-block btn-cartUpdate btn-sm">Black</label>
-                            <input type="radio" name="color" id="color-5" hidden>
-                        </div>
-                        <div class="col-xs-3 p-t-10x">
-                            <label class="btn btn-block btn-cartUpdate btn-sm">Blue</label>
-                            <input type="radio" name="color" id="color-6" hidden>
-                        </div>
-                        <div class="col-xs-3 p-t-10x">
-                            <label class="btn btn-block btn-cartUpdate btn-sm">Orange</label>
-                            <input type="radio" name="color" id="color-7" hidden>
-                        </div>
-                    </div>
-                </div>
-            </fieldset>
-            <hr class="hr-base m-a-0">
-            <fieldset class="p-x-15x p-y-10x text-left">
-                <div class="text-primary font-size-sm m-b-10x">Ring Inside Engraving+＄4.5</div>
-                <div class="flex flex-fullJustified flex-alignCenter">
-                    <input class="input-engraving form-control font-size-sm" type="text">
-                    <span class="p-l-20x"><a href="#"><i class="iconfont icon-checkcircle text-common"></i></a></span>
-                </div>
-            </fieldset>
-            <hr class="hr-base m-a-0">
-            <fieldset class="p-x-15x p-y-10x text-left">
-                <div class="text-primary font-size-sm m-b-10x">gift package+＄4.5(optional)</div>
-                <div class="flex flex-fullJustified flex-alignCenter">
-                    <input class="input-engraving form-control font-size-sm" type="text">
-                    <span class="p-l-20x"><a href="#"><i class="iconfont icon-checkcircle text-common"></i></a></span>
-                </div>
-            </fieldset>
-            <hr class="hr-base m-a-0">
-            <fieldset class="p-x-15x p-y-10x">
-                <div class="flex flex-fullJustified flex-alignCenter">
-                    <span class="text-primary font-size-sm">Qty:</span>
-                    <div class="btn-group flex">
-                        <div class="btn btn-cartCount btn-sm disabled">-</div>
-                        <div class="btn btn-cartCount btn-sm">2</div>
-                        <div class="btn btn-cartCount btn-sm">+</div>
-                    </div>
-                </div>
-            </fieldset>
-            <hr class="hr-dark m-a-0">
-            <fieldset class="container-fluid p-a-15x">
+    <div class="remodal p-a-0 modal-content" data-remodal-id="modal" id="modalDialog">
+    <form action="">
+        <div class="p-x-15x p-t-15x text-right">
+            <a data-remodal-action="close"><i class="iconfont icon-cross text-common icon-size-lg"></i>
+            </a>
+        </div>
+        <fieldset class="text-primary p-x-15x p-b-10x text-left">
+            <div class="font-size-sm"><strong>$748.00</strong></div>
+            <div class="font-size-sm">Select: Size, Color</div>
+        </fieldset>
+        <hr class="hr-base m-a-0">
+        <fieldset class="p-x-15x p-y-10x text-left">
+            <div class="container-fluid p-a-0">
+                <div class="text-primary font-size-sm">Size</div>
                 <div class="row">
-                    <div class="col-xs-6">
-                        <a href="#" class="btn btn-primary-outline btn-block">Add To Bag</a>
+                    <div class="col-xs-3 p-t-10x">
+                        <input type="radio" name="size" id="size-1" hidden>
+                        <label class="btn btn-block btn-itemProperty btn-sm m-b-0" for="size-1">XS</label>
                     </div>
-                    <div class="col-xs-6">
-                        <a href="#" class="btn btn-primary btn-block">Buy Now</a>
+                    <div class="col-xs-3 p-t-10x">
+                        <input type="radio" name="size" id="size-2" hidden>
+                        <label class="btn btn-block btn-itemProperty btn-sm m-b-0" for="size-2">X</label>
+                    </div>
+                    <div class="col-xs-3 p-t-10x">
+                        <input type="radio" name="size" id="size-3" hidden>
+                        <label class="btn btn-block btn-itemProperty btn-sm m-b-0 disabled" for="size-3">S</label>
+                    </div>
+                    <div class="col-xs-3 p-t-10x">
+                        <input type="radio" name="size" id="size-4" hidden>
+                        <label class="btn btn-block btn-itemProperty btn-sm m-b-0" for="size-4">M</label>
+                    </div>
+                    <div class="col-xs-3 p-t-10x">
+                        <input type="radio" name="size" id="size-5" hidden>
+                        <label class="btn btn-block btn-itemProperty btn-sm m-b-0" for="size-5">L</label>
+                    </div>
+                    <div class="col-xs-3 p-t-10x">
+                        <input type="radio" name="size" id="size-6" hidden>
+                        <label class="btn btn-block btn-itemProperty btn-sm m-b-0" for="size-6">XL</label>
+                    </div>
+                    <div class="col-xs-3 p-t-10x">
+                        <input type="radio" name="size" id="size-7" hidden>
+                        <label class="btn btn-block btn-itemProperty btn-sm m-b-0" for="size-7">XXL</label>
                     </div>
                 </div>
-            </fieldset>
-        </form>
-    </div>
+            </div>
+        </fieldset>
+        <hr class="hr-base m-a-0">
+        <fieldset class="p-x-15x p-y-10x text-left">
+            <div class="text-primary font-size-sm">Color</div>
+            <div class="container-fluid p-a-0">
+                <div class="row">
+                    <div class="col-xs-3 p-t-10x">
+                        <input type="radio" name="color" id="color-1" hidden>
+                        <label class="btn btn-block btn-itemProperty btn-sm" for="color-1">Red</label>
+                    </div>
+                    <div class="col-xs-3 p-t-10x">
+                        <input type="radio" name="color" id="color-2" hidden>
+                        <label class="btn btn-block btn-itemProperty btn-sm" for="color-2">Pink</label>
+                    </div>
+                    <div class="col-xs-3 p-t-10x">
+                        <input type="radio" name="color" id="color-3" hidden>
+                        <label class="btn btn-block btn-itemProperty btn-sm" for="color-3">Yellow</label>
+                    </div>
+                    <div class="col-xs-3 p-t-10x">
+                        <input type="radio" name="color" id="color-4" hidden>
+                        <label class="btn btn-block btn-itemProperty btn-sm" for="color-4">White</label>
+                    </div>
+                    <div class="col-xs-3 p-t-10x">
+                        <input type="radio" name="color" id="color-5" hidden>
+                        <label class="btn btn-block btn-itemProperty btn-sm" for="color-5">Black</label>
+                    </div>
+                    <div class="col-xs-3 p-t-10x">
+                        <input type="radio" name="color" id="color-6" hidden>
+                        <label class="btn btn-block btn-itemProperty btn-sm" for="color-6">Blue</label>
+                    </div>
+                    <div class="col-xs-3 p-t-10x">
+                        <input type="radio" name="color" id="color-7" hidden>
+                        <label class="btn btn-block btn-itemProperty btn-sm" for="color-7">Orange</label>
+                    </div>
+                </div>
+            </div>
+        </fieldset>
+        <hr class="hr-base m-a-0">
+        <fieldset class="p-x-15x p-y-10x text-left">
+            <div class="text-primary font-size-sm m-b-10x">Ring Inside Engraving+＄4.5</div>
+            <div class="flex flex-fullJustified flex-alignCenter">
+                <input class="input-engraving form-control font-size-sm" type="text">
+                <span class="p-l-20x"><a href="#"><i class="iconfont icon-checkcircle text-common"></i></a></span>
+            </div>
+        </fieldset>
+        <hr class="hr-base m-a-0">
+        <fieldset class="p-x-15x p-y-10x text-left">
+            <div class="text-primary font-size-sm m-b-10x">gift package+＄4.5(optional)</div>
+            <div class="flex flex-fullJustified flex-alignCenter">
+                <input class="input-engraving form-control font-size-sm" type="text">
+                <span class="p-l-20x"><a href="#"><i class="iconfont icon-checkcircle text-common"></i></a></span>
+            </div>
+        </fieldset>
+        <hr class="hr-base m-a-0">
+        <fieldset class="p-x-15x p-y-10x">
+            <div class="flex flex-fullJustified flex-alignCenter">
+                <span class="text-primary font-size-sm">Qty:</span>
+                <div class="btn-group flex">
+                    <div class="btn btn-cartCount btn-sm disabled">-</div>
+                    <div class="btn btn-cartCount btn-sm">2</div>
+                    <div class="btn btn-cartCount btn-sm">+</div>
+                </div>
+            </div>
+        </fieldset>
+        <hr class="hr-dark m-a-0">
+        <fieldset class="container-fluid p-a-15x">
+            <div class="row">
+                <div class="col-xs-6">
+                    <a href="#" class="btn btn-primary-outline btn-block">Add To Bag</a>
+                </div>
+                <div class="col-xs-6">
+                    <a href="#" class="btn btn-primary btn-block">Buy Now</a>
+                </div>
+            </div>
+        </fieldset>
+    </form>
+</div>
 
 <!-- 页脚 功能链接 start-->
 	@include('footer')
 <!-- 页脚 功能链接 end-->
 
 </body>
-<script src="scripts/vendor.js"></script>
+<script src="/scripts/vendor.js"></script>
 
 <script src="/scripts/shoppingDetail.js"></script>
 

@@ -75,7 +75,7 @@ class ShoppingController extends ApiController
 		$uuid = $request->input('uuid', "xuzhijie");
 		$cid = $request->input('cid', "135");
 		$pagenum = $request->input('pagenum', 1);
-		$pagesize = $request->input('pagesize', 20);
+		$pagesize = $request->input('pagesize', 5);
 		$extra = $request->input('extra_kv', "");
 		$params = array(
 			'recid'=>$recid,

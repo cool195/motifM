@@ -10,8 +10,8 @@ class ProductController extends ApiController
 {
 	public function index(Request $request, $spu)		
 	{
-		$cmd = 'productdetail';	
-		$spu = 10000025;	
+		$cmd = 'productdetail';
+		$spu = $spu;
 		$src = $request->input('src', "");
 		$ver = $request->input('ver', "");
 		$version = $request->input('version', 1.0);
@@ -28,9 +28,9 @@ class ProductController extends ApiController
 			'pin'=>$pin,
 			'token'=>$token
 		);
-		$system = "product";		
+		$system = "";
 		$service = "product";
-		$result = $this->request('openapi', $system, $service, $params, 300, false);
+		$result = $this->request('openapi', $system, $service, $params);
 		if(empty($result))
 		{
 			$result['success'] = false;
@@ -43,7 +43,7 @@ class ProductController extends ApiController
 	public function getProductDetail(Request $request, $spu)		
 	{
 		$cmd = 'productdetail';	
-		$spu = $request->input('spu', 10000025);	
+		$spu = $request->input('spu', 10000025);
 		$src = $request->input('src', "");
 		$ver = $request->input('ver', "");
 		$version = $request->input('version', 1.0);
@@ -60,15 +60,15 @@ class ProductController extends ApiController
 			'pin'=>$pin,
 			'token'=>$token
 		);
-		$system = "product";		
+		$system = "";
 		$service = "product";
-		$result = $this->request('openapi', $system, $service, $params, 300, false);
+		$result = $this->request('openapi', $system, $service, $params);
 		if(empty($result)){
 			$result['success'] = false;
 			$result['data'] = array();
 			$result['error_msg'] = "Data access failed";
 		}
-		return $result;
+		return View('shopping.detail', ['data' => $result['data']]);
 	}
 
 }
