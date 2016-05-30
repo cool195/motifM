@@ -213,77 +213,22 @@
             <div class="font-size-sm">Select: Size, Color</div>
         </fieldset>
         <hr class="hr-base m-a-0">
+        @foreach($data['spuAttrs'] as $value)
         <fieldset class="p-x-15x p-y-10x text-left">
             <div class="container-fluid p-a-0">
-                <div class="text-primary font-size-sm">Size</div>
+                <div class="text-primary font-size-sm">{{$value['attr_type_value']}}</div>
                 <div class="row">
+                    @foreach($value['skuAttrValues'] as $skuValue)
                     <div class="col-xs-3 p-t-10x">
-                        <input type="radio" name="size" id="size-1" hidden>
-                        <label class="btn btn-block btn-itemProperty btn-sm m-b-0" for="size-1">XS</label>
+                        <input type="radio" name="{{$value['attr_type_value']}}" id="{{$skuValue['attr_value_id']}}" hidden>
+                        <label class="btn btn-block btn-itemProperty btn-sm m-b-0" for="{{$skuValue['attr_value_id']}}">{{$skuValue['attr_value']}}</label>
                     </div>
-                    <div class="col-xs-3 p-t-10x">
-                        <input type="radio" name="size" id="size-2" hidden>
-                        <label class="btn btn-block btn-itemProperty btn-sm m-b-0" for="size-2">X</label>
-                    </div>
-                    <div class="col-xs-3 p-t-10x">
-                        <input type="radio" name="size" id="size-3" hidden>
-                        <label class="btn btn-block btn-itemProperty btn-sm m-b-0 disabled" for="size-3">S</label>
-                    </div>
-                    <div class="col-xs-3 p-t-10x">
-                        <input type="radio" name="size" id="size-4" hidden>
-                        <label class="btn btn-block btn-itemProperty btn-sm m-b-0" for="size-4">M</label>
-                    </div>
-                    <div class="col-xs-3 p-t-10x">
-                        <input type="radio" name="size" id="size-5" hidden>
-                        <label class="btn btn-block btn-itemProperty btn-sm m-b-0" for="size-5">L</label>
-                    </div>
-                    <div class="col-xs-3 p-t-10x">
-                        <input type="radio" name="size" id="size-6" hidden>
-                        <label class="btn btn-block btn-itemProperty btn-sm m-b-0" for="size-6">XL</label>
-                    </div>
-                    <div class="col-xs-3 p-t-10x">
-                        <input type="radio" name="size" id="size-7" hidden>
-                        <label class="btn btn-block btn-itemProperty btn-sm m-b-0" for="size-7">XXL</label>
-                    </div>
+                    @endforeach
                 </div>
             </div>
         </fieldset>
         <hr class="hr-base m-a-0">
-        <fieldset class="p-x-15x p-y-10x text-left">
-            <div class="text-primary font-size-sm">Color</div>
-            <div class="container-fluid p-a-0">
-                <div class="row">
-                    <div class="col-xs-3 p-t-10x">
-                        <input type="radio" name="color" id="color-1" hidden>
-                        <label class="btn btn-block btn-itemProperty btn-sm" for="color-1">Red</label>
-                    </div>
-                    <div class="col-xs-3 p-t-10x">
-                        <input type="radio" name="color" id="color-2" hidden>
-                        <label class="btn btn-block btn-itemProperty btn-sm" for="color-2">Pink</label>
-                    </div>
-                    <div class="col-xs-3 p-t-10x">
-                        <input type="radio" name="color" id="color-3" hidden>
-                        <label class="btn btn-block btn-itemProperty btn-sm" for="color-3">Yellow</label>
-                    </div>
-                    <div class="col-xs-3 p-t-10x">
-                        <input type="radio" name="color" id="color-4" hidden>
-                        <label class="btn btn-block btn-itemProperty btn-sm" for="color-4">White</label>
-                    </div>
-                    <div class="col-xs-3 p-t-10x">
-                        <input type="radio" name="color" id="color-5" hidden>
-                        <label class="btn btn-block btn-itemProperty btn-sm" for="color-5">Black</label>
-                    </div>
-                    <div class="col-xs-3 p-t-10x">
-                        <input type="radio" name="color" id="color-6" hidden>
-                        <label class="btn btn-block btn-itemProperty btn-sm" for="color-6">Blue</label>
-                    </div>
-                    <div class="col-xs-3 p-t-10x">
-                        <input type="radio" name="color" id="color-7" hidden>
-                        <label class="btn btn-block btn-itemProperty btn-sm" for="color-7">Orange</label>
-                    </div>
-                </div>
-            </div>
-        </fieldset>
+        @endforeach
         <hr class="hr-base m-a-0">
         <fieldset class="p-x-15x p-y-10x text-left">
             <div class="text-primary font-size-sm m-b-10x">Ring Inside Engraving+＄4.5</div>
