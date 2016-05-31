@@ -36,8 +36,10 @@
             <!-- 页面上图片轮播 -->
             <div class="swiper-container" id="baseImg-swiper">
                 <div class="swiper-wrapper">
-					@foreach($data['productImages'] as $image)
-					 <div class="swiper-slide"><img class="img-fluid" src="{{ 'https://s3-us-west-1.amazonaws.com/emimagetest/n2/'.$image['img_path'] }}"></div>
+					@forelse($data['productImages'] as $image)
+                        <div class="swiper-slide"><img class="img-fluid" src="{{ 'https://s3-us-west-1.amazonaws.com/emimagetest/n2/'.$image['img_path'] }}"></div>
+                    @empty
+                        <div class="swiper-slide"></div>
 					@endforeach
                 </div>
                 <!-- 分页器 -->
