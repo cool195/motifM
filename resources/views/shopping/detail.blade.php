@@ -40,7 +40,7 @@
                         <div class="swiper-slide"><img class="img-fluid" src="{{ 'https://s3-us-west-1.amazonaws.com/emimagetest/n2/'.$image['img_path'] }}"></div>
                     @empty
                         <div class="swiper-slide"></div>
-					@endforeach
+					@endforelse
                 </div>
                 <!-- 分页器 -->
                 <div class="swiper-pagination text-right p-r-20x font-size-sm" id="baseImg-pagination"></div>
