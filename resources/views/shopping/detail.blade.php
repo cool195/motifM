@@ -54,7 +54,7 @@
                 <p class="text-primary font-size-sm">{{ $data['intro_short'] }}</p>
                 <p class="text-primary font-size-sm">
                     <span>Designer:</span>
-                    <a href="#" class="text-primary text-underLine">Zhaozhe</a>
+                    <a href="{{$data['designer']['designer_home_page']}}" class="text-primary text-underLine">{{$data['designer']['designer_name']}}</a>
                 </p>
             </div>
             <hr class="hr-light m-x-10x">

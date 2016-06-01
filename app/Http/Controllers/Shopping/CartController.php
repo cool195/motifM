@@ -18,15 +18,14 @@ class CartController extends ApiController
 			'pin' => $pin,
 			'token' => $token
 		);
-		$system = "cart";
+		$system = "";
 		$service = "cart";
-		$result = $this->request('openapi', $system, $service, $params, 300);
+		$result = $this->request('openapi', $system, $service, $params);
 		if(empty($result)){
 	 		$result['success'] = false;	
 			$result['error_msg'] = "Data access failed";
 			$result['data'] = array();
 		}
-		dd($result);
 		return $result;
 	}
 
@@ -40,15 +39,14 @@ class CartController extends ApiController
 			'pin' => $pin,
 			'token' => $token
 		);
-		$system = "cart";
+		$system = "";
 		$service = "cart";
-		$result = $this->request('openapi', $system, $service, $params, 300);
+		$result = $this->request('openapi', $system, $service, $params);
 		if(empty($result)){
 	 		$result['success'] = false;	
 			$result['error_msg'] = "Data access failed";
 			$result['data'] = array();
 		}
-		dd($result);
 		return $result;
 	}
 
@@ -56,25 +54,28 @@ class CartController extends ApiController
 	{
 		$cmd = "accountlist";	
 		$pin = $request->input('pin', 'xuzhijie');
-		$token = $request->input('token', 1);
-		$addressid = $request->input('addressid', "");
+		$logisticstype = $request->input('logisticstype');
+		$paytype = $request->input('paytype');
+		//$addressid = $request->input('addressid', "");
 		$couponcode = $request->input('couponcode', "");
+		$token = $request->input('token', 'xxx');
 		$params = array(
 			'cmd' => $cmd,
 			'pin' => $pin,
-			'token' => $token,
-			'addressid' => $addressid,
-			'couponcode' => $couponcode
+			'logisticstype' => $logisticstype,
+			'paytype' => $paytype,
+		//	'addressid' => $addressid,
+			'couponcode' => $couponcode,
+			'token' => $token
 		);
-		$system = "cart";
+		$system = "";
 		$service = "cart";
-		$result = $this->request('openapi', $system, $service, $params, 300);
+		$result = $this->request('openapi', $system, $service, $params);
 		if(empty($result)){
 	 		$result['success'] = false;	
 			$result['error_msg'] = "Data access failed";
 			$result['data'] = array();
 		}
-		dd($result);
 		return $result;
 	}
 
@@ -88,15 +89,14 @@ class CartController extends ApiController
 			'pin' => $pin,
 			'token' => $token,
 		);
-		$system = "cart";
+		$system = "";
 		$service = "cart";
-		$result = $this->request('openapi', $system, $service, $params, 300);
+		$result = $this->request('openapi', $system, $service, $params);
 		if(empty($result)){
 	 		$result['success'] = false;	
 			$result['error_msg'] = "Data access failed";
 			$result['data'] = array();
 		}
-		dd($result);
 		return $result;
 	}
 
@@ -112,13 +112,10 @@ class CartController extends ApiController
 			'pin' => $pin,
 			'token' => $token
 		);		
-		$system = "cart";
+		$system = "";
 		$service = "cart";
-		$result = $this->request('openapi', $system, $service, $params, 300);
-		dd($result);
-		if($result['success']){
-			return $result;
-		}
+		$result = $this->request('openapi', $system, $service, $params);
+		return $result;
 	}
 
 	public function alterCartProQtty(Request $request)
@@ -135,13 +132,10 @@ class CartController extends ApiController
 			'pin' => $pin,
 			'token' => $token
 		);		
-		$system = "cart";
+		$system = "";
 		$service = "cart";
-		$result = $this->request('openapi', $system, $service, $params, 300);
-		dd($result);
-		if($result['success']){
-			return $result;
-		}
+		$result = $this->request('openapi', $system, $service, $params);
+		return $result;
 	}
 
 	public function promptlyBuy(Request $request)
@@ -156,13 +150,10 @@ class CartController extends ApiController
 			'pin' => $pin,
 			'token' => $token
 		);		
-		$system = "cart";
+		$system = "";
 		$service = "cart";
-		$result = $this->request('openapi', $system, $service, $params, 300);
-		dd($result);
-		if($result['success']){
-			return $result;
-		}
+		$result = $this->request('openapi', $system, $service, $params);
+		return $result;
 	}
 
 	public function other(Request $request)
@@ -181,11 +172,10 @@ class CartController extends ApiController
 				'pin' => $pin,
 				'token' => $token
 			);		
-			$system = "cart";
+			$system = "";
 			$service = "cart";
-			$result = $this->request('openapi', $system, $service, $params, 300);
+			$result = $this->request('openapi', $system, $service, $params);
 		}
-		dd($result);
 		return $result;
 	}
 }

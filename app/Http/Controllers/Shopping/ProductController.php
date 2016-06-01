@@ -11,7 +11,9 @@ class ProductController extends ApiController
 	public function index(Request $request, $spu)		
 	{
 		$cmd = 'productdetail';
-		$spu = 10000086;
+		if(empty($spu)){
+			$spu = 10000086;
+		}
 		$src = $request->input('src', "");
 		$ver = $request->input('ver', "");
 		$version = $request->input('version', 1.0);
