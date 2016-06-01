@@ -1,0 +1,11 @@
+.daily-imgInfo {
+  position: relative;
+}
+
+.daily-imgInfo .img-icon {
+  position: absolute;
+  right: 15px;
+  top: 10px;
+}
+
+/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImRhaWx5LnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQ0E7RUFDSSxtQkFBbUI7Q0FNdEI7O0FBUEQ7RUFHUSxtQkFBbUI7RUFDbkIsWUFBWTtFQUNaLFVBQVU7Q0FDYiIsImZpbGUiOiJkYWlseS5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyIvLyBkYWlseSDlm77niYfkuIog5Y+z5LiK6KeS5Zu+5qCHXG4uZGFpbHktaW1nSW5mbyB7XG4gICAgcG9zaXRpb246IHJlbGF0aXZlO1xuICAgIC5pbWctaWNvbiB7XG4gICAgICAgIHBvc2l0aW9uOiBhYnNvbHV0ZTtcbiAgICAgICAgcmlnaHQ6IDE1cHg7XG4gICAgICAgIHRvcDogMTBweDtcbiAgICB9XG59XG4iXSwic291cmNlUm9vdCI6Ii9zb3VyY2UvIn0= */
