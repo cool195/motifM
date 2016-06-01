@@ -62,6 +62,9 @@
         }
     });
 
+    // 产品图片延迟加载
+    $('img.img-lazy').lazyload();
+
     // 选项卡容器
     var TabsContainerSwiper = new Swiper('#tabs-container', {
         onlyExternal: true
@@ -104,6 +107,8 @@
                 // Tabs页码数组初始化
                 tabsPageInit(Category.length);
                 console.log('获取分类成功');
+                // 首次打开 加载相应页面
+                tabsLoading();
             } else {
                 console.log('获取分类失败');
             }
@@ -179,7 +184,7 @@
         var CurrentPage = TabsPage[ActiveTab],
             NextPage = ++CurrentPage;
         // 当前激活的分类ID
-        var CurrentCid = Category[ActiveTab]['category_id'];
+        var CurrentCid = Category[ActiveTab].category_id;
 
         // 显示加载动画
         loadingShow(ActiveTab);
@@ -188,7 +193,7 @@
             url: '/products',
             data: { pagenum: NextPage, pagesize: 20, cid: CurrentCid }
         }).done(function (data) {
-            if (data.data === null || data.data === "") {
+            if (data.data === null || data.data === '') {
                 return;
             } else if (data.data.list.length === 0) {
                 // 没有数据要加载
@@ -213,14 +218,18 @@
     $('#tabIndex-container').find('li[data-tabIndex]').one('click', function () {
         console.log('顶部切换, 触发选项卡loading, 一次性事件');
         tabsLoading();
+        // 图片延迟加载
+        $('img.img-lazy').lazyload();
     });
 
     // 为页面绑定 滚动条事件
     $(document).ready(function () {
-        $(window).scroll(pullLoading());
+        $(window).scroll(function () {
+            pullLoading();
+            // 图片延迟加载
+            $('img.img-lazy').lazyload();
+            console.log('滚动条滚动');
+        });
     });
-    window.onload = function () {
-        tabsLoading();
-    };
 })(jQuery, Swiper);
 //# sourceMappingURL=shoppingList.js.map

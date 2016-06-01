@@ -11,8 +11,9 @@ class ProductController extends ApiController
 	public function index(Request $request, $spu)		
 	{
 		$cmd = 'productdetail';
+		$spu = 10000086;
 		if(empty($spu)){
-			$spu = 10000086;
+			return redirect('/shopping');
 		}
 		$src = $request->input('src', "");
 		$ver = $request->input('ver', "");
@@ -33,11 +34,9 @@ class ProductController extends ApiController
 		$system = "";
 		$service = "product";
 		$result = $this->request('openapi', $system, $service, $params);
-		if(empty($result))
+		if(empty($result) || false == $result['success'] || empty($result['data']))
 		{
-			$result['success'] = false;
-			$result['data'] = array();
-			$result['error_msg'] = "Data access failed";
+			return redirect('/shopping');
 		}		
 		return View('shopping.detail', ['data' => $result['data']]);
 	}

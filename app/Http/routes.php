@@ -20,6 +20,7 @@ $app->get('/shopping', 'Shopping\ShoppingController@index');
 //$app->get('/shopping/list', 'Shopping\ShoppingController@getShoppingProductList');
 $app->get('/detail/{spu}', 'Shopping\ProductController@index');
 
+$app->get('/shopping/cart', 'Shopping\CartController@index');
 $app->get('/shopping/cart/amount', 'Shopping\CartController@getCartAmount');
 $app->get('/shopping/cart/list', 'Shopping\CartController@getCartList');
 $app->get('/shopping/cart/accountlist', 'Shopping\CartController@getCartAccountList');

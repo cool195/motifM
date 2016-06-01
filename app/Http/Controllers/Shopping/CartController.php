@@ -8,6 +8,16 @@ use App\Http\Controllers\ApiController;
 
 class CartController extends ApiController
 {
+	public function index(Request $request)
+	{
+		$cartList = $this->getCartList($request); 
+		$saveList = $this->getCartSaveList($request);
+		return View('shopping.cart', [
+			'cartData' => $cartList['data'], 
+			'saveData' => $cartList['data']
+		]);
+	}
+
 	public function getCartAmount(Request $request)		
 	{
 		$cmd = $request->input('cmd', 'amount');	
