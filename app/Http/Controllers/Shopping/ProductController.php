@@ -11,7 +11,7 @@ class ProductController extends ApiController
 	public function index(Request $request, $spu)		
 	{
 		$cmd = 'productdetail';
-		$spu = $spu;
+		$spu = 10000086;
 		$src = $request->input('src', "");
 		$ver = $request->input('ver', "");
 		$version = $request->input('version', 1.0);
@@ -43,7 +43,7 @@ class ProductController extends ApiController
 	public function getProductDetail(Request $request, $spu)		
 	{
 		$cmd = 'productdetail';	
-		$spu = $request->input('spu', 10000025);
+		$spu = $request->input('spu', 10000086);
 		$src = $request->input('src', "");
 		$ver = $request->input('ver', "");
 		$version = $request->input('version', 1.0);
@@ -68,7 +68,8 @@ class ProductController extends ApiController
 			$result['data'] = array();
 			$result['error_msg'] = "Data access failed";
 		}
-		return View('shopping.detail', ['data' => $result['data']]);
+		//return View('shopping.detail', ['data' => $result['data']]);
+		return $result;
 	}
 
 }
