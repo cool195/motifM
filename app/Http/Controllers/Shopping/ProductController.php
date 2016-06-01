@@ -15,21 +15,21 @@ class ProductController extends ApiController
 		if(empty($spu)){
 			return redirect('/shopping');
 		}
-		$src = $request->input('src', "");
-		$ver = $request->input('ver', "");
-		$version = $request->input('version', 1.0);
-		$uuid = $request->input('uuid', "4560aecaa5dd9d92e169a402bb0cf71c74992f50");
-		$pin = $request->input('pin', "xuzhijie");
-		$token = $request->input('token', "51afe0b7c5331d3df4920c46a0ee4ca2");
+//		$src = $request->input('src', "");
+//		$ver = $request->input('ver', "");
+//		$version = $request->input('version', 1.0);
+//		$uuid = $request->input('uuid', "4560aecaa5dd9d92e169a402bb0cf71c74992f50");
+//		$pin = $request->input('pin', "xuzhijie");
+//		$token = $request->input('token', "51afe0b7c5331d3df4920c46a0ee4ca2");
 		$params = array(
 			'cmd'=>$cmd, 
-			'spu'=>$spu,
-			'src'=>$src,
-			'ver'=>$ver,
-			'version'=>$version,
-			'uuid'=>$uuid,
-			'pin'=>$pin,
-			'token'=>$token
+			'spu'=>$spu
+//			'src'=>$src,
+//			'ver'=>$ver,
+//			'version'=>$version,
+//			'uuid'=>$uuid,
+//			'pin'=>$pin,
+//			'token'=>$token
 		);
 		$system = "";
 		$service = "product";
@@ -45,21 +45,21 @@ class ProductController extends ApiController
 	{
 		$cmd = 'productdetail';	
 		$spu = $request->input('spu', 10000086);
-		$src = $request->input('src', "");
-		$ver = $request->input('ver', "");
-		$version = $request->input('version', 1.0);
-		$uuid = $request->input('uuid', "4560aecaa5dd9d92e169a402bb0cf71c74992f50");
-		$pin = $request->input('pin', "xuzhijie");
-		$token = $request->input('token', "51afe0b7c5331d3df4920c46a0ee4ca2");
+		// $src = $request->input('src', "");
+		// $ver = $request->input('ver', "");
+		// $version = $request->input('version', 1.0);
+		// $uuid = $request->input('uuid', "4560aecaa5dd9d92e169a402bb0cf71c74992f50");
+		// $pin = $request->input('pin', "xuzhijie");
+		// $token = $request->input('token', "51afe0b7c5331d3df4920c46a0ee4ca2");
 		$params = array(
 			'cmd'=>$cmd, 
 			'spu'=>$spu,
-			'src'=>$src,
-			'ver'=>$ver,
-			'version'=>$version,
-			'uuid'=>$uuid,
-			'pin'=>$pin,
-			'token'=>$token
+			// 'src'=>$src,
+			// 'ver'=>$ver,
+			// 'version'=>$version,
+			// 'uuid'=>$uuid,
+			// 'pin'=>$pin,
+			// 'token'=>$token
 		);
 		$system = "";
 		$service = "product";
