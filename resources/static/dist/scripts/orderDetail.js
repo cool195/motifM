@@ -9,7 +9,9 @@
 
 (function ($) {
     var text = $('#messageInfo').html();
+
     var newInfo = $('<div></div>').html(text.substring(0, 550));
+
     $('#btnShowMore').on('click', function () {
         var showMore = $('#showMore');
         var btntext = showMore.text() === 'Show Less' ? 'Show More' : 'Show Less';
@@ -19,6 +21,7 @@
         $('#btnShowMore i').removeClass('icon-arrow-bottom icon-arrow-right').addClass(classtext);
         $('#messageInfo').html(newInfo.html(textstr));
     });
+
     $('#messageInfo').html(newInfo.html());
 })(jQuery);
 //# sourceMappingURL=orderDetail.js.map
