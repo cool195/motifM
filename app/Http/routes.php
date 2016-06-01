@@ -27,7 +27,7 @@ $app->get('/shopping/cart/accountlist', 'Shopping\CartController@getCartAccountL
 $app->get('/shopping/cart/savelist', 'Shopping\CartController@getCartSaveList');
 $app->get('/shopping/cart/addCart', 'Shopping\CartController@addCart');
 $app->get('/shopping/cart/alterQtty', 'Shopping\CartController@alterCartProQtty');
-$app->get('/shopping/cart/other', 'Shopping\CartController@other');
+$app->get('/shopping/cart/other', 'Shopping\CartController@operateCartProduct');
 
 $app->get('/shopping/addr/list', 'Shopping\AddressController@getUserAddrList');
 $app->get('/shopping/addr/default', 'Shopping\AddressController@getUserDefaultAddr');

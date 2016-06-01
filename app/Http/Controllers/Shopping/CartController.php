@@ -166,7 +166,7 @@ class CartController extends ApiController
 		return $result;
 	}
 
-	public function other(Request $request)
+	public function operateCartProduct(Request $request)
 	{
 		$cmdSelector = array("select", "cancal", "delsku", "save", "movetocart", "delsave");	
 		$cmd = $request->input('cmd'); 
@@ -178,14 +178,17 @@ class CartController extends ApiController
 			$token = $request->input('token', 1);	
 			$params = array(
 				'cmd' => $cmd,
-				'operate' => $operate,
+				'sku' => $sku,
 				'pin' => $pin,
 				'token' => $token
 			);		
 			$system = "";
 			$service = "cart";
 			$result = $this->request('openapi', $system, $service, $params);
+			if(!empty($result) && $result['success']){
+				return Redirect('/shopping/cart');	
+			}
+		
 		}
-		return $result;
 	}
 }
