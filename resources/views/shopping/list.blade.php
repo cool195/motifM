@@ -65,7 +65,7 @@
         <div class="productList-item">
             <div class="image-bg">
                 <div class="image-container">
-                    <a href="/products/@{{ $value.spu }}">
+                    <a href="/detail/@{{ $value.spu }}">
                         <img class="img-fluid" src="https://s3-us-west-1.amazonaws.com/emimagetest/n2/@{{ $value.main_image_url }}" alt="@{{ $value.main_title }}">
                         @{{ if $value.skuPrice.sale_price !== $value.skuPrice.price }}
                         <div class="price-off">
