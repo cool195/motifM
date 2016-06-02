@@ -114,7 +114,7 @@
                         }
                     }
 
-                    if (Detection == false) {
+                    if (Detection === false) {
                         // TODO input 和 label 都需要加 disabled
                         $('#' + index).addClass('disabled');
                     }
@@ -124,7 +124,7 @@
     }
 
     $('#modalDialog').on('click', 'input[type=radio]', function () {
-        console;
+        console.log('Click Radio');
     });
 })(jQuery, Swiper);
 //# sourceMappingURL=shoppingDetail.js.map
