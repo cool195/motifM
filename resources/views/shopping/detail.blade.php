@@ -80,10 +80,10 @@
 					<aside class="container-fluid bg-white p-y-10x p-x-15x m-b-10x">
 						<div class="row">
 							<div class="col-xs-6">
-								<a href="#" class="btn btn-primary-outline btn-block">Add To Bag</a>
+								<a href="#" class="btn btn-primary-outline btn-block" data-remodal-target="modal">Add To Bag</a>
 							</div>
 							<div class="col-xs-6">
-								<a href="#" class="btn btn-primary btn-block">Buy Now</a>
+								<a href="#" class="btn btn-primary btn-block" data-remodal-target="modal">Buy Now</a>
 							</div>
 						</div>
 					</aside>
@@ -92,7 +92,8 @@
 						<a class="flex flex-alignCenter flex-fullJustified font-size-sm text-primary p-a-15x" data-remodal-target="modal" href="#">
 							<span>Select</span>
 						<span class="flex flex-alignCenter flex-fullJustified">
-							<span class="m-r-10x">Size Color</span> <i class="iconfont icon-arrow-right icon-size-xm text-common"></i>
+							<span class="m-r-10x">@foreach($data['spuAttrs'] as $attrs)  {{$attrs['attr_type_value']}}  @endforeach</span> 
+							<i class="iconfont icon-arrow-right icon-size-xm text-common"></i>
 						</span>
 						</a>
 					</aside>
@@ -138,10 +139,10 @@
 					<aside class="product-secondaryInfo container-fluid p-y-10x p-x-15x">
 						<div class="row">
 							<div class="col-xs-6">
-								<a href="#" class="btn btn-primary-outline btn-block">Add To Bag</a>
+								<a href="#" class="btn btn-primary-outline btn-block" data-remodal-target="modal">Add To Bag</a>
 							</div>
 							<div class="col-xs-6">
-								<a href="#" class="btn btn-primary btn-block">Buy Now</a>
+								<a href="#" class="btn btn-primary btn-block" data-remodal-target="modal">Buy Now</a>
 							</div>
 						</div>
 					</aside>
@@ -230,7 +231,7 @@
 								<div class="row">
 									@foreach($value['skuAttrValues'] as $skuValue)
 									<div class="col-xs-3 p-t-10x">
-										<input type="radio" name="{{$value['attr_type_value']}}" id="{{$skuValue['attr_value_id']}}" hidden>
+										<input type="radio" name="{{$value['attr_type_value']}}" id="{{$skuValue['attr_value_id']}}" data-spa="{{$value['attr_type']}}" data-ska="{{$skuValue['attr_value_id']}}" hidden>
 										<label class="btn btn-block btn-itemProperty btn-sm m-b-0" for="{{$skuValue['attr_value_id']}}">{{$skuValue['attr_value']}}</label>
 									</div>
 									@endforeach
@@ -271,7 +272,7 @@
                             	<span class="text-primary font-size-sm">Qty:</span>
                             	<div class="btn-group flex">
                                 	<div class="btn btn-cartCount btn-sm disabled">-</div>
-                                	<div class="btn btn-cartCount btn-sm">2</div>
+                                	<div class="btn btn-cartCount btn-sm">1</div>
                                 	<div class="btn btn-cartCount btn-sm">+</div>
                             	</div>
                         	</div>
@@ -283,7 +284,7 @@
                                 	<a href="#" class="btn btn-primary-outline btn-block">Add To Bag</a>
                             	</div>
                             	<div class="col-xs-6">
-                                	<a href="#" class="btn btn-primary btn-block">Buy Now</a>
+                                	<a href="#" class="btn btn-primary btn-block" data-remodal-target="modal">Buy Now</a>
                             	</div>
                         	</div>
                     	</fieldset>

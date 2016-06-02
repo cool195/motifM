@@ -69,9 +69,9 @@
     // 为 Options 赋值
     var Options = function Options() {
         // TODO 获取 cid 的值, 获取分类ID
-        var productId = 0;
+        var SpuId = $('#modalDialog').data('spu');
         $.ajax({
-            url: '/products/' + productId
+            url: '/products/' + SpuId
         }).done(function (data) {
             console.log('success');
             return newOptions(data.data.spuAttrs);
@@ -114,17 +114,24 @@
                         }
                     }
 
-                    if (Detection === false) {
+                    if (Detection == false) {
                         // TODO input 和 label 都需要加 disabled
                         $('#' + index).addClass('disabled');
+                        $('#' + index).siblings('label').addClass('disabled');
                     }
                 });
             }
         });
     }
 
-    $('#modalDialog').on('click', 'input[type=radio]', function () {
+    $('#modalDialog').on('click', 'input[type=radio]', function (e) {
+
         console.log('Click Radio');
+
+        var SpaId = $(e.target).data('spa'),
+            SkaId = $(e.target).data('ska');
+
+        filterOptions(SpaId, SkaId);
     });
 })(jQuery, Swiper);
 //# sourceMappingURL=shoppingDetail.js.map
