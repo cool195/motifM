@@ -6,12 +6,6 @@
 'use strict';
 
 (function ($, Swiper) {
-    // 图片延迟加载
-    $('img.img-lazy').lazyload({
-        threshold: 200,
-        container: $('#tabs-container'),
-        effect: "fadeIn"
-    });
 
     // 导航条自动隐藏
     $('#header').headroom({
@@ -209,6 +203,13 @@
             appendProductsList(data.data, ActiveTab);
             // TabsPage 选项卡加载页 页码+1
             TabsPage[ActiveTab]++;
+
+            // 图片延迟加载
+            $('img.img-lazy').lazyload({
+                threshold: 200,
+                container: $('#tabs-container'),
+                effect: "fadeIn"
+            });
         })
         // TODO failed 时的提示
         .always(function () {

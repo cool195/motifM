@@ -6,6 +6,7 @@
 'use strict';
 
 (function ($, Swiper) {
+    ;
     // 导航条自动隐藏
     $('#header').headroom({
         'tolerance': .5,
@@ -189,7 +190,7 @@
         // ajax 请求加载数据
         $.ajax({
             url: '/products',
-            data: { pagenum: NextPage, pagesize: 20, cid: CurrentCid }
+            data: {pagenum: NextPage, pagesize: 20, cid: CurrentCid}
         }).done(function (data) {
             if (data.data === null || data.data === '') {
                 return;
@@ -202,14 +203,22 @@
             appendProductsList(data.data, ActiveTab);
             // TabsPage 选项卡加载页 页码+1
             TabsPage[ActiveTab]++;
+
+            // 图片延迟加载
+            $('img.img-lazy').lazyload({
+                threshold: 200,
+                container: $('#tabs-container'),
+                effect: "fadeIn"
+            })
         })
         // TODO failed 时的提示
-        .always(function () {
-            // 隐藏加载动画
-            loadingHide(ActiveTab);
-            // 请求结束, loading = false
-            $Current.data('loading', false);
-        });
+            .always(function () {
+                // 隐藏加载动画
+                loadingHide(ActiveTab);
+                // 请求结束, loading = false
+                $Current.data('loading', false);
+
+            });
     }
 
     // 为选项卡导航, 绑定一次性事件, 加载商品数据
@@ -217,7 +226,7 @@
         console.log('顶部切换, 触发选项卡loading, 一次性事件');
         tabsLoading();
         // 图片延迟加载
-        $('img.img-lazy').lazyload();
+        // $('img.img-lazy').lazyload();
     });
 
     // 为页面绑定 滚动条事件
@@ -225,7 +234,7 @@
         $(window).scroll(function () {
             pullLoading();
             // 图片延迟加载
-            $('img.img-lazy').lazyload();
+            // $('img.img-lazy').lazyload();
             console.log('滚动条滚动');
         });
     });
