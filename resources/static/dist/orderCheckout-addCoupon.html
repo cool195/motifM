@@ -14,44 +14,146 @@
     
 
     <script src="/scripts/vendor/modernizr.js"></script>
+
+    <script src="/scripts/vendor/fastclick.js"></script>
+
 </head>
-<body class="body-navbarPadding">
-    <header class="navbar-fixed-top" id="header">
-        <nav class="navbar navbar-full bg-primary">
-            <ul class="nav navbar-primary">
-                <li class="nav-item nav-menu">
-                    <div class="">
-                        <i class="nav-tap iconfont icon-hamburger icon-size-lg"></i>
-                    </div>
-                </li>
-                <li class="nav-item nav-logo">
-                    <a><img src="/images/logo/logo.png" srcset="/images/logo/logo@2x.png 2x,/images/logo/logo@3x.png 3x"></a>
+<body>
+    <!-- 外层容器 -->
+    <div id="body-content">
+        <!-- 展开的汉堡菜单 -->
+        <nav class="nav-menu">
+            <ul class="nav bg-white m-t-10x">
+                <li class="nav-item">
+                    <a href="#" class="flex flex-alignCenter flex-fullJustified p-a-15x">
+                        <div class="font-size-sm text-primary flex flex-alignCenter"><i class="iconfont icon-daily icon-size-md p-r-15x"></i><span>Daily</span></div>
+                        <span class="text-common"><i class="iconfont icon-arrow-right icon-size-sm"></i></span>
+                    </a>
+                    <hr class="hr-base m-a-0">
                 </li>
                 <li class="nav-item">
-                    <div class="nav-shoppingCart">
-                        <i class="nav-tap iconfont icon-shopbag icon-size-lg"></i>
-                        <span class="shoppingCart-number">2</span>
-                    </div>
+                    <a href="#" class="flex flex-alignCenter flex-fullJustified p-a-15x">
+                        <div class="font-size-sm text-primary flex flex-alignCenter"><i class="iconfont icon-designer icon-size-md p-r-15x"></i><span>Designer</span></div>
+                        <span class="text-common"><i class="iconfont icon-arrow-right icon-size-sm"></i></span>
+                    </a>
+                    <hr class="hr-base m-a-0">
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="flex flex-alignCenter flex-fullJustified p-a-15x">
+                        <div class="font-size-sm text-primary flex flex-alignCenter"><i class="iconfont icon-shopping icon-size-md p-r-15x"></i><span>Shopping</span></div>
+                        <span class="text-common"><i class="iconfont icon-arrow-right icon-size-sm"></i></span>
+                    </a>
+                </li>
+            </ul>
+            <ul class="nav bg-white m-t-10x">
+                <li class="nav-item">
+                    <a href="#" class="flex flex-alignCenter flex-fullJustified p-a-15x">
+                        <div class="font-size-sm text-primary flex flex-alignCenter"><i class="iconfont icon-book icon-size-md p-r-15x"></i><span>Orders</span></div>
+                        <span class="text-common"><i class="iconfont icon-arrow-right icon-size-sm"></i></span>
+                    </a>
+                    <hr class="hr-base m-a-0">
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="flex flex-alignCenter flex-fullJustified p-a-15x">
+                        <div class="font-size-sm text-primary flex flex-alignCenter"><i class="iconfont icon-shopbag icon-size-md p-r-15x"></i><span>Shopping Bag</span></div>
+                        <span class="text-common"><i class="iconfont icon-arrow-right icon-size-sm"></i></span>
+                    </a>
+                    <hr class="hr-base m-a-0">
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="flex flex-alignCenter flex-fullJustified p-a-15x">
+                        <div class="font-size-sm text-primary flex flex-alignCenter"><i class="iconfont icon-like icon-size-md p-r-15x"></i><span>Wishlist</span></div>
+                        <span class="text-common"><i class="iconfont icon-arrow-right icon-size-sm"></i></span>
+                    </a>
+                    <hr class="hr-base m-a-0">
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="flex flex-alignCenter flex-fullJustified p-a-15x">
+                        <div class="font-size-sm text-primary flex flex-alignCenter"><i class="iconfont icon-follow icon-size-md p-r-15x"></i><span>Following</span></div>
+                        <span class="text-common"><i class="iconfont icon-arrow-right icon-size-sm"></i></span>
+                    </a>
+                    <hr class="hr-base m-a-0">
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="flex flex-alignCenter flex-fullJustified p-a-15x">
+                        <div class="font-size-sm text-primary flex flex-alignCenter"><i class="iconfont icon-setting icon-size-md p-r-15x"></i><span>Settings</span></div>
+                        <span class="text-common"><i class="iconfont icon-arrow-right icon-size-sm"></i></span>
+                    </a>
+                    <hr class="hr-base m-a-0">
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="flex flex-alignCenter flex-fullJustified p-a-15x">
+                        <div class="font-size-sm text-primary flex flex-alignCenter"><i class="iconfont icon-signout icon-size-md p-r-15x"></i><span>Sign Out</span></div>
+                        <span class="text-common"><i class="iconfont icon-arrow-right icon-size-sm"></i></span>
+                    </a>
+                </li>
+            </ul>
+            <ul class="nav bg-white m-t-10x">
+                <li class="nav-item">
+                    <a href="#" class="flex flex-alignCenter flex-fullJustified p-a-15x">
+                        <div class="font-size-sm text-primary flex flex-alignCenter"><i class="iconfont icon-download icon-size-md p-r-15x"></i><span>Download MOTIF</span></div>
+                        <span class="text-common"><i class="iconfont icon-arrow-right icon-size-sm"></i></span>
+                    </a>
+                    <hr class="hr-base m-a-0">
+                </li>
+            </ul>
+            <ul class="nav bg-white m-t-10x m-b-10x">
+                <li class="nav-item">
+                    <a href="#" class="flex flex-alignCenter flex-fullJustified p-a-15x">
+                        <div class="font-size-sm text-primary flex flex-alignCenter"><i class="iconfont icon-help icon-size-md p-r-15x"></i><span>FAQ & Help</span></div>
+                        <span class="text-common"><i class="iconfont icon-arrow-right icon-size-sm"></i></span>
+                    </a>
+                    <hr class="hr-base m-a-0">
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="flex flex-alignCenter flex-fullJustified p-a-15x">
+                        <div class="font-size-sm text-primary flex flex-alignCenter"><i class="iconfont icon-talks icon-size-md p-r-15x"></i><span>Customer Support</span></div>
+                        <span class="text-common"><i class="iconfont icon-arrow-right icon-size-sm"></i></span>
+                    </a>
+                    <hr class="hr-base m-a-0">
                 </li>
             </ul>
         </nav>
-    </header>
+        <!-- 主体内容 -->
+        <div class="body-container">
+            <header class="navbar-fixed-top" id="header">
+                <nav class="navbar navbar-full bg-primary">
+                    <ul class="nav navbar-primary">
+                        <li class="nav-item">
+                            <div class="nav-icon" id="nav-menu-control">
+                                <i class="nav-tap iconfont icon-hamburger icon-size-lg"></i>
+                            </div>
+                        </li>
+                        <li class="nav-item nav-logo">
+                            <a><img src="/images/logo/logo.png" srcset="/images/logo/logo@2x.png 2x,/images/logo/logo@3x.png 3x"></a>
+                        </li>
+                        <li class="nav-item">
+                            <div class="nav-shoppingCart">
+                                <i class="nav-tap iconfont icon-shopbag icon-size-lg"></i>
+                                <span class="shoppingCart-number">2</span>
+                            </div>
+                        </li>
+                    </ul>
+                </nav>
+            </header>
+            <!-- 添加coupon -->
+            <section class="m-b-20x">
+                <form method="">
+                    <fieldset>
+                        <input class="form-control form-control-block p-a-15x font-size-sm" type="text" placeholder="Enter gift or coupon code">
+                        <p class="text-center font-size-xs text-common p-t-10x">Gift cards and coupons can only be
+                                                                                redeemed
+                                                                                through
+                                                                                PayPal.</p>
+                    </fieldset>
 
-    <!-- 添加coupon -->
-    <section class="m-b-20x">
-        <form method="">
-            <fieldset>
-                <input class="form-control form-control-block p-a-15x font-size-sm" type="text" placeholder="Enter gift or coupon code">
-                <p class="text-center font-size-xs text-common p-t-10x">Gift cards and coupons can only be redeemed
-                                                                        through
-                                                                        PayPal.</p>
-            </fieldset>
-
-            <div class="navbar-fixed-bottom bg-white p-a-15x">
-                <button class="btn btn-primary btn-block btn-sm" type="submit">Continue</button>
-            </div>
-        </form>
-    </section>
+                    <div class="navbar-fixed-bottom bg-white p-a-15x">
+                        <button class="btn btn-primary btn-block btn-sm" type="submit">Continue</button>
+                    </div>
+                </form>
+            </section>
+        </div>
+    </div>
 </body>
 <script src="scripts/vendor.js"></script>
 </html>

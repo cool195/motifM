@@ -11,7 +11,7 @@ class ProductController extends ApiController
 	public function index(Request $request, $spu)		
 	{
 		$cmd = 'productdetail';
-		$spu = 10000086;
+//		$spu = 10000086;
 		if(empty($spu)){
 			return redirect('/shopping');
 		}
