@@ -212,7 +212,7 @@
 
 				<!-- 弹出选择 size color Engraving -->
 				<!-- TODO remodal 有多余的样式 需要整理 -->
-				<div class="remodal p-a-0 modal-content" data-remodal-id="modal" id="modalDialog">
+				<div class="remodal p-a-0 modal-content" data-remodal-id="modal" id="modalDialog" data-spu="{{$data['spu']}}">
 					<form action="">
 						<div class="p-x-15x p-t-15x text-right">
 							<a data-remodal-action="close"><i class="iconfont icon-cross text-common icon-size-lg"></i>
@@ -243,7 +243,6 @@
 						@if(isset($data['vasBases']) && !empty($data['vasBases']))
 							@foreach($data['vasBases'] as $vas)
 								@if(1 == $vas['vas_type'])
-					    <hr class="hr-base m-a-0">
                 	    <fieldset class="p-x-15x p-y-10x text-left">
                        	 	<div class="text-primary font-size-sm m-b-10x">{{ $vas['vas_describe'] }} +$4.5</div>
                        	 	<div class="flex flex-fullJustified flex-alignCenter">
@@ -253,8 +252,8 @@
                             	</span>
                         	</div>
                     	</fieldset>
-                    			@else
                     	<hr class="hr-base m-a-0">
+                    			@else
                     	<fieldset class="p-x-15x p-y-10x text-left">
                         	<div class="flex flex-fullJustified flex-alignCenter">
                            	 	<div class="text-primary font-size-sm">{{ $vas['vas_describe'] }} +$4.5(optional)</div>
@@ -263,10 +262,10 @@
                             	</span>
                         	</div>
                     	</fieldset>
+                    	<hr class="hr-base m-a-0">
                     			@endif
                     		@endforeach
                     	@endif
-                    	<hr class="hr-base m-a-0">
                     	<fieldset class="p-x-15x p-y-10x">
                         	<div class="flex flex-fullJustified flex-alignCenter">
                             	<span class="text-primary font-size-sm">Qty:</span>
