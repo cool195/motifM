@@ -44,7 +44,6 @@ class ProductController extends ApiController
 	public function getProductDetail(Request $request, $spu)		
 	{
 		$cmd = 'productdetail';	
-		$spu = $request->input('spu', 10000086);
 		// $src = $request->input('src', "");
 		// $ver = $request->input('ver', "");
 		// $version = $request->input('version', 1.0);
