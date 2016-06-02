@@ -239,46 +239,61 @@
 						</fieldset>
 						<hr class="hr-base m-a-0">
 						@endforeach
-						<hr class="hr-base m-a-0">
-						<fieldset class="p-x-15x p-y-10x text-left">
-							<div class="text-primary font-size-sm m-b-10x">Ring Inside Engraving+＄4.5</div>
-							<div class="flex flex-fullJustified flex-alignCenter">
-								<input class="input-engraving form-control font-size-sm" type="text">
-								<span class="p-l-20x"><a href="#"><i class="iconfont icon-checkcircle text-common"></i></a></span>
-							</div>
-						</fieldset>
-						<hr class="hr-base m-a-0">
-						<fieldset class="p-x-15x p-y-10x text-left">
-							<div class="text-primary font-size-sm m-b-10x">gift package+＄4.5(optional)</div>
-							<div class="flex flex-fullJustified flex-alignCenter">
-								<input class="input-engraving form-control font-size-sm" type="text">
-								<span class="p-l-20x"><a href="#"><i class="iconfont icon-checkcircle text-common"></i></a></span>
-							</div>
-						</fieldset>
-						<hr class="hr-base m-a-0">
-						<fieldset class="p-x-15x p-y-10x">
-							<div class="flex flex-fullJustified flex-alignCenter">
-								<span class="text-primary font-size-sm">Qty:</span>
-								<div class="btn-group flex">
-									<div class="btn btn-cartCount btn-sm disabled">-</div>
-									<div class="btn btn-cartCount btn-sm">2</div>
-									<div class="btn btn-cartCount btn-sm">+</div>
-								</div>
-							</div>
-						</fieldset>
-						<hr class="hr-dark m-a-0">
-						<fieldset class="container-fluid p-a-15x">
-							<div class="row">
-								<div class="col-xs-6">
-									<a href="#" class="btn btn-primary-outline btn-block">Add To Bag</a>
-								</div>
-								<div class="col-xs-6">
-									<a href="#" class="btn btn-primary btn-block">Buy Now</a>
-								</div>
-							</div>
-						</fieldset>
-					</form>
-				</div>
+
+						@if(isset($data['vasBases']) && !empty($data['vasBases']))
+							@foreach($data['vasBases'] as $vas)
+								@if(1 == $vas['vas_type'])
+					    <hr class="hr-base m-a-0">
+                	    <fieldset class="p-x-15x p-y-10x text-left">
+                       	 	<div class="text-primary font-size-sm m-b-10x">{{ $vas['vas_describe'] }} +$4.5</div>
+                       	 	<div class="flex flex-fullJustified flex-alignCenter">
+                            	<input class="input-engraving form-control font-size-sm" type="text">
+                            	<span class="p-l-20x">
+                                	<a href="#"><i class="iconfont icon-checkcircle text-common"></i></a>
+                            	</span>
+                        	</div>
+                    	</fieldset>
+                    			@else
+                    	<hr class="hr-base m-a-0">
+                    	<fieldset class="p-x-15x p-y-10x text-left">
+                        	<div class="flex flex-fullJustified flex-alignCenter">
+                           	 	<div class="text-primary font-size-sm">{{ $vas['vas_describe'] }} +$4.5(optional)</div>
+                            	<span class="p-l-20x">
+                                	<a href="#"><i class="iconfont icon-checkcircle text-common"></i></a>
+                            	</span>
+                        	</div>
+                    	</fieldset>
+                    			@endif
+                    		@endforeach
+                    	@endif
+                    	<hr class="hr-base m-a-0">
+                    	<fieldset class="p-x-15x p-y-10x">
+                        	<div class="flex flex-fullJustified flex-alignCenter">
+                            	<span class="text-primary font-size-sm">Qty:</span>
+                            	<div class="btn-group flex">
+                                	<div class="btn btn-cartCount btn-sm disabled">-</div>
+                                	<div class="btn btn-cartCount btn-sm">2</div>
+                                	<div class="btn btn-cartCount btn-sm">+</div>
+                            	</div>
+                        	</div>
+                    	</fieldset>
+                    	<hr class="hr-dark m-a-0">
+                    	<fieldset class="container-fluid p-a-15x">
+                        	<div class="row">
+                            	<div class="col-xs-6">
+                                	<a href="#" class="btn btn-primary-outline btn-block">Add To Bag</a>
+                            	</div>
+                            	<div class="col-xs-6">
+                                	<a href="#" class="btn btn-primary btn-block">Buy Now</a>
+                            	</div>
+                        	</div>
+                    	</fieldset>
+                	</form>
+            	</div>
+
+
+							
+				
 
 <!-- 页脚 功能链接 start-->
 	@include('footer')
