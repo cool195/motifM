@@ -8,6 +8,12 @@ use App\Http\Controllers\ApiController;
 
 class OrderController extends ApiController
 {
+	public function index(Request $request)
+	{
+		$orderList = $this->getOrderList($request);
+		
+	}
+
 	public function getOrderList(Request $request)
 	{
 		$cmd = "ordlist";
