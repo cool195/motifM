@@ -6,6 +6,13 @@
 'use strict';
 
 (function ($, Swiper) {
+    // 图片延迟加载
+    $('img.img-lazy').lazyload({
+        threshold: 200,
+        container: $('#tabs-container'),
+        effect: "fadeIn"
+    });
+
     // 导航条自动隐藏
     $('#header').headroom({
         'tolerance': .5,
@@ -216,16 +223,11 @@
     $('#tabIndex-container').find('li[data-tabIndex]').one('click', function () {
         console.log('顶部切换, 触发选项卡loading, 一次性事件');
         tabsLoading();
-        // 图片延迟加载
-        $('img.img-lazy').lazyload();
     });
-
     // 为页面绑定 滚动条事件
     $(document).ready(function () {
         $(window).scroll(function () {
             pullLoading();
-            // 图片延迟加载
-            $('img.img-lazy').lazyload();
             console.log('滚动条滚动');
         });
     });
