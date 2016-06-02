@@ -31,6 +31,7 @@
         $(this).removeClass('in');
         $('body').removeClass('no-scroll');
     });
+
     var options = {
         closeOnOutsideClick: false,
         closeOnCancel: false
@@ -121,5 +122,9 @@
             }
         });
     }
+
+    $('#modalDialog').on('click', 'input[type=radio]', function () {
+        console;
+    });
 })(jQuery, Swiper);
 //# sourceMappingURL=shoppingDetail.js.map
