@@ -41,8 +41,8 @@
                 <!-- 商品列表 -->
                 <section class="cartList bg-white">
 					@foreach($cartData['showSkus'] as $showSku)
-                    <div class="cartList-item p-a-10x">
-                        <div class="flex">
+                    <div class="cartList-item p-a-10x @if(1 !== $showSku['stock_status']) disabled @endif">
+                        <div class="productInfo flex">
                             <div class="flex-fixedShrink">
                                 <img class="img-thumbnail" src="{{ 'https://s3-us-west-1.amazonaws.com/emimagetest/n2/'.$showSku['main_image_url'] }}" width="70px" height="70px">
                             </div>
@@ -67,6 +67,7 @@
                                     </div>
                                 </aside>
                             </div>
+                            <div class="mask"></div>
                         </div>
                         <div class="flex flex-alignCenter flex-fullJustified p-y-10x">
                             <div class="flex">
@@ -76,11 +77,11 @@
                             <div class="flex flex-alignCenter">
                                 <span class="text-primary font-size-sm m-r-5x">Qty:</span>
                                 <div class="btn-group flex" data-sku="{{$showSku['sku']}}">
-                                    <div class="btn btn-cartCount btn-sm disabled" data-item-qty="minus">
+                                    <div class="btn btn-cartCount btn-sm @if(1 !== $showSku['stock_status']) disabled @endif" data-item-qty="minus">
                                         <i class="iconfont icon-minus"></i>
                                     </div>
                                     <div class="btn btn-cartCount btn-sm" data-item-num="{{$showSku['sale_qtty']}}">{{$showSku['sale_qtty']}}</div>
-                                    <div class="btn btn-cartCount btn-sm" data-item-qty="add">
+                                    <div class="btn btn-cartCount btn-sm @if(1 !== $showSku['stock_status']) disabled @endif" data-item-qty="add">
                                         <i class="iconfont icon-add"></i>
                                     </div>
                                 </div>
@@ -116,8 +117,8 @@
                 <!-- 商品列表 -->
                 <section class="cartList bg-white">
 					@foreach($saveData['showSkus'] as $showSku)
-                    <div class="cartList-item p-a-10x">
-                        <div class="flex">
+                    <div class="cartList-item p-a-10x @if( 1 !== $showSku['stock_status'] ) disabled @endif">
+                        <div class="productInfo flex">
                             <div class="flex-fixedShrink">
                                 <img class="img-thumbnail" src="{{ 'https://s3-us-west-1.amazonaws.com/emimagetest/n2/'.$showSku['main_image_url'] }}" width="70px" height="70px">
                             </div>
@@ -140,6 +141,7 @@
                                     </div>
                                 </aside>
                             </div>
+                            <div class="mask"></div>
                         </div>
                         <div class="flex p-y-10x">
                             <a class="btn btn-cartUpdate btn-sm" data-remodal-target="modal" data-sku="{{$showSku['sku']}}" data-action="delsave">Delete</a>
