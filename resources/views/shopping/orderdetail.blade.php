@@ -14,6 +14,9 @@
     <link rel="stylesheet" href="/styles/orderDetail.css">
 
     <script src="/scripts/vendor/modernizr.js"></script>
+
+    <script src="/scripts/vendor/fastclick.js"></script>
+
 </head>
 <body id="body-content">
     <nav class="nav-menu">

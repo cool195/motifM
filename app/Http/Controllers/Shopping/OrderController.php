@@ -11,7 +11,8 @@ class OrderController extends ApiController
 	public function index(Request $request)
 	{
 		$orderList = $this->getOrderList($request);
-		
+		return View('shopping.orderlist', ['data' => $orderList['data']]);
+
 	}
 
 	public function getOrderList(Request $request)
@@ -39,11 +40,11 @@ class OrderController extends ApiController
 		return $result;
 	}
 
-	public function getOrderDetail(Request $request)
+	public function OrderDetail(Request $request, $subno)
 	{
 		$cmd = 'detail';
 		$pin = $request->input('pin', 'e052d5681da34fad83d0597b7b72acf7');
-		$subno = $request->input('subno', 14601491629216);
+		//$subno = $request->input('subno', 14601491629216);
 		$token = $request->input('token', 1);
 		$params = array(
 			'cmd' => $cmd,
@@ -59,7 +60,7 @@ class OrderController extends ApiController
 			$result['error_msg'] = "Data access failed";
 			$result['data'] = array();
 		}
-		return $result;
+		return View('shopping.orderdetail', ['data'=>$result['data']]);
 	}
 
 	public function orderSubmit(Request $request)

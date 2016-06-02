@@ -41,9 +41,9 @@ $app->get('/shopping/user/signup', 'Shopping\UserController@signup');
 $app->get('/shopping/user/login', 'Shopping\UserController@login');
 $app->get('/shopping/user/forget', 'Shopping\UserController@forgetPassword');
 
-$app->get('/shopping/order/index', 'Shopping\OrderController@index');
+$app->get('/shopping/order', 'Shopping\OrderController@index');
 $app->get('/shopping/order/orderlist', 'Shopping\OrderController@getOrderList');
-$app->get('/shopping/order/orderdetail', 'Shopping\OrderController@getOrderDetail');
+$app->get('/shopping/order/orderdetail/{subno}', 'Shopping\OrderController@orderDetail');
 $app->get('/shopping/order/orderSubmit', 'Shopping\OrderController@orderSubmit');
 
 $app->get('/category', 'Shopping\ShoppingController@getShoppingCategoryList');
