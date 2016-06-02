@@ -617,7 +617,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 //# sourceMappingURL=template-native.js.map
 
 /*!
- * jQuery JavaScript Library v2.2.3
+ * jQuery JavaScript Library v2.2.4
  * http://jquery.com/
  *
  * Includes Sizzle.js
@@ -627,7 +627,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
  * Released under the MIT license
  * http://jquery.org/license
  *
- * Date: 2016-04-05T19:26Z
+ * Date: 2016-05-20T17:23Z
  */
 
 (function( global, factory ) {
@@ -683,7 +683,7 @@ var support = {};
 
 
 var
-	version = "2.2.3",
+	version = "2.2.4",
 
 	// Define a local copy of jQuery
 	jQuery = function( selector, context ) {
@@ -5624,13 +5624,14 @@ jQuery.Event.prototype = {
 	isDefaultPrevented: returnFalse,
 	isPropagationStopped: returnFalse,
 	isImmediatePropagationStopped: returnFalse,
+	isSimulated: false,
 
 	preventDefault: function() {
 		var e = this.originalEvent;
 
 		this.isDefaultPrevented = returnTrue;
 
-		if ( e ) {
+		if ( e && !this.isSimulated ) {
 			e.preventDefault();
 		}
 	},
@@ -5639,7 +5640,7 @@ jQuery.Event.prototype = {
 
 		this.isPropagationStopped = returnTrue;
 
-		if ( e ) {
+		if ( e && !this.isSimulated ) {
 			e.stopPropagation();
 		}
 	},
@@ -5648,7 +5649,7 @@ jQuery.Event.prototype = {
 
 		this.isImmediatePropagationStopped = returnTrue;
 
-		if ( e ) {
+		if ( e && !this.isSimulated ) {
 			e.stopImmediatePropagation();
 		}
 
@@ -6578,19 +6579,6 @@ function getWidthOrHeight( elem, name, extra ) {
 		val = name === "width" ? elem.offsetWidth : elem.offsetHeight,
 		styles = getStyles( elem ),
 		isBorderBox = jQuery.css( elem, "boxSizing", false, styles ) === "border-box";
-
-	// Support: IE11 only
-	// In IE 11 fullscreen elements inside of an iframe have
-	// 100x too small dimensions (gh-1764).
-	if ( document.msFullscreenElement && window.top !== window ) {
-
-		// Support: IE11 only
-		// Running getBoundingClientRect on a disconnected node
-		// in IE throws an error.
-		if ( elem.getClientRects().length ) {
-			val = Math.round( elem.getBoundingClientRect()[ name ] * 100 );
-		}
-	}
 
 	// Some non-html elements return undefined for offsetWidth, so check for null/undefined
 	// svg - https://bugzilla.mozilla.org/show_bug.cgi?id=649285
@@ -8482,6 +8470,7 @@ jQuery.extend( jQuery.event, {
 	},
 
 	// Piggyback on a donor event to simulate a different one
+	// Used only for `focus(in | out)` events
 	simulate: function( type, elem, event ) {
 		var e = jQuery.extend(
 			new jQuery.Event(),
@@ -8489,27 +8478,10 @@ jQuery.extend( jQuery.event, {
 			{
 				type: type,
 				isSimulated: true
-
-				// Previously, `originalEvent: {}` was set here, so stopPropagation call
-				// would not be triggered on donor event, since in our own
-				// jQuery.event.stopPropagation function we had a check for existence of
-				// originalEvent.stopPropagation method, so, consequently it would be a noop.
-				//
-				// But now, this "simulate" function is used only for events
-				// for which stopPropagation() is noop, so there is no need for that anymore.
-				//
-				// For the 1.x branch though, guard for "click" and "submit"
-				// events is still used, but was moved to jQuery.event.stopPropagation function
-				// because `originalEvent` should point to the original event for the constancy
-				// with other events and for more focused logic
 			}
 		);
 
 		jQuery.event.trigger( e, null, elem );
-
-		if ( e.isDefaultPrevented() ) {
-			event.preventDefault();
-		}
 	}
 
 } );
@@ -14913,775 +14885,774 @@ else if (typeof define === 'function' && define.amd) {
  *  Under MIT License
  */
 
-!(function(root, factory) {
-  if (typeof define === 'function' && define.amd) {
-    define(['jquery'], function($) {
-      return factory(root, $);
-    });
-  } else if (typeof exports === 'object') {
-    factory(root, require('jquery'));
-  } else {
-    factory(root, root.jQuery || root.Zepto);
-  }
-})(this, function(global, $) {
-
-  'use strict';
-
-  /**
-   * Name of the plugin
-   * @private
-   * @const
-   * @type {String}
-   */
-  var PLUGIN_NAME = 'remodal';
-
-  /**
-   * Namespace for CSS and events
-   * @private
-   * @const
-   * @type {String}
-   */
-  var NAMESPACE = global.REMODAL_GLOBALS && global.REMODAL_GLOBALS.NAMESPACE || PLUGIN_NAME;
-
-  /**
-   * Animationstart event with vendor prefixes
-   * @private
-   * @const
-   * @type {String}
-   */
-  var ANIMATIONSTART_EVENTS = $.map(
-    ['animationstart', 'webkitAnimationStart', 'MSAnimationStart', 'oAnimationStart'],
-
-    function(eventName) {
-      return eventName + '.' + NAMESPACE;
+!(function (root, factory) {
+    if (typeof define === 'function' && define.amd) {
+        define(['jquery'], function ($) {
+            return factory(root, $);
+        });
+    } else if (typeof exports === 'object') {
+        factory(root, require('jquery'));
+    } else {
+        factory(root, root.jQuery || root.Zepto);
     }
+})(this, function (global, $) {
 
-  ).join(' ');
+    'use strict';
 
-  /**
-   * Animationend event with vendor prefixes
-   * @private
-   * @const
-   * @type {String}
-   */
-  var ANIMATIONEND_EVENTS = $.map(
-    ['animationend', 'webkitAnimationEnd', 'MSAnimationEnd', 'oAnimationEnd'],
+    /**
+     * Name of the plugin
+     * @private
+     * @const
+     * @type {String}
+     */
+    var PLUGIN_NAME = 'remodal';
 
-    function(eventName) {
-      return eventName + '.' + NAMESPACE;
-    }
+    /**
+     * Namespace for CSS and events
+     * @private
+     * @const
+     * @type {String}
+     */
+    var NAMESPACE = global.REMODAL_GLOBALS && global.REMODAL_GLOBALS.NAMESPACE || PLUGIN_NAME;
 
-  ).join(' ');
+    /**
+     * Animationstart event with vendor prefixes
+     * @private
+     * @const
+     * @type {String}
+     */
+    var ANIMATIONSTART_EVENTS = $.map(
+        ['animationstart', 'webkitAnimationStart', 'MSAnimationStart', 'oAnimationStart'],
 
-  /**
-   * Default settings
-   * @private
-   * @const
-   * @type {Object}
-   */
-  var DEFAULTS = $.extend({
-    hashTracking: true,
-    closeOnConfirm: true,
-    closeOnCancel: true,
-    closeOnEscape: true,
-    closeOnOutsideClick: true,
-    modifier: ''
-  }, global.REMODAL_GLOBALS && global.REMODAL_GLOBALS.DEFAULTS);
+        function (eventName) {
+            return eventName + '.' + NAMESPACE;
+        }
+    ).join(' ');
 
-  /**
-   * States of the Remodal
-   * @private
-   * @const
-   * @enum {String}
-   */
-  var STATES = {
-    CLOSING: 'closing',
-    CLOSED: 'closed',
-    OPENING: 'opening',
-    OPENED: 'opened'
-  };
+    /**
+     * Animationend event with vendor prefixes
+     * @private
+     * @const
+     * @type {String}
+     */
+    var ANIMATIONEND_EVENTS = $.map(
+        ['animationend', 'webkitAnimationEnd', 'MSAnimationEnd', 'oAnimationEnd'],
 
-  /**
-   * Reasons of the state change.
-   * @private
-   * @const
-   * @enum {String}
-   */
-  var STATE_CHANGE_REASONS = {
-    CONFIRMATION: 'confirmation',
-    CANCELLATION: 'cancellation'
-  };
+        function (eventName) {
+            return eventName + '.' + NAMESPACE;
+        }
+    ).join(' ');
 
-  /**
-   * Is animation supported?
-   * @private
-   * @const
-   * @type {Boolean}
-   */
-  var IS_ANIMATION = (function() {
-    var style = document.createElement('div').style;
+    /**
+     * Default settings
+     * @private
+     * @const
+     * @type {Object}
+     */
+    var DEFAULTS = $.extend({
+        hashTracking: true,
+        closeOnConfirm: true,
+        closeOnCancel: true,
+        closeOnEscape: true,
+        closeOnOutsideClick: true,
+        modifier: ''
+    }, global.REMODAL_GLOBALS && global.REMODAL_GLOBALS.DEFAULTS);
 
-    return style.animationName !== undefined ||
-      style.WebkitAnimationName !== undefined ||
-      style.MozAnimationName !== undefined ||
-      style.msAnimationName !== undefined ||
-      style.OAnimationName !== undefined;
-  })();
-
-  /**
-   * Is iOS?
-   * @private
-   * @const
-   * @type {Boolean}
-   */
-  var IS_IOS = /iPad|iPhone|iPod/.test(navigator.platform);
-
-  /**
-   * Current modal
-   * @private
-   * @type {Remodal}
-   */
-  var current;
-
-  /**
-   * Scrollbar position
-   * @private
-   * @type {Number}
-   */
-  var scrollTop;
-
-  /**
-   * Returns an animation duration
-   * @private
-   * @param {jQuery} $elem
-   * @returns {Number}
-   */
-  function getAnimationDuration($elem) {
-    if (
-      IS_ANIMATION &&
-      $elem.css('animation-name') === 'none' &&
-      $elem.css('-webkit-animation-name') === 'none' &&
-      $elem.css('-moz-animation-name') === 'none' &&
-      $elem.css('-o-animation-name') === 'none' &&
-      $elem.css('-ms-animation-name') === 'none'
-    ) {
-      return 0;
-    }
-
-    var duration = $elem.css('animation-duration') ||
-      $elem.css('-webkit-animation-duration') ||
-      $elem.css('-moz-animation-duration') ||
-      $elem.css('-o-animation-duration') ||
-      $elem.css('-ms-animation-duration') ||
-      '0s';
-
-    var delay = $elem.css('animation-delay') ||
-      $elem.css('-webkit-animation-delay') ||
-      $elem.css('-moz-animation-delay') ||
-      $elem.css('-o-animation-delay') ||
-      $elem.css('-ms-animation-delay') ||
-      '0s';
-
-    var iterationCount = $elem.css('animation-iteration-count') ||
-      $elem.css('-webkit-animation-iteration-count') ||
-      $elem.css('-moz-animation-iteration-count') ||
-      $elem.css('-o-animation-iteration-count') ||
-      $elem.css('-ms-animation-iteration-count') ||
-      '1';
-
-    var max;
-    var len;
-    var num;
-    var i;
-
-    duration = duration.split(', ');
-    delay = delay.split(', ');
-    iterationCount = iterationCount.split(', ');
-
-    // The 'duration' size is the same as the 'delay' size
-    for (i = 0, len = duration.length, max = Number.NEGATIVE_INFINITY; i < len; i++) {
-      num = parseFloat(duration[i]) * parseInt(iterationCount[i], 10) + parseFloat(delay[i]);
-
-      if (num > max) {
-        max = num;
-      }
-    }
-
-    return max;
-  }
-
-  /**
-   * Returns a scrollbar width
-   * @private
-   * @returns {Number}
-   */
-  function getScrollbarWidth() {
-    if ($(document.body).height() <= $(window).height()) {
-      return 0;
-    }
-
-    var outer = document.createElement('div');
-    var inner = document.createElement('div');
-    var widthNoScroll;
-    var widthWithScroll;
-
-    outer.style.visibility = 'hidden';
-    outer.style.width = '100px';
-    document.body.appendChild(outer);
-
-    widthNoScroll = outer.offsetWidth;
-
-    // Force scrollbars
-    outer.style.overflow = 'scroll';
-
-    // Add inner div
-    inner.style.width = '100%';
-    outer.appendChild(inner);
-
-    widthWithScroll = inner.offsetWidth;
-
-    // Remove divs
-    outer.parentNode.removeChild(outer);
-
-    return widthNoScroll - widthWithScroll;
-  }
-
-  /**
-   * Locks the screen
-   * @private
-   */
-  function lockScreen() {
-    if (IS_IOS) {
-      return;
-    }
-
-    var $html = $('html');
-    var lockedClass = namespacify('is-locked');
-    var paddingRight;
-    var $body;
-
-    if (!$html.hasClass(lockedClass)) {
-      $body = $(document.body);
-
-      // Zepto does not support '-=', '+=' in the `css` method
-      paddingRight = parseInt($body.css('padding-right'), 10) + getScrollbarWidth();
-
-      $body.css('padding-right', paddingRight + 'px');
-      $html.addClass(lockedClass);
-    }
-  }
-
-  /**
-   * Unlocks the screen
-   * @private
-   */
-  function unlockScreen() {
-    if (IS_IOS) {
-      return;
-    }
-
-    var $html = $('html');
-    var lockedClass = namespacify('is-locked');
-    var paddingRight;
-    var $body;
-
-    if ($html.hasClass(lockedClass)) {
-      $body = $(document.body);
-
-      // Zepto does not support '-=', '+=' in the `css` method
-      paddingRight = parseInt($body.css('padding-right'), 10) - getScrollbarWidth();
-
-      $body.css('padding-right', paddingRight + 'px');
-      $html.removeClass(lockedClass);
-    }
-  }
-
-  /**
-   * Sets a state for an instance
-   * @private
-   * @param {Remodal} instance
-   * @param {STATES} state
-   * @param {Boolean} isSilent If true, Remodal does not trigger events
-   * @param {String} Reason of a state change.
-   */
-  function setState(instance, state, isSilent, reason) {
-
-    var newState = namespacify('is', state);
-    var allStates = [namespacify('is', STATES.CLOSING),
-                     namespacify('is', STATES.OPENING),
-                     namespacify('is', STATES.CLOSED),
-                     namespacify('is', STATES.OPENED)].join(' ');
-
-    instance.$bg
-      .removeClass(allStates)
-      .addClass(newState);
-
-    instance.$overlay
-      .removeClass(allStates)
-      .addClass(newState);
-
-    instance.$wrapper
-      .removeClass(allStates)
-      .addClass(newState);
-
-    instance.$modal
-      .removeClass(allStates)
-      .addClass(newState);
-
-    instance.state = state;
-    !isSilent && instance.$modal.trigger({
-      type: state,
-      reason: reason
-    }, [{ reason: reason }]);
-  }
-
-  /**
-   * Synchronizes with the animation
-   * @param {Function} doBeforeAnimation
-   * @param {Function} doAfterAnimation
-   * @param {Remodal} instance
-   */
-  function syncWithAnimation(doBeforeAnimation, doAfterAnimation, instance) {
-    var runningAnimationsCount = 0;
-
-    var handleAnimationStart = function(e) {
-      if (e.target !== this) {
-        return;
-      }
-
-      runningAnimationsCount++;
+    /**
+     * States of the Remodal
+     * @private
+     * @const
+     * @enum {String}
+     */
+    var STATES = {
+        CLOSING: 'closing',
+        CLOSED: 'closed',
+        OPENING: 'opening',
+        OPENED: 'opened'
     };
 
-    var handleAnimationEnd = function(e) {
-      if (e.target !== this) {
-        return;
-      }
+    /**
+     * Reasons of the state change.
+     * @private
+     * @const
+     * @enum {String}
+     */
+    var STATE_CHANGE_REASONS = {
+        CONFIRMATION: 'confirmation',
+        CANCELLATION: 'cancellation'
+    };
 
-      if (--runningAnimationsCount === 0) {
+    /**
+     * Is animation supported?
+     * @private
+     * @const
+     * @type {Boolean}
+     */
+    var IS_ANIMATION = (function () {
+        var style = document.createElement('div').style;
 
-        // Remove event listeners
-        $.each(['$bg', '$overlay', '$wrapper', '$modal'], function(index, elemName) {
-          instance[elemName].off(ANIMATIONSTART_EVENTS + ' ' + ANIMATIONEND_EVENTS);
+        return style.animationName !== undefined ||
+            style.WebkitAnimationName !== undefined ||
+            style.MozAnimationName !== undefined ||
+            style.msAnimationName !== undefined ||
+            style.OAnimationName !== undefined;
+    })();
+
+    /**
+     * Is iOS?
+     * @private
+     * @const
+     * @type {Boolean}
+     */
+    var IS_IOS = /iPad|iPhone|iPod/.test(navigator.platform);
+
+    /**
+     * Current modal
+     * @private
+     * @type {Remodal}
+     */
+    var current;
+
+    /**
+     * Scrollbar position
+     * @private
+     * @type {Number}
+     */
+    var scrollTop;
+
+    /**
+     * Returns an animation duration
+     * @private
+     * @param {jQuery} $elem
+     * @returns {Number}
+     */
+    function getAnimationDuration($elem) {
+        if (
+            IS_ANIMATION &&
+            $elem.css('animation-name') === 'none' &&
+            $elem.css('-webkit-animation-name') === 'none' &&
+            $elem.css('-moz-animation-name') === 'none' &&
+            $elem.css('-o-animation-name') === 'none' &&
+            $elem.css('-ms-animation-name') === 'none'
+        ) {
+            return 0;
+        }
+
+        var duration = $elem.css('animation-duration') ||
+            $elem.css('-webkit-animation-duration') ||
+            $elem.css('-moz-animation-duration') ||
+            $elem.css('-o-animation-duration') ||
+            $elem.css('-ms-animation-duration') ||
+            '0s';
+
+        var delay = $elem.css('animation-delay') ||
+            $elem.css('-webkit-animation-delay') ||
+            $elem.css('-moz-animation-delay') ||
+            $elem.css('-o-animation-delay') ||
+            $elem.css('-ms-animation-delay') ||
+            '0s';
+
+        var iterationCount = $elem.css('animation-iteration-count') ||
+            $elem.css('-webkit-animation-iteration-count') ||
+            $elem.css('-moz-animation-iteration-count') ||
+            $elem.css('-o-animation-iteration-count') ||
+            $elem.css('-ms-animation-iteration-count') ||
+            '1';
+
+        var max;
+        var len;
+        var num;
+        var i;
+
+        duration = duration.split(', ');
+        delay = delay.split(', ');
+        iterationCount = iterationCount.split(', ');
+
+        // The 'duration' size is the same as the 'delay' size
+        for (i = 0, len = duration.length, max = Number.NEGATIVE_INFINITY; i < len; i++) {
+            num = parseFloat(duration[i]) * parseInt(iterationCount[i], 10) + parseFloat(delay[i]);
+
+            if (num > max) {
+                max = num;
+            }
+        }
+
+        return max;
+    }
+
+    /**
+     * Returns a scrollbar width
+     * @private
+     * @returns {Number}
+     */
+    function getScrollbarWidth() {
+        if ($(document.body).height() <= $(window).height()) {
+            return 0;
+        }
+
+        var outer = document.createElement('div');
+        var inner = document.createElement('div');
+        var widthNoScroll;
+        var widthWithScroll;
+
+        outer.style.visibility = 'hidden';
+        outer.style.width = '100px';
+        document.body.appendChild(outer);
+
+        widthNoScroll = outer.offsetWidth;
+
+        // Force scrollbars
+        outer.style.overflow = 'scroll';
+
+        // Add inner div
+        inner.style.width = '100%';
+        outer.appendChild(inner);
+
+        widthWithScroll = inner.offsetWidth;
+
+        // Remove divs
+        outer.parentNode.removeChild(outer);
+
+        return widthNoScroll - widthWithScroll;
+    }
+
+    /**
+     * Locks the screen
+     * @private
+     */
+    function lockScreen() {
+        if (IS_IOS) {
+            return;
+        }
+
+        var $html = $('html');
+        var lockedClass = namespacify('is-locked');
+        var paddingRight;
+        var $body;
+
+        if (!$html.hasClass(lockedClass)) {
+            $body = $(document.body);
+
+            // Zepto does not support '-=', '+=' in the `css` method
+            paddingRight = parseInt($body.css('padding-right'), 10) + getScrollbarWidth();
+
+            $body.css('padding-right', paddingRight + 'px');
+            $html.addClass(lockedClass);
+        }
+    }
+
+    /**
+     * Unlocks the screen
+     * @private
+     */
+    function unlockScreen() {
+        if (IS_IOS) {
+            return;
+        }
+
+        var $html = $('html');
+        var lockedClass = namespacify('is-locked');
+        var paddingRight;
+        var $body;
+
+        if ($html.hasClass(lockedClass)) {
+            $body = $(document.body);
+
+            // Zepto does not support '-=', '+=' in the `css` method
+            paddingRight = parseInt($body.css('padding-right'), 10) - getScrollbarWidth();
+
+            $body.css('padding-right', paddingRight + 'px');
+            $html.removeClass(lockedClass);
+        }
+    }
+
+    /**
+     * Sets a state for an instance
+     * @private
+     * @param {Remodal} instance
+     * @param {STATES} state
+     * @param {Boolean} isSilent If true, Remodal does not trigger events
+     * @param {String} Reason of a state change.
+     */
+    function setState(instance, state, isSilent, reason) {
+
+        var newState = namespacify('is', state);
+        var allStates = [namespacify('is', STATES.CLOSING),
+            namespacify('is', STATES.OPENING),
+            namespacify('is', STATES.CLOSED),
+            namespacify('is', STATES.OPENED)].join(' ');
+
+        instance.$bg
+            .removeClass(allStates)
+            .addClass(newState);
+
+        instance.$overlay
+            .removeClass(allStates)
+            .addClass(newState);
+
+        instance.$wrapper
+            .removeClass(allStates)
+            .addClass(newState);
+
+        instance.$modal
+            .removeClass(allStates)
+            .addClass(newState);
+
+        instance.state = state;
+        !isSilent && instance.$modal.trigger({
+            type: state,
+            reason: reason
+        }, [{reason: reason}]);
+    }
+
+    /**
+     * Synchronizes with the animation
+     * @param {Function} doBeforeAnimation
+     * @param {Function} doAfterAnimation
+     * @param {Remodal} instance
+     */
+    function syncWithAnimation(doBeforeAnimation, doAfterAnimation, instance) {
+        var runningAnimationsCount = 0;
+
+        var handleAnimationStart = function (e) {
+            if (e.target !== this) {
+                return;
+            }
+
+            runningAnimationsCount++;
+        };
+
+        var handleAnimationEnd = function (e) {
+            if (e.target !== this) {
+                return;
+            }
+
+            if (--runningAnimationsCount === 0) {
+
+                // Remove event listeners
+                $.each(['$bg', '$overlay', '$wrapper', '$modal'], function (index, elemName) {
+                    instance[elemName].off(ANIMATIONSTART_EVENTS + ' ' + ANIMATIONEND_EVENTS);
+                });
+
+                doAfterAnimation();
+            }
+        };
+
+        $.each(['$bg', '$overlay', '$wrapper', '$modal'], function (index, elemName) {
+            instance[elemName]
+                .on(ANIMATIONSTART_EVENTS, handleAnimationStart)
+                .on(ANIMATIONEND_EVENTS, handleAnimationEnd);
         });
 
-        doAfterAnimation();
-      }
+        doBeforeAnimation();
+
+        // If the animation is not supported by a browser or its duration is 0
+        if (
+            getAnimationDuration(instance.$bg) === 0 &&
+            getAnimationDuration(instance.$overlay) === 0 &&
+            getAnimationDuration(instance.$wrapper) === 0 &&
+            getAnimationDuration(instance.$modal) === 0
+        ) {
+
+            // Remove event listeners
+            $.each(['$bg', '$overlay', '$wrapper', '$modal'], function (index, elemName) {
+                instance[elemName].off(ANIMATIONSTART_EVENTS + ' ' + ANIMATIONEND_EVENTS);
+            });
+
+            doAfterAnimation();
+        }
+    }
+
+    /**
+     * Closes immediately
+     * @private
+     * @param {Remodal} instance
+     */
+    function halt(instance) {
+        if (instance.state === STATES.CLOSED) {
+            return;
+        }
+
+        $.each(['$bg', '$overlay', '$wrapper', '$modal'], function (index, elemName) {
+            instance[elemName].off(ANIMATIONSTART_EVENTS + ' ' + ANIMATIONEND_EVENTS);
+        });
+
+        instance.$bg.removeClass(instance.settings.modifier);
+        instance.$overlay.removeClass(instance.settings.modifier).hide();
+        instance.$wrapper.hide();
+        unlockScreen();
+        setState(instance, STATES.CLOSED, true);
+    }
+
+    /**
+     * Parses a string with options
+     * @private
+     * @param str
+     * @returns {Object}
+     */
+    function parseOptions(str) {
+        var obj = {};
+        var arr;
+        var len;
+        var val;
+        var i;
+
+        // Remove spaces before and after delimiters
+        str = str.replace(/\s*:\s*/g, ':').replace(/\s*,\s*/g, ',');
+
+        // Parse a string
+        arr = str.split(',');
+        for (i = 0, len = arr.length; i < len; i++) {
+            arr[i] = arr[i].split(':');
+            val = arr[i][1];
+
+            // Convert a string value if it is like a boolean
+            if (typeof val === 'string' || val instanceof String) {
+                val = val === 'true' || (val === 'false' ? false : val);
+            }
+
+            // Convert a string value if it is like a number
+            if (typeof val === 'string' || val instanceof String) {
+                val = !isNaN(val) ? +val : val;
+            }
+
+            obj[arr[i][0]] = val;
+        }
+
+        return obj;
+    }
+
+    /**
+     * Generates a string separated by dashes and prefixed with NAMESPACE
+     * @private
+     * @param {...String}
+     * @returns {String}
+     */
+    function namespacify() {
+        var result = NAMESPACE;
+
+        for (var i = 0; i < arguments.length; ++i) {
+            result += '-' + arguments[i];
+        }
+
+        return result;
+    }
+
+    /**
+     * Handles the hashchange event
+     * @private
+     * @listens hashchange
+     */
+    function handleHashChangeEvent() {
+        var id = location.hash.replace('#', '');
+        var instance;
+        var $elem;
+
+        if (!id) {
+
+            // Check if we have currently opened modal and animation was completed
+            if (current && current.state === STATES.OPENED && current.settings.hashTracking) {
+                current.close();
+            }
+        } else {
+
+            // Catch syntax error if your hash is bad
+            try {
+                $elem = $(
+                    '[data-' + PLUGIN_NAME + '-id="' + id + '"]'
+                );
+            } catch (err) {
+            }
+
+            if ($elem && $elem.length) {
+                instance = $[PLUGIN_NAME].lookup[$elem.data(PLUGIN_NAME)];
+
+                if (instance && instance.settings.hashTracking) {
+                    instance.open();
+                }
+            }
+
+        }
+    }
+
+    /**
+     * Remodal constructor
+     * @constructor
+     * @param {jQuery} $modal
+     * @param {Object} options
+     */
+    function Remodal($modal, options) {
+        var $body = $(document.body);
+        var remodal = this;
+
+        remodal.settings = $.extend({}, DEFAULTS, options);
+        remodal.index = $[PLUGIN_NAME].lookup.push(remodal) - 1;
+        remodal.state = STATES.CLOSED;
+
+        remodal.$overlay = $('.' + namespacify('overlay'));
+
+        if (!remodal.$overlay.length) {
+            remodal.$overlay = $('<div>').addClass(namespacify('overlay') + ' ' + namespacify('is', STATES.CLOSED)).hide();
+            $body.append(remodal.$overlay);
+        }
+
+        remodal.$bg = $('.' + namespacify('bg')).addClass(namespacify('is', STATES.CLOSED));
+
+        remodal.$modal = $modal
+            .addClass(
+                NAMESPACE + ' ' +
+                namespacify('is-initialized') + ' ' +
+                remodal.settings.modifier + ' ' +
+                namespacify('is', STATES.CLOSED))
+            .attr('tabindex', '-1');
+
+        remodal.$wrapper = $('<div>')
+            .addClass(
+                namespacify('wrapper') + ' ' +
+                remodal.settings.modifier + ' ' +
+                namespacify('is', STATES.CLOSED))
+            .hide()
+            .append(remodal.$modal);
+        $body.append(remodal.$wrapper);
+
+        // Add the event listener for the close button
+        remodal.$wrapper.on('click.' + NAMESPACE, '[data-' + PLUGIN_NAME + '-action="close"]', function (e) {
+            e.preventDefault();
+
+            remodal.close();
+        });
+
+        // Add the event listener for the cancel button
+        remodal.$wrapper.on('click.' + NAMESPACE, '[data-' + PLUGIN_NAME + '-action="cancel"]', function (e) {
+            e.preventDefault();
+
+            remodal.$modal.trigger(STATE_CHANGE_REASONS.CANCELLATION);
+
+            if (remodal.settings.closeOnCancel) {
+                remodal.close(STATE_CHANGE_REASONS.CANCELLATION);
+            }
+        });
+
+        // Add the event listener for the confirm button
+        remodal.$wrapper.on('click.' + NAMESPACE, '[data-' + PLUGIN_NAME + '-action="confirm"]', function (e) {
+            e.preventDefault();
+
+            remodal.$modal.trigger(STATE_CHANGE_REASONS.CONFIRMATION);
+
+            if (remodal.settings.closeOnConfirm) {
+                remodal.close(STATE_CHANGE_REASONS.CONFIRMATION);
+            }
+        });
+
+        // Add the event listener for the overlay
+        remodal.$wrapper.on('click.' + NAMESPACE, function (e) {
+            var $target = $(e.target);
+
+            if (!$target.hasClass(namespacify('wrapper'))) {
+                return;
+            }
+
+            if (remodal.settings.closeOnOutsideClick) {
+                remodal.close();
+            }
+        });
+    }
+
+    /**
+     * Opens a modal window
+     * @public
+     */
+    Remodal.prototype.open = function () {
+        var remodal = this;
+        var id;
+
+        // Check if the animation was completed
+        if (remodal.state === STATES.OPENING || remodal.state === STATES.CLOSING) {
+            return;
+        }
+
+        id = remodal.$modal.attr('data-' + PLUGIN_NAME + '-id');
+
+        if (id && remodal.settings.hashTracking) {
+            scrollTop = $(window).scrollTop();
+            location.hash = id;
+        }
+
+        if (current && current !== remodal) {
+            halt(current);
+        }
+
+        current = remodal;
+        lockScreen();
+        remodal.$bg.addClass(remodal.settings.modifier);
+        remodal.$overlay.addClass(remodal.settings.modifier).show();
+        remodal.$wrapper.show().scrollTop(0);
+        remodal.$modal.focus();
+
+        syncWithAnimation(
+            function () {
+                setState(remodal, STATES.OPENING);
+            },
+
+            function () {
+                setState(remodal, STATES.OPENED);
+            },
+
+            remodal);
     };
 
-    $.each(['$bg', '$overlay', '$wrapper', '$modal'], function(index, elemName) {
-      instance[elemName]
-        .on(ANIMATIONSTART_EVENTS, handleAnimationStart)
-        .on(ANIMATIONEND_EVENTS, handleAnimationEnd);
-    });
+    /**
+     * Closes a modal window
+     * @public
+     * @param {String} reason
+     */
+    Remodal.prototype.close = function (reason) {
+        var remodal = this;
 
-    doBeforeAnimation();
-
-    // If the animation is not supported by a browser or its duration is 0
-    if (
-      getAnimationDuration(instance.$bg) === 0 &&
-      getAnimationDuration(instance.$overlay) === 0 &&
-      getAnimationDuration(instance.$wrapper) === 0 &&
-      getAnimationDuration(instance.$modal) === 0
-    ) {
-
-      // Remove event listeners
-      $.each(['$bg', '$overlay', '$wrapper', '$modal'], function(index, elemName) {
-        instance[elemName].off(ANIMATIONSTART_EVENTS + ' ' + ANIMATIONEND_EVENTS);
-      });
-
-      doAfterAnimation();
-    }
-  }
-
-  /**
-   * Closes immediately
-   * @private
-   * @param {Remodal} instance
-   */
-  function halt(instance) {
-    if (instance.state === STATES.CLOSED) {
-      return;
-    }
-
-    $.each(['$bg', '$overlay', '$wrapper', '$modal'], function(index, elemName) {
-      instance[elemName].off(ANIMATIONSTART_EVENTS + ' ' + ANIMATIONEND_EVENTS);
-    });
-
-    instance.$bg.removeClass(instance.settings.modifier);
-    instance.$overlay.removeClass(instance.settings.modifier).hide();
-    instance.$wrapper.hide();
-    unlockScreen();
-    setState(instance, STATES.CLOSED, true);
-  }
-
-  /**
-   * Parses a string with options
-   * @private
-   * @param str
-   * @returns {Object}
-   */
-  function parseOptions(str) {
-    var obj = {};
-    var arr;
-    var len;
-    var val;
-    var i;
-
-    // Remove spaces before and after delimiters
-    str = str.replace(/\s*:\s*/g, ':').replace(/\s*,\s*/g, ',');
-
-    // Parse a string
-    arr = str.split(',');
-    for (i = 0, len = arr.length; i < len; i++) {
-      arr[i] = arr[i].split(':');
-      val = arr[i][1];
-
-      // Convert a string value if it is like a boolean
-      if (typeof val === 'string' || val instanceof String) {
-        val = val === 'true' || (val === 'false' ? false : val);
-      }
-
-      // Convert a string value if it is like a number
-      if (typeof val === 'string' || val instanceof String) {
-        val = !isNaN(val) ? +val : val;
-      }
-
-      obj[arr[i][0]] = val;
-    }
-
-    return obj;
-  }
-
-  /**
-   * Generates a string separated by dashes and prefixed with NAMESPACE
-   * @private
-   * @param {...String}
-   * @returns {String}
-   */
-  function namespacify() {
-    var result = NAMESPACE;
-
-    for (var i = 0; i < arguments.length; ++i) {
-      result += '-' + arguments[i];
-    }
-
-    return result;
-  }
-
-  /**
-   * Handles the hashchange event
-   * @private
-   * @listens hashchange
-   */
-  function handleHashChangeEvent() {
-    var id = location.hash.replace('#', '');
-    var instance;
-    var $elem;
-
-    if (!id) {
-
-      // Check if we have currently opened modal and animation was completed
-      if (current && current.state === STATES.OPENED && current.settings.hashTracking) {
-        current.close();
-      }
-    } else {
-
-      // Catch syntax error if your hash is bad
-      try {
-        $elem = $(
-          '[data-' + PLUGIN_NAME + '-id="' + id + '"]'
-        );
-      } catch (err) {}
-
-      if ($elem && $elem.length) {
-        instance = $[PLUGIN_NAME].lookup[$elem.data(PLUGIN_NAME)];
-
-        if (instance && instance.settings.hashTracking) {
-          instance.open();
+        // Check if the animation was completed
+        if (remodal.state === STATES.OPENING || remodal.state === STATES.CLOSING) {
+            return;
         }
-      }
-
-    }
-  }
-
-  /**
-   * Remodal constructor
-   * @constructor
-   * @param {jQuery} $modal
-   * @param {Object} options
-   */
-  function Remodal($modal, options) {
-    var $body = $(document.body);
-    var remodal = this;
-
-    remodal.settings = $.extend({}, DEFAULTS, options);
-    remodal.index = $[PLUGIN_NAME].lookup.push(remodal) - 1;
-    remodal.state = STATES.CLOSED;
-
-    remodal.$overlay = $('.' + namespacify('overlay'));
-
-    if (!remodal.$overlay.length) {
-      remodal.$overlay = $('<div>').addClass(namespacify('overlay') + ' ' + namespacify('is', STATES.CLOSED)).hide();
-      $body.append(remodal.$overlay);
-    }
-
-    remodal.$bg = $('.' + namespacify('bg')).addClass(namespacify('is', STATES.CLOSED));
-
-    remodal.$modal = $modal
-      .addClass(
-        NAMESPACE + ' ' +
-        namespacify('is-initialized') + ' ' +
-        remodal.settings.modifier + ' ' +
-        namespacify('is', STATES.CLOSED))
-      .attr('tabindex', '-1');
-
-    remodal.$wrapper = $('<div>')
-      .addClass(
-        namespacify('wrapper') + ' ' +
-        remodal.settings.modifier + ' ' +
-        namespacify('is', STATES.CLOSED))
-      .hide()
-      .append(remodal.$modal);
-    $body.append(remodal.$wrapper);
-
-    // Add the event listener for the close button
-    remodal.$wrapper.on('click.' + NAMESPACE, '[data-' + PLUGIN_NAME + '-action="close"]', function(e) {
-      e.preventDefault();
-
-      remodal.close();
-    });
-
-    // Add the event listener for the cancel button
-    remodal.$wrapper.on('click.' + NAMESPACE, '[data-' + PLUGIN_NAME + '-action="cancel"]', function(e) {
-      e.preventDefault();
-
-      remodal.$modal.trigger(STATE_CHANGE_REASONS.CANCELLATION);
-
-      if (remodal.settings.closeOnCancel) {
-        remodal.close(STATE_CHANGE_REASONS.CANCELLATION);
-      }
-    });
-
-    // Add the event listener for the confirm button
-    remodal.$wrapper.on('click.' + NAMESPACE, '[data-' + PLUGIN_NAME + '-action="confirm"]', function(e) {
-      e.preventDefault();
-
-      remodal.$modal.trigger(STATE_CHANGE_REASONS.CONFIRMATION);
-
-      if (remodal.settings.closeOnConfirm) {
-        remodal.close(STATE_CHANGE_REASONS.CONFIRMATION);
-      }
-    });
-
-    // Add the event listener for the overlay
-    remodal.$wrapper.on('click.' + NAMESPACE, function(e) {
-      var $target = $(e.target);
-
-      if (!$target.hasClass(namespacify('wrapper'))) {
-        return;
-      }
-
-      if (remodal.settings.closeOnOutsideClick) {
-        remodal.close();
-      }
-    });
-  }
-
-  /**
-   * Opens a modal window
-   * @public
-   */
-  Remodal.prototype.open = function() {
-    var remodal = this;
-    var id;
-
-    // Check if the animation was completed
-    if (remodal.state === STATES.OPENING || remodal.state === STATES.CLOSING) {
-      return;
-    }
-
-    id = remodal.$modal.attr('data-' + PLUGIN_NAME + '-id');
-
-    if (id && remodal.settings.hashTracking) {
-      scrollTop = $(window).scrollTop();
-      location.hash = id;
-    }
-
-    if (current && current !== remodal) {
-      halt(current);
-    }
-
-    current = remodal;
-    lockScreen();
-    remodal.$bg.addClass(remodal.settings.modifier);
-    remodal.$overlay.addClass(remodal.settings.modifier).show();
-    remodal.$wrapper.show().scrollTop(0);
-    remodal.$modal.focus();
-
-    syncWithAnimation(
-      function() {
-        setState(remodal, STATES.OPENING);
-      },
-
-      function() {
-        setState(remodal, STATES.OPENED);
-      },
-
-      remodal);
-  };
-
-  /**
-   * Closes a modal window
-   * @public
-   * @param {String} reason
-   */
-  Remodal.prototype.close = function(reason) {
-    var remodal = this;
-
-    // Check if the animation was completed
-    if (remodal.state === STATES.OPENING || remodal.state === STATES.CLOSING) {
-      return;
-    }
-
-    if (
-      remodal.settings.hashTracking &&
-      remodal.$modal.attr('data-' + PLUGIN_NAME + '-id') === location.hash.substr(1)
-    ) {
-      location.hash = '';
-      $(window).scrollTop(scrollTop);
-    }
-
-    syncWithAnimation(
-      function() {
-        setState(remodal, STATES.CLOSING, false, reason);
-      },
-
-      function() {
-        remodal.$bg.removeClass(remodal.settings.modifier);
-        remodal.$overlay.removeClass(remodal.settings.modifier).hide();
-        remodal.$wrapper.hide();
-        unlockScreen();
-
-        setState(remodal, STATES.CLOSED, false, reason);
-      },
-
-      remodal);
-  };
-
-  /**
-   * Returns a current state of a modal
-   * @public
-   * @returns {STATES}
-   */
-  Remodal.prototype.getState = function() {
-    return this.state;
-  };
-
-  /**
-   * Destroys a modal
-   * @public
-   */
-  Remodal.prototype.destroy = function() {
-    var lookup = $[PLUGIN_NAME].lookup;
-    var instanceCount;
-
-    halt(this);
-    this.$wrapper.remove();
-
-    delete lookup[this.index];
-    instanceCount = $.grep(lookup, function(instance) {
-      return !!instance;
-    }).length;
-
-    if (instanceCount === 0) {
-      this.$overlay.remove();
-      this.$bg.removeClass(
-        namespacify('is', STATES.CLOSING) + ' ' +
-        namespacify('is', STATES.OPENING) + ' ' +
-        namespacify('is', STATES.CLOSED) + ' ' +
-        namespacify('is', STATES.OPENED));
-    }
-  };
-
-  /**
-   * Special plugin object for instances
-   * @public
-   * @type {Object}
-   */
-  $[PLUGIN_NAME] = {
-    lookup: []
-  };
-
-  /**
-   * Plugin constructor
-   * @constructor
-   * @param {Object} options
-   * @returns {JQuery}
-   */
-  $.fn[PLUGIN_NAME] = function(opts) {
-    var instance;
-    var $elem;
-
-    this.each(function(index, elem) {
-      $elem = $(elem);
-
-      if ($elem.data(PLUGIN_NAME) == null) {
-        instance = new Remodal($elem, opts);
-        $elem.data(PLUGIN_NAME, instance.index);
 
         if (
-          instance.settings.hashTracking &&
-          $elem.attr('data-' + PLUGIN_NAME + '-id') === location.hash.substr(1)
+            remodal.settings.hashTracking &&
+            remodal.$modal.attr('data-' + PLUGIN_NAME + '-id') === location.hash.substr(1)
         ) {
-          instance.open();
+            location.hash = '';
+            $(window).scrollTop(scrollTop);
         }
-      } else {
-        instance = $[PLUGIN_NAME].lookup[$elem.data(PLUGIN_NAME)];
-      }
+
+        syncWithAnimation(
+            function () {
+                setState(remodal, STATES.CLOSING, false, reason);
+            },
+
+            function () {
+                remodal.$bg.removeClass(remodal.settings.modifier);
+                remodal.$overlay.removeClass(remodal.settings.modifier).hide();
+                remodal.$wrapper.hide();
+                unlockScreen();
+
+                setState(remodal, STATES.CLOSED, false, reason);
+            },
+
+            remodal);
+    };
+
+    /**
+     * Returns a current state of a modal
+     * @public
+     * @returns {STATES}
+     */
+    Remodal.prototype.getState = function () {
+        return this.state;
+    };
+
+    /**
+     * Destroys a modal
+     * @public
+     */
+    Remodal.prototype.destroy = function () {
+        var lookup = $[PLUGIN_NAME].lookup;
+        var instanceCount;
+
+        halt(this);
+        this.$wrapper.remove();
+
+        delete lookup[this.index];
+        instanceCount = $.grep(lookup, function (instance) {
+            return !!instance;
+        }).length;
+
+        if (instanceCount === 0) {
+            this.$overlay.remove();
+            this.$bg.removeClass(
+                namespacify('is', STATES.CLOSING) + ' ' +
+                namespacify('is', STATES.OPENING) + ' ' +
+                namespacify('is', STATES.CLOSED) + ' ' +
+                namespacify('is', STATES.OPENED));
+        }
+    };
+
+    /**
+     * Special plugin object for instances
+     * @public
+     * @type {Object}
+     */
+    $[PLUGIN_NAME] = {
+        lookup: []
+    };
+
+    /**
+     * Plugin constructor
+     * @constructor
+     * @param {Object} options
+     * @returns {JQuery}
+     */
+    $.fn[PLUGIN_NAME] = function (opts) {
+        var instance;
+        var $elem;
+
+        this.each(function (index, elem) {
+            $elem = $(elem);
+
+            if ($elem.data(PLUGIN_NAME) == null) {
+                instance = new Remodal($elem, opts);
+                $elem.data(PLUGIN_NAME, instance.index);
+
+                if (
+                    instance.settings.hashTracking &&
+                    $elem.attr('data-' + PLUGIN_NAME + '-id') === location.hash.substr(1)
+                ) {
+                    instance.open();
+                }
+            } else {
+                instance = $[PLUGIN_NAME].lookup[$elem.data(PLUGIN_NAME)];
+            }
+        });
+
+        return instance;
+    };
+
+    $(document).ready(function () {
+
+        // data-remodal-target opens a modal window with the special Id
+        $(document).on('click', '[data-' + PLUGIN_NAME + '-target]', function (e) {
+            e.preventDefault();
+
+            var elem = e.currentTarget;
+            var id = elem.getAttribute('data-' + PLUGIN_NAME + '-target');
+            var $target = $('[data-' + PLUGIN_NAME + '-id="' + id + '"]');
+
+            $[PLUGIN_NAME].lookup[$target.data(PLUGIN_NAME)].open();
+        });
+
+        // Auto initialization of modal windows
+        // They should have the 'remodal' class attribute
+        // Also you can write the `data-remodal-options` attribute to pass params into the modal
+        $(document).find('.' + NAMESPACE).each(function (i, container) {
+            var $container = $(container);
+            var options = $container.data(PLUGIN_NAME + '-options');
+
+            if (!options) {
+                options = {};
+            } else if (typeof options === 'string' || options instanceof String) {
+                options = parseOptions(options);
+            }
+
+            $container[PLUGIN_NAME](options);
+        });
+
+        // Handles the keydown event
+        $(document).on('keydown.' + NAMESPACE, function (e) {
+            if (current && current.settings.closeOnEscape && current.state === STATES.OPENED && e.keyCode === 27) {
+                current.close();
+            }
+        });
+
+        // Handles the hashchange event
+        $(window).on('hashchange.' + NAMESPACE, handleHashChangeEvent);
     });
-
-    return instance;
-  };
-
-  $(document).ready(function() {
-
-    // data-remodal-target opens a modal window with the special Id
-    $(document).on('click', '[data-' + PLUGIN_NAME + '-target]', function(e) {
-      e.preventDefault();
-
-      var elem = e.currentTarget;
-      var id = elem.getAttribute('data-' + PLUGIN_NAME + '-target');
-      var $target = $('[data-' + PLUGIN_NAME + '-id="' + id + '"]');
-
-      $[PLUGIN_NAME].lookup[$target.data(PLUGIN_NAME)].open();
-    });
-
-    // Auto initialization of modal windows
-    // They should have the 'remodal' class attribute
-    // Also you can write the `data-remodal-options` attribute to pass params into the modal
-    $(document).find('.' + NAMESPACE).each(function(i, container) {
-      var $container = $(container);
-      var options = $container.data(PLUGIN_NAME + '-options');
-
-      if (!options) {
-        options = {};
-      } else if (typeof options === 'string' || options instanceof String) {
-        options = parseOptions(options);
-      }
-
-      $container[PLUGIN_NAME](options);
-    });
-
-    // Handles the keydown event
-    $(document).on('keydown.' + NAMESPACE, function(e) {
-      if (current && current.settings.closeOnEscape && current.state === STATES.OPENED && e.keyCode === 27) {
-        current.close();
-      }
-    });
-
-    // Handles the hashchange event
-    $(window).on('hashchange.' + NAMESPACE, handleHashChangeEvent);
-  });
 });
 
 /*!
@@ -15709,14 +15680,14 @@ else if (typeof define === 'function' && define.amd) {
   'use strict';
 
   /* exported features */
-  
+
   var features = {
     bind : !!(function(){}.bind),
     classList : 'classList' in document.documentElement,
     rAF : !!(window.requestAnimationFrame || window.webkitRequestAnimationFrame || window.mozRequestAnimationFrame)
   };
   window.requestAnimationFrame = window.requestAnimationFrame || window.webkitRequestAnimationFrame || window.mozRequestAnimationFrame;
-  
+
   /**
    * Handles debouncing of events via requestAnimationFrame
    * @see http://www.html5rocks.com/en/tutorials/speed/animations/
@@ -15728,7 +15699,7 @@ else if (typeof define === 'function' && define.amd) {
   }
   Debouncer.prototype = {
     constructor : Debouncer,
-  
+
     /**
      * dispatches the event to the supplied callback
      * @private
@@ -15737,7 +15708,7 @@ else if (typeof define === 'function' && define.amd) {
       this.callback && this.callback();
       this.ticking = false;
     },
-  
+
     /**
      * ensures events don't get stacked
      * @private
@@ -15748,7 +15719,7 @@ else if (typeof define === 'function' && define.amd) {
         this.ticking = true;
       }
     },
-  
+
     /**
      * Attach this as the event listeners
      */
@@ -15764,7 +15735,7 @@ else if (typeof define === 'function' && define.amd) {
   function isDOMElement(obj) {
     return obj && typeof window !== 'undefined' && (obj === window || obj.nodeType);
   }
-  
+
   /**
    * Helper function for extending objects
    */
@@ -15772,14 +15743,14 @@ else if (typeof define === 'function' && define.amd) {
     if(arguments.length <= 0) {
       throw new Error('Missing arguments in extend function');
     }
-  
+
     var result = object || {},
         key,
         i;
-  
+
     for (i = 1; i < arguments.length; i++) {
       var replacement = arguments[i] || {};
-  
+
       for (key in replacement) {
         // Recurse into object except if the object is a DOM element
         if(typeof result[key] === 'object' && ! isDOMElement(result[key])) {
@@ -15790,17 +15761,17 @@ else if (typeof define === 'function' && define.amd) {
         }
       }
     }
-  
+
     return result;
   }
-  
+
   /**
    * Helper function for normalizing tolerance option to object format
    */
   function normalizeTolerance (t) {
     return t === Object(t) ? t : { down : t, up : t };
   }
-  
+
   /**
    * UI enhancement for fixed headers.
    * Hides header when scrolling down
@@ -15811,7 +15782,7 @@ else if (typeof define === 'function' && define.amd) {
    */
   function Headroom (elem, options) {
     options = extend(options, Headroom.options);
-  
+
     this.lastKnownScrollY = 0;
     this.elem             = elem;
     this.tolerance        = normalizeTolerance(options.tolerance);
@@ -15828,7 +15799,7 @@ else if (typeof define === 'function' && define.amd) {
   }
   Headroom.prototype = {
     constructor : Headroom,
-  
+
     /**
      * Initialises the widget
      */
@@ -15836,28 +15807,28 @@ else if (typeof define === 'function' && define.amd) {
       if(!Headroom.cutsTheMustard) {
         return;
       }
-  
+
       this.debouncer = new Debouncer(this.update.bind(this));
       this.elem.classList.add(this.classes.initial);
-  
-      // defer event registration to handle browser 
+
+      // defer event registration to handle browser
       // potentially restoring previous scroll position
       setTimeout(this.attachEvent.bind(this), 100);
-  
+
       return this;
     },
-  
+
     /**
      * Unattaches events and removes any classes that were added
      */
     destroy : function() {
       var classes = this.classes;
-  
+
       this.initialised = false;
       this.elem.classList.remove(classes.unpinned, classes.pinned, classes.top, classes.notTop, classes.initial);
       this.scroller.removeEventListener('scroll', this.debouncer, false);
     },
-  
+
     /**
      * Attaches the scroll event
      * @private
@@ -15867,92 +15838,92 @@ else if (typeof define === 'function' && define.amd) {
         this.lastKnownScrollY = this.getScrollY();
         this.initialised = true;
         this.scroller.addEventListener('scroll', this.debouncer, false);
-  
+
         this.debouncer.handleEvent();
       }
     },
-    
+
     /**
      * Unpins the header if it's currently pinned
      */
     unpin : function() {
       var classList = this.elem.classList,
         classes = this.classes;
-      
+
       if(classList.contains(classes.pinned) || !classList.contains(classes.unpinned)) {
         classList.add(classes.unpinned);
         classList.remove(classes.pinned);
         this.onUnpin && this.onUnpin.call(this);
       }
     },
-  
+
     /**
      * Pins the header if it's currently unpinned
      */
     pin : function() {
       var classList = this.elem.classList,
         classes = this.classes;
-      
+
       if(classList.contains(classes.unpinned)) {
         classList.remove(classes.unpinned);
         classList.add(classes.pinned);
         this.onPin && this.onPin.call(this);
       }
     },
-  
+
     /**
      * Handles the top states
      */
     top : function() {
       var classList = this.elem.classList,
         classes = this.classes;
-      
+
       if(!classList.contains(classes.top)) {
         classList.add(classes.top);
         classList.remove(classes.notTop);
         this.onTop && this.onTop.call(this);
       }
     },
-  
+
     /**
      * Handles the not top state
      */
     notTop : function() {
       var classList = this.elem.classList,
         classes = this.classes;
-      
+
       if(!classList.contains(classes.notTop)) {
         classList.add(classes.notTop);
         classList.remove(classes.top);
         this.onNotTop && this.onNotTop.call(this);
       }
     },
-  
+
     bottom : function() {
       var classList = this.elem.classList,
         classes = this.classes;
-      
+
       if(!classList.contains(classes.bottom)) {
         classList.add(classes.bottom);
         classList.remove(classes.notBottom);
         this.onBottom && this.onBottom.call(this);
       }
     },
-  
+
     /**
      * Handles the not top state
      */
     notBottom : function() {
       var classList = this.elem.classList,
         classes = this.classes;
-      
+
       if(!classList.contains(classes.notBottom)) {
         classList.add(classes.notBottom);
         classList.remove(classes.bottom);
         this.onNotBottom && this.onNotBottom.call(this);
       }
     },
-  
+
     /**
      * Gets the Y scroll position
      * @see https://developer.mozilla.org/en-US/docs/Web/API/Window.scrollY
@@ -15965,7 +15936,7 @@ else if (typeof define === 'function' && define.amd) {
           ? this.scroller.scrollTop
           : (document.documentElement || document.body.parentNode || document.body).scrollTop;
     },
-  
+
     /**
      * Gets the height of the viewport
      * @see http://andylangton.co.uk/blog/development/get-viewport-size-width-and-height-javascript
@@ -15976,7 +15947,7 @@ else if (typeof define === 'function' && define.amd) {
         || document.documentElement.clientHeight
         || document.body.clientHeight;
     },
-  
+
     /**
      * Gets the physical height of the DOM element
      * @param  {Object}  elm the element to calculate the physical height of which
@@ -15988,7 +15959,7 @@ else if (typeof define === 'function' && define.amd) {
         elm.clientHeight
       );
     },
-  
+
     /**
      * Gets the physical height of the scroller element
      * @return {int} the physical height of the scroller element in pixels
@@ -15998,7 +15969,7 @@ else if (typeof define === 'function' && define.amd) {
         ? this.getViewportHeight()
         : this.getElementPhysicalHeight(this.scroller);
     },
-  
+
     /**
      * Gets the height of the document
      * @see http://james.padolsey.com/javascript/get-document-height-cross-browser/
@@ -16007,14 +15978,14 @@ else if (typeof define === 'function' && define.amd) {
     getDocumentHeight : function () {
       var body = document.body,
         documentElement = document.documentElement;
-    
+
       return Math.max(
         body.scrollHeight, documentElement.scrollHeight,
         body.offsetHeight, documentElement.offsetHeight,
         body.clientHeight, documentElement.clientHeight
       );
     },
-  
+
     /**
      * Gets the height of the DOM element
      * @param  {Object}  elm the element to calculate the height of which
@@ -16027,7 +15998,7 @@ else if (typeof define === 'function' && define.amd) {
         elm.clientHeight
       );
     },
-  
+
     /**
      * Gets the height of the scroller element
      * @return {int} the height of the scroller element in pixels
@@ -16037,7 +16008,7 @@ else if (typeof define === 'function' && define.amd) {
         ? this.getDocumentHeight()
         : this.getElementHeight(this.scroller);
     },
-  
+
     /**
      * determines if the scroll position is outside of document boundaries
      * @param  {int}  currentScrollY the current y scroll position
@@ -16046,10 +16017,10 @@ else if (typeof define === 'function' && define.amd) {
     isOutOfBounds : function (currentScrollY) {
       var pastTop  = currentScrollY < 0,
         pastBottom = currentScrollY + this.getScrollerPhysicalHeight() > this.getScrollerHeight();
-      
+
       return pastTop || pastBottom;
     },
-  
+
     /**
      * determines if the tolerance has been exceeded
      * @param  {int} currentScrollY the current scroll y position
@@ -16058,7 +16029,7 @@ else if (typeof define === 'function' && define.amd) {
     toleranceExceeded : function (currentScrollY, direction) {
       return Math.abs(currentScrollY-this.lastKnownScrollY) >= this.tolerance[direction];
     },
-  
+
     /**
      * determine if it is appropriate to unpin
      * @param  {int} currentScrollY the current y scroll position
@@ -16068,10 +16039,10 @@ else if (typeof define === 'function' && define.amd) {
     shouldUnpin : function (currentScrollY, toleranceExceeded) {
       var scrollingDown = currentScrollY > this.lastKnownScrollY,
         pastOffset = currentScrollY >= this.offset;
-  
+
       return scrollingDown && pastOffset && toleranceExceeded;
     },
-  
+
     /**
      * determine if it is appropriate to pin
      * @param  {int} currentScrollY the current y scroll position
@@ -16081,10 +16052,10 @@ else if (typeof define === 'function' && define.amd) {
     shouldPin : function (currentScrollY, toleranceExceeded) {
       var scrollingUp  = currentScrollY < this.lastKnownScrollY,
         pastOffset = currentScrollY <= this.offset;
-  
+
       return (scrollingUp && toleranceExceeded) || pastOffset;
     },
-  
+
     /**
      * Handles updating the state of the widget
      */
@@ -16092,31 +16063,31 @@ else if (typeof define === 'function' && define.amd) {
       var currentScrollY  = this.getScrollY(),
         scrollDirection = currentScrollY > this.lastKnownScrollY ? 'down' : 'up',
         toleranceExceeded = this.toleranceExceeded(currentScrollY, scrollDirection);
-  
+
       if(this.isOutOfBounds(currentScrollY)) { // Ignore bouncy scrolling in OSX
         return;
       }
-  
+
       if (currentScrollY <= this.offset ) {
         this.top();
       } else {
         this.notTop();
       }
-  
+
       if(currentScrollY + this.getViewportHeight() >= this.getScrollerHeight()) {
         this.bottom();
       }
       else {
         this.notBottom();
       }
-  
+
       if(this.shouldUnpin(currentScrollY, toleranceExceeded)) {
         this.unpin();
       }
       else if(this.shouldPin(currentScrollY, toleranceExceeded)) {
         this.pin();
       }
-  
+
       this.lastKnownScrollY = currentScrollY;
     }
   };
@@ -16127,7 +16098,7 @@ else if (typeof define === 'function' && define.amd) {
   Headroom.options = {
     tolerance : {
       up : 0,
-      down : 0
+      down : 100
     },
     offset : 0,
     scroller: window,
@@ -16145,6 +16116,7 @@ else if (typeof define === 'function' && define.amd) {
 
   return Headroom;
 }));
+
 /*!
  * headroom.js v0.9.3 - Give your page some headroom. Hide your header until you need it
  * Copyright (c) 2016 Nick Williams - http://wicky.nillia.ms/headroom.js

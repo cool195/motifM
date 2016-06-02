@@ -208,7 +208,7 @@
             $('img.img-lazy').lazyload({
                 threshold: 200,
                 container: $('#tabs-container'),
-                effect: 'fadeIn'
+                effect: "fadeIn"
             });
         })
         // TODO failed 时的提示
