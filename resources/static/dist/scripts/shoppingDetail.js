@@ -66,8 +66,7 @@
         return Obj;
     }
 
-    // 为 Options 赋值
-    var Options = function Options() {
+    function initOptions() {
         // TODO 获取 cid 的值, 获取分类ID
         var SpuId = $('#modalDialog').data('spu');
         $.ajax({
@@ -76,7 +75,10 @@
             console.log('success');
             return newOptions(data.data.spuAttrs);
         });
-    };
+    }
+
+    // 为 Options 赋值
+    var Options = initOptions();
 
     // TODO 筛选 逻辑
     /**
