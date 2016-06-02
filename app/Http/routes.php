@@ -41,6 +41,10 @@ $app->get('/shopping/user/signup', 'Shopping\UserController@signup');
 $app->get('/shopping/user/login', 'Shopping\UserController@login');
 $app->get('/shopping/user/forget', 'Shopping\UserController@forgetPassword');
 
+$app->get('/shopping/order/orderlist', 'Shopping\OrderController@getOrderList');
+$app->get('/shopping/order/orderdetail', 'Shopping\OrderController@getOrderDetail');
+$app->get('/shopping/order/orderSubmit', 'Shopping\OrderController@orderSubmit');
+
 $app->get('/category', 'Shopping\ShoppingController@getShoppingCategoryList');
 $app->get('/products', 'Shopping\ShoppingController@getShoppingProductList');
 $app->get('/products/{spu}', 'Shopping\ProductController@getProductDetail');
