@@ -62,11 +62,9 @@
         }
     });
 
-    // 产品图片延迟加载
-    $('img.img-lazy').lazyload();
-
     // 选项卡容器
     var TabsContainerSwiper = new Swiper('#tabs-container', {
+        autoHeight: true,
         onlyExternal: true
     });
 
