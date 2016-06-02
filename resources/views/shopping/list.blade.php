@@ -27,36 +27,42 @@
 <!--</div>-->
 <!--<div class="font-size-sm"><a href="#">DOWNLOAD</a></div>-->
 <!--</nav>-->
-<!-- 头部导航 -->
-@include('navigator')
-<nav class="navbar-fixed-top swiper-container bg-gray" id="tabIndex-container">
-    <ul class="nav nav-tabs swiper-wrapper">
-        @foreach($categories as $key => $c)
-            <li class="nav-item swiper-slide" data-tabindex="">
-                <a class="nav-flex underLine-item text-primary m-x-15x p-y-10x p-l-20x iconimg-earrings @if($key!=0) inactive @endif">
-                    <span class="font-size-sm m-l-5x">{{ $c['category_name'] }}</span>
-                </a>
-            </li>
-        @endforeach
-    </ul>
-</nav>
-<section class="swiper-container p-b-10x" id="tabs-container" data-loading="">
-    <div class="swiper-wrapper">
-        @foreach($categories as $c)
-            <div class="swiper-slide" data-loading="">
-                <div class="container-fluid p-x-10x p-t-10x">
-                    <div class="row">
-                    </div>
-                </div>
-                <div class="loading" style="display: none">
-                    <div class="loader"></div>
-                </div>
-            </div>
-        @endforeach
-    </div>
-</section>
+<!-- 外层容器-->
+<div id="body-content">
+	@include('nav')
+	<div class="body-container">
+	<!-- 头部导航 -->
+		@include('navigator')
+		<nav class="navbar-fixed-top swiper-container bg-gray" id="tabIndex-container">
+			<ul class="nav nav-tabs swiper-wrapper">
+				@foreach($categories as $key => $c)
+					<li class="nav-item swiper-slide" data-tabindex="">
+						<a class="nav-flex underLine-item text-primary m-x-15x p-y-10x p-l-20x iconimg-earrings @if($key!=0) inactive @endif">
+							<span class="font-size-sm m-l-5x">{{ $c['category_name'] }}</span>
+						</a>
+					</li>
+				@endforeach
+			</ul>
+		</nav>
+		<section class="swiper-container p-b-10x" id="tabs-container" data-loading="">
+			<div class="swiper-wrapper">
+				@foreach($categories as $c)
+					<div class="swiper-slide" data-loading="">
+						<div class="container-fluid p-x-10x p-t-10x">
+							<div class="row">
+							</div>
+						</div>
+						<div class="loading" style="display: none">
+							<div class="loader"></div>
+						</div>
+					</div>
+				@endforeach
+			</div>
+		</section>
 <!-- 页脚 功能链接 -->
 @include('footer')
+		</div>
+ 	</div>
 </body>
 <!-- 模板 -->
 <template id="tpl-product">
