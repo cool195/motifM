@@ -55,7 +55,7 @@
                 // SpuID 该选项 的父级 SpaValue 所属的分类
                 // SkuID 该选项 SkaValue 所对应的ID
                 // Skus 该选项 SkaValue 所对应的skus
-                var SpaID = SpaValue.atty_type,
+                var SpaID = SpaValue.attr_type,
                     SkaID = SkaValue.attr_value_id,
                     Skus = SkaValue.skus;
 
