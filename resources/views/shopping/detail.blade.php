@@ -52,10 +52,12 @@
             <div class="product-text">
                 <h6 class="text-main">{{$data['main_title']}}</h6>
                 <p class="text-primary font-size-sm">{{ $data['intro_short'] }}</p>
+                @if(!empty($data['designer']))
                 <p class="text-primary font-size-sm">
                     <span>Designer:</span>
                     <a href="{{$data['designer']['designer_home_page']}}" class="text-primary text-underLine">{{$data['designer']['designer_name']}}</a>
                 </p>
+                @endif
             </div>
             <hr class="hr-light m-x-10x">
             <div class="product-price">
