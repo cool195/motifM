@@ -51,3 +51,4 @@ $app->get('/products', 'Shopping\ShoppingController@getShoppingProductList');
 $app->get('/products/{spu}', 'Shopping\ProductController@getProductDetail');
 
 $app->get('/designer', 'Designer\DesignerController@index');
+$app->get('/designer/{id}', 'Designer\DesignerController@show');
