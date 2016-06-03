@@ -247,8 +247,8 @@
 								<div class="row">
 									@foreach($value['skuAttrValues'] as $skuValue)
 									<div class="col-xs-3 p-t-10x">
-										<input type="radio" name="{{$value['attr_type_value']}}" id="{{$skuValue['attr_value_id']}}" data-spa="{{$value['attr_type']}}" data-ska="{{$skuValue['attr_value_id']}}" hidden>
-										<label class="btn btn-block btn-itemProperty btn-sm m-b-0" for="{{$skuValue['attr_value_id']}}">{{$skuValue['attr_value']}}</label>
+										<input type="radio" name="{{$value['attr_type_value']}}" id="{{$skuValue['attr_value_id']}}" data-spa="{{$value['attr_type']}}" data-ska="{{$skuValue['attr_value_id']}}" hidden @if(!$skuValue['stock']) disabled="disabled" @endif>
+										<label class="btn btn-block btn-itemProperty btn-sm m-b-0 @if(!$skuValue['stock']) disabled @endif" for="{{$skuValue['attr_value_id']}}">{{$skuValue['attr_value']}}</label>
 									</div>
 									@endforeach
 								</div>

@@ -37,7 +37,9 @@ class ProductController extends ApiController
 		if(empty($result) || false == $result['success'] || empty($result['data']))
 		{
 			return redirect('/shopping');
-		}		
+		}	
+		$result['data']['spuAttrs'] = $this->getSpuAttrsStockStatus($result['data']['spuAttrs'], $result['data']['skuExps']);
+
 		return View('shopping.detail', ['data' => $result['data']]);
 	}
 
@@ -67,9 +69,52 @@ class ProductController extends ApiController
 			$result['success'] = false;
 			$result['data'] = array();
 			$result['error_msg'] = "Data access failed";
+		}else{
+			$result['data']['spuAttrs'] = $this->getSpuAttrsStockStatus($result['data']['spuAttrs'], $result['data']['skuExps']);
 		}
 		//return View('shopping.detail', ['data' => $result['data']]);
 		return $result;
 	}
+
+	private function getSpuAttrsStockStatus(Array $spuAttrs, Array $skuExps)
+	{
+		$spuAttrsCopy = array();
+		foreach($spuAttrs as $spuAttr)
+		{
+			$skuAttrsValues = array();
+			foreach($spuAttr['skuAttrValues'] as $skuAttrValue)
+			{
+				$skuAttrValue['stock'] = $this->getSkuStockStatus($skuAttrValue['skus'], $skuExps);
+				$skuAttrsValues[] = $skuAttrValue;
+			} 
+			$spuAttr['skuAttrValues'] = $skuAttrsValues;
+			$spuAttrsCopy[] = $spuAttr;
+		}
+		return $spuAttrsCopy;
+	}
+
+	private function getSkuStockStatus($skus, $skuExps)
+	{
+		$flag = false;
+		foreach($skus as $sku){
+			foreach($skuExps as $skuExp)
+			{
+				if($sku == $skuExp['sku']){
+					if($skuExp['stock_qtty'] > 0){
+						$flag = true;
+						break;
+					}
+				}
+			}
+		}
+		return $flag;
+	}
+
+
+
+
+
+
+
 
 }
