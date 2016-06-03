@@ -96,22 +96,22 @@
             <aside class="bg-white m-b-10x">
                 <div class="p-a-10x">
                     <div class="flex flex-fullJustified text-primary font-size-sm">
-                        <span>Items(2)</span><span>$25.98</span>
+                        <span>Items({{ $data['item_qtty'] }})</span><span>${{$data['pay_amount']}}</span>
                     </div>
                     <div class="flex flex-fullJustified text-primary font-size-sm">
                         <span>Extra</span><span>$21</span>
                     </div>
                     <div class="flex flex-fullJustified text-primary font-size-sm">
-                        <span>Shipping to 10000</span><span>$14.50</span>
+                        <span>Shipping to 10000</span><span>${{ $data['freight_amount'] }}</span>
                     </div>
                     <div class="flex flex-fullJustified text-primary font-size-sm">
-                        <span>Discount</span><span>-20%</span>
+                        <span>Discount</span><span>-{{ $data['promot_discount_amount'] }}%</span>
                     </div>
                     <div class="flex flex-fullJustified text-primary font-size-sm">
-                        <span>Coupon</span><span>-$10</span>
+                        <span>Coupon</span><span>-${{ $data['cps_amount'] }}</span>
                     </div>
                     <div class="flex flex-fullJustified p-t-10x text-primary font-size-sm">
-                        <span><strong>Order Total</strong></span><span><strong>$25.98</strong></span>
+                        <span><strong>Order Total</strong></span><span><strong>${{ $data['total_amount'] }}</strong></span>
                     </div>
                 </div>
                 <hr class="hr-base m-a-0">
