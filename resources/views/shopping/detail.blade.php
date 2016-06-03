@@ -28,7 +28,7 @@
 				<div class="swiper-container" id="detailImg-swiper">
 					<div class="swiper-wrapper">
 					@foreach($data['productImages'] as $image)
-					 <div class="swiper-slide"><img class="img-fluid" src="{{ 'https://s3-us-west-1.amazonaws.com/emimagetest/n2/'.$image['img_path'] }}"></div>
+					 <div class="swiper-slide"><img class="img-fluid" src="{{ 'https://s3-us-west-1.amazonaws.com/emimagetest/n1/'.$image['img_path'] }}"></div>
 					@endforeach
 					</div>
 					<div class="swiper-pagination font-size-sm" id="detailImg-pagination"></div>
@@ -43,7 +43,7 @@
 					<div class="swiper-container" id="baseImg-swiper">
 						<div class="swiper-wrapper">
 							@forelse($data['productImages'] as $image)
-								<div class="swiper-slide"><img class="img-fluid" src="{{ 'https://s3-us-west-1.amazonaws.com/emimagetest/n2/'.$image['img_path'] }}"></div>
+								<div class="swiper-slide"><img class="img-fluid" src="{{ 'https://s3-us-west-1.amazonaws.com/emimagetest/n1/'.$image['img_path'] }}"></div>
 							@empty
 								<div class="swiper-slide"></div>
 							@endforelse

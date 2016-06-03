@@ -11,7 +11,7 @@
 		</li>
 		<li class="nav-item">
 			<div class="nav-shoppingCart">
-				<i class="nav-tap iconfont icon-shopbag icon-size-lg"></i>
+				<a href="/shopping/cart"><i class="nav-tap iconfont icon-shopbag icon-size-lg"></i></a>
 				<span class="shoppingCart-number">2</span>
 			</div>
 		</li>

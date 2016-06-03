@@ -31,25 +31,25 @@
                 <div class="container-fluid p-a-0">
                     <div class="row">
                         <div class="col-xs-3">
-                            <a class="designer-item" href="#">
+                            <a class="designer-item" href="/designer/42">
                                 <img class="img-fluid" src="/images/designer/designer.jpg">
                                 <div class="designer-text font-size-sm text-center">Lovely Pepa</div>
                             </a>
                         </div>
                         <div class="col-xs-3">
-                            <a class="designer-item" href="#">
+                            <a class="designer-item" href="/designer/42">
                                 <img class="img-fluid" src="/images/designer/designer1.jpg">
                                 <div class="designer-text font-size-sm text-center">Kyrzayda</div>
                             </a>
                         </div>
                         <div class="col-xs-3">
-                            <a class="designer-item" href="#">
+                            <a class="designer-item" href="/designer/42">
                                 <img class="img-fluid" src="/images/designer/designer2.jpg">
                                 <div class="designer-text font-size-sm text-center">Dulce Candy</div>
                             </a>
                         </div>
                         <div class="col-xs-3">
-                            <a class="designer-item" href="#">
+                            <a class="designer-item" href="/designer/42">
                                 <img class="img-fluid" src="/images/designer/designer3.jpg">
                                 <div class="designer-text font-size-sm text-center">Gabi Fresh</div>
                             </a>
@@ -64,16 +64,16 @@
                 <div class="container-fluid p-a-15x">
                     <div class="row">
                         <div class="col-xs-3">
-                            <a href="#"><img class="img-thumbnail" src="/images/product/product1.jpg"></a>
+                            <a href="/designer/42"><img class="img-thumbnail" src="/images/product/product1.jpg"></a>
                         </div>
                         <div class="col-xs-3">
-                            <a href="#"><img class="img-thumbnail" src="/images/product/product2.jpg"></a>
+                            <a href="/designer/42"><img class="img-thumbnail" src="/images/product/product2.jpg"></a>
                         </div>
                         <div class="col-xs-3">
-                            <a href="#"><img class="img-thumbnail" src="/images/product/product3.jpg"></a>
+                            <a href="/designer/42"><img class="img-thumbnail" src="/images/product/product3.jpg"></a>
                         </div>
                         <div class="col-xs-3">
-                            <a href="#"><img class="img-thumbnail" src="/images/product/product4.jpg"></a>
+                            <a href="/designer/42"><img class="img-thumbnail" src="/images/product/product4.jpg"></a>
                         </div>
                     </div>
                 </div>
@@ -104,7 +104,7 @@
     </div>
 </div>
 </body>
-<script src="scripts/vendor.js"></script>
+<script src="/scripts/vendor.js"></script>
 
 
 </html>
