@@ -90,5 +90,5 @@
         </div>
     </div>
 </body>
-<script src="scripts/vendor.js"></script>
+<script src="/scripts/vendor.js"></script>
 </html>
