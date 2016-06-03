@@ -6,12 +6,29 @@
 'use strict';
 
 (function ($) {
+    // loading 打开
+    function openLoading() {
+        $('.loading').toggleClass('loading-hidden');
+        setTimeout(function () {
+            $('.loading').toggleClass('loading-open');
+        }, 25);
+    }
+
+    // loading 隐藏
+    function closeLoading() {
+        $('.loading').addClass('loading-close');
+        setTimeout(function () {
+            $('.loading').toggleClass('loading-hidden loading-open').removeClass('loading-close');
+        }, 500);
+    }
+
     function addAskQuestion(spu) {
         // 获取表单数据
         var email = $('#email').val();
         var content = $('#content').val();
+        openLoading();
         $.ajax({
-            url: '/feedback',
+            url: '/feedback/support',
             type: 'POST',
             data: { cmd: 'support', spu: spu, content: content, email: email, type: '1', stype: '1' }
         }).done(function () {
@@ -20,6 +37,7 @@
         }).fail(function () {
             console.log('error');
         }).always(function () {
+            closeLoading();
             console.log('complete');
         });
     }

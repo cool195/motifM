@@ -4,18 +4,18 @@
 /*global jQuery Swiper*/
 
 'use strict';
-
 (function ($, Swiper) {
     // 添加购物车的参数
     var operate = {
-        'sale_qtty': 1, // 数量
-        'select': true, // 是否选中
-        'sku': '', // SKU
-        'VAList': [// 增值服务
-        {
-            'user_remark': 'KG.KB', // 用户备注信息
-            'vas_id': 'id' // 增值服务ID
-        }]
+        'sale_qtty': 1,       // 数量
+        'select': true,       // 是否选中
+        'sku': '',            // SKU
+        'VAList': [           // 增值服务
+            {
+                'user_remark': 'KG.KB',         // 用户备注信息
+                'vas_id': 'id'                   // 增值服务ID
+            }
+        ]
     };
     // 图片轮播
     var BaseImgSwiper = new Swiper('#baseImg-swiper', {
@@ -123,15 +123,17 @@
         var SpuId = $('#modalDialog').data('spu');
         $.ajax({
             url: '/products/' + SpuId
-        }).done(function (data) {
-            console.log('success');
-            // 获取商品所有的库存
-            // Inventory 为库存的商品的Sku
-            var Inventory = inventoryNull(data.data.skuExps);
-            newOptions(data.data.spuAttrs, Inventory, Options);
-            newStock(data.data.skuExps, Stock);
-        });
+        })
+            .done(function (data) {
+                console.log('success');
+                // 获取商品所有的库存
+                // Inventory 为库存的商品的Sku
+                var Inventory = inventoryNull(data.data.skuExps);
+                newOptions(data.data.spuAttrs, Inventory, Options);
+                newStock(data.data.skuExps, Stock);
+            });
     })();
+
 
     // TODO 筛选 逻辑
     /**
@@ -141,7 +143,8 @@
      */
     function filterOptions(SpaID, SkaID) {
         // 所点击的项, 所对应的 Skus , 数组类型
-        var CurrentSkus = Options[SpaID][SkaID];
+
+        var CurrentSkus = ResultSkus;
 
         $.each(Options, function (noIndex, v) {
             // 排除同一类别的 选项
@@ -170,15 +173,24 @@
                     }
 
                     if (Detection === false) {
-                        // TODO input 和 label 都需要加 disabled
-                        $('#' + index).attr('disabled', 'disabled');
-                        $('#' + index).siblings('label').addClass('disabled');
+                        $('#' + index).addClass('disabled');
+                        $('#' + index).removeClass('active');
                     } else {
-                        $('#' + index).removeAttr('disabled');
-                        $('#' + index).siblings('label').removeClass('disabled');
+                        $('#' + index).removeClass('disabled');
                     }
                 });
             }
+        });
+    }
+
+    /**
+     *
+     * @param List
+     * @param item
+     */
+    function sameArray(List, item) {
+        return List.find(function (el) {
+            return el === item;
         });
     }
 
@@ -189,39 +201,65 @@
      */
     function getResultSku(SpaId, SkaId) {
 
-        var RadioList = $('#modalDialog').find('input[type=radio]:checked');
-        var CheckCount = RadioList.length;
-        if (CheckCount === 1) {
+        var RadioList = $('#modalDialog').find('.btn-itemProperty.active');
+        // 只选中了一项时
+        if (RadioList.length === 1) {
             ResultSkus = Options[SpaId][SkaId];
             return;
         }
-        var CurrentSkus = Options[SpaId][SkaId];
-        var AfterSkus = [];
-        for (var i = 0; i < ResultSkus.length; i++) {
+        ResultSkus = [];
+        var InitSkus = [];
+        // 把选中的选项的 Skus, 建成二维数组
+        for (var l = 0; l < RadioList.length; l++) {
+            // 分别获取选中的选项中的 skaid 和 spaid
+            var Ska = $(RadioList[l]).data('ska'),
+                Spa = $(RadioList[l]).data('spa');
+            InitSkus.push(Options[Spa][Ska]);
+        }
 
-            for (var j = 0; j < CurrentSkus.length; j++) {
-                if (ResultSkus[i] === CurrentSkus[j]) {
-                    AfterSkus.push(CurrentSkus[j]);
-                    break;
+        // 作为比对项存在
+        var Intersection = [];
+        for (var i = 0; i < RadioList.length; i++) {
+            if (i === 0) {
+                Intersection = InitSkus[i];
+                continue;
+            }
+            for (var k = 0; k < InitSkus[i].length; k++) {
+                var SameSku = sameArray(Intersection, InitSkus[i][k]);
+                if (SameSku !== undefined) {
+                    ResultSkus.push(SameSku);
                 }
             }
+            Intersection = ResultSkus;
         }
-        ResultSkus = AfterSkus;
     }
 
     // 为所有选项绑定事件
-    $('#modalDialog').on('click', 'input[type=radio]', function (e) {
+    $('#modalDialog').on('click', '.btn-itemProperty', function (e) {
 
-        console.log('Click Radio');
+        if ($(e.target).hasClass('disabled')) {
+            console.log('选项不可用');
+            return;
+        } else if ($(e.target).hasClass('active')) {
+            console.log('取消选中');
+            $(e.target).removeClass('active');
+        } else {
+            $(e.target).parents('.row').find('.btn-itemProperty').removeClass('active');
+            $(e.target).addClass('active');
+        }
+
+        if ($('.btn-itemProperty.active').length < 1) {
+            $('.btn-itemProperty').removeClass('disabled');
+            return;
+        }
 
         var SpaId = $(e.target).data('spa'),
             SkaId = $(e.target).data('ska');
-
-        filterOptions(SpaId, SkaId);
         getResultSku(SpaId, SkaId);
+        filterOptions(SpaId, SkaId);
     });
 
-    // 调整数量
+// 调整数量
     /**
      *
      * @param Count
@@ -230,30 +268,33 @@
         // TODO Loading Show
         $.ajax({
             url: '/path/to/file',
-            data: { skus: RequestStock }
-        }).done(function (data) {
-            console.log('success');
-            var requestList = [];
-            for (var i = 0; i < RequestStock.length; i++) {
-                if (data.data.list[i].stockStatus === 1) {
-                    requestList[i] = true;
-                } else {
-                    requestList[i] = false;
+            data: {skus: RequestStock}
+        })
+            .done(function (data) {
+                console.log('success');
+                var requestList = [];
+                for (var i = 0; i < RequestStock.length; i++) {
+                    if (data.data.list[i].stockStatus === 1) {
+                        requestList[i] = true;
+                    } else {
+                        requestList[i] = false;
+                    }
                 }
-            }
-            return requestList;
-        }).fail(function () {
-            console.log('error');
-        }).always(function () {
-            console.log('complete');
-        });
+                return requestList;
+            })
+            .fail(function () {
+                console.log('error');
+            })
+            .always(function () {
+                console.log('complete');
+            });
     }
 
-    // 绑定计数事件,商品数量
-    // 需要添加库存验证
+// 绑定计数事件,商品数量
+// 需要添加库存验证
     $('#item-count').on('click', '[data-item]', function (e) {
         // 已选中的选项 以及 商品的选项组数
-        var RadioList = $('#modalDialog').find('input[type=radio]:checked'),
+        var RadioList = $('#modalDialog').find('.btn-itemProperty.active'),
             CheckCount = Object.keys(Options);
         if (CheckCount.length < RadioList.length) {
             return;
@@ -317,5 +358,5 @@
 
         $QtyCount.siblings('[data-num]').html(Count);
     });
-})(jQuery, Swiper);
-//# sourceMappingURL=shoppingDetail.js.map
+})
+(jQuery, Swiper);

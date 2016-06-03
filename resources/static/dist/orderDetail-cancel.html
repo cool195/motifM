@@ -164,7 +164,7 @@
                 </div>
 
                 <hr class="hr-base m-y-0 m-l-15x">
-                <div class="flex p-y-10x p-x-15x">
+                <div class="flex p-y-10x p-x-15x orderList-item" data-sku="111" data-item-qty="1">
                     <div class="flex-fixedShrink">
                         <img class="img-thumbnail" src="images/product/product1.jpg" width="70px" height="70px">
                     </div>
@@ -177,14 +177,34 @@
                             <div><span>Size: </span><span>11</span></div>
                             <div><span>Color: </span><span>Black</span></div>
                             <div><span>Qty: </span><span>1</span></div>
+                            <div class="vaList" data-remark="MY BEST LOVER" data-vasid="3"><span>Inside Engraving: </span><span>MY BEST LOVER</span></div>
+                            <div class="vaList" data-remark="MY LOVER" data-vasid="3"><span>Inside Engraving: </span><span>MY LOVER</span></div>
                         </aside>
                     </div>
                 </div>
+                <div class="flex p-y-10x p-x-15x orderList-item" data-sku="222" data-item-qty="2">
+                    <div class="flex-fixedShrink">
+                        <img class="img-thumbnail" src="images/product/product1.jpg" width="70px" height="70px">
+                    </div>
+                    <!-- TODO 缩略号的兼容性不好, 需要改样式 -->
+                    <div class="p-x-10x order-product-title">
+                        <h6 class="text-main font-size-md text-truncate">
+                            <strong>Crown Shape Black Gold-plated Shape Black Gold-plated</strong>
+                        </h6>
+                        <aside class="text-primary font-size-sm">
+                            <div><span>Size: </span><span>11</span></div>
+                            <div><span>Color: </span><span>Black</span></div>
+                            <div><span>Qty: </span><span>2</span></div>
+                            <div class="vaList" data-remark="MY LOVER" data-vasid="3"><span>Inside Engraving: </span><span>MY LOVER</span></div>
+                        </aside>
+                    </div>
+                </div>
+
                 <hr class="hr-base m-y-0 m-l-15x">
 
                 <!-- 被取消的订单 重新购买按钮 -->
                 <div class="p-a-10x">
-                    <a href="#" class="btn btn-primary btn-block btn-sm" type="bottom">Buy Again</a>
+                    <a href="#" class="btn btn-primary btn-block btn-sm" id="buyAgain" type="bottom">Buy Again</a>
                 </div>
 
             </aside>
