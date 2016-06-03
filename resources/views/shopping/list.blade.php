@@ -72,7 +72,7 @@
             <div class="image-bg">
                 <div class="image-container">
                     <a href="/detail/@{{ $value.spu }}">
-                        <img class="img-fluid img-lazy" data-original="https://s3-us-west-1.amazonaws.com/emimagetest/n4/@{{ $value.main_image_url }}" src="/images/product/bg-product.jpg" alt="@{{ $value.main_title }}">
+                        <img class="img-fluid img-lazy" data-original="https://s3-us-west-1.amazonaws.com/emimagetest/n1/@{{ $value.main_image_url }}" src="/images/product/bg-product.jpg" alt="@{{ $value.main_title }}">
                         @{{ if $value.skuPrice.sale_price !== $value.skuPrice.price }}
                         <div class="price-off">
                             <strong class="font-size-sm">@{{ $value.skuPrice.skuPromotion.display }}</strong>
