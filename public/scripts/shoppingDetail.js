@@ -4,18 +4,18 @@
 /*global jQuery Swiper*/
 
 'use strict';
+
 (function ($, Swiper) {
     // 添加购物车的参数
     var operate = {
-        'sale_qtty': 1,       // 数量
-        'select': true,       // 是否选中
-        'sku': '',            // SKU
-        'VAList': [           // 增值服务
-            {
-                'user_remark': 'KG.KB',         // 用户备注信息
-                'vas_id': 'id'                   // 增值服务ID
-            }
-        ]
+        'sale_qtty': 1, // 数量
+        'select': true, // 是否选中
+        'sku': '', // SKU
+        'VAList': [// 增值服务
+        {
+            'user_remark': 'KG.KB', // 用户备注信息
+            'vas_id': 'id' // 增值服务ID
+        }]
     };
     // 图片轮播
     var BaseImgSwiper = new Swiper('#baseImg-swiper', {
@@ -61,7 +61,7 @@
         List = List.filter(function (el) {
             return el !== Arr;
         });
-        return List
+        return List;
     }
 
     // 以选项的ID 为key
@@ -123,17 +123,15 @@
         var SpuId = $('#modalDialog').data('spu');
         $.ajax({
             url: '/products/' + SpuId
-        })
-            .done(function (data) {
-                console.log('success');
-                // 获取商品所有的库存
-                // Inventory 为库存的商品的Sku
-                var Inventory = inventoryNull(data.data.skuExps);
-                newOptions(data.data.spuAttrs, Inventory, Options);
-                newStock(data.data.skuExps, Stock);
-            });
+        }).done(function (data) {
+            console.log('success');
+            // 获取商品所有的库存
+            // Inventory 为库存的商品的Sku
+            var Inventory = inventoryNull(data.data.skuExps);
+            newOptions(data.data.spuAttrs, Inventory, Options);
+            newStock(data.data.skuExps, Stock);
+        });
     })();
-
 
     // TODO 筛选 逻辑
     /**
@@ -207,7 +205,6 @@
                     break;
                 }
             }
-
         }
         ResultSkus = AfterSkus;
     }
@@ -233,26 +230,23 @@
         // TODO Loading Show
         $.ajax({
             url: '/path/to/file',
-            data: {skus: RequestStock}
-        })
-            .done(function (data) {
-                console.log('success');
-                var requestList = [];
-                for (var i = 0; i < RequestStock.length; i++) {
-                    if (data.data.list[i].stockStatus === 1) {
-                        requestList[i] = true;
-                    } else {
-                        requestList[i] = false;
-                    }
+            data: { skus: RequestStock }
+        }).done(function (data) {
+            console.log('success');
+            var requestList = [];
+            for (var i = 0; i < RequestStock.length; i++) {
+                if (data.data.list[i].stockStatus === 1) {
+                    requestList[i] = true;
+                } else {
+                    requestList[i] = false;
                 }
-                return requestList;
-            })
-            .fail(function () {
-                console.log('error');
-            })
-            .always(function () {
-                console.log('complete');
-            });
+            }
+            return requestList;
+        }).fail(function () {
+            console.log('error');
+        }).always(function () {
+            console.log('complete');
+        });
     }
 
     // 绑定计数事件,商品数量
@@ -324,3 +318,4 @@
         $QtyCount.siblings('[data-num]').html(Count);
     });
 })(jQuery, Swiper);
+//# sourceMappingURL=shoppingDetail.js.map

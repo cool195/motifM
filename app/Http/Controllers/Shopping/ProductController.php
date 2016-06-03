@@ -69,8 +69,6 @@ class ProductController extends ApiController
 			$result['success'] = false;
 			$result['data'] = array();
 			$result['error_msg'] = "Data access failed";
-		}else{
-			$result['data']['spuAttrs'] = $this->getSpuAttrsStockStatus($result['data']['spuAttrs'], $result['data']['skuExps']);
 		}
 		//return View('shopping.detail', ['data' => $result['data']]);
 		return $result;

@@ -264,7 +264,8 @@
                        	 	<div class="text-primary font-size-sm m-b-10x">{{ $vas['vas_describe'] }} +$4.5</div>
                        	 	<div class="flex flex-fullJustified flex-alignCenter">
                             	<input class="input-engraving form-control font-size-sm" type="text">
-                               	<a href="#"><i class="iconfont icon-checkcircle text-common"></i></a>
+                            	<input type="radio" name="vas_name" id="{{$vas['vas_id']}}" hidden>
+                               	<label class="iconfont icon-checkcircle text-common m-b-0 p-l-20x" for="{{$vas['vas_id']}}"></label>
                         	</div>
                     	</fieldset>
                     	<hr class="hr-base m-a-0">
@@ -272,7 +273,8 @@
                     	<fieldset class="p-x-15x p-y-10x text-left" data-vas="$vas['vas_id']">
                         	<div class="flex flex-fullJustified flex-alignCenter">
                            	 	<div class="text-primary font-size-sm">{{ $vas['vas_describe'] }} +$4.5(optional)</div>
-                                <a href="#"><i class="iconfont icon-checkcircle text-common"></i></a>
+                                <input type="radio" name="vas_name2" id="{{$vas['vas_id']}}" hidden>
+                            	<label class="iconfont icon-checkcircle text-common m-b-0 p-l-20x" for="{{$vas['vas_id']}}"></label>
                         	</div>
                     	</fieldset>
                     	<hr class="hr-base m-a-0">
