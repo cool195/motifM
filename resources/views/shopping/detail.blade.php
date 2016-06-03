@@ -228,7 +228,7 @@
 							</a>
 						</div>
 						<fieldset class="text-primary p-x-15x p-b-10x text-left">
-							<div class="font-size-sm"><strong>$748.00</strong></div>
+							<div class="font-size-sm"><strong>${{$data['skuPrice']['sale_price']}}</strong></div>
 							<div class="font-size-sm">Select: 
 							@foreach($data['spuAttrs'] as $key => $attrs) 
 								@if((count($data['spuAttrs']) - 1) == $key)
