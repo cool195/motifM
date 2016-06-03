@@ -92,7 +92,15 @@
 						<a class="flex flex-alignCenter flex-fullJustified font-size-sm text-primary p-a-15x" data-remodal-target="modal" href="#">
 							<span>Select</span>
 						<span class="flex flex-alignCenter flex-fullJustified">
-							<span class="m-r-10x">@foreach($data['spuAttrs'] as $attrs)  {{$attrs['attr_type_value']}}  @endforeach</span> 
+							<span class="m-r-10x">
+							@foreach($data['spuAttrs'] as $key => $attrs) 
+								@if((count($data['spuAttrs']) - 1) == $key)
+									{{$attrs['attr_type_value']}}  
+								@else
+									{{$attrs['attr_type_value'].", "}}
+								@endif
+							@endforeach
+							</span> 
 							<i class="iconfont icon-arrow-right icon-size-xm text-common"></i>
 						</span>
 						</a>
@@ -221,7 +229,15 @@
 						</div>
 						<fieldset class="text-primary p-x-15x p-b-10x text-left">
 							<div class="font-size-sm"><strong>$748.00</strong></div>
-							<div class="font-size-sm">Select: Size, Color</div>
+							<div class="font-size-sm">Select: 
+							@foreach($data['spuAttrs'] as $key => $attrs) 
+								@if((count($data['spuAttrs']) - 1) == $key)
+									{{$attrs['attr_type_value']}}  
+								@else
+									{{$attrs['attr_type_value'].", "}}
+								@endif
+							@endforeach
+							</div>
 						</fieldset>
 						<hr class="hr-base m-a-0">
 						@foreach($data['spuAttrs'] as $value)
@@ -244,36 +260,37 @@
 						@if(isset($data['vasBases']) && !empty($data['vasBases']))
 							@foreach($data['vasBases'] as $vas)
 								@if(1 == $vas['vas_type'])
-                	    <fieldset class="p-x-15x p-y-10x text-left">
+                	    <fieldset class="p-x-15x p-y-10x text-left" data-vas="{{$vas['vas_id']}}">
                        	 	<div class="text-primary font-size-sm m-b-10x">{{ $vas['vas_describe'] }} +$4.5</div>
                        	 	<div class="flex flex-fullJustified flex-alignCenter">
                             	<input class="input-engraving form-control font-size-sm" type="text">
-                            	<span class="p-l-20x">
-                                	<a href="#"><i class="iconfont icon-checkcircle text-common"></i></a>
-                            	</span>
+                               	<a href="#"><i class="iconfont icon-checkcircle text-common"></i></a>
                         	</div>
                     	</fieldset>
                     	<hr class="hr-base m-a-0">
                     			@else
-                    	<fieldset class="p-x-15x p-y-10x text-left">
+                    	<fieldset class="p-x-15x p-y-10x text-left" data-vas="$vas['vas_id']">
                         	<div class="flex flex-fullJustified flex-alignCenter">
                            	 	<div class="text-primary font-size-sm">{{ $vas['vas_describe'] }} +$4.5(optional)</div>
-                            	<span class="p-l-20x">
-                                	<a href="#"><i class="iconfont icon-checkcircle text-common"></i></a>
-                            	</span>
+                                <a href="#"><i class="iconfont icon-checkcircle text-common"></i></a>
                         	</div>
                     	</fieldset>
                     	<hr class="hr-base m-a-0">
                     			@endif
                     		@endforeach
                     	@endif
-                    	<fieldset class="p-x-15x p-y-10x">
-                        	<div class="flex flex-fullJustified flex-alignCenter">
+        				<fieldset class="p-x-15x p-y-10x">
+                       		<div class="flex flex-fullJustified flex-alignCenter">
                             	<span class="text-primary font-size-sm">Qty:</span>
-                            	<div class="btn-group flex">
-                                	<div class="btn btn-cartCount btn-sm disabled">-</div>
-                                	<div class="btn btn-cartCount btn-sm">1</div>
-                                	<div class="btn btn-cartCount btn-sm">+</div>
+                            	<div class="btn-group flex" id="item-count">
+                                	<div class="btn btn-cartCount btn-sm disabled" data-item="minus">
+                                    	<i class="iconfont icon-minus"></i>
+                                	</div>
+                                	<div class="btn btn-cartCount btn-sm" data-num="num">2</div>
+
+                                	<div class="btn btn-cartCount btn-sm" data-item="add">
+                                    	<i class="iconfont icon-add"></i>
+                                	</div>
                             	</div>
                         	</div>
                     	</fieldset>
