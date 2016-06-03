@@ -58,9 +58,10 @@
 
     // 剔除 库存为 0 的项
     function filterNull(List, Arr) {
-        return List.filter(function (el) {
-            return el === Arr;
+        List = List.filter(function (el) {
+            return el !== Arr;
         });
+        return List;
     }
 
     // 以选项的ID 为key
@@ -101,7 +102,7 @@
     function inventoryNull(DataList) {
         var Cache = [];
         for (var i = 0; i < DataList.length; i++) {
-            if (DataList[i].stock_qtty !== 0) {
+            if (DataList[i].stock_qtty === 0) {
                 Cache.push(DataList[i].sku);
             }
         }
@@ -125,7 +126,7 @@
         }).done(function (data) {
             console.log('success');
             // 获取商品所有的库存
-            // Inventory 为有库存的商品的Sku
+            // Inventory 为库存的商品的Sku
             var Inventory = inventoryNull(data.data.skuExps);
             newOptions(data.data.spuAttrs, Inventory, Options);
             newStock(data.data.skuExps, Stock);
@@ -170,8 +171,11 @@
 
                     if (Detection === false) {
                         // TODO input 和 label 都需要加 disabled
-                        $('#' + index).addClass('disabled');
+                        $('#' + index).attr('disabled', 'disabled');
                         $('#' + index).siblings('label').addClass('disabled');
+                    } else {
+                        $('#' + index).removeAttr('disabled');
+                        $('#' + index).siblings('label').removeClass('disabled');
                     }
                 });
             }
@@ -250,8 +254,8 @@
     $('#item-count').on('click', '[data-item]', function (e) {
         // 已选中的选项 以及 商品的选项组数
         var RadioList = $('#modalDialog').find('input[type=radio]:checked'),
-            CheckCount = Object.keys(Options).length;
-        if (CheckCount < RadioList) {
+            CheckCount = Object.keys(Options);
+        if (CheckCount.length < RadioList.length) {
             return;
         }
 
@@ -281,7 +285,7 @@
 
             // 判断本地库存量
             if (StockCache < 20 && Count < StockCache) {
-                Count++;
+                ++Count;
                 console.log('商品数量:' + Count + '剩余库存量小于20');
                 // 判断增加后是否等于最大库存量
                 if (Count === StockCache) {
@@ -289,10 +293,10 @@
                     console.log('商品数量等于最大库存量');
                 }
             } else if (Count >= StockCache && StockCache === 20) {
-                var StrCount = Count;
+                var StrCount = [Count, ++Count];
 
                 for (var i = 0; i < RequestStock.length; i++) {
-                    RequestStock[i] = SelectSku + '_' + StrCount++;
+                    RequestStock[i] = SelectSku + '_' + StrCount[i];
                 }
                 var RequestList = changeQtty(RequestStock);
                 // 查看库存情况
@@ -304,7 +308,7 @@
                 }
             }
         } else {
-            Count--;
+            --Count;
             if (Count === 1) {
                 $QtyCount.addClass('disabled');
             }
