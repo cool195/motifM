@@ -12,34 +12,18 @@ class DesignerController extends ApiController
         return View('designer.index');
     }
 
-    public function store()
+    public function show(Request $request,$id)
     {
-        dd("store");
-    }
+        $params = array(
+            'cmd' => $request->input("cmd", 'designerdetail'),
+            'pin' => 'e052d5681da34fad83d0597b7b72acf7',
+            'token' => '1110',
+            'd_id' => $id,
+        );
 
-    public function create()
-    {
-        dd("create");
-    }
-
-    public function destroy($id)
-    {
-        dd("destroy" . $id);
-    }
-
-    public function update($id)
-    {
-        dd("update" . $id);
-    }
-
-    public function show($id)
-    {
-        dd("show" . $id);
-    }
-
-    public function edit($id)
-    {
-        dd("edit" . $id);
+        $service = "designer";
+        $result = $this->request('openapi', '', $service, $params);
+        return View('designer.show',['designer'=>$result['data']]);
     }
 }
 
