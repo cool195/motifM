@@ -440,19 +440,24 @@
                     <fieldset class="p-x-15x p-y-10x text-left" data-vas="">
                         <div class="flex flex-fullJustified flex-alignCenter">
                             <div class="text-primary font-size-sm">gift package+＄4.5(optional)</div>
-                            <span class="p-l-20x">
-                                <a href="#"><i class="iconfont icon-checkcircle text-common"></i></a>
-                            </span>
+                            <a href="#">
+                                <i class="iconfont icon-checkcircle text-common"></i>
+                            </a>
                         </div>
                     </fieldset>
                     <hr class="hr-base m-a-0">
                     <fieldset class="p-x-15x p-y-10x">
                         <div class="flex flex-fullJustified flex-alignCenter">
                             <span class="text-primary font-size-sm">Qty:</span>
-                            <div class="btn-group flex">
-                                <div class="btn btn-cartCount btn-sm disabled">-</div>
-                                <div class="btn btn-cartCount btn-sm">2</div>
-                                <div class="btn btn-cartCount btn-sm">+</div>
+                            <div class="btn-group flex" id="item-count">
+                                <div class="btn btn-cartCount btn-sm disabled" data-item="minus">
+                                    <i class="iconfont icon-minus"></i>
+                                </div>
+                                <div class="btn btn-cartCount btn-sm" data-num="num">2</div>
+
+                                <div class="btn btn-cartCount btn-sm" data-item="add">
+                                    <i class="iconfont icon-add"></i>
+                                </div>
                             </div>
                         </div>
                     </fieldset>
