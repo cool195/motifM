@@ -276,6 +276,9 @@
                         	</div>
                     	</fieldset>
                     	<hr class="hr-base m-a-0">
+                    			@endif
+                    		@endforeach
+                    	@endif
         				<fieldset class="p-x-15x p-y-10x">
                        		<div class="flex flex-fullJustified flex-alignCenter">
                             	<span class="text-primary font-size-sm">Qty:</span>
