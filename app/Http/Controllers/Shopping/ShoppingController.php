@@ -95,4 +95,35 @@ class ShoppingController extends ApiController
 		}
 		return $result;
 	}
+
+	public function checkStock(Request $request)
+	{
+		$cmd = "checkstock";
+		$skus = $request->input('skus', '1000000038_1,1000000039_10');
+		$params = array(
+			'cmd'=>$cmd,
+			'skus'=>$skus
+		);
+		$system = "";
+		$service = "stock";
+		$result = $this->request('openapi', $system, $service, $params);
+		if(empty($result)){
+			$result['success'] = false;
+			$result['error_msg'] = "Data access failed";
+			$result['data']['list'] = array();
+		}
+		return $result;
+	}
+
+
+
+
+
+
+
+
+
+
+
+
 }
