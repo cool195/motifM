@@ -93,7 +93,7 @@
                         </div>
                     </a>
                     <hr class="hr-base">
-                    <a class="flex font-size-sm text-primary p-a-10x" href="#">
+                    <a class="flex font-size-sm text-primary p-a-10x" href="/shopping/cart/coupon">
                         <span class="checkoutInfo-subTitle flex-fixedShrink">Gift Cards, Coupons</span>
                         <div class="checkoutInfo-content flex flex-fullJustified flex-alignCenter">
                             <span>YY365</span>
@@ -101,7 +101,7 @@
                         </div>
                     </a>
                     <hr class="hr-base">
-                    <a class="flex font-size-sm text-primary p-a-10x" href="#">
+                    <a class="flex font-size-sm text-primary p-a-10x" href="/shopping/cart/message">
                         <span class="checkoutInfo-subTitle flex-fixedShrink">Message to Us</span>
                         <div class="checkoutInfo-content flex flex-fullJustified flex-alignCenter">
                             <span class="text-truncate">My father was a self-taught mandolin self-taught mandolin</span>

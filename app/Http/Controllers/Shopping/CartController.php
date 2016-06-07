@@ -107,6 +107,16 @@ class CartController extends ApiController
 		return $result;
 	}
 
+	public function coupon(Request $request)
+	{
+		return View('shopping.ordercheckout_addcoupon');
+	}
+
+	public function message(Request $request)
+	{
+		return View('shopping.ordercheckout_message');
+	}
+
 	public function getCartAmount(Request $request)		
 	{
 		$cmd = $request->input('cmd', 'amount');	

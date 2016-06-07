@@ -27,6 +27,9 @@ $app->get('/detail/{spu}', 'Shopping\ProductController@index');
 $app->get('/shopping/cart', 'Shopping\CartController@index');
 $app->get('/shopping/ordercheckout', 'Shopping\CartController@orderCheckout');
 $app->get('/shopping/cart/addresslist', 'Shopping\CartController@addressList');
+$app->get('/shopping/cart/coupon', 'Shopping\CartController@coupon');
+$app->get('/shopping/cart/message', 'Shopping\CartController@message');
+
 $app->get('/shopping/cart/amount', 'Shopping\CartController@getCartAmount');
 $app->get('/shopping/cart/list', 'Shopping\CartController@getCartList');
 $app->get('/shopping/cart/accountlist', 'Shopping\CartController@getCartAccountList');
