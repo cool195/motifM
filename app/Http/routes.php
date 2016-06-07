@@ -38,6 +38,14 @@ $app->get('/shopping/cart/alterQtty', 'Shopping\CartController@alterCartProQtty'
 $app->get('/shopping/cart/other', 'Shopping\CartController@operateCartProduct');
 
 $app->get('/shopping/pay/token', 'Shopping\PayController@getPayToken');
+$app->get('/shopping/pay/method', 'Shopping\PayController@createPayMethod');
+$app->get('/shopping/pay/pay', 'Shopping\PayController@pay');
+$app->get('/shopping/pay/checkpay', 'Shopping\PayController@pay');
+$app->get('/shopping/pay/methodlist', 'Shopping\PayController@getMethodList');
+$app->get('/shopping/pay/del', 'Shopping\PayController@delMethod');
+$app->get('/shopping/pay/getDefault', 'Shopping\PayController@getDefaultMethod');
+$app->get('/shopping/pay/setDefault', 'Shopping\PayController@setDefaultMethod');
+$app->get('/shopping/pay/check', 'Shopping\PayController@check');
 
 $app->get('/shopping/addr/list', 'Shopping\AddressController@getUserAddrList');
 $app->get('/shopping/addr/default', 'Shopping\AddressController@getUserDefaultAddr');
