@@ -10,45 +10,47 @@ class AddressController extends ApiController
 {
 	public function getUserAddrList(Request $request)		
 	{
-		$cmd = 'list';			
-		$pin = $request->input("pin", "e052d5681da34fad83d0597b7b72acf7");
-		$token = $request->input("token", "eeec7a32dcb6115abfe4a871c6b08b47");
+		$cmd = 'list';	
+		$uuid = $request->input("uuid", "608341ba8191ba1bf7a2dec25f0158df3c6670da");	
+		$pin = $request->input("pin", "3e448648b3814c999b646f25cde12b2a");
+		$token = $request->input("token", "71b5cb03786f9d6207421caeab91da8f");
 		$params = array(
 			'cmd'=>$cmd,
+			'uuid'=>$uuid,
 			'pin'=>$pin,
 			'token'=>$token
 		);
-		$system = "user";
+		$system = "";
 		$service = "useraddr";
-		$result = $this->request('openapi', $system, $service, $params, 300);
+		$result = $this->request('openapi', $system, $service, $params);
 		if(empty($result)){
 			$result['success'] = false;
 			$result['error_msg'] = "Data access failed";
 			$result['data'] = array();
 		}
-		dd($result);
 		return $result;
 	}
 
 	public function getUserDefaultAddr(Request $request)
 	{
-		$cmd = 'gdefault';			
-		$pin = $request->input("pin", "e052d5681da34fad83d0597b7b72acf7");
-		$token = $request->input("token", "eeec7a32dcb6115abfe4a871c6b08b47");
+		$cmd = 'gdefault';		
+		$uuid = $request->input('uuid', "608341ba8191ba1bf7a2dec25f0158df3c6670da");
+		$pin = $request->input("pin", "3e448648b3814c999b646f25cde12b2a");
+		$token = $request->input("token", "71b5cb03786f9d6207421caeab91da8f");
 		$params = array(
 			'cmd'=>$cmd,
+			'uuid'=>$uuid,
 			'pin'=>$pin,
 			'token'=>$token
 		);
-		$system = "user";
+		$system = "";
 		$service = "useraddr";
-		$result = $this->request('openapi', $system, $service, $params, 300);
+		$result = $this->request('openapi', $system, $service, $params);
 		if(empty($result)){
 			$result['success'] = false;
 			$result['error_msg'] = "Data access failed";
 			$result['data'] = array();
 		}
-		dd($result);
 		return $result;
 	}
 
