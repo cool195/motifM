@@ -9,13 +9,7 @@ class DailyController extends ApiController
 {
     public function index(Request $request)
     {
-        $params = array(
-            'cmd' => $request->input("cmd", 'list'),
-            'token' => '1110',
-        );
-        $service = "daily";
-        $result = $this->request('openapi', '', $service, $params);
-        return View('daily.index',['daily'=>$result['data']['list']]);
+        return View('daily.index');
     }
 
     public function show(Request $request,$id)
