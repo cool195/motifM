@@ -25,7 +25,7 @@
         <section>
             <!-- 视频/图片 -->
             <div class="">
-                <iframe class="ytplayer img-fluid" type="text/html" width="100%" src="https://s3-us-west-1.amazonaws.com/emimagetest/n2/{{$designer['img_video_path']}}" frameborder="0" allowfullscreen></iframe>
+                <iframe class="ytplayer img-fluid" type="text/html" width="100%" src="@if($designer['path_type']==1)https://s3-us-west-1.amazonaws.com/emimagetest/n2/{{$designer['main_img_path']}}@else {{$designer['img_video_path']}} @endif" frameborder="0" allowfullscreen></iframe>
             </div>
 
             <!-- 设计师 文字信息 -->

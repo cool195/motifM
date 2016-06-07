@@ -30,12 +30,12 @@
             @foreach($daily as $value)
                 @if($value['type'] == 1)
                     <div class="bg-white m-b-10x">
-                        <a href="@if($value['skipType']==1)/detail/@elseif($value['skipType']==2)/designer/@elseif($value['skipType']==3)/topic/@elseif($value['skipType']==4)/shopping#/@endif{{$value['skipId']}}"><img class="img-fluid" src="https://s3-us-west-1.amazonaws.com/emimagetest/{{$value['imgPath']}}"></a>
+                        <a href="@if($value['skipType']==1)/detail/@elseif($value['skipType']==2)/designer/@elseif($value['skipType']==3)/topic/@elseif($value['skipType']==4)/shopping#/@endif{{$value['skipId']}}"><img class="img-fluid" src="https://s3-us-west-1.amazonaws.com/emimagetest/n0/{{$value['imgPath']}}"></a>
                     </div>
                 @else
                     <a href="@if($value['skipType']==1)/detail/@elseif($value['skipType']==2)/designer/@elseif($value['skipType']==3)/topic/@elseif($value['skipType']==4)/shopping#/@endif{{$value['skipId']}}">
                         <div class="bg-white m-b-10x">
-                            <div><img class="img-fluid" src="https://s3-us-west-1.amazonaws.com/emimagetest/{{$value['imgPath']}}"></div>
+                            <div><img class="img-fluid" src="https://s3-us-west-1.amazonaws.com/emimagetest/n0/{{$value['imgPath']}}"></div>
                             <div class="p-a-15x">
                                 <h6 class="text-main font-size-base m-b-5x"><strong>{{$value['title']}}</strong></h6>
                                 <div class="text-primary font-size-sm">{{$value['subTitle']}}

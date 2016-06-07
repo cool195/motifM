@@ -9,7 +9,14 @@ class DesignerController extends ApiController
 {
     public function index(Request $request)
     {
-        return View('designer.index');
+        $params = array(
+            'cmd' => $request->input("cmd", 'recdesignerlist'),
+            'token' => '1110',
+            'pin' => 'e052d5681da34fad83d0597b7b72acf7'
+        );
+        $service = "designer";
+        $result = $this->request('openapi', '', $service, $params);
+        return View('designer.index',['recdesigner'=>$result['data']['list']]);
     }
 
     public function show(Request $request,$id)
