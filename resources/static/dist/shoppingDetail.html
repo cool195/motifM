@@ -427,20 +427,18 @@
                         </div>
                     </fieldset>
                     <hr class="hr-base m-a-0">
-                    <fieldset class="p-x-15x p-y-10x text-left" data-vas="">
+                    <fieldset class="p-x-15x p-y-10x text-left" data-vas-type="">
                         <div class="text-primary font-size-sm m-b-10x">Ring Inside Engraving+＄4.5</div>
                         <div class="flex flex-fullJustified flex-alignCenter">
-                            <input class="input-engraving form-control font-size-sm" type="text">
-                            <input type="radio" name="vas_name" id="vas_id1" hidden>
-                            <label class="iconfont icon-checkcircle text-common m-b-0 p-l-20x" for="vas_id1"></label>
+                            <input class="input-engraving form-control font-size-sm disabled" type="text" disabled="disabled">
+                            <div class="iconfont icon-checkcircle text-common active m-b-0 p-l-20x" id="vas_id1"></div>
                         </div>
                     </fieldset>
                     <hr class="hr-base m-a-0">
-                    <fieldset class="p-x-15x p-y-10x text-left" data-vas="">
+                    <fieldset class="p-x-15x p-y-10x text-left" data-vas-type="">
                         <div class="flex flex-fullJustified flex-alignCenter">
                             <div class="text-primary font-size-sm">gift package+＄4.5(optional)</div>
-                            <input type="radio" name="vas_name2" id="vas_id2" hidden>
-                            <label class="iconfont icon-checkcircle text-common m-b-0 p-l-20x" for="vas_id2"></label>
+                            <div class="iconfont icon-checkcircle text-common active m-b-0 p-l-20x" id="vas_id2"></div>
                         </div>
                     </fieldset>
                     <hr class="hr-base m-a-0">
@@ -463,10 +461,10 @@
                     <fieldset class="container-fluid p-a-15x">
                         <div class="row">
                             <div class="col-xs-6">
-                                <a href="#" class="btn btn-primary-outline btn-block">Add To Bag</a>
+                                <div class="btn btn-primary-outline btn-block" id="addCart">Add To Bag</div>
                             </div>
                             <div class="col-xs-6">
-                                <a href="#" class="btn btn-primary btn-block">Buy Now</a>
+                                <div class="btn btn-primary btn-block" id="buyNow">Buy Now</div>
                             </div>
                         </div>
                     </fieldset>

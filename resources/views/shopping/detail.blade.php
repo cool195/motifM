@@ -107,7 +107,7 @@
                                         {{$attrs['attr_type_value'].", "}}
                                     @endif
                                 @endforeach
-							</span> 
+							</span>
 							<i class="iconfont icon-arrow-right icon-size-xm text-common"></i>
 						</span>
                     </a>
@@ -291,24 +291,25 @@
                 @if(isset($data['vasBases']) && !empty($data['vasBases']))
                     @foreach($data['vasBases'] as $vas)
                         @if(1 == $vas['vas_type'])
-                            <fieldset class="p-x-15x p-y-10x text-left" data-vas="{{$vas['vas_id']}}">
-                                <div class="text-primary font-size-sm m-b-10x">{{ $vas['vas_describe'] }} +$4.5</div>
+                            <fieldset class="p-x-15x p-y-10x text-left" data-vas-type="{{$vas['vas_type']}}">
+                                <div class="text-primary font-size-sm m-b-10x">{{ $vas['vas_describe'] }} + $4.5</div>
                                 <div class="flex flex-fullJustified flex-alignCenter">
-                                    <input class="input-engraving form-control font-size-sm" type="text">
-                                    <input type="radio" name="vas_name" id="{{$vas['vas_id']}}" hidden>
-                                    <label class="iconfont icon-checkcircle text-common m-b-0 p-l-20x"
-                                           for="{{$vas['vas_id']}}"></label>
+                                    <input class="input-engraving form-control font-size-sm disabled" type="text"
+                                           disabled="disabled">
+                                    {{--<input type="radio" name="vas_name" id="{{$vas['vas_id']}}" hidden>--}}
+                                    <div class="iconfont icon-checkcircle text-common m-b-0 p-l-20x"
+                                         id="{{$vas['vas_id']}}"></div>
                                 </div>
                             </fieldset>
                             <hr class="hr-base m-a-0">
                         @else
-                            <fieldset class="p-x-15x p-y-10x text-left" data-vas="$vas['vas_id']">
+                            <fieldset class="p-x-15x p-y-10x text-left" data-vas-type="$vas['vas_type']">
                                 <div class="flex flex-fullJustified flex-alignCenter">
-                                    <div class="text-primary font-size-sm">{{ $vas['vas_describe'] }}+$4.5(optional)
+                                    <div class="text-primary font-size-sm">{{ $vas['vas_describe'] }}+ $4.5(optional)
                                     </div>
-                                    <input type="radio" name="vas_name2" id="{{$vas['vas_id']}}" hidden>
-                                    <label class="iconfont icon-checkcircle text-common m-b-0 p-l-20x"
-                                           for="{{$vas['vas_id']}}"></label>
+                                    {{--<input type="radio" name="vas_name2" id="{{$vas['vas_id']}}" hidden>--}}
+                                    <div class="iconfont icon-checkcircle text-common m-b-0 p-l-20x"
+                                         id="{{$vas['vas_id']}}"></div>
                                 </div>
                             </fieldset>
                             <hr class="hr-base m-a-0">
@@ -322,9 +323,9 @@
                             <div class="btn btn-cartCount btn-sm disabled" data-item="minus">
                                 <i class="iconfont icon-minus"></i>
                             </div>
-                            <div class="btn btn-cartCount btn-sm" data-num="num">2</div>
+                            <div class="btn btn-cartCount btn-sm" data-num="num">1</div>
 
-                            <div class="btn btn-cartCount btn-sm" data-item="add">
+                            <div class="btn btn-cartCount btn-sm disabled" data-item="add">
                                 <i class="iconfont icon-add"></i>
                             </div>
                         </div>
@@ -334,10 +335,10 @@
                 <fieldset class="container-fluid p-a-15x">
                     <div class="row">
                         <div class="col-xs-6">
-                            <a href="#" class="btn btn-primary-outline btn-block">Add To Bag</a>
+                            <div class="btn btn-primary-outline btn-block disabled">Add To Bag</div>
                         </div>
                         <div class="col-xs-6">
-                            <a href="#" class="btn btn-primary btn-block" data-remodal-target="modal">Buy Now</a>
+                            <div class="btn btn-primary btn-block disabled">Buy Now</div>
                         </div>
                     </div>
                 </fieldset>

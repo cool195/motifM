@@ -29,9 +29,15 @@ $app->get('/shopping/cart/amount', 'Shopping\CartController@getCartAmount');
 $app->get('/shopping/cart/list', 'Shopping\CartController@getCartList');
 $app->get('/shopping/cart/accountlist', 'Shopping\CartController@getCartAccountList');
 $app->get('/shopping/cart/savelist', 'Shopping\CartController@getCartSaveList');
-$app->get('/shopping/cart/addCart', 'Shopping\CartController@addCart');
+//$app->get('/shopping/cart/addCart', 'Shopping\CartController@addCart');
+$app->patch('/cart', 'Shopping\CartController@addCart');
+$app->put('/cart', 'Shopping\CartController@promptlyBuy');
+$app->get('/shopping/cart/addBatchCart', 'Shopping\CartController@addBatchCart');
 $app->get('/shopping/cart/alterQtty', 'Shopping\CartController@alterCartProQtty');
+//$app->get('/shopping/cart/promptlyBuy', 'Shopping\CartController@promptlyBuy');
 $app->get('/shopping/cart/other', 'Shopping\CartController@operateCartProduct');
+
+$app->get('/shopping/pay/token', 'Shopping\PayController@getPayToken');
 
 $app->get('/shopping/addr/list', 'Shopping\AddressController@getUserAddrList');
 $app->get('/shopping/addr/default', 'Shopping\AddressController@getUserDefaultAddr');
