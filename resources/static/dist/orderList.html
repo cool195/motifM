@@ -408,18 +408,20 @@
     <div class="orderList-item bg-white m-b-10x">
         <div class="p-a-10x">
             <div class="flex flex-fullJustified flex-alignCenter">
-                <span class="font-size-sm text-primary"><strong>ORDER PLACED:</strong> Apr 14, 2016</span>
+                <span class="font-size-sm text-primary">
+                    <strong>@{{ $value.status_info }}</strong>@{{ $value.update_time }}
+                </span>
                 <a class="btn btn-primary btn-sm" href="">Order Detail</a>
             </div>
             <div class="font-size-sm text-primary p-t-10x">
-                We excepct your order to be processed between: <br>
-                <span>Apr 15, 2016 - Apr 17, 2016 </span>
+                @{{ $value.status_explain }}
             </div>
         </div>
         <hr class="hr-base m-y-0 m-l-10x">
+        @{{ each value }}
         <div class="flex p-a-10x">
             <div class="flex-fixedShrink">
-                <img class="img-thumbnail" src="images/product/product1.jpg" width="70px" height="70px">
+                <img class="img-thumbnail img-lazy" src="/images/product/bg-product.jpg" data-original="https://s3-us-west-1.amazonaws.com/emimagetest/n4/@{{ $value.main_image_url }}" width="70px" height="70px">
             </div>
             <div class="p-x-10x order-product-title">
                 <h6 class="text-main font-size-md text-truncate">
@@ -434,6 +436,7 @@
                 </aside>
             </div>
         </div>
+        @{{ /each }}
         <hr class="hr-base m-y-0 m-l-10x">
         <div class="flex flex-alignCenter flex-fullJustified p-a-10x">
             <div class="text-primary font-size-sm"><span>Order # </span><span>38579304985741</span>
