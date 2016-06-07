@@ -15,6 +15,8 @@ $app->get('/', function () use ($app) {
     return $app->welcome();
 });
 
+$app->get('/book', ['middleware' => 'test', 'uses'=> 'BookController@index']);
+
 $app->get('/shopping', 'Shopping\ShoppingController@index');
 //$app->get('/shopping/category', 'Shopping\ShoppingController@getShoppingCategoryList');
 //$app->get('/shopping/list', 'Shopping\ShoppingController@getShoppingProductList');

@@ -1,8 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use App\Http\Controllers\Controller;
-use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
 
@@ -10,12 +10,14 @@ class BookController extends Controller
 {
     public function index(Request $request)
     {
-        $expiresAt = Carbon::now()->addMinutes(10);
-        Cache::add('juchao', 'juchao1989', $expiresAt);
-        if (Cache::has('juchao')) {
-            dd(Cache::get('juchao', 'default'));
-        }
-        dd("index" . $request->input('p'));
+        //Cache::forget('juchao');
+        //Cache::has('juchao');
+        //Cache::put('juchao');
+        $value = Cache::remember('users', 5 / 60, function () {
+            $time = time();
+            return array('juchao' . $time, 'juchao1', 'juchao2');
+        });
+        dd($value);
     }
 
     public function store()

@@ -3,7 +3,7 @@
 namespace App\Http\Middleware;
 
 use Closure;
-
+use Illuminate\Support\Facades\Cache;
 class ExampleMiddleware
 {
     /**
@@ -15,6 +15,10 @@ class ExampleMiddleware
      */
     public function handle($request, Closure $next)
     {
+        if (!Cache::has('juchao')) {
+            return redirect('/');
+        }
+
         return $next($request);
     }
 }
