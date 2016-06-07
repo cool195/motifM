@@ -125,6 +125,34 @@ class CartController extends ApiController
 		$system = "";
 		$service = "cart";
 		$result = $this->request('openapi', $system, $service, $params);
+		if(empty($result)){
+	 		$result['success'] = false;	
+			$result['error_msg'] = "Data access failed";
+			$result['data'] = array();
+		}
+		return $result;
+	}
+
+	public function addBatchCart(Request $request)
+	{
+		$cmd = "batchaddskus";
+		$operate = $request->input('operate');
+		$pin = $request->input('pin', "xuzhijie");
+		$token = $request->input('token', 1);
+		$params = array(
+			'cmd' => $cmd,
+			'operate' => $operate,
+			'pin' => $pin,
+			'token' => $token
+		);		
+		$system = "";
+		$service = "cart";
+		$result = $this->request('openapi', $system, $service, $params);
+		if(empty($result)){
+	 		$result['success'] = false;	
+			$result['error_msg'] = "Data access failed";
+			$result['data'] = array();
+		}
 		return $result;
 	}
 
