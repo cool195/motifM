@@ -23,9 +23,11 @@ class CartController extends ApiController
 	{
 		$result = $this->getCartAccountList($request);
 		$defaultAddr = $this->getUserDefaultAddr();
+		$defaultPayMethod = $this->getDefaultPayMethod();
 		return View('shopping.ordercheckout', [
 			'data'=>$result['data'], 
-			'addr'=>$defaultAddr['data']
+			'addr'=>$defaultAddr['data'],
+			'pay'=>$defaultPayMethod['data']
 		]);
 	}
 
@@ -78,11 +80,31 @@ class CartController extends ApiController
 			$result['error_msg'] = "Data access failed";
 			$result['data']['list'] = array();
 		}
-		error_log(print_r("------------------\n", "\n"), 3, '/tmp/myerror.log');
-		error_log(print_r($result['data'], "\n"), 3, '/tmp/myerror.log');
-
-		//return $result;
 		return View('shopping.ordercheckout_addresslist', ['data'=>$result['data']]);
+	}
+
+
+	private function getDefaultPayMethod()
+	{
+		$cmd = "getdefault";
+		$uuid = "608341ba8191ba1bf7a2dec25f0158df3c6670da";
+		$pin = "3e448648b3814c999b646f25cde12b2a";
+		$token = "71b5cb03786f9d6207421caeab91da8f";
+		$params = array(
+			'cmd'=>$cmd,
+			'uuid'=>$uuid,
+			'pin'=>$pin,
+			'token'=>$token
+		);
+		$system = "";
+		$service = "pay";
+		$result = $this->request('openapi', $system, $service, $params);
+		if(empty($result)){
+	 		$result['success'] = false;	
+			$result['error_msg'] = "Data access failed";
+			$result['data'] = array();
+		}
+		return $result;
 	}
 
 	public function getCartAmount(Request $request)		

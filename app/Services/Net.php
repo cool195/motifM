@@ -23,13 +23,13 @@ class Net
         return $result;
     }
 
-    public static function getContent($api, $parameter = "", $total_timeout = 3000, $con_timeout = 0, $max_failed = 3, $headers = [])
+    public static function getContent($api, $parameter = "", $total_timeout = 10000, $con_timeout = 0, $max_failed = 3, $headers = [])
     {
         if ($total_timeout <= 0) {
-            $total_timeout = 1000;
+            $total_timeout = 10000;
         }
         if ($con_timeout <= 0) {
-            $con_timeout = 1000;
+            $con_timeout = 10000;
         }
         if ($max_failed < 1) {
             $max_failed = 3;
