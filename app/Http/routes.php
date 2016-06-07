@@ -70,3 +70,5 @@ $app->get('/products/{spu}', 'Shopping\ProductController@getProductDetail');
 
 $app->get('/designer', 'Designer\DesignerController@index');
 $app->get('/designer/{id}', 'Designer\DesignerController@show');
+
+$app->get('/daily', 'Daily\DailyController@index');
