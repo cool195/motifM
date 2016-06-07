@@ -58,9 +58,10 @@
 
     // 剔除 库存为 0 的项
     function filterNull(List, Arr) {
-        return List.filter(function (el) {
-            return el === Arr;
+        List = List.filter(function (el) {
+            return el !== Arr;
         });
+        return List;
     }
 
     // 以选项的ID 为key
@@ -101,7 +102,7 @@
     function inventoryNull(DataList) {
         var Cache = [];
         for (var i = 0; i < DataList.length; i++) {
-            if (DataList[i].stock_qtty !== 0) {
+            if (DataList[i].stock_qtty === 0) {
                 Cache.push(DataList[i].sku);
             }
         }
@@ -125,7 +126,7 @@
         }).done(function (data) {
             console.log('success');
             // 获取商品所有的库存
-            // Inventory 为有库存的商品的Sku
+            // Inventory 为库存的商品的Sku
             var Inventory = inventoryNull(data.data.skuExps);
             newOptions(data.data.spuAttrs, Inventory, Options);
             newStock(data.data.skuExps, Stock);
@@ -140,7 +141,8 @@
      */
     function filterOptions(SpaID, SkaID) {
         // 所点击的项, 所对应的 Skus , 数组类型
-        var CurrentSkus = Options[SpaID][SkaID];
+
+        var CurrentSkus = ResultSkus;
 
         $.each(Options, function (noIndex, v) {
             // 排除同一类别的 选项
@@ -170,11 +172,25 @@
 
                     if (Detection === false) {
                         // TODO input 和 label 都需要加 disabled
-                        $('#' + index).addClass('disabled');
+                        $('#' + index).attr('disabled', 'disabled');
                         $('#' + index).siblings('label').addClass('disabled');
+                    } else {
+                        $('#' + index).removeAttr('disabled');
+                        $('#' + index).siblings('label').removeClass('disabled');
                     }
                 });
             }
+        });
+    }
+
+    /**
+     *
+     * @param List
+     * @param item
+     */
+    function sameArray(List, item) {
+        return List.find(function (el) {
+            return el === item;
         });
     }
 
@@ -186,35 +202,55 @@
     function getResultSku(SpaId, SkaId) {
 
         var RadioList = $('#modalDialog').find('input[type=radio]:checked');
-        var CheckCount = RadioList.length;
-        if (CheckCount === 1) {
+        // 只选中了一项时
+        if (RadioList.length === 1) {
             ResultSkus = Options[SpaId][SkaId];
             return;
         }
-        var CurrentSkus = Options[SpaId][SkaId];
-        var AfterSkus = [];
-        for (var i = 0; i < ResultSkus.length; i++) {
+        ResultSkus = [];
+        var InitSkus = [];
+        // 把选中的选项的 Skus, 建成二维数组
+        for (var l = 0; l < RadioList.length; l++) {
+            // 分别获取选中的选项中的 skaid 和 spaid
+            var Ska = $(RadioList[l]).data('ska'),
+                Spa = $(RadioList[l]).data('spa');
+            InitSkus.push(Options[Spa][Ska]);
+        }
 
-            for (var j = 0; j < CurrentSkus.length; j++) {
-                if (ResultSkus[i] === CurrentSkus[j]) {
-                    AfterSkus.push(CurrentSkus[j]);
-                    break;
+        // 作为比对项存在
+        var Intersection = [];
+        for (var i = 0; i < RadioList.length; i++) {
+            if (i === 0) {
+                Intersection = InitSkus[i];
+                continue;
+            }
+            for (var k = 0; k < InitSkus[i].length; k++) {
+                var SameSku = sameArray(Intersection, InitSkus[i][k]);
+                if (SameSku !== undefined) {
+                    ResultSkus.push(SameSku);
                 }
             }
+            Intersection = ResultSkus;
         }
-        ResultSkus = AfterSkus;
     }
 
     // 为所有选项绑定事件
-    $('#modalDialog').on('click', 'input[type=radio]', function (e) {
+    $('#modalDialog').on('click', '.btn-itemProperty', function (e) {
 
-        console.log('Click Radio');
+        if ($(e.target).hasClass('active')) {
+            console.log("取消选中");
+            $(e.target).removeClass('active');
+        } else {
+            $('.btn-itemProperty').removeClass('active');
+            $(e.target).addClass('active');
+        }
 
         var SpaId = $(e.target).data('spa'),
             SkaId = $(e.target).data('ska');
 
-        filterOptions(SpaId, SkaId);
         getResultSku(SpaId, SkaId);
+
+        filterOptions(SpaId, SkaId);
     });
 
     // 调整数量
@@ -250,8 +286,8 @@
     $('#item-count').on('click', '[data-item]', function (e) {
         // 已选中的选项 以及 商品的选项组数
         var RadioList = $('#modalDialog').find('input[type=radio]:checked'),
-            CheckCount = Object.keys(Options).length;
-        if (CheckCount < RadioList) {
+            CheckCount = Object.keys(Options);
+        if (CheckCount.length < RadioList.length) {
             return;
         }
 
@@ -281,7 +317,7 @@
 
             // 判断本地库存量
             if (StockCache < 20 && Count < StockCache) {
-                Count++;
+                ++Count;
                 console.log('商品数量:' + Count + '剩余库存量小于20');
                 // 判断增加后是否等于最大库存量
                 if (Count === StockCache) {
@@ -289,10 +325,10 @@
                     console.log('商品数量等于最大库存量');
                 }
             } else if (Count >= StockCache && StockCache === 20) {
-                var StrCount = Count;
+                var StrCount = [Count, ++Count];
 
                 for (var i = 0; i < RequestStock.length; i++) {
-                    RequestStock[i] = SelectSku + '_' + StrCount++;
+                    RequestStock[i] = SelectSku + '_' + StrCount[i];
                 }
                 var RequestList = changeQtty(RequestStock);
                 // 查看库存情况
@@ -304,7 +340,7 @@
                 }
             }
         } else {
-            Count--;
+            --Count;
             if (Count === 1) {
                 $QtyCount.addClass('disabled');
             }

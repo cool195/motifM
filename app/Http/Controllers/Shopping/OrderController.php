@@ -20,7 +20,7 @@ class OrderController extends ApiController
 		$cmd = "ordlist";
 		$pin = $request->input("pin", "e052d5681da34fad83d0597b7b72acf7");
 		$num = $request->input("num", 1);
-		$size = $request->input("size", 3);
+		$size = $request->input("size", 100);
 		$token = $request->input('token', 11);
 		$params = array(
 			'cmd' => $cmd,
