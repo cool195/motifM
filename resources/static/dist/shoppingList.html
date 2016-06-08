@@ -180,7 +180,7 @@
                     </li>
                 </ul>
             </nav>
-            <section class="swiper-container p-b-10x" id="tabs-container" data-loading="">
+            <section class="swiper-container p-b-10x" id="tabs-container" data-loading="false">
                 <div class="swiper-wrapper">
                     <div class="swiper-slide" data-loading="">
                         <div class="container-fluid p-x-10x p-t-10x">
@@ -597,7 +597,7 @@
             <div class="image-bg">
                 <div class="image-container">
                     <a href="http://motiflumen.evermarker.com/products/@{{ $value.spu }}">
-                        <img class="img-fluid img-lazy" data-original="https://s3-us-west-1.amazonaws.com/emimagetest/n4/@{{ $value.main_image_url }}" src="/images/product/bg-product.jpg" alt="@{{ $value.main_title }}">
+                        <img class="img-fluid img-lazy" data-original="https://s3-us-west-1.amazonaws.com/emimagetest/n4/@{{ $value.main_image_url }}" src="/images/product/bg-product@336.jpg" alt="@{{ $value.main_title }}">
                         @{{ if $value.skuPrice.sale_price !== $value.skuPrice.price }}
                         <div class="price-off">
                             <strong class="font-size-sm">@{{ $value.skuPrice.skuPromotion.display }}</strong>
