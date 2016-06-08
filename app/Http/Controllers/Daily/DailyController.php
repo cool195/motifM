@@ -7,6 +7,7 @@ use App\Http\Controllers\ApiController;
 
 class DailyController extends ApiController
 {
+    //专题列表
     public function index(Request $request)
     {
         $params = array(
@@ -31,18 +32,16 @@ class DailyController extends ApiController
         }
     }
 
-    public function show(Request $request, $id)
+    //动态模版专题详情
+    public function show($id)
     {
         $params = array(
-            'cmd' => $request->input("cmd", 'designerdetail'),
-            'pin' => 'e052d5681da34fad83d0597b7b72acf7',
-            'token' => '1110',
-            'd_id' => $id,
+            'id' => $id
         );
 
-        $service = "designer";
-        $result = $this->request('openapi', '', $service, $params);
-        return View('designer.show', ['designer' => $result['data']]);
+        $result = $this->request('openapi', 'topicf', "content", $params);
+
+        return View('daily.topic', ['topic' => $result['data']['infos']]);
     }
 }
 

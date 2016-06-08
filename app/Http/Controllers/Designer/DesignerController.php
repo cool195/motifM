@@ -16,11 +16,12 @@ class DesignerController extends ApiController
         );
         $service = "designer";
         $result = $this->request('openapi', '', $service, $params);
-        return View('designer.index',['recdesigner'=>$result['data']['list']]);
+        return View('designer.index', ['recdesigner' => $result['data']['list']]);
     }
 
-    public function show(Request $request,$id)
+    public function show(Request $request, $id)
     {
+        //设计师详情
         $params = array(
             'cmd' => $request->input("cmd", 'designerdetail'),
             'pin' => 'e052d5681da34fad83d0597b7b72acf7',
@@ -30,7 +31,10 @@ class DesignerController extends ApiController
 
         $service = "designer";
         $result = $this->request('openapi', '', $service, $params);
-        return View('designer.show',['designer'=>$result['data']]);
+
+        //设计师动态模版
+        
+        return View('designer.show', ['designer' => $result['data']]);
     }
 }
 
