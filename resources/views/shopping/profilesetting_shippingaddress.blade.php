@@ -36,39 +36,27 @@
 
                 <!-- 地址列表 -->
                 <aside class="bg-white m-b-10x" id="addressList">
-                    <div class="flex flex-alignCenter p-x-15x p-y-10x">
-                        <a class="p-r-15x delAddress" data-aid="111" data-remodal-target="modal"><i class="iconfont icon-delete icon-size-md text-warming" data-aid="111"></i></a>
-                        <a class="flex flex-alignCenter flex-fullJustified flex-width font-size-sm text-primary" href="#">
-                            <div class="flex flex-alignCenter">
-
-                                <address class="m-b-0">
-                                    <div>民李</div>
-                                    <div>Beijing chao yang</div>
-                                    <div>Beijing, AK 10000</div>
-                                    <div>中国</div>
-                                    <div>130 1105 1863</div>
-                                </address>
-                            </div>
-                            <div class="flex flex-alignCenter"><span class="text-common p-r-20x">Primary</span><i class="iconfont icon-size-sm text-common del-icon"></i></div>
-                        </a>
-                    </div>
+                @foreach($data['list'] as $addr)
                     <hr class="hr-base m-a-0">
                     <div class="flex flex-alignCenter p-x-15x p-y-10x">
                         <a class="p-r-15x delAddress" data-remodal-target="modal"><i class="iconfont icon-delete icon-size-md text-warming" data-aid="222"></i></a>
                         <a class="flex flex-alignCenter flex-fullJustified flex-width font-size-sm text-primary" href="#">
                             <div class="flex flex-alignCenter">
-
                                 <address class="m-b-0">
-                                    <div>民李</div>
-                                    <div>Beijing chao yang</div>
-                                    <div>Beijing, AK 10000</div>
-                                    <div>中国</div>
-                                    <div>130 1105 1863</div>
+                                    <div>{{$addr['email']}}</div>
+                                    <div>{{$addr['detail_address1']}}  @if(!empty($addr['detail_address2'])) {{$addr['detail_address2']}} @endif</div>
+                                    <div>{{$addr['city']}}, {{$addr['zip']}} {{$addr['zip']}}</div>
+                                    <div>{{$addr['country']}}</div>
+                                    <div>@if(!empty($addr['telephone'])) {{$addr['telephone']}} @endif</div>
                                 </address>
                             </div>
-                            <div class="flex flex-alignCenter"><i class="iconfont icon-size-sm text-common del-icon"></i></div>
+                            @if($addr['isDefault'])
+                              <div class="flex flex-alignCenter"><i class="iconfont icon-size-sm text-common del-icon"></i></div>
+                            @endif
                         </a>
+                        <input type="hidden" name="aid" value="{{$addr['receiving_id']}}"></input>
                     </div>
+                @endforeach
                 </aside>
 
                 <aside class="bg-white">

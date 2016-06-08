@@ -214,7 +214,25 @@ class UserController extends ApiController
 
     public function shippingAddress(Request $request)
     {
-        return View('shopping.profilesetting_shippingaddress');
+        $cmd = 'list';
+        $uuid = $request->input("uuid", "608341ba8191ba1bf7a2dec25f0158df3c6670da");
+        $pin = $request->input("pin", "3e448648b3814c999b646f25cde12b2a");
+        $token = $request->input("token", "71b5cb03786f9d6207421caeab91da8f");
+        $params = array(
+            'cmd'=>$cmd,
+            'uuid'=>$uuid,
+            'pin'=>$pin,
+            'token'=>$token
+        );
+        $system = "";
+        $service = "useraddr";
+        $result = $this->request('openapi', $system, $service, $params);
+        if(empty($result)){
+            $result['success'] = false;
+            $result['error_msg'] = "Data access failed";
+            $result['data'] = array();
+        }
+        return View('shopping.profilesetting_shippingaddress', ['data'=>$result['data']]);
     }
 
 }
