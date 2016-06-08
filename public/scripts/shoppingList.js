@@ -166,7 +166,10 @@
 
         // 当前选项卡
         var $Current = $(TabsContainerSwiper.slides[ActiveTab]);
-
+        // 判断当前选项卡是否还有数据要加载
+        if (TabsPage[ActiveTab] === null) {
+            return;
+        }
         // 判断当前选项卡是否在加载中
         if ($Current.data('loading') === true) {
             return;
@@ -174,10 +177,7 @@
             $Current.data('loading', true);
         }
 
-        // 判断当前选项卡是否还有数据要加载
-        if (TabsPage[ActiveTab] === null) {
-            return;
-        }
+
 
         // 当前选项卡所要加载的分页页码
         var CurrentPage = TabsPage[ActiveTab],

@@ -14,6 +14,8 @@
     <link rel="stylesheet" href="/styles/daily.css">
 
     <script src="/scripts/vendor/modernizr.js"></script>
+
+    <script src="/scripts/vendor/template-native.js"></script>
 </head>
 <body>
 <!-- 外层容器 -->
@@ -24,57 +26,41 @@
     <div class="body-container">
         @include('navigator')
         <!-- daily 首页列表 -->
-            <section>
-                <!-- banner 图 -->
-                <div class="bg-white m-b-10x">
-                    <img class="img-fluid" src="http://html.motif.app/images/daily/daily1.jpg">
-                </div>
+        <section id="dailyContainer" data-loading="false" data-pagenum="0">
+            <div class="daily-content">
 
-                <!-- 图文 -->
-                <div class="bg-white m-b-10x">
-                    <div><img class="img-fluid" src="http://html.motif.app/images/daily/daily2.jpg"></div>
-                    <div class="p-a-15x">
-                        <h6 class="text-main font-size-base m-b-5x"><strong>STREET SPOT: 20.04.2016</strong></h6>
-                        <div class="text-primary font-size-sm">Handmade bracelets with gold mixture just occurs chemical
-                            reaction.
-                        </div>
-                    </div>
-                </div>
-                <div class="bg-white m-b-10x">
-                    <div class="daily-imgInfo">
-                        <img class="img-fluid" src="http://html.motif.app/images/daily/daily2.jpg">
-                        <span class="img-icon"><img src="http://html.motif.app/images/daily/daily-icon.png" srcset="http://html.motif.app/images/daily/daily-icon@2x.png 2x,http://html.motif.app/images/daily/daily-icon@3x.png 3x"></span>
-                    </div>
-                    <div class="p-a-15x">
-                        <h6 class="text-main font-size-base m-b-5x"><strong>Boho Beaded Tassel Necklace</strong></h6>
-                        <div class="text-primary font-size-sm">Gold leaf tassel pendant vintage necklace definitely
-                            suits
-                            for daily looks.
-                        </div>
-                    </div>
-                </div>
-                <div class="bg-white m-b-10x">
-                    <div class="daily-imgInfo">
-                        <img class="img-fluid" src="http://html.motif.app/images/daily/daily2.jpg">
-                        <span class="img-icon"><img src="http://html.motif.app/images/daily/daily-icon.png" srcset="http://html.motif.app/images/daily/daily-icon@2x.png 2x,http://html.motif.app/images/daily/daily-icon@3x.png 3x"></span>
-                    </div>
-                    <div class="p-a-15x">
-                        <h6 class="text-main font-size-base m-b-5x"><strong>Boho Beaded Tassel Necklace</strong></h6>
-                        <div class="text-primary font-size-sm">Gold leaf tassel pendant vintage necklace definitely
-                            suits
-                            for daily looks.
-                        </div>
-                    </div>
-                </div>
+            </div>
 
-
-            </section>
+            <div class="loading" style="display: none">
+                <div class="loader"></div>
+            </div>
+        </section>
         <!-- 页脚 功能链接 -->
-        @include('footer')
+            @include('footer')
     </div>
 </div>
 </body>
-<script src="scripts/vendor.js"></script>
+<!-- 模板 -->
+<!-- TODO 增加图文中 图片类型标签,如:热卖、新品、促销 目前接口中还没相应数据 -->
+<template id="tpl-daily">
+    @{{ each list }}
+    @{{ if $value.type == "1" }}
+    <div class="bg-white m-b-10x">
+        <img class="img-fluid img-lazy" data-original="https://s3-us-west-1.amazonaws.com/emimagetest/n4/@{{ $value.imgPath }}" src="/images/product/bg-product@750.png">
+    </div>
+    @{{ /if }}
+    @{{ if $value.type == "2" }}
+    <div class="bg-white m-b-10x">
+        <div><img class="img-fluid img-lazy" data-original="https://s3-us-west-1.amazonaws.com/emimagetest/n4/@{{ $value.imgPath }}" src="/images/product/bg-product@750.png" alt="@{{ $value.title }}"></div>
+        <div class="p-a-15x">
+            <h6 class="text-main font-size-base m-b-5x"><strong>@{{ $value.title }}</strong></h6>
+            <div class="text-primary font-size-sm">@{{ $value.subTitle }}</div>
+        </div>
+    </div>
+    @{{ /if }}
+    @{{ /each }}
+</template>
+<script src="/scripts/vendor.js"></script>
 
-
+<script src="/scripts/daily.js"></script>
 </html>
