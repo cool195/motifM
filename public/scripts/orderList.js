@@ -1,3 +1,5 @@
+'use strict';
+
 (function ($) {
     /**
      *
@@ -35,41 +37,39 @@
 
         // ajax 请求加载数据
         $.ajax({
-            url: '/orders',
-            data: {num: NextPage, size: 5}
-        })
-            .done(function (data) {
-                if (data.data === null || data.data === '') {
-                    return;
-                } else if (data.data.list.length === 0) {
-                    // 没有数据要加载
-                    Page = -1;
-                    return;
-                }
-                // 遍历模板 插入页面
-                appendProductsList(data.data);
+            url: '/orderList',
+            data: { num: NextPage, size: 20 }
+        }).done(function (data) {
+            if (data.data === null || data.data === '') {
+                return;
+            } else if (data.data.list.length === 0) {
+                // 没有数据要加载
+                Page = -1;
+                return;
+            }
+            // 遍历模板 插入页面
+            appendProductsList(data.data);
 
-                // 加载页 页码+1
-                $OrderContainer.data('pagenum', NextPage);
+            // 加载页 页码+1
+            $OrderContainer.data('pagenum', NextPage);
 
-                // 图片延迟加载
-                $('img.img-lazy').lazyload({
-                    threshold: 200,
-                    container: $('#orderContainer'),
-                    effect: 'fadeIn'
-                });
-            })
-            // TODO failed 时的提示
-            .always(function () {
-                // 隐藏加载动画
-                $('#loading').hide();
-                // 请求结束, loading = false
-                $OrderContainer.data('loading', false);
-
+            // 图片延迟加载
+            $('img.img-lazy').lazyload({
+                threshold: 200,
+                container: $('#orderContainer'),
+                effect: 'fadeIn'
             });
+        })
+        // TODO failed 时的提示
+        .always(function () {
+            // 隐藏加载动画
+            $('#loading').hide();
+            // 请求结束, loading = false
+            $OrderContainer.data('loading', false);
+        });
     }
 
-// 下拉加载
+    // 下拉加载
     function pullLoading() {
         // scrollCurrent    当前滚动距离
         // scrollMax        最大滚动距离
@@ -81,14 +81,12 @@
         }
     }
 
-// 为页面绑定 滚动条事件
+    // 为页面绑定 滚动条事件
     $(document).ready(function () {
         $(window).scroll(function () {
             pullLoading();
             console.log('滚动条滚动');
         });
     });
-    window.onload = function () {
-        listLoading();
-    };
 })(jQuery);
+//# sourceMappingURL=orderList.js.map
