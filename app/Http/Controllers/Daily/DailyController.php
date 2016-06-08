@@ -9,10 +9,29 @@ class DailyController extends ApiController
 {
     public function index(Request $request)
     {
-        return View('daily.index');
+        $params = array(
+            'cmd' => $request->input('cmd'),
+            'token' => $request->input('token', "1110"),
+            'pagesize' => $request->input('pagesize', 10),
+            'pagenum' => $request->input('pagenum', 1),
+        );
+        if(empty($params['cmd'])){
+            return View('daily.index');
+        }else{
+            $system = "";
+            $service = "daily";
+            $result = $this->request('openapi', $system, $service, $params);
+            if (empty($result)) {
+                $result['success'] = false;
+                $result['error_msg'] = "Data access failed";
+                $result['data']['list'] = array();
+            }
+
+            return $result;
+        }
     }
 
-    public function show(Request $request,$id)
+    public function show(Request $request, $id)
     {
         $params = array(
             'cmd' => $request->input("cmd", 'designerdetail'),
@@ -23,7 +42,7 @@ class DailyController extends ApiController
 
         $service = "designer";
         $result = $this->request('openapi', '', $service, $params);
-        return View('designer.show',['designer'=>$result['data']]);
+        return View('designer.show', ['designer' => $result['data']]);
     }
 }
 
