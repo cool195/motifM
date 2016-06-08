@@ -23,10 +23,10 @@
     @include('navigator')
     <!-- daily 详细内容 -->
         <section class="bg-white p-b-10x">
-        @foreach($topic as $k=>$value)
+        @foreach($topic['infos'] as $k=>$value)
             @if($value['type']=='banner')
                 <!-- 第一个 banner 图 -->
-                    <div class="">
+                    <div @if($k!=0)class="p-y-10x"@endif>
                         <img class="img-fluid" src="{{$value['imgPath']}}" alt="">
                     </div>
             @elseif($value['type']=='title')
@@ -51,24 +51,17 @@
                         {{-- 商品列表横向 --}}
                         <div class="container-fluid p-x-15x">
                             <div class="row">
-                                <div class="col-xs-6">
-                                    <div class="p-t-10x">
-                                        <img class="img-thumbnail" src="/images/product/product2.jpg" alt="商品的名称">
-                                        <div class="p-y-10x">
-                                            <span class="text-primary font-size-sm m-l-5x"><strong>$60.95</strong></span>
-                                            <span class="font-size-xs text-common text-throughLine m-l-5x">$125.95</span>
+                                @foreach($value['spus'] as $spu)
+                                    <div class="col-xs-6">
+                                        <div class="p-t-10x">
+                                            <img class="img-thumbnail" src="https://s3-us-west-1.amazonaws.com/emimagetest/n2/{{$topic['spuInfos'][$spu]['spuBase']['main_image_url']}}" alt="{{$topic['spuInfos'][$spu]['spuBase']['main_title']}}">
+                                            <div class="p-y-10x">
+                                                <span class="text-primary font-size-sm m-l-5x"><strong>${{number_format($topic['spuInfos'][$spu]['skuPrice']['sale_price']/100,2)}}</strong></span>
+                                                <span class="font-size-xs text-common text-throughLine m-l-5x">${{number_format($topic['spuInfos'][$spu]['skuPrice']['price']/100,2)}}</span>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="col-xs-6">
-                                    <div class="p-t-10x">
-                                        <img class="img-thumbnail" src="/images/product/product2.jpg" alt="商品的名称">
-                                        <div class="p-y-10x">
-                                            <span class="text-primary font-size-sm m-l-5x"><strong>$60.95</strong></span>
-                                            <span class="font-size-xs text-common text-throughLine m-l-5x">$125.95</span>
-                                        </div>
-                                    </div>
-                                </div>
+                                @endforeach
                             </div>
                         </div>
                     @endif

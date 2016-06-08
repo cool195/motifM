@@ -45,13 +45,13 @@ class DesignerController extends ApiController
         );
 
         $result = $this->request('openapi', '', 'designer', $params);
-
         //设计师商品动态模版
         $params = array(
             'id' => $id,
         );
-        $Template = $this->request('openapi', 'designerf', 'content', $params);
-        return View('designer.show', ['designer' => $result['data'], 'template' => $Template]);
+        $product = $this->request('openapi', 'designerf', 'content', $params);
+
+        return View('designer.show', ['designer' => $result['data'], 'product' => $product['data']]);
     }
 }
 

@@ -41,7 +41,7 @@ class DailyController extends ApiController
 
         $result = $this->request('openapi', 'topicf', "content", $params);
 
-        return View('daily.topic', ['topic' => $result['data']['infos']]);
+        return View('daily.topic', ['topic' => $result['data']]);
     }
 }
 
