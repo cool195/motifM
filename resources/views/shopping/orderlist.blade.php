@@ -22,7 +22,7 @@
     <!-- 外层容器 -->
     <div id="body-content">
         <!-- 展开的汉堡菜单 -->
-        @include('nav')
+        include('nav')
         <!-- 主体内容 -->
         <div class="body-container">
             @include('navigator')
@@ -42,53 +42,243 @@
                 <!--</div>-->
 
                 <!-- 订单列表 -->
-                <section class="orderList">
-                @foreach($data['list'] as $list)
-                   @foreach($list['subOrderList'] as $subOrderList)
-                   <div class="orderList-item bg-white m-b-10x">
+                <section class="orderList" id="orderContainer" data-loading="false" data-pagenum="0">
+                    <div class="orderList-item bg-white m-b-10x">
+                        <div class="p-y-10x p-x-15x">
+                            <div class="flex flex-fullJustified flex-alignCenter">
+                                <span class="font-size-sm text-primary"><strong>ORDER PLACED:</strong> Apr 14, 2016</span>
+                                <a class="btn btn-primary btn-sm" href="">Order Detail</a>
+                            </div>
+                            <div class="font-size-sm text-primary">We excepct your order to be processed between: <br><span>Apr 15, 2016 - Apr 17, 2016 </span>
+                            </div>
+                        </div>
+                        <hr class="hr-base m-y-0 m-l-15x">
+                        <div class="flex p-a-10x">
+                            <div class="flex-fixedShrink">
+                                <img class="img-thumbnail" src="images/product/product1.jpg" width="70px" height="70px">
+                            </div>
+                            <div class="p-x-10x order-product-title">
+                                <h6 class="text-main font-size-md text-truncate">
+                                    <strong>Crown Shape Black Gold-plated Sterling Silver Engagehape Black Engagehape
+                                            Black</strong>
+                                </h6>
+                                <aside class="text-primary font-size-sm">
+                                    <div><span>Size: </span><span>11</span></div>
+                                    <div><span>Color: </span><span>Black</span></div>
+                                    <div><span>Qty: </span><span>1</span></div>
+                                    <div><span>Inside Engraving: </span><span>MY LOVE</span></div>
+                                </aside>
+                            </div>
+                        </div>
+                        <hr class="hr-base m-y-0 m-l-10x">
+                        <div class="flex flex-alignCenter flex-fullJustified p-a-10x">
+                            <div class="text-primary font-size-sm"><span>Order # </span><span>38579304985741</span>
+                            </div>
+                            <div class="text-primary font-size-sm"><span>Order Total: </span><span>$21.50</span></div>
+                        </div>
+                    </div>
+                    <div class="orderList-item bg-white m-b-10x">
                         <div class="p-a-10x">
                             <div class="flex flex-fullJustified flex-alignCenter">
-                                <span class="font-size-sm text-primary"><strong>ORDER PLACED:</strong>{{  $subOrderList['create_time']}}</span>
-                                <a class="btn btn-primary btn-sm" href="/shopping/order/orderdetail/{{ $subOrderList['sub_order_no']}}">Order Detail</a>
+                                <span class="font-size-sm text-primary"><strong>ORDER PLACED:</strong> Apr 14, 2016</span>
+                                <a class="btn btn-primary btn-sm" href="">Order Detail</a>
                             </div>
                             <!--<div class="font-size-sm text-primary p-t-10x">We excepct your order to be processed between: <br/><span>Apr 15, 2016 - Apr 17, 2016 </span>-->
                             <!--</div>-->
                         </div>
                         <hr class="hr-base m-y-0 m-l-10x">
-                        @foreach($subOrderList['lineOrderList'] as $lineOrderList)
                         <div class="flex p-a-10x">
                             <div class="flex-fixedShrink">
-                                <img class="img-thumbnail" src="{{'https://s3-us-west-1.amazonaws.com/emimagetest/n2/'.$lineOrderList['img_path']}}" width="70px" height="70px">
+                                <img class="img-thumbnail" src="images/product/product1.jpg" width="70px" height="70px">
                             </div>
                             <div class="p-x-10x order-product-title">
                                 <h6 class="text-main font-size-md text-truncate">
-                                    <strong>{{ $lineOrderList['main_title']}}</strong>
+                                    <strong>Crown Shape Black Gold-plated Sterling Silver Engagehape Black Engagehape
+                                            Black</strong>
                                 </h6>
                                 <aside class="text-primary font-size-sm">
                                     <div><span>Size: </span><span>11</span></div>
                                     <div><span>Color: </span><span>Black</span></div>
-                                    <div><span>Qty: </span><span>{{ $lineOrderList['sale_qtty'] }}</span></div>
+                                    <div><span>Qty: </span><span>1</span></div>
                                     <div><span>Inside Engraving: </span><span>MY LOVE</span></div>
                                 </aside>
                             </div>
                         </div>
-                        @endforeach
                         <hr class="hr-base m-y-0 m-l-10x">
                         <div class="flex flex-alignCenter flex-fullJustified p-a-10x">
-                            <div class="text-primary font-size-sm"><span>Order # </span><span>{{ $subOrderList['sub_order_no']}}</span>
+                            <div class="text-primary font-size-sm"><span>Order # </span><span>38579304985741</span>
                             </div>
-                            <div class="text-primary font-size-sm"><span>Order Total: </span><span>${{ $subOrderList['total_amount']}}</span></div>
+                            <div class="text-primary font-size-sm"><span>Order Total: </span><span>$21.50</span></div>
                         </div>
                     </div>
-                    @endforeach
-                @endforeach
+                    <div class="orderList-item bg-white m-b-10x">
+                        <div class="p-a-10x">
+                            <div class="flex flex-fullJustified flex-alignCenter">
+                                <span class="font-size-sm text-primary"><strong>ORDER PLACED:</strong> Apr 14, 2016</span>
+                                <a class="btn btn-primary btn-sm" href="">Order Detail</a>
+                            </div>
+                            <!--<div class="font-size-sm text-primary p-t-10x">We excepct your order to be processed between: <br/><span>Apr 15, 2016 - Apr 17, 2016 </span>-->
+                            <!--</div>-->
+                        </div>
+                        <hr class="hr-base m-y-0 m-l-10x">
+                        <div class="flex p-a-10x">
+                            <div class="flex-fixedShrink">
+                                <img class="img-thumbnail" src="images/product/product1.jpg" width="70px" height="70px">
+                            </div>
+                            <div class="p-x-10x order-product-title">
+                                <h6 class="text-main font-size-md text-truncate">
+                                    <strong>Crown Shape Black Gold-plated Sterling Silver Engagehape Black Engagehape
+                                            Black</strong>
+                                </h6>
+                                <aside class="text-primary font-size-sm">
+                                    <div><span>Size: </span><span>11</span></div>
+                                    <div><span>Color: </span><span>Black</span></div>
+                                    <div><span>Qty: </span><span>1</span></div>
+                                    <div><span>Inside Engraving: </span><span>MY LOVE</span></div>
+                                </aside>
+                            </div>
+                        </div>
+                        <div class="flex p-a-10x">
+                            <div class="flex-fixedShrink">
+                                <img class="img-thumbnail" src="images/product/product1.jpg" width="70px" height="70px">
+                            </div>
+                            <div class="p-x-10x order-product-title">
+                                <h6 class="text-main font-size-md text-truncate">
+                                    <strong>Crown Shape Black Gold-plated Sterling Silver Engagehape Black Engagehape
+                                            Black</strong>
+                                </h6>
+                                <aside class="text-primary font-size-sm">
+                                    <div><span>Size: </span><span>11</span></div>
+                                    <div><span>Color: </span><span>Black</span></div>
+                                    <div><span>Qty: </span><span>1</span></div>
+                                    <div><span>Inside Engraving: </span><span>MY LOVE</span></div>
+                                </aside>
+                            </div>
+                        </div>
+                        <hr class="hr-base m-y-0 m-l-10x">
+                        <div class="flex flex-alignCenter flex-fullJustified p-a-10x">
+                            <div class="text-primary font-size-sm"><span>Order # </span><span>38579304985741</span>
+                            </div>
+                            <div class="text-primary font-size-sm"><span>Order Total: </span><span>$21.50</span></div>
+                        </div>
+                    </div>
+                    <div class="orderList-item bg-white m-b-10x">
+                        <div class="p-a-10x">
+                            <div class="flex flex-fullJustified flex-alignCenter">
+                                <span class="font-size-sm text-primary"><strong>ORDER PLACED:</strong> Apr 14, 2016</span>
+                                <a class="btn btn-primary btn-sm" href="">Order Detail</a>
+                            </div>
+                            <!--<div class="font-size-sm text-primary p-t-10x">We excepct your order to be processed between: <br/><span>Apr 15, 2016 - Apr 17, 2016 </span>-->
+                            <!--</div>-->
+                        </div>
+                        <hr class="hr-base m-y-0 m-l-10x">
+                        <div class="flex p-a-10x">
+                            <div class="flex-fixedShrink">
+                                <img class="img-thumbnail" src="images/product/product1.jpg" width="70px" height="70px">
+                            </div>
+                            <div class="p-x-10x order-product-title">
+                                <h6 class="text-main font-size-md text-truncate">
+                                    <strong>Crown Shape Black Gold-plated Sterling Silver Engagehape Black Engagehape
+                                            Black</strong>
+                                </h6>
+                                <aside class="text-primary font-size-sm">
+                                    <div><span>Size: </span><span>11</span></div>
+                                    <div><span>Color: </span><span>Black</span></div>
+                                    <div><span>Qty: </span><span>1</span></div>
+                                    <div><span>Inside Engraving: </span><span>MY LOVE</span></div>
+                                </aside>
+                            </div>
+                        </div>
+                        <div class="flex p-a-10x">
+                            <div class="flex-fixedShrink">
+                                <img class="img-thumbnail" src="images/product/product1.jpg" width="70px" height="70px">
+                            </div>
+                            <div class="p-x-10x order-product-title">
+                                <h6 class="text-main font-size-md text-truncate">
+                                    <strong>Crown Shape Black Gold-plated Sterling Silver Engagehape Black Engagehape
+                                            Black</strong>
+                                </h6>
+                                <aside class="text-primary font-size-sm">
+                                    <div><span>Size: </span><span>11</span></div>
+                                    <div><span>Color: </span><span>Black</span></div>
+                                    <div><span>Qty: </span><span>1</span></div>
+                                    <div><span>Inside Engraving: </span><span>MY LOVE</span></div>
+                                </aside>
+                            </div>
+                        </div>
+                        <hr class="hr-base m-y-0 m-l-10x">
+                        <div class="flex flex-alignCenter flex-fullJustified p-a-10x">
+                            <div class="text-primary font-size-sm"><span>Order # </span><span>38579304985741</span>
+                            </div>
+                            <div class="text-primary font-size-sm"><span>Order Total: </span><span>$21.50</span></div>
+                        </div>
+                    </div>
+                </section>
+                <section class="loading" id="loading" style="display: none">
+                    <div class="loader"></div>
                 </section>
             </section>
 <!-- 页脚 功能链接 start-->
-@include('footer')
+ @include('footer')
 <!-- 页脚 功能链接 end-->
         </div>
     </div>
 </body>
+<!-- 模板 -->
+<template id="tpl-orderList">
+    @{{ each list }}
+    <div class="orderList-item bg-white m-b-10x">
+        <div class="p-a-10x">
+            <div class="flex flex-fullJustified flex-alignCenter">
+                <span class="font-size-sm text-primary">
+                    <strong>@{{ $value.subOrderList.status_info }}</strong>@{{ $value.subOrderList.update_time }}
+                </span>
+                <a class="btn btn-primary btn-sm" href="">Order Detail</a>
+            </div>
+            <div class="font-size-sm text-primary p-t-10x">
+                @{{ $value.subOrderList.status_explain }}
+            </div>
+        </div>
+        <hr class="hr-base m-y-0 m-l-10x">
+
+        @{{ each $value.subOrderList.lineOrderList }}
+        <div class="flex p-a-10x">
+            <div class="flex-fixedShrink">
+                <img class="img-thumbnail img-lazy" src="/images/product/bg-product.jpg" data-original="https://s3-us-west-1.amazonaws.com/emimagetest/n4/@{{ $value.img_path }}" width="70px" height="70px">
+            </div>
+            <div class="p-x-10x order-product-title">
+                <h6 class="text-main font-size-md text-truncate">
+                    <strong>@{{ $value.main_title }}</strong>
+                </h6>
+                <aside class="text-primary font-size-sm">
+                    @{{ each $value.attrValues }}
+                    <div><span>@{{ $value.attr_type_value }}: </span><span>@{{ $value.attr_value }}</span></div>
+                    @{{ /each }}
+
+                    <div><span>Qty: </span><span>${{ $value.sale_qtty }}</span></div>
+
+                    @{{ if $value.vas_info !== null }}
+                    @{{ each $value.vas_info }}
+                    <div><span>@{{ $value.vas_name }}: </span><span>@{{ $value.user_remark }}</span></div>
+                    @{{ /each }}
+                    @{{ /if }}
+                </aside>
+            </div>
+        </div>
+        @{{ /each }}
+
+        <hr class="hr-base m-y-0 m-l-10x">
+        <div class="flex flex-alignCenter flex-fullJustified p-a-10x">
+            <div class="text-primary font-size-sm">
+                <span>Order # </span><span>@{{ $value.subOrderList.sub_order_no }}</span>
+            </div>
+            <div class="text-primary font-size-sm"><span>Order Total: </span><span>$@{{ $value.subOrderList.pay_amount/100 }}</span>
+            </div>
+        </div>
+    </div>
+    @{{ /each }}
+</template>
 <script src="/scripts/vendor.js"></script>
+
+<script src="/scripts/orderList.js"></script>
 </html>

@@ -17,6 +17,9 @@ $app->get('/', function () use ($app) {
 
 $app->get('/book', ['middleware' => 'test', 'uses'=> 'BookController@index']);
 
+$app->get('/', 'Shopping\UserController@index');
+
+
 $app->get('/shopping', 'Shopping\ShoppingController@index');
 //$app->get('/shopping/category', 'Shopping\ShoppingController@getShoppingCategoryList');
 //$app->get('/shopping/list', 'Shopping\ShoppingController@getShoppingProductList');
@@ -65,7 +68,8 @@ $app->get('/shopping/user/login', 'Shopping\UserController@login');
 $app->get('/shopping/user/forget', 'Shopping\UserController@forgetPassword');
 
 $app->get('/shopping/order', 'Shopping\OrderController@index');
-$app->get('/shopping/order/orderlist', 'Shopping\OrderController@getOrderList');
+//$app->get('/shopping/order/orderlist', 'Shopping\OrderController@getOrderList');
+$app->get('/orders', 'Shopping\OrderController@getOrderList');
 $app->get('/shopping/order/orderdetail/{subno}', 'Shopping\OrderController@orderDetail');
 $app->get('/shopping/order/orderSubmit', 'Shopping\OrderController@orderSubmit');
 
