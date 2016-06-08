@@ -7,7 +7,7 @@ use App\Http\Controllers\ApiController;
 
 class DailyController extends ApiController
 {
-    //专题列表
+    //Daily首页列表
     public function index(Request $request)
     {
         $params = array(

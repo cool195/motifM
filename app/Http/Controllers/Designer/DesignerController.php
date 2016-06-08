@@ -7,21 +7,36 @@ use App\Http\Controllers\ApiController;
 
 class DesignerController extends ApiController
 {
+    //设计师首页
     public function index(Request $request)
     {
         $params = array(
-            'cmd' => $request->input("cmd", 'recdesignerlist'),
+            'cmd' => $request->input('cmd'),//designerinfolist
             'token' => '1110',
-            'pin' => 'e052d5681da34fad83d0597b7b72acf7'
+            'pin' => 'e052d5681da34fad83d0597b7b72acf7',
+            'size' => $request->input('size', 10),
+            'num' => $request->input('num', 1),
         );
-        $service = "designer";
-        $result = $this->request('openapi', '', $service, $params);
-        return View('designer.index', ['recdesigner' => $result['data']['list']]);
+
+        if (empty($params['cmd'])) {
+            //首次加载,请求推荐设计师数据
+            $result = $this->request('openapi', '', 'designer', array(
+                'cmd' => 'recdesignerlist',
+                'token' => '1110',
+                'pin' => 'e052d5681da34fad83d0597b7b72acf7'
+            ));
+            return View('designer.index', ['recdesigner' => $result['data']['list']]);
+        } else {
+            //非首次加载,请求设计师列表数据
+            $result = $this->request('openapi', '', 'designer', $params);
+            return $result;
+        }
+
     }
 
+    //设计师详情
     public function show(Request $request, $id)
     {
-        //设计师详情
         $params = array(
             'cmd' => $request->input("cmd", 'designerdetail'),
             'pin' => 'e052d5681da34fad83d0597b7b72acf7',
@@ -29,12 +44,14 @@ class DesignerController extends ApiController
             'd_id' => $id,
         );
 
-        $service = "designer";
-        $result = $this->request('openapi', '', $service, $params);
+        $result = $this->request('openapi', '', 'designer', $params);
 
-        //设计师动态模版
-        
-        return View('designer.show', ['designer' => $result['data']]);
+        //设计师商品动态模版
+        $params = array(
+            'id' => $id,
+        );
+        $Template = $this->request('openapi', 'designerf', 'content', $params);
+        return View('designer.show', ['designer' => $result['data'], 'template' => $Template]);
     }
 }
 
