@@ -67,7 +67,8 @@ $app->get('/shopping/addr/default', 'Shopping\AddressController@getUserDefaultAd
 $app->get('/shopping/addr/add', 'Shopping\AddressController@getUserAddr');
 $app->get('/shopping/addr/modify', 'Shopping\AddressController@modifyUserAddr');
 $app->get('/shopping/addr/mdefault', 'Shopping\AddressController@modifyUserDefaultAddr');
-$app->get('/shopping/addr/delete', 'Shopping\AddressController@delUserAddr');
+//$app->get('/shopping/addr/delete', 'Shopping\AddressController@delUserAddr');
+$app->delete('/addresses', 'Shopping\AddressController@delUserAddr');
 $app->get('/shopping/addr/country', 'Shopping\AddressController@getCountry');
 
 
