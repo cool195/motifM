@@ -57,7 +57,7 @@
                                            </h6> -->
                                         <h6 class="text-main font-size-md p-r-10x">
                                             <strong>{{$showSku['main_title']}}</strong></h6>
-                                        <span class="text-primary font-size-sm flex-fixedShrink">${{$showSku['sale_price']}}</span>
+                                        <span class="text-primary font-size-sm flex-fixedShrink">${{number_format(($showSku['sale_price'] / 100), 2)}}</span>
                                     </article>
                                     <aside class="cartItem-secondaryInfo text-primary font-size-sm">
                                         <div><span>Size: </span><span>11</span></div>
@@ -66,7 +66,7 @@
                                         <div class="flex flex-fullJustified">
                                             <div class="">
                                                 <span>Inside Engraving: </span><span>MY LOVE</span></div>
-                                            <div class="">${{$showSku['total_amount']}}</div>
+                                            <div class="">${{number_format(($showSku['total_amount'] / 100), 2)}}</div>
                                         </div>
                                     </aside>
                                 </div>
@@ -139,7 +139,7 @@
                                             <!--<strong>Crown Shape Black Gold-plated Sterling Silver Engage...</strong>-->
                                             <strong>{{$showSku['main_title']}}</strong>
                                         </h6>
-                                        <span class="text-primary font-size-sm flex-fixedShrink">${{$showSku['sale_price']}}</span>
+                                        <span class="text-primary font-size-sm flex-fixedShrink">${{number_format(($showSku['sale_price'] / 100), 2)}}</span>
                                     </article>
                                     <aside class="cartItem-secondaryInfo text-primary font-size-sm">
                                         <div><span>Size: </span><span>11</span></div>
@@ -148,7 +148,7 @@
                                         <div class="flex flex-fullJustified">
                                             <div class="">
                                                 <span>Inside Engraving: </span><span>MY LOVE</span></div>
-                                            <div class="">${{$showSku['total_amount']}}</div>
+                                            <div class="">${{number_format(($showSku['total_amount']), 2)}}</div>
                                         </div>
                                     </aside>
                                 </div>
