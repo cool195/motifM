@@ -9,15 +9,21 @@ use App\Http\Controllers\ApiController;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\Session;
+use Illuminate\View\View;
 
 class UserController extends ApiController
 {
     const API_SYSTEM = "";
     const API_SERVICE = "user";
 
-    public function index(Request $request)
+    public function setting(Request $request)
     {
         return View('shopping.profilesetting');
+    }
+    
+    public function changeProfile(Request $request)
+    {
+        return View('shopping.profilesetting_changeprofile');
     }
 
     public function register(Request $request)
@@ -131,6 +137,11 @@ class UserController extends ApiController
         return $result;
     }
 
+    public function changePassword(Request $request)
+    {
+        return View('shopping.profilesetting_changepassword');
+    }
+
     public function modifyUserPwd(Request $request)
     {
         $cmd = "modifypwd";
@@ -199,6 +210,11 @@ class UserController extends ApiController
             $result['data'] = array();
         }
         return $result;
+    }
+
+    public function shippingAddress(Request $request)
+    {
+        return View('shopping.profilesetting_shippingaddress');
     }
 
 }

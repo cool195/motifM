@@ -17,7 +17,6 @@ $app->get('/', function () use ($app) {
 
 $app->get('/book', ['middleware' => 'test', 'uses'=> 'BookController@index']);
 
-$app->get('/', 'Shopping\UserController@index');
 
 
 $app->get('/shopping', 'Shopping\ShoppingController@index');
@@ -76,6 +75,10 @@ $app->get('/shopping/addr/country', 'Shopping\AddressController@getCountry');
 $app->get('/login', 'Shopping\UserController@login');
 $app->get('/register', 'Shopping\UserController@register');
 $app->get('/reset', 'Shopping\UserController@reset');
+$app->get('/user/setting', 'Shopping\UserController@setting');
+$app->get('/user/changeprofile', 'Shopping\UserController@changeProfile');
+$app->get('/user/shippingaddress', 'Shopping\UserController@shippingAddress');
+$app->get('/user/changepassword', 'Shopping\UserController@changePassword');
 
 $app->get('/user/signup', 'Shopping\UserController@signup');
 $app->get('/user/logincheck', 'Shopping\UserController@loginCheck');
