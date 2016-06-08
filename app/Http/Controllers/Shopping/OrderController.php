@@ -36,7 +36,38 @@ class OrderController extends ApiController
 			$result['success'] = false;	
 			$result['error_msg'] = "Data access failed";
 			$result['data'] = array();
+		}else{
+			$result = $this->resultJsonDecode($result);
 		}
+		return $result;
+	}
+
+	private function resultJsonDecode(Array $result)
+	{
+		$orderList = array();
+		foreach($result['data']['list'] as $order)
+		{
+			$subOrderList = array();
+			foreach($order['subOrderList'] as $subOrder)
+			{
+				$lineOrderList = array();
+				foreach($subOrder['lineOrderList'] as $lineOrder)
+				{
+					if(!empty($lineOrder['attrValues'])){
+						$lineOrder['attrValues'] = json_decode($lineOrder['attrValues'], true);
+					}
+					if(!empty($lineOrder['vas_info'])){
+						$lineOrder['vas_info'] = json_decode($lineOrder['vas_info'], true);
+					}
+					$lineOrderList[] = $lineOrder;
+				}
+				$subOrder['lineOrderList'] = $lineOrderList;
+				$subOrderList[] = $subOrder;
+			}
+			$order['subOrderList'] = $subOrderList;
+			$orderList[] = $order;
+		}
+		$result['data']['list'] = $orderList;
 		return $result;
 	}
 
