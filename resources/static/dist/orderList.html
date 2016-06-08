@@ -409,29 +409,28 @@
         <div class="p-a-10x">
             <div class="flex flex-fullJustified flex-alignCenter">
                 <span class="font-size-sm text-primary">
-                    <strong>@{{ $value.status_info }}</strong>@{{ $value.update_time }}
+                    <strong>@{{ $value.subOrderList.status_info }}</strong>@{{ $value.subOrderList.update_time }}
                 </span>
                 <a class="btn btn-primary btn-sm" href="">Order Detail</a>
             </div>
             <div class="font-size-sm text-primary p-t-10x">
-                @{{ $value.status_explain }}
+                @{{ $value.subOrderList.status_explain }}
             </div>
         </div>
         <hr class="hr-base m-y-0 m-l-10x">
-        @{{ each value }}
+        @{{ each $value.subOrderList.lineOrderList }}
         <div class="flex p-a-10x">
             <div class="flex-fixedShrink">
-                <img class="img-thumbnail img-lazy" src="/images/product/bg-product.jpg" data-original="https://s3-us-west-1.amazonaws.com/emimagetest/n4/@{{ $value.main_image_url }}" width="70px" height="70px">
+                <img class="img-thumbnail img-lazy" src="/images/product/bg-product.jpg" data-original="https://s3-us-west-1.amazonaws.com/emimagetest/n4/@{{ $value.img_path }}" width="70px" height="70px">
             </div>
             <div class="p-x-10x order-product-title">
                 <h6 class="text-main font-size-md text-truncate">
-                    <strong>Crown Shape Black Gold-plated Sterling Silver Engagehape Black Engagehape
-                            Black</strong>
+                    <strong>@{{ $value.main_title }}</strong>
                 </h6>
                 <aside class="text-primary font-size-sm">
                     <div><span>Size: </span><span>11</span></div>
                     <div><span>Color: </span><span>Black</span></div>
-                    <div><span>Qty: </span><span>1</span></div>
+                    <div><span>Qty: </span><span>${{ $value.sale_qtty3 }}</span></div>
                     <div><span>Inside Engraving: </span><span>MY LOVE</span></div>
                 </aside>
             </div>
@@ -439,9 +438,11 @@
         @{{ /each }}
         <hr class="hr-base m-y-0 m-l-10x">
         <div class="flex flex-alignCenter flex-fullJustified p-a-10x">
-            <div class="text-primary font-size-sm"><span>Order # </span><span>38579304985741</span>
+            <div class="text-primary font-size-sm">
+                <span>Order # </span><span>@{{ $value.subOrderList.sub_order_no }}</span>
             </div>
-            <div class="text-primary font-size-sm"><span>Order Total: </span><span>$21.50</span></div>
+            <div class="text-primary font-size-sm"><span>Order Total: </span><span>$@{{ $value.subOrderList.pay_amount }}</span>
+            </div>
         </div>
     </div>
     @{{ /each }}
