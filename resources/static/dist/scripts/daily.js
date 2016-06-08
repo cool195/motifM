@@ -8,12 +8,12 @@
 (function ($) {
     // 加载动画显示
     function loadingShow() {
-        $('#dailyContainer').find('.loading').show();
+        $("#dailyContainer").find('.loading').show();
     }
 
     // 加载动画隐藏
     function loadingHide() {
-        $('#dailyContainer').find('.loading').hide();
+        $("#dailyContainer").find('.loading').hide();
     }
 
     // ajax 请求 获取 daily 数据
@@ -39,7 +39,7 @@
         loadingShow();
         $.ajax({
             url: '/daily',
-            data: { cmd: 'list', pagenum: NextNum, pagesize: 3 }
+            data: { cmd: "list", pagenum: NextNum, pagesize: 3 }
         }).done(function (data) {
             console.info(data);
             if (data.data === null || data.data === '') {} else if (data.data.list === null || data.data.list === '' || data.data.list === undefined) {
@@ -49,7 +49,7 @@
                 appendDailyList(data.data);
                 // 页数 +1
                 $DailyContainer.data('pagenum', PageNum);
-                console.info('当前页码数为' + PageNum);
+                console.info("当前页码数为" + PageNum);
 
                 // 图片延迟加载
                 $('img.img-lazy').lazyload({
@@ -72,7 +72,7 @@
         // 把 字符串 转义成 HTML
         var StageCache = $.parseHTML(TplHtml);
         // 将 html 插入页面相应位置
-        $('.daily-content').append(StageCache);
+        $(".daily-content").append(StageCache);
     }
 
     // 为页面绑定 滚动条事件
