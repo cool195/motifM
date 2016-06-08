@@ -27,11 +27,15 @@ $app->get('/stock/checkstock', 'Shopping\ShoppingController@checkStock');
 
 $app->get('/detail/{spu}', 'Shopping\ProductController@index');
 
+
+
 $app->get('/shopping/cart', 'Shopping\CartController@index');
 $app->get('/shopping/ordercheckout', 'Shopping\CartController@orderCheckout');
 $app->get('/shopping/cart/addresslist', 'Shopping\CartController@addressList');
 $app->get('/shopping/cart/coupon', 'Shopping\CartController@coupon');
 $app->get('/shopping/cart/message', 'Shopping\CartController@message');
+
+
 
 $app->get('/shopping/cart/amount', 'Shopping\CartController@getCartAmount');
 $app->get('/shopping/cart/list', 'Shopping\CartController@getCartList');
@@ -45,6 +49,8 @@ $app->get('/shopping/cart/alterQtty', 'Shopping\CartController@alterCartProQtty'
 //$app->get('/shopping/cart/promptlyBuy', 'Shopping\CartController@promptlyBuy');
 $app->get('/shopping/cart/other', 'Shopping\CartController@operateCartProduct');
 
+
+
 $app->get('/shopping/pay/token', 'Shopping\PayController@getPayToken');
 $app->get('/shopping/pay/method', 'Shopping\PayController@createPayMethod');
 $app->get('/shopping/pay/pay', 'Shopping\PayController@pay');
@@ -55,6 +61,8 @@ $app->get('/shopping/pay/getDefault', 'Shopping\PayController@getDefaultMethod')
 $app->get('/shopping/pay/setDefault', 'Shopping\PayController@setDefaultMethod');
 $app->get('/shopping/pay/check', 'Shopping\PayController@check');
 
+
+
 $app->get('/shopping/addr/list', 'Shopping\AddressController@getUserAddrList');
 $app->get('/shopping/addr/default', 'Shopping\AddressController@getUserDefaultAddr');
 $app->get('/shopping/addr/add', 'Shopping\AddressController@getUserAddr');
@@ -63,9 +71,23 @@ $app->get('/shopping/addr/mdefault', 'Shopping\AddressController@modifyUserDefau
 $app->get('/shopping/addr/delete', 'Shopping\AddressController@delUserAddr');
 $app->get('/shopping/addr/country', 'Shopping\AddressController@getCountry');
 
-$app->get('/shopping/user/signup', 'Shopping\UserController@signup');
-$app->get('/shopping/user/login', 'Shopping\UserController@login');
-$app->get('/shopping/user/forget', 'Shopping\UserController@forgetPassword');
+
+
+$app->get('/login', 'Shopping\UserController@login');
+$app->get('/register', 'Shopping\UserController@register');
+$app->get('/reset', 'Shopping\UserController@reset');
+
+$app->get('/user/signup', 'Shopping\UserController@signup');
+$app->get('/user/logincheck', 'Shopping\UserController@loginCheck');
+$app->get('/user/signout', 'Shopping\UserController@signout');
+$app->get('/user/reset', 'Shopping\UserController@resetPassword');
+$app->get('/user/forget', 'Shopping\UserController@forgetPassword');
+$app->get('/user/modifyUserPwd', 'Shopping\UserController@modifyUserPwd');
+$app->get('/user/trilogin', 'Shopping\UserController@tryPrtLogin');
+$app->get('/user/userdetail', 'Shopping\UserController@getUserDetailInfo');
+$app->get('/user/modifyUserInfo', 'Shopping\UserController@modifyUserInfo');
+
+
 
 $app->get('/shopping/orderlist', 'Shopping\OrderController@index');
 //$app->get('/shopping/order/orderlist', 'Shopping\OrderController@getOrderList');
