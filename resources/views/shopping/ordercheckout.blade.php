@@ -41,12 +41,14 @@
                                     <h6 class="text-main font-size-md p-r-10x">
                                         <strong>{{$showSku['main_title']}}</strong>
                                     </h6>
-                                    <span class="text-primary font-size-sm flex-fixedShrink">${{ round(($showSku['sale_price'] / 100), 2) }}</span>
+                                    <span class="text-primary font-size-sm flex-fixedShrink">${{ number_format(($showSku['sale_price'] / 100), 2) }}</span>
                                 </article>
                                 <aside class="checkoutItem-secondaryInfo p-b-10x text-primary font-size-sm">
-                                    <div><span>Size: </span><span>11</span></div>
-                                    <div><span>Color: </span><span>Black</span></div>
-                                    <div><span>Material: </span><span>Gold</span></div>
+                                    @if(!empty($showSku['attrValues']))
+                                        @foreach($showSku['attrValues'] as $attrValue)
+                                            <div><span>{{$attrValue['attr_type_value'] }}: </span><span>{{ $attrValue['attr_value'] }}}</span></div>
+                                        @endforeach
+                                    @endif
                                     <div class="flex flex-fullJustified">
                                         <div class="">
                                             <span>Inside Engraving: </span><span>MY LOVE</span></div>
@@ -113,13 +115,13 @@
                 <!-- 结算总价 -->
                 <aside class="bg-white p-a-10x m-b-10x">
                     <div class="flex flex-fullJustified text-primary font-size-sm">
-                        <span>Items({{$data['total_sku_qtty']}})</span><span>${{ round(($data['total_amount'] / 100), 2)}}</span>
+                        <span>Items({{$data['total_sku_qtty']}})</span><span>${{ number_format(($data['total_amount'] / 100), 2)}}</span>
                     </div>
                     <div class="flex flex-fullJustified text-primary font-size-sm">
-                        <span>Extra</span><span>${{round(($data['vas_amount'] / 100), 2)}}</span>
+                        <span>Extra</span><span>${{number_format(($data['vas_amount'] / 100), 2)}}</span>
                     </div>
                     <div class="flex flex-fullJustified text-primary font-size-sm">
-                        <span>Shipping to 10000</span><span>${{ round(($data['freight_amount'] / 100), 2)}}</span>
+                        <span>Shipping to 10000</span><span>${{ number_format(($data['freight_amount'] / 100), 2)}}</span>
                     </div>
                     <div class="flex flex-fullJustified text-primary font-size-sm">
                         <span>Discount</span><span>20%</span>
@@ -128,7 +130,7 @@
                         <span>Coupon</span><span>-${{$data['promot_discount_amount'] / 100}}</span>
                     </div>
                     <div class="flex flex-fullJustified p-t-10x text-primary font-size-sm">
-                        <span><strong>Order Total</strong></span><span><strong>${{ round(($data['pay_amount'] / 100), 2)}}</strong></span>
+                        <span><strong>Order Total</strong></span><span><strong>${{ number_format(($data['pay_amount'] / 100), 2)}}</strong></span>
                     </div>
                 </aside>
 

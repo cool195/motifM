@@ -13,7 +13,7 @@
                 </div>
                 <div class="flex text-primary">
                     <span class="orderInfo-subTitle flex-fixedShrink">Order total</span>
-                    <span>${{$data['total_amount']}}({{ $data['item_qtty'] }} item)</span>
+                    <span>${{number_format(($data['total_amount'] / 100), 2)}}({{ $data['item_qtty'] }} item)</span>
                 </div>
             </article>
 
@@ -105,22 +105,22 @@
             <aside class="bg-white m-b-10x">
                 <div class="p-a-10x">
                     <div class="flex flex-fullJustified text-primary font-size-sm">
-                        <span>Items({{ $data['item_qtty'] }})</span><span>${{$data['pay_amount']}}</span>
+                        <span>Items({{ $data['item_qtty'] }})</span><span>${{number_format(($data['pay_amount'] / 100), 2)}}</span>
                     </div>
                     <div class="flex flex-fullJustified text-primary font-size-sm">
                         <span>Extra</span><span>$21</span>
                     </div>
                     <div class="flex flex-fullJustified text-primary font-size-sm">
-                        <span>Shipping to 10000</span><span>${{ $data['freight_amount'] }}</span>
+                        <span>Shipping to 10000</span><span>${{ number_format(($data['freight_amount'] / 100), 2) }}</span>
                     </div>
                     <div class="flex flex-fullJustified text-primary font-size-sm">
-                        <span>Discount</span><span>-{{ $data['promot_discount_amount'] }}%</span>
+                        <span>Discount</span><span>-{{ number_format(($data['promot_discount_amount'] / 100), 2)}}%</span>
                     </div>
                     <div class="flex flex-fullJustified text-primary font-size-sm">
-                        <span>Coupon</span><span>-${{ $data['cps_amount'] }}</span>
+                        <span>Coupon</span><span>-${{ number_format(($data['cps_amount'] / 100), 2)}}</span>
                     </div>
                     <div class="flex flex-fullJustified p-t-10x text-primary font-size-sm">
-                        <span><strong>Order Total</strong></span><span><strong>${{ $data['total_amount'] }}</strong></span>
+                        <span><strong>Order Total</strong></span><span><strong>${{ number_format(($data['total_amount'] / 100), 2)}}</strong></span>
                     </div>
                 </div>
                 <hr class="hr-base m-a-0">
