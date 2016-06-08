@@ -255,7 +255,7 @@
                     <div><span>@{{ $value.attr_type_value }}: </span><span>@{{ $value.attr_value }}</span></div>
                     @{{ /each }}
 
-                    <div><span>Qty: </span><span>$@{{ $value.sale_qtty }}</span></div>
+                    <div><span>Qty: </span><span>@{{ $value.sale_qtty }}</span></div>
 
                     @{{ if $value.vas_info !== null }}
                     @{{ each $value.vas_info }}
