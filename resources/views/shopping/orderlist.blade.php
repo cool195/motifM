@@ -19,41 +19,41 @@
 
 </head>
 <body>
-    <!-- 外层容器 -->
-    <div id="body-content">
-        <!-- 展开的汉堡菜单 -->
-        @include('nav')
-        <!-- 主体内容 -->
-        <div class="body-container">
-            @include('navigator')
+<!-- 外层容器 -->
+<div id="body-content">
+    <!-- 展开的汉堡菜单 -->
+@include('nav')
+<!-- 主体内容 -->
+    <div class="body-container">
+    @include('navigator')
+    <!-- 订单列表 -->
+        <section class="p-b-20x">
+            <article class="font-size-md text-main p-a-10x"><strong>Orders</strong></article>
+
+            <!-- 订单数为0 -->
+            <!--<div class="m-t-20x">-->
+            <!--<div class="order-empty-content m-t-20x p-x-10x">-->
+            <!--<div class="container m-t-20x order-emptyInfo">-->
+            <!--<div class="m-b-20x p-b-5x"><i class="btn-orderEmpty iconfont icon-error"></i></div>-->
+            <!--<p class="text-primary font-size-sm m-b-20x p-b-20x">No orders found</p>-->
+            <!--<a href="#" class="btn btn-primary btn-block btn-sm">Go Shopping</a>-->
+            <!--</div>-->
+            <!--</div>-->
+            <!--</div>-->
+
             <!-- 订单列表 -->
-            <section class="p-b-20x">
-                <article class="font-size-md text-main p-a-10x"><strong>Orders</strong></article>
+            <section class="orderList" id="orderContainer" data-loading="false" data-pagenum="0">
 
-                <!-- 订单数为0 -->
-                <!--<div class="m-t-20x">-->
-                <!--<div class="order-empty-content m-t-20x p-x-10x">-->
-                <!--<div class="container m-t-20x order-emptyInfo">-->
-                <!--<div class="m-b-20x p-b-5x"><i class="btn-orderEmpty iconfont icon-error"></i></div>-->
-                <!--<p class="text-primary font-size-sm m-b-20x p-b-20x">No orders found</p>-->
-                <!--<a href="#" class="btn btn-primary btn-block btn-sm">Go Shopping</a>-->
-                <!--</div>-->
-                <!--</div>-->
-                <!--</div>-->
-
-                <!-- 订单列表 -->
-                <section class="orderList" id="orderContainer" data-loading="false" data-pagenum="0">
-
-                </section>
-                <section class="loading" id="loading" style="display: none">
-                    <div class="loader"></div>
-                </section>
             </section>
-<!-- 页脚 功能链接 start-->
- @include('footer')
-<!-- 页脚 功能链接 end-->
-        </div>
+            <section class="loading" id="loading" style="display: none">
+                <div class="loader"></div>
+            </section>
+        </section>
+        <!-- 页脚 功能链接 start-->
+    @include('footer')
+    <!-- 页脚 功能链接 end-->
     </div>
+</div>
 </body>
 <!-- 模板 -->
 <template id="tpl-orderList">
@@ -75,7 +75,9 @@
         @{{ each $value.subOrderList.lineOrderList }}
         <div class="flex p-a-10x">
             <div class="flex-fixedShrink">
-                <img class="img-thumbnail img-lazy" src="/images/product/bg-product.jpg" data-original="https://s3-us-west-1.amazonaws.com/emimagetest/n4/@{{ $value.img_path }}" width="70px" height="70px">
+                <img class="img-thumbnail img-lazy" src="/images/product/bg-product.jpg"
+                     data-original="https://s3-us-west-1.amazonaws.com/emimagetest/n4/@{{ $value.img_path }}"
+                     width="70px" height="70px">
             </div>
             <div class="p-x-10x order-product-title">
                 <h6 class="text-main font-size-md text-truncate">
@@ -103,7 +105,8 @@
             <div class="text-primary font-size-sm">
                 <span>Order # </span><span>@{{ $value.subOrderList.sub_order_no }}</span>
             </div>
-            <div class="text-primary font-size-sm"><span>Order Total: </span><span>$@{{ $value.subOrderList.pay_amount/100 }}</span>
+            <div class="text-primary font-size-sm">
+                <span>Order Total: </span><span>$@{{ ($value.subOrderList.pay_amount/100).toFixed(2) }}</span>
             </div>
         </div>
     </div>
