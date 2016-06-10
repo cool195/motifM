@@ -70,4 +70,6 @@
 <div class="text-common text-center font-size-sm">Copyright @ 2016 EverMarker Inc. All rights
 												  reserved.
 </div>
+
+
 </footer>
