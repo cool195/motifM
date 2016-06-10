@@ -19,9 +19,7 @@ class DailyController extends ApiController
         if(empty($params['cmd'])){
             return View('daily.index');
         }else{
-            $system = "";
-            $service = "daily";
-            $result = $this->request('openapi', $system, $service, $params);
+            $result = $this->request('openapi', '', 'daily', $params);
             if (empty($result)) {
                 $result['success'] = false;
                 $result['error_msg'] = "Data access failed";
