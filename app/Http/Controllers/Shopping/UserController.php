@@ -10,6 +10,7 @@ use App\Http\Controllers\ApiController;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Redirect;
 use Illuminate\View\View;
 
 class UserController extends ApiController
@@ -49,17 +50,18 @@ class UserController extends ApiController
             $result['data'] = array();
         } else{
             if($result['success']){
+                $result['redirectUrl'] = "/login";
                 $expiresAt = Carbon::now()->addMinute(10);
                 Cache::forget('user');
                 Cache::put('user', $result['data'], $expiresAt);
             }
         }
-        return $result;
+         return $result;
     }
 
     public function login(Request $request)
     {
-        return View('shopping.login');
+        return view('shopping.login');
     }
 
     public function loginCheck(Request $request)
@@ -78,6 +80,7 @@ class UserController extends ApiController
             $result['data'] = array();
         } else {
             if ($result['success']) {
+                $result['redirectUrl'] = "/login";
                 $expiresAt = Carbon::now()->addMinute(10);
                 Cache::forget('user');
                 Cache::put("user", $result['data'], $expiresAt);
