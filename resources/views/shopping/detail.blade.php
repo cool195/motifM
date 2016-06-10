@@ -28,8 +28,11 @@
             <div class="swiper-container" id="detailImg-swiper">
                 <div class="swiper-wrapper">
                     @foreach($data['productImages'] as $image)
-                        <div class="swiper-slide"><img class="img-fluid"
-                                                       src="{{ 'https://s3-us-west-1.amazonaws.com/emimagetest/n1/'.$image['img_path'] }}">
+                        <div class="swiper-slide">
+                            <img class="img-fluid swiper-lazy"
+                                 data-src="{{ 'https://s3-us-west-1.amazonaws.com/emimagetest/n1/'.$image['img_path'] }}"
+                                 alt="">
+                            <img class="img-fluid preloader" src="/images/product/bg-product@750.png" alt="">
                         </div>
                     @endforeach
                 </div>
@@ -45,8 +48,11 @@
                 <div class="swiper-container" id="baseImg-swiper">
                     <div class="swiper-wrapper">
                         @forelse($data['productImages'] as $image)
-                            <div class="swiper-slide"><img class="img-fluid"
-                                                           src="{{ 'https://s3-us-west-1.amazonaws.com/emimagetest/n1/'.$image['img_path'] }}">
+                            <div class="swiper-slide">
+                                <img class="img-fluid swiper-lazy"
+                                     data-src="{{ 'https://s3-us-west-1.amazonaws.com/emimagetest/n1/'.$image['img_path'] }}"
+                                     alt="">
+                                <img class="img-fluid preloader" src="/images/product/bg-product@750.png" alt="">
                             </div>
                         @empty
                             <div class="swiper-slide"></div>
