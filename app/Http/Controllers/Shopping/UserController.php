@@ -50,6 +50,7 @@ class UserController extends ApiController
         } else{
             if($result['success']){
                 $expiresAt = Carbon::now()->addMinute(10);
+                Cache::forget('user');
                 Cache::put('user', $result['data'], $expiresAt);
             }
         }

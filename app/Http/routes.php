@@ -16,17 +16,24 @@ $app->get('/', function () use ($app) {
 });
 
 $app->get('/book', ['middleware' => 'test', 'uses'=> 'BookController@index']);
-
+//$app->get('/detail/{spu}', ['middleware'=>'logincheck', 'uses'=>'Shopping\ProductController@index']);
 
 
 $app->get('/shopping', 'Shopping\ShoppingController@index');
 //$app->get('/shopping/category', 'Shopping\ShoppingController@getShoppingCategoryList');
 //$app->get('/shopping/list', 'Shopping\ShoppingController@getShoppingProductList');
-$app->get('/stock/checkstock', 'Shopping\ShoppingController@checkStock');
-
-$app->get('/detail/{spu}', 'Shopping\ProductController@index');
+//$app->get('/stock/checkstock', 'Shopping\ShoppingController@checkStock');
 
 
+$app->group([/*'middleware'=>'logincheck',*/'namespace'=>'App\Http\Controllers\Shopping'], function($app){
+    $app->get('/shopping', 'ShoppingController@index');
+    $app->get('/category', 'ShoppingController@getShoppingCategoryList');
+    $app->get('/products', 'ShoppingController@getShoppingProductList');
+    $app->get('/stock/checkstock', 'ShoppingController@checkStock');
+
+    $app->get('/products/{spu}', 'Shopping\ProductController@getProductDetail');
+    $app->get('/detail/{spu}', 'ProductController@index');
+});
 
 $app->get('/shopping/cart', 'Shopping\CartController@index');
 $app->get('/shopping/ordercheckout', 'Shopping\CartController@orderCheckout');
@@ -84,6 +91,7 @@ $app->get('/user/changepassword', 'Shopping\UserController@changePassword');
 $app->get('/user/signup', 'Shopping\UserController@signup');
 $app->post('/user/signup', 'Shopping\UserController@signup');
 $app->get('/user/logincheck', 'Shopping\UserController@loginCheck');
+$app->post('/user/logincheck', 'Shopping\UserController@loginCheck');
 $app->get('/user/signout', 'Shopping\UserController@signout');
 $app->get('/user/resetPwd', 'Shopping\UserController@resetPassword');
 $app->get('/user/forget', 'Shopping\UserController@forgetPassword');
@@ -100,9 +108,9 @@ $app->get('/orders', 'Shopping\OrderController@getOrderList');
 $app->get('/shopping/order/orderdetail/{subno}', 'Shopping\OrderController@orderDetail');
 $app->get('/shopping/order/orderSubmit', 'Shopping\OrderController@orderSubmit');
 
-$app->get('/category', 'Shopping\ShoppingController@getShoppingCategoryList');
-$app->get('/products', 'Shopping\ShoppingController@getShoppingProductList');
-$app->get('/products/{spu}', 'Shopping\ProductController@getProductDetail');
+//$app->get('/category', 'Shopping\ShoppingController@getShoppingCategoryList');
+//$app->get('/products', 'Shopping\ShoppingController@getShoppingProductList');
+//$app->get('/products/{spu}', 'Shopping\ProductController@getProductDetail');
 
 $app->get('/designer', 'Designer\DesignerController@index');
 $app->get('/designer/{id}', 'Designer\DesignerController@show');

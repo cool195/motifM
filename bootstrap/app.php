@@ -55,16 +55,16 @@ $app->singleton(
 |
 */
 
-// $app->middleware([
+ $app->middleware([
 //     // Illuminate\Cookie\Middleware\EncryptCookies::class,
 //     // Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse::class,
-//     // Illuminate\Session\Middleware\StartSession::class,
+      Illuminate\Session\Middleware\StartSession::class,
 //     // Illuminate\View\Middleware\ShareErrorsFromSession::class,
-//     // Laravel\Lumen\Http\Middleware\VerifyCsrfToken::class,
-// ]);
+      Laravel\Lumen\Http\Middleware\VerifyCsrfToken::class,
+ ]);
 
  $app->routeMiddleware([
-     'test' => 'App\Http\Middleware\ExampleMiddleware',
+     'logincheck' => 'App\Http\Middleware\LogincheckMiddleware'
  ]);
 
 /*
