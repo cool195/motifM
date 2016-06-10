@@ -156,7 +156,7 @@
                 <div class="bg-white m-b-10x">
                     <div class="daily-imgInfo">
                         <img class="img-fluid" src="/images/daily/daily2.jpg">
-                <span class="img-icon"><img src="images/daily/daily-icon.png" srcset="/images/daily/daily-icon@2x.png 2x,/images/daily/daily-icon@3x.png 3x"></span>
+                        <span class="img-icon font-size-sm"><strong>NEW IN</strong></span>
                     </div>
                     <div class="p-a-15x">
                         <h6 class="text-main font-size-base m-b-5x"><strong>Boho Beaded Tassel Necklace</strong></h6>
@@ -273,7 +273,9 @@
     @{{ /if }}
     @{{ if $value.type == "2" }}
     <div class="bg-white m-b-10x">
-        <div><img class="img-fluid img-lazy" data-original="https://s3-us-west-1.amazonaws.com/emimagetest/n4/@{{ $value.imgPath }}" src="/images/product/bg-product@750.png" alt="@{{ $value.title }}"></div>
+        <div><img class="img-fluid img-lazy" data-original="https://s3-us-west-1.amazonaws.com/emimagetest/n4/@{{ $value.imgPath }}" src="/images/product/bg-product@750.png" alt="@{{ $value.title }}">
+            <span class="img-icon font-size-sm"><strong>@{{ $value.imgtextType }}</strong></span>
+        </div>
         <div class="p-a-15x">
             <h6 class="text-main font-size-base m-b-5x"><strong>@{{ $value.title }}</strong></h6>
             <div class="text-primary font-size-sm">@{{ $value.subTitle }}</div>
