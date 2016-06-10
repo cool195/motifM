@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Shopping;
 
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 use App\Http\Controllers\ApiController;
@@ -33,19 +34,24 @@ class UserController extends ApiController
 
     public function signup(Request $request)
     {
+        $email = $request->input('email');
         $params = array(
             'cmd' => 'signup',
-            'uuid' => $request->input('uuid', "199999999999"),
-            'email' => $request->input('email', "kangdong111@evermarker.net"),
-            'pw' => $request->input('pw', "dfafdasEFDdadfa"),
-            'nick' => $request->input('nick', "kangdong"),
-            'token' => $request->input('token', "eeec7a32dcb6115abfe4a871c6b08b47")
+            'uuid' => md5($email),
+            'email' => $email,
+            'pw' => $request->input('pw'),
+            'nick' => $request->input('nick')
         );
         $result = $this->request('openapi', self::API_SYSTEM, self::API_SERVICE, $params);
         if (empty($result)) {
             $result['success'] = false;
             $result['error_msg'] = "Data access failed";
             $result['data'] = array();
+        } else{
+            if($result['success']){
+                $expiresAt = Carbon::now()->addMinute(10);
+                Cache::put('user', $result['data'], $expiresAt);
+            }
         }
         return $result;
     }
@@ -57,12 +63,12 @@ class UserController extends ApiController
 
     public function loginCheck(Request $request)
     {
+        $email = $request->input('email');
         $params = array(
             'cmd' => "login",
-            'uuid' => $request->input('uuid', "199999999999"),
-            'email' => $request->input('email', "kangdong111@evermarker.net"),
-            'pw' => $request->input('pw', "dfafdasEFDdadfa"),
-            'token' => $request->input('token', "eeec7a32dcb6115abfe4a871c6b08b47")
+            'uuid' => $request->input('uuid', md5($email)),
+            'email' => $email,
+            'pw' => $request->input('pw'),
         );
         $result = $this->request('openapi', self::API_SYSTEM, self::API_SERVICE, $params);
         if (empty($result)) {
@@ -71,7 +77,9 @@ class UserController extends ApiController
             $result['data'] = array();
         } else {
             if ($result['success']) {
-                Session::put('user', $result['data']);
+                $expiresAt = Carbon::now()->addMinute(10);
+                Cache::forget('user');
+                Cache::put("user", $result['data'], $expiresAt);
             }
         }
         return $result;
@@ -79,16 +87,24 @@ class UserController extends ApiController
 
     public function signout(Request $request)
     {
-        $params = array(
-            'cmd' => "signout",
-            'pin' => $request->input('pin', "e052d5681da34fad83d0597b7b72acf7"),
-            'token' => $request->input('token', "eeec7a32dcb6115abfe4a871c6b08b47")
-        );
-        $result = $this->request('openapi', self::API_SYSTEM, self::API_SERVICE, $params);
-        if (empty($result)) {
-            $result['success'] = false;
-            $result['error_msg'] = "Data access failed";
-            $result['data'] = array();
+        $user = Cache::get('user');
+        $result = array('success'=>false, 'error_msg'=>"user is signout", 'data' => array());
+        if(!empty($user)) {
+            $params = array(
+                'cmd' => "signout",
+                'pin' => $request->input('pin', $user['pin']),
+                'token' => $request->input('token', $user['token'])
+            );
+            $result = $this->request('openapi', self::API_SYSTEM, self::API_SERVICE, $params);
+            if (empty($result)) {
+                $result['success'] = false;
+                $result['error_msg'] = "Data access failed";
+                $result['data'] = array();
+            } else {
+                if ($result['success']) {
+                    Cache::forget('user');
+                }
+            }
         }
         return $result;
     }
@@ -100,6 +116,7 @@ class UserController extends ApiController
 
     public function resetPassword(Request $request)
     {
+        $user = Cache::get('user');
         $params = array(
             'cmd' => "modifyfgttpwd",
             'pw' => $request->input('pw'),
@@ -123,9 +140,9 @@ class UserController extends ApiController
         //$pw = md5($request->input('pw'));
         $token = $request->input('token', "eeec7a32dcb6115abfe4a871c6b08b47");
         $params = array(
-            'cmd' => $cmd,
-            'uuid' => $uuid,
-            'email' => $email,
+            'cmd' => "forgetwd",
+            'uuid' => $request->input('uuid', "199999999999"),
+            'email' => $request->input('email', "kangdongno.4@163.com"),
             'token' => $token
         );
         $result = $this->request('openapi', self::API_SYSTEM, self::API_SERVICE, $params);
@@ -144,13 +161,12 @@ class UserController extends ApiController
 
     public function modifyUserPwd(Request $request)
     {
-        $cmd = "modifypwd";
         $params = array(
-            'cmd' => $cmd,
-            'pin' => $request->input('pin', "2fed8e13f80a4980a86437d4f6dd5917"),
-            'oldpwd' => $request->input('oldpwd', "11111"),
-            'pw' => $request->input('pw', "8888"),
-            'token' => $request->input('token', "199999999999")
+            'cmd' => "modifypwd",
+            'pin' => $request->input('pin'),
+            'oldpwd' => $request->input('oldpwd'),
+            'pw' => $request->input('pw'),
+            'token' => $request->input('token')
         );
         $result = $this->request('openapi', self::API_SYSTEM, self::API_SERVICE, $params);
         if (empty($result)) {

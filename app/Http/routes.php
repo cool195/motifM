@@ -82,6 +82,7 @@ $app->get('/user/shippingaddress', 'Shopping\UserController@shippingAddress');
 $app->get('/user/changepassword', 'Shopping\UserController@changePassword');
 
 $app->get('/user/signup', 'Shopping\UserController@signup');
+$app->post('/user/signup', 'Shopping\UserController@signup');
 $app->get('/user/logincheck', 'Shopping\UserController@loginCheck');
 $app->get('/user/signout', 'Shopping\UserController@signout');
 $app->get('/user/reset', 'Shopping\UserController@resetPassword');
