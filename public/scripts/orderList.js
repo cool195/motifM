@@ -37,7 +37,7 @@
 
         // ajax 请求加载数据
         $.ajax({
-            url: '/orderList',
+            url: '/orders',
             data: { num: NextPage, size: 20 }
         }).done(function (data) {
             if (data.data === null || data.data === '') {
@@ -88,5 +88,8 @@
             console.log('滚动条滚动');
         });
     });
+    window.onload = function () {
+        listLoading();
+    };
 })(jQuery);
 //# sourceMappingURL=orderList.js.map

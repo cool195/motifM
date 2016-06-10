@@ -2,10 +2,6 @@
 /* global jQuery */
 
 (function ($) {
-    var options = {
-        closeOnOutsideClick: false,
-        hashTracking: true
-    };
     // loading 打开
     function openLoading() {
         $('.loading').toggleClass('loading-hidden');
@@ -101,7 +97,10 @@
     });
 
     // 初始化 模态框
-    $('#cartDialog').remodal(options);
+    $('#cartDialog').remodal({
+        closeOnOutsideClick: false,
+        hashTracking: true
+    });
 
     $('#cartDialog').on('closed', function () {
         $(this).removeData('sku').removeData('action');
