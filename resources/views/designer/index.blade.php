@@ -5,8 +5,8 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
     <title>designer</title>
-    <link rel="icon" href="/favicon.ico">
-    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    <link rel="icon" href="/images/favicon.ico">
+    <link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
     <!-- Place favicon.ico in the root directory -->
 
     <link rel="stylesheet" href="/styles/vendor.css">
@@ -19,70 +19,37 @@
 <!-- 外层容器 -->
 <div id="body-content">
     <!-- 展开的汉堡菜单 -->
-    @include('nav')
-    <!-- 主体内容 -->
+@include('nav')
+<!-- 主体内容 -->
     <div class="body-container">
-        @include('navigator')
-        <!-- designer 设计师首页 -->
+    @include('navigator')
+    <!-- designer 设计师首页 -->
         <section>
             <!-- 设计师列表 -->
             <article class="bg-white p-a-15x m-b-10x">
                 <h5 class="font-size-base text-main m-b-10x"><strong>DESIGNERS</strong></h5>
-                <div class="container-fluid p-a-0">
-                    <div class="row">
-                        @foreach($recdesigner as $k=>$value)
-                            @if($k<4)
-                                <div class="col-xs-3">
-                                    <a class="designer-item" href="/designer/{{$value['designerId']}}">
-                                        <img class="img-fluid" src="http://html.motif.app/images/designer/designer{{$k+1}}.jpg">
-                                        <div class="designer-text font-size-sm text-center">{{$value['name']}}</div>
-                                    </a>
-                                </div>
-                            @endif
+                <div class="p-a-0 swiper-container">
+                    <div class="swiper-wrapper">
+                        @foreach($recdesigner as $value)
+                            <div class="designer-item swiper-slide p-x-5x">
+                                <a class="" href="/designer/{{$value['designerId']}}">
+                                    <img class="img-fluid" src="https://s3-us-west-1.amazonaws.com/emimagetest/n2/{{$value['mainImg']}}">
+                                    <div class="designer-text font-size-sm text-center">{{$value['name']}}</div>
+                                </a>
+                            </div>
                         @endforeach
                     </div>
                 </div>
             </article>
 
             <!-- 设计师及其商品列表 -->
-            <aside class="bg-white m-b-10x">
-                <div class=""><img class="img-fluid" src="http://html.motif.app/images/designer/designer4.jpg" alt=""></div>
-                <div class="container-fluid p-a-15x">
-                    <div class="row">
-                        <div class="col-xs-3">
-                            <a href="/designer/42"><img class="img-thumbnail" src="/images/product/product1.jpg"></a>
-                        </div>
-                        <div class="col-xs-3">
-                            <a href="/designer/42"><img class="img-thumbnail" src="/images/product/product2.jpg"></a>
-                        </div>
-                        <div class="col-xs-3">
-                            <a href="/designer/42"><img class="img-thumbnail" src="/images/product/product3.jpg"></a>
-                        </div>
-                        <div class="col-xs-3">
-                            <a href="/designer/42"><img class="img-thumbnail" src="/images/product/product4.jpg"></a>
-                        </div>
-                    </div>
+            <div id="designerContainer" data-pagenum="0" data-loading="false">
+                <div class="designer-content">
                 </div>
-            </aside>
-            <aside class="bg-white m-b-10x">
-                <div class=""><img class="img-fluid" src="http://html.motif.app/images/designer/designer4.jpg" alt=""></div>
-                <div class="container-fluid p-a-15x">
-                    <div class="row">
-                        <div class="col-xs-3">
-                            <a href="#"><img class="img-thumbnail" src="/images/product/product1.jpg"></a>
-                        </div>
-                        <div class="col-xs-3">
-                            <a href="#"><img class="img-thumbnail" src="/images/product/product2.jpg"></a>
-                        </div>
-                        <div class="col-xs-3">
-                            <a href="#"><img class="img-thumbnail" src="/images/product/product3.jpg"></a>
-                        </div>
-                        <div class="col-xs-3">
-                            <a href="#"><img class="img-thumbnail" src="/images/product/product4.jpg"></a>
-                        </div>
-                    </div>
+                <div class="loading" style="display: none">
+                    <div class="loader"></div>
                 </div>
-            </aside>
+            </div>
 
         </section>
         <!-- 页脚 功能链接 -->
@@ -90,7 +57,30 @@
     </div>
 </div>
 </body>
+<!-- 模板 -->
+<template id="tpl-designer">
+    @{{ each list }}
+    <aside class="bg-white m-b-10x">
+        <div class=""><a href="/designer/@{{$value.designerId}}"><img class="img-fluid img-lazy"
+                                      data-original="https://s3-us-west-1.amazonaws.com/emimagetest/n1/@{{ $value.mainImg }}"
+                                      src="/images/product/bg-product@750.png" alt="@{{ $value.name }}"></a></div>
+        <div class="p-x-10x p-y-15x swiper-container" id="designer-container">
+            <div class="swiper-wrapper productList@{{ $value.designerId }}">
+                @{{ each $value.products }}
+                <div class="designer-item swiper-slide p-x-5x">
+                    <a href="/designer/@{{$value.spu}}">
+                        <img class="img-fluid img-lazy"
+                             data-original="https://s3-us-west-1.amazonaws.com/emimagetest/n1/@{{ $value.mainImage }}"
+                             src="/images/product/bg-product@70.png">
+                    </a>
+                </div>
+                @{{ /each }}
+            </div>
+        </div>
+    </aside>
+    @{{ /each }}
+</template>
 <script src="/scripts/vendor.js"></script>
 
-
+<script src="/scripts/designer.js"></script>
 </html>
