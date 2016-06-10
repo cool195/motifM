@@ -85,7 +85,7 @@ $app->get('/user/signup', 'Shopping\UserController@signup');
 $app->post('/user/signup', 'Shopping\UserController@signup');
 $app->get('/user/logincheck', 'Shopping\UserController@loginCheck');
 $app->get('/user/signout', 'Shopping\UserController@signout');
-$app->get('/user/reset', 'Shopping\UserController@resetPassword');
+$app->get('/user/resetPwd', 'Shopping\UserController@resetPassword');
 $app->get('/user/forget', 'Shopping\UserController@forgetPassword');
 $app->get('/user/modifyUserPwd', 'Shopping\UserController@modifyUserPwd');
 $app->get('/user/trilogin', 'Shopping\UserController@tryPrtLogin');
