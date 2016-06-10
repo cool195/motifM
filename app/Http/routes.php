@@ -27,11 +27,11 @@ $app->get('/shopping', 'Shopping\ShoppingController@index');
 
 $app->group([/*'middleware'=>'logincheck',*/'namespace'=>'App\Http\Controllers\Shopping'], function($app){
     $app->get('/shopping', 'ShoppingController@index');
-    $app->get('/category', 'ShoppingController@getShoppingCategoryList');
-    $app->get('/products', 'ShoppingController@getShoppingProductList');
+    //$app->get('/category', 'ShoppingController@getShoppingCategoryList');
+   // $app->get('/products', 'ShoppingController@getShoppingProductList');
     $app->get('/stock/checkstock', 'ShoppingController@checkStock');
 
-    $app->get('/products/{spu}', 'Shopping\ProductController@getProductDetail');
+   // $app->get('/products/{spu}', 'Shopping\ProductController@getProductDetail');
     $app->get('/detail/{spu}', 'ProductController@index');
 });
 
@@ -108,9 +108,9 @@ $app->get('/orders', 'Shopping\OrderController@getOrderList');
 $app->get('/shopping/order/orderdetail/{subno}', 'Shopping\OrderController@orderDetail');
 $app->get('/shopping/order/orderSubmit', 'Shopping\OrderController@orderSubmit');
 
-//$app->get('/category', 'Shopping\ShoppingController@getShoppingCategoryList');
-//$app->get('/products', 'Shopping\ShoppingController@getShoppingProductList');
-//$app->get('/products/{spu}', 'Shopping\ProductController@getProductDetail');
+$app->get('/category', 'Shopping\ShoppingController@getShoppingCategoryList');
+$app->get('/products', 'Shopping\ShoppingController@getShoppingProductList');
+$app->get('/products/{spu}', 'Shopping\ProductController@getProductDetail');
 
 $app->get('/designer', 'Designer\DesignerController@index');
 $app->get('/designer/{id}', 'Designer\DesignerController@show');
