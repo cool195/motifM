@@ -29,40 +29,40 @@
 <!--</nav>-->
 <!-- 外层容器-->
 <div id="body-content">
-	@include('nav')
-	<div class="body-container">
-	<!-- 头部导航 -->
-		@include('navigator')
-		<nav class="navbar-fixed-top swiper-container bg-gray" id="tabIndex-container">
-			<ul class="nav nav-tabs swiper-wrapper">
-				@foreach($categories as $key => $c)
-					<li class="nav-item swiper-slide" data-tabindex="">
-						<a class="nav-flex underLine-item text-primary m-x-15x p-y-10x p-l-20x iconimg-earrings @if($key!=0) inactive @endif">
-							<span class="font-size-sm m-l-5x">{{ $c['category_name'] }}</span>
-						</a>
-					</li>
-				@endforeach
-			</ul>
-		</nav>
-		<section class="swiper-container p-b-10x" id="tabs-container" data-loading="false">
-			<div class="swiper-wrapper">
-				@foreach($categories as $c)
-					<div class="swiper-slide" data-loading="">
-						<div class="container-fluid p-x-10x p-t-10x">
-							<div class="row">
-							</div>
-						</div>
-						<div class="loading" style="display: none">
-							<div class="loader"></div>
-						</div>
-					</div>
-				@endforeach
-			</div>
-		</section>
-<!-- 页脚 功能链接 -->
-@include('footer')
-		</div>
- 	</div>
+    @include('nav')
+    <div class="body-container">
+        <!-- 头部导航 -->
+        @include('navigator')
+        <nav class="navbar-fixed-top swiper-container bg-gray" id="tabIndex-container">
+            <ul class="nav nav-tabs swiper-wrapper">
+                @foreach($categories as $key => $c)
+                    <li class="nav-item swiper-slide" data-tabindex="">
+                        <a class="nav-flex underLine-item text-primary m-x-15x p-y-10x p-l-20x iconimg-earrings @if($key!=0) inactive @endif">
+                            <span class="font-size-sm m-l-5x">{{ $c['category_name'] }}</span>
+                        </a>
+                    </li>
+                @endforeach
+            </ul>
+        </nav>
+        <section class="swiper-container p-b-10x" id="tabs-container" data-loading="false">
+            <div class="swiper-wrapper">
+                @foreach($categories as $c)
+                    <div class="swiper-slide" data-loading="">
+                        <div class="container-fluid p-x-10x p-t-10x">
+                            <div class="row">
+                            </div>
+                        </div>
+                        <div class="loading" style="display: none">
+                            <div class="loader"></div>
+                        </div>
+                    </div>
+                @endforeach
+            </div>
+        </section>
+        <!-- 页脚 功能链接 -->
+        @include('footer')
+    </div>
+</div>
 </body>
 <!-- 模板 -->
 <template id="tpl-product">
@@ -72,7 +72,9 @@
             <div class="image-bg">
                 <div class="image-container">
                     <a href="/detail/@{{ $value.spu }}">
-                        <img class="img-fluid img-lazy" data-original="https://s3-us-west-1.amazonaws.com/emimagetest/n1/@{{ $value.main_image_url }}" src="/images/product/bg-product@336.png" alt="@{{ $value.main_title }}">
+                        <img class="img-fluid img-lazy"
+                             data-original="https://s3-us-west-1.amazonaws.com/emimagetest/n1/@{{ $value.main_image_url }}"
+                             src="/images/product/bg-product@336.png" alt="@{{ $value.main_title }}">
                         @{{ if $value.skuPrice.sale_price !== $value.skuPrice.price }}
                         <div class="price-off">
                             <strong class="font-size-sm">@{{ $value.skuPrice.skuPromotion.display }}</strong>
@@ -83,10 +85,10 @@
             </div>
             <div class="price-caption">
                 <span class="font-size-sm m-l-5x">
-                    <strong>$@{{ $value.skuPrice.sale_price }}</strong>
+                    <strong>$@{{ ($value.skuPrice.sale_price/100).toFixed(2) }}</strong>
                 </span>
                 @{{ if $value.skuPrice.sale_price !== $value.skuPrice.price }}
-                <span class="font-size-xs text-common text-throughLine m-l-5x">$@{{ $value.skuPrice.price }}</span>
+                <span class="font-size-xs text-common text-throughLine m-l-5x">$@{{ ($value.skuPrice.price/100).toFixed(2) }}</span>
                 @{{ /if }}
             </div>
         </div>
