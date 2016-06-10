@@ -68,7 +68,7 @@
             <div class="swiper-wrapper productList@{{ $value.designerId }}">
                 @{{ each $value.products }}
                 <div class="designer-item swiper-slide p-x-5x">
-                    <a href="/designer/@{{$value.spu}}">
+                    <a href="/detail/@{{$value.spu}}">
                         <img class="img-fluid img-lazy"
                              data-original="https://s3-us-west-1.amazonaws.com/emimagetest/n1/@{{ $value.mainImage }}"
                              src="/images/product/bg-product@70.png">

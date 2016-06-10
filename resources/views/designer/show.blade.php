@@ -25,9 +25,13 @@
         <section>
             <!-- 视频/图片 正式上线将优酷视频改成改成img_video_path-->
             <div class="">
-                <iframe class="ytplayer img-fluid" type="text/html" width="100%"
-                        src="@if($designer['path_type']==2)http://player.youku.com/embed/XMTU5ODg3MzIzNg==@else https://s3-us-west-1.amazonaws.com/emimagetest/n2/{{$designer['main_img_path']}}@endif"
-                        frameborder="0" allowfullscreen></iframe>
+                @if($designer['path_type']==2)
+                    <iframe class="ytplayer img-fluid" type="text/html" width="100%"
+                            src="http://player.youku.com/embed/XMTU5ODg3MzIzNg=="
+                            frameborder="0" allowfullscreen></iframe>
+                @else
+                    <img src="https://s3-us-west-1.amazonaws.com/emimagetest/n2/{{$designer['main_img_path']}}">
+                @endif
             </div>
 
             <!-- 设计师 文字信息 -->
@@ -52,7 +56,8 @@
                 @if($value['type']=='banner')
                     <!-- 第一个 banner 图 -->
                         <div @if($k!=0)class="p-y-10x"@endif>
-                            <img class="img-fluid" src="https://s3-us-west-1.amazonaws.com/emimagetest/n2/{{$value['imgPath']}}" alt="">
+                            <img class="img-fluid"
+                                 src="https://s3-us-west-1.amazonaws.com/emimagetest/n2/{{$value['imgPath']}}" alt="">
                         </div>
                 @elseif($value['type']=='title')
                     <!-- 标题 -->
@@ -70,7 +75,9 @@
                         @if($value['style']=='box-vertical')
                             {{-- 商品列表竖向 --}}
                             <div class="p-x-15x p-y-10x">
-                                <img class="img-fluid" src="https://s3-us-west-1.amazonaws.com/emimagetest/n2/{{$value['imgPath']}}" alt="">
+                                <img class="img-fluid"
+                                     src="https://s3-us-west-1.amazonaws.com/emimagetest/n2/{{$value['imgPath']}}"
+                                     alt="">
                             </div>
                         @else
                             {{-- 商品列表横向 --}}
@@ -79,7 +86,9 @@
                                     @foreach($value['spus'] as $spu)
                                         <div class="col-xs-6">
                                             <div class="p-t-10x">
-                                                <img class="img-thumbnail" src="https://s3-us-west-1.amazonaws.com/emimagetest/n2/{{$product['spuInfos'][$spu]['spuBase']['main_image_url']}}" alt="{{$product['spuInfos'][$spu]['spuBase']['main_title']}}">
+                                                <img class="img-thumbnail"
+                                                     src="https://s3-us-west-1.amazonaws.com/emimagetest/n2/{{$product['spuInfos'][$spu]['spuBase']['main_image_url']}}"
+                                                     alt="{{$product['spuInfos'][$spu]['spuBase']['main_title']}}">
                                                 <div class="p-y-10x">
                                                     <span class="text-primary font-size-sm m-l-5x"><strong>${{number_format($product['spuInfos'][$spu]['skuPrice']['sale_price']/100,2)}}</strong></span>
                                                     <span class="font-size-xs text-common text-throughLine m-l-5x">${{number_format($product['spuInfos'][$spu]['skuPrice']['price']/100,2)}}</span>
