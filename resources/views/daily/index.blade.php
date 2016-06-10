@@ -21,11 +21,11 @@
 <!-- 外层容器 -->
 <div id="body-content">
     <!-- 展开的汉堡菜单 -->
-    @include('nav')
-    <!-- 主体内容 -->
+@include('nav')
+<!-- 主体内容 -->
     <div class="body-container">
-        @include('navigator')
-        <!-- daily 首页列表 -->
+    @include('navigator')
+    <!-- daily 首页列表 -->
         <section id="dailyContainer" data-loading="false" data-pagenum="0">
             <div class="daily-content">
 
@@ -36,7 +36,7 @@
             </div>
         </section>
         <!-- 页脚 功能链接 -->
-            @include('footer')
+        @include('footer')
     </div>
 </div>
 </body>
@@ -46,12 +46,19 @@
     @{{ each list }}
     @{{ if $value.type == "1" }}
     <div class="bg-white m-b-10x">
-        <img class="img-fluid img-lazy" data-original="https://s3-us-west-1.amazonaws.com/emimagetest/n4/@{{ $value.imgPath }}" src="/images/product/bg-product@750.png">
+        <img class="img-fluid img-lazy"
+             data-original="https://s3-us-west-1.amazonaws.com/emimagetest/n4/@{{ $value.imgPath }}"
+             src="/images/product/bg-product@750.png">
     </div>
     @{{ /if }}
     @{{ if $value.type == "2" }}
     <div class="bg-white m-b-10x">
-        <div><img class="img-fluid img-lazy" data-original="https://s3-us-west-1.amazonaws.com/emimagetest/n4/@{{ $value.imgPath }}" src="/images/product/bg-product@750.png" alt="@{{ $value.title }}"></div>
+        <div>
+            <img class="img-fluid img-lazy"
+                 data-original="https://s3-us-west-1.amazonaws.com/emimagetest/n4/@{{ $value.imgPath }}"
+                 src="/images/product/bg-product@750.png" alt="@{{ $value.title }}">
+            <span class="img-icon font-size-sm"><strong>@{{ $value.imgtextType }}</strong></span>
+        </div>
         <div class="p-a-15x">
             <h6 class="text-main font-size-base m-b-5x"><strong>@{{ $value.title }}</strong></h6>
             <div class="text-primary font-size-sm">@{{ $value.subTitle }}</div>
