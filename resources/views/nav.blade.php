@@ -23,7 +23,7 @@
 	</ul>
 	<ul class="nav bg-white m-t-10x">
 		<li class="nav-item">
-			<a href="/shopping/order" class="flex flex-alignCenter flex-fullJustified p-a-15x">
+			<a href="/shopping/orderlist" class="flex flex-alignCenter flex-fullJustified p-a-15x">
 				<div class="font-size-sm text-primary flex flex-alignCenter"><i class="iconfont icon-book icon-size-md p-r-15x"></i><span>Orders</span></div>
 				<span class="text-common"><i class="iconfont icon-arrow-right icon-size-sm"></i></span>
 			</a>
@@ -51,14 +51,14 @@
 			<hr class="hr-base m-a-0">
 		</li>
 		<li class="nav-item">
-			<a href="#" class="flex flex-alignCenter flex-fullJustified p-a-15x">
+			<a href="/user/setting" class="flex flex-alignCenter flex-fullJustified p-a-15x">
 				<div class="font-size-sm text-primary flex flex-alignCenter"><i class="iconfont icon-setting icon-size-md p-r-15x"></i><span>Settings</span></div>
 				<span class="text-common"><i class="iconfont icon-arrow-right icon-size-sm"></i></span>
 			</a>
 			<hr class="hr-base m-a-0">
 		</li>
 		<li class="nav-item">
-			<a href="#" class="flex flex-alignCenter flex-fullJustified p-a-15x">
+			<a href="/user/signup" class="flex flex-alignCenter flex-fullJustified p-a-15x">
 				<div class="font-size-sm text-primary flex flex-alignCenter"><i class="iconfont icon-signout icon-size-md p-r-15x"></i><span>Sign Out</span></div>
 				<span class="text-common"><i class="iconfont icon-arrow-right icon-size-sm"></i></span>
 			</a>
