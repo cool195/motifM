@@ -79,7 +79,7 @@
         <div class="flex p-a-10x">
             <div class="flex-fixedShrink">
                 <img class="img-thumbnail img-lazy"
-                     src="/images/product/bg-product.jpg"
+                     src="/images/product/bg-product@70.jpg"
                      data-original="https://s3-us-west-1.amazonaws.com/emimagetest/n4/@{{ $value.img_path }}"
                      width="70px" height="70px">
             </div>
