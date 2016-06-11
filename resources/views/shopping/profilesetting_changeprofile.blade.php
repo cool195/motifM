@@ -30,10 +30,10 @@
             <section class="bg-minHeight">
                 <form method="">
                     <article class="p-x-15x p-y-10x font-size-md text-main"><strong>Change Profile</strong>
-                        <div class="text-common font-size-sm p-t-10x">8jiudiahb@gmail.com</div>
+                        <div class="text-common font-size-sm p-t-10x">{{$user['login_email']}}</div>
                     </article>
                     <fieldset class="bg-white">
-                        <input class="form-control form-control-block p-a-15x font-size-sm" type="text" placeholder="Vivian">
+                        <input class="form-control form-control-block p-a-15x font-size-sm" type="text" placeholder="{{$user['nickname']}}">
                     </fieldset>
                     <div class="p-a-15x">
                         <a href="#" class="btn btn-primary btn-block btn-sm">Change</a>

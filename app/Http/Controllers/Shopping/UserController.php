@@ -37,7 +37,8 @@ class UserController extends ApiController
      * */
     public function changeProfile(Request $request)
     {
-        return View('shopping.profilesetting_changeprofile');
+        $user = Cache::get('user');
+        return View('shopping.profilesetting_changeprofile', ['user'=>$user]);
     }
 
     /*
