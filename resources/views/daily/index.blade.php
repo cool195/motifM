@@ -46,24 +46,28 @@
     @{{ each list }}
     @{{ if $value.type == "1" }}
     <div class="bg-white m-b-10x">
-        <img class="img-fluid img-lazy"
-             data-original="https://s3-us-west-1.amazonaws.com/emimagetest/n4/@{{ $value.imgPath }}"
-             src="/images/product/bg-product@750.png">
+        <a href="@{{ if $value.skipType == "1" }}/detail/@{{ elseif $value.skipType == "2" }}/designer/@{{ elseif $value.skipType == "3" }}/topic/@{{ elseif $value.skipType == "4" }}/shopping#@{{ /if }}@{{ $value.skipId }}">
+            <img class="img-fluid img-lazy"
+                 data-original="https://s3-us-west-1.amazonaws.com/emimagetest/n2/@{{ $value.imgPath }}"
+                 src="/images/product/bg-product@750.png">
+        </a>
     </div>
     @{{ /if }}
     @{{ if $value.type == "2" }}
-    <div class="bg-white m-b-10x">
-        <div>
-            <img class="img-fluid img-lazy"
-                 data-original="https://s3-us-west-1.amazonaws.com/emimagetest/n4/@{{ $value.imgPath }}"
-                 src="/images/product/bg-product@750.png" alt="@{{ $value.title }}">
-            <span class="img-icon font-size-sm"><strong>@{{ $value.imgtextType }}</strong></span>
+    <a href="@{{ if $value.skipType == "1" }}/detail/@{{ $value.skipId }}@{{ elseif $value.skipType == "2" }}/designer/@{{ $value.skipId }}@{{ elseif $value.skipType == "3" }}/topic/@{{ $value.skipId }}@{{ elseif $value.skipType == "4" }}/shopping#@{{ $value.skipId }}@{{ elseif $value.skipType == "5" }}@{{ $value.skipId }}@{{ /if }}">
+        <div class="bg-white m-b-10x">
+            <div>
+                <img class="img-fluid img-lazy"
+                     data-original="https://s3-us-west-1.amazonaws.com/emimagetest/n2/@{{ $value.imgPath }}"
+                     src="/images/product/bg-product@750.png" alt="@{{ $value.title }}">
+                <span class="img-icon font-size-sm"><strong>@{{ $value.imgtextType }}</strong></span>
+            </div>
+            <div class="p-a-15x">
+                <h6 class="text-main font-size-base m-b-5x"><strong>@{{ $value.title }}</strong></h6>
+                <div class="text-primary font-size-sm">@{{ $value.subTitle }}</div>
+            </div>
         </div>
-        <div class="p-a-15x">
-            <h6 class="text-main font-size-base m-b-5x"><strong>@{{ $value.title }}</strong></h6>
-            <div class="text-primary font-size-sm">@{{ $value.subTitle }}</div>
-        </div>
-    </div>
+    </a>
     @{{ /if }}
     @{{ /each }}
 </template>
