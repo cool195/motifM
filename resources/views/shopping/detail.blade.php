@@ -112,7 +112,7 @@
                                     @else
                                         {{$attrs['attr_type_value'].", "}}
                                     @endif
-                                @endforeach
+                            @endforeach
 							</span>
 							<i class="iconfont icon-arrow-right icon-size-xm text-common"></i>
 						</span>
@@ -245,7 +245,7 @@
                     </a>
                 </div>
                 <fieldset class="text-primary p-x-15x p-b-10x text-left">
-                    <div class="font-size-sm"><strong>${{$data['skuPrice']['sale_price']}}</strong></div>
+                    <div class="font-size-sm"><strong>${{number_format(($data['skuPrice']['sale_price'] / 100), 2)}}</strong></div>
                     <div class="font-size-sm">Select:
                         @foreach($data['spuAttrs'] as $key => $attrs)
                             @if((count($data['spuAttrs']) - 1) == $key)
