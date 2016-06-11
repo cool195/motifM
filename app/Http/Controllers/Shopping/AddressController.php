@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 
 use App\Http\Controllers\ApiController;
 
+use Illuminate\Support\Facades\Cache;
+
 class AddressController extends ApiController
 {
 	public function getUserAddrList(Request $request)		
@@ -86,9 +88,9 @@ class AddressController extends ApiController
 			'isd'=>$isd,
 			'token'=>$token
 		);
-		$system = "user";
+		$system = "";
 		$service = "useraddr";
-		$result = $this->request('openapi', $system, $service, $params, 300);
+		$result = $this->request('openapi', $system, $service, $params);
 		if(empty($result)){
 			$result['success'] = false;
 			$result['error_msg'] = "Failed to add address";
@@ -132,9 +134,9 @@ class AddressController extends ApiController
 			'isd'=>$isd,
 			'token'=>$token
 		);
-		$system = "user";
+		$system = "";
 		$service = "useraddr";
-		$result = $this->request('openapi', $system, $service, $params, 300);
+		$result = $this->request('openapi', $system, $service, $params);
 		if(empty($result)){
 			$result['success'] = false;
 			$result['error_msg'] = "Failed to add address";
@@ -157,7 +159,7 @@ class AddressController extends ApiController
 			'aid'=>$aid,
 			'isd'=>$isd
 		);
-		$system = "user";
+		$system = "";
 		$service = "useraddr";
 		if(empty($result)){
 			$result['success'] = false;
@@ -180,9 +182,9 @@ class AddressController extends ApiController
 			'aid'=>$aid,
 			'token'=>$token
 		);
-		$system = "user";
+		$system = "";
 		$service = "useraddr";
-		$result = $this->request('openapi', $system, $service, $params, 300);
+		$result = $this->request('openapi', $system, $service, $params);
 		if(empty($result)){
 			$result['success'] = false;
 			$result['error_msg'] = "Data access failed";
@@ -194,23 +196,28 @@ class AddressController extends ApiController
 
 	public function getCountry(Request $request)
 	{
-		$cmd = 'country';			
-		$pin = $request->input("pin", "e052d5681da34fad83d0597b7b72acf7");
-		$token = $request->input("token", "eeec7a32dcb6115abfe4a871c6b08b47");
+		//$user = Cache::get('user');
 		$params = array(
-			'cmd'=>$cmd,
-			'pin'=>$pin,
-			'token'=>$token
+			'cmd'=>'country',
+		//	'token'=> $user['token']
 		);
-		$system = "user";
+		$system = "";
 		$service = "useraddr";
-		$result = $this->request('openapi', $system, $service, $params, 300);
+		$result = $this->request('openapi', $system, $service, $params);
 		if(empty($result)){
 			$result['success'] = false;
 			$result['error_msg'] = "Data access failed";
 			$result['data'] = array();
+		}else{
+			if($result['success']){
+				$commonlist = array();
+				for($index = 0; $index < $result['data']['amount']; $index++)
+				{
+					$commonlist[] = array_shift($result['data']['list']);
+				}
+				$result['data']['commonlist'] = $commonlist;
+			}
 		}
-		dd($result);
 		return $result;
 	}
 }
