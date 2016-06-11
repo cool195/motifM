@@ -35,6 +35,7 @@
             data: { cmd: action, sku: sku }
         }).done(function () {
             console.log('success');
+            location.reload();
         }).fail(function () {
             console.log('error');
         }).always(function () {
@@ -62,6 +63,7 @@
             data: { cmd: action, sku: sku }
         }).done(function () {
             console.log('success');
+            location.reload();
         }).fail(function () {
             console.log('error');
         }).always(function () {
@@ -70,7 +72,7 @@
         });
     }
 
-    // TODO 加载的 loading 动画
+    // TODO 加载的 loading 动画 ,请求库存
     // 调整商品数量
     function changeQtty(Sku, Qtty) {
         openLoading();

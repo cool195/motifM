@@ -6,6 +6,21 @@
 'use strict';
 
 (function ($, Swiper) {
+    // loading 打开
+    function openLoading() {
+        $('.loading').toggleClass('loading-hidden');
+        setTimeout(function () {
+            $('.loading').toggleClass('loading-open');
+        }, 25);
+    }
+
+    // loading 隐藏
+    function closeLoading() {
+        $('.loading').addClass('loading-close');
+        setTimeout(function () {
+            $('.loading').toggleClass('loading-hidden loading-open').removeClass('loading-close');
+        }, 500);
+    }
 
     // 图片轮播
     var BaseImgSwiper = new Swiper('#baseImg-swiper', {
@@ -140,7 +155,6 @@
         });
     })();
 
-    // TODO 筛选 逻辑
     /**
      *
      * @param SpuID 一组商品所对应的ID
@@ -321,7 +335,6 @@
             filterOptions(SpaId, SkaId, ActiveOptions);
         }
 
-        // TODO 为所有选项绑定 控制 调整数量是否可用
         // 调整数量按钮组
         var $Count = $('#item-count');
 
@@ -363,7 +376,7 @@
      * @param Count
      */
     function changeQtty(RequestStock, $QttyCount) {
-        // TODO Loading Show
+        openLoading();
         $.ajax({
             url: '/stock/checkstock',
             data: { skus: RequestStock }
@@ -386,6 +399,7 @@
             console.log('error');
         }).always(function () {
             console.log('complete');
+            closeLoading();
         });
     }
 
@@ -396,7 +410,6 @@
         var RadioList = $('#modalDialog').find('.btn-itemProperty.active'),
             CheckCount = Object.keys(Options);
 
-        // TODO 选项已绑定 调整数量是否可用
         if (CheckCount.length < RadioList.length) {
             return;
         }
@@ -463,7 +476,7 @@
         $QtyCount.siblings('[data-num]').html(Qtty);
     });
     /**
-     *
+     * 添加购物车
      * @param Action
      */
     function initCart(Action) {
@@ -505,7 +518,7 @@
         });
 
         Operate.VAList = VarList;
-        // TODO Loading 动画
+        openLoading();
         // PUT 立即购买
         // PATCH 添加购物车
         $.ajax({
@@ -517,10 +530,12 @@
         }).fail(function () {
             console.log("error");
         }).always(function () {
+            closeLoading();
             console.log("complete");
         });
     }
 
+    // TODO 立即购买
     $('#addCart').on('click', function () {
         initCart('PATCH');
     });
