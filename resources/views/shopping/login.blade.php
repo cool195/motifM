@@ -30,7 +30,7 @@
             <div class="flex text-warning flex-alignCenter text-left m-t-20x p-t-5x">
                 <i class="iconfont icon-caveat icon-size-md p-r-5x"></i><span class="font-size-sm">Warming: Women’s Ring</span>
             </div>
-            <form action="">
+            <form id="login">
                 <fieldset class="m-t-10x login-text">
                     <input class="input-login form-control font-size-sm" name="email" placeholder="Email" type="text">
                     <i class="iconfont icon-delete icon-size-md input-clear text-common"></i>
@@ -49,7 +49,7 @@
                         <a class="btn btn-primary-outline btn-block" href="/register">Register</a>
                     </div>
                     <div class="col-xs-6">
-                        <a class="btn btn-primary btn-block">Login</a>
+                        <div class="btn btn-primary btn-block" data-role="submit">Login</div>
                     </div>
                 </div>
             </div>
@@ -70,7 +70,10 @@
         </section>
 
     </div>
-
+    <!-- loading 效果 -->
+    <div class="loading loading-screen loading-switch loading-hidden">
+        <div class="loader loader-screen"></div>
+    </div>
 </body>
 <script src="/scripts/vendor.js"></script>
 

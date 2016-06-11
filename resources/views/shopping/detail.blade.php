@@ -357,6 +357,10 @@
     <!-- 页脚 功能链接 end-->
     </div>
 </div>
+<!-- loading 效果 -->
+<div class="loading loading-screen loading-switch loading-hidden">
+    <div class="loader loader-screen"></div>
+</div>
 </body>
 <script src="/scripts/vendor.js"></script>
 
