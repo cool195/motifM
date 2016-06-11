@@ -28,15 +28,15 @@
             @include('navigator')
             <!-- 个人中心 修改 Profile -->
             <section class="bg-minHeight">
-                <form method="">
+                <form method="" id="changeProfile">
                     <article class="p-x-15x p-y-10x font-size-md text-main"><strong>Change Profile</strong>
                         <div class="text-common font-size-sm p-t-10x">{{$user['login_email']}}</div>
                     </article>
                     <fieldset class="bg-white">
-                        <input class="form-control form-control-block p-a-15x font-size-sm" type="text" placeholder="{{$user['nickname']}}">
+                        <input class="form-control form-control-block p-a-15x font-size-sm" name="nick" type="text" placeholder="{{$user['nickname']}}">
                     </fieldset>
                     <div class="p-a-15x">
-                        <a href="#" class="btn btn-primary btn-block btn-sm">Change</a>
+                        <div class="btn btn-primary btn-block btn-sm" data-role="submit">Change</div>
                     </div>
                 </form>
             </section>
@@ -47,6 +47,13 @@
 
         </div>
     </div>
+    <!-- loading 效果 -->
+    <div class="loading loading-screen loading-switch loading-hidden">
+        <div class="loader loader-screen"></div>
+    </div>
+
 </body>
 <script src="/scripts/vendor.js"></script>
+
+<script src="/scripts/profileSetting-changeProfile.js"></script>
 </html>

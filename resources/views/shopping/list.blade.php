@@ -63,6 +63,18 @@
         @include('footer')
     </div>
 </div>
+<!-- 下载 App Download MOTIF -->
+<div class="remodal remodal-lg modal-content" data-remodal-id="download-modal">
+    <div class="text-right p-x-15x p-t-15x" data-remodal-action="close"><i class="iconfont icon-cross icon-size-md text-common"></i></div>
+    <div class="font-size-sm p-a-15x">
+        We supply this function in the MOTIF App,<br>You can use there！
+    </div>
+    <hr class="hr-base m-a-0">
+    <div class="p-x-15x p-t-10x p-b-15x">
+        <div class="btn btn-primary btn-block btn-sm" data-remodal-action="confirm">View in MOTIF App</div>
+    </div>
+</div>
+
 </body>
 <!-- 模板 -->
 <template id="tpl-product">
