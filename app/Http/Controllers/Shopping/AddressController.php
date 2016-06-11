@@ -10,10 +10,18 @@ use Illuminate\Support\Facades\Cache;
 
 class AddressController extends ApiController
 {
+	/*
+	 * 获取用户收货地址列表
+	 *
+	 * @author zhangtao@evermarker.net
+	 * @params Request
+	 * @return Array
+	 *
+	 * */
 	public function getUserAddrList(Request $request)		
 	{
-		$cmd = 'list';	
-		$uuid = $request->input("uuid", "608341ba8191ba1bf7a2dec25f0158df3c6670da");	
+		$cmd = 'list';
+		$uuid = $request->input("uuid", "608341ba8191ba1bf7a2dec25f0158df3c6670da");
 		$pin = $request->input("pin", "3e448648b3814c999b646f25cde12b2a");
 		$token = $request->input("token", "71b5cb03786f9d6207421caeab91da8f");
 		$params = array(
@@ -22,6 +30,13 @@ class AddressController extends ApiController
 			'pin'=>$pin,
 			'token'=>$token
 		);
+/*		$user = Cache::get('user');
+		$params = array(
+			'cmd' => 'list',
+			'uuid' => $request->input('uuid', md5($user['login_email'])),
+			'pin' => $user['pin'],
+			'token' => $user['token'],
+		);*/
 		$system = "";
 		$service = "useraddr";
 		$result = $this->request('openapi', $system, $service, $params);
@@ -33,9 +48,17 @@ class AddressController extends ApiController
 		return $result;
 	}
 
+	/*
+	 * 获取用户默认收货地址
+	 *
+	 * @author zhangtao@evermarker.net
+	 * @param Request
+	 * @return Array
+	 *
+	 * */
 	public function getUserDefaultAddr(Request $request)
 	{
-		$cmd = 'gdefault';		
+/*		$cmd = 'gdefault';
 		$uuid = $request->input('uuid', "608341ba8191ba1bf7a2dec25f0158df3c6670da");
 		$pin = $request->input("pin", "3e448648b3814c999b646f25cde12b2a");
 		$token = $request->input("token", "71b5cb03786f9d6207421caeab91da8f");
@@ -44,7 +67,15 @@ class AddressController extends ApiController
 			'uuid'=>$uuid,
 			'pin'=>$pin,
 			'token'=>$token
+		);*/
+		$user = Cache::get('user');
+		$params = array(
+			'cmd' => 'gdefault',
+			'uuid' => $request->input('uuid', md5($user['login_email'])),
+			'pin' => $user['pin'],
+			'token' => $user['token']
 		);
+
 		$system = "";
 		$service = "useraddr";
 		$result = $this->request('openapi', $system, $service, $params);
@@ -56,9 +87,17 @@ class AddressController extends ApiController
 		return $result;
 	}
 
+	/*
+	 * 增加用户收货地址
+	 *
+	 * @author zhangtao@evermarker.net
+	 * @params Request
+	 * @return Array
+	 *
+	 * */
 	public function addUserAddr(Request $request)
 	{
-		$cmd = 'add';	
+/*		$cmd = 'add';
 		$pin = $request->input("pin", "e052d5681da34fad83d0597b7b72acf7");
 		$email = $request->input("email");
 		$tel = $request->input("tel");
@@ -87,7 +126,25 @@ class AddressController extends ApiController
 			'country'=>$country,
 			'isd'=>$isd,
 			'token'=>$token
+		);*/
+		$user = Cache::get('user');
+		$params = array(
+			'cmd' => 'add',
+			'pin' => $user['pin'],
+			'email' => $request->input('email'),
+			'tel' => $request->input('tel'),
+			'name' => $request->input("name"),
+			'addr1' => $request->input("addr1"),
+			'addr2' => $request->input("addr2"),
+			'city' => $request->input("city"),
+			'state' => $request->input("state"),
+			'zip' => $request->input("zip"),
+			'idnum' => $request->input("idnum"),
+			'country' => $request->input("country"),
+			'isd' => $request->input("isd", 0),
+			'token' => $user['token']
 		);
+
 		$system = "";
 		$service = "useraddr";
 		$result = $this->request('openapi', $system, $service, $params);
@@ -96,13 +153,19 @@ class AddressController extends ApiController
 			$result['error_msg'] = "Failed to add address";
 			$result['data'] = array();
 		}
-		dd($result);
 		return $result;
 	}
 
+	/*
+	 * 修改用户收货地址
+	 *
+	 * @author zhangtao@evermarker.net
+	 * @params Request
+	 * @return Array
+	 * */
 	public function modifyUserAddr(Request $request)
 	{
-		$cmd = 'modify';	
+/*		$cmd = 'modify';
 		$pin = $request->input("pin", "e052d5681da34fad83d0597b7b72acf7");
 		$aid = $request->input("aid");
 		$email = $request->input("email");
@@ -133,7 +196,26 @@ class AddressController extends ApiController
 			'country'=>$country,
 			'isd'=>$isd,
 			'token'=>$token
+		);*/
+		$user = Cache::get('user');
+		$params = array(
+			'cmd' => 'modify',
+			'pin' => $user['pin'],
+			'aid' => $user['aid'],
+			'email' => $request->input('email'),
+			'tel' => $request->input('tel'),
+			'name' => $request->input("name"),
+			'addr1' => $request->input("addr1"),
+			'addr2' => $request->input("addr2"),
+			'city' => $request->input("city"),
+			'state' => $request->input("state"),
+			'zip' => $request->input("zip"),
+			'idnum' => $request->input("idnum"),
+			'country' => $request->input("country"),
+			'isd' => $request->input("isd", 0),
+			'token' => $user['token']
 		);
+
 		$system = "";
 		$service = "useraddr";
 		$result = $this->request('openapi', $system, $service, $params);
@@ -142,14 +224,21 @@ class AddressController extends ApiController
 			$result['error_msg'] = "Failed to add address";
 			$result['data'] = array();
 		}
-		dd($result);
 		return $result;
 		
 	}
-	
+
+	/*
+	 * 修改用户默认地址
+	 *
+	 * @author zhangtao@evermarker.net
+	 * @params Request
+	 * @return Array
+	 *
+	 * */
 	public function modifyUserDefaultAddr(Request $request)
 	{
-		$cmd = "mdefault";	
+/*		$cmd = "mdefault";
 		$pin = $request->input("pin", "e052d5681da34fad83d0597b7b72acf7");
 		$aid = $request->input("aid");
 		$isd = $request->input("isd");
@@ -158,6 +247,13 @@ class AddressController extends ApiController
 			'pin'=>$pin,
 			'aid'=>$aid,
 			'isd'=>$isd
+		);*/
+		$user = Cache::get('user');
+		$params = array(
+			'cmd' => 'mdefault',
+			'pin' => $user['pin'],
+			'aid' => $request->input('aid'),
+			'isd' => $request->input('isd')
 		);
 		$system = "";
 		$service = "useraddr";
@@ -166,13 +262,20 @@ class AddressController extends ApiController
 			$result['error_msg'] = "Data access failed";
 			$result['data'] = array();
 		}
-		dd($result);
 		return $result;
 	}
 
+	/*
+	 * 删除用户收货地址
+	 *
+	 * @author zhangtao@evermarker.net
+	 * @param Request
+	 * @return Array
+	 *
+	 * */
 	public function delUserAddr(Request $request)
 	{
-		$cmd = "del";	
+/*		$cmd = "del";
 		$pin = $request->input("pin", "e052d5681da34fad83d0597b7b72acf7");
 		$aid = $request->input("aid");
 		$token = $request->input("token", "eeec7a32dcb6115abfe4a871c6b08b47");
@@ -181,6 +284,13 @@ class AddressController extends ApiController
 			'pin'=>$pin,
 			'aid'=>$aid,
 			'token'=>$token
+		);*/
+		$user = Cache::get('user');
+		$params = array(
+			'cmd' => "del",
+			'pin' => $user['pin'],
+			'aid' => $request->input('aid'),
+			'token' => $user['token']
 		);
 		$system = "";
 		$service = "useraddr";
@@ -190,10 +300,17 @@ class AddressController extends ApiController
 			$result['error_msg'] = "Data access failed";
 			$result['data'] = array();
 		}
-		dd($result);
 		return $result;
 	}
 
+	/*
+	 * 获取国家列表
+	 *
+	 * @author zhangtao@evermarker.net
+	 * @param Request
+	 * @return Array
+	 *
+	 * */
 	public function getCountry(Request $request)
 	{
 		//$user = Cache::get('user');
