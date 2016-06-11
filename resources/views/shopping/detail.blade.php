@@ -341,10 +341,10 @@
                 <fieldset class="container-fluid p-a-15x">
                     <div class="row">
                         <div class="col-xs-6">
-                            <div class="btn btn-primary-outline btn-block disabled">Add To Bag</div>
+                            <div class="btn btn-primary-outline btn-block disabled" id="addcart">Add To Bag</div>
                         </div>
                         <div class="col-xs-6">
-                            <div class="btn btn-primary btn-block disabled">Buy Now</div>
+                            <div class="btn btn-primary btn-block disabled" id="buynow">Buy Now</div>
                         </div>
                     </div>
                 </fieldset>
