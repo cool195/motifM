@@ -18,21 +18,46 @@ class UserController extends ApiController
     const API_SYSTEM = "";
     const API_SERVICE = "user";
 
+    /*
+     * @author zhangtao@evermarker.net
+     *
+     * 跳转至个人中心页
+     *
+     * */
     public function setting(Request $request)
     {
         return View('shopping.profilesetting');
     }
-    
+
+    /*
+     * @author zhangtao@evermarker.net
+     *
+     * 跳转至个人中心
+     *
+     * */
     public function changeProfile(Request $request)
     {
         return View('shopping.profilesetting_changeprofile');
     }
 
+    /*
+     * @author zhangtao@evermarker.net
+     *
+     * 跳转至注册页面
+     *
+     * */
     public function register(Request $request)
     {
         return View('shopping.register');
     }
 
+    /*
+     * 用户注册接口(异步)
+     *
+     * @author zhangtao@evermarker.net
+     * @params Request $request
+     * @return Array
+     * */
     public function signup(Request $request)
     {
         $email = $request->input('email');
@@ -59,11 +84,23 @@ class UserController extends ApiController
          return $result;
     }
 
+    /*
+     * 跳转至用户登录页面
+     *
+     * @author zhangtao@evemarker.net
+     * */
     public function login(Request $request)
     {
         return view('shopping.login');
     }
 
+    /*
+     * 用户登录接口(异步)
+     *
+     * @author zhangtao@evermarker.net
+     * @params Request $request
+     * @return Array
+     * */
     public function loginCheck(Request $request)
     {
         $email = $request->input('email');
@@ -89,6 +126,13 @@ class UserController extends ApiController
         return $result;
     }
 
+    /*
+     * 用户注销登录接口
+     *
+     * @author zhangtao@evermarker.net
+     * @params Request $request
+     * @return Array
+     * */
     public function signout(Request $request)
     {
         $user = Cache::get('user');
@@ -113,11 +157,23 @@ class UserController extends ApiController
         return $result;
     }
 
+    /*
+     * 跳转至重置密码页面
+     *
+     * @author zhangtao@evermarker.net
+     * */
     public function reset(Request $request)
     {
         return View('shopping.resetpwd');
     }
 
+    /*
+     * 重置密码接口
+     *
+     * @author zhangtao@evermarker.net
+     * @params Request $request
+     * @return Array
+     * */
     public function resetPassword(Request $request)
     {
         $params = array(
@@ -135,6 +191,13 @@ class UserController extends ApiController
         return $result;
     }
 
+    /*
+     * 找回密码
+     *
+     * @author zhangtao@evermarker.net
+     * @params Request $request
+     * @return Array
+     * */
     public function forgetPassword(Request $request)
     {
         $user = Cache::get('user');
@@ -153,11 +216,21 @@ class UserController extends ApiController
         return $result;
     }
 
+    /*
+     *
+     * */
     public function changePassword(Request $request)
     {
         return View('shopping.profilesetting_changepassword');
     }
 
+    /*
+     * 修改用户密码接口
+     *
+     * @author zhangtao@evermarker.net
+     * @params Request $request
+     * @return Array
+     * */
     public function modifyUserPwd(Request $request)
     {
         $user = Cache::get('user');
@@ -177,6 +250,13 @@ class UserController extends ApiController
         return $result;
     }
 
+    /*
+     * 用户第三方登录
+     *
+     * @author zhangtao@evermarker.net
+     * @params Request $request
+     * @return Array
+     * */
     public function tryPrtLogin(Request $request)
     {
         $reinfo = $request->input('reinfo');
@@ -201,6 +281,13 @@ class UserController extends ApiController
         return $result;
     }
 
+    /*
+     * 获取用户信息
+     *
+     * @author zhangtao@evermarker.net
+     * @params Request $request
+     * @return Array
+     * */
     public function getUserDetailInfo(Request $request)
     {
         $user = Cache::get('user');
@@ -218,6 +305,13 @@ class UserController extends ApiController
         return $result;
     }
 
+    /*
+     * 修改用户信息
+     *
+     * @author zhangtao@evermarker.net
+     * @params Request $request
+     * @return Array
+     * */
     public function modifyUserInfo(Request $request)
     {
         $user = Cache::get('user');
@@ -237,6 +331,9 @@ class UserController extends ApiController
         return $result;
     }
 
+    /*
+     *
+     * */
     public function shippingAddress(Request $request)
     {
         $user = Cache::get('user');

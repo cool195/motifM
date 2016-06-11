@@ -141,10 +141,22 @@
             <div class="product-detailImg fade">
                 <div class="swiper-container" id="detailImg-swiper">
                     <div class="swiper-wrapper">
-                        <div class="swiper-slide"><img class="img-fluid" src="/images/product/productDetail1.png"></div>
-                        <div class="swiper-slide"><img class="img-fluid" src="/images/product/productDetail2.png"></div>
-                        <div class="swiper-slide"><img class="img-fluid" src="/images/product/productDetail3.png"></div>
-                        <div class="swiper-slide"><img class="img-fluid" src="/images/product/productDetail4.png"></div>
+                        <div class="swiper-slide">
+                            <img class="img-fluid swiper-lazy" data-src="/images/product/productDetail1.png">
+                            <img class="img-fluid preloader" src="/images/product/bg-product@750.png" alt="">
+                        </div>
+                        <div class="swiper-slide">
+                            <img class="img-fluid swiper-lazy" data-src="/images/product/productDetail2.png">
+                            <img class="img-fluid preloader" src="/images/product/bg-product@750.png" alt="">
+                        </div>
+                        <div class="swiper-slide">
+                            <img class="img-fluid swiper-lazy" data-src="/images/product/productDetail3.png">
+                            <img class="img-fluid preloader" src="/images/product/bg-product@750.png" alt="">
+                        </div>
+                        <div class="swiper-slide">
+                            <img class="img-fluid swiper-lazy" data-src="/images/product/productDetail4.png">
+                            <img class="img-fluid preloader" src="/images/product/bg-product@750.png" alt="">
+                        </div>
                     </div>
                     <div class="swiper-pagination font-size-sm" id="detailImg-pagination"></div>
                 </div>
@@ -157,13 +169,21 @@
                     <!-- 页面上图片轮播 -->
                     <div class="swiper-container" id="baseImg-swiper">
                         <div class="swiper-wrapper">
-                            <div class="swiper-slide"><img class="img-fluid" src="/images/product/productDetail1.png">
+                            <div class="swiper-slide">
+                                <img class="img-fluid swiper-lazy" data-src="/images/product/productDetail1.png">
+                                <img class="img-fluid preloader" src="/images/product/bg-product@750.png" alt="">
                             </div>
-                            <div class="swiper-slide"><img class="img-fluid" src="/images/product/productDetail2.png">
+                            <div class="swiper-slide">
+                                <img class="img-fluid swiper-lazy" data-src="/images/product/productDetail2.png">
+                                <img class="img-fluid preloader" src="/images/product/bg-product@750.png" alt="">
                             </div>
-                            <div class="swiper-slide"><img class="img-fluid" src="/images/product/productDetail3.png">
+                            <div class="swiper-slide">
+                                <img class="img-fluid swiper-lazy" data-src="/images/product/productDetail3.png">
+                                <img class="img-fluid preloader" src="/images/product/bg-product@750.png" alt="">
                             </div>
-                            <div class="swiper-slide"><img class="img-fluid" src="/images/product/productDetail4.png">
+                            <div class="swiper-slide">
+                                <img class="img-fluid swiper-lazy" data-src="/images/product/productDetail4.png">
+                                <img class="img-fluid preloader" src="/images/product/bg-product@750.png" alt="">
                             </div>
                         </div>
                         <!-- 分页器 -->
@@ -547,6 +567,10 @@
                 </div>
             </footer>
         </div>
+    </div>
+    <!-- loading 效果 -->
+    <div class="loading loading-screen loading-switch loading-hidden">
+        <div class="loader loader-screen"></div>
     </div>
 </body>
 <script src="/scripts/vendor.js"></script>

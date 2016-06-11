@@ -1,20 +1,37 @@
 'use strict';
 
 (function ($) {
+    // loading 打开
+    function openLoading() {
+        $('.loading').toggleClass('loading-hidden');
+        setTimeout(function () {
+            $('.loading').toggleClass('loading-open');
+        }, 25);
+    }
 
-    // TODO loading 动画
+    // loading 隐藏
+    function closeLoading() {
+        $('.loading').addClass('loading-close');
+        setTimeout(function () {
+            $('.loading').toggleClass('loading-hidden loading-open').removeClass('loading-close');
+        }, 500);
+    }
+
+    // TODO 登录后跳转
     // ajax
     function loginUser() {
+        openLoading();
         $.ajax({
-            url: '/user/signup',
+            url: '/user/logincheck',
             type: 'POST',
-            data: $('#register').serialize()
-        }).done(function () {
+            data: $('#login').serialize()
+        }).done(function (data) {
             console.log("success");
         }).fail(function () {
             console.log("error");
         }).always(function () {
             console.log("complete");
+            closeLoading();
         });
     }
 
