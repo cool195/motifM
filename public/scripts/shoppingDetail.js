@@ -4,6 +4,7 @@
 /*global jQuery Swiper*/
 
 'use strict';
+
 (function ($, Swiper) {
 
     // 图片轮播
@@ -46,9 +47,9 @@
 
     // 建立 选项组 的数据集合
     // 为 Options 赋值
-    var Options = {};
-    var Stock = {};
-    var Vas = {};
+    var Options = {},
+        Stock = {},
+        Vas = {};
     // 剔除 库存为 0 的项
     function filterNull(List, Arr) {
         List = List.filter(function (el) {
@@ -114,28 +115,30 @@
     // 初始化 增值服务
     function newVas(DataList, objCache) {
         $.each(DataList, function (index, value) {
-            var vas_id = value['vas_id'],
-                vas_type = value['vas_type'];
+            var vas_id = value.vas_id,
+                vas_type = value.vas_type;
             objCache[vas_id] = vas_type;
         });
     }
 
     // 初始化 赋值
-    // (function initOptions() {
-    //     var SpuId = $('#modalDialog').data('spu');
-    //     $.ajax({
-    //         url: '/products/' + SpuId
-    //     })
-    //         .done(function (data) {
-    //             console.log('success');
-    //             // 获取商品所有的库存
-    //             // Inventory 为库存的商品的Sku
-    //             var Inventory = inventoryNull(data.data.skuExps);
-    //             newOptions(data.data.spuAttrs, Inventory, Options);
-    //             newStock(data.data.skuExps, Stock);
-    //             newVas(data.data.vasBases, Vas);
-    //         });
-    // })();
+    (function initOptions() {
+        var SpuId = $('#modalDialog').data('spu');
+        $.ajax({
+            url: '/products/' + SpuId
+        }).done(function (data) {
+            console.log('success');
+            // 获取商品所有的库存
+            // Inventory 为库存的商品的Sku
+            var Inventory = inventoryNull(data.data.skuExps);
+            // 所有选项
+            newOptions(data.data.spuAttrs, Inventory, Options);
+            // 所有sku对应的库存
+            newStock(data.data.skuExps, Stock);
+            // 所有增值服务
+            newVas(data.data.vasBases, Vas);
+        });
+    })();
 
     // TODO 筛选 逻辑
     /**
@@ -230,7 +233,6 @@
                 });
             }
         });
-
     }
 
     /**
@@ -311,7 +313,6 @@
             SkaId = $(e.target).data('ska');
 
         var ActiveOptions = $('#modalDialog').find('.btn-itemProperty.active');
-
         if (ActiveOptions.length < 1) {
             $('#modalDialog').find('.btn-itemProperty').removeClass('disabled');
             ResultSkus = [];
@@ -321,28 +322,39 @@
         }
 
         // TODO 为所有选项绑定 控制 调整数量是否可用
-
+        // 调整数量按钮组
         var $Count = $('#item-count');
-        var CountNum = $Count.children('[data-num="num"]').html();
-        // 购买的商品数量 大于1
-        if (CountNum > 1) {
-            $Count.children('[data-item]').addClass('disabled');
-            $Count.children('[data-num="num"]').html(1);
-        }
-        // 选中所有选项, 筛选出一个Sku
-        if (ResultSkus.length === 1) {
+
+        // 重置 调整数量按钮组
+        $Count.children('[data-item]').addClass('disabled');
+        $Count.children('[data-num="num"]').html(1);
+
+        // RadioList 选中的选项数量
+        // CheckCount 所有选项的组数
+        var RadioList = $('#modalDialog').find('.btn-itemProperty.active'),
+            CheckCount = Object.keys(Options);
+
+        // 判断所选项 是否 全选
+        if (CheckCount.length === RadioList.length) {
+            // 获取所选中 sku 对应的库存
             var StockCache = Stock[ResultSkus[0]];
-            // 库存若大于1
+
+            // 切换Sku时(确定一个sku时),商品购买数量归1
+            // 减号不可用
+            $Count.children('[data-item="minus"]').addClass('disabled');
+            $Count.children('[data-num="num"]').html(1);
+            // 如果库存大于1 加号可用
             if (StockCache > 1) {
                 $Count.children('[data-item="add"]').removeClass('disabled');
             }
+            // 全选状态时, 可以购买
             $('#addcart').removeClass('disabled');
             $('#buynow').removeClass('disabled');
         } else {
+            // 非全选状态时, 不可以购买
             $('#addcart').addClass('disabled');
             $('#buynow').addClass('disabled');
         }
-
     });
 
     // 调整数量
@@ -350,30 +362,31 @@
      *
      * @param Count
      */
-    function changeQtty(RequestStock) {
+    function changeQtty(RequestStock, $QttyCount) {
         // TODO Loading Show
         $.ajax({
             url: '/stock/checkstock',
-            data: {skus: RequestStock}
-        })
-            .done(function (data) {
-                console.log('success');
-                var requestList = [];
-                for (var i = 0; i < RequestStock.length; i++) {
-                    if (data.data.list[i].stockStatus === 1) {
-                        requestList[i] = true;
-                    } else {
-                        requestList[i] = false;
-                    }
+            data: { skus: RequestStock }
+        }).done(function (data) {
+            if (data.success) {
+
+                var Request = true;
+
+                if (data.data.list[0].stockStatus === 1) {
+                    Request = true;
+                } else {
+                    Request = false;
                 }
-                return requestList;
-            })
-            .fail(function () {
-                console.log('error');
-            })
-            .always(function () {
-                console.log('complete');
-            });
+
+                if (Request === false) {
+                    $QttyCount.addClass('disabled');
+                }
+            }
+        }).fail(function () {
+            console.log('error');
+        }).always(function () {
+            console.log('complete');
+        });
     }
 
     // 绑定计数事件,商品数量
@@ -405,38 +418,37 @@
         // SelectSku 选中的Sku 有且只有一个值
         // StockCache 本地储存的库存数据
         // Checkstock 拼接后的请求字符串
-        var Count = $QtyCount.siblings('[data-num]').html(),
+        var NextCount = parseInt($QtyCount.siblings('[data-num]').html()),
             SelectSku = ResultSkus[0],
             StockCache = Stock[SelectSku],
-            RequestStock = ['', ''];
+            Count = NextCount++,
+            // Count 当前的数值 , NextCount 是+1 之后的数量 , 用来拼接参数
+        Qtty = Count; // 用来 储存 最后改变后的数量
 
         if ($QtyCount.data('item') === 'add') {
-            // 判断本地库存量
-            if (StockCache < 20 && Count < StockCache) {
-                ++Count;
-                console.log('商品数量:' + Count + '剩余库存量小于库存' + StockCache);
-                // 判断增加后是否等于最大库存量
-                if (Count === StockCache) {
-                    $QtyCount.addClass('disabled');
-                    console.log('商品数量等于最大库存量');
-                }
-            } else if (Count >= StockCache && StockCache === 20) {
-                var StrCount = [Count, ++Count];
+            Qtty = NextCount;
+            var MaxCount = 50;
 
-                for (var i = 0; i < RequestStock.length; i++) {
-                    RequestStock[i] = SelectSku + '_' + StrCount[i];
-                }
-                var RequestList = changeQtty(RequestStock);
-                // 查看库存情况
-                if (RequestList[0] === true && RequestList[1] === true) {
-                    $QtyCount.siblings('[data-num]').html(Count);
-                } else if (RequestList[0] === true && RadioList[1] === false) {
-                    $QtyCount.siblings('[data-num]').html(Count);
+            if (Count > 1) {
+                $QtyCount.siblings('[data-item="minus"]').removeClass('disabled');
+            }
+            if (NextCount === MaxCount) {
+                $QtyCount.addClass('disabled');
+            }
+
+            // 判断本地库存量
+            if (StockCache < 20) {
+                if (NextCount === StockCache) {
                     $QtyCount.addClass('disabled');
                 }
-            }
-            if ($QtyCount.siblings('[data-item="minus"]').hasClass('disabled')) {
-                $QtyCount.siblings('[data-item="minus"]').removeClass('disabled');
+            } else if (StockCache === 20) {
+                // 库存量等于20的情况
+                if (NextCount >= 20) {
+                    var RequestStock = SelectSku + '_' + ++NextCount;
+
+                    // 查看库存情况
+                    changeQtty(RequestStock, $QtyCount);
+                }
             }
         } else {
             --Count;
@@ -445,10 +457,10 @@
             } else if ($QtyCount.siblings('[data-item="add"]').hasClass('disabled')) {
                 $QtyCount.siblings('[data-item="add"]').removeClass('disabled');
             }
-            console.log('商品数量:' + Count);
+            Qtty = Count;
         }
-
-        $QtyCount.siblings('[data-num]').html(Count);
+        // 将计数更新
+        $QtyCount.siblings('[data-num]').html(Qtty);
     });
     /**
      *
@@ -458,10 +470,10 @@
         var Qtty = $('#item-count').children('[data-num]').html();
         // ajax 请求的参数
         var Operate = {
-            'sale_qtty': Qtty,       // 数量
-            'select': true,       // 是否选中
-            'sku': ResultSkus[0],            // SKU
-            'VAList': []           // 增值服务
+            'sale_qtty': Qtty, // 数量
+            'select': true, // 是否选中
+            'sku': ResultSkus[0], // SKU
+            'VAList': [] // 增值服务
         };
 
         var i = 0;
@@ -473,8 +485,8 @@
             // 增值项 是否被选中
             if ($CurrentVas.prop('checked')) {
                 VarList[i] = {};
-                VarList[i].vas_id = index;          // 增值服务ID
-                VarList[i].user_remark = '';        // 用户备注信息
+                VarList[i].vas_id = index; // 增值服务ID
+                VarList[i].user_remark = ''; // 用户备注信息
                 // 增值服务类型
                 switch (val) {
                     case 1:
@@ -499,18 +511,14 @@
         $.ajax({
             url: '/cart',
             type: Action,
-            data: {operate: Operate}
-        })
-            .done(function () {
-                console.log("success");
-            })
-            .fail(function () {
-                console.log("error");
-            })
-            .always(function () {
-                console.log("complete");
-            });
-
+            data: { operate: Operate }
+        }).done(function () {
+            console.log("success");
+        }).fail(function () {
+            console.log("error");
+        }).always(function () {
+            console.log("complete");
+        });
     }
 
     $('#addCart').on('click', function () {
@@ -521,18 +529,18 @@
     });
     // 增值服务是否选中
     $('fieldset[data-vas-type]').on('click', function (e) {
-            // 判断增值服务类型
-            if (parseInt($(this).data('vas-type')) === 1 && $(e.target).hasClass('icon-checkcircle')) {
-                var $input = $(e.target).siblings('input[type="text"]');
-                if ($(e.target).hasClass('active')) {
-                    $input.addClass('disabled').attr('disabled', 'disabled');
-                    $(e.target).removeClass('active');
-                    $input.val('');
-                } else {
-                    $input.removeClass('disabled').removeAttr('disabled');
-                    $(e.target).addClass('active');
-                }
+        // 判断增值服务类型
+        if (parseInt($(this).data('vas-type')) === 1 && $(e.target).hasClass('icon-checkcircle')) {
+            var $input = $(e.target).siblings('input[type="text"]');
+            if ($(e.target).hasClass('active')) {
+                $input.addClass('disabled').attr('disabled', 'disabled');
+                $(e.target).removeClass('active');
+                $input.val('');
+            } else {
+                $input.removeClass('disabled').removeAttr('disabled');
+                $(e.target).addClass('active');
             }
         }
-    );
+    });
 })(jQuery, Swiper);
+//# sourceMappingURL=shoppingDetail.js.map

@@ -9,7 +9,10 @@
             url: '/user/signup',
             type: 'POST',
             data: $('#register').serialize()
-        }).done(function () {
+        }).done(function (data) {
+            if(data.success){
+                window.location.href = data.redirectUrl;
+            }
             console.log("success");
         }).fail(function () {
             console.log("error");
