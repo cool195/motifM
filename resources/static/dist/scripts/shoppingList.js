@@ -65,9 +65,7 @@
 
     // 选项卡容器
     var TabsContainerSwiper = new Swiper('#tabs-container', {
-        onlyExternal: true,
-        lazyLoading: true,
-        lazyLoadingInPrevNext: true
+        onlyExternal: true
     });
 
     // 导航和选项卡容器 联动的方法
