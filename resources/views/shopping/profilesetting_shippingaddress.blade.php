@@ -31,30 +31,29 @@
             <section class="p-b-15x">
                 <article class="p-x-15x p-y-10x flex flex-fullJustified flex-alignCenter">
                     <span class="font-size-md text-main"><strong>Shipping Address</strong></span>
-                    <a class="btn btn-sm btn-edit" id="btnEdit">Edit</a>
+                    <a class="btn btn-primary-outline btn-sm" id="address-edit">Edit</a>
+                    <!-- 修改状态 -->
+                    <!--<a class="btn btn-primary btn-sm" href="#">Done</a>-->
                 </article>
 
                 <!-- 地址列表 -->
-                <aside class="bg-white m-b-10x" id="addressList">
+                <aside class="bg-white m-b-10x">
                 @foreach($data['list'] as $addr)
                     <hr class="hr-base m-a-0">
-                    <div class="flex flex-alignCenter p-x-15x p-y-10x">
-                        <a class="p-r-15x delAddress" data-remodal-target="modal"><i class="iconfont icon-delete icon-size-md text-warming" data-aid="222"></i></a>
-                        <a class="flex flex-alignCenter flex-fullJustified flex-width font-size-sm text-primary" href="#">
-                            <div class="flex flex-alignCenter">
-                                <address class="m-b-0">
+                        <div class="addressList-container font-size-sm" id="primaryItem" data-address="" data-aid="101">
+                            <div class="addressItem-info text-primary m-l-15x p-r-15x p-y-10x" data-action="return" data-url-return="return" data-url-edit="edit">
+                                <div>
                                     <div>{{$addr['email']}}</div>
                                     <div>{{$addr['detail_address1']}}  @if(!empty($addr['detail_address2'])) {{$addr['detail_address2']}} @endif</div>
                                     <div>{{$addr['city']}}, {{$addr['zip']}} {{$addr['zip']}}</div>
                                     <div>{{$addr['country']}}</div>
                                     <div>@if(!empty($addr['telephone'])) {{$addr['telephone']}} @endif</div>
-                                </address>
-                            </div>
+                                </div>
                             @if($addr['isDefault'])
-                              <div class="flex flex-alignCenter"><i class="iconfont icon-size-sm text-common del-icon"></i></div>
+                                 <span class="text-common p-r-20x">Primary</span>
+                                 <div class="flex flex-alignCenter"><i class="iconfont icon-size-sm text-common del-icon"></i></div>
                             @endif
                         </a>
-                        <input type="hidden" name="aid" value="{{$addr['receiving_id']}}"></input>
                     </div>
                 @endforeach
                 </aside>
@@ -65,6 +64,9 @@
                         <span class="font-size-sm">Add a New Address</span>
                     </a>
                 </aside>
+                <aside class="p-a-15x">
+                    <div class="btn btn-block btn-primary" data-role="submit">Continue</div>
+                </aside>
             </section>
 
             <!-- 页脚 功能链接 start-->
@@ -73,10 +75,13 @@
         </div>
     </div>
 
-    <!-- 删除送货地址列表中的地址 -->
-    <div class="remodal remodal-md modal-content" data-remodal-id="modal" id="addressDialog">
+    <!-- 弹出选择 size color Engraving -->
+    <!-- TODO remodal 有多余的样式 需要整理 -->
+    <!-- 删除将要购买的商品 -->
+    <!-- TODO remodal 有多余的样式 需要整理 -->
+    <div class="remodal remodal-md modal-content" data-remodal-id="modal" id="modalDialog">
         <div class="font-size-sm p-t-20x p-x-15x p-b-15x">
-            Are you sure you want to delete <br> this item from your address list?
+            Are you sure you want to remove <br> this item from your bag?
         </div>
         <div class="btn-group flex">
             <div class="btn remodal-btn flex-width" data-remodal-action="confirm">Remove</div>
