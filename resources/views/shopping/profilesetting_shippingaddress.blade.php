@@ -59,7 +59,7 @@
                 </aside>
 
                 <aside class="bg-white">
-                    <a class="flex flex-alignCenter text-primary p-a-15x" href="#">
+                    <a class="flex flex-alignCenter text-primary p-a-15x" href="/user/addradd">
                         <i class="iconfont icon-add icon-size-sm p-r-10x"></i>
                         <span class="font-size-sm">Add a New Address</span>
                     </a>

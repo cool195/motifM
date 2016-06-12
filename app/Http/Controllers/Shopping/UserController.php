@@ -360,5 +360,36 @@ class UserController extends ApiController
         return View('shopping.profilesetting_shippingaddress', ['data'=>$result['data']]);
     }
 
+    public function addrAdd(Request $request)
+    {
+        return View('shopping.profilesetting_addaddress');
+    }
+
+    public function countryList(Request $request)
+    {
+        //$user = Cache::get('user');
+        $params = array(
+            'cmd'=>'country',
+            //	'token'=> $user['token']
+        );
+        $system = "";
+        $service = "useraddr";
+        $result = $this->request('openapi', $system, $service, $params);
+        if(empty($result)){
+            $result['success'] = false;
+            $result['error_msg'] = "Data access failed";
+            $result['data'] = array();
+        }else{
+            if($result['success']){
+                $commonlist = array();
+                for($index = 0; $index < $result['data']['amount']; $index++)
+                {
+                    $commonlist[] = array_shift($result['data']['list']);
+                }
+                $result['data']['commonlist'] = $commonlist;
+            }
+        }
+        return View('shopping.profilesetting_countrylist', ['list'=>$result['data']['list'], 'commonlist'=>$result['data']['commonlist']]);
+    }
 }
 
