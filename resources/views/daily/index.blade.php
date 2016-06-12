@@ -46,7 +46,7 @@
     @{{ each list }}
     @{{ if $value.type == "1" }}
     <div class="bg-white m-b-10x">
-        <a href="@{{ if $value.skipType == "1" }}/detail/@{{ elseif $value.skipType == "2" }}/designer/@{{ elseif $value.skipType == "3" }}/topic/@{{ elseif $value.skipType == "4" }}/shopping#@{{ /if }}@{{ $value.skipId }}">
+        <a href="@{{ if $value.skipType == 1 }}/detail/@{{ else if $value.skipType == 2 }}/designer/@{{ else if $value.skipType == 3 }}/topic/@{{ else if $value.skipType == 4 }}/shopping#@{{ /if }}@{{ $value.skipId }}">
             <img class="img-fluid img-lazy"
                  data-original="https://s3-us-west-1.amazonaws.com/emimagetest/n2/@{{ $value.imgPath }}"
                  src="/images/product/bg-product@750.png">
@@ -54,7 +54,7 @@
     </div>
     @{{ /if }}
     @{{ if $value.type == "2" }}
-    <a href="@{{ if $value.skipType == "1" }}/detail/@{{ $value.skipId }}@{{ elseif $value.skipType == "2" }}/designer/@{{ $value.skipId }}@{{ elseif $value.skipType == "3" }}/topic/@{{ $value.skipId }}@{{ elseif $value.skipType == "4" }}/shopping#@{{ $value.skipId }}@{{ elseif $value.skipType == "5" }}@{{ $value.skipId }}@{{ /if }}">
+    <a href="@{{ if $value.skipType == 1 }}/detail/@{{ else if $value.skipType == 2 }}/designer/@{{ else if $value.skipType == 3 }}/topic/@{{ else if $value.skipType == 4 }}/shopping#@{{ /if }}@{{ $value.skipId }}">
         <div class="bg-white m-b-10x">
             <div>
                 <img class="img-fluid img-lazy"
