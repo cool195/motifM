@@ -442,7 +442,7 @@
             Qtty = NextCount;
             var MaxCount = 50;
 
-            if (Count > 1) {
+            if (NextCount > 1) {
                 $QtyCount.siblings('[data-item="minus"]').removeClass('disabled');
             }
             if (NextCount === MaxCount) {
@@ -475,6 +475,7 @@
         // 将计数更新
         $QtyCount.siblings('[data-num]').html(Qtty);
     });
+
     /**
      * 添加购物车
      * @param Action

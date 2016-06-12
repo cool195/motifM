@@ -83,15 +83,15 @@
                                 <div class="flex flex-alignCenter">
                                     <span class="text-primary font-size-sm m-r-5x">Qty:</span>
                                     {{-- TODO 需要添加 商品是否上架的判断 --}}
-                                    <div class="btn-group flex" data-sku="{{$showSku['sku']}}">
-                                        <div class="btn btn-cartCount btn-sm @if(1 !== $showSku['stock_status']) disabled @endif"
-                                             data-item-qty="minus">
+                                    <div class="btn-group flex item-count" data-sku="{{$showSku['sku']}}">
+                                        <div class="btn btn-cartCount btn-sm @if(!$showSku['stock_status'] || !$showSku['isPutOn']) disabled @endif"
+                                             data-item="minus">
                                             <i class="iconfont icon-minus"></i>
                                         </div>
                                         <div class="btn btn-cartCount btn-sm"
-                                             data-item-num="{{$showSku['sale_qtty']}}">{{$showSku['sale_qtty']}}</div>
+                                             data-count="{{$showSku['sale_qtty']}}">{{$showSku['sale_qtty']}}</div>
                                         <div class="btn btn-cartCount btn-sm @if(1 !== $showSku['stock_status']) disabled @endif"
-                                             data-item-qty="add">
+                                             data-item="add">
                                             <i class="iconfont icon-add"></i>
                                         </div>
                                     </div>
