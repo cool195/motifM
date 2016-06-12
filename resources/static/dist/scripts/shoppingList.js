@@ -222,7 +222,7 @@
     }
 
     // 为选项卡导航, 绑定一次性事件, 加载商品数据
-    $('#tabIndex-container').find('li[data-tabIndex]').one('click', function () {
+    $('#tabIndex-container').find('li[data-tab-index]').one('click', function () {
         console.log('顶部切换, 触发选项卡loading, 一次性事件');
         tabsLoading();
     });

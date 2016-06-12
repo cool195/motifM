@@ -56,7 +56,7 @@
     @{{ if $value.type == "2" }}
     <a href="@{{ if $value.skipType == 1 }}/detail/@{{ else if $value.skipType == 2 }}/designer/@{{ else if $value.skipType == 3 }}/topic/@{{ else if $value.skipType == 4 }}/shopping#@{{ /if }}@{{ $value.skipId }}">
         <div class="bg-white m-b-10x">
-            <div>
+            <div class="daily-imgInfo">
                 <img class="img-fluid img-lazy"
                      data-original="https://s3-us-west-1.amazonaws.com/emimagetest/n2/@{{ $value.imgPath }}"
                      src="/images/product/bg-product@750.png" alt="@{{ $value.title }}">
