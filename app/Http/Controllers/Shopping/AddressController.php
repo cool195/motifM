@@ -257,6 +257,7 @@ class AddressController extends ApiController
 		);
 		$system = "";
 		$service = "useraddr";
+		$result = $this->request('openapi', $system, $service, $params);
 		if(empty($result)){
 			$result['success'] = false;
 			$result['error_msg'] = "Data access failed";

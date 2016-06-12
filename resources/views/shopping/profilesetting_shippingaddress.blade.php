@@ -40,9 +40,10 @@
                 <aside class="bg-white m-b-10x">
                 @foreach($data['list'] as $addr)
                     <hr class="hr-base m-a-0">
-                        <div class="addressList-container font-size-sm" id="primaryItem" data-address="" data-aid="101">
-                            <div class="addressItem-info text-primary m-l-15x p-r-15x p-y-10x" data-action="return" data-url-return="return" data-url-edit="edit">
+                    <div class="addressList-container font-size-sm" id="primaryItem" data-address="" data-aid="101">
+                         <div class="addressItem-info text-primary m-l-15x p-r-15x p-y-10x" data-action="return" data-url-return="return" data-url-edit="edit">
                                 <div>
+                                    <div></div>
                                     <div>{{$addr['email']}}</div>
                                     <div>{{$addr['detail_address1']}}  @if(!empty($addr['detail_address2'])) {{$addr['detail_address2']}} @endif</div>
                                     <div>{{$addr['city']}}, {{$addr['zip']}} {{$addr['zip']}}</div>
@@ -53,7 +54,7 @@
                                  <span class="text-common p-r-20x">Primary</span>
                                  <div class="flex flex-alignCenter"><i class="iconfont icon-size-sm text-common del-icon"></i></div>
                             @endif
-                        </a>
+                        </div>
                     </div>
                 @endforeach
                 </aside>

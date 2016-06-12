@@ -365,6 +365,8 @@ class UserController extends ApiController
             $result['data'] = array();
             $result['data']['list'] = array();
         }
+        error_log(print_r("------------------\n", "\n"), 3, '/tmp/myerror.log');
+        error_log(print_r($result, "\n"), 3, '/tmp/myerror.log');
         return View('shopping.profilesetting_shippingaddress', ['data'=>$result['data']]);
     }
 

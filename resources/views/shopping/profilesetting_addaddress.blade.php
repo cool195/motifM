@@ -32,6 +32,10 @@
                 <form class="bg-white" id="addressInfo" name="addressInfo" method="get" action="/user/countrylist">
                     <!-- 个人中心 sitting list -->
                     <fieldset>
+                        <input class="form-control form-control-block p-a-15x font-size-sm" name="email" type="text" value="{{$input['email']}}" placeholder="Email Address">
+                    </fieldset>
+                    <hr class="hr-base m-a-0">
+                    <fieldset>
                         <input class="form-control form-control-block p-a-15x font-size-sm" name="name" type="text" value="{{$input['name']}}" placeholder="Full Name">
                     </fieldset>
                     <hr class="hr-base m-a-0">
