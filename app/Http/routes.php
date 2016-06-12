@@ -54,7 +54,7 @@ $app->put('/cart', 'Shopping\CartController@promptlyBuy');
 $app->get('/shopping/cart/addBatchCart', 'Shopping\CartController@addBatchCart');
 $app->get('/shopping/cart/alterQtty', 'Shopping\CartController@alterCartProQtty');
 //$app->get('/shopping/cart/promptlyBuy', 'Shopping\CartController@promptlyBuy');
-$app->get('/shopping/cart/other', 'Shopping\CartController@operateCartProduct');
+$app->get('/cart/operate', 'Shopping\CartController@operateCartProduct');
 
 
 
