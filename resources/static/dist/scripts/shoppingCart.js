@@ -30,12 +30,14 @@
         }
         openLoading();
         $.ajax({
-            url: '/path/to/file',
-            type: 'DELETE',
+            url: '/cart/operate',
+            type: 'POST',
             data: { cmd: action, sku: sku }
-        }).done(function () {
-            console.log('success');
-            location.reload();
+        }).done(function (data) {
+            if (data.success) {
+                console.log('success');
+                location.reload();
+            }
         }).fail(function () {
             console.log('error');
         }).always(function () {
@@ -44,13 +46,12 @@
         });
     }
 
-    // 移动商品 move to cart || move to save
     /**
+     * 移动商品 move to cart || move to save
      * moveProduct()
      * @param action
      * @param sku
      */
-    // TODO loading , ajax返回后 , 刷新页面
     function moveProduct(action, sku) {
         if (sku === undefined || action === undefined || sku === '' || action === '' || sku === null || action === null) {
             console.log('sku||action 为空');
@@ -58,12 +59,15 @@
         }
         openLoading();
         $.ajax({
-            url: '/path/to/file',
-            type: 'UPDATE',
+            url: '/cart/operate',
+            type: 'POST',
             data: { cmd: action, sku: sku }
-        }).done(function () {
+        }).done(function (data) {
             console.log('success');
-            location.reload();
+            // 操作成功刷新页面
+            if (data.success) {
+                location.reload();
+            }
         }).fail(function () {
             console.log('error');
         }).always(function () {
@@ -72,23 +76,91 @@
         });
     }
 
-    // TODO 加载的 loading 动画 ,请求库存
-    // 调整商品数量
-    function changeQtty(Sku, Qtty) {
+    /**
+     * 查询库存状态
+     * @param RequestStock
+     * @param $QttyCount
+     */
+    function changeQtty(RequestStock, $QttyCount) {
         openLoading();
         $.ajax({
-            url: '/path/to/file',
-            type: 'UPDATE',
-            data: { sku: Sku, qtty: Qtty }
-        }).done(function () {
-            console.log('success');
+            url: '/stock/checkstock',
+            data: { skus: RequestStock }
+        }).done(function (data) {
+            if (data.success) {
+
+                var Request = true;
+
+                if (data.data.list[0].stockStatus === 1) {
+                    Request = true;
+                } else {
+                    Request = false;
+                }
+
+                if (Request === false) {
+                    $QttyCount.addClass('disabled');
+                }
+            }
         }).fail(function () {
             console.log('error');
         }).always(function () {
-            closeLoading();
             console.log('complete');
+            closeLoading();
         });
     }
+
+    // 绑定计数事件,商品数量
+    // 需要添加库存验证
+    $('.item-count').on('click', '[data-item]', function (e) {
+
+        var $QtyCount;
+        // 获取加减号的标签项
+        if ($(e.target)[0].tagName === 'I') {
+            $QtyCount = $(e.target).parents('.btn-cartCount');
+        } else {
+            $QtyCount = $(e.target);
+        }
+
+        // 标签是否 disabled
+        if ($QtyCount.hasClass('disabled')) {
+            return;
+        }
+
+        // Count 当前商品数量
+        // SelectSku 选中的Sku 有且只有一个值
+        // StockCache 本地储存的库存数据
+        // Checkstock 拼接后的请求字符串
+        var NextCount = parseInt($QtyCount.siblings('[data-count]').html()),
+            SelectSku = $(e.target).parents('.item-count'),
+            Count = NextCount++,
+            // Count 当前的数值 , NextCount 是+1 之后的数量 , 用来拼接参数
+        Qtty = Count; // 用来 储存 最后改变后的数量
+
+        if ($QtyCount.data('item') === 'add') {
+            Qtty = NextCount;
+            var MaxCount = 50;
+
+            if (NextCount > 1) {
+                $QtyCount.siblings('[data-item="minus"]').removeClass('disabled');
+            }
+            if (NextCount === MaxCount) {
+                $QtyCount.addClass('disabled');
+            }
+            // 查看库存情况
+            var RequestStock = SelectSku + '_' + ++NextCount;
+            changeQtty(RequestStock, $QtyCount);
+        } else {
+            --Count;
+            if (Count === 1) {
+                $QtyCount.addClass('disabled');
+            } else if ($QtyCount.siblings('[data-item="add"]').hasClass('disabled')) {
+                $QtyCount.siblings('[data-item="add"]').removeClass('disabled');
+            }
+            Qtty = Count;
+        }
+        // 将计数更新
+        $QtyCount.siblings('[data-count]').html(Qtty);
+    });
 
     // 购物车对话框 触发点
     $('[data-remodal-target="modal"]').click(function (e) {
@@ -112,7 +184,7 @@
         deleteCart();
     });
 
-    // move 商品的出发点
+    // move 商品的触发点
     $('[data-product-move]').on('click', function () {
         var action = $(this).data('product-move');
         var sku = $(this).data('sku');
