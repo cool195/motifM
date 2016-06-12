@@ -45,10 +45,10 @@
                 @endforeach
             </ul>
         </nav>
-        <section class="swiper-container p-b-10x" id="tabs-container" data-loading="false">
+        <section class="swiper-container p-b-10x" id="tabs-container">
             <div class="swiper-wrapper">
                 @foreach($categories as $c)
-                    <div class="swiper-slide" data-loading="">
+                    <div class="swiper-slide" data-loading="false" data-pagenum="0">
                         <div class="container-fluid p-x-10x p-t-10x">
                             <div class="row">
                             </div>
