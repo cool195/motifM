@@ -394,10 +394,10 @@ class UserController extends ApiController
             $input['idnum'] = $input['iDnumber'];
             $input['aid'] = $input['receiving_id'];
         }else{
-            $expiresAt = Carbon::now()->addMinutes(10);
+           // $expiresAt = Carbon::now()->addMinutes(10);
             $input = Cache::get('input');
             Cache::forget('input');
-            Cache::put('input', $input, $expiresAt);
+            //Cache::put('input', $input, $expiresAt);
         }
         if(empty($input)){
             return redirect('/user/shippingaddress');
