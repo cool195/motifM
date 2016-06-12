@@ -362,12 +362,18 @@ class UserController extends ApiController
 
     public function addrAdd(Request $request)
     {
-        return View('shopping.profilesetting_addaddress');
+        $country = json_decode($request->input('country', json_encode(['country_id'=>5, 'country_name_cn'=>"中国", 'country_name_en'=>"China", 'iDnumberReq'=>0, 'isFreq'=>0])), true);
+        $input = Cache::get('input');
+        Cache::forget('input');
+        return View('shopping.profilesetting_addaddress', ['country'=>$country, 'input'=>$input]);
     }
 
     public function countryList(Request $request)
     {
-        //$user = Cache::get('user');
+
+        $input = $request->all();
+        Cache::forget('input');
+        Cache::forever('input', $input);
         $params = array(
             'cmd'=>'country',
             //	'token'=> $user['token']

@@ -29,49 +29,49 @@
             <!-- 添加地址 -->
             <section class="p-b-20x">
                 <article class="p-x-15x p-y-10x font-size-md text-main"><strong>Add New Address</strong></article>
-                <form class="bg-white" id="addressInfo">
+                <form class="bg-white" id="addressInfo" name="addressInfo" method="get" action="/user/countrylist">
                     <!-- 个人中心 sitting list -->
                     <fieldset>
-                        <input class="form-control form-control-block p-a-15x font-size-sm" name="name" type="text" placeholder="Full Name">
+                        <input class="form-control form-control-block p-a-15x font-size-sm" name="name" type="text" value="{{$input['name']}}" placeholder="Full Name">
                     </fieldset>
                     <hr class="hr-base m-a-0">
                     <fieldset>
-                        <input class="form-control form-control-block p-a-15x font-size-sm" name="addr1" type="text" placeholder="Street1">
+                        <input class="form-control form-control-block p-a-15x font-size-sm" name="addr1" type="text" value="{{$input['addr1']}}" placeholder="Street1">
                     </fieldset>
                     <hr class="hr-base m-a-0">
                     <fieldset>
-                        <input class="form-control form-control-block p-a-15x font-size-sm" name="addr2" type="text" placeholder="Street2 (optional)">
+                        <input class="form-control form-control-block p-a-15x font-size-sm" name="addr2" type="text"  value="{{$input['addr2']}}" placeholder="Street2 (optional)">
                     </fieldset>
                     <hr class="hr-base m-a-0">
                     <fieldset>
-                        <input class="form-control form-control-block p-a-15x font-size-sm" name="state" type="text" placeholder="State (optional)">
+                        <input class="form-control form-control-block p-a-15x font-size-sm" name="state" type="text" value="{{$input['state']}}" placeholder="State (optional)">
                     </fieldset>
                     <hr class="hr-base m-a-0">
                     <fieldset>
-                        <input class="form-control form-control-block p-a-15x font-size-sm" name="city" type="text" placeholder="City">
+                        <input class="form-control form-control-block p-a-15x font-size-sm" name="city" type="text" value="{{$input['city']}}" placeholder="City">
                     </fieldset>
                     <hr class="hr-base m-a-0">
                     <fieldset>
-                        <input class="form-control form-control-block p-a-15x font-size-sm" name="zip" type="text" placeholder="Zip code">
+                        <input class="form-control form-control-block p-a-15x font-size-sm" name="zip" type="text" value="{{$input['zip']}}"  placeholder="Zip code">
                     </fieldset>
                     <hr class="hr-base m-a-0">
                     <fieldset>
-                        <input class="form-control form-control-block p-a-15x font-size-sm" name="tel" type="text" placeholder="Phone (optional)">
+                        <input class="form-control form-control-block p-a-15x font-size-sm" name="tel" type="text" value="{{$input['tel']}}" placeholder="Phone (optional)">
                     </fieldset>
                     <hr class="hr-base m-a-0">
                     <fieldset>
-                        <input class="form-control form-control-block p-a-15x font-size-sm" name="idnum" type="text" placeholder="IDnumber">
+                        <input class="form-control form-control-block p-a-15x font-size-sm" name="idnum" type="text" value="{{$input['idnum']}}" placeholder="IDnumber">
                     </fieldset>
                     <hr class="hr-base m-a-0">
                     <fieldset>
-                        <a class="flex flex-alignCenter flex-fullJustified font-size-sm text-primary p-a-15x" href="">
-                            <span>Country</span>
+                        <div class="flex flex-alignCenter flex-fullJustified font-size-sm text-primary p-a-15x" id="country">
+                        <span>Country</span>
                             <div>
-                                <span>中国（CN）</span>
+                                <span>{{$country['country_name_cn']}} ({{ $country['country_name_en'] }})</span>
                                 <i class="iconfont icon-arrow-right icon-size-xm text-common"></i>
-                                <input type="text" name="country" hidden value="country_id">
+                                <input type="text" name="country" hidden value="{{$country['country_id']}}">
                             </div>
-                        </a>
+                        </div>
                     </fieldset>
                     <hr class="hr-base m-a-0">
                     <fieldset>
@@ -79,8 +79,13 @@
                             <span>Make Primary</span>
                             <div class="radio-checkBox">
                                 <div class="radio-checkItem"></div>
-                                <input type="radio" name="isd" id="address-default" hidden value="0" checked="checked">
-                                <input type="radio" name="isd" id="address-primary" hidden value="1">
+                                @if(1 == $input['isd'])
+                                    <input type="radio" name="isd" id="address-default" hidden value="0">
+                                    <input type="radio" name="isd" id="address-primary" hidden value="1" checked="checked">
+                                @else
+                                    <input type="radio" name="isd" id="address-default" hidden value="0" checked="checked">
+                                    <input type="radio" name="isd" id="address-primary" hidden value="1" >
+                                @endif
                             </div>
                         </div>
                     </fieldset>
