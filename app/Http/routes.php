@@ -54,7 +54,8 @@ $app->put('/cart', 'Shopping\CartController@promptlyBuy');
 $app->get('/shopping/cart/addBatchCart', 'Shopping\CartController@addBatchCart');
 $app->get('/shopping/cart/alterQtty', 'Shopping\CartController@alterCartProQtty');
 //$app->get('/shopping/cart/promptlyBuy', 'Shopping\CartController@promptlyBuy');
-$app->get('/shopping/cart/other', 'Shopping\CartController@operateCartProduct');
+$app->get('/cart/operate', 'Shopping\CartController@operateCartProduct');
+$app->post('/cart/operate', 'Shopping\CartController@operateCartProduct');
 
 
 
@@ -87,6 +88,8 @@ $app->get('/reset', 'Shopping\UserController@reset');
 $app->get('/user/setting', 'Shopping\UserController@setting');
 $app->get('/user/changeprofile', 'Shopping\UserController@changeProfile');
 $app->get('/user/shippingaddress', 'Shopping\UserController@shippingAddress');
+$app->get('/user/addradd', 'Shopping\UserController@addrAdd');
+$app->get('/user/countrylist', 'Shopping\UserController@countryList');
 $app->get('/user/changepassword', 'Shopping\UserController@changePassword');
 
 $app->get('/user/signup', 'Shopping\UserController@signup');

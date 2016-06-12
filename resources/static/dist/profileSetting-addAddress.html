@@ -138,51 +138,73 @@
             </header>
             <!-- 添加地址 -->
             <section class="p-b-20x">
-                <form method="post">
-                    <article class="p-x-15x p-y-10x font-size-md text-main"><strong>Add New Address</strong></article>
+                <article class="p-x-15x p-y-10x font-size-md text-main"><strong>Add New Address</strong></article>
+                <form class="bg-white" id="addressInfo">
                     <!-- 个人中心 sitting list -->
-                    <fieldset class="bg-white">
-                        <input class="form-control form-control-block p-a-15x font-size-sm" id="name" type="text" placeholder="Full Name">
-                        <hr class="hr-base m-a-0">
-                        <input class="form-control form-control-block p-a-15x font-size-sm" id="addr1" type="text" placeholder="Street1">
-                        <hr class="hr-base m-a-0">
-                        <input class="form-control form-control-block p-a-15x font-size-sm" id="addr2" type="text" placeholder="Street2 (optional)">
-                        <hr class="hr-base m-a-0">
-                        <input class="form-control form-control-block p-a-15x font-size-sm" id="state" type="text" placeholder="State (optional)">
-                        <hr class="hr-base m-a-0">
-                        <input class="form-control form-control-block p-a-15x font-size-sm" id="city" type="text" placeholder="City">
-                        <hr class="hr-base m-a-0">
-                        <input class="form-control form-control-block p-a-15x font-size-sm" id="zip" type="text" placeholder="Zip code">
-                        <hr class="hr-base m-a-0">
-                        <input class="form-control form-control-block p-a-15x font-size-sm" id="tel" type="text" placeholder="Phone (optional)">
-                        <hr class="hr-base m-a-0">
-                        <input class="form-control form-control-block p-a-15x font-size-sm" id="idnum" type="text" placeholder="IDnumber">
-                        <hr class="hr-base m-a-0">
-                        <a class="flex flex-alignCenter flex-fullJustified font-size-sm text-primary p-a-15x" href="#">
-                            <span>Country</span>
-                            <div><span id="country" data-country="1">中国（CN）</span><i class="iconfont icon-arrow-right icon-size-xm text-common"></i></div>
-                        </a>
-                        <hr class="hr-base m-a-0">
-                        <a class="flex flex-alignCenter flex-fullJustified font-size-sm text-primary p-a-15x" href="#">
-                            <span>Make Primary</span>
-                            <div id="bg-openClose" class="open">
-                                <div id="btn-openClose" class="btn-open"></div>
-                            </div>
-                        </a>
+                    <fieldset>
+                        <input class="form-control form-control-block p-a-15x font-size-sm" name="name" type="text" placeholder="Full Name">
                     </fieldset>
-                    <div class="container-fluid p-x-10x p-y-15x">
-                        <div class="row">
-                            <div class="col-xs-6">
-                                <a href="#" class="btn btn-primary-outline btn-block btn-sm" id="Cancel">Cancel</a>
-                            </div>
-                            <div class="col-xs-6">
-                                <button class="btn btn-primary btn-block btn-sm" type="button" id="btn-addAddress">
-                                    Confirm
-                                </button>
+                    <hr class="hr-base m-a-0">
+                    <fieldset>
+                        <input class="form-control form-control-block p-a-15x font-size-sm" name="addr1" type="text" placeholder="Street1">
+                    </fieldset>
+                    <hr class="hr-base m-a-0">
+                    <fieldset>
+                        <input class="form-control form-control-block p-a-15x font-size-sm" name="addr2" type="text" placeholder="Street2 (optional)">
+                    </fieldset>
+                    <hr class="hr-base m-a-0">
+                    <fieldset>
+                        <input class="form-control form-control-block p-a-15x font-size-sm" name="state" type="text" placeholder="State (optional)">
+                    </fieldset>
+                    <hr class="hr-base m-a-0">
+                    <fieldset>
+                        <input class="form-control form-control-block p-a-15x font-size-sm" name="city" type="text" placeholder="City">
+                    </fieldset>
+                    <hr class="hr-base m-a-0">
+                    <fieldset>
+                        <input class="form-control form-control-block p-a-15x font-size-sm" name="zip" type="text" placeholder="Zip code">
+                    </fieldset>
+                    <hr class="hr-base m-a-0">
+                    <fieldset>
+                        <input class="form-control form-control-block p-a-15x font-size-sm" name="tel" type="text" placeholder="Phone (optional)">
+                    </fieldset>
+                    <hr class="hr-base m-a-0">
+                    <fieldset>
+                        <input class="form-control form-control-block p-a-15x font-size-sm" name="idnum" type="text" placeholder="IDnumber">
+                    </fieldset>
+                    <hr class="hr-base m-a-0">
+                    <fieldset>
+                        <div class="flex flex-alignCenter flex-fullJustified font-size-sm text-primary p-a-15x" id="country">
+                            <span>Country</span>
+                            <div>
+                                <span>中国（CN）</span>
+                                <i class="iconfont icon-arrow-right icon-size-xm text-common"></i>
+                                <input type="text" name="country" hidden value="country_id">
                             </div>
                         </div>
-                    </div>
+                    </fieldset>
+                    <hr class="hr-base m-a-0">
+                    <fieldset>
+                        <div class="flex flex-alignCenter flex-fullJustified font-size-sm text-primary p-a-15x" href="#">
+                            <span>Make Primary</span>
+                            <div class="radio-checkBox">
+                                <div class="radio-checkItem"></div>
+                                <input type="radio" name="isd" id="address-default" hidden value="0" checked="checked">
+                                <input type="radio" name="isd" id="address-primary" hidden value="1">
+                            </div>
+                        </div>
+                    </fieldset>
                 </form>
+                <div class="container-fluid p-x-10x p-y-15x">
+                    <div class="row">
+                        <div class="col-xs-6">
+                            <a href="#" class="btn btn-primary-outline btn-block btn-sm" id="Cancel">Cancel</a>
+                        </div>
+                        <div class="col-xs-6">
+                            <div class="btn btn-primary btn-block btn-sm" id="btn-addAddress">Confirm</div>
+                        </div>
+                    </div>
+                </div>
             </section>
             <!-- 页脚 功能链接 -->
             <footer class="p-y-20x">

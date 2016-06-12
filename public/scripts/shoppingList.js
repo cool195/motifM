@@ -51,6 +51,16 @@
         }
     });
 
+    // 设置 tab 高度
+    function setTabHeight() {
+        var ActiveTabIndex = TabsContainerSwiper.activeIndex,
+            $ActiveTab = $(TabsContainerSwiper.slides[ActiveTabIndex]);
+        $ActiveTab.css({height: 'auto'});
+        var ActiveTabHeight = $ActiveTab.children('.container-fluid').height();
+        console.info(ActiveTabHeight);
+        $ActiveTab.siblings('.swiper-slide').height(ActiveTabHeight);
+    }
+
     // 选项卡导航
     var TabIndexSwiper = new Swiper('#tabIndex-container', {
         freeMode: true,
@@ -60,12 +70,14 @@
             if ($(event.target).is('li') || $(event.target).is('a') || $(event.target).is('span')) {
                 tabSwitch(TabIndexSwiper.clickedIndex);
             }
+            setTabHeight();
         }
     });
 
     // 选项卡容器
     var TabsContainerSwiper = new Swiper('#tabs-container', {
-        onlyExternal: true
+        onlyExternal: true,
+        noSwiping: true
     });
 
     // 导航和选项卡容器 联动的方法
@@ -189,7 +201,7 @@
         // ajax 请求加载数据
         $.ajax({
             url: '/products',
-            data: { pagenum: NextPage, pagesize: 20, cid: CurrentCid }
+            data: {pagenum: NextPage, pagesize: 20, cid: CurrentCid}
         }).done(function (data) {
             if (data.data === null || data.data === '') {
                 return;
@@ -211,12 +223,12 @@
             });
         })
         // TODO failed 时的提示
-        .always(function () {
-            // 隐藏加载动画
-            loadingHide(ActiveTab);
-            // 请求结束, loading = false
-            $Current.data('loading', false);
-        });
+            .always(function () {
+                // 隐藏加载动画
+                loadingHide(ActiveTab);
+                // 请求结束, loading = false
+                $Current.data('loading', false);
+            });
     }
 
     // 为选项卡导航, 绑定一次性事件, 加载商品数据
@@ -232,4 +244,5 @@
         });
     });
 })(jQuery, Swiper);
+//# sourceMappingURL=shoppingList.js.map
 //# sourceMappingURL=shoppingList.js.map
