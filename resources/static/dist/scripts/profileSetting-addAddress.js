@@ -65,7 +65,27 @@
     }
 
     // 表单格式验证
+    function selectCountry() {
+        openLoading();
+        // 获取表单数据
+        $.ajax({
+            url: '/user/countrylist',
+            type: 'GET',
+            data: $('#addressInfo').serialize()
+        }).done(function () {
+            console.log('success');
+        }).fail(function () {
+            console.log('error');
+        }).always(function () {
+            closeLoading();
+            console.log('complete');
+        });
+    }
 
+    // 跳转页面,
+    $('#country').on('click', function (e) {
+        selectCountry();
+    });
     // 点击提交表单
     $('#btn-addAddress').on('click', function (e) {
         $(e.target).removeClass('disabled');
