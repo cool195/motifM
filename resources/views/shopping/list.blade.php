@@ -36,7 +36,8 @@
         <nav class="navbar-fixed-top swiper-container bg-gray" id="tabIndex-container">
             <ul class="nav nav-tabs swiper-wrapper">
                 @foreach($categories as $key => $c)
-                    <li class="nav-item swiper-slide" data-tab-index="">
+                    <li class="nav-item swiper-slide" data-tab-index="{{ $c['category_id'] }}"
+                        id="{{ $c['category_id'] }}">
                         <a class="nav-flex underLine-item text-primary m-x-15x p-y-10x p-l-20x iconimg-earrings @if($key!=0) inactive @endif">
                             <span class="font-size-sm m-l-5x">{{ $c['category_name'] }}</span>
                         </a>
@@ -65,7 +66,8 @@
 </div>
 <!-- 下载 App Download MOTIF -->
 <div class="remodal remodal-lg modal-content" data-remodal-id="download-modal">
-    <div class="text-right p-x-15x p-t-15x" data-remodal-action="close"><i class="iconfont icon-cross icon-size-md text-common"></i></div>
+    <div class="text-right p-x-15x p-t-15x" data-remodal-action="close"><i
+                class="iconfont icon-cross icon-size-md text-common"></i></div>
     <div class="font-size-sm p-a-15x">
         We supply this function in the MOTIF App,<br>You can use there！
     </div>
