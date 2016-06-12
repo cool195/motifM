@@ -33,12 +33,12 @@
         }, 500);
     }
 
-    // 增加用户收货地址
-    function addUserAddress() {
+    // 修改用户收货地址
+    function changeAddress() {
         openLoading();
         // 获取表单数据
         $.ajax({
-            url: '/useraddr/addUserAddress',
+            url: '/addr/modify',
             type: 'POST',
             data: $('#addressInfo').serialize()
         }).done(function () {
@@ -91,7 +91,7 @@
         $(e.target).removeClass('disabled');
         // 表单非空验证
         if (checkInput()) {
-            addUserAddress();
+            changeAddress();
         } else {
             $(e.target).addClass('disabled');
         }
@@ -100,4 +100,4 @@
     // 退出添加
     $('#Cancel').on('click', function () {});
 })(jQuery);
-//# sourceMappingURL=profileSetting-addAddress.js.map
+//# sourceMappingURL=profileSetting-changeAddress.js.map

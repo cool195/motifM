@@ -68,7 +68,7 @@
         freeModeMomentumRatio: .5,
         onTap: function onTap() {
             if ($(event.target).is('li') || $(event.target).is('a') || $(event.target).is('span')) {
-                tabSwitch(TabIndexSwiper.clickedIndex);
+                tabSwitch(TabIndexSwiper.clickedIndex, 500);
             }
             setTabHeight();
         }
@@ -80,11 +80,11 @@
     });
 
     // 导航和选项卡容器 联动的方法
-    function tabSwitch(index) {
+    function tabSwitch(index, speed) {
         // 选项卡序号 移动
-        TabIndexSwiper.slideTo(index, 500, false);
+        TabIndexSwiper.slideTo(index, speed, false);
         // 选项卡 移动ta
-        TabsContainerSwiper.slideTo(index, 500, false);
+        TabsContainerSwiper.slideTo(index, speed, false);
         // 为选项卡序号 更改样式
         $(TabIndexSwiper.slides).children('a').addClass('inactive');
         $(TabIndexSwiper.slides[index]).children('a').removeClass('inactive');
@@ -106,22 +106,26 @@
         });
     }
 
-    // 获取分类
-    (function category() {
-        $.ajax({
-            url: '/category'
-        }).done(function (data) {
-            if (data.success === true) {
-                Category = data.data.list;
-                // Tabs页码数组初始化
-                tabsPageInit(Category.length);
-                console.log('获取分类成功');
-                // 首次打开 加载相应页面
-                tabsLoading();
-            } else {
-                console.log('获取分类失败');
+    // 根据 url 地址, 页面跳转到指定 tab
+    function initTab() {
+        var slideText = location.hash;
+        if (slideText !== '' && slideText !== null) {
+            slideText = slideText.substring(1);
+            var slideIndex = $('#' + slideText).index();
+            if (slideIndex >= 0) {
+                tabSwitch(slideIndex, 0);
             }
+        }
+    }
+
+    // 页面初始化
+    (function initBody() {
+        $.each($('[data-tab-index]'), function (index, val) {
+            Category[index] = val.data('tab-index');
         });
+        tabsPageInit(Category.length);
+        initTab();
+        tabsLoading();
     })();
 
     // 下拉加载
