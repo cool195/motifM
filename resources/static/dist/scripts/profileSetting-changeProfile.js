@@ -37,8 +37,12 @@
                 url: '/user/modifyUserInfo',
                 type: 'POST',
                 data: $('#changeProfile').serialize()
-            }).done(function () {
-                console.log("success");
+            }).done(function (data) {
+                if (data.success) {
+                    console.log("success");
+                    $('#nick').attr('placeholder', $('#nick').val());
+                    $('#nick').val("");
+                }
             }).fail(function () {
                 console.log("error");
             }).always(function () {
