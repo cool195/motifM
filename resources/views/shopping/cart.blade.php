@@ -41,6 +41,7 @@
             <!-- 商品列表 -->
                 <section class="cartList bg-white">
                     @foreach($cartData['showSkus'] as $showSku)
+                        {{-- TODO 需要添加 商品是否上架的判断 --}}
                         <div class="cartList-item p-a-10x @if(1 !== $showSku['stock_status']) disabled @endif">
                             <div class="productInfo flex">
                                 <div class="flex-fixedShrink">
@@ -81,6 +82,7 @@
                                 </div>
                                 <div class="flex flex-alignCenter">
                                     <span class="text-primary font-size-sm m-r-5x">Qty:</span>
+                                    {{-- TODO 需要添加 商品是否上架的判断 --}}
                                     <div class="btn-group flex" data-sku="{{$showSku['sku']}}">
                                         <div class="btn btn-cartCount btn-sm @if(1 !== $showSku['stock_status']) disabled @endif"
                                              data-item-qty="minus">
@@ -126,6 +128,7 @@
                 <!-- 商品列表 -->
                 <section class="cartList bg-white">
                     @foreach($saveData['showSkus'] as $showSku)
+                        {{-- TODO 需要添加 商品是否上架的判断 --}}
                         <div class="cartList-item p-a-10x @if( 1 !== $showSku['stock_status'] ) disabled @endif">
                             <div class="productInfo flex">
                                 <div class="flex-fixedShrink">
