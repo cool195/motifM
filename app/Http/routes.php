@@ -90,6 +90,7 @@ $app->get('/user/setting', 'Shopping\UserController@setting');
 $app->get('/user/changeprofile', 'Shopping\UserController@changeProfile');
 $app->get('/user/shippingaddress', 'Shopping\UserController@shippingAddress');
 $app->get('/user/addradd', 'Shopping\UserController@addrAdd');
+$app->get('/user/addrmod', 'Shopping\UserController@addrModify');
 $app->get('/user/countrylist', 'Shopping\UserController@countryList');
 $app->get('/user/changepassword', 'Shopping\UserController@changePassword');
 

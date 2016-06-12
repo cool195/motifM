@@ -302,6 +302,12 @@ class UserController extends ApiController
             $result['success'] = false;
             $result['error_msg'] = "Data access failed";
             $result['data'] = array();
+        }else{
+            if($result['success']){
+                $expiresAt = Carbon::now()->addMinute(10);
+                Cache::forget('user');
+                Cache::put('user', $user, $expiresAt);
+            }
         }
         return $result;
     }
@@ -365,17 +371,38 @@ class UserController extends ApiController
             $result['data'] = array();
             $result['data']['list'] = array();
         }
-        error_log(print_r("------------------\n", "\n"), 3, '/tmp/myerror.log');
-        error_log(print_r($result, "\n"), 3, '/tmp/myerror.log');
         return View('shopping.profilesetting_shippingaddress', ['data'=>$result['data']]);
     }
 
     public function addrAdd(Request $request)
     {
-        $country = json_decode($request->input('country', json_encode(['country_id'=>5, 'country_name_cn'=>"中国", 'country_name_en'=>"China", 'iDnumberReq'=>0, 'isFreq'=>0])), true);
+        $country = json_decode(base64_decode($request->input('country', base64_encode(json_encode(['country_id'=>5, 'country_name_cn'=>"中国", 'country_name_en'=>"China", 'iDnumberReq'=>0, 'isFreq'=>0])))), true);
         $input = Cache::get('input');
         Cache::forget('input');
         return View('shopping.profilesetting_addaddress', ['country'=>$country, 'input'=>$input]);
+    }
+
+    public function addrModify(Request $request)
+    {
+        $country = json_decode(base64_decode($request->input('country', base64_encode(json_encode(['country_id'=>5, 'country_name_cn'=>"中国", 'country_name_en'=>"China", 'iDnumberReq'=>0, 'isFreq'=>0])))), true);
+        $input = json_decode(base64_decode($request->input('addr')), true);
+        if(!empty($input)) {
+            $input['addr1'] = $input['detail_address1'];
+            $input['addr2'] = $input['detail_address2'];
+            $input['isd'] = $input['isDefault'];
+            $input['tel'] = $input['telephone'];
+            $input['idnum'] = $input['iDnumber'];
+            $input['aid'] = $input['receiving_id'];
+        }else{
+            $expiresAt = Carbon::now()->addMinutes(10);
+            $input = Cache::get('input');
+            Cache::forget('input');
+            Cache::put('input', $input, $expiresAt);
+        }
+        if(empty($input)){
+            return redirect('/user/shippingaddress');
+        }
+        return View('shopping.profilesetting_modaddress', ['country'=>$country,'input'=>$input]);
     }
 
     public function countryList(Request $request)
@@ -405,7 +432,7 @@ class UserController extends ApiController
                 $result['data']['commonlist'] = $commonlist;
             }
         }
-        return View('shopping.profilesetting_countrylist', ['list'=>$result['data']['list'], 'commonlist'=>$result['data']['commonlist']]);
+        return View('shopping.profilesetting_countrylist', ['list'=>$result['data']['list'], 'commonlist'=>$result['data']['commonlist'], 'route'=>$input['route']]);
     }
 }
 

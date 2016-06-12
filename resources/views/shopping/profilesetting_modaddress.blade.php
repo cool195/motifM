@@ -29,7 +29,7 @@
             <!-- 添加地址 -->
             <section class="p-b-20x">
                 <article class="p-x-15x p-y-10x font-size-md text-main"><strong>Add New Address</strong></article>
-                <form class="bg-white" id="addressInfo" name="addressInfo" method="get" action="/user/countrylist">
+                <form class="bg-white" id="addressInfo" method="get" action="/user/countrylist">
                     <!-- 个人中心 sitting list -->
                     <fieldset>
                         <input class="form-control form-control-block p-a-15x font-size-sm" name="email" type="text" value="{{$input['email']}}" placeholder="Email Address">
@@ -44,7 +44,7 @@
                     </fieldset>
                     <hr class="hr-base m-a-0">
                     <fieldset>
-                        <input class="form-control form-control-block p-a-15x font-size-sm" name="addr2" type="text"  value="{{$input['addr2']}}" placeholder="Street2 (optional)">
+                        <input class="form-control form-control-block p-a-15x font-size-sm" name="addr2" type="text" value="{{$input['addr2']}}" placeholder="Street2 (optional)">
                     </fieldset>
                     <hr class="hr-base m-a-0">
                     <fieldset>
@@ -56,7 +56,7 @@
                     </fieldset>
                     <hr class="hr-base m-a-0">
                     <fieldset>
-                        <input class="form-control form-control-block p-a-15x font-size-sm" name="zip" type="text" value="{{$input['zip']}}"  placeholder="Zip code">
+                        <input class="form-control form-control-block p-a-15x font-size-sm" name="zip" type="text" value="{{$input['zip']}}" placeholder="Zip code">
                     </fieldset>
                     <hr class="hr-base m-a-0">
                     <fieldset>
@@ -64,18 +64,19 @@
                     </fieldset>
                     <hr class="hr-base m-a-0">
                     <fieldset>
-                        <input class="form-control form-control-block p-a-15x font-size-sm" name="idnum" type="text" value="{{$input['idnum']}}" placeholder="IDnumber">
+                        <input class="form-control form-control-block p-a-15x font-size-sm" name="idnum" value="{{$input['idnum']}}"  type="text" placeholder="IDnumber">
                     </fieldset>
                     <hr class="hr-base m-a-0">
                     <fieldset>
                         <div class="flex flex-alignCenter flex-fullJustified font-size-sm text-primary p-a-15x" id="country">
-                        <span>Country</span>
+                            <span>Country</span>
                             <div>
                                 <span>{{$country['country_name_cn']}} ({{ $country['country_name_en'] }})</span>
                                 <i class="iconfont icon-arrow-right icon-size-xm text-common"></i>
                                 <input type="text" name="country" hidden value="{{$country['country_id']}}">
                             </div>
                         </div>
+                    </fieldset>
                     </fieldset>
                     <hr class="hr-base m-a-0">
                     <fieldset>
@@ -93,7 +94,8 @@
                             </div>
                         </div>
                     </fieldset>
-                    <input type="hidden" name="route" value="/user/addradd">
+                    <input name="aid" value="{{$input['aid']}}"  type="hidden" >
+                    <input name="route" value="/user/addrmod" type="hidden">
                 </form>
                 <div class="container-fluid p-x-10x p-y-15x">
                     <div class="row">
@@ -119,12 +121,4 @@
 <script src="/scripts/vendor.js"></script>
 
 <script src="/scripts/profileSetting-addAddress.js"></script>
-<meta name="csrf-token" content="{{ csrf_token() }}" />
-<script>
-    $.ajaxSetup({
-        headers: {
-            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-        }
-    });
-</script>
 </html>

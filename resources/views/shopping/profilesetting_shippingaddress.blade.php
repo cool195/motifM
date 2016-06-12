@@ -40,6 +40,7 @@
                 <aside class="bg-white m-b-10x">
                 @foreach($data['list'] as $addr)
                     <hr class="hr-base m-a-0">
+                    <a href="/user/addrmod?addr={{base64_encode(json_encode($addr))}}">
                     <div class="addressList-container font-size-sm" id="primaryItem" data-address="" data-aid="101">
                          <div class="addressItem-info text-primary m-l-15x p-r-15x p-y-10x" data-action="return" data-url-return="return" data-url-edit="edit">
                                 <div>
@@ -56,6 +57,7 @@
                             @endif
                         </div>
                     </div>
+                    </a>
                 @endforeach
                 </aside>
 

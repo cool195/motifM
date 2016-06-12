@@ -33,7 +33,7 @@
                 </article>
                 <aside class="bg-white m-b-10x">
                 @foreach($commonlist as $c)
-                    <a class="flex flex-alignCenter font-size-sm text-primary p-x-15x p-y-10x" href="/user/addradd?country={{json_encode($c)}}" data-cid="{{$c['country_id']}}">
+                    <a class="flex flex-alignCenter font-size-sm text-primary p-x-15x p-y-10x" href="{{$route}}?country={{base64_encode(json_encode($c))}}" data-cid="{{$c['country_id']}}">
                         <span>{{$c['country_name_en']}}</span>
                     </a>
                     <hr class="hr-base">
@@ -41,7 +41,7 @@
                 </aside>
                 <aside class="bg-white">
                 @foreach($list as $l)
-                    <a class="flex flex-alignCenter font-size-sm text-primary p-x-15x p-y-10x" href="/user/addradd?country={{json_encode($l)}}" data-cid="{{$l['country_id']}}">
+                    <a class="flex flex-alignCenter font-size-sm text-primary p-x-15x p-y-10x" href="{{$route}}?country={{base64_encode(json_encode($l))}}" data-cid="{{$l['country_id']}}">
                         <span>{{ $l['country_name_en'] }}</span>
                     </a>
                     <hr class="hr-base">
