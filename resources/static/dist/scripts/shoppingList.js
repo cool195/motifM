@@ -90,22 +90,10 @@
         $(TabIndexSwiper.slides[index]).children('a').removeClass('inactive');
     }
 
-    // Category 分类列表
-    // TabsPage 记录各个选项卡Index对应的页码数
-    var Category = [],
-        TabsPage = [];
-
     /**
      * 对选项卡 所加载的页码 集合, 根据分类 Category 的数目, 进行初始化
      * @param ArraryLength
      */
-    function tabsPageInit(ArraryLength) {
-        TabsPage.length = ArraryLength;
-        $.each(TabsPage, function (index) {
-            TabsPage[index] = 0;
-        });
-    }
-
     // 根据 url 地址, 页面跳转到指定 tab
     function initTab() {
         var slideText = location.hash;
@@ -120,10 +108,6 @@
 
     // 页面初始化
     (function initBody() {
-        $.each($('[data-tab-index]'), function (index, val) {
-            Category[index] = val.data('tab-index');
-        });
-        tabsPageInit(Category.length);
         initTab();
         tabsLoading();
     })();
@@ -180,9 +164,13 @@
 
         // 当前选项卡
         var $Current = $(TabsContainerSwiper.slides[ActiveTab]);
+        // 当前选项卡 Index列表
+        var $Index = $(TabIndexSwiper.slides[ActiveTab]);
 
-        // 判断当前选项卡是否还有数据要加载
-        if (TabsPage[ActiveTab] === null) {
+        //  PageNum 当前页码数
+        var PageNum = $Current.data('pagenum');
+        // 判断是否还有数据要加载
+        if (PageNum === -1) {
             return;
         }
 
@@ -194,10 +182,10 @@
         }
 
         // 当前选项卡所要加载的分页页码
-        var CurrentPage = TabsPage[ActiveTab],
-            NextPage = ++CurrentPage;
+        var NextPage = ++PageNum;
+
         // 当前激活的分类ID
-        var CurrentCid = Category[ActiveTab].category_id;
+        var CurrentCid = $Index.data('tab-index');
 
         // 显示加载动画
         loadingShow(ActiveTab);
@@ -206,24 +194,23 @@
             url: '/products',
             data: { pagenum: NextPage, pagesize: 20, cid: CurrentCid }
         }).done(function (data) {
-            if (data.data === null || data.data === '') {
-                return;
-            } else if (data.data.list.length === 0) {
-                // 没有数据要加载
-                TabsPage[ActiveTab] = null;
-                return;
-            }
-            // 遍历模板 插入页面
-            appendProductsList(data.data, ActiveTab);
-            // TabsPage 选项卡加载页 页码+1
-            TabsPage[ActiveTab]++;
+            if (data.success) {
+                if (data.data === null || data.data === '' || data.data.list.length === 0) {
+                    $Current.data('pagenum', -1);
+                } else {
+                    // 遍历模板 插入页面
+                    appendProductsList(data.data, ActiveTab);
+                    $Current.data('pagenum', PageNum);
+                    console.info('当前页码数为' + PageNum);
 
-            // 图片延迟加载
-            $('img.img-lazy').lazyload({
-                threshold: 200,
-                container: $('#tabs-container'),
-                effect: 'fadeIn'
-            });
+                    // 图片延迟加载
+                    $('img.img-lazy').lazyload({
+                        threshold: 200,
+                        container: $('#tabs-container'),
+                        effect: 'fadeIn'
+                    });
+                }
+            }
         })
         // TODO failed 时的提示
         .always(function () {
