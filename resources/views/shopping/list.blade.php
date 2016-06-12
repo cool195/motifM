@@ -36,7 +36,7 @@
         <nav class="navbar-fixed-top swiper-container bg-gray" id="tabIndex-container">
             <ul class="nav nav-tabs swiper-wrapper">
                 @foreach($categories as $key => $c)
-                    <li class="nav-item swiper-slide" data-tabindex="">
+                    <li class="nav-item swiper-slide" data-tab-index="">
                         <a class="nav-flex underLine-item text-primary m-x-15x p-y-10x p-l-20x iconimg-earrings @if($key!=0) inactive @endif">
                             <span class="font-size-sm m-l-5x">{{ $c['category_name'] }}</span>
                         </a>
