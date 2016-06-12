@@ -328,6 +328,14 @@ class UserController extends ApiController
             $result['success'] = false;
             $result['error_msg'] = "Data access failed";
             $result['data'] = array();
+        }else{
+            if($result['success']){
+                $userInfo = $this->getUserDetailInfo($request);
+                $user['nickname'] = $userInfo['data']['nickname'];
+                $expiresAt = Carbon::now()->addMinute(10);
+                Cache::forget('user');
+                Cache::put('user', $user, $expiresAt);
+            }
         }
         return $result;
     }
