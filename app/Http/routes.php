@@ -73,7 +73,8 @@ $app->get('/shopping/pay/check', 'Shopping\PayController@check');
 
 $app->get('/addr/list', 'Shopping\AddressController@getUserAddrList');
 $app->get('/addr/default', 'Shopping\AddressController@getUserDefaultAddr');
-$app->get('/addr/add', 'Shopping\AddressController@getUserAddr');
+$app->get('/addr/add', 'Shopping\AddressController@addUserAddr');
+$app->post('/addr/add', 'Shopping\AddressController@addUserAddr');
 $app->get('/addr/modify', 'Shopping\AddressController@modifyUserAddr');
 $app->get('/addr/mdefault', 'Shopping\AddressController@modifyUserDefaultAddr');
 //$app->get('/shopping/addr/delete', 'Shopping\AddressController@delUserAddr');

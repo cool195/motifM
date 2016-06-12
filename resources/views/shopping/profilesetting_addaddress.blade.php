@@ -93,7 +93,7 @@
                 <div class="container-fluid p-x-10x p-y-15x">
                     <div class="row">
                         <div class="col-xs-6">
-                            <a href="#" class="btn btn-primary-outline btn-block btn-sm" id="Cancel">Cancel</a>
+                            <a href="/user/shippingaddress" class="btn btn-primary-outline btn-block btn-sm" id="Cancel">Cancel</a>
                         </div>
                         <div class="col-xs-6">
                             <div class="btn btn-primary btn-block btn-sm" id="btn-addAddress">Confirm</div>
@@ -114,4 +114,12 @@
 <script src="/scripts/vendor.js"></script>
 
 <script src="/scripts/profileSetting-addAddress.js"></script>
+<meta name="csrf-token" content="{{ csrf_token() }}" />
+<script>
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+</script>
 </html>

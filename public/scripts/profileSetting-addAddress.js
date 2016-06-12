@@ -38,7 +38,7 @@
         openLoading();
         // 获取表单数据
         $.ajax({
-            url: '/useraddr/addUserAddress',
+            url: '/addr/add',
             type: 'POST',
             data: $('#addressInfo').serialize()
         }).done(function () {
@@ -68,18 +68,7 @@
     function selectCountry() {
         openLoading();
         // 获取表单数据
-        $.ajax({
-            url: '/user/countrylist',
-            type: 'GET',
-            data: $('#addressInfo').serialize()
-        }).done(function () {
-            console.log('success');
-        }).fail(function () {
-            console.log('error');
-        }).always(function () {
-            closeLoading();
-            console.log('complete');
-        });
+        $('#addressInfo').submit();
     }
 
     // 跳转页面,
