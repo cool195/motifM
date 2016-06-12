@@ -68,7 +68,7 @@
         freeModeMomentumRatio: .5,
         onTap: function onTap() {
             if ($(event.target).is('li') || $(event.target).is('a') || $(event.target).is('span')) {
-                tabSwitch(TabIndexSwiper.clickedIndex);
+                tabSwitch(TabIndexSwiper.clickedIndex, 500);
             }
             setTabHeight();
         }
@@ -80,48 +80,36 @@
     });
 
     // 导航和选项卡容器 联动的方法
-    function tabSwitch(index) {
+    function tabSwitch(index, speed) {
         // 选项卡序号 移动
-        TabIndexSwiper.slideTo(index, 500, false);
+        TabIndexSwiper.slideTo(index, speed, false);
         // 选项卡 移动ta
-        TabsContainerSwiper.slideTo(index, 500, false);
+        TabsContainerSwiper.slideTo(index, speed, false);
         // 为选项卡序号 更改样式
         $(TabIndexSwiper.slides).children('a').addClass('inactive');
         $(TabIndexSwiper.slides[index]).children('a').removeClass('inactive');
     }
 
-    // Category 分类列表
-    // TabsPage 记录各个选项卡Index对应的页码数
-    var Category = [],
-        TabsPage = [];
-
     /**
      * 对选项卡 所加载的页码 集合, 根据分类 Category 的数目, 进行初始化
      * @param ArraryLength
      */
-    function tabsPageInit(ArraryLength) {
-        TabsPage.length = ArraryLength;
-        $.each(TabsPage, function (index) {
-            TabsPage[index] = 0;
-        });
+    // 根据 url 地址, 页面跳转到指定 tab
+    function initTab() {
+        var slideText = location.hash;
+        if (slideText !== '' && slideText !== null) {
+            slideText = slideText.substring(1);
+            var slideIndex = $('#' + slideText).index();
+            if (slideIndex >= 0) {
+                tabSwitch(slideIndex, 0);
+            }
+        }
     }
 
-    // 获取分类
-    (function category() {
-        $.ajax({
-            url: '/category'
-        }).done(function (data) {
-            if (data.success === true) {
-                Category = data.data.list;
-                // Tabs页码数组初始化
-                tabsPageInit(Category.length);
-                console.log('获取分类成功');
-                // 首次打开 加载相应页面
-                tabsLoading();
-            } else {
-                console.log('获取分类失败');
-            }
-        });
+    // 页面初始化
+    (function initBody() {
+        initTab();
+        tabsLoading();
     })();
 
     // 下拉加载
@@ -176,9 +164,13 @@
 
         // 当前选项卡
         var $Current = $(TabsContainerSwiper.slides[ActiveTab]);
+        // 当前选项卡 Index列表
+        var $Index = $(TabIndexSwiper.slides[ActiveTab]);
 
-        // 判断当前选项卡是否还有数据要加载
-        if (TabsPage[ActiveTab] === null) {
+        //  PageNum 当前页码数
+        var PageNum = $Current.data('pagenum');
+        // 判断是否还有数据要加载
+        if (PageNum === -1) {
             return;
         }
 
@@ -190,10 +182,10 @@
         }
 
         // 当前选项卡所要加载的分页页码
-        var CurrentPage = TabsPage[ActiveTab],
-            NextPage = ++CurrentPage;
+        var NextPage = ++PageNum;
+
         // 当前激活的分类ID
-        var CurrentCid = Category[ActiveTab].category_id;
+        var CurrentCid = $Index.data('tab-index');
 
         // 显示加载动画
         loadingShow(ActiveTab);
@@ -202,24 +194,23 @@
             url: '/products',
             data: { pagenum: NextPage, pagesize: 20, cid: CurrentCid }
         }).done(function (data) {
-            if (data.data === null || data.data === '') {
-                return;
-            } else if (data.data.list.length === 0) {
-                // 没有数据要加载
-                TabsPage[ActiveTab] = null;
-                return;
-            }
-            // 遍历模板 插入页面
-            appendProductsList(data.data, ActiveTab);
-            // TabsPage 选项卡加载页 页码+1
-            TabsPage[ActiveTab]++;
+            if (data.success) {
+                if (data.data === null || data.data === '' || data.data.list.length === 0) {
+                    $Current.data('pagenum', -1);
+                } else {
+                    // 遍历模板 插入页面
+                    appendProductsList(data.data, ActiveTab);
+                    $Current.data('pagenum', PageNum);
+                    console.info('当前页码数为' + PageNum);
 
-            // 图片延迟加载
-            $('img.img-lazy').lazyload({
-                threshold: 200,
-                container: $('#tabs-container'),
-                effect: 'fadeIn'
-            });
+                    // 图片延迟加载
+                    $('img.img-lazy').lazyload({
+                        threshold: 200,
+                        container: $('#tabs-container'),
+                        effect: 'fadeIn'
+                    });
+                }
+            }
         })
         // TODO failed 时的提示
         .always(function () {
@@ -231,7 +222,7 @@
     }
 
     // 为选项卡导航, 绑定一次性事件, 加载商品数据
-    $('#tabIndex-container').find('li[data-tabIndex]').one('click', function () {
+    $('#tabIndex-container').find('li[data-tab-index]').one('click', function () {
         console.log('顶部切换, 触发选项卡loading, 一次性事件');
         tabsLoading();
     });
