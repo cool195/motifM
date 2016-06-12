@@ -28,7 +28,7 @@
             @include('navigator')
             <!-- 添加地址 -->
             <section class="p-b-20x">
-                <article class="p-x-15x p-y-10x font-size-md text-main"><strong>Add New Address</strong></article>
+                <article class="p-x-15x p-y-10x font-size-md text-main"><strong>Modify Address</strong></article>
                 <form class="bg-white" id="addressInfo" method="get" action="/user/countrylist">
                     <!-- 个人中心 sitting list -->
                     <fieldset>
@@ -120,5 +120,13 @@
 </body>
 <script src="/scripts/vendor.js"></script>
 
-<script src="/scripts/profileSetting-addAddress.js"></script>
+<script src="/scripts/profileSetting-changeAddress.js"></script>
+<meta name="csrf-token" content="{{ csrf_token() }}" />
+<script>
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+</script>
 </html>

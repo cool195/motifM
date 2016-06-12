@@ -201,7 +201,7 @@ class AddressController extends ApiController
 		$params = array(
 			'cmd' => 'modify',
 			'pin' => $user['pin'],
-			'aid' => $user['aid'],
+			'aid' => $request->input('aid'),
 			'email' => $request->input('email'),
 			'tel' => $request->input('tel'),
 			'name' => $request->input("name"),

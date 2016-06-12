@@ -76,6 +76,7 @@ $app->get('/addr/default', 'Shopping\AddressController@getUserDefaultAddr');
 $app->get('/addr/add', 'Shopping\AddressController@addUserAddr');
 $app->post('/addr/add', 'Shopping\AddressController@addUserAddr');
 $app->get('/addr/modify', 'Shopping\AddressController@modifyUserAddr');
+$app->post('/addr/modify', 'Shopping\AddressController@modifyUserAddr');
 $app->get('/addr/mdefault', 'Shopping\AddressController@modifyUserDefaultAddr');
 $app->get('/addr/del', 'Shopping\AddressController@delUserAddr');
 $app->delete('/addresses', 'Shopping\AddressController@delUserAddr');

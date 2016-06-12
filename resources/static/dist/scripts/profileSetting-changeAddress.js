@@ -33,12 +33,12 @@
         }, 500);
     }
 
-    // 修改用户收货地址
-    function changeAddress() {
+    // 增加用户收货地址
+    function addUserAddress() {
         openLoading();
         // 获取表单数据
         $.ajax({
-            url: '/addr/modify',
+            url: '/useraddr/addUserAddress',
             type: 'POST',
             data: $('#addressInfo').serialize()
         }).done(function () {
@@ -68,18 +68,7 @@
     function selectCountry() {
         openLoading();
         // 获取表单数据
-        $.ajax({
-            url: '/user/countrylist',
-            type: 'GET',
-            data: $('#addressInfo').serialize()
-        }).done(function () {
-            console.log('success');
-        }).fail(function () {
-            console.log('error');
-        }).always(function () {
-            closeLoading();
-            console.log('complete');
-        });
+        $("#addressInfo").submit();
     }
 
     // 跳转页面,
@@ -91,7 +80,7 @@
         $(e.target).removeClass('disabled');
         // 表单非空验证
         if (checkInput()) {
-            changeAddress();
+            addUserAddress();
         } else {
             $(e.target).addClass('disabled');
         }
@@ -100,4 +89,4 @@
     // 退出添加
     $('#Cancel').on('click', function () {});
 })(jQuery);
-//# sourceMappingURL=profileSetting-changeAddress.js.map
+//# sourceMappingURL=profileSetting-addAddress.js.map
