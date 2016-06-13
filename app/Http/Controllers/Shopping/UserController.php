@@ -77,9 +77,9 @@ class UserController extends ApiController
         } else{
             if($result['success']){
                 $result['redirectUrl'] = "/login";
-                $expiresAt = Carbon::now()->addMinute(10);
+/*                $expiresAt = Carbon::now()->addDays(180);
                 Cache::forget('user');
-                Cache::put('user', $result['data'], $expiresAt);
+                Cache::put('user', $result['data'], $expiresAt);*/
             }
         }
          return $result;
@@ -118,8 +118,8 @@ class UserController extends ApiController
             $result['data'] = array();
         } else {
             if ($result['success']) {
-                $result['redirectUrl'] = "/login";
-                $expiresAt = Carbon::now()->addMinute(10);
+                $result['redirectUrl'] = "/daily";
+                $expiresAt = Carbon::now()->addDays(180);
                 Cache::forget('user');
                 Cache::put("user", $result['data'], $expiresAt);
             }
@@ -141,8 +141,8 @@ class UserController extends ApiController
         if(!empty($user)) {
             $params = array(
                 'cmd' => "signout",
-                'pin' => $request->input('pin', $user['pin']),
-                'token' => $request->input('token', $user['token'])
+                'pin' => $user['pin'],
+                'token' => $user['token']
             );
             $result = $this->request('openapi', self::API_SYSTEM, self::API_SERVICE, $params);
             if (empty($result)) {
@@ -155,7 +155,7 @@ class UserController extends ApiController
                 }
             }
         }
-        return $result;
+        return redirect('/login');
     }
 
     /*
@@ -218,6 +218,9 @@ class UserController extends ApiController
     }
 
     /*
+     * 跳转至修改密码页面
+     *
+     * @author zhangtao@evermarker.net
      *
      * */
     public function changePassword(Request $request)
@@ -274,7 +277,7 @@ class UserController extends ApiController
             $result['data'] = array();
         }else {
             if ($result['success']) {
-                $expiresAt = Carbon::now()->addMinute(10);
+                $expiresAt = Carbon::now()->addMinute(180);
                 Cache::forget('user');
                 Cache::put("user", $result['data'], $expiresAt);
             }
@@ -302,12 +305,6 @@ class UserController extends ApiController
             $result['success'] = false;
             $result['error_msg'] = "Data access failed";
             $result['data'] = array();
-        }else{
-            if($result['success']){
-                $expiresAt = Carbon::now()->addMinute(10);
-                Cache::forget('user');
-                Cache::put('user', $user, $expiresAt);
-            }
         }
         return $result;
     }
@@ -325,7 +322,7 @@ class UserController extends ApiController
         $params = array(
             'cmd' => 'modify',
             'pin' => $user['pin'],
-            'nick' => $request->input('nick', $user['nickname']),
+            'nick' => $user['nickname'],
            //'icon' => $request->input('icon', $user['icon']),
             'token' => $user['token']
         );
@@ -338,20 +335,24 @@ class UserController extends ApiController
             if($result['success']){
                 $userInfo = $this->getUserDetailInfo($request);
                 $user['nickname'] = $userInfo['data']['nickname'];
-                $expiresAt = Carbon::now()->addMinute(10);
-                Cache::forget('user');
-                Cache::put('user', $user, $expiresAt);
             }
         }
         return $result;
     }
+
+    /*
+     * 获取用户收货地址
+     *
+     * @author zhangtao@evermarker.net
+     *
+     * */
 
     public function getShippingAddress(Request $request)
     {
         $user = Cache::get('user');
         $cmd = 'list';
         $pin = $user['pin'];
-        $uuid = $request->input('uuid', md5($cmd));
+        $uuid = $request->input('uuid', md5($pin));
         $token = $user['token'];
         $params = array(
             'cmd'=>$cmd,
@@ -380,7 +381,9 @@ class UserController extends ApiController
     }
 
     /*
+     * 跳转至地址列表页面
      *
+     * @author zhangtao@evermarker.net
      * */
     public function shippingAddress(Request $request)
     {
