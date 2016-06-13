@@ -38,11 +38,11 @@
                 type: 'POST',
                 data: $('#changeProfile').serialize()
             }).done(function (data) {
-                if(data.success){
+                if (data.success) {
+                    console.log("success");
                     $('#nick').attr('placeholder', $('#nick').val());
                     $('#nick').val("");
                 }
-                console.log("success");
             }).fail(function () {
                 console.log("error");
             }).always(function () {

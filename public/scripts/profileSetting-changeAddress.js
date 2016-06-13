@@ -68,7 +68,7 @@
     function selectCountry() {
         openLoading();
         // 获取表单数据
-        $('#addressInfo').submit();
+        $("#addressInfo").submit();
     }
 
     // 跳转页面,
