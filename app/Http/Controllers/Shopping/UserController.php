@@ -346,12 +346,45 @@ class UserController extends ApiController
         return $result;
     }
 
+    public function getShippingAddress(Request $request)
+    {
+        $user = Cache::get('user');
+        $cmd = 'list';
+        $pin = $user['pin'];
+        $uuid = $request->input('uuid', md5($cmd));
+        $token = $user['token'];
+        $params = array(
+            'cmd'=>$cmd,
+            'uuid'=>$uuid,
+            'pin'=>$pin,
+            'token'=>$token
+        );
+        $system = "";
+        $service = "useraddr";
+        $result = $this->request('openapi', $system, $service, $params);
+        if(empty($result) || empty($result['data']['list'])){
+            $result['success'] = false;
+            $result['error_msg'] = "Data access failed";
+            $result['data'] = array();
+            $result['data']['list'] = array();
+        }else{
+            if($result['success']){
+                $list = array();
+                foreach($result['data']['list'] as $addr){
+                    $list[$addr['receiving_id']] = $addr;
+                }
+                $result['data']['list'] = $list;
+            }
+        }
+        return $result;
+    }
+
     /*
      *
      * */
     public function shippingAddress(Request $request)
     {
-        $user = Cache::get('user');
+      /*  $user = Cache::get('user');
         $cmd = 'list';
         $pin = $user['pin'];
         $uuid = $request->input("uuid", md5($cmd));
@@ -370,7 +403,8 @@ class UserController extends ApiController
             $result['error_msg'] = "Data access failed";
             $result['data'] = array();
             $result['data']['list'] = array();
-        }
+        }*/
+        $result = $this->getShippingAddress($request);
         return View('shopping.profilesetting_shippingaddress', ['data'=>$result['data']]);
     }
 
@@ -382,26 +416,16 @@ class UserController extends ApiController
         return View('shopping.profilesetting_addaddress', ['country'=>$country, 'input'=>$input]);
     }
 
-    public function addrModify(Request $request)
+    public function addrModify(Request $request, $aid)
     {
+        $res = $this->getShippingAddress($request);
+        $addrList = $res['data']['list'];
+        $input = $addrList[$aid];
         $country = json_decode(base64_decode($request->input('country', base64_encode(json_encode(['country_id'=>5, 'country_name_cn'=>"中国", 'country_name_en'=>"China", 'iDnumberReq'=>0, 'isFreq'=>0])))), true);
-        $input = json_decode(base64_decode($request->input('addr')), true);
-        if(!empty($input)) {
-            $input['addr1'] = $input['detail_address1'];
-            $input['addr2'] = $input['detail_address2'];
-            $input['isd'] = $input['isDefault'];
-            $input['tel'] = $input['telephone'];
-            $input['idnum'] = $input['iDnumber'];
-            $input['aid'] = $input['receiving_id'];
-        }else{
-           // $expiresAt = Carbon::now()->addMinutes(10);
-            $input = Cache::get('input');
-            Cache::forget('input');
-            //Cache::put('input', $input, $expiresAt);
-        }
         if(empty($input)){
             return redirect('/user/shippingaddress');
         }
+        Cache::forget('input');
         return View('shopping.profilesetting_modaddress', ['country'=>$country,'input'=>$input]);
     }
 
@@ -413,7 +437,6 @@ class UserController extends ApiController
         Cache::forever('input', $input);
         $params = array(
             'cmd'=>'country',
-            //	'token'=> $user['token']
         );
         $system = "";
         $service = "useraddr";

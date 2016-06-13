@@ -40,11 +40,11 @@
                     </fieldset>
                     <hr class="hr-base m-a-0">
                     <fieldset>
-                        <input class="form-control form-control-block p-a-15x font-size-sm" name="addr1" type="text" value="{{$input['addr1']}}" placeholder="Street1">
+                        <input class="form-control form-control-block p-a-15x font-size-sm" name="addr1" type="text" value="{{$input['detail_address1']}}" placeholder="Street1">
                     </fieldset>
                     <hr class="hr-base m-a-0">
                     <fieldset>
-                        <input class="form-control form-control-block p-a-15x font-size-sm" name="addr2" type="text" value="{{$input['addr2']}}" placeholder="Street2 (optional)">
+                        <input class="form-control form-control-block p-a-15x font-size-sm" name="addr2" type="text" value="{{$input['detail_address2']}}" placeholder="Street2 (optional)">
                     </fieldset>
                     <hr class="hr-base m-a-0">
                     <fieldset>
@@ -60,11 +60,11 @@
                     </fieldset>
                     <hr class="hr-base m-a-0">
                     <fieldset>
-                        <input class="form-control form-control-block p-a-15x font-size-sm" name="tel" type="text" value="{{$input['tel']}}" placeholder="Phone (optional)">
+                        <input class="form-control form-control-block p-a-15x font-size-sm" name="tel" type="text" value="{{$input['telephone']}}" placeholder="Phone (optional)">
                     </fieldset>
                     <hr class="hr-base m-a-0">
                     <fieldset>
-                        <input class="form-control form-control-block p-a-15x font-size-sm" name="idnum" value="{{$input['idnum']}}"  type="text" placeholder="IDnumber">
+                        <input class="form-control form-control-block p-a-15x font-size-sm" name="idnum" value="{{$input['iDnumber']}}"  type="text" placeholder="IDnumber">
                     </fieldset>
                     <hr class="hr-base m-a-0">
                     <fieldset>
@@ -84,7 +84,7 @@
                             <span>Make Primary</span>
                             <div class="radio-checkBox">
                                 <div class="radio-checkItem"></div>
-                                @if(1 == $input['isd'])
+                                @if(1 == $input['isDefault'])
                                     <input type="radio" name="isd" id="address-default" hidden value="0">
                                     <input type="radio" name="isd" id="address-primary" hidden value="1" checked="checked">
                                 @else
@@ -94,8 +94,8 @@
                             </div>
                         </div>
                     </fieldset>
-                    <input name="aid" value="{{$input['aid']}}"  type="hidden" >
-                    <input name="route" value="/user/addrmod" type="hidden">
+                    <input name="aid" value="{{$input['receiving_id']}}"  type="hidden" >
+                    <input name="route" value="/user/addrmod/{{$input['receiving_id']}}" type="hidden">
                 </form>
                 <div class="container-fluid p-x-10x p-y-15x">
                     <div class="row">
