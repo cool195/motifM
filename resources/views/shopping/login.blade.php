@@ -23,62 +23,66 @@
 
 </head>
 <body>
-    <!-- 主体内容 -->
-    <div class="login-container">
-        <section class="login-content p-y-20x">
-            <img class="img-fluid m-x-auto m-b-20x" src="/images/login/login-logo.png" srcset="/images/login/login-logo@2x.png 2x,/images/login/login-logo@3x.png 3x">
-            <div class="flex text-warning flex-alignCenter text-left m-t-20x p-t-5x">
-                <i class="iconfont icon-caveat icon-size-md p-r-5x"></i><span class="font-size-sm">Warming: Women’s Ring</span>
+<!-- 主体内容 -->
+<div class="login-container">
+    <section class="login-content p-y-20x">
+        <img class="img-fluid m-x-auto m-b-20x" src="/images/login/login-logo.png"
+             srcset="/images/login/login-logo@2x.png 2x,/images/login/login-logo@3x.png 3x">
+        <form id="login">
+            <div class="warning-info off flex text-warning flex-alignCenter text-left">
+                <i class="iconfont icon-caveat icon-size-md p-r-5x"></i>
+                <span class="font-size-sm"></span>
             </div>
-            <form id="login">
-                <fieldset class="m-t-10x login-text">
-                    <input class="input-login form-control font-size-sm" name="email" placeholder="Email" type="text">
-                    <i class="iconfont icon-delete icon-size-md input-clear text-common"></i>
-                </fieldset>
-                <fieldset class="m-t-10x login-text">
-                    <input class="input-login form-control font-size-sm" name="pw" placeholder="Password" type="text">
-                    <i class="iconfont icon-show icon-size-lg input-show text-common"></i>
-                </fieldset>
-            </form>
-            <div class="m-t-15x text-primary text-center font-size-sm">
-                <a href="#" class="text-primary">Forgot Password?</a>
-            </div>
-            <div class="container-fluid p-a-0 m-t-20x">
-                <div class="row">
-                    <div class="col-xs-6">
-                        <a class="btn btn-primary-outline btn-block" href="/register">Register</a>
-                    </div>
-                    <div class="col-xs-6">
-                        <div class="btn btn-primary btn-block" data-role="submit">Login</div>
-                    </div>
+            <fieldset class="m-t-10x login-text">
+                <input class="input-login form-control font-size-sm" name="email" placeholder="Email"
+                       type="text" maxlength="60">
+                <i class="iconfont icon-delete icon-size-md input-clear text-common"></i>
+            </fieldset>
+            <fieldset class="m-t-10x login-text">
+                <input class="input-login form-control font-size-sm" name="pw" placeholder="Password"
+                       type="text" maxlength="32">
+                <i class="iconfont icon-show icon-size-lg input-show text-common"></i>
+            </fieldset>
+        </form>
+        <div class="m-t-15x text-primary text-center font-size-sm">
+            <a href="#" class="text-primary">Forgot Password?</a>
+        </div>
+        <div class="container-fluid p-a-0 m-t-20x">
+            <div class="row">
+                <div class="col-xs-6">
+                    <a class="btn btn-primary-outline btn-block" href="/register">Register</a>
+                </div>
+                <div class="col-xs-6">
+                    <div class="btn btn-primary btn-block" data-role="submit">Login</div>
                 </div>
             </div>
-            <div class="m-t-20x flex flex-justifyCenter">
-                <hr class="hr-login m-a-0">
-            </div>
-            <div class="m-t-20x p-b-20x">
-                <a class="btn btn-block btn-facebook">
-                    <i class="iconfont icon-facebook-o icon-size-md"></i>
-                    Signin with Facebook
-                </a>
-                <a class="btn btn-block btn-google m-l-0 m-t-10x">
-                    <i class="iconfont icon-google-o icon-size-md"></i>
-                    Sign in with Google
-                </a>
-            </div>
-            <div class="m-t-20x text-primary text-center font-size-sm"><a href="#">Contact Us</a></div>
-        </section>
+        </div>
+        <div class="m-t-20x flex flex-justifyCenter">
+            <hr class="hr-login m-a-0">
+        </div>
+        <div class="m-t-20x p-b-20x">
+            <a class="btn btn-block btn-facebook">
+                <i class="iconfont icon-facebook-o icon-size-md"></i>
+                Signin with Facebook
+            </a>
+            <a class="btn btn-block btn-google m-l-0 m-t-10x">
+                <i class="iconfont icon-google-o icon-size-md"></i>
+                Sign in with Google
+            </a>
+        </div>
+        <div class="m-t-20x text-primary text-center font-size-sm"><a href="#">Contact Us</a></div>
+    </section>
 
-    </div>
-    <!-- loading 效果 -->
-    <div class="loading loading-screen loading-switch loading-hidden">
-        <div class="loader loader-screen"></div>
-    </div>
+</div>
+<!-- loading 效果 -->
+<div class="loading loading-screen loading-switch loading-hidden">
+    <div class="loader loader-screen"></div>
+</div>
 </body>
 <script src="/scripts/vendor.js"></script>
 
 <script src="/scripts/login.js"></script>
-<meta name="csrf-token" content="{{ csrf_token() }}" />
+<meta name="csrf-token" content="{{ csrf_token() }}"/>
 <script>
     $.ajaxSetup({
         headers: {
