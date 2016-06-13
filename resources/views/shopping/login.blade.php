@@ -29,7 +29,7 @@
         <img class="img-fluid m-x-auto m-b-20x" src="/images/login/login-logo.png"
              srcset="/images/login/login-logo@2x.png 2x,/images/login/login-logo@3x.png 3x">
         <form id="login">
-            <div class="warning-info off flex text-warning flex-alignCenter text-left">
+            <div class="warning-info off flex text-warning flex-alignCenter text-left m-b-5x">
                 <i class="iconfont icon-caveat icon-size-md p-r-5x"></i>
                 <span class="font-size-sm"></span>
             </div>
