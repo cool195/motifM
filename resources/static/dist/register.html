@@ -31,21 +31,21 @@
             <img class="img-fluid m-x-auto m-b-20x" src="/images/login/register-logo.png" srcset="/images/login/register-logo@2x.png 2x,/images/login/register-logo@3x.png 3x">
 
             <div class="text-main text-center p-t-10x"><strong>Create An Account</strong></div>
-            <div class="text-warning font-size-sm flex flex-alignCenter text-left p-t-20x m-b-10x">
-                <i class="iconfont icon-caveat icon-size-md p-r-5x"></i>
-                Sorry, this email has already been registered.
-            </div>
             <form id="register">
+                <div class="warning-info off flex text-warning flex-alignCenter text-left">
+                    <i class="iconfont icon-caveat icon-size-md p-r-5x"></i>
+                    <span class="font-size-sm"></span>
+                </div>
                 <fieldset class="register-input m-b-10x">
-                    <input class="input-register form-control font-size-sm" name="nick" placeholder="Your Name" type="text">
+                    <input class="input-register form-control font-size-sm" name="nick" placeholder="Your Name" type="text" maxlength="32">
                     <i class="iconfont icon-delete icon-size-md input-clear text-common"></i>
                 </fieldset>
                 <fieldset class="register-input m-b-10x">
-                    <input class="input-register form-control font-size-sm" name="email" placeholder="Email" type="text">
+                    <input class="input-register form-control font-size-sm" name="email" placeholder="Email" type="text" maxlength="60">
                     <i class="iconfont icon-delete icon-size-md input-clear text-common"></i>
                 </fieldset>
                 <fieldset class="register-input m-b-10x">
-                    <input class="input-register form-control font-size-sm" name="pw" placeholder="Password" type="text">
+                    <input class="input-register form-control font-size-sm" name="pw" placeholder="Password" type="text" maxlength="32">
                     <i class="iconfont icon-show icon-size-md input-show text-common"></i>
                 </fieldset>
             </form>
