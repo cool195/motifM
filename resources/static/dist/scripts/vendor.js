@@ -16449,5 +16449,28 @@ else if (typeof define === 'function' && define.amd) {
             $('#body-content').removeClass('nav-menu-open');
         }
     });
+
+    (function () {
+        if ($('.nav-shoppingCart').data('login')) {
+            $.ajax({
+                url: ' /cart/amount',
+                type: 'GET'
+            }).done(function (data) {
+                console.log('success');
+                // 操作成功刷新页面
+                if (data.success) {
+                    if (data.data.skusAmout > 0) {
+                        $('.nav-shoppingCart').children('span').html(data.data.skusAmout);
+                    }
+                }
+            }).fail(function () {
+                console.log('error');
+            }).always(function () {
+                console.log('complete');
+            });
+        } else {
+            $('.nav-shoppingCart').children('span').remove();
+        }
+    })();
 })(jQuery);
 //# sourceMappingURL=common.js.map
