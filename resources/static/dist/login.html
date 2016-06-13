@@ -27,16 +27,17 @@
     <div class="login-container">
         <section class="login-content p-y-20x">
             <img class="img-fluid m-x-auto m-b-20x" src="/images/login/login-logo.png" srcset="/images/login/login-logo@2x.png 2x,/images/login/login-logo@3x.png 3x">
-            <div class="flex text-warning flex-alignCenter text-left m-t-20x p-t-5x">
-                <i class="iconfont icon-caveat icon-size-md p-r-5x"></i><span class="font-size-sm">Warming: Women’s Ring</span>
-            </div>
-            <form id="login">
+            <form id="login" class="p-t-10x">
+                <div class="warning-info off flex text-warning flex-alignCenter text-left">
+                    <i class="iconfont icon-caveat icon-size-md p-r-5x"></i>
+                    <span class="font-size-sm"></span>
+                </div>
                 <fieldset class="m-t-10x login-text">
-                    <input class="input-login form-control font-size-sm" name="email" placeholder="Email" type="text">
+                    <input class="input-login form-control font-size-sm" name="email" placeholder="Email" type="text" maxlength="60">
                     <i class="iconfont icon-delete icon-size-md input-clear text-common"></i>
                 </fieldset>
                 <fieldset class="m-t-10x login-text">
-                    <input class="input-login form-control font-size-sm" name="pw" placeholder="Password" type="text">
+                    <input class="input-login form-control font-size-sm" name="pw" placeholder="Password" type="text" maxlength="32">
                     <i class="iconfont icon-show icon-size-lg input-show text-common"></i>
                 </fieldset>
             </form>
@@ -68,7 +69,6 @@
             </div>
             <div class="m-t-20x text-primary text-center font-size-sm"><a href="#">Contact Us</a></div>
         </section>
-
     </div>
 
     <!-- loading 效果 -->
