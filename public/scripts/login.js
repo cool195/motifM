@@ -1,4 +1,5 @@
 'use strict';
+
 (function ($) {
     // loading 打开
     function openLoading() {
@@ -24,66 +25,42 @@
             url: '/user/logincheck',
             type: 'POST',
             data: $('#login').serialize()
-        })
-            .done(function (data) {
-                console.log("success");
-            })
-            .fail(function () {
-                console.log("error");
-            })
-            .always(function () {
-                console.log("complete");
-                closeLoading();
-            });
+        }).done(function (data) {
+            console.log("success");
+        }).fail(function () {
+            console.log("error");
+        }).always(function () {
+            console.log("complete");
+            closeLoading();
+        });
     }
 
+    // TODO 需要字段的格式
     // 验证电子邮件的情况
-    $('input[name="email"]').on('keyup', function (e) {
-        var EmailNull = 'Please enter your email',
-            EmailStyle = 'Please enter a valid email address';
-        var $WarningInfo = $('.warning-info');
+    $('input[name="email"]').on('blur', function (e) {
+        console.info('电子邮件');
+        console.log(e.target);
+
         var InputText = $(e.target).val();
-        // 邮箱验证的正则表达式
-        var Reg = /^[a-z0-9]([a-z0-9]*[-_]?[a-z0-9]+)*@([a-z0-9]*[-_]?[a-z0-9]+)+[\.][a-z]{2,3}([\.][a-z]{2})?$/i;
-        if (InputText === '') {
+        if (true) {} else {
             $('div[data-role="submit"]').addClass('disabled');
-            $WarningInfo.removeClass('off');
-            $WarningInfo.children('span').html(EmailNull);
-        } else if (!Reg.test(InputText)) {
-            $('div[data-role="submit"]').addClass('disabled');
-            $WarningInfo.removeClass('off');
-            $WarningInfo.children('span').html(EmailStyle);
-        } else {
-            $WarningInfo.addClass('off');
-            $('div[data-role="submit"]').removeClass('disabled');
         }
     });
 
+    // TODO 需要字段的格式
     // 验证密码的情况
-    $('input[name="pw"]').on('keyup', function (e) {
-        var PasswordNull = 'Please enter your password',
-            PasswordLength = 'Password (6 characters min)';
-        var $WarningInfo = $('.warning-info');
+    $('input[name="pw"]').on('blur', function (e) {
+        console.info('密码');
+        console.log(e.target);
         var InputText = $(e.target).val();
-
-        if (InputText === '') {
-            $('div[data-role="submit"]').addClass('disabled');
-            $WarningInfo.removeClass('off');
-            $WarningInfo.children('span').html(PasswordNull);
-        } else if (InputText.length < 6 || InputText.length > 32) {
-            $('div[data-role="submit"]').addClass('disabled');
-            $WarningInfo.removeClass('off');
-            $WarningInfo.children('span').html(PasswordLength);
-        } else {
-            $WarningInfo.addClass('off');
-            $('div[data-role="submit"]').removeClass('disabled');
+        if (true) {} else {
+            $('a[data-role="submit"]').addClass('disabled');
         }
     });
 
+    // 提交注册用户请求
     $('div[data-role="submit"]').on('click', function (e) {
-        if ($(e.target).hasClass('disabled')) {
-
-        } else {
+        if ($(e.target).hasClass('disabled')) {} else {
             loginUser();
         }
     });
@@ -106,3 +83,4 @@
         }
     });
 })(jQuery);
+//# sourceMappingURL=login.js.map
