@@ -17,7 +17,70 @@
         }, 500);
     }
 
-    // TODO loading 动画
+    /**
+     *  验证 Email 格式
+     * @param $Email
+     */
+    function validationEmail($Email) {
+        var EmailNull = 'Please enter your email',
+            EmailStyle = 'Please enter a valid email address';
+        var $WarningInfo = $('.warning-info');
+        var InputText = $Email.val();
+        // 邮箱验证的正则表达式
+        var Reg = /^[a-z0-9]([a-z0-9]*[-_]?[a-z0-9]+)*@([a-z0-9]*[-_]?[a-z0-9]+)+[\.][a-z]{2,3}([\.][a-z]{2})?$/i;
+        if (InputText === '') {
+            $WarningInfo.removeClass('off');
+            $WarningInfo.children('span').html(EmailNull);
+            return false;
+        } else if (!Reg.test(InputText)) {
+            $WarningInfo.removeClass('off');
+            $WarningInfo.children('span').html(EmailStyle);
+            return false;
+        } else {
+            $WarningInfo.addClass('off');
+            return true;
+        }
+    }
+
+    /**
+     * 验证 Password 格式
+     * @param $Password
+     */
+    function validationPassword($Password) {
+        var PasswordNull = 'Please enter your password',
+            PasswordLength = 'Password (6 characters min)';
+        var $WarningInfo = $('.warning-info');
+        var InputText = $Password.val();
+
+        if (InputText === '' || InputText === undefined) {
+            $WarningInfo.removeClass('off');
+            $WarningInfo.children('span').html(PasswordNull);
+            return false;
+        } else if (InputText.length < 6 || InputText.length > 32) {
+            $WarningInfo.removeClass('off');
+            $WarningInfo.children('span').html(PasswordLength);
+            return false;
+        } else {
+            $WarningInfo.addClass('off');
+            return true;
+        }
+    }
+
+    function validationNick($Nick) {
+        var NickNull = 'Please enter your nick name';
+        var InputText = $Nick.val();
+        var $WarningInfo = $('.warning-info');
+
+        if (InputText === '') {
+            $WarningInfo.removeClass('off');
+            $WarningInfo.children('span').html(NickNull);
+            return false;
+        } else {
+            $WarningInfo.addClass('off');
+            return true;
+        }
+    }
+
     // ajax
     function registerUser() {
         openLoading();
@@ -28,6 +91,9 @@
         }).done(function (data) {
             if (data.success) {
                 window.location.href = data.redirectUrl;
+            } else {
+                $('.warning-info').removeClass('off');
+                $('.warning-info').children('span').html(data.prompt_msg);
             }
         }).fail(function () {
             console.log("error");
@@ -37,34 +103,52 @@
         });
     }
 
-    // TODO 需要字段的格式
-    // 验证电子邮件的情况
-    $('input[name="email"]').on('blur', function (e) {
-        console.info('电子邮件');
-        console.log(e.target);
-
-        var InputText = $(e.target).val();
-        if (true) {} else {
+    // 验证昵称
+    $('input[name="nick"]').on('keyup blur', function (e) {
+        if (validationNick($(this))) {
+            $('div[data-role="submit"]').removeClass('disabled');
+        } else {
             $('div[data-role="submit"]').addClass('disabled');
         }
     });
 
-    // TODO 需要字段的格式
+    // 验证电子邮件的情况
+    $('input[name="email"]').on('keyup blur', function (e) {
+        if (validationEmail($(this))) {
+            $('div[data-role="submit"]').removeClass('disabled');
+        } else {
+            $('div[data-role="submit"]').addClass('disabled');
+        }
+    });
+
     // 验证密码的情况
-    $('input[name="pw"]').on('blur', function (e) {
-        console.info('密码');
-        console.log(e.target);
-        var InputText = $(e.target).val();
-        if (true) {} else {
-            $('a[data-role="submit"]').addClass('disabled');
+    $('input[name="pw"]').on('keyup blur', function (e) {
+        if (validationPassword($(this))) {
+            $('div[data-role="submit"]').removeClass('disabled');
+        } else {
+            $('div[data-role="submit"]').addClass('disabled');
         }
     });
 
     // 提交注册用户请求
     $('div[data-role="submit"]').on('click', function (e) {
-        if ($(e.target).hasClass('disabled')) {} else {
-            registerUser();
+
+        var $Email = $('input[name="email"]'),
+            $Password = $('input[name="password"]'),
+            $Nick = $('input[name="nick"]');
+
+        if (!validationNick($Nick)) {
+            $('div[data-role="submit"]').addClass('disabled');
+            return;
+        } else if (!validationEmail($Email)) {
+            $('div[data-role="submit"]').addClass('disabled');
+            return;
+        } else if (!validationPassword($Password)) {
+            $('div[data-role="submit"]').addClass('disabled');
+            return;
         }
+
+        registerUser();
     });
 
     // 清除输入
