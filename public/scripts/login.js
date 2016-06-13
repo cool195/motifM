@@ -1,3 +1,4 @@
+'use strict';
 (function ($) {
     // loading 打开
     function openLoading() {
@@ -39,7 +40,7 @@
     // 验证电子邮件的情况
     $('input[name="email"]').on('keyup', function (e) {
         var EmailNull = 'Please enter your email',
-            EmailStyle = 'email wrong';
+            EmailStyle = 'Please enter a valid email address';
         var $WarningInfo = $('.warning-info');
         var InputText = $(e.target).val();
         // 邮箱验证的正则表达式
