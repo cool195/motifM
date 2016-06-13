@@ -9,17 +9,34 @@ use Illuminate\Support\Facades\Cache;
 
 class PayController extends ApiController
 {
+	/*
+	 * 跳转到支付方式列表页面
+	 *
+	 * @author zhangtao@evermarker.net
+	 * */
 	public function paymentMethod(Request $request)
 	{
 		$result = $this->getMethodList($request);
-		return view('shopping.paymentmethod', ['data'=>$result['data'], 'support'=>$result['data']['support']]);
+		return view('shopping.paymentmethod', ['data'=>$result['data']]);
 	}
 
+	/*
+	 * 跳转到添加支付卡页面
+	 *
+	 * @author zhangtao@evermarker.net
+	 *
+	 * */
 	public function newCardAdd(Request $request)
 	{
 		return view('shopping.paymentmethod_addcard');
 	}
 
+	/*
+	 * 获取支付Token
+	 *
+	 * @author zhangtao@evermarker.net
+	 * */
+	//todo 改为私有方法
 	public function getPayToken(Request $request)
 	{
 		$user = Cache::get('user');
