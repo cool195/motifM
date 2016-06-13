@@ -27,6 +27,12 @@
             data: $('#login').serialize()
         }).done(function (data) {
             console.log("success");
+            if (data.success) {
+                window.location.href = data.redirectUrl;
+            } else {
+                $('.warning-info').removeClass('off');
+                $('.warning-info').children('span').html(data.prompt_msg);
+            }
         }).fail(function () {
             console.log("error");
         }).always(function () {
