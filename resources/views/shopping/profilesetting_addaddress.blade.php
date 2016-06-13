@@ -71,9 +71,9 @@
                         <div class="flex flex-alignCenter flex-fullJustified font-size-sm text-primary p-a-15x" id="country">
                         <span>Country</span>
                             <div>
-                                <span>{{$country['country_name_cn']}} ({{ $country['country_name_en'] }})</span>
+                                <span>{{ $country['country_name_en'] }} ({{ $country['country_name_cn'] }})</span>
                                 <i class="iconfont icon-arrow-right icon-size-xm text-common"></i>
-                                <input type="text" name="country" hidden value="{{$country['country_id']}}">
+                                <input type="text" name="country" hidden value="{{$country['country_name_en']}}">
                             </div>
                         </div>
                     </fieldset>

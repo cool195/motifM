@@ -421,12 +421,15 @@ class UserController extends ApiController
         $res = $this->getShippingAddress($request);
         $addrList = $res['data']['list'];
         $input = $addrList[$aid];
-        $country = json_decode(base64_decode($request->input('country', base64_encode(json_encode(['country_id'=>5, 'country_name_cn'=>"中国", 'country_name_en'=>"China", 'iDnumberReq'=>0, 'isFreq'=>0])))), true);
+        $country = json_decode(base64_decode($request->input('country')), true);
+        if(!empty($country)){
+            $input['country'] = $country['country_name_en'];
+        }
         if(empty($input)){
             return redirect('/user/shippingaddress');
         }
         Cache::forget('input');
-        return View('shopping.profilesetting_modaddress', ['country'=>$country,'input'=>$input]);
+        return View('shopping.profilesetting_modaddress', ['input'=>$input]);
     }
 
     public function countryList(Request $request)
