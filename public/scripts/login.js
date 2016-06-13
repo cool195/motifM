@@ -27,6 +27,12 @@
             data: $('#login').serialize()
         }).done(function (data) {
             console.log("success");
+            if (data.success) {
+                window.location.href = data.redirectUrl;
+            } else {
+                $('.warning-info').removeClass('off');
+                $('.warning-info').children('span').html(data.prompt_msg);
+            }
         }).fail(function () {
             console.log("error");
         }).always(function () {
@@ -104,7 +110,7 @@
 
     $('div[data-role="submit"]').on('click', function (e) {
         var $Email = $('input[name="email"]'),
-            $Password = $('input[name="password"]');
+            $Password = $('input[name="pw"]');
 
         if (!validationEmail($Email)) {
             $('div[data-role="submit"]').addClass('disabled');

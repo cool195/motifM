@@ -250,6 +250,11 @@ class UserController extends ApiController
             $result['success'] = false;
             $result['error_msg'] = "Data access failed";
             $result['data'] = array();
+        }else{
+            if($result['success']){
+                Cache::forget('user');
+                $result['redirectUrl'] = "/login";
+            }
         }
         return $result;
     }

@@ -134,7 +134,7 @@
     $('div[data-role="submit"]').on('click', function (e) {
 
         var $Email = $('input[name="email"]'),
-            $Password = $('input[name="password"]'),
+            $Password = $('input[name="pw"]'),
             $Nick = $('input[name="nick"]');
 
         if (!validationNick($Nick)) {

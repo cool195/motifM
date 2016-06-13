@@ -123,5 +123,6 @@ $app->get('/shopping/order/orderSubmit', 'Shopping\OrderController@orderSubmit')
 $app->get('/designer', 'Designer\DesignerController@index');
 $app->get('/designer/{id}', 'Designer\DesignerController@show');
 
+$app->get('/', 'Daily\DailyController@index');
 $app->get('/daily', 'Daily\DailyController@index');
 $app->get('/topic/{id}', 'Daily\DailyController@show');
