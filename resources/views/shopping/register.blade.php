@@ -32,9 +32,9 @@
              srcset="/images/login/register-logo@2x.png 2x,/images/login/register-logo@3x.png 3x">
 
         <div class="text-main text-center p-t-10x"><strong>Create An Account</strong></div>
-            
+
         <form id="register">
-            <div class="warning-info off flex text-warning flex-alignCenter text-left">
+            <div class="warning-info off flex text-warning flex-alignCenter text-left m-b-x">
                 <i class="iconfont icon-caveat icon-size-md p-r-5x"></i>
                 <span class="font-size-sm"></span>
             </div>
