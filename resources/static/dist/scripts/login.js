@@ -104,7 +104,7 @@
 
     $('div[data-role="submit"]').on('click', function (e) {
         var $Email = $('input[name="email"]'),
-            $Password = $('input[name="password"]');
+            $Password = $('input[name="pw"]');
 
         if (!validationEmail($Email)) {
             $('div[data-role="submit"]').addClass('disabled');
