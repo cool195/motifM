@@ -77,29 +77,23 @@
     }
 
     /**
-     * 查询库存状态
-     * @param RequestStock
-     * @param $QttyCount
+     * 更改 商品数量
+     * @param Sku
+     * @param Qtty
+     * @param $Count
      */
-    function changeQtty(RequestStock, $QttyCount) {
+    function changeQtty(Sku, Qtty, $Count) {
         openLoading();
         $.ajax({
-            url: '/stock/checkstock',
-            data: { skus: RequestStock }
+            url: '/cart/alterQtty',
+            type: 'POST',
+            data: { sku: Sku, qtty: Qtty }
         }).done(function (data) {
+            // TODO 操作失败时 需要进行什么操作
+            // 操作成功刷新页面
             if (data.success) {
-
-                var Request = true;
-
-                if (data.data.list[0].stockStatus === 1) {
-                    Request = true;
-                } else {
-                    Request = false;
-                }
-
-                if (Request === false) {
-                    $QttyCount.addClass('disabled');
-                }
+                location.reload();
+                $Count.siblings('[data-count]').html(Qtty);
             }
         }).fail(function () {
             console.log('error');
@@ -128,38 +122,17 @@
 
         // Count 当前商品数量
         // SelectSku 选中的Sku 有且只有一个值
-        // StockCache 本地储存的库存数据
         // Checkstock 拼接后的请求字符串
-        var NextCount = parseInt($QtyCount.siblings('[data-count]').html()),
-            SelectSku = $(e.target).parents('.item-count'),
-            Count = NextCount++,
-            // Count 当前的数值 , NextCount 是+1 之后的数量 , 用来拼接参数
-        Qtty = Count; // 用来 储存 最后改变后的数量
+        var Count = parseInt($QtyCount.siblings('[data-count]').html()),
+            SelectSku = $(e.target).parents('.item-count').data('sku'),
+            NextCount = Count;
 
         if ($QtyCount.data('item') === 'add') {
-            Qtty = NextCount;
-            var MaxCount = 50;
-
-            if (NextCount > 1) {
-                $QtyCount.siblings('[data-item="minus"]').removeClass('disabled');
-            }
-            if (NextCount === MaxCount) {
-                $QtyCount.addClass('disabled');
-            }
-            // 查看库存情况
-            var RequestStock = SelectSku + '_' + ++NextCount;
-            changeQtty(RequestStock, $QtyCount);
+            NextCount++;
         } else {
-            --Count;
-            if (Count === 1) {
-                $QtyCount.addClass('disabled');
-            } else if ($QtyCount.siblings('[data-item="add"]').hasClass('disabled')) {
-                $QtyCount.siblings('[data-item="add"]').removeClass('disabled');
-            }
-            Qtty = Count;
+            NextCount--;
         }
-        // 将计数更新
-        $QtyCount.siblings('[data-count]').html(Qtty);
+        changeQtty(SelectSku, NextCount, $QtyCount);
     });
 
     // 购物车对话框 触发点

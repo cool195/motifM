@@ -52,7 +52,8 @@ $app->get('/shopping/cart/savelist', 'Shopping\CartController@getCartSaveList');
 $app->patch('/cart', 'Shopping\CartController@addCart');
 $app->put('/cart', 'Shopping\CartController@promptlyBuy');
 $app->get('/shopping/cart/addBatchCart', 'Shopping\CartController@addBatchCart');
-$app->get('/shopping/cart/alterQtty', 'Shopping\CartController@alterCartProQtty');
+$app->get('/cart/alterQtty', 'Shopping\CartController@alterCartProQtty');
+
 //$app->get('/shopping/cart/promptlyBuy', 'Shopping\CartController@promptlyBuy');
 $app->get('/cart/operate', 'Shopping\CartController@operateCartProduct');
 $app->post('/cart/operate', 'Shopping\CartController@operateCartProduct');
@@ -102,7 +103,7 @@ $app->post('/user/logincheck', 'Shopping\UserController@loginCheck');
 $app->get('/user/signout', 'Shopping\UserController@signout');
 $app->get('/user/resetPwd', 'Shopping\UserController@resetPassword');
 $app->get('/user/forget', 'Shopping\UserController@forgetPassword');
-$app->get('/user/modifyUserPwd', 'Shopping\UserController@modifyUserPwd');
+$app->post('/user/modifyUserPwd', 'Shopping\UserController@modifyUserPwd');
 $app->get('/user/trilogin', 'Shopping\UserController@tryPrtLogin');
 $app->get('/user/userdetail', 'Shopping\UserController@getUserDetailInfo');
 $app->get('/user/modifyUserInfo', 'Shopping\UserController@modifyUserInfo');
