@@ -67,10 +67,10 @@
         </li>
         <li class="nav-item">
 
-            <a href="@if(Cache::has('user'))/user/signout @else/login @endif"
+            <a href="@if(Cache::has('user')){{'/user/signout'}}@else{{'/login'}}@endif"
                class="flex flex-alignCenter flex-fullJustified p-a-15x">
                 <div class="font-size-sm text-primary flex flex-alignCenter"><i
-                            class="iconfont icon-signout icon-size-md p-r-15x"></i><span>@if(Cache::has('user')) Sign Out @else Login @endif</span></div>
+                            class="iconfont icon-signout icon-size-md p-r-15x"></i><span>@if(Cache::has('user')){{'Sign Out'}}@else{{'Login'}}@endif</span></div>
                 <span class="text-common"><i class="iconfont icon-arrow-right icon-size-sm"></i></span>
             </a>
         </li>

@@ -12,9 +12,9 @@
             </li>
             <li class="nav-item">
                 <a href="/shopping/cart">
-                    <div class="nav-shoppingCart" data-login="@if(Cache::has('user')) true @else false @endif">
+                    <div class="nav-shoppingCart" data-login="@if(Cache::has('user')){{'true'}}@else{{'false'}}@endif">
                         <i class="nav-tap iconfont icon-shopbag icon-size-lg"></i>
-                        <span class="shoppingCart-number">0</span>
+                        <span class="shoppingCart-number"></span>
                     </div>
                 </a>
             </li>
