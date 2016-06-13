@@ -59,12 +59,14 @@ $app->get('/cart/operate', 'Shopping\CartController@operateCartProduct');
 $app->post('/cart/operate', 'Shopping\CartController@operateCartProduct');
 
 
+$app->get('/pay/paymentmethod', 'Shopping\PayController@paymentMethod');
+$app->get('/pay/cardadd', 'Shopping\PayController@newCardAdd');
 
-$app->get('/shopping/pay/token', 'Shopping\PayController@getPayToken');
+$app->get('/pay/token', 'Shopping\PayController@getPayToken');
 $app->get('/shopping/pay/method', 'Shopping\PayController@createPayMethod');
 $app->get('/shopping/pay/pay', 'Shopping\PayController@pay');
 $app->get('/shopping/pay/checkpay', 'Shopping\PayController@pay');
-$app->get('/shopping/pay/methodlist', 'Shopping\PayController@getMethodList');
+$app->get('/pay/methodlist', 'Shopping\PayController@getMethodList');
 $app->get('/shopping/pay/del', 'Shopping\PayController@delMethod');
 $app->get('/shopping/pay/getDefault', 'Shopping\PayController@getDefaultMethod');
 $app->get('/shopping/pay/setDefault', 'Shopping\PayController@setDefaultMethod');
@@ -95,8 +97,7 @@ $app->get('/user/addradd', 'Shopping\UserController@addrAdd');
 $app->get('/user/addrmod/{aid}', 'Shopping\UserController@addrModify');
 $app->get('/user/countrylist', 'Shopping\UserController@countryList');
 $app->get('/user/changepassword', 'Shopping\UserController@changePassword');
-$app->get('/user/paymentmethod', 'Shopping\UserController@paymentMethod');
-$app->get('/user/cardadd', 'Shopping\UserController@newCardAdd');
+
 
 $app->get('/user/signup', 'Shopping\UserController@signup');
 $app->post('/user/signup', 'Shopping\UserController@signup');

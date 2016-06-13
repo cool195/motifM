@@ -9,16 +9,28 @@ use Session;
 
 class CartController extends ApiController
 {
+	/*
+	 * 购物车页面接口
+	 *
+	 * @author zhangtao@evermarker.net
+	 *
+	 * */
 	public function index(Request $request)
 	{
 		$cartList = $this->getCartList($request); 
 		$saveList = $this->getCartSaveList($request);
 		return View('shopping.cart', [
 			'cartData' => $cartList['data'], 
-			'saveData' => $cartList['data']
+			'saveData' => $saveList['data']
 		]);
 	}
 
+	/*
+	 * 订单确认接口
+	 *
+	 * @author zhangtao@evermarker.net
+	 *
+	 * */
 	public function orderCheckout(Request $request)
 	{
 		$result = $this->getCartAccountList($request);
