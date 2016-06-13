@@ -38,7 +38,7 @@
         openLoading();
         // 获取表单数据
         $.ajax({
-            url: '/addr/add',
+            url: '/useraddr/addUserAddress',
             type: 'POST',
             data: $('#addressInfo').serialize()
         }).done(function () {
