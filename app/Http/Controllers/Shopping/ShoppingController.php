@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Shopping;
 use Illuminate\Http\Request;
 
 use App\Http\Controllers\ApiController;
+use Illuminate\Support\Facades\Cache;
 
 class ShoppingController extends ApiController
 {
@@ -29,14 +30,16 @@ class ShoppingController extends ApiController
 		return $result;
 	}
 
+	//todo
 	public function getShoppingProductList(Request $request)
 	{
-		$user = Cache::get('user');
+		//$user = Cache::get('user');
 		$params = array(
-			'recid'=>$request->input('recid'),
-			'pin'=>$user['pin'],
-			'uuid'=>$request->input('uuid', md5($user['pin'])),
-			'cid'=>$request->input('cid'),
+			'recid'=>$request->input('recid', '100000'),
+			//'pin'=>$user['pin'],
+			'pin' => 'xuzhijie',
+			'uuid'=>$request->input('uuid', 'xuzhijie'),
+			'cid'=>$request->input('cid', '0'),
 			'pagenum'=>$request->input('pagenum', 1),
 			'pagesize'=>$request->input('pagesize', 5),
 			'extra'=>$request->input('extra_kv', "")
@@ -68,16 +71,5 @@ class ShoppingController extends ApiController
 		}
 		return $result;
 	}
-
-
-
-
-
-
-
-
-
-
-
 
 }
