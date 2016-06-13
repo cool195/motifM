@@ -47,16 +47,16 @@
         // 邮箱验证的正则表达式
         var Reg = /^[a-z0-9]([a-z0-9]*[-_]?[a-z0-9]+)*@([a-z0-9]*[-_]?[a-z0-9]+)+[\.][a-z]{2,3}([\.][a-z]{2})?$/i;
         if (InputText === '') {
-            $('div[data-role="submit"]').addClass('disabled');
             $WarningInfo.removeClass('off');
             $WarningInfo.children('span').html(EmailNull);
+            return false;
         } else if (!Reg.test(InputText)) {
-            $('div[data-role="submit"]').addClass('disabled');
             $WarningInfo.removeClass('off');
             $WarningInfo.children('span').html(EmailStyle);
+            return false;
         } else {
             $WarningInfo.addClass('off');
-            $('div[data-role="submit"]').removeClass('disabled');
+            return true;
         }
     }
 
@@ -71,39 +71,50 @@
         var InputText = $Password.val();
 
         if (InputText === '' || InputText === undefined) {
-            $('div[data-role="submit"]').addClass('disabled');
             $WarningInfo.removeClass('off');
             $WarningInfo.children('span').html(PasswordNull);
+            return false;
         } else if (InputText.length < 6 || InputText.length > 32) {
-            $('div[data-role="submit"]').addClass('disabled');
             $WarningInfo.removeClass('off');
             $WarningInfo.children('span').html(PasswordLength);
+            return false;
         } else {
             $WarningInfo.addClass('off');
-            $('div[data-role="submit"]').removeClass('disabled');
+            return true;
         }
     }
 
     // 验证电子邮件的情况
-    $('input[name="email"]').on('keyup blur', function () {
-        validationEmail($(this));
+    $('input[name="email"]').on('keyup blur', function (e) {
+        if (validationEmail($(this))) {
+            $('div[data-role="submit"]').removeClass('disabled');
+        } else {
+            $('div[data-role="submit"]').addClass('disabled');
+        }
     });
 
     // 验证密码的情况
-    $('input[name="pw"]').on('keyup blur', function () {
-        validationPassword($(this));
+    $('input[name="pw"]').on('keyup blur', function (e) {
+        if (validationPassword($(this))) {
+            $('div[data-role="submit"]').removeClass('disabled');
+        } else {
+            $('div[data-role="submit"]').addClass('disabled');
+        }
     });
 
     $('div[data-role="submit"]').on('click', function (e) {
         var $Email = $('input[name="email"]'),
             $Password = $('input[name="password"]');
 
-        validationEmail($Email);
-        validationPassword($Password);
-
-        if ($(e.target).hasClass('disabled')) {} else {
-            loginUser();
+        if (!validationEmail($Email)) {
+            $('div[data-role="submit"]').addClass('disabled');
+            return;
+        } else if (!validationPassword($Password)) {
+            $('div[data-role="submit"]').addClass('disabled');
+            return;
         }
+
+        loginUser();
     });
 
     // 清除输入
