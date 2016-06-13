@@ -35,12 +35,15 @@
         });
     }
 
-    // 验证电子邮件的情况
-    $('input[name="email"]').on('keyup', function (e) {
+    /**
+     *  验证 Email 格式
+     * @param $Email
+     */
+    function validationEmail($Email) {
         var EmailNull = 'Please enter your email',
             EmailStyle = 'Please enter a valid email address';
         var $WarningInfo = $('.warning-info');
-        var InputText = $(e.target).val();
+        var InputText = $Email.val();
         // 邮箱验证的正则表达式
         var Reg = /^[a-z0-9]([a-z0-9]*[-_]?[a-z0-9]+)*@([a-z0-9]*[-_]?[a-z0-9]+)+[\.][a-z]{2,3}([\.][a-z]{2})?$/i;
         if (InputText === '') {
@@ -55,16 +58,19 @@
             $WarningInfo.addClass('off');
             $('div[data-role="submit"]').removeClass('disabled');
         }
-    });
+    }
 
-    // 验证密码的情况
-    $('input[name="pw"]').on('keyup', function (e) {
+    /**
+     * 验证 Password 格式
+     * @param $Password
+     */
+    function validationPassword($Password) {
         var PasswordNull = 'Please enter your password',
             PasswordLength = 'Password (6 characters min)';
         var $WarningInfo = $('.warning-info');
-        var InputText = $(e.target).val();
+        var InputText = $Password.val();
 
-        if (InputText === '') {
+        if (InputText === '' || InputText === undefined) {
             $('div[data-role="submit"]').addClass('disabled');
             $WarningInfo.removeClass('off');
             $WarningInfo.children('span').html(PasswordNull);
@@ -76,9 +82,25 @@
             $WarningInfo.addClass('off');
             $('div[data-role="submit"]').removeClass('disabled');
         }
+    }
+
+    // 验证电子邮件的情况
+    $('input[name="email"]').on('keyup blur', function () {
+        validationEmail($(this));
+    });
+
+    // 验证密码的情况
+    $('input[name="pw"]').on('keyup blur', function () {
+        validationPassword($(this));
     });
 
     $('div[data-role="submit"]').on('click', function (e) {
+        var $Email = $('input[name="email"]'),
+            $Password = $('input[name="password"]');
+
+        validationEmail($Email);
+        validationPassword($Password);
+
         if ($(e.target).hasClass('disabled')) {} else {
             loginUser();
         }
