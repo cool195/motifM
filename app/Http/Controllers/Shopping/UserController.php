@@ -92,6 +92,9 @@ class UserController extends ApiController
      * */
     public function login(Request $request)
     {
+        if(Cache::has('user')){
+            return redirect('/daily');
+        }
         return view('shopping.login');
     }
 
