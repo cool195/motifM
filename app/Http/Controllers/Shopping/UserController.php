@@ -119,7 +119,7 @@ class UserController extends ApiController
         } else {
             if ($result['success']) {
                 $result['redirectUrl'] = "/daily";
-                $expiresAt = Carbon::now()->addDays(180);
+                $expiresAt = Carbon::now()->addMinute(10000);
                 Cache::forget('user');
                 Cache::put("user", $result['data'], $expiresAt);
             }
