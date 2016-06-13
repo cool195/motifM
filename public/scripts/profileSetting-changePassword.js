@@ -1,3 +1,8 @@
+/**
+ * Created by yinlinghui on 16/6/13.
+ */
+/*global jQuery*/
+
 'use strict';
 
 (function ($) {
@@ -22,33 +27,30 @@
         var PasswordNull = 'Please enter your password',
             PasswordLength = 'Password needs to be at least 6 characters';
         var $WarningInfo = $('.warning-info');
-        var flag = true;
         if (InputText == '') {
             $('div[data-role="submit"]').addClass('disabled');
             $WarningInfo.removeClass("off");
             $WarningInfo.children('span').html(PasswordNull);
-            flag = false;
+            return false;
         } else if (InputText.length < 6 || InputText.length > 32) {
             $('div[data-role="submit"]').addClass('disabled');
             $WarningInfo.removeClass("off");
             $WarningInfo.children('span').html(PasswordLength);
-            flag = false;
+            return false;
         } else {
             $WarningInfo.addClass('off');
             $('div[data-role="submit"]').removeClass('disabled');
-            flag = true;
+            return true;
         }
-        return flag;
     }
 
     // 验证确认密码 和 新密码是否正确
     function validateconfirmPwd(NewPwd, confirmPwd) {
-        var PasswordConfirm = '确认密码有误';
+        var PasswordConfirm = 'New password does not match';
         var $WarningInfo = $('.warning-info');
-        var flag = true;
         if (NewPwd !== confirmPwd) {
             $('div[data-role="submit"]').addClass('disabled');
-            $WarningInfo.removeClass("off");
+            $WarningInfo.removeClass('off');
             $WarningInfo.children('span').html(PasswordConfirm);
             return false;
         } else {
@@ -93,18 +95,18 @@
             data: $('#changePassword').serialize()
         }).done(function (data) {
             if (data.success) {
-                console.log("success");
                 $ModalDialog.open();
                 var href = data.redirectUrl;
-                $('[data-remodal-action="confirm"]').attr("href", href);
+                $('#confirmPwd').attr('href', href);
+                console.log('success');
             } else {
                 $('.warning-info').removeClass('off');
                 $('.warning-info').children('span').html(data.prompt_msg);
             }
         }).fail(function () {
-            console.log("error");
+            console.log('error');
         }).always(function () {
-            console.log("complete");
+            console.log('complete');
             closeLoading();
         });
     }

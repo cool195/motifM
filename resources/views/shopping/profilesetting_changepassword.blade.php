@@ -62,7 +62,7 @@
     </div>
     <hr class="hr-base m-a-0">
     <div class="btn-group flex">
-        <a href="/login" class="btn remodal-btn flex-width text-primary">OK</a>
+        <a href="" class="btn remodal-btn flex-width text-primary" id="confirmPwd">OK</a>
     </div>
 </div>
 
