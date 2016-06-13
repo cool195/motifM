@@ -45,9 +45,9 @@ $app->get('/shopping/cart/message', 'Shopping\CartController@message');
 
 
 $app->get('/cart/amount', 'Shopping\CartController@getCartAmount');
-$app->get('/shopping/cart/list', 'Shopping\CartController@getCartList');
-$app->get('/shopping/cart/accountlist', 'Shopping\CartController@getCartAccountList');
-$app->get('/shopping/cart/savelist', 'Shopping\CartController@getCartSaveList');
+$app->get('/cart/list', 'Shopping\CartController@getCartList');
+$app->get('/cart/accountlist', 'Shopping\CartController@getCartAccountList');
+$app->get('/cart/savelist', 'Shopping\CartController@getCartSaveList');
 //$app->get('/shopping/cart/addCart', 'Shopping\CartController@addCart');
 $app->patch('/cart', 'Shopping\CartController@addCart');
 $app->put('/cart', 'Shopping\CartController@promptlyBuy');

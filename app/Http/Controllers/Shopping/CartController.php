@@ -5,7 +5,8 @@ namespace App\Http\Controllers\Shopping;
 use Illuminate\Http\Request;
 
 use App\Http\Controllers\ApiController;
-use Session;
+use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Cache;
 
 class CartController extends ApiController
 {
@@ -129,15 +130,18 @@ class CartController extends ApiController
 		return View('shopping.ordercheckout_message');
 	}
 
+	/*
+	 * 获取购物车数量
+	 *
+	 * @author zhangtao@evermarker.net
+	 * */
 	public function getCartAmount(Request $request)		
 	{
-		$cmd = $request->input('cmd', 'amount');	
-		$pin = $request->input('pin', 'xuzhijie');
-		$token = $request->input('token', 1);
+		$user = Cache::get('user');
 		$params = array(
-			'cmd' => $cmd,
-			'pin' => $pin,
-			'token' => $token
+			'cmd' => 'amount',
+			'pin' => $user['pin'],
+			'token' => $user['token']
 		);
 		$system = "";
 		$service = "cart";
@@ -146,19 +150,42 @@ class CartController extends ApiController
 	 		$result['success'] = false;	
 			$result['error_msg'] = "Data access failed";
 			$result['data'] = array();
+		}else{
+			if($result['success']){
+				if(empty($result['data']['saveAmout'])){
+					$result['data']['saveAmout'] = 0;
+				}
+				if(empty($result['data']['skusAmout'])){
+					$result['data']['skusAmout'] = 0;
+				}
+			}
 		}
 		return $result;
 	}
 
+	/*
+	 * 获取购物车商品列表
+	 *
+	 * @author zhangtao@evermarker.net
+	 * @param Request
+	 * @return Array
+	 *
+	 * */
 	public function getCartList(Request $request) 
 	{
-		$cmd = "cartlist";	
+/*		$cmd = "cartlist";
 		$pin = $request->input('pin', 'xuzhijie');
 		$token = $request->input('token', 1);
 		$params = array(
 			'cmd' => $cmd,
 			'pin' => $pin,
 			'token' => $token
+		);*/
+		$user = Cache::get('user');
+		$params = array(
+			'cmd' =>"cartlist",
+			'pin' => $user['pin'],
+			'token' => $user['token']
 		);
 		$system = "";
 		$service = "cart";
@@ -171,9 +198,17 @@ class CartController extends ApiController
 		return $result;
 	}
 
+	/*
+	 * 获取购物车结算商品列表
+	 *
+	 * @author zhangtao@evermarker.net
+	 * @param Request
+	 * @return Array
+	 *
+	 * */
 	public function getCartAccountList(Request $request)
 	{
-		$cmd = "accountlist";	
+/*		$cmd = "accountlist";
 		$pin = $request->input('pin', 'xuzhijie');
 		$logisticstype = $request->input('logisticstype');
 		$paytype = $request->input('paytype');
@@ -188,6 +223,14 @@ class CartController extends ApiController
 		//	'addressid' => $addressid,
 			'couponcode' => $couponcode,
 			'token' => $token
+		);*/
+		$user = Cache::get('user');
+		$params = array(
+			'cmd'=>'accountlist',
+			'pin'=>$user['pin'],
+			'logisticstype'=>$request->input('logisticstype'),
+			'paytype'=>$request->input('paytype'),
+			'couponcode'=>$request->input('couponcode')
 		);
 		$system = "";
 		$service = "cart";
@@ -200,15 +243,29 @@ class CartController extends ApiController
 		return $result;
 	}
 
+	/*
+	 * 获取购物车暂存商品列表
+	 *
+	 * @author zhangtao@evermarker.net
+	 * @param Request
+	 * @return Array
+	 *
+	 * */
 	public function getCartSaveList(Request $request)
 	{
-		$cmd = "savelist";	
+/*		$cmd = "savelist";
 		$pin = $request->input('pin', "xuzhijie");
 		$token = $request->input('token', 1);
 		$params = array(
 			'cmd' => $cmd,
 			'pin' => $pin,
 			'token' => $token,
+		);*/
+		$user = Cache::get('user');
+		$params = array(
+			'cmd' => 'savelist',
+			'pin' => $user['pin'],
+			'token' => $user['token']
 		);
 		$system = "";
 		$service = "cart";
@@ -223,7 +280,7 @@ class CartController extends ApiController
 
 	public function addCart(Request $request)
 	{
-		$cmd = "addsku";
+/*		$cmd = "addsku";
 		$operate = $request->input('operate');
 		$pin = $request->input('pin', "xuzhijie");
 		$token = $request->input('token', 1);
@@ -232,7 +289,14 @@ class CartController extends ApiController
 			'operate' => $operate,
 			'pin' => $pin,
 			'token' => $token
-		);		
+		);		*/
+		$user = Cache::get('user');
+		$params = array(
+			'cmd' => 'addsku',
+			'operate' => $request->input('operate'),
+			'pin' => $user['pin'],
+			'token' => $user['token']
+		);
 		$system = "";
 		$service = "cart";
 		$result = $this->request('openapi', $system, $service, $params);
@@ -246,7 +310,7 @@ class CartController extends ApiController
 
 	public function addBatchCart(Request $request)
 	{
-		$cmd = "batchaddskus";
+/*		$cmd = "batchaddskus";
 		$operate = $request->input('operate');
 		$pin = $request->input('pin', "xuzhijie");
 		$token = $request->input('token', 1);
@@ -255,7 +319,14 @@ class CartController extends ApiController
 			'operate' => $operate,
 			'pin' => $pin,
 			'token' => $token
-		);		
+		);		*/
+		$user = Cache::get('user');
+		$params = array(
+			'cmd' => 'batchaddskus',
+			'operate' => $request->input('operate'),
+			'pin' => $user['pin'],
+			'token' => $user['token']
+		);
 		$system = "";
 		$service = "cart";
 		$result = $this->request('openapi', $system, $service, $params);
@@ -264,7 +335,7 @@ class CartController extends ApiController
 
 	public function alterCartProQtty(Request $request)
 	{
-		$cmd = "alterqtty";	
+/*		$cmd = "alterqtty";
 		$sku = $request->input('sku');
 		$qtty = $request->input('qtty');
 		$pin = $request->input('pin', "xuzhijie");
@@ -275,7 +346,15 @@ class CartController extends ApiController
 			'qtty' => $qtty,
 			'pin' => $pin,
 			'token' => $token
-		);		
+		);		*/
+		$user = Cache::get('user');
+		$params = array(
+			'cmd' => 'alterqtty',
+			'sku' => $request->input('sku'),
+			'qtty' => $request->input('qtty'),
+			'pin' => $user['pin'],
+			'token' => $user['token']
+		);
 		$system = "";
 		$service = "cart";
 		$result = $this->request('openapi', $system, $service, $params);
@@ -284,7 +363,7 @@ class CartController extends ApiController
 
 	public function promptlyBuy(Request $request)
 	{
-		$cmd = "promptlybuy";
+/*		$cmd = "promptlybuy";
 		$operate = $request->input('operate');
 		$pin = $request->input('pin', "xuzhijie");
 		$token = $request->input('token', 1);
@@ -293,7 +372,14 @@ class CartController extends ApiController
 			'operate' => $operate,
 			'pin' => $pin,
 			'token' => $token
-		);		
+		);		*/
+		$user = Cache::get('user');
+		$params = array(
+			'cmd' => 'promptlybuy',
+			'operate' => $request->input('operate'),
+			'pin' => $request->input('pin'),
+			'token' => $request->input('token')
+		);
 		$system = "";
 		$service = "cart";
 		$result = $this->request('openapi', $system, $service, $params);
@@ -307,7 +393,7 @@ class CartController extends ApiController
 		$result = "";	
 		if(in_array($cmd, $cmdSelector))
 		{
-			$sku = $request->input('sku');
+/*			$sku = $request->input('sku');
 			$pin = $request->input('pin', "xuzhijie");
 			$token = $request->input('token', 1);	
 			$params = array(
@@ -315,26 +401,38 @@ class CartController extends ApiController
 				'sku' => $sku,
 				'pin' => $pin,
 				'token' => $token
-			);		
+			);		*/
+			$user = Cache::get('user');
+			$params = array(
+				'cmd' => $cmd,
+				'sku' => $request->input('sku'),
+				'pin' => $user['pin'],
+				'token' => $user['token'],
+			);
 			$system = "";
 			$service = "cart";
 			$result = $this->request('openapi', $system, $service, $params);
 			if(!empty($result) && $result['success']){
 				return Redirect('/shopping/cart');	
 			}
-		
 		}
 	}
 
 	public function verifyCoupon(Request $request)
 	{
-		$cmd = "verifyCoupon";
+/*		$cmd = "verifyCoupon";
 		$couponcode = $request->input('couponcode', "61et");
 		$token = $request->input('token', "xxx");
 		$params = array(
 			'cmd' => $cmd,
 			'couponcode' => $couponcode,
 			'token' => $token
+		);*/
+		$user = Cache::get('user');
+		$params = array(
+			'cmd' => 'verifyCoupon',
+			'couponcode' => $request->input('couponcode'),
+			'token' => $user['token'],
 		);
 		$system = "";
 		$service = "cart";
