@@ -95,6 +95,7 @@ $app->get('/user/addradd', 'Shopping\UserController@addrAdd');
 $app->get('/user/addrmod/{aid}', 'Shopping\UserController@addrModify');
 $app->get('/user/countrylist', 'Shopping\UserController@countryList');
 $app->get('/user/changepassword', 'Shopping\UserController@changePassword');
+$app->get('/user/paymentmethod', 'Shopping\UserController@paymentMethod');
 
 $app->get('/user/signup', 'Shopping\UserController@signup');
 $app->post('/user/signup', 'Shopping\UserController@signup');

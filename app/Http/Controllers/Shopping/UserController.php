@@ -259,6 +259,11 @@ class UserController extends ApiController
         return $result;
     }
 
+    public function paymentMethod(Request $request)
+    {
+        return view('shopping.paymentmethod');
+    }
+
     /*
      * 用户第三方登录
      *
