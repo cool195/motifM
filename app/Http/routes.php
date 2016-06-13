@@ -44,7 +44,7 @@ $app->get('/shopping/cart/message', 'Shopping\CartController@message');
 
 
 
-$app->get('/shopping/cart/amount', 'Shopping\CartController@getCartAmount');
+$app->get('/cart/amount', 'Shopping\CartController@getCartAmount');
 $app->get('/shopping/cart/list', 'Shopping\CartController@getCartList');
 $app->get('/shopping/cart/accountlist', 'Shopping\CartController@getCartAccountList');
 $app->get('/shopping/cart/savelist', 'Shopping\CartController@getCartSaveList');
