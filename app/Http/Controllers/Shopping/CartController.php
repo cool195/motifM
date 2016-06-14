@@ -251,6 +251,10 @@ class CartController extends ApiController
 	 		$result['success'] = false;	
 			$result['error_msg'] = "Data access failed";
 			$result['data'] = array();
+		}else{
+			if($result['success']){
+				$result['redirectUrl'] = "";
+			}
 		}
 		return $result;
 	}
