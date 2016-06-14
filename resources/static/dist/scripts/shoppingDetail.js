@@ -497,7 +497,7 @@
             var $CurrentVas = $('#' + index);
 
             // 增值项 是否被选中
-            if ($CurrentVas.prop('checked')) {
+            if ($CurrentVas.hasClass('active')) {
                 VarList[i] = {};
                 VarList[i].vas_id = index; // 增值服务ID
                 VarList[i].user_remark = ''; // 用户备注信息
