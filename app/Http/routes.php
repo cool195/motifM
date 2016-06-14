@@ -114,6 +114,7 @@ $app->group(['namespace'=>'App\Http\Controllers\Shopping'], function($app){
 
 
     $app->get('/login', 'UserController@login');
+    $app->patch('/login', 'UserController@login');
     $app->get('/user/logincheck', 'UserController@loginCheck');
     $app->post('/user/logincheck', 'UserController@loginCheck');
     $app->get('/register', 'UserController@register');

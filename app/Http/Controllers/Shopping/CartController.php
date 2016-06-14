@@ -241,7 +241,7 @@ class CartController extends ApiController
 	{
 		$params = array(
 			'cmd' => 'addsku',
-			'operate' => $request->input('operate'),
+			'operate' => json_encode($request->input('operate')),
 			'token' => Session::get('user.token'),
 			'pin' => Session::get('user.pin'),
 		);
@@ -286,12 +286,19 @@ class CartController extends ApiController
 		return $result;
 	}
 
+	/*
+	 * 立即购买接口
+	 *
+	 * @author zhangtao@evermarker.net
+	 *
+	 * @return Array
+	 * */
 	public function promptlyBuy(Request $request)
 	{
 
 		$params = array(
 			'cmd' => 'promptlybuy',
-			'operate' => $request->input('operate'),
+			'operate' => json_encode($request->input('operate')),
 			'token' => Session::get('user.token'),
 			'pin' => Session::get('user.pin'),
 		);
