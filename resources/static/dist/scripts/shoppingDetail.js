@@ -361,12 +361,12 @@
                 $Count.children('[data-item="add"]').removeClass('disabled');
             }
             // 全选状态时, 可以购买
-            $('#addcart').removeClass('disabled');
-            $('#buynow').removeClass('disabled');
+            $('#addCart').removeClass('disabled');
+            $('#buyNow').removeClass('disabled');
         } else {
             // 非全选状态时, 不可以购买
-            $('#addcart').addClass('disabled');
-            $('#buynow').addClass('disabled');
+            $('#addCart').addClass('disabled');
+            $('#buyNow').addClass('disabled');
         }
     });
 
