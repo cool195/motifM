@@ -341,10 +341,10 @@
                 <fieldset class="container-fluid p-a-15x">
                     <div class="row">
                         <div class="col-xs-6">
-                            <div class="btn btn-primary-outline btn-block disabled" id="addcart">Add To Bag</div>
+                            <div class="btn btn-primary-outline btn-block disabled" id="addCart">Add To Bag</div>
                         </div>
                         <div class="col-xs-6">
-                            <div class="btn btn-primary btn-block disabled" id="buynow">Buy Now</div>
+                            <div class="btn btn-primary btn-block disabled" id="buyNow">Buy Now</div>
                         </div>
                     </div>
                 </fieldset>
@@ -365,5 +365,12 @@
 <script src="/scripts/vendor.js"></script>
 
 <script src="/scripts/shoppingDetail.js"></script>
-
+<meta name="csrf-token" content="{{ csrf_token() }}"/>
+<script>
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+</script>
 </html>
