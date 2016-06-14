@@ -126,3 +126,6 @@ $app->get('/designer/{id}', 'Designer\DesignerController@show');
 $app->get('/', 'Daily\DailyController@index');
 $app->get('/daily', 'Daily\DailyController@index');
 $app->get('/topic/{id}', 'Daily\DailyController@show');
+
+$app->get('/braintree', 'Shopping\BraintreeController@index');
+$app->post('/braintree', 'Shopping\BraintreeController@checkout');

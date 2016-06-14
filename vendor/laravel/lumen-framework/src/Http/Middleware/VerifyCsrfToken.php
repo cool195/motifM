@@ -87,6 +87,12 @@ class VerifyCsrfToken
      */
     protected function isReading($request)
     {
+        /*
+         * juchao add 2016.6.13 支付SDK 请求表单过滤CSRF规则
+         * */
+        if(strstr($request->url(),"braintree")){
+            return true;
+        }
         return in_array($request->method(), ['HEAD', 'GET', 'OPTIONS']);
     }
 }
