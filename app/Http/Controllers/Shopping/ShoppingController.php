@@ -5,7 +5,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Controllers\ApiController;
 use Illuminate\Support\Facades\Cache;
-
+use Illuminate\Support\Facades\Session;
 class ShoppingController extends ApiController
 {
 	public function index(Request $request)	
