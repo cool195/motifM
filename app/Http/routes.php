@@ -23,7 +23,7 @@ $app->get('/designer/{id}', 'Designer\DesignerController@show');
 $app->group(['middleware' => 'logincheck', 'namespace' => 'App\Http\Controllers\Shopping'], function ($app) {
 
     $app->get('/cart', 'CartController@index');
-    $app->get('/ordercheckout', 'CartController@orderCheckout');
+    $app->get('/cart/ordercheckout', 'CartController@orderCheckout');
     $app->get('/cart/addresslist', 'CartController@addressList');
     $app->get('/cart/coupon', 'CartController@coupon');
     $app->get('/cart/message', 'CartController@message');
@@ -94,6 +94,7 @@ $app->group(['middleware' => 'logincheck', 'namespace' => 'App\Http\Controllers\
 
 
     $app->get('/shopping/orderlist', 'OrderController@index');
+    $app->get('/order/orderlist', 'OrderController@index');
     $app->get('/orders', 'OrderController@getOrderList');
     $app->get('/shopping/order/orderdetail/{subno}', 'OrderController@orderDetail');
     $app->get('/shopping/order/orderSubmit', 'OrderController@orderSubmit');
