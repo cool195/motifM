@@ -147,12 +147,13 @@
                 <!-- 支付方式列表 list -->
                 <!-- 没有绑定支付方式 状态 -->
                 <aside class="bg-white m-b-10x">
-                    <a class="flex flex-alignCenter flex-fullJustified font-size-sm text-primary p-y-10x p-x-15x" href="#">
+                    <div class="flex flex-alignCenter flex-fullJustified font-size-sm text-primary p-y-10x p-x-15x" id="paypal" data-braintree="">
                         <div class="font-size-sm text-primary">
-                        <span class="p-r-15x"><img src="images/payment/icon-Paypal.png" srcset="/images/payment/icon-Paypal@2x.png 2x,/images/payment/icon-Paypal@3x.png 3x" alt=""></span>
+                        <span class="p-r-15x">
+                            <img src="images/payment/icon-Paypal.png" srcset="/images/payment/icon-Paypal@2x.png 2x,/images/payment/icon-Paypal@3x.png 3x" alt=""></span>
                             <span>Paypal</span></div>
                         <span><i class="iconfont icon-arrow-right icon-size-sm text-common"></i></span>
-                    </a>
+                    </div>
                 </aside>
                 <aside class="bg-white m-b-10x">
                     <a class="flex flex-alignCenter flex-fullJustified font-size-sm text-primary p-y-10x p-x-15x" href="#">
@@ -266,5 +267,11 @@
         </div>
     </div>
 </body>
-<script src="scripts/vendor.js"></script>
+<!-- BrainTree -->
+<script src="https://js.braintreegateway.com/js/braintree-2.24.1.min.js"></script>
+
+<script src="/scripts/vendor.js"></script>
+
+<script src="/scripts/paymentMethod-paypal.js"></script>
+
 </html>
