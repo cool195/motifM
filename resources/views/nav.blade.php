@@ -34,7 +34,7 @@
             <hr class="hr-base m-a-0">
         </li>
         <li class="nav-item">
-            <a href="/shopping/cart" class="flex flex-alignCenter flex-fullJustified p-a-15x">
+            <a href="/cart" class="flex flex-alignCenter flex-fullJustified p-a-15x">
                 <div class="font-size-sm text-primary flex flex-alignCenter"><i
                             class="iconfont icon-shopbag icon-size-md p-r-15x"></i><span>Shopping Bag</span></div>
                 <span class="text-common"><i class="iconfont icon-arrow-right icon-size-sm"></i></span>

@@ -11,7 +11,7 @@
                         srcset="/images/logo/logo@2x.png 2x,/images/logo/logo@3x.png 3x"></a>
             </li>
             <li class="nav-item">
-                <a href="/shopping/cart">
+                <a href="/cart">
                     <div class="nav-shoppingCart" data-login="@if(Session::has('user')){{'true'}}@else{{'false'}}@endif">
                         <i class="nav-tap iconfont icon-shopbag icon-size-lg"></i>
                         <span class="shoppingCart-number"></span>
