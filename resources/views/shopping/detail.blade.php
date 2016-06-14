@@ -27,14 +27,16 @@
         <div class="product-detailImg fade">
             <div class="swiper-container" id="detailImg-swiper">
                 <div class="swiper-wrapper">
-                    @foreach($data['productImages'] as $image)
-                        <div class="swiper-slide">
-                            <img class="img-fluid swiper-lazy"
-                                 data-src="{{ 'https://s3-us-west-1.amazonaws.com/emimagetest/n1/'.$image['img_path'] }}"
-                                 alt="">
-                            <img class="img-fluid preloader" src="/images/product/bg-product@750.png" alt="">
-                        </div>
-                    @endforeach
+                    @if(isset($data['productImages']))
+                        @foreach($data['productImages'] as $image)
+                            <div class="swiper-slide">
+                                <img class="img-fluid swiper-lazy"
+                                     data-src="{{ 'https://s3-us-west-1.amazonaws.com/emimagetest/n1/'.$image['img_path'] }}"
+                                     alt="">
+                                <img class="img-fluid preloader" src="/images/product/bg-product@750.png" alt="">
+                            </div>
+                        @endforeach
+                    @endif
                 </div>
                 <div class="swiper-pagination font-size-sm" id="detailImg-pagination"></div>
             </div>
@@ -47,16 +49,18 @@
                 <!-- 页面上图片轮播 -->
                 <div class="swiper-container" id="baseImg-swiper">
                     <div class="swiper-wrapper">
-                        @forelse($data['productImages'] as $image)
-                            <div class="swiper-slide">
-                                <img class="img-fluid swiper-lazy"
-                                     data-src="{{ 'https://s3-us-west-1.amazonaws.com/emimagetest/n1/'.$image['img_path'] }}"
-                                     alt="">
-                                <img class="img-fluid preloader" src="/images/product/bg-product@750.png" alt="">
-                            </div>
-                        @empty
+                        @if(isset($data['productImages']))
+                            @foreach($data['productImages'] as $image)
+                                <div class="swiper-slide">
+                                    <img class="img-fluid swiper-lazy"
+                                         data-src="{{ 'https://s3-us-west-1.amazonaws.com/emimagetest/n1/'.$image['img_path'] }}"
+                                         alt="">
+                                    <img class="img-fluid preloader" src="/images/product/bg-product@750.png" alt="">
+                                </div>
+                            @endforeach
+                        @else
                             <div class="swiper-slide"></div>
-                        @endforelse
+                        @endif
                     </div>
                     <!-- 分页器 -->
                     <div class="swiper-pagination text-right p-r-20x font-size-sm" id="baseImg-pagination"></div>
@@ -78,8 +82,8 @@
                 </div>
                 <hr class="hr-light m-x-10x">
                 <div class="product-price">
-                    <span class="font-size-lx text-primary">$ {{ number_format(($data['skuPrice']['price'] / 100), 2) }}</span>
-                    <span class="font-size-sm text-common">＄{{ number_format(($data['skuPrice']['sale_price'] /100), 2) }}</span>
+                    <span class="font-size-lx text-primary">$ {{ number_format(($data['skuPrice']['sale_price'] / 100), 2) }}</span>
+                    <span class="font-size-sm text-common">＄{{ number_format(($data['skuPrice']['price'] /100), 2) }}</span>
                     <span class="font-size-sm text-primary">(51% off)</span>
                     <a class="text-primary pull-xs-right" href="#"><i class="iconfont icon-share icon-size-xm"></i></a>
                 </div>
@@ -106,13 +110,15 @@
                         <span>Select</span>
 						<span class="flex flex-alignCenter flex-fullJustified">
 							<span class="m-r-10x">
-							@foreach($data['spuAttrs'] as $key => $attrs)
-                                    @if((count($data['spuAttrs']) - 1) == $key)
-                                        {{$attrs['attr_type_value']}}
-                                    @else
-                                        {{$attrs['attr_type_value'].", "}}
-                                    @endif
-                            @endforeach
+                                @if(isset($data['spuAttrs']))
+                                    @foreach($data['spuAttrs'] as $key => $attrs)
+                                        @if((count($data['spuAttrs']) - 1) == $key)
+                                            {{$attrs['attr_type_value']}}
+                                        @else
+                                            {{$attrs['attr_type_value'].", "}}
+                                        @endif
+                                    @endforeach
+                                @endif
 							</span>
 							<i class="iconfont icon-arrow-right icon-size-xm text-common"></i>
 						</span>
@@ -245,56 +251,63 @@
                     </a>
                 </div>
                 <fieldset class="text-primary p-x-15x p-b-10x text-left">
-                    <div class="font-size-sm"><strong>${{number_format(($data['skuPrice']['sale_price'] / 100), 2)}}</strong></div>
+                    <div class="font-size-sm">
+                        <strong>${{number_format(($data['skuPrice']['sale_price'] / 100), 2)}}</strong></div>
                     <div class="font-size-sm">Select:
-                        @foreach($data['spuAttrs'] as $key => $attrs)
-                            @if((count($data['spuAttrs']) - 1) == $key)
-                                {{$attrs['attr_type_value']}}
-                            @else
-                                {{$attrs['attr_type_value'].", "}}
-                            @endif
-                        @endforeach
+                        @if(isset($data['spuAttrs']))
+                            @foreach($data['spuAttrs'] as $key => $attrs)
+                                @if((count($data['spuAttrs']) - 1) == $key)
+                                    {{$attrs['attr_type_value']}}
+                                @else
+                                    {{$attrs['attr_type_value'].", "}}
+                                @endif
+                            @endforeach
+                        @endif
                     </div>
                 </fieldset>
                 <hr class="hr-base m-a-0">
-                @foreach($data['spuAttrs'] as $value)
-                    <fieldset class="p-x-15x p-y-10x text-left">
-                        <div class="container-fluid p-a-0">
-                            <div class="text-primary font-size-sm">{{$value['attr_type_value']}}</div>
-                            <div class="row">
-                                @foreach($value['skuAttrValues'] as $skuValue)
-                                    <div class="col-xs-3 p-t-10x">
-                                        {{-- TODO 赵哲更改模板 --}}
-                                        <div class="btn btn-block btn-itemProperty btn-sm @if(!$skuValue['stock']) disabled @endif"
-                                             id="{{$skuValue['attr_value_id']}}"
-                                             data-spa="{{$value['attr_type']}}"
-                                             data-ska="{{$skuValue['attr_value_id']}}">
-                                            {{$skuValue['attr_value']}}
-                                        </div>
-                                        {{-- 注释掉的模板 --}}
-                                        {{--<input type="radio"--}}
-                                        {{--name="{{$value['attr_type_value']}}"--}}
-                                        {{--id="{{$skuValue['attr_value_id']}}" --}}
-                                        {{--data-spa="{{$value['attr_type']}}"--}}
-                                        {{--data-ska="{{$skuValue['attr_value_id']}}"--}}
-                                        {{--hidden--}}
-                                        {{--@if(!$skuValue['stock']) --}}
-                                        {{--disabled="disabled"--}}
-                                        {{--@endif>--}}
-                                        {{----}}
-                                        {{--<label class="btn btn-block btn-itemProperty btn-sm m-b-0 --}}
-                                        {{--@if(!$skuValue['stock']) disabled @endif--}}
-                                        {{--"--}}
-                                        {{--for="{{$skuValue['attr_value_id']}}">{{$skuValue['attr_value']}}</label>--}}
-                                    </div>
-                                @endforeach
+                @if(isset($data['spuAttrs']))
+                    @foreach($data['spuAttrs'] as $value)
+                        <fieldset class="p-x-15x p-y-10x text-left">
+                            <div class="container-fluid p-a-0">
+                                <div class="text-primary font-size-sm">{{$value['attr_type_value']}}</div>
+                                <div class="row">
+                                    @if(isset($value['skuAttrValues']))
+                                        @foreach($value['skuAttrValues'] as $skuValue)
+                                            <div class="col-xs-3 p-t-10x">
+                                                {{-- TODO 赵哲更改模板 --}}
+                                                <div class="btn btn-block btn-itemProperty btn-sm @if(!$skuValue['stock']) disabled @endif"
+                                                     id="{{$skuValue['attr_value_id']}}"
+                                                     data-spa="{{$value['attr_type']}}"
+                                                     data-ska="{{$skuValue['attr_value_id']}}">
+                                                    {{$skuValue['attr_value']}}
+                                                </div>
+                                                {{-- 注释掉的模板 --}}
+                                                {{--<input type="radio"--}}
+                                                {{--name="{{$value['attr_type_value']}}"--}}
+                                                {{--id="{{$skuValue['attr_value_id']}}" --}}
+                                                {{--data-spa="{{$value['attr_type']}}"--}}
+                                                {{--data-ska="{{$skuValue['attr_value_id']}}"--}}
+                                                {{--hidden--}}
+                                                {{--@if(!$skuValue['stock']) --}}
+                                                {{--disabled="disabled"--}}
+                                                {{--@endif>--}}
+                                                {{----}}
+                                                {{--<label class="btn btn-block btn-itemProperty btn-sm m-b-0 --}}
+                                                {{--@if(!$skuValue['stock']) disabled @endif--}}
+                                                {{--"--}}
+                                                {{--for="{{$skuValue['attr_value_id']}}">{{$skuValue['attr_value']}}</label>--}}
+                                            </div>
+                                        @endforeach
+                                    @endif
+                                </div>
                             </div>
-                        </div>
-                    </fieldset>
-                    <hr class="hr-base m-a-0">
-                @endforeach
+                        </fieldset>
+                        <hr class="hr-base m-a-0">
+                    @endforeach
+                @endif
 
-                @if(isset($data['vasBases']) && !empty($data['vasBases']))
+                @if(isset($data['vasBases']))
                     @foreach($data['vasBases'] as $vas)
                         @if(1 == $vas['vas_type'])
                             <fieldset class="p-x-15x p-y-10x text-left" data-vas-type="{{$vas['vas_type']}}">
@@ -341,10 +354,10 @@
                 <fieldset class="container-fluid p-a-15x">
                     <div class="row">
                         <div class="col-xs-6">
-                            <div class="btn btn-primary-outline btn-block disabled" id="addcart">Add To Bag</div>
+                            <div class="btn btn-primary-outline btn-block disabled" id="addCart">Add To Bag</div>
                         </div>
                         <div class="col-xs-6">
-                            <div class="btn btn-primary btn-block disabled" id="buynow">Buy Now</div>
+                            <div class="btn btn-primary btn-block disabled" id="buyNow">Buy Now</div>
                         </div>
                     </div>
                 </fieldset>
@@ -365,5 +378,12 @@
 <script src="/scripts/vendor.js"></script>
 
 <script src="/scripts/shoppingDetail.js"></script>
-
+<meta name="csrf-token" content="{{ csrf_token() }}"/>
+<script>
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+</script>
 </html>

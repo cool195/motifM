@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Shopping;
 use Illuminate\Http\Request;
 
 use App\Http\Controllers\ApiController;
-use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Session;
 
 class PayController extends ApiController

@@ -3,10 +3,7 @@
 namespace App\Http\Controllers\Shopping;
 
 use Illuminate\Http\Request;
-
 use App\Http\Controllers\ApiController;
-
-use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Session;
 
 class AddressController extends ApiController
@@ -23,7 +20,7 @@ class AddressController extends ApiController
 	{
 		$params = array(
 			'cmd' => 'list',
-			'uuid' => $request->input('uuid', md5($user['login_email'])),
+			'uuid' => $request->input('uuid','123'),
 			'token' => Session::get('user.token'),
 			'pin' => Session::get('user.pin'),
 		);
@@ -50,7 +47,7 @@ class AddressController extends ApiController
 	{
 		$params = array(
 			'cmd' => 'gdefault',
-			'uuid' => $request->input('uuid', md5($user['login_email'])),
+			'uuid' => $request->input('uuid','123'),
 			'token' => Session::get('user.token'),
 			'pin' => Session::get('user.pin'),
 		);

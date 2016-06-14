@@ -30,15 +30,17 @@
                 <h5 class="font-size-base text-main m-b-10x"><strong>DESIGNERS</strong></h5>
                 <div class="p-a-0 swiper-container">
                     <div class="swiper-wrapper">
-                        @foreach($recdesigner as $value)
-                            <div class="designer-item swiper-slide p-x-5x">
-                                <a class="" href="/designer/{{$value['designerId']}}">
-                                    <img class="img-fluid"
-                                         src="https://s3-us-west-1.amazonaws.com/emimagetest/n0/{{$value['avatar']}}">
-                                    <div class="designer-text font-size-sm text-center">{{$value['name']}}</div>
-                                </a>
-                            </div>
-                        @endforeach
+                        @if(isset($recdesigner))
+                            @foreach($recdesigner as $value)
+                                <div class="designer-item swiper-slide p-x-5x">
+                                    <a class="" href="/designer/{{$value['designerId']}}">
+                                        <img class="img-fluid"
+                                             src="https://s3-us-west-1.amazonaws.com/emimagetest/n0/{{$value['avatar']}}">
+                                        <div class="designer-text font-size-sm text-center">{{$value['name']}}</div>
+                                    </a>
+                                </div>
+                            @endforeach
+                        @endif
                     </div>
                 </div>
             </article>

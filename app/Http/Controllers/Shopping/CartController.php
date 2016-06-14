@@ -6,7 +6,6 @@ use Illuminate\Http\Request;
 
 use App\Http\Controllers\ApiController;
 use Illuminate\Support\Facades\Session;
-use Illuminate\Support\Facades\Cache;
 
 class CartController extends ApiController
 {
@@ -37,6 +36,9 @@ class CartController extends ApiController
 		$result = $this->getCartAccountList($request);
 		$defaultAddr = $this->getUserDefaultAddr();
 		$defaultPayMethod = $this->getDefaultPayMethod();
+		if(empty($result['data'])){
+			return redirect('/shopping');
+		}
 		return View('shopping.ordercheckout', [
 			'data'=>$result['data'], 
 			'addr'=>$defaultAddr['data'],
@@ -50,11 +52,9 @@ class CartController extends ApiController
 		{
 			$result = Session::get('defaultAddr');
 		}else{
-			$cmd = 'gdefault';		
-			$uuid = "608341ba8191ba1bf7a2dec25f0158df3c6670da";
 			$params = array(
-				'cmd'=>$cmd,
-				'uuid'=>$uuid,
+				'cmd'=> 'gdefault',
+				'uuid'=> Session::get('user.uuid'),
 				'token' => Session::get('user.token'),
 				'pin' => Session::get('user.pin'),
 			);
@@ -94,11 +94,9 @@ class CartController extends ApiController
 
 	private function getDefaultPayMethod()
 	{
-		$cmd = "getdefault";
-		$uuid = "608341ba8191ba1bf7a2dec25f0158df3c6670da";
 		$params = array(
-			'cmd'=>$cmd,
-			'uuid'=>$uuid,
+			'cmd'=>"getdefault",
+			'uuid'=>Session::get('user.uuid'),
 			'token' => Session::get('user.token'),
 			'pin' => Session::get('user.pin'),
 		);
@@ -242,7 +240,7 @@ class CartController extends ApiController
 	{
 		$params = array(
 			'cmd' => 'addsku',
-			'operate' => $request->input('operate'),
+			'operate' => json_encode($request->input('operate')),
 			'token' => Session::get('user.token'),
 			'pin' => Session::get('user.pin'),
 		);
@@ -253,6 +251,10 @@ class CartController extends ApiController
 	 		$result['success'] = false;	
 			$result['error_msg'] = "Data access failed";
 			$result['data'] = array();
+		}else{
+			if($result['success']){
+				$result['redirectUrl'] = "";
+			}
 		}
 		return $result;
 	}
@@ -287,21 +289,38 @@ class CartController extends ApiController
 		return $result;
 	}
 
+	/*
+	 * 立即购买接口
+	 *
+	 * @author zhangtao@evermarker.net
+	 *
+	 * @return Array
+	 * */
 	public function promptlyBuy(Request $request)
 	{
 
 		$params = array(
 			'cmd' => 'promptlybuy',
-			'operate' => $request->input('operate'),
+			'operate' => json_encode($request->input('operate')),
 			'token' => Session::get('user.token'),
 			'pin' => Session::get('user.pin'),
 		);
 		$system = "";
 		$service = "cart";
 		$result = $this->request('openapi', $system, $service, $params);
+		if($result['success']){
+			$result['redirectUrl'] = '/cart/ordercheckout';
+		}
 		return $result;
 	}
-
+	/*
+	 * 购物车其它操作接口
+	 *
+	 * @author zhangtao@evermarker.net
+	 *
+	 * @params Request
+	 * @return Array
+	 * */
 	public function operateCartProduct(Request $request)
 	{
 		$cmdSelector = array("select", "cancal", "delsku", "save", "movetocart", "delsave");	
@@ -319,7 +338,7 @@ class CartController extends ApiController
 			$service = "cart";
 			$result = $this->request('openapi', $system, $service, $params);
 			if(!empty($result) && $result['success']){
-				return Redirect('/shopping/cart');	
+				return $result;
 			}
 		}
 	}

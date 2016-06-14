@@ -35,29 +35,33 @@
         @include('navigator')
         <nav class="navbar-fixed-top swiper-container bg-gray" id="tabIndex-container">
             <ul class="nav nav-tabs swiper-wrapper">
-                @foreach($categories as $key => $c)
-                    <li class="nav-item swiper-slide" data-tab-index="{{ $c['category_id'] }}"
-                        id="{{ $c['category_id'] }}">
-                        <a class="nav-flex underLine-item text-primary m-x-15x p-y-10x p-l-20x iconimg-earrings @if($key!=0) inactive @endif">
-                            <span class="font-size-sm m-l-5x">{{ $c['category_name'] }}</span>
-                        </a>
-                    </li>
-                @endforeach
+                @if(isset($categories))
+                    @foreach($categories as $key => $c)
+                        <li class="nav-item swiper-slide" data-tab-index="{{ $c['category_id'] }}"
+                            id="{{ $c['category_id'] }}">
+                            <a class="nav-flex underLine-item text-primary m-x-15x p-y-10x p-l-20x iconimg-earrings @if($key!=0) inactive @endif">
+                                <span class="font-size-sm m-l-5x">{{ $c['category_name'] }}</span>
+                            </a>
+                        </li>
+                    @endforeach
+                @endif
             </ul>
         </nav>
         <section class="swiper-container p-b-10x" id="tabs-container">
             <div class="swiper-wrapper">
-                @foreach($categories as $c)
-                    <div class="swiper-slide" data-loading="false" data-pagenum="0">
-                        <div class="container-fluid p-x-10x p-t-10x">
-                            <div class="row">
+                @if(isset($categories))
+                    @foreach($categories as $c)
+                        <div class="swiper-slide" data-loading="false" data-pagenum="0">
+                            <div class="container-fluid p-x-10x p-t-10x">
+                                <div class="row">
+                                </div>
+                            </div>
+                            <div class="loading" style="display: none">
+                                <div class="loader"></div>
                             </div>
                         </div>
-                        <div class="loading" style="display: none">
-                            <div class="loader"></div>
-                        </div>
-                    </div>
-                @endforeach
+                    @endforeach
+                @endif
             </div>
         </section>
         <!-- 页脚 功能链接 -->
