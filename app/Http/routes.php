@@ -11,21 +11,16 @@
 |
 */
 
-$app->get('/', function () use ($app) {
-    return $app->welcome();
-});
 
-$app->get('/book', ['middleware' => 'test', 'uses'=> 'BookController@index']);
-//$app->get('/detail/{spu}', ['middleware'=>'logincheck', 'uses'=>'Shopping\ProductController@index']);
-
-
+$app->get('/', 'Daily\DailyController@index');
+$app->get('/daily', 'Daily\DailyController@index');
+$app->get('/topic/{id}', 'Daily\DailyController@show');
 $app->get('/shopping', 'Shopping\ShoppingController@index');
-//$app->get('/shopping/category', 'Shopping\ShoppingController@getShoppingCategoryList');
-//$app->get('/shopping/list', 'Shopping\ShoppingController@getShoppingProductList');
-//$app->get('/stock/checkstock', 'Shopping\ShoppingController@checkStock');
 
+$app->get('/designer', 'Designer\DesignerController@index');
+$app->get('/designer/{id}', 'Designer\DesignerController@show');
 
-$app->group(['middleware'=>'logincheck', 'namespace'=>'App\Http\Controllers\Shopping'], function($app){
+$app->group(['middleware' => 'logincheck', 'namespace' => 'App\Http\Controllers\Shopping'], function ($app) {
 
     $app->get('/cart', 'CartController@index');
     $app->get('/cart/ordercheckout', 'CartController@orderCheckout');
@@ -103,9 +98,14 @@ $app->group(['middleware'=>'logincheck', 'namespace'=>'App\Http\Controllers\Shop
     $app->get('/orders', 'OrderController@getOrderList');
     $app->get('/shopping/order/orderdetail/{subno}', 'OrderController@orderDetail');
     $app->get('/shopping/order/orderSubmit', 'OrderController@orderSubmit');
+
+    $app->get('/braintree', 'BraintreeController@index');
+    //$app->get('/payment/default', 'BraintreeController@getDefault');
+    //$app->get('/payment/list', 'BraintreeController@methodlist');
+    $app->post('/braintree', 'BraintreeController@checkout');
 });
 
-$app->group(['namespace'=>'App\Http\Controllers\Shopping'], function($app){
+$app->group(['namespace' => 'App\Http\Controllers\Shopping'], function ($app) {
     $app->get('/shopping', 'ShoppingController@index');
     $app->get('/category', 'ShoppingController@getShoppingCategoryList');
     $app->get('/products', 'ShoppingController@getShoppingProductList');
@@ -123,14 +123,3 @@ $app->group(['namespace'=>'App\Http\Controllers\Shopping'], function($app){
     $app->get('/user/signup', 'UserController@signup');
     $app->post('/user/signup', 'UserController@signup');
 });
-
-$app->get('/designer', 'Designer\DesignerController@index');
-$app->get('/designer/{id}', 'Designer\DesignerController@show');
-
-$app->get('/', 'Daily\DailyController@index');
-$app->get('/daily', 'Daily\DailyController@index');
-$app->get('/topic/{id}', 'Daily\DailyController@show');
-
-$app->get('/braintree', 'Shopping\BraintreeController@index');
-$app->get('/payment/default', 'Shopping\BraintreeController@getDefault');
-$app->post('/braintree', 'Shopping\BraintreeController@checkout');
