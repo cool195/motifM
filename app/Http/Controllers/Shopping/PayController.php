@@ -5,18 +5,47 @@ namespace App\Http\Controllers\Shopping;
 use Illuminate\Http\Request;
 
 use App\Http\Controllers\ApiController;
+use Illuminate\Support\Facades\Cache;
 
 class PayController extends ApiController
 {
+	/*
+	 * 跳转到支付方式列表页面
+	 *
+	 * @author zhangtao@evermarker.net
+	 * */
+	public function paymentMethod(Request $request)
+	{
+		$result = $this->getMethodList($request);
+		return view('shopping.paymentmethod', ['data'=>$result['data']]);
+	}
+
+	/*
+	 * 跳转到添加支付卡页面
+	 *
+	 * @author zhangtao@evermarker.net
+	 *
+	 * */
+	public function newCardAdd(Request $request)
+	{
+		return view('shopping.paymentmethod_addcard');
+	}
+
+	/*
+	 * 获取支付Token
+	 *
+	 * @author zhangtao@evermarker.net
+	 * */
+	//todo 改为私有方法
 	public function getPayToken(Request $request)
 	{
+		$user = Cache::get('user');
 		$cmd = "token";
-		//$uuid = $request->input('uuid', "");
 		$token = $request->input('token', "eeec7a32dcb6115abfe4a871c6b08b47");
 		$params = array(
-			'cmd'=>$cmd,
-		//	'uuid'=>$uuid,
-			'token'=>$token
+			'cmd'=>'token',
+			'uuid'=>$request->input('uuid', md5($user['login_email'])),
+			'token'=>$user['token']
 		);
 		$system = "";
 		$service = "pay";
@@ -113,13 +142,13 @@ class PayController extends ApiController
 
 	public function getMethodList(Request $request)
 	{
-		$cmd = "methodlist";
-		$token = $request->input('token', "eeec7a32dcb6115abfe4a871c6b08b47");
-		$userid = $request->input('userid');
+		$user = Cache::get('user');
 		$params = array(
-			'cmd' => $cmd,
-			'token' => $token,
-			'userid' => $userid
+			'cmd' => 'methodlist',
+			'token' => $user['token'],
+			'uuid' => $request->input('uuid', $user['uuid']),
+			'pin' => $user['pin'],
+			'src' => "H5"
 		);
 		$system = "";
 		$service = "pay";

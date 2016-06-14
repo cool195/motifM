@@ -45,25 +45,28 @@ $app->get('/shopping/cart/message', 'Shopping\CartController@message');
 
 
 $app->get('/cart/amount', 'Shopping\CartController@getCartAmount');
-$app->get('/shopping/cart/list', 'Shopping\CartController@getCartList');
-$app->get('/shopping/cart/accountlist', 'Shopping\CartController@getCartAccountList');
-$app->get('/shopping/cart/savelist', 'Shopping\CartController@getCartSaveList');
+$app->get('/cart/list', 'Shopping\CartController@getCartList');
+$app->get('/cart/accountlist', 'Shopping\CartController@getCartAccountList');
+$app->get('/cart/savelist', 'Shopping\CartController@getCartSaveList');
 //$app->get('/shopping/cart/addCart', 'Shopping\CartController@addCart');
 $app->patch('/cart', 'Shopping\CartController@addCart');
 $app->put('/cart', 'Shopping\CartController@promptlyBuy');
 $app->get('/shopping/cart/addBatchCart', 'Shopping\CartController@addBatchCart');
-$app->get('/shopping/cart/alterQtty', 'Shopping\CartController@alterCartProQtty');
+$app->get('/cart/alterQtty', 'Shopping\CartController@alterCartProQtty');
+
 //$app->get('/shopping/cart/promptlyBuy', 'Shopping\CartController@promptlyBuy');
 $app->get('/cart/operate', 'Shopping\CartController@operateCartProduct');
 $app->post('/cart/operate', 'Shopping\CartController@operateCartProduct');
 
 
+$app->get('/pay/paymentmethod', 'Shopping\PayController@paymentMethod');
+$app->get('/pay/cardadd', 'Shopping\PayController@newCardAdd');
 
-$app->get('/shopping/pay/token', 'Shopping\PayController@getPayToken');
+$app->get('/pay/token', 'Shopping\PayController@getPayToken');
 $app->get('/shopping/pay/method', 'Shopping\PayController@createPayMethod');
 $app->get('/shopping/pay/pay', 'Shopping\PayController@pay');
 $app->get('/shopping/pay/checkpay', 'Shopping\PayController@pay');
-$app->get('/shopping/pay/methodlist', 'Shopping\PayController@getMethodList');
+$app->get('/pay/methodlist', 'Shopping\PayController@getMethodList');
 $app->get('/shopping/pay/del', 'Shopping\PayController@delMethod');
 $app->get('/shopping/pay/getDefault', 'Shopping\PayController@getDefaultMethod');
 $app->get('/shopping/pay/setDefault', 'Shopping\PayController@setDefaultMethod');
@@ -95,6 +98,7 @@ $app->get('/user/addrmod/{aid}', 'Shopping\UserController@addrModify');
 $app->get('/user/countrylist', 'Shopping\UserController@countryList');
 $app->get('/user/changepassword', 'Shopping\UserController@changePassword');
 
+
 $app->get('/user/signup', 'Shopping\UserController@signup');
 $app->post('/user/signup', 'Shopping\UserController@signup');
 $app->get('/user/logincheck', 'Shopping\UserController@loginCheck');
@@ -102,7 +106,7 @@ $app->post('/user/logincheck', 'Shopping\UserController@loginCheck');
 $app->get('/user/signout', 'Shopping\UserController@signout');
 $app->get('/user/resetPwd', 'Shopping\UserController@resetPassword');
 $app->get('/user/forget', 'Shopping\UserController@forgetPassword');
-$app->get('/user/modifyUserPwd', 'Shopping\UserController@modifyUserPwd');
+$app->post('/user/modifyUserPwd', 'Shopping\UserController@modifyUserPwd');
 $app->get('/user/trilogin', 'Shopping\UserController@tryPrtLogin');
 $app->get('/user/userdetail', 'Shopping\UserController@getUserDetailInfo');
 $app->get('/user/modifyUserInfo', 'Shopping\UserController@modifyUserInfo');

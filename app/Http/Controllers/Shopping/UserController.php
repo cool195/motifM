@@ -92,6 +92,9 @@ class UserController extends ApiController
      * */
     public function login(Request $request)
     {
+        if(Cache::has('user')){
+            return redirect('/daily');
+        }
         return view('shopping.login');
     }
 
@@ -252,7 +255,7 @@ class UserController extends ApiController
             $result['data'] = array();
         }else{
             if($result['success']){
-                Cache::forget('user');
+                //Cache::forget('user');
                 $result['redirectUrl'] = "/login";
             }
         }
