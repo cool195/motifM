@@ -33,11 +33,10 @@ class ShoppingController extends ApiController
 	//todo
 	public function getShoppingProductList(Request $request)
 	{
-		//$user = Cache::get('user');
 		$params = array(
+			'token' => Session::get('user.token'),
+			'pin' => Session::get('user.pin'),
 			'recid'=>$request->input('recid', '100000'),
-			//'pin'=>$user['pin'],
-			'pin' => 'xuzhijie',
 			'uuid'=>$request->input('uuid', 'xuzhijie'),
 			'cid'=>$request->input('cid', '0'),
 			'pagenum'=>$request->input('pagenum', 1),

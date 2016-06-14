@@ -46,20 +46,17 @@ class CartController extends ApiController
 
 	private function getUserDefaultAddr()
 	{
-		$result = "";
 		if(Session::has('defaultAddr'))
 		{
 			$result = Session::get('defaultAddr');
 		}else{
 			$cmd = 'gdefault';		
 			$uuid = "608341ba8191ba1bf7a2dec25f0158df3c6670da";
-			$pin = "3e448648b3814c999b646f25cde12b2a";
-			$token = "71b5cb03786f9d6207421caeab91da8f";
 			$params = array(
 				'cmd'=>$cmd,
 				'uuid'=>$uuid,
-				'pin'=>$pin,
-				'token'=>$token
+				'token' => Session::get('user.token'),
+				'pin' => Session::get('user.pin'),
 			);
 			$system = "";
 			$service = "useraddr";
@@ -76,14 +73,12 @@ class CartController extends ApiController
 	public function addressList(Request $request)		
 	{
 		$cmd = 'list';	
-		$uuid = $request->input("uuid", "608341ba8191ba1bf7a2dec25f0158df3c6670da");	
-		$pin = $request->input("pin", "3e448648b3814c999b646f25cde12b2a");
-		$token = $request->input("token", "71b5cb03786f9d6207421caeab91da8f");
+		$uuid = $request->input("uuid", "608341ba8191ba1bf7a2dec25f0158df3c6670da");
 		$params = array(
 			'cmd'=>$cmd,
 			'uuid'=>$uuid,
-			'pin'=>$pin,
-			'token'=>$token
+			'token' => Session::get('user.token'),
+			'pin' => Session::get('user.pin'),
 		);
 		$system = "";
 		$service = "useraddr";
@@ -101,13 +96,11 @@ class CartController extends ApiController
 	{
 		$cmd = "getdefault";
 		$uuid = "608341ba8191ba1bf7a2dec25f0158df3c6670da";
-		$pin = "3e448648b3814c999b646f25cde12b2a";
-		$token = "71b5cb03786f9d6207421caeab91da8f";
 		$params = array(
 			'cmd'=>$cmd,
 			'uuid'=>$uuid,
-			'pin'=>$pin,
-			'token'=>$token
+			'token' => Session::get('user.token'),
+			'pin' => Session::get('user.pin'),
 		);
 		$system = "";
 		$service = "pay";
@@ -137,11 +130,10 @@ class CartController extends ApiController
 	 * */
 	public function getCartAmount(Request $request)		
 	{
-		$user = Session::get('user');
 		$params = array(
 			'cmd' => 'amount',
-			'pin' => $user['pin'],
-			'token' => $user['token']
+			'token' => Session::get('user.token'),
+			'pin' => Session::get('user.pin'),
 		);
 		$system = "";
 		$service = "cart";
@@ -173,19 +165,11 @@ class CartController extends ApiController
 	 * */
 	public function getCartList(Request $request) 
 	{
-/*		$cmd = "cartlist";
-		$pin = $request->input('pin', 'xuzhijie');
-		$token = $request->input('token', 1);
-		$params = array(
-			'cmd' => $cmd,
-			'pin' => $pin,
-			'token' => $token
-		);*/
-		$user = Session::get('user');
+
 		$params = array(
 			'cmd' =>"cartlist",
-			'pin' => $user['pin'],
-			'token' => $user['token']
+			'token' => Session::get('user.token'),
+			'pin' => Session::get('user.pin'),
 		);
 		$system = "";
 		$service = "cart";
@@ -208,26 +192,11 @@ class CartController extends ApiController
 	 * */
 	public function getCartAccountList(Request $request)
 	{
-/*		$cmd = "accountlist";
-		$pin = $request->input('pin', 'xuzhijie');
-		$logisticstype = $request->input('logisticstype');
-		$paytype = $request->input('paytype');
-		//$addressid = $request->input('addressid', "");
-		$couponcode = $request->input('couponcode', "");
-		$token = $request->input('token', 'xxx');
-		$params = array(
-			'cmd' => $cmd,
-			'pin' => $pin,
-			'logisticstype' => $logisticstype,
-			'paytype' => $paytype,
-		//	'addressid' => $addressid,
-			'couponcode' => $couponcode,
-			'token' => $token
-		);*/
-		$user = Session::get('user');
+
 		$params = array(
 			'cmd'=>'accountlist',
-			'pin'=>$user['pin'],
+			'token' => Session::get('user.token'),
+			'pin' => Session::get('user.pin'),
 			'logisticstype'=>$request->input('logisticstype'),
 			'paytype'=>$request->input('paytype'),
 			'couponcode'=>$request->input('couponcode')
@@ -253,19 +222,10 @@ class CartController extends ApiController
 	 * */
 	public function getCartSaveList(Request $request)
 	{
-/*		$cmd = "savelist";
-		$pin = $request->input('pin', "xuzhijie");
-		$token = $request->input('token', 1);
-		$params = array(
-			'cmd' => $cmd,
-			'pin' => $pin,
-			'token' => $token,
-		);*/
-		$user = Session::get('user');
 		$params = array(
 			'cmd' => 'savelist',
-			'pin' => $user['pin'],
-			'token' => $user['token']
+			'token' => Session::get('user.token'),
+			'pin' => Session::get('user.pin'),
 		);
 		$system = "";
 		$service = "cart";
@@ -280,22 +240,11 @@ class CartController extends ApiController
 
 	public function addCart(Request $request)
 	{
-/*		$cmd = "addsku";
-		$operate = $request->input('operate');
-		$pin = $request->input('pin', "xuzhijie");
-		$token = $request->input('token', 1);
-		$params = array(
-			'cmd' => $cmd,
-			'operate' => $operate,
-			'pin' => $pin,
-			'token' => $token
-		);		*/
-		$user = Session::get('user');
 		$params = array(
 			'cmd' => 'addsku',
 			'operate' => $request->input('operate'),
-			'pin' => $user['pin'],
-			'token' => $user['token']
+			'token' => Session::get('user.token'),
+			'pin' => Session::get('user.pin'),
 		);
 		$system = "";
 		$service = "cart";
@@ -310,22 +259,12 @@ class CartController extends ApiController
 
 	public function addBatchCart(Request $request)
 	{
-/*		$cmd = "batchaddskus";
-		$operate = $request->input('operate');
-		$pin = $request->input('pin', "xuzhijie");
-		$token = $request->input('token', 1);
-		$params = array(
-			'cmd' => $cmd,
-			'operate' => $operate,
-			'pin' => $pin,
-			'token' => $token
-		);		*/
-		$user = Session::get('user');
+
 		$params = array(
 			'cmd' => 'batchaddskus',
 			'operate' => $request->input('operate'),
-			'pin' => $user['pin'],
-			'token' => $user['token']
+			'token' => Session::get('user.token'),
+			'pin' => Session::get('user.pin'),
 		);
 		$system = "";
 		$service = "cart";
@@ -335,25 +274,12 @@ class CartController extends ApiController
 
 	public function alterCartProQtty(Request $request)
 	{
-/*		$cmd = "alterqtty";
-		$sku = $request->input('sku');
-		$qtty = $request->input('qtty');
-		$pin = $request->input('pin', "xuzhijie");
-		$token = $request->input('token', 1);	
-		$params = array(
-			'cmd' => $cmd,
-			'sku' => $sku,
-			'qtty' => $qtty,
-			'pin' => $pin,
-			'token' => $token
-		);		*/
-		$user = Session::get('user');
 		$params = array(
 			'cmd' => 'alterqtty',
 			'sku' => $request->input('sku'),
 			'qtty' => $request->input('qtty'),
-			'pin' => $user['pin'],
-			'token' => $user['token']
+			'token' => Session::get('user.token'),
+			'pin' => Session::get('user.pin'),
 		);
 		$system = "";
 		$service = "cart";
@@ -363,22 +289,12 @@ class CartController extends ApiController
 
 	public function promptlyBuy(Request $request)
 	{
-/*		$cmd = "promptlybuy";
-		$operate = $request->input('operate');
-		$pin = $request->input('pin', "xuzhijie");
-		$token = $request->input('token', 1);
-		$params = array(
-			'cmd' => $cmd,
-			'operate' => $operate,
-			'pin' => $pin,
-			'token' => $token
-		);		*/
-		$user = Session::get('user');
+
 		$params = array(
 			'cmd' => 'promptlybuy',
 			'operate' => $request->input('operate'),
-			'pin' => $request->input('pin'),
-			'token' => $request->input('token')
+			'token' => Session::get('user.token'),
+			'pin' => Session::get('user.pin'),
 		);
 		$system = "";
 		$service = "cart";
@@ -393,21 +309,11 @@ class CartController extends ApiController
 		$result = "";	
 		if(in_array($cmd, $cmdSelector))
 		{
-/*			$sku = $request->input('sku');
-			$pin = $request->input('pin', "xuzhijie");
-			$token = $request->input('token', 1);	
-			$params = array(
-				'cmd' => $cmd,
-				'sku' => $sku,
-				'pin' => $pin,
-				'token' => $token
-			);		*/
-			$user = Session::get('user');
 			$params = array(
 				'cmd' => $cmd,
 				'sku' => $request->input('sku'),
-				'pin' => $user['pin'],
-				'token' => $user['token'],
+				'token' => Session::get('user.token'),
+				'pin' => Session::get('user.pin'),
 			);
 			$system = "";
 			$service = "cart";
@@ -420,19 +326,11 @@ class CartController extends ApiController
 
 	public function verifyCoupon(Request $request)
 	{
-/*		$cmd = "verifyCoupon";
-		$couponcode = $request->input('couponcode', "61et");
-		$token = $request->input('token', "xxx");
-		$params = array(
-			'cmd' => $cmd,
-			'couponcode' => $couponcode,
-			'token' => $token
-		);*/
-		$user = Session::get('user');
 		$params = array(
 			'cmd' => 'verifyCoupon',
 			'couponcode' => $request->input('couponcode'),
-			'token' => $user['token'],
+			'token' => Session::get('user.token'),
+			'pin' => Session::get('user.pin'),
 		);
 		$system = "";
 		$service = "cart";

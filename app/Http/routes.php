@@ -131,4 +131,5 @@ $app->get('/daily', 'Daily\DailyController@index');
 $app->get('/topic/{id}', 'Daily\DailyController@show');
 
 $app->get('/braintree', 'Shopping\BraintreeController@index');
+$app->get('/payment/default', 'Shopping\BraintreeController@getDefault');
 $app->post('/braintree', 'Shopping\BraintreeController@checkout');

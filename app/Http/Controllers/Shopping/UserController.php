@@ -207,12 +207,12 @@ class UserController extends ApiController
      * */
     public function forgetPassword(Request $request)
     {
-        $user = Session::get('user');
         $params = array(
             'cmd' => "forgetwd",
-            'uuid' => $user['uuid'],
+            'uuid' => '123',
             'email' => $request->input('email'),
-            'token' => $user['token']
+            'token' => Session::get('user.token'),
+            'pin' => Session::get('user.pin'),
         );
         $result = $this->request('openapi', self::API_SYSTEM, self::API_SERVICE, $params);
         if (empty($result)) {
@@ -243,13 +243,12 @@ class UserController extends ApiController
      * */
     public function modifyUserPwd(Request $request)
     {
-        $user = Session::get('user');
         $params = array(
             'cmd' => "modifypwd",
-            'pin' => $user['pin'],
+            'token' => Session::get('user.token'),
+            'pin' => Session::get('user.pin'),
             'oldpw' => $request->input('oldpw'),
             'pw' => $request->input('pw'),
-            'token' => $user['token']
         );
         $result = $this->request('openapi', self::API_SYSTEM, self::API_SERVICE, $params);
         if (empty($result)) {
@@ -304,11 +303,10 @@ class UserController extends ApiController
      * */
     public function getUserDetailInfo(Request $request)
     {
-        $user = Session::get('user');
         $params = array(
             'cmd' => "detail",
-            'pin' => $user['pin'],
-            'token' => $user['token']
+            'token' => Session::get('user.token'),
+            'pin' => Session::get('user.pin'),
         );
         $result = $this->request('openapi', self::API_SYSTEM, self::API_SERVICE, $params);
         if (empty($result)) {
@@ -333,7 +331,6 @@ class UserController extends ApiController
             'cmd' => 'modify',
             'pin' => $user['pin'],
             'nick' => $user['nickname'],
-           //'icon' => $request->input('icon', $user['icon']),
             'token' => $user['token']
         );
         $result = $this->request('openapi', self::API_SYSTEM, self::API_SERVICE, $params);
@@ -359,16 +356,13 @@ class UserController extends ApiController
 
     public function getShippingAddress(Request $request)
     {
-        $user = Session::get('user');
         $cmd = 'list';
-        $pin = $user['pin'];
-        $uuid = $request->input('uuid', md5($pin));
-        $token = $user['token'];
+        $uuid = $request->input('uuid', '123');
         $params = array(
             'cmd'=>$cmd,
             'uuid'=>$uuid,
-            'pin'=>$pin,
-            'token'=>$token
+            'token' => Session::get('user.token'),
+            'pin' => Session::get('user.pin'),
         );
         $system = "";
         $service = "useraddr";
