@@ -241,7 +241,7 @@ class CartController extends ApiController
 	{
 		$params = array(
 			'cmd' => 'addsku',
-			'operate' => $request->input('operate'),
+			'operate' => json_encode($request->input('operate')),
 			'token' => Session::get('user.token'),
 			'pin' => Session::get('user.pin'),
 		);
@@ -286,12 +286,19 @@ class CartController extends ApiController
 		return $result;
 	}
 
+	/*
+	 * 立即购买接口
+	 *
+	 * @author zhangtao@evermarker.net
+	 *
+	 * @return Array
+	 * */
 	public function promptlyBuy(Request $request)
 	{
 
 		$params = array(
 			'cmd' => 'promptlybuy',
-			'operate' => $request->input('operate'),
+			'operate' => json_encode($request->input('operate')),
 			'token' => Session::get('user.token'),
 			'pin' => Session::get('user.pin'),
 		);
@@ -300,7 +307,14 @@ class CartController extends ApiController
 		$result = $this->request('openapi', $system, $service, $params);
 		return $result;
 	}
-
+	/*
+	 * 购物车其它操作接口
+	 *
+	 * @author zhangtao@evermarker.net
+	 *
+	 * @params Request
+	 * @return Array
+	 * */
 	public function operateCartProduct(Request $request)
 	{
 		$cmdSelector = array("select", "cancal", "delsku", "save", "movetocart", "delsave");	
@@ -318,7 +332,7 @@ class CartController extends ApiController
 			$service = "cart";
 			$result = $this->request('openapi', $system, $service, $params);
 			if(!empty($result) && $result['success']){
-				return Redirect('/shopping/cart');	
+				return $result;
 			}
 		}
 	}

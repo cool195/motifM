@@ -47,6 +47,7 @@ $app->group(['middleware'=>'logincheck', 'namespace'=>'App\Http\Controllers\Shop
     $app->put('/cart', 'CartController@promptlyBuy');
     $app->get('/cart/addBatchCart', 'CartController@addBatchCart');
     $app->get('/cart/alterQtty', 'CartController@alterCartProQtty');
+    $app->post('/cart/alterQtty', 'CartController@alterCartProQtty');
     $app->get('/cart/operate', 'CartController@operateCartProduct');
     $app->post('/cart/operate', 'CartController@operateCartProduct');
 
@@ -119,6 +120,7 @@ $app->group(['namespace'=>'App\Http\Controllers\Shopping'], function($app){
 
 
     $app->get('/login', 'UserController@login');
+    $app->patch('/login', 'UserController@login');
     $app->get('/user/logincheck', 'UserController@loginCheck');
     $app->post('/user/logincheck', 'UserController@loginCheck');
     $app->get('/register', 'UserController@register');

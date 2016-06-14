@@ -34,7 +34,7 @@
                     <div class="container shopbag-emptyInfo">
                         <div class="m-b-20x p-b-5x"><i class="btn-shopbagEmpty iconfont icon-shopbag"></i></div>
                         <p class="text-primary font-size-sm m-b-20x p-b-20x">No saved items</p>
-                        <a href="#" class="btn btn-primary btn-block btn-sm">Continue Shopping</a>
+                        <a href="/shopping" class="btn btn-primary btn-block btn-sm">Continue Shopping</a>
                     </div>
                 </div>
         @else
@@ -109,13 +109,13 @@
                 <section class="bg-white m-t-10x p-a-10x">
                     <div class="flex flex-rightJustify text-primary font-size-sm">
                         <span class="p-r-5x">Items({{$cartData['total_sku_qtty'] }}
-                            ): </span><strong>${{$cartData['total_amount']}}</strong>
+                            ): </span><strong>${{number_format($cartData['total_amount'] /100, 2)}}</strong>
                     </div>
                     <div class="flex flex-rightJustify text-primary font-size-sm">
-                        <span class="p-r-5x">Extra: </span><strong>${{ $cartData['vas_amount'] }}</strong>
+                        <span class="p-r-5x">Extra: </span><strong>${{ number_format($cartData['vas_amount'] / 100, 2) }}</strong>
                     </div>
                     <div class="flex flex-rightJustify text-primary font-size-sm">
-                        <span class="p-r-5x">Bag Subtotal: </span><strong>${{$cartData['pay_amount']}}</strong>
+                        <span class="p-r-5x">Bag Subtotal: </span><strong>${{ number_format($cartData['pay_amount'] / 100, 2)}}</strong>
                     </div>
                 </section>
                 <!-- 购买按钮 -->
@@ -200,4 +200,12 @@
 <script src="/scripts/vendor.js"></script>
 
 <script src="/scripts/shoppingCart.js"></script>
+<meta name="csrf-token" content="{{ csrf_token() }}"/>
+<script>
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+</script>
 </html>
