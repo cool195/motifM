@@ -497,7 +497,7 @@
             var $CurrentVas = $('#' + index);
 
             // 增值项 是否被选中
-            if ($CurrentVas.prop('checked')) {
+            if ($CurrentVas.hasClass('active')) {
                 VarList[i] = {};
                 VarList[i].vas_id = index; // 增值服务ID
                 VarList[i].user_remark = ''; // 用户备注信息
@@ -505,7 +505,7 @@
                 switch (val) {
                     case 1:
                         // 刻字
-                        var remark = $CurrentVas.siblings('input-engraving').value();
+                        var remark = $CurrentVas.siblings('input-engraving').val();
                         VarList[i].user_remark = remark;
                         break;
                     case 2:
@@ -526,10 +526,7 @@
             url: '/cart',
             type: Action,
             data: { operate: Operate }
-        }).done(function (data) {
-            if(data.success){
-                window.location.href = data.redirectUrl;
-            }
+        }).done(function () {
             console.log("success");
         }).fail(function () {
             console.log("error");
@@ -540,10 +537,33 @@
     }
 
     // TODO 立即购买
-    $('#addCart').on('click', function () {
+    $('#addCart').on('click', function (e) {
+        if ($(e.target).hasClass('disabled')) {
+            return;
+        }
         initCart('PATCH');
+        // 添加成功 刷新数量
+        $.ajax({
+            url: ' /cart/amount',
+            type: 'GET'
+        }).done(function (data) {
+            console.log('success');
+            // 操作成功刷新页面
+            if (data.success) {
+                if (data.data.skusAmout > 0) {
+                    $('.nav-shoppingCart').children('span').html(data.data.skusAmout);
+                }
+            }
+        }).fail(function () {
+            console.log('error');
+        }).always(function () {
+            console.log('complete');
+        });
     });
     $('#buyNow').on('click', function () {
+        if ($(e.target).hasClass('disabled')) {
+            return;
+        }
         initCart('PUT');
     });
     // 增值服务是否选中

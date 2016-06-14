@@ -51,10 +51,18 @@
                                     <div>{{$addr['country']}}</div>
                                     <div>@if(!empty($addr['telephone'])) {{$addr['telephone']}} @endif</div>
                                 </div>
-                            @if($addr['isDefault'])
-                                 <span class="text-common p-r-20x">Primary</span>
-                                 <div class="flex flex-alignCenter"><i class="iconfont icon-size-sm text-common del-icon"></i></div>
-                            @endif
+                                 <div class="flex flex-alignCenter">
+                                     @if($addr['isDefault'])
+                                     <span class="text-common p-r-20x">Primary</span>
+                                     @endif
+                                     @if($addr['isDefault'])
+                                             <i class="iconfont icon-size-sm text-common icon-radio active"></i>
+                                         @else
+                                             <i class="iconfont icon-size-sm text-common icon-radio"></i>
+
+                                         @endif
+
+                                 </div>
                         </div>
                     </div>
                     </a>

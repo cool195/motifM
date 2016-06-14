@@ -92,25 +92,17 @@ class OrderController extends ApiController
 
     public function orderSubmit(Request $request)
     {
-        $cmd = "ordsubmit";
-        $aid = $request->input('aid', 15);
-        $paym = $request->input('paym', 'paypal');
-        $cps = $request->input('cps', 'cd333');
-        $remark = $request->input('remark', 'quickly');
-        $stype = $request->input('stype', 1);
-        $src = $request->input('src', 1);
-        $ver = $request->input('ver', 1);
         $params = array(
-            'cmd' => $cmd,
+            'cmd' => 'ordsubmit',
             'token' => Session::get('user.token'),
             'pin' => Session::get('user.pin'),
-            'aid' => $aid,
-            'paym' => $paym,
-            'cps' => $cps,
-            'remark' => $remark,
-            'stype' => $stype,
-            'src' => $src,
-            'ver' => $ver,
+            'aid' => $request->input('aid'),
+            'paym' => $request->input('paym'),
+            'cps' => $request->input('cps'),
+            'remark' => $request->input('remark'),
+            'stype' => $request->input('stype'),
+            'src' => $request->input('src', "H5"),
+            'ver' => $request->input('ver', 1)
         );
         $system = "";
         $service = "order";
