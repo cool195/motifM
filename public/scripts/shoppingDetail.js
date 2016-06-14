@@ -560,7 +560,7 @@
             console.log('complete');
         });
     });
-    $('#buyNow').on('click', function () {
+    $('#buyNow').on('click', function (e) {
         if ($(e.target).hasClass('disabled')) {
             return;
         }
