@@ -425,9 +425,19 @@ class UserController extends ApiController
 
     public function addrModify(Request $request, $aid)
     {
-        $res = $this->getShippingAddress($request);
-        $addrList = $res['data']['list'];
-        $input = $addrList[$aid];
+        if(Session::has('input')){
+            $input = Session::get('input');
+            $input['detail_address1'] = $input['addr1'];
+            $input['detail_address2'] = $input['addr2'];
+            $input['telephone'] = $input['tel'];
+            $input['iDnumber'] = $input['idnum'];
+            $input['isDefault'] = $input['isd'];
+            $input['receiving_id'] = $input['aid'];
+        }else {
+            $res = $this->getShippingAddress($request);
+            $addrList = $res['data']['list'];
+            $input = $addrList[$aid];
+        }
         $country = json_decode(base64_decode($request->input('country')), true);
         if(!empty($country)){
             $input['country'] = $country['country_name_en'];
