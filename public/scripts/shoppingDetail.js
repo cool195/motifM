@@ -526,7 +526,10 @@
             url: '/cart',
             type: Action,
             data: { operate: Operate }
-        }).done(function () {
+        }).done(function (data) {
+            if(data.success){
+                window.location.href = data.redirectUrl;
+            }
             console.log("success");
         }).fail(function () {
             console.log("error");

@@ -120,7 +120,7 @@
                 </section>
                 <!-- 购买按钮 -->
                 <section class="bg-white m-t-10x p-a-10x">
-                    <a href="#" class="btn btn-primary btn-block btn-sm" type="submit">Proceed To Checkout</a>
+                    <a href="/cart/ordercheckout" class="btn btn-primary btn-block btn-sm" type="submit">Proceed To Checkout</a>
                 </section>
 
         @endif

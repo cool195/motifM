@@ -95,7 +95,7 @@
                 <a class="flex font-size-sm text-primary p-a-10x" href="#">
                     <span class="checkoutInfo-subTitle flex-fixedShrink">Pay with</span>
                     <div class="checkoutInfo-content flex flex-fullJustified flex-alignCenter">
-                        <span>{{$pay['cardType']}}</span>
+                        <span>{{isset($pay['cardType']) ? $pay['cardType'] : "paypal"}}</span>
                         <i class="iconfont icon-arrow-right icon-size-xm text-common p-r-15x"></i>
                     </div>
                 </a>

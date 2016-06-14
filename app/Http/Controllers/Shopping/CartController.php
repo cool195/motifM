@@ -36,6 +36,9 @@ class CartController extends ApiController
 		$result = $this->getCartAccountList($request);
 		$defaultAddr = $this->getUserDefaultAddr();
 		$defaultPayMethod = $this->getDefaultPayMethod();
+		if(empty($result['data'])){
+			return redirect('/shopping');
+		}
 		return View('shopping.ordercheckout', [
 			'data'=>$result['data'], 
 			'addr'=>$defaultAddr['data'],
@@ -49,11 +52,9 @@ class CartController extends ApiController
 		{
 			$result = Session::get('defaultAddr');
 		}else{
-			$cmd = 'gdefault';		
-			$uuid = "608341ba8191ba1bf7a2dec25f0158df3c6670da";
 			$params = array(
-				'cmd'=>$cmd,
-				'uuid'=>$uuid,
+				'cmd'=> 'gdefault',
+				'uuid'=> Session::get('user.uuid'),
 				'token' => Session::get('user.token'),
 				'pin' => Session::get('user.pin'),
 			);
@@ -93,11 +94,9 @@ class CartController extends ApiController
 
 	private function getDefaultPayMethod()
 	{
-		$cmd = "getdefault";
-		$uuid = "608341ba8191ba1bf7a2dec25f0158df3c6670da";
 		$params = array(
-			'cmd'=>$cmd,
-			'uuid'=>$uuid,
+			'cmd'=>"getdefault",
+			'uuid'=>Session::get('user.uuid'),
 			'token' => Session::get('user.token'),
 			'pin' => Session::get('user.pin'),
 		);
@@ -305,6 +304,9 @@ class CartController extends ApiController
 		$system = "";
 		$service = "cart";
 		$result = $this->request('openapi', $system, $service, $params);
+		if($result['success']){
+			$result['redirectUrl'] = '/cart/ordercheckout';
+		}
 		return $result;
 	}
 	/*
