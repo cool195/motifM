@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Controllers\ApiController;
 use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\Session;
 
 class PayController extends ApiController
 {
@@ -39,7 +40,7 @@ class PayController extends ApiController
 	//todo 改为私有方法
 	public function getPayToken(Request $request)
 	{
-		$user = Cache::get('user');
+		$user = Session::get('user');
 		$cmd = "token";
 		$token = $request->input('token', "eeec7a32dcb6115abfe4a871c6b08b47");
 		$params = array(
@@ -142,7 +143,7 @@ class PayController extends ApiController
 
 	public function getMethodList(Request $request)
 	{
-		$user = Cache::get('user');
+		$user = Session::get('user');
 		$params = array(
 			'cmd' => 'methodlist',
 			'token' => $user['token'],

@@ -137,7 +137,7 @@ class CartController extends ApiController
 	 * */
 	public function getCartAmount(Request $request)		
 	{
-		$user = Cache::get('user');
+		$user = Session::get('user');
 		$params = array(
 			'cmd' => 'amount',
 			'pin' => $user['pin'],
@@ -181,7 +181,7 @@ class CartController extends ApiController
 			'pin' => $pin,
 			'token' => $token
 		);*/
-		$user = Cache::get('user');
+		$user = Session::get('user');
 		$params = array(
 			'cmd' =>"cartlist",
 			'pin' => $user['pin'],
@@ -224,7 +224,7 @@ class CartController extends ApiController
 			'couponcode' => $couponcode,
 			'token' => $token
 		);*/
-		$user = Cache::get('user');
+		$user = Session::get('user');
 		$params = array(
 			'cmd'=>'accountlist',
 			'pin'=>$user['pin'],
@@ -261,7 +261,7 @@ class CartController extends ApiController
 			'pin' => $pin,
 			'token' => $token,
 		);*/
-		$user = Cache::get('user');
+		$user = Session::get('user');
 		$params = array(
 			'cmd' => 'savelist',
 			'pin' => $user['pin'],
@@ -290,7 +290,7 @@ class CartController extends ApiController
 			'pin' => $pin,
 			'token' => $token
 		);		*/
-		$user = Cache::get('user');
+		$user = Session::get('user');
 		$params = array(
 			'cmd' => 'addsku',
 			'operate' => $request->input('operate'),
@@ -320,7 +320,7 @@ class CartController extends ApiController
 			'pin' => $pin,
 			'token' => $token
 		);		*/
-		$user = Cache::get('user');
+		$user = Session::get('user');
 		$params = array(
 			'cmd' => 'batchaddskus',
 			'operate' => $request->input('operate'),
@@ -347,7 +347,7 @@ class CartController extends ApiController
 			'pin' => $pin,
 			'token' => $token
 		);		*/
-		$user = Cache::get('user');
+		$user = Session::get('user');
 		$params = array(
 			'cmd' => 'alterqtty',
 			'sku' => $request->input('sku'),
@@ -373,7 +373,7 @@ class CartController extends ApiController
 			'pin' => $pin,
 			'token' => $token
 		);		*/
-		$user = Cache::get('user');
+		$user = Session::get('user');
 		$params = array(
 			'cmd' => 'promptlybuy',
 			'operate' => $request->input('operate'),
@@ -402,7 +402,7 @@ class CartController extends ApiController
 				'pin' => $pin,
 				'token' => $token
 			);		*/
-			$user = Cache::get('user');
+			$user = Session::get('user');
 			$params = array(
 				'cmd' => $cmd,
 				'sku' => $request->input('sku'),
@@ -428,7 +428,7 @@ class CartController extends ApiController
 			'couponcode' => $couponcode,
 			'token' => $token
 		);*/
-		$user = Cache::get('user');
+		$user = Session::get('user');
 		$params = array(
 			'cmd' => 'verifyCoupon',
 			'couponcode' => $request->input('couponcode'),

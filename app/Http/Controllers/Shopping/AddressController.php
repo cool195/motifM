@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\ApiController;
 
 use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\Session;
 
 class AddressController extends ApiController
 {
@@ -30,7 +31,7 @@ class AddressController extends ApiController
 			'pin'=>$pin,
 			'token'=>$token
 		);*/
-		$user = Cache::get('user');
+		$user = Session::get('user');
 		$params = array(
 			'cmd' => 'list',
 			'uuid' => $request->input('uuid', md5($user['login_email'])),
@@ -68,7 +69,7 @@ class AddressController extends ApiController
 			'pin'=>$pin,
 			'token'=>$token
 		);*/
-		$user = Cache::get('user');
+		$user = Session::get('user');
 		$params = array(
 			'cmd' => 'gdefault',
 			'uuid' => $request->input('uuid', md5($user['login_email'])),
@@ -127,7 +128,7 @@ class AddressController extends ApiController
 			'isd'=>$isd,
 			'token'=>$token
 		);*/
-		$user = Cache::get('user');
+		$user = Session::get('user');
 		$params = array(
 			'cmd' => 'add',
 			'pin' => $user['pin'],
@@ -197,7 +198,7 @@ class AddressController extends ApiController
 			'isd'=>$isd,
 			'token'=>$token
 		);*/
-		$user = Cache::get('user');
+		$user = Session::get('user');
 		$params = array(
 			'cmd' => 'modify',
 			'pin' => $user['pin'],
@@ -248,7 +249,7 @@ class AddressController extends ApiController
 			'aid'=>$aid,
 			'isd'=>$isd
 		);*/
-		$user = Cache::get('user');
+		$user = Session::get('user');
 		$params = array(
 			'cmd' => 'mdefault',
 			'pin' => $user['pin'],
@@ -286,7 +287,7 @@ class AddressController extends ApiController
 			'aid'=>$aid,
 			'token'=>$token
 		);*/
-		$user = Cache::get('user');
+		$user = Session::get('user');
 		$params = array(
 			'cmd' => "del",
 			'pin' => $user['pin'],

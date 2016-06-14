@@ -7,6 +7,7 @@ use Illuminate\Contracts\Routing\Middleware;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Redirect;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Session;
 
 class LoginCheckMiddleware
 {
@@ -19,15 +20,9 @@ class LoginCheckMiddleware
      */
     public function handle($request, Closure $next)
     {
-        if(Cache::has('user')){
-            $user = Cache::pull('user');
-            if(!empty($user)) {
-                $expiresAt = Carbon::now()->addMinutes(10);
-                Cache::put('user', $user, $expiresAt);
-                return $next($request);
-            }
+        if(Session::has('user')){
+            return $next($request);
         }
-
         return redirect('/login');
     }
 }

@@ -37,7 +37,7 @@ class UserController extends ApiController
      * */
     public function changeProfile(Request $request)
     {
-        $user = Cache::get('user');
+        $user = Session::get('user');
         return View('shopping.profilesetting_changeprofile', ['user'=>$user]);
     }
 
@@ -92,7 +92,7 @@ class UserController extends ApiController
      * */
     public function login(Request $request)
     {
-        if(Cache::has('user')){
+        if(Session::has('user')){
             return redirect('/daily');
         }
         return view('shopping.login');
@@ -122,11 +122,14 @@ class UserController extends ApiController
         } else {
             if ($result['success']) {
                 $result['redirectUrl'] = "/daily";
-                $expiresAt = Carbon::now()->addMinute(10000);
-                Cache::forget('user');
-                Cache::put("user", $result['data'], $expiresAt);
+                if(isset($_SERVER['HTTP_REFERER']) && !empty($_SERVER['HTTP_REFERER'])){
+                    $result['redirectUrl'] = $_SERVER['HTTP_REFERER'];
+                }
+                Session::forget('user');
+                Session::put('user', $result['data']);
             }
         }
+
         return $result;
     }
 
@@ -139,7 +142,7 @@ class UserController extends ApiController
      * */
     public function signout(Request $request)
     {
-        $user = Cache::get('user');
+        $user = Session::get('user');
         $result = array('success'=>false, 'error_msg'=>"user is signout", 'data' => array());
         if(!empty($user)) {
             $params = array(
@@ -154,7 +157,7 @@ class UserController extends ApiController
                 $result['data'] = array();
             } else {
                 if ($result['success']) {
-                    Cache::forget('user');
+                    Session::forget('user');
                 }
             }
         }
@@ -204,7 +207,7 @@ class UserController extends ApiController
      * */
     public function forgetPassword(Request $request)
     {
-        $user = Cache::get('user');
+        $user = Session::get('user');
         $params = array(
             'cmd' => "forgetwd",
             'uuid' => $user['uuid'],
@@ -240,7 +243,7 @@ class UserController extends ApiController
      * */
     public function modifyUserPwd(Request $request)
     {
-        $user = Cache::get('user');
+        $user = Session::get('user');
         $params = array(
             'cmd' => "modifypwd",
             'pin' => $user['pin'],
@@ -285,9 +288,8 @@ class UserController extends ApiController
             $result['data'] = array();
         }else {
             if ($result['success']) {
-                $expiresAt = Carbon::now()->addMinute(180);
-                Cache::forget('user');
-                Cache::put("user", $result['data'], $expiresAt);
+                Session::forget('user');
+                Session::put("user", $result['data']);
             }
         }
         return $result;
@@ -302,7 +304,7 @@ class UserController extends ApiController
      * */
     public function getUserDetailInfo(Request $request)
     {
-        $user = Cache::get('user');
+        $user = Session::get('user');
         $params = array(
             'cmd' => "detail",
             'pin' => $user['pin'],
@@ -326,7 +328,7 @@ class UserController extends ApiController
      * */
     public function modifyUserInfo(Request $request)
     {
-        $user = Cache::get('user');
+        $user = Session::get('user');
         $params = array(
             'cmd' => 'modify',
             'pin' => $user['pin'],
@@ -357,7 +359,7 @@ class UserController extends ApiController
 
     public function getShippingAddress(Request $request)
     {
-        $user = Cache::get('user');
+        $user = Session::get('user');
         $cmd = 'list';
         $pin = $user['pin'];
         $uuid = $request->input('uuid', md5($pin));
@@ -422,8 +424,8 @@ class UserController extends ApiController
     public function addrAdd(Request $request)
     {
         $country = json_decode(base64_decode($request->input('country', base64_encode(json_encode(['country_id'=>5, 'country_name_cn'=>"中国", 'country_name_en'=>"China", 'iDnumberReq'=>0, 'isFreq'=>0])))), true);
-        $input = Cache::get('input');
-        Cache::forget('input');
+        $input = Session::get('input');
+        Session::forget('input');
         return View('shopping.profilesetting_addaddress', ['country'=>$country, 'input'=>$input]);
     }
 
@@ -439,7 +441,7 @@ class UserController extends ApiController
         if(empty($input)){
             return redirect('/user/shippingaddress');
         }
-        Cache::forget('input');
+        Session::forget('input');
         return View('shopping.profilesetting_modaddress', ['input'=>$input]);
     }
 
@@ -447,8 +449,8 @@ class UserController extends ApiController
     {
 
         $input = $request->all();
-        Cache::forget('input');
-        Cache::forever('input', $input);
+        Session::forget('input');
+        Session::put('input', $input);
         $params = array(
             'cmd'=>'country',
         );
