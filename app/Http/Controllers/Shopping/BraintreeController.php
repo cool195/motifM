@@ -12,7 +12,16 @@ class BraintreeController extends ApiController
     //进入braintree绑定支付信息模版
     public function index()
     {
-        return View('shopping.braintree');
+        $methodlist = $this->methodlist();
+        $params = array(
+            'cmd' => 'token',
+            'token' => Session::get('user.token'),
+            'pin' => Session::get('user.pin'),
+            'uuid' => '123',
+        );
+        $result = $this->request('openapi', '', 'pay', $params);
+        $token = isset($result['data']['token']) ? $result['data']['token'] : '';
+        return View('shopping.paymentmethod', ['token' => $token, 'methodlist' => $methodlist['data']]);
     }
 
     //Braintree回调,绑定支付信息方法
@@ -28,7 +37,8 @@ class BraintreeController extends ApiController
         return $result;
     }
 
-    public function getDefault(Request $request)
+    //测试默认支付类型
+    public function getDefault()
     {
 
         $params = array(
@@ -40,4 +50,17 @@ class BraintreeController extends ApiController
         dd($result);
     }
 
+    //获取支付列表
+    public function methodlist()
+    {
+
+        $params = array(
+            'cmd' => 'methodlist',
+            'token' => Session::get('user.token'),
+            'pin' => Session::get('user.pin'),
+            'src' => 'H5',
+        );
+        $result = $this->request('openapi', '', 'pay', $params);
+        return $result;
+    }
 }

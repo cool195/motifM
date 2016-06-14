@@ -45,7 +45,7 @@
                         <i class="iconfont icon-arrow-right icon-size-xm text-common"></i>
                     </a>
                     <hr class="hr-base m-a-0">
-                    <a class="flex flex-alignCenter flex-fullJustified font-size-sm text-primary p-a-15x" href="/pay/paymentmethod">
+                    <a class="flex flex-alignCenter flex-fullJustified font-size-sm text-primary p-a-15x" href="/braintree">
                         <span>Payment Method</span>
                         <i class="iconfont icon-arrow-right icon-size-xm text-common"></i>
                     </a>

@@ -101,6 +101,11 @@ $app->group(['middleware'=>'logincheck', 'namespace'=>'App\Http\Controllers\Shop
     $app->get('/orders', 'OrderController@getOrderList');
     $app->get('/shopping/order/orderdetail/{subno}', 'OrderController@orderDetail');
     $app->get('/shopping/order/orderSubmit', 'OrderController@orderSubmit');
+
+    $app->get('/braintree', 'BraintreeController@index');
+    //$app->get('/payment/default', 'BraintreeController@getDefault');
+    //$app->get('/payment/list', 'BraintreeController@methodlist');
+    $app->post('/braintree', 'BraintreeController@checkout');
 });
 
 $app->group(['namespace'=>'App\Http\Controllers\Shopping'], function($app){
@@ -127,7 +132,3 @@ $app->get('/designer/{id}', 'Designer\DesignerController@show');
 $app->get('/', 'Daily\DailyController@index');
 $app->get('/daily', 'Daily\DailyController@index');
 $app->get('/topic/{id}', 'Daily\DailyController@show');
-
-$app->get('/braintree', 'Shopping\BraintreeController@index');
-$app->get('/payment/default', 'Shopping\BraintreeController@getDefault');
-$app->post('/braintree', 'Shopping\BraintreeController@checkout');

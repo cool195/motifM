@@ -20,7 +20,7 @@ class AddressController extends ApiController
 	{
 		$params = array(
 			'cmd' => 'list',
-			'uuid' => $request->input('uuid', md5($user['login_email'])),
+			'uuid' => $request->input('uuid','123'),
 			'token' => Session::get('user.token'),
 			'pin' => Session::get('user.pin'),
 		);
@@ -47,7 +47,7 @@ class AddressController extends ApiController
 	{
 		$params = array(
 			'cmd' => 'gdefault',
-			'uuid' => $request->input('uuid', md5($user['login_email'])),
+			'uuid' => $request->input('uuid','123'),
 			'token' => Session::get('user.token'),
 			'pin' => Session::get('user.pin'),
 		);
