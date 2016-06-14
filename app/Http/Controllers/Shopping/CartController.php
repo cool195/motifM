@@ -307,7 +307,14 @@ class CartController extends ApiController
 		$result = $this->request('openapi', $system, $service, $params);
 		return $result;
 	}
-
+	/*
+	 * 购物车其它操作接口
+	 *
+	 * @author zhangtao@evermarker.net
+	 *
+	 * @params Request
+	 * @return Array
+	 * */
 	public function operateCartProduct(Request $request)
 	{
 		$cmdSelector = array("select", "cancal", "delsku", "save", "movetocart", "delsave");	
@@ -325,7 +332,7 @@ class CartController extends ApiController
 			$service = "cart";
 			$result = $this->request('openapi', $system, $service, $params);
 			if(!empty($result) && $result['success']){
-				return Redirect('/shopping/cart');	
+				return $result;
 			}
 		}
 	}

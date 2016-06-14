@@ -82,8 +82,8 @@
                 </div>
                 <hr class="hr-light m-x-10x">
                 <div class="product-price">
-                    <span class="font-size-lx text-primary">$ {{ number_format(($data['skuPrice']['price'] / 100), 2) }}</span>
-                    <span class="font-size-sm text-common">＄{{ number_format(($data['skuPrice']['sale_price'] /100), 2) }}</span>
+                    <span class="font-size-lx text-primary">$ {{ number_format(($data['skuPrice']['sale_price'] / 100), 2) }}</span>
+                    <span class="font-size-sm text-common">＄{{ number_format(($data['skuPrice']['price'] /100), 2) }}</span>
                     <span class="font-size-sm text-primary">(51% off)</span>
                     <a class="text-primary pull-xs-right" href="#"><i class="iconfont icon-share icon-size-xm"></i></a>
                 </div>
