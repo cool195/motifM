@@ -6,7 +6,6 @@ use Illuminate\Http\Request;
 
 use App\Http\Controllers\ApiController;
 use Illuminate\Support\Facades\Session;
-use Illuminate\Support\Facades\Cache;
 
 class CartController extends ApiController
 {

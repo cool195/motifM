@@ -50,14 +50,14 @@
                 <div class="swiper-container" id="baseImg-swiper">
                     <div class="swiper-wrapper">
                         @if(isset($data['productImages']))
-                            @forelse($data['productImages'] as $image)
+                            @foreach($data['productImages'] as $image)
                                 <div class="swiper-slide">
                                     <img class="img-fluid swiper-lazy"
                                          data-src="{{ 'https://s3-us-west-1.amazonaws.com/emimagetest/n1/'.$image['img_path'] }}"
                                          alt="">
                                     <img class="img-fluid preloader" src="/images/product/bg-product@750.png" alt="">
                                 </div>
-                            @endforelse
+                            @endforeach
                         @else
                             <div class="swiper-slide"></div>
                         @endif
