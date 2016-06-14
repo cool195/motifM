@@ -17,6 +17,7 @@
         }, 500);
     }
 
+    /* TODO 判断 token 是否为空 */
     // 客户端验证 token
     // var token = $('#paypal').data('braintree');
     // 测试 token
