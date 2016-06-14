@@ -207,40 +207,27 @@
 			3714 496353 98431: American Express
 			-->
             <section>
-                <div class="cardform-container">
-                    <form id="card-form">
-                        <div class="cardinfo-card-number">
-                            <label class="cardinfo-label p-a-15x" for="card-number">
-                                <div class="input-wrapper" id="card-number"></div>
-                                <div id="card-image"></div>
-                            </label>
+                <form action="/" class="cardform-container" id="card-container" method="post">
+                    <div class="cardinfo-wrapper">
+                        <div class="cardinfo-item" id="card-number">
+                            <span class="card-image visa" id="card-type"></span>
                         </div>
-                        <hr class="hr-base m-a-0">
-                        <div class="cardinfo-wrapper">
-                            <div class="cardinfo-exp-date p-a-15x">
-                                <label class="cardinfo-label" for="expiration-date">
-                                    <span class="flex-fixedShrink p-r-10x">Valid Thru</span>
-                                    <div class="input-wrapper" id="expiration-date"></div>
-                                </label>
-                            </div>
-                            <div class="cardinfo-cvv p-a-15x">
-                                <label class="cardinfo-label" for="cvv">
-                                    <span class="flex-fixedShrink p-r-10x">CVV</span>
-                                    <div class="input-wrapper" id="cvv"></div>
-                                </label>
-                            </div>
+                    </div>
+                    <div class="cardinfo-wrapper">
+                        <div class="cardinfo-item" id="expiration-date">
+                            <label class="cardinfo-label" for="expiration-date">Expires</label>
                         </div>
-                    </form>
-                </div>
-                <div class="p-a-15x">
-                    <input id="button-pay" class="btn btn-primary btn-block btn-sm" type="submit" value="Change">
-                </div>
+                        <div class="cardinfo-item" id="cvv">
+                            <label class="cardinfo-label" for="cvv">CVV</label>
+                        </div>
+                    </div>
+                    <div class="warning-info text-warning flex flex-alignCenter p-a-15x">
+                        <i class="iconfont icon-caveat icon-size-md p-r-5x"></i>
+                        <span class="font-size-sm">Warming: Women’s Ring</span>
+                    </div>
+                    <input type="submit" value="Pay">
+                </form>
             </section>
-            <!-- Load the required client component. -->
-            <script src="https://js.braintreegateway.com/web/3.0.0-beta.7/js/client.min.js"></script>
-
-            <!-- Load Hosted Fields component. -->
-            <script src="https://js.braintreegateway.com/web/3.0.0-beta.7/js/hosted-fields.min.js"></script>
 
             <!-- 页脚 功能链接 -->
             <footer class="p-y-20x">
@@ -319,6 +306,9 @@
         </div>
     </div>
 </body>
+<!-- BrainTree -->
+<script src="https://js.braintreegateway.com/js/braintree-2.24.1.min.js"></script>
+
 <script src="/scripts/vendor.js"></script>
 
 <script src="scripts/vendor.js"></script>

@@ -537,10 +537,33 @@
     }
 
     // TODO 立即购买
-    $('#addCart').on('click', function () {
+    $('#addCart').on('click', function (e) {
+        if ($(e.target).hasClass('disabled')) {
+            return;
+        }
         initCart('PATCH');
+        // 添加成功 刷新数量
+        $.ajax({
+            url: ' /cart/amount',
+            type: 'GET'
+        }).done(function (data) {
+            console.log('success');
+            // 操作成功刷新页面
+            if (data.success) {
+                if (data.data.skusAmout > 0) {
+                    $('.nav-shoppingCart').children('span').html(data.data.skusAmout);
+                }
+            }
+        }).fail(function () {
+            console.log('error');
+        }).always(function () {
+            console.log('complete');
+        });
     });
     $('#buyNow').on('click', function () {
+        if ($(e.target).hasClass('disabled')) {
+            return;
+        }
         initCart('PUT');
     });
     // 增值服务是否选中
