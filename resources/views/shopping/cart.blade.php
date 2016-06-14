@@ -62,9 +62,11 @@
                                             <span class="text-primary font-size-sm flex-fixedShrink">${{number_format(($showSku['sale_price'] / 100), 2)}}</span>
                                         </article>
                                         <aside class="cartItem-secondaryInfo text-primary font-size-sm">
-                                            <div><span>Size: </span><span>11</span></div>
-                                            <div><span>Color: </span><span>Black</span></div>
-                                            <div><span>Material: </span><span>Gold</span></div>
+                                            @if(isset($showSku['attrValues']))
+                                                @foreach($showSku['attrValues'] as $attrValue)
+                                                    <div><span>{{$attrValue['attr_type_value'] }}: </span><span>{{ $attrValue['attr_value'] }}</span></div>
+                                                @endforeach
+                                            @endif
                                             <div class="flex flex-fullJustified">
                                                 <div class="">
                                                     <span>Inside Engraving: </span><span>MY LOVE</span></div>
@@ -149,9 +151,11 @@
                                             <span class="text-primary font-size-sm flex-fixedShrink">${{number_format(($showSku['sale_price'] / 100), 2)}}</span>
                                         </article>
                                         <aside class="cartItem-secondaryInfo text-primary font-size-sm">
-                                            <div><span>Size: </span><span>11</span></div>
-                                            <div><span>Color: </span><span>Black</span></div>
-                                            <div><span>Material: </span><span>Gold</span></div>
+                                            @if(isset($showSku['attrValues']))
+                                                @foreach($showSku['attrValues'] as $attrValue)
+                                                    <div><span>{{$attrValue['attr_type_value'] }}: </span><span>{{ $attrValue['attr_value'] }}</span></div>
+                                                @endforeach
+                                            @endif
                                             <div class="flex flex-fullJustified">
                                                 <div class="">
                                                     <span>Inside Engraving: </span><span>MY LOVE</span></div>
