@@ -505,7 +505,7 @@
                 switch (val) {
                     case 1:
                         // 刻字
-                        var remark = $CurrentVas.siblings('input-engraving').value();
+                        var remark = $CurrentVas.siblings('input-engraving').val();
                         VarList[i].user_remark = remark;
                         break;
                     case 2:
