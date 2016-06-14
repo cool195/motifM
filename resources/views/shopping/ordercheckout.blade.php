@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="UTF-8">
     <meta name="description" content="">
@@ -49,8 +49,7 @@
                                     <aside class="checkoutItem-secondaryInfo p-b-10x text-primary font-size-sm">
                                         @if(isset($showSku['attrValues']))
                                             @foreach($showSku['attrValues'] as $attrValue)
-                                                <div><span>{{$attrValue['attr_type_value'] }}: </span><span>{{ $attrValue['attr_value'] }}
-                                                        }</span></div>
+                                                <div><span>{{$attrValue['attr_type_value'] }}: </span><span>{{ $attrValue['attr_value'] }}</span></div>
                                             @endforeach
                                         @endif
                                         <div class="flex flex-fullJustified">
@@ -70,7 +69,7 @@
             </aside>
             <!-- 结算订单 地址、物流、支付等其他信息 -->
             <aside class="bg-white m-b-10x">
-                <a class="flex font-size-sm text-primary p-a-10x" href="/shopping/cart/addresslist">
+                <a class="flex font-size-sm text-primary p-a-10x" href="/cart/addresslist">
                     <span class="checkoutInfo-subTitle flex-fixedShrink">Ships to</span>
                     <div class="checkoutInfo-content flex flex-fullJustified flex-alignCenter">
                         <div>
@@ -79,7 +78,7 @@
                             <div>{{$addr['city']}}, {{$addr['zip']}} {{$addr['status_code']}}</div>
                             <div>{{$addr['country']}}</div>
                         </div>
-                        <input hidden name="aid" value="{{$addr['receiving_id']}}"></input>
+                        <input hidden name="aid" value="{{$addr['receiving_id']}}">
                         <i class="iconfont icon-arrow-right icon-size-xm text-common p-r-15x"></i>
                     </div>
                 </a>
@@ -95,12 +94,12 @@
                 <a class="flex font-size-sm text-primary p-a-10x" href="#">
                     <span class="checkoutInfo-subTitle flex-fixedShrink">Pay with</span>
                     <div class="checkoutInfo-content flex flex-fullJustified flex-alignCenter">
-                        <span>{{isset($pay['cardType']) ? $pay['cardType'] : "paypal"}}</span>
+                        <span>{{isset($pay['cardType']) ? $pay['cardType'] : "Paypal"}}</span>
                         <i class="iconfont icon-arrow-right icon-size-xm text-common p-r-15x"></i>
                     </div>
                 </a>
                 <hr class="hr-base">
-                <a class="flex font-size-sm text-primary p-a-10x" href="/shopping/cart/coupon">
+                <a class="flex font-size-sm text-primary p-a-10x" href="/cart/coupon">
                     <span class="checkoutInfo-subTitle flex-fixedShrink">Gift Cards, Coupons</span>
                     <div class="checkoutInfo-content flex flex-fullJustified flex-alignCenter">
                         <span>YY365</span>
@@ -108,7 +107,7 @@
                     </div>
                 </a>
                 <hr class="hr-base">
-                <a class="flex font-size-sm text-primary p-a-10x" href="/shopping/cart/message">
+                <a class="flex font-size-sm text-primary p-a-10x" href="/cart/message">
                     <span class="checkoutInfo-subTitle flex-fixedShrink">Message to Us</span>
                     <div class="checkoutInfo-content flex flex-fullJustified flex-alignCenter">
                         <span class="text-truncate">My father was a self-taught mandolin self-taught mandolin</span>
