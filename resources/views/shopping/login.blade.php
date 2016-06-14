@@ -40,8 +40,8 @@
             </fieldset>
             <fieldset class="m-t-10x login-text">
                 <input class="input-login form-control font-size-sm" name="pw" placeholder="Password"
-                       type="text" maxlength="32">
-                <i class="iconfont icon-show icon-size-lg input-show text-common"></i>
+                       type="password" maxlength="32">
+                <i class="iconfont icon-show icon-size-lg input-show text-common off"></i>
             </fieldset>
         </form>
         <div class="m-t-15x text-primary text-center font-size-sm">
