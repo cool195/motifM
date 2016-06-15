@@ -26,5 +26,11 @@
     $('#deliveryDialog').on('closed', function () {
         $(this).removeData('delivery');
     });
+
+    $('[data-form-action]').on('click', function () {
+        var Action = $(this).data('form-action');
+        $('#infoForm').attr('action', Action);
+        $('#infoForm').submit();
+    });
 })(jQuery);
 //# sourceMappingURL=orderCheckout.js.map

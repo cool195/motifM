@@ -225,6 +225,7 @@
     $('#tabIndex-container').find('li[data-tab-index]').one('click', function () {
         console.log('顶部切换, 触发选项卡loading, 一次性事件');
         tabsLoading();
+        $(window).scrollTop(0);
     });
     // 为页面绑定 滚动条事件
     $(document).ready(function () {
