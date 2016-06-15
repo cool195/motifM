@@ -69,7 +69,8 @@
             </aside>
             <!-- 结算订单 地址、物流、支付等其他信息 -->
             <aside class="bg-white m-b-10x">
-                <a class="flex font-size-sm text-primary p-a-10x" href="/cart/addresslist">
+                {{--<a class="flex font-size-sm text-primary p-a-10x" href="/cart/addresslist">--}}
+                <div class="flex font-size-sm text-primary p-a-10x" data-form-action="/cart/addresslist">
                     <span class="checkoutInfo-subTitle flex-fixedShrink">Ships to</span>
                     <div class="checkoutInfo-content flex flex-fullJustified flex-alignCenter">
                         <div>
@@ -81,46 +82,45 @@
                         <input hidden name="aid" value="{{$addr['receiving_id']}}">
                         <i class="iconfont icon-arrow-right icon-size-xm text-common p-r-15x"></i>
                     </div>
-                </a>
+                </div>
                 <hr class="hr-base">
-                <a class="flex font-size-sm text-primary p-a-10x" href="#">
+                <a class="flex font-size-sm text-primary p-a-10x" data-remodal-target="delivery-modal" href="#">
                     <span class="checkoutInfo-subTitle flex-fixedShrink">Delivery</span>
                     <div class="checkoutInfo-content flex flex-fullJustified flex-alignCenter">
-                        <span>7-20 working days +14.5$</span>
+                        <span class="delivery-text">7-20 working days +14.5$</span>
                         <i class="iconfont icon-arrow-right icon-size-xm text-common p-r-15x"></i>
                     </div>
                 </a>
                 <hr class="hr-base">
-                <a class="flex font-size-sm text-primary p-a-10x" href="#">
+                <div class="flex font-size-sm text-primary p-a-10x" data-form-action="2">
                     <span class="checkoutInfo-subTitle flex-fixedShrink">Pay with</span>
                     <div class="checkoutInfo-content flex flex-fullJustified flex-alignCenter">
                         <span>{{isset($pay['cardType']) ? $pay['cardType'] : "Paypal"}}</span>
                         <i class="iconfont icon-arrow-right icon-size-xm text-common p-r-15x"></i>
                     </div>
-                </a>
+                </div>
                 <hr class="hr-base">
-                <a class="flex font-size-sm text-primary p-a-10x" href="/cart/coupon">
+                <div class="flex font-size-sm text-primary p-a-10x" data-form-action="3"  href="/cart/coupon">
                     <span class="checkoutInfo-subTitle flex-fixedShrink">Gift Cards, Coupons</span>
                     <div class="checkoutInfo-content flex flex-fullJustified flex-alignCenter">
                         <span>YY365</span>
                         <i class="iconfont icon-arrow-right icon-size-xm text-common p-r-15x"></i>
                     </div>
-                </a>
+                </div>
                 <hr class="hr-base">
-                <a class="flex font-size-sm text-primary p-a-10x" href="/cart/message">
+                <div class="flex font-size-sm text-primary p-a-10x" data-form-action="4" href="/cart/message">
                     <span class="checkoutInfo-subTitle flex-fixedShrink">Message to Us</span>
                     <div class="checkoutInfo-content flex flex-fullJustified flex-alignCenter">
                         <span class="text-truncate">My father was a self-taught mandolin self-taught mandolin</span>
                         <i class="iconfont icon-arrow-right icon-size-xm text-common p-r-15x flex-fixedShrink"></i>
                     </div>
-                </a>
+                </div>
             </aside>
 
             <!-- 结算总价 -->
             <aside class="bg-white p-a-10x m-b-10x">
                 <div class="flex flex-fullJustified text-primary font-size-sm">
-                    <span>Items({{$data['total_sku_qtty']}}
-                        )</span><span>${{ number_format(($data['total_amount'] / 100), 2)}}</span>
+                    <span>Items({{$data['total_sku_qtty']}})</span><span>${{ number_format(($data['total_amount'] / 100), 2)}}</span>
                 </div>
                 <div class="flex flex-fullJustified text-primary font-size-sm">
                     <span>Extra</span><span>${{number_format(($data['vas_amount'] / 100), 2)}}</span>
@@ -149,6 +149,50 @@
     <!-- 页脚 功能链接 end-->
     </div>
 </div>
+
+<!-- 弹出 选择运送方式 Delivery -->
+<div class="remodal remodal-lg modal-content" data-remodal-id="delivery-modal" id="deliveryDialog">
+    <div class="text-right p-a-15x" data-remodal-action="close">
+        <i class="iconfont icon-cross icon-size-md text-common"></i></div>
+    <div class="font-size-sm">
+        <hr class="hr-base m-a-0">
+        <div class="p-a-15x flex flex-fullJustified flex-alignCenter btn-changeDelivery" data-dialog="Registered AirMail/7-20 working days $0.00">
+            <span>Registered AirMail/7-20 working days $0.00</span>
+            <span class="">
+                <label class="iconfont icon-radio icon-size-md text-common m-b-0 active" for="delivery1"></label>
+                <input type="radio" name="stype" value="1" id="delivery1" checked="checked" hidden>
+            </span>
+        </div>
+        <hr class="hr-base m-a-0">
+        <div class="p-a-15x flex flex-fullJustified flex-alignCenter btn-changeDelivery" data-dialog="Standard/7-8 working days $14.50">
+            <span>Standard/7-8 working days $14.50</span>
+            <span class="">
+                <label class="iconfont icon-radio icon-size-md text-common m-b-0" for="delivery2"></label>
+                <input type="radio" name="stype" value="2" id="delivery2" hidden>
+            </span>
+        </div>
+        <hr class="hr-base m-a-0">
+        <div class="p-a-15x flex flex-fullJustified flex-alignCenter btn-changeDelivery" data-dialog="Expedited/5-6 working days $25.66">
+            <span>Expedited/5-6 working days $25.66</span>
+            <span class="">
+                <label class="iconfont icon-radio icon-size-md text-common m-b-0" for="delivery3"></label>
+                <input type="radio" name="stype" value="3" id="delivery3" hidden>
+            </span>
+        </div>
+    </div>
+    <hr class="hr-base m-a-0">
+    <div class="p-x-15x p-t-10x p-b-15x">
+        <div class="btn btn-primary btn-block btn-md" data-dialog="" data-remodal-action="confirm">Change</div>
+    </div>
+</div>
+<!-- 隐藏表单域 -->
+<form id="infoForm" action="" hidden>
+    <input type="hidden" name="aid" value="{{$addr['receiving_id']}}">
+    <input type="hidden" name="paym" value="">
+    <input type="hidden" name="cps" value="">
+    <input type="hidden" name="remark" value="">
+    <input type="hidden" name="stype" value="">
+</form>
 </body>
 <script src="/scripts/vendor.js"></script>
 

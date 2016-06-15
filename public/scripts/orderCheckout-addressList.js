@@ -10,10 +10,12 @@
             $Edit.html('Edit');
             $Edit.toggleClass('active');
             $Edit.addClass('btn-primary-outline').removeClass('btn-primary');
+            $('div[data-role="submit"]').removeClass('hidden');
         } else {
             $Edit.html('Done');
             $Edit.toggleClass('active');
             $Edit.addClass('btn-primary').removeClass('btn-primary-outline');
+            $('div[data-role="submit"]').addClass('hidden');
         }
     }
 
@@ -62,6 +64,11 @@
 
         $('.addressList-delete').toggleClass('switch');
     });
+
+    $('[data-role="submit"]').on('click', function () {
+        $('#infoForm').submit();
+    });
+
     // loading 打开
     function openLoading() {
         $('.loading').toggleClass('loading-hidden');
@@ -107,7 +114,18 @@
         var AddressID = $(e.target).parents('.addressList-container').data('address');
         $('#modalDialog').data('address', AddressID);
     });
+    $('.addressItem-info').on('click', function () {
+        var Action = $(this).data('action');
 
+        if (Action === 'return') {
+            $('.icon-radio.active').removeClass('active');
+            $(this).find('.icon-radio').addClass('active');
+            var Aid = $(this).parents('.addressList-container').data('address');
+            $('input[name="aid"]').val(Aid);
+        } else if (Action === 'edit') {
+            // TODO 跳转到编辑页面
+        }
+    });
     // 初始化 模态框
     $('#modalDialog').remodal({
         closeOnOutsideClick: false,
