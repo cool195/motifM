@@ -16463,7 +16463,7 @@ else if (typeof define === 'function' && define.amd) {
                         $('.nav-shoppingCart').children('span').show();
                         $('.nav-shoppingCart').children('span').html(data.data.skusAmout);
                     } else {
-                        $('.nav-shoppingCart').children('span').hidden();
+                        $('.nav-shoppingCart').children('span').hide();
                     }
                 }
             }).fail(function () {
