@@ -35,7 +35,7 @@
                 console.log("success");
                 $('#infoForm').submit();
             } else {
-                $('.warning-info').remattr('hidden');
+                $('.warning-info').removeAttr('hidden');
             }
         }).fail(function () {
             console.log("error");
