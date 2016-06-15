@@ -56,6 +56,7 @@ $app->group(['middleware' => 'logincheck', 'namespace' => 'App\Http\Controllers\
     $app->get('/pay/checkpay', 'PayController@pay');
     $app->get('/pay/methodlist', 'PayController@getMethodList');
     $app->get('/pay/del', 'PayController@delMethod');
+    $app->delete('/pay/del', 'PayController@delMethod');
     $app->get('/pay/getDefault', 'PayController@getDefaultMethod');
     $app->get('/pay/setDefault', 'PayController@setDefaultMethod');
     $app->get('/pay/check', 'PayController@check');
