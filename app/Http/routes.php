@@ -45,6 +45,7 @@ $app->group(['middleware' => 'logincheck', 'namespace' => 'App\Http\Controllers\
     $app->post('/cart/alterQtty', 'CartController@alterCartProQtty');
     $app->get('/cart/operate', 'CartController@operateCartProduct');
     $app->post('/cart/operate', 'CartController@operateCartProduct');
+    $app->post('/cart/verifycoupon', 'CartController@verifyCoupon');
 
 
     $app->get('/pay/paymentmethod', 'PayController@paymentMethod');
