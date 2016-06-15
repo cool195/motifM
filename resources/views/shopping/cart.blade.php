@@ -67,12 +67,15 @@
                                                     <div><span>{{$attrValue['attr_type_value'] }}: </span><span>{{ $attrValue['attr_value'] }}</span></div>
                                                 @endforeach
                                             @endif
-                                            <div class="flex flex-fullJustified">
-                                                <div class="">
-                                                    <span>Inside Engraving: </span><span>MY LOVE</span></div>
-                                                <div class="">
-                                                    ${{number_format(($showSku['total_amount'] / 100), 2)}}</div>
-                                            </div>
+                                            @if(isset($showSku['showVASes']) && !empty($showSku['showVASes']))
+                                                @foreach($showSku['showVASes'] as $showVAS)
+                                                     <div class="flex flex-fullJustified">
+                                                        <div class="">
+                                                             <span>{{$showVAS['vas_name']}}: </span><span>{{$showVAS['user_remark']}}</span></div>
+                                                        <div class="">${{number_format(($showVAS['vas_price']), 2)}}</div>
+                                                     </div>
+                                                @endforeach
+                                            @endif
                                         </aside>
                                     </div>
                                     <div class="mask"></div>
@@ -110,8 +113,8 @@
                 <!-- 商品总价 -->
                 <section class="bg-white m-t-10x p-a-10x">
                     <div class="flex flex-rightJustify text-primary font-size-sm">
-                        <span class="p-r-5x">Items({{$cartData['total_sku_qtty'] }}
-                            ): </span><strong>${{number_format($cartData['total_amount'] /100, 2)}}</strong>
+                        <span class="p-r-5x">Items({{$cartData['total_sku_qtty'] }}) :
+                        </span><strong>${{number_format($cartData['total_amount'] /100, 2)}}</strong>
                     </div>
                     <div class="flex flex-rightJustify text-primary font-size-sm">
                         <span class="p-r-5x">Extra: </span><strong>${{ number_format($cartData['vas_amount'] / 100, 2) }}</strong>
@@ -156,11 +159,15 @@
                                                     <div><span>{{$attrValue['attr_type_value'] }}: </span><span>{{ $attrValue['attr_value'] }}</span></div>
                                                 @endforeach
                                             @endif
+                                            @if(isset($showSku['showVASes']) && !empty($showSku['showVASes']))
+                                                @foreach($showSku['showVASes'] as $showVAS)
                                             <div class="flex flex-fullJustified">
                                                 <div class="">
-                                                    <span>Inside Engraving: </span><span>MY LOVE</span></div>
-                                                <div class="">${{number_format(($showSku['total_amount']), 2)}}</div>
+                                                    <span>{{$showVAS['vas_name']}}: </span><span>{{$showVAS['user_remark']}}</span></div>
+                                                <div class="">${{number_format(($showVAS['vas_price']), 2)}}</div>
                                             </div>
+                                                @endforeach
+                                            @endif
                                         </aside>
                                     </div>
                                     <div class="mask"></div>

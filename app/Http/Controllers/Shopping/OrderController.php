@@ -90,6 +90,12 @@ class OrderController extends ApiController
         return View('shopping.orderdetail', ['data' => $result['data']]);
     }
 
+    /*
+     * 提交订单接口
+     *
+     * @author zhangtao@evermarker.net
+     *
+     * */
     public function orderSubmit(Request $request)
     {
         $params = array(

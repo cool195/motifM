@@ -72,11 +72,10 @@ class CartController extends ApiController
 
 	public function addressList(Request $request)		
 	{
-		$cmd = 'list';	
-		$uuid = $request->input("uuid", "608341ba8191ba1bf7a2dec25f0158df3c6670da");
+		$cmd = 'list';
 		$params = array(
 			'cmd'=>$cmd,
-			'uuid'=>$uuid,
+			'uuid'=>Session::get('user.uuid'),
 			'token' => Session::get('user.token'),
 			'pin' => Session::get('user.pin'),
 		);
