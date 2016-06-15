@@ -18,6 +18,7 @@
             $(this).children('.iconfont').removeClass('icon-arrow-up').addClass('icon-arrow-bottom');
         }
     });
+
     $(document).ready(function () {
         if ($('.message-info').children('p').height() <= 144) {
             $('.btn-showMore').hide();
