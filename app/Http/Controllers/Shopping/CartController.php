@@ -42,7 +42,11 @@ class CartController extends ApiController
 		return View('shopping.ordercheckout', [
 			'data'=>$result['data'], 
 			'addr'=>$addr,
-			'pay'=>$defaultPayMethod['data']
+			'paym'=> $request->input('paym', isset($defaultPayMethod['data']['type']) ? $defaultPayMethod['data']['type'] : "paypal"),
+			'cps' => $request->input('cps', ""),
+			'remark' => $request->input('remark', ""),
+			'stype' => $request->input('stype', ""),
+			'input' => $request->except('aid')
 		]);
 	}
 
@@ -139,14 +143,23 @@ class CartController extends ApiController
 		return $result;
 	}
 
+	/*
+	 * 跳转至填写Coupon页面
+	 *
+	 * @author zhangtao@evermarker.net
+	 * */
 	public function coupon(Request $request)
 	{
-		return View('shopping.ordercheckout_addcoupon');
+		$input = $request->except('cps');
+		$cps = $request->input('cps', "");
+		return View('shopping.ordercheckout_addcoupon', ['input'=>$input, 'cps'=>$cps ]);
 	}
 
 	public function message(Request $request)
 	{
-		return View('shopping.ordercheckout_message');
+		$input = $request->except('remark');
+		$remark = $request->input('remark', "");
+		return View('shopping.ordercheckout_message', ['input'=>$input, 'remark'=>$remark]);
 	}
 
 	/*
@@ -264,6 +277,12 @@ class CartController extends ApiController
 		return $result;
 	}
 
+	/*
+	 * 添加购物车
+	 *
+	 * @author zhangtao@evermarker.net
+	 * @return Array
+	 * */
 	public function addCart(Request $request)
 	{
 		$params = array(
@@ -302,6 +321,12 @@ class CartController extends ApiController
 		return $result;
 	}
 
+	/*
+	 * 修改购物车商品数量
+	 *
+	 * @author zhangtao@evermarker.net
+	 * @return Array
+	 * */
 	public function alterCartProQtty(Request $request)
 	{
 		$params = array(
@@ -370,12 +395,18 @@ class CartController extends ApiController
 			}
 		}
 	}
-
+	/*
+	 * 验证Coupon是否有效
+	 *
+	 * @author zhangtao@evermarker.net
+	 * @return Array
+	 *
+	 * */
 	public function verifyCoupon(Request $request)
 	{
 		$params = array(
 			'cmd' => 'verifyCoupon',
-			'couponcode' => $request->input('couponcode'),
+			'couponcode' => $request->input('couponcode', $request->input('cps')),
 			'token' => Session::get('user.token'),
 			'pin' => Session::get('user.pin'),
 		);
@@ -385,5 +416,10 @@ class CartController extends ApiController
 		return $result;
 	}
 
+/*	public function verifyCoupon(Request $request)
+	{
+		$result['success'] = true;
+		return $result;
+	}*/
 
 }

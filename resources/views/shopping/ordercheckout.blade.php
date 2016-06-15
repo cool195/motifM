@@ -95,23 +95,23 @@
                 <div class="flex font-size-sm text-primary p-a-10x" data-form-action="2">
                     <span class="checkoutInfo-subTitle flex-fixedShrink">Pay with</span>
                     <div class="checkoutInfo-content flex flex-fullJustified flex-alignCenter">
-                        <span>{{isset($pay['cardType']) ? $pay['cardType'] : "Paypal"}}</span>
+                        <span>{{ (isset($paym) && !empty($paym)) ? $paym : "paypal"}}</span>
                         <i class="iconfont icon-arrow-right icon-size-xm text-common p-r-15x"></i>
                     </div>
                 </div>
                 <hr class="hr-base">
-                <div class="flex font-size-sm text-primary p-a-10x" data-form-action="3"  href="/cart/coupon">
+                <div class="flex font-size-sm text-primary p-a-10x" data-form-action="/cart/coupon">
                     <span class="checkoutInfo-subTitle flex-fixedShrink">Gift Cards, Coupons</span>
                     <div class="checkoutInfo-content flex flex-fullJustified flex-alignCenter">
-                        <span>YY365</span>
+                        <span>{{ $cps }}</span>
                         <i class="iconfont icon-arrow-right icon-size-xm text-common p-r-15x"></i>
                     </div>
                 </div>
                 <hr class="hr-base">
-                <div class="flex font-size-sm text-primary p-a-10x" data-form-action="4" href="/cart/message">
+                <div class="flex font-size-sm text-primary p-a-10x" data-form-action="/cart/message">
                     <span class="checkoutInfo-subTitle flex-fixedShrink">Message to Us</span>
                     <div class="checkoutInfo-content flex flex-fullJustified flex-alignCenter">
-                        <span class="text-truncate">My father was a self-taught mandolin self-taught mandolin</span>
+                        <span class="text-truncate">{{$remark}}</span>
                         <i class="iconfont icon-arrow-right icon-size-xm text-common p-r-15x flex-fixedShrink"></i>
                     </div>
                 </div>
@@ -188,10 +188,11 @@
 <!-- 隐藏表单域 -->
 <form id="infoForm" action="" hidden>
     <input type="hidden" name="aid" value="{{$addr['receiving_id']}}">
-    <input type="hidden" name="paym" value="">
-    <input type="hidden" name="cps" value="">
-    <input type="hidden" name="remark" value="">
-    <input type="hidden" name="stype" value="">
+    @if(isset($input) && !empty($input))
+        @foreach($input as $name=>$value)
+            <input type="hidden" name="{{$name}}" value="{{$value}}">
+        @endforeach
+    @endif
 </form>
 </body>
 <script src="/scripts/vendor.js"></script>
