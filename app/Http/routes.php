@@ -123,3 +123,7 @@ $app->group(['namespace' => 'App\Http\Controllers\Shopping'], function ($app) {
     $app->get('/user/signup', 'UserController@signup');
     $app->post('/user/signup', 'UserController@signup');
 });
+
+
+$app->get('askshopping', ['middleware' => 'logincheck', 'uses' => 'Other\AskController@show']);
+$app->put('askshopping', ['middleware' => 'logincheck', 'uses' => 'Other\AskController@install']);
