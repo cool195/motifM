@@ -150,6 +150,21 @@
                     </a>
                 </aside>
 
+                <!-- 版权信息 -->
+                <!-- TODO -->
+                <aside class="product-secondaryInfo p-a-15x">
+                    <div class="media m-a-0">
+                        <div class="media-left media-middle">
+                            <img class="media-object" src="/images/icon/icon-guarantee.png"
+                                 srcset="/images/icon/icon-guarantee@2x.png 2x, /images/icon/icon-guarantee@3x.png 3x"
+                                 alt="">
+                        </div>
+                        <div class="media-body media-middle">
+                            <p class="font-size-sm text-primary m-a-0 p-r-2">MOTIF guarantee quality merchandise and
+                                return service</p>
+                        </div>
+                    </div>
+                </aside>
                 <!-- 添加购物车 -->
                 <aside class="product-secondaryInfo container-fluid p-y-10x p-x-15x">
                     <div class="row">

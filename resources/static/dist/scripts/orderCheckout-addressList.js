@@ -64,6 +64,11 @@
 
         $('.addressList-delete').toggleClass('switch');
     });
+
+    $('[data-role="submit"]').on('click', function () {
+        $('#infoForm').submit();
+    });
+
     // loading 打开
     function openLoading() {
         $('.loading').toggleClass('loading-hidden');
@@ -115,6 +120,8 @@
         if (Action === 'return') {
             $('.icon-radio.active').removeClass('active');
             $(this).find('.icon-radio').addClass('active');
+            var Aid = $(this).parents('.addressList-container').data('address');
+            $('input[name="aid"]').val(Aid);
         } else if (Action === 'edit') {
             // TODO 跳转到编辑页面
         }

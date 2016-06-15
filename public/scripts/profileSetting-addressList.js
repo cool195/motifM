@@ -110,6 +110,17 @@
         $('#modalDialog').data('aid', AddressID);
     });
 
+    $('.addressItem-info').on('click', function () {
+        var Action = $(this).data('action');
+
+        if (Action === 'return') {
+            $('.icon-radio.active').removeClass('active');
+            $(this).find('.icon-radio').addClass('active');
+        } else if (Action === 'edit') {
+            // TODO 跳转到编辑页面
+        }
+    });
+
     $('div[data-role="submit"]').on('click', function () {
         // TODO 提交相应数据到后台
     });
