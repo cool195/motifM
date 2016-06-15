@@ -54,6 +54,9 @@
         $('body').removeClass('no-scroll');
     });
 
+    var height = $('#detailImg-swiper').height();
+    $('#detailImg-pagination');
+
     var options = {
         closeOnOutsideClick: false,
         closeOnCancel: false
