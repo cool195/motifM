@@ -41,8 +41,11 @@
             url: '/useraddr/addUserAddress',
             type: 'POST',
             data: $('#addressInfo').serialize()
-        }).done(function () {
-            console.log('success');
+        }).done(function (data) {
+            if (data.success) {
+                console.log('success');
+                window.location.href = data.redirectUrl;
+            }
         }).fail(function () {
             console.log('error');
         }).always(function () {
