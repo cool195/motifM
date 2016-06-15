@@ -26,6 +26,17 @@
         </li>
     </ul>
     <ul class="nav bg-white m-t-10x">
+        @if(!Session::has('user'))
+            <li class="nav-item">
+                <a href="/login"
+                   class="flex flex-alignCenter flex-fullJustified p-a-15x">
+                    <div class="font-size-sm text-primary flex flex-alignCenter"><i
+                                class="iconfont icon-signout icon-size-md p-r-15x"></i><span>Login/Register</span>
+                    </div>
+                    <span class="text-common"><i class="iconfont icon-arrow-right icon-size-sm"></i></span>
+                </a>
+            </li>
+        @endif
         <li class="nav-item">
             <a href="/shopping/orderlist" class="flex flex-alignCenter flex-fullJustified p-a-15x">
                 <div class="font-size-sm text-primary flex flex-alignCenter"><i
@@ -66,15 +77,17 @@
             </a>
             <hr class="hr-base m-a-0">
         </li>
-        <li class="nav-item">
-
-            <a href="@if(Session::has('user')){{'/user/signout'}}@else{{'/login'}}@endif"
-               class="flex flex-alignCenter flex-fullJustified p-a-15x">
-                <div class="font-size-sm text-primary flex flex-alignCenter"><i
-                            class="iconfont icon-signout icon-size-md p-r-15x"></i><span>@if(Session::has('user')){{'Sign Out'}}@else{{'Login'}}@endif</span></div>
-                <span class="text-common"><i class="iconfont icon-arrow-right icon-size-sm"></i></span>
-            </a>
-        </li>
+        @if(Session::has('user'))
+            <li class="nav-item">
+                <a href="/user/signout"
+                   class="flex flex-alignCenter flex-fullJustified p-a-15x">
+                    <div class="font-size-sm text-primary flex flex-alignCenter"><i
+                                class="iconfont icon-signout icon-size-md p-r-15x"></i><span>Sign Out</span>
+                    </div>
+                    <span class="text-common"><i class="iconfont icon-arrow-right icon-size-sm"></i></span>
+                </a>
+            </li>
+        @endif
     </ul>
     <ul class="nav bg-white m-t-10x">
         <li class="nav-item">

@@ -95,6 +95,7 @@
             // TODO 请求成功后 删除相应地址
             if (data.success) {
                 console.log("success");
+                location.reload();
             }
         }).fail(function () {
             console.log("error");
