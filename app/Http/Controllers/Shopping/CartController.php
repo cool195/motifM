@@ -34,15 +34,15 @@ class CartController extends ApiController
 	public function orderCheckout(Request $request)
 	{
 		$result = $this->getCartAccountList($request);
-		$addr = $this->getUserAddrByAid($request->input('aid', 0));
 		$defaultPayMethod = $this->getDefaultPayMethod();
 		if(empty($result['data'])){
 			return redirect('/shopping');
 		}
 		return View('shopping.ordercheckout', [
 			'data'=>$result['data'], 
-			'addr'=>$addr,
+			'addr'=>$this->getUserAddrByAid($request->input('aid', 0)),
 			'paym'=> $request->input('paym', isset($defaultPayMethod['data']['type']) ? $defaultPayMethod['data']['type'] : "paypal"),
+			'shipMethodList' => $this->getShippingMethod(),
 			'cps' => $request->input('cps', ""),
 			'remark' => $request->input('remark', ""),
 			'stype' => $request->input('stype', ""),
@@ -414,6 +414,20 @@ class CartController extends ApiController
 		$system = "";
 		$service = "cart";
 		$result = $this->request('openapi', $system, $service, $params);
+		return $result;
+	}
+
+	public function getShippingMethod()
+	{
+		$params = array(
+			'cmd'=>'logis',
+			'token' => Session::get('user.token')
+		);
+		$result = $this->request('openapi', "", "general", $params);
+		if(!empty($result) && $result['success']) {
+			return $result['data']['list'];
+		}
+		$result['data']['list'] = array();
 		return $result;
 	}
 
