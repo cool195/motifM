@@ -129,9 +129,6 @@
                     <span>Shipping to 10000</span><span>${{ number_format(($data['freight_amount'] / 100), 2)}}</span>
                 </div>
                 <div class="flex flex-fullJustified text-primary font-size-sm">
-                    <span>Discount</span><span>20%</span>
-                </div>
-                <div class="flex flex-fullJustified text-primary font-size-sm">
                     <span>Coupon</span><span>-${{$data['promot_discount_amount'] / 100}}</span>
                 </div>
                 <div class="flex flex-fullJustified p-t-10x text-primary font-size-sm">
@@ -155,15 +152,17 @@
     <div class="text-right p-a-15x" data-remodal-action="close">
         <i class="iconfont icon-cross icon-size-md text-common"></i></div>
     <div class="font-size-sm">
+        @foreach($shipMethodList as $index => $shipMethod)
         <hr class="hr-base m-a-0">
-        <div class="p-a-15x flex flex-fullJustified flex-alignCenter btn-changeDelivery" data-dialog="Registered AirMail/7-20 working days $0.00">
-            <span>Registered AirMail/7-20 working days $0.00</span>
+        <div class="p-a-15x flex flex-fullJustified flex-alignCenter btn-changeDelivery" data-dialog="{{ $shipMethod['logistics_name'] }} ${{ number_format(($shipMethod['price'] / 100), 2) }}">
+            <span>{{ $shipMethod['logistics_name'] }} ${{ number_format(($shipMethod['price'] / 100), 2) }}</span>
             <span class="">
-                <label class="iconfont icon-radio icon-size-md text-common m-b-0 active" for="delivery1"></label>
-                <input type="radio" name="stype" value="1" id="delivery1" checked="checked" hidden>
+                <label class="iconfont icon-radio icon-size-md text-common m-b-0 @if(0 == $shipMethod['price']) active @endif" for="delivery{{$index + 1}}"></label>
+                <input type="radio" name="stype" value="{{$shipMethod['logistics_type']}}" id="delivery{{$shipMethod['logistics_type']}}" @if(0 == $shipMethod['price']) checked="checked" @endif hidden>
             </span>
         </div>
-        <hr class="hr-base m-a-0">
+        @endforeach
+{{--        <hr class="hr-base m-a-0">
         <div class="p-a-15x flex flex-fullJustified flex-alignCenter btn-changeDelivery" data-dialog="Standard/7-8 working days $14.50">
             <span>Standard/7-8 working days $14.50</span>
             <span class="">
@@ -178,7 +177,7 @@
                 <label class="iconfont icon-radio icon-size-md text-common m-b-0" for="delivery3"></label>
                 <input type="radio" name="stype" value="3" id="delivery3" hidden>
             </span>
-        </div>
+        </div>--}}
     </div>
     <hr class="hr-base m-a-0">
     <div class="p-x-15x p-t-10x p-b-15x">

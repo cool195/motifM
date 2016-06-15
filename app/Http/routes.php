@@ -126,6 +126,8 @@ $app->group(['namespace' => 'App\Http\Controllers\Shopping'], function ($app) {
     $app->post('/user/signup', 'UserController@signup');
 });
 
+$app->group(['middleware' => 'logincheck', 'namespace' => 'App\Http\Controllers\Other'], function ($app) {
+    $app->get('/askshopping', 'AskController@show');
+    $app->put('/askshopping', 'AskController@install');
+});
 
-$app->get('askshopping', ['middleware' => 'logincheck', 'uses' => 'Other\AskController@show']);
-$app->put('askshopping', ['middleware' => 'logincheck', 'uses' => 'Other\AskController@install']);
