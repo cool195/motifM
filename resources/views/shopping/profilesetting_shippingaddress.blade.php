@@ -5,8 +5,8 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
     <title>Address List</title>
-    <link rel="icon" href="/favicon.ico">
-    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    <link rel="icon" href="/images/favicon.ico">
+    <link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
     <!-- Place favicon.ico in the root directory -->
 
     <link rel="stylesheet" href="/styles/vendor.css">
@@ -38,54 +38,49 @@
 
                 <!-- 地址列表 -->
                 <aside class="bg-white m-b-10x">
-                @foreach($data['list'] as $addr)
-                    <hr class="hr-base m-a-0">
-                    <a href="/user/addrmod/{{$addr['receiving_id']}}">
-                    <div class="addressList-container font-size-sm" id="primaryItem" data-address="" data-aid="101">
-                         <div class="addressItem-info text-primary m-l-15x p-r-15x p-y-10x" data-action="return" data-url-return="return" data-url-edit="edit">
-                                <div>
-                                    <div></div>
-                                    <div>{{$addr['email']}}</div>
-                                    <div>{{$addr['detail_address1']}}  @if(!empty($addr['detail_address2'])) {{$addr['detail_address2']}} @endif</div>
-                                    <div>{{$addr['city']}}, {{$addr['zip']}} {{$addr['zip']}}</div>
-                                    <div>{{$addr['country']}}</div>
-                                    <div>@if(!empty($addr['telephone'])) {{$addr['telephone']}} @endif</div>
-                                </div>
-                                 <div class="flex flex-alignCenter">
-                                     @if($addr['isDefault'])
-                                     <span class="text-common p-r-20x">Primary</span>
-                                     @endif
-                                     @if($addr['isDefault'])
-                                             <i class="iconfont icon-size-sm text-common icon-radio active"></i>
-                                         @else
-                                             <i class="iconfont icon-size-sm text-common icon-radio"></i>
-
-                                         @endif
-
-                                 </div>
+                @if(isset($data['list']))i
+                    @foreach($data['list'] as $addr)
+                     <hr class="hr-base m-a-0">
+                     <div class="addressList-container font-size-sm" id="primaryItem" data-address="" data-aid="101">
+                         @if(1 !== $addr['isDefault'])
+                             <div class="addressList-delete switch" data-remodal-target="modal">
+                                 <i class="iconfont icon-delete icon-size-md text-warning"></i>
+                             </div>
+                         @endif
+                        <a href="/user/addrmod/{{$addr['receiving_id']}}">
+                        <div class="addressItem-info text-primary m-l-15x p-r-15x p-y-10x" data-action="return" data-url-return="return" data-url-edit="edit">
+                            <div>
+                                <div>{{$addr['email']}}</div>
+                                <div>{{$addr['detail_address1']}}  @if(!empty($addr['detail_address2'])) {{$addr['detail_address2']}} @endif</div>
+                                <div>{{$addr['city']}}, {{$addr['zip']}} {{$addr['zip']}}</div>
+                                <div>{{$addr['country']}}</div>
+                                <div>@if(!empty($addr['telephone'])) {{$addr['telephone']}} @endif</div>
+                            </div>
+                            @if(1 == $addr['isDefault'])
+                            <div class="flex flex-alignCenter">
+                                <span class="text-common p-r-20x">Primary</span>
+                                <i class="iconfont icon-check icon-size-sm text-common"></i>
+                            </div>
+                            @endif
                         </div>
+                        </a>
                     </div>
-                    </a>
-                @endforeach
+                    @endforeach
+                @endif
                 </aside>
-
                 <aside class="bg-white">
                     <a class="flex flex-alignCenter text-primary p-a-15x" href="/user/addradd">
                         <i class="iconfont icon-add icon-size-sm p-r-10x"></i>
                         <span class="font-size-sm">Add a New Address</span>
                     </a>
                 </aside>
-                <aside class="p-a-15x">
-                    <div class="btn btn-block btn-primary" data-role="submit">Continue</div>
-                </aside>
+
             </section>
 
-            <!-- 页脚 功能链接 start-->
+            <!-- 页脚 功能链接 -->
             @include('footer')
-            <!-- 页脚 功能链接 end-->
         </div>
     </div>
-
     <!-- 弹出选择 size color Engraving -->
     <!-- TODO remodal 有多余的样式 需要整理 -->
     <!-- 删除将要购买的商品 -->
