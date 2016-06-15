@@ -31,15 +31,13 @@
             <article class="font-size-md text-main p-a-10x"><strong>Orders</strong></article>
 
             <!-- 订单数为0 -->
-            <!--<div class="m-t-20x">-->
-            <!--<div class="order-empty-content m-t-20x p-x-10x">-->
-            <!--<div class="container m-t-20x order-emptyInfo">-->
-            <!--<div class="m-b-20x p-b-5x"><i class="btn-orderEmpty iconfont icon-error"></i></div>-->
-            <!--<p class="text-primary font-size-sm m-b-20x p-b-20x">No orders found</p>-->
-            <!--<a href="#" class="btn btn-primary btn-block btn-sm">Go Shopping</a>-->
-            <!--</div>-->
-            <!--</div>-->
-            <!--</div>-->
+            <div class="order-empty-content m-t-20x p-x-10x" id="emptyOrder">
+                <div class="container m-t-20x order-emptyInfo">
+                    <div class="m-b-20x p-b-5x"><i class="btn-orderEmpty iconfont icon-error"></i></div>
+                    <p class="text-primary font-size-sm m-b-20x p-b-20x">No orders found</p>
+                    <a href="#" class="btn btn-primary btn-block btn-sm">Go Shopping</a>
+                </div>
+            </div>
 
             <!-- 订单列表 -->
             <section class="orderList" id="orderContainer" data-loading="false" data-pagenum="0">
@@ -65,7 +63,8 @@
                 <span class="font-size-sm text-primary">
                     <strong>@{{ $value.status_info }}: </strong>@{{ $value.update_time }}
                 </span>
-                <a class="btn btn-primary btn-sm" href="/shopping/order/orderdetail/@{{ $value.sub_order_no }}">Order Detail</a>
+                <a class="btn btn-primary btn-sm" href="/shopping/order/orderdetail/@{{ $value.sub_order_no }}">Order
+                    Detail</a>
             </div>
             @{{ if $value.status_explain == '' || $value.status_explain == null }}
             <div class="font-size-sm text-primary p-t-10x">
