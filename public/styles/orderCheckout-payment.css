@@ -1,0 +1,69 @@
+.payPal-container,
+.cardCredit-container {
+  background-color: #fff;
+}
+
+.cardCredit-container ~ .addressList-container {
+  border-top: 1px solid #e2e5ed;
+}
+
+.payment-delete {
+  width: 2rem;
+  max-width: 2rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-negative: 0;
+      flex-shrink: 0;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  overflow: hidden;
+  -webkit-transition: max-width 300ms ease, -webkit-transform 300ms ease;
+  transition: max-width 300ms ease, -webkit-transform 300ms ease;
+  transition: max-width 300ms ease, transform 300ms ease;
+  transition: max-width 300ms ease, transform 300ms ease, -webkit-transform 300ms ease;
+}
+
+.payment-delete.switch {
+  max-width: 0;
+  -webkit-transform: translateX(-200%);
+          transform: translateX(-200%);
+  -webkit-transition: max-width 300ms ease, -webkit-transform 300ms ease;
+  transition: max-width 300ms ease, -webkit-transform 300ms ease;
+  transition: max-width 300ms ease, transform 300ms ease;
+  transition: max-width 300ms ease, transform 300ms ease, -webkit-transform 300ms ease;
+}
+
+.payment-item {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: stretch;
+      -ms-flex-align: stretch;
+          align-items: stretch;
+}
+
+.payment-info {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  width: 100%;
+  -webkit-transition: width 300ms ease-out;
+  transition: width 300ms ease-out;
+}
+
+.hidden {
+  display: none;
+}
+
+/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIm9yZGVyQ2hlY2tvdXQtcGF5bWVudC5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUNBOztFQUVJLHVCQUF1QjtDQUMxQjs7QUFFRDtFQUNJLDhCQUE4QjtDQUNqQzs7QUFFRDtFQUNJLFlBQVk7RUFDWixnQkFBZ0I7RUFDaEIscUJBQWM7RUFBZCxxQkFBYztFQUFkLGNBQWM7RUFDZCxxQkFBZTtNQUFmLGVBQWU7RUFDZiwwQkFBb0I7TUFBcEIsdUJBQW9CO1VBQXBCLG9CQUFvQjtFQUNwQixzQkFBMEI7TUFBMUIsbUJBQTBCO1VBQTFCLDBCQUEwQjtFQUMxQixpQkFBaUI7RUFDakIsdUVBQXVEO0VBQXZELCtEQUF1RDtFQUF2RCx1REFBdUQ7RUFBdkQscUZBQXVEO0NBTTFEOztBQWREO0VBVVEsYUFBYTtFQUNiLHFDQUFxQjtVQUFyQiw2QkFBcUI7RUFDckIsdUVBQXVEO0VBQXZELCtEQUF1RDtFQUF2RCx1REFBdUQ7RUFBdkQscUZBQXVEO0NBQzFEOztBQUVMO0VBQ0kscUJBQWM7RUFBZCxxQkFBYztFQUFkLGNBQWM7RUFDZCwyQkFBcUI7TUFBckIsd0JBQXFCO1VBQXJCLHFCQUFxQjtDQUN4Qjs7QUFDRDtFQUNJLHFCQUFjO0VBQWQscUJBQWM7RUFBZCxjQUFjO0VBQ2QsMEJBQW9CO01BQXBCLHVCQUFvQjtVQUFwQixvQkFBb0I7RUFDcEIsMEJBQStCO01BQS9CLHVCQUErQjtVQUEvQiwrQkFBK0I7RUFDL0IsWUFBWTtFQUNaLHlDQUFpQztFQUFqQyxpQ0FBaUM7Q0FDcEM7O0FBRUQ7RUFDSSxjQUFjO0NBQ2pCIiwiZmlsZSI6Im9yZGVyQ2hlY2tvdXQtcGF5bWVudC5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyJcbi5wYXlQYWwtY29udGFpbmVyLFxuLmNhcmRDcmVkaXQtY29udGFpbmVyIHtcbiAgICBiYWNrZ3JvdW5kLWNvbG9yOiAjZmZmO1xufVxuXG4uY2FyZENyZWRpdC1jb250YWluZXIgfiAuYWRkcmVzc0xpc3QtY29udGFpbmVyIHtcbiAgICBib3JkZXItdG9wOiAxcHggc29saWQgI2UyZTVlZDtcbn1cblxuLnBheW1lbnQtZGVsZXRlIHtcbiAgICB3aWR0aDogMnJlbTtcbiAgICBtYXgtd2lkdGg6IDJyZW07XG4gICAgZGlzcGxheTogZmxleDtcbiAgICBmbGV4LXNocmluazogMDtcbiAgICBhbGlnbi1pdGVtczogY2VudGVyO1xuICAgIGp1c3RpZnktY29udGVudDogZmxleC1lbmQ7XG4gICAgb3ZlcmZsb3c6IGhpZGRlbjtcbiAgICB0cmFuc2l0aW9uOiBtYXgtd2lkdGggMzAwbXMgZWFzZSwgdHJhbnNmb3JtIDMwMG1zIGVhc2U7XG4gICAgJi5zd2l0Y2gge1xuICAgICAgICBtYXgtd2lkdGg6IDA7XG4gICAgICAgIHRyYW5zZm9ybTogdHJhbnNsYXRlWCgtMjAwJSk7XG4gICAgICAgIHRyYW5zaXRpb246IG1heC13aWR0aCAzMDBtcyBlYXNlLCB0cmFuc2Zvcm0gMzAwbXMgZWFzZTtcbiAgICB9XG59XG4ucGF5bWVudC1pdGVte1xuICAgIGRpc3BsYXk6IGZsZXg7XG4gICAgYWxpZ24taXRlbXM6IHN0cmV0Y2g7XG59XG4ucGF5bWVudC1pbmZvIHtcbiAgICBkaXNwbGF5OiBmbGV4O1xuICAgIGFsaWduLWl0ZW1zOiBjZW50ZXI7XG4gICAganVzdGlmeS1jb250ZW50OiBzcGFjZS1iZXR3ZWVuO1xuICAgIHdpZHRoOiAxMDAlO1xuICAgIHRyYW5zaXRpb246IHdpZHRoIDMwMG1zIGVhc2Utb3V0O1xufVxuXG4uaGlkZGVuIHtcbiAgICBkaXNwbGF5OiBub25lO1xufVxuIl0sInNvdXJjZVJvb3QiOiIvc291cmNlLyJ9 */

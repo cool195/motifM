@@ -52,16 +52,10 @@
                                 <div>{{$addr['country']}}</div>
                                 <div>@if(isset($addr['telephone'])) {{$addr['telephone']}}  @endif</div>
                             </div>
-                            @if(1 == $addr['isDefault'])
                             <div class="flex flex-alignCenter">
-                                <span class="text-common p-r-20x">Primary</span>
-                                <i class="iconfont icon-radio active icon-size-sm text-common"></i>
+                                @if(1 == $addr['isDefault']) <span class="text-common p-r-20x">Primary</span> @endif
+                                <i class="iconfont icon-radio icon-size-sm text-common"></i>
                             </div>
-                            @else
-                                <div class="flex">
-                                    <i class="iconfont icon-radio icon-size-sm text-common"></i>
-                                </div>
-                            @endif
                         </div>
                     </div>
                         @endforeach
@@ -102,7 +96,17 @@
         <div class="loader loader-screen"></div>
     </div>
     <form id="infoForm" action="/cart/ordercheckout" method="get" hidden>
-        <input type="hidden" name="aid" value="{{$input['aid']}}">
+
+{{--        <input type="hidden" name="aid" value="{{$input['aid']}}">
+        <input type="hidden" name="paym" value="">
+        <input type="hidden" name="cps" value="">
+        <input type="hidden" name="remark" value="">
+        <input type="hidden" name="stype" value="">--}}
+        @if(isset($input) && !empty($input))
+            @foreach($input as $name => $value)
+                <input type="hidden" name="{{$name}}" value="{{$value}}">
+            @endforeach
+        @endif
     </form>
 </body>
 <script src="/scripts/vendor.js"></script>
