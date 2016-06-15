@@ -96,12 +96,7 @@
         <div class="loader loader-screen"></div>
     </div>
     <form id="infoForm" action="/cart/ordercheckout" method="get" hidden>
-
-{{--        <input type="hidden" name="aid" value="{{$input['aid']}}">
-        <input type="hidden" name="paym" value="">
-        <input type="hidden" name="cps" value="">
-        <input type="hidden" name="remark" value="">
-        <input type="hidden" name="stype" value="">--}}
+        <input type="hidden" name="aid" value="{{$aid}}">
         @if(isset($input) && !empty($input))
             @foreach($input as $name => $value)
                 <input type="hidden" name="{{$name}}" value="{{$value}}">

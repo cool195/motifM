@@ -31,7 +31,7 @@
                 <form id="infoForm" action="/cart/ordercheckout" method="get">
                     <fieldset>
                         <div class="message-info">
-                            <textarea class="form-control form-control-block p-a-15x font-size-sm" name="remark" id="messageContent" value="{{$remark}}" placeholder="Message" rows="12" data-length="1000"></textarea>
+                            <textarea class="form-control form-control-block p-a-15x font-size-sm" name="remark" id="messageContent"  placeholder="Message" rows="12" data-length="1000">{{$remark}}</textarea>
                             <span class="message-wordNumber font-size-sm text-primary"><span id="wordNum">0</span>/1000</span>
                         </div>
                     </fieldset>
