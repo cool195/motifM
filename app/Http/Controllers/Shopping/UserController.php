@@ -250,7 +250,7 @@ class UserController extends ApiController
             $result['data'] = array();
         }else{
             if($result['success']){
-                //Cache::forget('user');
+                Session::forget('user');
                 $result['redirectUrl'] = "/login";
             }
         }
