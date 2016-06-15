@@ -25,8 +25,8 @@
     @include('navigator')
     <!-- 图片详情 --><!-- 弹出图片轮播 -->
         <div class="product-detailImg fade">
-            <div class="swiper-container" id="detailImg-swiper">
-                <div class="swiper-wrapper">
+            <div class="swiper-container p-b-20x" id="detailImg-swiper">
+                <div class="swiper-wrapper p-b-20x">
                     @if(isset($data['productImages']))
                         @foreach($data['productImages'] as $image)
                             <div class="swiper-slide">
@@ -38,7 +38,7 @@
                         @endforeach
                     @endif
                 </div>
-                <div class="swiper-pagination font-size-sm" id="detailImg-pagination"></div>
+                <div class="swiper-pagination text-white font-size-sm" id="detailImg-pagination"></div>
             </div>
         </div>
         <!-- 商品内容介绍 -->
