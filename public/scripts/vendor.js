@@ -16460,7 +16460,10 @@ else if (typeof define === 'function' && define.amd) {
                 // 操作成功刷新页面
                 if (data.success) {
                     if (data.data.skusAmout > 0) {
+                        $('.nav-shoppingCart').children('span').show();
                         $('.nav-shoppingCart').children('span').html(data.data.skusAmout);
+                    } else {
+                        $('.nav-shoppingCart').children('span').hidden();
                     }
                 }
             }).fail(function () {
