@@ -24,11 +24,11 @@
      * @param $Edit
      */
     function switchSelect($Edit) {
-        var $IconFont = $('.addressItem-info').find('.iconfont');
+        var $IconFont = $('.payment-info').find('.iconfont');
         if ($Edit.hasClass('active')) {
-            $IconFont.removeClass('icon-arrow-right').addClass('icon-radio');
+            $IconFont.addClass('icon-radio');
         } else {
-            $IconFont.removeClass('icon-radio').addClass('icon-arrow-right');
+            $IconFont.removeClass('icon-radio');
         }
     }
 
@@ -37,22 +37,22 @@
      * @param $Edit
      */
     function switchLink($Edit) {
-        var $LinkList = $('.addressItem-info');
+        var $LinkList = $('.payment-info');
 
         if ($Edit.hasClass('active')) {
             $.each($LinkList, function (index, val) {
-                var Action = $(val).data('url-return');
-                $(val).attr('data-action', Action);
+                var Link = $(val).data('url-return');
+                $(val).attr('href', Link);
             });
         } else {
             $.each($LinkList, function (index, val) {
-                var Action = $(val).data('url-edit');
-                $(val).attr('data-action', Action);
+                var Link = $(val).data('url-edit');
+                $(val).attr('href', Link);
             });
         }
     }
 
-    $('#address-edit').on('click', function (e) {
+    $('#payment-edit').on('click', function (e) {
         // 可选的状态切换
         switchSelect($(e.target));
 
@@ -62,8 +62,13 @@
         // 切换按钮以及叉号状态
         switchEdit($(e.target));
 
-        $('.addressList-delete').toggleClass('switch');
+        $('.payment-delete').toggleClass('switch');
     });
+
+    $('[data-role="submit"]').on('click', function () {
+        $('#infoForm').submit();
+    });
+
     // loading 打开
     function openLoading() {
         $('.loading').toggleClass('loading-hidden');
@@ -84,18 +89,19 @@
      *
      * @param AddressId
      */
-    function deleteAddress(AddressID) {
+    function deleteAddress(PaymentToken) {
+        // TODO loading 动画
         openLoading();
 
         $.ajax({
-            url: '/addresses',
+            url: ' /pay/del',
             type: 'DELETE',
-            data: { aid: AddressID }
-        }).done(function (data) {
-            // TODO 请求成功后 删除相应地址
-            if (data.success) {
-                console.log("success");
+            data: {
+                methodtoken: PaymentToken
             }
+        }).done(function () {
+            console.log("success");
+            return true;
         }).fail(function () {
             console.log("error");
         }).always(function () {
@@ -105,15 +111,16 @@
     }
 
     // 删除按钮
-    $('.addressList-delete').on('click', function (e) {
-        var AddressID = $(e.target).parents('.addressList-container').data('aid');
-        $('#modalDialog').data('aid', AddressID);
+    $('.payment-delete').on('click', function (e) {
+        var PaymentToken = $(e.target).parents('.payment-info').data('token');
+        $('#modalDialog').data('address', PaymentToken);
     });
-
-    $('div[data-role="submit"]').on('click', function () {
-        // TODO 提交相应数据到后台
+    $('.payment-info').on('click', function () {
+        $('.icon-radio.active').removeClass('active');
+        $(this).find('.icon-radio').addClass('active');
+        var PaymentToken = $(this).parents('.payment-info').data('token');
+        $('input[name="methodtoken"]').val(PaymentToken);
     });
-
     // 初始化 模态框
     $('#modalDialog').remodal({
         closeOnOutsideClick: false,
@@ -124,14 +131,13 @@
         $(this).removeData('address');
         console.log('close');
     });
-
     $('#modalDialog').on('confirmation', function () {
-        var AddressID = $(this).data('aid');
+        var PaymentToken = $(this).data('token');
         if (AddressID === undefined || AddressID === null || AddressID === '') {
-            console.log('AddressID 没有值');
+            console.log('Token 没有值');
             return;
         }
-        deleteAddress(AddressID);
+        deleteAddress(PaymentToken);
     });
 })(jQuery);
-//# sourceMappingURL=profileSetting-addressList.js.map
+//# sourceMappingURL=orderCheckout-payment.js.map

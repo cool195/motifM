@@ -34,14 +34,14 @@ class CartController extends ApiController
 	public function orderCheckout(Request $request)
 	{
 		$result = $this->getCartAccountList($request);
-		$defaultAddr = $this->getUserDefaultAddr();
+		$addr = $this->getUserAddrByAid($request->input('aid', 0));
 		$defaultPayMethod = $this->getDefaultPayMethod();
 		if(empty($result['data'])){
 			return redirect('/shopping');
 		}
 		return View('shopping.ordercheckout', [
 			'data'=>$result['data'], 
-			'addr'=>$defaultAddr['data'],
+			'addr'=>$addr,
 			'pay'=>$defaultPayMethod['data']
 		]);
 	}
@@ -70,7 +70,29 @@ class CartController extends ApiController
 		return $result;
 	}
 
+
+
 	public function addressList(Request $request)		
+	{
+		$input = $request->all();
+		$result = $this->getUserAddressList();
+		return View('shopping.ordercheckout_addresslist', ['data'=>$result['data'], 'input'=>$input]);
+	}
+
+	private function getUserAddrByAid($aid)
+	{
+		$addrList = $this->getUserAddressList();
+		$defaultAddr = $this->getUserDefaultAddr();
+		$addr = $defaultAddr['data'];
+		if($addrList['success'] && !empty($addrList['data']['list'])){
+			if(isset($addrList['data']['list'][$aid])) {
+				$addr = $addrList['data']['list'][$aid];
+			}
+		}
+		return $addr;
+	}
+
+	private function getUserAddressList()
 	{
 		$cmd = 'list';
 		$params = array(
@@ -86,10 +108,17 @@ class CartController extends ApiController
 			$result['success'] = false;
 			$result['error_msg'] = "Data access failed";
 			$result['data']['list'] = array();
+		}else{
+			if($result['success'] && !empty($result['data']['list'])){
+				$list = array();
+				foreach($result['data']['list'] as $addr){
+					$list[$addr['receiving_id']] = $addr;
+				}
+				$result['data']['list'] = $list;
+			}
 		}
-		return View('shopping.ordercheckout_addresslist', ['data'=>$result['data']]);
+		return $result;
 	}
-
 
 	private function getDefaultPayMethod()
 	{

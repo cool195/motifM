@@ -6,20 +6,23 @@
 'use strict';
 
 (function ($) {
-    // 隐藏、显示 文字内容
-    // 显示 message to us 文字内容
-    var text = $('#messageInfo').html();
-    var newInfo = $('<div></div>').html(text.substring(0, 550));
-    $('#btnShowMore').on('click', function () {
-        var showMore = $('#showMore');
-        var btntext = showMore.text() === 'Show Less' ? 'Show More' : 'Show Less';
-        var classtext = showMore.text() === 'Show Less' ? 'icon-arrow-bottom' : 'icon-arrow-right';
-        var textstr = showMore.text() === 'Show More' ? text : text.substring(0, 550);
-        showMore.text(btntext);
-        $('#btnShowMore i').removeClass('icon-arrow-bottom icon-arrow-right').addClass(classtext);
-        $('#messageInfo').html(newInfo.html(textstr));
+    // 显示隐藏 message 更多内容
+    $('.btn-showMore').on('click', function () {
+        var $Message = $(this).siblings('.message-info');
+        $Message.toggleClass('active');
+        if ($Message.hasClass('active')) {
+            $(this).children('.showMore').html('Show Less');
+            $(this).children('.iconfont').removeClass('icon-arrow-bottom').addClass('icon-arrow-up');
+        } else {
+            $(this).children('.showMore').html('Show More');
+            $(this).children('.iconfont').removeClass('icon-arrow-up').addClass('icon-arrow-bottom');
+        }
     });
-    $('#messageInfo').html(newInfo.html());
+    $(document).ready(function () {
+        if ($('.message-info').children('p').height() <= 144) {
+            $('.btn-showMore').hide();
+        }
+    });
 
     // 获取当前取消的 订单
     function getOperate() {

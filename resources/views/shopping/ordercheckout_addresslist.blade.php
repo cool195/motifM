@@ -38,7 +38,7 @@
                 <aside class="bg-white m-b-10x">
                     @if(isset($data['list']))
                         @foreach($data['list'] as $addr)
-                    <div class="addressList-container font-size-sm" id="primaryItem" data-address="1">
+                    <div class="addressList-container font-size-sm" id="primaryItem" data-address="{{ $addr['receiving_id'] }}">
                         @if(1 !== $addr['isDefault'])
                         <div class="addressList-delete switch" data-remodal-target="modal">
                             <i class="iconfont icon-delete icon-size-md text-warning"></i>
@@ -101,6 +101,9 @@
     <div class="loading loading-screen loading-switch loading-hidden">
         <div class="loader loader-screen"></div>
     </div>
+    <form id="infoForm" action="/cart/ordercheckout" method="get" hidden>
+        <input type="hidden" name="aid" value="{{$input['aid']}}">
+    </form>
 </body>
 <script src="/scripts/vendor.js"></script>
 
