@@ -148,46 +148,30 @@
 </div>
 
 <!-- 弹出 选择运送方式 Delivery -->
-<div class="remodal remodal-lg modal-content" data-remodal-id="delivery-modal" id="deliveryDialog">
+<div class="remodal remodal-lg modal-content" data-remodal-id="delivery-modal" data-select="{{ $shipMethodList[0]['logistics_type'] }}" id="deliveryDialog">
     <div class="text-right p-a-15x" data-remodal-action="close">
-        <i class="iconfont icon-cross icon-size-md text-common"></i></div>
+        <i class="iconfont icon-cross icon-size-md text-common"></i>
+    </div>
     <div class="font-size-sm">
         @foreach($shipMethodList as $index => $shipMethod)
         <hr class="hr-base m-a-0">
-        <div class="p-a-15x flex flex-fullJustified flex-alignCenter btn-changeDelivery" data-dialog="{{ $shipMethod['logistics_name'] }} ${{ number_format(($shipMethod['price'] / 100), 2) }}">
+        <div class="p-a-15x flex flex-fullJustified flex-alignCenter" data-stype="{{$shipMethod['logistics_type']}}" data-dialog="{{ $shipMethod['logistics_name'] }} ${{ number_format(($shipMethod['price'] / 100), 2) }}">
             <span>{{ $shipMethod['logistics_name'] }} ${{ number_format(($shipMethod['price'] / 100), 2) }}</span>
-            <span class="">
-                <label class="iconfont icon-radio icon-size-md text-common m-b-0 @if(0 == $shipMethod['price']) active @endif" for="delivery{{$index + 1}}"></label>
-                <input type="radio" name="stype" value="{{$shipMethod['logistics_type']}}" id="delivery{{$shipMethod['logistics_type']}}" @if(0 == $shipMethod['price']) checked="checked" @endif hidden>
-            </span>
+            <i class="iconfont icon-radio icon-size-md text-common active"></i>
         </div>
         @endforeach
-{{--        <hr class="hr-base m-a-0">
-        <div class="p-a-15x flex flex-fullJustified flex-alignCenter btn-changeDelivery" data-dialog="Standard/7-8 working days $14.50">
-            <span>Standard/7-8 working days $14.50</span>
-            <span class="">
-                <label class="iconfont icon-radio icon-size-md text-common m-b-0" for="delivery2"></label>
-                <input type="radio" name="stype" value="2" id="delivery2" hidden>
-            </span>
-        </div>
-        <hr class="hr-base m-a-0">
-        <div class="p-a-15x flex flex-fullJustified flex-alignCenter btn-changeDelivery" data-dialog="Expedited/5-6 working days $25.66">
-            <span>Expedited/5-6 working days $25.66</span>
-            <span class="">
-                <label class="iconfont icon-radio icon-size-md text-common m-b-0" for="delivery3"></label>
-                <input type="radio" name="stype" value="3" id="delivery3" hidden>
-            </span>
-        </div>--}}
     </div>
     <hr class="hr-base m-a-0">
     <div class="p-x-15x p-t-10x p-b-15x">
-        <div class="btn btn-primary btn-block btn-md" data-dialog="" data-remodal-action="confirm">Change</div>
+        <div class="btn btn-primary btn-block btn-md" data-remodal-action="confirm">Change</div>
     </div>
 </div>
+
 <!-- 隐藏表单域 -->
 <form id="infoForm" action="" hidden>
     <input type="hidden" name="aid" value="{{$addr['receiving_id']}}">
-    @if(isset($input) && !empty($input))
+    <input type="hidden" name="stype" value="delivery" hidden>
+@if(isset($input) && !empty($input))
         @foreach($input as $name=>$value)
             <input type="hidden" name="{{$name}}" value="{{$value}}">
         @endforeach
