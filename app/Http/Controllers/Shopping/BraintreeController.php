@@ -40,8 +40,12 @@ class BraintreeController extends ApiController
         );
         $result = $this->request('openapi', '', 'pay', $params);
         $token = isset($result['data']['token']) ? $result['data']['token'] : '';
-        $view = $request->input('checkout') ? 'shopping.checkpayment' : 'shopping.paymentmethod';
-        return View($view, ['token' => $token, 'methodlist' => $methodlist['data']]);
+        $view = View('shopping.paymentmethod', ['token' => $token, 'methodlist' => $methodlist['data']]);
+        if('checkout' == $request->input('pageSrc')) {
+            $input = $request->except('pageSrc', 'methodtoken');
+            $view = View('shopping.checkpayment', ['token' => $token, 'methodlist' => $methodlist['data'], 'input'=>$input]);
+        }
+        return $view;
     }
 
     //Braintree回调,绑定支付信息方法

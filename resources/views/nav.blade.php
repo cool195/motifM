@@ -38,7 +38,7 @@
             </li>
         @endif
         <li class="nav-item">
-            <a href="/shopping/orderlist" class="flex flex-alignCenter flex-fullJustified p-a-15x">
+            <a href="/order/orderlist" class="flex flex-alignCenter flex-fullJustified p-a-15x">
                 <div class="font-size-sm text-primary flex flex-alignCenter"><i
                             class="iconfont icon-book icon-size-md p-r-15x"></i><span>Orders</span></div>
                 <span class="text-common"><i class="iconfont icon-arrow-right icon-size-sm"></i></span>

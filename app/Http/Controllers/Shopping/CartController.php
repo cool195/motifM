@@ -81,7 +81,7 @@ class CartController extends ApiController
 
 	public function addressList(Request $request)		
 	{
-		$input = $request->except('aid');
+		$input = $request->except('aid', 'checkout');
 		$aid = $request->input('aid', 0);
 		$result = $this->getUserAddressList();
 		return View('shopping.ordercheckout_addresslist', ['data'=>$result['data'], 'input'=>$input, 'aid'=>$aid]);

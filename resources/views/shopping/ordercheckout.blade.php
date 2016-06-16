@@ -53,9 +53,11 @@
                                         @if(isset($showSku['showVASes']) && !empty($showSku['showVASes']))
                                             @foreach($showSku['showVASes'] as $showVAS)
                                                 <div class="flex flex-fullJustified">
-                                                    <div class="">
-                                                        <span>{{$showVAS['vas_name']}}: </span><span>{{$showVAS['user_remark']}}</span></div>
-                                                    <div class="">${{number_format(($showVAS['vas_price'] / 100), 2)}}</div>
+                                                    <div>
+                                                        <span>{{$showVAS['vas_name']}}: </span>
+                                                        <span>{{$showVAS['user_remark']}} </span>
+                                                    </div>
+                                                    <div>${{number_format(($showVAS['vas_price'] / 100), 2)}}</div>
                                                 </div>
                                             @endforeach
                                         @endif
@@ -94,7 +96,7 @@
                     </div>
                 </a>
                 <hr class="hr-base">
-                <div class="flex font-size-sm text-primary p-a-10x" data-form-action="2">
+                <div class="flex font-size-sm text-primary p-a-10x" data-form-action="/braintree">
                     <span class="checkoutInfo-subTitle flex-fixedShrink">Pay with</span>
                     <div class="checkoutInfo-content flex flex-fullJustified flex-alignCenter">
                         <span>{{ (isset($paym) && !empty($paym)) ? $paym : "paypal"}}</span>
@@ -176,6 +178,7 @@
 
 <!-- 隐藏表单域 -->
 <form id="infoForm" action="" hidden>
+    <input type="hidden" name="pageSrc" value="checkout">
     <input type="hidden" name="aid" value="{{$addr['receiving_id']}}">
     <input type="hidden" name="stype" value="{{$stype}}">
     <input type="hidden" name="paym" value="{{$paym}}">
