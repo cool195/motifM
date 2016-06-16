@@ -72,7 +72,7 @@
                                                      <div class="flex flex-fullJustified">
                                                         <div class="">
                                                              <span>{{$showVAS['vas_name']}}: </span><span>{{$showVAS['user_remark']}}</span></div>
-                                                        <div class="">${{number_format(($showVAS['vas_price']), 2)}}</div>
+                                                        <div class="">${{number_format(($showVAS['vas_price'] / 100), 2)}}</div>
                                                      </div>
                                                 @endforeach
                                             @endif
