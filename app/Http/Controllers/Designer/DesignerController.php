@@ -15,7 +15,7 @@ class DesignerController extends ApiController
             'token' => '1110',
             'pin' => 'e052d5681da34fad83d0597b7b72acf7',
             'size' => $request->input('size', 10),
-            'num' => $request->input('num', 1),
+            'start' => $request->input('start', 1),
         );
 
         if (empty($params['cmd'])) {

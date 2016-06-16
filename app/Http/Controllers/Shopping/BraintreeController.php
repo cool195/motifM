@@ -21,7 +21,7 @@ class BraintreeController extends ApiController
         );
         $result = $this->request('openapi', '', 'pay', $params);
         $token = isset($result['data']['token']) ? $result['data']['token'] : '';
-        $view = $request->input('setting') ? 'shopping.paymentmethod' : 'shopping.checkpayment';
+        $view = $request->input('checkout') ? 'shopping.checkpayment' : 'shopping.paymentmethod';
         return View($view, ['token' => $token, 'methodlist' => $methodlist['data']]);
     }
 
