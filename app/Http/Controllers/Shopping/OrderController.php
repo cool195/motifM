@@ -19,14 +19,12 @@ class OrderController extends ApiController
     public function getOrderList(Request $request)
     {
         $cmd = "ordlist";
-        $num = $request->input("num", 1);
-        $size = $request->input("size", 100);
         $params = array(
             'cmd' => $cmd,
             'token' => Session::get('user.token'),
             'pin' => Session::get('user.pin'),
-            'num' => $num,
-            'size' => $size,
+            'num' => $request->input("num", 1),
+            'size' => $size = $request->input("size", 5),
         );
         $system = "";
         $service = "order";
