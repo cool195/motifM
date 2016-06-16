@@ -33,22 +33,30 @@
 
         <hr class="hr-base m-y-0 m-l-15x">
         @if(isset($data['lineOrderList']))
-            @foreach($data['lineOrderList'] as $lineOrderList)
+            @foreach($data['lineOrderList'] as $lineOrder)
                 <div class="flex p-y-10x p-x-15x">
                     <div class="flex-fixedShrink">
                         <img class="img-thumbnail"
-                             src="{{ 'https://s3-us-west-1.amazonaws.com/emimagetest/n2/'.$lineOrderList['img_path'] }}"
+                             src="{{ 'https://s3-us-west-1.amazonaws.com/emimagetest/n2/'.$lineOrder['img_path'] }}"
                              width="70px" height="70px">
                     </div>
                     <!-- TODO 缩略号的兼容性不好, 需要改样式 -->
                     <div class="p-x-10x order-product-title">
                         <h6 class="text-main font-size-md text-truncate">
-                            <strong>{{$lineOrderList['main_title']}}</strong>
+                            <strong>{{$lineOrder['main_title']}}</strong>
                         </h6>
                         <aside class="text-primary font-size-sm">
-                            <div><span>Size: </span><span>11</span></div>
-                            <div><span>Color: </span><span>Black</span></div>
-                            <div><span>Qty: </span><span>{{$lineOrderList['sale_qtty']}}</span></div>
+                            @if(isset($lineOrder['attrValues']) && !empty($lineOrder['attrValues']))
+                                @foreach($lineOrder['attrValues'] as $attr)
+                                    <div><span>{{$attr['attr_type_value']}}: </span><span>{{$attr['attr_value'] }}</span></div>
+                                @endforeach
+                            @endif
+                            <div><span>Qty: </span><span>{{$lineOrder['sale_qtty']}}</span></div>
+                            @if(isset($lineOrder['vas_info']) && !empty($lineOrder['vas_info']))
+                                @foreach($lineOrder['vas_info'] as $info)
+                                        <div><span>{{$info['vas_name']}}: </span><span>{{$info['user_remark'] }}</span></div>
+                                @endforeach
+                            @endif
                         </aside>
                     </div>
                 </div>
@@ -83,7 +91,7 @@
         <hr class="hr-base">
         <div class="flex font-size-sm text-primary p-y-10x p-x-15x">
             <span class="orderInfo-subTitle flex-fixedShrink">Delivery</span>
-            <span>{{$data['logistics_name']}} +14.5$</span>
+            <span>{{$data['logistics_name']}} +{{number_format(($data['logistics_price'] / 100), 2)}}$</span>
         </div>
         <hr class="hr-base">
         <div class="flex font-size-sm text-primary p-y-10x p-x-15x">
@@ -109,38 +117,23 @@
     <aside class="bg-white m-b-10x">
         <div class="p-a-10x">
             <div class="flex flex-fullJustified text-primary font-size-sm">
-                <span>Items({{ $data['item_qtty'] }}
-                    )</span><span>${{number_format(($data['pay_amount'] / 100), 2)}}</span>
+                <span>Items({{ $data['item_qtty'] }})</span><span>${{number_format(($data['total_amount'] / 100), 2)}}</span>
             </div>
             <div class="flex flex-fullJustified text-primary font-size-sm">
-                <span>Extra</span><span>$21</span>
+                <span>Extra</span><span>${{number_format(($data['vas_amount'] / 100), 2)}}</span>
             </div>
             <div class="flex flex-fullJustified text-primary font-size-sm">
                 <span>Shipping to 10000</span><span>${{ number_format(($data['freight_amount'] / 100), 2) }}</span>
             </div>
             <div class="flex flex-fullJustified text-primary font-size-sm">
-                <span>Discount</span><span>-{{ number_format(($data['promot_discount_amount'] / 100), 2)}}%</span>
-            </div>
-            <div class="flex flex-fullJustified text-primary font-size-sm">
                 <span>Coupon</span><span>-${{ number_format(($data['cps_amount'] / 100), 2)}}</span>
             </div>
             <div class="flex flex-fullJustified p-t-10x text-primary font-size-sm">
-                <span><strong>Order Total</strong></span><span><strong>${{ number_format(($data['total_amount'] / 100), 2)}}</strong></span>
+                <span><strong>Order Total</strong></span><span><strong>${{ number_format(($data['pay_amount'] / 100), 2)}}</strong></span>
             </div>
         </div>
         <hr class="hr-base m-a-0">
         <!-- 服务质量保证 -->
-        <div class="media m-a-0 p-a-10x">
-            <div class="media-left media-middle">
-                <img class="media-object" src="/images/icon/icon-guarantee.png"
-                     srcset="/images/icon/icon-guarantee@2x.png 2x, /images/icon/icon-guarantee@3x.png 3x" alt="">
-            </div>
-            <div class="media-body media-middle">
-                <p class="font-size-sm text-primary m-a-0 p-r-2">MOTIF guarantee quality merchandise and
-                    return
-                    service</p>
-            </div>
-        </div>
     </aside>
 
     <!-- 联系客服 -->

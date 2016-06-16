@@ -72,6 +72,12 @@ class OrderController extends ApiController
 
     public function OrderDetail(Request $request, $subno)
     {
+        $result = $this->getOrderDetail($subno);
+        return View('shopping.orderdetail', ['data' => $result['data']]);
+    }
+
+    public function getOrderDetail($subno)
+    {
         $cmd = 'detail';
         $params = array(
             'cmd' => $cmd,
@@ -86,8 +92,22 @@ class OrderController extends ApiController
             $result['success'] = false;
             $result['error_msg'] = "Data access failed";
             $result['data'] = array();
+        }else{
+            if($result['success'] && !empty($result['data']['lineOrderList'])){
+                $lineOrderList = array();
+                foreach($result['data']['lineOrderList'] as $lineOrder){
+                    if(isset($lineOrder['attrValues'])){
+                        $lineOrder['attrValues'] = json_decode($lineOrder['attrValues'], true);
+                    }
+                    if(isset($lineOrder['vas_info'])){
+                        $lineOrder['vas_info'] = json_decode($lineOrder['vas_info'], true);
+                    }
+                    $lineOrderList[] = $lineOrder;
+                }
+                $result['data']['lineOrderList'] = $lineOrderList;
+            }
         }
-        return View('shopping.orderdetail', ['data' => $result['data']]);
+        return $result;
     }
 
     /*

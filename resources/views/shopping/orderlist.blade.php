@@ -63,7 +63,7 @@
                 <span class="font-size-sm text-primary">
                     <strong>@{{ $value.status_info }}: </strong>@{{ $value.update_time }}
                 </span>
-                <a class="btn btn-primary btn-sm" href="/shopping/order/orderdetail/@{{ $value.sub_order_no }}">Order
+                <a class="btn btn-primary btn-sm" href="/order/orderdetail/@{{ $value.sub_order_no }}">Order
                     Detail</a>
             </div>
             @{{ if $value.status_explain == '' || $value.status_explain == null }}
