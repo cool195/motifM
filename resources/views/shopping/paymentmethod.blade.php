@@ -43,8 +43,8 @@
                             <div class="p-r-15x"><i class="iconfont icon-delete icon-size-md text-warning"></i></div>
                             <div class="font-size-sm text-primary">
                                 <span class="p-r-15x">
-                                    <img src="images/payment/icon-Paypal-active.png"
-                                         srcset="/images/payment/icon-Paypal-active@2x.png 2x,/images/payment/icon-Paypal-active@3x.png 3x"
+                                    <img src="images/payment/icon-paypal-active.png"
+                                         srcset="/images/payment/icon-paypal-active@2x.png 2x,/images/payment/icon-paypal-active@3x.png 3x"
                                          alt=""></span>
                                 <span>{{$value['showName']}}</span></div>
                         </div>

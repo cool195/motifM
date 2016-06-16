@@ -9,6 +9,25 @@ use Illuminate\Support\Facades\Session;
 class BraintreeController extends ApiController
 {
 
+    //支付方式
+    //PAYPAL("PayPal"),
+    //CREDIT_CARD("Card"),
+    //APPLE_PAY("ApplePay"),
+    //ANDROID_PAY("AndroidPay"),
+    //UNKNOWN("unknown");
+    //
+    //
+    //卡类型
+    //AMEX("AmericanExpress"),
+    //DINERS("Diners"),
+    //DISCOVER("Discover"),
+    //JCB("JCB"),
+    //MAESTRO("Maestro"),
+    //MASTERCARD("MasterCard"),
+    //VISA("Visa"),
+    //UNION("ChinaUnionPay"),
+    //UNKNOWN("unknown");
+
     //进入个人中心braintree绑定支付信息模版
     public function index(Request $request)
     {
