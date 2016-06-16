@@ -34,6 +34,9 @@ class BraintreeController extends ApiController
             'nonce' => $request->input("payment_method_nonce"),
         );
         $result = $this->request('openapi', '', 'pay', $params);
+        if(!$result['data']['success']){
+            $result['params'] = $params;
+        }
         return $result;
     }
 
@@ -61,6 +64,27 @@ class BraintreeController extends ApiController
             'src' => 'H5',
         );
         $result = $this->request('openapi', '', 'pay', $params);
+        return $result;
+    }
+
+    //删除绑定
+    public function delMethod(Request $request)
+    {
+        $cmd = "delmethod";
+        $params = array(
+            'cmd' => $cmd,
+            'token' => Session::get('user.token'),
+            'pin' => Session::get('user.pin'),
+            'methodtoken' => $request->input('methodtoken')
+        );
+        $system = "";
+        $service = "pay";
+        $result = $this->request('openapi', $system, $service, $params);
+        if(empty($result)){
+            $result['success'] = false;
+            $result['error_msg'] = "Data access failed";
+            $result['data'] = array();
+        }
         return $result;
     }
 }
