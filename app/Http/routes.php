@@ -99,7 +99,8 @@ $app->group(['middleware' => 'logincheck', 'namespace' => 'App\Http\Controllers\
     $app->get('/order/orderlist', 'OrderController@index');
     $app->get('/orders', 'OrderController@getOrderList');
     $app->get('/shopping/order/orderdetail/{subno}', 'OrderController@orderDetail');
-    $app->get('/shopping/order/orderSubmit', 'OrderController@orderSubmit');
+    $app->get('/order/orderSubmit', 'OrderController@orderSubmit');
+    $app->post('/order/orderSubmit', 'OrderController@orderSubmit');
 
     $app->get('/braintree', 'BraintreeController@index');
     //$app->get('/payment/default', 'BraintreeController@getDefault');

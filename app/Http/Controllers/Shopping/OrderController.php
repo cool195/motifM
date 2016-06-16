@@ -108,7 +108,8 @@ class OrderController extends ApiController
             'remark' => $request->input('remark'),
             'stype' => $request->input('stype'),
             'src' => $request->input('src', "H5"),
-            'ver' => $request->input('ver', 1)
+            'ver' => $request->input('ver', 1),
+            'ordtime' => ""
         );
         $system = "";
         $service = "order";

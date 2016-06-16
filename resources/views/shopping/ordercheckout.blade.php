@@ -168,8 +168,9 @@
 <!-- 隐藏表单域 -->
 <form id="infoForm" action="" hidden>
     <input type="hidden" name="aid" value="{{$addr['receiving_id']}}">
-    <input type="hidden" name="stype" value="{{$stype}}" hidden>
-@if(isset($input) && !empty($input))
+    <input type="hidden" name="stype" value="{{$stype}}">
+    <input type="hidden" name="paym" value="{{$paym}}">
+    @if(isset($input) && !empty($input))
         @foreach($input as $name=>$value)
             <input type="hidden" name="{{$name}}" value="{{$value}}">
         @endforeach
