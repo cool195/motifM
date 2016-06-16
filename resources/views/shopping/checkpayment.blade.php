@@ -44,7 +44,7 @@
                             </div>
                             <div class="payment-info m-l-15x p-r-15x p-y-10x" data-token="{{$value['token']}}">
                                 <div class="flex flex-alignCenter">
-                                    <span class="cardImage-inline american-express"></span>
+                                    <span class="cardImage-inline paypal"></span>
                                     <span class="m-l-10x">{{$value['showName']}}</span>
                                 </div>
                                 <div class="flex">
@@ -61,8 +61,8 @@
                          id="paypal" data-braintree="{{$token}}">
                         <div class="font-size-sm text-primary">
                             <span class="p-r-15x">
-                                <img src="images/payment/icon-Paypal.png"
-                                     srcset="/images/payment/icon-Paypal@2x.png 2x,/images/payment/icon-Paypal@3x.png 3x"
+                                <img src="images/payment/icon-paypal-inactive.png"
+                                     srcset="/images/payment/icon-paypal-inactive@2x.png 2x,/images/payment/icon-paypal-inactive@3x.png 3x"
                                      alt="">
                             </span>
                             <span>Paypal</span>
@@ -81,7 +81,7 @@
                             </div>
                             <div class="payment-info m-l-15x p-r-15x p-y-10x" data-token="{{$value['token']}}">
                                 <div class="flex flex-alignCenter">
-                                    <span class="cardImage-inline american-express"></span>
+                                    <span class="cardImage-inline {{array_get($methodlist['cardlist'],$value['cardType'])}}"></span>
                                     <span class="m-l-10x">{{$value['showName']}}</span>
                                 </div>
                                 <div class="flex">
