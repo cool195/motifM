@@ -9,8 +9,8 @@ use Illuminate\Support\Facades\Session;
 class BraintreeController extends ApiController
 {
 
-    //进入braintree绑定支付信息模版
-    public function index()
+    //进入个人中心braintree绑定支付信息模版
+    public function index(Request $request)
     {
         $methodlist = $this->methodlist();
         $params = array(
@@ -21,7 +21,8 @@ class BraintreeController extends ApiController
         );
         $result = $this->request('openapi', '', 'pay', $params);
         $token = isset($result['data']['token']) ? $result['data']['token'] : '';
-        return View('shopping.paymentmethod', ['token' => $token, 'methodlist' => $methodlist['data']]);
+        $view = $request->input('setting') ? 'shopping.paymentmethod' : 'shopping.checkpayment';
+        return View($view, ['token' => $token, 'methodlist' => $methodlist['data']]);
     }
 
     //Braintree回调,绑定支付信息方法

@@ -35,7 +35,7 @@
             </article>
             <!-- 支付方式列表 list -->
 
-            <!-- 已绑定支付方式 状态 -->
+            <!-- 已绑定PayPal支付方式 状态 -->
             @if(!empty($methodlist['PayPal']))
                 @foreach($methodlist['PayPal'] as $value)
                     <aside class="bg-white m-b-10x">
@@ -65,6 +65,7 @@
                     </div>
                 </aside>
             @endif
+            <!-- 已绑定信用卡支付方式 状态 -->
             @if(!empty($methodlist['Card']))
                 @foreach($methodlist['Card'] as $value)
                     <aside class="bg-white m-b-10x">
