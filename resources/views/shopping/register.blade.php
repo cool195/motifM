@@ -50,8 +50,8 @@
             </fieldset>
             <fieldset class="register-input m-b-10x">
                 <input class="input-register form-control font-size-sm" name="pw"
-                       placeholder="Password" type="text" maxlength="32">
-                <i class="iconfont icon-show icon-size-md input-show text-common"></i>
+                       placeholder="Password" type="password" maxlength="32">
+                <i class="iconfont icon-show icon-size-md input-show text-common off"></i>
             </fieldset>
         </form>
         <div class="m-t-15x text-primary text-center font-size-sm">

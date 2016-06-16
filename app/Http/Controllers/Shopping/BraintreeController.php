@@ -31,12 +31,10 @@ class BraintreeController extends ApiController
             'cmd' => 'method',
             'token' => Session::get('user.token'),
             'pin' => Session::get('user.pin'),
-            'nonce' => $request->input("payment_method_nonce"),
+            'nonce' => $request->input("nonce"),
         );
         $result = $this->request('openapi', '', 'pay', $params);
-        if(!$result['data']['success']){
-            $result['params'] = $params;
-        }
+        $result['params'] = $params;
         return $result;
     }
 
@@ -80,7 +78,7 @@ class BraintreeController extends ApiController
         $system = "";
         $service = "pay";
         $result = $this->request('openapi', $system, $service, $params);
-        if(empty($result)){
+        if (empty($result)) {
             $result['success'] = false;
             $result['error_msg'] = "Data access failed";
             $result['data'] = array();

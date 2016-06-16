@@ -111,7 +111,7 @@
 </div>
 </body>
 <!-- BrainTree -->
-<script src="https://js.braintreegateway.com/js/braintree-2.24.1.min.js"></script>
+<script src="/scripts/braintree-2.24.1.min.js"></script>
 
 <script src="/scripts/vendor.js"></script>
 
