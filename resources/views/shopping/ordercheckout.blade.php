@@ -50,11 +50,15 @@
                                                 <div><span>{{$attrValue['attr_type_value'] }}: </span><span>{{ $attrValue['attr_value'] }}</span></div>
                                             @endforeach
                                         @endif
-                                        <div class="flex flex-fullJustified">
-                                            <div class="">
-                                                <span>Inside Engraving: </span><span>MY LOVE</span></div>
-                                            <div class="">${{$showSku['cps_amount']}}</div>
-                                        </div>
+                                        @if(isset($showSku['showVASes']) && !empty($showSku['showVASes']))
+                                            @foreach($showSku['showVASes'] as $showVAS)
+                                                <div class="flex flex-fullJustified">
+                                                    <div class="">
+                                                        <span>{{$showVAS['vas_name']}}: </span><span>{{$showVAS['user_remark']}}</span></div>
+                                                    <div class="">${{number_format(($showVAS['vas_price'] / 100), 2)}}</div>
+                                                </div>
+                                            @endforeach
+                                        @endif
                                     </aside>
                                 </div>
                             </div>
@@ -136,13 +140,18 @@
 
             <!-- 结算按钮 -->
             <aside class="bg-white m-t-10x p-a-10x">
-                <a href="#" class="btn btn-primary btn-block btn-sm" type="submit">Place Order</a>
+                <div class="btn btn-primary btn-block btn-sm" data-role="submit">Place Order</div>
             </aside>
         </section>
         <!-- 页脚 功能链接 start-->
     @include('footer')
     <!-- 页脚 功能链接 end-->
     </div>
+</div>
+
+<!-- loading 效果 -->
+<div class="loading loading-screen loading-switch loading-hidden">
+    <div class="loader loader-screen"></div>
 </div>
 
 <!-- 弹出 选择运送方式 Delivery -->
@@ -168,8 +177,9 @@
 <!-- 隐藏表单域 -->
 <form id="infoForm" action="" hidden>
     <input type="hidden" name="aid" value="{{$addr['receiving_id']}}">
-    <input type="hidden" name="stype" value="{{$stype}}" hidden>
-@if(isset($input) && !empty($input))
+    <input type="hidden" name="stype" value="{{$stype}}">
+    <input type="hidden" name="paym" value="{{$paym}}">
+    @if(isset($input) && !empty($input))
         @foreach($input as $name=>$value)
             <input type="hidden" name="{{$name}}" value="{{$value}}">
         @endforeach
@@ -179,5 +189,12 @@
 <script src="/scripts/vendor.js"></script>
 
 <script src="/scripts/orderCheckout.js"></script>
-
+<meta name="csrf-token" content="{{ csrf_token() }}" />
+<script>
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+</script>
 </html>
