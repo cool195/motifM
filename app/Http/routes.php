@@ -48,19 +48,19 @@ $app->group(['middleware' => 'logincheck', 'namespace' => 'App\Http\Controllers\
     $app->post('/cart/verifycoupon', 'CartController@verifyCoupon');
 
 
-    $app->get('/pay/paymentmethod', 'PayController@paymentMethod');
-    $app->get('/pay/cardadd', 'PayController@newCardAdd');
-
-    $app->get('/pay/token', 'PayController@getPayToken');
-    $app->get('/pay/method', 'PayController@createPayMethod');
-    $app->get('/pay/pay', 'PayController@pay');
-    $app->get('/pay/checkpay', 'PayController@pay');
-    $app->get('/pay/methodlist', 'PayController@getMethodList');
-    $app->get('/pay/del', 'PayController@delMethod');
-    $app->delete('/pay/del', 'PayController@delMethod');
-    $app->get('/pay/getDefault', 'PayController@getDefaultMethod');
-    $app->get('/pay/setDefault', 'PayController@setDefaultMethod');
-    $app->get('/pay/check', 'PayController@check');
+//    $app->get('/pay/paymentmethod', 'PayController@paymentMethod');
+//    $app->get('/pay/cardadd', 'PayController@newCardAdd');
+//
+//    $app->get('/pay/token', 'PayController@getPayToken');
+//    $app->get('/pay/method', 'PayController@createPayMethod');
+//    $app->get('/pay/pay', 'PayController@pay');
+//    $app->get('/pay/checkpay', 'PayController@pay');
+//    $app->get('/pay/methodlist', 'PayController@getMethodList');
+//    $app->get('/pay/del', 'PayController@delMethod');
+//    $app->delete('/pay/del', 'PayController@delMethod');
+//    $app->get('/pay/getDefault', 'PayController@getDefaultMethod');
+//    $app->get('/pay/setDefault', 'PayController@setDefaultMethod');
+//    $app->get('/pay/check', 'PayController@check');
 
 
     $app->get('/addr/list', 'AddressController@getUserAddrList');
@@ -104,7 +104,7 @@ $app->group(['middleware' => 'logincheck', 'namespace' => 'App\Http\Controllers\
 
     $app->get('/braintree', 'BraintreeController@index');
     //$app->get('/payment/default', 'BraintreeController@getDefault');
-    //$app->get('/payment/list', 'BraintreeController@methodlist');
+    $app->delete('/braintree', 'BraintreeController@delMethod');
     $app->post('/braintree', 'BraintreeController@checkout');
 });
 

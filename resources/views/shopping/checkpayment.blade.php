@@ -81,7 +81,7 @@
                             </div>
                             <div class="payment-info m-l-15x p-r-15x p-y-10x" data-token="{{$value['token']}}">
                                 <div class="flex flex-alignCenter">
-                                    <span class="cardImage-inline @if($value['cardType']=='AmericanExpress'){{'american-express'}}@elseif($value['cardType']=='Visa'){{'visa'}}@elseif($value['cardType']=='MasterCard'){{'master-card'}}@elseif($value['cardType']=='Maestro'){{'maestro'}}@elseif($value['cardType']=='JCB'){{'jcb'}}@elseif($value['cardType']=='Discover'){{'discover'}}@elseif($value['cardType']=='Diners'){{'diners-club'}}@endif"></span>
+                                    <span class="cardImage-inline {{array_get($methodlist['cardlist'],$value['cardType'])}}"></span>
                                     <span class="m-l-10x">{{$value['showName']}}</span>
                                 </div>
                                 <div class="flex">

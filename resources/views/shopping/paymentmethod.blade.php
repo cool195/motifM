@@ -43,8 +43,8 @@
                             <div class="p-r-15x"><i class="iconfont icon-delete icon-size-md text-warning"></i></div>
                             <div class="font-size-sm text-primary">
                                 <span class="p-r-15x">
-                                    <img src="images/payment/icon-paypal-active.png"
-                                         srcset="/images/payment/icon-paypal-active@2x.png 2x,/images/payment/icon-paypal-active@3x.png 3x"
+                                    <img src="images/payment/icon-Paypal.png"
+                                         srcset="/images/payment/icon-Paypal@2x.png 2x,/images/payment/icon-Paypal@3x.png 3x"
                                          alt=""></span>
                                 <span>{{$value['showName']}}</span></div>
                         </div>
@@ -65,28 +65,26 @@
                     </div>
                 </aside>
             @endif
-            <!-- 已绑定信用卡支付方式 状态 -->
+        <!-- 已绑定信用卡支付方式 状态 -->
             @if(!empty($methodlist['Card']))
-                @foreach($methodlist['Card'] as $value)
-                    <aside class="bg-white m-b-10x">
+                <aside class="bg-white m-b-10x">
+                    @foreach($methodlist['Card'] as $value)
                         <div class="flex flex-alignCenter font-size-sm text-primary p-a-15x">
                             <div class="p-r-15x"><i class="iconfont icon-delete icon-size-md text-warning"></i></div>
-                            <div class="font-size-sm text-primary">
-                                <span class="p-r-15x">
-                                    <img src="images/payment/icon-americanexpress.png"
-                                         srcset="/images/payment/icon-americanexpress@2x.png 2x,/images/payment/icon-americanexpress@3x.png 3x"
-                                         alt=""></span>
-                                <span>{{$value['showName']}}</span></div>
+                            <div class="flex flex-alignCenter">
+                                <span class="cardImage-inline {{array_get($methodlist['cardlist'],$value['cardType'])}}"></span>
+                                <span class="m-l-10x">{{$value['showName']}}</span>
+                            </div>
                         </div>
-                    </aside>
-                @endforeach
-                <hr class="hr-base m-a-0">
-                <div class="bg-white">
-                    <a class="flex flex-alignCenter text-primary p-a-15x" href="#">
-                        <i class="iconfont icon-add icon-size-sm p-r-10x"></i>
-                        <span class="font-size-sm">Add a New Card</span>
-                    </a>
-                </div>
+                    @endforeach
+                    <hr class="hr-base m-a-0">
+                    <div class="bg-white">
+                        <a class="flex flex-alignCenter text-primary p-a-15x" href="#">
+                            <i class="iconfont icon-add icon-size-sm p-r-10x"></i>
+                            <span class="font-size-sm">Add a New Card</span>
+                        </a>
+                    </div>
+                </aside>
             @else
             <!-- 没有绑定信用卡支付方式 状态 -->
                 <aside class="bg-white m-b-10x">

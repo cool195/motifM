@@ -32,6 +32,7 @@ class BraintreeController extends ApiController
     public function index(Request $request)
     {
         $methodlist = $this->methodlist();
+        $methodlist['data']['cardlist'] = array('Diners' => 'diners-club', 'Discover' => 'discover', 'JCB' => 'jcb', 'Maestro' => 'maestro', 'AmericanExpress' => 'american-express', 'Visa' => 'visa', 'MasterCard' => 'master-card');
         $params = array(
             'cmd' => 'token',
             'token' => Session::get('user.token'),
@@ -41,9 +42,9 @@ class BraintreeController extends ApiController
         $result = $this->request('openapi', '', 'pay', $params);
         $token = isset($result['data']['token']) ? $result['data']['token'] : '';
         $view = View('shopping.paymentmethod', ['token' => $token, 'methodlist' => $methodlist['data']]);
-        if('checkout' == $request->input('pageSrc')) {
+        if ('checkout' == $request->input('pageSrc')) {
             $input = $request->except('pageSrc', 'methodtoken');
-            $view = View('shopping.checkpayment', ['token' => $token, 'methodlist' => $methodlist['data'], 'input'=>$input]);
+            $view = View('shopping.checkpayment', ['token' => $token, 'methodlist' => $methodlist['data'], 'input' => $input]);
         }
         return $view;
     }
