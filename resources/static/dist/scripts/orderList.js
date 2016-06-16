@@ -45,7 +45,7 @@
                 $OrderContainer.data('pagenum', -1);
             } else if (data.data.list.length > 0) {
                 if (NextPage === 1) {
-                    $('#emptyOrder').empty();
+                    $('#emptyOrder').remove();
                 }
 
                 // 遍历模板 插入页面

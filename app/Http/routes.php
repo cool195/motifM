@@ -98,7 +98,8 @@ $app->group(['middleware' => 'logincheck', 'namespace' => 'App\Http\Controllers\
     $app->get('/shopping/orderlist', 'OrderController@index');
     $app->get('/order/orderlist', 'OrderController@index');
     $app->get('/orders', 'OrderController@getOrderList');
-    $app->get('/shopping/order/orderdetail/{subno}', 'OrderController@orderDetail');
+    $app->get('/order/orderdetail/{subno}', 'OrderController@orderDetail');
+    $app->get('/orderdetail/{subno}', 'OrderController@getOrderDetail');
     $app->get('/order/orderSubmit', 'OrderController@orderSubmit');
     $app->post('/order/orderSubmit', 'OrderController@orderSubmit');
 
