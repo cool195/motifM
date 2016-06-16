@@ -35,9 +35,7 @@
                         <div class="checkoutList-item p-a-10x">
                             <div class="flex">
                                 <div class="flex-fixedShrink">
-                                    <img class="img-thumbnail"
-                                         src="{{'https://s3-us-west-1.amazonaws.com/emimagetest/n2/'.$showSku['main_image_url']}}"
-                                         width="70px" height="70px">
+                                    <img class="img-thumbnail" src="{{'https://s3-us-west-1.amazonaws.com/emimagetest/n2/'.$showSku['main_image_url']}}" width="70px" height="70px">
                                 </div>
                                 <div class="p-l-10x flex-width">
                                     <article class="flex flex-fullJustified">
@@ -87,7 +85,7 @@
                 <a class="flex font-size-sm text-primary p-a-10x" data-remodal-target="delivery-modal" href="#">
                     <span class="checkoutInfo-subTitle flex-fixedShrink">Delivery</span>
                     <div class="checkoutInfo-content flex flex-fullJustified flex-alignCenter">
-                        <span class="delivery-text">7-20 working days +14.5$</span>
+                        <span class="delivery-text">{{$defaultMethod['logistics_name']}} +{{ number_format(($defaultMethod['price'] / 100), 2) }}$</span>
                         <i class="iconfont icon-arrow-right icon-size-xm text-common p-r-15x"></i>
                     </div>
                 </a>
@@ -148,7 +146,7 @@
 </div>
 
 <!-- 弹出 选择运送方式 Delivery -->
-<div class="remodal remodal-lg modal-content" data-remodal-id="delivery-modal" data-select="{{ $shipMethodList[0]['logistics_type'] }}" id="deliveryDialog">
+<div class="remodal remodal-lg modal-content" data-remodal-id="delivery-modal" data-select="{{ $shipMethodList[1]['logistics_type'] }}" id="deliveryDialog">
     <div class="text-right p-a-15x" data-remodal-action="close">
         <i class="iconfont icon-cross icon-size-md text-common"></i>
     </div>
@@ -170,7 +168,7 @@
 <!-- 隐藏表单域 -->
 <form id="infoForm" action="" hidden>
     <input type="hidden" name="aid" value="{{$addr['receiving_id']}}">
-    <input type="hidden" name="stype" value="delivery" hidden>
+    <input type="hidden" name="stype" value="{{$stype}}" hidden>
 @if(isset($input) && !empty($input))
         @foreach($input as $name=>$value)
             <input type="hidden" name="{{$name}}" value="{{$value}}">

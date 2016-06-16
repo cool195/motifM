@@ -35,6 +35,8 @@ class CartController extends ApiController
 	{
 		$result = $this->getCartAccountList($request);
 		$defaultPayMethod = $this->getDefaultPayMethod();
+		$stype = !empty($request->input('stype')) ? $request->input('stype', 1) : 1; //必须加非空验证
+		$defaultMethod = $this->getShippingMethodByStype($stype);
 		if(empty($result['data'])){
 			return redirect('/shopping');
 		}
@@ -43,10 +45,11 @@ class CartController extends ApiController
 			'addr'=>$this->getUserAddrByAid($request->input('aid', 0)),
 			'paym'=> $request->input('paym', isset($defaultPayMethod['data']['type']) ? $defaultPayMethod['data']['type'] : "paypal"),
 			'shipMethodList' => $this->getShippingMethod(),
+			'defaultMethod' => $defaultMethod,
 			'cps' => $request->input('cps', ""),
 			'remark' => $request->input('remark', ""),
-			'stype' => $request->input('stype', ""),
-			'input' => $request->except('aid')
+			'stype' => $defaultMethod['logistics_type'],
+			'input' => $request->except('aid', 'stype')
 		]);
 	}
 
@@ -417,6 +420,19 @@ class CartController extends ApiController
 		return $result;
 	}
 
+	public function getShippingMethodByStype($stype)
+	{
+		$methodList = $this->getShippingMethod();
+		$method = array();
+		if( !empty($methodList)){
+			$method = $methodList[1];
+			if(isset($methodList[$stype])){
+				$method = $methodList[$stype];
+			}
+		}
+		return $method;
+	}
+
 	public function getShippingMethod()
 	{
 		$params = array(
@@ -424,11 +440,20 @@ class CartController extends ApiController
 			'token' => Session::get('user.token')
 		);
 		$result = $this->request('openapi', "", "general", $params);
-		if(!empty($result) && $result['success']) {
-			return $result['data']['list'];
+		if(empty($result)){
+			$result['success'] = false;
+			$result['error_msg'] = "Data access failed";
+			$result['data']['list'] = array();
+		}else{
+			if($result['success'] && !empty($result['data']['list'])){
+				$list = array();
+				foreach($result['data']['list'] as $method){
+					$list[$method['logistics_type']] = $method;
+				}
+				$result['data']['list'] = $list;
+			}
 		}
-		$result['data']['list'] = array();
-		return $result;
+		return $result['data']['list'];
 	}
 
 /*	public function verifyCoupon(Request $request)
