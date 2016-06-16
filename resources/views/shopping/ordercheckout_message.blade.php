@@ -25,7 +25,7 @@
         @include('nav')
         <!-- 主体内容 -->
         <div class="body-container">
-            @include('navigator')
+            @include('navigator', ['pageScope'=>true])
             <!-- 提交备注 表单 -->
             <section class="m-b-20x">
                 <form id="infoForm" action="/cart/ordercheckout" method="get">

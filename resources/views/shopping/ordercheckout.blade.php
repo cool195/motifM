@@ -25,7 +25,7 @@
 @include('nav')
 <!-- 主体内容 -->
     <div class="body-container">
-    @include('navigator')
+    @include('navigator', ['pageScope'=>true])
     <!-- 结算 商品列表 -->
         <section class="">
             <!-- 商品列表 -->

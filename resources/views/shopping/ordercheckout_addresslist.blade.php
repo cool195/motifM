@@ -25,7 +25,7 @@
         @include('nav')
         <!-- 主体内容 -->
         <div class="body-container">
-            @include('navigator')
+            @include('navigator', ['pageScope'=>true])
             <section class="p-b-15x">
                 <article class="p-x-15x p-y-10x flex flex-fullJustified flex-alignCenter">
                     <span class="font-size-md text-main"><strong>Shipping Address</strong></span>

@@ -24,7 +24,7 @@
 @include('nav')
 <!-- 主体内容 -->
     <div class="body-container">
-    @include('navigator')
+    @include('navigator', ['pageScope'=>true])
     <!-- 国家列表 -->
         <section class="p-b-10x">
             <article class="p-x-15x p-y-10x font-size-md text-main">

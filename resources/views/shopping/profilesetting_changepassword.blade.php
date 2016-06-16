@@ -25,7 +25,7 @@
     @include('nav')
     <!-- 主体内容 -->
     <div class="body-container">
-        @include('navigator')
+        @include('navigator', ['pageScope'=>true])
         <!-- 修改密码 -->
         <section class="bg-minHeight">
             <form method="" id="changePassword">
