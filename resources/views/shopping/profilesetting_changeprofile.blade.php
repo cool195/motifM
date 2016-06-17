@@ -25,7 +25,7 @@
         @include('nav')
         <!-- 主体内容 -->
         <div class="body-container">
-            @include('navigator')
+            @include('navigator', ['pageScope'=>true])
             <!-- 个人中心 修改 Profile -->
             <section class="bg-minHeight">
                 <form method="" id="changeProfile">

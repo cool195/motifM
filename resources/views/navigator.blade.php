@@ -13,8 +13,10 @@
             <li class="nav-item">
                 <a href="/cart">
                     <div class="nav-shoppingCart" data-login="@if(Session::has('user')){{'true'}}@else{{'false'}}@endif">
-                        <i class="nav-tap iconfont icon-shopbag icon-size-lg"></i>
-                        <span class="shoppingCart-number"></span>
+                        @if(!isset($pageScope))
+                            <i class="nav-tap iconfont icon-shopbag icon-size-lg"></i>
+                            <span class="shoppingCart-number"></span>
+                        @endif
                     </div>
                 </a>
             </li>

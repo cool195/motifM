@@ -84,7 +84,9 @@
                 <div class="product-price">
                     <span class="font-size-lx text-primary">$ {{ number_format(($data['skuPrice']['sale_price'] / 100), 2) }}</span>
                     <span class="font-size-sm text-common">＄{{ number_format(($data['skuPrice']['price'] /100), 2) }}</span>
-                    <span class="font-size-sm text-primary">(51% off)</span>
+                    @if(isset($data['skuPrice']['skuPromotion']))
+                         <span class="font-size-sm text-primary">({{ $data['skuPrice']['skuPromotion']['display'] }})</span>
+                    @endif
                     <a class="text-primary pull-xs-right" href="#"><i class="iconfont icon-share icon-size-xm"></i></a>
                 </div>
                 <div class="text-warming font-size-xs p-x-15x">{{ $data['seo_describe'] }}</div>
@@ -139,7 +141,7 @@
                         Ask a Question <i class="iconfont icon-arrow-right icon-size-xm text-common"></i></a>
                 </aside>
                 <aside class="product-secondaryInfo">
-                    <a class="flex flex-alignCenter flex-fullJustified font-size-sm text-primary p-a-15x">
+{{--                    <a class="flex flex-alignCenter flex-fullJustified font-size-sm text-primary p-a-15x">
                         Size Guide
                         <i class="iconfont icon-arrow-right icon-size-xm text-common"></i>
                     </a>
@@ -147,7 +149,16 @@
                     <a class="flex flex-alignCenter flex-fullJustified font-size-sm text-primary p-a-15x" href="#">
                         Shipping, Returns, Payments
                         <i class="iconfont icon-arrow-right icon-size-xm text-common"></i>
-                    </a>
+                    </a>--}}
+                    @if(isset($data['templates']) && !empty($data['templates']))
+                        @foreach($data['templates'] as $template)
+                            <a class="flex flex-alignCenter flex-fullJustified font-size-sm text-primary p-a-15x" href="{{ $template['page_url'] }}">
+                                {{ $template['template_title'] }}
+                                <i class="iconfont icon-arrow-right icon-size-xm text-common"></i>
+                            </a>
+                            <hr class="hr-base">
+                        @endforeach
+                    @endif
                 </aside>
 
                 <!-- 添加购物车 -->

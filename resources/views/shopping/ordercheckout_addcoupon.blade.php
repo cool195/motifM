@@ -25,7 +25,7 @@
         @include('nav')
         <!-- 主体内容 -->
         <div class="body-container">
-            @include('navigator')
+            @include('navigator', ['pageScope'=>true])
             <!-- 添加coupon -->
             <section class="m-b-20x">
                 <form id="infoForm" method="get" action="/cart/ordercheckout" method="get">

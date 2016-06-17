@@ -25,7 +25,7 @@
 @include('nav')
 <!-- 主体内容 -->
     <div class="body-container">
-    @include('navigator')
+    @include('navigator', ['pageScope'=>true])
     <!-- 支付方式 列表 -->
         <section>
             <article class="p-x-15x p-y-10x flex flex-fullJustified flex-alignCenter">

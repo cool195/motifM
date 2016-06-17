@@ -22,7 +22,7 @@
     <!-- 外层容器 -->
     <div id="body-content">
         <!-- 展开的汉堡菜单 -->
-        @include('nav')
+        @include('nav', ['pageScope'=>true])
         <!-- 主体内容 -->
         <div class="body-container">
             @include('navigator')
