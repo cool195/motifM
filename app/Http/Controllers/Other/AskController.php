@@ -11,7 +11,7 @@ class AskController extends ApiController
     //Ask提交页
     public function show(Request $request)
     {
-        return View('other.askshopping', ['spu' => $request->input('spu')]);
+        return View('other.AskShopping', ['spu' => $request->input('spu')]);
     }
 
     //提交ASK表单
