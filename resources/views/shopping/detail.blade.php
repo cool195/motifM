@@ -270,9 +270,9 @@
                                 <div class="row">
                                     @if(isset($value['skuAttrValues']))
                                         @foreach($value['skuAttrValues'] as $skuValue)
-                                            <div class="col-xs-3 p-t-10x">
+                                            <div class="p-t-10x p-x-5x">
                                                 {{-- TODO 赵哲更改模板 --}}
-                                                <div class="btn btn-block btn-itemProperty btn-sm @if(!$skuValue['stock']) disabled @endif"
+                                                <div class="btn btn-itemProperty btn-sm @if(!$skuValue['stock']) disabled @endif"
                                                      id="{{$skuValue['attr_value_id']}}"
                                                      data-spa="{{$value['attr_type']}}"
                                                      data-ska="{{$skuValue['attr_value_id']}}">
