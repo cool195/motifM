@@ -128,8 +128,6 @@ class OrderController extends ApiController
             'src' => $request->input('src', "H5"),
             'ver' => $request->input('ver', 1)
         );
-        error_log(print_r("------------------\n", "\n"), 3, '/tmp/myerror.log');
-        error_log(print_r($params, "\n"), 3, '/tmp/myerror.log');
         $system = "";
         $service = "order";
         $result = $this->request('openapi', $system, $service, $params);

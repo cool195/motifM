@@ -93,6 +93,7 @@ $app->group(['middleware' => 'logincheck', 'namespace' => 'App\Http\Controllers\
     $app->get('/user/userdetail', 'UserController@getUserDetailInfo');
     $app->get('/user/modifyUserInfo', 'UserController@modifyUserInfo');
     $app->post('/user/modifyUserInfo', 'UserController@modifyUserInfo');
+    $app->put('/user/uuid', 'UserController@saveUUID');
 
 
     $app->get('/shopping/orderlist', 'OrderController@index');
