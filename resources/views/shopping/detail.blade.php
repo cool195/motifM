@@ -129,11 +129,15 @@
                 <!-- 产品描述 -->
                 <aside class="bg-white p-x-15x p-y-10x m-b-10x">
                     <p class="font-size-md text-main"><strong>Description</strong></p>
-                    <p class="font-size-sm text-primary">{{ $data['seo_describe'] }} </p>
-                    <a class="flex flex-alignCenter flex-fullJustified font-size-xs text-common" href="#">
-                        show more
-                        <i class="iconfont icon-arrow-bottom icon-size-xm text-common"></i>
-                    </a>
+                    <div class="font-size-sm text-primary">
+                        <div class="message-info">
+                            <p class="m-b-0">{{ $data['seo_describe'] }}</p>
+                        </div>
+                        <a class="flex flex-alignCenter flex-fullJustified font-size-sm p-t-5x text-common btn-showMore">
+                            <span class="showMore">Show More</span>
+                            <i class="iconfont icon-arrow-bottom icon-size-xm text-common"></i>
+                        </a>
+                    </div>
                 </aside>
                 <!-- 用户 Q & A -->
                 <aside class="product-secondaryInfo">
