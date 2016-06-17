@@ -46,6 +46,8 @@ $app->group(['middleware' => 'logincheck', 'namespace' => 'App\Http\Controllers\
     $app->get('/cart/operate', 'CartController@operateCartProduct');
     $app->post('/cart/operate', 'CartController@operateCartProduct');
     $app->post('/cart/verifycoupon', 'CartController@verifyCoupon');
+    $app->get('/cart/addradd', 'CartController@addrAdd');
+    $app->get('/cart/countrylist', 'CartController@countrylist');
 
 
 //    $app->get('/pay/paymentmethod', 'PayController@paymentMethod');

@@ -63,13 +63,13 @@
                 </aside>
 
                 <aside class="bg-white">
-                    <a class="flex flex-alignCenter text-primary p-a-15x" href="#">
+                    <div class="flex flex-alignCenter text-primary p-a-15x" data-role="add" data-action="/cart/addradd">
                         <i class="iconfont icon-add icon-size-sm p-r-10x"></i>
                         <span class="font-size-sm">Add a New Address</span>
-                    </a>
+                    </div>
                 </aside>
                 <aside class="p-a-15x">
-                    <div class="btn btn-block btn-primary" data-role="submit">Continue</div>
+                    <div class="btn btn-block btn-primary" data-role="submit" data-action="/cart/ordercheckout">Continue</div>
                 </aside>
             </section>
 
