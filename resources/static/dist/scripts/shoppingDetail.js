@@ -312,6 +312,69 @@
         ResultSkus = Intersection;
     }
 
+    function switchOption(RadioList) {
+
+        var SpaList = Object.keys(Options);
+
+        // 把选定的 Skus , 编成一组 , Skus集合
+        var SkusList = {};
+        $.each(SpaList, function (index, val) {
+            // 分别获取选中的选项中的 skaid 和 spaid
+            var Ska = $(RadioList[index]).data('ska'),
+                Spa = $(RadioList[index]).data('spa');
+            SkusList[val] = Options[Spa][Ska];
+        });
+
+        // 作为比对项存在, 取 除需要比对的 Spa 外 ,剩余 Spa 所对应的 Skus 的集合
+        $.each(SpaList, function (SpaIndex, SpaVal) {
+
+            var Intersection = [];
+            // 取交集
+            $.each(SkusList, function (SkuIndex, SkuVal) {
+                if (SpaVal !== SkuIndex) {
+                    var Cache = [];
+                    if (Intersection.length === 0) {
+                        Cache = SkuVal;
+                    } else {
+                        for (var k = 0; k < SkuVal.length; k++) {
+                            var SameSku = sameArray(Intersection, SkuVal[k]);
+                            if (SameSku !== undefined) {
+                                Cache.push(SameSku);
+                            }
+                        }
+                    }
+                    Intersection = Cache;
+                }
+            });
+
+            // 遍历除去的 Spa 所对应的各项 option 内 , 所对应的 Sku
+            $.each(Options[SpaVal], function (SkusIndex, SkusVal) {
+
+                // 比对 每项中 的 Sku, 与交集中的 Skus 进行比对
+                var Detection = false;
+                for (var i = 0; i < Intersection.length; i++) {
+                    if (Detection) {
+                        break;
+                    }
+                    for (var l = 0; l < SkusVal.length; l++) {
+                        if (SkusVal[l] === Intersection[i]) {
+                            // 有交集 removeClass
+                            Detection = true;
+                            break;
+                        }
+                    }
+                }
+
+                if (Detection === false) {
+                    $('#' + SkusIndex).addClass('disabled');
+                    $('#' + SkusIndex).removeClass('active');
+                } else {
+                    $('#' + SkusIndex).removeClass('disabled');
+                }
+            });
+        });
+    }
+
     // 为所有选项绑定事件
     $('#modalDialog').on('click', '.btn-itemProperty', function (e) {
 
@@ -329,15 +392,10 @@
         var SpaId = $(e.target).data('spa'),
             SkaId = $(e.target).data('ska');
 
-        var ActiveOptions = $('#modalDialog').find('.btn-itemProperty.active');
-        if (ActiveOptions.length < 1) {
-            $('#modalDialog').find('.btn-itemProperty').removeClass('disabled');
-            ResultSkus = [];
-        } else {
-            getResultSku(ActiveOptions);
-            filterOptions(SpaId, SkaId, ActiveOptions);
-        }
-
+        // RadioList 选中的选项数量
+        // CheckCount 所有选项的组数
+        var RadioList = $('#modalDialog').find('.btn-itemProperty.active'),
+            CheckCount = Object.keys(Options);
         // 调整数量按钮组
         var $Count = $('#item-count');
 
@@ -345,13 +403,13 @@
         $Count.children('[data-item]').addClass('disabled');
         $Count.children('[data-num="num"]').html(1);
 
-        // RadioList 选中的选项数量
-        // CheckCount 所有选项的组数
-        var RadioList = $('#modalDialog').find('.btn-itemProperty.active'),
-            CheckCount = Object.keys(Options);
+        if (RadioList.length < 1) {
+            $('#modalDialog').find('.btn-itemProperty').removeClass('disabled');
+            ResultSkus = [];
+        } else if (RadioList.length === CheckCount.length) {
+            // 全选状态的筛选
+            switchOption(RadioList);
 
-        // 判断所选项 是否 全选
-        if (CheckCount.length === RadioList.length) {
             // 获取所选中 sku 对应的库存
             var StockCache = Stock[ResultSkus[0]];
 
@@ -367,6 +425,10 @@
             $('#addCart').removeClass('disabled');
             $('#buyNow').removeClass('disabled');
         } else {
+            getResultSku(RadioList);
+            // 非全选状态的筛选
+            filterOptions(SpaId, SkaId, RadioList);
+
             // 非全选状态时, 不可以购买
             $('#addCart').addClass('disabled');
             $('#buyNow').addClass('disabled');
