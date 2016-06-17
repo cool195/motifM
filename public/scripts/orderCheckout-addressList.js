@@ -66,6 +66,12 @@
     });
 
     $('[data-role="submit"]').on('click', function () {
+        $('#infoForm').attr('action', $('[data-role="submit"]').attr('data-action'));
+        $('#infoForm').submit();
+    });
+
+    $('[data-role="add"]').on('click', function(){
+        $('#infoForm').attr('action', $('[data-role="add"]').attr('data-action')) ;
         $('#infoForm').submit();
     });
 

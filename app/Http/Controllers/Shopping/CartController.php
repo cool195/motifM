@@ -77,11 +77,10 @@ class CartController extends ApiController
 		return $result;
 	}
 
-
-
 	public function addressList(Request $request)		
 	{
-		$input = $request->except('aid', 'checkout');
+		//$input = $request->except('aid', 'checkout');
+		$input = $request->except('aid', 'checkout', 'email', 'name', 'addr1', 'addr2', 'state', 'city', 'zip', 'tel', 'idnum', 'country', 'isd', 'route');
 		$aid = $request->input('aid', 0);
 		$result = $this->getUserAddressList();
 		return View('shopping.ordercheckout_addresslist', ['data'=>$result['data'], 'input'=>$input, 'aid'=>$aid]);
@@ -126,6 +125,43 @@ class CartController extends ApiController
 			}
 		}
 		return $result;
+	}
+
+	public function addrAdd(Request $request)
+	{
+		$input = $request->except('country');
+		$checkout = $request->except('email', 'name', 'addr1', 'addr2', 'state', 'city', 'zip', 'tel', 'idnum', 'country', 'isd', 'route');
+		$country = json_decode(base64_decode($request->input('country', base64_encode(json_encode(['country_id'=>5, 'country_name_cn'=>"中国", 'country_name_en'=>"China", 'iDnumberReq'=>0, 'isFreq'=>0])))), true);
+		return View('shopping.ordercheckout_addaddress', ['input'=>$input, 'checkout'=>$checkout, 'country'=>$country, 'first'=>1]);
+	}
+
+	public function countryList(Request $request)
+	{
+
+		$input = $request->except('route', 'country');
+		$route = $request->input('route');
+		//$checkout = $request->except('email', 'name', 'addr1', 'addr2', 'state', 'city', 'zip', 'tel', 'idnum', 'country', 'isd', 'route');
+		$params = array(
+			'cmd'=>'country',
+		);
+		$system = "";
+		$service = "useraddr";
+		$result = $this->request('openapi', $system, $service, $params);
+		if(empty($result)){
+			$result['success'] = false;
+			$result['error_msg'] = "Data access failed";
+			$result['data'] = array();
+		}else{
+			if($result['success'] && !empty($result['data']['list'])){
+				$commonlist = array();
+				for($index = 0; $index < $result['data']['amount']; $index++)
+				{
+					$commonlist[] = array_shift($result['data']['list']);
+				}
+				$result['data']['commonlist'] = $commonlist;
+			}
+		}
+		return View('shopping.ordercheckout_countrylist', ['list'=>$result['data']['list'], 'commonlist'=>$result['data']['commonlist'], 'route'=>$route, 'input'=>$input]);
 	}
 
 	private function getDefaultPayMethod()
@@ -208,7 +244,6 @@ class CartController extends ApiController
 	 * */
 	public function getCartList(Request $request) 
 	{
-
 		$params = array(
 			'cmd' =>"cartlist",
 			'token' => Session::get('user.token'),
