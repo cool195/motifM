@@ -60,22 +60,25 @@
     });
 
     $('[data-role="submit"]').on('click', function () {
-        openLoading();
-        $.ajax({
-            url: '/order/orderSubmit',
-            type: 'POST',
-            data: $('#infoForm').serialize()
-        }).done(function (data) {
-            if (data.success) {
-                console.log('success');
-                window.location.href = data.redirectUrl;
-            }
-        }).fail(function () {
-            console.log('error');
-        }).always(function () {
-            closeLoading();
-            console.log('complete');
-        });
+
+        if (!$(this).hasClass('disabled')) {
+            openLoading();
+            $.ajax({
+                url: '/order/orderSubmit',
+                type: 'POST',
+                data: $('#infoForm').serialize()
+            }).done(function (data) {
+                if (data.success) {
+                    console.log('success');
+                    window.location.href = data.redirectUrl;
+                }
+            }).fail(function () {
+                console.log('error');
+            }).always(function () {
+                closeLoading();
+                console.log('complete');
+            });
+        }
     });
 })(jQuery);
 //# sourceMappingURL=orderCheckout.js.map

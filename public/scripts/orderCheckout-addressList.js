@@ -66,12 +66,14 @@
     });
 
     $('[data-role="submit"]').on('click', function () {
-        $('#infoForm').attr('action', $('[data-role="submit"]').attr('data-action'));
+        var Action = $(this).data('action');
+        $('#infoForm').attr('action', Action);
         $('#infoForm').submit();
     });
 
-    $('[data-role="add"]').on('click', function(){
-        $('#infoForm').attr('action', $('[data-role="add"]').attr('data-action')) ;
+    $('[data-role="add"]').on('click', function () {
+        var Action = $(this).data('action');
+        $('#infoForm').attr('action', Action);
         $('#infoForm').submit();
     });
 

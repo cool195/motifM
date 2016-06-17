@@ -77,12 +77,16 @@
                 <div class="flex font-size-sm text-primary p-a-10x" data-form-action="/cart/addresslist">
                     <span class="checkoutInfo-subTitle flex-fixedShrink">Ships to</span>
                     <div class="checkoutInfo-content flex flex-fullJustified flex-alignCenter">
+                        @if(empty($addr) || "" == $addr)
+                            <div class="text-warning">No Address Added</div>
+                        @else
                         <div>
                             <div>{{$addr['email']}}</div>
                             <div>{{$addr['detail_address1']}}</div>
                             <div>{{$addr['city']}}  {{$addr['zip']}} {{$addr['status_code']}}</div>
                             <div>{{$addr['country']}}</div>
                         </div>
+                        @endif
                         <input hidden name="aid" value="{{$addr['receiving_id']}}">
                         <i class="iconfont icon-arrow-right icon-size-xm text-common p-r-15x"></i>
                     </div>
@@ -99,7 +103,11 @@
                 <div class="flex font-size-sm text-primary p-a-10x" data-form-action="/braintree">
                     <span class="checkoutInfo-subTitle flex-fixedShrink">Pay with</span>
                     <div class="checkoutInfo-content flex flex-fullJustified flex-alignCenter">
-                        <span>{{ $paym }}</span>
+                        @if(empty($paym) || "" == $paym )
+                            <span class="text-warning">No PaymentMethod add</span>
+                        @else
+                            <span>{{ $paym }}</span>
+                        @endif
                         <i class="iconfont icon-arrow-right icon-size-xm text-common p-r-15x"></i>
                     </div>
                 </div>
@@ -142,7 +150,7 @@
 
             <!-- 结算按钮 -->
             <aside class="bg-white m-t-10x p-a-10x">
-                <div class="btn btn-primary btn-block btn-sm" data-role="submit">Place Order</div>
+                <div class="btn btn-primary btn-block btn-sm @if(empty($paym) || empty($addr) || "" == $paym || "" == $addr) disabled @endif"  data-role="submit">Place Order</div>
             </aside>
         </section>
         <!-- 页脚 功能链接 start-->
