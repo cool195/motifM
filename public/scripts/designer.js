@@ -19,11 +19,13 @@
     // ajax 请求 获取 推荐设计师列表 数据
     function getDesignerList() {
         //  $DesignerContainer 列表容器
-        //  PageNum 当前页码数
+        //  Start 当前页开始条数
+        //  Size 当前页显示条数
         var $DesignerContainer = $('#designerContainer'),
-            PageNum = $DesignerContainer.data('pagenum');
+            Start = $DesignerContainer.data('start'),
+            Size = 3;
         // 判断是否还有数据要加载
-        if (PageNum === -1) {
+        if (Start === -1) {
             return;
         }
 
@@ -34,23 +36,32 @@
             $DesignerContainer.data('loading', true);
         }
 
-        var NextNum = ++PageNum;
-
         loadingShow();
         $.ajax({
             url: '/designer',
-            data: { cmd: 'designerinfolist', num: NextNum, size: 3 }
+            data: { cmd: 'designerinfolist', start: Start, size: Size }
         }).done(function (data) {
             if (data.data === null || data.data === '') {
                 return;
             } else if (data.data.list === null || data.data.list === '' || data.data.list === undefined) {
-                $DesignerContainer.data('pagenum', -1);
+                $DesignerContainer.data('start', -1);
             } else {
                 // 遍历模板 插入页面
+
                 appendDesignerList(data.data);
-                // 页数 +1
-                $DesignerContainer.data('pagenum', PageNum);
-                console.info('当前页码数为' + PageNum);
+
+                // 判断当前页是否是最后一页
+                // CurrentSize 当前页显示条数
+                // StartNum 下一页开始条数
+                var CurrentSize = data.data.list.length,
+                    StartNum = data.data.start;
+                if (CurrentSize < Size) {
+                    $DesignerContainer.data('start', -1);
+                } else {
+                    $DesignerContainer.data('start', StartNum);
+                    console.info('本页从第几条开始' + Start);
+                    console.info('下页从第几条开始' + StartNum);
+                }
 
                 // 图片延迟加载
                 $('img.img-lazy').lazyload({

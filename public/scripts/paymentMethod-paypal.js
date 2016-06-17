@@ -65,5 +65,28 @@
         event.preventDefault();
         checkout.paypal.initAuthFlow();
     });
+
+    $('.icon-delete').on('click', function (e) {
+
+        var Token = $(e.target).parents('.payment-item').children('.payment-info').data(token);
+
+        openLoading();
+        // TODO
+        $.ajax({
+            url: '/braintree',
+            type: 'DELETE',
+            data: { methodtoken: Token }
+        }).done(function (data) {
+            if (data.success) {
+                console.log("success");
+                location.reload();
+            }
+        }).fail(function () {
+            console.log("error");
+        }).always(function () {
+            closeLoading();
+            console.log("complete");
+        });
+    });
 })();
 //# sourceMappingURL=paymentMethod-paypal.js.map
