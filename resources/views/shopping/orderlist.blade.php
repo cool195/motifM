@@ -35,7 +35,7 @@
                 <div class="container m-t-20x order-emptyInfo">
                     <div class="m-b-20x p-b-5x"><i class="btn-orderEmpty iconfont icon-error"></i></div>
                     <p class="text-primary font-size-sm m-b-20x p-b-20x">No orders found</p>
-                    <a href="/daily" class="btn btn-primary btn-block btn-sm">Go Shopping</a>
+                    <a href="/daily" class="btn btn-primary btn-sm">Go Shopping</a>
                 </div>
             </div>
 
