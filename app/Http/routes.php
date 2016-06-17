@@ -137,3 +137,16 @@ $app->group(['middleware' => 'logincheck', 'namespace' => 'App\Http\Controllers\
     $app->put('/askshopping', 'AskController@install');
 });
 
+
+$app->group(['namespace' => 'App\Http\Controllers\Other'], function ($app) {
+    $app->get('/aboutMotif', 'PageController@aboutMotif');
+    $app->get('/cancellationPolicy', 'PageController@cancellationPolicy');
+    $app->get('/contactUs', 'PageController@contactUs');
+    $app->get('/description', 'PageController@description');
+    $app->get('/faq', 'PageController@faq');
+    $app->get('/motifGuarantee', 'PageController@motifGuarantee');
+    $app->get('/privacyPolicy', 'PageController@privacyPolicy');
+    $app->get('/sizeGuide', 'PageController@sizeGuide');
+    $app->get('/termsService', 'PageController@termsService');
+    $app->get('/userAgreement', 'PageController@userAgreement');
+});
