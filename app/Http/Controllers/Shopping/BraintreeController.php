@@ -63,17 +63,30 @@ class BraintreeController extends ApiController
         return $result;
     }
 
-    //测试默认支付类型
-    public function getDefault()
+    //测试支付类型
+    public function testpay()
     {
-
         $params = array(
-            'cmd' => 'getdefault',
+            'cmd' => 'token',
             'token' => Session::get('user.token'),
             'pin' => Session::get('user.pin'),
+            'uuid' => '123',
         );
         $result = $this->request('openapi', '', 'pay', $params);
-        dd($result);
+        $token = isset($result['data']['token']) ? $result['data']['token'] : '';
+        return View('shopping.braintree', ['token' => $token]);
+    }
+
+    public function testcheck(Request $request){
+        $params = array(
+            'cmd' => 'method',
+            'token' => Session::get('user.token'),
+            'pin' => Session::get('user.pin'),
+            'nonce' => $request->input("payment_method_nonce"),
+        );
+        $result = $this->request('openapi', '', 'pay', $params);
+        $result['params'] = $params;
+        return $result;
     }
 
     //获取支付列表
