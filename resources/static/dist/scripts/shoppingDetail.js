@@ -649,5 +649,24 @@
             }
         }
     });
+
+    // 显示隐藏 message 更多内容
+    $('.btn-showMore').on('click', function () {
+        var $Message = $(this).siblings('.message-info');
+        $Message.toggleClass('active');
+        if ($Message.hasClass('active')) {
+            $(this).children('.showMore').html('Show Less');
+            $(this).children('.iconfont').removeClass('icon-arrow-bottom').addClass('icon-arrow-up');
+        } else {
+            $(this).children('.showMore').html('Show More');
+            $(this).children('.iconfont').removeClass('icon-arrow-up').addClass('icon-arrow-bottom');
+        }
+    });
+
+    $(document).ready(function () {
+        if ($('.message-info').children('p').height() <= 144) {
+            $('.btn-showMore').hide();
+        }
+    });
 })(jQuery, Swiper);
 //# sourceMappingURL=shoppingDetail.js.map

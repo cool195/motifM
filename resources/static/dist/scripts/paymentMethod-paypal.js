@@ -28,8 +28,6 @@
 
     braintree.setup(token, "custom", {
         paypal: {
-            singleUse: true, // 沙盒系统需要字段
-            amount: 10.00, // 沙盒系统需要字段
             currency: 'USD', // 沙盒系统需要字段
             locale: 'en_us', // 沙盒系统需要字段
             headless: true

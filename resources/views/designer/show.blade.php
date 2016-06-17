@@ -24,13 +24,19 @@
     <!-- designerDetail 设计师详情 -->
         <section>
             <!-- 视频/图片 正式上线将优酷视频改成改成img_video_path-->
-            <div class="">
+            <div class="designer-media flex flex-justifyCenter flex-alignCenter">
+                <img class="designer-placeImg" src="/images/designer/placeholder.jpg" alt="" hidden>
                 @if($designer['path_type']==2)
-                    <iframe class="ytplayer img-fluid" type="text/html" width="100%"
+                    <iframe class="player img-fluid" type="text/html" width="100%"
                             src="http://player.youku.com/embed/XMTU5ODg3MzIzNg=="
                             frameborder="0" allowfullscreen></iframe>
                 @else
-                    <img src="https://s3-us-west-1.amazonaws.com/emimagetest/n2/{{$designer['main_img_path']}}">
+
+                    <img src="https://s3-us-west-1.amazonaws.com/emimagetest/n1/{{$designer['main_img_path']}}" alt=""
+                         class="designer-realImg" hidden>
+                    <img class="img-fluid img-lazy designer-Img"
+                         data-original="https://s3-us-west-1.amazonaws.com/emimagetest/n1/{{$designer['main_img_path']}}"
+                         src="/images/product/bg-product@750.png" alt="">
                 @endif
             </div>
 
