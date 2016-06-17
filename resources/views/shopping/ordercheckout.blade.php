@@ -80,7 +80,7 @@
                         <div>
                             <div>{{$addr['email']}}</div>
                             <div>{{$addr['detail_address1']}}</div>
-                            <div>{{$addr['city']}}, {{$addr['zip']}} {{$addr['status_code']}}</div>
+                            <div>{{$addr['city']}}  {{$addr['zip']}} {{$addr['status_code']}}</div>
                             <div>{{$addr['country']}}</div>
                         </div>
                         <input hidden name="aid" value="{{$addr['receiving_id']}}">
@@ -99,7 +99,7 @@
                 <div class="flex font-size-sm text-primary p-a-10x" data-form-action="/braintree">
                     <span class="checkoutInfo-subTitle flex-fixedShrink">Pay with</span>
                     <div class="checkoutInfo-content flex flex-fullJustified flex-alignCenter">
-                        <span>{{ (isset($paym) && !empty($paym)) ? $paym : "paypal"}}</span>
+                        <span>{{ $paym }}</span>
                         <i class="iconfont icon-arrow-right icon-size-xm text-common p-r-15x"></i>
                     </div>
                 </div>

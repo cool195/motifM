@@ -43,7 +43,7 @@ class CartController extends ApiController
 		return View('shopping.ordercheckout', [
 			'data'=>$result['data'], 
 			'addr'=>$this->getUserAddrByAid($request->input('aid', 0)),
-			'paym'=> $request->input('paym', isset($defaultPayMethod['data']['type']) ? $defaultPayMethod['data']['type'] : "PayPal"),
+			'paym'=> $request->input('paym', isset($defaultPayMethod['data']['type']) ? $defaultPayMethod['data']['type'] : ""),
 			'shipMethodList' => $this->getShippingMethod(),
 			'defaultMethod' => $defaultMethod,
 			'cps' => $request->input('cps', ""),
