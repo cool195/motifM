@@ -35,6 +35,7 @@
                     </div>
                     <span class="text-common"><i class="iconfont icon-arrow-right icon-size-sm"></i></span>
                 </a>
+                <hr class="hr-base m-a-0">
             </li>
         @endif
         <li class="nav-item">
@@ -86,6 +87,7 @@
                     </div>
                     <span class="text-common"><i class="iconfont icon-arrow-right icon-size-sm"></i></span>
                 </a>
+                <hr class="hr-base m-a-0">
             </li>
         @endif
     </ul>

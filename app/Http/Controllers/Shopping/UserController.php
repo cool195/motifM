@@ -384,26 +384,6 @@ class UserController extends ApiController
      * */
     public function shippingAddress(Request $request)
     {
-      /*  $user = Cache::get('user');
-        $cmd = 'list';
-        $pin = $user['pin'];
-        $uuid = $request->input("uuid", md5($cmd));
-        $token = $user['token'];
-        $params = array(
-            'cmd'=>$cmd,
-            'uuid'=>$uuid,
-            'pin'=>$pin,
-            'token'=>$token
-        );
-        $system = "";
-        $service = "useraddr";
-        $result = $this->request('openapi', $system, $service, $params);
-        if(empty($result) || empty($result['data']['list'])){
-            $result['success'] = false;
-            $result['error_msg'] = "Data access failed";
-            $result['data'] = array();
-            $result['data']['list'] = array();
-        }*/
         $result = $this->getShippingAddress($request);
         return View('shopping.profilesetting_shippingaddress', ['data'=>$result['data']]);
     }
@@ -469,6 +449,17 @@ class UserController extends ApiController
             }
         }
         return View('shopping.profilesetting_countrylist', ['list'=>$result['data']['list'], 'commonlist'=>$result['data']['commonlist'], 'route'=>$input['route']]);
+    }
+
+    public function saveUUID(Request $request)
+    {
+        $uuid = $request->input('uuid');
+        $result['success'] = false;
+        if(!empty($uuid) && Session::has('user')){
+            Session::push('user.uuid', $uuid);
+            $result['success'] = true;
+        }
+        return $result;
     }
 }
 

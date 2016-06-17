@@ -126,16 +126,11 @@ class OrderController extends ApiController
             'remark' => $request->input('remark'),
             'stype' => $request->input('stype'),
             'src' => $request->input('src', "H5"),
-            'ver' => $request->input('ver', 1),
-            'ordtime' => ""
+            'ver' => $request->input('ver', 1)
         );
-        error_log(print_r("------------------\n", "\n"), 3, '/tmp/myerror.log');
-        error_log(print_r($params, "\n"), 3, '/tmp/myerror.log');
         $system = "";
         $service = "order";
         $result = $this->request('openapi', $system, $service, $params);
-        error_log(print_r("------------------\n", "\n"), 3, '/tmp/myerror.log');
-        error_log(print_r($result, "\n"), 3, '/tmp/myerror.log');
         if (empty($result)) {
             $result['success'] = false;
             $result['error_msg'] = "Data access failed";

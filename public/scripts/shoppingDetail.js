@@ -4,6 +4,7 @@
 /*global jQuery Swiper*/
 
 'use strict';
+
 (function ($, Swiper) {
     // loading 打开
     function openLoading() {
@@ -54,7 +55,7 @@
     });
 
     var height = $('#detailImg-swiper').height();
-    $('#detailImg-pagination')
+    $('#detailImg-pagination');
 
     var options = {
         closeOnOutsideClick: false,
@@ -143,19 +144,18 @@
         var SpuId = $('#modalDialog').data('spu');
         $.ajax({
             url: '/products/' + SpuId
-        })
-            .done(function (data) {
-                console.log('success');
-                // 获取商品所有的库存
-                // Inventory 为库存的商品的Sku
-                var Inventory = inventoryNull(data.data.skuExps);
-                // 所有选项
-                newOptions(data.data.spuAttrs, Inventory, Options);
-                // 所有sku对应的库存
-                newStock(data.data.skuExps, Stock);
-                // 所有增值服务
-                newVas(data.data.vasBases, Vas);
-            });
+        }).done(function (data) {
+            console.log('success');
+            // 获取商品所有的库存
+            // Inventory 为库存的商品的Sku
+            var Inventory = inventoryNull(data.data.skuExps);
+            // 所有选项
+            newOptions(data.data.spuAttrs, Inventory, Options);
+            // 所有sku对应的库存
+            newStock(data.data.skuExps, Stock);
+            // 所有增值服务
+            newVas(data.data.vasBases, Vas);
+        });
     })();
 
     /**
@@ -250,7 +250,6 @@
                 });
             }
         });
-
     }
 
     /**
@@ -373,9 +372,7 @@
                     $('#' + SkusIndex).removeClass('disabled');
                 }
             });
-
         });
-
     }
 
     // 为所有选项绑定事件
@@ -395,7 +392,6 @@
         var SpaId = $(e.target).data('spa'),
             SkaId = $(e.target).data('ska');
 
-
         // RadioList 选中的选项数量
         // CheckCount 所有选项的组数
         var RadioList = $('#modalDialog').find('.btn-itemProperty.active'),
@@ -406,7 +402,6 @@
         // 重置 调整数量按钮组
         $Count.children('[data-item]').addClass('disabled');
         $Count.children('[data-num="num"]').html(1);
-
 
         if (RadioList.length < 1) {
             $('#modalDialog').find('.btn-itemProperty').removeClass('disabled');
@@ -438,11 +433,9 @@
             $('#addCart').addClass('disabled');
             $('#buyNow').addClass('disabled');
         }
-
-
     });
 
-// 调整数量
+    // 调整数量
     /**
      *
      * @param Count
@@ -451,35 +444,32 @@
         openLoading();
         $.ajax({
             url: '/stock/checkstock',
-            data: {skus: RequestStock}
-        })
-            .done(function (data) {
-                if (data.success) {
+            data: { skus: RequestStock }
+        }).done(function (data) {
+            if (data.success) {
 
-                    var Request = true;
+                var Request = true;
 
-                    if (data.data.list[0].stockStatus === 1) {
-                        Request = true;
-                    } else {
-                        Request = false;
-                    }
-
-                    if (Request === false) {
-                        $QttyCount.addClass('disabled');
-                    }
+                if (data.data.list[0].stockStatus === 1) {
+                    Request = true;
+                } else {
+                    Request = false;
                 }
-            })
-            .fail(function () {
-                console.log('error');
-            })
-            .always(function () {
-                console.log('complete');
-                closeLoading();
-            });
+
+                if (Request === false) {
+                    $QttyCount.addClass('disabled');
+                }
+            }
+        }).fail(function () {
+            console.log('error');
+        }).always(function () {
+            console.log('complete');
+            closeLoading();
+        });
     }
 
-// 绑定计数事件,商品数量
-// 需要添加库存验证
+    // 绑定计数事件,商品数量
+    // 需要添加库存验证
     $('#item-count').on('click', '[data-item]', function (e) {
         // 已选中的选项 以及 商品的选项组数
         var RadioList = $('#modalDialog').find('.btn-itemProperty.active'),
@@ -509,8 +499,9 @@
         var NextCount = parseInt($QtyCount.siblings('[data-num]').html()),
             SelectSku = ResultSkus[0],
             StockCache = Stock[SelectSku],
-            Count = NextCount++,  // Count 当前的数值 , NextCount 是+1 之后的数量 , 用来拼接参数
-            Qtty = Count;   // 用来 储存 最后改变后的数量
+            Count = NextCount++,
+            // Count 当前的数值 , NextCount 是+1 之后的数量 , 用来拼接参数
+        Qtty = Count; // 用来 储存 最后改变后的数量
 
         if ($QtyCount.data('item') === 'add') {
             Qtty = NextCount;
@@ -531,7 +522,7 @@
             } else if (StockCache === 20) {
                 // 库存量等于20的情况
                 if (NextCount >= 20) {
-                    var RequestStock = SelectSku + '_' + (++NextCount);
+                    var RequestStock = SelectSku + '_' + ++NextCount;
 
                     // 查看库存情况
                     changeQtty(RequestStock, $QtyCount);
@@ -558,10 +549,10 @@
         var Qtty = $('#item-count').children('[data-num]').html();
         // ajax 请求的参数
         var Operate = {
-            'sale_qtty': Qtty,       // 数量
-            'select': true,       // 是否选中
-            'sku': ResultSkus[0],            // SKU
-            'VAList': []           // 增值服务
+            'sale_qtty': Qtty, // 数量
+            'select': true, // 是否选中
+            'sku': ResultSkus[0], // SKU
+            'VAList': [] // 增值服务
         };
 
         var i = 0;
@@ -573,8 +564,8 @@
             // 增值项 是否被选中
             if ($CurrentVas.hasClass('active')) {
                 VarList[i] = {};
-                VarList[i].vas_id = index;          // 增值服务ID
-                VarList[i].user_remark = '';        // 用户备注信息
+                VarList[i].vas_id = index; // 增值服务ID
+                VarList[i].user_remark = ''; // 用户备注信息
                 // 增值服务类型
                 switch (val) {
                     case 1:
@@ -599,25 +590,21 @@
         $.ajax({
             url: '/cart',
             type: Action,
-            data: {operate: Operate}
-        })
-            .done(function (data) {
-                if (data.success) {
-                    window.location.href = data.redirectUrl;
-                    console.log("success");
-                }
-            })
-            .fail(function () {
-                console.log("error");
-            })
-            .always(function () {
-                closeLoading();
-                console.log("complete");
-            });
-
+            data: { operate: Operate }
+        }).done(function (data) {
+            if (data.success) {
+                window.location.href = data.redirectUrl;
+                console.log("success");
+            }
+        }).fail(function () {
+            console.log("error");
+        }).always(function () {
+            closeLoading();
+            console.log("complete");
+        });
     }
 
-// TODO 立即购买
+    // TODO 立即购买
     $('#addCart').on('click', function (e) {
         if ($(e.target).hasClass('disabled')) {
             return;
@@ -627,22 +614,19 @@
         $.ajax({
             url: ' /cart/amount',
             type: 'GET'
-        })
-            .done(function (data) {
-                console.log('success');
-                // 操作成功刷新页面
-                if (data.success) {
-                    if (data.data.skusAmout > 0) {
-                        $('.nav-shoppingCart').children('span').html(data.data.skusAmout);
-                    }
+        }).done(function (data) {
+            console.log('success');
+            // 操作成功刷新页面
+            if (data.success) {
+                if (data.data.skusAmout > 0) {
+                    $('.nav-shoppingCart').children('span').html(data.data.skusAmout);
                 }
-            })
-            .fail(function () {
-                console.log('error');
-            })
-            .always(function () {
-                console.log('complete');
-            });
+            }
+        }).fail(function () {
+            console.log('error');
+        }).always(function () {
+            console.log('complete');
+        });
     });
     $('#buyNow').on('click', function (e) {
         if ($(e.target).hasClass('disabled')) {
@@ -650,21 +634,20 @@
         }
         initCart('PUT');
     });
-// 增值服务是否选中
+    // 增值服务是否选中
     $('fieldset[data-vas-type]').on('click', function (e) {
-            // 判断增值服务类型
-            if (parseInt($(this).data('vas-type')) === 1 && $(e.target).hasClass('icon-checkcircle')) {
-                var $input = $(e.target).siblings('input[type="text"]');
-                if ($(e.target).hasClass('active')) {
-                    $input.addClass('disabled').attr('disabled', 'disabled');
-                    $(e.target).removeClass('active');
-                    $input.val('');
-                } else {
-                    $input.removeClass('disabled').removeAttr('disabled');
-                    $(e.target).addClass('active');
-                }
+        // 判断增值服务类型
+        if (parseInt($(this).data('vas-type')) === 1 && $(e.target).hasClass('icon-checkcircle')) {
+            var $input = $(e.target).siblings('input[type="text"]');
+            if ($(e.target).hasClass('active')) {
+                $input.addClass('disabled').attr('disabled', 'disabled');
+                $(e.target).removeClass('active');
+                $input.val('');
+            } else {
+                $input.removeClass('disabled').removeAttr('disabled');
+                $(e.target).addClass('active');
             }
         }
-    );
-})
-(jQuery, Swiper);
+    });
+})(jQuery, Swiper);
+//# sourceMappingURL=shoppingDetail.js.map

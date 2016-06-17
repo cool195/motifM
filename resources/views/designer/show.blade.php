@@ -52,72 +52,74 @@
 
             <!-- 设计师 对应商品 -->
             <aside class="bg-white p-b-10x">
-            @foreach($product['infos'] as $k=>$value)
-                @if($value['type']=='banner')
-                    <!-- 第一个 banner 图 -->
-                        <a href="@if($value['skipType']=='1')/detail/@elseif($value['skipType']=='2')/designer/@elseif($value['skipType']=='3')/topic/@elseif($value['skipType']=='4')/shopping#@endif{{$value['skipId']}}">
-                            <div @if($k!=0)class="p-y-10x"@endif>
-                                <img class="img-fluid"
-                                     src="https://s3-us-west-1.amazonaws.com/emimagetest/n2/{{$value['imgPath']}}"
-                                     alt="">
-                            </div>
-                        </a>
-                @elseif($value['type']=='title')
-                    <!-- 标题 -->
-                        <a href="@if($value['skipType']=='1')/detail/@elseif($value['skipType']=='2')/designer/@elseif($value['skipType']=='3')/topic/@elseif($value['skipType']=='4')/shopping#@endif{{$value['skipId']}}">
-                            <div class="p-x-15x p-y-10x text-primary">
-                                <strong>{{$value['value']}}</strong>
-                            </div>
-                        </a>
-                    @elseif($value['type']=='boxline')
-                        <hr class="hr-base m-x-5x m-y-0">
-                    @elseif($value['type']=='context')
-                    <!-- 描述 -->
-                        <a href="@if($value['skipType']=='1')/detail/@elseif($value['skipType']=='2')/designer/@elseif($value['skipType']=='3')/topic/@elseif($value['skipType']=='4')/shopping#@endif{{$value['skipId']}}">
-                            <div class="p-x-15x p-y-10x text-primary font-size-sm">
-                                {{$value['value']}}
-                            </div>
-                        </a>
-                    @elseif($value['type']=='product')
-                        @if($value['style']=='box-vertical')
-                            {{-- 商品列表竖向 --}}
-                            @if(isset($value['spus']))
-                                @foreach($value['spus'] as $spu)
-                                    <div class="p-x-15x p-y-10x">
-                                        <a href="/detail/{{$spu}}">
-                                            <img class="img-fluid"
-                                                 src="https://s3-us-west-1.amazonaws.com/emimagetest/n2/{{$product['spuInfos'][$spu]['spuBase']['main_image_url']}}"
-                                                 alt="{{$product['spuInfos'][$spu]['spuBase']['main_title']}}">
-                                        </a>
-                                    </div>
-                                @endforeach
-                            @endif
-                        @else
-                            {{-- 商品列表横向 --}}
-                            <div class="container-fluid p-x-15x">
-                                <div class="row">
-                                    @if(isset($value['spus']))
-                                        @foreach($value['spus'] as $spu)
-                                            <div class="col-xs-6">
-                                                <a href="/detail/{{$spu}}">
-                                                    <div class="p-t-10x">
-                                                        <img class="img-thumbnail"
-                                                             src="https://s3-us-west-1.amazonaws.com/emimagetest/n2/{{$product['spuInfos'][$spu]['spuBase']['main_image_url']}}"
-                                                             alt="{{$product['spuInfos'][$spu]['spuBase']['main_title']}}">
-                                                        <div class="p-y-10x">
-                                                            <span class="text-primary font-size-sm m-l-5x"><strong>${{number_format($product['spuInfos'][$spu]['skuPrice']['sale_price']/100,2)}}</strong></span>
-                                                            <span class="font-size-xs text-common text-throughLine m-l-5x">${{number_format($product['spuInfos'][$spu]['skuPrice']['price']/100,2)}}</span>
-                                                        </div>
-                                                    </div>
-                                                </a>
-                                            </div>
-                                        @endforeach
-                                    @endif
+            @if(isset($product['infos']))
+                @foreach($product['infos'] as $k=>$value)
+                    @if($value['type']=='banner')
+                        <!-- 第一个 banner 图 -->
+                            <a href="@if($value['skipType']=='1')/detail/@elseif($value['skipType']=='2')/designer/@elseif($value['skipType']=='3')/topic/@elseif($value['skipType']=='4')/shopping#@endif{{$value['skipId']}}">
+                                <div @if($k!=0)class="p-y-10x"@endif>
+                                    <img class="img-fluid"
+                                         src="https://s3-us-west-1.amazonaws.com/emimagetest/n2/{{$value['imgPath']}}"
+                                         alt="">
                                 </div>
-                            </div>
+                            </a>
+                    @elseif($value['type']=='title')
+                        <!-- 标题 -->
+                            <a href="@if($value['skipType']=='1')/detail/@elseif($value['skipType']=='2')/designer/@elseif($value['skipType']=='3')/topic/@elseif($value['skipType']=='4')/shopping#@endif{{$value['skipId']}}">
+                                <div class="p-x-15x p-y-10x text-primary">
+                                    <strong>{{$value['value']}}</strong>
+                                </div>
+                            </a>
+                        @elseif($value['type']=='boxline')
+                            <hr class="hr-base m-x-5x m-y-0">
+                        @elseif($value['type']=='context')
+                        <!-- 描述 -->
+                            <a href="@if($value['skipType']=='1')/detail/@elseif($value['skipType']=='2')/designer/@elseif($value['skipType']=='3')/topic/@elseif($value['skipType']=='4')/shopping#@endif{{$value['skipId']}}">
+                                <div class="p-x-15x p-y-10x text-primary font-size-sm">
+                                    {{$value['value']}}
+                                </div>
+                            </a>
+                        @elseif($value['type']=='product')
+                            @if($value['style']=='box-vertical')
+                                {{-- 商品列表竖向 --}}
+                                @if(isset($value['spus']))
+                                    @foreach($value['spus'] as $spu)
+                                        <div class="p-x-15x p-y-10x">
+                                            <a href="/detail/{{$spu}}">
+                                                <img class="img-fluid"
+                                                     src="https://s3-us-west-1.amazonaws.com/emimagetest/n2/{{$product['spuInfos'][$spu]['spuBase']['main_image_url']}}"
+                                                     alt="{{$product['spuInfos'][$spu]['spuBase']['main_title']}}">
+                                            </a>
+                                        </div>
+                                    @endforeach
+                                @endif
+                            @else
+                                {{-- 商品列表横向 --}}
+                                <div class="container-fluid p-x-15x">
+                                    <div class="row">
+                                        @if(isset($value['spus']))
+                                            @foreach($value['spus'] as $spu)
+                                                <div class="col-xs-6">
+                                                    <a href="/detail/{{$spu}}">
+                                                        <div class="p-t-10x">
+                                                            <img class="img-thumbnail"
+                                                                 src="https://s3-us-west-1.amazonaws.com/emimagetest/n2/{{$product['spuInfos'][$spu]['spuBase']['main_image_url']}}"
+                                                                 alt="{{$product['spuInfos'][$spu]['spuBase']['main_title']}}">
+                                                            <div class="p-y-10x">
+                                                                <span class="text-primary font-size-sm m-l-5x"><strong>${{number_format($product['spuInfos'][$spu]['skuPrice']['sale_price']/100,2)}}</strong></span>
+                                                                <span class="font-size-xs text-common text-throughLine m-l-5x">${{number_format($product['spuInfos'][$spu]['skuPrice']['price']/100,2)}}</span>
+                                                            </div>
+                                                        </div>
+                                                    </a>
+                                                </div>
+                                            @endforeach
+                                        @endif
+                                    </div>
+                                </div>
+                            @endif
                         @endif
-                    @endif
-                @endforeach
+                    @endforeach
+                @endif
             </aside>
 
         </section>
