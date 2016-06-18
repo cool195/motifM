@@ -59,7 +59,7 @@ class UserController extends ApiController
             'cmd' => 'signup',
             'uuid' => md5($email),
             'email' => $email,
-            'pw' => $request->input('pw'),
+            'pw' => bin2hex(md5($request->input('pw'))),
             'nick' => $request->input('nick')
         );
         $result = $this->request('openapi', self::API_SYSTEM, self::API_SERVICE, $params);
@@ -105,7 +105,7 @@ class UserController extends ApiController
             'cmd' => "login",
             'uuid' => $request->input('uuid', md5($email)),
             'email' => $email,
-            'pw' => $request->input('pw'),
+            'pw' => bin2hex(md5($request->input('pw'))),
         );
         $result = $this->request('openapi', self::API_SYSTEM, self::API_SERVICE, $params);
         if (empty($result)) {
@@ -178,7 +178,7 @@ class UserController extends ApiController
     {
         $params = array(
             'cmd' => "modifyfgttpwd",
-            'pw' => $request->input('pw'),
+            'pw' => bin2hex(md5($request->input('pw'))),
             'tp' => $request->input('tp'),
             'sig' => $request->input('sig')
         );
@@ -241,7 +241,7 @@ class UserController extends ApiController
             'token' => Session::get('user.token'),
             'pin' => Session::get('user.pin'),
             'oldpw' => $request->input('oldpw'),
-            'pw' => $request->input('pw'),
+            'pw' => bin2hex(md5($request->input('pw'))),
         );
         $result = $this->request('openapi', self::API_SYSTEM, self::API_SERVICE, $params);
         if (empty($result)) {
