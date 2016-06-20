@@ -42,12 +42,12 @@
         if ($Edit.hasClass('active')) {
             $.each($LinkList, function (index, val) {
                 var Link = $(val).data('url-return');
-                $(val).attr('href', Link);
+                $(val).data('action', Link);
             });
         } else {
             $.each($LinkList, function (index, val) {
                 var Link = $(val).data('url-edit');
-                $(val).attr('href', Link);
+                $(val).data('action', Link);
             });
         }
     }
@@ -107,7 +107,6 @@
             data: { aid: AddressID }
         }).done(function () {
             console.log("success");
-
             return true;
         }).fail(function () {
             console.log("error");
@@ -122,17 +121,27 @@
         var AddressID = $(e.target).parents('.addressList-container').data('address');
         $('#modalDialog').data('address', AddressID);
     });
+
     $('.addressItem-info').on('click', function () {
         var Action = $(this).data('action');
+        // 当前点击项所对应的 Aid
+        var Aid = $(this).parents('.addressList-container').data('address');
 
         if (Action === 'return') {
             $('.icon-radio.active').removeClass('active');
             $(this).find('.icon-radio').addClass('active');
-            var Aid = $(this).parents('.addressList-container').data('address');
-            $('input[name="aid"]').val(Aid);
+            $('input[name="aid"]').val(Aid); // 需要提交的项
         } else if (Action === 'edit') {
-            // TODO 跳转到编辑页面
-        }
+                // TODO 跳转到编辑页面
+                $('input[name="edit_id"]').val(Aid); // 需要修改的项
+                // Active 项 所对应的 AddressID
+                var AddressID = $('.icon-radio.active').parents('.addressList-container').data('address');
+                $('input[name="aid"]').val(AddressID); // 暂存选定的项
+
+                var $InfoForm = $('#infoForm');
+                $InfoForm.attr('action', $InfoForm.data('edit'));
+                $InfoForm.submit();
+            }
     });
     // 初始化 模态框
     $('#modalDialog').remodal({
