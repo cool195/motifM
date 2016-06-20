@@ -80,7 +80,7 @@ class CartController extends ApiController
 	public function addressList(Request $request)		
 	{
 		//$input = $request->except('aid', 'checkout');
-		$input = $request->except('aid', 'checkout', 'email', 'name', 'addr1', 'addr2', 'state', 'city', 'zip', 'tel', 'idnum', 'country', 'isd', 'route');
+		$input = $request->except('aid', 'checkout', 'email', 'name', 'addr1', 'addr2', 'state', 'city', 'zip', 'tel', 'idnum', 'country', 'isd', 'route', 'eid');
 		$aid = $request->input('aid', 0);
 		$result = $this->getUserAddressList();
 		return View('shopping.ordercheckout_addresslist', ['data'=>$result['data'], 'input'=>$input, 'aid'=>$aid]);
@@ -135,6 +135,26 @@ class CartController extends ApiController
 		return View('shopping.ordercheckout_addaddress', ['input'=>$input, 'checkout'=>$checkout, 'country'=>$country, 'first'=>1]);
 	}
 
+	public function addrModify(Request $request)
+	{
+		$checkout = $request->except('email', 'name', 'addr1', 'addr2', 'state', 'city', 'zip', 'tel', 'idnum', 'country', 'isd', 'route', 'eid');
+		if ($request->has('country')) {
+			$input = $request->except('country', 'eid');
+			$input['detail_address1'] = $input['addr1'];
+			$input['detail_address2'] = $input['addr2'];
+			$input['telephone'] = $input['tel'];
+			$input['iDnumber'] = $input['idnum'];
+			$input['isDefault'] = $input['isd'];
+			$input['receiving_id'] = $input['aid'];
+			$country = json_decode(base64_decode($request->input('country')), true);
+			$input['country'] = $country['country_name_en'];
+		} else {
+			$eid = $request->input('eid', 0);
+			$input = $this->getUserAddrByAid($eid);
+		}
+		return View('shopping.ordercheckout_modaddress', ['input'=>$input, 'checkout'=>$checkout]);
+	}
+	
 	public function countryList(Request $request)
 	{
 
@@ -163,6 +183,7 @@ class CartController extends ApiController
 		}
 		return View('shopping.ordercheckout_countrylist', ['list'=>$result['data']['list'], 'commonlist'=>$result['data']['commonlist'], 'route'=>$route, 'input'=>$input]);
 	}
+
 
 	private function getDefaultPayMethod()
 	{
