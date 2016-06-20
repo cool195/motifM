@@ -49,7 +49,7 @@ class CartController extends ApiController
 			'cps' => $request->input('cps', ""),
 			'remark' => $request->input('remark', ""),
 			'stype' => $defaultMethod['logistics_type'],
-			'input' => $request->except('aid', 'stype', 'paym')
+			'input' => $request->except('aid', 'stype', 'paym', 'eid')
 		]);
 	}
 

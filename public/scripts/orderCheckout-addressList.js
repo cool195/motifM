@@ -67,6 +67,7 @@
 
     $('[data-role="submit"]').on('click', function () {
         var Action = $(this).data('action');
+        $('input[name="eid"]').remove();
         $('#infoForm').attr('action', Action);
         $('#infoForm').submit();
     });
