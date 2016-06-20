@@ -64,27 +64,50 @@
         checkout.paypal.initAuthFlow();
     });
 
-    $('.icon-delete').on('click', function (e) {
-
-        var Token = $(e.target).parents('.payment-item').children('.payment-info').data(token);
-
+    function deletePayment(PaymentToken) {
+        // TODO loading 动画
         openLoading();
-        // TODO
+
         $.ajax({
-            url: '/braintree',
+            url: ' /braintree',
             type: 'DELETE',
-            data: { methodtoken: Token }
-        }).done(function (data) {
-            if (data.success) {
-                console.log("success");
-                location.reload();
+            data: {
+                methodtoken: PaymentToken
             }
+        }).done(function () {
+            console.log("success");
+            return true;
         }).fail(function () {
             console.log("error");
         }).always(function () {
-            closeLoading();
             console.log("complete");
+            closeLoading();
         });
+    }
+
+    // 删除按钮
+    $('.payment-delete').on('click', function (e) {
+        var PaymentToken = $(e.target).parents('.payment-info').data('token');
+        $('#modalDialog').data('token', PaymentToken);
+    });
+
+    // 初始化 模态框
+    $('#modalDialog').remodal({
+        closeOnOutsideClick: false,
+        hashTracking: true
+    });
+
+    $('#modalDialog').on('closed', function () {
+        $(this).removeData('token');
+        console.log('close');
+    });
+    $('#modalDialog').on('confirmation', function () {
+        var PaymentToken = $(this).data('token');
+        if (PaymentToken === undefined || PaymentToken === null || PaymentToken === '') {
+            console.log('Token 没有值');
+            return;
+        }
+        deletePayment(PaymentToken);
     });
 })();
 //# sourceMappingURL=paymentMethod-paypal.js.map
