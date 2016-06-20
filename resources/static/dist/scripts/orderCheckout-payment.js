@@ -66,6 +66,8 @@
     });
 
     $('[data-role="submit"]').on('click', function () {
+        var PayType = $('.icon-radio.active').parents('.payment-info').data('type');
+        $('input[name="paym"]').val(PayType);
         $('#infoForm').submit();
     });
 
@@ -133,7 +135,7 @@
     });
     $('#modalDialog').on('confirmation', function () {
         var PaymentToken = $(this).data('token');
-        if (AddressID === undefined || AddressID === null || AddressID === '') {
+        if (PaymentToken === undefined || PaymentToken === null || PaymentToken === '') {
             console.log('Token 没有值');
             return;
         }
