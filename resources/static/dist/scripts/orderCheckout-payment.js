@@ -84,7 +84,9 @@
             }
         }).done(function () {
             console.log("success");
-            return true;
+            if (data.success) {
+                window.location.href = data.redirectUrl;
+            }
         }).fail(function () {
             console.log("error");
         }).always(function () {
@@ -174,9 +176,9 @@
                 type: 'POST',
                 data: { nonce: payload.nonce }
             }).done(function (data) {
+                console.log("success");
                 if (data.success) {
-                    console.log("success");
-                    location.reload();
+                    window.location.href = data.redirectUrl;
                 }
             }).fail(function () {
                 console.log("error");

@@ -105,8 +105,8 @@
                 type: 'POST',
                 data: { nonce: payload.nonce }
             }).done(function (data) {
+                console.log("success");
                 if (data.success) {
-                    console.log("success");
                     window.location.href = data.redirectUrl;
                 }
             }).fail(function () {
