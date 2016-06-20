@@ -107,10 +107,6 @@
                     </a>
                 </aside>
             @endif
-            <aside class="p-a-15x">
-                <div class="btn btn-block btn-primary" data-role="submit">Continue</div>
-            </aside>
-
         </section>
         <!-- 页脚 功能链接 -->
         @include('footer')
