@@ -193,5 +193,11 @@
         event.preventDefault();
         checkout.paypal.initAuthFlow();
     });
+
+    $('#cardCredit').on('click', function (event) {
+        event.preventDefault();
+        $('#infoForm').attr('action', $(this).data('action'));
+        $('#infoForm').submit();
+    });
 })(jQuery);
 //# sourceMappingURL=orderCheckout-payment.js.map
