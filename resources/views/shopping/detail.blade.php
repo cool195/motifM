@@ -85,7 +85,8 @@
                     <span class="font-size-lx text-primary">$ {{ number_format(($data['skuPrice']['sale_price'] / 100), 2) }}</span>
                     <span class="font-size-sm text-common">＄{{ number_format(($data['skuPrice']['price'] /100), 2) }}</span>
                     @if(isset($data['skuPrice']['skuPromotion']))
-                         <span class="font-size-sm text-primary">({{ $data['skuPrice']['skuPromotion']['display'] }})</span>
+                        <span class="font-size-sm text-primary">({{ $data['skuPrice']['skuPromotion']['display'] }}
+                            )</span>
                     @endif
                     <a class="text-primary pull-xs-right" href="#"><i class="iconfont icon-share icon-size-xm"></i></a>
                 </div>
@@ -141,22 +142,24 @@
                 </aside>
                 <!-- 用户 Q & A -->
                 <aside class="product-secondaryInfo">
-                    <a class="flex flex-alignCenter flex-fullJustified font-size-sm text-primary p-a-15x" href="/askshopping?spu={{$data['spu']}}">
+                    <a class="flex flex-alignCenter flex-fullJustified font-size-sm text-primary p-a-15x"
+                       href="/askshopping?spu={{$data['spu']}}">
                         Ask a Question <i class="iconfont icon-arrow-right icon-size-xm text-common"></i></a>
                 </aside>
                 <aside class="product-secondaryInfo">
-{{--                    <a class="flex flex-alignCenter flex-fullJustified font-size-sm text-primary p-a-15x">
-                        Size Guide
-                        <i class="iconfont icon-arrow-right icon-size-xm text-common"></i>
-                    </a>
-                    <hr class="hr-base">
-                    <a class="flex flex-alignCenter flex-fullJustified font-size-sm text-primary p-a-15x" href="#">
-                        Shipping, Returns, Payments
-                        <i class="iconfont icon-arrow-right icon-size-xm text-common"></i>
-                    </a>--}}
+                    {{--                    <a class="flex flex-alignCenter flex-fullJustified font-size-sm text-primary p-a-15x">
+                                            Size Guide
+                                            <i class="iconfont icon-arrow-right icon-size-xm text-common"></i>
+                                        </a>
+                                        <hr class="hr-base">
+                                        <a class="flex flex-alignCenter flex-fullJustified font-size-sm text-primary p-a-15x" href="#">
+                                            Shipping, Returns, Payments
+                                            <i class="iconfont icon-arrow-right icon-size-xm text-common"></i>
+                                        </a>--}}
                     @if(isset($data['templates']) && !empty($data['templates']))
                         @foreach($data['templates'] as $template)
-                            <a class="flex flex-alignCenter flex-fullJustified font-size-sm text-primary p-a-15x" href="{{ $template['page_url'] }}">
+                            <a class="flex flex-alignCenter flex-fullJustified font-size-sm text-primary p-a-15x"
+                               href="{{ $template['page_url'] }}">
                                 {{ $template['template_title'] }}
                                 <i class="iconfont icon-arrow-right icon-size-xm text-common"></i>
                             </a>
@@ -182,60 +185,31 @@
                     <article class="font-size-md text-primary p-x-15x"><strong>More Like This</strong></article>
                     <div class="container-fluid p-a-10x">
                         <div class="row">
-                            <div class="col-xs-6">
-                                <div class="productList-item">
-                                    <div class="image-bg">
-                                        <div class="image-container">
-                                            <img class="img-fluid" src="/images/product/product1.jpg" alt="商品的名称">
-                                            <div class="price-off"><strong class="font-size-sm">OFF 49%</strong></div>
+                            @foreach($recommended as $value)
+                                <div class="col-xs-6">
+                                    <div class="productList-item">
+                                        <div class="image-bg">
+                                            <div class="image-container">
+                                                <a href="/detail/{{ $value['spu'] }}">
+                                                    <img class="img-fluid img-lazy"
+                                                         data-original="https://s3-us-west-1.amazonaws.com/emimagetest/n1/{{ $value['main_image_url'] }}"
+                                                         src="/images/product/bg-product@336.png" alt="{{ $value['main_title'] }}">
+                                                </a>
+                                                @if($value['skuPrice']['sale_price'] != $value['skuPrice']['price'])
+                                                    <div class="price-off"><strong class="font-size-sm">{{$value['skuPrice']['skuPromotion']['display']}}</strong>
+                                                    </div>
+                                                @endif
+                                            </div>
+                                        </div>
+                                        <div class="price-caption">
+                                            <span class="font-size-sm m-l-5x"><strong>${{ number_format(($value['skuPrice']['sale_price'] / 100), 2) }}</strong></span>
+                                            @if($value['skuPrice']['sale_price'] != $value['skuPrice']['price'])
+                                                <span class="font-size-xs text-common text-throughLine m-l-5x">${{ number_format(($value['skuPrice']['price'] / 100), 2) }}</span>
+                                            @endif
                                         </div>
                                     </div>
-                                    <div class="price-caption">
-                                        <span class="font-size-sm m-l-5x"><strong>$60.95</strong></span>
-                                        <span class="font-size-xs text-common text-throughLine m-l-5x">$125.95</span>
-                                    </div>
                                 </div>
-                            </div>
-                            <div class="col-xs-6">
-                                <div class="productList-item">
-                                    <div class="image-bg">
-                                        <div class="image-container">
-                                            <img class="img-fluid" src="/images/product/product2.jpg" alt="商品的名称">
-                                            <div class="price-off"><strong class="font-size-sm">OFF 89%</strong></div>
-                                        </div>
-                                    </div>
-                                    <div class="price-caption">
-                                        <span class="font-size-sm text-primary m-l-5x"><strong>$60.95</strong></span>
-                                        <span class="font-size-xs text-common text-throughLine m-l-5x">$125.95</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xs-6">
-                                <div class="productList-item">
-                                    <div class="image-bg">
-                                        <div class="image-container">
-                                            <img class="img-fluid" src="/images/product/product3.jpg" alt="商品的名称">
-                                        </div>
-                                    </div>
-                                    <div class="price-caption">
-                                        <span class="font-size-sm text-primary m-l-5x"><strong>$60.95</strong></span>
-                                        <span class="font-size-xs text-common text-throughLine m-l-5x">$125.95</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xs-6">
-                                <div class="productList-item">
-                                    <div class="image-bg">
-                                        <div class="image-container">
-                                            <img class="img-fluid" src="/images/product/product4.jpg" alt="商品的名称">
-                                        </div>
-                                    </div>
-                                    <div class="price-caption">
-                                        <span class="font-size-sm text-primary m-l-5x"><strong>$60.95</strong></span>
-                                        <span class="font-size-xs text-common text-throughLine m-l-5x">$125.95</span>
-                                    </div>
-                                </div>
-                            </div>
+                            @endforeach
                         </div>
                     </div>
                 </aside>
