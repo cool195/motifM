@@ -103,7 +103,7 @@
             $.ajax({
                 url: '/braintree',
                 type: 'POST',
-                data: { nonc: payload.nonc }
+                data: { nonce: payload.nonce }
             }).done(function (data) {
                 if (data.success) {
                     console.log("success");
