@@ -95,8 +95,9 @@
     <div class="loading loading-screen loading-switch loading-hidden">
         <div class="loader loader-screen"></div>
     </div>
-    <form id="infoForm" action="/cart/ordercheckout" method="get" hidden>
+    <form id="infoForm" action="/cart/ordercheckout" method="get">
         <input type="hidden" name="aid" value="{{$aid}}">
+        <input type="hidden" name="eid" value="{{$aid}}">
         @if(isset($input) && !empty($input))
             @foreach($input as $name => $value)
                 <input type="hidden" name="{{$name}}" value="{{$value}}">
