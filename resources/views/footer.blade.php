@@ -56,7 +56,6 @@
 																						 SERVICE</strong>
 				</div>
 				<a class="list-group-item list-group-itemText-lg text-primary" href="/faq">FAQs</a>
-				<a class="list-group-item list-group-itemText-lg text-primary" href="https://www.facebook.com/Motif-862363260557363/">Feedback</a>
 				<a class="list-group-item list-group-itemText-lg text-primary" href="/shippingreturns">Shipping &
 																						Returns</a>
 				<a class="list-group-item list-group-itemText-lg text-primary" href="/payments">Payments</a>
