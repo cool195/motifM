@@ -69,7 +69,7 @@
     </div>
 </div>
 <!-- 下载 App Download MOTIF -->
-<div class="remodal remodal-lg modal-content" data-remodal-id="download-modal">
+<div class="remodal remodal-lg modal-content" data-remodal-id="download-modal" id="downloadModal">
     <div class="text-right p-x-15x p-t-15x" data-remodal-action="close"><i
                 class="iconfont icon-cross icon-size-md text-common"></i></div>
     <div class="font-size-sm p-a-15x">
