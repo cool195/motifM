@@ -136,12 +136,13 @@ class BraintreeController extends ApiController
         $system = "";
         $service = "pay";
         $result = $this->request('openapi', $system, $service, $params);
-        $result['params'] = $params;
+
         if (empty($result)) {
             $result['success'] = false;
             $result['error_msg'] = "Data access failed";
             $result['data'] = array();
         }
+        $result['redirectUrl'] = "/braintree";
         return $result;
     }
 }
