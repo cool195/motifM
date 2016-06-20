@@ -4,10 +4,10 @@
 		Follow Us:&nbsp;
 	</div>
 	<div class="field-items">
-		<a class="share-btn">
+		<a class="share-btn"href="https://www.facebook.com/Motif-862363260557363/">
 			<i class="iconfont icon-facebook icon-size-lg"></i>
 		</a>
-		<a class="share-btn">
+		<a class="share-btn"href="https://plus.google.com/u/0/113666794179158439426">
 			<i class="iconfont icon-google icon-size-lg"></i>
 		</a>
 		<a class="share-btn">
@@ -26,10 +26,10 @@
 		Download:
 	</div>
 	<div class="field-items">
-		<a href="#" class="btn btn-secondary btn-xs">
+		<a href="https://itunes.apple.com/cn/app/id1125850409" class="btn btn-secondary btn-xs">
 			<img src="/images/icon/icon-appStore.png" srcset="/images/icon/icon-appStore@2x.png 2x, /images/icon/icon-appStore@3x.png 3x">
 		</a>
-		<a href="#" class="btn btn-secondary btn-xs">
+		<a href="https://play.google.com/store/apps/details?id=me.motif.motif" class="btn btn-secondary btn-xs">
 			<img src="/images/icon/icon-googlePlay.png" srcset="/images/icon/icon-googlePlay@2x.png 2x, /images/icon/icon-googlePlay@3x.png 3x">
 		</a>
 	</div>
