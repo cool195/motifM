@@ -141,14 +141,17 @@ $app->group(['middleware' => 'logincheck', 'namespace' => 'App\Http\Controllers\
 
 
 $app->group(['namespace' => 'App\Http\Controllers\Other'], function ($app) {
-    $app->get('/aboutMotif', 'PageController@aboutMotif');
-    $app->get('/cancellationPolicy', 'PageController@cancellationPolicy');
-    $app->get('/contactUs', 'PageController@contactUs');
-    $app->get('/description', 'PageController@description');
+    $app->get('/aboutmotif', 'PageController@aboutMotif');
+    $app->get('/contactus', 'PageController@contactUs');
     $app->get('/faq', 'PageController@faq');
-    $app->get('/motifGuarantee', 'PageController@motifGuarantee');
-    $app->get('/privacyPolicy', 'PageController@privacyPolicy');
-    $app->get('/sizeGuide', 'PageController@sizeGuide');
-    $app->get('/termsService', 'PageController@termsService');
-    $app->get('/userAgreement', 'PageController@userAgreement');
+    $app->get('/termsconditions', 'PageController@userAgreement');
+    $app->get('/privacynotice', 'PageController@privacyPolicy');
+    $app->get('/sizeguide', 'PageController@sizeGuide');
+    $app->get('/shippingreturns', 'PageController@shippingreturns');
+    $app->get('/payments', 'PageController@payments');
+
+    //$app->get('/cancellationpolicy', 'PageController@cancellationPolicy');
+    //$app->get('/motifguarantee', 'PageController@motifGuarantee');
+    //$app->get('/termsservice', 'PageController@termsService');
+
 });

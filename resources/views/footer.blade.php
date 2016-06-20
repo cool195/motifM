@@ -42,13 +42,12 @@
 				<div class="list-group-item list-group-itemText-lg text-primary"><strong>THE
 																						 MOTIF</strong>
 				</div>
-				<a class="list-group-item list-group-itemText-lg text-primary" href="#">About Motif</a>
-				<a class="list-group-item list-group-itemText-lg text-primary" href="#">Privacy
+				<a class="list-group-item list-group-itemText-lg text-primary" href="/aboutmotif">About Motif</a>
+				<a class="list-group-item list-group-itemText-lg text-primary" href="/privacynotice">Privacy
 																						Poilcy</a>
-				<a class="list-group-item list-group-itemText-lg text-primary" href="#">Terms of
+				<a class="list-group-item list-group-itemText-lg text-primary" href="/termsconditions">Terms of
 																						Services</a>
-				<a class="list-group-item list-group-itemText-lg text-primary" href="#">Contact Us</a>
-				<a class="list-group-item list-group-itemText-lg text-primary" href="#">Site Map</a>
+				<a class="list-group-item list-group-itemText-lg text-primary" href="/contactus">Contact Us</a>
 			</div>
 		</div>
 		<div class="col-xs-6">
@@ -56,11 +55,11 @@
 				<div class="list-group-item list-group-itemText-lg text-primary"><strong>HELP &
 																						 SERVICE</strong>
 				</div>
-				<a class="list-group-item list-group-itemText-lg text-primary" href="#">FAQs</a>
-				<a class="list-group-item list-group-itemText-lg text-primary" href="#">Feedback</a>
-				<a class="list-group-item list-group-itemText-lg text-primary" href="#">Delivery &
-																						Shipping</a>
-				<a class="list-group-item list-group-itemText-lg text-primary" href="#">Returns</a>
+				<a class="list-group-item list-group-itemText-lg text-primary" href="/faq">FAQs</a>
+				<a class="list-group-item list-group-itemText-lg text-primary" href="https://www.facebook.com/Motif-862363260557363/">Feedback</a>
+				<a class="list-group-item list-group-itemText-lg text-primary" href="/shippingreturns">Shipping &
+																						Returns</a>
+				<a class="list-group-item list-group-itemText-lg text-primary" href="/payments">Payments</a>
 			</div>
 
 		</div>

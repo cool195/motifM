@@ -26,10 +26,16 @@ class PageController extends ApiController
         return View('Other.page-contactUs');
     }
 
-    //description
-    public function description()
+    //shippingreturns
+    public function shippingreturns()
     {
-        return View('Other.page-description');
+        return View('Other.page-shippingreturns');
+    }
+
+    //payments
+    public function payments()
+    {
+        return View('Other.page-payment');
     }
 
     //faq
