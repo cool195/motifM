@@ -43,7 +43,7 @@
                             <div class="payment-delete switch" data-remodal-target="modal">
                                 <i class="iconfont icon-delete icon-size-md text-warning"></i>
                             </div>
-                            <div class="payment-info m-l-15x p-r-15x p-y-10x">
+                            <div class="payment-info m-l-15x p-r-15x p-y-10x" data-token="{{$value['token']}}" data-type="{{$value['type']}}">
                                 <div class="flex flex-alignCenter">
                                     <span class="cardImage-inline american-express"></span>
                                     <span class="m-l-10x">{{$value['showName']}}</span>
