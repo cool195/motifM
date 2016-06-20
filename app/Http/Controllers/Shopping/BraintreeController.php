@@ -63,6 +63,17 @@ class BraintreeController extends ApiController
         return $result;
     }
 
+    /*
+	 * 跳转到添加支付卡页面
+	 *
+	 * @author zhangtao@evermarker.net
+	 *
+	 * */
+    public function addCard(Request $request)
+    {
+        return view('shopping.paymentaddCard');
+    }
+
     //测试支付类型
     public function testpay()
     {
