@@ -213,10 +213,10 @@
                 </aside>
 
                 <aside class="bg-white">
-                    <a class="flex flex-alignCenter text-primary p-a-15x" href="#">
+                    <div class="flex flex-alignCenter text-primary p-a-15x" data-role="">
                         <i class="iconfont icon-add icon-size-sm p-r-10x"></i>
                         <span class="font-size-sm">Add a New Address</span>
-                    </a>
+                    </div>
                 </aside>
                 <aside class="p-a-15x">
                     <div class="btn btn-block btn-primary" data-role="submit">Continue</div>
@@ -314,8 +314,9 @@
     <div class="loading loading-screen loading-switch loading-hidden">
         <div class="loader loader-screen"></div>
     </div>
-    <form id="infoForm" action="/cart/ordercheckout" method="get" hidden>
+    <form id="infoForm" action="/cart/ordercheckout" method="get" data-edit="" hidden>
         <input type="hidden" name="aid" value="aid">
+        <input type="hidden" name="edit_id" value="aid">
     </form>
 </body>
 <script src="/scripts/vendor.js"></script>

@@ -16416,6 +16416,17 @@ else if (typeof define === 'function' && define.amd) {
 'use strict';
 
 (function ($) {
+    function switchDevice() {
+        var Agent = navigator.userAgent;
+        if (/iPhone/i.test(Agent)) {
+            return 1;
+        } else if (/Android/i.test(Agent) || /Linux/i.test(Agent)) {
+            return 0;
+        } else {
+            return -1;
+        }
+    }
+
     // 导航条自动隐藏
     $('#header').headroom({
         'tolerance': .5,
@@ -16450,6 +16461,9 @@ else if (typeof define === 'function' && define.amd) {
         }
     });
 
+    // 下载App 弹出框
+    $('#downloadModal').on('opening', function () {});
+
     (function () {
         if ($('.nav-shoppingCart').data('login')) {
             $.ajax({
@@ -16473,6 +16487,26 @@ else if (typeof define === 'function' && define.amd) {
             });
         } else {
             $('.nav-shoppingCart').children('span').remove();
+        }
+
+        var Android = "https://play.google.com/apps/testing/me.motif.motif",
+            iPhone = "https://itunes.apple.com/cn/app/id1125850409";
+
+        var $Downloading = $('a[data-role="downloading"]');
+        switch (switchDevice()) {
+            case 1:
+                $Downloading.attr('href', iPhone);
+                $('.download-content').removeAttr('hidden');
+                break;
+            case 0:
+                $Downloading.attr('href', Android);
+                $('.download-content').removeAttr('hidden');
+                break;
+            case -1:
+                break;
+                $('.app-content').removeAttr('hidden');
+            default:
+                break;
         }
     })();
 })(jQuery);
