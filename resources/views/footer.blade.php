@@ -18,13 +18,7 @@
                 <i class="iconfont icon-google icon-size-lg"></i>
             </a>
             <a class="share-btn">
-                <i class="iconfont icon-youtube icon-size-lg"></i>
-            </a>
-            <a class="share-btn">
                 <i class="iconfont icon-linkedin icon-size-lg"></i>
-            </a>
-            <a class="share-btn">
-                <i class="iconfont icon-twitter icon-size-lg"></i>
             </a>
         </div>
     </div>
