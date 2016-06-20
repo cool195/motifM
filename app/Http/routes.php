@@ -144,7 +144,7 @@ $app->group(['namespace' => 'App\Http\Controllers\Other'], function ($app) {
     $app->get('/aboutmotif', 'PageController@aboutMotif');
     $app->get('/contactus', 'PageController@contactUs');
     $app->get('/faq', 'PageController@faq');
-    $app->get('/termsconditions', 'PageController@userAgreement');
+    $app->get('/termsconditions', 'PageController@termsService');
     $app->get('/privacynotice', 'PageController@privacyPolicy');
     $app->get('/sizeguide', 'PageController@sizeGuide');
     $app->get('/shippingreturns', 'PageController@shippingreturns');
