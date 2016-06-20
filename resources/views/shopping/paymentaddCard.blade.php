@@ -39,7 +39,7 @@
             5555 5555 5555 4444: MasterCard
             3714 496353 98431: American Express
             -->
-            <form action="/" class="cardform-container" id="card-container" method="post">
+            <form action="/" class="cardform-container" id="card-container" method="post" data-token="{{$token}}">
                 <div class="cardinfo-wrapper">
                     <div class="cardinfo-item" id="card-number">
                         <span class="card-image" id="card-type"></span>
@@ -108,5 +108,6 @@
 <!-- BrainTree -->
 <script src="/scripts/braintree-2.24.1.min.js"></script>
 <script src="/scripts/vendor.js"></script>
+<script src="/scripts/paymentMethod-addCard.js"></script>
 
 </html>

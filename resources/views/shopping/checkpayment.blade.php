@@ -9,7 +9,7 @@
     <link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
     <!-- Place favicon.ico in the root directory -->
 
-    <link rel="stylesheet" href="styles/vendor.css">
+    <link rel="stylesheet" href="/styles/vendor.css">
 
     <link rel="stylesheet" href="/styles/orderCheckout-payment.css">
 
@@ -34,7 +34,8 @@
             </article>
 
             <!-- 支付方式列表 list -->
-            <!-- 已绑定paypal支付方式 状态 -->
+            <!-- 已绑定支付方式 状态 -->
+            <!-- paypal -->
             @if(!empty($methodlist['PayPal']))
                 @foreach($methodlist['PayPal'] as $value)
                     <aside class="payPal-container m-b-10x">
@@ -44,7 +45,7 @@
                             </div>
                             <div class="payment-info m-l-15x p-r-15x p-y-10x" data-token="{{$value['token']}}">
                                 <div class="flex flex-alignCenter">
-                                    <span class="cardImage-inline paypal"></span>
+                                    <span class="cardImage-inline american-express"></span>
                                     <span class="m-l-10x">{{$value['showName']}}</span>
                                 </div>
                                 <div class="flex">
@@ -55,31 +56,29 @@
                     </aside>
                 @endforeach
             @else
-            <!-- 没有paypal绑定支付方式 状态 -->
+            <!-- 没有绑定支付方式 状态 -->
                 <aside class="payPal-container m-b-10x">
                     <div class="flex flex-alignCenter flex-fullJustified font-size-sm text-primary p-y-10x p-x-15x"
                          id="paypal" data-braintree="{{$token}}">
-                        <div class="font-size-sm text-primary">
-                            <span class="p-r-15x">
-                                <img src="images/payment/icon-paypal-inactive.png"
-                                     srcset="/images/payment/icon-paypal-inactive@2x.png 2x,/images/payment/icon-paypal-inactive@3x.png 3x"
-                                     alt="">
-                            </span>
+                        <div class="flex flex-alignCenter font-size-sm text-primary">
+                        <span class="cardImage-inline unPaypal"></span>
                             <span>Paypal</span>
                         </div>
                         <span><i class="iconfont icon-arrow-right icon-size-sm text-common"></i></span>
                     </div>
                 </aside>
             @endif
+
+
         <!-- 信用卡 -->
-            <aside class="cardCredit-container">
-                @if(!empty($methodlist['Card']))
+            @if(!empty($methodlist['Card']))
+                <aside class="cardCredit-container">
                     @foreach($methodlist['Card'] as $value)
                         <div class="payment-item font-size-sm">
                             <div class="payment-delete switch" data-remodal-target="modal">
                                 <i class="iconfont icon-delete icon-size-md text-warning"></i>
                             </div>
-                            <div class="payment-info m-l-15x p-r-15x p-y-10x" data-token="{{$value['token']}}">
+                            <div class="payment-info m-l-15x p-r-15x p-y-10x" data-token="{{$value['token']}}" data-type="type">
                                 <div class="flex flex-alignCenter">
                                     <span class="cardImage-inline {{array_get($methodlist['cardlist'],$value['cardType'])}}"></span>
                                     <span class="m-l-10x">{{$value['showName']}}</span>
@@ -97,22 +96,23 @@
                             <span class="font-size-sm">Add a New Card</span>
                         </a>
                     </div>
-                @else
-                <!-- 没有绑定信用卡支付方式 状态 -->
-                    <aside class="bg-white m-b-10x">
-                        <a class="flex flex-alignCenter flex-fullJustified font-size-sm text-primary p-y-10x p-x-15x"
-                           href="#">
-                            <div class="font-size-sm text-primary">
-                        <span class="p-r-15x"><img src="/images/payment/icon-card.png"
-                                                   srcset="/images/payment/icon-card@2x.png 2x,/images/payment/icon-card@3x.png 3x"
-                                                   alt=""></span>
-                                <span>Direct debit/credit card</span></div>
-                            <span><i class="iconfont icon-arrow-right icon-size-sm text-common"></i></span>
-                        </a>
-                    </aside>
-                @endif
-            </aside>
-
+                </aside>
+            @else
+                <aside class="cardCredit-container m-b-10x">
+                    <a class="flex flex-alignCenter flex-fullJustified font-size-sm text-primary p-y-10x p-x-15x"
+                       href="#">
+                        <div class="font-size-sm text-primary">
+                            <span class="p-r-15x">
+                                <img src="/images/payment/icon-card.png"
+                                     srcset="/images/payment/icon-card@2x.png 2x,/images/payment/icon-card@3x.png 3x"
+                                     alt="">
+                            </span>
+                            <span>Direct debit/credit card</span>
+                        </div>
+                        <span><i class="iconfont icon-arrow-right icon-size-sm text-common"></i></span>
+                    </a>
+                </aside>
+            @endif
             <aside class="p-a-15x">
                 <div class="btn btn-block btn-primary" data-role="submit">Continue</div>
             </aside>
