@@ -38,8 +38,8 @@
                 @if(isset($categories))
                     @foreach($categories as $key => $c)
                         <li class="nav-item swiper-slide" data-tab-index="{{ $c['category_id'] }}" id="{{ $c['category_id'] }}">
-                            <a class="nav-flex underLine-item text-primary m-x-15x p-y-10x p-l-20x iconimg-earrings @if($key!=0) inactive @endif">
-                                <img src="https://s3-us-west-1.amazonaws.com/emimagetest/n4/{{$c['img_path2'] }}" alt="">
+                            <a class="nav-flex flex-alignCenter underLine-item text-primary m-x-15x p-y-10x @if($key!=0) inactive @endif">
+                                <img class="img-fluid" src="https://s3-us-west-1.amazonaws.com/emimagetest/n4/{{$c['img_path2'] }}" alt="">
                                 <span class="font-size-sm m-l-5x">{{ $c['category_name'] }}</span>
                             </a>
                         </li>

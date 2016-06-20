@@ -676,6 +676,11 @@
         if ($('.message-info').children('p').height() <= 144) {
             $('.btn-showMore').hide();
         }
+        // 图片延迟加载
+        $('img.img-lazy').lazyload({
+            threshold: 200,
+            effect: 'fadeIn'
+        });
     });
 })(jQuery, Swiper);
 //# sourceMappingURL=shoppingDetail.js.map
