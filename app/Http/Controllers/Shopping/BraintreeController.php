@@ -59,7 +59,7 @@ class BraintreeController extends ApiController
             'nonce' => $request->input("nonce"),
         );
         $result = $this->request('openapi', '', 'pay', $params);
-        $result['params'] = $params;
+        $result['redirectUrl'] = "/braintree";
         return $result;
     }
 
@@ -71,7 +71,15 @@ class BraintreeController extends ApiController
 	 * */
     public function addCard(Request $request)
     {
-        return view('shopping.paymentaddCard');
+        $params = array(
+            'cmd' => 'token',
+            'token' => Session::get('user.token'),
+            'pin' => Session::get('user.pin'),
+            'uuid' => '123',
+        );
+        $result = $this->request('openapi', '', 'pay', $params);
+        $token = isset($result['data']['token']) ? $result['data']['token'] : '';
+        return view('shopping.paymentaddCard',['token' => $token]);
     }
 
     //测试支付类型
