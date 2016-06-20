@@ -107,7 +107,7 @@
             }).done(function (data) {
                 if (data.success) {
                     console.log("success");
-                    location.reload();
+                    window.location.href = data.redirectUrl;
                 }
             }).fail(function () {
                 console.log("error");
