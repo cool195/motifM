@@ -84,7 +84,7 @@
                     @endforeach
                     <hr class="hr-base m-a-0">
                     <div class="bg-white">
-                        <a class="flex flex-alignCenter text-primary p-a-15x" href="#">
+                        <a class="flex flex-alignCenter text-primary p-a-15x" href="/braintree/addcard">
                             <i class="iconfont icon-add icon-size-sm p-r-10x"></i>
                             <span class="font-size-sm">Add a New Card</span>
                         </a>
@@ -93,7 +93,7 @@
             @else
                 <aside class="cardCredit-container m-b-10x">
                     <a class="flex flex-alignCenter flex-fullJustified font-size-sm text-primary p-y-10x p-x-15x"
-                       href="#">
+                       href="/braintree/addcard">
                         <div class="font-size-sm text-primary">
                             <span class="p-r-15x">
                                 <img src="/images/payment/icon-card.png"
