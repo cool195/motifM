@@ -41,7 +41,7 @@ class PageController extends ApiController
     //faq
     public function faq()
     {
-        return View('Other.page-faq');
+        return View('Other.page-FAQ');
     }
 
     //motifGuarantee
