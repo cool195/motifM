@@ -138,7 +138,7 @@
     <div class="loader loader-screen"></div>
 </div>
 <form id="infoForm" action="/cart/ordercheckout" method="get" hidden>
-    <input type="hidden" name="methodtoken" value="token">
+    <input type="hidden" name="paym" value="{{$paym}}">
     @if(isset($input) && !empty($input))
         @foreach($input as $name => $value)
             <input type="hidden" name="{{$name}}" value="{{$value}}">

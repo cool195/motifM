@@ -43,8 +43,9 @@ class BraintreeController extends ApiController
         $token = isset($result['data']['token']) ? $result['data']['token'] : '';
         $view = View('shopping.paymentmethod', ['token' => $token, 'methodlist' => $methodlist['data']]);
         if ('checkout' == $request->input('pageSrc')) {
-            $input = $request->except('pageSrc', 'methodtoken');
-            $view = View('shopping.checkpayment', ['token' => $token, 'methodlist' => $methodlist['data'], 'input' => $input]);
+            $input = $request->except('pageSrc', 'methodtoken', 'paym');
+            $paym = $request->input('paym');
+            $view = View('shopping.checkpayment', ['token' => $token, 'methodlist' => $methodlist['data'], 'input' => $input, 'paym'=>$paym]);
         }
         return $view;
     }
