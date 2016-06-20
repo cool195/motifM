@@ -135,7 +135,13 @@ class OrderController extends ApiController
             $result['success'] = false;
             $result['error_msg'] = "Data access failed";
             $result['data'] = array();
+        }else{
+            if($result['success']){
+                $result['redirectUrl'] = "/order/orderdetail/".$result['data']['orderID'];
+            }
         }
+        error_log(print_r("------------------\n", "\n"), 3, '/tmp/myerror.log');
+        error_log(print_r($result, "\n"), 3, '/tmp/myerror.log');
         return $result;
     }
 
