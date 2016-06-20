@@ -403,11 +403,8 @@
         $Count.children('[data-item]').addClass('disabled');
         $Count.children('[data-num="num"]').html(1);
 
-        if (RadioList.length < 1) {
-            $('#modalDialog').find('.btn-itemProperty').removeClass('disabled');
-            ResultSkus = [];
-        } else if (RadioList.length === CheckCount.length) {
-            // 全选状态的筛选
+        // 全选状态的筛选
+        if (RadioList.length === CheckCount.length) {
             switchOption(RadioList);
 
             // 获取所选中 sku 对应的库存
@@ -417,17 +414,29 @@
             // 减号不可用
             $Count.children('[data-item="minus"]').addClass('disabled');
             $Count.children('[data-num="num"]').html(1);
-            // 如果库存大于1 加号可用
+
             if (StockCache > 1) {
+                // 如果库存大于1 加号可用
                 $Count.children('[data-item="add"]').removeClass('disabled');
             }
+
             // 全选状态时, 可以购买
             $('#addCart').removeClass('disabled');
             $('#buyNow').removeClass('disabled');
+        } else if (RadioList.length < 1) {
+            // 全都未选
+            $('#modalDialog').find('.btn-itemProperty').removeClass('disabled');
+            // 重置交集
+            ResultSkus = [];
+        } else if (RadioList.length === 1) {
+            // 只选中一项时
+            getResultSku(RadioList); // 取得交集
+            $('.btn-itemProperty').removeClass('disabled'); // 清空 disabled
+            $('#addCart').addClass('disabled');
+            $('#buyNow').addClass('disabled');
         } else {
             getResultSku(RadioList);
-            // 非全选状态的筛选
-            filterOptions(SpaId, SkaId, RadioList);
+            filterOptions(SpaId, SkaId, RadioList); // 非全选状态的筛选
 
             // 非全选状态时, 不可以购买
             $('#addCart').addClass('disabled');
