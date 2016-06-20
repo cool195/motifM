@@ -133,13 +133,14 @@
             $('input[name="aid"]').val(Aid); // 需要提交的项
         } else if (Action === 'edit') {
                 // TODO 跳转到编辑页面
-                $('input[name="edit_id"]').val(Aid); // 需要修改的项
+                $('input[name="eid"]').val(Aid); // 需要修改的项
                 // Active 项 所对应的 AddressID
                 var AddressID = $('.icon-radio.active').parents('.addressList-container').data('address');
-                $('input[name="aid"]').val(AddressID); // 暂存选定的项
+               // $('input[name="aid"]').val(AddressID); // 暂存选定的项
 
                 var $InfoForm = $('#infoForm');
-                $InfoForm.attr('action', $InfoForm.data('edit'));
+                //$InfoForm.attr('action', $InfoForm.data('edit'));
+                $InfoForm.attr('action', "/cart/addromd");
                 $InfoForm.submit();
             }
     });
