@@ -18,7 +18,7 @@
     }
 
     // 测试 token
-    var token = "sandbox_g42y39zw_348pk9cgf3bgyw2b";
+    var token = $('#card-container').data('token');
 
     var $CardImage = $('#card-type'),
         $WaringInfo = $('.warning-info');

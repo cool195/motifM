@@ -50,22 +50,6 @@ $app->group(['middleware' => 'logincheck', 'namespace' => 'App\Http\Controllers\
     $app->get('/cart/addrmod', 'Cartcontroller@addrModify');
     $app->get('/cart/countrylist', 'CartController@countrylist');
 
-
-//    $app->get('/pay/paymentmethod', 'PayController@paymentMethod');
-//    $app->get('/pay/cardadd', 'PayController@newCardAdd');
-//
-//    $app->get('/pay/token', 'PayController@getPayToken');
-//    $app->get('/pay/method', 'PayController@createPayMethod');
-//    $app->get('/pay/pay', 'PayController@pay');
-//    $app->get('/pay/checkpay', 'PayController@pay');
-//    $app->get('/pay/methodlist', 'PayController@getMethodList');
-//    $app->get('/pay/del', 'PayController@delMethod');
-//    $app->delete('/pay/del', 'PayController@delMethod');
-//    $app->get('/pay/getDefault', 'PayController@getDefaultMethod');
-//    $app->get('/pay/setDefault', 'PayController@setDefaultMethod');
-//    $app->get('/pay/check', 'PayController@check');
-
-
     $app->get('/addr/list', 'AddressController@getUserAddrList');
     $app->get('/addr/default', 'Shopping\AddressController@getUserDefaultAddr');
     $app->get('/addr/add', 'AddressController@addUserAddr');
@@ -107,10 +91,11 @@ $app->group(['middleware' => 'logincheck', 'namespace' => 'App\Http\Controllers\
     $app->get('/order/orderSubmit', 'OrderController@orderSubmit');
     $app->post('/order/orderSubmit', 'OrderController@orderSubmit');
 
+    //第三方支付
     $app->get('/braintree', 'BraintreeController@index');
     $app->delete('/braintree', 'BraintreeController@delMethod');
     $app->post('/braintree', 'BraintreeController@checkout');
-
+    $app->get('/braintree/addcard', 'BraintreeController@addCard');
     //测试支付
     $app->get('/testpay', 'BraintreeController@testpay');
     $app->post('/testcheck', 'BraintreeController@testcheck');
