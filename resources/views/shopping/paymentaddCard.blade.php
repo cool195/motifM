@@ -39,7 +39,7 @@
             5555 5555 5555 4444: MasterCard
             3714 496353 98431: American Express
             -->
-            <form action="/" class="cardform-container" id="card-container" method="post" data-token="{{$token}}">
+            <form class="cardform-container" id="card-container" method="post" data-token="{{$token}}">
                 <div class="cardinfo-wrapper">
                     <div class="cardinfo-item" id="card-number">
                         <span class="card-image" id="card-type"></span>
@@ -104,6 +104,13 @@
         <div class="text-white font-size-md text-center m-t-20x">Applying Payment Method</div>
     </div>
 </div>
+@if(isset($input) && !empty($input))
+<form id="infoForm" action="/braintree" method="get" hidden>
+    @foreach($input as $name => $value)
+        <input type="hidden" name="{{$name}}" value="{{$value}}">
+    @endforeach
+</form>
+@endif
 </body>
 <!-- BrainTree -->
 <script src="/scripts/braintree-2.24.1.min.js"></script>

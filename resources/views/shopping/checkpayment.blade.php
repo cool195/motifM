@@ -45,7 +45,7 @@
                             </div>
                             <div class="payment-info m-l-15x p-r-15x p-y-10x" data-token="{{$value['token']}}" data-type="{{$value['type']}}">
                                 <div class="flex flex-alignCenter">
-                                    <span class="cardImage-inline american-express"></span>
+                                    <span class="cardImage-inline paypal"></span>
                                     <span class="m-l-10x">{{$value['showName']}}</span>
                                 </div>
                                 <div class="flex">
@@ -58,8 +58,7 @@
             @else
             <!-- 没有绑定支付方式 状态 -->
                 <aside class="payPal-container m-b-10x">
-                    <div class="flex flex-alignCenter flex-fullJustified font-size-sm text-primary p-y-10x p-x-15x"
-                         id="paypal" data-braintree="{{$token}}">
+                    <div class="flex flex-alignCenter flex-fullJustified font-size-sm text-primary p-y-10x p-x-15x" id="paypal" data-braintree="{{$token}}">
                         <div class="flex flex-alignCenter font-size-sm text-primary">
                         <span class="cardImage-inline unPaypal"></span>
                             <span>Paypal</span>
@@ -78,7 +77,7 @@
                             <div class="payment-delete switch" data-remodal-target="modal">
                                 <i class="iconfont icon-delete icon-size-md text-warning"></i>
                             </div>
-                            <div class="payment-info m-l-15x p-r-15x p-y-10x" data-type="type">
+                            <div class="payment-info m-l-15x p-r-15x p-y-10x" data-token="{{ $value['token'] }}" data-type="{{ $value['type'] }}">
                                 <div class="flex flex-alignCenter">
                                     <span class="cardImage-inline {{array_get($methodlist['cardlist'],$value['cardType'])}}"></span>
                                     <span class="m-l-10x">{{$value['showName']}}</span>
@@ -91,16 +90,15 @@
                     @endforeach
                     <hr class="hr-base m-a-0">
                     <div class="bg-white">
-                        <a class="flex flex-alignCenter text-primary p-a-15x" href="/braintree/addcard">
+                        <div class="flex flex-alignCenter text-primary p-a-15x" id="cardCredit" data-action="/braintree/addcard">
                             <i class="iconfont icon-add icon-size-sm p-r-10x"></i>
                             <span class="font-size-sm">Add a New Card</span>
-                        </a>
+                        </div>
                     </div>
                 </aside>
             @else
                 <aside class="cardCredit-container m-b-10x">
-                    <a class="flex flex-alignCenter flex-fullJustified font-size-sm text-primary p-y-10x p-x-15x"
-                       href="/braintree/addcard">
+                    <div class="flex flex-alignCenter flex-fullJustified font-size-sm text-primary p-y-10x p-x-15x" id="cardCredit" data-action="/braintree/addcard">
                         <div class="font-size-sm text-primary">
                             <span class="p-r-15x">
                                 <img src="/images/payment/icon-card.png"
@@ -110,7 +108,7 @@
                             <span>Direct debit/credit card</span>
                         </div>
                         <span><i class="iconfont icon-arrow-right icon-size-sm text-common"></i></span>
-                    </a>
+                    </div>
                 </aside>
             @endif
             <aside class="p-a-15x">
@@ -137,14 +135,14 @@
 <div class="loading loading-screen loading-switch loading-hidden">
     <div class="loader loader-screen"></div>
 </div>
+@if(isset($input) && !empty($input))
 <form id="infoForm" action="/cart/ordercheckout" method="get" hidden>
     <input type="hidden" name="paym" value="{{$paym}}">
-    @if(isset($input) && !empty($input))
-        @foreach($input as $name => $value)
-            <input type="hidden" name="{{$name}}" value="{{$value}}">
-        @endforeach
-    @endif
+    @foreach($input as $name => $value)
+        <input type="hidden" name="{{$name}}" value="{{$value}}">
+    @endforeach
 </form>
+@endif
 </body>
 <!-- BrainTree -->
 <script src="/scripts/braintree-2.24.1.min.js"></script>

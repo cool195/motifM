@@ -140,8 +140,6 @@ class OrderController extends ApiController
                 $result['redirectUrl'] = "/order/orderdetail/".$result['data']['orderID'];
             }
         }
-        error_log(print_r("------------------\n", "\n"), 3, '/tmp/myerror.log');
-        error_log(print_r($result, "\n"), 3, '/tmp/myerror.log');
         return $result;
     }
 
