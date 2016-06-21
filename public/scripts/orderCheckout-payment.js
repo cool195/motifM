@@ -156,38 +156,40 @@
 
     var checkout = {}; // 事件 句柄
 
-    braintree.setup(token, "custom", {
-        paypal: {
-            currency: 'USD', // 沙盒系统需要字段
-            locale: 'en_us', // 沙盒系统需要字段
-            headless: true
-        },
-        onReady: function onReady(integration) {
-            checkout = integration;
-        },
-        onPaymentMethodReceived: function onPaymentMethodReceived(payload) {
-            console.info('payload : ');
-            console.info(payload);
+    if (token !== undefined) {
+        braintree.setup(token, "custom", {
+            paypal: {
+                currency: 'USD', // 沙盒系统需要字段
+                locale: 'en_us', // 沙盒系统需要字段
+                headless: true
+            },
+            onReady: function onReady(integration) {
+                checkout = integration;
+            },
+            onPaymentMethodReceived: function onPaymentMethodReceived(payload) {
+                console.info('payload : ');
+                console.info(payload);
 
-            openLoading();
-            // TODO
-            $.ajax({
-                url: '/braintree',
-                type: 'POST',
-                data: { nonce: payload.nonce }
-            }).done(function (data) {
-                console.log("success");
-                if (data.success) {
-                    window.location.href = data.redirectUrl;
-                }
-            }).fail(function () {
-                console.log("error");
-            }).always(function () {
-                closeLoading();
-                console.log("complete");
-            });
-        }
-    });
+                openLoading();
+                // TODO
+                $.ajax({
+                    url: '/braintree',
+                    type: 'POST',
+                    data: { nonce: payload.nonce }
+                }).done(function (data) {
+                    console.log("success");
+                    if (data.success) {
+                        window.location.href = data.redirectUrl;
+                    }
+                }).fail(function () {
+                    console.log("error");
+                }).always(function () {
+                    closeLoading();
+                    console.log("complete");
+                });
+            }
+        });
+    }
 
     $('#paypal').on('click', function (event) {
         event.preventDefault();
