@@ -71,7 +71,7 @@
             <article class="product-baseInfo bg-white m-b-10x">
                 <div class="product-text">
                     <h6 class="text-main">{{$data['main_title']}}</h6>
-                    <p class="text-primary font-size-sm">{{ $data['seo_describe'] }} @if(isset($data['skuPrice']['skuPromotion']['promo_words'])){{$data['skuPrice']['skuPromotion']['promo_words']}}@endif</p>
+                    <p class="text-primary font-size-sm">{{ $data['sub_title'] }} @if(isset($data['skuPrice']['skuPromotion']['promo_words'])){{$data['skuPrice']['skuPromotion']['promo_words']}}@endif</p>
                     @if(!empty($data['designer']))
                         <p class="text-primary font-size-sm">
                             <span>Designer:</span>
@@ -90,7 +90,7 @@
                     @endif
                     <a class="text-primary pull-xs-right" href="#"><i class="iconfont icon-share icon-size-xm"></i></a>
                 </div>
-                <div class="text-warming font-size-xs p-x-15x">{{ $data['prompt_words'] }}</div>
+                <div class="text-warning font-size-xs p-x-15x">{{ $data['prompt_words'] }}</div>
             </article>
             <!-- 产品 其他信息 -->
             <section>
@@ -143,7 +143,7 @@
                     <p class="font-size-md text-main"><strong>Description</strong></p>
                     <div class="font-size-sm text-primary">
                         <div class="message-info">
-                            <p class="m-b-0">{{ $data['seo_describe'] }}</p>
+                            <p class="m-b-0">{{ $data['intro_short'] }}</p>
                         </div>
                         <a class="flex flex-alignCenter flex-fullJustified font-size-sm p-t-5x text-common btn-showMore">
                             <span class="showMore">Show More</span>
