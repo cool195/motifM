@@ -128,18 +128,45 @@ class OrderController extends ApiController
             'src' => $request->input('src', "H5"),
             'ver' => $request->input('ver', 1)
         );
-        $system = "";
-        $service = "order";
-        $result = $this->request('openapi', $system, $service, $params);
-        if (empty($result)) {
-            $result['success'] = false;
-            $result['error_msg'] = "Data access failed";
-            $result['data'] = array();
+        $result = $this->request('openapi', "", "order", $params);
+        if(!empty($result) && $result['success']){
+            $orderId = $result['data']['orderID'];
         }else{
-            if($result['success']){
-                $result['redirectUrl'] = "/order/orderdetail/".$result['data']['orderID'];
-            }
+            return $result;
         }
+
+        $params = array(
+            'cmd' => "dopay",
+            'uuid' => Session::get('user.uuid'),
+            'token' => Session::get('user.token'),
+            'pin' => Session::get('user.pin'),
+            'orderid' => $orderId,
+            'paytype' => $request->input('paym'),
+            'cardtype' => $request->input('cardType'),
+            'showname' => $request->input('showName'),
+            'methodtoken' => $request->input('methodtoken'),
+            'setdefault' => 1,
+            'devicedata' => "H5"
+        );
+        $result = $this->request('openapi', "", "pay", $params);
+        if(!empty($result) && $result['success']){
+            $transid = $result['data']['id'];
+        }else{
+            return $result;
+        }
+
+        $params = array(
+            'cmd' => 'checkpay',
+            'transid' => $transid,
+            'orderid' => $orderId
+        );
+        $result = $this->request('openapi', "", "pay", $params);
+        if(!empty($result) && $result['success']){
+            $result['redirectUrl'] = "/order/orderdetail/".$orderId;
+        }else{
+            $result['success'] = false;
+        }
+
         return $result;
     }
 
