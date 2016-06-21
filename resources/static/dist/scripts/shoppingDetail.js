@@ -59,7 +59,8 @@
 
     var options = {
         closeOnOutsideClick: false,
-        closeOnCancel: false
+        closeOnCancel: false,
+        hashTracking: false
     };
     $('[data-remodal-id=modal]').remodal(options);
 
