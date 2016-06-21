@@ -44,12 +44,15 @@ class CartController extends ApiController
 			'data'=>$result['data'], 
 			'addr'=>$this->getUserAddrByAid($request->input('aid', 0)),
 			'paym'=> $request->input('paym', !empty($defaultPayMethod['data']['type']) ? $defaultPayMethod['data']['type'] : ""),
+			'cardType' => $request->input('cardType', !empty($defaultPayMethod['data']['cardType']) ? $defaultPayMethod['data']['cardType'] : ""),
+			'methodtoken' => $request->input('methodtoken', !empty($defaultPayMethod['data']['token']) ? $defaultPayMethod['data']['token'] : "" ),
+			'showName' => $request->input('showName', !empty($defaultPayMethod['data']['showName']) ? $defaultPayMethod['data']['showName'] : "" ),
 			'shipMethodList' => $this->getShippingMethod(),
 			'defaultMethod' => $defaultMethod,
 			'cps' => $request->input('cps', ""),
 			'remark' => $request->input('remark', ""),
 			'stype' => $defaultMethod['logistics_type'],
-			'input' => $request->except('aid', 'stype', 'paym', 'eid')
+			'input' => $request->except('aid', 'stype', 'paym', 'cardType', 'methodtoken', 'showName', 'eid')
 		]);
 	}
 

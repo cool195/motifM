@@ -215,24 +215,23 @@ class PayController extends ApiController
 		return $result;
 
 	}
-
-	public function check(Request $request)
+	/*
+	 * 判断支付方式是否有效
+	 *
+	 * @author zhangtao@evermarker.net
+	 *
+	 * @return Boolen
+	 * */
+	private function isPayMethodValid()
 	{
-		$cmd = "check";
 		$params = array(
-			'cmd' => $cmd,
+			'cmd' => "check",
 			'token' => Session::get('user.token'),
-			'pin' => Session::get('user.pin'),
+			'pin' => Session::get('user.pin')
 		);
-		$system = "";
-		$service = "pay";
-		$result = $this->request('openapi', $system, $service, $params);
-		if(empty($result)){
-	 		$result['success'] = false;	
-			$result['error_msg'] = "Data access failed";
-			$result['data'] = array();
-		}
-		return $result;
+		$result = $this->request('openapi', "", "pay", $params);
+		$flag = !empty($result['success']) ? $result['success'] : false;
+		return $flag;
 	}
 
 

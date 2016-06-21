@@ -43,7 +43,7 @@
                             <div class="payment-delete switch" data-remodal-target="modal">
                                 <i class="iconfont icon-delete icon-size-md text-warning"></i>
                             </div>
-                            <div class="payment-info m-l-15x p-r-15x p-y-10x" data-token="{{$value['token']}}" data-type="{{$value['type']}}">
+                            <div class="payment-info m-l-15x p-r-15x p-y-10x" data-token="{{$value['token']}}" data-type="{{$value['type']}}" data-cardtype="{{""}}" data-showname="{{ $value['showName'] }}">
                                 <div class="flex flex-alignCenter">
                                     <span class="cardImage-inline paypal"></span>
                                     <span class="m-l-10x">{{$value['showName']}}</span>
@@ -77,7 +77,7 @@
                             <div class="payment-delete switch" data-remodal-target="modal">
                                 <i class="iconfont icon-delete icon-size-md text-warning"></i>
                             </div>
-                            <div class="payment-info m-l-15x p-r-15x p-y-10x" data-token="{{ $value['token'] }}" data-type="{{ $value['type'] }}">
+                            <div class="payment-info m-l-15x p-r-15x p-y-10x" data-token="{{ $value['token'] }}" data-type="{{ $value['type'] }}" data-cardtype="{{$value['cardType']}}" data-showname="{{$value['showName']}}">
                                 <div class="flex flex-alignCenter">
                                     <span class="cardImage-inline {{array_get($methodlist['cardlist'],$value['cardType'])}}"></span>
                                     <span class="m-l-10x">{{$value['showName']}}</span>
@@ -137,7 +137,10 @@
 </div>
 @if(isset($input) && !empty($input))
 <form id="infoForm" action="/cart/ordercheckout" method="get" hidden>
+    <input type="hidden" name="methodtoken" value="{{$methodtoken}}">
     <input type="hidden" name="paym" value="{{$paym}}">
+    <input type="hidden" name="cardType" value="{{ $cardType }}">
+    <input type="hidden" name="showName" value="{{ $showName }}">
     @foreach($input as $name => $value)
         <input type="hidden" name="{{$name}}" value="{{$value}}">
     @endforeach
