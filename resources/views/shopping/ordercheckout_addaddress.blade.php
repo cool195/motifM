@@ -32,7 +32,7 @@
                 <form class="bg-white" id="addressInfo" name="addressInfo" method="get" action="/cart/countrylist">
                     <!-- 个人中心 sitting list -->
                     <fieldset>
-                        <input class="form-control form-control-block p-a-15x font-size-sm" name="email" type="text" value="{{!empty($input['email']) ? $input['email'] : ""}}" placeholder="Email Address">
+                        <input class="form-control form-control-block p-a-15x font-size-sm" name="email" type="text" value="{{!empty($input['email']) ? $input['email'] : Session::get('user.login_email')}}" placeholder="Email Address">
                     </fieldset>
                     <hr class="hr-base m-a-0">
                     <fieldset>
@@ -61,10 +61,6 @@
                     <hr class="hr-base m-a-0">
                     <fieldset>
                         <input class="form-control form-control-block p-a-15x font-size-sm" name="tel" type="text" value="{{!empty($input['tel']) ? $input['zip'] : ""}}" placeholder="Phone (optional)">
-                    </fieldset>
-                    <hr class="hr-base m-a-0">
-                    <fieldset>
-                        <input class="form-control form-control-block p-a-15x font-size-sm" name="idnum" type="text" value="{{!empty($input['idnum']) ? $input['idnum'] : ""}}" placeholder="IDnumber">
                     </fieldset>
                     <hr class="hr-base m-a-0">
                     <fieldset>
