@@ -71,7 +71,7 @@
             <article class="product-baseInfo bg-white m-b-10x">
                 <div class="product-text">
                     <h6 class="text-main">{{$data['main_title']}}</h6>
-                    <p class="text-primary font-size-sm">{{ $data['intro_short'] }}</p>
+                    <p class="text-primary font-size-sm">{{ $data['seo_describe'] }}</p>
                     @if(!empty($data['designer']))
                         <p class="text-primary font-size-sm">
                             <span>Designer:</span>
@@ -90,7 +90,7 @@
                     @endif
                     <a class="text-primary pull-xs-right" href="#"><i class="iconfont icon-share icon-size-xm"></i></a>
                 </div>
-                <div class="text-warming font-size-xs p-x-15x">{{ $data['seo_describe'] }}</div>
+                <div class="text-warming font-size-xs p-x-15x">{{ $data['intro_short'] }}</div>
             </article>
             <!-- 产品 其他信息 -->
             <section>

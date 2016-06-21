@@ -61,11 +61,11 @@
             <hr class="hr-login m-a-0">
         </div>
         <div class="m-t-20x p-b-20x">
-            <a class="btn btn-block btn-facebook">
+            <a class="btn btn-block btn-facebook" id="facebookLogin">
                 <i class="iconfont icon-facebook-o icon-size-md"></i>
                 Signin with Facebook
             </a>
-            <a class="btn btn-block btn-google m-l-0 m-t-10x">
+            <a class="btn btn-block btn-google m-l-0 m-t-10x" id="gooleLogin">
                 <i class="iconfont icon-google-o icon-size-md"></i>
                 Sign in with Google
             </a>
@@ -80,8 +80,9 @@
 </div>
 </body>
 <script src="/scripts/vendor.js"></script>
-
+<script src="https://apis.google.com/js/api:client.js"></script>
 <script src="/scripts/login.js"></script>
+<script src="/scripts/signWith.js"></script>
 <meta name="csrf-token" content="{{ csrf_token() }}"/>
 <script>
     $.ajaxSetup({
