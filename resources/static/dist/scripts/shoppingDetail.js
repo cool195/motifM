@@ -674,7 +674,7 @@
     });
 
     $(document).ready(function () {
-        if ($('.message-info').children('p').height() <= 144) {
+        if ($('.message-info').children('p').height() <= 56) {
             $('.btn-showMore').hide();
         }
     });

@@ -113,7 +113,8 @@
 
     // 初始化模态框
     var $ModalDialog = $('#changePwdDialog').remodal({
-        closeOnOutsideClick: false
+        closeOnOutsideClick: false,
+        hashTracking: true
     });
 })(jQuery);
 //# sourceMappingURL=profileSetting-changePassword.js.map

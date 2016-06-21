@@ -22,6 +22,12 @@
         }, 500);
     }
 
+    // 初始化模态框
+    var options = {
+        hashTracking: false
+    };
+    $('[data-remodal-id=delivery-modal]').remodal(options);
+
     // 暂存选中的物流 ID
     var SelectID = '';
 
