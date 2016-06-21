@@ -71,7 +71,7 @@
             <article class="product-baseInfo bg-white m-b-10x">
                 <div class="product-text">
                     <h6 class="text-main">{{$data['main_title']}}</h6>
-                    <p class="text-primary font-size-sm">{{ $data['seo_describe'] }}</p>
+                    <p class="text-primary font-size-sm">{{ $data['seo_describe'] }} @if(isset($data['skuPrice']['skuPromotion']['promo_words'])){{$data['skuPrice']['skuPromotion']['promo_words']}}@endif</p>
                     @if(!empty($data['designer']))
                         <p class="text-primary font-size-sm">
                             <span>Designer:</span>
@@ -82,29 +82,40 @@
                 </div>
                 <hr class="hr-light m-x-10x">
                 <div class="product-price">
-                    <span class="font-size-lx text-primary">$ {{ number_format(($data['skuPrice']['sale_price'] / 100), 2) }}</span>
-                    <span class="font-size-sm text-common">＄{{ number_format(($data['skuPrice']['price'] /100), 2) }}</span>
+                    <span class="font-size-lx text-primary">${{ number_format(($data['skuPrice']['sale_price'] / 100), 2) }}</span>
                     @if(isset($data['skuPrice']['skuPromotion']))
+                        <span class="font-size-sm text-throughLine text-common">${{ number_format(($data['skuPrice']['price'] /100), 2) }}</span>
                         <span class="font-size-sm text-primary">({{ $data['skuPrice']['skuPromotion']['display'] }}
                             )</span>
                     @endif
                     <a class="text-primary pull-xs-right" href="#"><i class="iconfont icon-share icon-size-xm"></i></a>
                 </div>
-                <div class="text-warming font-size-xs p-x-15x">{{ $data['intro_short'] }}</div>
+                <div class="text-warming font-size-xs p-x-15x">{{ $data['prompt_words'] }}</div>
             </article>
             <!-- 产品 其他信息 -->
             <section>
                 <!-- 添加到购物车 立即购买 -->
                 <aside class="container-fluid bg-white p-y-10x p-x-15x m-b-10x">
-                    <div class="row">
-                        <div class="col-xs-6">
-                            <a href="#" class="btn btn-primary-outline btn-block" data-remodal-target="modal">Add To
-                                Bag</a>
+                    @if(Session::has('user'))
+                        <div class="row">
+                            <div class="col-xs-6">
+                                <a href="#" class="btn btn-primary-outline btn-block" data-remodal-target="modal">Add To
+                                    Bag</a>
+                            </div>
+                            <div class="col-xs-6">
+                                <a href="#" class="btn btn-primary btn-block" data-remodal-target="modal">Buy Now</a>
+                            </div>
                         </div>
-                        <div class="col-xs-6">
-                            <a href="#" class="btn btn-primary btn-block" data-remodal-target="modal">Buy Now</a>
+                    @else
+                        <div class="row">
+                            <div class="col-xs-6">
+                                <a href="/login" class="btn btn-primary-outline btn-block" id="addCart">Add To Bag</a>
+                            </div>
+                            <div class="col-xs-6">
+                                <a href="/login" class="btn btn-primary btn-block" id="buyNow">Buy Now</a>
+                            </div>
                         </div>
-                    </div>
+                    @endif
                 </aside>
                 <!-- 选择商品参数 -->
                 <aside class="bg-white m-b-10x">
@@ -170,15 +181,26 @@
 
                 <!-- 添加购物车 -->
                 <aside class="product-secondaryInfo container-fluid p-y-10x p-x-15x">
-                    <div class="row">
-                        <div class="col-xs-6">
-                            <a href="#" class="btn btn-primary-outline btn-block" data-remodal-target="modal">Add To
-                                Bag</a>
+                    @if(Session::has('user'))
+                        <div class="row">
+                            <div class="col-xs-6">
+                                <a href="#" class="btn btn-primary-outline btn-block" data-remodal-target="modal">Add To
+                                    Bag</a>
+                            </div>
+                            <div class="col-xs-6">
+                                <a href="#" class="btn btn-primary btn-block" data-remodal-target="modal">Buy Now</a>
+                            </div>
                         </div>
-                        <div class="col-xs-6">
-                            <a href="#" class="btn btn-primary btn-block" data-remodal-target="modal">Buy Now</a>
+                    @else
+                        <div class="row">
+                            <div class="col-xs-6">
+                                <a href="/login" class="btn btn-primary-outline btn-block" id="addCart">Add To Bag</a>
+                            </div>
+                            <div class="col-xs-6">
+                                <a href="/login" class="btn btn-primary btn-block" id="buyNow">Buy Now</a>
+                            </div>
                         </div>
-                    </div>
+                    @endif
                 </aside>
                 <!-- 推荐商品 -->
                 <aside class="m-b-20x">
@@ -193,10 +215,12 @@
                                                 <a href="/detail/{{ $value['spu'] }}">
                                                     <img class="img-fluid img-lazy"
                                                          data-original="https://s3-us-west-1.amazonaws.com/emimagetest/n1/{{ $value['main_image_url'] }}"
-                                                         src="/images/product/bg-product@336.png" alt="{{ $value['main_title'] }}">
+                                                         src="/images/product/bg-product@336.png"
+                                                         alt="{{ $value['main_title'] }}">
                                                 </a>
                                                 @if($value['skuPrice']['sale_price'] != $value['skuPrice']['price'])
-                                                    <div class="price-off"><strong class="font-size-sm">{{$value['skuPrice']['skuPromotion']['display']}}</strong>
+                                                    <div class="price-off"><strong
+                                                                class="font-size-sm">{{$value['skuPrice']['skuPromotion']['display']}}</strong>
                                                     </div>
                                                 @endif
                                             </div>
@@ -326,14 +350,25 @@
                 </fieldset>
                 <hr class="hr-dark m-a-0">
                 <fieldset class="container-fluid p-a-15x">
-                    <div class="row">
-                        <div class="col-xs-6">
-                            <div class="btn btn-primary-outline btn-block disabled" id="addCart">Add To Bag</div>
+                    @if(Session::has('user'))
+                        <div class="row">
+                            <div class="col-xs-6">
+                                <div class="btn btn-primary-outline btn-block disabled" id="addCart">Add To Bag</div>
+                            </div>
+                            <div class="col-xs-6">
+                                <div class="btn btn-primary btn-block disabled" id="buyNow">Buy Now</div>
+                            </div>
                         </div>
-                        <div class="col-xs-6">
-                            <div class="btn btn-primary btn-block disabled" id="buyNow">Buy Now</div>
+                    @else
+                        <div class="row">
+                            <div class="col-xs-6">
+                                <a href="/login" class="btn btn-primary-outline btn-block" id="addCart">Add To Bag</a>
+                            </div>
+                            <div class="col-xs-6">
+                                <a href="/login" class="btn btn-primary btn-block" id="buyNow">Buy Now</a>
+                            </div>
                         </div>
-                    </div>
+                    @endif
                 </fieldset>
             </form>
         </div>
