@@ -95,6 +95,7 @@ $app->group(['middleware' => 'logincheck', 'namespace' => 'App\Http\Controllers\
     $app->get('/orderdetail/{subno}', 'OrderController@getOrderDetail');
     $app->get('/order/orderSubmit', 'OrderController@orderSubmit');
     $app->post('/order/orderSubmit', 'OrderController@orderSubmit');
+    $app->get('/success', 'OrderController@orderSuccess');
 
     //第三方支付
     $app->get('/braintree', 'BraintreeController@index');
