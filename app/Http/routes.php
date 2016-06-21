@@ -85,6 +85,8 @@ $app->group(['middleware' => 'logincheck', 'namespace' => 'App\Http\Controllers\
     $app->post('/user/modifyUserInfo', 'UserController@modifyUserInfo');
     $app->put('/user/uuid', 'UserController@saveUUID');
 
+    $app->post('/useraddr/addUserAddress', 'AddressController@addUserAddr');
+
 
     $app->get('/shopping/orderlist', 'OrderController@index');
     $app->get('/order/orderlist', 'OrderController@index');

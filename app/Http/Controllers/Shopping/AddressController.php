@@ -98,6 +98,10 @@ class AddressController extends ApiController
 			$result['success'] = false;
 			$result['error_msg'] = "Failed to add address";
 			$result['data'] = array();
+		}else{
+			if($result['success']){
+				$result['redirectUrl'] = "/user/shippingaddress";
+			}
 		}
 		return $result;
 	}
