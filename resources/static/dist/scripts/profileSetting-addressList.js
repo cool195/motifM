@@ -118,7 +118,7 @@
     // 初始化 模态框
     $('#modalDialog').remodal({
         closeOnOutsideClick: false,
-        hashTracking: true
+        hashTracking: false
     });
 
     $('#modalDialog').on('closed', function () {
