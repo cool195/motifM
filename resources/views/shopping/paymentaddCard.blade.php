@@ -49,12 +49,12 @@
                 </div>
                 <div class="cardinfo-wrapper font-size-sm">
                     <div class="cardinfo-item">
-                        <label class="cardinfo-label">Expires</label>
+                        <label class="cardinfo-label flex-fixedShrink">Expires</label>
                         <input class="cardinfo-input" type="text" data-braintree-name="expiration_date"
                                value="" placeholder="MM/YY">
                     </div>
                     <div class="cardinfo-item">
-                        <label class="cardinfo-label">CVV</label>
+                        <label class="cardinfo-label flex-fixedShrink">CVV</label>
                         <input class="cardinfo-input" type="tel" data-braintree-name="cvv" value=""
                                placeholder="CVV">
                     </div>
