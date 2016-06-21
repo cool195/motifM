@@ -146,7 +146,7 @@
     // 初始化 模态框
     $('#cartDialog').remodal({
         closeOnOutsideClick: false,
-        hashTracking: true
+        hashTracking: false
     });
 
     $('#cartDialog').on('closed', function () {

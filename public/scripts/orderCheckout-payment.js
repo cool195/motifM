@@ -131,7 +131,7 @@
     // 初始化 模态框
     $('#modalDialog').remodal({
         closeOnOutsideClick: false,
-        hashTracking: true
+        hashTracking: false
     });
 
     $('#modalDialog').on('closed', function () {
@@ -156,7 +156,7 @@
 
     var checkout = {}; // 事件 句柄
 
-    if (token !== undefined) {
+    if (token !== '') {
         braintree.setup(token, "custom", {
             paypal: {
                 currency: 'USD', // 沙盒系统需要字段
