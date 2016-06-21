@@ -39,7 +39,7 @@
                     @foreach($categories as $key => $c)
                         <li class="nav-item swiper-slide" data-tab-index="{{ $c['category_id'] }}" id="{{ $c['category_id'] }}">
                             <a class="nav-flex flex-alignCenter underLine-item text-primary m-x-15x p-y-10x @if($key!=0) inactive @endif">
-                                <img class="img-fluid" src="https://s3-us-west-1.amazonaws.com/emimagetest/n3/{{$c['img_path2'] }}" alt="">
+                                <img class="img-fluid" src="https://s3-us-west-1.amazonaws.com/emimagetest/n3/{{$c['img_path2'] }}" srcset="https://s3-us-west-1.amazonaws.com/emimagetest/n2/{{$c['img_path2'] }} 2x,https://s3-us-west-1.amazonaws.com/emimagetest/n1/{{$c['img_path2'] }} 3x">
                                 <span class="font-size-sm m-l-5x">{{ $c['category_name'] }}</span>
                             </a>
                         </li>

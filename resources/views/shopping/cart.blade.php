@@ -34,7 +34,7 @@
                     <div class="container shopbag-emptyInfo">
                         <div class="m-b-20x p-b-5x"><i class="btn-shopbagEmpty iconfont icon-shopbag"></i></div>
                         <p class="text-primary font-size-sm m-b-20x p-b-20x">No saved items</p>
-                        <a href="/shopping" class="btn btn-primary btn-sm">Continue Shopping</a>
+                        <a href="/daily" class="btn btn-primary btn-sm">Continue Shopping</a>
                     </div>
                 </div>
         @else
@@ -44,42 +44,49 @@
                         @foreach($cartData['showSkus'] as $showSku)
                             {{-- TODO 需要添加 商品是否上架的判断 --}}
                             <div class="cartList-item p-a-10x @if(1 !== $showSku['stock_status']) disabled @endif">
-                                <div class="productInfo flex">
-                                    <div class="flex-fixedShrink">
-                                        <img class="img-thumbnail"
-                                             src="{{ 'https://s3-us-west-1.amazonaws.com/emimagetest/n2/'.$showSku['main_image_url'] }}"
-                                             width="70px" height="70px">
+                                <a href="/detail/{{$showSku['spu']}}">
+                                    <div class="productInfo flex">
+                                        <div class="flex-fixedShrink">
+                                            <img class="img-thumbnail"
+                                                 src="{{ 'https://s3-us-west-1.amazonaws.com/emimagetest/n2/'.$showSku['main_image_url'] }}"
+                                                 width="70px" height="70px">
+                                        </div>
+                                        <div class="p-l-10x flex-width">
+                                            <article class="flex flex-fullJustified">
+                                                <!--<h6 class="text-main font-size-md p-r-10x">
+                                                       <strong>Crown Shape Black Gold-plated Sterling Silver Engagehape Black
+                                                               Gold-plated
+                                                               Sterling Silver</strong>
+                                                   </h6> -->
+                                                <h6 class="text-main font-size-md p-r-10x">
+                                                    <strong>{{$showSku['main_title']}}</strong></h6>
+                                                <span class="text-primary font-size-sm flex-fixedShrink">${{number_format(($showSku['sale_price'] / 100), 2)}}</span>
+                                            </article>
+                                            <aside class="cartItem-secondaryInfo text-primary font-size-sm">
+                                                @if(isset($showSku['attrValues']))
+                                                    @foreach($showSku['attrValues'] as $attrValue)
+                                                        <div><span>{{$attrValue['attr_type_value'] }}
+                                                                : </span><span>{{ $attrValue['attr_value'] }}</span>
+                                                        </div>
+                                                    @endforeach
+                                                @endif
+                                                @if(isset($showSku['showVASes']) && !empty($showSku['showVASes']))
+                                                    @foreach($showSku['showVASes'] as $showVAS)
+                                                        <div class="flex flex-fullJustified">
+                                                            <div class="">
+                                                                <span>{{$showVAS['vas_name']}}
+                                                                    : </span><span>{{$showVAS['user_remark']}}</span>
+                                                            </div>
+                                                            <div class="">
+                                                                ${{number_format(($showVAS['vas_price'] / 100), 2)}}</div>
+                                                        </div>
+                                                    @endforeach
+                                                @endif
+                                            </aside>
+                                        </div>
+                                        <div class="mask"></div>
                                     </div>
-                                    <div class="p-l-10x flex-width">
-                                        <article class="flex flex-fullJustified">
-                                            <!--<h6 class="text-main font-size-md p-r-10x">
-                                                   <strong>Crown Shape Black Gold-plated Sterling Silver Engagehape Black
-                                                           Gold-plated
-                                                           Sterling Silver</strong>
-                                               </h6> -->
-                                            <h6 class="text-main font-size-md p-r-10x">
-                                                <strong>{{$showSku['main_title']}}</strong></h6>
-                                            <span class="text-primary font-size-sm flex-fixedShrink">${{number_format(($showSku['sale_price'] / 100), 2)}}</span>
-                                        </article>
-                                        <aside class="cartItem-secondaryInfo text-primary font-size-sm">
-                                            @if(isset($showSku['attrValues']))
-                                                @foreach($showSku['attrValues'] as $attrValue)
-                                                    <div><span>{{$attrValue['attr_type_value'] }}: </span><span>{{ $attrValue['attr_value'] }}</span></div>
-                                                @endforeach
-                                            @endif
-                                            @if(isset($showSku['showVASes']) && !empty($showSku['showVASes']))
-                                                @foreach($showSku['showVASes'] as $showVAS)
-                                                     <div class="flex flex-fullJustified">
-                                                        <div class="">
-                                                             <span>{{$showVAS['vas_name']}}: </span><span>{{$showVAS['user_remark']}}</span></div>
-                                                        <div class="">${{number_format(($showVAS['vas_price'] / 100), 2)}}</div>
-                                                     </div>
-                                                @endforeach
-                                            @endif
-                                        </aside>
-                                    </div>
-                                    <div class="mask"></div>
-                                </div>
+                                </a>
                                 <div class="flex flex-alignCenter flex-fullJustified p-y-10x">
                                     <div class="flex">
                                         <a class="btn btn-cartUpdate btn-sm" data-remodal-target="modal"
@@ -125,7 +132,8 @@
                 </section>
                 <!-- 购买按钮 -->
                 <section class="bg-white m-t-10x p-a-10x">
-                    <a href="/cart/ordercheckout" class="btn btn-primary btn-block btn-sm" type="submit">Proceed To Checkout</a>
+                    <a href="/cart/ordercheckout" class="btn btn-primary btn-block btn-sm" type="submit">Proceed To
+                        Checkout</a>
                 </section>
 
         @endif
@@ -156,16 +164,19 @@
                                         <aside class="cartItem-secondaryInfo text-primary font-size-sm">
                                             @if(isset($showSku['attrValues']))
                                                 @foreach($showSku['attrValues'] as $attrValue)
-                                                    <div><span>{{$attrValue['attr_type_value'] }}: </span><span>{{ $attrValue['attr_value'] }}</span></div>
+                                                    <div><span>{{$attrValue['attr_type_value'] }}
+                                                            : </span><span>{{ $attrValue['attr_value'] }}</span></div>
                                                 @endforeach
                                             @endif
                                             @if(isset($showSku['showVASes']) && !empty($showSku['showVASes']))
                                                 @foreach($showSku['showVASes'] as $showVAS)
-                                            <div class="flex flex-fullJustified">
-                                                <div class="">
-                                                    <span>{{$showVAS['vas_name']}}: </span><span>{{$showVAS['user_remark']}}</span></div>
-                                                <div class="">${{number_format(($showVAS['vas_price']), 2)}}</div>
-                                            </div>
+                                                    <div class="flex flex-fullJustified">
+                                                        <div class="">
+                                                            <span>{{$showVAS['vas_name']}}
+                                                                : </span><span>{{$showVAS['user_remark']}}</span></div>
+                                                        <div class="">
+                                                            ${{number_format(($showVAS['vas_price']), 2)}}</div>
+                                                    </div>
                                                 @endforeach
                                             @endif
                                         </aside>

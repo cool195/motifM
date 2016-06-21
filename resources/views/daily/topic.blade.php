@@ -29,7 +29,7 @@
                     <!-- 第一个 banner 图 -->
                         <div @if($k!=0)class="p-y-10x"@endif>
                             <a href="@if($value['skipType']=='1')/detail/@elseif($value['skipType']=='2')/designer/@elseif($value['skipType']=='3')/topic/@elseif($value['skipType']=='4')/shopping#@endif{{$value['skipId']}}">
-                                <img class="img-fluid" src="https://s3-us-west-1.amazonaws.com/emimagetest/n1/{{$value['imgPath']}}" alt="">
+                                <img class="img-fluid" src="https://s3-us-west-1.amazonaws.com/emimagetest/n0/{{$value['imgPath']}}" alt="">
                             </a>
                         </div>
                 @elseif($value['type']=='title')
@@ -61,6 +61,10 @@
                                         </a>
                                     </div>
                                 @endforeach
+                            @else
+                                <a href="@if($value['skipType']=='1')/detail/@elseif($value['skipType']=='2')/designer/@elseif($value['skipType']=='3')/topic/@elseif($value['skipType']=='4')/shopping#@endif{{$value['skipId']}}">
+                                    <img class="img-fluid" src="https://s3-us-west-1.amazonaws.com/emimagetest/n0/{{$value['imgPath']}}" alt="">
+                                </a>
                             @endif
                         @else
                             {{-- 商品列表横向 --}}
