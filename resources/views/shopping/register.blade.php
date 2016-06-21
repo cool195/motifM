@@ -64,8 +64,8 @@
         </div>
         <div class="m-t-20x font-size-sm text-center">or sign up with:</div>
         <div class="p-a-20x flex flex-spaceAround">
-            <a href="#" class="iconfont icon-facebook btn-facebook"></a>
-            <a href="#" class="iconfont icon-google btn-google"></a>
+            <a href="#" class="iconfont icon-facebook btn-facebook" id="facebookLogin"></a>
+            <a href="#" class="iconfont icon-google btn-google" id="googleLogin"></a>
         </div>
         <div class="m-t-20x text-primary text-center font-size-sm"><a href="#">Contact Us</a></div>
     </section>
@@ -75,9 +75,10 @@
     <div class="loader loader-screen"></div>
 </div>
 </body>
+<script src="https://apis.google.com/js/api:client.js"></script>
 <script src="/scripts/vendor.js"></script>
-
 <script src="/scripts/register.js"></script>
+<script src="/scripts/signWith.js"></script>
 <meta name="csrf-token" content="{{ csrf_token() }}"/>
 <script>
     $.ajaxSetup({
