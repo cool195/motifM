@@ -65,8 +65,7 @@
                             <a href="@if($value['skipType']=='1')/detail/@elseif($value['skipType']=='2')/designer/@elseif($value['skipType']=='3')/topic/@elseif($value['skipType']=='4')/shopping#@endif{{$value['skipId']}}">
                                 <div @if($k!=0)class="p-y-10x"@endif>
                                     <img class="img-fluid"
-                                         src="https://s3-us-west-1.amazonaws.com/emimagetest/n2/{{$value['imgPath']}}"
-                                         alt="">
+                                         src="https://s3-us-west-1.amazonaws.com/emimagetest/n2/{{$value['imgPath']}}">
                                 </div>
                             </a>
                     @elseif($value['type']=='title')
@@ -92,8 +91,9 @@
                                     @foreach($value['spus'] as $spu)
                                         <div class="p-x-15x p-y-10x">
                                             <a href="/detail/{{$spu}}">
-                                                <img class="img-fluid"
-                                                     src="https://s3-us-west-1.amazonaws.com/emimagetest/n2/{{$product['spuInfos'][$spu]['spuBase']['main_image_url']}}"
+                                                <img class="img-fluid img-lazy"
+                                                     src="/images/product/bg-product@336.png"
+                                                     data-original="https://s3-us-west-1.amazonaws.com/emimagetest/n2/{{$product['spuInfos'][$spu]['spuBase']['main_image_url']}}"
                                                      alt="{{$product['spuInfos'][$spu]['spuBase']['main_title']}}">
                                             </a>
                                         </div>
@@ -108,12 +108,15 @@
                                                 <div class="col-xs-6">
                                                     <a href="/detail/{{$spu}}">
                                                         <div class="p-t-10x">
-                                                            <img class="img-thumbnail"
-                                                                 src="https://s3-us-west-1.amazonaws.com/emimagetest/n2/{{$product['spuInfos'][$spu]['spuBase']['main_image_url']}}"
+                                                            <img class="img-thumbnail img-lazy"
+                                                                 src="/images/product/bg-product@336.png"
+                                                                 data-original="https://s3-us-west-1.amazonaws.com/emimagetest/n2/{{$product['spuInfos'][$spu]['spuBase']['main_image_url']}}"
                                                                  alt="{{$product['spuInfos'][$spu]['spuBase']['main_title']}}">
                                                             <div class="p-y-10x">
                                                                 <span class="text-primary font-size-sm m-l-5x"><strong>${{number_format($product['spuInfos'][$spu]['skuPrice']['sale_price']/100,2)}}</strong></span>
-                                                                <span class="font-size-xs text-common text-throughLine m-l-5x">${{number_format($product['spuInfos'][$spu]['skuPrice']['price']/100,2)}}</span>
+                                                                @if($product['spuInfos'][$spu]['skuPrice']['sale_price'] != $product['spuInfos'][$spu]['skuPrice']['price'])
+                                                                    <span class="font-size-xs text-common text-throughLine m-l-5x">${{number_format($product['spuInfos'][$spu]['skuPrice']['price']/100,2)}}</span>
+                                                                @endif
                                                             </div>
                                                         </div>
                                                     </a>
