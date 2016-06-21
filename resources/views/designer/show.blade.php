@@ -23,12 +23,12 @@
     @include('navigator')
     <!-- designerDetail 设计师详情 -->
         <section>
-            <!-- 视频/图片 正式上线将优酷视频改成改成img_video_path-->
+            <!-- 视频/图片-->
             <div class="designer-media flex flex-justifyCenter flex-alignCenter">
                 <img class="designer-placeImg" src="/images/designer/placeholder.jpg" alt="" hidden>
                 @if($designer['path_type']==2)
                     <iframe class="player img-fluid" type="text/html" width="100%"
-                            src="http://player.youku.com/embed/XMTU5ODg3MzIzNg=="
+                            src="{{$designer['img_video_path']}}"
                             frameborder="0" allowfullscreen></iframe>
                 @else
 
