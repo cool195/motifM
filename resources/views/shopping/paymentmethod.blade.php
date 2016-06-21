@@ -58,8 +58,8 @@
                     <div class="flex flex-alignCenter flex-fullJustified font-size-sm text-primary p-y-10x p-x-15x"
                          id="paypal" data-braintree="{{$token}}">
                         <div class="flex flex-alignCenter font-size-sm text-primary">
-                        <span class="cardImage-inline unPaypal"></span>
-                            <span>Paypal</span>
+                            <span class="cardImage-inline unPaypal"></span>
+                            <span class="m-l-10x">Paypal</span>
                         </div>
                         <span><i class="iconfont icon-arrow-right icon-size-sm text-common"></i></span>
                     </div>
@@ -95,13 +95,9 @@
                 <aside class="cardCredit-container m-b-10x">
                     <a class="flex flex-alignCenter flex-fullJustified font-size-sm text-primary p-y-10x p-x-15x"
                        href="/braintree/addcard">
-                        <div class="font-size-sm text-primary">
-                            <span class="p-r-15x">
-                                <img src="/images/payment/icon-card.png"
-                                     srcset="/images/payment/icon-card@2x.png 2x,/images/payment/icon-card@3x.png 3x"
-                                     alt="">
-                            </span>
-                            <span>Direct debit/credit card</span>
+                        <div class="flex flex-alignCenter font-size-sm text-primary">
+                            <span class="cardImage-inline cardCredit"></span>
+                            <span class="m-l-10x">Direct debit/credit card</span>
                         </div>
                         <span><i class="iconfont icon-arrow-right icon-size-sm text-common"></i></span>
                     </a>

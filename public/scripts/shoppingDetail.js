@@ -59,7 +59,8 @@
 
     var options = {
         closeOnOutsideClick: false,
-        closeOnCancel: false
+        closeOnCancel: false,
+        hashTracking: false
     };
     $('[data-remodal-id=modal]').remodal(options);
 
@@ -673,7 +674,7 @@
     });
 
     $(document).ready(function () {
-        if ($('.message-info').children('p').height() <= 144) {
+        if ($('.message-info').children('p').height() <= 56) {
             $('.btn-showMore').hide();
         }
     });

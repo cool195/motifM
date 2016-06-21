@@ -106,7 +106,7 @@
                         @if(empty($paym) || "" == $paym )
                             <span class="text-warning">No PaymentMethod add</span>
                         @else
-                            <span>{{ $paym }}</span>
+                            <span>{{ $paym."(".$showName.")" }}</span>
                         @endif
                         <i class="iconfont icon-arrow-right icon-size-xm text-common p-r-15x"></i>
                     </div>
@@ -190,6 +190,9 @@
     <input type="hidden" name="aid" value="{{$addr['receiving_id']}}">
     <input type="hidden" name="stype" value="{{$stype}}">
     <input type="hidden" name="paym" value="{{$paym}}">
+    <input type="hidden" name="cardType" value="{{ $cardType }}">
+    <input type="hidden" name="methodtoken" value="{{ $methodtoken }}">
+    <input type="hidden" name="showName" value="{{ $showName }}">
     @if(isset($input) && !empty($input))
         @foreach($input as $name=>$value)
             <input type="hidden" name="{{$name}}" value="{{$value}}">

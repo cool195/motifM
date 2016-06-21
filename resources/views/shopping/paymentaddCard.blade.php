@@ -40,24 +40,29 @@
             3714 496353 98431: American Express
             -->
             <form class="cardform-container" id="card-container" method="post" data-token="{{$token}}">
-                <div class="cardinfo-wrapper">
-                    <div class="cardinfo-item" id="card-number">
+                <div class="cardinfo-wrapper font-size-sm">
+                    <div class="cardinfo-item">
+                        <input class="cardinfo-input" type="tel" data-braintree-name="number"
+                               value="" placeholder="Card Number">
                         <span class="card-image" id="card-type"></span>
                     </div>
                 </div>
-                <div class="cardinfo-wrapper">
-                    <div class="cardinfo-item" id="expiration-date">
-                        <label class="cardinfo-label" for="expiration-date">Expires</label>
+                <div class="cardinfo-wrapper font-size-sm">
+                    <div class="cardinfo-item">
+                        <label class="cardinfo-label">Expires</label>
+                        <input class="cardinfo-input" type="text" data-braintree-name="expiration_date"
+                               value="" placeholder="MM/YY">
                     </div>
-                    <div class="cardinfo-item" id="cvv">
-                        <label class="cardinfo-label" for="cvv">CVV</label>
+                    <div class="cardinfo-item">
+                        <label class="cardinfo-label">CVV</label>
+                        <input class="cardinfo-input" type="tel" data-braintree-name="cvv" value=""
+                               placeholder="CVV">
                     </div>
                 </div>
                 <div class="warning-info off text-warning flex flex-alignCenter p-a-15x">
                     <i class="iconfont icon-caveat icon-size-md p-r-5x"></i>
                     <span class="font-size-sm">Warming: Women’s Ring</span>
                 </div>
-
 
                 <div class="p-a-15x">
                     <input class="btn btn-primary btn-block" type="submit" value="Add">
@@ -105,11 +110,11 @@
     </div>
 </div>
 @if(isset($input) && !empty($input))
-<form id="infoForm" action="/braintree" method="get" hidden>
-    @foreach($input as $name => $value)
-        <input type="hidden" name="{{$name}}" value="{{$value}}">
-    @endforeach
-</form>
+    <form id="infoForm" action="/braintree" method="get" hidden>
+        @foreach($input as $name => $value)
+            <input type="hidden" name="{{$name}}" value="{{$value}}">
+        @endforeach
+    </form>
 @endif
 </body>
 <!-- BrainTree -->

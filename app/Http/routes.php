@@ -146,3 +146,5 @@ $app->group(['namespace' => 'App\Http\Controllers\Other'], function ($app) {
     //$app->get('/termsservice', 'PageController@termsService');
 
 });
+
+$app->get('methodlist', 'Shopping\BraintreeController@methodlist');
