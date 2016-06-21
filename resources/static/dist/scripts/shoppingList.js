@@ -74,6 +74,12 @@
         }
     });
 
+    // 初始化模态框
+    var options = {
+        hashTracking: false
+    };
+    $('[data-remodal-id=download-modal]').remodal(options);
+
     // 选项卡容器
     var TabsContainerSwiper = new Swiper('#tabs-container', {
         onlyExternal: true
