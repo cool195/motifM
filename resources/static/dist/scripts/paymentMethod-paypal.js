@@ -98,14 +98,8 @@
             }
         }).done(function (data) {
             console.log("success");
-
             if (data.success) {
-                var $InfoForm = $('#infoForm');
-                if ($InfoForm === undefined) {
-                    window.location.href = data.redirectUrl;
-                } else {
-                    $InfoForm.submit();
-                }
+                window.location.href = data.redirectUrl;
             }
         }).fail(function () {
             console.log("error");

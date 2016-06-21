@@ -107,7 +107,12 @@
             }).done(function (data) {
                 console.log("success");
                 if (data.success) {
-                    window.location.href = data.redirectUrl;
+                    var $InfoForm = $('#infoForm');
+                    if ($InfoForm === undefined) {
+                        window.location.href = data.redirectUrl;
+                    } else {
+                        $InfoForm.submit();
+                    }
                 }
             }).fail(function () {
                 console.log("error");
