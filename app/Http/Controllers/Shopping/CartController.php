@@ -468,7 +468,7 @@ class CartController extends ApiController
 	public function verifyCoupon(Request $request)
 	{
 		$params = array(
-			'cmd' => 'verifyCoupon',
+			'cmd' => 'verifycoupon',
 			'couponcode' => $request->input('couponcode', $request->input('cps')),
 			'token' => Session::get('user.token'),
 			'pin' => Session::get('user.pin'),
