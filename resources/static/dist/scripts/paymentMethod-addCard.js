@@ -66,28 +66,30 @@
     });
 
     // 判断 卡类型
-    function validationCard() {
+    function validationCard($CardInput) {
         // visa|master-card|american-express|diners-club|discover|jcb|unionpay|maestro
         var $CardImage = $('#card-type'),
-            CardNum = $(this).val(),
+            CardNum = $CardInput.val(),
             CardsTypes = getCardTypes(CardNum);
-
-        if (CardNum !== '') {
+        if (CardNum === '') {
+            console.log('CardNum 为空');
+            $CardImage.attr('class', 'card-image');
+        } else if (CardsTypes.length !== 0) {
             if (!$CardImage.hasClass(CardsTypes)) {
                 $CardImage.attr('class', 'card-image');
                 $CardImage.addClass(CardsTypes[0].type);
                 // TODO 判断 CVV 长度
             }
+            $CardInput.removeClass('text-warning');
         } else {
-                console.log('CardNum 为空');
-                $CardImage.attr('class', 'card-image');
-            }
+            $CardInput.addClass('text-warning');
+        }
         console.log(CardsTypes);
     }
 
     // 验证 卡的输入情况
     $('#cardNum').on('keyup', function (e) {
-        validationCard();
+        validationCard($(this));
     });
 })();
 //onFieldEvent: function (event) {
