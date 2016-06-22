@@ -25,7 +25,8 @@ class DesignerController extends ApiController
                 'token' => '1110',
                 'pin' => 'e052d5681da34fad83d0597b7b72acf7'
             ));
-            return View('designer.index', ['recdesigner' => $result['data']['list']]);
+
+            return View('designer.index', ['recdesigner' => isset($result['data']['list']) ? $result['data']['list'] : array()]);
         } else {
             //非首次加载,请求设计师列表数据
             $result = $this->request('openapi', '', 'designer', $params);
