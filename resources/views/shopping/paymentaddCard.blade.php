@@ -121,5 +121,6 @@
 <script src="/scripts/braintree-2.24.1.min.js"></script>
 <script src="/scripts/vendor.js"></script>
 <script src="/scripts/paymentMethod-addCard.js"></script>
+<script src="/scripts/creditCardType.js"></script>
 
 </html>
