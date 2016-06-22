@@ -57,13 +57,4 @@
 </div>
 </body>
 <script src="/scripts/vendor.js"></script>
-<script src="/scripts/JockeyJS.js"></script>
-<script>
-    var actions = [{"icon":"http://m.motif.me/images/login/login-logo.png","name":"motif","id":"1"}]
-    Jockey.send("action", {
-        name: "showActions",
-        token: "alskdfjsdfj",
-        data: {"actions":actions}
-    });
-</script>
 </html>

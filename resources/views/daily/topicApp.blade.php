@@ -16,9 +16,9 @@
 <body>
 <!-- 外层容器 -->
 <div id="body-content">
-<!-- 主体内容 -->
+    <!-- 主体内容 -->
     <div class="body-container" style="padding-top:0px">
-    <!-- daily 详细内容 -->
+        <!-- daily 详细内容 -->
         <section class="bg-white p-b-10x">
         @if(isset($topic['infos']))
             @foreach($topic['infos'] as $k=>$value)
@@ -26,7 +26,9 @@
                     <!-- 第一个 banner 图 -->
                         <div @if($k!=0)class="p-y-10x"@endif>
                             <a href="@if($value['skipType']=='1')motif://o.c?a=pd&spu=@elseif($value['skipType']=='2')/designer/@elseif($value['skipType']=='3')/topic/@elseif($value['skipType']=='4')motif://o.c?a=shoppinglist&cid=@endif{{$value['skipId']}}">
-                                <img class="img-fluid" src="https://s3-us-west-1.amazonaws.com/emimagetest/n0/{{$value['imgPath']}}" alt="">
+                                <img class="img-fluid"
+                                     src="https://s3-us-west-1.amazonaws.com/emimagetest/n0/{{$value['imgPath']}}"
+                                     alt="">
                             </a>
                         </div>
                 @elseif($value['type']=='title')
@@ -60,7 +62,9 @@
                                 @endforeach
                             @else
                                 <a href="@if($value['skipType']=='1')motif://o.c?a=pd&spu=@elseif($value['skipType']=='2')/designer/@elseif($value['skipType']=='3')/topic/@elseif($value['skipType']=='4')motif://o.c?a=shoppinglist&cid=@endif{{$value['skipId']}}">
-                                    <img class="img-fluid" src="https://s3-us-west-1.amazonaws.com/emimagetest/n0/{{$value['imgPath']}}" alt="">
+                                    <img class="img-fluid"
+                                         src="https://s3-us-west-1.amazonaws.com/emimagetest/n0/{{$value['imgPath']}}"
+                                         alt="">
                                 </a>
                             @endif
                         @else
@@ -95,6 +99,20 @@
 </div>
 </body>
 <script src="/scripts/vendor.js"></script>
+<script src="/scripts/JockeyJS.js"></script>
+<script>
+    var actionsShow = [{"icon": "", "name": "share", "id": "1"}]
+    Jockey.send("action", {
+        name: "showActions",
+        token: "key",
+        data: {"actions": actionsShow}
+    });
 
-
+    var actions = [{"title": "motif topic", "content": "motif test topic", "image": ""}]
+    Jockey.send("action", {
+        name: "share",
+        token: "key",
+        data: {actions}
+    });
+</script>
 </html>

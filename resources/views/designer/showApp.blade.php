@@ -132,4 +132,20 @@
 <script src="/scripts/vendor.js"></script>
 <script src="/scripts/designerDetail.js"></script>
 <script src="/scripts/videoPlay.js"></script>
+<script src="/scripts/JockeyJS.js"></script>
+<script>
+    var actionsShow = [{"icon": "", "name": "share", "id": "1"}]
+    Jockey.send("action", {
+        name: "showActions",
+        token: "key",
+        data: {"actions": actionsShow}
+    });
+
+    var actions = [{"title": "Designer", "content": "Designer test info", "image": ""}]
+    Jockey.send("action", {
+        name: "share",
+        token: "key",
+        data: {actions}
+    });
+</script>
 </html>
