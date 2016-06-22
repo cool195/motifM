@@ -138,14 +138,19 @@
                 </nav>
             </header>
             <!-- 提交问题反馈 表单 -->
-            <section class="m-b-20x">
+            <section class="m-b-20x reserve-height">
                 <form method="post" id="form-askQuestion">
                     <article class="font-size-md text-main p-y-10x p-x-15x"><strong>Ask a Question</strong></article>
+
+                    <div class="warning-info text-warning font-size-sm flex flex-alignCenter text-left p-x-15x m-b-10x off">
+                        <i class="iconfont icon-caveat icon-size-md p-r-5x"></i>
+                        <span>Warning:Please fill out all fieldes.</span>
+                    </div>
                     <fieldset>
-                        <input class="form-control form-control-block p-a-15x font-size-sm" id="email" type="text" placeholder="Your Email">
+                        <input class="form-control form-control-block p-a-15x font-size-sm" id="email" name="email" type="text" placeholder="Your Email">
                         <hr class="hr-base m-a-0">
                         <div class="message-info">
-                            <textarea class="form-control form-control-block p-a-15x font-size-sm" id="content" placeholder="Message" rows="10" data-length="1000"></textarea>
+                            <textarea class="form-control form-control-block p-a-15x font-size-sm" name="content" id="content" placeholder="Message" rows="10" data-length="1000"></textarea>
                         <span class="message-wordNumber font-size-sm text-primary">
                             <span id="wordNum">0</span>/1000
                         </span>
@@ -154,11 +159,10 @@
                     <div class="container-fluid p-a-15x">
                         <div class="row">
                             <div class="col-xs-6">
-                                <a href="#" class="btn btn-primary-outline btn-block btn-sm" id="Cancel">Cancel</a>
+                                <a href="#" class="btn btn-primary-outline btn-block btn-sm" data-role="cancel">Cancel</a>
                             </div>
                             <div class="col-xs-6">
-                                <button class="btn btn-primary btn-block btn-sm" id="submit" data-spu="123">Send
-                                </button>
+                                <div class="btn btn-primary btn-block btn-sm" data-role="submit" data-spu="123">Send</div>
                             </div>
                         </div>
                     </div>
@@ -239,6 +243,18 @@
                                                               reserved.
                 </div>
             </footer>
+        </div>
+    </div>
+
+    <!-- 提示添加成功 -->
+    <div class="remodal remodal-md modal-content" data-remodal-id="question-modal" id="askQuestion">
+        <div class="font-size-sm p-t-20x p-x-15x p-b-15x">
+            <div class="font-size-base">Question sent!</div>
+            <div class="p-t-5x">We will contact you as<br> soon as possible！</div>
+        </div>
+        <hr class="hr-base m-a-0">
+        <div class="btn-group flex">
+            <a href="" class="btn remodal-btn flex-width text-primary" id="confirmQuestion">OK</a>
         </div>
     </div>
 

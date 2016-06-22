@@ -137,7 +137,7 @@
                 </nav>
             </header>
             <!-- 结算 商品列表 -->
-            <section class="">
+            <section class="reserve-height">
                 <!-- 商品列表 -->
                 <aside class="checkoutList bg-white m-b-10x">
                     <div class="checkoutList-item p-a-10x">
@@ -352,11 +352,6 @@
         </div>
     </div>
 
-    <!-- loading 效果 -->
-    <div class="loading loading-screen loading-switch loading-hidden">
-        <div class="loader loader-screen"></div>
-    </div>
-
     <!-- 弹出 选择运送方式 Delivery -->
     <div class="remodal remodal-lg modal-content" data-remodal-id="delivery-modal" data-select="stype_id1" id="deliveryDialog">
         <div class="text-right p-a-15x" data-remodal-action="close">
@@ -388,9 +383,12 @@
     <!-- 隐藏表单域 -->
     <form id="infoForm" action="" hidden>
         <input type="hidden" name="stype" value="delivery" hidden>
-
-
     </form>
+
+    <!-- loading 效果 -->
+    <div class="loading loading-screen loading-switch loading-hidden">
+        <div class="loader loader-screen"></div>
+    </div>
 </body>
 <script src="/scripts/vendor.js"></script>
 
