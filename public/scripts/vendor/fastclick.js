@@ -1,7 +1,3 @@
-'use strict';
-
-var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj; };
-
 /* eslint-disable */
 
 ;(function () {
@@ -18,6 +14,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
     /*jslint browser:true, node:true*/
     /*global define, Event, Node*/
 
+
     /**
      * Instantiate fast-clicking listeners on the specified layer.
      *
@@ -25,7 +22,6 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
      * @param {Element} layer The layer to listen on
      * @param {Object} [options={}] The options to override the defaults
      */
-
     function FastClick(layer, options) {
         var oldOnClick;
 
@@ -38,12 +34,14 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
          */
         this.trackingClick = false;
 
+
         /**
          * Timestamp for when click tracking started.
          *
          * @type number
          */
         this.trackingClickStart = 0;
+
 
         /**
          * The element being tracked for a click.
@@ -52,12 +50,14 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
          */
         this.targetElement = null;
 
+
         /**
          * X-coordinate of touch start event.
          *
          * @type number
          */
         this.touchStartX = 0;
+
 
         /**
          * Y-coordinate of touch start event.
@@ -66,6 +66,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
          */
         this.touchStartY = 0;
 
+
         /**
          * ID of the last touch, retrieved from Touch.identifier.
          *
@@ -73,12 +74,14 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
          */
         this.lastTouchIdentifier = 0;
 
+
         /**
          * Touchmove boundary, beyond which a click will be cancelled.
          *
          * @type number
          */
         this.touchBoundary = options.touchBoundary || 10;
+
 
         /**
          * The FastClick layer.
@@ -111,6 +114,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
                 return method.apply(context, arguments);
             };
         }
+
 
         var methods = ['onMouse', 'onClick', 'onTouchStart', 'onTouchMove', 'onTouchEnd', 'onTouchCancel'];
         var context = this;
@@ -148,10 +152,10 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
                 var adv = Node.prototype.addEventListener;
                 if (type === 'click') {
                     adv.call(layer, type, callback.hijacked || (callback.hijacked = function (event) {
-                        if (!event.propagationStopped) {
-                            callback(event);
-                        }
-                    }), capture);
+                            if (!event.propagationStopped) {
+                                callback(event);
+                            }
+                        }), capture);
                 } else {
                     adv.call(layer, type, callback, capture);
                 }
@@ -187,6 +191,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
      */
     var deviceIsAndroid = navigator.userAgent.indexOf('Android') > 0 && !deviceIsWindowsPhone;
 
+
     /**
      * iOS requires exceptions.
      *
@@ -194,19 +199,21 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
      */
     var deviceIsIOS = /iP(ad|hone|od)/.test(navigator.userAgent) && !deviceIsWindowsPhone;
 
+
     /**
      * iOS 4 requires an exception for select elements.
      *
      * @type boolean
      */
-    var deviceIsIOS4 = deviceIsIOS && /OS 4_\d(_\d)?/.test(navigator.userAgent);
+    var deviceIsIOS4 = deviceIsIOS && (/OS 4_\d(_\d)?/).test(navigator.userAgent);
+
 
     /**
      * iOS 6.0-7.* requires the target element to be manually derived
      *
      * @type boolean
      */
-    var deviceIsIOSWithBadTarget = deviceIsIOS && /OS [6-7]_\d/.test(navigator.userAgent);
+    var deviceIsIOSWithBadTarget = deviceIsIOS && (/OS [6-7]_\d/).test(navigator.userAgent);
 
     /**
      * BlackBerry requires exceptions.
@@ -236,7 +243,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
             case 'input':
 
                 // File inputs need real clicks on iOS 6 due to a browser bug (issue #68)
-                if (deviceIsIOS && target.type === 'file' || target.disabled) {
+                if ((deviceIsIOS && target.type === 'file') || target.disabled) {
                     return true;
                 }
 
@@ -247,9 +254,9 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
                 return true;
         }
 
-        return (/\bneedsclick\b/.test(target.className)
-        );
+        return (/\bneedsclick\b/).test(target.className);
     };
+
 
     /**
      * Determine whether a given element requires a call to focus to simulate click into element.
@@ -277,10 +284,10 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
                 // No point in attempting to focus disabled inputs
                 return !target.disabled && !target.readOnly;
             default:
-                return (/\bneedsfocus\b/.test(target.className)
-                );
+                return (/\bneedsfocus\b/).test(target.className);
         }
     };
+
 
     /**
      * Send a click event to the specified element.
@@ -315,6 +322,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
         return 'click';
     };
 
+
     /**
      * @param {EventTarget|Element} targetElement
      */
@@ -329,6 +337,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
             targetElement.focus();
         }
     };
+
 
     /**
      * Check whether the given target element is a child of a scrollable layer and if so, set a flag on it.
@@ -361,6 +370,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
         }
     };
 
+
     /**
      * @param {EventTarget} targetElement
      * @returns {Element|EventTarget}
@@ -374,6 +384,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 
         return eventTarget;
     };
+
 
     /**
      * On touch start, record the position and scroll offset.
@@ -435,12 +446,13 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
         this.touchStartY = touch.pageY;
 
         // Prevent phantom clicks on fast double-tap (issue #36)
-        if (event.timeStamp - this.lastClickTime < this.tapDelay) {
+        if ((event.timeStamp - this.lastClickTime) < this.tapDelay) {
             event.preventDefault();
         }
 
         return true;
     };
+
 
     /**
      * Based on a touchmove event object, check whether the touch has moved past a boundary since it started.
@@ -449,8 +461,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
      * @returns {boolean}
      */
     FastClick.prototype.touchHasMoved = function (event) {
-        var touch = event.changedTouches[0],
-            boundary = this.touchBoundary;
+        var touch = event.changedTouches[0], boundary = this.touchBoundary;
 
         if (Math.abs(touch.pageX - this.touchStartX) > boundary || Math.abs(touch.pageY - this.touchStartY) > boundary) {
             return true;
@@ -458,6 +469,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 
         return false;
     };
+
 
     /**
      * Update the last position.
@@ -478,6 +490,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 
         return true;
     };
+
 
     /**
      * Attempt to find the labelled control for the given label element.
@@ -502,6 +515,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
         return labelElement.querySelector('button, input:not([type=hidden]), keygen, meter, output, progress, select, textarea');
     };
 
+
     /**
      * On touch end, determine whether to send a click event at once.
      *
@@ -509,24 +523,19 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
      * @returns {boolean}
      */
     FastClick.prototype.onTouchEnd = function (event) {
-        var forElement,
-            trackingClickStart,
-            targetTagName,
-            scrollParent,
-            touch,
-            targetElement = this.targetElement;
+        var forElement, trackingClickStart, targetTagName, scrollParent, touch, targetElement = this.targetElement;
 
         if (!this.trackingClick) {
             return true;
         }
 
         // Prevent phantom clicks on fast double-tap (issue #36)
-        if (event.timeStamp - this.lastClickTime < this.tapDelay) {
+        if ((event.timeStamp - this.lastClickTime) < this.tapDelay) {
             this.cancelNextClick = true;
             return true;
         }
 
-        if (event.timeStamp - this.trackingClickStart > this.tapTimeout) {
+        if ((event.timeStamp - this.trackingClickStart) > this.tapTimeout) {
             return true;
         }
 
@@ -566,7 +575,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 
             // Case 1: If the touch started a while ago (best guess is 100ms based on tests for issue #36) then focus will be triggered anyway. Return early and unset the target element reference so that the subsequent click will be allowed through.
             // Case 2: Without this exception for input elements tapped when the document is contained in an iframe, then any inputted text won't be visible even though the value attribute is updated as the user types (issue #37).
-            if (event.timeStamp - trackingClickStart > 100 || deviceIsIOS && window.top !== window && targetTagName === 'input') {
+            if ((event.timeStamp - trackingClickStart) > 100 || (deviceIsIOS && window.top !== window && targetTagName === 'input')) {
                 this.targetElement = null;
                 return false;
             }
@@ -604,6 +613,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
         return false;
     };
 
+
     /**
      * On touch cancel, stop tracking the click.
      *
@@ -613,6 +623,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
         this.trackingClick = false;
         this.targetElement = null;
     };
+
 
     /**
      * Determine mouse events which should be permitted.
@@ -661,6 +672,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
         return true;
     };
 
+
     /**
      * On actual clicks, determine whether this is a touch-generated click, a click action occurring
      * naturally after a delay after a touch (which needs to be cancelled to avoid duplication), or
@@ -695,6 +707,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
         return permitted;
     };
 
+
     /**
      * Remove all FastClick's event listeners.
      *
@@ -715,6 +728,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
         layer.removeEventListener('touchend', this.onTouchEnd, false);
         layer.removeEventListener('touchcancel', this.onTouchCancel, false);
     };
+
 
     /**
      * Check whether FastClick is needed.
@@ -753,8 +767,8 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 
                 // Chrome desktop doesn't need FastClick (issue #15)
             } else {
-                    return true;
-                }
+                return true;
+            }
         }
 
         if (deviceIsBlackBerry10) {
@@ -804,6 +818,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
         return false;
     };
 
+
     /**
      * Factory method for creating a FastClick object
      *
@@ -814,7 +829,8 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
         return new FastClick(layer, options);
     };
 
-    if (typeof define === 'function' && _typeof(define.amd) === 'object' && define.amd) {
+
+    if (typeof define === 'function' && typeof define.amd === 'object' && define.amd) {
 
         // AMD. Register as an anonymous module.
         define(function () {
@@ -826,10 +842,11 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
     } else {
         window.FastClick = FastClick;
     }
-})();
+}());
 
 document.addEventListener('DOMContentLoaded', function () {
     FastClick.attach(document.body);
     console.log('FastClick');
 }, false);
+
 //# sourceMappingURL=fastclick.js.map

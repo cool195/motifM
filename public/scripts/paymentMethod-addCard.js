@@ -1,5 +1,3 @@
-'use strict';
-
 (function () {
     // loading 打开
     function openLoading() {
@@ -25,10 +23,10 @@
 
     braintree.setup(token, "custom", {
         id: "card-container",
-        onReady: function onReady(integration) {
+        onReady: function (integration) {
             checkout = integration;
         },
-        onError: function onError(error) {
+        onError: function (error) {
             if (error.type === 'VALIDATION') {
                 $WaringInfo.children('span').html(error.message);
                 $WaringInfo.removeClass('off');
@@ -36,7 +34,7 @@
                 console.error(error.message);
             }
         },
-        onPaymentMethodReceived: function onPaymentMethodReceived(payload) {
+        onPaymentMethodReceived: function (payload) {
             console.info('payload : ');
             console.info(payload);
             openLoading();
@@ -44,23 +42,26 @@
             $.ajax({
                 url: '/braintree',
                 type: 'POST',
-                data: { nonce: payload.nonce }
-            }).done(function (data) {
-                console.log("success");
-                if (data.success) {
-                    var $InfoForm = $('#infoForm');
-                    if ($InfoForm === undefined) {
-                        window.location.href = data.redirectUrl;
-                    } else {
-                        $InfoForm.submit();
+                data: {nonce: payload.nonce}
+            })
+                .done(function (data) {
+                    console.log("success");
+                    if (data.success) {
+                        var $InfoForm = $('#infoForm');
+                        if ($InfoForm === undefined) {
+                            window.location.href = data.redirectUrl;
+                        } else {
+                            $InfoForm.submit();
+                        }
                     }
-                }
-            }).fail(function () {
-                console.log("error");
-            }).always(function () {
-                console.log("complete");
-                closeLoading();
-            });
+                })
+                .fail(function () {
+                    console.log("error");
+                })
+                .always(function () {
+                    console.log("complete");
+                    closeLoading();
+                });
         }
     });
 
@@ -135,4 +136,5 @@
 // }
 //
 // }
+
 //# sourceMappingURL=paymentMethod-addCard.js.map

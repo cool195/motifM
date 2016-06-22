@@ -1,5 +1,3 @@
-'use strict';
-
 (function ($) {
 
     // loading 打开
@@ -29,25 +27,32 @@
         $.ajax({
             url: '/cart/verifycoupon',
             type: 'POST',
-            data: { cps: Coupon }
-        }).done(function (data) {
-            if (data.success) {
-                console.log("success");
-                $('#infoForm').submit();
-            } else {
-                $('.warning-info').removeAttr('hidden');
-            }
-        }).fail(function () {
-            console.log("error");
-        }).always(function () {
-            console.log("complete");
-            closeLoading();
-        });
+            data: {cps: Coupon}
+        })
+            .done(function (data) {
+                if (data.success) {
+                    console.log("success");
+                    $('#infoForm').submit();
+                } else {
+                    $('.warning-info').removeAttr('hidden');
+                }
+            })
+            .fail(function () {
+                console.log("error");
+            })
+            .always(function () {
+                console.log("complete");
+                closeLoading();
+
+            });
     }
 
     $('[data-role="submit"]').on('click', function () {
         var Coupon = $('input[name="cps"]').val();
         verifyCoupon(Coupon);
     });
+
+
 })(jQuery);
+
 //# sourceMappingURL=orderCheckout-addCoupon.js.map

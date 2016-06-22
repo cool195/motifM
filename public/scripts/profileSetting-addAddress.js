@@ -4,7 +4,6 @@
 /*global jQuery*/
 
 'use strict';
-
 (function ($) {
     // 设置默认地址 开关按钮
     $('.radio-checkBox').on('click', function () {
@@ -41,17 +40,20 @@
             url: '/useraddr/addUserAddress',
             type: 'POST',
             data: $('#addressInfo').serialize()
-        }).done(function (data) {
-            if (data.success) {
-                console.log('success');
-                window.location.href = data.redirectUrl;
-            }
-        }).fail(function () {
-            console.log('error');
-        }).always(function () {
-            closeLoading();
-            console.log('complete');
-        });
+        })
+            .done(function (data) {
+                if (data.success) {
+                    console.log('success');
+                    window.location.href = data.redirectUrl;
+                }
+            })
+            .fail(function () {
+                console.log('error');
+            })
+            .always(function () {
+                closeLoading();
+                console.log('complete');
+            });
     }
 
     // 表单非空验证
@@ -89,7 +91,12 @@
         }
     });
 
+
     // 退出添加
-    $('#Cancel').on('click', function () {});
+    $('#Cancel').on('click', function () {
+
+    });
 })(jQuery);
+
+
 //# sourceMappingURL=profileSetting-addAddress.js.map

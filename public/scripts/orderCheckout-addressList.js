@@ -1,5 +1,3 @@
-'use strict';
-
 (function ($) {
     /**
      *
@@ -104,16 +102,19 @@
         $.ajax({
             url: '/addresses',
             type: 'DELETE',
-            data: { aid: AddressID }
-        }).done(function () {
-            console.log("success");
-            return true;
-        }).fail(function () {
-            console.log("error");
-        }).always(function () {
-            console.log("complete");
-            closeLoading();
-        });
+            data: {aid: AddressID}
+        })
+            .done(function () {
+                console.log("success");
+                return true;
+            })
+            .fail(function () {
+                console.log("error");
+            })
+            .always(function () {
+                console.log("complete");
+                closeLoading();
+            });
     }
 
     // 删除按钮
@@ -132,17 +133,18 @@
             $(this).find('.icon-radio').addClass('active');
             $('input[name="aid"]').val(Aid); // 需要提交的项
         } else if (Action === 'edit') {
-                // TODO 跳转到编辑页面
-                $('input[name="eid"]').val(Aid); // 需要修改的项
-                // Active 项 所对应的 AddressID
-                var AddressID = $('.icon-radio.active').parents('.addressList-container').data('address');
-                //$('input[name="aid"]').val(AddressID); // 暂存选定的项
+            // TODO 跳转到编辑页面
+            $('input[name="eid"]').val(Aid); // 需要修改的项
+            // Active 项 所对应的 AddressID
+            var AddressID = $('.icon-radio.active').parents('.addressList-container').data('address');
+            //$('input[name="aid"]').val(AddressID); // 暂存选定的项
 
-                var $InfoForm = $('#infoForm');
-                //$InfoForm.attr('action', $InfoForm.data('edit'));
-                $InfoForm.attr('action', '/cart/addrmod');
-                $InfoForm.submit();
-            }
+            var $InfoForm = $('#infoForm');
+            //$InfoForm.attr('action', $InfoForm.data('edit'));
+            $InfoForm.attr('action', '/cart/addrmod');
+            $InfoForm.submit();
+        }
+
     });
     // 初始化 模态框
     $('#modalDialog').remodal({
@@ -162,5 +164,7 @@
         }
         deleteAddress(AddressID);
     });
+
 })(jQuery);
+
 //# sourceMappingURL=orderCheckout-addressList.js.map

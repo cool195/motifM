@@ -7,9 +7,8 @@
 /* eslint-disable */
 'use strict';
 
-var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj; };
+!(function (window) {
 
-!function (window) {
 
     /**
      * 模板引擎
@@ -18,13 +17,15 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
      * @param   {Object, String}    数据。如果为字符串则编译并缓存编译结果
      * @return  {String, Function}  渲染好的HTML字符串或者渲染方法
      */
-    var template = function template(filename, content) {
+    var template = function (filename, content) {
         return typeof content === 'string' ? compile(content, {
             filename: filename
         }) : renderFile(filename, content);
     };
 
+
     template.version = '3.0.0';
+
 
     /**
      * 设置全局配置
@@ -36,6 +37,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
         defaults[name] = value;
     };
 
+
     var defaults = template.defaults = {
         openTag: '<%', // 逻辑语法开始标签
         closeTag: '%>', // 逻辑语法结束标签
@@ -45,7 +47,9 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
         parser: null // 自定义语法格式器 @see: template-syntax.js
     };
 
+
     var cacheStore = template.cache = {};
+
 
     /**
      * 渲染模板
@@ -58,6 +62,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
         return compile(source, options);
     };
 
+
     /**
      * 渲染模板(根据模板名)
      * @name    template.render
@@ -67,12 +72,13 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
      */
     var renderFile = template.renderFile = function (filename, data) {
         var fn = template.get(filename) || showDebugInfo({
-            filename: filename,
-            name: 'Render Error',
-            message: 'Template not found'
-        });
+                filename: filename,
+                name: 'Render Error',
+                message: 'Template not found'
+            });
         return data ? fn(data) : fn;
     };
+
 
     /**
      * 获取编译缓存（可由外部重写此方法）
@@ -86,12 +92,13 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
         if (cacheStore[filename]) {
             // 使用内存缓存
             cache = cacheStore[filename];
-        } else if ((typeof document === 'undefined' ? 'undefined' : _typeof(document)) === 'object') {
+        } else if (typeof document === 'object') {
             // 加载模板并编译
             var elem = document.getElementById(filename);
 
             if (elem) {
-                var source = (elem.value || elem.innerHTML).replace(/^\s*|\s*$/g, '');
+                var source = (elem.value || elem.innerHTML)
+                    .replace(/^\s*|\s*$/g, '');
                 cache = compile(source, {
                     filename: filename
                 });
@@ -101,11 +108,12 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
         return cache;
     };
 
-    var toString = function toString(value, type) {
+
+    var toString = function (value, type) {
 
         if (typeof value !== 'string') {
 
-            type = typeof value === 'undefined' ? 'undefined' : _typeof(value);
+            type = typeof value;
             if (type === 'number') {
                 value += '';
             } else if (type === 'function') {
@@ -116,7 +124,9 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
         }
 
         return value;
+
     };
+
 
     var escapeMap = {
         "<": "&#60;",
@@ -126,19 +136,23 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
         "&": "&#38;"
     };
 
-    var escapeFn = function escapeFn(s) {
+
+    var escapeFn = function (s) {
         return escapeMap[s];
     };
 
-    var escapeHTML = function escapeHTML(content) {
-        return toString(content).replace(/&(?![\w#]+;)|[<>"']/g, escapeFn);
+    var escapeHTML = function (content) {
+        return toString(content)
+            .replace(/&(?![\w#]+;)|[<>"']/g, escapeFn);
     };
+
 
     var isArray = Array.isArray || function (obj) {
-        return {}.toString.call(obj) === '[object Array]';
-    };
+            return ({}).toString.call(obj) === '[object Array]';
+        };
 
-    var each = function each(data, callback) {
+
+    var each = function (data, callback) {
         var i, len;
         if (isArray(data)) {
             for (i = 0, len = data.length; i < len; i++) {
@@ -150,6 +164,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
             }
         }
     };
+
 
     var utils = template.utils = {
 
@@ -176,6 +191,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 
     var helpers = template.helpers = utils.$helpers;
 
+
     /**
      * 模板错误事件（可由外部重写此方法）
      * @name    template.onerror
@@ -187,13 +203,14 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
             message += '<' + name + '>\n' + e[name] + '\n\n';
         }
 
-        if ((typeof console === 'undefined' ? 'undefined' : _typeof(console)) === 'object') {
+        if (typeof console === 'object') {
             console.error(message);
         }
     };
 
+
     // 模板调试器
-    var showDebugInfo = function showDebugInfo(e) {
+    var showDebugInfo = function (e) {
 
         template.onerror(e);
 
@@ -201,6 +218,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
             return '{Template Error}';
         };
     };
+
 
     /**
      * 编译模板
@@ -230,18 +248,23 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
             }
         }
 
+
         var filename = options.filename;
+
 
         try {
 
             var Render = compiler(source, options);
+
         } catch (e) {
 
             e.filename = filename || 'anonymous';
             e.name = 'Syntax Error';
 
             return showDebugInfo(e);
+
         }
+
 
         // 对编译结果进行一次包装
 
@@ -250,6 +273,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
             try {
 
                 return new Render(data, filename) + '';
+
             } catch (e) {
 
                 // 运行时出错后自动开启调试模式重新编译
@@ -259,34 +283,44 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
                 }
 
                 return showDebugInfo(e)();
+
             }
+
         }
+
 
         render.prototype = Render.prototype;
         render.toString = function () {
             return Render.toString();
         };
 
+
         if (filename && options.cache) {
             cacheStore[filename] = render;
         }
 
+
         return render;
+
     };
+
 
     // 数组迭代
     var forEach = utils.$each;
 
+
     // 静态分析模板变量
     var KEYWORDS =
-    // 关键字
-    'break,case,catch,continue,debugger,default,delete,do,else,false' + ',finally,for,function,if,in,instanceof,new,null,return,switch,this' + ',throw,true,try,typeof,var,void,while,with'
+        // 关键字
+        'break,case,catch,continue,debugger,default,delete,do,else,false' + ',finally,for,function,if,in,instanceof,new,null,return,switch,this' + ',throw,true,try,typeof,var,void,while,with'
 
-    // 保留字
-     + ',abstract,boolean,byte,char,class,const,double,enum,export,extends' + ',final,float,goto,implements,import,int,interface,long,native' + ',package,private,protected,public,short,static,super,synchronized' + ',throws,transient,volatile'
+        // 保留字
+        + ',abstract,boolean,byte,char,class,const,double,enum,export,extends' + ',final,float,goto,implements,import,int,interface,long,native' + ',package,private,protected,public,short,static,super,synchronized' + ',throws,transient,volatile'
 
-    // ECMA 5 - use strict
-     + ',arguments,let,yield' + ',undefined';
+        // ECMA 5 - use strict
+        + ',arguments,let,yield'
+
+        + ',undefined';
 
     var REMOVE_RE = /\/\*[\w\W]*?\*\/|\/\/[^\n]*\n|\/\/[^\n]*$|"(?:[^"\\]|\\[\w\W])*"|'(?:[^'\\]|\\[\w\W])*'|\s*\.\s*[$\w\.]+/g;
     var SPLIT_RE = /[^\w$]+/g;
@@ -295,19 +329,29 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
     var BOUNDARY_RE = /^,+|,+$/g;
     var SPLIT2_RE = /^$|,+/;
 
+
     // 获取变量
     function getVariable(code) {
-        return code.replace(REMOVE_RE, '').replace(SPLIT_RE, ',').replace(KEYWORDS_RE, '').replace(NUMBER_RE, '').replace(BOUNDARY_RE, '').split(SPLIT2_RE);
+        return code
+            .replace(REMOVE_RE, '')
+            .replace(SPLIT_RE, ',')
+            .replace(KEYWORDS_RE, '')
+            .replace(NUMBER_RE, '')
+            .replace(BOUNDARY_RE, '')
+            .split(SPLIT2_RE);
     };
+
 
     // 字符串转义
     function stringify(code) {
         return "'" + code
-        // 单引号与反斜杠转义
-        .replace(/('|\\)/g, '\\$1')
-        // 换行符转义(windows + linux)
-        .replace(/\r/g, '\\r').replace(/\n/g, '\\n') + "'";
+            // 单引号与反斜杠转义
+                .replace(/('|\\)/g, '\\$1')
+                // 换行符转义(windows + linux)
+                .replace(/\r/g, '\\r')
+                .replace(/\n/g, '\\n') + "'";
     }
+
 
     function compiler(source, options) {
 
@@ -318,8 +362,10 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
         var compress = options.compress;
         var escape = options.escape;
 
+
         var line = 1;
-        var uniq = { $data: 1, $filename: 1, $utils: 1, $helpers: 1, $out: 1, $line: 1 };
+        var uniq = {$data: 1, $filename: 1, $utils: 1, $helpers: 1, $out: 1, $line: 1};
+
 
         var isNewEngine = ''.trim; // '__proto__' in {}
         var replaces = isNewEngine ? ["$out='';", "$out+=", ";", "$out"] : ["$out=[];", "$out.push(", ");", "$out.join('')"];
@@ -334,7 +380,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 
         var mainCode = replaces[0];
 
-        var footerCode = "return new String(" + replaces[3] + ");";
+        var footerCode = "return new String(" + replaces[3] + ");"
 
         // html与逻辑语法分离
         forEach(source.split(openTag), function (code) {
@@ -351,12 +397,14 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
                 // code: [logic, html]
             } else {
 
-                    mainCode += logic($0);
+                mainCode += logic($0);
 
-                    if ($1) {
-                        mainCode += html($1);
-                    }
+                if ($1) {
+                    mainCode += html($1);
                 }
+            }
+
+
         });
 
         var code = headerCode + mainCode + footerCode;
@@ -366,16 +414,20 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
             code = "try{" + code + "}catch(e){" + "throw {" + "filename:$filename," + "name:'Render Error'," + "message:e.message," + "line:$line," + "source:" + stringify(source) + ".split(/\\n/)[$line-1].replace(/^\\s+/,'')" + "};" + "}";
         }
 
+
         try {
+
 
             var Render = new Function("$data", "$filename", code);
             Render.prototype = utils;
 
             return Render;
+
         } catch (e) {
             e.temp = "function anonymous($data,$filename) {" + code + "}";
             throw e;
         }
+
 
         // 处理 HTML 语句
         function html(code) {
@@ -385,7 +437,9 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 
             // 压缩多余空白与注释
             if (compress) {
-                code = code.replace(/\s+/g, ' ').replace(/<!--[\w\W]*?-->/g, '');
+                code = code
+                    .replace(/\s+/g, ' ')
+                    .replace(/<!--[\w\W]*?-->/g, '');
             }
 
             if (code) {
@@ -394,6 +448,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 
             return code;
         }
+
 
         // 处理逻辑语句
         function logic(code) {
@@ -404,6 +459,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 
                 // 语法转换插件钩子
                 code = parser(code, options);
+
             } else if (debug) {
 
                 // 记录行号
@@ -411,7 +467,9 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
                     line++;
                     return "$line=" + line + ";";
                 });
+
             }
+
 
             // 输出语句. 编码: <%=value%> 不编码:<%=#value%>
             // <%=#value%> 等同 v2.0.3 之前的 <%==value%>
@@ -434,10 +492,12 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 
                     // 不编码
                 } else {
-                        code = "$string(" + code + ")";
-                    }
+                    code = "$string(" + code + ")";
+                }
+
 
                 code = replaces[1] + code + replaces[2];
+
             }
 
             if (debug) {
@@ -460,15 +520,19 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
                 if (name === 'print') {
 
                     value = print;
+
                 } else if (name === 'include') {
 
                     value = include;
+
                 } else if (utils[name]) {
 
                     value = "$utils." + name;
+
                 } else if (helpers[name]) {
 
                     value = "$helpers." + name;
+
                 } else {
 
                     value = "$data." + name;
@@ -476,18 +540,25 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 
                 headerCode += name + "=" + value + ",";
                 uniq[name] = true;
+
+
             });
 
             return code + "\n";
         }
+
+
     };
 
+
     // 定义模板引擎的语法
+
 
     defaults.openTag = '{{';
     defaults.closeTag = '}}';
 
-    var filtered = function filtered(js, filter) {
+
+    var filtered = function (js, filter) {
         var parts = filter.split(':');
         var name = parts.shift();
         var args = parts.join(':') || '';
@@ -497,7 +568,8 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
         }
 
         return '$helpers.' + name + '(' + js + args + ')';
-    };
+    }
+
 
     defaults.parser = function (code, options) {
 
@@ -512,6 +584,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
         var split = code.split(' ');
         var key = split.shift();
         var args = split.join(' ');
+
 
         switch (key) {
 
@@ -598,20 +671,23 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
                     // 即将弃用 {{helperName value}}
                 } else if (template.helpers[key]) {
 
-                        code = '=#' + key + '(' + split.join(',') + ');';
+                    code = '=#' + key + '(' + split.join(',') + ');';
 
-                        // 内容直接输出 {{value}}
-                    } else {
+                    // 内容直接输出 {{value}}
+                } else {
 
-                            code = '=' + code;
-                        }
+                    code = '=' + code;
+                }
 
                 break;
         }
+
 
         return code;
     };
 
     window.template = template;
-}(window);
+
+})(window);
+
 //# sourceMappingURL=template-native.js.map

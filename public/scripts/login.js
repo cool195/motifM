@@ -1,5 +1,4 @@
 'use strict';
-
 (function ($) {
     // loading 打开
     function openLoading() {
@@ -25,20 +24,23 @@
             url: '/user/logincheck',
             type: 'POST',
             data: $('#login').serialize()
-        }).done(function (data) {
-            console.log("success");
-            if (data.success) {
-                window.location.href = data.redirectUrl;
-            } else {
-                $('.warning-info').removeClass('off');
-                $('.warning-info').children('span').html(data.error_msg);
-            }
-        }).fail(function () {
-            console.log("error");
-        }).always(function () {
-            console.log("complete");
-            closeLoading();
-        });
+        })
+            .done(function (data) {
+                console.log("success");
+                if (data.success) {
+                    window.location.href = data.redirectUrl;
+                } else {
+                    $('.warning-info').removeClass('off');
+                    $('.warning-info').children('span').html(data.error_msg);
+                }
+            })
+            .fail(function () {
+                console.log("error");
+            })
+            .always(function () {
+                console.log("complete");
+                closeLoading();
+            });
     }
 
     /**
@@ -141,4 +143,5 @@
         }
     });
 })(jQuery);
+
 //# sourceMappingURL=login.js.map

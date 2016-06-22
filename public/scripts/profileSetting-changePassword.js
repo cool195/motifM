@@ -4,7 +4,6 @@
 /*global jQuery*/
 
 'use strict';
-
 (function ($) {
     // loading 打开
     function openLoading() {
@@ -87,28 +86,32 @@
         updatePassword();
     });
 
+
     function updatePassword() {
         openLoading();
         $.ajax({
             url: '/user/modifyUserPwd',
             type: 'POST',
             data: $('#changePassword').serialize()
-        }).done(function (data) {
-            if (data.success) {
-                $ModalDialog.open();
-                var href = data.redirectUrl;
-                $('#confirmPwd').attr('href', href);
-                console.log('success');
-            } else {
-                $('.warning-info').removeClass('off');
-                $('.warning-info').children('span').html(data.prompt_msg);
-            }
-        }).fail(function () {
-            console.log('error');
-        }).always(function () {
-            console.log('complete');
-            closeLoading();
-        });
+        })
+            .done(function (data) {
+                if (data.success) {
+                    $ModalDialog.open();
+                    var href = data.redirectUrl;
+                    $('#confirmPwd').attr('href',href);
+                    console.log('success');
+                } else {
+                    $('.warning-info').removeClass('off');
+                    $('.warning-info').children('span').html(data.prompt_msg);
+                }
+            })
+            .fail(function () {
+                console.log('error');
+            })
+            .always(function () {
+                console.log('complete');
+                closeLoading();
+            });
     }
 
     // 初始化模态框
@@ -116,5 +119,7 @@
         closeOnOutsideClick: false,
         hashTracking: false
     });
+
 })(jQuery);
+
 //# sourceMappingURL=profileSetting-changePassword.js.map

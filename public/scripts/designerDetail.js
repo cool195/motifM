@@ -5,7 +5,6 @@
 
 // 设置 视频比例
 'use strict';
-
 (function ($) {
     var MediaScale = '';
     // 初始化 图片/ 视频 显示比例
@@ -23,7 +22,8 @@
         var Width = $(window).width(),
             MediaHeight = Width * MediaScale;
         // 初始化视频比例
-        if ($('#ytplayer').length > 0) {} else if ($('.designer-Img').length > 0) {
+        if ($('#ytplayer').length > 0) {
+        } else if ($('.designer-Img').length > 0) {
             $('.designer-media').css('height', MediaHeight);
             // 初始化图片比例
             // 对比图片比例  让图片显示在固定区域
@@ -57,6 +57,7 @@
         return ImgObj;
     }
 
+
     // 图片实际宽高比 与 固定宽高比 做比较
     function validateImgSize(ImgWidth, ImgHeight, RealScale, MediaScale) {
         var $Img = $('.designer-Img');
@@ -72,10 +73,10 @@
             $('.designer-Img').addClass('img-fluid');
         } else if (RealScale > MediaScale) {
             // 实际宽高比 大于 固定比
-            $('.designer-Img').css({ height: '100%', width: 'auto' });
+            $('.designer-Img').css({height: '100%', width: 'auto'});
         } else if (RealScale < MediaScale) {
             // 实际宽高比 小于 固定比
-            $('.designer-Img').css({ height: 'auto', width: '100%' });
+            $('.designer-Img').css({height: 'auto', width: '100%'});
         }
     }
 
@@ -109,4 +110,5 @@
         mediainit();
     };
 })(jQuery);
+
 //# sourceMappingURL=designerDetail.js.map

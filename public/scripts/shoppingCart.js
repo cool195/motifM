@@ -32,18 +32,22 @@
         $.ajax({
             url: '/cart/operate',
             type: 'POST',
-            data: { cmd: action, sku: sku }
-        }).done(function (data) {
-            if (data.success) {
-                console.log('success');
-                location.reload();
-            }
-        }).fail(function () {
-            console.log('error');
-        }).always(function () {
-            closeLoading();
-            console.log('complete');
-        });
+            data: {cmd: action, sku: sku}
+        })
+            .done(function (data) {
+                if (data.success) {
+                    console.log('success');
+                    location.reload();
+                }
+            })
+            .fail(function () {
+                console.log('error');
+            })
+            .always(function () {
+                closeLoading();
+                console.log('complete');
+            });
+
     }
 
     /**
@@ -61,19 +65,22 @@
         $.ajax({
             url: '/cart/operate',
             type: 'POST',
-            data: { cmd: action, sku: sku }
-        }).done(function (data) {
-            console.log('success');
-            // 操作成功刷新页面
-            if (data.success) {
-                location.reload();
-            }
-        }).fail(function () {
-            console.log('error');
-        }).always(function () {
-            closeLoading();
-            console.log('complete');
-        });
+            data: {cmd: action, sku: sku}
+        })
+            .done(function (data) {
+                console.log('success');
+                // 操作成功刷新页面
+                if (data.success) {
+                    location.reload();
+                }
+            })
+            .fail(function () {
+                console.log('error');
+            })
+            .always(function () {
+                closeLoading();
+                console.log('complete');
+            });
     }
 
     /**
@@ -87,20 +94,23 @@
         $.ajax({
             url: '/cart/alterQtty',
             type: 'POST',
-            data: { sku: Sku, qtty: Qtty }
-        }).done(function (data) {
-            // TODO 操作失败时 需要进行什么操作
-            // 操作成功刷新页面
-            if (data.success) {
-                location.reload();
-                $Count.siblings('[data-count]').html(Qtty);
-            }
-        }).fail(function () {
-            console.log('error');
-        }).always(function () {
-            console.log('complete');
-            closeLoading();
-        });
+            data: {sku: Sku, qtty: Qtty}
+        })
+            .done(function (data) {
+                // TODO 操作失败时 需要进行什么操作
+                // 操作成功刷新页面
+                if (data.success) {
+                    location.reload();
+                    $Count.siblings('[data-count]').html(Qtty);
+                }
+            })
+            .fail(function () {
+                console.log('error');
+            })
+            .always(function () {
+                console.log('complete');
+                closeLoading();
+            });
     }
 
     // 绑定计数事件,商品数量
@@ -191,4 +201,5 @@
         changeQtty(Sku, Qtty);
     });
 })(jQuery);
+
 //# sourceMappingURL=shoppingCart.js.map

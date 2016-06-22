@@ -1,5 +1,3 @@
-'use strict';
-
 (function () {
     /**
      *
@@ -49,14 +47,14 @@
     if (token !== '') {
         braintree.setup(token, "custom", {
             paypal: {
-                currency: 'USD', // 沙盒系统需要字段
-                locale: 'en_us', // 沙盒系统需要字段
+                currency: 'USD',// 沙盒系统需要字段
+                locale: 'en_us',// 沙盒系统需要字段
                 headless: true
             },
-            onReady: function onReady(integration) {
+            onReady: function (integration) {
                 checkout = integration;
             },
-            onPaymentMethodReceived: function onPaymentMethodReceived(payload) {
+            onPaymentMethodReceived: function (payload) {
                 console.info('payload : ');
                 console.info(payload);
 
@@ -65,18 +63,22 @@
                 $.ajax({
                     url: '/braintree',
                     type: 'POST',
-                    data: { nonce: payload.nonce }
-                }).done(function (data) {
-                    console.log("success");
-                    if (data.success) {
-                        window.location.href = data.redirectUrl;
-                    }
-                }).fail(function () {
-                    console.log("error");
-                }).always(function () {
-                    closeLoading();
-                    console.log("complete");
-                });
+                    data: {nonce: payload.nonce}
+                })
+                    .done(function (data) {
+                        console.log("success");
+                        if (data.success) {
+                            window.location.href = data.redirectUrl;
+                        }
+                    })
+                    .fail(function () {
+                        console.log("error");
+                    })
+                    .always(function () {
+                        closeLoading();
+                        console.log("complete");
+                    });
+
             }
         });
     }
@@ -96,17 +98,20 @@
             data: {
                 methodtoken: PaymentToken
             }
-        }).done(function (data) {
-            console.log("success");
-            if (data.success) {
-                window.location.href = data.redirectUrl;
-            }
-        }).fail(function () {
-            console.log("error");
-        }).always(function () {
-            console.log("complete");
-            closeLoading();
-        });
+        })
+            .done(function (data) {
+                console.log("success");
+                if (data.success) {
+                    window.location.href = data.redirectUrl;
+                }
+            })
+            .fail(function () {
+                console.log("error");
+            })
+            .always(function () {
+                console.log("complete");
+                closeLoading();
+            });
     }
 
     // 删除按钮
@@ -134,4 +139,5 @@
         deletePayment(PaymentToken);
     });
 })();
+
 //# sourceMappingURL=paymentMethod-paypal.js.map

@@ -1,5 +1,3 @@
-'use strict';
-
 (function ($) {
     /**
      *
@@ -82,17 +80,21 @@
             data: {
                 methodtoken: PaymentToken
             }
-        }).done(function () {
-            console.log("success");
-            if (data.success) {
-                window.location.href = data.redirectUrl;
-            }
-        }).fail(function () {
-            console.log("error");
-        }).always(function () {
-            console.log("complete");
-            closeLoading();
-        });
+        })
+            .done(function () {
+                console.log("success");
+                if (data.success) {
+                    window.location.href = data.redirectUrl;
+                }
+            })
+            .fail(function () {
+                console.log("error");
+            })
+            .always(function () {
+                console.log("complete");
+                closeLoading();
+
+            });
     }
 
     $('#payment-edit').on('click', function (e) {
@@ -112,7 +114,7 @@
         var PayType = $('.icon-radio.active').parents('.payment-info').data('type');
         var methodToken = $('.icon-radio.active').parents('.payment-info').data('token');
         var cardType = $('.icon-radio.active').parents('.payment-info').data('cardtype');
-        var showName = $('.icon-radio.active').parents('.payment-info').data('showname');
+        var showName = $('.icon-radio.active').parents('.payment-info').data('showname')
 
         $('input[name="methodToken"]').val(methodToken);
         $('input[name="cardType"]').val(cardType);
@@ -167,14 +169,14 @@
     if (token !== '') {
         braintree.setup(token, "custom", {
             paypal: {
-                currency: 'USD', // 沙盒系统需要字段
-                locale: 'en_us', // 沙盒系统需要字段
+                currency: 'USD',// 沙盒系统需要字段
+                locale: 'en_us',// 沙盒系统需要字段
                 headless: true
             },
-            onReady: function onReady(integration) {
+            onReady: function (integration) {
                 checkout = integration;
             },
-            onPaymentMethodReceived: function onPaymentMethodReceived(payload) {
+            onPaymentMethodReceived: function (payload) {
                 console.info('payload : ');
                 console.info(payload);
 
@@ -183,18 +185,22 @@
                 $.ajax({
                     url: '/braintree',
                     type: 'POST',
-                    data: { nonce: payload.nonce }
-                }).done(function (data) {
-                    console.log("success");
-                    if (data.success) {
-                        window.location.href = data.redirectUrl;
-                    }
-                }).fail(function () {
-                    console.log("error");
-                }).always(function () {
-                    closeLoading();
-                    console.log("complete");
-                });
+                    data: {nonce: payload.nonce}
+                })
+                    .done(function (data) {
+                        console.log("success");
+                        if (data.success) {
+                            window.location.href = data.redirectUrl;
+                        }
+                    })
+                    .fail(function () {
+                        console.log("error");
+                    })
+                    .always(function () {
+                        closeLoading();
+                        console.log("complete");
+                    });
+
             }
         });
     }
@@ -209,5 +215,7 @@
         $('#infoForm').attr('action', $(this).data('action'));
         $('#infoForm').submit();
     });
+
 })(jQuery);
+
 //# sourceMappingURL=orderCheckout-payment.js.map
