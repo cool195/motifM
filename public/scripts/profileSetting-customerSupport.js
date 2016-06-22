@@ -4,7 +4,6 @@
 /*global jQuery*/
 
 'use strict';
-
 (function ($) {
     // loading 打开
     function openLoading() {
@@ -66,7 +65,7 @@
     // 验证 是否选择类型
     function validateMessageType() {
         var MessageNull = 'Please fill out all fieldes';
-        var MessageType = $('.message-type').data('type');
+        var MessageType = $('.message-type').data('stype');
         var $WarningInfo = $('.warning-info');
         if (MessageType === 0 || MessageType === '' || MessageType === null) {
             $('div[data-role="submit"]').addClass('disabled');
@@ -114,18 +113,30 @@
     function addMessage() {
         openLoading();
         // 获取表单数据
+        var email = $('#email').val();
+        var content = $('#content').val();
+        var type = $('.message-type').data('type');
+        var stype = $('.message-type').data('stype');
         $.ajax({
-            url: '?',
-            type: 'POST',
-            data: {}
-        }).done(function () {
-            console.log('success');
-        }).fail(function () {
-            console.log('error');
-        }).always(function () {
-            closeLoading();
-            console.log('complete');
-        });
+            url: '/feedback',
+            type: 'GET',
+            data: {email: email, content: content, type: type, stype: stype}
+        })
+            .done(function (data) {
+                if (data.success) {
+                    $ModalDialog.open();
+                    var href = data.redirectUrl;
+                    $('#confirmQuestion').attr('href', href);
+                    console.log('success');
+                }
+            })
+            .fail(function () {
+                console.log('error');
+            })
+            .always(function () {
+                closeLoading();
+                console.log('complete');
+            });
     }
 
     // 计算 message 输入字数,并实时提示
@@ -142,6 +153,7 @@
         }
     });
 
+
     // 点击 选择 会话类型
     $('.btn-massageType').on('click', function () {
         var $messageList = $('.messageType-list');
@@ -152,14 +164,27 @@
     // 点击 确认 会话类型
     $('.message-item').on('click', function (e) {
         var messageTypeText = $(e.target).html();
-        var messageTypeVal = $(e.target).data('message-type');
+        var messageTypeVal = $(e.target).data('message-stype');
         $(this).parent().removeClass('active');
         $(this).addClass('active').siblings().removeClass('active');
         $('.btn-massageType').find('span').html(messageTypeText);
         $('.btn-massageType').find('i').removeClass('icon-arrow-up').addClass('icon-arrow-bottom');
 
-        $('.message-type').data('type', messageTypeVal);
+        $('.message-type').data('stype', messageTypeVal);
+        //console.info($('.message-type').data('stype'));
         validateMessageType();
     });
+
+    // 退出编辑
+    $('div[data-role="cancel"]').on('click', function () {
+        window.history.back(-1);
+    });
+
+    // 初始化模态框
+    var $ModalDialog = $('#askQuestion').remodal({
+        closeOnOutsideClick: false,
+        hashTracking: false
+    });
 })(jQuery);
+
 //# sourceMappingURL=profileSetting-customerSupport.js.map

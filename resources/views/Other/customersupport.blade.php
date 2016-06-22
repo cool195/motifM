@@ -36,14 +36,14 @@
                     <i class="iconfont icon-caveat icon-size-md p-r-5x"></i>
                     <span>Warning:Please fill out all fieldes.</span>
                 </div>
-                <fieldset class="bg-white m-b-10x message-type" data-type="">
+                <fieldset class="bg-white m-b-10x message-type" data-type="{{ $customers['feedback_type'] }}" data-stype="">
                     <a class="p-a-15x flex flex-alignCenter flex-fullJustified btn-massageType" href="#">
                         <span class="font-size-sm text-primary">Question Type</span>
                         <i class="iconfont icon-arrow-bottom icon-size-xm text-common"></i>
                     </a>
                     <div class="messageType-list bg-white text-primary font-size-sm">
                         @foreach($customers['feedback'] as $feed)
-                            <a class="message-item p-a-15x flex text-primary" data-message-type="{{ $feed['feedback_sub_type'] }}">{{$feed['feedback_sub_name']}}</a>
+                            <a class="message-item p-a-15x flex text-primary" data-message-stype="{{ $feed['feedback_sub_type'] }}">{{$feed['feedback_sub_name']}}</a>
                         @endforeach
                     </div>
                 </fieldset>
@@ -59,7 +59,7 @@
                 <div class="container-fluid p-a-15x">
                     <div class="row">
                         <div class="col-xs-6">
-                            <a href="#" class="btn btn-primary-outline btn-block btn-sm" id="Cancel">Cancel</a>
+                            <a href="#" class="btn btn-primary-outline btn-block btn-sm" data-role="cancel">Cancel</a>
                         </div>
                         <div class="col-xs-6">
                             <div class="btn btn-primary btn-block btn-sm" data-role="submit">Send</div>
@@ -72,12 +72,32 @@
         @include('footer')
     </div>
 </div>
+<!-- 提示添加成功 -->
+<div class="remodal remodal-md modal-content" data-remodal-id="question-modal" id="askQuestion">
+    <div class="font-size-sm p-t-20x p-x-15x p-b-15x">
+        <div class="font-size-base">Question sent!</div>
+        <div class="p-t-5x">We will contact you as<br> soon as possible！</div>
+    </div>
+    <hr class="hr-base m-a-0">
+    <div class="btn-group flex">
+        <a href="" class="btn remodal-btn flex-width text-primary" id="confirmQuestion">OK</a>
+    </div>
+</div>
+
 
 <!-- loading 效果 -->
 <div class="loading loading-screen loading-switch loading-hidden">
     <div class="loader loader-screen"></div>
 </div>
 </body>
+<meta name="csrf-token" content="{{ csrf_token() }}" />
+<script>
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+</script>
 <script src="/scripts/vendor.js"></script>
 
 <script src="/scripts/profileSetting-customerSupport.js"></script>

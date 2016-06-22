@@ -116,6 +116,11 @@ class ShoppingController extends ApiController
 			$params['orderno'] = $request->input('orderno');
 		}
 		$result = $this->request('openapi', '', 'feedback', $params);
+		if (empty($result)) {
+			$result['success'] = false;
+			$result['error_msg'] = "Data access failed";
+			$result['data']['list'] = array();
+		}
 		return $result;
 	}
 
