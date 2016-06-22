@@ -16,9 +16,9 @@ class DailyController extends ApiController
             'pagesize' => $request->input('pagesize', 10),
             'pagenum' => $request->input('pagenum', 1),
         );
-        if(empty($params['cmd'])){
+        if (empty($params['cmd'])) {
             return View('daily.index');
-        }else{
+        } else {
             $result = $this->request('openapi', '', 'daily', $params);
             if (empty($result)) {
                 $result['success'] = false;
@@ -38,8 +38,14 @@ class DailyController extends ApiController
         );
 
         $result = $this->request('openapi', 'topicf', "content", $params);
+        $view = '';
+        if (strstr($_SERVER['HTTP_USER_AGENT'], 'motif-android') || strstr($_SERVER['HTTP_USER_AGENT'], 'motif-ios')) {
+            $view = 'daily.topicApp';
+        } else {
+            $view = 'daily.topic';
+        }
 
-        return View('daily.topic', ['topic' => $result['data']]);
+        return View($view, ['topic' => $result['data']]);
     }
 }
 

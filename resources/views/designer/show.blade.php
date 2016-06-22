@@ -29,7 +29,7 @@
                 @if($designer['path_type']==2)
                     <iframe class="player img-fluid" type="text/html" width="100%"
                             src="{{$designer['img_video_path']}}"
-                            frameborder="0" allowfullscreen></iframe>
+                            frameborder="0" allowfullscreen autoplay="1"></iframe>
                 @else
 
                     <img src="https://s3-us-west-1.amazonaws.com/emimagetest/n1/{{$designer['main_img_path']}}" alt=""
