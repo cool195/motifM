@@ -114,12 +114,20 @@
     function addMessage() {
         openLoading();
         // 获取表单数据
+        var email = $('#email').val();
+        var content = $('#content').val();
+        var type = $('.message-type').data('type');
         $.ajax({
-            url: '?',
+            url: '/feedback/support',
             type: 'POST',
-            data: {}
-        }).done(function () {
-            console.log('success');
+            data: { spu: spu, content: content, email: email, type: type, stype: '1' }
+        }).done(function (data) {
+            if (data.success) {
+                $ModalDialog.open();
+                var href = data.redirectUrl;
+                $('#confirmQuestion').attr('href', href);
+                console.log('success');
+            }
         }).fail(function () {
             console.log('error');
         }).always(function () {
@@ -160,6 +168,17 @@
 
         $('.message-type').data('type', messageTypeVal);
         validateMessageType();
+    });
+
+    // 退出编辑
+    $('div[data-role="cancel"]').on('click', function () {
+        window.history.back(-1);
+    });
+
+    // 初始化模态框
+    var $ModalDialog = $('#askQuestion').remodal({
+        closeOnOutsideClick: false,
+        hashTracking: false
     });
 })(jQuery);
 //# sourceMappingURL=profileSetting-customerSupport.js.map
