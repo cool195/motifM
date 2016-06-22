@@ -18,8 +18,9 @@ class AuthController extends ApiController
 
         $params['reinfo'] = json_encode(array(
                 'email' => $request->get('email'),
-                'token' => $request->get('token'),
+                'id' => $request->get('token'),
                 'name' => $request->get('name'),
+                'type' => 4,
                 'avatar' => urlencode($request->get('avatar')),
             )
         );
@@ -28,5 +29,4 @@ class AuthController extends ApiController
         return $result;
     }
 }
-
 ?>
