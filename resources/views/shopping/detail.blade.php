@@ -83,9 +83,11 @@
                 <hr class="hr-light m-x-10x">
                 <div class="product-price">
                     <span class="font-size-lx text-primary">${{ number_format(($data['skuPrice']['sale_price'] / 100), 2) }}</span>
-                    @if($data['skuPrice']['sale_price'] != $data['skuPrice']['price'])<span class="font-size-sm text-throughLine text-common">${{ number_format(($data['skuPrice']['price'] /100), 2) }}</span>@endif
+                    @if($data['skuPrice']['sale_price'] != $data['skuPrice']['price'])<span
+                            class="font-size-sm text-throughLine text-common">${{ number_format(($data['skuPrice']['price'] /100), 2) }}</span>@endif
                     @if(isset($data['skuPrice']['skuPromotion']))
-                        <span class="font-size-sm text-primary">({{ $data['skuPrice']['skuPromotion']['display'] }})</span>
+                        <span class="font-size-sm text-primary">({{ $data['skuPrice']['skuPromotion']['display'] }}
+                            )</span>
                     @endif
                     <a class="text-primary pull-xs-right" href="#"><i class="iconfont icon-share icon-size-xm"></i></a>
                 </div>
@@ -379,8 +381,19 @@
     </div>
 </div>
 <!-- loading 效果 -->
-<div class="loading loading-screen loading-switch loading-hidden">
+<div class="loading loading-screen loading-switch loading-hidden" id="loading">
     <div class="loader loader-screen"></div>
+</div>
+
+<!-- loading 效果 -->
+<div class="loading loading-screen loading-transprant loading-hidden" id="success">
+    <div class="loading-modal">
+        <div class="">
+            <img class="img-fluid m-x-auto" src="/images/icon-success.png"
+                 srcset="/images/icon-success@2x.png 2x, /images/icon-success@3x.png 3x">
+        </div>
+        <div class="text-white font-size-md text-center m-t-10x">Item Added</div>
+    </div>
 </div>
 </body>
 <script src="/scripts/vendor.js"></script>
