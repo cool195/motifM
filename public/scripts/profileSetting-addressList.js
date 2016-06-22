@@ -111,6 +111,15 @@
         $('#modalDialog').data('aid', AddressID);
     });
 
+    $('.addressItem-info').on('click', function () {
+        var Action = $(this).data('action');
+        if (Action === 'return') {
+            return;
+        } else if (Action === 'edit') {
+            window.location.href = $(this).data('url');
+        }
+    });
+
     $('div[data-role="submit"]').on('click', function () {
         // TODO 提交相应数据到后台
     });
