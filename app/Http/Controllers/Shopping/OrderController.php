@@ -16,6 +16,11 @@ class OrderController extends ApiController
 
     }
 
+    public function orderSuccess(Request $request)
+    {
+        return view('shopping.ordercheckout_success');
+    }
+
     public function getOrderList(Request $request)
     {
         $cmd = "ordlist";
@@ -162,7 +167,8 @@ class OrderController extends ApiController
         );
         $result = $this->request('openapi', "", "pay", $params);
         if(!empty($result) && $result['success']){
-            $result['redirectUrl'] = "/order/orderdetail/".$orderId;
+            //$result['redirectUrl'] = "/order/orderdetail/".$orderId;
+            $result['redirectUrl'] = "/success";
         }else{
             $result['success'] = false;
         }

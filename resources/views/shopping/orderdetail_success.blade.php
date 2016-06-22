@@ -13,7 +13,7 @@
         </div>
         <div class="flex text-primary">
             <span class="orderInfo-subTitle flex-fixedShrink">Order total</span>
-            <span>${{number_format(($data['total_amount'] / 100), 2)}}({{ $data['item_qtty'] }} item)</span>
+            <span>${{number_format(($data['total_amount'] / 100), 2)}}</span>
         </div>
     </article>
 
@@ -22,6 +22,7 @@
         <!-- 正常订单 下单日期 -->
         <div class="p-y-10x p-x-15x">
             <span class="font-size-sm text-primary"><strong>ORDER PLACED:</strong> {{$data['create_time']}} </span>
+            <span class="font-size-sm text-primary"><p class="m-b-0">{{ $data['status_explain'] }}</p></span>
         </div>
 
         <!-- 被取消的订单 取消原因、取消日期 -->
@@ -64,10 +65,10 @@
             @endforeach
         @endif
     <!-- 正常订单 跟踪货物 -->
-        <a class="flex flex-alignCenter flex-fullJustified font-size-sm text-primary p-y-10x p-x-15x">
+      {{--  <a class="flex flex-alignCenter flex-fullJustified font-size-sm text-primary p-y-10x p-x-15x">
             Track Shipment
             <i class="iconfont icon-arrow-right icon-size-xm text-common p-r-10x"></i>
-        </a>
+        </a>--}}
 
         <!-- 被取消的订单 重新购买按钮 -->
         <!--<div class="p-a-10x">-->
@@ -103,7 +104,7 @@
             <span class="orderInfo-subTitle flex-fixedShrink">Message to Us</span>
             <div>
                 <div class="message-info">
-                    <p class="m-b-0">{{ $data['status_explain'] }}</p>
+                    <p class="m-b-0"></p>
                 </div>
                 <a class="flex flex-alignCenter flex-fullJustified font-size-sm p-t-5x text-common btn-showMore">
                     <span class="showMore">Show More</span>
