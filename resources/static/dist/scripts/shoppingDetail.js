@@ -6,6 +6,20 @@
 'use strict';
 
 (function ($, Swiper) {
+    function openAddSuccess() {
+        $('#success').toggleClass('loading-hidden');
+        setTimeout(function () {
+            $('#success').toggleClass('loading-open');
+        }, 25);
+    }
+
+    function closeAddSuccess() {
+        $('#success').addClass('loading-close');
+        setTimeout(function () {
+            $('#success').toggleClass('loading-hidden loading-open').removeClass('loading-close');
+        }, 500);
+    }
+
     // loading 打开
     function openLoading() {
         $('#loading').toggleClass('loading-hidden');
@@ -603,8 +617,14 @@
             data: { operate: Operate }
         }).done(function (data) {
             if (data.success) {
-                window.location.href = data.redirectUrl;
+                if (data.redirectUrl !== '') {
+                    window.location.href = data.redirectUrl;
+                }
                 console.log("success");
+                openAddSuccess();
+                setTimeout(function () {
+                    closeAddSuccess();
+                }, 1500);
             }
         }).fail(function () {
             console.log("error");
