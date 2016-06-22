@@ -71,4 +71,30 @@ class ShoppingController extends ApiController
 		return $result;
 	}
 
+	public function getFeedbackList(Request $request)
+	{
+		$params = array(
+			'cmd' => 'list',
+			'pin' => Session::get('user.pin'),
+			'token' => Session::get('user.token'),
+		);
+		if($request->has('type')){
+			$params['type'] = $request->input('type');
+		}
+		$result = $this->request('openapi', '', 'feedback', $params);
+		return $result;
+	}
+
+
+
+
+
+
+
+
+
+
+
+
+
 }

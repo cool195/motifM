@@ -141,7 +141,7 @@
                     <span>Shipping to 10000</span><span>${{ number_format(($data['freight_amount'] / 100), 2)}}</span>
                 </div>
                 <div class="flex flex-fullJustified text-primary font-size-sm">
-                    <span>Coupon</span><span>-${{$data['promot_discount_amount'] / 100}}</span>
+                    <span>Coupon</span><span>-${{number_format(($data['promot_discount_amount'] / 100), 2)}}</span>
                 </div>
                 <div class="flex flex-fullJustified p-t-10x text-primary font-size-sm">
                     <span><strong>Order Total</strong></span><span><strong>${{ number_format(($data['pay_amount'] / 100), 2)}}</strong></span>
