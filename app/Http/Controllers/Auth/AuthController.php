@@ -24,7 +24,7 @@ class AuthController extends ApiController
             )
         );
         $result = $this->request('openapi', '', "user", $params);
-        $request['params'] = $params;
+        $result['params'] = $params;
         return $result;
     }
 }
