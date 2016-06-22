@@ -119,7 +119,7 @@
         var stype = $('.message-type').data('stype');
         $.ajax({
             url: '/feedback',
-            type: 'POST',
+            type: 'GET',
             data: {email: email, content: content, type: type, stype: stype}
         })
             .done(function (data) {
