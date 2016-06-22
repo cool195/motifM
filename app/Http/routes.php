@@ -25,6 +25,8 @@ $app->post('/facebooklogin','Auth\AuthController@facebookLogin');
 
 $app->group(['middleware' => 'logincheck', 'namespace' => 'App\Http\Controllers\Shopping'], function ($app) {
 
+    $app->get('/feedback', 'ShoppingController@feedback');
+    $app->post('/feedback', 'ShoppingController@addSupport');
     $app->get('/feedbacklist', 'ShoppingController@getFeedbackList');
 
     $app->get('/cart', 'CartController@index');
