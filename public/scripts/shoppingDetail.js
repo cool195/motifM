@@ -75,7 +75,7 @@
         closeOnCancel: false,
         hashTracking: false
     };
-    $('[data-remodal-id=modal]').remodal(options);
+    var Modal = $('[data-remodal-id=modal]').remodal(options);
 
     // 建立 选项组 的数据集合
     // 为 Options 赋值
@@ -628,6 +628,7 @@
                         window.location.href = data.redirectUrl;
                     }
                     console.log("success");
+                    Modal.close();
                     openAddSuccess();
                     setTimeout(function () {
                         closeAddSuccess();
