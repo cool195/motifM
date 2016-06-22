@@ -39,7 +39,6 @@ class DailyController extends ApiController
 
         $result = $this->request('openapi', 'topicf', "content", $params);
         $view = '';
-        dd($_SERVER['HTTP_USER_AGENT']);
         if (strstr($_SERVER['HTTP_USER_AGENT'], 'motif-android') || strstr($_SERVER['HTTP_USER_AGENT'], 'motif-ios')) {
             $view = 'daily.topicApp';
         } else {
