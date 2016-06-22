@@ -3,6 +3,7 @@
 /**
  * Created by zhaozhe on 16/6/21.
  */
+/*eslint strict: ["error", "never"]*/
 
 (function () {
     // google 第三方登录
