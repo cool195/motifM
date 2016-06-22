@@ -22,11 +22,9 @@
     function mediainit() {
         var Width = $(window).width(),
             MediaHeight = Width * MediaScale;
-        $('.designer-media').css('height', MediaHeight);
         // 初始化视频比例
-        if ($('.player').length > 0) {
-            $('.player').css('height', MediaHeight);
-        } else if ($('.designer-Img').length > 0) {
+        if ($('#ytplayer').length > 0) {} else if ($('.designer-Img').length > 0) {
+            $('.designer-media').css('height', MediaHeight);
             // 初始化图片比例
             // 对比图片比例  让图片显示在固定区域
             var RealImg = getRealImg();
