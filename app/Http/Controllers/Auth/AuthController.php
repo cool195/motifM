@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\ApiController;
+use Illuminate\Support\Facades\Session;
 
 class AuthController extends ApiController
 {
@@ -25,8 +26,13 @@ class AuthController extends ApiController
             )
         );
         $result = $this->request('openapi', '', "user", $params);
-        $result['params'] = $params;
+        if ($result['success']) {
+            $result['redirectUrl'] = "/daily";
+            Session::forget('user');
+            Session::put('user', $result['data']);
+        }
         return $result;
     }
 }
+
 ?>
