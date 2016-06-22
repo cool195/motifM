@@ -112,7 +112,7 @@
         var PayType = $('.icon-radio.active').parents('.payment-info').data('type');
         var methodToken = $('.icon-radio.active').parents('.payment-info').data('token');
         var cardType = $('.icon-radio.active').parents('.payment-info').data('cardtype');
-        var showName = $('.icon-radio.active').parents('.payment-info').data('showname')
+        var showName = $('.icon-radio.active').parents('.payment-info').data('showname');
 
         $('input[name="methodToken"]').val(methodToken);
         $('input[name="cardType"]').val(cardType);

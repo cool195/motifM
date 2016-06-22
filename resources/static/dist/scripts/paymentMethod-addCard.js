@@ -91,6 +91,7 @@
     $('#cardNum').on('keyup', function (e) {
         validationCard($(this));
     });
+    // TODO 需要限制输入格式, 限制日期格式, 银行卡格式
 })();
 //onFieldEvent: function (event) {
 // console.info(event);
