@@ -114,10 +114,10 @@
                         name: "share",
                         token: "key",
                         data: {
-                            "title": "Designer",
-                            "content": "Designer test info",
+                            "title": "motif topic",
+                            "content": "motif test topic",
                             "image": "",
-                            "url": "http://m.motif.me/designer/{{$designer['designer_id']}}"
+                            "url": "http://m.motif.me/topic/{{$topicID}}"
                         }
                     });
                 }
