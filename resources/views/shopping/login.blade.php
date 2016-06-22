@@ -81,6 +81,7 @@
 </body>
 <script src="/scripts/vendor.js"></script>
 <script src="/scripts/login.js"></script>
+<script src="https://apis.google.com/js/api:client.js"></script>
 <script src="/scripts/signWith.js"></script>
 <meta name="csrf-token" content="{{ csrf_token() }}"/>
 <script>
@@ -90,5 +91,5 @@
         }
     });
 </script>
-<script src="https://apis.google.com/js/api:client.js"></script>
+
 </html>
