@@ -45,7 +45,7 @@ class DailyController extends ApiController
             $view = 'daily.topic';
         }
 
-        return View($view, ['topic' => $result['data']]);
+        return View($view, ['topic' => $result['data'], 'topicID' => $id]);
     }
 }
 

@@ -101,7 +101,7 @@
 <script src="/scripts/vendor.js"></script>
 <script src="/scripts/JockeyJS.js"></script>
 <script>
-    var actionsShow = [{"icon": "", "name": "share", "id": "1"}]
+    var actionsShow = [{"icon": "", "name": "share"}]
     Jockey.send("action", {
         name: "showActions",
         token: "key",
@@ -109,14 +109,20 @@
     });
 
     Jockey.on("action", function (actionName) {
-        if (actionName.name == "menuClick" && actionName.data.name == "share") {
-            var actions = [{"title": "motif topic", "content": "motif test topic", "image": ""}]
-            Jockey.send("action", {
-                name: "share",
-                token: "key",
-                data: {actions}
-            });
-        }
-    });
+                if (actionName.name == "menuClick" && actionName.data.name == "share") {
+                    var actions = [{
+                        "title": "motif topic",
+                        "content": "motif test topic",
+                        "image": "",
+                        "url": "http://m.motif.me/topic/{{$topicID}}"
+                    }]
+                    Jockey.send("action", {
+                        name: "share",
+                        token: "key",
+                        data: {actions}
+                    });
+                }
+            }
+    );
 </script>
 </html>

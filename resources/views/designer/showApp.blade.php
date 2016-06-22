@@ -143,7 +143,12 @@
 
     Jockey.on("action", function (actionName) {
         if (actionName.name == "menuClick" && actionName.data.name == "share") {
-            var actions = [{"title": "Designer", "content": "Designer test info", "image": ""}]
+            var actions = [{
+                "title": "Designer",
+                "content": "Designer test info",
+                "image": "",
+                "url": "http://m.motif.me/designer/{{$designer['designer_id']}}"
+            }]
             Jockey.send("action", {
                 name: "share",
                 token: "key",
