@@ -11,7 +11,6 @@
 
     <link rel="stylesheet" href="/styles/vendor.css">
 
-    
 
     <script src="/scripts/vendor/modernizr.js"></script>
 
@@ -22,19 +21,24 @@
 <!-- 外层容器 -->
 <div id="body-content">
     <!-- 展开的汉堡菜单 -->
-@include('nav')
-    <!-- 主体内容 -->
+@if(!strstr($_SERVER['HTTP_USER_AGENT'], 'motif-android') && !strstr($_SERVER['HTTP_USER_AGENT'], 'motif-ios'))
+    @include('nav')
+@endif
+<!-- 主体内容 -->
     <div class="body-container">
-    @include('navigator')
-
-        <!-- 保障 -->
+    @if(!strstr($_SERVER['HTTP_USER_AGENT'], 'motif-android') && !strstr($_SERVER['HTTP_USER_AGENT'], 'motif-ios'))
+        @include('navigator')
+    @endif
+    <!-- 保障 -->
         <section>
             <article class="font-size-md text-main p-x-15x p-y-10x"><strong>Motif guarantee</strong>
             </article>
             <aside class="product-secondaryInfo p-a-15x">
                 <div class="media m-a-0">
                     <div class="media-left media-middle">
-                        <img class="media-object" src="/images/icon/icon-guarantee.png" srcset="/images/icon/icon-guarantee@2x.png 2x, /images/icon/icon-guarantee@3x.png 3x" alt="">
+                        <img class="media-object" src="/images/icon/icon-guarantee.png"
+                             srcset="/images/icon/icon-guarantee@2x.png 2x, /images/icon/icon-guarantee@3x.png 3x"
+                             alt="">
                     </div>
                     <div class="media-body media-middle">
                         <p class="font-size-sm text-primary m-a-0 p-r-2">Motif guarantee security, quality and
@@ -45,7 +49,9 @@
 
         </section>
         <!-- 页脚 功能链接 -->
-        @include('footer')
+        @if(!strstr($_SERVER['HTTP_USER_AGENT'], 'motif-android') && !strstr($_SERVER['HTTP_USER_AGENT'], 'motif-ios'))
+            @include('footer')
+        @endif
     </div>
 </div>
 </body>

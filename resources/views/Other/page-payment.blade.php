@@ -11,7 +11,6 @@
 
     <link rel="stylesheet" href="/styles/vendor.css">
 
-    
 
     <script src="/scripts/vendor/modernizr.js"></script>
 
@@ -22,12 +21,15 @@
 <!-- 外层容器 -->
 <div id="body-content">
     <!-- 展开的汉堡菜单 -->
-@include('nav')
-    <!-- 主体内容 -->
+@if(!strstr($_SERVER['HTTP_USER_AGENT'], 'motif-android') && !strstr($_SERVER['HTTP_USER_AGENT'], 'motif-ios'))
+    @include('nav')
+@endif
+<!-- 主体内容 -->
     <div class="body-container">
-    @include('navigator')
-
-        <!-- 物流、退货、支付 说明 -->
+    @if(!strstr($_SERVER['HTTP_USER_AGENT'], 'motif-android') && !strstr($_SERVER['HTTP_USER_AGENT'], 'motif-ios'))
+        @include('navigator')
+    @endif
+    <!-- 物流、退货、支付 说明 -->
         <section class="m-b-20x p-b-20x">
             <article class="font-size-md text-main p-x-15x p-y-10x"><strong>Payment</strong>
             </article>
@@ -46,7 +48,8 @@
                             <strong>1) Credit card:</strong> We accept the following cards for payment of purchases made
                             online
                         </p>
-                        <p><img class="img-fluid" src="/images/payment/cards.png" srcset="/images/payment/cards@2x.png 2x, /images/payment/cards@3x.png 3x" alt=""></p>
+                        <p><img class="img-fluid" src="/images/payment/cards.png"
+                                srcset="/images/payment/cards@2x.png 2x, /images/payment/cards@3x.png 3x" alt=""></p>
                         <p class="m-b-15x">Payment will be taken from your credit or debit card as soon as you have
                             placed your order. To ensure safe shopping, we are GoDaddy SSL certified which will
                             automatically creates an encrypted connection with customer’s browser and protect all the
@@ -81,14 +84,18 @@
                             making payment.
                         </p>
                         <p class="m-b-0x">If you are experiencing difficulties with your payment or order please contact
-                            our Customer Service Team via Live Chat or email <a href="mailto:service@motif.me" class="text-underLine">service@motif.me</a>.
+                            our Customer Service Team via Live Chat or email <a href="mailto:service@motif.me"
+                                                                                class="text-underLine">service@motif
+                                .me</a>.
                         </p>
                     </div>
                 </div>
             </div>
         </section>
         <!-- 页脚 功能链接 -->
-        @include('footer')
+        @if(!strstr($_SERVER['HTTP_USER_AGENT'], 'motif-android') && !strstr($_SERVER['HTTP_USER_AGENT'], 'motif-ios'))
+            @include('footer')
+        @endif
     </div>
 </div>
 </body>

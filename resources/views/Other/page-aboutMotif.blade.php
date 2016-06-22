@@ -21,11 +21,14 @@
 <!-- 外层容器 -->
 <div id="body-content">
     <!-- 展开的汉堡菜单 -->
-@include('nav')
+@if(!strstr($_SERVER['HTTP_USER_AGENT'], 'motif-android') && !strstr($_SERVER['HTTP_USER_AGENT'], 'motif-ios'))
+    @include('nav')
+@endif
 <!-- 主体内容 -->
     <div class="body-container">
-    @include('navigator')
-
+    @if(!strstr($_SERVER['HTTP_USER_AGENT'], 'motif-android') && !strstr($_SERVER['HTTP_USER_AGENT'], 'motif-ios'))
+        @include('navigator')
+    @endif
     <!-- 关于我们 -->
         <section>
             <article class="font-size-md text-main p-x-15x p-y-10x"><strong>About Motif</strong>
@@ -47,7 +50,9 @@
 
         </section>
         <!-- 页脚 功能链接 -->
-        @include('footer')
+        @if(!strstr($_SERVER['HTTP_USER_AGENT'], 'motif-android') && !strstr($_SERVER['HTTP_USER_AGENT'], 'motif-ios'))
+            @include('footer')
+        @endif
     </div>
 </div>
 </body>

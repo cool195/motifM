@@ -11,7 +11,6 @@
 
     <link rel="stylesheet" href="/styles/vendor.css">
 
-    
 
     <script src="/scripts/vendor/modernizr.js"></script>
 
@@ -22,12 +21,15 @@
 <!-- 外层容器 -->
 <div id="body-content">
     <!-- 展开的汉堡菜单 -->
-@include('nav')
-    <!-- 主体内容 -->
+@if(!strstr($_SERVER['HTTP_USER_AGENT'], 'motif-android') && !strstr($_SERVER['HTTP_USER_AGENT'], 'motif-ios'))
+    @include('nav')
+@endif
+<!-- 主体内容 -->
     <div class="body-container">
-    @include('navigator')
-
-        <!-- 物流、退货、支付 说明 -->
+    @if(!strstr($_SERVER['HTTP_USER_AGENT'], 'motif-android') && !strstr($_SERVER['HTTP_USER_AGENT'], 'motif-ios'))
+        @include('navigator')
+    @endif
+    <!-- 物流、退货、支付 说明 -->
         <section class="m-b-20x p-b-20x">
             <article class="font-size-md text-main p-x-15x p-y-10x"><strong>Returns Shipping</strong>
             </article>
@@ -36,7 +38,8 @@
                 <hr class="hr-base m-y-0">
                 <div class="p-a-15x font-size-sm text-primary">
                     <p class="m-b-15x">We want to make sure you’re 100% satisfied with your purchases, if you are not
-                        happy for any reason, email your request to <a href="mailto:service@motif.me" class="text-underLine">service@motif.me</a> and
+                        happy for any reason, email your request to <a href="mailto:service@motif.me"
+                                                                       class="text-underLine">service@motif.me</a> and
                         return your item within 30 days of delivery for a full refund or exchange. Without email
                         notification or if 30 days have gone by, unfortunately, we can’t process any refund or exchange.
                     </p>
@@ -55,7 +58,7 @@
                     </p>
 
                     <p class="m-b-15x"><strong>There are certain situations where only partial refunds are granted
-                        (if applicable)</strong></p>
+                            (if applicable)</strong></p>
                     <p class="m-b-15x">
                         a) Any item not in its original condition, is damaged or missing parts for reasons not due
                         to our error.<br>
@@ -81,7 +84,8 @@
 
                     <p class="m-b-15x"><strong>Exchanges (if applicable)</strong></p>
                     <p class="m-b-15x">We only replace items if they are defective, damaged or the wrong items. If
-                        you need to exchange it for the same item, send us an application email at <a href="mailto:service@motif.me" class="text-underLine">service@motif.me</a>.
+                        you need to exchange it for the same item, send us an application email at <a
+                                href="mailto:service@motif.me" class="text-underLine">service@motif.me</a>.
                     </p>
 
                     <p class="m-b-15x"><strong>Shipping</strong></p>
@@ -237,7 +241,9 @@
 
         </section>
         <!-- 页脚 功能链接 -->
-        @include('footer')
+        @if(!strstr($_SERVER['HTTP_USER_AGENT'], 'motif-android') && !strstr($_SERVER['HTTP_USER_AGENT'], 'motif-ios'))
+            @include('footer')
+        @endif
     </div>
 </div>
 </body>
