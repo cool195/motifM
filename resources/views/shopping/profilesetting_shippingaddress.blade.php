@@ -47,9 +47,8 @@
                                     <i class="iconfont icon-delete icon-size-md text-warning"></i>
                                 </div>
                             @endif
-                            <a href="/user/addrmod/{{$addr['receiving_id']}}">
                                 <div class="addressItem-info text-primary m-l-15x p-r-15x p-y-10x" data-action="return"
-                                     data-url-return="return" data-url-edit="edit">
+                                     data-url-return="return" data-url-edit="edit" data-url="/user/addrmod/{{$addr['receiving_id']}}">
                                     <div>
                                         <div>{{$addr['email']}}</div>
                                         <div>{{$addr['detail_address1']}}  @if(!empty($addr['detail_address2'])) {{$addr['detail_address2']}} @endif</div>
@@ -64,7 +63,6 @@
                                         </div>
                                     @endif
                                 </div>
-                            </a>
                         </div>
                     @endforeach
                 @endif

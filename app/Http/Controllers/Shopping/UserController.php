@@ -323,7 +323,7 @@ class UserController extends ApiController
         $params = array(
             'cmd' => 'modify',
             'pin' => $user['pin'],
-            'nick' => $user['nickname'],
+            'nick' => $request->input('nick'),
             'token' => $user['token']
         );
         $result = $this->request('openapi', self::API_SYSTEM, self::API_SERVICE, $params);
@@ -332,11 +332,16 @@ class UserController extends ApiController
             $result['error_msg'] = "Data access failed";
             $result['data'] = array();
         }else{
+            $result['error_msg']= "Modify Info Failed";
             if($result['success']){
+                $result['prompt_msg'] = "Modify Info Success";
                 $userInfo = $this->getUserDetailInfo($request);
                 $user['nickname'] = $userInfo['data']['nickname'];
+                Session::forget('user');
+                Session::put('user', $user);
             }
         }
+
         return $result;
     }
 
