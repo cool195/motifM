@@ -20,13 +20,12 @@
     <div class="body-container">
     <!-- designerDetail 设计师详情 -->
         <section>
-            <!-- 视频/图片 $designer['img_video_path']-->
+            <!-- 视频/图片 -->
             <div class="designer-media flex flex-justifyCenter flex-alignCenter">
                 <img class="designer-placeImg" src="/images/designer/placeholder.jpg" alt="" hidden>
                 @if($designer['path_type']==2)
-                    <div id="ytplayer" data-playid="Yy6OD7_Fv0c"></div>
+                    <div id="ytplayer" data-playid="{{$designer['img_video_path']}}"></div>
                 @else
-
                     <img src="https://s3-us-west-1.amazonaws.com/emimagetest/n1/{{$designer['main_img_path']}}" alt=""
                          class="designer-realImg" hidden>
                     <img class="img-fluid img-lazy designer-Img"
