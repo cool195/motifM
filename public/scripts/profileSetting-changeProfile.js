@@ -1,5 +1,3 @@
-'use strict';
-
 (function ($) {
     // loading 打开
     function openLoading() {
@@ -37,21 +35,25 @@
                 url: '/user/modifyUserInfo',
                 type: 'POST',
                 data: $('#changeProfile').serialize()
-            }).done(function (data) {
-                if (data.success) {
-                    console.log("success");
-                    $('#nick').attr('placeholder', $('#nick').val());
-                    $('#nick').val("");
-                }
-            }).fail(function () {
-                console.log("error");
-            }).always(function () {
-                console.log("complete");
-                closeLoading();
-            });
+            })
+                .done(function (data) {
+                    if (data.success) {
+                        console.log("success");
+                        $('#nick').attr('placeholder', $('#nick').val());
+                        $('#nick').val("");
+                    }
+                })
+                .fail(function () {
+                    console.log("error");
+                })
+                .always(function () {
+                    console.log("complete");
+                    closeLoading();
+                });
         } else {
             $(e.target).addClass('disabled');
         }
     });
 })(jQuery);
+
 //# sourceMappingURL=profileSetting-changeProfile.js.map

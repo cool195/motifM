@@ -1,5 +1,3 @@
-'use strict';
-
 (function ($) {
     /**
      *
@@ -90,19 +88,22 @@
         $.ajax({
             url: '/addresses',
             type: 'DELETE',
-            data: { aid: AddressID }
-        }).done(function (data) {
-            // TODO 请求成功后 删除相应地址
-            if (data.success) {
-                console.log("success");
-                location.reload();
-            }
-        }).fail(function () {
-            console.log("error");
-        }).always(function () {
-            console.log("complete");
-            closeLoading();
-        });
+            data: {aid: AddressID}
+        })
+            .done(function (data) {
+                // TODO 请求成功后 删除相应地址
+                if (data.success) {
+                    console.log("success");
+                    location.reload();
+                }
+            })
+            .fail(function () {
+                console.log("error");
+            })
+            .always(function () {
+                console.log("complete");
+                closeLoading();
+            });
     }
 
     // 删除按钮
@@ -110,7 +111,7 @@
         var AddressID = $(e.target).parents('.addressList-container').data('aid');
         $('#modalDialog').data('aid', AddressID);
     });
-
+    
     $('.addressItem-info').on('click', function () {
         var Action = $(this).data('action');
         if (Action === 'return') {
@@ -119,6 +120,7 @@
             window.location.href = $(this).data('url');
         }
     });
+
 
     $('div[data-role="submit"]').on('click', function () {
         // TODO 提交相应数据到后台
@@ -143,5 +145,7 @@
         }
         deleteAddress(AddressID);
     });
+
 })(jQuery);
+
 //# sourceMappingURL=profileSetting-addressList.js.map

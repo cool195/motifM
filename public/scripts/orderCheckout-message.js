@@ -4,7 +4,6 @@
 /*global jQuery*/
 
 'use strict';
-
 (function ($) {
     // 计算 message 输入字数,并实时提示
     // 当字数超出规定字数,不能继续输入
@@ -20,4 +19,5 @@
         }
     });
 })(jQuery);
+
 //# sourceMappingURL=orderCheckout-message.js.map

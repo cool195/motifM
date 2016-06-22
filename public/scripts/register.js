@@ -1,5 +1,4 @@
 'use strict';
-
 (function ($) {
     // loading 打开
     function openLoading() {
@@ -88,19 +87,23 @@
             url: '/user/signup',
             type: 'POST',
             data: $('#register').serialize()
-        }).done(function (data) {
-            if (data.success) {
-                window.location.href = data.redirectUrl;
-            } else {
-                $('.warning-info').removeClass('off');
-                $('.warning-info').children('span').html(data.prompt_msg);
-            }
-        }).fail(function () {
-            console.log("error");
-        }).always(function () {
-            closeLoading();
-            console.log("complete");
-        });
+        })
+            .done(function (data) {
+                if (data.success) {
+                    window.location.href = data.redirectUrl;
+                } else {
+                    $('.warning-info').removeClass('off');
+                    $('.warning-info').children('span').html(data.prompt_msg);
+                }
+            })
+            .fail(function () {
+                console.log("error");
+            })
+            .always(function () {
+                closeLoading();
+                console.log("complete");
+            });
+
     }
 
     // 验证昵称
@@ -169,4 +172,5 @@
         }
     });
 })(jQuery);
+
 //# sourceMappingURL=register.js.map

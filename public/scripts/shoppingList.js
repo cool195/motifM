@@ -55,7 +55,7 @@
     function setTabHeight() {
         var ActiveTabIndex = TabsContainerSwiper.activeIndex,
             $ActiveTab = $(TabsContainerSwiper.slides[ActiveTabIndex]);
-        $ActiveTab.css({ height: 'auto' });
+        $ActiveTab.css({height: 'auto'});
         var ActiveTabHeight = $ActiveTab.children('.container-fluid').height();
         console.info(ActiveTabHeight);
         $ActiveTab.siblings('.swiper-slide').height(ActiveTabHeight);
@@ -102,7 +102,7 @@
      */
     // 根据 url 地址, 页面跳转到指定 tab
     function initTab() {
-        var slideText = location.hash;
+        var slideText = (location.hash);
         if (slideText !== '' && slideText !== null) {
             slideText = slideText.substring(1);
             var slideIndex = $('#' + slideText).index();
@@ -180,6 +180,7 @@
             return;
         }
 
+
         // 判断当前选项卡是否在加载中
         if ($Current.data('loading') === true) {
             return;
@@ -198,7 +199,7 @@
         // ajax 请求加载数据
         $.ajax({
             url: '/products',
-            data: { pagenum: NextPage, pagesize: 20, cid: CurrentCid }
+            data: {pagenum: NextPage, pagesize: 20, cid: CurrentCid}
         }).done(function (data) {
             if (data.success) {
                 if (data.data === null || data.data === '' || data.data.list.length === 0) {
@@ -219,19 +220,20 @@
             }
         })
         // TODO failed 时的提示
-        .always(function () {
-            // 隐藏加载动画
-            loadingHide(ActiveTab);
-            // 请求结束, loading = false
-            $Current.data('loading', false);
-        });
+            .always(function () {
+                // 隐藏加载动画
+                loadingHide(ActiveTab);
+                // 请求结束, loading = false
+                $Current.data('loading', false);
+            });
     }
+
 
     // 为选项卡导航, 绑定一次性事件, 加载商品数据
     $('#tabIndex-container').find('li[data-tab-index]').one('click', function () {
         console.log('顶部切换, 触发选项卡loading, 一次性事件');
         tabsLoading();
-        $('body').animate({ scrollTop: 0 }, 200);
+        $('body').animate({scrollTop: 0}, 200);
     });
     // 为页面绑定 滚动条事件
     $(document).ready(function () {
@@ -240,6 +242,8 @@
             console.log('滚动条滚动');
         });
     });
+
 })(jQuery, Swiper);
 //# sourceMappingURL=shoppingList.js.map
+
 //# sourceMappingURL=shoppingList.js.map
