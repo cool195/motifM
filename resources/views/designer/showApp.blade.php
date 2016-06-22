@@ -16,11 +16,8 @@
 <body>
 <!-- 外层容器 -->
 <div id="body-content">
-    <!-- 展开的汉堡菜单 -->
-@include('nav')
 <!-- 主体内容 -->
     <div class="body-container">
-    @include('navigator')
     <!-- designerDetail 设计师详情 -->
         <section>
             <!-- 视频/图片-->
@@ -132,8 +129,6 @@
             </aside>
 
         </section>
-        <!-- 页脚 功能链接 -->
-        @include('footer')
     </div>
 </div>
 </body>

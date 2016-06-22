@@ -51,8 +51,13 @@ class DesignerController extends ApiController
             'id' => $id,
         );
         $product = $this->request('openapi', 'designerf', 'content', $params);
-
-        return View('designer.show', ['designer' => $result['data'], 'product' => $product['data']]);
+        $view = '';
+        if (strstr($_SERVER['HTTP_USER_AGENT'], 'motif-android') || strstr($_SERVER['HTTP_USER_AGENT'], 'motif-ios')) {
+            $view = 'designer.showApp';
+        } else {
+            $view = 'designer.show';
+        }
+        return View($view, ['designer' => $result['data'], 'product' => $product['data']]);
     }
 }
 

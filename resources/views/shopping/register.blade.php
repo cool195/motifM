@@ -75,7 +75,7 @@
     <div class="loader loader-screen"></div>
 </div>
 </body>
-<script src="https://apis.google.com/js/api:client.js"></script>
+
 <script src="/scripts/vendor.js"></script>
 <script src="/scripts/register.js"></script>
 <script src="/scripts/signWith.js"></script>
@@ -87,4 +87,5 @@
         }
     });
 </script>
+<script src="https://apis.google.com/js/api:client.js"></script>
 </html>
