@@ -147,7 +147,7 @@
                         <span>Extra</span><span>${{number_format(($data['vas_amount'] / 100), 2)}}</span>
                     </div>
                     <div class="flex flex-fullJustified text-primary font-size-sm">
-                        <span>Shipping to 10000</span><span>${{ number_format(($data['freight_amount'] / 100), 2) }}</span>
+                        <span>Shipping to {{ $data['userAddr']['zip'] }}</span><span>${{ number_format(($data['freight_amount'] / 100), 2) }}</span>
                     </div>
                     <div class="flex flex-fullJustified text-primary font-size-sm">
                         <span>Coupon</span><span>-${{ number_format(($data['cps_amount'] / 100), 2)}}</span>
