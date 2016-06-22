@@ -93,7 +93,7 @@
                 window.location.href = data.redirectUrl;
             } else {
                 $('.warning-info').removeClass('off');
-                $('.warning-info').children('span').html(data.error_msg);
+                $('.warning-info').children('span').html(data.prompt_msg);
             }
         }).fail(function () {
             console.log("error");
