@@ -108,11 +108,15 @@
         data: {"actions": actionsShow}
     });
 
-    var actions = [{"title": "motif topic", "content": "motif test topic", "image": ""}]
-    Jockey.send("action", {
-        name: "share",
-        token: "key",
-        data: {actions}
+    Jockey.on("action", function (actionName) {
+        if (actionName.name == "menuClick" && actionName.data.name == "share") {
+            var actions = [{"title": "motif topic", "content": "motif test topic", "image": ""}]
+            Jockey.send("action", {
+                name: "share",
+                token: "key",
+                data: {actions}
+            });
+        }
     });
 </script>
 </html>

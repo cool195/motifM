@@ -16,9 +16,9 @@
 <body>
 <!-- 外层容器 -->
 <div id="body-content">
-<!-- 主体内容 -->
+    <!-- 主体内容 -->
     <div class="body-container" style="padding-top:0px">
-    <!-- designerDetail 设计师详情 -->
+        <!-- designerDetail 设计师详情 -->
         <section>
             <!-- 视频/图片 -->
             <div class="designer-media flex flex-justifyCenter flex-alignCenter">
@@ -134,18 +134,22 @@
 <script src="/scripts/videoPlay.js"></script>
 <script src="/scripts/JockeyJS.js"></script>
 <script>
-    var actionsShow = [{"icon": "", "name": "share", "id": "1"}]
+    var actionsShow = [{"icon": "", "name": "share"}]
     Jockey.send("action", {
         name: "showActions",
         token: "key",
         data: {"actions": actionsShow}
     });
 
-    var actions = [{"title": "Designer", "content": "Designer test info", "image": ""}]
-    Jockey.send("action", {
-        name: "share",
-        token: "key",
-        data: {actions}
+    Jockey.on("action", function (actionName) {
+        if (actionName.name == "menuClick" && actionName.data.name == "share") {
+            var actions = [{"title": "Designer", "content": "Designer test info", "image": ""}]
+            Jockey.send("action", {
+                name: "share",
+                token: "key",
+                data: {actions}
+            });
+        }
     });
 </script>
 </html>
