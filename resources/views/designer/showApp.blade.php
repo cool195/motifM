@@ -56,7 +56,7 @@
                 @foreach($product['infos'] as $k=>$value)
                     @if($value['type']=='banner')
                         <!-- 第一个 banner 图 -->
-                            <a href="@if($value['skipType']=='1')/detail/@elseif($value['skipType']=='2')/designer/@elseif($value['skipType']=='3')/topic/@elseif($value['skipType']=='4')/shopping#@endif{{$value['skipId']}}">
+                            <a href="@if($value['skipType']=='1')motif://o.c?a=pd&spu=@elseif($value['skipType']=='2')/designer/@elseif($value['skipType']=='3')/topic/@elseif($value['skipType']=='4')motif://o.c?a=shoppinglist&cid=@endif{{$value['skipId']}}">
                                 <div @if($k!=0)class="p-y-10x"@endif>
                                     <img class="img-fluid"
                                          src="https://s3-us-west-1.amazonaws.com/emimagetest/n2/{{$value['imgPath']}}">
@@ -64,7 +64,7 @@
                             </a>
                     @elseif($value['type']=='title')
                         <!-- 标题 -->
-                            <a href="@if($value['skipType']=='1')/detail/@elseif($value['skipType']=='2')/designer/@elseif($value['skipType']=='3')/topic/@elseif($value['skipType']=='4')/shopping#@endif{{$value['skipId']}}">
+                            <a href="@if($value['skipType']=='1')motif://o.c?a=pd&spu=@elseif($value['skipType']=='2')/designer/@elseif($value['skipType']=='3')/topic/@elseif($value['skipType']=='4')motif://o.c?a=shoppinglist&cid=@endif{{$value['skipId']}}">
                                 <div class="p-x-15x p-y-10x text-primary">
                                     <strong>{{$value['value']}}</strong>
                                 </div>
@@ -73,7 +73,7 @@
                             <hr class="hr-base m-x-5x m-y-0">
                         @elseif($value['type']=='context')
                         <!-- 描述 -->
-                            <a href="@if($value['skipType']=='1')/detail/@elseif($value['skipType']=='2')/designer/@elseif($value['skipType']=='3')/topic/@elseif($value['skipType']=='4')/shopping#@endif{{$value['skipId']}}">
+                            <a href="@if($value['skipType']=='1')motif://o.c?a=pd&spu=@elseif($value['skipType']=='2')/designer/@elseif($value['skipType']=='3')/topic/@elseif($value['skipType']=='4')motif://o.c?a=shoppinglist&cid=@endif{{$value['skipId']}}">
                                 <div class="p-x-15x p-y-10x text-primary font-size-sm">
                                     {{$value['value']}}
                                 </div>
@@ -84,7 +84,7 @@
                                 @if(isset($value['spus']))
                                     @foreach($value['spus'] as $spu)
                                         <div class="p-x-15x p-y-10x">
-                                            <a href="/detail/{{$spu}}">
+                                            <a href="motif://o.c?a=pd&spu={{$spu}}">
                                                 <img class="img-fluid img-lazy"
                                                      src="/images/product/bg-product@336.png"
                                                      data-original="https://s3-us-west-1.amazonaws.com/emimagetest/n2/{{$product['spuInfos'][$spu]['spuBase']['main_image_url']}}"
@@ -100,7 +100,7 @@
                                         @if(isset($value['spus']))
                                             @foreach($value['spus'] as $spu)
                                                 <div class="col-xs-6">
-                                                    <a href="/detail/{{$spu}}">
+                                                    <a href="motif://o.c?a=pd&spu={{$spu}}">
                                                         <div class="p-t-10x">
                                                             <img class="img-thumbnail img-lazy"
                                                                  src="/images/product/bg-product@336.png"

@@ -25,13 +25,13 @@
                 @if($value['type']=='banner')
                     <!-- 第一个 banner 图 -->
                         <div @if($k!=0)class="p-y-10x"@endif>
-                            <a href="@if($value['skipType']=='1')/detail/@elseif($value['skipType']=='2')/designer/@elseif($value['skipType']=='3')/topic/@elseif($value['skipType']=='4')/shopping#@endif{{$value['skipId']}}">
+                            <a href="@if($value['skipType']=='1')motif://o.c?a=pd&spu=@elseif($value['skipType']=='2')/designer/@elseif($value['skipType']=='3')/topic/@elseif($value['skipType']=='4')motif://o.c?a=shoppinglist&cid=@endif{{$value['skipId']}}">
                                 <img class="img-fluid" src="https://s3-us-west-1.amazonaws.com/emimagetest/n0/{{$value['imgPath']}}" alt="">
                             </a>
                         </div>
                 @elseif($value['type']=='title')
                     <!-- 标题 -->
-                        <a href="@if($value['skipType']=='1')/detail/@elseif($value['skipType']=='2')/designer/@elseif($value['skipType']=='3')/topic/@elseif($value['skipType']=='4')/shopping#@endif{{$value['skipId']}}">
+                        <a href="@if($value['skipType']=='1')motif://o.c?a=pd&spu=@elseif($value['skipType']=='2')/designer/@elseif($value['skipType']=='3')/topic/@elseif($value['skipType']=='4')motif://o.c?a=shoppinglist&cid=@endif{{$value['skipId']}}">
                             <div class="p-x-15x p-y-10x text-primary">
                                 <strong>{{$value['value']}}</strong>
                             </div>
@@ -40,7 +40,7 @@
                         <hr class="hr-base m-x-5x m-y-0">
                     @elseif($value['type']=='context')
                     <!-- 描述 -->
-                        <a href="@if($value['skipType']=='1')/detail/@elseif($value['skipType']=='2')/designer/@elseif($value['skipType']=='3')/topic/@elseif($value['skipType']=='4')/shopping#@endif{{$value['skipId']}}">
+                        <a href="@if($value['skipType']=='1')motif://o.c?a=pd&spu=@elseif($value['skipType']=='2')/designer/@elseif($value['skipType']=='3')/topic/@elseif($value['skipType']=='4')motif://o.c?a=shoppinglist&cid=@endif{{$value['skipId']}}">
                             <div class="p-x-15x p-y-10x text-primary font-size-sm">
                                 {{$value['value']}}
                             </div>
@@ -51,7 +51,7 @@
                             @if(isset($value['spus']))
                                 @foreach($value['spus'] as $spu)
                                     <div class="p-x-15x p-y-10x">
-                                        <a href="/detail/{{$spu}}">
+                                        <a href="motif://o.c?a=pd&spu={{$spu}}">
                                             <img class="img-fluid"
                                                  src="https://s3-us-west-1.amazonaws.com/emimagetest/n1/{{$topic['spuInfos'][$spu]['spuBase']['main_image_url']}}"
                                                  alt="{{$topic['spuInfos'][$spu]['spuBase']['main_title']}}">
@@ -59,7 +59,7 @@
                                     </div>
                                 @endforeach
                             @else
-                                <a href="@if($value['skipType']=='1')/detail/@elseif($value['skipType']=='2')/designer/@elseif($value['skipType']=='3')/topic/@elseif($value['skipType']=='4')/shopping#@endif{{$value['skipId']}}">
+                                <a href="@if($value['skipType']=='1')motif://o.c?a=pd&spu=@elseif($value['skipType']=='2')/designer/@elseif($value['skipType']=='3')/topic/@elseif($value['skipType']=='4')motif://o.c?a=shoppinglist&cid=@endif{{$value['skipId']}}">
                                     <img class="img-fluid" src="https://s3-us-west-1.amazonaws.com/emimagetest/n0/{{$value['imgPath']}}" alt="">
                                 </a>
                             @endif
@@ -70,7 +70,7 @@
                                     @if(isset($value['spus']))
                                         @foreach($value['spus'] as $spu)
                                             <div class="col-xs-6">
-                                                <a href="/detail/{{$spu}}">
+                                                <a href="motif://o.c?a=pd&spu={{$spu}}">
                                                     <div class="p-t-10x">
                                                         <img class="img-thumbnail"
                                                              src="https://s3-us-west-1.amazonaws.com/emimagetest/n2/{{$topic['spuInfos'][$spu]['spuBase']['main_image_url']}}"
