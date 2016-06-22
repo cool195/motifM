@@ -11,7 +11,7 @@ class AuthController extends ApiController
     public function googleLogin(Request $request)
     {
         $params = array(
-            'cmd' => $request->get('tplogin'),
+            'cmd' => 'tplogin',
             'uuid' => '123',
             'type' => 4,
         );
