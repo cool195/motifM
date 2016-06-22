@@ -17,7 +17,7 @@
 <!-- 外层容器 -->
 <div id="body-content">
 <!-- 主体内容 -->
-    <div class="body-container">
+    <div class="body-container" style="padding-top:0px">
     <!-- designerDetail 设计师详情 -->
         <section>
             <!-- 视频/图片 -->
