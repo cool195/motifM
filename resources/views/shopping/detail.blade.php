@@ -155,19 +155,10 @@
                 <!-- 用户 Q & A -->
                 <aside class="product-secondaryInfo">
                     <a class="flex flex-alignCenter flex-fullJustified font-size-sm text-primary p-a-15x"
-                       href="/askshopping?spu={{$data['spu']}}">
+                       href="/askshopping?skiptype=3&id={{$data['spu']}}">
                         Ask a Question <i class="iconfont icon-arrow-right icon-size-xm text-common"></i></a>
                 </aside>
                 <aside class="product-secondaryInfo">
-                    {{--                    <a class="flex flex-alignCenter flex-fullJustified font-size-sm text-primary p-a-15x">
-                                            Size Guide
-                                            <i class="iconfont icon-arrow-right icon-size-xm text-common"></i>
-                                        </a>
-                                        <hr class="hr-base">
-                                        <a class="flex flex-alignCenter flex-fullJustified font-size-sm text-primary p-a-15x" href="#">
-                                            Shipping, Returns, Payments
-                                            <i class="iconfont icon-arrow-right icon-size-xm text-common"></i>
-                                        </a>--}}
                     @if(isset($data['templates']) && !empty($data['templates']))
                         @foreach($data['templates'] as $template)
                             <a class="flex flex-alignCenter flex-fullJustified font-size-sm text-primary p-a-15x"

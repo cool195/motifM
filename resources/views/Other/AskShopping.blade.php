@@ -33,7 +33,8 @@
                 <article class="font-size-md text-main p-y-10x p-x-15x"><strong>Ask a Question</strong></article>
                 <fieldset>
                     <input type="hidden" name="_method" value="PUT">
-                    <input type="hidden" name="spu" value="{{$spu}}">
+                    <input type="hidden" name="id" value="{{$id}}">
+                    <input type="hidden" name="skiptype" value="{{$skiptype}}">
                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
                     <input class="form-control form-control-block p-a-15x font-size-sm" id="email" name="email" type="text"
                            placeholder="Your Email" value="{{Session::get('user.login_email')}}">
@@ -47,9 +48,6 @@
                 </fieldset>
                 <div class="container-fluid p-a-15x">
                     <div class="row">
-                        <div class="col-xs-6">
-                            <a href="#" class="btn btn-primary-outline btn-block btn-sm" id="Cancel">Cancel</a>
-                        </div>
                         <div class="col-xs-6">
                             <button class="btn btn-primary btn-block btn-sm" id="submit" data-spu="123">Send</button>
                         </div>

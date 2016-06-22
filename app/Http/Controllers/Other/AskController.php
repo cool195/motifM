@@ -11,7 +11,7 @@ class AskController extends ApiController
     //Ask提交页
     public function show(Request $request)
     {
-        return View('Other.AskShopping', ['spu' => $request->input('spu')]);
+        return View('Other.AskShopping', ['id' => $request->input('id'), 'skiptype' => $request->input('skiptype')]);
     }
 
     //提交ASK表单
@@ -23,13 +23,21 @@ class AskController extends ApiController
             'content' => $request->input('content'),
             'email' => $request->input('email'),
             'pin' => Session::get('user.pin'),
-            'type' => '3',
-            'stype' => '3',
-            'spu' => $request->input('spu'),
+            'type' => $request->input('skiptype'),
+            'stype' => $request->input('skiptype'),
         );
+        $urlStr = '';
+        if ($request->input('skiptype') == 3) {
+            $params['spu'] = $request->input('id');
+            $urlStr = '/detail/';
+        } elseif ($request->input('skiptype') == 2) {
+            $params['orderno'] = $request->input('id');
+            $urlStr = '/order/orderdetail/';
+        }
 
         $this->request('openapi', '', "feedback", $params);
-        return redirect('/detail/'.$request->input('spu'));
+
+        return redirect($urlStr . $request->input('id'));
     }
 }
 

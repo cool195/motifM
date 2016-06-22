@@ -162,7 +162,7 @@
 
             <!-- 联系客服 -->
             <aside class="bg-white m-b-10x p-a-10x">
-                <a href="/contactus" class="btn btn-primary btn-block btn-sm" type="submit">Contact Service</a>
+                <a href="/askshopping?skiptype=2&id={{$data['sub_order_no']}}" class="btn btn-primary btn-block btn-sm" type="submit">Contact Service</a>
             </aside>
         </section>
 <!-- 页脚 功能链接 start-->
