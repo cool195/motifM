@@ -3,8 +3,7 @@
 /**
  * Created by zhaozhe on 16/6/21.
  */
-/*eslint strict: ["error", "never"]*/
-
+/* eslint-disable */
 (function () {
     // google 第三方登录
     function attachSignin(element) {
