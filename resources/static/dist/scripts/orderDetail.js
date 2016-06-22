@@ -4,7 +4,6 @@
 /*global jQuery*/
 
 'use strict';
-
 (function ($) {
     // 显示隐藏 message 更多内容
     $('.btn-showMore').on('click', function () {
@@ -20,7 +19,7 @@
     });
 
     $(document).ready(function () {
-        if ($('.message-info').children('p').height() <= 144) {
+        if($('.message-info').children('p').height() <= 144){
             $('.btn-showMore').hide();
         }
     });
@@ -62,19 +61,24 @@
         $.ajax({
             url: '/cart/batchAddCart',
             type: 'POST',
-            data: { cmd: 'addsku', pin: 'yinlinghui', operate: operate }
-        }).done(function () {
-            console.log('success');
-        }).fail(function () {
-            console.log('error');
-        }).always(function () {
-            console.log('complete');
-        });
+            data: {cmd: 'addsku', pin: 'yinlinghui', operate: operate}
+        })
+            .done(function () {
+                console.log('success');
+            })
+            .fail(function () {
+                console.log('error');
+            })
+            .always(function () {
+                console.log('complete');
+            });
     }
 
     // 触发 重新购买 事件
     $('#buyAgain').click(function () {
         buyAgain();
     });
+
 })(jQuery);
+
 //# sourceMappingURL=orderDetail.js.map

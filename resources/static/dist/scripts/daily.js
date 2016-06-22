@@ -4,7 +4,6 @@
 /*global jQuery template*/
 
 'use strict';
-
 (function ($) {
     // 加载动画显示
     function loadingShow() {
@@ -39,31 +38,35 @@
         loadingShow();
         $.ajax({
             url: '/daily',
-            data: { cmd: 'list', pagenum: NextNum, pagesize: 3 }
-        }).done(function (data) {
-            console.info(data);
-            if (data.data === null || data.data === '') {} else if (data.data.list === null || data.data.list === '' || data.data.list === undefined) {
-                $DailyContainer.data('pagenum', -1);
-            } else {
-                // 遍历模板 插入页面
-                appendDailyList(data.data);
-                // 页数 +1
-                $DailyContainer.data('pagenum', PageNum);
-                console.info('当前页码数为' + PageNum);
+            data: {cmd: 'list', pagenum: NextNum, pagesize: 3}
+        })
+            .done(function (data) {
+                console.info(data);
+                if (data.data === null || data.data === '') {
 
-                // 图片延迟加载
-                $('img.img-lazy').lazyload({
-                    threshold: 200,
-                    container: $('#dailyContainer'),
-                    effect: 'fadeIn'
-                });
-            }
-        }).always(function () {
-            console.log('Ajax请求结束');
+                } else if (data.data.list === null || data.data.list === '' || data.data.list === undefined) {
+                    $DailyContainer.data('pagenum', -1);
+                }else{
+                    // 遍历模板 插入页面
+                    appendDailyList(data.data);
+                    // 页数 +1
+                    $DailyContainer.data('pagenum', PageNum);
+                    console.info('当前页码数为' + PageNum);
 
-            $DailyContainer.data('loading', false);
-            loadingHide();
-        });
+                    // 图片延迟加载
+                    $('img.img-lazy').lazyload({
+                        threshold: 200,
+                        container: $('#dailyContainer'),
+                        effect: 'fadeIn'
+                    });
+                }
+            })
+            .always(function () {
+                console.log('Ajax请求结束');
+
+                $DailyContainer.data('loading', false);
+                loadingHide();
+            })
     }
 
     // 将数据插入到模板中
@@ -85,6 +88,7 @@
         });
     });
 
+
     // 下拉加载
     function pullLoading() {
         // scrollCurrent    当前滚动距离
@@ -96,5 +100,8 @@
             getDailyList();
         }
     }
+
 })(jQuery);
+
+
 //# sourceMappingURL=daily.js.map

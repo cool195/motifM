@@ -4,7 +4,6 @@
 /*global jQuery*/
 
 'use strict';
-
 (function ($) {
     // loading 打开
     function openLoading() {
@@ -46,6 +45,7 @@
         // 激活选中项
         $(this).find('.icon-radio').removeClass('active');
         $('[data-stype="' + SelectID + '"]').children('.icon-radio').addClass('active');
+
     });
     $ModalDialog.on('confirmation', function () {
         // 获取 物流文本
@@ -73,18 +73,23 @@
                 url: '/order/orderSubmit',
                 type: 'POST',
                 data: $('#infoForm').serialize()
-            }).done(function (data) {
-                if (data.success) {
-                    console.log('success');
-                    window.location.href = data.redirectUrl;
-                }
-            }).fail(function () {
-                console.log('error');
-            }).always(function () {
-                closeLoading();
-                console.log('complete');
-            });
+            })
+                .done(function (data) {
+                    if (data.success) {
+                        console.log('success');
+                        window.location.href = data.redirectUrl;
+                    }
+                })
+                .fail(function () {
+                    console.log('error');
+                })
+                .always(function () {
+                    closeLoading();
+                    console.log('complete');
+                });
         }
     });
 })(jQuery);
+
+
 //# sourceMappingURL=orderCheckout.js.map

@@ -36,10 +36,11 @@
             $DesignerContainer.data('loading', true);
         }
 
+
         loadingShow();
         $.ajax({
             url: '/designer',
-            data: { cmd: 'designerinfolist', start: Start, size: Size }
+            data: {cmd: 'designerinfolist', start: Start, size: Size}
         }).done(function (data) {
             if (data.data === null || data.data === '') {
                 return;
@@ -122,4 +123,5 @@
         }
     }
 })(jQuery, Swiper);
+
 //# sourceMappingURL=designer.js.map
