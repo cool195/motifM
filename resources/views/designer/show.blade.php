@@ -27,9 +27,7 @@
             <div class="designer-media flex flex-justifyCenter flex-alignCenter">
                 <img class="designer-placeImg" src="/images/designer/placeholder.jpg" alt="" hidden>
                 @if($designer['path_type']==2)
-                    <iframe class="player img-fluid" type="text/html" width="100%"
-                            src="{{$designer['img_video_path']}}"
-                            frameborder="0" allowfullscreen></iframe>
+                    <div id="ytplayer" data-playid="Yy6OD7_Fv0c"></div>
                 @else
 
                     <img src="https://s3-us-west-1.amazonaws.com/emimagetest/n1/{{$designer['main_img_path']}}" alt=""
@@ -138,6 +136,6 @@
 </div>
 </body>
 <script src="/scripts/vendor.js"></script>
-
 <script src="/scripts/designerDetail.js"></script>
+<script src="/scripts/videoPlay.js"></script>
 </html>
