@@ -63,7 +63,7 @@
     Jockey.send("action", {
         name: "showActions",
         token: "alskdfjsdfj",
-        data: actions
+        data: {"actions":actions}
     });
 </script>
 </html>
