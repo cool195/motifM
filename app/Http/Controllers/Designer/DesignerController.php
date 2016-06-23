@@ -60,6 +60,10 @@ class DesignerController extends ApiController
         }
         return View($view, ['designer' => $result['data'], 'product' => $product['data']]);
     }
+
+    public function testApp(){
+        return View('designer.testApp');
+    }
 }
 
 ?>
