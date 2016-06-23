@@ -63,7 +63,7 @@
         <div class="m-t-20x p-b-20x">
             <a class="btn btn-block btn-facebook" id="facebookLogin">
                 <i class="iconfont icon-facebook-o icon-size-md"></i>
-                Signin with Facebook
+                Sign in with Facebook
             </a>
             <a class="btn btn-block btn-google m-l-0 m-t-10x" id="googleLogin">
                 <i class="iconfont icon-google-o icon-size-md"></i>
