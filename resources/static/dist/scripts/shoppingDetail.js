@@ -471,6 +471,14 @@
             $('#modalDialog').find('.btn-itemProperty').removeClass('disabled');
             // 重置交集
             ResultSkus = [];
+        } else if (RadioList.length === 0) {
+            // 只选中一项时
+            getResultSku(RadioList); // 取得交集
+            filterWaitOptions(OptionsStatus.wait);
+            filterSelectOptions(OptionsStatus.select, SpaId, SkaId);
+            // 非全选状态时, 不可以购买
+            $('#addCart').addClass('disabled');
+            $('#buyNow').addClass('disabled');
         } else if (RadioList.length === 1) {
             // 只选中一项时
             getResultSku(RadioList); // 取得交集
@@ -479,7 +487,7 @@
             // 非全选状态时, 不可以购买
             $('#addCart').addClass('disabled');
             $('#buyNow').addClass('disabled');
-        } else {
+        }else {
             getResultSku(RadioList);
             filterWaitOptions(OptionsStatus.wait);
             filterSelectOptions(OptionsStatus.select, SpaId, SkaId);
