@@ -172,8 +172,8 @@
     (function initOptions() {
         var SpuId = $('#modalDialog').data('spu');
         $.ajax({
-            url: '/products/' + SpuId
-        })
+                url: '/products/' + SpuId
+            })
             .done(function(data) {
                 console.log('success');
                 // 获取商品所有的库存
@@ -498,11 +498,11 @@
     function changeQtty(RequestStock, $QttyCount) {
         openLoading();
         $.ajax({
-            url: '/stock/checkstock',
-            data: {
-                skus: RequestStock
-            }
-        })
+                url: '/stock/checkstock',
+                data: {
+                    skus: RequestStock
+                }
+            })
             .done(function(data) {
                 if (data.success) {
 
@@ -647,12 +647,12 @@
         // PUT 立即购买
         // PATCH 添加购物车
         $.ajax({
-            url: '/cart',
-            type: Action,
-            data: {
-                operate: Operate
-            }
-        })
+                url: '/cart',
+                type: Action,
+                data: {
+                    operate: Operate
+                }
+            })
             .done(function(data) {
                 if (data.success) {
                     if (data.redirectUrl !== '') {
@@ -684,9 +684,9 @@
         initCart('PATCH');
         // 添加成功 刷新数量
         $.ajax({
-            url: ' /cart/amount',
-            type: 'GET'
-        })
+                url: ' /cart/amount',
+                type: 'GET'
+            })
             .done(function(data) {
                 console.log('success');
                 // 操作成功刷新页面
@@ -745,3 +745,5 @@
     });
 })
 (jQuery, Swiper);
+
+//# sourceMappingURL=shoppingDetail.js.map
