@@ -111,7 +111,7 @@
 <!-- TODO remodal 有多余的样式 需要整理 -->
 <div class="remodal remodal-md modal-content" data-remodal-id="modal" id="modalDialog">
     <div class="font-size-sm p-t-20x p-x-15x p-b-15x">
-        Are you sure you want to remove <br> this item from your bag?
+        Are you sure you want to remove this card?
     </div>
     <div class="btn-group flex">
         <div class="btn remodal-btn flex-width" data-remodal-action="confirm">Remove</div>
