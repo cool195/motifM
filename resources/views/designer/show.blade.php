@@ -29,10 +29,10 @@
                 @if($designer['path_type']==2)
                     <div id="ytplayer" data-playid="{{$designer['img_video_path']}}"></div>
                 @else
-                    <img src="https://s3-us-west-1.amazonaws.com/emimagetest/n1/{{$designer['main_img_path']}}" alt=""
+                    <img src="https://s3-us-west-1.amazonaws.com/emimagetest/n1/{{$designer['img_video_path']}}" alt=""
                          class="designer-realImg" hidden>
                     <img class="img-fluid img-lazy designer-Img"
-                         data-original="https://s3-us-west-1.amazonaws.com/emimagetest/n1/{{$designer['main_img_path']}}"
+                         data-original="https://s3-us-west-1.amazonaws.com/emimagetest/n1/{{$designer['img_video_path']}}"
                          src="/images/product/bg-product@750.png" alt="">
                 @endif
             </div>
