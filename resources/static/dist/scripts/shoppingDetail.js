@@ -487,7 +487,7 @@
             // 非全选状态时, 不可以购买
             $('#addCart').addClass('disabled');
             $('#buyNow').addClass('disabled');
-        }else {
+        } else {
             getResultSku(RadioList);
             filterWaitOptions(OptionsStatus.wait);
             filterSelectOptions(OptionsStatus.select, SpaId, SkaId);
@@ -691,37 +691,35 @@
         var $SelectOptions = $('.btn-itemProperty.active');
         var OptionsCount = Object.keys(Options);
 
-        if ($(e.target).hasClass('disabled') || $SelectOptions.length === OptionsCount.length) {
-            return;
+        if ($(e.target) === $('#addCart')) {
+            if (!$(e.target).hasClass('disabled')) {
+                initCart('PATCH');
+                // 添加成功 刷新页面
+                location.reload();
+            }
+        } else {
+            if ($SelectOptions.length !== OptionsCount.length && OptionsCount.length !== 0) {
+                Modal.open();
+            } else {
+                initCart('PATCH');
+            }
         }
-        initCart('PATCH');
-        // 添加成功 刷新数量
-        $.ajax({
-                url: ' /cart/amount',
-                type: 'GET'
-            })
-            .done(function(data) {
-                console.log('success');
-                // 操作成功刷新页面
-                if (data.success) {
-                    if (data.data.skusAmout > 0) {
-                        $('.nav-shoppingCart').children('span').html(data.data.skusAmout);
-                    }
-                }
-            })
-            .fail(function() {
-                console.log('error');
-            })
-            .always(function() {
-                console.log('complete');
-            });
     });
     // 立即购买
     $('[data-role="buyNow"]').on('click', function(e) {
-        if ($(e.target).hasClass('disabled')) {
-            return;
+        var $SelectOptions = $('.btn-itemProperty.active');
+        var OptionsCount = Object.keys(Options);
+        if ($(e.target) === $('#addCart')) {
+            if (!$(e.target).hasClass('disabled')) {
+                initCart('PUT');
+            }
+        } else {
+            if ($SelectOptions.length !== OptionsCount.length && OptionsCount.length !== 0) {
+                Modal.open();
+            } else {
+                initCart('PUT');
+            }
         }
-        initCart('PUT');
     });
 
     $('.input-engraving').on('click', function(e) {
@@ -734,9 +732,9 @@
         var TextOptions = '';
         $.each($SelectList, function(index, val) {
             if (index === ($SelectList.length - 1)) {
-                TextOptions += val.text();
+                TextOptions += val.textContent.trim();
             } else {
-                TextOptions += val.text() + ' , ';
+                TextOptions += val.textContent.trim() + ' , ';
             }
         });
         $('#selectOptions').text(TextOptions);
@@ -774,12 +772,6 @@
         if ($('.message-info').children('p').height() <= 56) {
             $('.btn-showMore').hide();
         }
-
-        // 图片延迟加载
-        $('img.img-lazy').lazyload({
-            threshold: 200,
-            effect: 'fadeIn'
-        });
     });
 })
 (jQuery, Swiper);
