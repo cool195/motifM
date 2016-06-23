@@ -147,20 +147,20 @@
                         <i class="iconfont icon-caveat icon-size-md p-r-5x"></i>
                         <span>Warning:Please fill out all fieldes.</span>
                     </div>
-                    <fieldset class="bg-white m-b-10x message-type" data-type="3" data-stype="0">
+                    <fieldset class="bg-white m-b-10x message-type" data-type="">
                         <a class="p-a-15x flex flex-alignCenter flex-fullJustified btn-massageType" href="#">
                             <span class="font-size-sm text-primary">Question Type</span>
                             <i class="iconfont icon-arrow-bottom icon-size-xm text-common"></i>
                         </a>
                         <div class="messageType-list bg-white text-primary font-size-sm">
-                            <a class="message-item p-a-15x flex text-primary active" data-message-stype="0">Question
+                            <a class="message-item p-a-15x flex text-primary active" data-message-type="0">Question
                                                                                                            Type</a>
-                            <a class="message-item p-a-15x flex text-primary" data-message-stype="1">About MOTIF</a>
-                            <a class="message-item p-a-15x flex text-primary" data-message-stype="2">About Order</a>
-                            <a class="message-item p-a-15x flex text-primary" data-message-stype="3">About Shopping</a>
-                            <a class="message-item p-a-15x flex text-primary" data-message-stype="4">About Redunds &
+                            <a class="message-item p-a-15x flex text-primary" data-message-type="1">About MOTIF</a>
+                            <a class="message-item p-a-15x flex text-primary" data-message-type="2">About Order</a>
+                            <a class="message-item p-a-15x flex text-primary" data-message-type="3">About Shopping</a>
+                            <a class="message-item p-a-15x flex text-primary" data-message-type="4">About Redunds &
                                                                                                     Returns</a>
-                            <a class="message-item p-a-15x flex text-primary" data-message-stype="5">About Shipping</a>
+                            <a class="message-item p-a-15x flex text-primary" data-message-type="5">About Shipping</a>
                         </div>
                     </fieldset>
 
@@ -175,7 +175,7 @@
                     <div class="container-fluid p-a-15x">
                         <div class="row">
                             <div class="col-xs-6">
-                                <a href="#" class="btn btn-primary-outline btn-block btn-sm" data-role="cancel">Cancel</a>
+                                <a href="#" class="btn btn-primary-outline btn-block btn-sm" id="Cancel">Cancel</a>
                             </div>
                             <div class="col-xs-6">
                                 <div class="btn btn-primary btn-block btn-sm" data-role="submit">Send</div>
@@ -261,17 +261,6 @@
             </footer>
         </div>
     </div>
-    <!-- 提示添加成功 -->
-    <div class="remodal remodal-md modal-content" data-remodal-id="question-modal" id="askQuestion">
-        <div class="font-size-sm p-t-20x p-x-15x p-b-15x">
-            <div class="font-size-base">Question sent!</div>
-            <div class="p-t-5x">We will contact you as<br> soon as possible！</div>
-        </div>
-        <hr class="hr-base m-a-0">
-        <div class="btn-group flex">
-            <a href="" class="btn remodal-btn flex-width text-primary" id="confirmQuestion">OK</a>
-        </div>
-    </div>
 
     <!-- loading 效果 -->
     <div class="loading loading-screen loading-switch loading-hidden">
@@ -280,5 +269,5 @@
 </body>
 <script src="scripts/vendor.js"></script>
 
-<script src="/scripts/profileSetting-customerSupport.js"></script>
+<script src="/scripts/shoppingDetail-askQuestion.js"></script>
 </html>
