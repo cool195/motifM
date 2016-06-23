@@ -711,6 +711,7 @@
                 Modal.open();
             } else {
                 initCart('PATCH');
+                location.reload();
             }
         }
     });
