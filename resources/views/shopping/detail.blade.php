@@ -100,11 +100,11 @@
                     @if(Session::has('user'))
                         <div class="row">
                             <div class="col-xs-6">
-                                <a href="#" class="btn btn-primary-outline btn-block" data-remodal-target="modal">Add To
+                                <a href="#" class="btn btn-primary-outline btn-block" @if(isset($data['spuAttrs'])) data-remodal-target="modal" @else data-row="addCard" @endif>Add To
                                     Bag</a>
                             </div>
                             <div class="col-xs-6">
-                                <a href="#" class="btn btn-primary btn-block" data-remodal-target="modal">Buy Now</a>
+                                <a href="#" class="btn btn-primary btn-block" @if(isset($data['spuAttrs'])) data-remodal-target="modal" @else data-row="addCard" @endif>Buy Now</a>
                             </div>
                         </div>
                     @else
@@ -119,27 +119,29 @@
                     @endif
                 </aside>
                 <!-- 选择商品参数 -->
-                <aside class="bg-white m-b-10x">
-                    <a class="flex flex-alignCenter flex-fullJustified font-size-sm text-primary p-a-15x"
-                       data-remodal-target="modal" href="#">
-                        <span>Select</span>
+                @if(isset($data['spuAttrs']))
+                    <aside class="bg-white m-b-10x">
+                        <a class="flex flex-alignCenter flex-fullJustified font-size-sm text-primary p-a-15x"
+                           data-remodal-target="modal" href="#">
+                            <span>Select</span>
 						<span class="flex flex-alignCenter flex-fullJustified">
 							<span class="m-r-10x">
-                                @if(isset($data['spuAttrs']))
+
                                     @foreach($data['spuAttrs'] as $key => $attrs)
-                                        @if((count($data['spuAttrs']) - 1) == $key)
-                                            {{$attrs['attr_type_value']}}
-                                        @else
-                                            {{$attrs['attr_type_value'].", "}}
-                                        @endif
-                                    @endforeach
-                                @endif
+                                    @if((count($data['spuAttrs']) - 1) == $key)
+                                        {{$attrs['attr_type_value']}}
+                                    @else
+                                        {{$attrs['attr_type_value'].", "}}
+                                    @endif
+                                @endforeach
+
 							</span>
 							<i class="iconfont icon-arrow-right icon-size-xm text-common"></i>
 						</span>
-                    </a>
-                </aside>
-                <!-- 产品描述 -->
+                        </a>
+                    </aside>
+                @endif
+            <!-- 产品描述 -->
                 <aside class="bg-white p-x-15x p-y-10x m-b-10x">
                     <p class="font-size-md text-main"><strong>Description</strong></p>
                     <div class="font-size-sm text-primary">
@@ -176,11 +178,11 @@
                     @if(Session::has('user'))
                         <div class="row">
                             <div class="col-xs-6">
-                                <a href="#" class="btn btn-primary-outline btn-block" data-remodal-target="modal">Add To
+                                <a href="#" class="btn btn-primary-outline btn-block" @if(isset($data['spuAttrs'])) data-remodal-target="modal" @else data-row="addCard" @endif>Add To
                                     Bag</a>
                             </div>
                             <div class="col-xs-6">
-                                <a href="#" class="btn btn-primary btn-block" data-remodal-target="modal">Buy Now</a>
+                                <a href="#" class="btn btn-primary btn-block" @if(isset($data['spuAttrs'])) data-remodal-target="modal" @else data-row="addCard" @endif>Buy Now</a>
                             </div>
                         </div>
                     @else
@@ -272,21 +274,6 @@
                                                      data-ska="{{$skuValue['attr_value_id']}}">
                                                     {{$skuValue['attr_value']}}
                                                 </div>
-                                                {{-- 注释掉的模板 --}}
-                                                {{--<input type="radio"--}}
-                                                {{--name="{{$value['attr_type_value']}}"--}}
-                                                {{--id="{{$skuValue['attr_value_id']}}" --}}
-                                                {{--data-spa="{{$value['attr_type']}}"--}}
-                                                {{--data-ska="{{$skuValue['attr_value_id']}}"--}}
-                                                {{--hidden--}}
-                                                {{--@if(!$skuValue['stock']) --}}
-                                                {{--disabled="disabled"--}}
-                                                {{--@endif>--}}
-                                                {{----}}
-                                                {{--<label class="btn btn-block btn-itemProperty btn-sm m-b-0 --}}
-                                                {{--@if(!$skuValue['stock']) disabled @endif--}}
-                                                {{--"--}}
-                                                {{--for="{{$skuValue['attr_value_id']}}">{{$skuValue['attr_value']}}</label>--}}
                                             </div>
                                         @endforeach
                                     @endif
