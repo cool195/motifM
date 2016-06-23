@@ -355,6 +355,9 @@
     function switchOption(RadioList) {
 
         var SpaList = Object.keys(Options);
+        if (SpaList.length === 1) {
+            return;
+        }
 
         // 把选定的 Skus , 编成一组 , Skus集合
         var SkusList = {};
@@ -674,7 +677,7 @@
                             closeAddSuccess();
                         }, 1500);
                     }
-                }else{
+                } else {
                     alert(data.error_msg);
                 }
             })
