@@ -674,6 +674,8 @@
                             closeAddSuccess();
                         }, 1500);
                     }
+                }else{
+                    alert(data.error_msg);
                 }
             })
             .fail(function() {
@@ -772,6 +774,12 @@
         if ($('.message-info').children('p').height() <= 56) {
             $('.btn-showMore').hide();
         }
+
+        // 图片延迟加载
+        $('img.img-lazy').lazyload({
+            threshold: 200,
+            effect: 'fadeIn'
+        });
     });
 })
 (jQuery, Swiper);
