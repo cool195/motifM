@@ -108,7 +108,7 @@
                          id="cardCredit" data-action="/braintree/addcard">
                         <div class="flex flex-alignCenter font-size-sm text-primary">
                             <span class="cardImage-inline cardCredit"></span>
-                            <span class="m-l-10x">Direct debit/credit card</span>
+                            <span class="m-l-10x">Direct Debit/Credit Card</span>
                         </div>
                         <span><i class="iconfont icon-arrow-right icon-size-sm text-common"></i></span>
                     </div>
