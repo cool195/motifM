@@ -660,10 +660,12 @@
                     }
                     console.log("success");
                     Modal.close();
-                    openAddSuccess();
-                    setTimeout(function() {
-                        closeAddSuccess();
-                    }, 1500);
+                    if (Action === 'PATCH') {
+                        openAddSuccess();
+                        setTimeout(function() {
+                            closeAddSuccess();
+                        }, 1500);
+                    }
                 }
             })
             .fail(function() {
@@ -676,9 +678,12 @@
 
     }
 
-    // TODO 立即购买
+    // 添加购物车
     $('[data-role="addCart"]').on('click', function(e) {
-        if ($(e.target).hasClass('disabled')) {
+        var $SelectOptions = $('.btn-itemProperty.active');
+        var OptionsCount = Object.keys(Options);
+
+        if ($(e.target).hasClass('disabled') || $SelectOptions.length === OptionsCount.length) {
             return;
         }
         initCart('PATCH');
@@ -703,11 +708,30 @@
                 console.log('complete');
             });
     });
+    // 立即购买
     $('[data-role="buyNow"]').on('click', function(e) {
         if ($(e.target).hasClass('disabled')) {
             return;
         }
         initCart('PUT');
+    });
+
+    $('.input-engraving').on('click', function(e) {
+        $(e.target).removeClass('disabled');
+    });
+
+    // 模态框关闭时，把选择的项更新到 select 位置
+    $('[data-remodal-id=modal]').on('closed', function() {
+        var $SelectList = $('.btn-itemProperty.active');
+        var TextOptions = '';
+        $.each($SelectList, function(index, val) {
+            if (index === ($SelectList.length - 1)) {
+                TextOptions += val.text();
+            } else {
+                TextOptions += val.text() + ' , ';
+            }
+        });
+        $('#selectOptions').text(TextOptions);
     });
     // 增值服务是否选中
     $('fieldset[data-vas-type]').on('click', function(e) {
