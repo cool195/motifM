@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Designer;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\ApiController;
+use Symfony\Component\HttpFoundation\Cookie;
 
 class DesignerController extends ApiController
 {
@@ -53,6 +54,7 @@ class DesignerController extends ApiController
         $product = $this->request('openapi', 'designerf', 'content', $params);
         $view = '';
         if (strstr($_SERVER['HTTP_USER_AGENT'], 'motif-android') || strstr($_SERVER['HTTP_USER_AGENT'], 'motif-ios')) {
+            dd($_COOKIE["TOKEN"]);
             $view = 'designer.showApp';
         } else {
             $view = 'designer.show';
