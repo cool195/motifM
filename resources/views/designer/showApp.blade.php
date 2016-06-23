@@ -129,6 +129,7 @@
         </section>
     </div>
 </div>
+<input type="button" onclick="follow()" value="follow">
 </body>
 <script src="/scripts/vendor.js"></script>
 <script src="/scripts/designerDetail.js"></script>
@@ -142,8 +143,9 @@
         data: {"actions": actionsShow}
     });
 
-    Jockey.on("action", function (actionName) {
-        if (actionName.name == "menuClick" && actionName.data.name == "share") {
+    Jockey.on("action", function (action) {
+        //share
+        if (action.name == "menuClick" && action.data.name == "share") {
             Jockey.send("action", {
                 name: "share",
                 token: "key",
@@ -155,6 +157,25 @@
                 }
             });
         }
+        //login
+        if (action.name == "authInfo") {
+            var cookieData = [{
+                "token": action.data.token,
+                "pin": action.data.pin,
+                "email": action.data.email,
+                "name": action.data.name,
+                "uuid": action.data.uuid
+            }]
+            alert(action.data.pin)
+        }
     });
+
+    //login send
+    function follow() {
+        Jockey.send("action", {
+            name: "login",
+            token: "key",
+        });
+    }
 </script>
 </html>
