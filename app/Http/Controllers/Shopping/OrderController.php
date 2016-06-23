@@ -76,6 +76,17 @@ class OrderController extends ApiController
     public function OrderDetail(Request $request, $subno)
     {
         $result = $this->getOrderDetail($subno);
+        $result['data']['cardlist'] = array('Diners' => 'diners-club', 'Discover' => 'discover', 'JCB' => 'jcb', 'Maestro' => 'maestro', 'AmericanExpress' => 'american-express', 'Visa' => 'visa', 'MasterCard' => 'master-card');
+
+        $params = array(
+            'cmd' => 'payinfo',
+            'token' => Session::get('user.token'),
+            'pin' => Session::get('user.pin'),
+            'uuid' => Session::get('user.token'),
+            'orderid' => $subno,
+        );
+        $resultOrder = $this->request('openapi', '', 'pay', $params);
+        $result['data']['orderPayInfo'] = array('pay_type'=>$resultOrder['data']['pay_type'],'show_name'=>$resultOrder['data']['show_name'],'card_type'=>$resultOrder['data']['card_type']);
         return View('shopping.orderdetail', ['data' => $result['data']]);
     }
 

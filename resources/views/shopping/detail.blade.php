@@ -100,11 +100,11 @@
                     @if(Session::has('user'))
                         <div class="row">
                             <div class="col-xs-6">
-                                <a href="#" class="btn btn-primary-outline btn-block" @if(isset($data['spuAttrs'])) data-remodal-target="modal" @else data-row="addCard" @endif>Add To
+                                <a class="btn btn-primary-outline btn-block" data-role="addCard">Add To
                                     Bag</a>
                             </div>
                             <div class="col-xs-6">
-                                <a href="#" class="btn btn-primary btn-block" @if(isset($data['spuAttrs'])) data-remodal-target="modal" @else data-row="addCard" @endif>Buy Now</a>
+                                <a class="btn btn-primary btn-block" data-role="buyNow">Buy Now</a>
                             </div>
                         </div>
                     @else
@@ -178,11 +178,11 @@
                     @if(Session::has('user'))
                         <div class="row">
                             <div class="col-xs-6">
-                                <a href="#" class="btn btn-primary-outline btn-block" @if(isset($data['spuAttrs'])) data-remodal-target="modal" @else data-row="addCard" @endif>Add To
+                                <a class="btn btn-primary-outline btn-block" data-role="addCard">Add To
                                     Bag</a>
                             </div>
                             <div class="col-xs-6">
-                                <a href="#" class="btn btn-primary btn-block" @if(isset($data['spuAttrs'])) data-remodal-target="modal" @else data-row="addCard" @endif>Buy Now</a>
+                                <a class="btn btn-primary btn-block" data-role="buyNow">Buy Now</a>
                             </div>
                         </div>
                     @else
@@ -332,10 +332,10 @@
                     @if(Session::has('user'))
                         <div class="row">
                             <div class="col-xs-6">
-                                <div class="btn btn-primary-outline btn-block disabled" id="addCart">Add To Bag</div>
+                                <div class="btn btn-primary-outline btn-block disabled" data-role="addCard" id="addCart">Add To Bag</div>
                             </div>
                             <div class="col-xs-6">
-                                <div class="btn btn-primary btn-block disabled" id="buyNow">Buy Now</div>
+                                <div class="btn btn-primary btn-block disabled" data-role="buyNow" id="buyNow">Buy Now</div>
                             </div>
                         </div>
                     @else
