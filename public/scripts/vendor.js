@@ -16490,7 +16490,7 @@ else if (typeof define === 'function' && define.amd) {
  */
 /*global jQuery*/
 'use strict';
-(function ($) {
+(function($) {
     function switchDevice() {
         var Agent = navigator.userAgent;
         if (/iPhone/i.test(Agent)) {
@@ -16524,30 +16524,30 @@ else if (typeof define === 'function' && define.amd) {
         }
     });
     // 汉堡菜单打开
-    $('#nav-menu-control').on('click', function () {
-        setTimeout(function () {
+    $('#nav-menu-control').on('click', function() {
+        setTimeout(function() {
             $('#body-content').addClass('nav-menu-open');
         }, 25);
     });
     // 汉堡菜单收起
-    $('.body-container').on('click', function () {
+    $('.body-container').on('click', function() {
         if ($('#body-content').hasClass('nav-menu-open')) {
             $('#body-content').removeClass('nav-menu-open');
         }
     });
 
     // 下载App 弹出框
-    $('#downloadModal').on('opening', function () {
+    $('#downloadModal').on('opening', function() {
 
     });
 
-    (function () {
+    (function() {
         if ($('.nav-shoppingCart').data('login')) {
             $.ajax({
-                url: ' /cart/amount',
-                type: 'GET'
-            })
-                .done(function (data) {
+                    url: ' /cart/amount',
+                    type: 'GET'
+                })
+                .done(function(data) {
                     console.log('success');
                     // 操作成功刷新页面
                     if (data.success) {
@@ -16559,10 +16559,10 @@ else if (typeof define === 'function' && define.amd) {
                         }
                     }
                 })
-                .fail(function () {
+                .fail(function() {
                     console.log('error');
                 })
-                .always(function () {
+                .always(function() {
                     console.log('complete');
                 });
         } else {
@@ -16589,8 +16589,7 @@ else if (typeof define === 'function' && define.amd) {
                 break;
         }
     })();
-
+    FastClick.attach(document.body);
 })(jQuery);
-
 
 //# sourceMappingURL=common.js.map

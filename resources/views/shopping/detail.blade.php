@@ -100,7 +100,7 @@
                     @if(Session::has('user'))
                         <div class="row">
                             <div class="col-xs-6">
-                                <a class="btn btn-primary-outline btn-block" data-role="addCard">Add To
+                                <a class="btn btn-primary-outline btn-block" data-role="addCart">Add To
                                     Bag</a>
                             </div>
                             <div class="col-xs-6">
@@ -178,7 +178,7 @@
                     @if(Session::has('user'))
                         <div class="row">
                             <div class="col-xs-6">
-                                <a class="btn btn-primary-outline btn-block" data-role="addCard">Add To
+                                <a class="btn btn-primary-outline btn-block" data-role="addCart">Add To
                                     Bag</a>
                             </div>
                             <div class="col-xs-6">
@@ -332,7 +332,7 @@
                     @if(Session::has('user'))
                         <div class="row">
                             <div class="col-xs-6">
-                                <div class="btn btn-primary-outline btn-block disabled" data-role="addCard" id="addCart">Add To Bag</div>
+                                <div class="btn btn-primary-outline btn-block disabled" data-role="addCart" id="addCart">Add To Bag</div>
                             </div>
                             <div class="col-xs-6">
                                 <div class="btn btn-primary btn-block disabled" data-role="buyNow" id="buyNow">Buy Now</div>

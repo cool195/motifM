@@ -37,6 +37,7 @@ class CartController extends ApiController
 		$defaultPayMethod = $this->getDefaultPayMethod();
 		$stype = !empty($request->input('stype')) ? $request->input('stype', 1) : 1; //必须加非空验证
 		$defaultMethod = $this->getShippingMethodByStype($stype);
+		$result['data']['cardlist'] = array('Diners' => 'diners-club', 'Discover' => 'discover', 'JCB' => 'jcb', 'Maestro' => 'maestro', 'AmericanExpress' => 'american-express', 'Visa' => 'visa', 'MasterCard' => 'master-card');
 		if(empty($result['data'])){
 			return redirect('/shopping');
 		}
