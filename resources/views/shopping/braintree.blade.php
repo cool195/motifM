@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <script src="/scripts/vendor/fastclick.js"></script>
 </head>
 <body>
 <form id="checkout" method="post" action="/testcheck">

@@ -487,7 +487,7 @@
             // 非全选状态时, 不可以购买
             $('#addCart').addClass('disabled');
             $('#buyNow').addClass('disabled');
-        } else {
+        }else {
             getResultSku(RadioList);
             filterWaitOptions(OptionsStatus.wait);
             filterSelectOptions(OptionsStatus.select, SpaId, SkaId);
