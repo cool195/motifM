@@ -106,7 +106,12 @@
                         @if(empty($paym) || "" == $paym )
                             <span class="text-warning">No PaymentMethod add</span>
                         @else
-                            <span>{{ $paym."(".$showName.")" }}</span>
+                            @if($cardType=="PayPal")
+                                <span class="cardImage-inline paypal"></span>
+                            @elseif(array_get($data['cardlist'],$cardType))
+                                <span class="cardImage-inline {{array_get($data['cardlist'],$cardType)}}"></span>
+                            @endif
+                            <span class="m-l-10x">{{ $paym."(".$showName.")" }}</span>
                         @endif
                         <i class="iconfont icon-arrow-right icon-size-xm text-common p-r-15x"></i>
                     </div>
