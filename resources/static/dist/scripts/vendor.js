@@ -16589,7 +16589,6 @@ else if (typeof define === 'function' && define.amd) {
                 break;
         }
     })();
-    FastClick.attach(document.body);
 })(jQuery);
 
 //# sourceMappingURL=common.js.map

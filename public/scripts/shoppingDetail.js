@@ -487,7 +487,7 @@
             // 非全选状态时, 不可以购买
             $('#addCart').addClass('disabled');
             $('#buyNow').addClass('disabled');
-        }else {
+        } else {
             getResultSku(RadioList);
             filterWaitOptions(OptionsStatus.wait);
             filterSelectOptions(OptionsStatus.select, SpaId, SkaId);
@@ -732,9 +732,9 @@
                 initCart('PUT');
             }
         } else {
-            if ($SelectOptions.length === OptionsCount.length) {
+            if ($SelectOptions.length === OptionsCount.length && OptionsCount.length !== 0 && $SelectOptions.length) {
                 Modal.open();
-            }else {
+            } else {
                 initCart('PUT');
             }
         }
@@ -750,9 +750,9 @@
         var TextOptions = '';
         $.each($SelectList, function(index, val) {
             if (index === ($SelectList.length - 1)) {
-                TextOptions += val.text();
+                TextOptions += val.textContent.trim();
             } else {
-                TextOptions += val.text() + ' , ';
+                TextOptions += val.textContent.trim() + ' , ';
             }
         });
         $('#selectOptions').text(TextOptions);
