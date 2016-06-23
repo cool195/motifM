@@ -33,7 +33,7 @@
                         <div class="text-common font-size-sm p-t-10x">{{$user['login_email']}}</div>
                     </article>
                     <fieldset class="bg-white">
-                        <input class="form-control form-control-block p-a-15x font-size-sm" id="nick" name="nick" type="text" placeholder="{{$user['nickname']}}">
+                        <input class="form-control form-control-block p-a-15x font-size-sm" id="nick" name="nick" type="text" value="{{$user['nickname']}}" placeholder="{{$user['nickname']}}">
                     </fieldset>
                     <div class="p-a-15x">
                         <div class="btn btn-primary btn-block btn-sm" data-role="submit">Change</div>
