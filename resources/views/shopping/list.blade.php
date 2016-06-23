@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="/styles/shoppingList.css">
 
     <script src="/scripts/vendor/modernizr.js"></script>
+    <script src="/scripts/vendor/fastclick.js"></script>
 </head>
 <body>
 <!-- App 下载提示 -->

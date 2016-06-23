@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="/styles/vendor.css">
 
     <script src="/scripts/vendor/modernizr.js"></script>
+    <script src="/scripts/vendor/fastclick.js"></script>
 </head>
 <body>
 <!-- 外层容器 -->
