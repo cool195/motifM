@@ -105,11 +105,11 @@
                 <div class="flex font-size-sm text-primary p-y-10x p-x-15x">
                     <span class="orderInfo-subTitle flex-fixedShrink">Ships to</span>
                     <div>
-                        <div>{{ $data['userAddr']['email'] }}</div>
-                        <div>{{ $data['userAddr']['detail_address1'] }}</div>
-                        <div>{{ $data['userAddr']['detail_address2'] }}</div>
+                        <div>{{ $data['userAddr']['name'] }}   {{ $data['userAddr']['email'] }}</div>
+                        <div>{{ $data['userAddr']['detail_address1'] }} @if(!empty($data['userAddr']['detail_address2'])) {{ $data['userAddr']['detail_address2'] }} @endif</div>
                         <div>{{$data['userAddr']['city']." ".$data['userAddr']['state']." ".$data['userAddr']['zip'] }}</div>
                         <div>{{$data['userAddr']['country']}}</div>
+                        <div> @if(!empty($data['userAddr']['telephone'])) {{ $data['userAddr']['telephone'] }} @endif </div>
                     </div>
                 </div>
                 <hr class="hr-base">
