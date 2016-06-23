@@ -7,6 +7,7 @@
 
 <input type="button" onclick="follow()" value="follow">
 </body>
+<script src="/scripts/vendor.js"></script>
 <script src="/scripts/JockeyJS.js"></script>
 <script>
     var actionsShow = [{"icon": "", "name": "share"}]
