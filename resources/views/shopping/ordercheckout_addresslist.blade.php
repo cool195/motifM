@@ -47,8 +47,8 @@
                         <div class="addressItem-info text-primary m-l-15x p-r-15x p-y-10x" data-action="return" data-url-return="return" data-url-edit="edit">
                             <div>
                                 <div>{{$addr['email']}}</div>
-                                <div>{{$addr['detail_address1']}} </div>
-                                <div>{{$addr['city']}}, {{$addr['zip']}} {{$addr['zip']}}</div>
+                                <div>{{$addr['detail_address1']}} @if(isset($addr['detail_address2'])) {{$addr['detail_address2']}} @endif</div>
+                                <div>{{$addr['city']}}, {{$addr['state']}} {{$addr['zip']}}</div>
                                 <div>{{$addr['country']}}</div>
                                 <div>@if(isset($addr['telephone'])) {{$addr['telephone']}}  @endif</div>
                             </div>

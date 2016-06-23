@@ -240,7 +240,7 @@ class UserController extends ApiController
             'cmd' => "modifypwd",
             'token' => Session::get('user.token'),
             'pin' => Session::get('user.pin'),
-            'oldpw' => $request->input('oldpw'),
+            'oldpw' => bin2hex(md5($request->input('oldpw'))),
             'pw' => bin2hex(md5($request->input('pw'))),
         );
         $result = $this->request('openapi', self::API_SYSTEM, self::API_SERVICE, $params);
@@ -249,8 +249,10 @@ class UserController extends ApiController
             $result['error_msg'] = "Data access failed";
             $result['data'] = array();
         }else{
+            $result['prompt_msg'] = "Password change failed, Please try agian!";
             if($result['success']){
                 Session::forget('user');
+                $result['prompt_msg'] = "Your password has been changed. Please login agian";
                 $result['redirectUrl'] = "/login";
             }
         }
