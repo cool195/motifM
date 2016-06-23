@@ -104,7 +104,7 @@
                                             </div>
                                             <div class="btn btn-cartCount btn-sm"
                                                  data-count="{{$showSku['sale_qtty']}}">{{$showSku['sale_qtty']}}</div>
-                                            <div class="btn btn-cartCount btn-sm @if(1 !== $showSku['stock_status']) disabled @endif"
+                                            <div class="btn btn-cartCount btn-sm @if(1 !== $showSku['stock_status'] || $showSku['sale_qtty'] >=50) disabled @endif"
                                                  data-item="add">
                                                 <i class="iconfont icon-add"></i>
                                             </div>
