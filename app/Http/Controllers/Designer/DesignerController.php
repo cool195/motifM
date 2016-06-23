@@ -54,7 +54,6 @@ class DesignerController extends ApiController
         $product = $this->request('openapi', 'designerf', 'content', $params);
         $view = '';
         if (strstr($_SERVER['HTTP_USER_AGENT'], 'motif-android') || strstr($_SERVER['HTTP_USER_AGENT'], 'motif-ios')) {
-            dd($_COOKIE);
             $view = 'designer.showApp';
         } else {
             $view = 'designer.show';
