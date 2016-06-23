@@ -28,11 +28,11 @@
         </div>
         <div class="field-items">
             <a href="https://itunes.apple.com/cn/app/id1125850409" class="btn btn-secondary btn-xs">
-                <img src="/images/icon/icon-appStore.png"
+                <img class="img-fluid m-x-auto" src="/images/icon/icon-appStore.png"
                      srcset="/images/icon/icon-appStore@2x.png 2x, /images/icon/icon-appStore@3x.png 3x">
             </a>
             <a href="https://play.google.com/store/apps/details?id=me.motif.motif" class="btn btn-secondary btn-xs">
-                <img src="/images/icon/icon-googlePlay.png"
+                <img class="img-fluid m-x-auto" src="/images/icon/icon-googlePlay.png"
                      srcset="/images/icon/icon-googlePlay@2x.png 2x, /images/icon/icon-googlePlay@3x.png 3x">
             </a>
         </div>
