@@ -64,10 +64,6 @@
                     </fieldset>
                     <hr class="hr-base m-a-0">
                     <fieldset>
-                        <input class="form-control form-control-block p-a-15x font-size-sm" name="idnum" value="{{$input['iDnumber']}}"  type="text" placeholder="IDnumber">
-                    </fieldset>
-                    <hr class="hr-base m-a-0">
-                    <fieldset>
                         <div class="flex flex-alignCenter flex-fullJustified font-size-sm text-primary p-a-15x" id="country">
                             <span>Country</span>
                             <div>
