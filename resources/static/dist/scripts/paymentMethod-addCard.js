@@ -1,8 +1,8 @@
-(function () {
+(function() {
     // loading 打开
     function openLoading() {
         $('.loading').toggleClass('loading-hidden');
-        setTimeout(function () {
+        setTimeout(function() {
             $('.loading').toggleClass('loading-open');
         }, 25);
     }
@@ -10,7 +10,7 @@
     // loading 隐藏
     function closeLoading() {
         $('.loading').addClass('loading-close');
-        setTimeout(function () {
+        setTimeout(function() {
             $('.loading').toggleClass('loading-hidden loading-open').removeClass('loading-close');
         }, 500);
     }
@@ -23,10 +23,10 @@
 
     braintree.setup(token, "custom", {
         id: "card-container",
-        onReady: function (integration) {
+        onReady: function(integration) {
             checkout = integration;
         },
-        onError: function (error) {
+        onError: function(error) {
             if (error.type === 'VALIDATION') {
                 $WaringInfo.children('span').html(error.message);
                 $WaringInfo.removeClass('off');
@@ -34,31 +34,33 @@
                 console.error(error.message);
             }
         },
-        onPaymentMethodReceived: function (payload) {
+        onPaymentMethodReceived: function(payload) {
             console.info('payload : ');
             console.info(payload);
             openLoading();
             // TODO
             $.ajax({
-                url: '/braintree',
-                type: 'POST',
-                data: {nonce: payload.nonce}
-            })
-                .done(function (data) {
+                    url: '/braintree',
+                    type: 'POST',
+                    data: {
+                        nonce: payload.nonce
+                    }
+                })
+                .done(function(data) {
                     console.log("success");
                     if (data.success) {
                         var $InfoForm = $('#infoForm');
-                        if ($InfoForm === undefined) {
+                        if ($InfoForm.length === 0) {
                             window.location.href = data.redirectUrl;
                         } else {
                             $InfoForm.submit();
                         }
                     }
                 })
-                .fail(function () {
+                .fail(function() {
                     console.log("error");
                 })
-                .always(function () {
+                .always(function() {
                     console.log("complete");
                     closeLoading();
                 });
@@ -88,7 +90,7 @@
     }
 
     // 验证 卡的输入情况
-    $('#cardNum').on('keyup', function (e) {
+    $('#cardNum').on('keyup', function(e) {
         validationCard($(this));
     });
     // TODO 需要限制输入格式, 限制日期格式, 银行卡格式

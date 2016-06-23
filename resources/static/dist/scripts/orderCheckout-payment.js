@@ -1,4 +1,4 @@
-(function ($) {
+(function($) {
     /**
      *
      * @param $Edit
@@ -38,12 +38,12 @@
         var $LinkList = $('.payment-info');
 
         if ($Edit.hasClass('active')) {
-            $.each($LinkList, function (index, val) {
+            $.each($LinkList, function(index, val) {
                 var Link = $(val).data('url-return');
                 $(val).attr('href', Link);
             });
         } else {
-            $.each($LinkList, function (index, val) {
+            $.each($LinkList, function(index, val) {
                 var Link = $(val).data('url-edit');
                 $(val).attr('href', Link);
             });
@@ -53,7 +53,7 @@
     // loading 打开
     function openLoading() {
         $('.loading').toggleClass('loading-hidden');
-        setTimeout(function () {
+        setTimeout(function() {
             $('.loading').toggleClass('loading-open');
         }, 25);
     }
@@ -61,7 +61,7 @@
     // loading 隐藏
     function closeLoading() {
         $('.loading').addClass('loading-close');
-        setTimeout(function () {
+        setTimeout(function() {
             $('.loading').toggleClass('loading-hidden loading-open').removeClass('loading-close');
         }, 500);
     }
@@ -75,30 +75,30 @@
         openLoading();
 
         $.ajax({
-            url: ' /braintree',
-            type: 'DELETE',
-            data: {
-                methodtoken: PaymentToken
-            }
-        })
-            .done(function () {
+                url: ' /braintree',
+                type: 'DELETE',
+                data: {
+                    methodtoken: PaymentToken
+                }
+            })
+            .done(function() {
                 console.log("success");
                 if (data.success) {
                     $('#infoForm').attr('action', data.redirectUrl);
                     $('#infoForm').submit();
                 }
             })
-            .fail(function () {
+            .fail(function() {
                 console.log("error");
             })
-            .always(function () {
+            .always(function() {
                 console.log("complete");
                 closeLoading();
 
             });
     }
 
-    $('#payment-edit').on('click', function (e) {
+    $('#payment-edit').on('click', function(e) {
         // 可选的状态切换
         switchSelect($(e.target));
 
@@ -111,7 +111,7 @@
         $('.payment-delete').toggleClass('switch');
     });
 
-    $('[data-role="submit"]').on('click', function () {
+    $('[data-role="submit"]').on('click', function() {
         var PayType = $('.icon-radio.active').parents('.payment-info').data('type');
         var methodToken = $('.icon-radio.active').parents('.payment-info').data('token');
         var cardType = $('.icon-radio.active').parents('.payment-info').data('cardtype');
@@ -126,13 +126,13 @@
     });
 
     // 删除按钮
-    $('.payment-delete').on('click', function (e) {
+    $('.payment-delete').on('click', function(e) {
         var PaymentToken = $(e.target).parents('.payment-item').data('token');
         $('#modalDialog').data('token', PaymentToken);
     });
 
     // 选定后赋值
-    $('.payment-info').on('click', function () {
+    $('.payment-info').on('click', function() {
         var PaymentToken = $(this).parents('.payment-item').data('token');
         $('.icon-radio.active').removeClass('active');
         $(this).find('.icon-radio').addClass('active');
@@ -145,12 +145,12 @@
         hashTracking: false
     });
 
-    $('#modalDialog').on('closed', function () {
+    $('#modalDialog').on('closed', function() {
         $(this).removeData('token');
         console.log('close');
     });
 
-    $('#modalDialog').on('confirmation', function () {
+    $('#modalDialog').on('confirmation', function() {
         var PaymentToken = $(this).data('token');
         if (PaymentToken === undefined || PaymentToken === null || PaymentToken === '') {
             console.log('Token 没有值');
@@ -167,38 +167,40 @@
 
     var checkout = {}; // 事件 句柄
 
-    if (token !== '') {
+    if (token !== '' || token !== undefined) {
         braintree.setup(token, "custom", {
             paypal: {
-                currency: 'USD',// 沙盒系统需要字段
-                locale: 'en_us',// 沙盒系统需要字段
+                currency: 'USD', // 沙盒系统需要字段
+                locale: 'en_us', // 沙盒系统需要字段
                 headless: true
             },
-            onReady: function (integration) {
+            onReady: function(integration) {
                 checkout = integration;
             },
-            onPaymentMethodReceived: function (payload) {
+            onPaymentMethodReceived: function(payload) {
                 console.info('payload : ');
                 console.info(payload);
 
                 openLoading();
                 // TODO
                 $.ajax({
-                    url: '/braintree',
-                    type: 'POST',
-                    data: {nonce: payload.nonce}
-                })
-                    .done(function (data) {
+                        url: '/braintree',
+                        type: 'POST',
+                        data: {
+                            nonce: payload.nonce
+                        }
+                    })
+                    .done(function(data) {
                         console.log("success");
                         if (data.success) {
                             $('#infoForm').attr('action', data.redirectUrl);
                             $('#infoForm').submit();
                         }
                     })
-                    .fail(function () {
+                    .fail(function() {
                         console.log("error");
                     })
-                    .always(function () {
+                    .always(function() {
                         closeLoading();
                         console.log("complete");
                     });
@@ -207,12 +209,12 @@
         });
     }
 
-    $('#paypal').on('click', function (event) {
+    $('#paypal').on('click', function(event) {
         event.preventDefault();
         checkout.paypal.initAuthFlow();
     });
 
-    $('#cardCredit').on('click', function (event) {
+    $('#cardCredit').on('click', function(event) {
         event.preventDefault();
         $('#infoForm').attr('action', $(this).data('action'));
         $('#infoForm').submit();

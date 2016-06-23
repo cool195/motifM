@@ -677,7 +677,7 @@
     }
 
     // TODO 立即购买
-    $('#addCart').on('click', function(e) {
+    $('[data-role="addCart"]').on('click', function(e) {
         if ($(e.target).hasClass('disabled')) {
             return;
         }
@@ -703,7 +703,7 @@
                 console.log('complete');
             });
     });
-    $('#buyNow').on('click', function(e) {
+    $('[data-role="buyNow"]').on('click', function(e) {
         if ($(e.target).hasClass('disabled')) {
             return;
         }
