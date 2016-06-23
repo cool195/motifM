@@ -11,6 +11,9 @@
 |
 */
 
+$app->get('/apptest', function () use ($app) {
+    return $_COOKIE;
+});
 
 $app->get('/', 'Daily\DailyController@index');
 $app->get('/daily', 'Daily\DailyController@index');
