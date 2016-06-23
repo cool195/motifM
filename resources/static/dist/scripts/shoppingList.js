@@ -5,7 +5,7 @@
 
 'use strict';
 
-(function ($, Swiper) {
+(function($, Swiper) {
 
     // 导航条自动隐藏
     $('#header').headroom({
@@ -50,41 +50,6 @@
             unpinned: 'tabIndexUp'
         }
     });
-
-    // 设置 tab 高度
-    function setTabHeight() {
-        var ActiveTabIndex = TabsContainerSwiper.activeIndex,
-            $ActiveTab = $(TabsContainerSwiper.slides[ActiveTabIndex]);
-        $ActiveTab.css({height: 'auto'});
-        var ActiveTabHeight = $ActiveTab.children('.container-fluid').height();
-        console.info(ActiveTabHeight);
-        $ActiveTab.siblings('.swiper-slide').height(ActiveTabHeight);
-    }
-
-    // 选项卡导航
-    var TabIndexSwiper = new Swiper('#tabIndex-container', {
-        freeMode: true,
-        slidesPerView: 'auto',
-        freeModeMomentumRatio: .5,
-        onTap: function onTap() {
-            if ($(event.target).is('li') || $(event.target).is('a') || $(event.target).is('span')) {
-                tabSwitch(TabIndexSwiper.clickedIndex, 500);
-            }
-            setTabHeight();
-        }
-    });
-
-    // 初始化模态框
-    var options = {
-        hashTracking: false
-    };
-    $('[data-remodal-id=download-modal]').remodal(options);
-
-    // 选项卡容器
-    var TabsContainerSwiper = new Swiper('#tabs-container', {
-        onlyExternal: true
-    });
-
     // 导航和选项卡容器 联动的方法
     function tabSwitch(index, speed) {
         // 选项卡序号 移动
@@ -95,6 +60,45 @@
         $(TabIndexSwiper.slides).children('a').addClass('inactive');
         $(TabIndexSwiper.slides[index]).children('a').removeClass('inactive');
     }
+
+    // 设置 tab 高度
+    function setTabHeight() {
+        var ActiveTabIndex = TabsContainerSwiper.activeIndex,
+            $ActiveTab = $(TabsContainerSwiper.slides[ActiveTabIndex]);
+        $ActiveTab.css({
+            height: 'auto'
+        });
+        var ActiveTabHeight = $ActiveTab.children('.container-fluid').height();
+        console.info(ActiveTabHeight);
+        $ActiveTab.siblings('.swiper-slide').height(ActiveTabHeight);
+    }
+
+    // 选项卡导航
+    var TabIndexSwiper = new Swiper('#tabIndex-container', {
+        freeMode: true,
+        slidesPerView: 'auto',
+        freeModeMomentumRatio: .5
+    });
+
+    $('#tabIndex-container').on('click', '.nav-item', function(event) {
+        /* Act on the event */
+        tabSwitch(TabIndexSwiper.clickedIndex, 500);
+        tabsLoading();
+        setTabHeight();
+    });
+
+    // 初始化模态框
+    var options = {
+        hashTracking: false
+    };
+
+    $('[data-remodal-id=download-modal]').remodal(options);
+
+    // 选项卡容器
+    var TabsContainerSwiper = new Swiper('#tabs-container', {
+        onlyExternal: true
+    });
+
 
     /**
      * 对选项卡 所加载的页码 集合, 根据分类 Category 的数目, 进行初始化
@@ -198,29 +202,33 @@
         loadingShow(ActiveTab);
         // ajax 请求加载数据
         $.ajax({
-            url: '/products',
-            data: {pagenum: NextPage, pagesize: 20, cid: CurrentCid}
-        }).done(function (data) {
-            if (data.success) {
-                if (data.data === null || data.data === '' || data.data.list.length === 0) {
-                    $Current.data('pagenum', -1);
-                } else {
-                    // 遍历模板 插入页面
-                    appendProductsList(data.data, ActiveTab);
-                    $Current.data('pagenum', PageNum);
-                    console.info('当前页码数为' + PageNum);
-
-                    // 图片延迟加载
-                    $('img.img-lazy').lazyload({
-                        threshold: 200,
-                        container: $('#tabs-container'),
-                        effect: 'fadeIn'
-                    });
+                url: '/products',
+                data: {
+                    pagenum: NextPage,
+                    pagesize: 20,
+                    cid: CurrentCid
                 }
-            }
-        })
-        // TODO failed 时的提示
-            .always(function () {
+            }).done(function(data) {
+                if (data.success) {
+                    if (data.data === null || data.data === '' || data.data.list.length === 0) {
+                        $Current.data('pagenum', -1);
+                    } else {
+                        // 遍历模板 插入页面
+                        appendProductsList(data.data, ActiveTab);
+                        $Current.data('pagenum', PageNum);
+                        console.info('当前页码数为' + PageNum);
+
+                        // 图片延迟加载
+                        $('img.img-lazy').lazyload({
+                            threshold: 200,
+                            container: $('#tabs-container'),
+                            effect: 'fadeIn'
+                        });
+                    }
+                }
+            })
+            // TODO failed 时的提示
+            .always(function() {
                 // 隐藏加载动画
                 loadingHide(ActiveTab);
                 // 请求结束, loading = false
@@ -230,14 +238,15 @@
 
 
     // 为选项卡导航, 绑定一次性事件, 加载商品数据
-    $('#tabIndex-container').find('li[data-tab-index]').one('click', function () {
-        console.log('顶部切换, 触发选项卡loading, 一次性事件');
-        tabsLoading();
-        $('body').animate({scrollTop: 0}, 200);
+    $('#tabIndex-container').find('li[data-tab-index]').one('click', function() {
+        console.log('一次性事件');
+        $('body').animate({
+            scrollTop: 0
+        }, 200);
     });
     // 为页面绑定 滚动条事件
-    $(document).ready(function () {
-        $(window).scroll(function () {
+    $(document).ready(function() {
+        $(window).scroll(function() {
             pullLoading();
             console.log('滚动条滚动');
         });
