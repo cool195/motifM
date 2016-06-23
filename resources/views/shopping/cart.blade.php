@@ -44,7 +44,7 @@
                         @foreach($cartData['showSkus'] as $showSku)
                             {{-- TODO 需要添加 商品是否上架的判断 --}}
                             <div class="cartList-item p-a-10x @if(1 !== $showSku['stock_status']) disabled @endif">
-                                <a href="/detail/{{$showSku['spu']}}">
+                                <a @if(1 == $showSku['stock_status'] && 1 == $showSku['isPutOn']) href="/detail/{{$showSku['spu']}}" @endif>
                                     <div class="productInfo flex">
                                         <div class="flex-fixedShrink">
                                             <img class="img-thumbnail"
@@ -111,7 +111,9 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="text-warming font-size-xs">Warming: Women’s Ring</div>
+                                @if(0 == $showSku['stock_status'] || 0 == $showSku['isPutOn'])
+                                <div class="text-warning font-size-xs">Warming: {{$showSku['prompt_info']}}</div>
+                                @endif
                             </div>
                         @endforeach
                     @endif
@@ -147,7 +149,7 @@
                         @foreach($saveData['showSkus'] as $showSku)
                             {{-- TODO 需要添加 商品是否上架的判断 --}}
                             <div class="cartList-item p-a-10x @if( 1 !== $showSku['stock_status'] ) disabled @endif">
-                                <a href="/detail/{{$showSku['spu']}}">
+                                <a @if(1 == $showSku['stock_status'] && 1 == $showSku['isPutOn']) href="/detail/{{$showSku['spu']}}" @endif>
                                     <div class="productInfo flex">
                                         <div class="flex-fixedShrink">
                                             <img class="img-thumbnail"
@@ -192,6 +194,9 @@
                                     <a class="btn btn-cartUpdate btn-sm" data-product-move="movetocart"
                                        data-sku="{{$showSku['sku']}}">Move to Bag</a>
                                 </div>
+                                @if(0 == $showSku['stock_status'] || 0 == $showSku['isPutOn'])
+                                    <div class="text-warning font-size-xs">Warming: {{$showSku['prompt_info']}}</div>
+                                @endif
                             </div>
                         @endforeach
                     @endif
