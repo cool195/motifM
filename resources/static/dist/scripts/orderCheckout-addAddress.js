@@ -44,7 +44,7 @@
         }).done(function (data) {
             if (data.success) {
                 console.log('success');
-                //window.location.href = data.redirectUrl;
+                window.location.href = data.redirectUrl;
             }
         }).fail(function () {
             console.log('error');

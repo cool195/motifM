@@ -45,7 +45,7 @@
                             </div>
                             <div class="payment-info m-l-15x p-r-15x p-y-10x">
                                 <div class="flex flex-alignCenter">
-                                    <span class="cardImage-inline american-express"></span>
+                                    <span class="cardImage-inline paypal"></span>
                                     <span class="m-l-10x">{{$value['showName']}}</span>
                                 </div>
                             </div>
