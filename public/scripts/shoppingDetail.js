@@ -180,7 +180,11 @@
                 // Inventory 为库存的商品的Sku
                 var Inventory = inventoryNull(data.data.skuExps);
                 // 所有选项
-                newOptions(data.data.spuAttrs, Inventory, Options);
+                if (data.data.skus.length === 1) {
+                    ResultSkus = data.data.skus;
+                } else {
+                    newOptions(data.data.spuAttrs, Inventory, Options);
+                }
                 // 所有sku对应的库存
                 newStock(data.data.skuExps, Stock);
                 // 所有增值服务
@@ -355,6 +359,9 @@
     function switchOption(RadioList) {
 
         var SpaList = Object.keys(Options);
+        if (SpaList.length === 1) {
+            return;
+        }
 
         // 把选定的 Skus , 编成一组 , Skus集合
         var SkusList = {};
@@ -674,7 +681,7 @@
                             closeAddSuccess();
                         }, 1500);
                     }
-                }else{
+                } else {
                     alert(data.error_msg);
                 }
             })
@@ -704,6 +711,7 @@
                 Modal.open();
             } else {
                 initCart('PATCH');
+                location.reload();
             }
         }
     });
