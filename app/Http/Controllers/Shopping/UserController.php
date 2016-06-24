@@ -63,17 +63,19 @@ class UserController extends ApiController
             'nick' => $request->input('nick')
         );
         $result = $this->request('openapi', self::API_SYSTEM, self::API_SERVICE, $params);
-        if (empty($result)) {
+/*        if (empty($result) ) {
             $result['success'] = false;
             $result['error_msg'] = "Data access failed";
             $result['data'] = array();
         } else {
             if ($result['success']) {
                 $result['redirectUrl'] = "/login";
-                /*                $expiresAt = Carbon::now()->addDays(180);
-                                Cache::forget('user');
-                                Cache::put('user', $result['data'], $expiresAt);*/
             }
+        }*/
+        if($result['success']){
+            $result['redirectUrl'] = "/login";
+        }else{
+            $result['prompt_msg'] = $result['error_msg'];
         }
         return $result;
     }
