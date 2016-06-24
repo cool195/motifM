@@ -247,6 +247,7 @@
                     <div class="font-size-sm">
                         <strong>${{number_format(($data['skuPrice']['sale_price'] / 100), 2)}}</strong></div>
                     <div class="font-size-sm">Select:
+                        <span id="selectedOptions">
                         @if(isset($data['spuAttrs']))
                             @foreach($data['spuAttrs'] as $key => $attrs)
                                 @if((count($data['spuAttrs']) - 1) == $key)
@@ -256,6 +257,7 @@
                                 @endif
                             @endforeach
                         @endif
+                        </span>
                     </div>
                 </fieldset>
                 <hr class="hr-base m-a-0">
