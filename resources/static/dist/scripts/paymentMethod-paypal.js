@@ -44,7 +44,7 @@
     // braintree 初始化
 
     var checkout = {}; // 事件 句柄
-    if (token !== '' || token !== undefined) {
+    if (token !== '' && token !== undefined) {
         braintree.setup(token, "custom", {
             paypal: {
                 currency: 'USD', // 沙盒系统需要字段
