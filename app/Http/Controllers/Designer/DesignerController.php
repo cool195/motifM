@@ -56,7 +56,7 @@ class DesignerController extends ApiController
         $view = '';
         if (strstr($_SERVER['HTTP_USER_AGENT'], 'motif-android') || strstr($_SERVER['HTTP_USER_AGENT'], 'motif-ios')) {
 
-            if (isset($_COOKIE['PIN'])) {
+            if (!empty($_COOKIE['PIN'])) {
                 Log::info('app pin:::' . $_COOKIE['PIN']);
                 Session::put('user', array(
                     'login_email' => $_COOKIE['EMAIL'],
