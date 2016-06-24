@@ -74,7 +74,7 @@ class ShoppingController extends ApiController
 	public function feedback(Request $request)
 	{
 		$result = $this->getFeedbackList($request);
-		return View('Other.CustomerSupport', ['customers' => $result['data']['list'][3]]);
+		return View('Other.customersupport', ['customers' => $result['data']['list'][3]]);
 	}
 
 	public function getFeedbackList(Request $request)

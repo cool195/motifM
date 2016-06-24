@@ -67,7 +67,7 @@
             <a href="#" class="iconfont icon-facebook btn-facebook" id="facebookLogin"></a>
             <a href="#" class="iconfont icon-google btn-google" id="googleLogin"></a>
         </div>
-        <div class="m-t-20x text-primary text-center font-size-sm"><a href="#">Contact Us</a></div>
+        <div class="m-t-20x text-primary text-center font-size-sm"><a href="/contactus">Contact Us</a></div>
     </section>
 </div>
 <!-- loading 效果 -->
