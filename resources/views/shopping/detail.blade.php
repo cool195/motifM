@@ -334,10 +334,10 @@
                     @if(Session::has('user'))
                         <div class="row">
                             <div class="col-xs-6">
-                                <div class="btn btn-primary-outline btn-block disabled" data-role="addCart" id="addCart">Add To Bag</div>
+                                <div class="btn btn-primary-outline btn-block @if(!(!empty($data['vasBases']) && empty($data['spuAttrs'])))disabled @endif" data-role="addCart" id="addCart">Add To Bag</div>
                             </div>
                             <div class="col-xs-6">
-                                <div class="btn btn-primary btn-block disabled" data-role="buyNow" id="buyNow">Buy Now</div>
+                                <div class="btn btn-primary btn-block @if(!(!empty($data['vasBases']) && empty($data['spuAttrs'])))disabled @endif" data-role="buyNow" id="buyNow">Buy Now</div>
                             </div>
                         </div>
                     @else
