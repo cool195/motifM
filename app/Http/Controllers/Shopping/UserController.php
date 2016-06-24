@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Shopping;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\ApiController;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Session;
 
 class UserController extends ApiController
@@ -478,6 +479,7 @@ class UserController extends ApiController
             'token' => $request->input('token'),
             'uuid' => $request->input('uuid'),
         ));
+        Log::info($request->all());
         if (Session::get('pin')) {
             return array('success' => true);
         } else {
