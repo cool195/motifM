@@ -426,7 +426,7 @@
         <hr class="hr-base m-y-0 m-l-10x">
 
         @{{ each $value.lineOrderList }}
-        <div class="flex p-a-10x">
+        <a class="flex p-a-10x" href="/detail/@{{ $value.spu }}">
             <div class="flex-fixedShrink">
                 <img class="img-thumbnail img-lazy" src="/images/product/bg-product@70.png" data-original="https://s3-us-west-1.amazonaws.com/emimagetest/n4/@{{ $value.img_path }}" width="70px" height="70px">
             </div>
@@ -448,7 +448,7 @@
                     @{{ /if }}
                 </aside>
             </div>
-        </div>
+        </a>
         @{{ /each }}
 
         <hr class="hr-base m-y-0 m-l-10x">
