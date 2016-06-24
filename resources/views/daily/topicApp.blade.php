@@ -14,6 +14,7 @@
     <script src="/scripts/vendor/modernizr.js"></script>
     <script src="/scripts/vendor/fastclick.js"></script>
 </head>
+<?php error_reporting(0)?>
 <body>
 <!-- 外层容器 -->
 <div id="body-content">
