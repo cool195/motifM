@@ -10,7 +10,7 @@
     <!-- Place favicon.ico in the root directory -->
 
     <link rel="stylesheet" href="/styles/vendor.css">
-
+    <link rel="stylesheet" href="/styles/designerDetail.css">
     <script src="/scripts/vendor/modernizr.js"></script>
     <script src="/scripts/vendor/fastclick.js"></script>
 </head>
