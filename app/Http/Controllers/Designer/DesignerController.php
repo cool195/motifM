@@ -55,8 +55,9 @@ class DesignerController extends ApiController
         $product = $this->request('openapi', 'designerf', 'content', $params);
         $view = '';
         if (strstr($_SERVER['HTTP_USER_AGENT'], 'motif-android') || strstr($_SERVER['HTTP_USER_AGENT'], 'motif-ios')) {
-            Log::info('app pin:::' . $_COOKIE['PIN']);
+
             if (isset($_COOKIE['PIN'])) {
+                Log::info('app pin:::' . $_COOKIE['PIN']);
                 Session::put('user', array(
                     'login_email' => $_COOKIE['EMAIL'],
                     'nickname' => urldecode($_COOKIE['NAME']),
