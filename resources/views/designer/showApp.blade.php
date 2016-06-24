@@ -38,8 +38,20 @@
             <!-- 设计师 文字信息 -->
             <div class="bg-white p-a-5x">
                 <div class="flex flex-alignCenter flex-fullJustified p-x-10x p-t-10x">
-                    <p class="font-size-base text-main"><strong>{{$designer['name']}}</strong></p>
-                    <a href="#"><i class="iconfont icon-share icon-size-md text-primary"></i></a>
+                    <div class="font-size-base text-main"><strong>{{$designer['name']}}</strong></div>
+                    <div class="flex flex-alignCenter">
+                        <span class="p-r-20x">
+                            @if(Session::get('user.pin'))
+                                <a href="#" class="btn btn-follow btn-sm @if(!$designer['followStatus']) active @endif"
+                                   id="follow">Follow@if($designer['followStatus']){{'ing'}}@endif</a>
+                            @else
+                                <a href="#" class="btn btn-follow btn-sm active" id="sendLogin">Follow</a>
+                            @endif
+
+
+                        </span>
+                    </div>
+
                 </div>
                 <div class="font-size-sm text-primary p-a-10x">{{$designer['intro']}}</div>
                 <hr class="hr-base m-a-0">
@@ -129,7 +141,7 @@
         </section>
     </div>
 </div>
-<input type="button" onclick="follow()" value="follow">
+
 </body>
 <script src="/scripts/vendor.js"></script>
 <script src="/scripts/designerDetail.js"></script>
@@ -158,24 +170,33 @@
             });
         }
         //login
-        if (action.name == "authInfo") {
-            var cookieData = [{
-                "token": action.data.token,
-                "pin": action.data.pin,
-                "email": action.data.email,
-                "name": action.data.name,
-                "uuid": action.data.uuid
-            }]
-            alert(action.data.pin)
+        else if (action.name == "authInfo") {
+            //ajax post session info
+            $.ajax({
+                url: '/user/logincheck',
+                type: 'POST',
+                data: {
+                    token: action.data.token,
+                    pin: action.data.pin,
+                    email: action.data.email,
+                    name: decodeURIComponent(action.data.name),
+                    uuid: action.data.uuid
+                },
+                success: function(data){
+                    if (data.success) {
+                        window.location.reload()
+                    }
+                }
+            })
         }
     });
 
     //login send
-    function follow() {
+    $('#sendLogin').on('click', function () {
         Jockey.send("action", {
             name: "login",
             token: "key",
         });
-    }
+    })
 </script>
 </html>

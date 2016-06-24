@@ -12,7 +12,7 @@ class DailyController extends ApiController
     {
         $params = array(
             'cmd' => $request->input('cmd'),
-            'token' => $request->input('token', "1110"),
+            'token' => Session::get('user.token'),
             'pagesize' => $request->input('pagesize', 10),
             'pagenum' => $request->input('pagenum', 1),
         );
