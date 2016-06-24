@@ -14,7 +14,7 @@
                     type: 'POST',
                     data: {
                         email: profile.getEmail(),
-                        token: googleUser.getAuthResponse().id_token,
+                        id: profile.getId(),
                         name: profile.getName(),
                         avatar: profile.getImageUrl()
                     }
