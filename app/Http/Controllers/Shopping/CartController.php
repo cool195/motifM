@@ -33,10 +33,11 @@ class CartController extends ApiController
 	 * */
 	public function orderCheckout(Request $request)
 	{
-		$result = $this->getCartAccountList($request);
 		$defaultPayMethod = $this->getDefaultPayMethod();
 		$stype = !empty($request->input('stype')) ? $request->input('stype', 1) : 1; //必须加非空验证
+		$cps = $request->input('cps');
 		$defaultMethod = $this->getShippingMethodByStype($stype);
+		$result = $this->getCartAccountList($request, $defaultMethod['logistics_type'], $cps);
 		$result['data']['cardlist'] = array('Diners' => 'diners-club', 'Discover' => 'discover', 'JCB' => 'jcb', 'Maestro' => 'maestro', 'AmericanExpress' => 'american-express', 'Visa' => 'visa', 'MasterCard' => 'master-card');
 		if(empty($result['data'])){
 			return redirect('/shopping');
@@ -50,7 +51,7 @@ class CartController extends ApiController
 			'showName' => $request->input('showName', !empty($defaultPayMethod['data']['showName']) ? $defaultPayMethod['data']['showName'] : "" ),
 			'shipMethodList' => $this->getShippingMethod(),
 			'defaultMethod' => $defaultMethod,
-			'cps' => $request->input('cps', ""),
+			'cps' => $cps,
 			'remark' => $request->input('remark', ""),
 			'stype' => $defaultMethod['logistics_type'],
 			'input' => $request->except('pageSrc', 'aid', 'stype', 'paym', 'cardType', 'methodtoken', 'showName', 'eid')
@@ -293,16 +294,16 @@ class CartController extends ApiController
 	 * @return Array
 	 *
 	 * */
-	public function getCartAccountList(Request $request)
+	public function getCartAccountList(Request $request , $logisticstype = 1, $couponcode = "", $paytype = "")
 	{
 
 		$params = array(
 			'cmd'=>'accountlist',
 			'token' => Session::get('user.token'),
 			'pin' => Session::get('user.pin'),
-			'logisticstype'=>$request->input('logisticstype'),
-			'paytype'=>$request->input('paytype'),
-			'couponcode'=>$request->input('couponcode')
+			'logisticstype'=>$request->input('logisticstype', $logisticstype),
+			'paytype'=>$request->input('paytype', $paytype),
+			'couponcode'=>$request->input('couponcode', $couponcode )
 		);
 		$system = "";
 		$service = "cart";
