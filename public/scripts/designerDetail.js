@@ -109,6 +109,24 @@
         getMediaScale();
         mediainit();
     };
+
+    // follow 设计师
+    function switchFollow($Follow) {
+        if ($Follow.hasClass('active')) {
+            $Follow.html('Following');
+            $Follow.toggleClass('active');
+            $Follow.addClass('btn-primary').removeClass('btn-follow');
+        } else {
+            $Follow.html('Follow');
+            $Follow.toggleClass('active');
+            $Follow.addClass('btn-follow').removeClass('btn-primary');
+        }
+    }
+
+    $('#follow').on('click', function (e) {
+        // 切换 Follow 按钮状态
+        switchFollow($(e.target));
+    })
 })(jQuery);
 
 //# sourceMappingURL=designerDetail.js.map
