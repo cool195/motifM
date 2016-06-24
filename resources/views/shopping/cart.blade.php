@@ -134,7 +134,7 @@
                 </section>
                 <!-- 购买按钮 -->
                 <section class="bg-white m-t-10x p-a-10x">
-                    <a href="/cart/ordercheckout" class="btn btn-primary btn-block btn-sm" type="submit">Proceed To
+                    <a href="/cart/ordercheckout" class="btn btn-primary btn-block btn-sm @if($cartData['pay_amount'] <= 0) disabled @endif" type="submit">Proceed To
                         Checkout</a>
                 </section>
 
