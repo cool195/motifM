@@ -27,7 +27,7 @@
                 "name": action.data.name,
                 "uuid": action.data.uuid
             }]
-            alert(action.data.pin)
+            alert(decodeURIComponent(action.data.name))
         }
     });
 
