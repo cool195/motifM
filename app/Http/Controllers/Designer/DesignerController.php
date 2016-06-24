@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Designer;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\ApiController;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Session;
 
 class DesignerController extends ApiController
@@ -54,7 +55,8 @@ class DesignerController extends ApiController
         $product = $this->request('openapi', 'designerf', 'content', $params);
         $view = '';
         if (strstr($_SERVER['HTTP_USER_AGENT'], 'motif-android') || strstr($_SERVER['HTTP_USER_AGENT'], 'motif-ios')) {
-            if (!Session::get('user.pin') && isset($_COOKIE['pin'])) {
+            Log::info('app pin:::'.$_COOKIE['pin']);
+            if (isset($_COOKIE['pin'])) {
                 Session::put('user', array(
                     'login_email' => $_COOKIE['email'],
                     'nickname' => urldecode($_COOKIE['name']),
@@ -62,17 +64,10 @@ class DesignerController extends ApiController
                     'token' => $_COOKIE['token'],
                     'uuid' => $_COOKIE['uuid'],
                 ));
-            }
-
-            if (Session::get('user.pin')) {
-                $followParams = array(
-                    'cmd' => 'is',
-                    'pin' => Session::get('user.pin'),
-                    'token' => Session::get('user.token'),
-                    'did' => $id,
-                );
                 $follow = $this->request('openapi', '', 'follow', $followParams);
                 $result['data']['followStatus'] = $follow['data']['isFC'];
+            } else {
+                Session::forget('user');
             }
             $view = 'designer.showApp';
         } else {
