@@ -169,6 +169,7 @@
         //login
         else if (action.name == "authInfo") {
             //ajax post session info
+            alert(decodeURIComponent(action.data.name))
             $.ajax({
                 url: '/user/logincheck',
                 type: 'POST',
