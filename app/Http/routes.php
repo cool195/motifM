@@ -119,7 +119,7 @@ $app->group(['namespace' => 'App\Http\Controllers\Shopping'], function ($app) {
     $app->get('/products/{spu}', 'ProductController@getProductDetail');
     $app->get('/detail/{spu}', 'ProductController@index');
 
-
+    $app->post('/rsyncLogin', 'UserController@rsyncLogin');
     $app->get('/login', 'UserController@login');
     $app->patch('/login', 'UserController@login');
     $app->get('/user/logincheck', 'UserController@loginCheck');

@@ -31,7 +31,7 @@ class UserController extends ApiController
     public function changeProfile(Request $request)
     {
         $user = Session::get('user');
-        return View('shopping.profilesetting_changeprofile', ['user'=>$user]);
+        return View('shopping.profilesetting_changeprofile', ['user' => $user]);
     }
 
     /*
@@ -67,15 +67,15 @@ class UserController extends ApiController
             $result['success'] = false;
             $result['error_msg'] = "Data access failed";
             $result['data'] = array();
-        } else{
-            if($result['success']){
+        } else {
+            if ($result['success']) {
                 $result['redirectUrl'] = "/login";
-/*                $expiresAt = Carbon::now()->addDays(180);
-                Cache::forget('user');
-                Cache::put('user', $result['data'], $expiresAt);*/
+                /*                $expiresAt = Carbon::now()->addDays(180);
+                                Cache::forget('user');
+                                Cache::put('user', $result['data'], $expiresAt);*/
             }
         }
-         return $result;
+        return $result;
     }
 
     /*
@@ -85,7 +85,7 @@ class UserController extends ApiController
      * */
     public function login(Request $request)
     {
-        if(Session::has('user')){
+        if (Session::has('user')) {
             return redirect('/daily');
         }
         return view('shopping.login');
@@ -115,7 +115,7 @@ class UserController extends ApiController
         } else {
             if ($result['success']) {
                 $result['redirectUrl'] = "/daily";
-                if(isset($_SERVER['HTTP_REFERER']) && !empty($_SERVER['HTTP_REFERER'])){
+                if (isset($_SERVER['HTTP_REFERER']) && !empty($_SERVER['HTTP_REFERER'])) {
                     $result['redirectUrl'] = $_SERVER['HTTP_REFERER'];
                 }
                 Session::forget('user');
@@ -136,8 +136,8 @@ class UserController extends ApiController
     public function signout(Request $request)
     {
         $user = Session::get('user');
-        $result = array('success'=>false, 'error_msg'=>"user is signout", 'data' => array());
-        if(!empty($user)) {
+        $result = array('success' => false, 'error_msg' => "user is signout", 'data' => array());
+        if (!empty($user)) {
             $params = array(
                 'cmd' => "signout",
                 'pin' => $user['pin'],
@@ -248,9 +248,9 @@ class UserController extends ApiController
             $result['success'] = false;
             $result['error_msg'] = "Data access failed";
             $result['data'] = array();
-        }else{
+        } else {
             $result['prompt_msg'] = "Password change failed, Please try agian!";
-            if($result['success']){
+            if ($result['success']) {
                 Session::forget('user');
                 $result['prompt_msg'] = "Your password has been changed. Please login agian";
                 $result['redirectUrl'] = "/login";
@@ -280,7 +280,7 @@ class UserController extends ApiController
             $result['success'] = false;
             $result['error_msg'] = "Data access failed";
             $result['data'] = array();
-        }else {
+        } else {
             if ($result['success']) {
                 Session::forget('user');
                 Session::put("user", $result['data']);
@@ -333,9 +333,9 @@ class UserController extends ApiController
             $result['success'] = false;
             $result['error_msg'] = "Data access failed";
             $result['data'] = array();
-        }else{
-            $result['error_msg']= "Modify Info Failed";
-            if($result['success']){
+        } else {
+            $result['error_msg'] = "Modify Info Failed";
+            if ($result['success']) {
                 $result['prompt_msg'] = "Modify Info Success";
                 $userInfo = $this->getUserDetailInfo($request);
                 $user['nickname'] = $userInfo['data']['nickname'];
@@ -359,23 +359,23 @@ class UserController extends ApiController
         $cmd = 'list';
         $uuid = $request->input('uuid', '123');
         $params = array(
-            'cmd'=>$cmd,
-            'uuid'=>$uuid,
+            'cmd' => $cmd,
+            'uuid' => $uuid,
             'token' => Session::get('user.token'),
             'pin' => Session::get('user.pin'),
         );
         $system = "";
         $service = "useraddr";
         $result = $this->request('openapi', $system, $service, $params);
-        if(empty($result) || empty($result['data']['list'])){
+        if (empty($result) || empty($result['data']['list'])) {
             $result['success'] = false;
             $result['error_msg'] = "Data access failed";
             $result['data'] = array();
             $result['data']['list'] = array();
-        }else{
-            if($result['success']){
+        } else {
+            if ($result['success']) {
                 $list = array();
-                foreach($result['data']['list'] as $addr){
+                foreach ($result['data']['list'] as $addr) {
                     $list[$addr['receiving_id']] = $addr;
                 }
                 $result['data']['list'] = $list;
@@ -392,20 +392,20 @@ class UserController extends ApiController
     public function shippingAddress(Request $request)
     {
         $result = $this->getShippingAddress($request);
-        return View('shopping.profilesetting_shippingaddress', ['data'=>$result['data']]);
+        return View('shopping.profilesetting_shippingaddress', ['data' => $result['data']]);
     }
 
     public function addrAdd(Request $request)
     {
-        $country = json_decode(base64_decode($request->input('country', base64_encode(json_encode(['country_id'=>5, 'country_name_cn'=>"中国", 'country_name_en'=>"China", 'iDnumberReq'=>0, 'isFreq'=>0])))), true);
+        $country = json_decode(base64_decode($request->input('country', base64_encode(json_encode(['country_id' => 5, 'country_name_cn' => "中国", 'country_name_en' => "China", 'iDnumberReq' => 0, 'isFreq' => 0])))), true);
         $input = Session::get('input');
         Session::forget('input');
-        return View('shopping.profilesetting_addaddress', ['country'=>$country, 'input'=>$input,'first' => $request->get('first')]);
+        return View('shopping.profilesetting_addaddress', ['country' => $country, 'input' => $input, 'first' => $request->get('first')]);
     }
 
     public function addrModify(Request $request, $aid)
     {
-        if(Session::has('input')){
+        if (Session::has('input')) {
             $input = Session::get('input');
             $input['detail_address1'] = $input['addr1'];
             $input['detail_address2'] = $input['addr2'];
@@ -413,20 +413,20 @@ class UserController extends ApiController
             $input['iDnumber'] = $input['idnum'];
             $input['isDefault'] = $input['isd'];
             $input['receiving_id'] = $input['aid'];
-        }else {
+        } else {
             $res = $this->getShippingAddress($request);
             $addrList = $res['data']['list'];
             $input = $addrList[$aid];
         }
         $country = json_decode(base64_decode($request->input('country')), true);
-        if(!empty($country)){
+        if (!empty($country)) {
             $input['country'] = $country['country_name_en'];
         }
-        if(empty($input)){
+        if (empty($input)) {
             return redirect('/user/shippingaddress');
         }
         Session::forget('input');
-        return View('shopping.profilesetting_modaddress', ['input'=>$input]);
+        return View('shopping.profilesetting_modaddress', ['input' => $input]);
     }
 
     public function countryList(Request $request)
@@ -436,37 +436,53 @@ class UserController extends ApiController
         Session::forget('input');
         Session::put('input', $input);
         $params = array(
-            'cmd'=>'country',
+            'cmd' => 'country',
         );
         $system = "";
         $service = "useraddr";
         $result = $this->request('openapi', $system, $service, $params);
-        if(empty($result)){
+        if (empty($result)) {
             $result['success'] = false;
             $result['error_msg'] = "Data access failed";
             $result['data'] = array();
-        }else{
-            if($result['success']){
+        } else {
+            if ($result['success']) {
                 $commonlist = array();
-                for($index = 0; $index < $result['data']['amount']; $index++)
-                {
+                for ($index = 0; $index < $result['data']['amount']; $index++) {
                     $commonlist[] = array_shift($result['data']['list']);
                 }
                 $result['data']['commonlist'] = $commonlist;
             }
         }
-        return View('shopping.profilesetting_countrylist', ['list'=>$result['data']['list'], 'commonlist'=>$result['data']['commonlist'], 'route'=>$input['route']]);
+        return View('shopping.profilesetting_countrylist', ['list' => $result['data']['list'], 'commonlist' => $result['data']['commonlist'], 'route' => $input['route']]);
     }
 
     public function saveUUID(Request $request)
     {
         $uuid = $request->input('uuid');
         $result['success'] = false;
-        if(!empty($uuid) && Session::has('user')){
+        if (!empty($uuid) && Session::has('user')) {
             Session::push('user.uuid', $uuid);
             $result['success'] = true;
         }
         return $result;
+    }
+
+    //APP同步登录
+    public function rsyncLogin(Request $request)
+    {
+        Session::put('user', array(
+            'login_email' => $request->input('email'),
+            'nickname' => $request->input('name'),
+            'pin' => $request->input('pin'),
+            'token' => $request->input('token'),
+            'uuid' => $request->input('uuid'),
+        ));
+        if (Session::get('pin')) {
+            return array('success' => true);
+        } else {
+            return array('success' => false);
+        }
     }
 }
 

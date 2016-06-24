@@ -170,7 +170,7 @@
         else if (action.name == "authInfo") {
             //ajax post session info
             $.ajax({
-                url: '/user/logincheck',
+                url: '/rsyncLogin',
                 type: 'POST',
                 data: {
                     token: action.data.token,
