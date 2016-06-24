@@ -13,8 +13,8 @@ class DesignerController extends ApiController
     {
         $params = array(
             'cmd' => $request->input('cmd'),//designerinfolist
-            'token' => '1110',
-            'pin' => 'e052d5681da34fad83d0597b7b72acf7',
+            'token' => Session::get('user.token'),
+            'pin' => Session::get('user.pin'),
             'size' => $request->input('size', 10),
             'start' => $request->input('start', 1),
         );
@@ -23,8 +23,8 @@ class DesignerController extends ApiController
             //首次加载,请求推荐设计师数据
             $result = $this->request('openapi', '', 'designer', array(
                 'cmd' => 'recdesignerlist',
-                'token' => '1110',
-                'pin' => 'e052d5681da34fad83d0597b7b72acf7'
+                'token' => Session::get('user.token'),
+                'pin' => Session::get('user.pin')
             ));
 
             return View('designer.index', ['recdesigner' => isset($result['data']['list']) ? $result['data']['list'] : array()]);
@@ -41,8 +41,8 @@ class DesignerController extends ApiController
     {
         $params = array(
             'cmd' => $request->input("cmd", 'designerdetail'),
-            'pin' => 'e052d5681da34fad83d0597b7b72acf7',
-            'token' => '1110',
+            'pin' => Session::get('user.pin'),
+            'token' => Session::get('user.token'),
             'd_id' => $id,
         );
 
@@ -62,6 +62,17 @@ class DesignerController extends ApiController
                     'token' => $_COOKIE['token'],
                     'uuid' => $_COOKIE['uuid'],
                 ));
+            }
+            
+            if (Session::get('user.pin')) {
+                $followParams = array(
+                    'cmd' => 'is',
+                    'pin' => Session::get('user.pin'),
+                    'token' => Session::get('user.token'),
+                    'did' => $id,
+                );
+                $follow = $this->request('openapi', '', 'follow', $followParams);
+                $result['followStatus'] = $follow['data']['isFC'];
             }
             $view = 'designer.showApp';
         } else {
