@@ -102,8 +102,6 @@ $app->group(['middleware' => 'logincheck', 'namespace' => 'App\Http\Controllers\
     $app->post('/order/orderSubmit', 'OrderController@orderSubmit');
     $app->get('/success', 'OrderController@orderSuccess');
 
-    $app->get('/followDesigner/{id}', 'DesignerController@follow');
-
     //第三方支付
     $app->get('/braintree', 'BraintreeController@index');
     $app->delete('/braintree', 'BraintreeController@delMethod');
@@ -136,6 +134,10 @@ $app->group(['namespace' => 'App\Http\Controllers\Shopping'], function ($app) {
 $app->group(['middleware' => 'logincheck', 'namespace' => 'App\Http\Controllers\Other'], function ($app) {
     $app->get('/askshopping', 'AskController@show');
     $app->put('/askshopping', 'AskController@install');
+});
+
+$app->group(['middleware' => 'logincheck', 'namespace' => 'App\Http\Controllers\Designer'], function ($app) {
+    $app->get('/followDesigner/{id}', 'DesignerController@follow');
 });
 
 
