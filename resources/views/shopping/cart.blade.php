@@ -189,10 +189,16 @@
                                     </div>
                                 </a>
                                 <div class="flex p-y-10x">
-                                    <a class="btn btn-cartUpdate btn-sm" data-remodal-target="modal"
-                                       data-sku="{{$showSku['sku']}}" data-action="delsave">Delete</a>
-                                    <a class="btn btn-cartUpdate btn-sm" data-product-move="movetocart"
-                                       data-sku="{{$showSku['sku']}}">Move to Bag</a>
+                                    <a class="btn btn-cartUpdate btn-sm" data-remodal-target="modal" data-sku="{{$showSku['sku']}}" data-action="delsave">
+                                        Delete
+                                    </a>
+                                    <a class="btn btn-cartUpdate btn-sm @if(0 == $showSku['stock_status'] || 0 == $showSku['isPutOn']) disabled @endif" data-product-move="movetocart" data-sku="{{$showSku['sku']}}">
+                                        @if(0 == $showSku['stock_status'] || 0 == $showSku['isPutOn'])
+                                            Listing Ended
+                                        @else
+                                            Move to Bag
+                                        @endif
+                                    </a>
                                 </div>
                                 @if(0 == $showSku['stock_status'] || 2 == $showSku['stock_status'] || 0 == $showSku['isPutOn'])
                                     <div class="text-warning font-size-xs">Warming: {{$showSku['prompt_info']}}</div>
