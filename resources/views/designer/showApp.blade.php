@@ -43,7 +43,8 @@
                     <div class="flex flex-alignCenter">
                         <span class="p-r-20x">
                             @if(Session::get('user.pin'))
-                                <a href="#" class="btn btn-follow btn-sm @if(!$designer['followStatus']) active @endif" id="follow">@if($designer['followStatus']){{'Following'}}@else{{'Follow'}}@endif</a>
+                                <a href="#" data-followid="{{$designer['designer_id']}}" class="btn btn-follow btn-sm @if(!$designer['followStatus']) active @endif"
+                                   id="follow">@if($designer['followStatus']){{'Following'}}@else{{'Follow'}}@endif</a>
                             @else
                                 <a href="#" class="btn btn-follow btn-sm active" id="sendLogin">Follow</a>
                             @endif
@@ -139,6 +140,10 @@
         </section>
     </div>
 </div>
+<!-- loading 效果 -->
+<div class="loading loading-screen loading-switch loading-hidden">
+    <div class="loader loader-screen"></div>
+</div>
 
 </body>
 <script src="/scripts/vendor.js"></script>
@@ -180,7 +185,7 @@
                     name: decodeURIComponent(action.data.name),
                     uuid: action.data.uuid
                 },
-                success: function(data){
+                success: function (data) {
                     if (data.success) {
                         window.location.reload()
                     }

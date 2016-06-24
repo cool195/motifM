@@ -33,6 +33,22 @@
         }
     }
 
+    // loading 打开
+    function openLoading() {
+        $('.loading').toggleClass('loading-hidden');
+        setTimeout(function () {
+            $('.loading').toggleClass('loading-open');
+        }, 25);
+    }
+
+    // loading 隐藏
+    function closeLoading() {
+        $('.loading').addClass('loading-close');
+        setTimeout(function () {
+            $('.loading').toggleClass('loading-hidden loading-open').removeClass('loading-close');
+        }, 500);
+    }
+
     $(window).resize(function () {
         mediainit();
     });
@@ -127,7 +143,34 @@
     $('#follow').on('click', function (e) {
         // 切换 Follow 按钮状态
         switchFollow($(e.target));
+
+        //修改 Follow 状态
+        var followId = $(this).data('followId');
+        changeFollow(followId);
     })
+
+    // 修改 Follow 状态
+    function changeFollow(id) {
+        openLoading();
+        $.ajax({
+            url: '/followDesigner',
+            type: 'POST',
+            data: {id: id}
+        })
+            .done(function (data) {
+                if (data.success) {
+                    console.log("success");
+                    //location.reload();
+                }
+            })
+            .fail(function () {
+                console.log("error");
+            })
+            .always(function () {
+                console.log("complete");
+                closeLoading();
+            });
+    }
 })(jQuery);
 
 //# sourceMappingURL=designerDetail.js.map
