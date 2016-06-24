@@ -181,6 +181,7 @@
                     uuid: action.data.uuid
                 },
                 success: function(data){
+                    alert('success')
                     if (data.success) {
                         window.location.reload()
                     }
@@ -196,5 +197,14 @@
             token: "key",
         });
     })
+</script>
+
+<meta name="csrf-token" content="{{ csrf_token() }}"/>
+<script>
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
 </script>
 </html>
