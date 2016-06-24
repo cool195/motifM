@@ -70,7 +70,7 @@
                 Sign in with Google
             </a>
         </div>
-        <div class="m-t-20x text-primary text-center font-size-sm"><a href="#">Contact Us</a></div>
+        <div class="m-t-20x text-primary text-center font-size-sm"><a href="/contactus">Contact Us</a></div>
     </section>
 
 </div>

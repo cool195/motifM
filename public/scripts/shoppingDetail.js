@@ -456,6 +456,7 @@
 
         // 全选状态的筛选
         if (RadioList.length === CheckCount.length) {
+            getResultSku(RadioList);
             switchOption(RadioList);
 
             // 获取所选中 sku 对应的库存
