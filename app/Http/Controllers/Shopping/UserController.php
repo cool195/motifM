@@ -479,7 +479,7 @@ class UserController extends ApiController
             'token' => $request->input('token'),
             'uuid' => $request->input('uuid'),
         ));
-        Log::info($request->all());
+        Log::info($request->input('uuid').'---'.$request->input('token').'---'.$request->input('pin').'---'.$request->input('name').'---'.$request->input('email'));
         if (Session::get('pin')) {
             return array('success' => true);
         } else {
