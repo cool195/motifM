@@ -240,7 +240,7 @@ class UserController extends ApiController
             'cmd' => "modifypwd",
             'token' => Session::get('user.token'),
             'pin' => Session::get('user.pin'),
-            'oldpw' => md5($request->input('pw')),
+            'oldpw' => md5($request->input('oldpw')),
             'pw' => md5($request->input('pw')),
         );
         $result = $this->request('openapi', self::API_SYSTEM, self::API_SERVICE, $params);
