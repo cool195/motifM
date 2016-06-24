@@ -55,15 +55,21 @@ class DesignerController extends ApiController
         $product = $this->request('openapi', 'designerf', 'content', $params);
         $view = '';
         if (strstr($_SERVER['HTTP_USER_AGENT'], 'motif-android') || strstr($_SERVER['HTTP_USER_AGENT'], 'motif-ios')) {
-            Log::info('app pin:::'.$_COOKIE['pin']);
-            if (isset($_COOKIE['pin'])) {
+            Log::info('app pin:::' . $_COOKIE['PIN']);
+            if (isset($_COOKIE['PIN'])) {
                 Session::put('user', array(
-                    'login_email' => $_COOKIE['email'],
-                    'nickname' => urldecode($_COOKIE['name']),
-                    'pin' => $_COOKIE['pin'],
-                    'token' => $_COOKIE['token'],
-                    'uuid' => $_COOKIE['uuid'],
+                    'login_email' => $_COOKIE['EMAIL'],
+                    'nickname' => urldecode($_COOKIE['NAME']),
+                    'pin' => $_COOKIE['PIN'],
+                    'token' => $_COOKIE['TOKEN'],
+                    'uuid' => $_COOKIE['UUID'],
                 ));
+                $followParams = array(
+                    'cmd' => 'is',
+                    'pin' => Session::get('user.pin'),
+                    'token' => Session::get('user.token'),
+                    'did' => $id,
+                );
                 $follow = $this->request('openapi', '', 'follow', $followParams);
                 $result['data']['followStatus'] = $follow['data']['isFC'];
             } else {
