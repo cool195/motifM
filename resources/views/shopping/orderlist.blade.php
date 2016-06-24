@@ -75,6 +75,7 @@
         <hr class="hr-base m-y-0 m-l-10x">
 
         @{{ each $value.lineOrderList }}
+        <a href="/detail/@{{ $value.spu }}">
         <div class="flex p-a-10x">
             <div class="flex-fixedShrink">
                 <img class="img-thumbnail img-lazy"
@@ -101,6 +102,7 @@
                 </aside>
             </div>
         </div>
+        </a>
         @{{ /each }}
 
         <hr class="hr-base m-y-0 m-l-10x">
