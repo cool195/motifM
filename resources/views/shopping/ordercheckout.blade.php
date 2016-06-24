@@ -81,10 +81,11 @@
                             <div class="text-warning">No Address Added</div>
                         @else
                         <div>
-                            <div>{{$addr['email']}}</div>
-                            <div>{{$addr['detail_address1']}}</div>
-                            <div>{{$addr['city']}}  {{$addr['zip']}} {{$addr['status_code']}}</div>
+                            <div>{{ $addr['name'] }}  {{$addr['email']}}</div>
+                            <div>{{$addr['detail_address1']}} @if(!empty($addr['detail_address2'])) {{ $addr['detail_address2'] }} @endif</div>
+                            <div>{{$addr['city']}}  {{$addr['state']}} {{$addr['zip']}}</div>
                             <div>{{$addr['country']}}</div>
+                            <div>@if(!empty($addr['telephone'])){{ $addr['telephone'] }} @endif</div>
                         </div>
                         @endif
                         <input hidden name="aid" value="{{$addr['receiving_id']}}">
@@ -106,12 +107,14 @@
                         @if(empty($paym) || "" == $paym )
                             <span class="text-warning">No PaymentMethod add</span>
                         @else
+                            <div class="flex">
                             @if($cardType=="PayPal")
-                                <span class="cardImage-inline paypal"></span>
+                                <span class="cardImage-inline  paypal"></span>
                             @elseif(array_get($data['cardlist'],$cardType))
-                                <span class="cardImage-inline {{array_get($data['cardlist'],$cardType)}}"></span>
+                                <span class="cardImage-inline  {{array_get($data['cardlist'],$cardType)}}"></span>
                             @endif
-                            <span class="m-l-10x">{{ $paym."(".$showName.")" }}</span>
+                            <span class="m-l-10x">{{$showName}}</span>
+                            </div>
                         @endif
                         <i class="iconfont icon-arrow-right icon-size-xm text-common p-r-15x"></i>
                     </div>
