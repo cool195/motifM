@@ -169,7 +169,6 @@
         //login
         else if (action.name == "authInfo") {
             //ajax post session info
-            alert(decodeURIComponent(action.data.name))
             $.ajax({
                 url: '/user/logincheck',
                 type: 'POST',
@@ -181,7 +180,7 @@
                     uuid: action.data.uuid
                 },
                 success: function(data){
-                    alert('success')
+                    alert(data.success)
                     if (data.success) {
                         window.location.reload()
                     }
