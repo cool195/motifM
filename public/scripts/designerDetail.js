@@ -68,6 +68,7 @@
         if (ImgWidth < Width && ImgHeight < MediaHeight) {
             // 图片实际高度小与固定高度  并且 实际宽度小与固定宽度
             $('.designer-Img').removeClass('img-fluid');
+            $('.designer-Img').css({width: 'auto'});
         } else if (RealScale == MediaScale) {
             // 实际宽高比 等于 固定比
             $('.designer-Img').addClass('img-fluid');
