@@ -102,6 +102,8 @@ $app->group(['middleware' => 'logincheck', 'namespace' => 'App\Http\Controllers\
     $app->post('/order/orderSubmit', 'OrderController@orderSubmit');
     $app->get('/success', 'OrderController@orderSuccess');
 
+    $app->get('/followDesigner/{id}', 'DesignerController@follow');
+
     //第三方支付
     $app->get('/braintree', 'BraintreeController@index');
     $app->delete('/braintree', 'BraintreeController@delMethod');

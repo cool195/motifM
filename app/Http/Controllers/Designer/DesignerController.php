@@ -57,7 +57,6 @@ class DesignerController extends ApiController
         if (strstr($_SERVER['HTTP_USER_AGENT'], 'motif-android') || strstr($_SERVER['HTTP_USER_AGENT'], 'motif-ios')) {
 
             if (!empty($_COOKIE['PIN'])) {
-                Log::info('app pin:::' . $_COOKIE['PIN']);
                 Session::put('user', array(
                     'login_email' => $_COOKIE['EMAIL'],
                     'nickname' => urldecode($_COOKIE['NAME']),
@@ -81,6 +80,38 @@ class DesignerController extends ApiController
             $view = 'designer.show';
         }
         return View($view, ['designer' => $result['data'], 'product' => $product['data']]);
+    }
+
+    //关注或取消设计师
+    public function follow($id)
+    {
+        $followParams = array(
+            'cmd' => 'is',
+            'pin' => Session::get('user.pin'),
+            'token' => Session::get('user.token'),
+            'did' => $id,
+        );
+        $follow = $this->request('openapi', '', 'follow', $followParams);
+        if ($follow['data']['isFC']) {
+            //取消关注
+            $followParams = array(
+                'cmd' => 'del',
+                'pin' => Session::get('user.pin'),
+                'token' => Session::get('user.token'),
+                'did' => $id,
+            );
+            $follow = $this->request('openapi', '', 'follow', $followParams);
+        } else {
+            //关注
+            $followParams = array(
+                'cmd' => 'add',
+                'pin' => Session::get('user.pin'),
+                'token' => Session::get('user.token'),
+                'did' => $id,
+            );
+            $follow = $this->request('openapi', '', 'follow', $followParams);
+        }
+        return $follow;
     }
 }
 
