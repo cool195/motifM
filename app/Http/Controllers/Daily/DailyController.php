@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Daily;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\ApiController;
-
+use Illuminate\Support\Facades\Session;
 class DailyController extends ApiController
 {
     //Daily首页列表
@@ -12,7 +12,7 @@ class DailyController extends ApiController
     {
         $params = array(
             'cmd' => $request->input('cmd'),
-            'token' => $request->input('token', "1110"),
+            'token' => Session::get('user.token'),
             'pagesize' => $request->input('pagesize', 10),
             'pagenum' => $request->input('pagenum', 1),
         );
