@@ -63,7 +63,7 @@ class DesignerController extends ApiController
                     'uuid' => $_COOKIE['uuid'],
                 ));
             }
-            
+
             if (Session::get('user.pin')) {
                 $followParams = array(
                     'cmd' => 'is',
@@ -72,7 +72,7 @@ class DesignerController extends ApiController
                     'did' => $id,
                 );
                 $follow = $this->request('openapi', '', 'follow', $followParams);
-                $result['followStatus'] = $follow['data']['isFC'];
+                $result['data']['followStatus'] = $follow['data']['isFC'];
             }
             $view = 'designer.showApp';
         } else {
