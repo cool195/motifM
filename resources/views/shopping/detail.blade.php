@@ -120,15 +120,14 @@
                     @endif
                 </aside>
                 <!-- 选择商品参数 -->
-                @if(isset($data['spuAttrs']))
+                @if(isset($data['spuAttrs']) || isset($data['vasBases']))
                     <aside class="bg-white m-b-10x">
                         <a class="flex flex-alignCenter flex-fullJustified font-size-sm text-primary p-a-15x"
                            data-remodal-target="modal" href="#">
                             <span>Select</span>
 						<span class="flex flex-alignCenter flex-fullJustified">
 							<span class="m-r-10x">
-
-                                    @foreach($data['spuAttrs'] as $key => $attrs)
+                                @foreach($data['spuAttrs'] as $key => $attrs)
                                     @if((count($data['spuAttrs']) - 1) == $key)
                                         {{$attrs['attr_type_value']}}
                                     @else
