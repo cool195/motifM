@@ -1,6 +1,6 @@
 <?php
 namespace App\Services;
-
+use Illuminate\Support\Facades\Log;
 class Net
 {
     public static function api($apiName, $system, $service, $params, array $headers = [])
@@ -39,6 +39,7 @@ class Net
         while ($urlIndex < $max_failed) {
             $url = $api . $parameter;
             $ch = curl_init($url);
+            Log::info($url);
             $opt = array(
                 CURLOPT_USERAGENT => 'jason curl lib',
                 CURLOPT_HEADER => false,

@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Designer;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\ApiController;
-use Symfony\Component\HttpFoundation\Cookie;
+use Illuminate\Support\Facades\Session;
 
 class DesignerController extends ApiController
 {
@@ -54,15 +54,20 @@ class DesignerController extends ApiController
         $product = $this->request('openapi', 'designerf', 'content', $params);
         $view = '';
         if (strstr($_SERVER['HTTP_USER_AGENT'], 'motif-android') || strstr($_SERVER['HTTP_USER_AGENT'], 'motif-ios')) {
+            if (!Session::get('user.pin') && isset($_COOKIE['pin'])) {
+                Session::put('user', array(
+                    'login_email' => $_COOKIE['email'],
+                    'nickname' => urldecode($_COOKIE['name']),
+                    'pin' => $_COOKIE['pin'],
+                    'token' => $_COOKIE['token'],
+                    'uuid' => $_COOKIE['uuid'],
+                ));
+            }
             $view = 'designer.showApp';
         } else {
             $view = 'designer.show';
         }
         return View($view, ['designer' => $result['data'], 'product' => $product['data']]);
-    }
-
-    public function testApp(){
-        return View('designer.testApp');
     }
 }
 
