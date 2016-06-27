@@ -1,1 +1,0 @@
-<script src="http://clk.motif.me/wl.js"></script>
