@@ -4,17 +4,17 @@
 /*global jQuery Swiper*/
 
 'use strict';
-(function($, Swiper) {
+(function ($, Swiper) {
     function openAddSuccess() {
         $('#success').toggleClass('loading-hidden');
-        setTimeout(function() {
+        setTimeout(function () {
             $('#success').toggleClass('loading-open');
         }, 25);
     }
 
     function closeAddSuccess() {
         $('#success').addClass('loading-close');
-        setTimeout(function() {
+        setTimeout(function () {
             $('#success').toggleClass('loading-hidden loading-open').removeClass('loading-close');
         }, 500);
     }
@@ -22,7 +22,7 @@
     // loading 打开
     function openLoading() {
         $('#loading').toggleClass('loading-hidden');
-        setTimeout(function() {
+        setTimeout(function () {
             $('#loading').toggleClass('loading-open');
         }, 25);
     }
@@ -30,7 +30,7 @@
     // loading 隐藏
     function closeLoading() {
         $('#loading').addClass('loading-close');
-        setTimeout(function() {
+        setTimeout(function () {
             $('#loading').toggleClass('loading-hidden loading-open').removeClass('loading-close');
         }, 500);
     }
@@ -58,21 +58,22 @@
     DetailImgSwiper.params.control = BaseImgSwiper;
     BaseImgSwiper.params.control = DetailImgSwiper;
 
-    $('.product-baseImg').on('click', function() {
+    $('.product-baseImg').on('click', function () {
         $('.product-detailImg').addClass('in');
         $('body').addClass('no-scroll');
     });
-    $('.product-detailImg').on('click', function() {
+    $('.product-detailImg').on('click', function () {
         $(this).removeClass('in');
         $('body').removeClass('no-scroll');
     });
+
+    var height = $('#detailImg-swiper').height();
 
     var options = {
         closeOnOutsideClick: false,
         closeOnCancel: false,
         hashTracking: false
     };
-    
     var Modal = $('[data-remodal-id=modal]').remodal(options);
 
     // 建立 选项组 的数据集合
@@ -83,11 +84,12 @@
 
     // 剔除 库存为 0 的项
     function filterNull(List, Arr) {
-        List = List.filter(function(el) {
+        List = List.filter(function (el) {
             return el !== Arr;
         });
         return List;
     }
+
     /**
      * item 为比对值
      * List 为待比对数组
@@ -98,7 +100,7 @@
      * @returns {*}
      */
     function sameArray(List, item) {
-        return List.find(function(el) {
+        return List.find(function (el) {
             return el === item;
         });
     }
@@ -119,7 +121,7 @@
     function newOptions(DataList, Inventory, objCache) {
         var Obj = objCache;
 
-        $.each(DataList, function(index, val) {
+        $.each(DataList, function (index, val) {
             // 选项组 SpaValue 中的 一类选项
             var SpaValue = val;
             // 一类选项中的一个选项 SkaValue
@@ -150,7 +152,7 @@
 
     // 初始化 赋值 库存 Stock
     function newStock(DataList, objCache) {
-        $.each(DataList, function(index, val) {
+        $.each(DataList, function (index, val) {
             if (val.stock_qtty !== 0) {
                 objCache[val.sku] = val.stock_qtty;
             }
@@ -159,7 +161,7 @@
 
     // 初始化 增值服务
     function newVas(DataList, objCache) {
-        $.each(DataList, function(index, value) {
+        $.each(DataList, function (index, value) {
             var vas_id = value.vas_id,
                 vas_type = value.vas_type;
             objCache[vas_id] = vas_type;
@@ -170,15 +172,19 @@
     (function initOptions() {
         var SpuId = $('#modalDialog').data('spu');
         $.ajax({
-                url: '/products/' + SpuId
-            })
-            .done(function(data) {
+            url: '/products/' + SpuId
+        })
+            .done(function (data) {
                 console.log('success');
                 // 获取商品所有的库存
                 // Inventory 为库存的商品的Sku
                 var Inventory = inventoryNull(data.data.skuExps);
                 // 所有选项
-                newOptions(data.data.spuAttrs, Inventory, Options);
+                if (data.data.skus.length === 1) {
+                    ResultSkus = data.data.skus;
+                } else {
+                    newOptions(data.data.spuAttrs, Inventory, Options);
+                }
                 // 所有sku对应的库存
                 newStock(data.data.skuExps, Stock);
                 // 所有增值服务
@@ -239,11 +245,11 @@
      */
     function filterWaitOptions(WaitOptions) {
         // 筛选 未选项
-        $.each(WaitOptions, function(i, iValue) {
+        $.each(WaitOptions, function (i, iValue) {
             // StaticSpa 是一个Spa
             var StaticSpa = Options[iValue];
 
-            $.each(StaticSpa, function(j, jValue) {
+            $.each(StaticSpa, function (j, jValue) {
                 // 等同于 var StaticSkus = StaticSpa[j] = Options[iValue][j]
                 var StaticSkus = jValue;
                 // 比对记录
@@ -283,12 +289,12 @@
         if (SelectOptions.length === 1) {
             $('.btn-itemProperty[data-spa=' + SelectOptions[0] + ']').removeClass('disabled');
         } else {
-            $.each(SelectOptions, function(i, iValue) {
+            $.each(SelectOptions, function (i, iValue) {
                 var StaticSpa = Options[iValue];
 
                 if (iValue !== SpaId) {
 
-                    $.each(StaticSpa, function(j, jValue) {
+                    $.each(StaticSpa, function (j, jValue) {
                         var StaticSkus = jValue;
                         // 比对记录
                         var Detection = false;
@@ -359,7 +365,7 @@
 
         // 把选定的 Skus , 编成一组 , Skus集合
         var SkusList = {};
-        $.each(SpaList, function(index, val) {
+        $.each(SpaList, function (index, val) {
             // 分别获取选中的选项中的 skaid 和 spaid
             var Ska = $(RadioList[index]).data('ska'),
                 Spa = $(RadioList[index]).data('spa');
@@ -367,11 +373,11 @@
         });
 
         // 作为比对项存在, 取 除需要比对的 Spa 外 ,剩余 Spa 所对应的 Skus 的集合
-        $.each(SpaList, function(SpaIndex, SpaVal) {
+        $.each(SpaList, function (SpaIndex, SpaVal) {
 
             var Intersection = [];
             // 取交集
-            $.each(SkusList, function(SkuIndex, SkuVal) {
+            $.each(SkusList, function (SkuIndex, SkuVal) {
                 if (SpaVal !== SkuIndex) {
                     var Cache = [];
                     if (Intersection.length === 0) {
@@ -389,7 +395,7 @@
             });
 
             // 遍历除去的 Spa 所对应的各项 option 内 , 所对应的 Sku
-            $.each(Options[SpaVal], function(SkusIndex, SkusVal) {
+            $.each(Options[SpaVal], function (SkusIndex, SkusVal) {
 
                 // 比对 每项中 的 Sku, 与交集中的 Skus 进行比对
                 var Detection = false;
@@ -419,7 +425,11 @@
     }
 
     // 为所有选项绑定事件
-    $('#modalDialog').on('click', '.btn-itemProperty', function(e) {
+    $('#modalDialog').on('click', '.btn-itemProperty', function (e) {
+        var $WarningInfo = $('.warning-info');
+        if (!$WarningInfo.hasClass('off')) {
+            $WarningInfo.addClass('off');
+        }
 
         if ($(e.target).hasClass('disabled')) {
             console.log('选项不可用');
@@ -466,7 +476,8 @@
             }
 
             // 全选状态时, 可以购买
-            $('[data-role]').removeClass('disabled');
+            $('#addCart').removeClass('disabled');
+            $('#buyNow').removeClass('disabled');
         } else if (RadioList.length < 1) {
             // 全都未选
             $('#modalDialog').find('.btn-itemProperty').removeClass('disabled');
@@ -478,20 +489,23 @@
             filterWaitOptions(OptionsStatus.wait);
             filterSelectOptions(OptionsStatus.select, SpaId, SkaId);
             // 非全选状态时, 不可以购买
-            $('[data-role]').addClass('disabled');
+            $('#addCart').addClass('disabled');
+            $('#buyNow').addClass('disabled');
         } else if (RadioList.length === 1) {
             // 只选中一项时
             getResultSku(RadioList); // 取得交集
             filterWaitOptions(OptionsStatus.wait);
             filterSelectOptions(OptionsStatus.select, SpaId, SkaId);
             // 非全选状态时, 不可以购买
-            $('[data-role]').addClass('disabled');
+            $('#addCart').addClass('disabled');
+            $('#buyNow').addClass('disabled');
         } else {
             getResultSku(RadioList);
             filterWaitOptions(OptionsStatus.wait);
             filterSelectOptions(OptionsStatus.select, SpaId, SkaId);
             // 非全选状态时, 不可以购买
-            $('[data-role]').addClass('disabled');
+            $('#addCart').addClass('disabled');
+            $('#buyNow').addClass('disabled');
         }
 
     });
@@ -502,33 +516,34 @@
      * @param Count
      */
     function changeQtty(RequestStock, $QttyCount) {
+        var $WarningInfo = $('.warning-info');
         openLoading();
         $.ajax({
-                url: '/stock/checkstock',
-                data: {
-                    skus: RequestStock
-                }
-            })
-            .done(function(data) {
+            url: '/stock/checkstock',
+            data: {
+                skus: RequestStock
+            }
+        })
+            .done(function (data) {
                 if (data.success) {
-
                     var Request = true;
-
+                    var StockCount = parseInt($QttyCount.siblings('[data-num]').html());
                     if (data.data.list[0].stockStatus === 1) {
                         Request = true;
                     } else {
                         Request = false;
                     }
-
                     if (Request === false) {
+                        $WarningInfo.removeClass('off');
+                        $WarningInfo.children('span').html('Warning: Only ' + StockCount + ' left');
                         $QttyCount.addClass('disabled');
                     }
                 }
             })
-            .fail(function() {
+            .fail(function () {
                 console.log('error');
             })
-            .always(function() {
+            .always(function () {
                 console.log('complete');
                 closeLoading();
             });
@@ -536,7 +551,8 @@
 
     // 绑定计数事件,商品数量
     // 需要添加库存验证
-    $('#item-count').on('click', '[data-item]', function(e) {
+    $('#item-count').on('click', '[data-item]', function (e) {
+        var $WarningInfo = $('.warning-info');
         // 已选中的选项 以及 商品的选项组数
         var RadioList = $('#modalDialog').find('.btn-itemProperty.active'),
             CheckCount = Object.keys(Options);
@@ -575,13 +591,17 @@
             if (NextCount > 1) {
                 $QtyCount.siblings('[data-item="minus"]').removeClass('disabled');
             }
+
             if (NextCount === MaxCount) {
+                $WarningInfo.removeClass('off');
+                $WarningInfo.children('span').html('50 items limit');
                 $QtyCount.addClass('disabled');
             }
-
             // 判断本地库存量
             if (StockCache < 20) {
                 if (NextCount === StockCache) {
+                    $WarningInfo.removeClass('off');
+                    $WarningInfo.children('span').html('Warning: Only ' + NextCount + ' left');
                     $QtyCount.addClass('disabled');
                 }
             } else if (StockCache === 20) {
@@ -595,6 +615,9 @@
             }
         } else {
             --Count;
+            if (!$WarningInfo.hasClass('off')) {
+                $WarningInfo.addClass('off');
+            }
             if (Count === 1) {
                 $QtyCount.addClass('disabled');
             } else if ($QtyCount.siblings('[data-item="add"]').hasClass('disabled')) {
@@ -623,7 +646,7 @@
         var i = 0;
         var VarList = [];
 
-        $.each(Vas, function(index, val) {
+        $.each(Vas, function (index, val) {
             var $CurrentVas = $('#' + index);
 
             // 增值项 是否被选中
@@ -653,13 +676,13 @@
         // PUT 立即购买
         // PATCH 添加购物车
         $.ajax({
-                url: '/cart',
-                type: Action,
-                data: {
-                    operate: Operate
-                }
-            })
-            .done(function(data) {
+            url: '/cart',
+            type: Action,
+            data: {
+                operate: Operate
+            }
+        })
+            .done(function (data) {
                 if (data.success) {
                     if (data.redirectUrl !== '') {
                         window.location.href = data.redirectUrl;
@@ -668,7 +691,7 @@
                     Modal.close();
                     if (Action === 'PATCH') {
                         openAddSuccess();
-                        setTimeout(function() {
+                        setTimeout(function () {
                             closeAddSuccess();
                         }, 1500);
                     }
@@ -676,54 +699,72 @@
                     alert(data.error_msg);
                 }
             })
-            .fail(function() {
+            .fail(function () {
                 console.log("error");
             })
-            .always(function() {
+            .always(function () {
                 closeLoading();
                 console.log("complete");
             });
 
     }
 
-    // 添加购物车 购买商品
-    $('[data-role]').on('click', function(e) {
-        var Action = $(e.target).data('action');
-        initCart(Action);
-    });
-
-    $('[data-control="openModal"]').on('click', function(e) {
+    // 添加购物车
+    $('[data-role="addCart"]').on('click', function (e) {
+        var $SelectOptions = $('.btn-itemProperty.active');
         var OptionsCount = Object.keys(Options);
-        var VasCount = Object.keys(Vas);
-        var Action = $(e.target).data('action');
 
-        if (OptionsCount.length === 0 && VasCount.length === 0) {
-            initCart(Action);
+        if ($(e.target) === $('#addCart')) {
+            if (!$(e.target).hasClass('disabled')) {
+                initCart('PATCH');
+                // 添加成功 刷新页面
+                location.reload();
+            }
         } else {
-            Modal.open();
-            $('[data-role="continue"]').data('action', Action);
+            if ($SelectOptions.length !== OptionsCount.length && OptionsCount.length !== 0) {
+                Modal.open();
+            } else {
+                initCart('PATCH');
+                location.reload();
+            }
+        }
+    });
+    // 立即购买
+    $('[data-role="buyNow"]').on('click', function (e) {
+        var $SelectOptions = $('.btn-itemProperty.active');
+        var OptionsCount = Object.keys(Options);
+        if ($(e.target) === $('#addCart')) {
+            if (!$(e.target).hasClass('disabled')) {
+                initCart('PUT');
+            }
+        } else {
+            if ($SelectOptions.length !== OptionsCount.length && OptionsCount.length !== 0) {
+                Modal.open();
+            } else {
+                initCart('PUT');
+            }
         }
     });
 
-    $('.input-engraving').on('click', function(e) {
+    $('.input-engraving').on('click', function (e) {
         $(e.target).removeClass('disabled');
     });
 
     // 模态框关闭时，把选择的项更新到 select 位置
-    $('[data-remodal-id=modal]').on('closed', function() {
+    $('[data-remodal-id=modal]').on('closed', function () {
         var $SelectList = $('.btn-itemProperty.active');
         var TextOptions = '';
-        $.each($SelectList, function(index, val) {
+        $.each($SelectList, function (index, val) {
             if (index === ($SelectList.length - 1)) {
                 TextOptions += val.textContent.trim();
             } else {
                 TextOptions += val.textContent.trim() + ' , ';
             }
         });
-        $('#selectedOptions').text(TextOptions);
+        $('#selectOptions').text(TextOptions);
     });
     // 增值服务是否选中
-    $('fieldset[data-vas-type]').on('click', function(e) {
+    $('fieldset[data-vas-type]').on('click', function (e) {
         // 判断增值服务类型
         if (parseInt($(this).data('vas-type')) === 1 && $(e.target).hasClass('icon-checkcircle')) {
             var $input = $(e.target).siblings('input[type="text"]');
@@ -739,7 +780,7 @@
     });
 
     // 显示隐藏 message 更多内容
-    $('.btn-showMore').on('click', function() {
+    $('.btn-showMore').on('click', function () {
         var $Message = $(this).siblings('.message-info');
         $Message.toggleClass('active');
         if ($Message.hasClass('active')) {
@@ -751,7 +792,7 @@
         }
     });
 
-    $(document).ready(function() {
+    $(document).ready(function () {
         if ($('.message-info').children('p').height() <= 56) {
             $('.btn-showMore').hide();
         }

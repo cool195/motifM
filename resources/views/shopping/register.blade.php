@@ -40,12 +40,12 @@
             <fieldset class="register-input m-b-10x">
                 <input class="input-register form-control font-size-sm" name="nick"
                        placeholder="Your Name" type="text" maxlength="32">
-                <i class="iconfont icon-delete icon-size-md input-clear text-common"></i>
+                <i class="iconfont icon-delete icon-size-md input-clear text-common hidden"></i>
             </fieldset>
             <fieldset class="register-input m-b-10x">
                 <input class="input-register form-control font-size-sm" name="email"
                        placeholder="Email" type="text" maxlength="60">
-                <i class="iconfont icon-delete icon-size-md input-clear text-common"></i>
+                <i class="iconfont icon-delete icon-size-md input-clear text-common hidden"></i>
             </fieldset>
             <fieldset class="register-input m-b-10x">
                 <input class="input-register form-control font-size-sm" name="pw"

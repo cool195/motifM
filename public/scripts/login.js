@@ -94,6 +94,12 @@
 
     // 验证电子邮件的情况
     $('input[name="email"]').on('keyup blur', function (e) {
+        var InputText = $(this).val();
+        if (InputText === '' || InputText === undefined) {
+            $(this).siblings('.input-clear').addClass('hidden');
+        } else {
+            $(this).siblings('.input-clear').removeClass('hidden');
+        }
         if (validationEmail($(this))) {
             $('div[data-role="submit"]').removeClass('disabled');
         } else {
@@ -128,6 +134,7 @@
     // 清除输入
     $('.input-clear').on('click', function (e) {
         $(e.target).siblings('input').val('');
+        $(this).addClass('hidden');
     });
 
     // 查看密码
