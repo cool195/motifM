@@ -336,7 +336,7 @@
                 <fieldset class="container-fluid p-a-15x">
                     @if(Session::has('user'))
                             <!-- 添加 购物车 控制按钮显示 -->
-                    <div class="btn btn-primary btn-block" data-control="continue" data-role="continue" data-action="" hidden>Continue</div>
+                    <div class="btn btn-primary btn-block  hidden-xs-up" data-control="continue" data-role="continue" data-action="">Continue</div>
                     <div class="row" data-control="modalButton">
                         <div class="col-xs-6">
                             <div class="btn btn-primary-outline btn-block @if(!(!empty($data['vasBases']) && empty($data['spuAttrs'])))disabled @endif"

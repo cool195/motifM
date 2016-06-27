@@ -44,10 +44,10 @@
         <!-- 订单商品列表 -->
         <aside class="bg-white m-b-10x">
             <!-- 正常订单 下单日期 -->
-        @if('CANCELLED' == $data['status_info'])
+        @if(in_array($data['status_code'], array(21, 22, 23)))
             <!--被取消的订单 取消原因、取消日期-->
                 <div class="p-a-10x">
-                    <div class="font-size-sm text-primary"><strong>CANCELLED:</strong>
+                    <div class="font-size-sm text-primary"><strong>{{ $data['status_info'] }}:</strong>
                         <span>{{$data['create_time']}}</span></div>
                     <div class="font-size-sm text-primary">
                         <div>Order payment failed:</div>
@@ -57,7 +57,7 @@
                 </div>
             @else
                 <div class="p-y-10x p-x-15x">
-                    <span class="font-size-sm text-primary"><strong>ORDER PLACED:</strong> {{$data['create_time']}} </span>
+                    <span class="font-size-sm text-primary"><strong>{{ $data['status_info'] }}:</strong> {{$data['create_time']}} </span>
                     <span class="font-size-sm text-primary"><p class="m-b-0">{{ $data['status_explain'] }}</p></span>
                 </div>
             @endif
@@ -98,7 +98,7 @@
                     <hr class="hr-base m-y-0 m-l-15x">
                 @endforeach
             @endif
-            @if(in_array($data['status_info'], array(21, 22, 23)))
+            @if(in_array($data['status_code'], array(21, 22, 23)))
                 <div class="p-a-10x">
                     <a href="#" class="btn btn-primary btn-block btn-sm" type="bottom">Buy Again</a>
                 </div>
