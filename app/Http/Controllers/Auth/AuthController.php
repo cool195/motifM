@@ -13,7 +13,7 @@ class AuthController extends ApiController
     {
         $params = array(
             'cmd' => 'tplogin',
-            'uuid' => '123',
+            'uuid' => $_COOKIE['uid'],
             'type' => 4,
         );
 

@@ -57,7 +57,7 @@ class UserController extends ApiController
         $email = $request->input('email');
         $params = array(
             'cmd' => 'signup',
-            'uuid' => md5($email),
+            'uuid' => $_COOKIE['uid'],
             'email' => $email,
             'pw' => md5($request->input('pw')),
             'nick' => $request->input('nick')
@@ -105,7 +105,7 @@ class UserController extends ApiController
         $email = $request->input('email');
         $params = array(
             'cmd' => "login",
-            'uuid' => $request->input('uuid', md5($email)),
+            'uuid' => $_COOKIE['uid'],
             'email' => $email,
             'pw' => md5($request->input('pw')),
         );
@@ -204,7 +204,7 @@ class UserController extends ApiController
     {
         $params = array(
             'cmd' => "forgetpwd",
-            'uuid' => md5(123456),
+            'uuid' => $_COOKIE['uid'],
             'email' => $request->input('email'),
             //'token' => Session::get('user.token'),
             //'pin' => Session::get('user.pin'),
@@ -272,7 +272,7 @@ class UserController extends ApiController
         $reinfo = $request->input('reinfo');
         $params = array(
             'cmd' => "tplogin",
-            'uuid' => $request->input('uuid', md5($reinfo)),
+            'uuid' => $_COOKIE['uid'],
             'type' => $request->input('type', 1),
             'reinfo' => $reinfo,
         );
@@ -358,10 +358,9 @@ class UserController extends ApiController
     public function getShippingAddress(Request $request)
     {
         $cmd = 'list';
-        $uuid = $request->input('uuid', '123');
         $params = array(
             'cmd' => $cmd,
-            'uuid' => $uuid,
+            'uuid' => $_COOKIE['uid'],
             'token' => Session::get('user.token'),
             'pin' => Session::get('user.pin'),
         );
@@ -458,17 +457,6 @@ class UserController extends ApiController
         return View('shopping.profilesetting_countrylist', ['list' => $result['data']['list'], 'commonlist' => $result['data']['commonlist'], 'route' => $input['route']]);
     }
 
-    public function saveUUID(Request $request)
-    {
-        $uuid = $request->input('uuid');
-        $result['success'] = false;
-        if (!empty($uuid) && Session::has('user')) {
-            Session::push('user.uuid', $uuid);
-            $result['success'] = true;
-        }
-        return $result;
-    }
-
     //APP同步登录
     public function rsyncLogin(Request $request)
     {
@@ -477,7 +465,7 @@ class UserController extends ApiController
             'nickname' => $request->input('name'),
             'pin' => $request->input('pin'),
             'token' => $request->input('token'),
-            'uuid' => $request->input('uuid'),
+            'uuid' => $_COOKIE['uid'],
         ));
         if (Session::get('user.pin')) {
             return array('success' => true);

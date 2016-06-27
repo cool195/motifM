@@ -37,7 +37,7 @@ class BraintreeController extends ApiController
             'cmd' => 'token',
             'token' => Session::get('user.token'),
             'pin' => Session::get('user.pin'),
-            'uuid' => '123',
+            'uuid' => $_COOKIE['uid'],
         );
         $result = $this->request('openapi', '', 'pay', $params);
         $token = isset($result['data']['token']) ? $result['data']['token'] : '';
@@ -82,7 +82,7 @@ class BraintreeController extends ApiController
             'cmd' => 'token',
             'token' => Session::get('user.token'),
             'pin' => Session::get('user.pin'),
-            'uuid' => '123',
+            'uuid' => $_COOKIE['uid'],
         );
         $result = $this->request('openapi', '', 'pay', $params);
         $token = isset($result['data']['token']) ? $result['data']['token'] : '';
@@ -102,7 +102,7 @@ class BraintreeController extends ApiController
             'cmd' => 'token',
             'token' => Session::get('user.token'),
             'pin' => Session::get('user.pin'),
-            'uuid' => '123',
+            'uuid' => $_COOKIE['uid'],
         );
         $result = $this->request('openapi', '', 'pay', $params);
         $token = isset($result['data']['token']) ? $result['data']['token'] : '';

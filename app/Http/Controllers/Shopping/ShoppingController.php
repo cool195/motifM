@@ -37,7 +37,7 @@ class ShoppingController extends ApiController
 			'token' => Session::get('user.token'),
 			'pin' => Session::get('user.pin'),
 			'recid' => $request->input('recid', '100000'),
-			'uuid' => $request->input('uuid', 'xuzhijie'),
+			'uuid' => $_COOKIE['uid'],
 			'cid' => $request->input('cid', '0'),
 			'pagenum' => $request->input('pagenum', 1),
 			'pagesize' => $request->input('pagesize', 5),
