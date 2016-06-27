@@ -1,4 +1,10 @@
 (function() {
+    function openSuccess() {
+        $('#success').toggleClass('loading-hidden');
+        setTimeout(function () {
+            $('#success').toggleClass('loading-open');
+        }, 25);
+    }
     // loading 打开
     function openLoading() {
         $('.loading').toggleClass('loading-hidden');
@@ -49,12 +55,21 @@
                 .done(function(data) {
                     console.log("success");
                     if (data.success) {
+                        $('.warning-info').addClass('off');
+                        openSuccess();
                         var $InfoForm = $('#infoForm');
                         if ($InfoForm.length === 0) {
-                            window.location.href = data.redirectUrl;
+                            setTimeout(function() {
+                                window.location.href = data.redirectUrl;
+                            }, 1500);
                         } else {
-                            $InfoForm.submit();
+                            setTimeout(function() {
+                                $InfoForm.submit()
+                            }, 1500);
                         }
+                    } else {
+                        $('.warning-info').removeClass('off');
+                        $('.warning-info').children('span').text(data.prompt_msg);
                     }
                 })
                 .fail(function() {
