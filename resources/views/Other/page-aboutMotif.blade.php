@@ -57,4 +57,5 @@
 </div>
 </body>
 <script src="/scripts/vendor.js"></script>
+@include('global')
 </html>

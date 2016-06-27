@@ -122,5 +122,5 @@
 <script src="/scripts/vendor.js"></script>
 <script src="/scripts/paymentMethod-addCard.js"></script>
 <script src="/scripts/creditCardType.js"></script>
-
+@include('global')
 </html>

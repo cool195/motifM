@@ -76,5 +76,5 @@ $("[data-country]").on('click',function () {
     $('#infoForm').submit();
 })
 </script>
-
+@include('global')
 </html>

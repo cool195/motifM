@@ -130,5 +130,5 @@
 <script src="/scripts/vendor.js"></script>
 
 <script src="/scripts/paymentMethod-paypal.js"></script>
-
+@include('global')
 </html>

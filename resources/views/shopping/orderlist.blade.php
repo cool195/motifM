@@ -122,4 +122,5 @@
 <script src="/scripts/vendor.js"></script>
 
 <script src="/scripts/orderList.js"></script>
+@include('global')
 </html>
