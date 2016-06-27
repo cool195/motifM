@@ -63,8 +63,8 @@
         </div>
         <div class="m-t-20x font-size-sm text-center">or sign up with:</div>
         <div class="p-a-20x flex flex-spaceAround">
-            <a href="#" class="iconfont icon-facebook btn-facebook" id="facebookLogin"></a>
-            <a href="#" class="iconfont icon-google btn-google" id="googleLogin"></a>
+            <div href="#" class="iconfont icon-facebook btn-facebook" id="facebookLogin"></div>
+            <div href="#" class="iconfont icon-google btn-google" id="googleLogin"></div>
         </div>
         <div class="m-t-20x text-primary text-center font-size-sm"><a href="/contactus">Contact Us</a></div>
     </section>

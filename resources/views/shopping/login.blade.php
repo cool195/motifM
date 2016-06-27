@@ -61,14 +61,14 @@
             <hr class="hr-login m-a-0">
         </div>
         <div class="m-t-20x p-b-20x">
-            <a class="btn btn-block btn-facebook" id="facebookLogin">
+            <div class="btn btn-block btn-facebook" id="facebookLogin">
                 <i class="iconfont icon-facebook-o icon-size-md"></i>
                 Sign in with Facebook
-            </a>
-            <a class="btn btn-block btn-google m-l-0 m-t-10x" id="googleLogin">
+            </div>
+            <div class="btn btn-block btn-google m-l-0 m-t-10x" id="googleLogin">
                 <i class="iconfont icon-google-o icon-size-md"></i>
                 Sign in with Google
-            </a>
+            </div>
         </div>
         <div class="m-t-20x text-primary text-center font-size-sm"><a href="/contactus">Contact Us</a></div>
     </section>
