@@ -157,5 +157,5 @@
 <script src="/scripts/vendor.js"></script>
 
 <script src="/scripts/orderCheckout-payment.js"></script>
-
+@include('global')
 </html>

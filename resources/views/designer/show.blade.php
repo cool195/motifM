@@ -138,4 +138,5 @@
 <script src="/scripts/vendor.js"></script>
 <script src="/scripts/designerDetail.js"></script>
 <script src="/scripts/videoPlay.js"></script>
+@include('global')
 </html>

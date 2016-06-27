@@ -152,6 +152,9 @@ $app->group(['namespace' => 'App\Http\Controllers\Other'], function ($app) {
     $app->get('/shippingreturns', 'PageController@shippingreturns');
     $app->get('/payments', 'PageController@payments');
 
+    //404
+    $app->get('/error', 'PageController@error');
+
     //$app->get('/cancellationpolicy', 'PageController@cancellationPolicy');
     //$app->get('/motifguarantee', 'PageController@motifGuarantee');
     //$app->get('/termsservice', 'PageController@termsService');

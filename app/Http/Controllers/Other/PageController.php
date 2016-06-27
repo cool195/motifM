@@ -9,6 +9,12 @@ use App\Http\Controllers\ApiController;
 class PageController extends ApiController
 {
     //aboutMotif
+    public function error()
+    {
+        return View('error');
+    }
+
+    //aboutMotif
     public function aboutmotif()
     {
         return View('Other.page-aboutMotif');

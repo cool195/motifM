@@ -101,4 +101,5 @@
 <script src="/scripts/vendor.js"></script>
 
 <script src="/scripts/profileSetting-customerSupport.js"></script>
+@include('global')
 </html>

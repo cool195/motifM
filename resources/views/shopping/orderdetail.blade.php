@@ -98,7 +98,7 @@
                     <hr class="hr-base m-y-0 m-l-15x">
                 @endforeach
             @endif
-            @if('CANCELLED' == $data['status_info'])
+            @if(in_array($data['status_info'], array(21, 22, 23)))
                 <div class="p-a-10x">
                     <a href="#" class="btn btn-primary btn-block btn-sm" type="bottom">Buy Again</a>
                 </div>
@@ -185,4 +185,5 @@
 <script src="/scripts/vendor.js"></script>
 
 <script src="/scripts/orderDetail.js"></script>
+@include('global')
 </html>

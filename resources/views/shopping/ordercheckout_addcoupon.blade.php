@@ -68,4 +68,5 @@
         }
     });
 </script>
+@include('global')
 </html>
