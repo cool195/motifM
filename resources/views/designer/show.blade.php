@@ -30,10 +30,10 @@
                 @if($designer['path_type']==2)
                     <div id="ytplayer" data-playid="{{$designer['img_video_path']}}"></div>
                 @else
-                    <img src="https://s3-us-west-1.amazonaws.com/emimagetest/n1/{{$designer['img_video_path']}}" alt=""
+                    <img src="https://s3-us-west-1.amazonaws.com/emimagetest/n0/{{$designer['img_video_path']}}" alt=""
                          class="designer-realImg" hidden>
                     <img class="img-fluid img-lazy designer-Img"
-                         data-original="https://s3-us-west-1.amazonaws.com/emimagetest/n1/{{$designer['img_video_path']}}"
+                         data-original="https://s3-us-west-1.amazonaws.com/emimagetest/n0/{{$designer['img_video_path']}}"
                          src="/images/product/bg-product@750.png" alt="">
                 @endif
             </div>
@@ -63,7 +63,7 @@
                             <a href="@if($value['skipType']=='1')/detail/@elseif($value['skipType']=='2')/designer/@elseif($value['skipType']=='3')/topic/@elseif($value['skipType']=='4')/shopping#@endif{{$value['skipId']}}">
                                 <div @if($k!=0)class="p-y-10x"@endif>
                                     <img class="img-fluid"
-                                         src="https://s3-us-west-1.amazonaws.com/emimagetest/n2/{{$value['imgPath']}}">
+                                         src="https://s3-us-west-1.amazonaws.com/emimagetest/n0/{{$value['imgPath']}}">
                                 </div>
                             </a>
                     @elseif($value['type']=='title')
@@ -91,7 +91,7 @@
                                             <a href="/detail/{{$spu}}">
                                                 <img class="img-fluid img-lazy"
                                                      src="/images/product/bg-product@336.png"
-                                                     data-original="https://s3-us-west-1.amazonaws.com/emimagetest/n2/{{$product['spuInfos'][$spu]['spuBase']['main_image_url']}}"
+                                                     data-original="https://s3-us-west-1.amazonaws.com/emimagetest/n0/{{$product['spuInfos'][$spu]['spuBase']['main_image_url']}}"
                                                      alt="{{$product['spuInfos'][$spu]['spuBase']['main_title']}}">
                                             </a>
                                         </div>
@@ -108,7 +108,7 @@
                                                         <div class="p-t-10x">
                                                             <img class="img-thumbnail img-lazy"
                                                                  src="/images/product/bg-product@336.png"
-                                                                 data-original="https://s3-us-west-1.amazonaws.com/emimagetest/n2/{{$product['spuInfos'][$spu]['spuBase']['main_image_url']}}"
+                                                                 data-original="https://s3-us-west-1.amazonaws.com/emimagetest/n0/{{$product['spuInfos'][$spu]['spuBase']['main_image_url']}}"
                                                                  alt="{{$product['spuInfos'][$spu]['spuBase']['main_title']}}">
                                                             <div class="p-y-10x">
                                                                 <span class="text-primary font-size-sm m-l-5x"><strong>${{number_format($product['spuInfos'][$spu]['skuPrice']['sale_price']/100,2)}}</strong></span>

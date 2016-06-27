@@ -28,9 +28,8 @@
 <div class="register-container">
     <section class="register-content p-y-20x">
         <!-- 顶部 logo -->
-        <img class="img-fluid m-x-auto m-b-20x" src="/images/login/register-logo.png"
-             srcset="/images/login/register-logo@2x.png 2x,/images/login/register-logo@3x.png 3x">
-
+        <a href="/daily"><img class="img-fluid m-x-auto m-b-20x" src="/images/login/register-logo.png"
+                              srcset="/images/login/register-logo@2x.png 2x,/images/login/register-logo@3x.png 3x"></a>
         <div class="text-main text-center p-t-10x"><strong>Create An Account</strong></div>
 
         <form id="register">

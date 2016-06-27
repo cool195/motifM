@@ -57,7 +57,7 @@
                                     <div class="p-x-15x p-y-10x">
                                         <a href="/detail/{{$spu}}">
                                             <img class="img-fluid"
-                                                 src="https://s3-us-west-1.amazonaws.com/emimagetest/n1/{{$topic['spuInfos'][$spu]['spuBase']['main_image_url']}}"
+                                                 src="https://s3-us-west-1.amazonaws.com/emimagetest/n0/{{$topic['spuInfos'][$spu]['spuBase']['main_image_url']}}"
                                                  alt="{{$topic['spuInfos'][$spu]['spuBase']['main_title']}}">
                                         </a>
                                     </div>
@@ -77,7 +77,7 @@
                                                 <a href="/detail/{{$spu}}">
                                                     <div class="p-t-10x">
                                                         <img class="img-thumbnail"
-                                                             src="https://s3-us-west-1.amazonaws.com/emimagetest/n2/{{$topic['spuInfos'][$spu]['spuBase']['main_image_url']}}"
+                                                             src="https://s3-us-west-1.amazonaws.com/emimagetest/n0/{{$topic['spuInfos'][$spu]['spuBase']['main_image_url']}}"
                                                              alt="{{$topic['spuInfos'][$spu]['spuBase']['main_title']}}">
                                                         <div class="p-y-10x">
                                                             <span class="text-primary font-size-sm m-l-5x"><strong>${{number_format($topic['spuInfos'][$spu]['skuPrice']['sale_price']/100,2)}}</strong></span>

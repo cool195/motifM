@@ -47,9 +47,9 @@
                     </div>
                     <a class="list-group-item list-group-itemText-lg text-primary" href="/aboutmotif">About Motif</a>
                     <a class="list-group-item list-group-itemText-lg text-primary" href="/privacynotice">Privacy
-                        Poilcy</a>
-                    <a class="list-group-item list-group-itemText-lg text-primary" href="/termsconditions">Terms of
-                        Services</a>
+                        Notice</a>
+                    <a class="list-group-item list-group-itemText-lg text-primary" href="/termsconditions">Terms &
+                        Conditions</a>
                     <a class="list-group-item list-group-itemText-lg text-primary" href="/contactus">Contact Us</a>
                 </div>
             </div>
@@ -58,7 +58,7 @@
                     <div class="list-group-item list-group-itemText-lg text-primary"><strong>HELP &
                             SERVICE</strong>
                     </div>
-                    <a class="list-group-item list-group-itemText-lg text-primary" href="/faq">FAQs</a>
+                    <a class="list-group-item list-group-itemText-lg text-primary" href="/faq">FAQ</a>
                     <a class="list-group-item list-group-itemText-lg text-primary" href="/shippingreturns">Shipping &
                         Returns</a>
                     <a class="list-group-item list-group-itemText-lg text-primary" href="/payments">Payments</a>
