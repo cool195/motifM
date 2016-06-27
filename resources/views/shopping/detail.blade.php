@@ -258,6 +258,10 @@
                         </span>
                     </div>
                 </fieldset>
+                <div class="warning-info off flex text-warning flex-alignCenter text-left p-x-15x p-b-10x">
+                    <i class="iconfont icon-caveat icon-size-md p-r-5x"></i>
+                    <span class="font-size-sm"></span>
+                </div>
                 <hr class="hr-base m-a-0">
                 @if(isset($data['spuAttrs']))
                     @foreach($data['spuAttrs'] as $value)

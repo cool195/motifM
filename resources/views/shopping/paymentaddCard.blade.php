@@ -61,7 +61,7 @@
                 </div>
                 <div class="warning-info off text-warning flex flex-alignCenter p-a-15x">
                     <i class="iconfont icon-caveat icon-size-md p-r-5x"></i>
-                    <span class="font-size-sm">Warming: Women’s Ring</span>
+                    <span class="font-size-sm"></span>
                 </div>
 
                 <div class="p-a-15x">
@@ -107,6 +107,15 @@
     <div class="loading-modal">
         <div class="loader loader-white"></div>
         <div class="text-white font-size-md text-center m-t-20x">Applying Payment Method</div>
+    </div>
+</div>
+<!-- loading 效果 -->
+<div class="loading loading-screen loading-transprant loading-hidden" id="success">
+    <div class="loading-modal">
+        <div class="">
+            <img class="img-fluid m-x-auto" src="/images/icon-success.png" srcset="/images/icon-success@2x.png 2x, /images/icon-success@3x.png 3x">
+        </div>
+        <div class="text-white font-size-md text-center m-t-10x">Card Success</div>
     </div>
 </div>
 @if(isset($input) && !empty($input))

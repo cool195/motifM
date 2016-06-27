@@ -36,7 +36,7 @@
             <fieldset class="m-t-10x login-text">
                 <input class="input-login form-control font-size-sm" name="email" placeholder="Email"
                        type="text" maxlength="60">
-                <i class="iconfont icon-delete icon-size-md input-clear text-common"></i>
+                <i class="iconfont icon-delete icon-size-md input-clear text-common hidden"></i>
             </fieldset>
             <fieldset class="m-t-10x login-text">
                 <input class="input-login form-control font-size-sm" name="pw" placeholder="Password"
