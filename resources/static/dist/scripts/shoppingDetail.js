@@ -67,14 +67,12 @@
         $('body').removeClass('no-scroll');
     });
 
-    var height = $('#detailImg-swiper').height();
-    $('#detailImg-pagination')
-
     var options = {
         closeOnOutsideClick: false,
         closeOnCancel: false,
         hashTracking: false
     };
+    
     var Modal = $('[data-remodal-id=modal]').remodal(options);
 
     // 建立 选项组 的数据集合
@@ -180,11 +178,7 @@
                 // Inventory 为库存的商品的Sku
                 var Inventory = inventoryNull(data.data.skuExps);
                 // 所有选项
-                if (data.data.skus.length === 1) {
-                    ResultSkus = data.data.skus;
-                } else {
-                    newOptions(data.data.spuAttrs, Inventory, Options);
-                }
+                newOptions(data.data.spuAttrs, Inventory, Options);
                 // 所有sku对应的库存
                 newStock(data.data.skuExps, Stock);
                 // 所有增值服务
@@ -472,8 +466,7 @@
             }
 
             // 全选状态时, 可以购买
-            $('#addCart').removeClass('disabled');
-            $('#buyNow').removeClass('disabled');
+            $('[data-role]').removeClass('disabled');
         } else if (RadioList.length < 1) {
             // 全都未选
             $('#modalDialog').find('.btn-itemProperty').removeClass('disabled');
@@ -485,23 +478,20 @@
             filterWaitOptions(OptionsStatus.wait);
             filterSelectOptions(OptionsStatus.select, SpaId, SkaId);
             // 非全选状态时, 不可以购买
-            $('#addCart').addClass('disabled');
-            $('#buyNow').addClass('disabled');
+            $('[data-role]').addClass('disabled');
         } else if (RadioList.length === 1) {
             // 只选中一项时
             getResultSku(RadioList); // 取得交集
             filterWaitOptions(OptionsStatus.wait);
             filterSelectOptions(OptionsStatus.select, SpaId, SkaId);
             // 非全选状态时, 不可以购买
-            $('#addCart').addClass('disabled');
-            $('#buyNow').addClass('disabled');
+            $('[data-role]').addClass('disabled');
         } else {
             getResultSku(RadioList);
             filterWaitOptions(OptionsStatus.wait);
             filterSelectOptions(OptionsStatus.select, SpaId, SkaId);
             // 非全选状态时, 不可以购买
-            $('#addCart').addClass('disabled');
-            $('#buyNow').addClass('disabled');
+            $('[data-role]').addClass('disabled');
         }
 
     });
@@ -696,40 +686,22 @@
 
     }
 
-    // 添加购物车
-    $('[data-role="addCart"]').on('click', function(e) {
-        var $SelectOptions = $('.btn-itemProperty.active');
-        var OptionsCount = Object.keys(Options);
-
-        if ($(e.target) === $('#addCart')) {
-            if (!$(e.target).hasClass('disabled')) {
-                initCart('PATCH');
-                // 添加成功 刷新页面
-                location.reload();
-            }
-        } else {
-            if ($SelectOptions.length !== OptionsCount.length && OptionsCount.length !== 0) {
-                Modal.open();
-            } else {
-                initCart('PATCH');
-                location.reload();
-            }
-        }
+    // 添加购物车 购买商品
+    $('[data-role]').on('click', function(e) {
+        var Action = $(e.target).data('action');
+        initCart(Action);
     });
-    // 立即购买
-    $('[data-role="buyNow"]').on('click', function(e) {
-        var $SelectOptions = $('.btn-itemProperty.active');
+
+    $('[data-control="openModal"]').on('click', function(e) {
         var OptionsCount = Object.keys(Options);
-        if ($(e.target) === $('#addCart')) {
-            if (!$(e.target).hasClass('disabled')) {
-                initCart('PUT');
-            }
+        var VasCount = Object.keys(Vas);
+        var Action = $(e.target).data('action');
+
+        if (OptionsCount.length === 0 && VasCount.length === 0) {
+            initCart(Action);
         } else {
-            if ($SelectOptions.length !== OptionsCount.length && OptionsCount.length !== 0) {
-                Modal.open();
-            } else {
-                initCart('PUT');
-            }
+            Modal.open();
+            $('[data-role="continue"]').data('action', Action);
         }
     });
 
@@ -748,7 +720,7 @@
                 TextOptions += val.textContent.trim() + ' , ';
             }
         });
-        $('#selectOptions').text(TextOptions);
+        $('#selectedOptions').text(TextOptions);
     });
     // 增值服务是否选中
     $('fieldset[data-vas-type]').on('click', function(e) {
