@@ -203,17 +203,16 @@ class UserController extends ApiController
     public function forgetPassword(Request $request)
     {
         $params = array(
-            'cmd' => "forgetwd",
-            'uuid' => '123',
+            'cmd' => "forgetpwd",
+            'uuid' => md5(123456),
             'email' => $request->input('email'),
-            'token' => Session::get('user.token'),
-            'pin' => Session::get('user.pin'),
+            //'token' => Session::get('user.token'),
+            //'pin' => Session::get('user.pin'),
         );
         $result = $this->request('openapi', self::API_SYSTEM, self::API_SERVICE, $params);
-        if (empty($result)) {
-            $result['success'] = false;
-            $result['error_msg'] = "Data access failed";
-            $result['data'] = array();
+        if(!empty($result) && $result['success']){
+            $result['redirectUrl'] = "/login";
+            $result['prompt_msg'] = "We have send you an email to your email address";
         }
         return $result;
     }

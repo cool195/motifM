@@ -26,7 +26,7 @@
 <!-- 主体内容 -->
 <div class="resetPwd-container p-t-20x">
     <section class="resetPwd-content m-t-10x p-y-20x">
-        <form action="">
+        <form id="reset" action="">
             <fieldset>
                 <div class="p-b-20x"><img src="/images/login/register-logo.png" srcset="/images/login/register-logo@2x.png 2x,/images/login/register-logo@3x.png 3x">
                 </div>
@@ -36,18 +36,18 @@
                 </div>
             </fieldset>
             <fieldset>
-                <div class="text-warming flex flex-alignCenter text-left m-t-15x">
+                {{--<div class="text-warming flex flex-alignCenter text-left m-t-15x">
                     <i class="iconfont icon-caveat icon-size-md p-r-5x"></i><span class="font-size-sm">Sorry, this email has already been registered.</span>
-                </div>
+                </div>--}}
                 <div class="m-t-10x">
-                    <input class="input-resetPwd form-control font-size-sm" placeholder="Please enter your email address" type="text">
+                    <input class="input-resetPwd form-control font-size-sm" placeholder="Please enter your email address" type="text" name="email">
                 </div>
                 <div class="m-t-20x">
-                    <a class="btn btn-primary btn-block">Continue</a>
+                    <div class="btn btn-primary btn-block" id="send">Continue</div>
                 </div>
             </fieldset>
             <div class="text-primary font-size-sm contactUs">
-                <a href="#">Contact Us</a>
+                <a href="/contactus">Contact Us</a>
             </div>
         </form>
     </section>
@@ -56,6 +56,20 @@
 
 </body>
 <script src="/scripts/vendor.js"></script>
-
+<script>
+    $('#send').click(function(){
+        $.ajax({
+            type: "POST",
+            url : "/user/forget",
+            data : $('#reset').serialize(),
+            success : function(data){
+                if(data.success){
+                    alert(data.prompt_msg);
+                    window.location.href = data.redirectUrl;
+                }
+            }
+        })
+    });
+</script>
 
 </html>

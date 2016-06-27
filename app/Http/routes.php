@@ -71,7 +71,6 @@ $app->group(['middleware' => 'logincheck', 'namespace' => 'App\Http\Controllers\
     $app->get('/addr/country', 'AddressController@getCountry');
 
 
-    $app->get('/reset', 'UserController@reset');
     $app->get('/user/setting', 'UserController@setting');
     $app->get('/user/changeprofile', 'UserController@changeProfile');
     $app->get('/user/shippingaddress', 'UserController@shippingAddress');
@@ -81,8 +80,6 @@ $app->group(['middleware' => 'logincheck', 'namespace' => 'App\Http\Controllers\
     $app->get('/user/changepassword', 'UserController@changePassword');
 
     $app->get('/user/signout', 'UserController@signout');
-    $app->get('/user/resetPwd', 'UserController@resetPassword');
-    $app->get('/user/forget', 'UserController@forgetPassword');
     $app->post('/user/modifyUserPwd', 'UserController@modifyUserPwd');
     $app->get('/user/trilogin', 'UserController@tryPrtLogin');
     $app->get('/user/userdetail', 'UserController@getUserDetailInfo');
@@ -129,6 +126,10 @@ $app->group(['namespace' => 'App\Http\Controllers\Shopping'], function ($app) {
     $app->get('/register', 'UserController@register');
     $app->get('/user/signup', 'UserController@signup');
     $app->post('/user/signup', 'UserController@signup');
+    $app->get('/reset', 'UserController@reset');
+    $app->post('/user/forget', 'UserController@forgetPassword');
+    $app->get('/user/resetPwd', 'UserController@resetPassword');
+
 });
 
 $app->group(['middleware' => 'logincheck', 'namespace' => 'App\Http\Controllers\Other'], function ($app) {
