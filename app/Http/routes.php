@@ -10,9 +10,7 @@
 | and give it the Closure to call when that URI is requested.
 |
 */
-$app->get('/apptest', function () use ($app) {
-    return $_COOKIE;
-});
+
 $app->get('/', 'Daily\DailyController@index');
 $app->get('/daily', 'Daily\DailyController@index');
 $app->get('/topic/{id}', 'Daily\DailyController@show');
@@ -153,7 +151,7 @@ $app->group(['namespace' => 'App\Http\Controllers\Other'], function ($app) {
     $app->get('/payments', 'PageController@payments');
 
     //404
-    $app->get('/error', 'PageController@error');
+    $app->get('/404.html', 'PageController@error');
 
     //$app->get('/cancellationpolicy', 'PageController@cancellationPolicy');
     //$app->get('/motifguarantee', 'PageController@motifGuarantee');
