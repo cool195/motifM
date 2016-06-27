@@ -1,6 +1,8 @@
 <?php
 namespace App\Services;
+
 use Illuminate\Support\Facades\Log;
+
 class Net
 {
     public static function api($apiName, $system, $service, $params, array $headers = [])
@@ -13,13 +15,9 @@ class Net
         if (!empty($service) && "" != $service) {
             $api .= "/" . $service . "?";
         }
-        $opt_timeout = isset($cfg['opt_timeout']) ? $cfg['opt_timeout'] : 0;
-        $con_timeout = isset($cfg['con_timeout']) ? $cfg['con_timeout'] : 0;
-        $headers = isset($cfg['headers']) ? array_merge($headers, explode(';', $cfg['headers'])) : '';
-        $headers[] = isset($cfg['host']) ? 'Host:' . $cfg['host'] : '';
-        $host = isset($cfg['host']) ? $cfg['host'] : '';
-        $max_failed = isset($cfg['max_failed']) ? $cfg['callback'] : '';
-        $result = self::getContent($api, $params, $opt_timeout, $con_timeout, $max_failed, $headers);
+        $opt_timeout = 10000;
+        $con_timeout = 10000;
+        $result = self::getContent($api, $params, $opt_timeout, $con_timeout);
         return $result;
     }
 
@@ -59,13 +57,6 @@ class Net
             }
             curl_setopt_array($ch, $opt);
             $content = curl_exec($ch);
-
-            if (!empty($_REQUEST['debug'])) {
-                if (!isset($GLOBALS['debug'])) {
-                    $GLOBALS['debug'] = '';
-                }
-                $GLOBALS['debug'] .= $url . $parameter . PHP_EOL;
-            }
             $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
             $curlCode = curl_errno($ch);
             if ($curlCode == 0 && $httpCode == 200) {
