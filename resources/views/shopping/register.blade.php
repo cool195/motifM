@@ -87,5 +87,5 @@
 </script>
 <script src="https://apis.google.com/js/api:client.js"></script>
 <script src="/scripts/signWith.js"></script>
-<script src="http://clk.motif.me/wl.js"></script>
+@include('global')
 </html>

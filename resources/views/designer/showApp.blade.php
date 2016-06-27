@@ -211,4 +211,5 @@
         }
     });
 </script>
+@include('global')
 </html>

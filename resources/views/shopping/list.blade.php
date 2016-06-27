@@ -151,4 +151,5 @@
 <script src="/scripts/vendor.js"></script>
 
 <script src="/scripts/shoppingList.js"></script>
+@include('global')
 </html>

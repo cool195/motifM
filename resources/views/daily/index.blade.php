@@ -75,4 +75,5 @@
 <script src="/scripts/vendor.js"></script>
 
 <script src="/scripts/daily.js"></script>
+@include('global')
 </html>

@@ -88,4 +88,5 @@
 <script src="/scripts/vendor.js"></script>
 
 <script src="/scripts/designer.js"></script>
+@include('global')
 </html>

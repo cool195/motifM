@@ -68,4 +68,5 @@
 <script src="scripts/vendor.js"></script>
 
 <script src="/scripts/shoppingDetail-askQuestion.js"></script>
+@include('global')
 </html>

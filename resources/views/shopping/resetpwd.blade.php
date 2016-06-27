@@ -71,5 +71,5 @@
         })
     });
 </script>
-
+@include('global')
 </html>
