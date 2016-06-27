@@ -145,7 +145,7 @@
         switchFollow($(e.target));
 
         //修改 Follow 状态
-        var followId = $(this).data('followId');
+        var followId = $(this).data('followid');
         changeFollow(followId);
     })
 
@@ -153,9 +153,8 @@
     function changeFollow(id) {
         openLoading();
         $.ajax({
-            url: '/followDesigner',
-            type: 'POST',
-            data: {id: id}
+            url: '/followDesigner' + id,
+            type: 'POST'
         })
             .done(function (data) {
                 if (data.success) {

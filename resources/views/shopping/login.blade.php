@@ -45,7 +45,7 @@
             </fieldset>
         </form>
         <div class="m-t-15x text-primary text-center font-size-sm">
-            <a href="#" class="text-primary">Forgot Password?</a>
+            <a href="/reset" class="text-primary">Forgot Password?</a>
         </div>
         <div class="container-fluid p-a-0 m-t-20x">
             <div class="row">

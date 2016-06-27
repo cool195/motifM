@@ -221,13 +221,14 @@
                     <aside class="container-fluid bg-white p-y-10x p-x-15x m-b-10x">
                         <div class="row">
                             <div class="col-xs-6">
-                                <a class="btn btn-primary-outline btn-block disabled" data-role="addCart">
+                                <div class="btn btn-primary-outline btn-block" data-control="openModal" data-action="PATCH">
                                     Add To Bag
-                                </a>
+                                </div>
                             </div>
                             <div class="col-xs-6">
-                                <a class="btn btn-primary btn-block disabled" data-role="buyNow">
-                                    Buy Now</a>
+                                <div class="btn btn-primary btn-block" data-control="openModal" data-action="PUT">
+                                    Buy Now
+                                </div>
                             </div>
                         </div>
                     </aside>
@@ -236,7 +237,7 @@
                         <a class="flex flex-alignCenter flex-fullJustified font-size-sm text-primary p-a-15x" data-remodal-target="modal" href="#">
                             <span>Select</span>
                             <div class="flex flex-alignCenter flex-fullJustified">
-                                <span class="m-r-10x">Size Color</span>
+                                <span class="m-r-10x" id="selectedOptions">Size Color</span>
                                 <i class="iconfont icon-arrow-right icon-size-xm text-common"></i>
                             </div>
                         </a>
@@ -251,20 +252,12 @@
                                     <br> want and hug them for real! Dream what you want to dream;go where you want to go;be what
                                     <br>dfsdsf
                                     <br> you my want and hug them for real! Dream what you want</p>
-                                <!--<p class="m-b-0">Metal: Alloy/Gold-plated<br />-->
-                                <!--Flower Dimension: 25*15 mm<br />-->
-                                <!--About EverMarker :</p>-->
                             </div>
                             <a class="flex flex-alignCenter flex-fullJustified font-size-sm p-t-5x text-common btn-showMore">
                                 <span class="showMore">Show More</span>
                                 <i class="iconfont icon-arrow-bottom icon-size-xm text-common"></i>
                             </a>
                         </div>
-
-                        <!--<a class="flex flex-alignCenter flex-fullJustified font-size-xs text-common" href="#">-->
-                        <!--show more-->
-                        <!--<i class="iconfont icon-arrow-bottom icon-size-xm text-common"></i>-->
-                        <!--</a>-->
                     </aside>
                     <!-- 用户 Q & A -->
                     <aside class="product-secondaryInfo">
@@ -287,12 +280,12 @@
                     <aside class="product-secondaryInfo container-fluid p-y-10x p-x-15x">
                         <div class="row">
                             <div class="col-xs-6">
-                                <a class="btn btn-primary-outline btn-block" data-role="addCart">
+                                <div class="btn btn-primary-outline btn-block" data-control="openModal" data-action="PATCH">
                                     Add To Bag
-                                </a>
+                                </div>
                             </div>
                             <div class="col-xs-6">
-                                <a class="btn btn-primary btn-block" data-role="buyNow">Buy Now</a>
+                                <div class="btn btn-primary btn-block" data-control="openModal" data-action="PUT">Buy Now</div>
                             </div>
                         </div>
                     </aside>
@@ -480,22 +473,16 @@
                     </fieldset>
                     <hr class="hr-dark m-a-0">
                     <fieldset class="container-fluid p-a-15x">
-                        <div class="row">
+                        <!-- 添加 购物车 控制按钮显示 -->
+                        <div class="btn btn-primary btn-block" data-control="continue" data-role="continue" data-action="" hidden>Continue</div>
+                        <div class="row" data-control="modalButton">
                             <div class="col-xs-6">
-                                <div class="btn btn-primary-outline btn-block" id="addCart" data-role="addCart">Add To Bag</div>
+                                <div class="btn btn-primary-outline btn-block" data-role="modalButton" data-action="PATCH">Add To Bag</div>
                             </div>
                             <div class="col-xs-6">
-                                <div class="btn btn-primary btn-block" id="buyNow" data-role="buyNow">Buy Now</div>
+                                <div class="btn btn-primary btn-block" data-role="modalButton" data-action="PUT">Buy Now</div>
                             </div>
                         </div>
-                        <!--<div class="row">-->
-                        <!--<div class="col-xs-6">-->
-                        <!--<a href="" class="btn btn-primary-outline btn-block" id="addCart">Add To Bag</a>-->
-                        <!--</div>-->
-                        <!--<div class="col-xs-6">-->
-                        <!--<a href="" class="btn btn-primary btn-block" id="buyNow">Buy Now</a>-->
-                        <!--</div>-->
-                        <!--</div>-->
                     </fieldset>
                 </form>
             </div>
