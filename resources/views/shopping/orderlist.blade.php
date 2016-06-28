@@ -66,7 +66,7 @@
                 <a class="btn btn-primary btn-sm" href="/order/orderdetail/@{{ $value.sub_order_no }}">Order
                     Detail</a>
             </div>
-            @{{ if $value.status_explain == '' || $value.status_explain == null }}
+            @{{ if $value.status_explain !== '' || $value.status_explain !== null }}
             <div class="font-size-sm text-primary p-t-10x">
                 @{{ $value.status_explain }}
             </div>
