@@ -40,8 +40,9 @@ class DesignerController extends ApiController
     //设计师详情
     public function show(Request $request, $id)
     {
+        //设计师详情
         $params = array(
-            'cmd' => $request->input("cmd", 'designerdetail'),
+            'cmd' => 'designerdetail',
             'pin' => Session::get('user.pin'),
             'token' => Session::get('user.token'),
             'd_id' => $id,
