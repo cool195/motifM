@@ -137,7 +137,7 @@
             <article class="font-size-md text-main p-y-10x p-x-15x"><strong>Order Details</strong></article>
 
             <!-- 订单主要信息:日期、订单号、总金额 -->
-            <article class="bg-white font-size-sm p-y-10x p-x-15x m-b-10x">
+            <article class="bg-white font-size-sm p-y-10x p-x-15x m-b-10x" data-order-number="">
                 <div class="flex text-primary">
                     <span class="orderInfo-subTitle flex-fixedShrink">Order date</span>
                     <span>apr 14, 2016</span>
@@ -156,7 +156,7 @@
             <aside class="bg-white m-b-10x">
                 <!--被取消的订单 取消原因、取消日期-->
                 <div class="p-a-10x">
-                    <div class="font-size-sm text-primary"><strong>CANCELLED:</strong> <span>Apr 14, 2016</span></div>
+                    <div class="font-size-sm text-primary" id="orderState" data-state=""><strong>CANCELLED:</strong> <span>Apr 14, 2016</span></div>
                     <div class="font-size-sm text-primary">
                         <div>Order payment failed:</div>
                         <div>Apr 15, 2016 - Apr 17, 2016</div>
