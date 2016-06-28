@@ -51,7 +51,6 @@
                     <div class="font-size-sm text-primary"><strong>{{ $data['status_info'] }}:</strong>
                         <span>{{$data['create_time']}}</span></div>
                     <div class="font-size-sm text-primary">
-                        <div>Order payment failed:</div>
                         <div>{{ $data['status_explain'] }}</div>
                         {{--<div>Apr 15, 2016 - Apr 17, 2016</div>--}}
                     </div>
@@ -103,7 +102,7 @@
             @endif
             @if(in_array($data['status_code'], array(21, 22, 23)))
                 <div class="p-a-10x">
-                    <a href="#" class="btn btn-primary btn-block btn-sm" type="bottom">Buy Again</a>
+                    <div href="#" class="btn btn-primary btn-block btn-sm" type="bottom" id="buyAgain">Buy Again</div>
                 </div>
             @endif
         </aside>
@@ -188,5 +187,13 @@
 <script src="/scripts/vendor.js"></script>
 
 <script src="/scripts/orderDetail.js"></script>
+<meta name="csrf-token" content="{{ csrf_token() }}" />
+<script>
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+</script>
 @include('global')
 </html>

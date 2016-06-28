@@ -106,7 +106,7 @@
                     <span class="checkoutInfo-subTitle flex-fixedShrink">Pay with</span>
                     <div class="checkoutInfo-content flex flex-fullJustified flex-alignCenter">
                         @if(empty($paym) || "" == $paym )
-                            <span class="text-warning">No PaymentMethod add</span>
+                            <span class="text-warning">Select payment method</span>
                         @else
                             <div class="flex">
                             @if($cardType=="PayPal")
