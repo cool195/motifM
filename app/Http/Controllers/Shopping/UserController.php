@@ -63,18 +63,18 @@ class UserController extends ApiController
             'nick' => $request->input('nick')
         );
         $result = $this->request('openapi', self::API_SYSTEM, self::API_SERVICE, $params);
-/*        if (empty($result) ) {
-            $result['success'] = false;
-            $result['error_msg'] = "Data access failed";
-            $result['data'] = array();
-        } else {
-            if ($result['success']) {
-                $result['redirectUrl'] = "/login";
-            }
-        }*/
-        if($result['success']){
+        /*        if (empty($result) ) {
+                    $result['success'] = false;
+                    $result['error_msg'] = "Data access failed";
+                    $result['data'] = array();
+                } else {
+                    if ($result['success']) {
+                        $result['redirectUrl'] = "/login";
+                    }
+                }*/
+        if ($result['success']) {
             $result['redirectUrl'] = "/login";
-        }else{
+        } else {
             $result['prompt_msg'] = $result['error_msg'];
         }
         return $result;
@@ -210,7 +210,7 @@ class UserController extends ApiController
             //'pin' => Session::get('user.pin'),
         );
         $result = $this->request('openapi', self::API_SYSTEM, self::API_SERVICE, $params);
-        if(!empty($result) && $result['success']){
+        if (!empty($result) && $result['success']) {
             $result['redirectUrl'] = "/login";
             $result['prompt_msg'] = "We have send you an email to your email address";
         }
@@ -472,6 +472,31 @@ class UserController extends ApiController
         } else {
             return array('success' => false);
         }
+    }
+
+    //找回密码并修改密码
+    public function forgetPWD(Request $request)
+    {
+        if ($request->input('pw')) {
+            if ($request->input('pw') != $request->input('lastpw')) {
+                return array('success' => false, 'error_msg' => 'Passwords do not match');
+            }
+            $params = array(
+                'cmd' => 'modifyfgtpwd',
+                'pw' => $request->input('pw'),
+                'tp' => $request->input('tp'),
+                'sig' => $request->input('sig'),
+            );
+
+            return $this->request('openapi', '', 'user', $params);
+        } else {
+            $params = array(
+                'tp' => $request->input('tp'),
+                'sig' => $request->input('sig'),
+            );
+            return View('shopping.forgetpwd', ['params' => $params]);
+        }
+
     }
 }
 
