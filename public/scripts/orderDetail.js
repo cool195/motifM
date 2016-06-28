@@ -56,8 +56,8 @@
 
             $.each(val.vas_info,function(i, el) {
                 var Cache=[];
-                Cache[i]['user_remark']=el.user_remark;
-                Cache[i]['vas_id']=el.vas_id;
+                Cache[i]['user_remark']=el['user_remark'];
+                Cache[i]['vas_id']=el['vas_id'];
                 Operate.VAList.push(Cache);
             });
 
@@ -77,7 +77,7 @@
             .done(function(data) {
                 console.log("success");
                 if (data.success) {
-                    //window.location.href = data.redirectUrl;
+                    window.location.href = data.redirectUrl;
                 }
             })
             .fail(function() {
