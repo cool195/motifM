@@ -11,7 +11,6 @@ use Illuminate\Support\Facades\Cookie;
 use App\Services\Net;
 
 
-
 abstract class ApiController extends Controller
 {
 
@@ -23,10 +22,9 @@ abstract class ApiController extends Controller
      */
     protected $ApiUrl = [
         //接口名称
-        'openapi' => 'http://192.168.0.230',
-        //'openapi' => '54.222.233.255',
-        //分类列表
-        'Category' => 'http://192.168.0.230/product?cmd=categorylist&token=1001'
+        'openapi_local' => 'http://192.168.0.230',//本地
+        'openapi_test' => 'http://192.168.0.230',//预发布
+        'openapi' => 'http://54.222.233.255',//生产
     ];
 
     public function __construct()
@@ -42,14 +40,14 @@ abstract class ApiController extends Controller
 
     protected function request($ApiName, $system, $service, array $params, $cacheTime = 0, $output = false)
     {
-
+        $ApiName = $_SERVER['SERVER_NAME'] == 'm.motif.me' ? 'openapi' : ($_SERVER['SERVER_NAME'] == 'motif.app' ? 'openapi_local' : 'openapi_test');
         $buildParams = http_build_query($params);
-		$key = md5($buildParams);
+        $key = md5($buildParams);
         $result = "";
         if ($cacheTime > 0 && Cache::has($key)) {
             $result = Cache::get($key);
-        } 
-		if(empty($result) || "" == $result ) {
+        }
+        if (empty($result) || "" == $result) {
             $result = Net::api($this->ApiUrl[$ApiName], $system, $service, $buildParams, ['Cookie:frontend=' . $this->sessionId]);
             if ($cacheTime > 0) {
                 Cache::put($key, $result, $cacheTime);
