@@ -14,6 +14,7 @@
 $app->get('/', 'Daily\DailyController@index');
 $app->get('/daily', 'Daily\DailyController@index');
 $app->get('/topic/{id}', 'Daily\DailyController@show');
+$app->get('/template/{id}', 'Daily\DailyController@staticShow');
 $app->get('/shopping', 'Shopping\ShoppingController@index');
 
 $app->get('/designer', 'Designer\DesignerController@index');
