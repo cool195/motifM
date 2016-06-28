@@ -163,7 +163,7 @@
                     @if(isset($data['templates']) && !empty($data['templates']))
                         @foreach($data['templates'] as $template)
                             <a class="flex flex-alignCenter flex-fullJustified font-size-sm text-primary p-a-15x"
-                               href="{{ $template['page_url'] }}">
+                               href="/template/{{ $template['template_id'] }}">
                                 {{ $template['template_title'] }}
                                 <i class="iconfont icon-arrow-right icon-size-xm text-common"></i>
                             </a>

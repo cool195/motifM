@@ -47,6 +47,24 @@ class DailyController extends ApiController
 
         return View($view, ['topic' => $result['data'], 'topicID' => $id]);
     }
+
+    //商品详情动态模版
+    public function staticShow($id)
+    {
+        $params = array(
+            'id' => $id
+        );
+
+        $result = $this->request('openapi', 'topicf', "template", $params);
+        $view = '';
+        if (strstr($_SERVER['HTTP_USER_AGENT'], 'motif-android') || strstr($_SERVER['HTTP_USER_AGENT'], 'motif-ios')) {
+            $view = 'daily.topicApp';
+        } else {
+            $view = 'daily.topic';
+        }
+
+        return View($view, ['topic' => $result['data'], 'topicID' => $id]);
+    }
 }
 
 ?>
