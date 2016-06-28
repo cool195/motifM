@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
-    <title>Ask & Question</title>
+    <title>@if(2==$skiptype) Contact Service @else Ask a Question @endif</title>
     <link rel="icon" href="/images/favicon.ico">
     <link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
     <!-- Place favicon.ico in the root directory -->
@@ -31,7 +31,7 @@
     <!-- 提交问题反馈 表单 -->
         <section class="m-b-20x">
             <form method="post" id="form-askQuestion" action="/askshopping">
-                <article class="font-size-md text-main p-y-10x p-x-15x"><strong>Ask a Question</strong></article>
+                <article class="font-size-md text-main p-y-10x p-x-15x"><strong>@if(2==$skiptype) Contact Service @else Ask a Question @endif</strong></article>
                 <fieldset>
                     <input type="hidden" name="_method" value="PUT">
                     <input type="hidden" name="id" value="{{$id}}">
