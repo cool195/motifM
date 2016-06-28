@@ -30,16 +30,20 @@
         @include('navigator')
     @endif
     <!-- 联系我们 -->
-        <section>
+        <section class="reserve-height">
             <article class="font-size-md text-main p-x-15x p-y-10x"><strong>Contact Us</strong>
             </article>
             <div class="bg-white">
-                <div class="p-a-15x font-size-md text-main">Email:&nbsp;<a href="mailto:service@motif.me">Service@motif
-                        .me</a></div>
+                <div class="p-a-15x font-size-md text-main">Customer Support Email:&nbsp;<a href="mailto:service@motif.me">Service@motif.me</a>
+                </div>
                 <hr class="hr-base m-y-0">
-                <div class="p-x-15x p-y-10x font-size-md text-main">On Facebook:&nbsp;
-                    <a class="btn btn-primary btn-sm" target="_blank"
-                       href="https://www.facebook.com/Motif-862363260557363/">fackbook</a>
+                <div class="p-x-15x p-y-10x font-size-md text-main">Business Contact Email:&nbsp;
+                    <a href="mailto:Business@motif.me">Business@motif.me</a>
+                </div>
+                <hr class="hr-base m-y-0">
+                <div class="p-x-15x p-y-10x font-size-md text-main">Contact Us on Facebook:&nbsp;
+                    <a target="_blank" href="https://www.facebook.com/Motif-862363260557363/">
+                        <img src="/images/contactus/icon-facebook.png" srcset="/images/contactus/icon-facebook@2x.png 2x,/images/contactus/icon-facebook@3x.png 3x"></a>
                 </div>
             </div>
         </section>

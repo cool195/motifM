@@ -81,10 +81,12 @@
                     methodtoken: PaymentToken
                 }
             })
-            .done(function() {
+            .done(function(data) {
                 console.log("success");
                 if (data.success) {
-                    window.location.href = data.redirectUrl;
+                    $('#infoForm').attr('action', data.redirectUrl);
+                    $('#infoForm').submit();
+                    //window.location.href = data.redirectUrl;
                 }
             })
             .fail(function() {
@@ -192,7 +194,9 @@
                     .done(function(data) {
                         console.log("success");
                         if (data.success) {
-                            window.location.href = data.redirectUrl;
+                            $('#infoForm').attr('action', data.redirectUrl);
+                            $('#infoForm').submit();
+                           // window.location.href = data.redirectUrl;
                         }
                     })
                     .fail(function() {
