@@ -103,7 +103,7 @@
 </div>
 
 <!-- loading 效果 -->
-<div class="loading loading-screen loading-transprant loading-hidden">
+<div class="loading loading-screen loading-transprant loading-hidden" id="loading">
     <div class="loading-modal">
         <div class="loader loader-white"></div>
         <div class="text-white font-size-md text-center m-t-20x">Applying Payment Method</div>
