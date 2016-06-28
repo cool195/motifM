@@ -48,7 +48,7 @@
         @if(in_array($data['status_code'], array(21, 22, 23)))
             <!--被取消的订单 取消原因、取消日期-->
                 <div class="p-a-10x">
-                    <div class="font-size-sm text-primary"><strong>{{ $data['status_info'] }}:</strong>
+                    <div class="font-size-sm text-primary" id="orderState" data-state="true"><strong>{{ $data['status_info'] }}:</strong>
                         <span>{{$data['create_time']}}</span></div>
                     <div class="font-size-sm text-primary">
                         <div>{{ $data['status_explain'] }}</div>

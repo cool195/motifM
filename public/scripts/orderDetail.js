@@ -4,9 +4,9 @@
 /*global jQuery*/
 
 'use strict';
-(function ($) {
+(function($) {
     // 显示隐藏 message 更多内容
-    $('.btn-showMore').on('click', function () {
+    $('.btn-showMore').on('click', function() {
         var $Message = $(this).siblings('.message-info');
         $Message.toggleClass('active');
         if ($Message.hasClass('active')) {
@@ -18,65 +18,80 @@
         }
     });
 
-    $(document).ready(function () {
-        if($('.message-info').children('p').height() <= 144){
+    var OrderInfo = [],
+        OrderOperate = [];
+
+    function getOrderInfo() {
+        var OrderNum = $('data-order-number').data('order-number');
+        $.ajax({
+                url: '/orderdetail/' + OrderNum,
+                type: 'GET'
+            })
+            .done(function(data) {
+                console.log("success");
+                if (data.success) {
+                    OrderInfo = data.data.lineOrderList;
+                }
+            })
+            .fail(function() {
+                console.log("error");
+            })
+            .always(function() {
+                console.log("complete");
+            });
+    }
+
+    function getOperate() {
+        var Operate = {
+            'sale_qtty': null, // 数量
+            'select': true, // 是否选中
+            'sku': null, // SKU
+            'VAList': [] // 增值服务
+        };
+
+        $.each(OrderInfo, function(index, el) {
+            Operate.sale_qtty = el.sale_qtty;
+            Operate.sku = el.sku;
+            Operate.VAList.user_remark = el.vas_info.user_remark;
+            Operate.VAList.vas_id = el.vas_info.vas_id;
+            OrderOperate.push(Operate);
+        });
+    }
+
+    function initCart() {
+        $.ajax({
+                url: '/cart/addBatchCart',
+                type: 'POST',
+                data: {
+                    operate: OrderOperate
+                }
+            })
+            .done(function(data) {
+                console.log("success");
+                if (data.success) {
+                    window.location.href = data.redirectUrl;
+                }
+            })
+            .fail(function() {
+                console.log("error");
+            })
+            .always(function() {
+                console.log("complete");
+            });
+
+    }
+    $(document).ready(function() {
+        if ($('.message-info').children('p').height() <= 144) {
             $('.btn-showMore').hide();
+        }
+        if ($('#orderState').data('state')) {
+            getOrderInfo(OrderInfo);
+            getOperate(OrderOperate);
         }
     });
 
-    // 获取当前取消的 订单
-    function getOperate() {
-        var orderlist = $('.orderList-item');
-        var obj = {};
-        $.each(orderlist, function (index) {
-            var sku = $(this).data('sku');
-            var qty = $(this).data('item-qty');
-
-            obj[index] = {};
-            obj[index].sale_qtty = qty;
-            obj[index].sku = sku;
-
-            //判断当前订单的 商品中 是否有增值服务
-            var vasobj = {};
-            $(this).find('.vaList').each(function (i) {
-                var remark = $(this).data('remark');
-                var vasid = $(this).data('vasid');
-
-                vasobj[i] = {};
-                vasobj[i].user_remark = remark;
-                vasobj[i].vas_id = vasid;
-
-                // 将增值服务添加到 obj 中
-                obj[index].VAList = vasobj;
-            });
-        });
-        console.info(obj);
-        return obj;
-    }
-
-    // 取消订单 重新购买
-    function buyAgain() {
-        // 获取 取消的订单信息
-        var operate = JSON.stringify(getOperate());
-        $.ajax({
-            url: '/cart/batchAddCart',
-            type: 'POST',
-            data: {cmd: 'addsku', pin: 'yinlinghui', operate: operate}
-        })
-            .done(function () {
-                console.log('success');
-            })
-            .fail(function () {
-                console.log('error');
-            })
-            .always(function () {
-                console.log('complete');
-            });
-    }
-
-    // 触发 重新购买 事件
-    $('#buyAgain').click(function () {
-        buyAgain();
+    $('#buyAgain').click(function() {
+        initCart();
     });
 
 })(jQuery);
