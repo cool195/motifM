@@ -55,7 +55,7 @@
             <hr class="hr-base m-a-0">
         </li>
         <li class="nav-item">
-            <a href="#" class="flex flex-alignCenter flex-fullJustified p-a-15x">
+            <a href="#" class="flex flex-alignCenter flex-fullJustified p-a-15x" data-remodal-target="download-modal">
                 <div class="font-size-sm text-primary flex flex-alignCenter"><i
                             class="iconfont icon-like icon-size-md p-r-15x"></i><span>Wishlist</span></div>
                 <span class="text-common"><i class="iconfont icon-arrow-right icon-size-sm"></i></span>
@@ -63,7 +63,7 @@
             <hr class="hr-base m-a-0">
         </li>
         <li class="nav-item">
-            <a href="#" class="flex flex-alignCenter flex-fullJustified p-a-15x">
+            <a href="#" class="flex flex-alignCenter flex-fullJustified p-a-15x" data-remodal-target="download-modal">
                 <div class="font-size-sm text-primary flex flex-alignCenter"><i
                             class="iconfont icon-follow icon-size-md p-r-15x"></i><span>Following</span></div>
                 <span class="text-common"><i class="iconfont icon-arrow-right icon-size-sm"></i></span>
