@@ -50,11 +50,18 @@
             'VAList': [] // 增值服务
         };
 
-        $.each(OrderInfo, function(index, el) {
-            Operate.sale_qtty = el.sale_qtty;
-            Operate.sku = el.sku;
-            Operate.VAList.user_remark = el.vas_info.user_remark;
-            Operate.VAList.vas_id = el.vas_info.vas_id;
+        $.each(OrderInfo, function(index, val) {
+            Operate.sale_qtty = val.sale_qtty;
+            Operate.sku = val.sku;
+
+            $.each(val.vas_info,function(i, el) {
+                var Cache=[];
+                Cache[i].user_remark=el.user_remark;
+                Cache[i].vas_id=el.vas_id;
+                Operate.VAList.push(Cache);
+            });
+
+
             OrderOperate.push(Operate);
         });
     }
