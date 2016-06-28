@@ -54,13 +54,13 @@
             Operate.sale_qtty = val.sale_qtty;
             Operate.sku = val.sku;
 
-            $.each(val.vas_info,function(i, el) {
-                var Cache=[];
-                Cache[i]['user_remark']=el['user_remark'];
-                Cache[i]['vas_id']=el['vas_id'];
-                Operate.VAList.push(Cache);
+            var Cache = [];
+            $.each(val.vas_info, function(i, el) {
+                Cache[i] = {};
+                Cache[i].user_remark = el.user_remark;
+                Cache[i].vas_id = el.vas_id;
             });
-
+            Operate.VAList = Cache;
 
             OrderOperate.push(Operate);
         });
