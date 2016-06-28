@@ -5,7 +5,7 @@ use Illuminate\Support\Facades\Log;
 
 class Net
 {
-    public static function api($apiName, $system, $service, $params, array $headers = [])
+    public static function api($apiName, $system, $service, $params)
     {
         $api = "";
         $api .= $apiName;
