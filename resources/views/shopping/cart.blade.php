@@ -17,6 +17,7 @@
 
 </head>
 <body>
+@include('check.tagmanager')
 <!-- 外层容器 -->
 <div id="body-content">
     @include('nav')

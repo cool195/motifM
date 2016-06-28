@@ -6,6 +6,7 @@
     <script src="/scripts/vendor/fastclick.js"></script>
 </head>
 <body>
+@include('check.tagmanager')
 <form id="checkout" method="post" action="/testcheck">
     <div id="payment-form"></div>
     <input type="submit" value="Pay $10">

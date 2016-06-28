@@ -19,6 +19,7 @@
 
 </head>
 <body id="body-content">
+@include('check.tagmanager')
 @include('nav')
 <div class="body-container">
     @include('navigator')

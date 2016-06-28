@@ -23,6 +23,7 @@
 
 </head>
 <body>
+@include('check.tagmanager')
 <!-- 主体内容 -->
 <div class="resetPwd-container p-t-20x">
     <section class="resetPwd-content m-t-10x p-y-20x">

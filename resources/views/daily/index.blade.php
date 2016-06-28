@@ -19,6 +19,7 @@
     <script src="/scripts/vendor/template-native.js"></script>
 </head>
 <body>
+@include('check.tagmanager')
 <!-- 外层容器 -->
 <div id="body-content">
     <!-- 展开的汉堡菜单 -->

@@ -20,6 +20,7 @@
 </head>
 
 <body>
+@include('check.tagmanager')
 <!-- 外层容器 -->
 <div id="body-content">
     <!-- 展开的汉堡菜单 -->
@@ -61,7 +62,7 @@
     <div class="loader loader-screen"></div>
 </div>
 </body>
-<script src="scripts/vendor.js"></script>
+<script src="/scripts/vendor.js"></script>
 
 <script src="/scripts/shoppingDetail-askQuestion.js"></script>
 @include('global')

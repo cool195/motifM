@@ -17,6 +17,7 @@
     <script src="/scripts/vendor/fastclick.js"></script>
 </head>
 <body>
+@include('check.tagmanager')
 <!-- App 下载提示 -->
 <!--<nav class="navbar-fixed-bottom bg-download p-y-10x p-x-15x flex flex-fullJustified flex-alignCenter">-->
 <!--<div class="flex flex-alignCenter">-->

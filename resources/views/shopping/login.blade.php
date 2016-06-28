@@ -23,6 +23,7 @@
 
 </head>
 <body>
+@include('check.tagmanager')
 <!-- 主体内容 -->
 <div class="login-container">
     <section class="login-content p-y-20x">

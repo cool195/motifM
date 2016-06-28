@@ -24,6 +24,7 @@
 </head>
 
 <body>
+@include('check.tagmanager')
 <!-- 主体内容 -->
 <div class="register-container">
     <section class="register-content p-y-20x">

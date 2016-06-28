@@ -24,6 +24,7 @@ abstract class ApiController extends Controller
     protected $ApiUrl = [
         //接口名称
         'openapi' => 'http://192.168.0.230',
+        //'openapi' => '54.222.233.255',
         //分类列表
         'Category' => 'http://192.168.0.230/product?cmd=categorylist&token=1001'
     ];

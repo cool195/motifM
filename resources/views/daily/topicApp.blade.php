@@ -16,6 +16,7 @@
 </head>
 <?php error_reporting(0)?>
 <body>
+@include('check.tagmanager')
 <!-- 外层容器 -->
 <div id="body-content">
     <!-- 主体内容 -->
