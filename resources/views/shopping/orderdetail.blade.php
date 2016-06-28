@@ -37,7 +37,7 @@
             </div>
             <div class="flex text-primary">
                 <span class="orderInfo-subTitle flex-fixedShrink">Order total</span>
-                <span>${{number_format(($data['total_amount'] / 100), 2)}}</span>
+                <span>${{number_format(($data['pay_amount'] / 100), 2)}}</span>
             </div>
         </article>
 
