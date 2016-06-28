@@ -84,7 +84,8 @@
             .done(function(data) {
                 console.log("success");
                 if (data.success) {
-                    window.location.href = data.redirectUrl;
+                    $('#infoForm').attr('action', data.redirectUrl);
+                    $('#infoForm').submit();
                 }
             })
             .fail(function() {
@@ -191,7 +192,8 @@
                     .done(function(data) {
                         console.log("success");
                         if (data.success) {
-                            window.location.href = data.redirectUrl;
+                            $('#infoForm').attr('action', data.redirectUrl);
+                            $('#infoForm').submit();
                         }
                     })
                     .fail(function() {
