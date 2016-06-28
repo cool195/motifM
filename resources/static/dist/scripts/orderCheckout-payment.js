@@ -81,7 +81,7 @@
                     methodtoken: PaymentToken
                 }
             })
-            .done(function() {
+            .done(function(data) {
                 console.log("success");
                 if (data.success) {
                     window.location.href = data.redirectUrl;
@@ -93,7 +93,6 @@
             .always(function() {
                 console.log("complete");
                 closeLoading();
-
             });
     }
 
