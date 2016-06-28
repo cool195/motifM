@@ -27,7 +27,7 @@
         <article class="font-size-md text-main p-y-10x p-x-15x"><strong>Order Details</strong></article>
 
         <!-- 订单主要信息:日期、订单号、总金额 -->
-        <article class="bg-white font-size-sm p-y-10x p-x-15x m-b-10x">
+        <article class="bg-white font-size-sm p-y-10x p-x-15x m-b-10x" data-order-number="{{ $data['sub_order_no'] }}">
             <div class="flex text-primary">
                 <span class="orderInfo-subTitle flex-fixedShrink">Order date</span>
                 <span>{{$data['create_time']}}</span>
@@ -157,10 +157,10 @@
                         )</span><span>${{number_format(($data['total_amount'] / 100), 2)}}</span>
                 </div>
                 <div class="flex flex-fullJustified text-primary font-size-sm">
-                    <span>Extra</span><span>${{number_format(($data['vas_amount'] / 100), 2)}}</span>
+                    <span>Additional Services</span><span>${{number_format(($data['vas_amount'] / 100), 2)}}</span>
                 </div>
                 <div class="flex flex-fullJustified text-primary font-size-sm">
-                    <span>Shipping to {{ $data['userAddr']['zip'] }}</span><span>${{ number_format(($data['freight_amount'] / 100), 2) }}</span>
+                    <span>Shipping to {{ $data['userAddr']['zip'] }}</span><span>@if(0 == $data['freight_amount']) Free @else${{ number_format(($data['freight_amount'] / 100), 2)}} @endif</span>
                 </div>
                 <div class="flex flex-fullJustified text-primary font-size-sm">
                     <span>Coupon</span><span>-${{ number_format(($data['cps_amount'] / 100), 2)}}</span>
