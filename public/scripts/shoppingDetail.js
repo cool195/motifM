@@ -178,7 +178,11 @@
                 // Inventory 为库存的商品的Sku
                 var Inventory = inventoryNull(data.data.skuExps);
                 // 所有选项
-                newOptions(data.data.spuAttrs, Inventory, Options);
+                if (data.data.spuAttrs === undefined) {
+                    ResultSkus = data.data.skus;
+                } else {
+                    newOptions(data.data.spuAttrs, Inventory, Options);
+                }
                 // 所有sku对应的库存
                 newStock(data.data.skuExps, Stock);
                 // 所有增值服务

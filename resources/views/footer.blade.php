@@ -17,7 +17,7 @@
             <a class="share-btn" href="https://plus.google.com/u/0/113666794179158439426">
                 <i class="iconfont icon-google icon-size-lg"></i>
             </a>
-            <a class="share-btn">
+            <a class="share-btn" href="https://instagram.com/motif.jewelry/">
                 <i class="iconfont icon-linkedin icon-size-lg"></i>
             </a>
         </div>
