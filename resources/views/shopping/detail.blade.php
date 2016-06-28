@@ -96,28 +96,7 @@
             </article>
             <!-- 产品 其他信息 -->
             <section>
-                <!-- 添加到购物车 立即购买 -->
-                <aside class="container-fluid bg-white p-y-10x p-x-15x m-b-10x">
-                    @if(Session::has('user'))
-                        <div class="row">
-                            <div class="col-xs-6">
-                                <div class="btn btn-primary-outline btn-block" data-control="openModal" data-action="PATCH">Add To Bag</div>
-                            </div>
-                            <div class="col-xs-6">
-                                <div class="btn btn-primary btn-block" data-control="openModal" data-action="PUT">Buy Now</div>
-                            </div>
-                        </div>
-                    @else
-                        <div class="row">
-                            <div class="col-xs-6">
-                                <a href="/login" class="btn btn-primary-outline btn-block" id="addCart">Add To Bag</a>
-                            </div>
-                            <div class="col-xs-6">
-                                <a href="/login" class="btn btn-primary btn-block" id="buyNow">Buy Now</a>
-                            </div>
-                        </div>
-                    @endif
-                </aside>
+
                 <!-- 选择商品参数 -->
                 @if(isset($data['spuAttrs']) || isset($data['vasBases']))
                     <aside class="bg-white m-b-10x">
@@ -140,6 +119,28 @@
                         </a>
                     </aside>
                 @endif
+            <!-- 添加到购物车 立即购买 -->
+                <aside class="container-fluid bg-white p-y-10x p-x-15x m-b-10x">
+                    @if(Session::has('user'))
+                        <div class="row">
+                            <div class="col-xs-6">
+                                <div class="btn btn-primary-outline btn-block" data-control="openModal" data-action="PATCH">Add To Bag</div>
+                            </div>
+                            <div class="col-xs-6">
+                                <div class="btn btn-primary btn-block" data-control="openModal" data-action="PUT">Buy Now</div>
+                            </div>
+                        </div>
+                    @else
+                        <div class="row">
+                            <div class="col-xs-6">
+                                <a href="/login" class="btn btn-primary-outline btn-block" id="addCart">Add To Bag</a>
+                            </div>
+                            <div class="col-xs-6">
+                                <a href="/login" class="btn btn-primary btn-block" id="buyNow">Buy Now</a>
+                            </div>
+                        </div>
+                    @endif
+                </aside>
             <!-- 产品描述 -->
                 <aside class="bg-white p-x-15x p-y-10x m-b-10x">
                     <p class="font-size-md text-main"><strong>Description</strong></p>
@@ -172,29 +173,7 @@
                     @endif
                 </aside>
 
-                <!-- 添加购物车 -->
-                <aside class="product-secondaryInfo container-fluid p-y-10x p-x-15x">
-                    @if(Session::has('user'))
-                        <div class="row">
-                            <div class="col-xs-6">
-                                <div class="btn btn-primary-outline btn-block" data-control="openModal" data-action="PATCH">Add To
-                                    Bag</div>
-                            </div>
-                            <div class="col-xs-6">
-                                <div class="btn btn-primary btn-block" data-control="openModal" data-action="PUT">Buy Now</div>
-                            </div>
-                        </div>
-                    @else
-                        <div class="row">
-                            <div class="col-xs-6">
-                                <a href="/login" class="btn btn-primary-outline btn-block" id="addCart">Add To Bag</a>
-                            </div>
-                            <div class="col-xs-6">
-                                <a href="/login" class="btn btn-primary btn-block" id="buyNow">Buy Now</a>
-                            </div>
-                        </div>
-                    @endif
-                </aside>
+
                 <!-- 推荐商品 -->
                 <aside class="m-b-20x">
                     <article class="font-size-md text-primary p-x-15x"><strong>More Like This</strong></article>
@@ -229,6 +208,29 @@
                             @endforeach
                         </div>
                     </div>
+                </aside>
+                <!-- 添加购物车 -->
+                <aside class="product-secondaryInfo container-fluid p-y-10x p-x-15x">
+                    @if(Session::has('user'))
+                        <div class="row">
+                            <div class="col-xs-6">
+                                <div class="btn btn-primary-outline btn-block" data-control="openModal" data-action="PATCH">Add To
+                                    Bag</div>
+                            </div>
+                            <div class="col-xs-6">
+                                <div class="btn btn-primary btn-block" data-control="openModal" data-action="PUT">Buy Now</div>
+                            </div>
+                        </div>
+                    @else
+                        <div class="row">
+                            <div class="col-xs-6">
+                                <a href="/login" class="btn btn-primary-outline btn-block" id="addCart">Add To Bag</a>
+                            </div>
+                            <div class="col-xs-6">
+                                <a href="/login" class="btn btn-primary btn-block" id="buyNow">Buy Now</a>
+                            </div>
+                        </div>
+                    @endif
                 </aside>
             </section>
         </section>
