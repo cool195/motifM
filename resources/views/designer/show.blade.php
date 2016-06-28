@@ -49,16 +49,18 @@
                 <div class="font-size-sm text-primary p-a-10x">{{$designer['describe']}}</div>
                 <div class="p-x-10x p-y-5x">
                     @if(isset($designer['youtube_link']))
-                        <a href="{{$designer['youtube_link']}}" class="p-r-5x"><i class="iconfont icon-youtube icon-size-lg text-primary"></i></a>
+                        <a href="{{$designer['youtube_link']}}" class="p-r-5x"><i
+                                    class="iconfont icon-youtube icon-size-lg text-primary"></i></a>
                     @elseif(isset($designer['facebook_link']))
-                        <a href="{{$designer['facebook_link']}}" class="p-r-5x"><i class="iconfont icon-facebook icon-size-lg text-primary"></i></a>
+                        <a href="{{$designer['facebook_link']}}" class="p-r-5x"><i
+                                    class="iconfont icon-facebook icon-size-lg text-primary"></i></a>
                     @elseif(isset($designer['instagram_link']))
-                        <a href="{{$designer['instagram_link']}}" class="p-r-5x"><i class="iconfont icon-linkedin icon-size-lg text-primary"></i></a>
+                        <a href="{{$designer['instagram_link']}}" class="p-r-5x"><i
+                                    class="iconfont icon-linkedin icon-size-lg text-primary"></i></a>
                     @endif
                 </div>
             </div>
-
-            <!-- 设计师 对应商品 -->
+            <!-- 设计师 对应模版商品 -->
             <aside class="bg-white p-b-10x">
             @if(isset($product['infos']))
                 @foreach($product['infos'] as $k=>$value)

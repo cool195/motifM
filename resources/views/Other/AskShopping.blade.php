@@ -47,11 +47,7 @@
                     </div>
                 </fieldset>
                 <div class="container-fluid p-a-15x">
-                    <div class="row">
-                        <div class="col-xs-6">
-                            <button class="btn btn-primary btn-block btn-sm" id="submit" data-spu="123">Send</button>
-                        </div>
-                    </div>
+                    <button class="btn btn-primary btn-block btn-sm" id="submit" data-spu="123">Send</button>
                 </div>
             </form>
         </section>

@@ -37,7 +37,7 @@
             </div>
             <div class="flex text-primary">
                 <span class="orderInfo-subTitle flex-fixedShrink">Order total</span>
-                <span>${{number_format(($data['total_amount'] / 100), 2)}}</span>
+                <span>${{number_format(($data['pay_amount'] / 100), 2)}}</span>
             </div>
         </article>
 
@@ -80,14 +80,16 @@
                             <aside class="text-primary font-size-sm">
                                 @if(isset($lineOrder['attrValues']) && !empty($lineOrder['attrValues']))
                                     @foreach($lineOrder['attrValues'] as $attr)
-                                        <div><span>{{$attr['attr_type_value']}}
-                                                : </span><span>{{$attr['attr_value'] }}</span></div>
+                                        <div><span>{{$attr['attr_type_value']}}: </span><span>{{$attr['attr_value'] }}</span></div>
                                     @endforeach
                                 @endif
                                 <div><span>Qty: </span><span>{{$lineOrder['sale_qtty']}}</span></div>
                                 @if(isset($lineOrder['vas_info']) && !empty($lineOrder['vas_info']))
                                     @foreach($lineOrder['vas_info'] as $info)
-                                        <div><span>{{$info['vas_name']}}: </span><span>{{$info['user_remark'] }}</span>
+                                        <div>
+                                            <span>{{$info['vas_name']}}: </span>
+                                            <span>{{$info['user_remark'] }}</span>
+                                            <span>+${{number_format(($info['vas_price'] / 100), 2)}}</span>
                                         </div>
                                     @endforeach
                                 @endif
