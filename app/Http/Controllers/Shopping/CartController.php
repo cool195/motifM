@@ -376,7 +376,7 @@ class CartController extends ApiController
 
 		$params = array(
 			'cmd' => 'batchaddskus',
-			'operate' => $request->input('operate'),
+			'operate' => json_decode($request->input('operate'), true),
 			'token' => Session::get('user.token'),
 			'pin' => Session::get('user.pin'),
 		);
