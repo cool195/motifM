@@ -25,12 +25,13 @@
         var OrderNum = $('[data-order-number]').data('order-number');
         $.ajax({
                 url: '/orderdetail/' + OrderNum,
-                type: 'POST'
+                type: 'GET'
             })
             .done(function(data) {
                 console.log("success");
                 if (data.success) {
                     OrderInfo = data.data.lineOrderList;
+                    getOperate(OrderOperate);
                 }
             })
             .fail(function() {
@@ -86,7 +87,6 @@
         }
         if ($('#orderState').data('state')) {
             getOrderInfo(OrderInfo);
-            getOperate(OrderOperate);
         }
     });
 
