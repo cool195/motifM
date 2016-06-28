@@ -22,7 +22,7 @@
         OrderOperate = [];
 
     function getOrderInfo() {
-        var OrderNum = $('data-order-number').data('order-number');
+        var OrderNum = $('[data-order-number]').data('order-number');
         $.ajax({
                 url: '/orderdetail/' + OrderNum,
                 type: 'POST'
