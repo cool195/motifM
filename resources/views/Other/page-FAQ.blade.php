@@ -82,6 +82,19 @@
             </div>
 
             <div class="bg-white m-b-10x">
+                <div class="p-x-15x p-y-10x font-size-md text-main"><strong>Taxes and Fees.</strong>
+                </div>
+                <hr class="hr-base m-y-0">
+                <div class="p-a-15x font-size-sm text-primary">
+                    <p class="m-b-15x"><strong>Do I need to pay tax for the products?</strong></p>
+                    <p class="m-b-15x">You are responsible for determining and paying the appropriate government taxes, fees,
+                        and service charges resulting from a transaction occurring through the Service.  We are
+                        not responsible for collecting, reporting, paying, or remitting to you any such taxes, fees,
+                        or service charges. All transactions through the Service are in U.S. dollars.</p>
+                </div>
+            </div>
+
+            <div class="bg-white m-b-10x">
                 <div class="p-x-15x p-y-10x font-size-md text-main"><strong>Return & Exchange</strong>
                 </div>
                 <hr class="hr-base m-y-0">
@@ -112,7 +125,7 @@
                 </div>
             </div>
 
-            <div class="bg-white m-b-10x">
+{{--            <div class="bg-white m-b-10x">
                 <div class="p-x-15x p-y-10x font-size-md text-main"><strong>Other Queries</strong>
                 </div>
                 <hr class="hr-base m-y-0">
@@ -129,7 +142,7 @@
                         during the busy season or long holidays, it may take longer to respond. However, no emails will
                         be left unanswered.</p>
                 </div>
-            </div>
+            </div>--}}
 
             <div class="bg-white">
                 <div class="p-x-15x p-y-10x font-size-md text-main"><strong>Personalized Jewelry FAQs</strong>
@@ -177,9 +190,10 @@
                         jewelry is made according to your requirements, once it has been made it cannot be sold to
                         others.</p>
 
-                    <p class="m-b-15x"><strong>9. Still need help?</strong></p>
                     <p class="m-b-0">For any further queries, please feel free to contact us at <a
                                 href="mailto:service@motif.me" class="text-underLine">service@motif.me</a>.
+                        Normally our service team will reply within24 hours, but during the busy season or long holidays,
+                        it may take longer to respond. However, no emails will be left unanswered.
                     </p>
                 </div>
             </div>

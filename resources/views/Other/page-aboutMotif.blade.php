@@ -36,16 +36,18 @@
             </article>
             <div class="bg-white">
                 <div class="p-a-15x font-size-sm text-primary">
-                    <p class="m-b-15x">Fashion is not just a pursuit of beauty, it’s an attitude towards life.</p>
-                    <p class="m-b-15x">Declare your individuality and enhance your appearance with our selection of
-                        fashionable jewelry.</p>
-                    <p class="m-b-15x">Motif brings together a seamless online purchasing system with exceptional
-                        customer service. </p>
-                    <p class="m-b-15x">We guarantee a safe and secure shopping experience with Trust Marketing and SSL
-                        certified payment
-                        services. Whether you’re looking to complement your attire or reveal your style, Motif is just
-                        the
-                        best choice for you!</p>
+                    <p class="m-b-15x">Your style is unique and cutting edge - your fashion should be too. </p>
+                    <p class="m-b-15x">Exclusive, limited edition accessories designed by the world’s top fashion bloggers, Instagrammers and digital influencers are all here.</p>
+                    <p class="m-b-15x">Motif products and services include:</p>
+                    <p class="m-b-15x">- No. 1 ecommerce fashion boutique for digital influencers and limited editions</p>
+                    <p class="m-b-15x">- Collections by the world’s best fashion and beauty Instagrammers, bloggers and YouTubers </p>
+                    <p class="m-b-15x">- Limited edition collections: sold out designs will never be reproduced</p>
+                    <p class="m-b-15x">- Also featuring hand-picked emerging fashion designers from around the world</p>
+                    <p class="m-b-15x">- Rare, never before seen fashion: make your style as unique and special as you are</p>
+                    <p class="m-b-15x">-  New designs and style inspiration on our daily newsfeed</p>
+                    <p class="m-b-15x">- NEW style inspo from the Motif social community, and be featured on our app via #motifme</p>
+                    <p class="m-b-15x">- Free shipping and returns</p>
+                    <p class="m-b-15x">Download the app. Discover your personal Motif. Flaunt.</p>
                 </div>
             </div>
 
