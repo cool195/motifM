@@ -45,6 +45,8 @@
                 } else if (data.data.list.length > 0) {
                     if (NextPage === 1) {
                         $('#emptyOrder').remove();
+                    }else{
+                        $('#emptyOrder').removeClass('hidden-xs-up');
                     }
 
                     // 遍历模板 插入页面

@@ -106,7 +106,7 @@
                     <span class="checkoutInfo-subTitle flex-fixedShrink">Pay with</span>
                     <div class="checkoutInfo-content flex flex-fullJustified flex-alignCenter">
                         @if(empty($paym) || "" == $paym )
-                            <span class="text-warning">No PaymentMethod add</span>
+                            <span class="text-warning">Select payment method</span>
                         @else
                             <div class="flex">
                             @if($cardType=="PayPal")
@@ -145,11 +145,11 @@
                 </div>
                 @if($data['vas_amount'] > 0)
                 <div class="flex flex-fullJustified text-primary font-size-sm">
-                    <span>Extra</span><span>${{number_format(($data['vas_amount'] / 100), 2)}}</span>
+                    <span>Additional Services</span><span>${{number_format(($data['vas_amount'] / 100), 2)}}</span>
                 </div>
                 @endif
                 <div class="flex flex-fullJustified text-primary font-size-sm">
-                    <span>Shipping to {{$addr['zip']}}</span><span>${{ number_format(($data['freight_amount'] / 100), 2)}}</span>
+                    <span>Shipping to {{$addr['zip']}}</span><span>@if(0 == $data['freight_amount']) Free @else${{ number_format(($data['freight_amount'] / 100), 2)}} @endif</span>
                 </div>
                 @if($data['cps_amount'] > 0)
                 <div class="flex flex-fullJustified text-primary font-size-sm">

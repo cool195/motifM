@@ -86,7 +86,6 @@
                 if (data.success) {
                     $('#infoForm').attr('action', data.redirectUrl);
                     $('#infoForm').submit();
-                    //window.location.href = data.redirectUrl;
                 }
             })
             .fail(function() {
@@ -95,7 +94,6 @@
             .always(function() {
                 console.log("complete");
                 closeLoading();
-
             });
     }
 
@@ -196,7 +194,6 @@
                         if (data.success) {
                             $('#infoForm').attr('action', data.redirectUrl);
                             $('#infoForm').submit();
-                           // window.location.href = data.redirectUrl;
                         }
                     })
                     .fail(function() {
