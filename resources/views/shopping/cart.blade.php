@@ -128,9 +128,11 @@
                         <span class="p-r-5x">Items({{$cartData['total_sku_qtty'] }}) :
                         </span><strong>${{number_format($cartData['total_amount'] /100, 2)}}</strong>
                     </div>
+                    @if($cartData['vas_amount'] >= 0)
                     <div class="flex flex-rightJustify text-primary font-size-sm">
                         <span class="p-r-5x">Additional Services: </span><strong>${{ number_format($cartData['vas_amount'] / 100, 2) }}</strong>
                     </div>
+                    @endif
                     <div class="flex flex-rightJustify text-primary font-size-sm">
                         <span class="p-r-5x">Bag Subtotal: </span><strong>${{ number_format($cartData['pay_amount'] / 100, 2)}}</strong>
                     </div>
