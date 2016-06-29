@@ -33,6 +33,32 @@ class AuthController extends ApiController
         }
         return $result;
     }
+
+    //facebook login
+    public function facebookLogin(Request $request)
+    {
+        $params = array(
+            'cmd' => 'tplogin',
+            'uuid' => $_COOKIE['uid'],
+            'type' => 2,
+        );
+
+        $params['reinfo'] = json_encode(array(
+                'email' => $request->get('email'),
+                'id' => $request->get('id'),
+                'name' => $request->get('name'),
+                'type' => 2,
+                'avatar' => urlencode($request->get('avatar')),
+            )
+        );
+        $result = $this->request('openapi', '', "user", $params);
+        if ($result['success']) {
+            $result['redirectUrl'] = "/daily";
+            Session::forget('user');
+            Session::put('user', $result['data']);
+        }
+        return $result;
+    }
 }
 
 ?>

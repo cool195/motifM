@@ -38,7 +38,7 @@ class DesignerController extends ApiController
     }
 
     //设计师详情
-    public function show(Request $request, $id)
+    public function show($id)
     {
         //设计师详情
         $params = array(
@@ -54,6 +54,19 @@ class DesignerController extends ApiController
             'id' => $id,
         );
         $product = $this->request('openapi', 'designerf', 'content', $params);
+
+        //设计师商品
+        $params = array(
+            'recid' => '100000',
+            'pagenum' => 1,
+            'pagesize' => 16,
+            'uuid' => $_COOKIE['uid'],
+            'extra_kv' => 'designerId:'.$id,
+            'pin' => Session::get('user.pin')
+        );
+        $productAll = $this->request('openapi', '', 'rec', $params);
+
+
         $view = '';
         if (strstr($_SERVER['HTTP_USER_AGENT'], 'motif-android') || strstr($_SERVER['HTTP_USER_AGENT'], 'motif-ios')) {
 
@@ -80,7 +93,7 @@ class DesignerController extends ApiController
         } else {
             $view = 'designer.show';
         }
-        return View($view, ['designer' => $result['data'], 'product' => $product['data']]);
+        return View($view, ['designer' => $result['data'], 'productAll' => $productAll, 'product' => $product['data']]);
     }
 
     //关注或取消设计师
