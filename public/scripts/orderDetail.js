@@ -22,7 +22,7 @@
         OrderOperate = [];
 
     function getOrderInfo() {
-        var OrderNum = $('data-order-number').data('order-number');
+        var OrderNum = $('[data-order-number]').data('order-number');
         $.ajax({
                 url: '/orderdetail/' + OrderNum,
                 type: 'GET'
@@ -31,6 +31,7 @@
                 console.log("success");
                 if (data.success) {
                     OrderInfo = data.data.lineOrderList;
+                    getOperate(OrderOperate);
                 }
             })
             .fail(function() {
@@ -49,11 +50,18 @@
             'VAList': [] // 增值服务
         };
 
-        $.each(OrderInfo, function(index, el) {
-            Operate.sale_qtty = el.sale_qtty;
-            Operate.sku = el.sku;
-            Operate.VAList.user_remark = el.vas_info.user_remark;
-            Operate.VAList.vas_id = el.vas_info.vas_id;
+        $.each(OrderInfo, function(index, val) {
+            Operate.sale_qtty = val.sale_qtty;
+            Operate.sku = val.sku;
+
+            var Cache = [];
+            $.each(val.vas_info, function(i, el) {
+                Cache[i] = {};
+                Cache[i].user_remark = el.user_remark;
+                Cache[i].vas_id = el.vas_id;
+            });
+            Operate.VAList = Cache;
+
             OrderOperate.push(Operate);
         });
     }
@@ -69,7 +77,7 @@
             .done(function(data) {
                 console.log("success");
                 if (data.success) {
-                    window.location.href = data.redirectUrl;
+                    //window.location.href = data.redirectUrl;
                 }
             })
             .fail(function() {
@@ -86,7 +94,6 @@
         }
         if ($('#orderState').data('state')) {
             getOrderInfo(OrderInfo);
-            getOperate(OrderOperate);
         }
     });
 

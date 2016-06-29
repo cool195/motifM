@@ -376,13 +376,16 @@ class CartController extends ApiController
 
 		$params = array(
 			'cmd' => 'batchaddskus',
-			'operate' => json_decode($request->input('operate'), true),
+			'operate' => json_encode($request->input('operate')),
 			'token' => Session::get('user.token'),
 			'pin' => Session::get('user.pin'),
 		);
 		$system = "";
 		$service = "cart";
 		$result = $this->request('openapi', $system, $service, $params);
+		if(!empty($result) && $result['success']){
+			$result['redirectUrl'] = '/cart';
+		}
 		return $result;
 	}
 
