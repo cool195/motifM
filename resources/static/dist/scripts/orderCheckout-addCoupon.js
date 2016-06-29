@@ -32,7 +32,7 @@
             .done(function (data) {
                 if (data.success) {
                     console.log("success");
-                    $('input[name="coupon"]').val(Coupon);
+                    $('input[name="cps"]').val(Coupon);
                     $('#infoForm').submit();
                 } else {
                     $('.warning-info').removeAttr('hidden');
@@ -45,7 +45,6 @@
             .always(function () {
                 console.log("complete");
                 closeLoading();
-
             });
     }
 

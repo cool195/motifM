@@ -235,9 +235,9 @@
                     <!-- 选择商品参数 -->
                     <aside class="bg-white m-b-10x">
                         <a class="flex flex-alignCenter flex-fullJustified font-size-sm text-primary p-a-15x" data-remodal-target="modal" href="#">
-                            <span>Select</span>
+                            <span data-select>Select</span>
                             <div class="flex flex-alignCenter flex-fullJustified">
-                                <span class="m-r-10x" id="selectedOptions">Size Color</span>
+                                <span class="m-r-10x" data-select-options>Size,Color</span>
                                 <i class="iconfont icon-arrow-right icon-size-xm text-common"></i>
                             </div>
                         </a>
@@ -366,7 +366,10 @@
                     </div>
                     <fieldset class="text-primary p-x-15x p-b-10x text-left">
                         <div class="font-size-sm"><strong>$748.00</strong></div>
-                        <div class="font-size-sm">Select: <span>Size, Color</span></div>
+                        <div class="font-size-sm">
+                            <span data-select>Select</span>
+                            <span data-select-options></span>
+                        </div>
                     </fieldset>
                     <div class="warning-info off flex text-warning flex-alignCenter text-left p-x-15x p-b-10x">
                         <i class="iconfont icon-caveat icon-size-md p-r-5x"></i>
