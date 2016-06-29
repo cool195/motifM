@@ -93,8 +93,8 @@
                                 </div>
                             </div>
                         </div>
+                        <hr class="hr-base m-a-0">
                     @endforeach
-                    <hr class="hr-base m-a-0">
                     <div class="bg-white">
                         @if(count($methodlist['card']) <= 5)
                         <div class="flex flex-alignCenter text-primary p-a-15x" id="cardCredit"
