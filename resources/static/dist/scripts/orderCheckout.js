@@ -57,6 +57,9 @@
         $('#deliveryDialog').data('select', SelectID);
 
         $('input[name="stype"]').val(SelectID);
+
+        $('#infoForm').attr('action', window.location.href);
+        $('#infoForm').submit();
     });
 
     $('[data-form-action]').on('click', function () {
@@ -90,6 +93,5 @@
         }
     });
 })(jQuery);
-
 
 //# sourceMappingURL=orderCheckout.js.map
