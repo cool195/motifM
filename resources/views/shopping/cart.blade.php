@@ -27,7 +27,7 @@
     <!-- 购物袋 商品列表 -->
         <section class="p-b-20x">
             <!-- "Shopping Bag" 标题 -->
-            <article class="font-size-md text-main p-a-10x"><strong>Shopping Bag</strong></article>
+            <article class="font-size-md text-main p-a-10x"><strong>My Bag</strong></article>
 
         @if(empty($cartData['showSkus']))
             <!-- 空袋子 提示信息 -->
@@ -91,7 +91,7 @@
                                 <div class="flex flex-alignCenter flex-fullJustified p-y-10x">
                                     <div class="flex">
                                         <a class="btn btn-cartUpdate btn-sm" data-remodal-target="modal"
-                                           data-sku="{{$showSku['sku']}}" data-action="delsku">Delete</a>
+                                           data-sku="{{$showSku['sku']}}" data-action="delsku">Remove</a>
                                         <a href="#" class="btn btn-cartUpdate btn-sm" data-product-move="save"
                                            data-sku="{{$showSku['sku']}}">Save for Later</a>
                                     </div>
@@ -129,7 +129,7 @@
                         </span><strong>${{number_format($cartData['total_amount'] /100, 2)}}</strong>
                     </div>
                     <div class="flex flex-rightJustify text-primary font-size-sm">
-                        <span class="p-r-5x">Extra: </span><strong>${{ number_format($cartData['vas_amount'] / 100, 2) }}</strong>
+                        <span class="p-r-5x">Additional Services: </span><strong>${{ number_format($cartData['vas_amount'] / 100, 2) }}</strong>
                     </div>
                     <div class="flex flex-rightJustify text-primary font-size-sm">
                         <span class="p-r-5x">Bag Subtotal: </span><strong>${{ number_format($cartData['pay_amount'] / 100, 2)}}</strong>
@@ -193,7 +193,7 @@
                                 </a>
                                 <div class="flex p-y-10x">
                                     <a class="btn btn-cartUpdate btn-sm" data-remodal-target="modal" data-sku="{{$showSku['sku']}}" data-action="delsave">
-                                        Delete
+                                        Remove
                                     </a>
                                     <a class="btn btn-cartUpdate btn-sm @if(0 == $showSku['stock_status'] || 0 == $showSku['isPutOn']) disabled @endif" data-product-move="movetocart" data-sku="{{$showSku['sku']}}">
                                         @if(0 == $showSku['stock_status'] || 0 == $showSku['isPutOn'])
