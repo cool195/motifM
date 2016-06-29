@@ -31,7 +31,7 @@
     <!-- 提交问题反馈 表单 -->
         <section class="m-b-20x">
             <form method="post" id="form-askQuestion" action="/askshopping">
-                <article class="font-size-md text-main p-y-10x p-x-15x"><strong>@if(2==$skiptype) Contact Service @else Ask a Question @endif</strong></article>
+                <article class="font-size-md text-main p-y-10x p-x-15x"><strong>@if(2==$skiptype) Contact Service @elseif(3==$skiptype) Inquiries @else Ask a Question @endif</strong></article>
                 <fieldset>
                     <input type="hidden" name="_method" value="PUT">
                     <input type="hidden" name="id" value="{{$id}}">

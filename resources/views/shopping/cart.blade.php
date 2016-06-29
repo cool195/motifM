@@ -27,7 +27,7 @@
     <!-- 购物袋 商品列表 -->
         <section class="p-b-20x">
             <!-- "Shopping Bag" 标题 -->
-            <article class="font-size-md text-main p-a-10x"><strong>My Bag</strong></article>
+            <article class="font-size-md text-main p-a-10x"><strong>MY BAG</strong></article>
 
         @if(empty($cartData['showSkus']))
             <!-- 空袋子 提示信息 -->
@@ -35,7 +35,7 @@
                     <div class="container shopbag-emptyInfo">
                         <div class="m-b-20x p-b-5x"><i class="btn-shopbagEmpty iconfont icon-shopbag"></i></div>
                         <p class="text-primary font-size-sm m-b-20x p-b-20x">No saved items</p>
-                        <a href="/daily" class="btn btn-primary btn-sm">Continue Shopping</a>
+                        <a href="/daily" class="btn btn-primary btn-sm">Go Shopping</a>
                     </div>
                 </div>
         @else
