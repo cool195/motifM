@@ -1,1 +1,1 @@
-<script src="http://clk.motif.me/wl.js"></script>
+{{--<script src="http://clk.motif.me/wl.js"></script>--}}
