@@ -97,7 +97,7 @@
                 <a class="flex font-size-sm text-primary p-a-10x" data-remodal-target="delivery-modal" href="#">
                     <span class="checkoutInfo-subTitle flex-fixedShrink">Shipping Method</span>
                     <div class="checkoutInfo-content flex flex-fullJustified flex-alignCenter">
-                        <span class="delivery-text">{{$defaultMethod['logistics_name']}} +{{ number_format(($defaultMethod['price'] / 100), 2) }}$</span>
+                        <span class="delivery-text">{{$defaultMethod['logistics_name']}} +${{ number_format(($defaultMethod['price'] / 100), 2) }}</span>
                         <i class="iconfont icon-arrow-right icon-size-xm text-common p-r-15x"></i>
                     </div>
                 </a>
@@ -178,7 +178,7 @@
 </div>
 
 <!-- 弹出 选择运送方式 Delivery -->
-<div class="remodal remodal-lg modal-content" data-remodal-id="delivery-modal" data-select="{{ $shipMethodList[1]['logistics_type'] }}" id="deliveryDialog">
+<div class="remodal remodal-lg modal-content" data-remodal-id="delivery-modal" data-select="{{ $shipMethodList[$stype]['logistics_type'] }}" id="deliveryDialog">
     <div class="text-right p-a-15x" data-remodal-action="close">
         <i class="iconfont icon-cross icon-size-md text-common"></i>
     </div>
@@ -186,7 +186,7 @@
         @foreach($shipMethodList as $index => $shipMethod)
         <hr class="hr-base m-a-0">
         <div class="p-a-15x flex flex-fullJustified flex-alignCenter" data-stype="{{$shipMethod['logistics_type']}}" data-dialog="{{ $shipMethod['logistics_name'] }} ${{ number_format(($shipMethod['price'] / 100), 2) }}">
-            <span>{{ $shipMethod['logistics_name'] }} ${{ number_format(($shipMethod['price'] / 100), 2) }}</span>
+            <span>{{ $shipMethod['logistics_name'] }} +${{ number_format(($shipMethod['price'] / 100), 2) }}</span>
             <i class="iconfont icon-radio icon-size-md text-common active"></i>
         </div>
         @endforeach
