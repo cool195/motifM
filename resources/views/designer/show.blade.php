@@ -134,6 +134,32 @@
                         @endif
                     @endforeach
                 @endif
+
+                @if(isset($productAll['data']['list']))
+                    {{-- 商品列表横向 --}}
+                    <div class="container-fluid p-x-15x">
+                        <div class="row">
+                            @foreach($productAll['data']['list'] as $value)
+                                <div class="col-xs-6">
+                                    <a href="/detail/{{$value['spu']}}">
+                                        <div class="p-t-10x">
+                                            <img class="img-thumbnail img-lazy"
+                                                 src="/images/product/bg-product@336.png"
+                                                 data-original="https://s3-us-west-1.amazonaws.com/emimagetest/n0/{{$value['main_image_url']}}"
+                                                 alt="{{$value['main_title']}}">
+                                            <div class="p-y-10x">
+                                                <span class="text-primary font-size-sm m-l-5x"><strong>${{number_format($value['skuPrice']['sale_price']/100,2)}}</strong></span>
+                                                @if($value['skuPrice']['sale_price'] != $value['skuPrice']['price'])
+                                                    <span class="font-size-xs text-common text-throughLine m-l-5x">${{number_format($value['skuPrice']['price']/100,2)}}</span>
+                                                @endif
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                            @endforeach
+                        </div>
+                    </div>
+                @endif
             </aside>
 
         </section>
