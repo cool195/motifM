@@ -96,11 +96,13 @@
                     @endforeach
                     <hr class="hr-base m-a-0">
                     <div class="bg-white">
+                        @if(count($methodlist['card']) <= 5)
                         <div class="flex flex-alignCenter text-primary p-a-15x" id="cardCredit"
                              data-action="/braintree/addcard">
                             <i class="iconfont icon-add icon-size-sm p-r-10x"></i>
-                            <span class="font-size-sm">Add a New Card</span>
+                            <span class="font-size-sm">Add New Card</span>
                         </div>
+                        @endif
                     </div>
                 </aside>
             @else
@@ -128,7 +130,7 @@
 <div class="remodal remodal-md modal-content" data-remodal-id="modal" id="modalDialog">
     <div class="font-size-sm p-t-20x p-x-15x p-b-15x">
         <span class="font-size-base">Remove Payment Method</span><br>
-        Are you sure you want to remove this card?
+        Are you sure you want to remove this payment method?
     </div>
     <div class="btn-group flex">
         <div class="btn remodal-btn flex-width" data-remodal-action="confirm">Remove</div>

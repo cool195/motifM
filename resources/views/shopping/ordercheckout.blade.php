@@ -76,7 +76,7 @@
             <aside class="bg-white m-b-10x">
                 {{--<a class="flex font-size-sm text-primary p-a-10x" href="/cart/addresslist">--}}
                 <div class="flex font-size-sm text-primary p-a-10x" data-form-action="/cart/addresslist">
-                    <span class="checkoutInfo-subTitle flex-fixedShrink">Ships to</span>
+                    <span class="checkoutInfo-subTitle flex-fixedShrink">Ship to</span>
                     <div class="checkoutInfo-content flex flex-fullJustified flex-alignCenter">
                         @if(empty($addr) || "" == $addr)
                             <div class="text-warning">No Address Added</div>
@@ -95,7 +95,7 @@
                 </div>
                 <hr class="hr-base">
                 <a class="flex font-size-sm text-primary p-a-10x" data-remodal-target="delivery-modal" href="#">
-                    <span class="checkoutInfo-subTitle flex-fixedShrink">Delivery</span>
+                    <span class="checkoutInfo-subTitle flex-fixedShrink">Shipping Method</span>
                     <div class="checkoutInfo-content flex flex-fullJustified flex-alignCenter">
                         <span class="delivery-text">{{$defaultMethod['logistics_name']}} +{{ number_format(($defaultMethod['price'] / 100), 2) }}$</span>
                         <i class="iconfont icon-arrow-right icon-size-xm text-common p-r-15x"></i>
@@ -122,7 +122,7 @@
                 </div>
                 <hr class="hr-base">
                 <div class="flex font-size-sm text-primary p-a-10x" data-form-action="/cart/coupon">
-                    <span class="checkoutInfo-subTitle flex-fixedShrink">Gift Cards, Coupons</span>
+                    <span class="checkoutInfo-subTitle flex-fixedShrink">Promotion Code</span>
                     <div class="checkoutInfo-content flex flex-fullJustified flex-alignCenter">
                         <span>{{ $cps }}</span>
                         <i class="iconfont icon-arrow-right icon-size-xm text-common p-r-15x"></i>
@@ -130,7 +130,7 @@
                 </div>
                 <hr class="hr-base">
                 <div class="flex font-size-sm text-primary p-a-10x" data-form-action="/cart/message">
-                    <span class="checkoutInfo-subTitle flex-fixedShrink">Message to Us</span>
+                    <span class="checkoutInfo-subTitle flex-fixedShrink">Special Request(optional)</span>
                     <div class="checkoutInfo-content flex flex-fullJustified flex-alignCenter">
                         <span class="text-truncate">{{$remark}}</span>
                         <i class="iconfont icon-arrow-right icon-size-xm text-common p-r-15x flex-fixedShrink"></i>

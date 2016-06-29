@@ -177,7 +177,7 @@
 
                 <!-- 推荐商品 -->
                 <aside class="m-b-20x">
-                    <article class="font-size-md text-primary p-x-15x"><strong>More Like This</strong></article>
+                    <article class="font-size-md text-primary p-x-15x"><strong>You May Also Like</strong></article>
                     <div class="container-fluid p-a-10x">
                         <div class="row">
                             @foreach($recommended as $value)
