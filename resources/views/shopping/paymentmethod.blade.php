@@ -86,10 +86,12 @@
                     @endforeach
                     <hr class="hr-base m-a-0">
                     <div class="bg-white">
+                        @if(count($methodlist['cart']) <= 5)
                         <a class="flex flex-alignCenter text-primary p-a-15x" href="/braintree/addcard">
                             <i class="iconfont icon-add icon-size-sm p-r-10x"></i>
                             <span class="font-size-sm">Add a New Card</span>
                         </a>
+                        @endif
                     </div>
                 </aside>
             @else
