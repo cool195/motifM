@@ -130,7 +130,7 @@
 <div class="remodal remodal-md modal-content" data-remodal-id="modal" id="modalDialog">
     <div class="font-size-sm p-t-20x p-x-15x p-b-15x">
         <span class="font-size-base">Remove Payment Method</span><br>
-        Are you sure you want to remove this card?
+        Are you sure you want to remove this payment method?
     </div>
     <div class="btn-group flex">
         <div class="btn remodal-btn flex-width" data-remodal-action="confirm">Remove</div>
