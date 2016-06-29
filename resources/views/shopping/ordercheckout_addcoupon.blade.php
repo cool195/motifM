@@ -29,20 +29,17 @@
             @include('navigator', ['pageScope'=>true])
             <!-- 添加coupon -->
             <section class="m-b-20x">
+                <article class="font-size-md text-main p-a-10x"><strong>Promotion Code</strong></article>
                 <form id="infoForm" method="get" action="/cart/ordercheckout" method="get">
                     <fieldset>
-                        <input class="form-control form-control-block p-a-15x font-size-sm" type="text" name="cps" placeholder="Enter gift or coupon code" value="{{$cps}}">
-                        <p class="text-center font-size-xs text-common p-t-10x">Gift cards and coupons can only be
-                                                                                redeemed
-                                                                                through
-                                                                                PayPal.</p>
                         <div class="warning-info flex text-warning flex-alignCenter text-left p-a-15x" hidden>
                             <i class="iconfont icon-caveat icon-size-md p-r-5x"></i>
-                            <span class="font-size-sm">Invalid Coupon</span>
+                            <span class="font-size-sm">Invalid Code</span>
                         </div>
+                        <input class="form-control form-control-block p-a-15x font-size-sm" type="text" name="cps" placeholder="Enter your code" value="{{$cps}}">
                     </fieldset>
                     <div class="navbar-fixed-bottom bg-white p-a-15x">
-                        <div class="btn btn-primary btn-block btn-sm" data-role="submit">Continue</div>
+                        <div class="btn btn-primary btn-block btn-sm" data-role="submit">Apply</div>
                     </div>
                     @if(isset($input) && !empty($input))
                         @foreach($input as $name=>$value)
