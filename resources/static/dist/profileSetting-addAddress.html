@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="description" content="">
@@ -19,6 +20,7 @@
     <script src="/scripts/vendor/fastclick.js"></script>
 
 </head>
+
 <body>
     <!-- 外层容器 -->
     <div id="body-content">
@@ -143,35 +145,35 @@
                 <form class="bg-white" id="addressInfo">
                     <!-- 个人中心 sitting list -->
                     <fieldset>
-                        <input class="form-control form-control-block p-a-15x font-size-sm" name="name" type="text" placeholder="Full Name">
+                        <input class="form-control form-control-block p-a-15x font-size-sm" name="name" type="text" data-optional="false" placeholder="Full Name">
                     </fieldset>
                     <hr class="hr-base m-a-0">
                     <fieldset>
-                        <input class="form-control form-control-block p-a-15x font-size-sm" name="addr1" type="text" placeholder="Street1">
+                        <input class="form-control form-control-block p-a-15x font-size-sm" name="addr1" type="text" data-optional="false" placeholder="Street1">
                     </fieldset>
                     <hr class="hr-base m-a-0">
                     <fieldset>
-                        <input class="form-control form-control-block p-a-15x font-size-sm" name="addr2" type="text" placeholder="Street2 (optional)">
+                        <input class="form-control form-control-block p-a-15x font-size-sm" name="addr2" type="text" data-optional="true" placeholder="Street2 (optional)">
                     </fieldset>
                     <hr class="hr-base m-a-0">
                     <fieldset>
-                        <input class="form-control form-control-block p-a-15x font-size-sm" name="state" type="text" placeholder="State (optional)">
+                        <input class="form-control form-control-block p-a-15x font-size-sm" name="state" type="text" data-optional="true" placeholder="State (optional)">
                     </fieldset>
                     <hr class="hr-base m-a-0">
                     <fieldset>
-                        <input class="form-control form-control-block p-a-15x font-size-sm" name="city" type="text" placeholder="City">
+                        <input class="form-control form-control-block p-a-15x font-size-sm" name="city" type="text" data-optional="false" placeholder="City">
                     </fieldset>
                     <hr class="hr-base m-a-0">
                     <fieldset>
-                        <input class="form-control form-control-block p-a-15x font-size-sm" name="zip" type="text" placeholder="Zip code">
+                        <input class="form-control form-control-block p-a-15x font-size-sm" name="zip" type="text" data-optional="false" placeholder="Zip code">
                     </fieldset>
                     <hr class="hr-base m-a-0">
                     <fieldset>
-                        <input class="form-control form-control-block p-a-15x font-size-sm" name="tel" type="text" placeholder="Phone (optional)">
+                        <input class="form-control form-control-block p-a-15x font-size-sm" name="tel" type="text" data-optional="true" placeholder="Phone (optional)">
                     </fieldset>
                     <hr class="hr-base m-a-0">
                     <fieldset>
-                        <input class="form-control form-control-block p-a-15x font-size-sm" name="idnum" type="text" placeholder="IDnumber">
+                        <input class="form-control form-control-block p-a-15x font-size-sm" name="idnum" type="text" data-optional="false" placeholder="IDnumber">
                     </fieldset>
                     <hr class="hr-base m-a-0">
                     <fieldset>
@@ -180,7 +182,7 @@
                             <div>
                                 <span>中国（CN）</span>
                                 <i class="iconfont icon-arrow-right icon-size-xm text-common"></i>
-                                <input type="text" name="country" hidden value="country_id">
+                                <input type="text" name="country" data-optional="false" value="country_id" hidden>
                             </div>
                         </div>
                     </fieldset>
@@ -202,7 +204,7 @@
                             <a href="#" class="btn btn-primary-outline btn-block btn-sm" id="Cancel">Cancel</a>
                         </div>
                         <div class="col-xs-6">
-                            <div class="btn btn-primary btn-block btn-sm" id="btn-addAddress">Confirm</div>
+                            <div class="btn btn-primary btn-block btn-sm disabled" id="btn-addAddress">Confirm</div>
                         </div>
                     </div>
                 </div>
@@ -277,8 +279,7 @@
                     </div>
                     <hr class="hr-dark m-t-20x m-b-15x">
                 </div>
-                <div class="text-common text-center font-size-sm">Copyright @ 2016 EverMarker Inc. All rights
-                                                                  reserved.
+                <div class="text-common text-center font-size-sm">Copyright @ 2016 EverMarker Inc. All rights reserved.
                 </div>
             </footer>
         </div>
@@ -292,4 +293,5 @@
 <script src="scripts/vendor.js"></script>
 
 <script src="/scripts/profileSetting-addAddress.js"></script>
+
 </html>
