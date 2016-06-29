@@ -103,9 +103,9 @@
                     <aside class="bg-white m-b-10x">
                         <a class="flex flex-alignCenter flex-fullJustified font-size-sm text-primary p-a-15x"
                            data-remodal-target="modal" href="#">
-                            <span>Select</span>
+                            <span data-select>Select</span>
 						<span class="flex flex-alignCenter flex-fullJustified">
-							<span id="selectedOptions" class="m-r-10x">
+							<span class="m-r-10x" data-select-options>
                                 @foreach($data['spuAttrs'] as $key => $attrs)
                                     @if((count($data['spuAttrs']) - 1) == $key)
                                         {{$attrs['attr_type_value']}}
@@ -246,9 +246,11 @@
                 </div>
                 <fieldset class="text-primary p-x-15x p-b-10x text-left">
                     <div class="font-size-sm">
-                        <strong>${{number_format(($data['skuPrice']['sale_price'] / 100), 2)}}</strong></div>
-                    <div class="font-size-sm" id="selectedOptions">Select:
-                        <span>
+                        <strong>${{number_format(($data['skuPrice']['sale_price'] / 100), 2)}}</strong>
+                    </div>
+                    <div class="font-size-sm" id="selectedOptions">
+                        <span data-select>Select:</span>
+                        <span data-select-options>
                         @if(isset($data['spuAttrs']))
                             @foreach($data['spuAttrs'] as $key => $attrs)
                                 @if((count($data['spuAttrs']) - 1) == $key)

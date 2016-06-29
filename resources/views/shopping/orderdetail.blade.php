@@ -124,6 +124,7 @@
                 <span class="orderInfo-subTitle flex-fixedShrink">Shipping Method</span>
                 <span>{{$data['logistics_name']}} +{{number_format(($data['logistics_price'] / 100), 2)}}$</span>
             </div>
+            @if(!empty($data['pay_type']))
             <hr class="hr-base">
             <div class="flex font-size-sm text-primary p-y-10x p-x-15x">
                 <span class="orderInfo-subTitle flex-fixedShrink">Pay with</span>
@@ -134,6 +135,7 @@
                 @endif
                 <span class="m-l-10x">{{$data['pay_type']}}({{$data['orderPayInfo']['show_name']}})</span>
             </div>
+            @endif
             <hr class="hr-base">
             <div class="flex font-size-sm text-primary p-y-10x p-x-15x">
                 <span class="orderInfo-subTitle flex-fixedShrink">Special Request</span>
