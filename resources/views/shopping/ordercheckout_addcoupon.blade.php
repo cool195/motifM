@@ -37,13 +37,14 @@
                         </div>
                         <input class="form-control form-control-block p-a-15x font-size-sm" type="text" name="coupon" placeholder="Enter your code" value="{{$cps}}">
                     </fieldset>
-                    <div class="navbar-fixed-bottom bg-white p-a-15x">
+                    <div class="bg-white p-a-15x">
                         <div class="btn btn-primary btn-block btn-sm" data-role="submit">Apply</div>
                     </div>
 
             </section>
         </div>
     </div>
+@include('footer')
     <!-- loading 效果 -->
     <div class="loading loading-screen loading-switch loading-hidden">
         <div class="loader loader-screen"></div>
