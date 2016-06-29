@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Session;
 
 class AuthController extends ApiController
 {
+    const Token = 'eeec7a32dcb6115abfe4a871c6b08b47';
     //google login
     public function googleLogin(Request $request)
     {
@@ -15,6 +16,7 @@ class AuthController extends ApiController
             'cmd' => 'tplogin',
             'uuid' => $_COOKIE['uid'],
             'type' => 4,
+            'token'=> self::Token,
         );
 
         $params['reinfo'] = json_encode(array(
@@ -41,6 +43,7 @@ class AuthController extends ApiController
             'cmd' => 'tplogin',
             'uuid' => $_COOKIE['uid'],
             'type' => 2,
+            'token'=> self::Token,
         );
 
         $params['reinfo'] = json_encode(array(

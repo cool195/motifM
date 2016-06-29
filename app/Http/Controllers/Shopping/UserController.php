@@ -10,7 +10,7 @@ class UserController extends ApiController
 {
     const API_SYSTEM = "";
     const API_SERVICE = "user";
-
+    const Token = 'eeec7a32dcb6115abfe4a871c6b08b47';
     /*
      * @author zhangtao@evermarker.net
      *
@@ -60,7 +60,8 @@ class UserController extends ApiController
             'uuid' => $_COOKIE['uid'],
             'email' => $email,
             'pw' => md5($request->input('pw')),
-            'nick' => $request->input('nick')
+            'nick' => $request->input('nick'),
+            'token'=> self::Token,
         );
         $result = $this->request('openapi', self::API_SYSTEM, self::API_SERVICE, $params);
         /*        if (empty($result) ) {
@@ -108,6 +109,7 @@ class UserController extends ApiController
             'uuid' => $_COOKIE['uid'],
             'email' => $email,
             'pw' => md5($request->input('pw')),
+            'token'=> self::Token,
         );
         $result = $this->request('openapi', self::API_SYSTEM, self::API_SERVICE, $params);
         if (empty($result)) {
@@ -255,36 +257,6 @@ class UserController extends ApiController
                 Session::forget('user');
                 $result['prompt_msg'] = "Your password has been changed. Please login agian";
                 $result['redirectUrl'] = "/login";
-            }
-        }
-        return $result;
-    }
-
-    /*
-     * 用户第三方登录
-     *
-     * @author zhangtao@evermarker.net
-     * @params Request $request
-     * @return Array
-     * */
-    public function tryPrtLogin(Request $request)
-    {
-        $reinfo = $request->input('reinfo');
-        $params = array(
-            'cmd' => "tplogin",
-            'uuid' => $_COOKIE['uid'],
-            'type' => $request->input('type', 1),
-            'reinfo' => $reinfo,
-        );
-        $result = $this->request('openapi', self::API_SYSTEM, self::API_SERVICE, $params);
-        if (empty($result)) {
-            $result['success'] = false;
-            $result['error_msg'] = "Data access failed";
-            $result['data'] = array();
-        } else {
-            if ($result['success']) {
-                Session::forget('user');
-                Session::put("user", $result['data']);
             }
         }
         return $result;
