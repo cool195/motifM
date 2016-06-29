@@ -24,12 +24,12 @@
 <div class="body-container">
     @include('navigator')
     <section>
-        <article class="font-size-md text-main p-y-10x p-x-15x"><strong>Order Details</strong></article>
+        <article class="font-size-md text-main p-y-10x p-x-15x"><strong>Order Detail</strong></article>
 
         <!-- 订单主要信息:日期、订单号、总金额 -->
         <article class="bg-white font-size-sm p-y-10x p-x-15x m-b-10x" data-order-number="{{ $data['sub_order_no'] }}">
             <div class="flex text-primary">
-                <span class="orderInfo-subTitle flex-fixedShrink">Order date</span>
+                <span class="orderInfo-subTitle flex-fixedShrink">Order Date</span>
                 <span>{{$data['create_time']}}</span>
             </div>
             <div class="flex text-primary">
@@ -37,7 +37,7 @@
                 <span>{{$data['sub_order_no']}}</span>
             </div>
             <div class="flex text-primary">
-                <span class="orderInfo-subTitle flex-fixedShrink">Order total</span>
+                <span class="orderInfo-subTitle flex-fixedShrink">Order Total</span>
                 <span>${{number_format(($data['pay_amount'] / 100), 2)}}</span>
             </div>
         </article>
@@ -110,7 +110,7 @@
         <!-- 订单地址、物流、支付 等信息 -->
         <aside class="bg-white m-b-10x">
             <div class="flex font-size-sm text-primary p-y-10x p-x-15x">
-                <span class="orderInfo-subTitle flex-fixedShrink">Ships to</span>
+                <span class="orderInfo-subTitle flex-fixedShrink">Ship to</span>
                 <div>
                     <div>{{ $data['userAddr']['name'] }}   {{ $data['userAddr']['email'] }}</div>
                     <div>{{ $data['userAddr']['detail_address1'] }} @if(!empty($data['userAddr']['detail_address2'])) {{ $data['userAddr']['detail_address2'] }} @endif</div>
@@ -121,7 +121,7 @@
             </div>
             <hr class="hr-base">
             <div class="flex font-size-sm text-primary p-y-10x p-x-15x">
-                <span class="orderInfo-subTitle flex-fixedShrink">Delivery</span>
+                <span class="orderInfo-subTitle flex-fixedShrink">Shipping Method</span>
                 <span>{{$data['logistics_name']}} +{{number_format(($data['logistics_price'] / 100), 2)}}$</span>
             </div>
             <hr class="hr-base">
@@ -136,7 +136,7 @@
             </div>
             <hr class="hr-base">
             <div class="flex font-size-sm text-primary p-y-10x p-x-15x">
-                <span class="orderInfo-subTitle flex-fixedShrink">Message to Us</span>
+                <span class="orderInfo-subTitle flex-fixedShrink">Special Request</span>
                 <div>
                     <div class="message-info">
                         <p class="m-b-0">@if(!empty($data['order_remark'])){{ $data['order_remark'] }} @endif</p>
@@ -163,7 +163,7 @@
                     <span>Shipping to {{ $data['userAddr']['zip'] }}</span><span>@if(0 == $data['freight_amount']) Free @else${{ number_format(($data['freight_amount'] / 100), 2)}} @endif</span>
                 </div>
                 <div class="flex flex-fullJustified text-primary font-size-sm">
-                    <span>Coupon</span><span>-${{ number_format(($data['cps_amount'] / 100), 2)}}</span>
+                    <span>Promotion Code</span><span>-${{ number_format(($data['cps_amount'] / 100), 2)}}</span>
                 </div>
                 <div class="flex flex-fullJustified p-t-10x text-primary font-size-sm">
                     <span><strong>Order Total</strong></span><span><strong>${{ number_format(($data['pay_amount'] / 100), 2)}}</strong></span>
@@ -176,7 +176,8 @@
         <!-- 联系客服 -->
         <aside class="bg-white m-b-10x p-a-10x">
             <a href="/askshopping?skiptype=2&id={{$data['sub_order_no']}}" class="btn btn-primary btn-block btn-sm"
-               type="submit">Contact Service</a>
+               type="submit">Contact Customer Service
+            </a>
         </aside>
     </section>
     <!-- 页脚 功能链接 start-->

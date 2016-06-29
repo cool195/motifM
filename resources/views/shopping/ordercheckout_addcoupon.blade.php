@@ -34,7 +34,7 @@
                     <fieldset>
                         <div class="warning-info flex text-warning flex-alignCenter text-left p-a-15x" hidden>
                             <i class="iconfont icon-caveat icon-size-md p-r-5x"></i>
-                            <span class="font-size-sm">Invalid Code</span>
+                            <span class="font-size-sm"></span>
                         </div>
                         <input class="form-control form-control-block p-a-15x font-size-sm" type="text" name="cps" placeholder="Enter your code" value="{{$cps}}">
                     </fieldset>

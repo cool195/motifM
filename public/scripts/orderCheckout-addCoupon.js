@@ -35,6 +35,7 @@
                     $('#infoForm').submit();
                 } else {
                     $('.warning-info').removeAttr('hidden');
+                    $('.warning-info').children('span').text(data.prompt_msg);
                 }
             })
             .fail(function () {
