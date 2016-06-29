@@ -27,8 +27,12 @@
 <!-- 主体内容 -->
 <div class="login-container">
     <section class="login-content p-y-20x">
-        <a href="/daily"><img class="img-fluid m-x-auto m-b-20x" src="/images/login/login-logo.png"
-             srcset="/images/login/login-logo@2x.png 2x,/images/login/login-logo@3x.png 3x"></a>
+        <div class="m-x-auto m-b-20x text-center">
+            <a href="/daily">
+                <img class="motif-logo" src="/images/login/login-logo.png"
+                 srcset="/images/login/login-logo@2x.png 2x,/images/login/login-logo@3x.png 3x">
+            </a>
+        </div>
         <form id="login">
             <div class="warning-info off flex text-warning flex-alignCenter text-left m-b-5x">
                 <i class="iconfont icon-caveat icon-size-md p-r-5x"></i>
@@ -46,15 +50,15 @@
             </fieldset>
         </form>
         <div class="m-t-15x text-primary text-center font-size-sm">
-            <a href="/reset" class="text-primary">Forgot Password?</a>
+            <a href="/reset" class="text-primary" target="_blank">Forgot Password?</a>
         </div>
         <div class="container-fluid p-a-0 m-t-20x">
             <div class="row">
                 <div class="col-xs-6">
-                    <a class="btn btn-primary-outline btn-block" href="/register">Register</a>
+                    <a class="btn btn-primary-outline btn-block" href="/register" id="register">Register</a>
                 </div>
                 <div class="col-xs-6">
-                    <div class="btn btn-primary btn-block" data-role="submit">Login</div>
+                    <div class="btn btn-primary btn-block" data-role="submit" id="login">Login</div>
                 </div>
             </div>
         </div>

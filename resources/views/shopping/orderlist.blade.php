@@ -32,7 +32,7 @@
             <article class="font-size-md text-main p-a-10x"><strong>Orders</strong></article>
 
             <!-- 订单数为0 -->
-            <div class="order-empty-content m-t-20x p-x-10x" id="emptyOrder">
+            <div class="order-empty-content m-t-20x p-x-10x hidden-xs-up" id="emptyOrder">
                 <div class="container m-t-20x order-emptyInfo">
                     <div class="m-b-20x p-b-5x"><i class="btn-orderEmpty iconfont icon-error"></i></div>
                     <p class="text-primary font-size-sm m-b-20x p-b-20x">No orders found</p>
