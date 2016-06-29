@@ -47,7 +47,15 @@
                 </div>
                 <div class="font-size-sm text-primary p-a-10x">{{$designer['intro']}}</div>
                 <hr class="hr-base m-a-0">
-                <div class="font-size-sm text-primary p-a-10x">{{$designer['describe']}}</div>
+                <div class="font-size-sm text-primary">
+                    <div class="message-info">
+                        <p class="m-b-0">{{$designer['describe']}}</p>
+                    </div>
+                    <a class="flex flex-alignCenter flex-fullJustified font-size-sm p-t-5x text-common btn-showMore">
+                        <span class="showMore">Show More</span>
+                        <i class="iconfont icon-arrow-bottom icon-size-xm text-common"></i>
+                    </a>
+                </div>
                 <div class="p-x-10x p-y-5x">
                     @if(isset($designer['youtube_link']))
                         <a href="{{$designer['youtube_link']}}" class="p-r-5x"><i
