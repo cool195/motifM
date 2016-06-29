@@ -68,7 +68,7 @@
         </div>
         <hr class="hr-dark m-t-20x m-b-15x">
     </div>
-    <div class="text-common text-center font-size-sm">Copyright @ 2016 EverMarker Inc. All rights
+    <div class="text-common text-center font-size-sm">Copyright © 2016 MOTIF Inc. All rights reserved.
         reserved.
     </div>
 </footer>

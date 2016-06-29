@@ -45,7 +45,6 @@
             .always(function () {
                 console.log("complete");
                 closeLoading();
-
             });
     }
 

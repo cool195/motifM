@@ -422,8 +422,31 @@
 
     }
 
+    function selectOptionsText() {
+        var $SelectList = $('.btn-itemProperty.active');
+        var TextOptions = '';
+        if ($SelectList.length > 0) {
+            $.each($SelectList, function(index, val) {
+                if (index === ($SelectList.length - 1)) {
+                    TextOptions += val.textContent.trim();
+                } else {
+                    TextOptions += val.textContent.trim() + ' , ';
+                }
+            });
+            $('[data-select]').text('Selected:')
+            $('[data-select-options]').text(TextOptions);
+        } else {
+            $('[data-select]').text('Select')
+            $('[data-select-options]').text('');
+        }
+
+    }
+
+
     // 为所有选项绑定事件
     $('#modalDialog').on('click', '.btn-itemProperty', function(e) {
+        selectOptionsText();
+
         var $WarningInfo = $('.warning-info');
         if (!$WarningInfo.hasClass('off')) {
             $WarningInfo.addClass('off');
@@ -735,17 +758,6 @@
 
     // 模态框关闭时，把选择的项更新到 select 位置
     $('[data-remodal-id=modal]').on('closed', function() {
-        var $SelectList = $('.btn-itemProperty.active');
-        var TextOptions = '';
-        $.each($SelectList, function(index, val) {
-            if (index === ($SelectList.length - 1)) {
-                TextOptions += val.textContent.trim();
-            } else {
-                TextOptions += val.textContent.trim() + ' , ';
-            }
-        });
-        $('#selectedOptions').text(TextOptions);
-
         $('[data-control="continue"]').addClass('hidden-xs-up');
         $('[data-control="modalButton"]').removeClass('hidden-xs-up');
     });
