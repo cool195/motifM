@@ -329,7 +329,7 @@
                             </div>
                             <div class="btn btn-cartCount btn-sm" data-num="num">1</div>
 
-                            <div class="btn btn-cartCount btn-sm disabled" data-item="add">
+                            <div class="btn btn-cartCount btn-sm @if(!(!empty($data['vasBases']) && empty($data['spuAttrs'])))disabled @endif"  data-item="add">
                                 <i class="iconfont icon-add"></i>
                             </div>
                         </div>
