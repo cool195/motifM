@@ -142,14 +142,18 @@
             <!-- 添加地址 -->
             <section class="p-b-20x reserve-height">
                 <article class="p-x-15x p-y-10x font-size-md text-main"><strong>Add New Address</strong></article>
+                <div class="warning-info off flex text-warning flex-alignCenter text-left p-x-15x p-b-10x hidden-xs-up">
+                    <i class="iconfont icon-caveat icon-size-md p-r-5x"></i>
+                    <span class="font-size-sm"></span>
+                </div>
                 <form class="bg-white" id="addressInfo">
                     <!-- 个人中心 sitting list -->
                     <fieldset>
-                        <input class="form-control form-control-block p-a-15x font-size-sm" name="name" type="text" data-optional="false" placeholder="Full Name">
+                        <input class="form-control form-control-block p-a-15x font-size-sm" name="name" type="text" data-optional="false" data-role="name" placeholder="Full Name">
                     </fieldset>
                     <hr class="hr-base m-a-0">
                     <fieldset>
-                        <input class="form-control form-control-block p-a-15x font-size-sm" name="addr1" type="text" data-optional="false" placeholder="Street1">
+                        <input class="form-control form-control-block p-a-15x font-size-sm" name="addr1" type="text" data-optional="false" data-role="street" placeholder="Street1">
                     </fieldset>
                     <hr class="hr-base m-a-0">
                     <fieldset>
@@ -161,26 +165,26 @@
                     </fieldset>
                     <hr class="hr-base m-a-0">
                     <fieldset>
-                        <input class="form-control form-control-block p-a-15x font-size-sm" name="city" type="text" data-optional="false" placeholder="City">
+                        <input class="form-control form-control-block p-a-15x font-size-sm" name="city" type="text" data-optional="false" data-role="city" placeholder="City">
                     </fieldset>
                     <hr class="hr-base m-a-0">
                     <fieldset>
-                        <input class="form-control form-control-block p-a-15x font-size-sm" name="zip" type="text" data-optional="false" placeholder="Zip code">
+                        <input class="form-control form-control-block p-a-15x font-size-sm" name="zip" type="number" data-optional="false" data-role="zip code" placeholder="Zip code">
                     </fieldset>
                     <hr class="hr-base m-a-0">
                     <fieldset>
-                        <input class="form-control form-control-block p-a-15x font-size-sm" name="tel" type="text" data-optional="true" placeholder="Phone (optional)">
+                        <input class="form-control form-control-block p-a-15x font-size-sm" name="tel" type="tel" maxlength="20" data-optional="true" placeholder="Phone (optional)">
                     </fieldset>
                     <hr class="hr-base m-a-0">
                     <fieldset>
-                        <input class="form-control form-control-block p-a-15x font-size-sm" name="idnum" type="text" data-optional="false" placeholder="IDnumber">
+                        <input class="form-control form-control-block p-a-15x font-size-sm" name="idnum" type="text" data-optional="false" data-role="ID" placeholder="IDnumber">
                     </fieldset>
                     <hr class="hr-base m-a-0">
                     <fieldset>
                         <div class="flex flex-alignCenter flex-fullJustified font-size-sm text-primary p-a-15x" id="country">
                             <span>Country</span>
                             <div>
-                                <span>中国（CN）</span>
+                                <span>默认给美国 (US)</span>
                                 <i class="iconfont icon-arrow-right icon-size-xm text-common"></i>
                                 <input type="text" name="country" data-optional="false" value="country_id" hidden>
                             </div>

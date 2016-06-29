@@ -430,7 +430,7 @@
                 if (index === ($SelectList.length - 1)) {
                     TextOptions += val.textContent.trim();
                 } else {
-                    TextOptions += val.textContent.trim() + ' , ';
+                    TextOptions += val.textContent.trim() + ',';
                 }
             });
             $('[data-select]').text('Selected:')
@@ -734,8 +734,10 @@
 
     // 添加购物车 购买商品
     $('[data-role]').on('click', function(e) {
-        var Action = $(e.target).data('action');
-        initCart(Action);
+        if (!$(e.target).hasClass('disabled')) {
+            var Action = $(e.target).data('action');
+            initCart(Action);
+        }
     });
 
     $('[data-control="openModal"]').on('click', function(e) {

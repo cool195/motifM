@@ -65,6 +65,7 @@
                 return Result;
             }
             // TODO 添加警告
+
         });
         return Result;
     }
@@ -81,10 +82,14 @@
         selectCountry();
     });
 
+    // 输入框非空验证
     $('input[type="text"]').on('blur keyup change', function(e) {
         if (checkInput()) {
+            $('warning-info').addClass('hidden-xs-up');
             $('#btn-addAddress').removeClass('disabled');
         } else {
+            $('.warning-info').removeClass('hidden-xs-up');
+            $('.warning-info').children('span').text('Please enter your ' + $(e.target).data('role') + ' !');
             $('#btn-addAddress').addClass('disabled');
         }
     });
