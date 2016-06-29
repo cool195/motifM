@@ -32,6 +32,7 @@
             .done(function (data) {
                 if (data.success) {
                     console.log("success");
+                    $('input[name="cps"]').val(Coupon);
                     $('#infoForm').submit();
                 } else {
                     $('.warning-info').removeAttr('hidden');
@@ -49,10 +50,9 @@
     }
 
     $('[data-role="submit"]').on('click', function () {
-        var Coupon = $('input[name="cps"]').val();
+        var Coupon = $('input[name="coupon"]').val();
         verifyCoupon(Coupon);
     });
-
 
 })(jQuery);
 
