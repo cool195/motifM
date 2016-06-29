@@ -23,6 +23,7 @@ class Net
 
     public static function getContent($api, $parameter = "", $total_timeout, $con_timeout)
     {
+
         $url = $api . $parameter;
         $ch = curl_init($url);
         Log::info($url);
@@ -48,7 +49,6 @@ class Net
         if ($curlCode == 0 && $httpCode == 200) {
             curl_close($ch);
         }
-        curl_close($ch);
 
         return $content;
     }
