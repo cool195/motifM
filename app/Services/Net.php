@@ -6,7 +6,6 @@ use Illuminate\Support\Facades\Log;
 class Net
 {
     const TimeOut = 15000;
-
     public static function api($apiName, $system, $service, $params)
     {
         $api = "";
@@ -17,13 +16,12 @@ class Net
         if (!empty($service) && "" != $service) {
             $api .= "/" . $service . "?";
         }
-        $result = self::getContent($api, $params, TimeOut, TimeOut);
+        $result = self::getContent($api, $params, self::TimeOut, self::TimeOut);
         return $result;
     }
 
-    public static function getContent($api, $parameter = "", $total_timeout, $con_timeout, $max_failed = 3, $headers = [])
+    public static function getContent($api, $parameter = "", $total_timeout , $con_timeout , $max_failed = 3, $headers = [])
     {
-
         if ($max_failed < 1) {
             $max_failed = 3;
         }
