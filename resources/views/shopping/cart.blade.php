@@ -113,7 +113,9 @@
                                     </div>
                                 </div>
                                 @if(0 == $showSku['stock_status'] || 2 == $showSku['stock_status'] || 0 == $showSku['isPutOn'])
-                                <div class="text-warning font-size-xs">@if(2 !== $showSku['stock_status'])Warming: @endif{{$showSku['prompt_info']}}</div>
+                                <div class="text-warning font-size-xs">@if(2 !== $showSku['stock_status'])Warning: @endif{{$showSku['prompt_info']}}</div>
+                                @elseif(50 == $showSku['sale_qtty'])
+                                <div class="text-warning font-size-xs">Warning: 50 items limit</div>
                                 @endif
                             </div>
                         @endforeach
@@ -202,7 +204,7 @@
                                     </a>
                                 </div>
                                 @if(0 == $showSku['stock_status'] || 2 == $showSku['stock_status'] || 0 == $showSku['isPutOn'])
-                                    <div class="text-warning font-size-xs">Warming: {{$showSku['prompt_info']}}</div>
+                                    <div class="text-warning font-size-xs">Warning: {{$showSku['prompt_info']}}</div>
                                 @endif
                             </div>
                         @endforeach

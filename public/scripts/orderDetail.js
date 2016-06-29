@@ -77,7 +77,7 @@
             .done(function(data) {
                 console.log("success");
                 if (data.success) {
-                    //window.location.href = data.redirectUrl;
+                    window.location.href = data.redirectUrl;
                 }
             })
             .fail(function() {
