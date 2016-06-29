@@ -445,7 +445,6 @@
 
     // 为所有选项绑定事件
     $('#modalDialog').on('click', '.btn-itemProperty', function(e) {
-        selectOptionsText();
 
         var $WarningInfo = $('.warning-info');
         if (!$WarningInfo.hasClass('off')) {
@@ -462,6 +461,8 @@
             $(e.target).parents('.row').find('.btn-itemProperty').removeClass('active');
             $(e.target).addClass('active');
         }
+
+        selectOptionsText();
 
         var SpaId = $(e.target).data('spa'),
             SkaId = $(e.target).data('ska');
