@@ -62,7 +62,7 @@
                 <img class="img-fluid img-lazy"
                      data-original="https://s3-us-west-1.amazonaws.com/emimagetest/n0/@{{ $value.imgPath }}"
                      src="/images/product/bg-product@750.png" alt="@{{ $value.title }}">
-                <span class="img-icon font-size-sm"><strong>@{{ $value.imgtextType }}</strong></span>
+                @{{ if $value.imgtextType }}<span class="img-icon font-size-sm"><strong>@{{ $value.imgtextType }}</strong></span>@{{ /if }}
             </div>
             <div class="p-a-15x">
                 <h6 class="text-main font-size-base m-b-5x"><strong>@{{ $value.title }}</strong></h6>
