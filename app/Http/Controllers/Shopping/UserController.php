@@ -457,8 +457,11 @@ class UserController extends ApiController
                 'tp' => $request->input('tp'),
                 'sig' => $request->input('sig'),
             );
-
-            return $this->request('openapi', '', 'user', $params);
+            $result = $this->request('openapi', '', 'user', $params);
+            if($result['success']){
+                $result['redirectUrl'] = "/login";
+            }
+            return $result;
         } else {
             $params = array(
                 'tp' => $request->input('tp'),
