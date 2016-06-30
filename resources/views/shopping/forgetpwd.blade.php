@@ -68,6 +68,8 @@
                 if(data.success){
                     alert(data.prompt_msg);
                     window.location.href = data.redirectUrl;
+                }else{
+                    alert(data.error_msg);
                 }
             }
         })
