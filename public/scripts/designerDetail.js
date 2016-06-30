@@ -35,17 +35,17 @@
 
     // loading 打开
     function openLoading() {
-        $('.loading').toggleClass('loading-hidden');
+        $('#fullLoading').toggleClass('loading-hidden');
         setTimeout(function () {
-            $('.loading').toggleClass('loading-open');
+            $('#fullLoading').toggleClass('loading-open');
         }, 25);
     }
 
     // loading 隐藏
     function closeLoading() {
-        $('.loading').addClass('loading-close');
+        $('#fullLoading').addClass('loading-close');
         setTimeout(function () {
-            $('.loading').toggleClass('loading-hidden loading-open').removeClass('loading-close');
+            $('#fullLoading').toggleClass('loading-hidden loading-open').removeClass('loading-close');
         }, 500);
     }
 

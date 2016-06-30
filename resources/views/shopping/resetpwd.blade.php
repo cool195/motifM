@@ -55,24 +55,26 @@
     </section>
 
 </div>
+<!-- 提示成功修改密码 -->
+<div class="remodal remodal-lg modal-content" data-remodal-id="changePwd-modal" id="changePwdDialog">
+    <div class="font-size-sm p-t-20x p-x-15x p-b-15x">
+        <span class="font-size-base">Password Change Success</span>
+        <br> Your Password has been changed.
+        <br>Please log in again!
+    </div>
+    <hr class="hr-base m-a-0">
+    <div class="btn-group flex">
+        <a href="" class="btn remodal-btn flex-width text-primary" id="confirmPwd">OK</a>
+    </div>
+</div>
 
+<!-- loading 效果 -->
+<div class="loading loading-screen loading-switch loading-hidden">
+    <div class="loader loader-screen"></div>
+</div>
 </body>
 <script src="/scripts/vendor.js"></script>
-<script>
-    $('#send').click(function(){
-        $.ajax({
-            type: "POST",
-            url : "/user/forget",
-            data : $('#reset').serialize(),
-            success : function(data){
-                if(data.success){
-                    alert(data.prompt_msg);
-                    window.location.href = data.redirectUrl;
-                }
-            }
-        })
-    });
-</script>
+<script src="/scripts/profileSetting-changePassword.js"></script>
 <meta name="csrf-token" content="{{ csrf_token() }}" />
 <script>
     $.ajaxSetup({
