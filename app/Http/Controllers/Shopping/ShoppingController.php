@@ -117,7 +117,7 @@ class ShoppingController extends ApiController
 		$type = $request->input('type');
 		$params = array(
 			'cmd' => "support",
-			'content' => $request->input('content'),
+			'content' => mb_convert_encoding($request->input('content'), "GBK","UTF-8"),
 			'email' => $request->input('email'),
 			'type' => $type,
 			'stype' => $request->input('stype'),

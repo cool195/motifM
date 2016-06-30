@@ -20,7 +20,7 @@ class AskController extends ApiController
 
         $params = array(
             'cmd' => 'support',
-            'content' => $request->input('content'),
+            'content' => mb_convert_encoding($request->input('content'), "GBK","UTF-8"),
             'email' => $request->input('email'),
             'pin' => Session::get('user.pin'),
             'type' => $request->input('skiptype'),

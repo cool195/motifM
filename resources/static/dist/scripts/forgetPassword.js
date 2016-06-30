@@ -93,7 +93,7 @@
                     console.log('success');
                 } else {
                     $('.warning-info').removeClass('hidden-xs-up');
-                    $('.warning-info').children('span').html(data.prompt_msg);
+                    $('.warning-info').children('span').html(data.error_msg);
                 }
             })
             .fail(function() {

@@ -139,7 +139,7 @@ class OrderController extends ApiController
             'aid' => $request->input('aid'),
             'paym' => $request->input('paym', ""),
             'cps' => $request->input('cps', ""),
-            'remark' => $request->input('remark'),
+            'remark' => mb_convert_encoding($request->input('remark'), "GBK","UTF-8"),
             'stype' => $request->input('stype'),
             'src' => $request->input('src', "H5"),
             'ver' => $request->input('ver', 1)
