@@ -50,7 +50,6 @@
             <div class="bg-white p-a-5x">
                 <div class="flex flex-alignCenter flex-fullJustified p-x-10x p-t-10x">
                     <p class="font-size-base text-main"><strong>{{$designer['nickname']}}</strong></p>
-                    <a href="#"><i class="iconfont icon-share icon-size-md text-primary"></i></a>
                 </div>
                 <div class="font-size-sm text-primary p-a-10x">{{$designer['intro']}}</div>
                 <hr class="hr-base m-a-0">

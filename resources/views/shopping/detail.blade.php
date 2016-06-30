@@ -91,7 +91,6 @@
                         <span class="font-size-sm text-primary">({{ $data['skuPrice']['skuPromotion']['display'] }}
                             )</span>
                     @endif
-                    <a class="text-primary pull-xs-right" href="#"><i class="iconfont icon-share icon-size-xm"></i></a>
                 </div>
                 <div class="text-warning font-size-xs p-x-15x">{{ $data['prompt_words'] }}</div>
             </article>
