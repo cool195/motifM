@@ -45,7 +45,7 @@
                     <input class="input-resetPwd form-control font-size-sm" placeholder="Please enter your email address" type="text" name="email">
                 </div>
                 <div class="m-t-20x">
-                    <div class="btn btn-primary btn-block" id="send">Continue</div>
+                    <div class="btn btn-primary btn-block" data-role="submit">Continue</div>
                 </div>
             </fieldset>
             <div class="text-primary font-size-sm contactUs">
