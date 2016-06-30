@@ -299,8 +299,7 @@
                             <fieldset class="p-x-15x p-y-10x text-left" data-vas-type="{{$vas['vas_type']}}">
                                 <div class="text-primary font-size-sm m-b-10x">{{ $vas['vas_describe'] }} + ${{number_format(($vas['vas_price'] / 100), 2)}}</div>
                                 <div class="flex flex-fullJustified flex-alignCenter">
-                                    <input class="input-engraving form-control font-size-sm disabled" type="text"
-                                           disabled="disabled" maxlength="10">
+                                    <input class="input-engraving form-control font-size-sm disabled" type="text" maxlength="10">
                                     {{--<input type="radio" name="vas_name" id="{{$vas['vas_id']}}" hidden>--}}
                                     <div class="iconfont icon-checkcircle text-common m-b-0 p-l-20x"
                                          id="{{$vas['vas_id']}}"></div>
