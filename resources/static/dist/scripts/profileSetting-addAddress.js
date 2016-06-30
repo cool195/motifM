@@ -59,9 +59,10 @@
     // 表单非空验证
     function checkInput() {
         var Result = true;
-        $('input[type="text"]').each(function() {
-            if ($(this).val() === '' && $(this).data('optional')) {
-                return $(this);
+        $('input[data-optional="false"]').each(function() {
+            if ($(this).val() === '' && !$(this).data('optional')) {
+                Result= $(this);
+                return false;
             }
         });
         return Result;
@@ -80,10 +81,10 @@
     });
 
     // 输入框非空验证
-    $('input[type="text"]').on('blur keyup change', function(e) {
+    $('input[data-optional="false"]').on('blur', function(e) {
         var $Error = checkInput();
         if ($Error === true) {
-            $('warning-info').addClass('hidden-xs-up');
+            $('.warning-info').addClass('hidden-xs-up');
             $('#btn-addAddress').removeClass('disabled');
         } else {
             $('.warning-info').removeClass('hidden-xs-up');
