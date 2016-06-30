@@ -42,7 +42,7 @@
                          class="designer-realImg" hidden>
                     <img class="img-fluid img-lazy designer-Img"
                          data-original="https://s3-us-west-1.amazonaws.com/emimagetest/n0/{{$designer['img_video_path']}}"
-                         src="/images/product/bg-product@750.png" alt="">
+                         src="/images/designer/bg-designer@750x550.png" alt="">
                 @endif
             </div>
 

@@ -36,7 +36,7 @@
                         </div>
                     </div>
                 @else
-                    <img src="https://s3-us-west-1.amazonaws.com/emimagetest/n0/{{$designer['main_img_path']}}" alt=""
+                    <img src="https://s3-us-west-1.amazonaws.com/emimagetest/n0/{{$designer['img_video_path']}}" alt=""
                          class="designer-realImg" hidden>
                     <img class="img-fluid img-lazy designer-Img"
                          data-original="https://s3-us-west-1.amazonaws.com/emimagetest/n0/{{$designer['img_video_path']}}"
