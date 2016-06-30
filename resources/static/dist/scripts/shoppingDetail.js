@@ -781,7 +781,7 @@
         }
     });
 
-    // 验证增值服务 只能输入数字和字母  _ - / 空格
+    /* 验证增值服务 只能输入数字和字母  '_' '-' '/' 空格 */
     function validateVas($Vas) {
         var InputText = validateChinese($Vas.val());
         var Reg = /^([a-z_A-Z-/+0-9+\s]+)$/i;
