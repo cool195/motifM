@@ -26,10 +26,12 @@
     @include('nav')
 @endif
 <!-- 主体内容 -->
-    <div class="body-container">
     @if(!strstr($_SERVER['HTTP_USER_AGENT'], 'motif-android') && !strstr($_SERVER['HTTP_USER_AGENT'], 'motif-ios'))
-        @include('navigator')
-    @endif
+        <div class="body-container">
+            @include('navigator')
+            @else
+                <div class="body-container" style="padding-top:0px">
+                @endif
     <!-- 服务条款 -->
         <section>
             <article class="font-size-md text-main p-x-15x p-y-10x"><strong>TERMS & CONDITIONS</strong>
