@@ -55,8 +55,9 @@
                                  data-url-return="return" data-url-edit="edit"
                                  data-url="/user/addrmod/{{$addr['receiving_id']}}">
                                 <div>
-                                    <div>{{$addr['name']}}  {{$addr['email']}}</div>
-                                    <div>{{$addr['detail_address1']}}  @if(!empty($addr['detail_address2'])) {{$addr['detail_address2']}} @endif</div>
+                                    <div>{{$addr['name']}}</div>
+                                    <div>{{$addr['detail_address1']}}</div>
+                                    @if(!empty($addr['detail_address2'])) <div>{{$addr['detail_address2']}}</div> @endif
                                     <div>{{$addr['city']}}, {{$addr['state']}} {{$addr['zip']}}</div>
                                     <div>{{$addr['country']}}</div>
                                     <div>@if(!empty($addr['telephone'])) {{$addr['telephone']}} @endif</div>
