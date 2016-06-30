@@ -34,7 +34,7 @@ class OrderController extends ApiController
         $system = "";
         $service = "order";
         $result = $this->request('openapi', $system, $service, $params);
-        if (empty($result) || !$result['success']) {
+        if (empty($result)) {
             $result['success'] = false;
             $result['error_msg'] = "Data access failed";
             $result['data'] = array();
@@ -73,9 +73,12 @@ class OrderController extends ApiController
         return $result;
     }
 
-    public function OrderDetail(Request $request, $subno)
+    public function OrderDetail($subno)
     {
         $result = $this->getOrderDetail($subno);
+        if (!$result['success']) {
+            return redirect('/daily');
+        }
         $result['data']['cardlist'] = array('Diners' => 'diners-club', 'Discover' => 'discover', 'JCB' => 'jcb', 'Maestro' => 'maestro', 'AmericanExpress' => 'american-express', 'Visa' => 'visa', 'MasterCard' => 'master-card');
 
         $params = array(
@@ -86,7 +89,7 @@ class OrderController extends ApiController
             'orderid' => $subno,
         );
         $resultOrder = $this->request('openapi', '', 'pay', $params);
-        $result['data']['orderPayInfo'] = array('pay_type'=>$resultOrder['data']['pay_type'],'show_name'=>$resultOrder['data']['show_name'],'card_type'=>$resultOrder['data']['card_type']);
+        $result['data']['orderPayInfo'] = array('pay_type' => $resultOrder['data']['pay_type'], 'show_name' => $resultOrder['data']['show_name'], 'card_type' => $resultOrder['data']['card_type']);
         return View('shopping.orderdetail', ['data' => $result['data']]);
     }
 
@@ -106,14 +109,14 @@ class OrderController extends ApiController
             $result['success'] = false;
             $result['error_msg'] = "Data access failed";
             $result['data'] = array();
-        }else{
-            if($result['success'] && !empty($result['data']['lineOrderList'])){
+        } else {
+            if ($result['success'] && !empty($result['data']['lineOrderList'])) {
                 $lineOrderList = array();
-                foreach($result['data']['lineOrderList'] as $lineOrder){
-                    if(isset($lineOrder['attrValues'])){
+                foreach ($result['data']['lineOrderList'] as $lineOrder) {
+                    if (isset($lineOrder['attrValues'])) {
                         $lineOrder['attrValues'] = json_decode($lineOrder['attrValues'], true);
                     }
-                    if(isset($lineOrder['vas_info'])){
+                    if (isset($lineOrder['vas_info'])) {
                         $lineOrder['vas_info'] = json_decode($lineOrder['vas_info'], true);
                     }
                     $lineOrderList[] = $lineOrder;
@@ -139,15 +142,15 @@ class OrderController extends ApiController
             'aid' => $request->input('aid'),
             'paym' => $request->input('paym', ""),
             'cps' => $request->input('cps', ""),
-            'remark' => mb_convert_encoding($request->input('remark'), "GBK","UTF-8"),
+            'remark' => mb_convert_encoding($request->input('remark'), "GBK", "UTF-8"),
             'stype' => $request->input('stype'),
             'src' => $request->input('src', "H5"),
             'ver' => $request->input('ver', 1)
         );
         $result = $this->request('openapi', "", "order", $params);
-        if(!empty($result) && $result['success']){
+        if (!empty($result) && $result['success']) {
             $orderId = $result['data']['orderID'];
-        }else{
+        } else {
             return $result;
         }
 
@@ -165,9 +168,9 @@ class OrderController extends ApiController
             'devicedata' => "H5"
         );
         $result = $this->request('openapi', "", "pay", $params);
-        if(!empty($result) && $result['success']){
+        if (!empty($result) && $result['success']) {
             $transid = $result['data']['id'];
-        }else{
+        } else {
             return $result;
         }
 
@@ -177,10 +180,10 @@ class OrderController extends ApiController
             'orderid' => $orderId
         );
         $result = $this->request('openapi', "", "pay", $params);
-        if(!empty($result) && $result['success']){
+        if (!empty($result) && $result['success']) {
             //$result['redirectUrl'] = "/order/orderdetail/".$orderId;
             $result['redirectUrl'] = "/success";
-        }else{
+        } else {
             $result['success'] = false;
         }
 

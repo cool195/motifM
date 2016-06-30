@@ -47,7 +47,7 @@
                         @endif
                         <div class="addressItem-info text-primary m-l-15x p-r-15x p-y-10x" data-action="return" data-url-return="return" data-url-edit="edit">
                             <div>
-                                <div>{{$addr['email']}}</div>
+                                <div>{{$addr['name']}}</div>
                                 <div>{{$addr['detail_address1']}}</div>
                                 @if(isset($addr['detail_address2'])) <div> {{$addr['detail_address2']}} </div> @endif
                                 <div>{{$addr['city']}}, {{$addr['state']}} {{$addr['zip']}}</div>

@@ -720,7 +720,8 @@
                         }, 1500);
                     }
                 } else {
-                    alert(data.error_msg);
+                    $('.warning-info').removeClass('off');
+                    $('.warning-info').children('span').text(data.error_msg);
                 }
             })
             .fail(function () {
