@@ -49,11 +49,11 @@
                     </fieldset>
                     <hr class="hr-base m-a-0">
                     <fieldset>
-                        <input class="form-control form-control-block p-a-15x font-size-sm" name="state" type="text" value="{{!empty($input['state']) ? $input['state'] : ""}}" placeholder="State (optional)">
+                        <input class="form-control form-control-block p-a-15x font-size-sm" name="city" type="text" value="{{!empty($input['city']) ? $input['state'] : ""}}" placeholder="City">
                     </fieldset>
                     <hr class="hr-base m-a-0">
                     <fieldset>
-                        <input class="form-control form-control-block p-a-15x font-size-sm" name="city" type="text" value="{{!empty($input['city']) ? $input['state'] : ""}}" placeholder="City">
+                        <input class="form-control form-control-block p-a-15x font-size-sm" name="state" type="text" value="{{!empty($input['state']) ? $input['state'] : ""}}" placeholder="State (optional)">
                     </fieldset>
                     <hr class="hr-base m-a-0">
                     <fieldset>
