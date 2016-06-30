@@ -16502,6 +16502,28 @@ else if (typeof define === 'function' && define.amd) {
         }
     }
 
+    function switchDownload() {
+        var Android = "https://play.google.com/apps/testing/me.motif.motif",
+            iPhone = "https://itunes.apple.com/cn/app/id1125850409";
+
+        var $Downloading = $('a[data-role="downloading"]');
+        switch (switchDevice()) {
+            case 1:
+                $Downloading.attr('href', iPhone);
+                $('.download-content').removeAttr('hidden');
+                break;
+            case 0:
+                $Downloading.attr('href', Android);
+                $('.download-content').removeAttr('hidden');
+                break;
+            case -1:
+                break;
+                $('.app-content').removeAttr('hidden');
+            default:
+                break;
+        }
+    }
+
     // 导航条自动隐藏
     $('#header').headroom({
         'tolerance': .5,
@@ -16536,12 +16558,23 @@ else if (typeof define === 'function' && define.amd) {
         }
     });
 
-    // 下载App 弹出框
-    $('#downloadModal').on('opening', function() {
-
-    });
+    function SetCookie(name, value) {
+        var Time = 24;
+        var exp = new Date();
+        exp.setTime(exp.getTime() + Time * 60 * 60 * 1000);
+        document.cookie = name + "=" + escape(value) + ";expires=" + exp.toGMTString();
+    }
+    //读取cookie
+    function getCookie(name) {
+        var arr = document.cookie.match(new RegExp("(^| )" + name + "=([^;]*)(;|$)"));
+        if (arr != null) {
+            return unescape(arr[2]);
+        }
+        return null;
+    }
 
     (function() {
+        // 获取购物车数量
         if ($('.nav-shoppingCart').data('login')) {
             $.ajax({
                     url: ' /cart/amount',
@@ -16568,27 +16601,19 @@ else if (typeof define === 'function' && define.amd) {
         } else {
             $('.nav-shoppingCart').children('span').remove();
         }
-
-        var Android = "https://play.google.com/apps/testing/me.motif.motif",
-            iPhone = "https://itunes.apple.com/cn/app/id1125850409";
-
-        var $Downloading = $('a[data-role="downloading"]');
-        switch (switchDevice()) {
-            case 1:
-                $Downloading.attr('href', iPhone);
-                $('.download-content').removeAttr('hidden');
-                break;
-            case 0:
-                $Downloading.attr('href', Android);
-                $('.download-content').removeAttr('hidden');
-                break;
-            case -1:
-                break;
-                $('.app-content').removeAttr('hidden');
-            default:
-                break;
+        // downloading 是否显示
+        if (getCookie('downloadingApp')) {
+            $('#closeDownloading').parents('nav').remove();
         }
     })();
+
+    switchDownload();
+
+    $('#closeDownloading').on('click', function() {
+        SetCookie('downloadingApp', 'true');
+        $(this).parents('nav').remove();
+    });
+
 })(jQuery);
 
 //# sourceMappingURL=common.js.map
