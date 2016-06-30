@@ -42,7 +42,7 @@
                 <div class="m-t-10x">
                     <input class="input-resetPwd form-control font-size-sm" placeholder="Confirm New Password" type="password" name="lastpw">
                     <input type="hidden" name="tp" value="{{$params['tp']}}">
-                    <input type="hidden" name="tp" value="{{$params['sig']}}">
+                    <input type="hidden" name="sig" value="{{$params['sig']}}">
                 </div>
                 <div class="m-t-20x">
                     <div class="btn btn-primary btn-block" id="send">Reset Password</div>
