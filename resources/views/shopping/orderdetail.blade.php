@@ -134,7 +134,7 @@
                 @elseif(array_get($data['cardlist'],$data['orderPayInfo']['card_type']))
                     <span class="cardImage-inline {{array_get($data['cardlist'],$data['orderPayInfo']['card_type'])}}"></span>
                 @endif
-                <span class="m-l-10x">{{$data['pay_type']}}({{$data['orderPayInfo']['show_name']}})</span>
+                <span class="m-l-10x">{{$data['orderPayInfo']['show_name']}}</span>
             </div>
             @endif
             <hr class="hr-base">
@@ -159,15 +159,19 @@
                     <span>Items({{ $data['item_qtty'] }}
                         )</span><span>${{number_format(($data['total_amount'] / 100), 2)}}</span>
                 </div>
+                @if($data['vas_amount'] > 0)
                 <div class="flex flex-fullJustified text-primary font-size-sm">
                     <span>Additional Services</span><span>${{number_format(($data['vas_amount'] / 100), 2)}}</span>
                 </div>
+                @endif
                 <div class="flex flex-fullJustified text-primary font-size-sm">
                     <span>Shipping to {{ $data['userAddr']['zip'] }}</span><span>@if(0 == $data['freight_amount']) Free @else${{ number_format(($data['freight_amount'] / 100), 2)}} @endif</span>
                 </div>
+                @if($data['vas_amount'] > 0)
                 <div class="flex flex-fullJustified text-primary font-size-sm">
                     <span>Promotion Code</span><span>-${{ number_format(($data['cps_amount'] / 100), 2)}}</span>
                 </div>
+                @endif
                 <div class="flex flex-fullJustified p-t-10x text-primary font-size-sm">
                     <span><strong>Order Total</strong></span><span><strong>${{ number_format(($data['pay_amount'] / 100), 2)}}</strong></span>
                 </div>
