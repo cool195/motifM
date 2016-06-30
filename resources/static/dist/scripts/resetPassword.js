@@ -41,7 +41,7 @@
     }
 
     // 验证电子邮件的情况
-    $('input[name="email"]').on('keyup blur', function(e) {
+    $('input[name="email"]').on('keyup blur change', function(e) {
         if (validationEmail($(this))) {
             $('div[data-role="submit"]').removeClass('disabled');
         } else {
@@ -49,10 +49,10 @@
         }
     });
 
-    $('#send').click(function() {
+    $('div[data-role="submit"]').click(function() {
         if (!$(this).hasClass('disabled')) {
             $.ajax({
-                    url: "/forgetpwd",
+                    url: "/user/forget",
                     type: "POST",
                     data: $('#reset').serialize()
                 })

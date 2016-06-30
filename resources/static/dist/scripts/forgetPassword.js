@@ -81,8 +81,8 @@
     function updatePassword() {
         openLoading();
         $.ajax({
-                type: "POST",
-                url: "/forgetpwd",
+            url: "/forgetpwd",
+            type: "POST",
                 data: $('#reset').serialize(),
             })
             .done(function(data) {
