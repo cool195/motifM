@@ -1,9 +1,9 @@
 <footer class="p-y-20x">
     <div class="text-center font-size-sm p-y-5x">
         @if(Session::has('user'))
-            <a href="/user/signout">Sign Out</a>
+            <a href="/user/signout" class="text-primary">Sign Out</a>
         @else
-            <a href="/login">Login/Register</a>
+            <a href="/login" class="text-primary">Login/Register</a>
         @endif
     </div>
     <div class="field-content m-t-15x m-b-20x">

@@ -12,6 +12,7 @@ var Width = $(window).width(),
 if ($('#ytplayer').length > 0) {
     // 初始化 外边框尺寸
     $('.designer-media').css('height', MediaHeight);
+    $('#ytplayer').find('.loading').removeClass('loading-hidden');
 
     // 加载视频
     var tag = document.createElement('script');
@@ -29,7 +30,8 @@ if ($('#ytplayer').length > 0) {
             videoId: PlayId,
             autoplay: 1,
             events: {
-                'onReady': onPlayerReady
+                'onReady': onPlayerReady,
+                'onError': onPlayerError
             }
         });
     }
@@ -39,6 +41,11 @@ if ($('#ytplayer').length > 0) {
 function onPlayerReady(event) {
     event.target.playVideo();
     event.target.mute();
+}
+
+// 视频播放失败
+function onPlayerReady(event) {
+    event.target.playVideo();
 }
 
 

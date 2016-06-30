@@ -29,7 +29,14 @@
             <div class="designer-media flex flex-justifyCenter flex-alignCenter">
                 <img class="designer-placeImg" src="/images/designer/placeholder.jpg" alt="" hidden>
                 @if($designer['path_type']==2)
-                    <div id="ytplayer" data-playid="{{$designer['img_video_path']}}"></div>
+                    <div id="ytplayer" data-playid="{{$designer['img_video_path']}}">
+                        <div class="loading loading-screen loading-transprant loading-hidden">
+                            <div class="">
+                                <div class="loader"></div>
+                                <div class="text-white font-size-md text-center m-t-10x">Loading</div>
+                            </div>
+                        </div>
+                    </div>
                 @else
                     <img src="https://s3-us-west-1.amazonaws.com/emimagetest/n0/{{$designer['img_video_path']}}" alt=""
                          class="designer-realImg" hidden>
