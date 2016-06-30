@@ -26,7 +26,7 @@
         var PasswordNull = 'Please enter your password',
             PasswordLength = 'Password needs to be at least 6 characters';
         var $WarningInfo = $('.warning-info');
-        if (InputText == '') {
+        if (InputText === '' || InputText === undefined) {
             $('div[data-role="submit"]').addClass('disabled');
             $WarningInfo.removeClass("off");
             $WarningInfo.children('span').html(PasswordNull);
@@ -38,7 +38,6 @@
             return false;
         } else {
             $WarningInfo.addClass('off');
-            $('div[data-role="submit"]').removeClass('disabled');
             return true;
         }
     }
@@ -54,38 +53,28 @@
             return false;
         } else {
             $WarningInfo.addClass('off');
-            $('div[data-role="submit"]').removeClass('disabled');
             return true;
         }
     }
 
+    // 输入密码时 进行验证
     $('input[type="password"]').on('keyup', function () {
-        var InputText = $(this).val();
-        validatePwdLenght(InputText);
+        validatePwd();
     });
 
-    $('input[data-role="confirmPwd"]').on('keyup', function () {
-        var pwdText = $('input[name="pw"]').val();
-        var confirmPwdText = $(this).val();
-        validateconfirmPwd(pwdText, confirmPwdText);
-    });
+    // 验证密码格式
+    function validatePwd() {
+        var OldPwd = $('input[name="oldpw"]').val(),
+            NewPpwd = $('input[name="pw"]').val(),
+            ConfirmPwd = $('input[data-role="confirmPwd"]').val();
+        if (validatePwdLenght(OldPwd) && validatePwdLenght(NewPpwd) && validatePwdLenght(ConfirmPwd) && validateconfirmPwd(NewPpwd, ConfirmPwd)) {
+            $('div[data-role="submit"]').removeClass('disabled');
+        }
+    }
 
     $('div[data-role="submit"]').on('click', function (e) {
-        var CurrentPwd = $('input[name="oldpw"]').val(),
-            NewPwd = $('input[name="pw"]').val(),
-            ConfirmPwd = $('input[data-role="confirmPwd"]').val();
-
-        if (!validatePwdLenght(CurrentPwd) || !validatePwdLenght(NewPwd) || !validatePwdLenght(ConfirmPwd)) {
-            $(e.target).addClass('disabled');
-            return;
-        }
-        if (!validateconfirmPwd(NewPwd, ConfirmPwd)) {
-            $(e.target).addClass('disabled');
-            return;
-        }
         updatePassword();
     });
-
 
     function updatePassword() {
         openLoading();
@@ -98,7 +87,7 @@
                 if (data.success) {
                     $ModalDialog.open();
                     var href = data.redirectUrl;
-                    $('#confirmPwd').attr('href',href);
+                    $('#confirmPwd').attr('href', href);
                     console.log('success');
                 } else {
                     $('.warning-info').removeClass('off');

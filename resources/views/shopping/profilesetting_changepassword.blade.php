@@ -45,7 +45,7 @@
                     <input class="form-control form-control-block p-a-15x font-size-sm" type="password" placeholder="Confirm New Password" data-role="confirmPwd">
                 </fieldset>
                 <div class="p-a-15x">
-                    <div href="#" class="btn btn-primary btn-block btn-sm" data-role="submit">Change Password</div>
+                    <div href="#" class="btn btn-primary btn-block btn-sm disabled" data-role="submit">Change Password</div>
                 </div>
             </form>
         </section>
