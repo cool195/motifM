@@ -70,3 +70,14 @@
     </div>
     <div class="text-common text-center font-size-sm">Copyright © 2016 MOTIF Inc. All rights reserved.</div>
 </footer>
+<!-- App 下载提示 -->
+<nav class="navbar-fixed-bottom bg-download p-y-10x p-x-15x flex flex-fullJustified flex-alignCenter">
+    <div class="flex flex-alignCenter">
+        <span class="p-r-20x"><a id="closeDownloading"><i class="iconfont icon-cross text-common"></i></a></span>
+        <div class="p-r-15x">
+            <img src="/images/icon/icon-motif.png" srcset="/images/icon/icon-motif@2x.png 2x,/images/icon/icon-motif@3x.png 3x">
+        </div>
+        <span class="p-r-15x font-size-sm text-primary">Find More With MOTIF App</span>
+    </div>
+    <div class="font-size-sm"><a data-role="downloading">DOWNLOAD</a></div>
+</nav>
