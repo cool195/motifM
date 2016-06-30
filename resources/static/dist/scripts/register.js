@@ -1,9 +1,9 @@
 'use strict';
-(function ($) {
+(function($) {
     // loading 打开
     function openLoading() {
         $('.loading').toggleClass('loading-hidden');
-        setTimeout(function () {
+        setTimeout(function() {
             $('.loading').toggleClass('loading-open');
         }, 25);
     }
@@ -11,7 +11,7 @@
     // loading 隐藏
     function closeLoading() {
         $('.loading').addClass('loading-close');
-        setTimeout(function () {
+        setTimeout(function() {
             $('.loading').toggleClass('loading-hidden loading-open').removeClass('loading-close');
         }, 500);
     }
@@ -27,7 +27,7 @@
         var InputText = $Email.val();
         // 邮箱验证的正则表达式
         var Reg = /^[a-z0-9]([a-z0-9]*[-_]?[a-z0-9]+)*@([a-z0-9]*[-_]?[a-z0-9]+)+[\.][a-z]{2,3}([\.][a-z]{2})?$/i;
-        if (InputText === '') {
+        if (InputText === '' || InputText === undefined) {
             $WarningInfo.removeClass('off');
             $WarningInfo.children('span').html(EmailNull);
             return false;
@@ -84,11 +84,11 @@
     function registerUser() {
         openLoading();
         $.ajax({
-            url: '/user/signup',
-            type: 'POST',
-            data: $('#register').serialize()
-        })
-            .done(function (data) {
+                url: '/user/signup',
+                type: 'POST',
+                data: $('#register').serialize()
+            })
+            .done(function(data) {
                 if (data.success) {
                     window.location.href = data.redirectUrl;
                 } else {
@@ -96,10 +96,10 @@
                     $('.warning-info').children('span').html(data.prompt_msg);
                 }
             })
-            .fail(function () {
+            .fail(function() {
                 console.log("error");
             })
-            .always(function () {
+            .always(function() {
                 closeLoading();
                 console.log("complete");
             });
@@ -107,7 +107,7 @@
     }
 
     // 验证昵称
-    $('input[name="nick"]').on('keyup blur', function (e) {
+    $('input[name="nick"]').on('keyup blur', function(e) {
         var InputText = $(this).val();
         if (InputText === '' || InputText === undefined) {
             $(this).siblings('.input-clear').addClass('hidden');
@@ -123,7 +123,7 @@
     });
 
     // 验证电子邮件的情况
-    $('input[name="email"]').on('keyup blur', function (e) {
+    $('input[name="email"]').on('keyup blur', function(e) {
         var InputText = $(this).val();
         if (InputText === '' || InputText === undefined) {
             $(this).siblings('.input-clear').addClass('hidden');
@@ -139,7 +139,7 @@
     });
 
     // 验证密码的情况
-    $('input[name="pw"]').on('keyup blur', function (e) {
+    $('input[name="pw"]').on('keyup blur', function(e) {
         if (validationPassword($(this))) {
             $('div[data-role="submit"]').removeClass('disabled');
         } else {
@@ -148,7 +148,7 @@
     });
 
     // 提交注册用户请求
-    $('div[data-role="submit"]').on('click', function (e) {
+    $('div[data-role="submit"]').on('click', function(e) {
 
         var $Email = $('input[name="email"]'),
             $Password = $('input[name="pw"]'),
@@ -169,13 +169,13 @@
     });
 
     // 清除输入
-    $('.input-clear').on('click', function (e) {
+    $('.input-clear').on('click', function(e) {
         $(e.target).siblings('input').val('');
         $(this).addClass('hidden');
     });
 
     // 查看密码
-    $('.input-show').on('click', function (e) {
+    $('.input-show').on('click', function(e) {
         var $Password = $(e.target).siblings('input');
 
         if ($(e.target).hasClass('off')) {

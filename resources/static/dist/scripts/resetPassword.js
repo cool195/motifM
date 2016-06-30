@@ -77,11 +77,10 @@
                     console.log("error");
                 })
                 .always(function() {
-                        console.log("complete");
-                    }
+                    console.log("complete");
                 });
+        }
     });
-
 
 })(jQuery);
 
