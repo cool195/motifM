@@ -31,7 +31,7 @@
                 <a href="/login"
                    class="flex flex-alignCenter flex-fullJustified p-a-15x">
                     <div class="font-size-sm text-primary flex flex-alignCenter"><i
-                                class="iconfont icon-signout icon-size-md p-r-15x"></i><span>Login/Register</span>
+                                class="iconfont icon-login icon-size-md p-r-15x"></i><span>Login/Register</span>
                     </div>
                     <span class="text-common"><i class="iconfont icon-arrow-right icon-size-sm"></i></span>
                 </a>
