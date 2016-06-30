@@ -148,9 +148,11 @@
                     <span>Additional Services</span><span>${{number_format(($data['vas_amount'] / 100), 2)}}</span>
                 </div>
                 @endif
-                <div class="flex flex-fullJustified text-primary font-size-sm">
-                    <span>Shipping to {{$addr['zip']}}</span><span>@if(0 == $data['freight_amount']) Free @else${{ number_format(($data['freight_amount'] / 100), 2)}} @endif</span>
-                </div>
+                @if(!empty($addr))
+                    <div class="flex flex-fullJustified text-primary font-size-sm">
+                        <span>Shipping to {{$addr['zip']}}</span><span>@if(0 == $data['freight_amount']) Free @else${{ number_format(($data['freight_amount'] / 100), 2)}} @endif</span>
+                    </div>
+                @endif
                 @if($data['cps_amount'] > 0)
                 <div class="flex flex-fullJustified text-primary font-size-sm">
                     <span>Coupon</span><span>-${{number_format(($data['cps_amount'] / 100), 2)}}</span>

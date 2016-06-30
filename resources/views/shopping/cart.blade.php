@@ -66,8 +66,7 @@
                                             <aside class="cartItem-secondaryInfo text-primary font-size-sm">
                                                 @if(isset($showSku['attrValues']))
                                                     @foreach($showSku['attrValues'] as $attrValue)
-                                                        <div><span>{{$attrValue['attr_type_value'] }}
-                                                                : </span><span>{{ $attrValue['attr_value'] }}</span>
+                                                        <div><span>{{$attrValue['attr_type_value'] }}: </span><span>{{ $attrValue['attr_value'] }}</span>
                                                         </div>
                                                     @endforeach
                                                 @endif
@@ -75,8 +74,7 @@
                                                     @foreach($showSku['showVASes'] as $showVAS)
                                                         <div class="flex flex-fullJustified">
                                                             <div class="">
-                                                                <span>{{$showVAS['vas_name']}}
-                                                                    : </span><span>{{$showVAS['user_remark']}}</span>
+                                                                <span>{{$showVAS['vas_name']}}: </span><span>{{$showVAS['user_remark']}}</span>
                                                             </div>
                                                             <div class="">
                                                                 ${{number_format(($showVAS['vas_price'] / 100), 2)}}</div>
@@ -125,10 +123,10 @@
                 <!-- 商品总价 -->
                 <section class="bg-white m-t-10x p-a-10x">
                     <div class="flex flex-rightJustify text-primary font-size-sm">
-                        <span class="p-r-5x">Items({{$cartData['total_sku_qtty'] }}) :
+                        <span class="p-r-5x">Items ({{$cartData['total_sku_qtty'] }}):
                         </span><strong>${{number_format($cartData['total_amount'] /100, 2)}}</strong>
                     </div>
-                    @if($cartData['vas_amount'] >= 0)
+                    @if($cartData['vas_amount'] > 0)
                     <div class="flex flex-rightJustify text-primary font-size-sm">
                         <span class="p-r-5x">Additional Services: </span><strong>${{ number_format($cartData['vas_amount'] / 100, 2) }}</strong>
                     </div>

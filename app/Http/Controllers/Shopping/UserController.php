@@ -18,7 +18,7 @@ class UserController extends ApiController
      * 跳转至个人中心页
      *
      * */
-    public function setting(Request $request)
+    public function setting()
     {
         return View('shopping.profilesetting');
     }
@@ -29,7 +29,7 @@ class UserController extends ApiController
      * 跳转至个人中心
      *
      * */
-    public function changeProfile(Request $request)
+    public function changeProfile()
     {
         $user = Session::get('user');
         return View('shopping.profilesetting_changeprofile', ['user' => $user]);
@@ -41,7 +41,7 @@ class UserController extends ApiController
      * 跳转至注册页面
      *
      * */
-    public function register(Request $request)
+    public function register()
     {
         return View('shopping.register');
     }
@@ -119,7 +119,7 @@ class UserController extends ApiController
             $result['data'] = array();
         } else {
             if ($result['success']) {
-                $result['redirectUrl'] = $request->input('referer') ? $request->input('referer') : "/daily";
+                $result['redirectUrl'] = ($request->input('referer') && !strstr($request->input('referer'),'register')) ? $request->input('referer') : "/daily";
                 Session::forget('user');
                 Session::put('user', $result['data']);
             }
@@ -135,7 +135,7 @@ class UserController extends ApiController
      * @params Request $request
      * @return Array
      * */
-    public function signout(Request $request)
+    public function signout()
     {
         $user = Session::get('user');
         $result = array('success' => false, 'error_msg' => "user is signout", 'data' => array());
@@ -164,7 +164,7 @@ class UserController extends ApiController
      *
      * @author zhangtao@evermarker.net
      * */
-    public function reset(Request $request)
+    public function reset()
     {
         return View('shopping.resetpwd');
     }
@@ -223,7 +223,7 @@ class UserController extends ApiController
      * @author zhangtao@evermarker.net
      *
      * */
-    public function changePassword(Request $request)
+    public function changePassword()
     {
         return View('shopping.profilesetting_changepassword');
     }
@@ -267,7 +267,7 @@ class UserController extends ApiController
      * @params Request $request
      * @return Array
      * */
-    public function getUserDetailInfo(Request $request)
+    public function getUserDetailInfo()
     {
         $params = array(
             'cmd' => "detail",
@@ -325,7 +325,7 @@ class UserController extends ApiController
      *
      * */
 
-    public function getShippingAddress(Request $request)
+    public function getShippingAddress()
     {
         $cmd = 'list';
         $params = array(
