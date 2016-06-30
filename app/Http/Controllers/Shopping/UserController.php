@@ -381,7 +381,6 @@ class UserController extends ApiController
             $input['detail_address1'] = $input['addr1'];
             $input['detail_address2'] = $input['addr2'];
             $input['telephone'] = $input['tel'];
-            $input['iDnumber'] = $input['idnum'];
             $input['isDefault'] = $input['isd'];
             $input['receiving_id'] = $input['aid'];
         } else {
