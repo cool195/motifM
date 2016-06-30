@@ -42,10 +42,10 @@
                     <hr class="hr-base m-a-0">
                     <input class="form-control form-control-block p-a-15x font-size-sm" type="password" placeholder="New Password (6 characters min)" name="pw">
                     <hr class="hr-base m-a-0">
-                    <input class="form-control form-control-block p-a-15x font-size-sm" type="password" placeholder="Confirm Password" data-role="confirmPwd">
+                    <input class="form-control form-control-block p-a-15x font-size-sm" type="password" placeholder="Confirm New Password" data-role="confirmPwd">
                 </fieldset>
                 <div class="p-a-15x">
-                    <div href="#" class="btn btn-primary btn-block btn-sm" data-role="submit">Change</div>
+                    <div href="#" class="btn btn-primary btn-block btn-sm" data-role="submit">Change Password</div>
                 </div>
             </form>
         </section>
@@ -58,7 +58,7 @@
 <!-- 提示成功修改密码 -->
 <div class="remodal remodal-lg modal-content" data-remodal-id="changePwd-modal" id="changePwdDialog">
     <div class="font-size-sm p-t-20x p-x-15x p-b-15x">
-        <span class="font-size-base">Password Change Success</span> <br> Your Password has been changed. <br>Please log
+        <span class="font-size-base">Password Change Complete!</span><br>Please log
         in again!
     </div>
     <hr class="hr-base m-a-0">

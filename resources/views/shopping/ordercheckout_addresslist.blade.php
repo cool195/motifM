@@ -67,7 +67,7 @@
                 <aside class="bg-white">
                     <div class="flex flex-alignCenter text-primary p-a-15x" data-role="add" data-action="/cart/addradd">
                         <i class="iconfont icon-add icon-size-sm p-r-10x"></i>
-                        <span class="font-size-sm">Add a New Address</span>
+                        <span class="font-size-sm">Add New Address</span>
                     </div>
                 </aside>
                 <aside class="p-a-15x">
@@ -85,7 +85,7 @@
     <!-- TODO remodal 有多余的样式 需要整理 -->
     <div class="remodal remodal-md modal-content" data-remodal-id="modal" id="modalDialog">
         <div class="font-size-sm p-t-20x p-x-15x p-b-15x">
-            Are you sure you want to remove <br> this item from your bag?
+            Are you sure you want to remove this address?
         </div>
         <div class="btn-group flex">
             <div class="btn remodal-btn flex-width" data-remodal-action="confirm">Remove</div>

@@ -34,7 +34,7 @@
                 <div class="shopbag-empty-content p-x-10x">
                     <div class="container shopbag-emptyInfo">
                         <div class="m-b-20x p-b-5x"><i class="btn-shopbagEmpty iconfont icon-shopbag"></i></div>
-                        <p class="text-primary font-size-sm m-b-20x p-b-20x">No saved items</p>
+                        <p class="text-primary font-size-sm m-b-20x p-b-20x">Your bag is empty. Fill it up</p>
                         <a href="/daily" class="btn btn-primary btn-sm">Go Shopping</a>
                     </div>
                 </div>

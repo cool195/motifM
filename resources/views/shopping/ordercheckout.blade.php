@@ -79,7 +79,7 @@
                     <span class="checkoutInfo-subTitle flex-fixedShrink">Ship to</span>
                     <div class="checkoutInfo-content flex flex-fullJustified flex-alignCenter">
                         @if(empty($addr) || "" == $addr)
-                            <div class="text-warning">No Address Added</div>
+                            <div class="text-warning">Add new address</div>
                         @else
                         <div>
                             <div>{{ $addr['name'] }}</div>

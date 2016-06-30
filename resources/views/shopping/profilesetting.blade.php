@@ -32,12 +32,7 @@
                 <!-- 个人中心 sitting list -->
                 <aside class="bg-white m-b-20x">
                     <a class="flex flex-alignCenter flex-fullJustified font-size-sm text-primary p-a-15x" href="/user/changeprofile">
-                        <span>Change Profile</span>
-                        <i class="iconfont icon-arrow-right icon-size-xm text-common"></i>
-                    </a>
-                    <hr class="hr-base m-a-0">
-                    <a class="flex flex-alignCenter flex-fullJustified font-size-sm text-primary p-a-15x" href="/user/shippingaddress">
-                        <span>Shipping Address</span>
+                        <span>Edit Profile</span>
                         <i class="iconfont icon-arrow-right icon-size-xm text-common"></i>
                     </a>
                     <hr class="hr-base m-a-0">
@@ -46,8 +41,13 @@
                         <i class="iconfont icon-arrow-right icon-size-xm text-common"></i>
                     </a>
                     <hr class="hr-base m-a-0">
+                    <a class="flex flex-alignCenter flex-fullJustified font-size-sm text-primary p-a-15x" href="/user/shippingaddress">
+                        <span>Shipping Address</span>
+                        <i class="iconfont icon-arrow-right icon-size-xm text-common"></i>
+                    </a>
+                    <hr class="hr-base m-a-0">
                     <a class="flex flex-alignCenter flex-fullJustified font-size-sm text-primary p-a-15x" href="/braintree">
-                        <span>Payment Method</span>
+                        <span>Payment Methods</span>
                         <i class="iconfont icon-arrow-right icon-size-xm text-common"></i>
                     </a>
                 </aside>
