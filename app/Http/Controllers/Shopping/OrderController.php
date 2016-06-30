@@ -34,7 +34,7 @@ class OrderController extends ApiController
         $system = "";
         $service = "order";
         $result = $this->request('openapi', $system, $service, $params);
-        if (empty($result) || !$result['success']) {
+        if (empty($result)) {
             $result['success'] = false;
             $result['error_msg'] = "Data access failed";
             $result['data'] = array();
@@ -86,8 +86,13 @@ class OrderController extends ApiController
             'orderid' => $subno,
         );
         $resultOrder = $this->request('openapi', '', 'pay', $params);
-        $result['data']['orderPayInfo'] = array('pay_type'=>$resultOrder['data']['pay_type'],'show_name'=>$resultOrder['data']['show_name'],'card_type'=>$resultOrder['data']['card_type']);
-        return View('shopping.orderdetail', ['data' => $result['data']]);
+        if($resultOrder['success']){
+            $result['data']['orderPayInfo'] = array('pay_type'=>$resultOrder['data']['pay_type'],'show_name'=>$resultOrder['data']['show_name'],'card_type'=>$resultOrder['data']['card_type']);
+            return View('shopping.orderdetail', ['data' => $result['data']]);
+        }else{
+            return redirect('/daily');
+        }
+
     }
 
     public function getOrderDetail($subno)
