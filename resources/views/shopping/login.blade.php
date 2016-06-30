@@ -48,6 +48,7 @@
                        type="password" maxlength="32">
                 <i class="iconfont icon-show icon-size-lg input-show text-common off"></i>
             </fieldset>
+            <input type="hidden" name="referer" value="{{$referer}}">
         </form>
         <div class="m-t-15x text-primary text-center font-size-sm">
             <a href="/reset" class="text-primary" target="_blank">Forgot Password?</a>
