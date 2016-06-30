@@ -75,7 +75,18 @@ class ShoppingController extends ApiController
 	{
 		$customerSupportIndex = 3;
 		$result = $this->getFeedbackList($request);
+		$this->putRefererInSession();
 		return View('Other.customersupport', ['customers' => $result['data']['list'][$customerSupportIndex]]);
+	}
+
+	private function putRefererInSession()
+	{
+		if(isset($_SERVER['HTTP_REFERER'])) {
+			if(empty($_SERVER['PHP_SELF']) || $_SERVER['PHP_SELF'] !== $_SERVER['HTTP_REFERER']) {
+				$referer = !empty($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : "/shopping";
+				Session::put('referer', $referer);
+			}
+		}
 	}
 
 	public function getFeedbackList(Request $request)
@@ -121,6 +132,11 @@ class ShoppingController extends ApiController
 			$result['success'] = false;
 			$result['error_msg'] = "Data access failed";
 			$result['data']['list'] = array();
+		}else{
+			if($result['success']){
+				$result['redirectUrl'] = Session::has('referer')? Session::get('referer') : "/shopping";
+				Session::forget('referer');
+			}
 		}
 		return $result;
 	}
