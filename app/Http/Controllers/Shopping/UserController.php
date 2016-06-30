@@ -11,6 +11,7 @@ class UserController extends ApiController
     const API_SYSTEM = "";
     const API_SERVICE = "user";
     const Token = 'eeec7a32dcb6115abfe4a871c6b08b47';
+
     /*
      * @author zhangtao@evermarker.net
      *
@@ -61,7 +62,7 @@ class UserController extends ApiController
             'email' => $email,
             'pw' => md5($request->input('pw')),
             'nick' => $request->input('nick'),
-            'token'=> self::Token,
+            'token' => self::Token,
         );
         $result = $this->request('openapi', self::API_SYSTEM, self::API_SERVICE, $params);
         /*        if (empty($result) ) {
@@ -91,7 +92,7 @@ class UserController extends ApiController
         if (Session::has('user')) {
             return redirect('/daily');
         }
-        return view('shopping.login');
+        return view('shopping.login', ['referer' => $request->header('referer')]);
     }
 
     /*
@@ -109,7 +110,7 @@ class UserController extends ApiController
             'uuid' => $_COOKIE['uid'],
             'email' => $email,
             'pw' => md5($request->input('pw')),
-            'token'=> self::Token,
+            'token' => self::Token,
         );
         $result = $this->request('openapi', self::API_SYSTEM, self::API_SERVICE, $params);
         if (empty($result)) {
@@ -118,10 +119,7 @@ class UserController extends ApiController
             $result['data'] = array();
         } else {
             if ($result['success']) {
-                $result['redirectUrl'] = "/daily";
-                if (isset($_SERVER['HTTP_REFERER']) && !empty($_SERVER['HTTP_REFERER'])) {
-                    $result['redirectUrl'] = $_SERVER['HTTP_REFERER'];
-                }
+                $result['redirectUrl'] = $request->input('referer') ? $request->input('referer') : "/daily";
                 Session::forget('user');
                 Session::put('user', $result['data']);
             }
