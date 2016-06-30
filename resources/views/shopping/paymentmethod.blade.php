@@ -28,7 +28,9 @@
         <section>
             <article class="p-x-15x p-y-10x flex flex-fullJustified flex-alignCenter">
                 <span class="font-size-md text-main"><strong>Payment Methods</strong></span>
-                <a class="btn btn-primary-outline btn-sm" id="payment-edit">Edit</a>
+                @if(count($methodlist['Card']) > 0)
+                    <a class="btn btn-primary-outline btn-sm" id="payment-edit">Edit</a>
+                @endif
 
                 <!-- 修改状态 -->
                 <!--<a class="btn btn-primary btn-sm" href="#">Done</a>-->
