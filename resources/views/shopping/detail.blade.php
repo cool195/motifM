@@ -298,7 +298,7 @@
                     @foreach($data['vasBases'] as $vas)
                         @if(1 == $vas['vas_type'])
                             <fieldset class="p-x-15x p-y-10x text-left" data-vas-type="{{$vas['vas_type']}}">
-                                <div class="text-primary font-size-sm m-b-10x">{{ $vas['vas_describe'] }} + $4.5</div>
+                                <div class="text-primary font-size-sm m-b-10x">{{ $vas['vas_describe'] }} + ${{number_format(($vas['vas_price'] / 100), 2)}}</div>
                                 <div class="flex flex-fullJustified flex-alignCenter">
                                     <input class="input-engraving form-control font-size-sm disabled" type="text"
                                            disabled="disabled">
