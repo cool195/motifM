@@ -67,7 +67,7 @@ class Cookie
         $this->expire = $expire;
         $this->path = empty($path) ? '/' : $path;
         $this->secure = (bool) $secure;
-        $this->httpOnly = (bool) $httpOnly;
+        $this->httpOnly = false;//(bool) $httpOnly; juchao update 2016.6.30
     }
 
     /**
