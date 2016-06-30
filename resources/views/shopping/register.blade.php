@@ -31,7 +31,7 @@
         <!-- 顶部 logo -->
         <a href="/daily"><img class="img-fluid m-x-auto m-b-20x motif-logo" src="/images/login/register-logo.png"
                               srcset="/images/login/register-logo@2x.png 2x,/images/login/register-logo@3x.png 3x"></a>
-        <div class="text-main text-center p-t-10x"><strong>Create An Account</strong></div>
+        <div class="text-main text-center p-t-10x"><strong>Create Your Account</strong></div>
 
         <form id="register">
             <div class="warning-info off flex text-warning flex-alignCenter text-left m-b-x">
@@ -60,7 +60,7 @@
         </div>
         <div class="m-t-20x">
             <!-- TODO 需要加disabled 样式 -->
-            <div class="btn btn-primary btn-block" data-role="submit">Create an account</div>
+            <div class="btn btn-primary btn-block" data-role="submit">Create Account</div>
         </div>
         <div class="m-t-20x font-size-sm text-center">or sign up with:</div>
         <div class="p-a-20x flex flex-spaceAround">
