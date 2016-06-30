@@ -32,7 +32,9 @@
         <section class="p-b-15x">
             <article class="p-x-15x p-y-10x flex flex-fullJustified flex-alignCenter">
                 <span class="font-size-md text-main"><strong>Shipping Address</strong></span>
-                <a class="btn btn-primary-outline btn-sm" id="address-edit">Edit</a>
+                @if(isset($data['list']))
+                    <a class="btn btn-primary-outline btn-sm" id="address-edit">Edit</a>
+                @endif
                 <!-- 修改状态 -->
                 <!--<a class="btn btn-primary btn-sm" href="#">Done</a>-->
             </article>
@@ -42,34 +44,37 @@
                 @if(isset($data['list']))
                     @foreach($data['list'] as $addr)
                         <hr class="hr-base m-a-0">
-                        <div class="addressList-container font-size-sm" id="primaryItem" data-address="" data-aid="{{$addr['receiving_id']}}">
+                        <div class="addressList-container font-size-sm" id="primaryItem" data-address=""
+                             data-aid="{{$addr['receiving_id']}}">
                             @if(1 !== $addr['isDefault'])
                                 <div class="addressList-delete switch" data-remodal-target="modal">
                                     <i class="iconfont icon-delete icon-size-md text-warning"></i>
                                 </div>
                             @endif
-                                <div class="addressItem-info text-primary m-l-15x p-r-15x p-y-10x" data-action="return"
-                                     data-url-return="return" data-url-edit="edit" data-url="/user/addrmod/{{$addr['receiving_id']}}">
-                                    <div>
-                                        <div>{{$addr['name']}}  {{$addr['email']}}</div>
-                                        <div>{{$addr['detail_address1']}}  @if(!empty($addr['detail_address2'])) {{$addr['detail_address2']}} @endif</div>
-                                        <div>{{$addr['city']}}, {{$addr['state']}} {{$addr['zip']}}</div>
-                                        <div>{{$addr['country']}}</div>
-                                        <div>@if(!empty($addr['telephone'])) {{$addr['telephone']}} @endif</div>
-                                    </div>
-                                    @if(1 == $addr['isDefault'])
-                                        <div class="flex flex-alignCenter">
-                                            <span class="text-common p-r-20x">Primary</span>
-                                            <i class="iconfont icon-check icon-size-sm text-common"></i>
-                                        </div>
-                                    @endif
+                            <div class="addressItem-info text-primary m-l-15x p-r-15x p-y-10x" data-action="return"
+                                 data-url-return="return" data-url-edit="edit"
+                                 data-url="/user/addrmod/{{$addr['receiving_id']}}">
+                                <div>
+                                    <div>{{$addr['name']}}  {{$addr['email']}}</div>
+                                    <div>{{$addr['detail_address1']}}  @if(!empty($addr['detail_address2'])) {{$addr['detail_address2']}} @endif</div>
+                                    <div>{{$addr['city']}}, {{$addr['state']}} {{$addr['zip']}}</div>
+                                    <div>{{$addr['country']}}</div>
+                                    <div>@if(!empty($addr['telephone'])) {{$addr['telephone']}} @endif</div>
                                 </div>
+                                @if(1 == $addr['isDefault'])
+                                    <div class="flex flex-alignCenter">
+                                        <span class="text-common p-r-20x">Primary</span>
+                                        <i class="iconfont icon-check icon-size-sm text-common"></i>
+                                    </div>
+                                @endif
+                            </div>
                         </div>
                     @endforeach
                 @endif
             </aside>
             <aside class="bg-white">
-                <a class="flex flex-alignCenter text-primary p-a-15x" href="@if(empty($data['list'])){{'/user/addradd?first=1'}}@else{{'/user/addradd'}}@endif">
+                <a class="flex flex-alignCenter text-primary p-a-15x"
+                   href="@if(empty($data['list'])){{'/user/addradd?first=1'}}@else{{'/user/addradd'}}@endif">
                     <i class="iconfont icon-add icon-size-sm p-r-10x"></i>
                     <span class="font-size-sm">Add a New Address</span>
                 </a>
