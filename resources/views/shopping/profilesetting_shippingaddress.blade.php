@@ -32,7 +32,7 @@
         <section class="p-b-15x">
             <article class="p-x-15x p-y-10x flex flex-fullJustified flex-alignCenter">
                 <span class="font-size-md text-main"><strong>Shipping Address</strong></span>
-                @if(isset($data['list']))
+                @if(!empty($data['list']))
                     <a class="btn btn-primary-outline btn-sm" id="address-edit">Edit</a>
                 @endif
                 <!-- 修改状态 -->
