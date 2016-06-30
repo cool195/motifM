@@ -34,7 +34,7 @@ class OrderController extends ApiController
         $system = "";
         $service = "order";
         $result = $this->request('openapi', $system, $service, $params);
-        if (empty($result)) {
+        if (empty($result) || !$result['success']) {
             $result['success'] = false;
             $result['error_msg'] = "Data access failed";
             $result['data'] = array();
