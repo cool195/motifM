@@ -1,9 +1,15 @@
 'use strict';
 (function($) {
+    // 初始化模态框
+    var $ModalDialog = $('#changePwdDialog').remodal({
+        closeOnOutsideClick: false,
+        hashTracking: false
+    });
+
     // loading 打开
     function openLoading() {
         $('.loading').toggleClass('loading-hidden');
-        setTimeout(function () {
+        setTimeout(function() {
             $('.loading').toggleClass('loading-open');
         }, 25);
     }
@@ -11,7 +17,7 @@
     // loading 隐藏
     function closeLoading() {
         $('.loading').addClass('loading-close');
-        setTimeout(function () {
+        setTimeout(function() {
             $('.loading').toggleClass('loading-hidden loading-open').removeClass('loading-close');
         }, 500);
     }
@@ -20,64 +26,56 @@
         var PasswordNull = 'Please enter your password',
             PasswordLength = 'Password needs to be at least 6 characters';
         var $WarningInfo = $('.warning-info');
-        if (InputText == '') {
+        if (InputText === '' || InputText === undefined) {
             $('div[data-role="submit"]').addClass('disabled');
-            $WarningInfo.removeClass("off");
             $WarningInfo.children('span').html(PasswordNull);
             return false;
         } else if (InputText.length < 6 || InputText.length > 32) {
             $('div[data-role="submit"]').addClass('disabled');
-            $WarningInfo.removeClass("off");
+            $WarningInfo.removeClass("hidden-xs-up");
             $WarningInfo.children('span').html(PasswordLength);
             return false;
         } else {
-            $WarningInfo.addClass('off');
-            $('div[data-role="submit"]').removeClass('disabled');
             return true;
         }
     }
 
     // 验证确认密码 和 新密码是否正确
-    function validateconfirmPwd(NewPwd, confirmPwd) {
+    function validateConfirmPwd(NewPwd, confirmPwd) {
         var PasswordConfirm = 'New password does not match';
         var $WarningInfo = $('.warning-info');
         if (NewPwd !== confirmPwd) {
             $('div[data-role="submit"]').addClass('disabled');
-            $WarningInfo.removeClass('off');
+            $WarningInfo.removeClass('hidden-xs-up');
             $WarningInfo.children('span').html(PasswordConfirm);
             return false;
         } else {
-            $WarningInfo.addClass('off');
-            $('div[data-role="submit"]').removeClass('disabled');
             return true;
         }
     }
+    $('input[type="password"]').on('keyup', function(e) {
+        var NewPwd = $('input[name="pw"]').val(),
+            AnotherPwd = $('input[name="lastpw"]').val();
 
-    $('input[type="password"]').on('keyup', function() {
-        var InputText = $(this).val();
-        validatePwdLenght(InputText);
+        // 验证输入密码长度
+        var BoolLength = validatePwdLenght($(e.target).val());
+
+        if (NewPwd !== '' && NewPwd !== undefined && AnotherPwd !== '' && NewPwd !== undefined) {
+            // 验证密码是否匹配
+            var BoolSame = validateConfirmPwd(NewPwd, AnotherPwd);
+        }
+
+        if (BoolLength && BoolSame) {
+            $('[data-role="submit"]').removeClass('disabled');
+            $('.warning-info').addClass('hidden-xs-up');
+        }
+
     });
 
-    $('input[data-role="confirmPwd"]').on('keyup', function() {
-        var pwdText = $('input[name="pw"]').val();
-        var confirmPwdText = $(this).val();
-        validateconfirmPwd(pwdText, confirmPwdText);
-    });
-
-    $('div[data-role="submit"]').on('click', function(e) {
-        var CurrentPwd = $('input[name="oldpw"]').val(),
-            NewPwd = $('input[name="pw"]').val(),
-            ConfirmPwd = $('input[data-role="confirmPwd"]').val();
-
-        if (!validatePwdLenght(CurrentPwd) || !validatePwdLenght(NewPwd) || !validatePwdLenght(ConfirmPwd)) {
-            $(e.target).addClass('disabled');
-            return;
+    $('[data-role="submit"]').on('click', function(e) {
+        if (!$(e.target).hasClass('disabled')) {
+            updatePassword();
         }
-        if (!validateconfirmPwd(NewPwd, ConfirmPwd)) {
-            $(e.target).addClass('disabled');
-            return;
-        }
-        updatePassword();
     });
 
     function updatePassword() {
@@ -94,7 +92,7 @@
                     $('#confirmPwd').attr('href', href);
                     console.log('success');
                 } else {
-                    $('.warning-info').removeClass('off');
+                    $('.warning-info').removeClass('hidden-xs-up');
                     $('.warning-info').children('span').html(data.prompt_msg);
                 }
             })
@@ -106,6 +104,7 @@
                 closeLoading();
             });
     }
+
 })(jQuery);
 
 //# sourceMappingURL=forgetPassword.js.map
