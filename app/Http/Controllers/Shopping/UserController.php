@@ -308,6 +308,7 @@ class UserController extends ApiController
             $result['error_msg'] = "Modify Info Failed";
             if ($result['success']) {
                 $result['prompt_msg'] = "Modify Info Success";
+                $result['redirectUrl'] = "/user/setting";
                 $userInfo = $this->getUserDetailInfo($request);
                 $user['nickname'] = $userInfo['data']['nickname'];
                 Session::forget('user');
