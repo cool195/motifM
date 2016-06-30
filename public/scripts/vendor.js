@@ -16584,9 +16584,12 @@ else if (typeof define === 'function' && define.amd) {
                     console.log('success');
                     // 操作成功刷新页面
                     if (data.success) {
-                        if (data.data.skusAmout > 0) {
+                        if (data.data.skusAmout > 0 && data.data.skusAmout <= 99) {
                             $('.nav-shoppingCart').children('span').show();
                             $('.nav-shoppingCart').children('span').html(data.data.skusAmout);
+                        }else if (data.data.skusAmout>99) {
+                            $('.nav-shoppingCart').children('span').show();
+                            $('.nav-shoppingCart').children('span').html('99+');
                         } else {
                             $('.nav-shoppingCart').children('span').hide();
                         }

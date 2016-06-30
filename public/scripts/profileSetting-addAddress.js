@@ -61,11 +61,8 @@
         var Result = true;
         $('input[type="text"]').each(function() {
             if ($(this).val() === '' && $(this).data('optional')) {
-                Result = false;
-                return Result;
+                return $(this);
             }
-            // TODO 添加警告
-
         });
         return Result;
     }
@@ -84,12 +81,13 @@
 
     // 输入框非空验证
     $('input[type="text"]').on('blur keyup change', function(e) {
-        if (checkInput()) {
+        var $Error = checkInput();
+        if ($Error === true) {
             $('warning-info').addClass('hidden-xs-up');
             $('#btn-addAddress').removeClass('disabled');
         } else {
             $('.warning-info').removeClass('hidden-xs-up');
-            $('.warning-info').children('span').text('Please enter your ' + $(e.target).data('role') + ' !');
+            $('.warning-info').children('span').text('Please enter your ' + $Error.data('role') + ' !');
             $('#btn-addAddress').addClass('disabled');
         }
     });
