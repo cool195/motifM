@@ -47,7 +47,7 @@
                 </div>
                 <div class="font-size-sm text-primary p-a-10x">{{$designer['intro']}}</div>
                 <hr class="hr-base m-a-0">
-                <div class="font-size-sm text-primary">
+                <div class="font-size-sm text-primary p-a-10x">
                     <div class="message-info">
                         <p class="m-b-0">{{$designer['describe']}}</p>
                     </div>
@@ -56,16 +56,22 @@
                         <i class="iconfont icon-arrow-bottom icon-size-xm text-common"></i>
                     </a>
                 </div>
-                <div class="p-x-10x p-y-5x">
+                <div class="p-x-10x p-t-5x p-b-15x">
                     @if(isset($designer['youtube_link']))
-                        <a href="{{$designer['youtube_link']}}" class="p-r-5x"><i
-                                    class="iconfont icon-youtube icon-size-lg text-primary"></i></a>
+                        <a href="{{$designer['youtube_link']}}" target="_blank" class="p-r-20x">
+                            <img src="/images/designer/youtube.png"
+                                 srcset="/images/designer/youtube@2x.png 2x,/images/designer/youtube@3x.png 3x">
+                        </a>
                     @elseif(isset($designer['facebook_link']))
-                        <a href="{{$designer['facebook_link']}}" class="p-r-5x"><i
-                                    class="iconfont icon-facebook icon-size-lg text-primary"></i></a>
+                        <a href="{{$designer['facebook_link']}}" target="_blank" class="p-r-20x">
+                            <img src="/images/designer/facebook.png"
+                                 srcset="/images/designer/facebook@2x.png 2x,/images/designer/facebook@3x.png 3x">
+                        </a>
                     @elseif(isset($designer['instagram_link']))
-                        <a href="{{$designer['instagram_link']}}" class="p-r-5x"><i
-                                    class="iconfont icon-linkedin icon-size-lg text-primary"></i></a>
+                        <a href="{{$designer['instagram_link']}}" target="_blank" class="p-r-20x">
+                            <img src="/images/designer/ins.png"
+                                 srcset="/images/designer/ins@2x.png 2x,/images/designer/ins@3x.png 3x">
+                        </a>
                     @endif
                 </div>
             </div>
