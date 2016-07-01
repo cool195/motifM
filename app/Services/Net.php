@@ -49,7 +49,7 @@ class Net
         if ($curlCode == 0 && $httpCode == 200) {
             curl_close($ch);
         }
-
+        Log::info($content);
         return $content;
     }
 }
