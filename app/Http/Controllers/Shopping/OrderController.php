@@ -85,7 +85,7 @@ class OrderController extends ApiController
             'cmd' => 'payinfo',
             'token' => Session::get('user.token'),
             'pin' => Session::get('user.pin'),
-            'uuid' => $_COOKIE['uid'],
+            'uuid' => @$_COOKIE['uid'],
             'orderid' => $subno,
         );
         $resultOrder = $this->request('openapi', '', 'pay', $params);
@@ -156,7 +156,7 @@ class OrderController extends ApiController
 
         $params = array(
             'cmd' => "dopay",
-            'uuid' => $_COOKIE['uid'],
+            'uuid' => @$_COOKIE['uid'],
             'token' => Session::get('user.token'),
             'pin' => Session::get('user.pin'),
             'orderid' => $orderId,

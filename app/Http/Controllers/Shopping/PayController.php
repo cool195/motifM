@@ -41,7 +41,7 @@ class PayController extends ApiController
 	{
 		$params = array(
 			'cmd'=>'token',
-			'uuid' => $_COOKIE['uid'],
+			'uuid' => @$_COOKIE['uid'],
 			'token' => Session::get('user.token'),
 			'pin' => Session::get('user.pin'),
 		);
@@ -138,7 +138,7 @@ class PayController extends ApiController
 			'cmd' => 'methodlist',
 			'token' => Session::get('user.token'),
 			'pin' => Session::get('user.pin'),
-			'uuid' => $_COOKIE['uid'],
+			'uuid' => @$_COOKIE['uid'],
 			'src' => "H5"
 		);
 		$system = "";
@@ -178,7 +178,7 @@ class PayController extends ApiController
 		$cmd = "getdefault";
 		$params = array(
 			'cmd'=>$cmd,
-			'uuid' => $_COOKIE['uid'],
+			'uuid' => @$_COOKIE['uid'],
 			'token' => Session::get('user.token'),
 			'pin' => Session::get('user.pin'),
 		);

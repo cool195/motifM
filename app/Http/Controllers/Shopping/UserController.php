@@ -58,7 +58,7 @@ class UserController extends ApiController
         $email = $request->input('email');
         $params = array(
             'cmd' => 'signup',
-            'uuid' => $_COOKIE['uid'],
+            'uuid' => @$_COOKIE['uid'],
             'email' => $email,
             'pw' => md5($request->input('pw')),
             'nick' => $request->input('nick'),
@@ -107,7 +107,7 @@ class UserController extends ApiController
         $email = $request->input('email');
         $params = array(
             'cmd' => "login",
-            'uuid' => $_COOKIE['uid'],
+            'uuid' => @$_COOKIE['uid'],
             'email' => $email,
             'pw' => md5($request->input('pw')),
             'token' => self::Token,
@@ -204,7 +204,7 @@ class UserController extends ApiController
     {
         $params = array(
             'cmd' => "forgetpwd",
-            'uuid' => $_COOKIE['uid'],
+            'uuid' => @$_COOKIE['uid'],
             'email' => $request->input('email'),
             //'token' => Session::get('user.token'),
             //'pin' => Session::get('user.pin'),
@@ -331,7 +331,7 @@ class UserController extends ApiController
         $cmd = 'list';
         $params = array(
             'cmd' => $cmd,
-            'uuid' => $_COOKIE['uid'],
+            'uuid' => @$_COOKIE['uid'],
             'token' => Session::get('user.token'),
             'pin' => Session::get('user.pin'),
         );
@@ -435,7 +435,7 @@ class UserController extends ApiController
             'nickname' => $request->input('name'),
             'pin' => $request->input('pin'),
             'token' => $request->input('token'),
-            'uuid' => $_COOKIE['uid'],
+            'uuid' => @$_COOKIE['uid'],
         ));
         if (Session::get('user.pin')) {
             return array('success' => true);

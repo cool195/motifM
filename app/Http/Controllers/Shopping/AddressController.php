@@ -20,7 +20,7 @@ class AddressController extends ApiController
 	{
 		$params = array(
 			'cmd' => 'list',
-			'uuid' => $_COOKIE['uid'],
+			'uuid' => @$_COOKIE['uid'],
 			'token' => Session::get('user.token'),
 			'pin' => Session::get('user.pin'),
 		);
@@ -47,7 +47,7 @@ class AddressController extends ApiController
 	{
 		$params = array(
 			'cmd' => 'gdefault',
-			'uuid' => $_COOKIE['uid'],
+			'uuid' => @$_COOKIE['uid'],
 			'token' => Session::get('user.token'),
 			'pin' => Session::get('user.pin'),
 		);

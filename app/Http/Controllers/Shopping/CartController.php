@@ -66,7 +66,7 @@ class CartController extends ApiController
 		}else{
 			$params = array(
 				'cmd'=> 'gdefault',
-				'uuid' => $_COOKIE['uid'],
+				'uuid' => @$_COOKIE['uid'],
 				'token' => Session::get('user.token'),
 				'pin' => Session::get('user.pin'),
 			);
@@ -109,7 +109,7 @@ class CartController extends ApiController
 		$cmd = 'list';
 		$params = array(
 			'cmd'=>$cmd,
-			'uuid' => $_COOKIE['uid'],
+			'uuid' => @$_COOKIE['uid'],
 			'token' => Session::get('user.token'),
 			'pin' => Session::get('user.pin'),
 		);
@@ -194,7 +194,7 @@ class CartController extends ApiController
 	{
 		$params = array(
 			'cmd'=>"getdefault",
-			'uuid' => $_COOKIE['uid'],
+			'uuid' => @$_COOKIE['uid'],
 			'token' => Session::get('user.token'),
 			'pin' => Session::get('user.pin'),
 		);
