@@ -368,10 +368,14 @@ class UserController extends ApiController
 
     public function addrAdd(Request $request)
     {
-        $country = json_decode(base64_decode($request->input('country', base64_encode(json_encode(['country_id' => 5, 'country_name_cn' => "中国", 'country_name_en' => "China", 'iDnumberReq' => 0, 'isFreq' => 0])))), true);
+        $country = json_decode(base64_decode($request->input('country')), true);
         $input = Session::get('input');
         Session::forget('input');
-        return View('shopping.profilesetting_addaddress', ['country' => $country, 'input' => $input, 'first' => $request->get('first')]);
+        $view = View('shopping.profilesetting_addaddress', ['input' => $input, 'first' => $request->get('first')]);
+        if(!empty($country)) {
+            $view = View('shopping.profilesetting_addaddress', ['country' => $country, 'input' => $input, 'first' => $request->get('first')]);
+        }
+        return $view;
     }
 
     public function addrModify(Request $request, $aid)

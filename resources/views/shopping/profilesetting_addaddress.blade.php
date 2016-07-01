@@ -60,9 +60,9 @@
                         <div class="flex flex-alignCenter flex-fullJustified font-size-sm text-primary p-a-15x" id="country">
                         <span>Country</span>
                             <div>
-                                <span>{{ $country['country_name_en'] }} ({{ $country['country_name_cn'] }})</span>
+                                <span>@if(!empty($country)){{ $country['country_name_en'] }} @endif</span>
                                 <i class="iconfont icon-arrow-right icon-size-xm text-common"></i>
-                                <input type="text" name="country" hidden value="{{$country['country_name_en']}}">
+                                <input type="text" name="country" hidden value="@if(!empty($country)) {{$country['country_name_en']}} @endif">
                             </div>
                         </div>
                     </fieldset>
