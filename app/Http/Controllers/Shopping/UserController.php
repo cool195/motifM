@@ -424,7 +424,7 @@ class UserController extends ApiController
                 $result['data']['commonlist'] = $commonlist;
             }
         }
-        return View('shopping.profilesetting_countrylist', ['list' => $result['data']['list'], 'commonlist' => $result['data']['commonlist'], 'route' =>$request->input('route'), 'input'=>$input]);
+        return View('shopping.countrylist', ['list' => $result['data']['list'], 'commonlist' => $result['data']['commonlist'], 'route' =>$request->input('route'), 'input'=>$input]);
     }
 
     //APP同步登录
