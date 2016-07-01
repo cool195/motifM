@@ -1,4 +1,4 @@
-<?php error_reporting(0)?>
+
 <nav class="nav-menu">
     <ul class="nav bg-white m-t-10x">
         <li class="nav-item">

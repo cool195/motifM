@@ -5,7 +5,6 @@
     @include('head')
     <link rel="stylesheet" href="/styles/designerDetail.css">
 </head>
-<?php error_reporting(0)?>
 <body>
 @include('check.tagmanager')
 <!-- 外层容器 -->
