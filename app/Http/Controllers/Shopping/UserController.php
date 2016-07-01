@@ -453,7 +453,7 @@ class UserController extends ApiController
             }
             $params = array(
                 'cmd' => 'modifyfgtpwd',
-                'pw' => $request->input('pw'),
+                'pw' => md5($request->input('pw')),
                 'tp' => $request->input('tp'),
                 'sig' => $request->input('sig'),
             );
