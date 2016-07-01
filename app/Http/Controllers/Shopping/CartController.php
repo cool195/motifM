@@ -186,7 +186,7 @@ class CartController extends ApiController
 				$result['data']['commonlist'] = $commonlist;
 			}
 		}
-		return View('shopping.ordercheckout_countrylist', ['list'=>$result['data']['list'], 'commonlist'=>$result['data']['commonlist'], 'route'=>$route, 'input'=>$input]);
+		return View('shopping.countrylist', ['list'=>$result['data']['list'], 'commonlist'=>$result['data']['commonlist'], 'route'=>$route, 'input'=>$input]);
 	}
 
 

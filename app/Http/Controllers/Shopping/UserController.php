@@ -369,8 +369,7 @@ class UserController extends ApiController
     public function addrAdd(Request $request)
     {
         $country = json_decode(base64_decode($request->input('country')), true);
-        $input = Session::get('input');
-        Session::forget('input');
+        $input = $request->all();
         $view = View('shopping.profilesetting_addaddress', ['input' => $input, 'first' => $request->get('first')]);
         if(!empty($country)) {
             $view = View('shopping.profilesetting_addaddress', ['country' => $country, 'input' => $input, 'first' => $request->get('first')]);
@@ -380,8 +379,8 @@ class UserController extends ApiController
 
     public function addrModify(Request $request, $aid)
     {
-        if (Session::has('input')) {
-            $input = Session::get('input');
+        if ($request->has('aid')) {
+            $input = $request->all();
             $input['detail_address1'] = $input['addr1'];
             $input['detail_address2'] = $input['addr2'];
             $input['telephone'] = $input['tel'];
@@ -399,16 +398,13 @@ class UserController extends ApiController
         if (empty($input)) {
             return redirect('/user/shippingaddress');
         }
-        Session::forget('input');
         return View('shopping.profilesetting_modaddress', ['input' => $input]);
     }
 
     public function countryList(Request $request)
     {
 
-        $input = $request->all();
-        Session::forget('input');
-        Session::put('input', $input);
+        $input = $request->except('country', 'route');
         $params = array(
             'cmd' => 'country',
         );
@@ -428,7 +424,7 @@ class UserController extends ApiController
                 $result['data']['commonlist'] = $commonlist;
             }
         }
-        return View('shopping.profilesetting_countrylist', ['list' => $result['data']['list'], 'commonlist' => $result['data']['commonlist'], 'route' => $input['route']]);
+        return View('shopping.countrylist', ['list' => $result['data']['list'], 'commonlist' => $result['data']['commonlist'], 'route' =>$request->input('route'), 'input'=>$input]);
     }
 
     //APP同步登录
