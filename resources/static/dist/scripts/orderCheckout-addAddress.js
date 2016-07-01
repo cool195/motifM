@@ -4,9 +4,9 @@
 /*global jQuery*/
 
 'use strict';
-(function($) {
+(function ($) {
     // 设置默认地址 开关按钮
-    $('.radio-checkBox').on('click', function() {
+    $('.radio-checkBox').on('click', function () {
         $(this).toggleClass('open');
 
         if ($(this).hasClass('open')) {
@@ -19,7 +19,7 @@
     // loading 打开
     function openLoading() {
         $('.loading').toggleClass('loading-hidden');
-        setTimeout(function() {
+        setTimeout(function () {
             $('.loading').toggleClass('loading-open');
         }, 25);
     }
@@ -27,7 +27,7 @@
     // loading 隐藏
     function closeLoading() {
         $('.loading').addClass('loading-close');
-        setTimeout(function() {
+        setTimeout(function () {
             $('.loading').toggleClass('loading-hidden loading-open').removeClass('loading-close');
         }, 500);
     }
@@ -37,28 +37,31 @@
         openLoading();
         // 获取表单数据
         $.ajax({
-                url: '/useraddr/addUserAddress',
-                type: 'POST',
-                data: $('#addressInfo').serialize()
-            })
-            .done(function(data) {
-                if (data.success) {
-                    window.location.href = data.redirectUrl;
-                }
-            })
-            .always(function() {
-                closeLoading();
-            });
+            url: '/useraddr/addUserAddress',
+            type: 'POST',
+            data: $('#addressInfo').serialize()
+        }).done(function (data) {
+            if (data.success) {
+                console.log('success');
+                $('#infoForm').submit();
+            }
+        }).fail(function () {
+            console.log('error');
+        }).always(function () {
+            closeLoading();
+            console.log('complete');
+        });
     }
 
     // 表单非空验证
     function checkInput() {
         var Result = true;
-        $('input[data-optional="false"]').each(function() {
+        $('input[data-optional="false"]').each(function () {
             if ($(this).val() === '' && !$(this).data('optional')) {
                 Result = $(this);
                 return false;
             }
+            // TODO 添加警告
         });
         return Result;
     }
@@ -71,7 +74,7 @@
     }
 
     // 跳转页面,
-    $('#country').on('click', function() {
+    $('#country').on('click', function (e) {
         selectCountry();
     });
 
@@ -96,9 +99,9 @@
     });
 
     // 退出添加
-    $('#Cancel').on('click', function() {
-
+    $('#Cancel').on('click', function(){
+        $('#infoForm').attr('action', $('#Cancel').attr('data-action'));
+        $('#infoForm').submit();
     });
 })(jQuery);
-
 //# sourceMappingURL=profileSetting-addAddress.js.map

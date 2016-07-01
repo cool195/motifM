@@ -1,3 +1,8 @@
+/**
+ * Created by lhyin on 16/6/01.
+ */
+/*global jQuery*/
+
 'use strict';
 (function ($) {
     // loading 打开
@@ -26,7 +31,6 @@
             data: $('#login').serialize()
         })
             .done(function (data) {
-                console.log("success");
                 if (data.success) {
                     window.location.href = data.redirectUrl;
                 } else {
@@ -34,11 +38,7 @@
                     $('.warning-info').children('span').html(data.error_msg);
                 }
             })
-            .fail(function () {
-                console.log("error");
-            })
             .always(function () {
-                console.log("complete");
                 closeLoading();
             });
     }
@@ -93,7 +93,7 @@
     }
 
     // 验证电子邮件的情况
-    $('input[name="email"]').on('keyup blur', function (e) {
+    $('input[name="email"]').on('keyup blur', function () {
         var InputText = $(this).val();
         if (InputText === '' || InputText === undefined) {
             $(this).siblings('.input-clear').addClass('hidden');
@@ -108,7 +108,7 @@
     });
 
     // 验证密码的情况
-    $('input[name="pw"]').on('keyup blur', function (e) {
+    $('input[name="pw"]').on('keyup blur', function () {
         if (validationPassword($(this))) {
             $('div[data-role="submit"]').removeClass('disabled');
         } else {
@@ -116,7 +116,7 @@
         }
     });
 
-    $('div[data-role="submit"]').on('click', function (e) {
+    $('div[data-role="submit"]').on('click', function () {
         var $Email = $('input[name="email"]'),
             $Password = $('input[name="pw"]');
 

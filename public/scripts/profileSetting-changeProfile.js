@@ -1,3 +1,5 @@
+/*global jQuery*/
+'use strict';
 (function($) {
     function openAddSuccess() {
         $('#success').toggleClass('loading-hidden');
@@ -46,10 +48,9 @@
                     data: $('#changeProfile').serialize()
                 })
                 .done(function(data) {
-                    console.log("success");
                     if (data.success) {
                         $('#nick').attr('placeholder', $('#nick').val());
-                        $('#nick').val("");
+                        $('#nick').val('');
 
                         openAddSuccess();
                         setTimeout(function() {
@@ -59,11 +60,7 @@
                         window.location.href = data.redirectUrl;
                     }
                 })
-                .fail(function() {
-                    console.log("error");
-                })
                 .always(function() {
-                    console.log("complete");
                     closeLoading();
                 });
         }

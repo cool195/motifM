@@ -4,6 +4,7 @@
 /*global jQuery*/
 
 'use strict';
+
 (function ($) {
     // 设置默认地址 开关按钮
     $('.radio-checkBox').on('click', function () {
@@ -40,17 +41,15 @@
             url: '/addr/modify',
             type: 'POST',
             data: $('#addressInfo').serialize()
-        })
-            .done(function (data) {
-                if (data.success) {
-                    window.location.href = data.redirectUrl;
-                }
-            })
-            .fail(function () {
-            })
-            .always(function () {
-                closeLoading();
-            });
+        }).done(function () {
+            console.log('success');
+            $('#infoForm').submit();
+        }).fail(function () {
+            console.log('error');
+        }).always(function () {
+            closeLoading();
+            console.log('complete');
+        });
     }
 
     // 表单非空验证
@@ -74,9 +73,15 @@
     }
 
     // 跳转页面,
-    $('#country').on('click', function () {
+    $('#country').on('click', function (e) {
         selectCountry();
     });
+
+    $('#Cancel').on('click', function(){
+        $('#infoForm').attr('action', $('#Cancel').attr('data-action'));
+        $('#infoForm').submit();
+    });
+
     // 点击提交表单
     $('#btn-addAddress').on('click', function (e) {
         $(e.target).removeClass('disabled');
@@ -89,9 +94,6 @@
     });
 
     // 退出添加
-    $('#Cancel').on('click', function () {
-
-    });
+    $('#Cancel').on('click', function () {});
 })(jQuery);
-
 //# sourceMappingURL=profileSetting-changeAddress.js.map

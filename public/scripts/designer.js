@@ -60,8 +60,6 @@
                     $DesignerContainer.data('start', -1);
                 } else {
                     $DesignerContainer.data('start', StartNum);
-                    console.info('本页从第几条开始' + Start);
-                    console.info('下页从第几条开始' + StartNum);
                 }
 
                 // 图片延迟加载
@@ -75,8 +73,6 @@
                 initSwiper();
             }
         }).always(function () {
-            console.log('Ajax请求结束');
-
             $DesignerContainer.data('loading', false);
             loadingHide();
         });
@@ -100,17 +96,6 @@
         });
     }
 
-    // 为页面绑定 滚动条事件
-    $(document).ready(function () {
-        // 首次加载
-        getDesignerList();
-        initSwiper();
-        $(window).scroll(function () {
-            pullLoading();
-            console.log('滚动条滚动');
-        });
-    });
-
     // 下拉加载
     function pullLoading() {
         // scrollCurrent    当前滚动距离
@@ -122,6 +107,17 @@
             getDesignerList();
         }
     }
+
+    // 为页面绑定 滚动条事件
+    $(document).ready(function () {
+        // 首次加载
+        getDesignerList();
+        initSwiper();
+        $(window).scroll(function () {
+            pullLoading();
+        });
+    });
+
 })(jQuery, Swiper);
 
 //# sourceMappingURL=designer.js.map

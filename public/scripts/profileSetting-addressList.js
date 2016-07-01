@@ -1,3 +1,5 @@
+/*global jQuery*/
+'use strict';
 (function ($) {
     /**
      *
@@ -53,13 +55,10 @@
     $('#address-edit').on('click', function (e) {
         // 可选的状态切换
         switchSelect($(e.target));
-
         // 跳转链接的切换
         switchLink($(e.target));
-
         // 切换按钮以及叉号状态
         switchEdit($(e.target));
-
         $('.addressList-delete').toggleClass('switch');
     });
     // loading 打开
@@ -91,17 +90,11 @@
             data: {aid: AddressID}
         })
             .done(function (data) {
-                // TODO 请求成功后 删除相应地址
                 if (data.success) {
-                    console.log("success");
                     location.reload();
                 }
             })
-            .fail(function () {
-                console.log("error");
-            })
             .always(function () {
-                console.log("complete");
                 closeLoading();
             });
     }
@@ -111,7 +104,7 @@
         var AddressID = $(e.target).parents('.addressList-container').data('aid');
         $('#modalDialog').data('aid', AddressID);
     });
-    
+
     $('.addressItem-info').on('click', function () {
         var Action = $(this).data('action');
         if (Action === 'return') {
@@ -134,13 +127,11 @@
 
     $('#modalDialog').on('closed', function () {
         $(this).removeData('address');
-        console.log('close');
     });
 
     $('#modalDialog').on('confirmation', function () {
         var AddressID = $(this).data('aid');
         if (AddressID === undefined || AddressID === null || AddressID === '') {
-            console.log('AddressID 没有值');
             return;
         }
         deleteAddress(AddressID);

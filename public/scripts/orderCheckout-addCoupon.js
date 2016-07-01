@@ -1,3 +1,6 @@
+/*global jQuery*/
+
+'use strict';
 (function($) {
 
     // loading 打开
@@ -33,7 +36,6 @@
             })
             .done(function(data) {
                 if (data.success) {
-                    console.log("success");
                     $('input[name="cps"]').val(Coupon);
                     $('#infoForm').submit();
                 } else {
@@ -41,11 +43,7 @@
                     $('.warning-info').children('span').text(data.prompt_msg);
                 }
             })
-            .fail(function() {
-                console.log("error");
-            })
             .always(function() {
-                console.log("complete");
                 closeLoading();
             });
     }

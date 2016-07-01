@@ -11,7 +11,7 @@
     function getMediaScale() {
         var $Img = $('.designer-placeImg');
         var NewImg = new Image();
-        NewImg.src = $Img.attr("src");
+        NewImg.src = $Img.attr('src');
         var ScaleWidth = NewImg.width,
             ScaleHeight = NewImg.height;
         MediaScale = ScaleHeight / ScaleWidth;
@@ -22,8 +22,7 @@
         var Width = $(window).width(),
             MediaHeight = Width * MediaScale;
         // 初始化视频比例
-        if ($('#ytplayer').length > 0) {
-        } else if ($('.designer-Img').length > 0) {
+        if ($('.designer-Img').length > 0) {
             $('.designer-media').css('height', MediaHeight);
             // 初始化图片比例
             // 对比图片比例  让图片显示在固定区域
@@ -59,23 +58,21 @@
         var NewImg = new Image();
         var ImgObj = {};
 
-        NewImg.src = $Img.attr("src");
+        NewImg.src = $Img.attr('src');
 
         var ImgWidth = NewImg.width,
             ImgHeight = NewImg.height;
 
         // 获取图片的比例,小数点后面保留两位
         var RealScale = (ImgHeight / ImgWidth).toFixed(2);
-        ImgObj['Scale'] = RealScale;
-        ImgObj['ImgWidth'] = ImgWidth;
-        ImgObj['ImgHeight'] = ImgHeight;
-        console.info(ImgObj);
+        ImgObj.Scale = RealScale;
+        ImgObj.ImgWidth = ImgWidth;
+        ImgObj.ImgHeight = ImgHeight;
         return ImgObj;
     }
 
-
     // 图片实际宽高比 与 固定宽高比 做比较
-    function validateImgSize(ImgWidth, ImgHeight, RealScale, MediaScale) {
+    function validateImgSize(ImgWidth, ImgHeight, RealScale, MediaFixedScale) {
         var $Img = $('.designer-Img');
         $Img.removeClass('img-fluid');
         //获取图片区域高度 宽度
@@ -85,13 +82,13 @@
             // 图片实际高度小与固定高度  并且 实际宽度小与固定宽度
             $('.designer-Img').removeClass('img-fluid');
             $('.designer-Img').css({width: 'auto'});
-        } else if (RealScale == MediaScale) {
+        } else if (RealScale === MediaFixedScale) {
             // 实际宽高比 等于 固定比
             $('.designer-Img').addClass('img-fluid');
-        } else if (RealScale > MediaScale) {
+        } else if (RealScale > MediaFixedScale) {
             // 实际宽高比 大于 固定比
             $('.designer-Img').css({height: '100%', width: 'auto'});
-        } else if (RealScale < MediaScale) {
+        } else if (RealScale < MediaFixedScale) {
             // 实际宽高比 小于 固定比
             $('.designer-Img').css({height: 'auto', width: '100%'});
         }
@@ -140,15 +137,6 @@
         }
     }
 
-    $('#follow').on('click', function (e) {
-        // 切换 Follow 按钮状态
-        switchFollow($(e.target));
-
-        //修改 Follow 状态
-        var followId = $(this).data('followid');
-        changeFollow(followId);
-    })
-
     // 修改 Follow 状态
     function changeFollow(id) {
         openLoading();
@@ -158,18 +146,23 @@
         })
             .done(function (data) {
                 if (data.success) {
-                    console.log("success");
-                    //location.reload();
+                    closeLoading();
                 }
             })
-            .fail(function () {
-                console.log("error");
-            })
             .always(function () {
-                console.log("complete");
                 closeLoading();
             });
     }
+
+    $('#follow').on('click', function (e) {
+        // 切换 Follow 按钮状态
+        switchFollow($(e.target));
+
+        //修改 Follow 状态
+        var followId = $(this).data('followid');
+        changeFollow(followId);
+    });
+
 })(jQuery);
 
 //# sourceMappingURL=designerDetail.js.map

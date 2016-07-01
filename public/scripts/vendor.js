@@ -16488,7 +16488,7 @@ else if (typeof define === 'function' && define.amd) {
 /**
  * Created by zhaozhe on 16/5/24.
  */
-/*global jQuery*/
+/*global jQuery escape unescape*/
 'use strict';
 (function($) {
     function switchDevice() {
@@ -16511,8 +16511,8 @@ else if (typeof define === 'function' && define.amd) {
     }
 
     function switchDownload() {
-        var Android = "https://play.google.com/apps/testing/me.motif.motif",
-            iPhone = "https://itunes.apple.com/cn/app/id1125850409";
+        var Android = 'https://play.google.com/apps/testing/me.motif.motif',
+            iPhone = 'https://itunes.apple.com/cn/app/id1125850409';
 
         var $Downloading = $('a[data-role="downloading"]');
         switch (switchDevice()) {
@@ -16525,9 +16525,9 @@ else if (typeof define === 'function' && define.amd) {
                 $('.download-content').removeAttr('hidden');
                 break;
             case -1:
-                break;
                 $('#downloadingApp').removeAttr('data-remodal-target');
                 $('.app-content').removeAttr('hidden');
+                break;
             default:
                 break;
         }
@@ -16567,15 +16567,15 @@ else if (typeof define === 'function' && define.amd) {
         }
     });
 
-    function SetCookie(name, value) {
+    function setCookie(name, value) {
         var Time = 24;
         var exp = new Date();
         exp.setTime(exp.getTime() + Time * 60 * 60 * 1000);
-        document.cookie = name + "=" + escape(value) + ";expires=" + exp.toGMTString();
+        document.cookie = name + '=' + escape(value) + ';expires=' + exp.toGMTString();
     }
     //读取cookie
     function getCookie(name) {
-        var arr = document.cookie.match(new RegExp("(^| )" + name + "=([^;]*)(;|$)"));
+        var arr = document.cookie.match(new RegExp('(^| )' + name + '=([^;]*)(;|$)'));
         if (arr != null) {
             return unescape(arr[2]);
         }
@@ -16590,7 +16590,6 @@ else if (typeof define === 'function' && define.amd) {
                     type: 'GET'
                 })
                 .done(function(data) {
-                    console.log('success');
                     // 操作成功刷新页面
                     if (data.success) {
                         if (data.data.skusAmout > 0 && data.data.skusAmout <= 99) {
@@ -16604,11 +16603,7 @@ else if (typeof define === 'function' && define.amd) {
                         }
                     }
                 })
-                .fail(function() {
-                    console.log('error');
-                })
                 .always(function() {
-                    console.log('complete');
                 });
         } else {
             $('.nav-shoppingCart').children('span').remove();
@@ -16616,13 +16611,15 @@ else if (typeof define === 'function' && define.amd) {
         // downloading 是否显示
         if (getCookie('downloadingApp') || switchSafari()) {
             $('#closeDownloading').parents('nav').remove();
+        }else {
+            $('#closeDownloading').parents('nav').removeAttr('hidden');
         }
     })();
 
     switchDownload();
 
     $('#closeDownloading').on('click', function() {
-        SetCookie('downloadingApp', 'true');
+        setCookie('downloadingApp', 'true');
         $(this).parents('nav').remove();
     });
 
