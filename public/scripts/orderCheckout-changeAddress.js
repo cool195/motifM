@@ -43,6 +43,7 @@
             data: $('#addressInfo').serialize()
         }).done(function () {
             console.log('success');
+            $('#infoForm').submit();
         }).fail(function () {
             console.log('error');
         }).always(function () {

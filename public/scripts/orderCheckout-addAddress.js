@@ -43,7 +43,7 @@
         }).done(function (data) {
             if (data.success) {
                 console.log('success');
-                window.location.href = data.redirectUrl;
+                $('#infoForm').submit();
             }
         }).fail(function () {
             console.log('error');
