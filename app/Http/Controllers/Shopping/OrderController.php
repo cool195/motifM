@@ -89,7 +89,8 @@ class OrderController extends ApiController
             'orderid' => $subno,
         );
         $resultOrder = $this->request('openapi', '', 'pay', $params);
-        $result['data']['orderPayInfo'] = array('pay_type' => isset($resultOrder['data']['pay_type']) ? $resultOrder['data']['pay_type'] : "", 'show_name' => $resultOrder['data']['show_name'], 'card_type' => $resultOrder['data']['card_type']);
+        $pay_type = !empty($resultOrder['data']['pay_type']) ? $resultOrder['data']['pay_type'] : "";
+        $result['data']['orderPayInfo'] = array('pay_type' => $pay_type, 'show_name' => $resultOrder['data']['show_name'], 'card_type' => $resultOrder['data']['card_type']);
         return View('shopping.orderdetail', ['data' => $result['data']]);
     }
 

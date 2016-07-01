@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
     <title>shopping</title>
     <link rel="icon" href="/images/favicon.ico">
+    <meta name="apple-itunes-app" content="app-id=432274380">
     <link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
     <!-- Place favicon.ico in the root directory -->
 
@@ -115,7 +116,7 @@
             </ul>
             <ul class="nav bg-white m-t-10x">
                 <li class="nav-item">
-                    <a href="#" class="flex flex-alignCenter flex-fullJustified p-a-15x" data-remodal-target="download-modal">
+                    <a href="#" class="flex flex-alignCenter flex-fullJustified p-a-15x" data-remodal-target="download-modal" id="downloadingApp" data-role="downloading">
                         <div class="font-size-sm text-primary flex flex-alignCenter"><i class="iconfont icon-download icon-size-md p-r-15x"></i><span>Download MOTIF</span></div>
                         <span class="text-common"><i class="iconfont icon-arrow-right icon-size-sm"></i></span>
                     </a>
@@ -618,74 +619,45 @@
                         <div class="col-xs-6">
                             <div class="list-group font-size-sm">
                                 <div class="list-group-item list-group-itemText-lg text-primary">
-                                    <strong>THE
-                                            MOTIF</strong>
+                                    <strong>MOTIF</strong>
                                 </div>
-                                <a class="list-group-item list-group-itemText-lg text-primary" href="#">About Motif</a>
-                                <a class="list-group-item list-group-itemText-lg text-primary" href="#">Privacy
-                                            Poilcy</a>
-                                <a class="list-group-item list-group-itemText-lg text-primary" href="#">Terms of
-                                            Services</a>
-                                <a class="list-group-item list-group-itemText-lg text-primary" href="#">Contact Us</a>
+                                <a class="list-group-item list-group-itemText-lg text-primary" href="#">About MOTIF</a>
+                                <a class="list-group-item list-group-itemText-lg text-primary" href="#">Privacy Notice</a>
+                                <a class="list-group-item list-group-itemText-lg text-primary" href="#">Terms & Conditions</a>
                                 <a class="list-group-item list-group-itemText-lg text-primary" href="#">Site Map</a>
                             </div>
                         </div>
                         <div class="col-xs-6">
                             <div class="foot-list-group font-size-sm">
                                 <div class="list-group-item list-group-itemText-lg text-primary">
-                                    <strong>HELP &
-                                            SERVICE</strong>
+                                    <strong>HELP & SERVICE</strong>
                                 </div>
-                                <a class="list-group-item list-group-itemText-lg text-primary" href="#">FAQs</a>
-                                <a class="list-group-item list-group-itemText-lg text-primary" href="#">Feedback</a>
-                                <a class="list-group-item list-group-itemText-lg text-primary" href="#">Delivery &
-                                            Shipping</a>
-                                <a class="list-group-item list-group-itemText-lg text-primary" href="#">Returns</a>
+                                <a class="list-group-item list-group-itemText-lg text-primary" href="#">Contact Us</a>
+                                <a class="list-group-item list-group-itemText-lg text-primary" href="#">FAQ</a>
+                                <a class="list-group-item list-group-itemText-lg text-primary" href="#">Payments</a>
+                                <a class="list-group-item list-group-itemText-lg text-primary" href="#">Shipping & Returns</a>
                             </div>
 
                         </div>
                     </div>
                     <hr class="hr-dark m-t-20x m-b-15x">
                 </div>
-                <div class="text-common text-center font-size-sm">Copyright @ 2016 EverMarker Inc. All rights reserved.
+                <div class="text-common text-center font-size-sm">Copyright © 2016 MOTIF Inc. All rights reserved.
                 </div>
             </footer>
         </div>
     </div>
 
     <!-- 下载 App Download MOTIF -->
-    <div class="remodal remodal-md modal-content" data-remodal-id="download-modal" id="downloadModal">
+    <div class="remodal remodal-lg modal-content" data-remodal-id="download-modal" id="downloadModal">
         <div class="text-right p-x-15x p-t-15x" data-remodal-action="close">
             <i class="iconfont icon-cross icon-size-md text-common"></i>
         </div>
-        <!-- 提示: 打开 app -->
-        <div class="view-content" hidden>
-            <div class="font-size-sm p-x-15x p-b-15x p-t-10x">
-                We supply this function in the
-                <br>MOTIF App,You can use there！
-            </div>
-            <hr class="hr-base m-a-0">
-            <div class="p-x-15x p-t-10x p-b-15x">
-                <a class="btn btn-primary btn-block btn-sm" href="">View in MOTIF App</a>
-            </div>
-        </div>
-        <!-- 提示: 下载 app -->
-        <div class="download-content" hidden>
-            <div class="font-size-sm p-x-15x p-b-15x p-t-10x">
-                We supply this function in the
-                <br>MOTIF App,You can use there！
-            </div>
-            <hr class="hr-base m-a-0">
-            <div class="p-x-15x p-t-10x p-b-15x">
-                <div class="btn btn-primary btn-block btn-sm" data-role="downloading">Download MOTIF App
-                </div>
-            </div>
-        </div>
-        <!-- 提示: 不支持此设备 -->
+        <!-- 不支持此设备 -->
         <div class="app-content" hidden>
             <div class="font-size-sm p-x-15x p-b-15x p-t-10x">
-                Your device is not supported.
-                <br>It's available in stores below.
+                MOTIF is not supported by your device.
+                <br>It's only available in the stores below.
             </div>
             <hr class="hr-base m-a-0">
             <div class="p-x-15x p-t-10x p-b-15x">
@@ -697,6 +669,28 @@
                         <img src="/images/icon/icon-googlePlay.png" srcset="/images/icon/icon-googlePlay@2x.png 2x, /images/icon/icon-googlePlay@3x.png 3x">
                     </a>
                 </div>
+            </div>
+        </div>
+
+        <!-- 已安装 提示: 打开 App-->
+        <!-- <div class="view-content" hidden>
+            <div class="font-size-sm p-x-15x p-b-15x p-t-10x">
+                The funtion is only supported in MOTIF App.
+            </div>
+            <hr class="hr-base m-a-0">
+            <div class="p-x-15x p-t-10x p-b-15x">
+                <a class="btn btn-primary btn-block" href="">Switch to MOTIF App</a>
+            </div>
+        </div> -->
+
+        <!-- 未安装 -->
+        <div class="download-content" hidden>
+            <div class="font-size-sm p-x-15x p-b-15x p-t-10x">
+                The funtion is only supported in MOTIF App.
+            </div>
+            <hr class="hr-base m-a-0">
+            <div class="p-x-15x p-t-10x p-b-15x">
+                <a class="btn btn-primary btn-block" href="" data-role="role">Download MOTIF App</a>
             </div>
         </div>
     </div>
