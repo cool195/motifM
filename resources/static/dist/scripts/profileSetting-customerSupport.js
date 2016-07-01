@@ -158,7 +158,11 @@
     $('.btn-massageType').on('click', function () {
         var $messageList = $('.messageType-list');
         $(this).siblings('.messageType-list').toggleClass('active');
-        $(this).find('.iconfont').removeClass('icon-arrow-bottom').addClass('icon-arrow-up');
+        if ($(this).siblings('.messageType-list').hasClass('active')) {
+            $(this).find('.iconfont').removeClass('icon-arrow-bottom').addClass('icon-arrow-up');
+        } else {
+            $('.btn-massageType').find('i').removeClass('icon-arrow-up').addClass('icon-arrow-bottom');
+        }
     });
 
     // 点击 确认 会话类型
