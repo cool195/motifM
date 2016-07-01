@@ -4,11 +4,11 @@
 /*global jQuery*/
 
 'use strict';
-(function ($) {
+(function($) {
     // loading 打开
     function openLoading() {
         $('.loading').toggleClass('loading-hidden');
-        setTimeout(function () {
+        setTimeout(function() {
             $('.loading').toggleClass('loading-open');
         }, 25);
     }
@@ -16,7 +16,7 @@
     // loading 隐藏
     function closeLoading() {
         $('.loading').addClass('loading-close');
-        setTimeout(function () {
+        setTimeout(function() {
             $('.loading').toggleClass('loading-hidden loading-open').removeClass('loading-close');
         }, 500);
     }
@@ -58,7 +58,7 @@
     }
 
     // 输入密码时 进行验证
-    $('input[type="password"]').on('keyup', function () {
+    $('input[type="password"]').on('keyup', function() {
         validatePwd();
     });
 
@@ -72,18 +72,20 @@
         }
     }
 
-    $('div[data-role="submit"]').on('click', function (e) {
-        updatePassword();
+    $('div[data-role="submit"]').on('click', function(e) {
+        if (!$(e.taget).hasClass('disabled')) {
+            updatePassword();
+        }
     });
 
     function updatePassword() {
         openLoading();
         $.ajax({
-            url: '/user/modifyUserPwd',
-            type: 'POST',
-            data: $('#changePassword').serialize()
-        })
-            .done(function (data) {
+                url: '/user/modifyUserPwd',
+                type: 'POST',
+                data: $('#changePassword').serialize()
+            })
+            .done(function(data) {
                 if (data.success) {
                     $ModalDialog.open();
                     var href = data.redirectUrl;
@@ -94,10 +96,10 @@
                     $('.warning-info').children('span').html(data.prompt_msg);
                 }
             })
-            .fail(function () {
+            .fail(function() {
                 console.log('error');
             })
-            .always(function () {
+            .always(function() {
                 console.log('complete');
                 closeLoading();
             });
