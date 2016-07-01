@@ -1,4 +1,4 @@
-(function ($) {
+(function($) {
     /**
      *
      * @param $Edit
@@ -38,19 +38,19 @@
         var $LinkList = $('.addressItem-info');
 
         if ($Edit.hasClass('active')) {
-            $.each($LinkList, function (index, val) {
+            $.each($LinkList, function(index, val) {
                 var Link = $(val).data('url-return');
                 $(val).data('action', Link);
             });
         } else {
-            $.each($LinkList, function (index, val) {
+            $.each($LinkList, function(index, val) {
                 var Link = $(val).data('url-edit');
                 $(val).data('action', Link);
             });
         }
     }
 
-    $('#address-edit').on('click', function (e) {
+    $('#address-edit').on('click', function(e) {
         // 可选的状态切换
         switchSelect($(e.target));
 
@@ -63,13 +63,13 @@
         $('.addressList-delete').toggleClass('switch');
     });
 
-    $('[data-role="submit"]').on('click', function () {
+    $('[data-role="submit"]').on('click', function() {
         var Action = $(this).data('action');
         $('#infoForm').attr('action', Action);
         $('#infoForm').submit();
     });
 
-    $('[data-role="add"]').on('click', function () {
+    $('[data-role="add"]').on('click', function() {
         var Action = $(this).data('action');
         $('#infoForm').attr('action', Action);
         $('#infoForm').submit();
@@ -78,7 +78,7 @@
     // loading 打开
     function openLoading() {
         $('.loading').toggleClass('loading-hidden');
-        setTimeout(function () {
+        setTimeout(function() {
             $('.loading').toggleClass('loading-open');
         }, 25);
     }
@@ -86,7 +86,7 @@
     // loading 隐藏
     function closeLoading() {
         $('.loading').addClass('loading-close');
-        setTimeout(function () {
+        setTimeout(function() {
             $('.loading').toggleClass('loading-hidden loading-open').removeClass('loading-close');
         }, 500);
     }
@@ -100,30 +100,32 @@
         openLoading();
 
         $.ajax({
-            url: '/addresses',
-            type: 'DELETE',
-            data: {aid: AddressID}
-        })
-            .done(function () {
-                console.log("success");
-                return true;
+                url: '/addresses',
+                type: 'DELETE',
+                data: {
+                    aid: AddressID
+                }
             })
-            .fail(function () {
+            .done(function() {
+                console.log("success");
+                location.reload();
+            })
+            .fail(function() {
                 console.log("error");
             })
-            .always(function () {
+            .always(function() {
                 console.log("complete");
                 closeLoading();
             });
     }
 
     // 删除按钮
-    $('.addressList-delete').on('click', function (e) {
+    $('.addressList-delete').on('click', function(e) {
         var AddressID = $(e.target).parents('.addressList-container').data('address');
         $('#modalDialog').data('address', AddressID);
     });
 
-    $('.addressItem-info').on('click', function () {
+    $('.addressItem-info').on('click', function() {
         var Action = $(this).data('action');
         // 当前点击项所对应的 Aid
         var Aid = $(this).parents('.addressList-container').data('address');
@@ -152,11 +154,11 @@
         hashTracking: false
     });
 
-    $('#modalDialog').on('closed', function () {
+    $('#modalDialog').on('closed', function() {
         $(this).removeData('address');
         console.log('close');
     });
-    $('#modalDialog').on('confirmation', function () {
+    $('#modalDialog').on('confirmation', function() {
         var AddressID = $(this).data('address');
         if (AddressID === undefined || AddressID === null || AddressID === '') {
             console.log('AddressID 没有值');
