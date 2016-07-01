@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Topic</title>
+    <title>{{$topic['title']}}</title>
     @include('head')
 </head>
 <?php error_reporting(0)?>
