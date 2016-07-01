@@ -20,10 +20,11 @@ $app->get('/shopping', 'Shopping\ShoppingController@index');
 $app->get('/designer', 'Designer\DesignerController@index');
 $app->get('/designer/{id}', 'Designer\DesignerController@show');
 
-$app->post('/googlelogin','Auth\AuthController@googleLogin');
-$app->post('/facebooklogin','Auth\AuthController@facebookLogin');
+$app->post('/googlelogin', 'Auth\AuthController@googleLogin');
+$app->post('/facebooklogin', 'Auth\AuthController@facebookLogin');
 $app->get('/forgetpwd', 'Shopping\UserController@forgetPWD');
 $app->post('/forgetpwd', 'Shopping\UserController@forgetPWD');
+$app->get('/addFacebookEmail', 'Auth\AuthController@addFacebookEmail');
 $app->group(['middleware' => 'logincheck', 'namespace' => 'App\Http\Controllers\Shopping'], function ($app) {
 
     $app->get('/feed', 'ShoppingController@feedback');
