@@ -37,7 +37,7 @@ class ProductController extends ApiController
     {
         $params = array(
             'recid' => '100002',
-            'uuid' => $_COOKIE['uid'],
+            'uuid' => @$_COOKIE['uid'],
             'pagenum' => 1,
             'pagesize' => 16,
             'spu' => $spu,

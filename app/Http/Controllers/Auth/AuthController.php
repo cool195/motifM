@@ -14,7 +14,7 @@ class AuthController extends ApiController
     {
         $params = array(
             'cmd' => 'tplogin',
-            'uuid' => $_COOKIE['uid'],
+            'uuid' => @$_COOKIE['uid'],
             'type' => 4,
             'token'=> self::Token,
         );
@@ -41,7 +41,7 @@ class AuthController extends ApiController
     {
         $params = array(
             'cmd' => 'tplogin',
-            'uuid' => $_COOKIE['uid'],
+            'uuid' => @$_COOKIE['uid'],
             'type' => 2,
             'token'=> self::Token,
         );
