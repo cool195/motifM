@@ -22,10 +22,9 @@
             <aside class="bg-white m-b-10x">
                 @if(isset($commonlist))
                     @foreach($commonlist as $c)
-                        <a class="flex flex-alignCenter font-size-sm text-primary p-x-15x p-y-10x"
-                           href="{{$route}}?country={{base64_encode(json_encode($c))}}" data-cid="{{$c['country_id']}}">
+                        <div class="flex flex-alignCenter font-size-sm text-primary p-x-15x p-y-10x " data-country="{{base64_encode(json_encode($c))}}" data-cid="{{$c['country_id']}}">
                             <span>{{$c['country_name_en']}}</span>
-                        </a>
+                        </div>
                         <hr class="hr-base">
                     @endforeach
                 @endif
@@ -33,10 +32,9 @@
             <aside class="bg-white">
                 @if(isset($list))
                     @foreach($list as $l)
-                        <a class="flex flex-alignCenter font-size-sm text-primary p-x-15x p-y-10x"
-                           href="{{$route}}?country={{base64_encode(json_encode($l))}}" data-cid="{{$l['country_id']}}">
+                        <div class="flex flex-alignCenter font-size-sm text-primary p-x-15x p-y-10x" data-country="{{base64_encode(json_encode($l))}}" data-cid="{{$l['country_id']}}">
                             <span>{{ $l['country_name_en'] }}</span>
-                        </a>
+                        </div>
                         <hr class="hr-base">
                     @endforeach
                 @endif
@@ -51,8 +49,21 @@
 <div class="loading loading-screen loading-switch loading-hidden">
     <div class="loader loader-screen"></div>
 </div>
+<form id="infoForm" action="{{$route}}" method="get" hidden>
+    <input type="hidden" name="country" value="">
+    @if(isset($input) && !empty($input))
+        @foreach($input as $name => $value)
+            <input type="hidden" name="{{$name}}" value="{{$value}}">
+        @endforeach
+    @endif
+</form>
 </body>
 <script src="/scripts/vendor.js"></script>
-
+<script>
+    $("[data-country]").on('click',function () {
+        $('input[name="country"]').val($(this).data('country'));
+        $('#infoForm').submit();
+    })
+</script>
 @include('global')
 </html>
