@@ -43,16 +43,11 @@
             })
             .done(function(data) {
                 if (data.success) {
-                    console.log('success');
                     window.location.href = data.redirectUrl;
                 }
             })
-            .fail(function() {
-                console.log('error');
-            })
             .always(function() {
                 closeLoading();
-                console.log('complete');
             });
     }
 
@@ -61,7 +56,7 @@
         var Result = true;
         $('input[data-optional="false"]').each(function() {
             if ($(this).val() === '' && !$(this).data('optional')) {
-                Result= $(this);
+                Result = $(this);
                 return false;
             }
         });
@@ -76,12 +71,12 @@
     }
 
     // 跳转页面,
-    $('#country').on('click', function(e) {
+    $('#country').on('click', function() {
         selectCountry();
     });
 
     // 输入框非空验证
-    $('input[data-optional="false"]').on('blur change', function() {
+    $('input[data-optional="false"]').on('blur keyup', function() {
         var $Error = checkInput();
         if ($Error === true) {
             $('.warning-info').addClass('hidden-xs-up');

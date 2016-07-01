@@ -1,4 +1,6 @@
-(function ($) {
+/*global jQuery template*/
+'use strict';
+(function($) {
     /**
      *
      * @param ProductsList
@@ -25,7 +27,6 @@
 
         var Page = $OrderContainer.data('pagenum');
         if (Page === -1) {
-            console.log('数据已加载完');
             return;
         }
 
@@ -35,17 +36,20 @@
 
         // ajax 请求加载数据
         $.ajax({
-            url: '/orders',
-            data: {num: NextPage, size: 20}
-        })
-            .done(function (data) {
+                url: '/orders',
+                data: {
+                    num: NextPage,
+                    size: 20
+                }
+            })
+            .done(function(data) {
                 if (data.data === null || data.data === '' || data.data.list.length === 0) {
                     // 没有数据要加载
                     $OrderContainer.data('pagenum', -1);
                 } else if (data.data.list.length > 0) {
                     if (NextPage === 1) {
                         $('#emptyOrder').remove();
-                    }else{
+                    } else {
                         $('#emptyOrder').removeClass('hidden-xs-up');
                     }
 
@@ -64,7 +68,7 @@
                 }
             })
             // TODO failed 时的提示
-            .always(function () {
+            .always(function() {
                 // 隐藏加载动画
                 $('#loading').hide();
                 // 请求结束, loading = false
@@ -73,7 +77,7 @@
             });
     }
 
-// 下拉加载
+    // 下拉加载
     function pullLoading() {
         // scrollCurrent    当前滚动距离
         // scrollMax        最大滚动距离
@@ -85,14 +89,13 @@
         }
     }
 
-// 为页面绑定 滚动条事件
-    $(document).ready(function () {
-        $(window).scroll(function () {
+    // 为页面绑定 滚动条事件
+    $(document).ready(function() {
+        $(window).scroll(function() {
             pullLoading();
-            console.log('滚动条滚动');
         });
     });
-    window.onload = function () {
+    window.onload = function() {
         listLoading();
     };
 })(jQuery);

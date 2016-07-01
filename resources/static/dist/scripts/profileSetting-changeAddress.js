@@ -41,15 +41,15 @@
             type: 'POST',
             data: $('#addressInfo').serialize()
         })
-            .done(function () {
-                console.log('success');
+            .done(function (data) {
+                if (data.success) {
+                    window.location.href = data.redirectUrl;
+                }
             })
             .fail(function () {
-                console.log('error');
             })
             .always(function () {
                 closeLoading();
-                console.log('complete');
             });
     }
 
@@ -74,7 +74,7 @@
     }
 
     // 跳转页面,
-    $('#country').on('click', function (e) {
+    $('#country').on('click', function () {
         selectCountry();
     });
     // 点击提交表单
@@ -93,6 +93,5 @@
 
     });
 })(jQuery);
-
 
 //# sourceMappingURL=profileSetting-changeAddress.js.map

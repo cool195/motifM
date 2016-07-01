@@ -43,15 +43,14 @@
             .done(function (data) {
                 console.info(data);
                 if (data.data === null || data.data === '') {
-
+                    $DailyContainer.data('pagenum', -1);
                 } else if (data.data.list === null || data.data.list === '' || data.data.list === undefined) {
                     $DailyContainer.data('pagenum', -1);
-                }else{
+                } else {
                     // 遍历模板 插入页面
                     appendDailyList(data.data);
                     // 页数 +1
                     $DailyContainer.data('pagenum', PageNum);
-                    console.info('当前页码数为' + PageNum);
 
                     // 图片延迟加载
                     $('img.img-lazy').lazyload({
@@ -62,11 +61,9 @@
                 }
             })
             .always(function () {
-                console.log('Ajax请求结束');
-
                 $DailyContainer.data('loading', false);
                 loadingHide();
-            })
+            });
     }
 
     // 将数据插入到模板中
@@ -77,17 +74,6 @@
         // 将 html 插入页面相应位置
         $('.daily-content').append(StageCache);
     }
-
-    // 为页面绑定 滚动条事件
-    $(document).ready(function () {
-        // 首次加载
-        getDailyList();
-        $(window).scroll(function () {
-            pullLoading();
-            console.log('滚动条滚动');
-        });
-    });
-
 
     // 下拉加载
     function pullLoading() {
@@ -101,6 +87,14 @@
         }
     }
 
+    // 为页面绑定 滚动条事件
+    $(document).ready(function () {
+        // 首次加载
+        getDailyList();
+        $(window).scroll(function () {
+            pullLoading();
+        });
+    });
 })(jQuery);
 
 

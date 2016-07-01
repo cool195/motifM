@@ -28,12 +28,12 @@
         var $WarningInfo = $('.warning-info');
         if (InputText === '' || InputText === undefined) {
             $('div[data-role="submit"]').addClass('disabled');
-            $WarningInfo.removeClass("off");
+            $WarningInfo.removeClass('off');
             $WarningInfo.children('span').html(PasswordNull);
             return false;
         } else if (InputText.length < 6 || InputText.length > 32) {
             $('div[data-role="submit"]').addClass('disabled');
-            $WarningInfo.removeClass("off");
+            $WarningInfo.removeClass('off');
             $WarningInfo.children('span').html(PasswordLength);
             return false;
         } else {
@@ -57,11 +57,6 @@
         }
     }
 
-    // 输入密码时 进行验证
-    $('input[type="password"]').on('keyup', function() {
-        validatePwd();
-    });
-
     // 验证密码格式
     function validatePwd() {
         var OldPwd = $('input[name="oldpw"]').val(),
@@ -71,6 +66,11 @@
             $('div[data-role="submit"]').removeClass('disabled');
         }
     }
+
+    // 输入密码时 进行验证
+    $('input[type="password"]').on('keyup', function() {
+        validatePwd();
+    });
 
     $('div[data-role="submit"]').on('click', function(e) {
         if (!$(e.target).hasClass('disabled')) {
@@ -90,17 +90,12 @@
                     $ModalDialog.open();
                     var href = data.redirectUrl;
                     $('#confirmPwd').attr('href', href);
-                    console.log('success');
                 } else {
                     $('.warning-info').removeClass('off');
                     $('.warning-info').children('span').html(data.prompt_msg);
                 }
             })
-            .fail(function() {
-                console.log('error');
-            })
             .always(function() {
-                console.log('complete');
                 closeLoading();
             });
     }

@@ -33,7 +33,7 @@
     }
 
     // 验证电子邮件的情况
-    $('input[name="email"]').on('keyup blur change', function(e) {
+    $('input[name="email"]').on('keyup blur change', function() {
         if (validationEmail($(this))) {
             $('div[data-role="submit"]').removeClass('disabled');
         } else {
@@ -44,12 +44,11 @@
     $('div[data-role="submit"]').click(function() {
         if (!$(this).hasClass('disabled')) {
             $.ajax({
-                    url: "/user/forget",
-                    type: "POST",
+                    url: '/user/forget',
+                    type: 'POST',
                     data: $('#reset').serialize()
                 })
                 .done(function(data) {
-                    console.log("success");
                     if (data.success) {
                         $('.warning-info').addClass('hidden-xs-up');
 
@@ -60,11 +59,7 @@
                         $('.warning-info').children('span').text(data.error_msg);
                     }
                 })
-                .fail(function() {
-                    console.log("error");
-                })
                 .always(function() {
-                    console.log("complete");
                 });
         }
     });

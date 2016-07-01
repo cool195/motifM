@@ -1,3 +1,6 @@
+/*global jQuery*/
+
+'use strict';
 (function($) {
     /**
      *
@@ -107,14 +110,9 @@
                 }
             })
             .done(function() {
-                console.log("success");
                 location.reload();
             })
-            .fail(function() {
-                console.log("error");
-            })
             .always(function() {
-                console.log("complete");
                 closeLoading();
             });
     }
@@ -138,7 +136,7 @@
             // TODO 跳转到编辑页面
             $('input[name="eid"]').val(Aid); // 需要修改的项
             // Active 项 所对应的 AddressID
-            var AddressID = $('.icon-radio.active').parents('.addressList-container').data('address');
+            // var AddressID = $('.icon-radio.active').parents('.addressList-container').data('address');
             //$('input[name="aid"]').val(AddressID); // 暂存选定的项
 
             var $InfoForm = $('#infoForm');
@@ -156,12 +154,10 @@
 
     $('#modalDialog').on('closed', function() {
         $(this).removeData('address');
-        console.log('close');
     });
     $('#modalDialog').on('confirmation', function() {
         var AddressID = $(this).data('address');
         if (AddressID === undefined || AddressID === null || AddressID === '') {
-            console.log('AddressID 没有值');
             return;
         }
         deleteAddress(AddressID);

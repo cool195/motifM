@@ -28,17 +28,10 @@
                 type: 'GET'
             })
             .done(function(data) {
-                console.log("success");
                 if (data.success) {
                     OrderInfo = data.data.lineOrderList;
                     getOperate(OrderOperate);
                 }
-            })
-            .fail(function() {
-                console.log("error");
-            })
-            .always(function() {
-                console.log("complete");
             });
     }
 
@@ -75,16 +68,9 @@
                 }
             })
             .done(function(data) {
-                console.log("success");
                 if (data.success) {
                     window.location.href = data.redirectUrl;
                 }
-            })
-            .fail(function() {
-                console.log("error");
-            })
-            .always(function() {
-                console.log("complete");
             });
 
     }

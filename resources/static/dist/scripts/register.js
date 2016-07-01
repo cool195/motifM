@@ -1,4 +1,5 @@
 'use strict';
+/*global jQuery*/
 (function ($) {
     // loading 打开
     function openLoading() {
@@ -88,7 +89,15 @@
             return true;
         }
     }
-
+    // 验证昵称、邮箱、密码格式
+    function validateInfo() {
+        var $Nick = $('input[name="nick"]'),
+            $Email = $('input[name="email"]'),
+            $Password = $('input[name="pw"]');
+        if (validationNick($Nick) && validationEmail($Email) && validationPassword($Password)) {
+            $('div[data-role="submit"]').removeClass('disabled');
+        }
+    }
     // 输入注册信息时 进行验证
     $('.input-register').on('keyup', function () {
         var InputText = $(this).val();
@@ -100,15 +109,6 @@
         validateInfo();
     });
 
-    // 验证昵称、邮箱、密码格式
-    function validateInfo() {
-        var $Nick = $('input[name="nick"]'),
-            $Email = $('input[name="email"]'),
-            $Password = $('input[name="pw"]');
-        if (validationNick($Nick) && validationEmail($Email) && validationPassword($Password)) {
-            $('div[data-role="submit"]').removeClass('disabled');
-        }
-    }
 
     // ajax
     function registerUser() {
@@ -126,12 +126,8 @@
                     $('.warning-info').children('span').html(data.prompt_msg);
                 }
             })
-            .fail(function () {
-                console.log("error");
-            })
             .always(function () {
                 closeLoading();
-                console.log("complete");
             });
     }
 

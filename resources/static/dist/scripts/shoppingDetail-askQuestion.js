@@ -92,9 +92,9 @@
     function validateMessageLenght(InputText) {
         var MessageNull = 'Please fill out all fieldes';
         var $WarningInfo = $('.warning-info');
-        if (InputText == '') {
+        if (InputText === '') {
             $('div[data-role="submit"]').addClass('disabled');
-            $WarningInfo.removeClass("off");
+            $WarningInfo.removeClass('off');
             $WarningInfo.children('span').html(MessageNull);
             return false;
         } else {

@@ -1,3 +1,8 @@
+/**
+ * Created by lhyin on 16/6/01.
+ */
+/*global jQuery*/
+
 'use strict';
 (function($) {
     // 初始化模态框
@@ -32,7 +37,7 @@
             return false;
         } else if (InputText.length < 6 || InputText.length > 32) {
             $('div[data-role="submit"]').addClass('disabled');
-            $WarningInfo.removeClass("hidden-xs-up");
+            $WarningInfo.removeClass('hidden-xs-up');
             $WarningInfo.children('span').html(PasswordLength);
             return false;
         } else {
@@ -81,26 +86,21 @@
     function updatePassword() {
         openLoading();
         $.ajax({
-                type: "POST",
-                url: "/forgetpwd",
-                data: $('#reset').serialize(),
+                type: 'POST',
+                url: '/forgetpwd',
+                data: $('#reset').serialize()
             })
             .done(function(data) {
                 if (data.success) {
                     $ModalDialog.open();
                     var href = data.redirectUrl;
                     $('#confirmPwd').attr('href', href);
-                    console.log('success');
                 } else {
                     $('.warning-info').removeClass('hidden-xs-up');
                     $('.warning-info').children('span').html(data.prompt_msg);
                 }
             })
-            .fail(function() {
-                console.log('error');
-            })
             .always(function() {
-                console.log('complete');
                 closeLoading();
             });
     }

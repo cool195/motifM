@@ -1,7 +1,10 @@
-(function() {
+/*global jQuery braintree getCardTypes*/
+
+'use strict';
+(function($) {
     function openSuccess() {
         $('#success').toggleClass('loading-hidden');
-        setTimeout(function () {
+        setTimeout(function() {
             $('#success').toggleClass('loading-open');
         }, 25);
     }
@@ -27,8 +30,8 @@
     var $WaringInfo = $('.warning-info');
     var checkout = {}; // 事件 句柄
 
-    braintree.setup(token, "custom", {
-        id: "card-container",
+    braintree.setup(token, 'custom', {
+        id: 'card-container',
         onReady: function(integration) {
             checkout = integration;
         },
@@ -36,13 +39,9 @@
             if (error.type === 'VALIDATION') {
                 $WaringInfo.children('span').html(error.message);
                 $WaringInfo.removeClass('off');
-            } else {
-                console.error(error.message);
             }
         },
         onPaymentMethodReceived: function(payload) {
-            console.info('payload : ');
-            console.info(payload);
             openLoading();
             // TODO
             $.ajax({
@@ -53,7 +52,6 @@
                     }
                 })
                 .done(function(data) {
-                    console.log("success");
                     if (data.success) {
                         $('.warning-info').addClass('off');
                         openSuccess();
@@ -64,7 +62,7 @@
                             }, 1500);
                         } else {
                             setTimeout(function() {
-                                $InfoForm.submit()
+                                $InfoForm.submit();
                             }, 1500);
                         }
                     } else {
@@ -72,11 +70,8 @@
                         $('.warning-info').children('span').text(data.prompt_msg);
                     }
                 })
-                .fail(function() {
-                    console.log("error");
-                })
+                .fail(function() {})
                 .always(function() {
-                    console.log("complete");
                     closeLoading();
                 });
         }
@@ -89,7 +84,6 @@
             CardNum = $CardInput.val(),
             CardsTypes = getCardTypes(CardNum);
         if (CardNum === '') {
-            console.log('CardNum 为空');
             $CardImage.attr('class', 'card-image');
         } else if (CardsTypes.length !== 0) {
             if (!$CardImage.hasClass(CardsTypes)) {
@@ -101,57 +95,13 @@
         } else {
             $CardInput.addClass('text-warning');
         }
-        console.log(CardsTypes);
     }
 
     // 验证 卡的输入情况
-    $('#cardNum').on('keyup', function(e) {
+    $('#cardNum').on('keyup', function() {
         validationCard($(this));
     });
     // TODO 需要限制输入格式, 限制日期格式, 银行卡格式
-})();
-//onFieldEvent: function (event) {
-// console.info(event);
-// if (event.type === 'focus') {
-//     // Handle focus
-// } else if (event.type === 'blur') {
-//     // Handle blur
-// } else if (event.type === 'fieldStateChange') {
-//     // Handle a change in validation or card type
-//     if (event.isValid) {
-//         $WaringInfo.addClass('off');
-//     } else {
-//         var ErrorMessage = '';
-//         switch (event.target.fieldKey) {
-//             case 'number':
-//                 ErrorMessage = 'Please enter a valid credit card or debit card number.';
-//                 break;
-//             case 'expirationDate':
-//                 ErrorMessage = 'Please enter a valid Expiration Date.';
-//                 break;
-//             case 'cvv':
-//                 ErrorMessage = 'Please enter a valid CSC (Card Security Code).';
-//                 break;
-//             default:
-//                 break;
-//         }
-//         $WaringInfo.children('span').html(ErrorMessage);
-//         $WaringInfo.removeClass('off');
-//     }
-//
-//     // 银行卡 图片设置
-//     if (event.card) {
-//         console.log(event.card.type);
-//         if (!$CardImage.hasClass(event.card.type)) {
-//             $CardImage.attr('class', 'card-image');
-//             $CardImage.addClass(event.card.type);
-//         }
-//         // visa|master-card|american-express|diners-club|discover|jcb|unionpay|maestro
-//     } else {
-//         $CardImage.attr('class', 'card-image');
-//     }
-// }
-//
-// }
+})(jQuery);
 
 //# sourceMappingURL=paymentMethod-addCard.js.map

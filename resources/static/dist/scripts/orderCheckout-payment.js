@@ -1,3 +1,6 @@
+/*global jQuery braintree*/
+
+'use strict';
 (function($) {
     /**
      *
@@ -82,18 +85,10 @@
                 }
             })
             .done(function(data) {
-                console.log("success");
                 if (data.success) {
                     $('#infoForm').attr('action', data.redirectUrl);
                     $('#infoForm').submit();
                 }
-            })
-            .fail(function() {
-                console.log("error");
-            })
-            .always(function() {
-                console.log("complete");
-                closeLoading();
             });
     }
 
@@ -114,7 +109,7 @@
         var PayType = $('.icon-radio.active').parents('.payment-info').data('type');
         var methodToken = $('.icon-radio.active').parents('.payment-info').data('token');
         var cardType = $('.icon-radio.active').parents('.payment-info').data('cardtype');
-        var showName = $('.icon-radio.active').parents('.payment-info').data('showname')
+        var showName = $('.icon-radio.active').parents('.payment-info').data('showname');
 
         $('input[name="methodToken"]').val(methodToken);
         $('input[name="cardType"]').val(cardType);
@@ -146,13 +141,11 @@
 
     $('#modalDialog').on('closed', function() {
         $(this).removeData('token');
-        console.log('close');
     });
 
     $('#modalDialog').on('confirmation', function() {
         var PaymentToken = $(this).data('token');
         if (PaymentToken === undefined || PaymentToken === null || PaymentToken === '') {
-            console.log('Token 没有值');
             return;
         }
         deletePayment(PaymentToken);
@@ -167,7 +160,7 @@
     var checkout = {}; // 事件 句柄
 
     if (token !== '' && token !== undefined) {
-        braintree.setup(token, "custom", {
+        braintree.setup(token, 'custom', {
             paypal: {
                 currency: 'USD', // 沙盒系统需要字段
                 locale: 'en_us', // 沙盒系统需要字段
@@ -177,9 +170,6 @@
                 checkout = integration;
             },
             onPaymentMethodReceived: function(payload) {
-                console.info('payload : ');
-                console.info(payload);
-
                 openLoading();
                 // TODO
                 $.ajax({
@@ -190,18 +180,13 @@
                         }
                     })
                     .done(function(data) {
-                        console.log("success");
                         if (data.success) {
                             $('#infoForm').attr('action', data.redirectUrl);
                             $('#infoForm').submit();
                         }
                     })
-                    .fail(function() {
-                        console.log("error");
-                    })
                     .always(function() {
                         closeLoading();
-                        console.log("complete");
                     });
 
             }

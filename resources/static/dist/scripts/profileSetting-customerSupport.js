@@ -4,11 +4,11 @@
 /*global jQuery*/
 
 'use strict';
-(function ($) {
+(function($) {
     // loading 打开
     function openLoading() {
         $('.loading').toggleClass('loading-hidden');
-        setTimeout(function () {
+        setTimeout(function() {
             $('.loading').toggleClass('loading-open');
         }, 25);
     }
@@ -16,7 +16,7 @@
     // loading 隐藏
     function closeLoading() {
         $('.loading').addClass('loading-close');
-        setTimeout(function () {
+        setTimeout(function() {
             $('.loading').toggleClass('loading-hidden loading-open').removeClass('loading-close');
         }, 500);
     }
@@ -52,7 +52,7 @@
         var $WarningInfo = $('.warning-info');
         if (InputText === '') {
             $('div[data-role="submit"]').addClass('disabled');
-            $WarningInfo.removeClass("off");
+            $WarningInfo.removeClass('off');
             $WarningInfo.children('span').html(MessageNull);
             return false;
         } else {
@@ -69,7 +69,7 @@
         var $WarningInfo = $('.warning-info');
         if (MessageType === 0 || MessageType === '' || MessageType === null) {
             $('div[data-role="submit"]').addClass('disabled');
-            $WarningInfo.removeClass("off");
+            $WarningInfo.removeClass('off');
             $WarningInfo.children('span').html(MessageNull);
             return false;
         } else {
@@ -79,17 +79,46 @@
         }
     }
 
-    $('input[name="email"]').on('keyup', function () {
+    $('input[name="email"]').on('keyup', function() {
         var InputText = $(this).val();
         validationEmail(InputText);
     });
-    $('textarea[name="content"]').on('keyup', function () {
+    $('textarea[name="content"]').on('keyup', function() {
         var InputText = $(this).val();
         validateMessageLenght(InputText);
     });
+    // 提交 message 内容
+    function addMessage() {
+        openLoading();
+        // 获取表单数据
+        var email = $('#email').val();
+        var content = $('#content').val();
+        var type = $('.message-type').data('type');
+        var stype = $('.message-type').data('stype');
+        $.ajax({
+                url: '/feedback',
+                type: 'GET',
+                data: {
+                    email: email,
+                    content: content,
+                    type: type,
+                    stype: stype
+                }
+            })
+            .done(function(data) {
+                if (data.success) {
+                    $ModalDialog.open();
+                    var href = data.redirectUrl;
+                    $('#confirmQuestion').attr('href', href);
+                }
+            })
+            .always(function() {
+                closeLoading();
+            });
+    }
 
     // 点击提交表单时 对所填信息进行验证
-    $('div[data-role="submit"]').on('click', function (e) {
+    $('div[data-role="submit"]').on('click', function(e) {
         var MessageEmail = $('input[name="email"]').val(),
             MessageText = $('textarea[name="content"]').val();
 
@@ -109,39 +138,10 @@
         addMessage();
     });
 
-    // 提交 message 内容
-    function addMessage() {
-        openLoading();
-        // 获取表单数据
-        var email = $('#email').val();
-        var content = $('#content').val();
-        var type = $('.message-type').data('type');
-        var stype = $('.message-type').data('stype');
-        $.ajax({
-            url: '/feedback',
-            type: 'GET',
-            data: {email: email, content: content, type: type, stype: stype}
-        })
-            .done(function (data) {
-                if (data.success) {
-                    $ModalDialog.open();
-                    var href = data.redirectUrl;
-                    $('#confirmQuestion').attr('href', href);
-                    console.log('success');
-                }
-            })
-            .fail(function () {
-                console.log('error');
-            })
-            .always(function () {
-                closeLoading();
-                console.log('complete');
-            });
-    }
 
     // 计算 message 输入字数,并实时提示
     // 当字数超出规定字数,不能继续输入
-    $('#content').keyup(function () {
+    $('#content').keyup(function() {
         var length = $('#content').data('length');
         var content = $('#content').val();
         var contentLen = content.length;
@@ -155,8 +155,7 @@
 
 
     // 点击 选择 会话类型
-    $('.btn-massageType').on('click', function () {
-        var $messageList = $('.messageType-list');
+    $('.btn-massageType').on('click', function() {
         $(this).siblings('.messageType-list').toggleClass('active');
         if ($(this).siblings('.messageType-list').hasClass('active')) {
             $(this).find('.iconfont').removeClass('icon-arrow-bottom').addClass('icon-arrow-up');
@@ -166,7 +165,7 @@
     });
 
     // 点击 确认 会话类型
-    $('.message-item').on('click', function (e) {
+    $('.message-item').on('click', function(e) {
         var messageTypeText = $(e.target).html();
         var messageTypeVal = $(e.target).data('message-stype');
         $(this).parent().removeClass('active');
@@ -180,7 +179,7 @@
     });
 
     // 退出编辑
-    $('div[data-role="cancel"]').on('click', function () {
+    $('div[data-role="cancel"]').on('click', function() {
         window.history.back(-1);
     });
 
