@@ -49,7 +49,7 @@
     }
 
     $('input[name="coupon"]').on('keyup', function() {
-        if($(this).val()===''){
+        if($(this).val() === ''){
             $('div[data-role="submit"]').addClass('disabled');
         }else {
             $('div[data-role="submit"]').removeClass('disabled');
