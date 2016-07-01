@@ -379,8 +379,8 @@ class UserController extends ApiController
 
     public function addrModify(Request $request, $aid)
     {
-        if (Session::has('input')) {
-            $input = Session::get('input');
+        if ($request->has('aid')) {
+            $input = $request->all();
             $input['detail_address1'] = $input['addr1'];
             $input['detail_address2'] = $input['addr2'];
             $input['telephone'] = $input['tel'];
@@ -398,7 +398,6 @@ class UserController extends ApiController
         if (empty($input)) {
             return redirect('/user/shippingaddress');
         }
-        Session::forget('input');
         return View('shopping.profilesetting_modaddress', ['input' => $input]);
     }
 
@@ -406,8 +405,6 @@ class UserController extends ApiController
     {
 
         $input = $request->except('country', 'route');
-        Session::forget('input');
-        Session::put('input', $input);
         $params = array(
             'cmd' => 'country',
         );
