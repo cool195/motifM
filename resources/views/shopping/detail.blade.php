@@ -113,7 +113,7 @@
                     @if(Session::has('user'))
                         <div class="row">
                             <div class="col-xs-6">
-                                <div class="btn btn-primary-outline btn-block" data-control="openModal" data-action="PATCH">Add To Bag</div>
+                                <div class="btn btn-primary-outline btn-block" data-control="openModal" data-action="PATCH">Add to Bag</div>
                             </div>
                             <div class="col-xs-6">
                                 <div class="btn btn-primary btn-block" data-control="openModal" data-action="PUT">Buy Now</div>
@@ -122,7 +122,7 @@
                     @else
                         <div class="row">
                             <div class="col-xs-6">
-                                <a href="/login" class="btn btn-primary-outline btn-block" id="addCart">Add To Bag</a>
+                                <a href="/login" class="btn btn-primary-outline btn-block" id="addCart">Add to Bag</a>
                             </div>
                             <div class="col-xs-6">
                                 <a href="/login" class="btn btn-primary btn-block" id="buyNow">Buy Now</a>
@@ -213,7 +213,7 @@
                     @else
                         <div class="row">
                             <div class="col-xs-6">
-                                <a href="/login" class="btn btn-primary-outline btn-block" id="addCart">Add To Bag</a>
+                                <a href="/login" class="btn btn-primary-outline btn-block" id="addCart">Add to Bag</a>
                             </div>
                             <div class="col-xs-6">
                                 <a href="/login" class="btn btn-primary btn-block" id="buyNow">Buy Now</a>
@@ -332,7 +332,7 @@
                     <div class="row" data-control="modalButton">
                         <div class="col-xs-6">
                             <div class="btn btn-primary-outline btn-block @if(!(!empty($data['vasBases']) && empty($data['spuAttrs'])))disabled @endif"
-                                 data-role="modalButton" data-action="PATCH">Add To Bag
+                                 data-role="modalButton" data-action="PATCH">Add to Bag
                             </div>
                         </div>
                         <div class="col-xs-6">
@@ -344,7 +344,7 @@
                     @else
                         <div class="row">
                             <div class="col-xs-6">
-                                <a href="/login" class="btn btn-primary-outline btn-block" id="addCart">Add To Bag</a>
+                                <a href="/login" class="btn btn-primary-outline btn-block" id="addCart">Add to Bag</a>
                             </div>
                             <div class="col-xs-6">
                                 <a href="/login" class="btn btn-primary btn-block" id="buyNow">Buy Now</a>
