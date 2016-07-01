@@ -17,10 +17,10 @@
         <!-- 顶部 logo -->
         <a href="/daily"><img class="img-fluid m-x-auto m-b-20x motif-logo" src="/images/login/register-logo.png"
                               srcset="/images/login/register-logo@2x.png 2x,/images/login/register-logo@3x.png 3x"></a>
-        <div class="text-main text-center p-t-10x"><strong>Create Your Account</strong></div>
+        <div class="text-main text-center p-t-10x m-b-20x p-b-5x"><strong>Create Your Account</strong></div>
 
         <form id="register">
-            <div class="warning-info off flex text-warning flex-alignCenter text-left m-b-x">
+            <div class="warning-info off flex text-warning flex-alignCenter text-left m-b-10x">
                 <i class="iconfont icon-caveat icon-size-md p-r-5x"></i>
                 <span class="font-size-sm"></span>
             </div>
