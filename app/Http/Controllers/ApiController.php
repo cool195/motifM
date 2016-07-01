@@ -15,13 +15,13 @@ abstract class ApiController extends Controller
      */
     protected $ApiUrl = [
         'openapi_local' => 'http://192.168.0.230',//本地
-        'openapi_test' => 'http://192.168.0.230',//预发布
+        'openapi_test' => 'http://54.222.233.255',//预发布
         'openapi' => 'http://54.222.233.255',//生产
     ];
 
     protected function request($ApiName, $system, $service, array $params, $cacheTime = 0)
     {
-        $ApiName = ($_SERVER['SERVER_NAME'] == 'm.motif.me' || $_SERVER['SERVER_NAME'] == 'localhost') ? 'openapi' : ($_SERVER['SERVER_NAME'] == 'motif.app' ? 'openapi_local' : 'openapi_test');
+        $ApiName = $_SERVER['SERVER_NAME'] == 'm.motif.me' ? 'openapi' : ($_SERVER['SERVER_NAME'] == 'test.m.motif.app' ? 'openapi_test' : 'openapi_local');
         $buildParams = http_build_query($params);
         $key = md5($buildParams);
         $result = "";
