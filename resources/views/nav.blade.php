@@ -132,7 +132,7 @@
         </div>
         <hr class="hr-base m-a-0">
         <div class="p-x-15x p-t-10x p-b-15x">
-            <a class="btn btn-primary btn-block btn-sm" href="">View in MOTIF App</a>
+            <a class="btn btn-primary btn-block" href="">View in MOTIF App</a>
         </div>
     </div>
     <!-- 提示: 下载 app -->
@@ -142,7 +142,7 @@
         </div>
         <hr class="hr-base m-a-0">
         <div class="p-x-15x p-t-10x p-b-15x">
-            <a class="btn btn-primary btn-block btn-sm" data-role="downloading">Download MOTIF App
+            <a class="btn btn-primary btn-block" data-role="downloading">Download MOTIF App
             </a>
         </div>
     </div>
