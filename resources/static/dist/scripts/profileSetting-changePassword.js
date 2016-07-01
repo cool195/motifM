@@ -73,7 +73,7 @@
     }
 
     $('div[data-role="submit"]').on('click', function(e) {
-        if ($(e.taget).hasClass('disabled')) {
+        if (!$(e.taget).hasClass('disabled')) {
             updatePassword();
         }
     });
