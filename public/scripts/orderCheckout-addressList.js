@@ -63,18 +63,6 @@
         $('.addressList-delete').toggleClass('switch');
     });
 
-    $('[data-role="submit"]').on('click', function () {
-        var Action = $(this).data('action');
-        $('#infoForm').attr('action', Action);
-        $('#infoForm').submit();
-    });
-
-    $('[data-role="add"]').on('click', function () {
-        var Action = $(this).data('action');
-        $('#infoForm').attr('action', Action);
-        $('#infoForm').submit();
-    });
-
     // loading 打开
     function openLoading() {
         $('.loading').toggleClass('loading-hidden');
@@ -90,6 +78,19 @@
             $('.loading').toggleClass('loading-hidden loading-open').removeClass('loading-close');
         }, 500);
     }
+
+    $('[data-role="submit"]').on('click', function () {
+        var Action = $(this).data('action');
+        $('#infoForm').attr('action', Action);
+        $('#infoForm').submit();
+    });
+
+    $('[data-role="add"]').on('click', function () {
+        var Action = $(this).data('action');
+        $('#infoForm').attr('action', Action);
+        $('#infoForm').submit();
+    });
+    
 
     /**
      *
