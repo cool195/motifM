@@ -1,18 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="topic" content="">
-    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+
     <title>Topic</title>
-    <link rel="icon" href="/favicon.ico">
-    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-    <!-- Place favicon.ico in the root directory -->
-
-    <link rel="stylesheet" href="/styles/vendor.css">
-
-    <script src="/scripts/vendor/modernizr.js"></script>
-    <script src="/scripts/vendor/fastclick.js"></script>
+    @include('head')
 </head>
 <body>
 @include('check.tagmanager')

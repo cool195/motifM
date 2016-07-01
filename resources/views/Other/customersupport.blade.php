@@ -1,21 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="description" content="">
-    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
     <title>Customer Support</title>
-    <link rel="icon" href="/images/favicon.ico">
-    <link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
-    <!-- Place favicon.ico in the root directory -->
-
-    <link rel="stylesheet" href="/styles/vendor.css">
+    @include('head')
 
     <link rel="stylesheet" href="/styles/profileSetting-customerSupport.css">
-
-    <script src="/scripts/vendor/modernizr.js"></script>
-
-    <script src="/scripts/vendor/fastclick.js"></script>
 
 </head>
 

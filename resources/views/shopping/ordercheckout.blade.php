@@ -1,21 +1,10 @@
 <!DOCTYPE html>
 <html lang="en" xmlns="http://www.w3.org/1999/html">
 <head>
-    <meta charset="UTF-8">
-    <meta name="description" content="">
-    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+
     <title>Order Checkout</title>
-    <link rel="icon" href="/favicon.ico">
-    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-    <!-- Place favicon.ico in the root directory -->
-
-    <link rel="stylesheet" href="/styles/vendor.css">
-
+    @include('head')
     <link rel="stylesheet" href="/styles/orderCheckout.css">
-
-    <script src="/scripts/vendor/modernizr.js"></script>
-
-    <script src="/scripts/vendor/fastclick.js"></script>
 
 </head>
 <body>
