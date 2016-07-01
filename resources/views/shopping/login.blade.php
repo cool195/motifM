@@ -66,7 +66,7 @@
                 Sign in with Google
             </div>
         </div>
-        <div class="m-t-20x text-center font-size-sm"><a class="text-primary" href="/contactus">Contact Us</a></div>
+        <div class="m-t-20x text-center font-size-sm"><a href="/contactus">Contact Us</a></div>
     </section>
 
 </div>
