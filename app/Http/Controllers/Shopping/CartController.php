@@ -136,7 +136,7 @@ class CartController extends ApiController
 	{
 		$input = $request->except('country');
 		$checkout = $request->except('email', 'name', 'addr1', 'addr2', 'state', 'city', 'zip', 'tel', 'idnum', 'country', 'isd', 'route');
-		$country = json_decode(base64_decode($request->input('country', base64_encode(json_encode(['country_id'=>5, 'country_name_cn'=>"中国", 'country_name_en'=>"China", 'iDnumberReq'=>0, 'isFreq'=>0])))), true);
+		$country = json_decode(base64_decode($request->input('country')), true);
 		return View('shopping.ordercheckout_addaddress', ['input'=>$input, 'checkout'=>$checkout, 'country'=>$country, 'first'=>1]);
 	}
 
