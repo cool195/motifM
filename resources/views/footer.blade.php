@@ -18,7 +18,7 @@
                 <img src="/images/icon/google.png" srcset="/images/icon/google@2x.png 2x,/images/icon/google@3x.png 3x">
             </a>
             <a class="share-btn" href="https://instagram.com/motif.jewelry/">
-                <img src="/images/icon/in.png" srcset="/images/icon/in@2x.png 2x,/images/icon/in@3x.png 3x">
+                <img src="/images/icon/ins.png" srcset="/images/icon/ins@2x.png 2x,/images/icon/ins@3x.png 3x">
             </a>
         </div>
     </div>
