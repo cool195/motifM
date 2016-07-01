@@ -81,8 +81,8 @@
     function updatePassword() {
         openLoading();
         $.ajax({
-            url: "/forgetpwd",
-            type: "POST",
+                type: "POST",
+                url: "/forgetpwd",
                 data: $('#reset').serialize(),
             })
             .done(function(data) {
@@ -93,7 +93,7 @@
                     console.log('success');
                 } else {
                     $('.warning-info').removeClass('hidden-xs-up');
-                    $('.warning-info').children('span').html(data.error_msg);
+                    $('.warning-info').children('span').html(data.prompt_msg);
                 }
             })
             .fail(function() {

@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Session;
 class AuthController extends ApiController
 {
     const Token = 'eeec7a32dcb6115abfe4a871c6b08b47';
+
     //google login
     public function googleLogin(Request $request)
     {
@@ -16,7 +17,7 @@ class AuthController extends ApiController
             'cmd' => 'tplogin',
             'uuid' => @$_COOKIE['uid'],
             'type' => 4,
-            'token'=> self::Token,
+            'token' => self::Token,
         );
 
         $params['reinfo'] = json_encode(array(
@@ -43,7 +44,7 @@ class AuthController extends ApiController
             'cmd' => 'tplogin',
             'uuid' => @$_COOKIE['uid'],
             'type' => 2,
-            'token'=> self::Token,
+            'token' => self::Token,
         );
 
         $params['reinfo'] = json_encode(array(
@@ -61,6 +62,18 @@ class AuthController extends ApiController
             Session::put('user', $result['data']);
         }
         return $result;
+    }
+
+    //facebook 没有绑定邮箱
+    public function addFacebookEmail(Request $request)
+    {
+        $params = array(
+            'id' => $request->get('id'),
+            'name' => $request->get('name'),
+            'type' => 2,
+            'avatar' => urlencode($request->get('avatar')),
+        );
+        return view('shopping.fbaddemail', ['params' => $params]);
     }
 }
 

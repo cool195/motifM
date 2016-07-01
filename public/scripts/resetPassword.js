@@ -4,20 +4,12 @@
 /*global jQuery*/
 'use strict';
 (function($) {
-
-    function openAddSuccess() {
-        $('#success').toggleClass('loading-hidden');
-        setTimeout(function() {
-            $('#success').toggleClass('loading-open');
-        }, 25);
-    }
-
-    function closeAddSuccess() {
-        $('#success').addClass('loading-close');
-        setTimeout(function() {
-            $('#success').toggleClass('loading-hidden loading-open').removeClass('loading-close');
-        }, 500);
-    }
+    var options = {
+        closeOnOutsideClick: false,
+        closeOnCancel: false,
+        hashTracking: false
+    };
+    var Modal = $('#successModal').remodal(options);
 
     function validationEmail($Email) {
         var EmailNull = 'Please enter your email',
@@ -59,15 +51,10 @@
                 .done(function(data) {
                     console.log("success");
                     if (data.success) {
-                        openAddSuccess();
-                        setTimeout(function() {
-                            closeAddSuccess();
-                        }, 1500);
-
                         $('.warning-info').addClass('hidden-xs-up');
 
-                        $('#successText').text(data.prompt_msg);
-                        window.location.href = data.redirectUrl;
+                        Modal.open();
+                        $('#confirm').attr('href', data.redirectUrl);
                     } else {
                         $('.warning-info').removeClass('hidden-xs-up');
                         $('.warning-info').children('span').text(data.error_msg);

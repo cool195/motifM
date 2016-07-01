@@ -16518,6 +16518,7 @@ else if (typeof define === 'function' && define.amd) {
                 break;
             case -1:
                 break;
+                $('#downloadingApp').removeAttr('data-remodal-target');
                 $('.app-content').removeAttr('hidden');
             default:
                 break;

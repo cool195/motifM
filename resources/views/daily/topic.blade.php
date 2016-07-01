@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 
-    <title>Topic</title>
+    <title>{{$topic['title']}}</title>
     @include('head')
 </head>
 <body>

@@ -163,7 +163,7 @@
                         <div class="row">
                             @foreach($productAll['data']['list'] as $value)
                                 <div class="col-xs-6">
-                                    <a href="/detail/{{$value['spu']}}">
+                                    <a href="motif://o.c?a=pd&spu={{$value['spu']}}">
                                         <div class="p-t-10x">
                                             <img class="img-thumbnail img-lazy"
                                                  src="/images/product/bg-product@336.png"
