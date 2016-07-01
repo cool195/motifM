@@ -35,7 +35,7 @@
                     </div>
                 </fieldset>
                 <div class="text-primary font-size-sm contactUs">
-                    <a class="text-primary" href="/contactus">Contact Us</a>
+                    <a href="/contactus">Contact Us</a>
                 </div>
                 <input type="hidden" name="id" value="{{$params['id']}}">
                 <input type="hidden" name="name" value="{{$params['name']}}">
