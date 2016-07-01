@@ -55,17 +55,19 @@
                     </a>
                 </div>
                 <div class="p-x-10x p-t-5x p-b-15x">
-                    @if(isset($designer['youtube_link']))
+                    @if(!empty($designer['youtube_link']))
                         <a href="{{$designer['youtube_link']}}" target="_blank" class="p-r-20x">
                             <img src="/images/designer/youtube.png"
                                  srcset="/images/designer/youtube@2x.png 2x,/images/designer/youtube@3x.png 3x">
                         </a>
-                    @elseif(isset($designer['facebook_link']))
+                    @endif
+                    @if(!empty($designer['facebook_link']))
                         <a href="{{$designer['facebook_link']}}" target="_blank" class="p-r-20x">
                             <img src="/images/designer/facebook.png"
                                  srcset="/images/designer/facebook@2x.png 2x,/images/designer/facebook@3x.png 3x">
                         </a>
-                    @elseif(isset($designer['instagram_link']))
+                    @endif
+                    @if(!empty($designer['instagram_link']))
                         <a href="{{$designer['instagram_link']}}" target="_blank" class="p-r-20x">
                             <img src="/images/designer/ins.png"
                                  srcset="/images/designer/ins@2x.png 2x,/images/designer/ins@3x.png 3x">
