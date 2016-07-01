@@ -81,7 +81,7 @@
     });
 
     // 输入框非空验证
-    $('input[data-optional="false"]').on('blur change', function() {
+    $('input[data-optional="false"]').on('blur keyup', function() {
         var $Error = checkInput();
         if ($Error === true) {
             $('.warning-info').addClass('hidden-xs-up');
