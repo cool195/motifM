@@ -1,9 +1,9 @@
 'use strict';
-(function($) {
+(function ($) {
     // loading 打开
     function openLoading() {
         $('.loading').toggleClass('loading-hidden');
-        setTimeout(function() {
+        setTimeout(function () {
             $('.loading').toggleClass('loading-open');
         }, 25);
     }
@@ -11,7 +11,7 @@
     // loading 隐藏
     function closeLoading() {
         $('.loading').addClass('loading-close');
-        setTimeout(function() {
+        setTimeout(function () {
             $('.loading').toggleClass('loading-hidden loading-open').removeClass('loading-close');
         }, 500);
     }
@@ -110,20 +110,15 @@
         }
     }
 
-    // 提交注册用户请求
-    $('div[data-role="submit"]').on('click', function (e) {
-        registerUser();
-    });
-
     // ajax
     function registerUser() {
         openLoading();
         $.ajax({
-                url: '/user/signup',
-                type: 'POST',
-                data: $('#register').serialize()
-            })
-            .done(function(data) {
+            url: '/user/signup',
+            type: 'POST',
+            data: $('#register').serialize()
+        })
+            .done(function (data) {
                 if (data.success) {
                     window.location.href = data.redirectUrl;
                 } else {
@@ -131,29 +126,30 @@
                     $('.warning-info').children('span').html(data.prompt_msg);
                 }
             })
-            .fail(function() {
+            .fail(function () {
                 console.log("error");
             })
-            .always(function() {
+            .always(function () {
                 closeLoading();
                 console.log("complete");
             });
     }
 
     // 提交注册用户请求
-    $('div[data-role="submit"]').on('click', function(e) {
-
-        registerUser();
-
+    $('div[data-role="submit"]').on('click', function (e) {
+        if (!($(e.target).hasClass('disabled'))) {
+            registerUser();
+        }
+    });
     // 清除输入
-    $('.input-clear').on('click', function(e) {
+    $('.input-clear').on('click', function (e) {
         $(e.target).siblings('input').val('');
         $(this).addClass('hidden');
         validateInfo();
     });
 
     // 查看密码
-    $('.input-show').on('click', function(e) {
+    $('.input-show').on('click', function (e) {
         var $Password = $(e.target).siblings('input');
 
         if ($(e.target).hasClass('off')) {
