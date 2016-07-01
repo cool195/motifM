@@ -107,34 +107,40 @@
         console.log('Welcome!  Fetching your information.... ');
         FB.api('/me?fields=id,name,picture,email', function(response) {
             console.log(response);
-            $.ajax({
-                    url: '/facebooklogin',
-                    type: 'POST',
-                    data: {
-                        email: response.email,
-                        id: response.id,
-                        name: response.name,
-                        avatar: response.picture.data.url
-                    }
-                })
-                .done(function(data) {
-                    console.log("success");
-                    if (data.success) {
-                        window.location.href = data.redirectUrl;
-                    } else {
-                        $('.warning-info').removeClass('off');
-                        $('.warning-info').children('span').html(data.prompt_msg);
-                    }
-                })
-                .fail(function() {
-                    console.log("error");
-                })
-                .always(function() {
-                    console.log("complete");
-                });
+            if (response.email === '' && response === undefined) {
+                window.location.href = '/addFacebookEmail?id=' + response.id + '&name=' + response.name + '&avatar=' + response.picture.data.url.encodeURIComponent();
+            } else {
+                $.ajax({
+                        url: '/facebooklogin',
+                        type: 'POST',
+                        data: {
+                            email: response.email,
+                            id: response.id,
+                            name: response.name,
+                            avatar: response.picture.data.url
+                        }
+                    })
+                    .done(function(data) {
+                        console.log("success");
+                        if (data.success) {
+                            window.location.href = data.redirectUrl;
+                        } else {
+                            $('.warning-info').removeClass('off');
+                            $('.warning-info').children('span').html(data.prompt_msg);
+                        }
+                    })
+                    .fail(function() {
+                        console.log("error");
+                    })
+                    .always(function() {
+                        console.log("complete");
+                    });
+
+            }
+
         });
     }
-    
+
     $('#facebookLogin').click(function() {
         /* Act on the event */
         FB.login(function(response) {

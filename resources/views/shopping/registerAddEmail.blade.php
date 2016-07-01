@@ -14,13 +14,13 @@
     <!-- 主体内容 -->
     <div class="resetPwd-container p-t-20x">
         <section class="resetPwd-content m-t-10x p-y-20x">
-            <form action="">
+            <form id="register">
                 <fieldset>
                     <div class="p-b-20x"><img src="/images/login/register-logo.png" srcset="/images/login/register-logo@2x.png 2x,/images/login/register-logo@3x.png 3x">
                     </div>
-                    <div class="text-main m-t-10x"><strong>Reset Password</strong></div>
+                    <div class="text-main m-t-10x"><strong>Add Email</strong></div>
                     <div class="text-primary text-left m-t-15x font-size-sm">
-                        Enter the email address associated with your Motif account, then click Continue. We'll send you a link to reset your password.
+                        Enter the email address associated with your Motif account, then click Continue.
                     </div>
                 </fieldset>
                 <fieldset>
@@ -31,25 +31,37 @@
                         <input class="input-resetPwd form-control font-size-sm" placeholder="Please enter your email address" type="email" name="email">
                     </div>
                     <div class="m-t-20x">
-                        <a class="btn btn-primary btn-block">Continue</a>
+                        <div class="btn btn-primary btn-block" data-role="submit">Continue</div>
                     </div>
                 </fieldset>
                 <div class="text-primary font-size-sm contactUs">
-                    <a href="#">Contact Us</a>
+                    <a class="text-primary" href="/contactus">Contact Us</a>
                 </div>
+                <input type="hidden" name="id" value="{{$params['id']}}">
+                <input type="hidden" name="name" value="{{$params['name']}}">
+                <input type="hidden" name="avatar" value="{{$params['avatar']}}">
             </form>
         </section>
     </div>
-    <!-- success 效果 -->
-    <div class="loading loading-screen loading-transprant loading-hidden" id="success">
-        <div class="loading-modal">
-            <div class="">
-                <img class="img-fluid m-x-auto" src="/images/icon-success.png" srcset="/images/icon-success@2x.png 2x, /images/icon-success@3x.png 3x">
-            </div>
-            <div class="text-white font-size-md text-center m-t-10x" id="successText"></div>
+
+    <!-- 提示添加成功 -->
+    <div class="remodal remodal-md modal-content" data-remodal-id="question-modal" id="successModal">
+        <div class="font-size-sm p-t-20x p-x-15x p-b-15x">
+            <div class="font-size-base">Register Success!</div>
+            <div class="p-t-5x">You will Register Success. </div>
         </div>
+        <hr class="hr-base m-a-0">
+        <div class="btn-group flex">
+            <a href="" class="btn remodal-btn flex-width text-primary" id="confirm">OK</a>
+        </div>
+    </div>
+    <!-- loading 效果 -->
+    <div class="loading loading-screen loading-switch loading-hidden">
+        <div class="loader loader-screen"></div>
     </div>
 </body>
 <script src="/scripts/vendor.js"></script>
+
+<script src="/scripts/registerAddEmial.js"></script>
 
 </html>
