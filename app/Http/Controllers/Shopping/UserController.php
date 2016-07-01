@@ -369,7 +369,7 @@ class UserController extends ApiController
     public function addrAdd(Request $request)
     {
         $country = json_decode(base64_decode($request->input('country')), true);
-        $input = $request->all();
+        $input = $request->except('country');
         $view = View('shopping.profilesetting_addaddress', ['input' => $input, 'first' => $request->get('first')]);
         if(!empty($country)) {
             $view = View('shopping.profilesetting_addaddress', ['country' => $country, 'input' => $input, 'first' => $request->get('first')]);
