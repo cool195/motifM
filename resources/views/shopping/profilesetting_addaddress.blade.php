@@ -62,7 +62,7 @@
                             <div>
                                 <span>@if(!empty($country)){{ $country['country_name_en'] }} @endif</span>
                                 <i class="iconfont icon-arrow-right icon-size-xm text-common"></i>
-                                <input type="text" name="country" hidden value="@if(!empty($country)) {{$country['country_name_en']}} @endif">
+                                <input type="text" name="country" hidden data-optional="false" value="@if(!empty($country)) {{$country['country_name_en']}} @endif">
                             </div>
                         </div>
                     </fieldset>

@@ -106,7 +106,7 @@
         })
             .done(function () {
                 console.log("success");
-                return true;
+                location.reload();
             })
             .fail(function () {
                 console.log("error");
