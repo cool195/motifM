@@ -203,7 +203,7 @@
                     @if(Session::has('user'))
                         <div class="row">
                             <div class="col-xs-6">
-                                <div class="btn btn-primary-outline btn-block" data-control="openModal" data-action="PATCH">Add To
+                                <div class="btn btn-primary-outline btn-block" data-control="openModal" data-action="PATCH">Add to
                                     Bag</div>
                             </div>
                             <div class="col-xs-6">
