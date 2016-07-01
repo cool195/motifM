@@ -20,7 +20,7 @@
             <a href="#" class="share-btn">
                 <img src="/images/icon/youtube.png" srcset="/images/icon/youtube@2x.png 2x,/images/icon/youtube@3x.png 3x">
             </a>
-            <a class="share-btn" href="https://instagram.com/motif.jewelry/">
+            <a class="share-btn" href="https://www.instagram.com/motif.jewelry/">
                 <img src="/images/icon/in.png" srcset="/images/icon/in@2x.png 2x,/images/icon/in@3x.png 3x">
             </a>
             <a href="#" class="share-btn">
@@ -48,26 +48,22 @@
         <div class="row">
             <div class="col-xs-6">
                 <div class="list-group font-size-sm">
-                    <div class="list-group-item list-group-itemText-lg text-primary"><strong>THE
-                            MOTIF</strong>
+                    <div class="list-group-item list-group-itemText-lg text-primary"><strong>MOTIF</strong>
                     </div>
-                    <a class="list-group-item list-group-itemText-lg text-primary" href="/aboutmotif">About Motif</a>
-                    <a class="list-group-item list-group-itemText-lg text-primary" href="/privacynotice">Privacy
-                        Notice</a>
-                    <a class="list-group-item list-group-itemText-lg text-primary" href="/termsconditions">Terms &
-                        Conditions</a>
-                    <a class="list-group-item list-group-itemText-lg text-primary" href="/contactus">Contact Us</a>
+                    <a class="list-group-item list-group-itemText-lg text-primary" href="/aboutmotif">About MOTIF</a>
+                    <a class="list-group-item list-group-itemText-lg text-primary" href="/privacynotice">Privacy Notice</a>
+                    <a class="list-group-item list-group-itemText-lg text-primary" href="/termsconditions">Terms & Conditions</a>
                 </div>
             </div>
             <div class="col-xs-6">
                 <div class="foot-list-group font-size-sm">
-                    <div class="list-group-item list-group-itemText-lg text-primary"><strong>HELP &
-                            SERVICE</strong>
+                    <div class="list-group-item list-group-itemText-lg text-primary"><strong>HELP & SERVICE</strong>
                     </div>
+                    <a class="list-group-item list-group-itemText-lg text-primary" href="/contactus">Contact Us</a>
                     <a class="list-group-item list-group-itemText-lg text-primary" href="/faq">FAQ</a>
+                    <a class="list-group-item list-group-itemText-lg text-primary" href="/payments">Payments</a>
                     <a class="list-group-item list-group-itemText-lg text-primary" href="/shippingreturns">Shipping &
                         Returns</a>
-                    <a class="list-group-item list-group-itemText-lg text-primary" href="/payments">Payments</a>
                 </div>
 
             </div>
