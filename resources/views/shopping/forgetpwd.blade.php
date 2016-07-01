@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 
-    <title>Shopping Cart</title>
+    <title>Rest Password</title>
     @include('head')
     <link rel="stylesheet" href="/styles/resetPassword.css">
 
