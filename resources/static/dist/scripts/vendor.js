@@ -16502,6 +16502,14 @@ else if (typeof define === 'function' && define.amd) {
         }
     }
 
+    function switchSafari() {
+        var Agent = navigator.userAgent;
+        if (/iPhone/i.test(Agent) && /Safari/i.test(Agent) && !(/Chrome/i.test(Agent))) {
+            return true;
+        }
+        return false;
+    }
+
     function switchDownload() {
         var Android = "https://play.google.com/apps/testing/me.motif.motif",
             iPhone = "https://itunes.apple.com/cn/app/id1125850409";
@@ -16588,7 +16596,7 @@ else if (typeof define === 'function' && define.amd) {
                         if (data.data.skusAmout > 0 && data.data.skusAmout <= 99) {
                             $('.nav-shoppingCart').children('span').show();
                             $('.nav-shoppingCart').children('span').html(data.data.skusAmout);
-                        }else if (data.data.skusAmout>99) {
+                        } else if (data.data.skusAmout > 99) {
                             $('.nav-shoppingCart').children('span').show();
                             $('.nav-shoppingCart').children('span').html('99+');
                         } else {
@@ -16606,7 +16614,7 @@ else if (typeof define === 'function' && define.amd) {
             $('.nav-shoppingCart').children('span').remove();
         }
         // downloading 是否显示
-        if (getCookie('downloadingApp')) {
+        if (getCookie('downloadingApp') || switchSafari()) {
             $('#closeDownloading').parents('nav').remove();
         }
     })();
