@@ -17,7 +17,7 @@
 <!-- 主体内容 -->
 <div class="login-container">
     <section class="login-content p-y-20x">
-        <div class="m-x-auto m-b-20x text-center">
+        <div class="m-x-auto m-b-20x text-center p-b-20x">
             <a href="/daily">
                 <img class="motif-logo" src="/images/login/login-logo.png"
                  srcset="/images/login/login-logo@2x.png 2x,/images/login/login-logo@3x.png 3x">
