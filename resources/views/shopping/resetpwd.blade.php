@@ -42,22 +42,16 @@
     </section>
 
 </div>
-<!-- 提示成功修改密码 -->
-<div class="remodal remodal-lg modal-content" data-remodal-id="changePwd-modal" id="changePwdDialog">
+<!-- 提示添加成功 -->
+<div class="remodal remodal-md modal-content" data-remodal-id="question-modal" id="successModal">
     <div class="font-size-sm p-t-20x p-x-15x p-b-15x">
-        <span class="font-size-base">Password Change Success</span>
-        <br> Your Password has been changed.
-        <br>Please log in again!
+        <div class="font-size-base">Email sent!</div>
+        <div class="p-t-5x">You will receive an email from us shortly. If you haven't received our email, please check your spam folder or contact our Customer Support team. </div>
     </div>
     <hr class="hr-base m-a-0">
     <div class="btn-group flex">
-        <a href="" class="btn remodal-btn flex-width text-primary" id="confirmPwd">OK</a>
+        <a href="" class="btn remodal-btn flex-width text-primary" id="confirm">OK</a>
     </div>
-</div>
-
-<!-- loading 效果 -->
-<div class="loading loading-screen loading-switch loading-hidden">
-    <div class="loader loader-screen"></div>
 </div>
 </body>
 <script src="/scripts/vendor.js"></script>

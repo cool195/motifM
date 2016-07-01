@@ -27,13 +27,13 @@ class ProductController extends ApiController
         if (!$result['success']) {
             return redirect('/shopping');
         }
-        $recommended = $this->recommended($spu);
+        $recommended = $this->recommended($spu,$result['data']['front_category_ids'][0]);
         //dd($recommended['data']['list']);
         return View('shopping.detail', ['data' => $result['data'], 'recommended' => isset($recommended['data']['list']) ? $recommended['data']['list'] : array()]);
     }
 
     //获取相关推荐商品
-    public function recommended($spu)
+    public function recommended($spu,$cid)
     {
         $params = array(
             'recid' => '100002',
@@ -42,7 +42,7 @@ class ProductController extends ApiController
             'pagesize' => 16,
             'spu' => $spu,
         );
-
+        $params['cid'] = isset($cid) ? $cid : -1;
         return $this->request('openapi', '', "rec", $params);
     }
 

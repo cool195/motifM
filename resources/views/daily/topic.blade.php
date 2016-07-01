@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+<?php error_reporting(0)?>
 <head>
 
     <title>{{$topic['title']}}</title>
