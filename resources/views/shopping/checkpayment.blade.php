@@ -86,7 +86,7 @@
                         <hr class="hr-base m-a-0">
                     @endforeach
                     <div class="bg-white">
-                        @if(count($methodlist['Card']) <= 5)
+                        @if(count($methodlist['Card']) < 5)
                         <div class="flex flex-alignCenter text-primary p-a-15x" id="cardCredit"
                              data-action="/braintree/addcard">
                             <i class="iconfont icon-add icon-size-sm p-r-10x"></i>
