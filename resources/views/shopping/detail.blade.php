@@ -87,46 +87,46 @@
             <section>
 
                 <!-- 选择商品参数 -->
-                @if(isset($data['spuAttrs']) || isset($data['vasBases']))
-                    <aside class="bg-white m-b-10x">
-                        <a class="flex flex-alignCenter flex-fullJustified font-size-sm text-primary p-a-15x"
-                           data-remodal-target="modal" href="#">
-                            <span data-select>Select</span>
-						<span class="flex flex-alignCenter flex-fullJustified">
-							<span class="m-r-10x" data-select-options>
-                                @foreach($data['spuAttrs'] as $key => $attrs)
-                                    @if((count($data['spuAttrs']) - 1) == $key)
-                                        {{$attrs['attr_type_value']}}
-                                    @else
-                                        {{$attrs['attr_type_value'].", "}}
-                                    @endif
-                                @endforeach
+                {{--@if(isset($data['spuAttrs']) || isset($data['vasBases']))--}}
+                    {{--<aside class="bg-white m-b-10x">--}}
+                        {{--<a class="flex flex-alignCenter flex-fullJustified font-size-sm text-primary p-a-15x"--}}
+                           {{--data-remodal-target="modal" href="#">--}}
+                            {{--<span data-select>Select</span>--}}
+						{{--<span class="flex flex-alignCenter flex-fullJustified">--}}
+							{{--<span class="m-r-10x" data-select-options>--}}
+                                {{--@foreach($data['spuAttrs'] as $key => $attrs)--}}
+                                    {{--@if((count($data['spuAttrs']) - 1) == $key)--}}
+                                        {{--{{$attrs['attr_type_value']}}--}}
+                                    {{--@else--}}
+                                        {{--{{$attrs['attr_type_value'].", "}}--}}
+                                    {{--@endif--}}
+                                {{--@endforeach--}}
 
-							</span>
-							<i class="iconfont icon-arrow-right icon-size-xm text-common"></i>
-						</span>
-                        </a>
-                    </aside>
-                @endif
+							{{--</span>--}}
+							{{--<i class="iconfont icon-arrow-right icon-size-xm text-common"></i>--}}
+						{{--</span>--}}
+                        {{--</a>--}}
+                    {{--</aside>--}}
+                {{--@endif--}}
             <!-- 添加到购物车 立即购买 -->
                 <aside class="container-fluid bg-white p-y-10x p-x-15x m-b-10x">
                     @if(Session::has('user'))
                         <div class="row">
-                            <div class="col-xs-6">
-                                <div class="btn btn-primary-outline btn-block" data-control="openModal" data-action="PATCH">Add to Bag</div>
+                            <div class="col-xs-12">
+                                <div class="btn btn-primary btn-block" data-control="openModal" data-action="PATCH">Add to Bag</div>
                             </div>
-                            <div class="col-xs-6">
-                                <div class="btn btn-primary btn-block" data-control="openModal" data-action="PUT">Buy Now</div>
-                            </div>
+                            {{--<div class="col-xs-6">--}}
+                                {{--<div class="btn btn-primary btn-block" data-control="openModal" data-action="PUT">Buy Now</div>--}}
+                            {{--</div>--}}
                         </div>
                     @else
                         <div class="row">
-                            <div class="col-xs-6">
-                                <a href="/login" class="btn btn-primary-outline btn-block" id="addCart">Add to Bag</a>
+                            <div class="col-xs-12">
+                                <a href="/login" class="btn btn-primary btn-block" id="addCart">Add to Bag</a>
                             </div>
-                            <div class="col-xs-6">
-                                <a href="/login" class="btn btn-primary btn-block" id="buyNow">Buy Now</a>
-                            </div>
+                            {{--<div class="col-xs-6">--}}
+                                {{--<a href="/login" class="btn btn-primary btn-block" id="buyNow">Buy Now</a>--}}
+                            {{--</div>--}}
                         </div>
                     @endif
                 </aside>
@@ -202,22 +202,22 @@
                 <aside class="product-secondaryInfo container-fluid p-y-10x p-x-15x">
                     @if(Session::has('user'))
                         <div class="row">
-                            <div class="col-xs-6">
-                                <div class="btn btn-primary-outline btn-block" data-control="openModal" data-action="PATCH">Add to
+                            <div class="col-xs-12">
+                                <div class="btn btn-primary btn-block" data-control="openModal" data-action="PATCH">Add to
                                     Bag</div>
                             </div>
-                            <div class="col-xs-6">
-                                <div class="btn btn-primary btn-block" data-control="openModal" data-action="PUT">Buy Now</div>
-                            </div>
+                            {{--<div class="col-xs-6">--}}
+                                {{--<div class="btn btn-primary btn-block" data-control="openModal" data-action="PUT">Buy Now</div>--}}
+                            {{--</div>--}}
                         </div>
                     @else
                         <div class="row">
-                            <div class="col-xs-6">
-                                <a href="/login" class="btn btn-primary-outline btn-block" id="addCart">Add to Bag</a>
+                            <div class="col-xs-12">
+                                <a href="/login" class="btn btn-primary btn-block" id="addCart">Add to Bag</a>
                             </div>
-                            <div class="col-xs-6">
-                                <a href="/login" class="btn btn-primary btn-block" id="buyNow">Buy Now</a>
-                            </div>
+                            {{--<div class="col-xs-6">--}}
+                                {{--<a href="/login" class="btn btn-primary btn-block" id="buyNow">Buy Now</a>--}}
+                            {{--</div>--}}
                         </div>
                     @endif
                 </aside>
@@ -330,25 +330,25 @@
                             <!-- 添加 购物车 控制按钮显示 -->
                     <div class="btn btn-primary btn-block  hidden-xs-up @if(!(!empty($data['vasBases']) && empty($data['spuAttrs'])))disabled @endif" data-control="continue" data-role="continue" data-action="">Continue</div>
                     <div class="row" data-control="modalButton">
-                        <div class="col-xs-6">
-                            <div class="btn btn-primary-outline btn-block @if(!(!empty($data['vasBases']) && empty($data['spuAttrs'])))disabled @endif"
+                        <div class="col-xs-12">
+                            <div class="btn btn-primary btn-block @if(!(!empty($data['vasBases']) && empty($data['spuAttrs'])))disabled @endif"
                                  data-role="modalButton" data-action="PATCH">Add to Bag
                             </div>
                         </div>
-                        <div class="col-xs-6">
-                            <div class="btn btn-primary btn-block @if(!(!empty($data['vasBases']) && empty($data['spuAttrs'])))disabled @endif"
-                                 data-role="modalButton" data-action="PUT">Buy Now
-                            </div>
-                        </div>
+                        {{--<div class="col-xs-6">--}}
+                            {{--<div class="btn btn-primary btn-block @if(!(!empty($data['vasBases']) && empty($data['spuAttrs'])))disabled @endif"--}}
+                                 {{--data-role="modalButton" data-action="PUT">Buy Now--}}
+                            {{--</div>--}}
+                        {{--</div>--}}
                     </div>
                     @else
                         <div class="row">
-                            <div class="col-xs-6">
-                                <a href="/login" class="btn btn-primary-outline btn-block" id="addCart">Add to Bag</a>
+                            <div class="col-xs-12">
+                                <a href="/login" class="btn btn-primary btn-block" id="addCart">Add to Bag</a>
                             </div>
-                            <div class="col-xs-6">
-                                <a href="/login" class="btn btn-primary btn-block" id="buyNow">Buy Now</a>
-                            </div>
+                            {{--<div class="col-xs-6">--}}
+                                {{--<a href="/login" class="btn btn-primary btn-block" id="buyNow">Buy Now</a>--}}
+                            {{--</div>--}}
                         </div>
                     @endif
                 </fieldset>

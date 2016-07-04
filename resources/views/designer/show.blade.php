@@ -43,8 +43,8 @@
                 <div class="flex flex-alignCenter flex-fullJustified p-x-10x p-t-10x">
                     <p class="font-size-base text-main"><strong>{{$designer['nickname']}}</strong></p>
                 </div>
-                <div class="font-size-sm text-primary p-a-10x">{{$designer['intro']}}</div>
-                <hr class="hr-base m-a-0">
+                {{--<div class="font-size-sm text-primary p-a-10x">{{$designer['intro']}}</div>--}}
+                {{--<hr class="hr-base m-a-0">--}}
                 <div class="font-size-sm text-primary p-a-10x">
                     <div class="message-info">
                         <p class="m-b-0">{{$designer['describe']}}</p>

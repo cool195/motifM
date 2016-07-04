@@ -27,7 +27,7 @@
                                     <a class="" href="/designer/{{$value['designerId']}}">
                                         <img class="img-fluid"
                                              src="https://s3-us-west-1.amazonaws.com/emimagetest/n0/{{$value['avatar']}}">
-                                        <div class="designer-text font-size-sm text-center">{{$value['name']}}</div>
+                                        {{--<div class="designer-text font-size-sm text-center">{{$value['name']}}</div>--}}
                                     </a>
                                 </div>
                             @endforeach
