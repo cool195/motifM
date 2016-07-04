@@ -17,13 +17,13 @@
     <!-- designer 设计师首页 -->
         <section>
             <!-- 设计师列表 -->
-            <article class="bg-white p-a-15x m-b-10x">
-                <h5 class="font-size-base text-main m-b-10x"><strong>DESIGNERS</strong></h5>
+            <article class="bg-white p-y-15x m-b-10x">
+                <h5 class="font-size-base text-main p-x-15x m-b-10x"><strong>DESIGNERS</strong></h5>
                 <div class="p-a-0 swiper-container">
                     <div class="swiper-wrapper">
                         @if(isset($recdesigner))
                             @foreach($recdesigner as $value)
-                                <div class="designer-item swiper-slide p-x-5x">
+                                <div class="designer-item swiper-slide p-r-10x">
                                     <a class="" href="/designer/{{$value['designerId']}}">
                                         <img class="img-fluid img-lazy"
                                              src="/images/designer/bg-designer@140.png"
