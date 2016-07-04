@@ -63,6 +63,20 @@
                     </a>
                 </div>
                 <div class="p-x-10x p-t-5x p-b-15x">
+                    @if(!empty($designer['instagram_link']))
+                        <a href="motif://o.c?a=outurl&url={{$designer['instagram_link']}}" target="_blank"
+                           class="p-r-20x">
+                            <img src="/images/designer/ins.png"
+                                 srcset="/images/designer/ins@2x.png 2x,/images/designer/ins@3x.png 3x">
+                        </a>
+                    @endif
+                    @if(!empty($designer['snapchat_link']))
+                        <a href="motif://o.c?a=outurl&url={{$designer['snapchat_link']}}" target="_blank"
+                           class="p-r-20x">
+                            <img src="/images/designer/snapchat.png"
+                                 srcset="/images/designer/snapchat@2x.png 2x,/images/designer/snapchat@3x.png 3x">
+                        </a>
+                    @endif
                     @if(!empty($designer['youtube_link']))
                         <a href="motif://o.c?a=outurl&url={{$designer['youtube_link']}}" target="_blank"
                            class="p-r-20x">
@@ -75,13 +89,6 @@
                            class="p-r-20x">
                             <img src="/images/designer/facebook.png"
                                  srcset="/images/designer/facebook@2x.png 2x,/images/designer/facebook@3x.png 3x">
-                        </a>
-                    @endif
-                    @if(!empty($designer['instagram_link']))
-                        <a href="motif://o.c?a=outurl&url={{$designer['instagram_link']}}" target="_blank"
-                           class="p-r-20x">
-                            <img src="/images/designer/ins.png"
-                                 srcset="/images/designer/ins@2x.png 2x,/images/designer/ins@3x.png 3x">
                         </a>
                     @endif
                 </div>

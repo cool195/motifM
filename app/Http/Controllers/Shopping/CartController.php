@@ -36,7 +36,7 @@ class CartController extends ApiController
 		$defaultPayMethod = $this->getDefaultPayMethod();
 		$stype = !empty($request->input('stype')) ? $request->input('stype', 1) : 1; //必须加非空验证
 		$cps = $request->input('cps');
-		$defaultMethod = $this->getShippingMethodByStype($stype);
+		$defaultMethod = $this->getShippingMethodByStypeOrDefault($stype);
 		$result = $this->getCartAccountList($request, $defaultMethod['logistics_type'], $cps);
 		$result['data']['cardlist'] = array('Diners' => 'diners-club', 'Discover' => 'discover', 'JCB' => 'jcb', 'Maestro' => 'maestro', 'AmericanExpress' => 'american-express', 'Visa' => 'visa', 'MasterCard' => 'master-card');
 		if(empty($result['data'])){
@@ -487,12 +487,13 @@ class CartController extends ApiController
 		return $result;
 	}
 
-	public function getShippingMethodByStype($stype)
+	public function getShippingMethodByStypeOrDefault($stype)
 	{
-		$methodList = $this->getShippingMethod();
+		$defaultStype = 1;
 		$method = array();
-		if( !empty($methodList)){
-			$method = $methodList[1];
+		$methodList = $this->getShippingMethod();
+		if( !empty($methodList) ){
+			$method = $methodList[$defaultStype];
 			if(isset($methodList[$stype])){
 				$method = $methodList[$stype];
 			}
@@ -522,11 +523,5 @@ class CartController extends ApiController
 		}
 		return $result['data']['list'];
 	}
-
-/*	public function verifyCoupon(Request $request)
-	{
-		$result['success'] = true;
-		return $result;
-	}*/
 
 }
