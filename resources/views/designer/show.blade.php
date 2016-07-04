@@ -61,6 +61,12 @@
                                  srcset="/images/designer/youtube@2x.png 2x,/images/designer/youtube@3x.png 3x">
                         </a>
                     @endif
+                    @if(!empty($designer['snapchat_link']))
+                        <a href="{{$designer['snapchat_link']}}" target="_blank" class="p-r-20x">
+                            <img src="/images/designer/snapchat.png"
+                                 srcset="/images/designer/ins@2x.png 2x,/images/designer/ins@3x.png 3x">
+                        </a>
+                    @endif
                     @if(!empty($designer['facebook_link']))
                         <a href="{{$designer['facebook_link']}}" target="_blank" class="p-r-20x">
                             <img src="/images/designer/facebook.png"
