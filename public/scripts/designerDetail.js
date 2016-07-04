@@ -141,8 +141,8 @@
     function changeFollow(id) {
         openLoading();
         $.ajax({
-            url: '/followDesigner' + id,
-            type: 'POST'
+            url: '/followDesigner/'+id,
+            type: 'GET'
         })
             .done(function (data) {
                 if (data.success) {
