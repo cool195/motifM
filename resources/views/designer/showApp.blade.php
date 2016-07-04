@@ -244,6 +244,7 @@
                     uuid: action.data.uuid
                 },
                 success: function (data) {
+                    alert(data.success)
                     if (data.success) {
                         window.location.reload()
                     }
