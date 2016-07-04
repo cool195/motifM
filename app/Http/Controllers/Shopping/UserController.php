@@ -368,7 +368,8 @@ class UserController extends ApiController
 
     public function addrAdd(Request $request)
     {
-        $country = json_decode(base64_decode($request->input('country')), true);
+        $defaultCountry = array('country_id'=>1, 'country_name_cn'=>'美国', 'country_name_en'=>"United States", 'iDnumberReq'=>0, 'isFreq'=>1, 'sort_no'=>100);
+        $country = json_decode(base64_decode($request->input('country', base64_encode(json_encode($defaultCountry)))), true);
         $input = $request->except('country');
         $view = View('shopping.profilesetting_addaddress', ['input' => $input, 'first' => $request->get('first')]);
         if(!empty($country)) {
@@ -407,6 +408,8 @@ class UserController extends ApiController
         $input = $request->except('country', 'route');
         $params = array(
             'cmd' => 'country',
+            'token' => Session::get('user.token'),
+            'pin' => Session::get('user.pin')
         );
         $system = "";
         $service = "useraddr";

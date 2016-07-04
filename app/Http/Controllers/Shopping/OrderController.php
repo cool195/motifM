@@ -106,24 +106,25 @@ class OrderController extends ApiController
         $system = "";
         $service = "order";
         $result = $this->request('openapi', $system, $service, $params);
-        if (empty($result)) {
-            $result['success'] = false;
-            $result['error_msg'] = "Data access failed";
-            $result['data'] = array();
-        } else {
-            if ($result['success'] && !empty($result['data']['lineOrderList'])) {
-                $lineOrderList = array();
-                foreach ($result['data']['lineOrderList'] as $lineOrder) {
-                    if (isset($lineOrder['attrValues'])) {
-                        $lineOrder['attrValues'] = json_decode($lineOrder['attrValues'], true);
-                    }
-                    if (isset($lineOrder['vas_info'])) {
-                        $lineOrder['vas_info'] = json_decode($lineOrder['vas_info'], true);
-                    }
-                    $lineOrderList[] = $lineOrder;
+        if ($result['success']) {
+            $result = $this->jsonDecodeOrderDetailResult($result);
+        }
+        return $result;
+    }
+
+    private function jsonDecodeOrderDetailResult(Array $result){
+        if(!empty($result['data']['lineOrderList'])) {
+            $lineOrderList = array();
+            foreach ($result['data']['lineOrderList'] as $lineOrder) {
+                if (isset($lineOrder['attrValues'])) {
+                    $lineOrder['attrValues'] = json_decode($lineOrder['attrValues'], true);
                 }
-                $result['data']['lineOrderList'] = $lineOrderList;
+                if (isset($lineOrder['vas_info'])) {
+                    $lineOrder['vas_info'] = json_decode($lineOrder['vas_info'], true);
+                }
+                $lineOrderList[] = $lineOrder;
             }
+            $result['data']['lineOrderList'] = $lineOrderList;
         }
         return $result;
     }

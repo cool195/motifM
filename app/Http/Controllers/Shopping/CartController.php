@@ -134,9 +134,10 @@ class CartController extends ApiController
 
 	public function addrAdd(Request $request)
 	{
+		$defaultCountry = array('country_id'=>1, 'country_name_cn'=>'美国', 'country_name_en'=>"United States", 'iDnumberReq'=>0, 'isFreq'=>1, 'sort_no'=>100);
+		$country = json_decode(base64_decode($request->input('country', base64_encode(json_encode($defaultCountry)))), true);
 		$input = $request->except('country');
 		$checkout = $request->except('email', 'name', 'addr1', 'addr2', 'state', 'city', 'zip', 'tel', 'idnum', 'country', 'isd', 'route');
-		$country = json_decode(base64_decode($request->input('country')), true);
 		return View('shopping.ordercheckout_addaddress', ['input'=>$input, 'checkout'=>$checkout, 'country'=>$country, 'first'=>$request->input('first')]);
 	}
 
@@ -168,6 +169,8 @@ class CartController extends ApiController
 		//$checkout = $request->except('email', 'name', 'addr1', 'addr2', 'state', 'city', 'zip', 'tel', 'idnum', 'country', 'isd', 'route');
 		$params = array(
 			'cmd'=>'country',
+			'token'=>Session::get('user.token'),
+			'pin'=>Session::get('user.pin')
 		);
 		$system = "";
 		$service = "useraddr";
