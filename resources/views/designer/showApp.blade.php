@@ -91,9 +91,9 @@
             <aside class="bg-white p-b-10x">
             @if(isset($product['infos']))
                 @foreach($product['infos'] as $k=>$value)
-                    @if($value['type']=='banner')
+                    @if($value['type']=='banner' || (!isset($value['spus']) && $value['type']=='product'))
                         <!-- 第一个 banner 图 -->
-                            <a href="@if($value['skipType']=='1')motif://o.c?a=pd&spu=@elseif($value['skipType']=='2')/designer/@elseif($value['skipType']=='3')/topic/@elseif($value['skipType']=='4')motif://o.c?a=shoppinglist&cid=@endif{{$value['skipId']}}">
+                            <a href="@if($value['skipType']=='1')motif://o.c?a=pd&spu={{$value['skipId']}}@elseif($value['skipType']=='2')/designer/{{$value['skipId']}}@elseif($value['skipType']=='3')/topic/{{$value['skipId']}}@elseif($value['skipType']=='4')motif://o.c?a=shoppinglist&cid={{$value['skipId']}}@else{{'motif://o.c?a=outurl&url='.$value['imgUrl']}}@endif">
                                 <div @if($k!=0)class="p-y-10x"@endif>
                                     <img class="img-fluid"
                                          src="https://s3-us-west-1.amazonaws.com/emimagetest/n0/{{$value['imgPath']}}">
@@ -101,7 +101,7 @@
                             </a>
                     @elseif($value['type']=='title')
                         <!-- 标题 -->
-                            <a href="@if($value['skipType']=='1')motif://o.c?a=pd&spu=@elseif($value['skipType']=='2')/designer/@elseif($value['skipType']=='3')/topic/@elseif($value['skipType']=='4')motif://o.c?a=shoppinglist&cid=@endif{{$value['skipId']}}">
+                            <a href="@if($value['skipType']=='1')motif://o.c?a=pd&spu={{$value['skipId']}}@elseif($value['skipType']=='2')/designer/{{$value['skipId']}}@elseif($value['skipType']=='3')/topic/{{$value['skipId']}}@elseif($value['skipType']=='4')motif://o.c?a=shoppinglist&cid={{$value['skipId']}}@else{{'motif://o.c?a=outurl&url='.$value['imgUrl']}}@endif">
                                 <div class="p-x-15x p-y-10x text-primary">
                                     <strong>{{$value['value']}}</strong>
                                 </div>
@@ -110,7 +110,7 @@
                             <hr class="hr-base m-x-5x m-y-0">
                         @elseif($value['type']=='context')
                         <!-- 描述 -->
-                            <a href="@if($value['skipType']=='1')motif://o.c?a=pd&spu=@elseif($value['skipType']=='2')/designer/@elseif($value['skipType']=='3')/topic/@elseif($value['skipType']=='4')motif://o.c?a=shoppinglist&cid=@endif{{$value['skipId']}}">
+                            <a href="@if($value['skipType']=='1')motif://o.c?a=pd&spu={{$value['skipId']}}@elseif($value['skipType']=='2')/designer/{{$value['skipId']}}@elseif($value['skipType']=='3')/topic/{{$value['skipId']}}@elseif($value['skipType']=='4')motif://o.c?a=shoppinglist&cid={{$value['skipId']}}@else{{'motif://o.c?a=outurl&url='.$value['imgUrl']}}@endif">
                                 <div class="p-x-15x p-y-10x text-primary font-size-sm">
                                     {{$value['value']}}
                                 </div>
