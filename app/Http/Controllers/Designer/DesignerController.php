@@ -38,7 +38,7 @@ class DesignerController extends ApiController
     }
 
     //设计师详情
-    public function show($id)
+    public function show(Request $request,$id)
     {
         //设计师详情
         $params = array(
@@ -87,7 +87,9 @@ class DesignerController extends ApiController
                 $follow = $this->request('openapi', '', 'follow', $followParams);
                 $result['data']['followStatus'] = $follow['data']['isFC'];
             } else {
-                Session::forget('user');
+                if(!$request->input('rsync')==1){
+                    Session::forget('user');
+                }
             }
             $view = 'designer.showApp';
         } else {
