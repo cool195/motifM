@@ -144,8 +144,7 @@
         <aside class="bg-white m-b-10x">
             <div class="p-a-10x">
                 <div class="flex flex-fullJustified text-primary font-size-sm">
-                    <span>Items({{ $data['item_qtty'] }}
-                        )</span><span>${{number_format(($data['total_amount'] / 100), 2)}}</span>
+                    <span>Items({{ $data['item_qtty'] }})</span><span>${{number_format(($data['total_amount'] / 100), 2)}}</span>
                 </div>
                 @if($data['vas_amount'] > 0)
                 <div class="flex flex-fullJustified text-primary font-size-sm">

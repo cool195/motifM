@@ -215,6 +215,8 @@ class AddressController extends ApiController
 	{
 		$params = array(
 			'cmd'=>'country',
+			'token'=>Session::get('user.token'),
+			'pin'=>Session::get('user.pin')
 		);
 		$system = "";
 		$service = "useraddr";
