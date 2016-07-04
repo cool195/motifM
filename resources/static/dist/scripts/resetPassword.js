@@ -10,6 +10,21 @@
         hashTracking: false
     };
     var Modal = $('#successModal').remodal(options);
+    // loading 打开
+    function openLoading() {
+        $('.loading').toggleClass('loading-hidden');
+        setTimeout(function() {
+            $('.loading').toggleClass('loading-open');
+        }, 25);
+    }
+
+    // loading 隐藏
+    function closeLoading() {
+        $('.loading').addClass('loading-close');
+        setTimeout(function() {
+            $('.loading').toggleClass('loading-hidden loading-open').removeClass('loading-close');
+        }, 500);
+    }
 
     function validationEmail($Email) {
         var EmailNull = 'Please enter your email',
@@ -43,6 +58,7 @@
 
     $('div[data-role="submit"]').click(function() {
         if (!$(this).hasClass('disabled')) {
+            openLoading();
             $.ajax({
                     url: '/user/forget',
                     type: 'POST',
@@ -60,6 +76,7 @@
                     }
                 })
                 .always(function() {
+                    closeLoading();
                 });
         }
     });
