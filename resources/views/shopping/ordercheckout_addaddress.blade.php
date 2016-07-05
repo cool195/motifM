@@ -30,7 +30,7 @@
                     </fieldset>
                     <hr class="hr-base m-a-0">
                     <fieldset>
-                        <input class="form-control form-control-block p-a-15x font-size-sm" name="name" type="text" data-optional="false" data-role="name" value="{{!empty($input['name']) ? $input['name'] : ""}}" placeholder="Full Name">
+                        <input class="form-control form-control-block p-a-15x font-size-sm" name="name" type="text" maxlength="32" data-optional="false" data-role="name" placeholder="Full Name">
                     </fieldset>
                     <hr class="hr-base m-a-0">
                     <fieldset>
@@ -50,7 +50,7 @@
                     </fieldset>
                     <hr class="hr-base m-a-0">
                     <fieldset>
-                        <input class="form-control form-control-block p-a-15x font-size-sm" name="zip" type="tel" data-optional="false" data-role="zip code" value="{{!empty($input['zip']) ? $input['zip'] : ""}}"  placeholder="Zip code">
+                        <input class="form-control form-control-block p-a-15x font-size-sm" name="zip" type="number" maxlength="10" data-optional="false" data-role="zip code" placeholder="Zip code">
                     </fieldset>
                     <hr class="hr-base m-a-0">
                     <fieldset>

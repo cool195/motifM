@@ -35,10 +35,20 @@
 
         </div>
     </div>
-    <!-- loading 效果 -->
-    <div class="loading loading-screen loading-switch loading-hidden">
-        <div class="loader loader-screen"></div>
+<!-- loading 效果 -->
+<div class="loading loading-screen loading-switch loading-hidden">
+    <div class="loader loader-screen"></div>
+</div>
+<!-- 用户修改成功后的提示 -->
+<div class="loading loading-screen loading-transprant loading-hidden" id="success">
+    <div class="loading-modal">
+        <div class="">
+            <img class="img-fluid m-x-auto" src="/images/icon-success.png"
+                 srcset="/images/icon-success@2x.png 2x, /images/icon-success@3x.png 3x">
+        </div>
+        <div class="text-white font-size-md text-center m-t-10x">Update succeeded!</div>
     </div>
+</div>
 
 </body>
 <script src="/scripts/vendor.js"></script>

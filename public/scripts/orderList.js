@@ -46,12 +46,13 @@
                 if (data.data === null || data.data === '' || data.data.list.length === 0) {
                     // 没有数据要加载
                     $OrderContainer.data('pagenum', -1);
+                    $('#emptyOrder').removeClass('hidden-xs-up');
                 } else if (data.data.list.length > 0) {
-                    if (NextPage === 1) {
-                        $('#emptyOrder').remove();
-                    } else {
-                        $('#emptyOrder').removeClass('hidden-xs-up');
-                    }
+                    // if (NextPage === 1) {
+                    $('#emptyOrder').remove();
+                    // } else {
+                    // $('#emptyOrder').removeClass('hidden-xs-up');
+                    // }
 
                     // 遍历模板 插入页面
                     appendProductsList(data.data);

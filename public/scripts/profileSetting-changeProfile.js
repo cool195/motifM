@@ -55,9 +55,9 @@
                         openAddSuccess();
                         setTimeout(function() {
                             closeAddSuccess();
+                            window.location.href = data.redirectUrl;
                         }, 1500);
 
-                        window.location.href = data.redirectUrl;
                     }
                 })
                 .always(function() {
