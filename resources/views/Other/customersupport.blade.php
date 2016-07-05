@@ -28,7 +28,7 @@
                 </div>
                 <fieldset class="bg-white m-b-10x message-type" data-type="{{ $customers['feedback_type'] }}" data-stype="">
                     <a class="p-a-15x flex flex-alignCenter flex-fullJustified btn-massageType" href="#">
-                        <span class="font-size-sm text-primary">Question Type</span>
+                        <span class="font-size-sm text-primary">Choose a Category</span>
                         <i class="iconfont icon-arrow-bottom icon-size-xm text-common"></i>
                     </a>
                     <div class="messageType-list bg-white text-primary font-size-sm">
