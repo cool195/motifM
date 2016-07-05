@@ -57,7 +57,7 @@ class DesignerController extends ApiController
 
         //设计师商品
         $params = array(
-            'recid' => '100000',
+            'recid' => '100004',
             'pagenum' => 1,
             'pagesize' => 16,
             'uuid' => $_COOKIE['uid'] ? $_COOKIE['uid'] : 'ioscookieuidnull',
