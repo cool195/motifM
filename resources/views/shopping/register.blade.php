@@ -41,7 +41,7 @@
             </fieldset>
         </form>
         <div class="m-t-15x text-primary text-center font-size-sm">
-            By registering,You’ve read and accepted our<br>
+            By registering,You’ve accepted our<br>
             <a class="text-primary text-underLine" href="/termsconditions">Terms & Conditions</a>
         </div>
         <div class="m-t-20x">
@@ -56,6 +56,17 @@
         <div class="m-t-20x text-primary text-center font-size-sm"><a href="/contactus">Contact Us</a></div>
     </section>
 </div>
+<!-- 提示注册成功 -->
+<div class="remodal remodal-lg modal-content" data-remodal-id="changePwd-modal" id="successDialog">
+    <div class="font-size-sm p-t-20x p-x-15x p-b-15x">
+        <div class="font-size-base">Congratulation！</div>
+        <span>Account Created Successfully</span>
+    </div>
+    <hr class="hr-base m-a-0">
+    <div class="btn-group flex">
+        <a href="" class="btn remodal-btn flex-width text-primary" id="confirm">OK</a>
+    </div>
+</div>s
 <!-- loading 效果 -->
 <div class="loading loading-screen loading-switch loading-hidden">
     <div class="loader loader-screen"></div>

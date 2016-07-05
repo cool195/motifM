@@ -1,10 +1,15 @@
 'use strict';
 /*global jQuery*/
-(function ($) {
+(function($) {
+    // 初始化模态框
+    var $Modal = $('#successDialog').remodal({
+        closeOnOutsideClick: false,
+        hashTracking: false
+    });
     // loading 打开
     function openLoading() {
         $('.loading').toggleClass('loading-hidden');
-        setTimeout(function () {
+        setTimeout(function() {
             $('.loading').toggleClass('loading-open');
         }, 25);
     }
@@ -12,7 +17,7 @@
     // loading 隐藏
     function closeLoading() {
         $('.loading').addClass('loading-close');
-        setTimeout(function () {
+        setTimeout(function() {
             $('.loading').toggleClass('loading-hidden loading-open').removeClass('loading-close');
         }, 500);
     }
@@ -99,7 +104,7 @@
         }
     }
     // 输入注册信息时 进行验证
-    $('.input-register').on('keyup', function () {
+    $('.input-register').on('keyup', function() {
         var InputText = $(this).val();
         if (InputText === '' || InputText === undefined) {
             $(this).siblings('.input-clear').addClass('hidden');
@@ -114,38 +119,39 @@
     function registerUser() {
         openLoading();
         $.ajax({
-            url: '/user/signup',
-            type: 'POST',
-            data: $('#register').serialize()
-        })
-            .done(function (data) {
+                url: '/user/signup',
+                type: 'POST',
+                data: $('#register').serialize()
+            })
+            .done(function(data) {
                 if (data.success) {
-                    window.location.href = data.redirectUrl;
+                    $Modal.open();
+                    $('#confirm').attr('href', data.redirectUrl);
                 } else {
                     $('.warning-info').removeClass('off');
                     $('.warning-info').children('span').html(data.prompt_msg);
                 }
             })
-            .always(function () {
+            .always(function() {
                 closeLoading();
             });
     }
 
     // 提交注册用户请求
-    $('div[data-role="submit"]').on('click', function (e) {
+    $('div[data-role="submit"]').on('click', function(e) {
         if (!($(e.target).hasClass('disabled'))) {
             registerUser();
         }
     });
     // 清除输入
-    $('.input-clear').on('click', function (e) {
+    $('.input-clear').on('click', function(e) {
         $(e.target).siblings('input').val('');
         $(this).addClass('hidden');
         validateInfo();
     });
 
     // 查看密码
-    $('.input-show').on('click', function (e) {
+    $('.input-show').on('click', function(e) {
         var $Password = $(e.target).siblings('input');
 
         if ($(e.target).hasClass('off')) {
