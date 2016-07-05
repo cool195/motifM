@@ -20,19 +20,19 @@ class AskController extends ApiController
 
         $params = array(
             'cmd' => 'support',
-      //todo 转码? 'content' => mb_convert_encoding($request->input('content'), "GBK","UTF-8"),
             'content' => $request->input('content'),
             'email' => $request->input('email'),
             'pin' => Session::get('user.pin'),
             'type' => $request->input('skiptype'),
-            'stype' => $request->input('skiptype'),
         );
         $urlStr = '';
         if ($request->input('skiptype') == 3) {
             $params['spu'] = $request->input('id');
+            $params['stype'] = 3;
             $urlStr = '/detail/';
         } elseif ($request->input('skiptype') == 2) {
             $params['orderno'] = $request->input('id');
+            $params['stype'] = 1;
             $urlStr = '/order/orderdetail/';
         }
 
