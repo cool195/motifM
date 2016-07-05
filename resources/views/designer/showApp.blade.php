@@ -213,7 +213,7 @@
 <script src="/scripts/videoPlay.js"></script>
 <script src="/scripts/JockeyJS.js"></script>
 <script>
-    var actionsShow = [{"icon": "", "name": "wish"}]
+    var actionsShow = [{"icon": "", "name": "share"}]
     Jockey.send("action", {
         name: "showActions",
         token: "key",
@@ -221,7 +221,21 @@
     });
 
     Jockey.on("action", function (action) {
-        if (action.name == "authInfo") {
+        //share
+        if (action.name == "menuClick" && action.data.name == "share") {
+            Jockey.send("action", {
+                name: "share",
+                token: "key",
+                data: {
+                    "title": "Designer",
+                    "content": "Designer test info",
+                    "image": "",
+                    "url": "http://m.motif.me/designer/{{$designer['designer_id']}}"
+                }
+            });
+        }
+        //login
+        else if (action.name == "authInfo") {
             //ajax post session info
             $.ajax({
                 url: '/rsyncLogin',
@@ -247,21 +261,6 @@
         Jockey.send("action", {
             name: "login",
             token: "key",
-        });
-    })
-
-    //share send
-    $('#shareDesigner').on('click', function () {
-        alert('share')
-        Jockey.send("action", {
-            name: "share",
-            token: "key",
-            data: {
-                "title": "{{$designer['nickname']}}",
-                "content": "{{$designer['describe']}}",
-                "image": "",
-                "url": "http://m.motif.me/designer/{{$designer['designer_id']}}"
-            }
         });
     })
 </script>
