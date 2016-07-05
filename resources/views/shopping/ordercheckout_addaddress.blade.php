@@ -59,7 +59,7 @@
                     <hr class="hr-base m-a-0">
                     <fieldset>
                         <div class="flex flex-alignCenter flex-fullJustified font-size-sm text-primary p-a-15x" id="country">
-                        <span>Select Country</span>
+                        <span>Country</span>
                             <div>
                                 <span>@if(!empty($country)) {{ $country['country_name_en'] }}  @endif</span>
                                 <i class="iconfont icon-arrow-right icon-size-xm text-common"></i>
