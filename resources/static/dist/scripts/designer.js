@@ -16,6 +16,13 @@
         $('#designerContainer').find('.loading').hide();
     }
 
+    // 图片延迟加载
+    $('img.img-lazy').lazyload({
+        threshold: 200,
+        container: $('#designerContainer'),
+        effect: 'fadeIn'
+    });
+
     // ajax 请求 获取 推荐设计师列表 数据
     function getDesignerList() {
         //  $DesignerContainer 列表容器
