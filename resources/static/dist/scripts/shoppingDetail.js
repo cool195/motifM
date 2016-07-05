@@ -746,10 +746,6 @@
         }
     });
 
-    $('.input-engraving').on('click', function(e) {
-        $(e.target).removeClass('disabled');
-    });
-
     // 模态框关闭时，把选择的项更新到 select 位置
     $('[data-remodal-id=modal]').on('closed', function() {
         $('[data-control="continue"]').addClass('hidden-xs-up');
@@ -758,15 +754,21 @@
     // 增值服务是否选中
     $('fieldset[data-vas-type]').on('click', function(e) {
         // 判断增值服务类型
-        if (parseInt($(this).data('vas-type')) === 1 && $(e.target).hasClass('icon-checkcircle')) {
-            var $input = $(e.target).siblings('input[type="text"]');
-            if ($(e.target).hasClass('active')) {
-                $input.addClass('disabled').attr('disabled', 'disabled');
-                $(e.target).removeClass('active');
-                $input.val('');
+        if (parseInt($(this).data('vas-type')) === 1) {
+            if ($(e.target).hasClass('icon-checkcircle')) {
+                var $Check = $(e.target);
+                var $Input = $(e.target).siblings('input-engraving');
+            } else if ($(e.target).hasClass('input-engraving')) {
+                var $Check = $(e.target).siblings('icon-checkcircle');
+                var $Input = $(e.target);
+            }
+            if ($Check.hasClass('active')) {
+                $Input.addClass('disabled');
+                $Check.removeClass('active');
+                $Input.val('');
             } else {
-                $input.removeClass('disabled').removeAttr('disabled');
-                $(e.target).addClass('active');
+                $Input.removeClass('disabled');
+                $Check.addClass('active');
             }
         }
     });
