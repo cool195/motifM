@@ -22,9 +22,7 @@
                     <div class="font-size-sm text-primary m-b-20x"><strong>{{Session::get('user.login_email')}}</strong></div>
                     <p class="font-size-xs text-common m-b-15x p-t-10x">You can track <a href="/order/orderlist" class="text-primary text-underLine">your
                                                                                                                              order</a>
-                                                                        at any time by visting the Order tab from the
-                                                                        PROFILE
-                                                                        menu
+                                                                        at any time by visting the Orders tab
                     </p>
                     <a href="/shopping" class="btn btn-primary btn-block btn-sm" type="submit">Continue Shopping</a>
                 </article>

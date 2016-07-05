@@ -26,7 +26,7 @@
                         </div>
                     </fieldset>
                     <div class="p-a-15x">
-                        <button class="btn btn-primary btn-block btn-sm" type="submit">Confirm</button>
+                        <button class="btn btn-primary btn-block btn-sm" type="submit">Save</button>
                     </div>
                     @if(isset($input) && !empty($input))
                         @foreach($input as $name =>$value)
