@@ -30,7 +30,7 @@
                     </fieldset>
                     <hr class="hr-base m-a-0">
                     <fieldset>
-                        <input class="form-control form-control-block p-a-15x font-size-sm" name="name" type="text" maxlength="32" data-optional="false" data-role="name" placeholder="Full Name">
+                        <input class="form-control form-control-block p-a-15x font-size-sm" name="name" type="text" maxlength="32" data-optional="false" data-role="name" placeholder="Your Name">
                     </fieldset>
                     <hr class="hr-base m-a-0">
                     <fieldset>
@@ -59,7 +59,7 @@
                     <hr class="hr-base m-a-0">
                     <fieldset>
                         <div class="flex flex-alignCenter flex-fullJustified font-size-sm text-primary p-a-15x" id="country">
-                        <span>Country</span>
+                        <span>Select Country</span>
                             <div>
                                 <span>@if(!empty($country)) {{ $country['country_name_en'] }}  @endif</span>
                                 <i class="iconfont icon-arrow-right icon-size-xm text-common"></i>
@@ -96,7 +96,7 @@
                             <div data-action="/cart/addresslist" class="btn btn-primary-outline btn-block btn-sm" id="Cancel">Cancel</div>
                         </div>
                         <div class="col-xs-6">
-                            <div class="btn btn-primary btn-block btn-sm disabled" id="btn-addAddress">Confirm</div>
+                            <div class="btn btn-primary btn-block btn-sm disabled" id="btn-addAddress">Save</div>
                         </div>
                     </div>
                 </div>

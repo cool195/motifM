@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 
-    <title>Address List</title>
+    <title>SHIPPING ADDRESS</title>
     @include('head')
 
     <link rel="stylesheet" href="/styles/orderCheckout-addressList.css">
@@ -75,6 +75,7 @@
     <!-- TODO remodal 有多余的样式 需要整理 -->
     <div class="remodal remodal-md modal-content" data-remodal-id="modal" id="modalDialog">
         <div class="font-size-sm p-t-20x p-x-15x p-b-15x">
+            <div class="font-size-base">Remove Shipping Address</div>
             Are you sure you want to remove this address?
         </div>
         <div class="btn-group flex">
