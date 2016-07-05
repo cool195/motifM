@@ -23,13 +23,11 @@
 
     function addMessage(spu) {
         // 获取表单数据
-        var email = $('#email').val();
-        var content = $('#content').val();
         openLoading();
         $.ajax({
-            url: '/feedback/support',
-            type: 'POST',
-            data: {spu: spu, content: content, email: email, type: '1', stype: '1'}
+            url: '/askshopping',
+            type: 'PUT',
+            data: $('#form-askQuestion').serialize()
         })
             .done(function (data) {
                 if (data.success) {
