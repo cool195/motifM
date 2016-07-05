@@ -44,7 +44,7 @@
                 <div class="list-group font-size-sm">
                     <div class="list-group-item list-group-itemText-lg text-primary"><strong>MOTIF</strong>
                     </div>
-                    <a class="list-group-item list-group-itemText-lg text-primary" href="/aboutmotif">About MOTIF</a>
+                    <a class="list-group-item list-group-itemText-lg text-primary" href="/aboutmotif">About Motif</a>
                     <a class="list-group-item list-group-itemText-lg text-primary" href="/privacynotice">Privacy Notice</a>
                     <a class="list-group-item list-group-itemText-lg text-primary" href="/termsconditions">Terms & Conditions</a>
                 </div>
@@ -64,7 +64,7 @@
         </div>
         <hr class="hr-dark m-t-20x m-b-15x">
     </div>
-    <div class="text-common text-center font-size-sm">Copyright © 2016 MOTIF Inc. All rights reserved.</div>
+    <div class="text-common text-center font-size-sm">Copyright © 2016 Motif Inc. All rights reserved.</div>
 </footer>
 <!-- App 下载提示 -->
 <nav class="navbar-fixed-bottom bg-download p-y-10x p-x-15x flex flex-fullJustified flex-alignCenter" hidden>

@@ -139,7 +139,7 @@
 
         @if(!empty($saveData['showSkus']))
             <!-- 暂存商品列表 -->
-                <article class="font-size-md text-main p-a-10x"><strong>Saved ({{$saveData['total_sku_qtty']}})</strong></article>
+                <article class="font-size-md text-main p-a-10x"><strong>Saved</strong></article>
                 <!-- 商品列表 -->
                 <section class="cartList bg-white">
                     @if(isset($saveData['showSkus']))
