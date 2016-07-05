@@ -213,7 +213,7 @@
 <script src="/scripts/videoPlay.js"></script>
 <script src="/scripts/JockeyJS.js"></script>
 <script>
-    var actionsShow = [{"icon": "", "name": "share"}]
+    var actionsShow = [{"icon": "", "name": "wish"}]
     Jockey.send("action", {
         name: "showActions",
         token: "key",
