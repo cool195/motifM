@@ -36,9 +36,9 @@ class AskController extends ApiController
             $urlStr = '/order/orderdetail/';
         }
 
-        $this->request('openapi', '', "feedback", $params);
-
-        return redirect($urlStr . $request->input('id'));
+        $result = $this->request('openapi', '', "feedback", $params);
+        $result['redirectUrl'] = $urlStr . $request->input('id');
+        return $result;
     }
 }
 

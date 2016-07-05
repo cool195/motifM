@@ -37,12 +37,31 @@
                     </div>
                 </fieldset>
                 <div class="container-fluid p-a-15x">
-                    <button class="btn btn-primary btn-block btn-sm" id="submit" data-spu="123">Send</button>
+                    <div class="row">
+                        <div class="col-xs-6">
+                            <a href="#" class="btn btn-primary-outline btn-block btn-sm" data-role="cancel">Cancel</a>
+                        </div>
+                        <div class="col-xs-6">
+                            <div class="btn btn-primary btn-block btn-sm" data-role="submit" data-spu="123">Send</div>
+                        </div>
+                    </div>
                 </div>
             </form>
         </section>
         <!-- 页脚 功能链接 -->
         @include('footer')
+    </div>
+</div>
+
+<!-- 提示添加成功 -->
+<div class="remodal remodal-md modal-content" data-remodal-id="question-modal" id="askQuestion">
+    <div class="font-size-sm p-t-20x p-x-15x p-b-15x">
+        <div class="font-size-base">Submission successful</div>
+        <div class="p-t-5x">We will contact you as soon as possible!</div>
+    </div>
+    <hr class="hr-base m-a-0">
+    <div class="btn-group flex">
+        <a href="" class="btn remodal-btn flex-width text-primary" id="confirmQuestion">OK</a>
     </div>
 </div>
 
