@@ -22,10 +22,8 @@
             <form method="post" id="form-askQuestion" action="/askshopping">
                 <article class="font-size-md text-main p-y-10x p-x-15x"><strong>@if(2==$skiptype) Contact Service @elseif(3==$skiptype) Inquiries @else Ask a Question @endif</strong></article>
                 <fieldset>
-                    <input type="hidden" name="_method" value="PUT">
                     <input type="hidden" name="id" value="{{$id}}">
                     <input type="hidden" name="skiptype" value="{{$skiptype}}">
-                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
                     <input class="form-control form-control-block p-a-15x font-size-sm" id="email" name="email" type="text"
                            placeholder="Your Email" value="{{Session::get('user.login_email')}}">
                     <hr class="hr-base m-a-0">
