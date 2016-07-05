@@ -34,15 +34,13 @@
                     $ModalDialog.open();
                     var href = data.redirectUrl;
                     $('#confirmQuestion').attr('href', href);
-                    console.log('success');
+                }else{
+                    $('.warning-info').removeClass('hidden-xs-up');
+                    $('.warning-info').children('span').text(data.prompt_msg);
                 }
-            })
-            .fail(function () {
-                console.log('error');
             })
             .always(function () {
                 closeLoading();
-                console.log('complete');
             });
     }
 
