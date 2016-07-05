@@ -19,9 +19,9 @@
                 <a href="/daily">
                     <div class="p-b-20x"><img src="/images/login/register-logo.png" srcset="/images/login/register-logo@2x.png 2x,/images/login/register-logo@3x.png 3x"></div>
                 </a>
-                <div class="text-main m-t-10x"><strong>Reset Password</strong></div>
+                <div class="text-main m-t-10x"><strong>Forget Password</strong></div>
                 <div class="text-primary text-left m-t-15x font-size-sm">Enter the email address associated with
-                    your MOTIF account, then click Continue. We'll send you a link to reset your password.
+                    your Motif account, then click Continue. We'll send you a link to reset your password.
                 </div>
             </fieldset>
             <fieldset>
@@ -29,7 +29,7 @@
                     <i class="iconfont icon-caveat icon-size-md p-r-5x"></i><span class="font-size-sm">Sorry, this email has already been registered.</span>
                 </div>--}}
                 <div class="m-t-10x">
-                    <input class="input-resetPwd form-control font-size-sm" placeholder="Please enter your email address" type="text" name="email">
+                    <input class="input-resetPwd form-control font-size-sm" placeholder="Your Email" type="text" name="email">
                 </div>
                 <div class="m-t-20x">
                     <div class="btn btn-primary btn-block disabled" data-role="submit">Continue</div>
@@ -50,7 +50,7 @@
 <!-- 提示添加成功 -->
 <div class="remodal remodal-md modal-content" data-remodal-id="question-modal" id="successModal">
     <div class="font-size-sm p-t-20x p-x-15x p-b-15x">
-        <div class="font-size-base">Email sent!</div>
+        <div class="font-size-base">Check Your Email</div>
         <div class="p-t-5x">You will receive an email from us shortly. If you haven't received our email, please check your spam folder or contact our Customer Support team. </div>
     </div>
     <hr class="hr-base m-a-0">
