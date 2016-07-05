@@ -15,7 +15,20 @@
             $('#address-default').prop('checked', true);
         }
     });
-
+    //
+    function openAddSuccess() {
+        $('#success').toggleClass('loading-hidden');
+        setTimeout(function() {
+            $('#success').toggleClass('loading-open');
+        }, 25);
+    }
+    //
+    function closeAddSuccess() {
+        $('#success').addClass('loading-close');
+        setTimeout(function() {
+            $('#success').toggleClass('loading-hidden loading-open').removeClass('loading-close');
+        }, 500);
+    }
     // loading 打开
     function openLoading() {
         $('.loading').toggleClass('loading-hidden');
@@ -43,7 +56,11 @@
             })
             .done(function(data) {
                 if (data.success) {
-                    window.location.href = data.redirectUrl;
+                    openAddSuccess();
+                    setTimeout(function() {
+                        closeAddSuccess();
+                        window.location.href = data.redirectUrl;
+                    }, 1500);
                 }
             })
             .always(function() {
