@@ -74,7 +74,7 @@
      */
     function validationPassword($Password) {
         var PasswordNull = 'Please enter your password',
-            PasswordLength = 'Password (6 characters min)';
+            PasswordLength = "Oops, that's not a match.";
         var $WarningInfo = $('.warning-info');
         var InputText = $Password.val();
 
