@@ -25,9 +25,8 @@
                             @foreach($recdesigner as $value)
                                 <div class="designer-item swiper-slide p-x-5x">
                                     <a class="" href="/designer/{{$value['designerId']}}">
-                                        <img class="img-fluid img-lazy"
-                                             src="/images/designer/bg-designer@140.png"
-                                             data-original="https://s3-us-west-1.amazonaws.com/emimagetest/n0/{{$value['avatar']}}">
+                                        <img class="img-fluid"
+                                             src="https://s3-us-west-1.amazonaws.com/emimagetest/n0/{{$value['avatar']}}">
                                         {{--<div class="designer-text font-size-sm text-center">{{$value['name']}}</div>--}}
                                     </a>
                                 </div>
