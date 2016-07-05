@@ -22,7 +22,7 @@
                 <div class="body-container" style="padding-top:0px">
                 @endif
                 <!-- 关于我们 -->
-                    <section>
+                    <section class="m-b-20x p-b-20x">
                         <article class="font-size-md text-main p-x-15x p-y-10x"><strong>About Motif</strong>
                         </article>
                         <div class="bg-white">
@@ -52,7 +52,7 @@
                                     our app
                                     via #motifme</p>
                                 <p class="m-b-15x">- Free shipping and returns</p>
-                                <p class="m-b-15x">Download the app. Discover your personal Motif. Flaunt.</p>
+                                <p class="m-b-0">Download the app. Discover your personal Motif. Flaunt.</p>
                             </div>
                         </div>
 

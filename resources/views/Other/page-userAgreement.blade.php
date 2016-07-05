@@ -21,7 +21,7 @@
                 <div class="body-container" style="padding-top:0px">
                 @endif
     <!-- 用户协议 -->
-        <section>
+        <section  class="m-b-20x p-b-20x">
             <article class="font-size-md text-main p-x-15x p-y-10x"><strong>User Agreement</strong>
             </article>
             <div class="bg-white">
@@ -125,7 +125,7 @@
                         <strong>By Email:</strong> <br>
                         <a href="mailto:service@motif.me" class="text-underLine">service@motif.me</a><br>
                     </p>
-                    <p class="m-b-15x">
+                    <p class="m-b-0">
                         <strong>By Mail:</strong> <br>
                         MOTIF<br>
                         160 Greentree Drive,<br>

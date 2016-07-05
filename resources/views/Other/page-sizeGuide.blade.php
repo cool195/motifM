@@ -21,7 +21,7 @@
                 <div class="body-container" style="padding-top:0px">
                 @endif
     <!-- 尺寸指南 -->
-        <section>
+        <section class="m-b-20x p-b-20x">
             <article class="font-size-md text-main p-x-15x p-y-10x"><strong>Size Guide</strong>
             </article>
             <div class="bg-white">
