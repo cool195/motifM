@@ -16,7 +16,7 @@
                     <div class="nav-shoppingCart" data-login="@if(Session::has('user')){{'true'}}@else{{'false'}}@endif">
                         @if(!isset($pageScope))
                             <img class="nav-tap" src="/images/icon/icon-bag.png" srcset="/images/icon/icon-bag@2x.png 2x,/images/icon/icon-bag@3x.png 3x">
-                            <span class="shoppingCart-number"></span>
+                            <span class="shoppingCart-number" style="display: none;"></span>
                         @endif
                     </div>
                 </a>
