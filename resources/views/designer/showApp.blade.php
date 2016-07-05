@@ -48,6 +48,8 @@
                                 <a href="#" class="btn btn-follow btn-sm active" id="sendLogin">Follow</a>
                             @endif
                         </span>
+                        <span><a href="#" id="shareDesigner"><i
+                                        class="iconfont icon-share icon-size-md text-primary"></i></a></span>
                     </div>
 
                 </div>
@@ -209,7 +211,7 @@
 <script src="/scripts/videoPlay.js"></script>
 <script src="/scripts/JockeyJS.js"></script>
 <script>
-    var actionsShow = [{"icon": "", "name": "share"}]
+    var actionsShow = [{"icon": "", "name": "wish"}, {"icon": "", "name": "bag"}]
     Jockey.send("action", {
         name: "showActions",
         token: "key",
@@ -218,18 +220,18 @@
 
     Jockey.on("action", function (action) {
         //share
-        if (action.name == "menuClick" && action.data.name == "share") {
-            Jockey.send("action", {
-                name: "share",
-                token: "key",
-                data: {
-                    "title": "Designer",
-                    "content": "Designer test info",
-                    "image": "",
-                    "url": "http://m.motif.me/designer/{{$designer['designer_id']}}"
-                }
-            });
-        }
+        {{--if (action.name == "menuClick" && action.data.name == "share") {--}}
+            {{--Jockey.send("action", {--}}
+                {{--name: "share",--}}
+                {{--token: "key",--}}
+                {{--data: {--}}
+                    {{--"title": "Designer",--}}
+                    {{--"content": "Designer test info",--}}
+                    {{--"image": "",--}}
+                    {{--"url": "http://m.motif.me/designer/{{$designer['designer_id']}}"--}}
+                {{--}--}}
+            {{--});--}}
+        {{--}--}}
         //login
         else if (action.name == "authInfo") {
             //ajax post session info
@@ -245,7 +247,7 @@
                 },
                 success: function (data) {
                     if (data.success) {
-                        window.location.href="http://m.motif.me/designer/{{$designer['designer_id']}}?rsync=1"
+                        window.location.href = "http://m.motif.me/designer/{{$designer['designer_id']}}?rsync=1"
                     }
                 }
             })
@@ -257,6 +259,20 @@
         Jockey.send("action", {
             name: "login",
             token: "key",
+        });
+    })
+
+    //share send
+    $('#shareDesigner').on('click', function () {
+        Jockey.send("action", {
+            name: "share",
+            token: "key",
+            data: {
+                "title": "{{$designer['nickname']}}",
+                "content": "{{$designer['describe']}}",
+                "image": "",
+                "url": "http://m.motif.me/designer/{{$designer['designer_id']}}"
+            }
         });
     })
 </script>
