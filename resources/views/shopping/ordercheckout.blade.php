@@ -25,7 +25,7 @@
                         <div class="checkoutList-item p-a-10x">
                             <div class="flex">
                                 <div class="flex-fixedShrink">
-                                    <img class="img-thumbnail" src="{{'https://s3-us-west-1.amazonaws.com/emimagetest/n2/'.$showSku['main_image_url']}}" width="70px" height="70px">
+                                    <img class="img-thumbnail img-lazy" src="/images/product/bg-product@70.png" data-original="{{'https://s3-us-west-1.amazonaws.com/emimagetest/n2/'.$showSku['main_image_url']}}" width="70px" height="70px">
                                 </div>
                                 <div class="p-l-10x flex-width">
                                     <article class="flex flex-fullJustified">
@@ -85,7 +85,7 @@
                 </div>
                 <hr class="hr-base">
                 <a class="flex font-size-sm text-primary p-a-10x" data-remodal-target="delivery-modal" href="#">
-                    <span class="checkoutInfo-subTitle flex-fixedShrink">Shipping Method</span>
+                    <span class="checkoutInfo-subTitle flex-fixedShrink">Shipping method</span>
                     <div class="checkoutInfo-content flex flex-fullJustified flex-alignCenter">
                         <span class="delivery-text">{{$defaultMethod['logistics_name']}} +${{ number_format(($defaultMethod['price'] / 100), 2) }}</span>
                         <i class="iconfont icon-arrow-right icon-size-xm text-common p-r-15x"></i>

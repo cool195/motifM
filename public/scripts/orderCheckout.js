@@ -21,6 +21,12 @@
         }, 500);
     }
 
+    // 图片延迟加载
+    $('img.img-lazy').lazyload({
+        threshold: 200,
+        effect: 'fadeIn'
+    });
+
     // 初始化模态框
     var options = {
         hashTracking: false

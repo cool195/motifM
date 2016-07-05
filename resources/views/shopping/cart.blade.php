@@ -41,8 +41,9 @@
                                 <a @if(1 == $showSku['stock_status'] && 1 == $showSku['isPutOn']) href="/detail/{{$showSku['spu']}}" @endif>
                                     <div class="productInfo flex">
                                         <div class="flex-fixedShrink">
-                                            <img class="img-thumbnail"
-                                                 src="{{ 'https://s3-us-west-1.amazonaws.com/emimagetest/n2/'.$showSku['main_image_url'] }}"
+                                            <img class="img-thumbnail img-lazy"
+                                                 src="/images/product/bg-product@70.png"
+                                                 data-original="{{ 'https://s3-us-west-1.amazonaws.com/emimagetest/n2/'.$showSku['main_image_url'] }}"
                                                  width="70px" height="70px">
                                         </div>
                                         <div class="p-l-10x flex-width">
@@ -130,7 +131,7 @@
                 </section>
                 <!-- 购买按钮 -->
                 <section class="bg-white m-t-10x p-a-10x">
-                    <a href="/cart/ordercheckout" class="btn btn-primary btn-block btn-sm @if($cartData['pay_amount'] <= 0) disabled @endif" type="submit">Proceed To
+                    <a href="/cart/ordercheckout" class="btn btn-primary btn-block btn-sm @if($cartData['pay_amount'] <= 0) disabled @endif" type="submit">Proceed to
                         Checkout</a>
                 </section>
 
@@ -148,8 +149,9 @@
                                 <a @if(1 == $showSku['stock_status'] && 1 == $showSku['isPutOn']) href="/detail/{{$showSku['spu']}}" @endif>
                                     <div class="productInfo flex">
                                         <div class="flex-fixedShrink">
-                                            <img class="img-thumbnail"
-                                                 src="{{ 'https://s3-us-west-1.amazonaws.com/emimagetest/n2/'.$showSku['main_image_url'] }}"
+                                            <img class="img-thumbnail img-lazy"
+                                                 src="/images/product/bg-product@70.png"
+                                                 data-original="{{ 'https://s3-us-west-1.amazonaws.com/emimagetest/n2/'.$showSku['main_image_url'] }}"
                                                  width="70px" height="70px">
                                         </div>
                                         <div class="p-l-10x flex-width">
