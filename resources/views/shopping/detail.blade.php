@@ -144,11 +144,11 @@
                     </div>
                 </aside>
                 <!-- 用户 Q & A -->
-                <aside class="product-secondaryInfo">
-                    <a class="flex flex-alignCenter flex-fullJustified font-size-sm text-primary p-a-15x"
-                       href="/askshopping?skiptype=3&id={{$data['spu']}}">
-                        Inquiries <i class="iconfont icon-arrow-right icon-size-xm text-common"></i></a>
-                </aside>
+                {{--<aside class="product-secondaryInfo">--}}
+                    {{--<a class="flex flex-alignCenter flex-fullJustified font-size-sm text-primary p-a-15x"--}}
+                       {{--href="/askshopping?skiptype=3&id={{$data['spu']}}">--}}
+                        {{--Inquiries <i class="iconfont icon-arrow-right icon-size-xm text-common"></i></a>--}}
+                {{--</aside>--}}
                 <aside class="product-secondaryInfo">
                     @if(isset($data['templates']) && !empty($data['templates']))
                         @foreach($data['templates'] as $template)
