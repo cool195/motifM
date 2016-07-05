@@ -65,9 +65,8 @@
                 @{{ each $value.products }}
                 <div class="designer-item swiper-slide p-x-5x">
                     <a href="/detail/@{{$value.spu}}">
-                        <img class="img-fluid img-lazy"
-                             data-original="https://s3-us-west-1.amazonaws.com/emimagetest/n0/@{{ $value.mainImage }}"
-                             src="/images/product/bg-product@70.png">
+                        <img class="img-fluid"
+                             src="https://s3-us-west-1.amazonaws.com/emimagetest/n0/@{{ $value.mainImage }}">
                     </a>
                 </div>
                 @{{ /each }}
