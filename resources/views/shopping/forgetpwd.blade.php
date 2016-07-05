@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 
-    <title>Rest Password</title>
+    <title>RESET PASSWORD</title>
     @include('head')
     <link rel="stylesheet" href="/styles/resetPassword.css">
 
@@ -21,7 +21,7 @@
                 </div>
                 <div class="text-main m-t-10x"><strong>Reset Password</strong></div>
                 <div class="text-primary text-left m-t-15x font-size-sm">You will use the new password to login to your
-                    MOTIF account.
+                    Motif account.
                 </div>
             </fieldset>
             <div class="warning-info text-warning font-size-sm flex flex-alignCenter text-left p-x-15x m-y-10x hidden-xs-up">
@@ -52,9 +52,8 @@
 <!-- 提示成功修改密码 -->
 <div class="remodal remodal-lg modal-content" data-remodal-id="changePwd-modal" id="changePwdDialog">
     <div class="font-size-sm p-t-20x p-x-15x p-b-15x">
-        <span class="font-size-base">Password Change Success</span>
-        <br> Your Password has been changed.
-        <br>Please log in again!
+        <span class="font-size-base">Password Reset Complete!</span>
+        <br>Please login again!
     </div>
     <hr class="hr-base m-a-0">
     <div class="btn-group flex">
