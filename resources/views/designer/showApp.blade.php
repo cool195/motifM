@@ -44,10 +44,10 @@
                                 @if($designer['followStatus'])
                                     <a href="#" class="btn btn-sm btn-primary" id="follow" data-followid="{{$designer['designer_id']}}">Following</a >
                                 @else
-                                    <a href="#" class="btn btn-sm btn-follow" id="follow" data-followid="{{$designer['designer_id']}}">Follow</a >
+                                    <a href="#" class="btn btn-sm btn-follow active" id="follow" data-followid="{{$designer['designer_id']}}">Follow</a >
                                 @endif
                             @else
-                                <a href="#" class="btn btn-sm btn-follow" id="sendLogin" data-followid="1">Follow</a >
+                                <a href="#" class="btn btn-sm btn-follow active" id="sendLogin" data-followid="1">Follow</a >
                             @endif
                         </span>
                         <span><a href="#" id="shareDesigner"><i
@@ -267,6 +267,7 @@
 
     //share send
     $('#shareDesigner').on('click', function () {
+        alert('share')
         Jockey.send("action", {
             name: "share",
             token: "key",
