@@ -62,7 +62,7 @@ class DesignerController extends ApiController
             'pagesize' => 16,
             'uuid' => $_COOKIE['uid'] ? $_COOKIE['uid'] : 'ioscookieuidnull',
             'extra_kv' => 'designerId:'.$id,
-            'pin' => Session::get('user.pin') ? Session::get('user.pin') : 'ioscookieuidnull',
+            'pin' => Session::get('user.pin'),
         );
         $productAll = $this->request('openapi', '', 'rec', $params);
 
