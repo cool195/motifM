@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Checkout Message</title>
+    <title>Special Request</title>
     @include('head')
     <link rel="stylesheet" href="/styles/orderCheckout-message.css">
 
@@ -18,6 +18,7 @@
             @include('navigator', ['pageScope'=>true])
             <!-- 提交备注 表单 -->
             <section class="m-b-20x">
+                <article class="font-size-md text-main p-a-10x"><strong>Special Request</strong></article>
                 <form id="infoForm" action="/cart/ordercheckout" method="get">
                     <fieldset>
                         <div class="message-info">
