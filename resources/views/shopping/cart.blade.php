@@ -20,7 +20,7 @@
     <!-- 购物袋 商品列表 -->
         <section class="p-b-20x">
             <!-- "Shopping Bag" 标题 -->
-            <article class="font-size-md text-main p-a-10x"><strong>MY BAG</strong></article>
+            <article class="font-size-md text-main p-a-10x"><strong>My Bag</strong></article>
 
         @if(empty($cartData['showSkus']))
             <!-- 空袋子 提示信息 -->
@@ -139,7 +139,7 @@
 
         @if(!empty($saveData['showSkus']))
             <!-- 暂存商品列表 -->
-                <article class="font-size-md text-main p-a-10x"><strong>Saved Items</strong></article>
+                <article class="font-size-md text-main p-a-10x"><strong>Saved ({{$saveData['total_sku_qtty']}})</strong></article>
                 <!-- 商品列表 -->
                 <section class="cartList bg-white">
                     @if(isset($saveData['showSkus']))
