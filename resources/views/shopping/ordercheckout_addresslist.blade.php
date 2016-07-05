@@ -89,6 +89,9 @@
         <div class="loader loader-screen"></div>
     </div>
     <form id="infoForm" action="/cart/ordercheckout" method="get">
+        @if(empty($data['list']))
+            <input type="hidden" name="first" value="1">
+        @endif
         <input type="hidden" name="aid" value="{{$aid}}">
         <input type="hidden" name="eid" value="{{$aid}}">
         @if(isset($input) && !empty($input))
