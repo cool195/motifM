@@ -221,21 +221,8 @@
     });
 
     Jockey.on("action", function (action) {
-        //share
-        if (action.name == "menuClick" && action.data.name == "share") {
-            Jockey.send("action", {
-                name: "share",
-                token: "key",
-                data: {
-                    "title": "Designer",
-                    "content": "Designer test info",
-                    "image": "",
-                    "url": "http://m.motif.me/designer/{{$designer['designer_id']}}"
-                }
-            });
-        }
         //login
-        else if (action.name == "authInfo") {
+        if (action.name == "authInfo") {
             //ajax post session info
             $.ajax({
                 url: '/rsyncLogin',
@@ -263,6 +250,21 @@
             token: "key",
         });
     })
+
+    $('#shareDesigner').on('click', function () {
+        Jockey.send("action", {
+            name: "share",
+            token: "key",
+            data: {
+                "title": "Designer",
+                "content": "Designer test info",
+                "image": "",
+                "url": "http://m.motif.me/designer/{{$designer['designer_id']}}"
+            }
+        });
+    })
+
+
 </script>
 
 <meta name="csrf-token" content="{{ csrf_token() }}"/>
