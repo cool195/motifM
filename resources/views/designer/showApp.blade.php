@@ -41,11 +41,13 @@
                     <div class="flex flex-alignCenter">
                         <span class="p-r-20x">
                             @if(Session::get('user.pin'))
-                                <a href="#" data-followid="{{$designer['designer_id']}}"
-                                   class="btn btn-follow btn-sm @if(!$designer['followStatus']) active @endif"
-                                   id="follow">@if($designer['followStatus']){{'Following'}}@else{{'Follow'}}@endif</a>
+                                @if($designer['followStatus'])
+                                    <a href="#" class="btn btn-sm btn-primary" id="follow" data-followid="{{$designer['designer_id']}}">Following</a >
+                                @else
+                                    <a href="#" class="btn btn-sm btn-follow" id="follow" data-followid="{{$designer['designer_id']}}">Follow</a >
+                                @endif
                             @else
-                                <a href="#" class="btn btn-follow btn-sm active" id="sendLogin">Follow</a>
+                                <a href="#" class="btn btn-sm btn-follow" id="sendLogin" data-followid="1">Follow</a >
                             @endif
                         </span>
                         <span><a href="#" id="shareDesigner"><i
@@ -233,7 +235,8 @@
             {{--});--}}
         {{--}--}}
         //login
-        else if (action.name == "authInfo") {
+        //else
+        if (action.name == "authInfo") {
             //ajax post session info
             $.ajax({
                 url: '/rsyncLogin',
