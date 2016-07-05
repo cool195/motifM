@@ -89,6 +89,15 @@ class DesignerController extends ApiController
             } else {
                 if(!$request->input('rsync')==1){
                     Session::forget('user');
+                }else{
+                    $followParams = array(
+                        'cmd' => 'is',
+                        'pin' => Session::get('user.pin'),
+                        'token' => Session::get('user.token'),
+                        'did' => $id,
+                    );
+                    $follow = $this->request('openapi', '', 'follow', $followParams);
+                    $result['data']['followStatus'] = $follow['data']['isFC'];
                 }
             }
             $view = 'designer.showApp';
