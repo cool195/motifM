@@ -18,12 +18,6 @@
         }, 500);
     }
 
-    // 图片延迟加载
-    $('img.img-lazy').lazyload({
-        threshold: 200,
-        effect: 'fadeIn'
-    });
-
     // 删除对应商品
     // TODO loading , ajax返回后 , 刷新页面
     function deleteCart() {
