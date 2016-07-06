@@ -55,8 +55,8 @@
                     </div>
 
                 </div>
-                <div class="font-size-sm text-primary p-a-10x">{{$designer['intro']}}</div>
-                <hr class="hr-base m-a-0">
+                {{--<div class="font-size-sm text-primary p-a-10x">{{$designer['intro']}}</div>--}}
+                {{--<hr class="hr-base m-a-0">--}}
                 <div class="font-size-sm text-primary p-a-10x">
                     <div class="message-info">
                         <p class="m-b-0">{{$designer['describe']}}</p>
