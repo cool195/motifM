@@ -29,7 +29,7 @@ class ProductController extends ApiController
         }
         $recommended = $this->recommended($spu,$result['data']['front_category_ids'][0]);
         //dd($recommended['data']['list']);
-        return View('shopping.detail', ['data' => $result['data'], 'recommended' => isset($recommended['data']['list']) ? $recommended['data']['list'] : array()]);
+        return View('shopping.detail', ['data' => $result['data'], 'recommended' => $recommended['data']]);
     }
 
     //获取相关推荐商品

@@ -166,14 +166,15 @@
                 <!-- 推荐商品 -->
                 <aside class="m-b-20x">
                     <article class="font-size-md text-primary p-x-15x"><strong>You May Also Like</strong></article>
-                    <div class="container-fluid p-a-10x">
+                    <div class="container-fluid p-a-10x" data-impr="{{ $recommended['impr'] }}">
                         <div class="row">
-                            @foreach($recommended as $value)
+                            @if(isset($recommended['list']))
+                            @foreach($recommended['list'] as $value)
                                 <div class="col-xs-6">
                                     <div class="productList-item">
                                         <div class="image-bg">
                                             <div class="image-container">
-                                                <a href="/detail/{{ $value['spu'] }}">
+                                                <a href="/detail/{{ $value['spu'] }}" data-impr="{{ $value['impr'] }}" data-clk="{{ $value['clk'] }}">
                                                     <img class="img-fluid img-lazy"
                                                          data-original="https://s3-us-west-1.amazonaws.com/emimagetest/n1/{{ $value['main_image_url'] }}"
                                                          src="/images/product/bg-product@336.png"
@@ -195,6 +196,7 @@
                                     </div>
                                 </div>
                             @endforeach
+                            @endif
                         </div>
                     </div>
                 </aside>
