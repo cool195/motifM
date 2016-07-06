@@ -34,11 +34,7 @@ class OrderController extends ApiController
         $system = "";
         $service = "order";
         $result = $this->request('openapi', $system, $service, $params);
-        if (empty($result)) {
-            $result['success'] = false;
-            $result['error_msg'] = "Data access failed";
-            $result['data'] = array();
-        } else {
+        if (!empty($result) && $result['success']){
             $result = $this->resultJsonDecode($result);
         }
         return $result;
@@ -106,7 +102,7 @@ class OrderController extends ApiController
         $system = "";
         $service = "order";
         $result = $this->request('openapi', $system, $service, $params);
-        if ($result['success']) {
+        if (!empty($result) && $result['success']) {
             $result = $this->jsonDecodeOrderDetailResult($result);
         }
         return $result;

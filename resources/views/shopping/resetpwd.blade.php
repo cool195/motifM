@@ -19,7 +19,7 @@
                 <a href="/daily">
                     <div class="p-b-20x"><img src="/images/login/register-logo.png" srcset="/images/login/register-logo@2x.png 2x,/images/login/register-logo@3x.png 3x"></div>
                 </a>
-                <div class="text-main m-t-10x"><strong>Forget Password</strong></div>
+                <div class="text-main m-t-10x"><strong>Forgot Password</strong></div>
                 <div class="text-primary text-left m-t-15x font-size-sm">Enter the email address associated with
                     your Motif account, then click Continue. We'll send you a link to reset your password.
                 </div>

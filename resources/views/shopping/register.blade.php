@@ -41,7 +41,7 @@
             </fieldset>
         </form>
         <div class="m-t-15x text-primary text-center font-size-sm">
-            By registering,You’ve accepted our<br>
+            By registering, you’ve accepted our<br>
             <a class="text-primary text-underLine" href="/termsconditions">Terms & Conditions</a>
         </div>
         <div class="m-t-20x">
