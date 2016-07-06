@@ -358,7 +358,7 @@
                 <img class="img-fluid img-lazy" data-original="https://s3-us-west-1.amazonaws.com/emimagetest/n1/@{{ $value.mainImg }}" src="/images/product/bg-product@750.png" alt="@{{ $value.name }}"></a>
         </div>
         <div class="p-x-10x p-y-15x swiper-container" id="designer-container">
-            <div class="swiper-wrapper productList@{{ $value.designerId }}">
+            <div class="swiper-wrapper">
                 @{{ each $value.products }}
                 <div class="designer-item swiper-slide p-x-5x">
                     <a href="#" data-clk='http://clk.motif.me/log.gif?t=designer.300001&m=H5_M2016-1&pin=@{{ XXX }}&uuid=@{{ XXX }}&v={"action":1,"skipType":2,"skipId":@{{ $value.designerId }},expid":0,"ver":"1.0.1","src":"H5"}'>
