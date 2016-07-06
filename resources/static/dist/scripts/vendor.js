@@ -16491,6 +16491,7 @@ else if (typeof define === 'function' && define.amd) {
 /*global jQuery escape unescape*/
 'use strict';
 (function($) {
+    
     function switchDevice() {
         var Agent = navigator.userAgent;
         if (/iPhone/i.test(Agent)) {
