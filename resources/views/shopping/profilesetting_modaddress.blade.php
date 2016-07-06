@@ -86,10 +86,10 @@
                 <div class="container-fluid p-x-10x p-y-15x">
                     <div class="row">
                         <div class="col-xs-6">
-                            <a href="/user/shippingaddress" class="btn btn-primary-outline btn-block btn-sm" id="Cancel">Cancel</a>
+                            <a href="/user/shippingaddress" class="btn btn-primary-outline btn-block" id="Cancel">Cancel</a>
                         </div>
                         <div class="col-xs-6">
-                            <div class="btn btn-primary btn-block btn-sm" id="btn-addAddress">Confirm</div>
+                            <div class="btn btn-primary btn-block" id="btn-addAddress">Confirm</div>
                         </div>
                     </div>
                 </div>

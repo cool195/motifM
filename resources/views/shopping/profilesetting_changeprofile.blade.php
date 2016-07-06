@@ -24,7 +24,7 @@
                         <input class="form-control form-control-block p-a-15x font-size-sm" id="nick" name="nick" type="text" value="{{$user['nickname']}}" placeholder="{{$user['nickname']}}">
                     </fieldset>
                     <div class="p-a-15x">
-                        <div class="btn btn-primary btn-block btn-sm" data-role="submit">Save</div>
+                        <div class="btn btn-primary btn-block" data-role="submit">Save</div>
                     </div>
                 </form>
             </section>

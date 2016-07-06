@@ -90,7 +90,7 @@
             @endif
             @if(in_array($data['status_code'], array(21, 22, 23)))
                 <div class="p-a-10x">
-                    <div href="#" class="btn btn-primary btn-block btn-sm" type="bottom" id="buyAgain">Buy Again</div>
+                    <div href="#" class="btn btn-primary btn-block" type="bottom" id="buyAgain">Buy Again</div>
                 </div>
             @endif
         </aside>
@@ -174,7 +174,7 @@
 
         <!-- 联系客服 -->
         <aside class="bg-white m-b-10x p-a-10x">
-            <a href="/askshopping?skiptype=2&id={{$data['sub_order_no']}}" class="btn btn-primary btn-block btn-sm"
+            <a href="/askshopping?skiptype=2&id={{$data['sub_order_no']}}" class="btn btn-primary btn-block"
                type="submit">Contact Customer Service
             </a>
         </aside>

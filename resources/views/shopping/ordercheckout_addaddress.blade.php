@@ -93,10 +93,10 @@
                 <div class="container-fluid p-x-10x p-y-15x">
                     <div class="row">
                         <div class="col-xs-6">
-                            <div data-action="/cart/addresslist" class="btn btn-primary-outline btn-block btn-sm" id="Cancel">Cancel</div>
+                            <div data-action="/cart/addresslist" class="btn btn-primary-outline btn-block" id="Cancel">Cancel</div>
                         </div>
                         <div class="col-xs-6">
-                            <div class="btn btn-primary btn-block btn-sm disabled" id="btn-addAddress">Save</div>
+                            <div class="btn btn-primary btn-block disabled" id="btn-addAddress">Save</div>
                         </div>
                     </div>
                 </div>

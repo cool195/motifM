@@ -28,7 +28,7 @@
                     <div class="container shopbag-emptyInfo">
                         <div class="m-b-20x p-b-5x"><i class="btn-shopbagEmpty iconfont icon-shopbag"></i></div>
                         <p class="text-primary font-size-sm m-b-20x p-b-20x">Your bag is empty. Fill it up</p>
-                        <a href="/daily" class="btn btn-primary btn-sm">Go Shopping</a>
+                        <a href="/daily" class="btn btn-primary btn-block">Go Shopping</a>
                     </div>
                 </div>
         @else
@@ -131,7 +131,7 @@
                 </section>
                 <!-- 购买按钮 -->
                 <section class="bg-white m-t-10x p-a-10x">
-                    <a href="/cart/ordercheckout" class="btn btn-primary btn-block btn-sm @if($cartData['pay_amount'] <= 0) disabled @endif" type="submit">Proceed to
+                    <a href="/cart/ordercheckout" class="btn btn-primary btn-block @if($cartData['pay_amount'] <= 0) disabled @endif" type="submit">Proceed to
                         Checkout</a>
                 </section>
 

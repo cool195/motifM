@@ -46,10 +46,10 @@
         <div class="container-fluid p-a-0 m-t-20x">
             <div class="row">
                 <div class="col-xs-6">
-                    <a class="btn btn-primary-outline btn-block" href="/register" id="register">Register</a>
+                    <a class="btn btn-primary-outline btn-lg btn-block" href="/register" id="register">Register</a>
                 </div>
                 <div class="col-xs-6">
-                    <div class="btn btn-primary btn-block" data-role="submit" id="login">Login</div>
+                    <div class="btn btn-primary btn-lg btn-block" data-role="submit" id="login">Login</div>
                 </div>
             </div>
         </div>
@@ -57,11 +57,11 @@
             <hr class="hr-login m-a-0">
         </div>
         <div class="m-t-20x p-b-20x">
-            <div class="btn btn-block btn-facebook" id="facebookLogin">
+            <div class="btn btn-block btn-lg btn-facebook" id="facebookLogin">
                 <i class="iconfont icon-facebook-o icon-size-md"></i>
                 Sign in with Facebook
             </div>
-            <div class="btn btn-block btn-google m-l-0 m-t-10x" id="googleLogin">
+            <div class="btn btn-block btn-lg btn-google m-l-0 m-t-10x" id="googleLogin">
                 <i class="iconfont icon-google-o icon-size-md"></i>
                 Sign in with Google
             </div>
