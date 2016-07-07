@@ -17,7 +17,7 @@
         <div class="body-container">
             @include('navigator', ['pageScope'=>true])
             <!-- 提交备注 表单 -->
-            <section class="m-b-20x">
+            <section class="m-b-20x reserve-height">
                 <article class="font-size-md text-main p-a-10x"><strong>Special Request</strong></article>
                 <form id="infoForm" action="/cart/ordercheckout" method="get">
                     <fieldset>

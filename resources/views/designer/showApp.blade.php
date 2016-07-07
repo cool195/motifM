@@ -12,7 +12,7 @@
     <!-- 主体内容 -->
     <div class="body-container" style="padding-top:0px">
         <!-- designerDetail 设计师详情 -->
-        <section>
+        <section class="reserve-height">
             <!-- 视频/图片 -->
             <div class="designer-media flex flex-justifyCenter flex-alignCenter">
                 <img class="designer-placeImg" src="/images/designer/placeholder.jpg" alt="" hidden>
@@ -107,7 +107,7 @@
                             <a href="@if($value['skipType']=='1')motif://o.c?a=pd&spu={{$value['skipId']}}@elseif($value['skipType']=='2')/designer/{{$value['skipId']}}@elseif($value['skipType']=='3')/topic/{{$value['skipId']}}@elseif($value['skipType']=='4')motif://o.c?a=shoppinglist&cid={{$value['skipId']}}@else{{'motif://o.c?a=outurl&url='.urlencode($value['imgUrl'])}}@endif">
                                 <div @if($k!=0)class="p-y-10x"@endif>
                                     <img class="img-fluid"
-                                         src="https://s3-us-west-1.amazonaws.com/emimagetest/n0/{{$value['imgPath']}}">
+                                         src="https://s3-us-west-1.amazonaws.com/emimagetest/n2/{{$value['imgPath']}}">
                                 </div>
                             </a>
                     @elseif($value['type']=='title')
@@ -135,7 +135,7 @@
                                             <a href="motif://o.c?a=pd&spu={{$spu}}">
                                                 <img class="img-fluid img-lazy"
                                                      src="/images/product/bg-product@336.png"
-                                                     data-original="https://s3-us-west-1.amazonaws.com/emimagetest/n0/{{$product['spuInfos'][$spu]['spuBase']['main_image_url']}}"
+                                                     data-original="https://s3-us-west-1.amazonaws.com/emimagetest/n2/{{$product['spuInfos'][$spu]['spuBase']['main_image_url']}}"
                                                      alt="{{$product['spuInfos'][$spu]['spuBase']['main_title']}}">
                                             </a>
                                         </div>
@@ -152,7 +152,7 @@
                                                         <div class="p-t-10x">
                                                             <img class="img-thumbnail img-lazy"
                                                                  src="/images/product/bg-product@336.png"
-                                                                 data-original="https://s3-us-west-1.amazonaws.com/emimagetest/n0/{{$product['spuInfos'][$spu]['spuBase']['main_image_url']}}"
+                                                                 data-original="https://s3-us-west-1.amazonaws.com/emimagetest/n2/{{$product['spuInfos'][$spu]['spuBase']['main_image_url']}}"
                                                                  alt="{{$product['spuInfos'][$spu]['spuBase']['main_title']}}">
                                                             <div class="p-y-10x">
                                                                 <span class="text-primary font-size-sm m-l-5x"><strong>${{number_format($product['spuInfos'][$spu]['skuPrice']['sale_price']/100,2)}}</strong></span>
@@ -182,7 +182,7 @@
                                         <div class="p-t-10x">
                                             <img class="img-thumbnail img-lazy"
                                                  src="/images/product/bg-product@336.png"
-                                                 data-original="https://s3-us-west-1.amazonaws.com/emimagetest/n0/{{$value['main_image_url']}}"
+                                                 data-original="https://s3-us-west-1.amazonaws.com/emimagetest/n2/{{$value['main_image_url']}}"
                                                  alt="{{$value['main_title']}}">
                                             <div class="p-y-10x">
                                                 <span class="text-primary font-size-sm m-l-5x"><strong>${{number_format($value['skuPrice']['sale_price']/100,2)}}</strong></span>

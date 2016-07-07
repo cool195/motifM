@@ -16,7 +16,7 @@
     <div class="body-container">
     @include('navigator', ['pageScope'=>true])
     <!-- 支付方式 列表 -->
-        <section>
+        <section class="reserve-height">
             <article class="p-x-15x p-y-10x flex flex-fullJustified flex-alignCenter">
                 <span class="font-size-md text-main"><strong>Payment Method</strong></span>
                 @if(count($methodlist['Card']) > 0)

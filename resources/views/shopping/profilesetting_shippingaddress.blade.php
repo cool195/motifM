@@ -17,7 +17,7 @@
 <!-- 主体内容 -->
     <div class="body-container">
         @include('navigator')
-        <section class="p-b-15x">
+        <section class="p-b-15x reserve-height">
             <article class="p-x-15x p-y-10x flex flex-fullJustified flex-alignCenter">
                 <span class="font-size-md text-main"><strong>Shipping Address</strong></span>
                 @if(!empty($data['list']))

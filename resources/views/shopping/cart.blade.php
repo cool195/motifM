@@ -18,7 +18,7 @@
     @include('navigator')
 
     <!-- 购物袋 商品列表 -->
-        <section class="p-b-20x">
+        <section class="p-b-20x reserve-height">
             <!-- "Shopping Bag" 标题 -->
             <article class="font-size-md text-main p-a-10x"><strong>My Bag</strong></article>
 

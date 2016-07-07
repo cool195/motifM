@@ -21,7 +21,7 @@
                 <div class="body-container" style="padding-top:0px">
                 @endif
     <!-- 用户协议 -->
-        <section  class="m-b-20x p-b-20x">
+        <section  class="m-b-20x p-b-20x reserve-height">
             <article class="font-size-md text-main p-x-15x p-y-10x"><strong>User Agreement</strong>
             </article>
             <div class="bg-white">

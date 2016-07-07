@@ -16,7 +16,7 @@
     <div class="body-container">
     @include('navigator')
     <!-- 订单列表 -->
-        <section class="p-b-20x">
+        <section class="p-b-20x reserve-height">
             <article class="font-size-md text-main p-a-10x"><strong>ORDERS</strong></article>
 
             <!-- 订单数为0 -->

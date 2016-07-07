@@ -16,7 +16,7 @@
     <div class="body-container">
     @include('navigator')
     <!-- 添加支付方式 -->
-        <section>
+        <section class="reserve-height">
             <article class="p-x-15x p-y-10x">
                 <span class="font-size-md text-main"><strong>Add New Card</strong></span>
             </article>

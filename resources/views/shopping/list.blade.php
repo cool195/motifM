@@ -39,7 +39,7 @@
                 @endif
             </ul>
         </nav>
-        <section class="swiper-container p-b-10x" id="tabs-container">
+        <section class="swiper-container p-b-10x reserve-height" id="tabs-container">
             <div class="swiper-wrapper">
                 @if(isset($categories))
                     @foreach($categories as $c)

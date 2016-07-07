@@ -15,7 +15,7 @@
         <div class="body-container">
             @include('navigator', ['pageScope'=>true])
             <!-- 个人中心 修改 Profile -->
-            <section class="bg-minHeight">
+            <section class="reserve-height">
                 <form method="" id="changeProfile">
                     <article class="p-x-15x p-y-10x font-size-md text-main"><strong>Edit Profile</strong>
                         <div class="text-common font-size-sm p-t-10x">{{$user['login_email']}}</div>
