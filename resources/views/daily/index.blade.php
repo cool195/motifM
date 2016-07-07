@@ -40,17 +40,19 @@
     <div class="bg-white m-b-10x">
         <a href="@{{ if $value.skipType == 1 }}/detail/@{{ else if $value.skipType == 2 }}/designer/@{{ else if $value.skipType == 3 }}/topic/@{{ else if $value.skipType == 4 }}/shopping#@{{ /if }}@{{ $value.skipId }}">
             <img class="img-fluid img-lazy"
-                 data-original="https://s3-us-west-1.amazonaws.com/emimagetest/n0/@{{ $value.imgPath }}"
+                 data-original="https://s3-us-west-1.amazonaws.com/emimagetest/n2/@{{ $value.imgPath }}"
                  src="/images/product/bg-product@750.png">
         </a>
     </div>
     @{{ /if }}
     @{{ if $value.type == "2" }}
-    <a href="@{{ if $value.skipType == 1 }}/detail/@{{ else if $value.skipType == 2 }}/designer/@{{ else if $value.skipType == 3 }}/topic/@{{ else if $value.skipType == 4 }}/shopping#@{{ /if }}@{{ $value.skipId }}">
+    <a data-impr='http://clk.motif.me/log.gif?t=daily.100001&m=H5_M2016-1&pin={{ Session::get('user.pin') }}&uuid={{ Session::get('user.uuid') }}&v=<?="{\"action\":0,\"type\":"?>@{{ $value.type }}<?=",\"imgtextType\":"?>@{{ $value.imgtextType }}<?=",\"skipType\","?>@{{ $value.skipType }}<?=",\"skipId\":"?>@{{ $value.skipId }}<?=",\"sortNo\":" ?>@{{ $value.sortNo }}<?=",\"expid\":0,\"index\":"?>@{{ xxx }}<?=",\"ver\":\"1.0.1\", \"src\":\"H5\"}"?>'
+       data-clk='http://clk.motif.me/log.gif?t=daily.100001&m=H5_M2016-1&pin={{ Session::get('user.pin') }}&uuid={{ Session::get('user.uuid') }}&v=<?="{\"action\":0,\"type\":"?>@{{ $value.type }}<?=",\"imgtextType\":"?>@{{ $value.imgtextType }}<?=",\"skipType\","?>@{{ $value.skipType }}<?=",\"skipId\":"?>@{{ $value.skipId }}<?=",\"sortNo\":" ?>@{{ $value.sortNo }}<?=",\"expid\":0,\"index\":"?>@{{ xxx }}<?=",\"ver\":\"1.0.1\", \"src\":\"H5\"}"?>'
+       href="@{{ if $value.skipType == 1 }}/detail/@{{ else if $value.skipType == 2 }}/designer/@{{ else if $value.skipType == 3 }}/topic/@{{ else if $value.skipType == 4 }}/shopping#@{{ /if }}@{{ $value.skipId }}">
         <div class="bg-white m-b-10x">
             <div class="daily-imgInfo">
                 <img class="img-fluid img-lazy"
-                     data-original="https://s3-us-west-1.amazonaws.com/emimagetest/n0/@{{ $value.imgPath }}"
+                     data-original="https://s3-us-west-1.amazonaws.com/emimagetest/n2/@{{ $value.imgPath }}"
                      src="/images/product/bg-product@750.png" alt="@{{ $value.title }}">
                 @{{ if $value.imgtextType }}<span class="img-icon font-size-sm"><strong>@{{ $value.imgtextType }}</strong></span>@{{ /if }}
             </div>

@@ -69,15 +69,15 @@
                     $DesignerContainer.data('start', StartNum);
                 }
 
+                // 初始化 swiper
+                initSwiper();
+
                 // 图片延迟加载
                 $('img.img-lazy').lazyload({
-                    threshold: 200,
-                    container: $('#designerContainer'),
+                    threshold: 1000,
                     effect: 'fadeIn'
                 });
 
-                // 初始化 swiper
-                initSwiper();
             }
         }).always(function () {
             $DesignerContainer.data('loading', false);
