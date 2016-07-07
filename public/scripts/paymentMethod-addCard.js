@@ -101,7 +101,12 @@
     $('#cardNum').on('keyup', function() {
         validationCard($(this));
     });
-    // TODO 需要限制输入格式, 限制日期格式, 银行卡格式
+    $('div[data-role="submit"]').on('click', function(event) {
+        event.preventDefault();
+        if (!$(event.target).hasClass('disabled')) {
+            $('#card-container').submit();
+        }
+    });
 })(jQuery);
 
 //# sourceMappingURL=paymentMethod-addCard.js.map
