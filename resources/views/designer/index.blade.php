@@ -61,7 +61,7 @@
             </a>
         </div>
         <div class="p-x-10x p-y-15x swiper-container" id="designer-container">
-            <div class="swiper-wrapper productList@{{ $value.designerId }}">
+            <div class="swiper-wrapper">
                 @{{ each $value.products }}
                 <div class="designer-item swiper-slide p-x-5x">
                     <a href="/detail/@{{$value.spu}}" data-clk='http://clk.motif.me/log.gif?t=designer.300001&m=H5_M2016-1&pin={{ Session::get('user.pin') }}&uuid={{ Session::get('user.uuid') }}&v=<?="\"action\":0,\"skipType\":2,\"skipId\":"?>@{{ $value.designerId }}<?=",\"expid\":0,\"ver\":\"1.0.1\",\"src\":\"H5\" "?>'>
