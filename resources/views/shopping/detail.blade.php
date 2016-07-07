@@ -81,7 +81,7 @@
                             )</span>
                     @endif
                 </div>
-                <div class="text-warning font-size-xs p-x-15x">{{ $data['prompt_words'] }}</div>
+                <div class="text-warning font-size-xs p-x-15x" data-impr='http://clk.motif.me/log.gif?t=rec.100002&m=OPEN_M2016-1&pin={{ Session::get('user.pin') }}&uuid={{Session::get('user.uuid')}}&v={" action ":0,"cspus ":{{ $data['skus'] }},"expid ":0,"index ":1,"rec_type ":1,"spu":{{ $data['spu'] }},"ver ":"9.00 "}&sig=2291a58454115c8136169111738de65696add43d'>{{ $data['prompt_words'] }}</div>
             </article>
             <!-- 产品 其他信息 -->
             <section>

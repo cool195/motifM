@@ -114,7 +114,7 @@
         <div class="productList-item">
             <div class="image-bg">
                 <div class="image-container">
-                    <a href="/detail/@{{ $value.spu }}">
+                    <a href="/detail/@{{ $value.spu }}" data-impr="@{{ $value.impr }}" data-clk="@{{ $value.clk }}">
                         <img class="img-fluid img-lazy"
                              data-original="https://s3-us-west-1.amazonaws.com/emimagetest/n1/@{{ $value.main_image_url }}"
                              src="/images/product/bg-product@336.png" alt="@{{ $value.main_title }}">

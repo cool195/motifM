@@ -142,7 +142,10 @@
                         // 遍历模板 插入页面
                         appendProductsList(data.data, ActiveTab);
                         $Current.data('pagenum', PageNum);
-                        console.info('当前页码数为' + PageNum);
+
+                        $.ajax({
+                            url: data.impr
+                        });
 
                         // 图片延迟加载
                         $('img.img-lazy').lazyload({
