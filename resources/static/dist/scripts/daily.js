@@ -23,6 +23,7 @@
             PageNum = $DailyContainer.data('pagenum');
         // 判断是否还有数据要加载
         if (PageNum === -1) {
+            getProductList();
             return;
         }
 
@@ -38,7 +39,11 @@
         loadingShow();
         $.ajax({
             url: '/daily',
-            data: {cmd: 'list', pagenum: NextNum, pagesize: 3}
+            data: {
+                cmd: 'list',
+                pagenum: NextNum,
+                pagesize: 3
+            }
         })
             .done(function (data) {
                 console.info(data);
@@ -48,7 +53,7 @@
                     $DailyContainer.data('pagenum', -1);
                 } else {
                     // 遍历模板 插入页面
-                    appendDailyList(data.data);
+                    appendDailyList('tpl-daily', data.data);
                     // 页数 +1
                     $DailyContainer.data('pagenum', PageNum);
 
@@ -66,9 +71,63 @@
             });
     }
 
+    // ajax 请求 获取 product 数据
+    function getProductList() {
+        //  $DailyContainer 列表容器
+        //  ProductPageNum 产品当前页码数
+        var $DailyContainer = $('#dailyContainer'),
+            ProductPageNum = $DailyContainer.data('productpagenum');
+        // 判断是否还有数据要加载
+        if (ProductPageNum === -1) {
+            return;
+        }
+
+        // 判断当前选项卡是否在加载中
+        if ($DailyContainer.data('loading') === true) {
+            return;
+        } else {
+            $DailyContainer.data('loading', true);
+        }
+        var NextProductNum = ++ProductPageNum;
+
+        loadingShow();
+        $.ajax({
+            url: '/recdata',
+            data: {
+                pagenum: NextProductNum,
+                pagesize: 3
+            }
+        })
+            .done(function (data) {
+                console.info(data);
+                if (data.data === null || data.data === '') {
+                    $DailyContainer.data('productpagenum', -1);
+                } else if (data.data.list === null || data.data.list === '' || data.data.list === undefined) {
+                    $DailyContainer.data('productpagenum', -1);
+                } else {
+                    // 遍历模板 插入页面
+                    appendDailyList('tpl-product', data.data);
+                    // 页数 +1
+                    $DailyContainer.data('productpagenum', ProductPageNum);
+
+                    // 图片延迟加载
+                    $('img.img-lazy').lazyload({
+                        threshold: 200,
+                        container: $('#dailyContainer'),
+                        effect: 'fadeIn'
+                    });
+                }
+            })
+            .always(function () {
+                $DailyContainer.data('loading', false);
+                loadingHide();
+            });
+
+    }
+
     // 将数据插入到模板中
-    function appendDailyList(DailyList) {
-        var TplHtml = template('tpl-daily', DailyList);
+    function appendDailyList(tpl, DailyList) {
+        var TplHtml = template(tpl, DailyList);
         // 把 字符串 转义成 HTML
         var StageCache = $.parseHTML(TplHtml);
         // 将 html 插入页面相应位置
@@ -96,6 +155,5 @@
         });
     });
 })(jQuery);
-
 
 //# sourceMappingURL=daily.js.map
