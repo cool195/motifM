@@ -68,6 +68,7 @@ class DesignerController extends ApiController
 
 
         $view = '';
+        $result['data']['osType'] = strstr($_SERVER['HTTP_USER_AGENT'], 'motif-ios') ? 'ios' : 'android';
         if ($_GET['test'] || strstr($_SERVER['HTTP_USER_AGENT'], 'motif-android') || strstr($_SERVER['HTTP_USER_AGENT'], 'motif-ios')) {
 
             if (!empty($_COOKIE['PIN'])) {

@@ -30,6 +30,19 @@ class DailyController extends ApiController
         }
     }
 
+    //Daily无数据加载
+    public function recData(Request $request){
+        $params = array(
+            'recid' => '100001',
+            'pagesize' => $request->input('pagesize', 3),
+            'pagenum' => $request->input('pagenum', 1),
+            'uuid' => $_COOKIE['uid'],
+            'pin' => Session::get('user.pin'),
+        );
+        $productAll = $this->request('openapi', '', 'rec', $params);
+        return $productAll;
+    }
+
     //动态模版专题详情
     public function show($id)
     {

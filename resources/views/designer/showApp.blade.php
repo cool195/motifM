@@ -42,16 +42,26 @@
                         <span class="p-r-20x">
                             @if(Session::get('user.pin'))
                                 @if($designer['followStatus'])
-                                    <a href="#" class="btn btn-sm btn-primary" id="follow" data-followid="{{$designer['designer_id']}}">Following</a >
+                                    <a href="#" class="btn btn-sm btn-primary" id="follow"
+                                       data-followid="{{$designer['designer_id']}}">Following</a>
                                 @else
-                                    <a href="#" class="btn btn-sm btn-follow active" id="follow" data-followid="{{$designer['designer_id']}}">Follow</a >
+                                    <a href="#" class="btn btn-sm btn-follow active" id="follow"
+                                       data-followid="{{$designer['designer_id']}}">Follow</a>
                                 @endif
                             @else
-                                <a href="#" class="btn btn-sm btn-follow active" id="sendLogin" data-followid="1">Follow</a >
+                                <a href="#" class="btn btn-sm btn-follow active" id="sendLogin"
+                                   data-followid="1">Follow</a>
                             @endif
                         </span>
-                        <span><a href="#" id="shareDesigner"><i
-                                        class="iconfont icon-share icon-size-md text-primary"></i></a></span>
+                        <span>
+                            @if($designer['osType'])
+                                <a id="shareDesigner" href="#"><img src="/images/icon/share-ios.png"
+                                                                    srcset="/images/icon/share-ios@2x.png 2x,/images/icon/share-ios@3x.png 3x"></a>
+                            @else
+                                <a id="shareDesigner" href="#"><img src="/images/icon/share-android.png"
+                                                                    srcset="/images/icon/share-android@2x.png 2x,/images/icon/share-android@3x.png 3x"></a>
+                            @endif
+                        </span>
                     </div>
 
                 </div>
@@ -186,7 +196,8 @@
                         <div class="row">
                             @foreach($productAll['data']['list'] as $value)
                                 <div class="col-xs-6">
-                                    <a href="motif://o.c?a=pd&spu={{$value['spu']}}" data-clk="{{ $value['clk'] }}" data-impr="{{ $value['impr'] }}">
+                                    <a href="motif://o.c?a=pd&spu={{$value['spu']}}" data-clk="{{ $value['clk'] }}"
+                                       data-impr="{{ $value['impr'] }}">
                                         <div class="p-t-10x">
                                             <img class="img-thumbnail img-lazy"
                                                  src="/images/product/bg-product@336.png"
@@ -221,7 +232,7 @@
 <script src="/scripts/videoPlay.js"></script>
 <script src="/scripts/JockeyJS.js"></script>
 <script>
-    var actionsShow = [{"icon": "", "name": "wish"},{"icon": "", "name": "bag"}]
+    var actionsShow = [{"icon": "", "name": "wish"}, {"icon": "", "name": "bag"}]
     Jockey.send("action", {
         name: "showActions",
         token: "key",
