@@ -189,6 +189,7 @@
                 newStock(data.data.skuExps, Stock);
                 // 所有增值服务
                 newVas(data.data.vasBases, Vas);
+
             });
     })();
 
@@ -759,7 +760,7 @@
         var VasCount = Object.keys(Vas);
         var Action = $(e.target).data('action');
 
-        if (OptionsCount.length === 0 && VasCount.length === 0) {
+        if (OptionsCount.length === 0 && VasCount.length === 0 && ResultSkus.length !== 0) {
             initCart(Action);
         } else {
             $('[data-control="continue"]').removeClass('hidden-xs-up');
