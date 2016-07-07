@@ -723,6 +723,7 @@
             .done(function(data) {
                 if (data.success) {
                     updateCartCount();
+                    $('[data-role]').removeClass('disabled');
                     if (data.redirectUrl !== '') {
                         window.location.href = data.redirectUrl;
                     }
@@ -747,6 +748,7 @@
     // 添加购物车 购买商品
     $('[data-role]').on('click', function(e) {
         if (!$(e.target).hasClass('disabled')) {
+            $(e.target).addClass('disabled');
             var Action = $(e.target).data('action');
             initCart(Action);
         }
@@ -778,9 +780,9 @@
         if (parseInt($(this).data('vas-type')) === 1) {
             if ($(e.target).hasClass('icon-checkcircle')) {
                 var $Check = $(e.target);
-                var $Input = $(e.target).siblings('input-engraving');
+                var $Input = $(e.target).siblings('.input-engraving');
             } else if ($(e.target).hasClass('input-engraving')) {
-                var $Check = $(e.target).siblings('icon-checkcircle');
+                var $Check = $(e.target).siblings('.icon-checkcircle');
                 var $Input = $(e.target);
             }
             if ($Check.hasClass('active')) {

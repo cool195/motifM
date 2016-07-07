@@ -32,7 +32,7 @@
                 <div class="cardinfo-wrapper font-size-sm">
                     <div class="cardinfo-item">
                         <input class="cardinfo-input" type="tel" data-braintree-name="number"
-                               value="" placeholder="Card Number" id="cardNum" maxlength="20">
+                               value="" placeholder="Card Number" data-role="Card Number" data-optional="" id="cardNum" maxlength="20">
                         <span class="card-image" id="card-type"></span>
                     </div>
                 </div>
@@ -40,12 +40,12 @@
                     <div class="cardinfo-item">
                         <label class="cardinfo-label flex-fixedShrink">Expires</label>
                         <input class="cardinfo-input" type="text" data-braintree-name="expiration_date"
-                               value="" placeholder="MM/YY" maxlength="8">
+                               value="" placeholder="MM/YY" data-role="expires" data-optional="" maxlength="8">
                     </div>
                     <div class="cardinfo-item">
                         <label class="cardinfo-label flex-fixedShrink">CVV</label>
                         <input class="cardinfo-input" type="tel" data-braintree-name="cvv" value=""
-                               placeholder="CVV" maxlength="4">
+                               placeholder="CVV" data-optional="" maxlength="4">
                     </div>
                 </div>
                 <div class="warning-info off text-warning flex flex-alignCenter p-a-15x">
@@ -61,26 +61,13 @@
             <div class="bg-white m-b-15x p-a-15x">
                 <div class="font-size-md text-main m-b-10x"><strong>Acceptable Bank Cards</strong></div>
                 <div class="flex flex-fullJustified">
-                    <span><img src="/images/payment/icon-americanexpress.png"
-                               srcset="/images/payment/icon-americanexpress@2x.png 2x,/images/payment/icon-americanexpress@3x.png 3x"
-                               alt=""></span>
-                    <span><img src="/images/payment/icon-discover.png"
-                               srcset="/images/payment/icon-discover@2x.png 2x,/images/payment/icon-discover@3x.png 3x"
-                               alt=""></span>
-                    <span><img src="/images/payment/icon-duversclub.png"
-                               srcset="/images/payment/icon-duversclub@2x.png 2x,/images/payment/icon-duversclub@3x.png 3x"
-                               alt=""></span>
-                    <span><img src="/images/payment/icon-jcb.png"
-                               srcset="/images/payment/icon-jcb@2x.png 2x,/images/payment/icon-jcb@3x.png 3x"
-                               alt=""></span>
-                    <span><img src="/images/payment/icon-maestro.png"
-                               srcset="/images/payment/icon-maestro@2x.png 2x,/images/payment/icon-maestro@3x.png 3x"
-                               alt=""></span>
-                    <span><img src="/images/payment/icon-mastercard.png"
-                               srcset="/images/payment/icon-mastercard@2x.png 2x,/images/payment/icon-mastercard@3x.png 3x"
-                               alt=""></span>
-                    <span><img src="/images/payment/icon-visa.png"
-                               srcset="/images/payment/icon-visa@2x.png 2x,/images/payment/icon-visa@3x.png 3x" alt=""></span>
+                    <span><img src="/images/payment/icon-americanexpress.png" srcset="/images/payment/icon-americanexpress@2x.png 2x,/images/payment/icon-americanexpress@3x.png 3x" alt=""></span>
+                    <span><img src="/images/payment/icon-discover.png" srcset="/images/payment/icon-discover@2x.png 2x,/images/payment/icon-discover@3x.png 3x" alt=""></span>
+                    <span><img src="/images/payment/icon-duversclub.png" srcset="/images/payment/icon-duversclub@2x.png 2x,/images/payment/icon-duversclub@3x.png 3x" alt=""></span>
+                    <span><img src="/images/payment/icon-jcb.png" srcset="/images/payment/icon-jcb@2x.png 2x,/images/payment/icon-jcb@3x.png 3x" alt=""></span>
+                    <span><img src="/images/payment/icon-maestro.png" srcset="/images/payment/icon-maestro@2x.png 2x,/images/payment/icon-maestro@3x.png 3x" alt=""></span>
+                    <span><img src="/images/payment/icon-mastercard.png" srcset="/images/payment/icon-mastercard@2x.png 2x,/images/payment/icon-mastercard@3x.png 3x" alt=""></span>
+                    <span><img src="/images/payment/icon-visa.png" srcset="/images/payment/icon-visa@2x.png 2x,/images/payment/icon-visa@3x.png 3x" alt=""></span>
                 </div>
             </div>
 

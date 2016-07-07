@@ -101,6 +101,31 @@
     $('#cardNum').on('keyup', function() {
         validationCard($(this));
     });
+
+    // 表单非空验证
+    function checkInput() {
+        var Result = true;
+        $('input[data-optional]').each(function() {
+            if ($(this).val() === '') {
+                Result = $(this);
+                return false;
+            }
+        });
+        return Result;
+    }
+
+    $('input[data-optional]').on('keyup', function() {
+        var $Error = checkInput();
+        if ($Error === true) {
+            $('.warning-info').addClass('hidden-xs-up');
+            $('div[data-role="submit"]').removeClass('disabled');
+        } else {
+            $('.warning-info').removeClass('hidden-xs-up');
+            $('.warning-info').children('span').text('Please enter your ' + $Error.data('role') + ' !');
+            $('div[data-role="submit"]').addClass('disabled');
+        }
+    });
+
     $('div[data-role="submit"]').on('click', function(event) {
         event.preventDefault();
         if (!$(event.target).hasClass('disabled')) {
