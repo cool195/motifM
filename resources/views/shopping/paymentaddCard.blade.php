@@ -104,7 +104,7 @@
         <div class="">
             <img class="img-fluid m-x-auto" src="/images/icon-success.png" srcset="/images/icon-success@2x.png 2x, /images/icon-success@3x.png 3x">
         </div>
-        <div class="text-white font-size-md text-center m-t-10x">Card Success</div>
+        <div class="text-white font-size-md text-center m-t-10x">Card Added</div>
     </div>
 </div>
 @if(isset($input) && !empty($input))
