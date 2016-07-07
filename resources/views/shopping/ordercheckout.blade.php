@@ -17,7 +17,7 @@
     <div class="body-container">
     @include('navigator', ['pageScope'=>true])
     <!-- 结算 商品列表 -->
-        <section class="">
+        <section class="reserve-height">
             <!-- 商品列表 -->
             <aside class="checkoutList bg-white m-b-10x">
                 @if(isset($data['showSkus']))

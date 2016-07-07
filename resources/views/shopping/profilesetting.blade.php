@@ -15,7 +15,7 @@
         <!-- 主体内容 -->
         <div class="body-container">
             @include('navigator')
-            <section class="bg-minHeight">
+            <section class="reserve-height">
                 <article class="p-x-15x p-y-10x font-size-md text-main"><strong>Settings</strong></article>
                 <!-- 个人中心 sitting list -->
                 <aside class="bg-white m-b-20x">

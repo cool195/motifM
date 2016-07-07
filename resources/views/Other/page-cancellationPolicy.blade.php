@@ -22,7 +22,7 @@
                 <div class="body-container" style="padding-top:0px">
                 @endif
     <!-- 取消政策 -->
-        <section>
+        <section class="reserve-height">
             <article class="font-size-md text-main p-x-15x p-y-10x"><strong>Cancellation Policy</strong>
             </article>
             <div class="bg-white">

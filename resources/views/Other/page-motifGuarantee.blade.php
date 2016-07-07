@@ -21,7 +21,7 @@
                 <div class="body-container" style="padding-top:0px">
                 @endif
     <!-- 保障 -->
-        <section>
+        <section class="reserve-height">
             <article class="font-size-md text-main p-x-15x p-y-10x"><strong>Motif guarantee</strong>
             </article>
             <aside class="product-secondaryInfo p-a-15x">

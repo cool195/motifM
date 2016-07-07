@@ -15,7 +15,7 @@
     <div class="body-container">
     @include('navigator', ['pageScope'=>true])
     <!-- 国家列表 -->
-        <section class="p-b-10x">
+        <section class="p-b-10x reserve-height">
             <article class="p-x-15x p-y-10x font-size-md text-main">
                 <strong>Select Country</strong>
             </article>

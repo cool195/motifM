@@ -11,7 +11,7 @@
 @include('nav')
 <div class="body-container">
     @include('navigator')
-    <section>
+    <section class="reserve-height">
         <article class="font-size-md text-main p-y-10x p-x-15x"><strong>Order Detail</strong></article>
 
         <!-- 订单主要信息:日期、订单号、总金额 -->

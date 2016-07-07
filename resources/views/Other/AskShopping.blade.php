@@ -18,7 +18,7 @@
     <div class="body-container">
     @include('navigator')
     <!-- 提交问题反馈 表单 -->
-        <section class="m-b-20x">
+        <section class="m-b-20x reserve-height">
             <form method="post" id="form-askQuestion" action="/askshopping">
                 <article class="font-size-md text-main p-y-10x p-x-15x"><strong>@if(2==$skiptype) Contact Service @elseif(3==$skiptype) Inquiries @else Ask a Question @endif</strong></article>
                 <fieldset>

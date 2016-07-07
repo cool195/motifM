@@ -12,7 +12,7 @@
     <!-- 主体内容 -->
     <div class="body-container" style="padding-top:0px">
         <!-- designerDetail 设计师详情 -->
-        <section>
+        <section class="reserve-height">
             <!-- 视频/图片 -->
             <div class="designer-media flex flex-justifyCenter flex-alignCenter">
                 <img class="designer-placeImg" src="/images/designer/placeholder.jpg" alt="" hidden>

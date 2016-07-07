@@ -16,7 +16,7 @@
         <div class="body-container">
             @include('navigator')
             <!-- 添加地址 -->
-            <section class="p-b-20x">
+            <section class="p-b-20x reserve-height">
                 <article class="p-x-15x p-y-10x font-size-md text-main"><strong>Add New Address</strong></article>
                 <div class="warning-info off flex text-warning flex-alignCenter text-left p-x-15x p-b-10x hidden-xs-up">
                     <i class="iconfont icon-caveat icon-size-md p-r-5x"></i>

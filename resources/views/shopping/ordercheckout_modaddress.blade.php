@@ -16,7 +16,7 @@
         <div class="body-container">
             @include('navigator', ['pageScope'=>true])
             <!-- 添加地址 -->
-            <section class="p-b-20x">
+            <section class="p-b-20x reserve-height">
                 <article class="p-x-15x p-y-10x font-size-md text-main"><strong>Modify Address</strong></article>
                 <form class="bg-white" id="addressInfo" method="get" action="/cart/countrylist">
                     <!-- 个人中心 sitting list -->

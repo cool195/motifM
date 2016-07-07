@@ -16,7 +16,7 @@
     <div class="body-container">
         @include('navigator', ['pageScope'=>true])
         <!-- 修改密码 -->
-        <section class="bg-minHeight">
+        <section class="reserve-height">
             <form method="" id="changePassword">
                 <article class="p-x-15x p-y-10x font-size-md text-main"><strong>Change Password</strong></article>
                 <!-- 个人中心 sitting list -->

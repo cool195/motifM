@@ -16,7 +16,7 @@
         <div class="body-container">
             @include('navigator', ['pageScope'=>true])
             <!-- 添加coupon -->
-            <section class="m-b-20x">
+            <section class="m-b-20x reserve-height">
                 <article class="font-size-md text-main p-a-10x"><strong>Promotion code</strong></article>
                     <fieldset>
                         <div class="warning-info flex text-warning flex-alignCenter text-left p-a-15x" hidden>

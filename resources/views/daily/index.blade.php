@@ -18,7 +18,7 @@
     <div class="body-container">
     @include('navigator')
     <!-- daily 首页列表 -->
-        <section id="dailyContainer" data-loading="false" data-pagenum="0">
+        <section id="dailyContainer" class="reserve-height" data-loading="false" data-pagenum="0">
             <div class="daily-content">
 
             </div>

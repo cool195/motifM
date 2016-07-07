@@ -12,7 +12,7 @@
     <!-- 主体内容 -->
     <div class="body-container" style="padding-top:0px">
         <!-- daily 详细内容 -->
-        <section class="bg-white p-b-10x">
+        <section class="bg-white p-b-10x reserve-height">
         @if(isset($topic['infos']))
             @foreach($topic['infos'] as $k=>$value)
                 @if($value['type']=='banner')

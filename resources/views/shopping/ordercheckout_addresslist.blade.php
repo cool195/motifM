@@ -17,7 +17,7 @@
         <!-- 主体内容 -->
         <div class="body-container">
             @include('navigator', ['pageScope'=>true])
-            <section class="p-b-15x">
+            <section class="p-b-15x reserve-height">
                 <article class="p-x-15x p-y-10x flex flex-fullJustified flex-alignCenter">
                     <span class="font-size-md text-main"><strong>Shipping Address</strong></span>
                     <a class="btn btn-primary-outline btn-sm" id="address-edit">Edit</a>
