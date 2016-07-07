@@ -22,7 +22,7 @@
                     <!-- 第一个 banner 图 -->
                         <div @if($k!=0)class="p-y-10x"@endif>
                             <a href="@if($value['skipType']=='1')/detail/@elseif($value['skipType']=='2')/designer/@elseif($value['skipType']=='3')/topic/@elseif($value['skipType']=='4')/shopping#@endif{{$value['skipId']}}">
-                                <img class="img-fluid" src="https://s3-us-west-1.amazonaws.com/emimagetest/n0/{{$value['imgPath']}}" alt="">
+                                <img class="img-fluid" src="https://s3-us-west-1.amazonaws.com/emimagetest/n2/{{$value['imgPath']}}" alt="">
                             </a>
                         </div>
                 @elseif($value['type']=='title')
@@ -56,7 +56,7 @@
                                 @endforeach
                             @else
                                 <a href="@if($value['skipType']=='1')/detail/@elseif($value['skipType']=='2')/designer/@elseif($value['skipType']=='3')/topic/@elseif($value['skipType']=='4')/shopping#@endif{{$value['skipId']}}">
-                                    <img class="img-fluid" src="https://s3-us-west-1.amazonaws.com/emimagetest/n0/{{$value['imgPath']}}" alt="">
+                                    <img class="img-fluid" src="https://s3-us-west-1.amazonaws.com/emimagetest/n2/{{$value['imgPath']}}" alt="">
                                 </a>
                             @endif
                         @else
@@ -69,7 +69,7 @@
                                                 <a href="/detail/{{$spu}}">
                                                     <div class="p-t-10x">
                                                         <img class="img-thumbnail"
-                                                             src="https://s3-us-west-1.amazonaws.com/emimagetest/n0/{{$topic['spuInfos'][$spu]['spuBase']['main_image_url']}}"
+                                                             src="https://s3-us-west-1.amazonaws.com/emimagetest/n2/{{$topic['spuInfos'][$spu]['spuBase']['main_image_url']}}"
                                                              alt="{{$topic['spuInfos'][$spu]['spuBase']['main_title']}}">
                                                         <div class="p-y-10x">
                                                             <span class="text-primary font-size-sm m-l-5x"><strong>${{number_format($topic['spuInfos'][$spu]['skuPrice']['sale_price']/100,2)}}</strong></span>
