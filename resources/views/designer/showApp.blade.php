@@ -54,7 +54,7 @@
                             @endif
                         </span>
                         <span>
-                            @if($designer['osType'])
+                            @if($designer['osType']=='ios')
                                 <a id="shareDesigner" href="#"><img src="/images/icon/share-ios.png"
                                                                     srcset="/images/icon/share-ios@2x.png 2x,/images/icon/share-ios@3x.png 3x"></a>
                             @else
