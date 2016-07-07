@@ -20,11 +20,22 @@
             <article class="bg-white p-y-15x m-b-10x">
                 <h5 class="font-size-base text-main p-x-15x m-b-10x"><strong>DESIGNERS</strong></h5>
                 <div class="p-a-0 swiper-container">
-                    <div class="swiper-wrapper">
+                    <?php $skipIds = ""; ?>
+                    @if(isset($recdesigner))
+                        @foreach($recdesigner as $key => $value)
+                            @if(0 == $key)
+                                <?php $skipIds = $value['designerId']?>
+                            @else
+                                <?php $skipIds .= "_" . $value['designerId'] ?>
+                            @endif
+                        @endforeach
+                    @endif
+                    <div class="swiper-wrapper" @if(isset($recdesigner))data-impr='http://clk.motif.me/log.gif?t=designer.100001&m=H5_M2016-1&pin={{Session::get('user.pin')}}&uuid={{Session::get('user.uuid')}}&v={"action":0,"skipType":2,"skipId":{{$skipIds}},expid":0,"ver":"1.0.1","src":"H5"}'@endif>
                         @if(isset($recdesigner))
                             @foreach($recdesigner as $value)
                                 <div class="designer-item swiper-slide p-r-10x">
-                                    <a class="" href="/designer/{{$value['designerId']}}">
+                                    <a class="" href="/designer/{{$value['designerId']}}"
+                                        data-clk='http://clk.motif.me/log.gif?t=designer.100001&m=H5_M2016-1&pin={{Session::get('user.pin')}}&uuid={{Session::get('user.uuid')}}&v={"action":1,"skipType":2,"skipId":{{$value['designerId']}},expid":0,"ver":"1.0.1","src":"H5"}'>
                                         <img class="img-fluid"
                                              src="https://s3-us-west-1.amazonaws.com/emimagetest/n2/{{$value['avatar']}}">
                                         {{--<div class="designer-text font-size-sm text-center">{{$value['name']}}</div>--}}
