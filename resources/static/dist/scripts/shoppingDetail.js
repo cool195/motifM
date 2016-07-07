@@ -648,6 +648,26 @@
         $QtyCount.siblings('[data-num]').html(Qtty);
     });
 
+    function updateCartCount() {
+        $.ajax({
+                url: ' /cart/amount',
+                type: 'GET'
+            })
+            .done(function(data) {
+                if (data.success) {
+                    if (data.data.skusAmout > 0 && data.data.skusAmout <= 99) {
+                        $('.nav-shoppingCart').children('span').show();
+                        $('.nav-shoppingCart').children('span').html(data.data.skusAmout);
+                    } else if (data.data.skusAmout > 99) {
+                        $('.nav-shoppingCart').children('span').show();
+                        $('.nav-shoppingCart').children('span').html('99+');
+                    } else {
+                        $('.nav-shoppingCart').children('span').hide();
+                    }
+                }
+            });
+    }
+
     /**
      * 添加购物车
      * @param Action
@@ -702,6 +722,7 @@
             })
             .done(function(data) {
                 if (data.success) {
+                    updateCartCount();
                     if (data.redirectUrl !== '') {
                         window.location.href = data.redirectUrl;
                     }
