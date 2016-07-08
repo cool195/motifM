@@ -275,8 +275,8 @@
             name: "share",
             token: "key",
             data: {
-                "title": "Designer",
-                "content": "Designer test info",
+                "title": "{{$designer['nickname']}}",
+                "content": "{{$designer['describe']}}",
                 "image": "",
                 "url": "http://m.motif.me/designer/{{$designer['designer_id']}}"
             }
