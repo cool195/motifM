@@ -66,7 +66,7 @@
     <div class="btn-group flex">
         <a href="" class="btn remodal-btn flex-width text-primary" id="confirm">OK</a>
     </div>
-</div>s
+</div>
 <!-- loading 效果 -->
 <div class="loading loading-screen loading-switch loading-hidden">
     <div class="loader loader-screen"></div>
