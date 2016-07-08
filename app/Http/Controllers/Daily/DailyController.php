@@ -58,7 +58,7 @@ class DailyController extends ApiController
             $view = 'daily.topic';
         }
 
-        return View($view, ['topic' => $result['data'], 'topicID' => $id]);
+        return View($view, ['topic' => $result['data'], 'topicID' => $id, 'shareFlag'=>true]);
     }
 
     //商品详情动态模版
@@ -76,7 +76,7 @@ class DailyController extends ApiController
             $view = 'daily.topic';
         }
 
-        return View($view, ['topic' => $result['data'], 'topicID' => $id]);
+        return View($view, ['topic' => $result['data'], 'topicID' => $id, 'shareFlag'=>false]);
     }
 }
 
