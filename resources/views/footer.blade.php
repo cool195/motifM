@@ -14,7 +14,7 @@
             <a class="share-btn" href="https://instagram.com/motif.jewelry/">
                 <img src="/images/icon/ins.png" srcset="/images/icon/ins@2x.png 2x,/images/icon/ins@3x.png 3x">
             </a>
-            <a class="share-btn" href="https://www.facebook.com/Motif-862363260557363/">
+            <a class="share-btn" href="https://www.facebook.com/motifme">
                 <img src="/images/icon/facebook.png" srcset="/images/icon/facebook@2x.png 2x,/images/icon/facebook@3x.png 3x">
             </a>
             <a class="share-btn" href="https://plus.google.com/u/0/113666794179158439426">
