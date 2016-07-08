@@ -17,17 +17,17 @@
 
     // loading 打开
     function openLoading() {
-        $('.loading').toggleClass('loading-hidden');
+        $('#loading').toggleClass('loading-hidden');
         setTimeout(function() {
-            $('.loading').toggleClass('loading-open');
+            $('#loading').toggleClass('loading-open');
         }, 25);
     }
 
     // loading 隐藏
     function closeLoading() {
-        $('.loading').addClass('loading-close');
+        $('#loading').addClass('loading-close');
         setTimeout(function() {
-            $('.loading').toggleClass('loading-hidden loading-open').removeClass('loading-close');
+            $('#loading').toggleClass('loading-hidden loading-open').removeClass('loading-close');
         }, 500);
     }
 
@@ -49,9 +49,9 @@
                 })
                 .done(function(data) {
                     if (data.success) {
+                        closeLoading();
                         $('#nick').attr('placeholder', $('#nick').val());
                         $('#nick').val('');
-
                         openAddSuccess();
                         setTimeout(function() {
                             closeAddSuccess();

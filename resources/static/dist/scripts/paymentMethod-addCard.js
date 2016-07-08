@@ -118,11 +118,10 @@
         var $Error = checkInput();
         if ($Error === true) {
             $('.warning-info').addClass('hidden-xs-up');
-            $('div[data-role="submit"]').removeClass('disabled').removeAttr('disabled');
+            $('input[type="submit"]').removeClass('disabled').removeAttr('disabled');
         } else {
             $('.warning-info').removeClass('hidden-xs-up');
-            $('.warning-info').children('span').text('Please enter your ' + $Error.data('role') + ' !');
-            $('div[data-role="submit"]').addClass('disabled').attr('disabled', 'disabled');
+            $('input[type="submit"]').addClass('disabled').attr('disabled', 'disabled');
         }
     });
 
