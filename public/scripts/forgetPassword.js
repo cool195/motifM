@@ -97,7 +97,7 @@
                     $('#confirmPwd').attr('href', href);
                 } else {
                     $('.warning-info').removeClass('hidden-xs-up');
-                    $('.warning-info').children('span').html(data.prompt_msg);
+                    $('.warning-info').children('span').html('Oops something went wrong, please go to the login page and reset your password.');
                 }
             })
             .always(function() {
