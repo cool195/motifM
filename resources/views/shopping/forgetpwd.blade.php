@@ -40,7 +40,7 @@
                     <input type="hidden" name="sig" value="{{$params['sig']}}">
                 </div>
                 <div class="m-t-20x">
-                    <div class="btn btn-primary btn-block" data-role="submit">Reset Password</div>
+                    <div class="btn btn-primary btn-block disabled" data-role="submit">Reset Password</div>
                 </div>
             </fieldset>
             <div class="text-primary font-size-sm contactUs">

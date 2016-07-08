@@ -25,9 +25,9 @@
                 </div>
             </fieldset>
             <fieldset>
-                {{--<div class="text-warming flex flex-alignCenter text-left m-t-15x">
-                    <i class="iconfont icon-caveat icon-size-md p-r-5x"></i><span class="font-size-sm">Sorry, this email has already been registered.</span>
-                </div>--}}
+                <div class="warning-info text-warning flex flex-alignCenter text-left m-t-15x hidden-xs-up">
+                    <i class="iconfont icon-caveat icon-size-md p-r-5x"></i><span class="font-size-sm">Sorry, this email has not been registered.</span>
+                </div>
                 <div class="m-t-10x">
                     <input class="input-resetPwd form-control font-size-sm" placeholder="Your Email" type="text" name="email">
                 </div>
