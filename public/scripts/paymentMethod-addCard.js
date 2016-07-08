@@ -118,20 +118,13 @@
         var $Error = checkInput();
         if ($Error === true) {
             $('.warning-info').addClass('hidden-xs-up');
-            $('div[data-role="submit"]').removeClass('disabled');
+            $('input[type="submit"]').removeClass('disabled').removeAttr('disabled');
         } else {
             $('.warning-info').removeClass('hidden-xs-up');
-            $('.warning-info').children('span').text('Please enter your ' + $Error.data('role') + ' !');
-            $('div[data-role="submit"]').addClass('disabled');
+            $('input[type="submit"]').addClass('disabled').attr('disabled', 'disabled');
         }
     });
 
-    $('div[data-role="submit"]').on('click', function(event) {
-        event.preventDefault();
-        if (!$(event.target).hasClass('disabled')) {
-            $('#card-container').submit();
-        }
-    });
 })(jQuery);
 
 //# sourceMappingURL=paymentMethod-addCard.js.map

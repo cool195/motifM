@@ -54,7 +54,8 @@
                 </div>
 
                 <div class="p-a-15x">
-                    <div class="btn btn-primary btn-block disabled" data-role="submit">Add</div>
+                    {{--<div class="btn btn-primary btn-block disabled" data-role="submit">Add</div>--}}
+                    <input class="btn btn-primary btn-block disabled" type="submit" value="Add" disabled="disabled">
                 </div>
             </form>
 
