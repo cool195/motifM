@@ -11,7 +11,18 @@ class AskController extends ApiController
     //Ask提交页
     public function show(Request $request)
     {
+        $this->putRefererInSession();
         return View('Other.AskShopping', ['id' => $request->input('id'), 'skiptype' => $request->input('skiptype')]);
+    }
+
+    private function putRefererInSession()
+    {
+        if(isset($_SERVER['HTTP_REFERER'])) {
+            if(empty($_SERVER['PHP_SELF']) || $_SERVER['PHP_SELF'] !== $_SERVER['HTTP_REFERER']) {
+                $referer = !empty($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : "/daily";
+                Session::put('referer', $referer);
+            }
+        }
     }
 
     //提交ASK表单
@@ -37,6 +48,10 @@ class AskController extends ApiController
         }
 
         $result = $this->request('openapi', '', "feedback", $params);
+        if($result['success']){
+            $result['redirectUrl'] = $urlStr . $request->input('id');
+            Session::forget('referer');
+        }
         $result['redirectUrl'] = $urlStr . $request->input('id');
         return $result;
     }

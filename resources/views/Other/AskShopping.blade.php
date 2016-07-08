@@ -37,7 +37,7 @@
                 <div class="container-fluid p-a-15x">
                     <div class="row">
                         <div class="col-xs-6">
-                            <a href="#" class="btn btn-primary-outline btn-block btn-sm" data-role="cancel">Cancel</a>
+                            <a href="{{Session::has('referer') ? Session::get('referer') : '/order/orderlist'}}" class="btn btn-primary-outline btn-block btn-sm" data-role="cancel">Cancel</a>
                         </div>
                         <div class="col-xs-6">
                             <div class="btn btn-primary btn-block btn-sm" data-role="submit" data-spu="123">Send</div>
