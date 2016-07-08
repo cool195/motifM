@@ -115,10 +115,9 @@
             <div class="image-bg">
                 <div class="image-container">
                     <a href="/detail/@{{ $value.spu }}" data-impr="@{{ $value.impr }}" data-clk="@{{ $value.clk }}">
-                        <img class="img-fluid img-lazy"
-                             data-original="https://s3-us-west-1.amazonaws.com/emimagetest/n1/@{{ $value.main_image_url }}"
-                             src="/images/product/bg-product@336.png" alt="@{{ $value.main_title }}">
+                        <img class="img-fluid img-lazy" data-original="https://s3-us-west-1.amazonaws.com/emimagetest/n1/@{{ $value.main_image_url }}" src="/images/product/bg-product@336.png" alt="@{{ $value.main_title }}">
                         @{{ if $value.skuPrice.sale_price !== $value.skuPrice.price }}
+
                         <div class="price-off">
                             <strong class="font-size-sm">@{{ $value.skuPrice.skuPromotion.display }}</strong>
                         </div>
@@ -131,8 +130,9 @@
                     <strong>$@{{ ($value.skuPrice.sale_price/100).toFixed(2) }}</strong>
                 </span>
                 @{{ if $value.skuPrice.sale_price !== $value.skuPrice.price }}
-                <span class="font-size-xs text-common text-throughLine m-l-5x">$@{{ ($value.skuPrice.price/100).toFixed(2) }}</span>
+                <span class="font-size-xs text-common text-throughLine m-l-5x">$@{{ ($value.skuPrice.skuPromotion.price/100).toFixed(2) }}</span>
                 @{{ /if }}
+
             </div>
         </div>
     </div>
