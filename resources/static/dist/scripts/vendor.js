@@ -16519,14 +16519,15 @@ else if (typeof define === 'function' && define.amd) {
         switch (switchDevice()) {
             case 1:
                 $Downloading.attr('href', iPhone);
+                $('#downloadingApp').removeAttr('data-remodal-target');
                 $('.download-content').removeAttr('hidden');
                 break;
             case 0:
                 $Downloading.attr('href', Android);
+                $('#downloadingApp').removeAttr('data-remodal-target');
                 $('.download-content').removeAttr('hidden');
                 break;
             case -1:
-                $('#downloadingApp').removeAttr('data-remodal-target');
                 $('.app-content').removeAttr('hidden');
                 break;
             default:
