@@ -34,7 +34,7 @@
                         @if(isset($recdesigner))
                             @foreach($recdesigner as $value)
                                 <div class="designer-item swiper-slide p-r-10x">
-                                    <a class="" href="/designer/{{$value['designerId']}}"
+                                    <a class="designers" href="/designer/{{$value['designerId']}}"
                                         data-clk='http://clk.motif.me/log.gif?t=designer.100001&m=H5_M2016-1&pin={{Session::get('user.pin')}}&uuid={{Session::get('user.uuid')}}&v={"action":1,"skipType":2,"skipId":{{$value['designerId']}},expid":0,"ver":"1.0.1","src":"H5"}'>
                                         <img class="img-fluid"
                                              src="https://s3-us-west-1.amazonaws.com/emimagetest/n2/{{$value['avatar']}}">
@@ -75,7 +75,7 @@
             <div class="swiper-wrapper">
                 @{{ each $value.products }}
                 <div class="designer-item swiper-slide p-x-5x">
-                    <a href="/detail/@{{$value.spu}}" data-clk='http://clk.motif.me/log.gif?t=designer.300001&m=H5_M2016-1&pin={{ Session::get('user.pin') }}&uuid={{ Session::get('user.uuid') }}&v=<?="\"action\":0,\"skipType\":2,\"skipId\":"?>@{{ $value.designerId }}<?=",\"expid\":0,\"ver\":\"1.0.1\",\"src\":\"H5\" "?>'>
+                    <a href="/detail/@{{$value.spu}}" data-designerid="@{{ $value.designerId }}" data-clk='http://clk.motif.me/log.gif?t=designer.300001&m=H5_M2016-1&pin={{ Session::get('user.pin') }}&uuid={{ Session::get('user.uuid') }}&v=<?="\"action\":0,\"skipType\":2,\"skipId\":"?>@{{ $value.designerId }}<?=",\"expid\":0,\"ver\":\"1.0.1\",\"src\":\"H5\" "?>'>
                         <img class="img-fluid"
                              src="https://s3-us-west-1.amazonaws.com/emimagetest/n2/@{{ $value.mainImage }}">
                     </a>
