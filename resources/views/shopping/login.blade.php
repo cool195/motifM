@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 
-    <title>Login</title>
+    <title>Sign in</title>
     @include('head')
 
     <link rel="stylesheet" href="/styles/login.css">
@@ -49,7 +49,7 @@
                     <a class="btn btn-primary-outline btn-lg btn-block" href="/register" id="register">Register</a>
                 </div>
                 <div class="col-xs-6">
-                    <div class="btn btn-primary btn-lg btn-block" data-role="submit" id="login">Login</div>
+                    <div class="btn btn-primary btn-lg btn-block" data-role="submit" id="login">Sign in</div>
                 </div>
             </div>
         </div>

@@ -53,7 +53,7 @@
 <div class="remodal remodal-lg modal-content" data-remodal-id="changePwd-modal" id="changePwdDialog">
     <div class="font-size-sm p-t-20x p-x-15x p-b-15x">
         <span class="font-size-base">Password Reset Complete!</span>
-        <br>Please login again!
+        <br>Please sign in again!
     </div>
     <hr class="hr-base m-a-0">
     <div class="btn-group flex">

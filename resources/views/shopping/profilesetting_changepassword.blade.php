@@ -46,8 +46,7 @@
 <!-- 提示成功修改密码 -->
 <div class="remodal remodal-lg modal-content" data-remodal-id="changePwd-modal" id="changePwdDialog">
     <div class="font-size-sm p-t-20x p-x-15x p-b-15x">
-        <span class="font-size-base">Password Change Complete!</span><br>Please log
-        in again!
+        <span class="font-size-base">Password Change Complete!</span><br>Please sign in again!
     </div>
     <hr class="hr-base m-a-0">
     <div class="btn-group flex">
