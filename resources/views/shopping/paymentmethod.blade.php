@@ -88,7 +88,7 @@
                     </div>
                 </aside>
             @else
-                <aside class="cardCredit-container m-b-10x">
+{{--                <aside class="cardCredit-container m-b-10x">
                     <a class="flex flex-alignCenter flex-fullJustified font-size-sm text-primary p-y-10x p-x-15x"
                        href="/braintree/addcard">
                         <div class="flex flex-alignCenter font-size-sm text-primary">
@@ -97,7 +97,7 @@
                         </div>
                         <span><i class="iconfont icon-arrow-right icon-size-sm text-common"></i></span>
                     </a>
-                </aside>
+                </aside>--}}
             @endif
         </section>
         <!-- 页脚 功能链接 -->

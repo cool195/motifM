@@ -147,6 +147,8 @@ class OrderController extends ApiController
             'ver' => $request->input('ver', 1)
         );
         $result = $this->request('openapi', "", "order", $params);
+        error_log(print_r("11111111111111\n", "\n"), 3, '/tmp/myerror.log');
+        error_log(print_r($result, "\n"), 3, '/tmp/myerror.log');
         if (!empty($result) && $result['success']) {
             $orderId = $result['data']['orderID'];
         } else {
@@ -167,6 +169,8 @@ class OrderController extends ApiController
             'devicedata' => "H5"
         );
         $result = $this->request('openapi', "", "pay", $params);
+        error_log(print_r("2222222222222222\n", "\n"), 3, '/tmp/myerror.log');
+        error_log(print_r($result, "\n"), 3, '/tmp/myerror.log');
         if (!empty($result) && $result['success']) {
             $transid = $result['data']['id'];
         } else {
@@ -179,6 +183,8 @@ class OrderController extends ApiController
             'orderid' => $orderId
         );
         $result = $this->request('openapi', "", "pay", $params);
+        error_log(print_r("3333333333333333333\n", "\n"), 3, '/tmp/myerror.log');
+        error_log(print_r($result, "\n"), 3, '/tmp/myerror.log');
         if (!empty($result) && $result['success']) {
             //$result['redirectUrl'] = "/order/orderdetail/".$orderId;
             $result['redirectUrl'] = "/success";

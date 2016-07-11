@@ -96,7 +96,7 @@
                     </div>
                 </aside>
             @else
-                <aside class="cardCredit-container m-b-10x">
+{{--                <aside class="cardCredit-container m-b-10x">
                     <div class="flex flex-alignCenter flex-fullJustified font-size-sm text-primary p-y-10x p-x-15x"
                          id="cardCredit" data-action="/braintree/addcard">
                         <div class="flex flex-alignCenter font-size-sm text-primary">
@@ -105,7 +105,7 @@
                         </div>
                         <span><i class="iconfont icon-arrow-right icon-size-sm text-common"></i></span>
                     </div>
-                </aside>
+                </aside>--}}
             @endif
             <aside class="p-a-15x">
                 <div class="btn btn-block btn-primary" data-role="submit">Continue</div>
