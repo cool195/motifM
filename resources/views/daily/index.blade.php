@@ -66,21 +66,21 @@
     @{{ /each }}
 </template>
 <!-- 更多商品图片 模板 -->
-<template id="tpl-product">
-    @{{ each list }}
-    <a data-impr="@{{ $value.impr }}" data-clk="@{{ $value.clk }}" href="/detail/@{{ $value.spu }}">
-        <div class="bg-white m-b-10x">
-            <div class="daily-imgInfo">
-                <img class="img-fluid img-lazy" data-original="{{env('APP_Api_Image')}}/n2/@{{ $value.main_image_url }}" src="/images/product/bg-product@750.png" alt="@{{ $value.title }}">
-            </div>
-            <div class="p-a-15x">
-                <h6 class="text-main font-size-base m-b-5x"><strong>@{{ $value.main_title }}</strong></h6>
-                <div class="text-primary font-size-sm">@{{ $value.sub_title }}</div>
-            </div>
-        </div>
-    </a>
-    @{{ /each }}
-</template>
+{{--<template id="tpl-product">--}}
+    {{--@{{ each list }}--}}
+    {{--<a data-impr="@{{ $value.impr }}" data-clk="@{{ $value.clk }}" href="/detail/@{{ $value.spu }}">--}}
+        {{--<div class="bg-white m-b-10x">--}}
+            {{--<div class="daily-imgInfo">--}}
+                {{--<img class="img-fluid img-lazy" data-original="{{env('APP_Api_Image')}}/n2/@{{ $value.main_image_url }}" src="/images/product/bg-product@750.png" alt="@{{ $value.title }}">--}}
+            {{--</div>--}}
+            {{--<div class="p-a-15x">--}}
+                {{--<h6 class="text-main font-size-base m-b-5x"><strong>@{{ $value.main_title }}</strong></h6>--}}
+                {{--<div class="text-primary font-size-sm">@{{ $value.sub_title }}</div>--}}
+            {{--</div>--}}
+        {{--</div>--}}
+    {{--</a>--}}
+    {{--@{{ /each }}--}}
+{{--</template>--}}
 
 <script src="/scripts/vendor.js"></script>
 
