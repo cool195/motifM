@@ -127,6 +127,7 @@
     </div>
     <!-- 提示: 打开 app -->
     <div class="view-content" hidden>
+        <div class="font-size-base">Function Not Supported</div>
         <div class="font-size-sm p-x-15x p-b-15x p-t-10x">
             We supply this function in the <br>MOTIF App,You can use there！
         </div>
@@ -137,6 +138,7 @@
     </div>
     <!-- 提示: 下载 app -->
     <div class="download-content" hidden>
+        <div class="font-size-base">Function Not Supported</div>
         <div class="font-size-sm p-x-15x p-b-15x p-t-10x">
             We supply this function in the <br>MOTIF App,You can use there！
         </div>
@@ -148,6 +150,7 @@
     </div>
     <!-- 提示: 不支持此设备 -->
     <div class="app-content" hidden>
+        <div class="font-size-base">Device Not Supported</div>
         <div class="font-size-sm p-x-15x p-b-15x p-t-10x">
             Your device is not supported.<br>It's available in stores below.
         </div>
