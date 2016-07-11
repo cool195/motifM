@@ -22,7 +22,7 @@
                     @endif
                             <!-- 物流、退货、支付 说明 -->
                     <section class="m-b-20x p-b-20x reserve-height">
-                        <article class="font-size-md text-main p-x-15x p-y-10x"><strong>Returns Shipping</strong>
+                        <article class="font-size-md text-main p-x-15x p-y-10x"><strong>Shipping & Returns</strong>
                         </article>
                         <div class="bg-white  m-b-10x">
                             <div class="p-x-15x p-y-10x font-size-md text-main"><strong>Shipping</strong></div>
