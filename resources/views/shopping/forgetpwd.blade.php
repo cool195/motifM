@@ -16,9 +16,11 @@
     <section class="resetPwd-content m-t-10x p-y-20x reserve-height">
         <form id="reset" action="">
             <fieldset>
+                <a href="/daily"></a>
                 <div class="p-b-20x"><img src="/images/login/register-logo.png"
                                           srcset="/images/login/register-logo@2x.png 2x,/images/login/register-logo@3x.png 3x">
                 </div>
+                </a>
                 <div class="text-main m-t-10x"><strong>Reset Password</strong></div>
                 <div class="text-primary text-left m-t-15x font-size-sm">You will use the new password to login to your
                     Motif account.

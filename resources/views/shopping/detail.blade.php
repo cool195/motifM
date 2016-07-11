@@ -73,14 +73,15 @@
                 </div>
                 <hr class="hr-light m-x-10x">
                 <div class="product-price">
-                    <span class="font-size-lx text-primary">${{ number_format(($data['skuPrice']['sale_price'] / 100), 2) }}</span>
-                    @if($data['skuPrice']['sale_price'] != $data['skuPrice']['price'])<span
-                            class="font-size-sm text-throughLine text-common">${{ number_format(($data['skuPrice']['price'] /100), 2) }}</span>@endif
                     @if(isset($data['skuPrice']['skuPromotion']))
-                        <span class="font-size-sm text-primary">({{ $data['skuPrice']['skuPromotion']['display'] }}
-                            )</span>
+                        <span class="font-size-lx text-primary">${{ number_format(($data['skuPrice']['skuPromotion']['promot_price'] / 100), 2) }}</span>
+                        <span class="font-size-sm text-throughLine text-common">${{ number_format(($data['skuPrice']['skuPromotion']['price'] /100), 2) }}</span>
+                        <span class="font-size-sm text-primary">({{ $data['skuPrice']['skuPromotion']['display'] }})</span>
+                    @else
+                        <span class="font-size-lx text-primary">${{ number_format(($data['skuPrice']['sale_price'] / 100), 2) }}</span>
                     @endif
                 </div>
+
                 <div class="text-warning font-size-xs p-x-15x" data-impr='http://clk.motif.me/log.gif?t=rec.100002&m=OPEN_M2016-1&pin={{ Session::get('user.pin') }}&uuid={{Session::get('user.uuid')}}&v={" action ":0,"cspus ":{{ $data['skus'] }},"expid ":0,"index ":1,"rec_type ":1,"spu":{{ $data['spu'] }},"ver ":"9.00 "}&sig=2291a58454115c8136169111738de65696add43d'>{{ $data['prompt_words'] }}</div>
             </article>
             <!-- 产品 其他信息 -->

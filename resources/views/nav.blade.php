@@ -93,7 +93,7 @@
     </ul>
     <ul class="nav bg-white m-t-10x">
         <li class="nav-item">
-            <a href="#" class="flex flex-alignCenter flex-fullJustified p-a-15x" data-remodal-target="download-modal">
+            <a href="#" class="flex flex-alignCenter flex-fullJustified p-a-15x" data-remodal-target="download-modal" id="downloadingApp" data-role="downloading">
                 <div class="font-size-sm text-primary flex flex-alignCenter"><i
                             class="iconfont icon-download icon-size-md p-r-15x"></i><span>Download Motif</span></div>
                 <span class="text-common"><i class="iconfont icon-arrow-right icon-size-sm"></i></span>

@@ -68,32 +68,35 @@
     </div>
     <!-- 提示: 打开 app -->
     <div class="view-content" hidden>
-        <div class="font-size-sm p-x-15x p-b-15x p-t-10x">
+        <div class="font-size-base">Function Not Supported</div>
+        <div class="font-size-sm p-x-15x p-b-15x p-t-5x">
             We supply this function in the <br>MOTIF App,You can use there！
         </div>
         <hr class="hr-base m-a-0">
         <div class="p-x-15x p-t-10x p-b-15x">
-            <a class="btn btn-primary btn-block btn-sm" href="">View in MOTIF App</a>
+            <a class="btn btn-primary btn-block" href="">View in MOTIF App</a>
         </div>
     </div>
     <!-- 提示: 下载 app -->
     <div class="download-content" hidden>
-        <div class="font-size-sm p-x-15x p-b-15x p-t-10x">
+        <div class="font-size-base">Function Not Supported</div>
+        <div class="font-size-sm p-x-15x p-b-15x p-t-5x">
             We supply this function in the <br>MOTIF App,You can use there！
         </div>
         <hr class="hr-base m-a-0">
         <div class="p-x-15x p-t-10x p-b-15x">
-            <div class="btn btn-primary btn-block btn-sm" data-role="downloading">Download MOTIF App
-            </div>
+            <a class="btn btn-primary btn-block" data-role="downloading">Download MOTIF App
+            </a>
         </div>
     </div>
     <!-- 提示: 不支持此设备 -->
     <div class="app-content" hidden>
+        <div class="font-size-base">Device Not Supported</div>
         <div class="font-size-sm p-x-15x p-b-15x p-t-10x">
             Your device is not supported.<br>It's available in stores below.
         </div>
         <hr class="hr-base m-a-0">
-        <div class="p-x-15x p-t-10x p-b-15x">
+        <div class="p-x-15x p-t-5x p-b-15x">
             <div class="field-items">
                 <a href="#" class="btn btn-secondary btn-xs">
                     <img src="/images/icon/icon-appStore.png" srcset="/images/icon/icon-appStore@2x.png 2x, /images/icon/icon-appStore@3x.png 3x">
@@ -115,10 +118,9 @@
             <div class="image-bg">
                 <div class="image-container">
                     <a href="/detail/@{{ $value.spu }}" data-impr="@{{ $value.impr }}" data-clk="@{{ $value.clk }}">
-                        <img class="img-fluid img-lazy"
-                             data-original="https://s3-us-west-1.amazonaws.com/emimagetest/n1/@{{ $value.main_image_url }}"
-                             src="/images/product/bg-product@336.png" alt="@{{ $value.main_title }}">
+                        <img class="img-fluid img-lazy" data-original="https://s3-us-west-1.amazonaws.com/emimagetest/n1/@{{ $value.main_image_url }}" src="/images/product/bg-product@336.png" alt="@{{ $value.main_title }}">
                         @{{ if $value.skuPrice.sale_price !== $value.skuPrice.price }}
+
                         <div class="price-off">
                             <strong class="font-size-sm">@{{ $value.skuPrice.skuPromotion.display }}</strong>
                         </div>
@@ -131,8 +133,9 @@
                     <strong>$@{{ ($value.skuPrice.sale_price/100).toFixed(2) }}</strong>
                 </span>
                 @{{ if $value.skuPrice.sale_price !== $value.skuPrice.price }}
-                <span class="font-size-xs text-common text-throughLine m-l-5x">$@{{ ($value.skuPrice.price/100).toFixed(2) }}</span>
+                <span class="font-size-xs text-common text-throughLine m-l-5x">$@{{ ($value.skuPrice.skuPromotion.price/100).toFixed(2) }}</span>
                 @{{ /if }}
+
             </div>
         </div>
     </div>

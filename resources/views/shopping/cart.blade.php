@@ -37,7 +37,7 @@
                     @if(isset($cartData['showSkus']))
                         @foreach($cartData['showSkus'] as $showSku)
                             {{-- TODO 需要添加 商品是否上架的判断 --}}
-                            <div class="cartList-item p-a-10x @if(0 == $showSku['stock_status']) disabled @endif">
+                            <div class="cartList-item p-a-10x @if(!$showSku['stock_status'] || !$showSku['isPutOn']) disabled @endif">
                                 <a @if(1 == $showSku['stock_status'] && 1 == $showSku['isPutOn']) href="/detail/{{$showSku['spu']}}" @endif>
                                     <div class="productInfo flex">
                                         <div class="flex-fixedShrink">
@@ -97,7 +97,7 @@
                                             </div>
                                             <div class="btn btn-cartCount btn-sm"
                                                  data-count="{{$showSku['sale_qtty']}}">{{$showSku['sale_qtty']}}</div>
-                                            <div class="btn btn-cartCount btn-sm @if(1 !== $showSku['stock_status'] || $showSku['sale_qtty'] >=50) disabled @endif"
+                                            <div class="btn btn-cartCount btn-sm @if($showSku['sale_qtty'] >=50 || !$showSku['stock_status'] || !$showSku['isPutOn']) disabled @endif"
                                                  data-item="add">
                                                 <i class="iconfont icon-add"></i>
                                             </div>
