@@ -25,7 +25,7 @@
                         <div class="checkoutList-item p-a-10x">
                             <div class="flex">
                                 <div class="flex-fixedShrink">
-                                    <img class="img-thumbnail img-lazy" src="/images/product/bg-product@70.png" data-original="{{'https://s3-us-west-1.amazonaws.com/emimagetest/n2/'.$showSku['main_image_url']}}" width="70px" height="70px">
+                                    <img class="img-thumbnail img-lazy" src="/images/product/bg-product@70.png" data-original="{{env('APP_Api_Image').'/n2/'.$showSku['main_image_url']}}" width="70px" height="70px">
                                 </div>
                                 <div class="p-l-10x flex-width">
                                     <article class="flex flex-fullJustified">

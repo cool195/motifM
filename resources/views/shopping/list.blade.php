@@ -30,8 +30,8 @@
                     @foreach($categories as $key => $c)
                         <li class="nav-item swiper-slide" data-tab-index="{{ $c['category_id'] }}" id="{{ $c['category_id'] }}">
                             <a class="nav-flex flex-alignCenter underLine-item text-primary m-x-15x p-y-10x nav-productType @if($key!=0) inactive @endif">
-                                <img class="img-fluid img-icon" src="https://s3-us-west-1.amazonaws.com/emimagetest/n2/{{$c['img_path'] }}" srcset="https://s3-us-west-1.amazonaws.com/emimagetest/n1/{{$c['img_path'] }} 2x,https://s3-us-west-1.amazonaws.com/emimagetest/n0/{{$c['img_path'] }} 3x">
-                                <img class="img-fluid img-icon-active" src="https://s3-us-west-1.amazonaws.com/emimagetest/n2/{{$c['img_path2'] }}" srcset="https://s3-us-west-1.amazonaws.com/emimagetest/n1/{{$c['img_path2'] }} 2x, https://s3-us-west-1.amazonaws.com/emimagetest/n0/{{$c['img_path2'] }} 3x">
+                                <img class="img-fluid img-icon" src="{{env('APP_Api_Image')}}/n2/{{$c['img_path'] }}" srcset="{{env('APP_Api_Image')}}/n1/{{$c['img_path'] }} 2x,{{env('APP_Api_Image')}}/n0/{{$c['img_path'] }} 3x">
+                                <img class="img-fluid img-icon-active" src="{{env('APP_Api_Image')}}/n2/{{$c['img_path2'] }}" srcset="{{env('APP_Api_Image')}}/n1/{{$c['img_path2'] }} 2x, {{env('APP_Api_Image')}}/n0/{{$c['img_path2'] }} 3x">
                                 <span class="font-size-sm m-l-5x">{{ $c['category_name'] }}</span>
                             </a>
                         </li>
@@ -118,7 +118,7 @@
             <div class="image-bg">
                 <div class="image-container">
                     <a href="/detail/@{{ $value.spu }}" data-impr="@{{ $value.impr }}" data-clk="@{{ $value.clk }}">
-                        <img class="img-fluid img-lazy" data-original="https://s3-us-west-1.amazonaws.com/emimagetest/n1/@{{ $value.main_image_url }}" src="/images/product/bg-product@336.png" alt="@{{ $value.main_title }}">
+                        <img class="img-fluid img-lazy" data-original="{{env('APP_Api_Image')}}/n1/@{{ $value.main_image_url }}" src="/images/product/bg-product@336.png" alt="@{{ $value.main_title }}">
                         @{{ if $value.skuPrice.sale_price !== $value.skuPrice.price }}
 
                         <div class="price-off">
