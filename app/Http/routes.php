@@ -106,9 +106,9 @@ $app->group(['middleware' => 'logincheck', 'namespace' => 'App\Http\Controllers\
     $app->delete('/braintree', 'BraintreeController@delMethod');
     $app->post('/braintree', 'BraintreeController@checkout');
     $app->get('/braintree/addcard', 'BraintreeController@addCard');
-    //测试支付
-    $app->get('/testpay', 'BraintreeController@testpay');
-    $app->post('/testcheck', 'BraintreeController@testcheck');
+    //paypal
+    $app->get('/paypalorder', 'PaypalController@index');
+    $app->get('/paypal', 'PaypalController@paypal');
 });
 
 $app->group(['namespace' => 'App\Http\Controllers\Shopping'], function ($app) {
