@@ -33,7 +33,7 @@
                 </div>
                 <hr class="hr-base m-y-0">
                 <div class="p-x-15x p-y-10x font-size-md text-main">Contact Us on Facebook:&nbsp;
-                    <a target="_blank" href="https://www.facebook.com/Motif-862363260557363/">
+                    <a target="_blank" href="https://www.facebook.com/564721193713231">
                         <img src="/images/contactus/icon-facebook.png" srcset="/images/contactus/icon-facebook@2x.png 2x,/images/contactus/icon-facebook@3x.png 3x"></a>
                 </div>
             </div>
