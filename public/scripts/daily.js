@@ -23,7 +23,7 @@
             PageNum = $DailyContainer.data('pagenum');
         // 判断是否还有数据要加载
         if (PageNum === -1) {
-            getProductList();
+            //getProductList();
             return;
         }
 
