@@ -61,7 +61,7 @@
                     }
                 })
                 .always(function() {
-                    closeLoading();
+                    //closeLoading();
                 });
         }
     });
