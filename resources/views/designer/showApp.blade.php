@@ -26,10 +26,10 @@
                         </div>
                     </div>
                 @else
-                    <img src="https://s3-us-west-1.amazonaws.com/emimagetest/n0/{{$designer['img_video_path']}}" alt=""
+                    <img src="{{env('APP_Api_Image')}}/n0/{{$designer['img_video_path']}}" alt=""
                          class="designer-realImg" hidden>
                     <img class="img-fluid img-lazy designer-Img"
-                         data-original="https://s3-us-west-1.amazonaws.com/emimagetest/n0/{{$designer['img_video_path']}}"
+                         data-original="{{env('APP_Api_Image')}}/n0/{{$designer['img_video_path']}}"
                          src="/images/designer/bg-designer@750x550.png" alt="">
                 @endif
             </div>
@@ -119,7 +119,7 @@
                                data-clk='http://clk.motif.me/log.gif?t=designer.400001&m=H5_M2016-1&pin={{Session::get('user.pin')}}&uuid={{ Session::get('user.uuid') }}&v={"action":1,"skipType":{{$value['skipType']}},"skipId":{{$value['skipId']}},expid":0,"ver":"1.0.1","src":"H5"}'>
                                 <div @if($k!=0)class="p-y-10x"@endif>
                                     <img class="img-fluid"
-                                         src="https://s3-us-west-1.amazonaws.com/emimagetest/n2/{{$value['imgPath']}}">
+                                         src="{{env('APP_Api_Image')}}/n2/{{$value['imgPath']}}">
                                 </div>
                             </a>
                     @elseif($value['type']=='title')
@@ -151,7 +151,7 @@
                                             <a href="motif://o.c?a=pd&spu={{$spu}}">
                                                 <img class="img-fluid img-lazy"
                                                      src="/images/product/bg-product@336.png"
-                                                     data-original="https://s3-us-west-1.amazonaws.com/emimagetest/n2/{{$product['spuInfos'][$spu]['spuBase']['main_image_url']}}"
+                                                     data-original="{{env('APP_Api_Image')}}/n2/{{$product['spuInfos'][$spu]['spuBase']['main_image_url']}}"
                                                      alt="{{$product['spuInfos'][$spu]['spuBase']['main_title']}}">
                                             </a>
                                         </div>
@@ -170,7 +170,7 @@
                                                         <div class="p-t-10x">
                                                             <img class="img-thumbnail img-lazy"
                                                                  src="/images/product/bg-product@336.png"
-                                                                 data-original="https://s3-us-west-1.amazonaws.com/emimagetest/n2/{{$product['spuInfos'][$spu]['spuBase']['main_image_url']}}"
+                                                                 data-original="{{env('APP_Api_Image')}}/n2/{{$product['spuInfos'][$spu]['spuBase']['main_image_url']}}"
                                                                  alt="{{$product['spuInfos'][$spu]['spuBase']['main_title']}}">
                                                             <div class="p-y-10x">
                                                                 <span class="text-primary font-size-sm m-l-5x"><strong>${{number_format($product['spuInfos'][$spu]['skuPrice']['sale_price']/100,2)}}</strong></span>
@@ -201,7 +201,7 @@
                                         <div class="p-t-10x">
                                             <img class="img-thumbnail img-lazy"
                                                  src="/images/product/bg-product@336.png"
-                                                 data-original="https://s3-us-west-1.amazonaws.com/emimagetest/n2/{{$value['main_image_url']}}"
+                                                 data-original="{{env('APP_Api_Image')}}/n2/{{$value['main_image_url']}}"
                                                  alt="{{$value['main_title']}}">
                                             <div class="p-y-10x">
                                                 <span class="text-primary font-size-sm m-l-5x"><strong>${{number_format($value['skuPrice']['sale_price']/100,2)}}</strong></span>

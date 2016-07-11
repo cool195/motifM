@@ -57,7 +57,7 @@
                     <div class="flex p-y-10x p-x-15x">
                         <div class="flex-fixedShrink">
                             <img class="img-thumbnail"
-                                 src="{{ 'https://s3-us-west-1.amazonaws.com/emimagetest/n2/'.$lineOrder['img_path'] }}"
+                                 src="{{ env('APP_Api_Image').'/n2/'.$lineOrder['img_path'] }}"
                                  width="70px" height="70px">
                         </div>
                         <!-- TODO 缩略号的兼容性不好, 需要改样式 -->

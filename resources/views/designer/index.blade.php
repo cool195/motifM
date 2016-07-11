@@ -37,7 +37,7 @@
                                     <a class="designers" href="/designer/{{$value['designerId']}}"
                                         data-clk='http://clk.motif.me/log.gif?t=designer.100001&m=H5_M2016-1&pin={{Session::get('user.pin')}}&uuid={{Session::get('user.uuid')}}&v={"action":1,"skipType":2,"skipId":{{$value['designerId']}},expid":0,"ver":"1.0.1","src":"H5"}'>
                                         <img class="img-fluid"
-                                             src="https://s3-us-west-1.amazonaws.com/emimagetest/n2/{{$value['avatar']}}">
+                                             src="{{env('APP_Api_Image')}}/n2/{{$value['avatar']}}">
                                         {{--<div class="designer-text font-size-sm text-center">{{$value['name']}}</div>--}}
                                     </a>
                                 </div>
@@ -68,7 +68,7 @@
     <aside class="bg-white m-b-10x">
         <div class="">
             <a href="/designer/@{{$value.designerId}}" data-impr='http://clk.motif.me/log.gif?t=designer.200001&m=H5_M2016-1&pin={{ Session::get('user.pin') }}&uuid={{ Session::get('user.uuid') }}&v=<?="\"action\":0,\"skipType\":2,\"skipId\":"?>@{{ $value.designerId }}<?=",\"expid\":0,\"ver\":\"1.0.1\",\"src\":\"H5\" "?>' data-clk='http://clk.motif.me/log.gif?t=designer.200001&m=H5_M2016-1&pin={{ Session::get('user.pin') }}&uuid={{ Session::get('user.uuid') }}&v=<?="\"action\":0,\"skipType\":2,\"skipId\":"?>@{{ $value.designerId }}<?=",\"expid\":0,\"ver\":\"1.0.1\",\"src\":\"H5\" "?>'>
-                <img class="img-fluid img-lazy" data-original="https://s3-us-west-1.amazonaws.com/emimagetest/n2/@{{ $value.listImg }}" src="/images/product/bg-product@750.png" alt="@{{ $value.name }}">
+                <img class="img-fluid img-lazy" data-original="{{env('APP_Api_Image')}}/n2/@{{ $value.listImg }}" src="/images/product/bg-product@750.png" alt="@{{ $value.name }}">
             </a>
         </div>
         <div class="p-x-10x p-y-15x swiper-container" id="designer-container">
@@ -77,7 +77,7 @@
                 <div class="designer-item swiper-slide p-x-5x">
                     <a href="/detail/@{{$value.spu}}" data-designerid="@{{ $value.designerId }}" data-clk='http://clk.motif.me/log.gif?t=designer.300001&m=H5_M2016-1&pin={{ Session::get('user.pin') }}&uuid={{ Session::get('user.uuid') }}&v=<?="\"action\":0,\"skipType\":2,\"skipId\":"?>@{{ $value.designerId }}<?=",\"expid\":0,\"ver\":\"1.0.1\",\"src\":\"H5\" "?>'>
                         <img class="img-fluid"
-                             src="https://s3-us-west-1.amazonaws.com/emimagetest/n2/@{{ $value.mainImage }}">
+                             src="{{env('APP_Api_Image')}}/n2/@{{ $value.mainImage }}">
                     </a>
                 </div>
                 @{{ /each }}

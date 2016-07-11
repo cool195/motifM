@@ -69,7 +69,7 @@
             <div class="flex-fixedShrink">
                 <img class="img-thumbnail img-lazy"
                      src="/images/product/bg-product@70.png"
-                     data-original="https://s3-us-west-1.amazonaws.com/emimagetest/n4/@{{ $value.img_path }}"
+                     data-original="{{env('APP_Api_Image')}}/n4/@{{ $value.img_path }}"
                      width="70px" height="70px">
             </div>
             <div class="p-x-10x order-product-title">
