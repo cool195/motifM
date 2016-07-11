@@ -157,10 +157,10 @@
         <hr class="hr-base m-a-0">
         <div class="p-x-15x p-t-10x p-b-15x">
             <div class="field-items">
-                <a href="#" class="btn btn-secondary btn-xs">
+                <a href="#" class="btn btn-black btn-xs">
                     <img src="/images/icon/icon-appStore.png" srcset="/images/icon/icon-appStore@2x.png 2x, /images/icon/icon-appStore@3x.png 3x">
                 </a>
-                <a href="#" class="btn btn-secondary btn-xs">
+                <a href="#" class="btn btn-black btn-xs">
                     <img src="/images/icon/icon-googlePlay.png" srcset="/images/icon/icon-googlePlay@2x.png 2x, /images/icon/icon-googlePlay@3x.png 3x">
                 </a>
             </div>
