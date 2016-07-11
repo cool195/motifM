@@ -29,7 +29,7 @@
                 @if(isset($categories))
                     @foreach($categories as $key => $c)
                         <li class="nav-item swiper-slide" data-tab-index="{{ $c['category_id'] }}" id="{{ $c['category_id'] }}">
-                            <a class="nav-flex flex-alignCenter underLine-item text-primary m-x-15x p-y-10x nav-productType @if($key!=0) inactive @endif">
+                            <a class="nav-flex flex-alignCenter underLine-item text-primary m-x-15x p-y-10x nav-productType @if($key!=0) inactive @endif" data-categoryid="{{ $c['category_id'] }}">
                                 <img class="img-fluid img-icon" src="{{env('APP_Api_Image')}}/n2/{{$c['img_path'] }}" srcset="{{env('APP_Api_Image')}}/n1/{{$c['img_path'] }} 2x,{{env('APP_Api_Image')}}/n0/{{$c['img_path'] }} 3x">
                                 <img class="img-fluid img-icon-active" src="{{env('APP_Api_Image')}}/n2/{{$c['img_path2'] }}" srcset="{{env('APP_Api_Image')}}/n1/{{$c['img_path2'] }} 2x, {{env('APP_Api_Image')}}/n0/{{$c['img_path2'] }} 3x">
                                 <span class="font-size-sm m-l-5x">{{ $c['category_name'] }}</span>

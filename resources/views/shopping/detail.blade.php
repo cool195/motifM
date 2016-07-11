@@ -114,7 +114,7 @@
                     @if(Session::has('user'))
                         <div class="row">
                             <div class="col-xs-12">
-                                <div class="btn btn-primary btn-block" data-control="openModal" data-action="PATCH">Add to Bag</div>
+                                <div class="btn btn-primary btn-block up-btn-addToBag" data-control="openModal" data-action="PATCH">Add to Bag</div>
                             </div>
                             {{--<div class="col-xs-6">--}}
                                 {{--<div class="btn btn-primary btn-block" data-control="openModal" data-action="PUT">Buy Now</div>--}}
@@ -123,7 +123,7 @@
                     @else
                         <div class="row">
                             <div class="col-xs-12">
-                                <a href="/login" class="btn btn-primary btn-block" id="addCart">Add to Bag</a>
+                                <a href="/login" class="btn btn-primary btn-block up-btn-addToBag" id="addCart">Add to Bag</a>
                             </div>
                             {{--<div class="col-xs-6">--}}
                                 {{--<a href="/login" class="btn btn-primary btn-block" id="buyNow">Buy Now</a>--}}
@@ -206,7 +206,7 @@
                     @if(Session::has('user'))
                         <div class="row">
                             <div class="col-xs-12">
-                                <div class="btn btn-primary btn-block" data-control="openModal" data-action="PATCH">Add to
+                                <div class="btn btn-primary btn-block down-btn-addToBag" data-control="openModal" data-action="PATCH">Add to
                                     Bag</div>
                             </div>
                             {{--<div class="col-xs-6">--}}
@@ -216,7 +216,7 @@
                     @else
                         <div class="row">
                             <div class="col-xs-12">
-                                <a href="/login" class="btn btn-primary btn-block" id="addCart">Add to Bag</a>
+                                <a href="/login" class="btn btn-primary btn-block down-btn-addToBag" id="addCart">Add to Bag</a>
                             </div>
                             {{--<div class="col-xs-6">--}}
                                 {{--<a href="/login" class="btn btn-primary btn-block" id="buyNow">Buy Now</a>--}}

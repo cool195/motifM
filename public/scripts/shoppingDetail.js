@@ -831,9 +831,11 @@
         var $Message = $(this).siblings('.message-info');
         $Message.toggleClass('active');
         if ($Message.hasClass('active')) {
+            $(this).addClass('off');
             $(this).children('.showMore').html('Show Less');
             $(this).children('.iconfont').removeClass('icon-arrow-bottom').addClass('icon-arrow-up');
         } else {
+            $(this).removeClass('off');
             $(this).children('.showMore').html('Show More');
             $(this).children('.iconfont').removeClass('icon-arrow-up').addClass('icon-arrow-bottom');
         }

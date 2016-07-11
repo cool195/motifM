@@ -38,7 +38,7 @@
                         @foreach($cartData['showSkus'] as $showSku)
                             {{-- TODO 需要添加 商品是否上架的判断 --}}
                             <div class="cartList-item p-a-10x @if(!$showSku['stock_status'] || !$showSku['isPutOn']) disabled @endif">
-                                <a @if(1 == $showSku['stock_status'] && 1 == $showSku['isPutOn']) href="/detail/{{$showSku['spu']}}" @endif>
+                                <a @if(1 == $showSku['stock_status'] && 1 == $showSku['isPutOn']) href="/detail/{{$showSku['spu']}}" @endif class="inBag">
                                     <div class="productInfo flex">
                                         <div class="flex-fixedShrink">
                                             <img class="img-thumbnail img-lazy"
@@ -82,22 +82,22 @@
                                 </a>
                                 <div class="flex flex-alignCenter flex-fullJustified p-y-10x">
                                     <div class="flex">
-                                        <a class="btn btn-cartUpdate btn-sm" data-remodal-target="modal"
+                                        <a class="btn btn-cartUpdate btn-sm btn-inBag" data-remodal-target="modal"
                                            data-sku="{{$showSku['sku']}}" data-action="delsku">Remove</a>
-                                        <a href="#" class="btn btn-cartUpdate btn-sm" data-product-move="save"
+                                        <a href="#" class="btn btn-cartUpdate btn-sm btn-inBag" data-product-move="save"
                                            data-sku="{{$showSku['sku']}}">Save for Later</a>
                                     </div>
                                     <div class="flex flex-alignCenter">
                                         <span class="text-primary font-size-sm m-r-5x">Qty:</span>
                                         {{-- TODO 需要添加 商品是否上架的判断 --}}
                                         <div class="btn-group flex item-count" data-sku="{{$showSku['sku']}}">
-                                            <div class="btn btn-cartCount btn-sm @if($showSku['sale_qtty'] <=1 || !$showSku['stock_status'] || !$showSku['isPutOn']) disabled @endif"
+                                            <div class="btn btn-cartCount btn-sm btn-minus @if($showSku['sale_qtty'] <=1 || !$showSku['stock_status'] || !$showSku['isPutOn']) disabled @endif"
                                                  data-item="minus">
                                                 <i class="iconfont icon-minus"></i>
                                             </div>
                                             <div class="btn btn-cartCount btn-sm"
                                                  data-count="{{$showSku['sale_qtty']}}">{{$showSku['sale_qtty']}}</div>
-                                            <div class="btn btn-cartCount btn-sm @if($showSku['sale_qtty'] >=50 || !$showSku['stock_status'] || !$showSku['isPutOn']) disabled @endif"
+                                            <div class="btn btn-cartCount btn-sm btn-add @if($showSku['sale_qtty'] >=50 || !$showSku['stock_status'] || !$showSku['isPutOn']) disabled @endif"
                                                  data-item="add">
                                                 <i class="iconfont icon-add"></i>
                                             </div>
@@ -146,7 +146,7 @@
                         @foreach($saveData['showSkus'] as $showSku)
                             {{-- TODO 需要添加 商品是否上架的判断 --}}
                             <div class="cartList-item p-a-10x @if( 1 !== $showSku['stock_status'] ) disabled @endif">
-                                <a @if(1 == $showSku['stock_status'] && 1 == $showSku['isPutOn']) href="/detail/{{$showSku['spu']}}" @endif>
+                                <a @if(1 == $showSku['stock_status'] && 1 == $showSku['isPutOn']) href="/detail/{{$showSku['spu']}}" @endif class="inSaved">
                                     <div class="productInfo flex">
                                         <div class="flex-fixedShrink">
                                             <img class="img-thumbnail img-lazy"
@@ -187,10 +187,10 @@
                                     </div>
                                 </a>
                                 <div class="flex p-y-10x">
-                                    <a class="btn btn-cartUpdate btn-sm" data-remodal-target="modal" data-sku="{{$showSku['sku']}}" data-action="delsave">
+                                    <a class="btn btn-cartUpdate btn-sm btn-inSaved" data-remodal-target="modal" data-sku="{{$showSku['sku']}}" data-action="delsave">
                                         Remove
                                     </a>
-                                    <a class="btn btn-cartUpdate btn-sm @if(0 == $showSku['stock_status'] || 0 == $showSku['isPutOn']) disabled @endif" data-product-move="movetocart" data-sku="{{$showSku['sku']}}">
+                                    <a class="btn btn-cartUpdate btn-sm btn-inSaved @if(0 == $showSku['stock_status'] || 0 == $showSku['isPutOn']) disabled @endif" data-product-move="movetocart" data-sku="{{$showSku['sku']}}">
                                         @if(0 == $showSku['stock_status'] || 0 == $showSku['isPutOn'])
                                             Listing Ended
                                         @else
