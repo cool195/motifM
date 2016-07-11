@@ -68,32 +68,35 @@
     </div>
     <!-- 提示: 打开 app -->
     <div class="view-content" hidden>
-        <div class="font-size-sm p-x-15x p-b-15x p-t-10x">
+        <div class="font-size-base">Function Not Supported</div>
+        <div class="font-size-sm p-x-15x p-b-15x p-t-5x">
             We supply this function in the <br>MOTIF App,You can use there！
         </div>
         <hr class="hr-base m-a-0">
         <div class="p-x-15x p-t-10x p-b-15x">
-            <a class="btn btn-primary btn-block btn-sm" href="">View in MOTIF App</a>
+            <a class="btn btn-primary btn-block" href="">View in MOTIF App</a>
         </div>
     </div>
     <!-- 提示: 下载 app -->
     <div class="download-content" hidden>
-        <div class="font-size-sm p-x-15x p-b-15x p-t-10x">
+        <div class="font-size-base">Function Not Supported</div>
+        <div class="font-size-sm p-x-15x p-b-15x p-t-5x">
             We supply this function in the <br>MOTIF App,You can use there！
         </div>
         <hr class="hr-base m-a-0">
         <div class="p-x-15x p-t-10x p-b-15x">
-            <div class="btn btn-primary btn-block btn-sm" data-role="downloading">Download MOTIF App
-            </div>
+            <a class="btn btn-primary btn-block" data-role="downloading">Download MOTIF App
+            </a>
         </div>
     </div>
     <!-- 提示: 不支持此设备 -->
     <div class="app-content" hidden>
+        <div class="font-size-base">Device Not Supported</div>
         <div class="font-size-sm p-x-15x p-b-15x p-t-10x">
             Your device is not supported.<br>It's available in stores below.
         </div>
         <hr class="hr-base m-a-0">
-        <div class="p-x-15x p-t-10x p-b-15x">
+        <div class="p-x-15x p-t-5x p-b-15x">
             <div class="field-items">
                 <a href="#" class="btn btn-secondary btn-xs">
                     <img src="/images/icon/icon-appStore.png" srcset="/images/icon/icon-appStore@2x.png 2x, /images/icon/icon-appStore@3x.png 3x">
