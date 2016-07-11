@@ -18,7 +18,7 @@
         <section class="reserve-height">
             <!-- 设计师列表 -->
             <article class="bg-white p-y-15x m-b-10x">
-                <h5 class="font-size-base text-main p-x-15x m-b-10x"><strong>DESIGNERS</strong></h5>
+                {{--<h5 class="font-size-base text-main p-x-15x m-b-10x"><strong>DESIGNERS</strong></h5>--}}
                 <div class="p-a-0 swiper-container">
                     <?php $skipIds = ""; ?>
                     @if(isset($recdesigner))
