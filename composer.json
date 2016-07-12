@@ -18,7 +18,8 @@
             "App\\": "app/"
         },
         "classmap": [
-            "database/"
+            "database/",
+            "app/libs/PayPal"
         ]
     },
     "autoload-dev": {

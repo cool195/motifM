@@ -1,6 +1,5 @@
 <?php
-namespace App\PayPal;
-
+namespace App\libs;
 use \PayPal\Api\Payer;
 use \PayPal\Api\Item;
 use \PayPal\Api\ItemList;
@@ -9,10 +8,12 @@ use \PayPal\Api\Amount;
 use \PayPal\Api\Transaction;
 use \PayPal\Api\RedirectUrls;
 use \PayPal\Api\Payment;
+use \PayPal\Rest\ApiContext;
 use \PayPal\Exception\PayPalConnectionException;
+use \PayPal\Auth\OAuthTokenCredential;
 use Illuminate\Http\Request;
 
-Class PayPal
+Class PayOrder
 {
 //live:
 //     clientid:
@@ -21,19 +22,14 @@ Class PayPal
 //ECmKQFY0UdanCEXHr6bHQ1PCwivwmtEMWma30r3ejfOlvQVlSW6_rwuXp4leydeHrcqSCthauqka1BYU
 //lijiang.hou-buyer2@gmail.com
 //gsx12345
-    public static $paypalObj;
+    //public static $paypalObj;
     const clientID = 'AV8SZ3C16kSXKT4-vPI3pRf0Fo2j-kHLj9jDc3Eg346Q74XcbxJyAMlQsSPy3x5iiRFsXhn3xM57Pj4b';
     const secret = 'EApPC9Qkz0WFkK76gFbz8miNMgsMeZT27LTc24ABFpAcyUqMqBXiLKjR73xX-U7Q8Xlc_szx_5yGP52q';
     const SITE_URL = 'http://m.motif.me';
 
-    public static function __construct()
-    {
-        Self::$paypalObj = new \PayPal\Rest\ApiContext(new \PayPal\Auth\OAuthTokenCredential(Self::clientID, Self::secret));
-        //$this->paypal = new \PayPal\Rest\ApiContext(new \PayPal\Auth\OAuthTokenCredential(Self::clientID, Self::secret));
-    }
-
     public static function createOrder($product, $price, $shipping)
     {
+        $paypalObj = new \PayPal\Rest\ApiContext(new \PayPal\Auth\OAuthTokenCredential(Self::clientID, Self::secret));
         $total = $price + $shipping;
         $payer = new Payer();
         $payer->setPaymentMethod('paypal');
@@ -73,7 +69,7 @@ Class PayPal
             ->setTransactions([$transaction]);
 
         try {
-            $payment->create(Self::$paypalObj);
+            $payment->create($paypalObj);
         } catch (PayPalConnectionException $e) {
             echo $e->getData();
             die();
@@ -86,6 +82,7 @@ Class PayPal
     //paypal回调
     public static function paypalStatic(Request $request)
     {
+        $paypalObj = new ApiContext(new OAuthTokenCredential(Self::clientID, Self::secret));
         if ($request->input('paymentId') || $request->input('success') || $request->input('PayerID')) {
             die();
         }
@@ -99,13 +96,13 @@ Class PayPal
         $paymentID = $request->input('paymentId');
         $payerId = $request->input('PayerID');
 
-        $payment = Payment::get($paymentID, Self::$paypalObj);
+        $payment = Payment::get($paymentID, $paypalObj);
 
         $execute = new PaymentExecution();
         $execute->setPayerId($payerId);
 
         try {
-            $result = $payment->execute($execute, Self::$paypalObj);
+            $result = $payment->execute($execute, $paypalObj);
             return $result;
         } catch (Exception $e) {
             die($e);
