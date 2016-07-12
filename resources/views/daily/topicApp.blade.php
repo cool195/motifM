@@ -56,7 +56,7 @@
                             @else
                                 <a href="@if($value['skipType']=='1')motif://o.c?a=pd&spu=@elseif($value['skipType']=='2')/designer/@elseif($value['skipType']=='3')/topic/@elseif($value['skipType']=='4')motif://o.c?a=shoppinglist&cid=@endif{{$value['skipId']}}">
                                     <img class="img-fluid"
-                                         src="{{env('APP_Api_Image')}}/n2/{{$value['imgPath']}}"
+                                         src="{{env('APP_Api_Image')}}/n0/{{$value['imgPath']}}"
                                          alt="">
                                 </a>
                             @endif
