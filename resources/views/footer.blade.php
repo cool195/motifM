@@ -75,7 +75,7 @@
         <div class="p-r-15x">
             <img src="/images/icon/icon-motif.png" srcset="/images/icon/icon-motif@2x.png 2x,/images/icon/icon-motif@3x.png 3x">
         </div>
-        <span class="p-r-15x font-size-sm text-primary">Find More With MOTIF App</span>
+        <span class="p-r-15x font-size-sm text-primary">Find More With Motif App</span>
     </div>
     <div class="font-size-sm"><a data-role="downloading">DOWNLOAD</a></div>
 </nav>
