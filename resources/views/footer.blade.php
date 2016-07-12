@@ -3,7 +3,7 @@
         @if(Session::has('user'))
             <a href="/user/signout" class="text-primary">Sign Out</a>
         @else
-            <a href="/login" class="text-primary">Login/Register</a>
+            <a href="/login" class="text-primary">Sign in/Register</a>
         @endif
     </div>
     <div class="field-content m-t-15x m-b-20x">
