@@ -93,7 +93,7 @@
                     console.log('error');
                 })
                 .always(function () {
-                    closeLoading();
+                    //closeLoading();
                     console.log('complete');
                 });
         }

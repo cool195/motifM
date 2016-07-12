@@ -114,30 +114,32 @@
                 <span>{{$data['logistics_name']}} ${{number_format(($data['logistics_price'] / 100), 2)}}</span>
             </div>
             @if(!empty($data['pay_type']))
-            <hr class="hr-base">
-            <div class="flex font-size-sm text-primary p-y-10x p-x-15x">
-                <span class="orderInfo-subTitle flex-fixedShrink">Pay with</span>
-                @if($data['pay_type']=="PayPal")
-                    <span class="cardImage-inline paypal"></span>
-                @elseif(array_get($data['cardlist'],$data['orderPayInfo']['card_type']))
-                    <span class="cardImage-inline {{array_get($data['cardlist'],$data['orderPayInfo']['card_type'])}}"></span>
-                @endif
-                <span class="m-l-10x">{{$data['orderPayInfo']['show_name']}}</span>
-            </div>
-            @endif
-            <hr class="hr-base">
-            <div class="flex font-size-sm text-primary p-y-10x p-x-15x">
-                <span class="orderInfo-subTitle flex-fixedShrink">Special Request</span>
-                <div>
-                    <div class="message-info">
-                        <p class="m-b-0">@if(!empty($data['order_remark'])){{ $data['order_remark'] }} @endif</p>
-                    </div>
-                    <a class="flex flex-alignCenter flex-fullJustified font-size-sm p-t-5x text-common btn-showMore">
-                        <span class="showMore">Show More</span>
-                        <i class="iconfont icon-arrow-bottom icon-size-xm text-common"></i>
-                    </a>
+                <hr class="hr-base">
+                <div class="flex font-size-sm text-primary p-y-10x p-x-15x">
+                    <span class="orderInfo-subTitle flex-fixedShrink">Pay with</span>
+                    @if($data['pay_type']=="PayPal")
+                        <span class="cardImage-inline paypal"></span>
+                    @elseif(array_get($data['cardlist'],$data['orderPayInfo']['card_type']))
+                        <span class="cardImage-inline {{array_get($data['cardlist'],$data['orderPayInfo']['card_type'])}}"></span>
+                    @endif
+                    <span class="m-l-10x">{{$data['orderPayInfo']['show_name']}}</span>
                 </div>
-            </div>
+            @endif
+            @if(!empty($data['order_remark']))
+                <hr class="hr-base">
+                <div class="flex font-size-sm text-primary p-y-10x p-x-15x">
+                    <span class="orderInfo-subTitle flex-fixedShrink">Special Request</span>
+                    <div>
+                        <div class="message-info">
+                            <p class="m-b-0">{{ $data['order_remark'] }} </p>
+                        </div>
+                        <a class="flex flex-alignCenter flex-fullJustified font-size-sm p-t-5x text-common btn-showMore">
+                            <span class="showMore">Show More</span>
+                            <i class="iconfont icon-arrow-bottom icon-size-xm text-common"></i>
+                        </a>
+                    </div>
+                </div>
+            @endif
         </aside>
 
         <!-- 订单金额 -->

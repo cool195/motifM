@@ -11,7 +11,7 @@
 |
 */
 
-$app->group(['middleware' => 'pcguide', 'namespace' => 'App\Http\Controllers'], function ($app) {
+//$app->group(['middleware' => 'pcguide', 'namespace' => 'App\Http\Controllers'], function ($app) {
 
     $app->get('/', 'Daily\DailyController@index');
     $app->get('/daily', 'Daily\DailyController@index');
@@ -28,7 +28,7 @@ $app->group(['middleware' => 'pcguide', 'namespace' => 'App\Http\Controllers'], 
     $app->get('/forgetpwd', 'Shopping\UserController@forgetPWD');
     $app->post('/forgetpwd', 'Shopping\UserController@forgetPWD');
     $app->get('/addFacebookEmail', 'Auth\AuthController@addFacebookEmail');
-});
+//});
 
 $app->group(['middleware' => 'logincheck', 'namespace' => 'App\Http\Controllers\Shopping'], function ($app) {
 

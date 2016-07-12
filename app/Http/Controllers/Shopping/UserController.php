@@ -119,7 +119,7 @@ class UserController extends ApiController
             $result['data'] = array();
         } else {
             if ($result['success']) {
-                $result['redirectUrl'] = ($request->input('referer') && !strstr($request->input('referer'),'register')) ? $request->input('referer') : "/daily";
+                $result['redirectUrl'] = ($request->input('referer') && !strstr($request->input('referer'), 'register')) ? $request->input('referer') : "/daily";
                 Session::forget('user');
                 Session::put('user', $result['data']);
             }
@@ -137,25 +137,27 @@ class UserController extends ApiController
      * */
     public function signout()
     {
-        $user = Session::get('user');
-        $result = array('success' => false, 'error_msg' => "user is signout", 'data' => array());
-        if (!empty($user)) {
-            $params = array(
-                'cmd' => "signout",
-                'pin' => $user['pin'],
-                'token' => $user['token']
-            );
-            $result = $this->request('openapi', self::API_SYSTEM, self::API_SERVICE, $params);
-            if (empty($result)) {
-                $result['success'] = false;
-                $result['error_msg'] = "Data access failed";
-                $result['data'] = array();
-            } else {
-                if ($result['success']) {
-                    Session::forget('user');
-                }
-            }
-        }
+//        $user = Session::get('user');
+//        $result = array('success' => false, 'error_msg' => "user is signout", 'data' => array());
+//        if (!empty($user)) {
+//            $params = array(
+//                'cmd' => "signout",
+//                'pin' => $user['pin'],
+//                'token' => $user['token']
+//            );
+//            $result = $this->request('openapi', self::API_SYSTEM, self::API_SERVICE, $params);
+//            if (empty($result)) {
+//                $result['success'] = false;
+//                $result['error_msg'] = "Data access failed";
+//                $result['data'] = array();
+//            } else {
+//                if ($result['success']) {
+//                    Session::forget('user');
+//                }
+//            }
+//        }
+
+        Session::forget('user');
         return redirect('/login');
     }
 
@@ -368,11 +370,11 @@ class UserController extends ApiController
 
     public function addrAdd(Request $request)
     {
-        $defaultCountry = array('country_id'=>1, 'country_name_cn'=>'美国', 'country_name_en'=>"United States", 'iDnumberReq'=>0, 'isFreq'=>1, 'sort_no'=>100);
+        $defaultCountry = array('country_id' => 1, 'country_name_cn' => '美国', 'country_name_en' => "United States", 'iDnumberReq' => 0, 'isFreq' => 1, 'sort_no' => 100);
         $country = json_decode(base64_decode($request->input('country', base64_encode(json_encode($defaultCountry)))), true);
         $input = $request->except('country');
         $view = View('shopping.profilesetting_addaddress', ['input' => $input, 'first' => $request->get('first')]);
-        if(!empty($country)) {
+        if (!empty($country)) {
             $view = View('shopping.profilesetting_addaddress', ['country' => $country, 'input' => $input, 'first' => $request->get('first')]);
         }
         return $view;
@@ -427,7 +429,7 @@ class UserController extends ApiController
                 $result['data']['commonlist'] = $commonlist;
             }
         }
-        return View('shopping.countrylist', ['list' => $result['data']['list'], 'commonlist' => $result['data']['commonlist'], 'route' =>$request->input('route'), 'input'=>$input]);
+        return View('shopping.countrylist', ['list' => $result['data']['list'], 'commonlist' => $result['data']['commonlist'], 'route' => $request->input('route'), 'input' => $input]);
     }
 
     //APP同步登录
@@ -461,7 +463,7 @@ class UserController extends ApiController
                 'sig' => $request->input('sig'),
             );
             $result = $this->request('openapi', '', 'user', $params);
-            if($result['success']){
+            if ($result['success']) {
                 $result['redirectUrl'] = "/login";
             }
             return $result;

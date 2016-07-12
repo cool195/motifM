@@ -92,26 +92,30 @@
                         <i class="iconfont icon-arrow-right icon-size-xm text-common p-r-15x"></i>
                     </div>
                 </a>
-                <hr class="hr-base">
-                <div class="flex font-size-sm text-primary p-a-10x order-option" data-form-action="/braintree">
-                    <span class="checkoutInfo-subTitle flex-fixedShrink">Pay with</span>
-                    <div class="checkoutInfo-content flex flex-fullJustified flex-alignCenter">
-                        @if(empty($paym) || "" == $paym )
-                            <span class="text-warning">Select payment method</span>
-                        @else
-                            <div class="flex">
-                            @if($cardType=="PayPal")
-                                <span class="cardImage-inline  paypal"></span>
-                            @elseif(array_get($data['cardlist'],$cardType))
-                                <span class="cardImage-inline  {{array_get($data['cardlist'],$cardType)}}"></span>
-                            @endif
-                            <span class="m-l-10x">{{$showName}}</span>
-                            </div>
-                        @endif
-                        <i class="iconfont icon-arrow-right icon-size-xm text-common p-r-15x"></i>
-                    </div>
-                    <div class="bg-option bg-payWith"></div>
-                </div>
+
+                {{--<hr class="hr-base">--}}
+                {{--<div class="flex font-size-sm text-primary p-a-10x order-option" data-form-action="/braintree">--}}
+
+                    {{--<span class="checkoutInfo-subTitle flex-fixedShrink">Pay with</span>--}}
+                    {{--<div class="checkoutInfo-content flex flex-fullJustified flex-alignCenter">--}}
+                        {{--@if(empty($paym) || "" == $paym )--}}
+                            {{--<span class="text-warning">Select payment method</span>--}}
+                        {{--@else--}}
+                            {{--<div class="flex">--}}
+                            {{--@if($cardType=="PayPal")--}}
+                                {{--<span class="cardImage-inline  paypal"></span>--}}
+                            {{--@elseif(array_get($data['cardlist'],$cardType))--}}
+                                {{--<span class="cardImage-inline  {{array_get($data['cardlist'],$cardType)}}"></span>--}}
+                            {{--@endif--}}
+                            {{--<span class="m-l-10x">{{$showName}}</span>--}}
+                            {{--</div>--}}
+                        {{--@endif--}}
+                        {{--<i class="iconfont icon-arrow-right icon-size-xm text-common p-r-15x"></i>--}}
+                    {{--</div>--}}
+
+                    {{--<div class="bg-option bg-payWith"></div>--}}
+                {{--</div>--}}
+
                 <hr class="hr-base">
                 <div class="flex font-size-sm text-primary p-a-10x order-option" data-form-action="/cart/coupon">
                     <span class="checkoutInfo-subTitle flex-fixedShrink">Promotion Code</span>
@@ -164,7 +168,7 @@
 
             <!-- 结算按钮 -->
             <aside class="bg-white m-t-10x p-a-10x">
-                <div class="btn btn-primary btn-block @if(empty($paym) || empty($addr) || "" == $paym || "" == $addr) disabled @endif"  data-role="submit">Place Order</div>
+                <div class="btn btn-primary btn-block @if(empty($paym) || empty($addr) || "" == $paym || "" == $addr) disabled @endif"  data-role="submit">Pay with PayPal</div>
             </aside>
         </section>
         <!-- 页脚 功能链接 start-->

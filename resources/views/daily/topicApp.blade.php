@@ -74,7 +74,9 @@
                                                              alt="{{$topic['spuInfos'][$spu]['spuBase']['main_title']}}">
                                                         <div class="p-y-10x">
                                                             <span class="text-primary font-size-sm m-l-5x"><strong>${{number_format($topic['spuInfos'][$spu]['skuPrice']['sale_price']/100,2)}}</strong></span>
-                                                            <span class="font-size-xs text-common text-throughLine m-l-5x">${{number_format($topic['spuInfos'][$spu]['skuPrice']['price']/100,2)}}</span>
+                                                            @if($topic['spuInfos'][$spu]['skuPrice']['price'] != $topic['spuInfos'][$spu]['skuPrice']['sale_price'])
+                                                                <span class="font-size-xs text-common text-throughLine m-l-5x">${{number_format($topic['spuInfos'][$spu]['skuPrice']['price']/100,2)}}</span>
+                                                            @endif
                                                         </div>
                                                     </div>
                                                 </a>
@@ -108,8 +110,8 @@
                         name: "share",
                         token: "key",
                         data: {
-                            "title": "motif topic",
-                            "content": "motif test topic",
+                            "title": "Look at this on Motif:",
+                            "content": "{{$topic['title']}}",
                             "image": "",
                             "url": "http://m.motif.me/topic/{{$topicID}}"
                         }

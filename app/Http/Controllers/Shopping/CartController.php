@@ -33,7 +33,7 @@ class CartController extends ApiController
 	 * */
 	public function orderCheckout(Request $request)
 	{
-		$defaultPayMethod = $this->getDefaultPayMethod();
+		//$defaultPayMethod = $this->getDefaultPayMethod();
 		$stype = !empty($request->input('stype')) ? $request->input('stype', 1) : 1; //必须加非空验证
 		$cps = $request->input('cps');
 		$defaultMethod = $this->getShippingMethodByStypeOrDefault($stype);
@@ -45,10 +45,12 @@ class CartController extends ApiController
 		return View('shopping.ordercheckout', [
 			'data'=>$result['data'], 
 			'addr'=>$this->getUserAddrByAid($request->input('aid', 0)),
-			'paym'=> $request->input('paym', !empty($defaultPayMethod['data']['type']) ? $defaultPayMethod['data']['type'] : ""),
+			//'paym'=> $request->input('paym', !empty($defaultPayMethod['data']['type']) ? $defaultPayMethod['data']['type'] : ""),
+			'paym' => $request->input('paym', "PayPayNative"),
 			'cardType' => $request->input('cardType', !empty($defaultPayMethod['data']['cardType']) ? $defaultPayMethod['data']['cardType'] : ""),
-			'methodtoken' => $request->input('methodtoken', !empty($defaultPayMethod['data']['token']) ? $defaultPayMethod['data']['token'] : "" ),
-			'showName' => $request->input('showName', !empty($defaultPayMethod['data']['showName']) ? $defaultPayMethod['data']['showName'] : "" ),
+			//'methodtoken' => $request->input('methodtoken', !empty($defaultPayMethod['data']['token']) ? $defaultPayMethod['data']['token'] : "" ),
+			//'showName' => $request->input('showName', !empty($defaultPayMethod['data']['showName']) ? $defaultPayMethod['data']['showName'] : "" ),
+			'showName' => $request->input('showName', 'PayPal'),
 			'shipMethodList' => $this->getShippingMethod(),
 			'defaultMethod' => $defaultMethod,
 			'cps' => $cps,
