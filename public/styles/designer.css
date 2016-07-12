@@ -23,7 +23,7 @@
   position: relative;
   display: block;
   float: left;
-  width: 85px;
+  width: 90px;
 }
 
 .designer-item .designer-text {
@@ -32,6 +32,13 @@
   bottom: 0;
   left: 0;
   width: 100%;
+}
+
+.product-item {
+  position: relative;
+  display: block;
+  float: left;
+  width: 85px;
 }
 
 .message-info {
