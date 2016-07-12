@@ -37,7 +37,7 @@
                     @if(isset($cartData['showSkus']))
                         @foreach($cartData['showSkus'] as $showSku)
                             {{-- TODO 需要添加 商品是否上架的判断 --}}
-                            <div class="cartList-item p-a-10x @if(!$showSku['stock_status'] || !$showSku['isPutOn']) disabled @endif">
+                            <div class="cartList-item p-a-10x @if(!$showSku['stock_status'] || 1 != $showSku['isPutOn']) disabled @endif">
                                 <a @if(1 == $showSku['stock_status'] && 1 == $showSku['isPutOn']) href="/detail/{{$showSku['spu']}}" @endif class="inBag">
                                     <div class="productInfo flex">
                                         <div class="flex-fixedShrink">
@@ -91,20 +91,20 @@
                                         <span class="text-primary font-size-sm m-r-5x">Qty:</span>
                                         {{-- TODO 需要添加 商品是否上架的判断 --}}
                                         <div class="btn-group flex item-count" data-sku="{{$showSku['sku']}}">
-                                            <div class="btn btn-cartCount btn-sm btn-minus @if($showSku['sale_qtty'] <=1 || !$showSku['stock_status'] || !$showSku['isPutOn']) disabled @endif"
+                                            <div class="btn btn-cartCount btn-sm btn-minus @if($showSku['sale_qtty'] <=1 || !$showSku['stock_status'] || 1 != $showSku['isPutOn']) disabled @endif"
                                                  data-item="minus">
                                                 <i class="iconfont icon-minus"></i>
                                             </div>
                                             <div class="btn btn-cartCount btn-sm"
                                                  data-count="{{$showSku['sale_qtty']}}">{{$showSku['sale_qtty']}}</div>
-                                            <div class="btn btn-cartCount btn-sm btn-add @if($showSku['sale_qtty'] >=50 || !$showSku['stock_status'] || !$showSku['isPutOn']) disabled @endif"
+                                            <div class="btn btn-cartCount btn-sm btn-add @if($showSku['sale_qtty'] >=50 || !$showSku['stock_status'] || 1 != $showSku['isPutOn']) disabled @endif"
                                                  data-item="add">
                                                 <i class="iconfont icon-add"></i>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                                @if(0 == $showSku['stock_status'] || 2 == $showSku['stock_status'] || 0 == $showSku['isPutOn'])
+                                @if(0 == $showSku['stock_status'] || 2 == $showSku['stock_status'] || 1 != $showSku['isPutOn'])
                                 <div class="text-warning font-size-xs">@if(2 !== $showSku['stock_status'])Warning: @endif{{$showSku['prompt_info']}}</div>
                                 @elseif(50 == $showSku['sale_qtty'])
                                 <div class="text-warning font-size-xs">Warning: 50 items limit</div>
@@ -190,15 +190,15 @@
                                     <a class="btn btn-cartUpdate btn-sm btn-inSaved" data-remodal-target="modal" data-sku="{{$showSku['sku']}}" data-action="delsave">
                                         Remove
                                     </a>
-                                    <a class="btn btn-cartUpdate btn-sm btn-inSaved @if(0 == $showSku['stock_status'] || 0 == $showSku['isPutOn']) disabled @endif" data-product-move="movetocart" data-sku="{{$showSku['sku']}}">
-                                        @if(0 == $showSku['stock_status'] || 0 == $showSku['isPutOn'])
+                                    <a class="btn btn-cartUpdate btn-sm btn-inSaved @if(0 == $showSku['stock_status'] || 1 != $showSku['isPutOn']) disabled @endif" data-product-move="movetocart" data-sku="{{$showSku['sku']}}">
+                                        @if(0 == $showSku['stock_status'] || 1 != $showSku['isPutOn'])
                                             Listing Ended
                                         @else
                                             Move to Bag
                                         @endif
                                     </a>
                                 </div>
-                                @if(0 == $showSku['stock_status'] || 2 == $showSku['stock_status'] || 0 == $showSku['isPutOn'])
+                                @if(0 == $showSku['stock_status'] || 2 == $showSku['stock_status'] || 1 != $showSku['isPutOn'])
                                     <div class="text-warning font-size-xs">Warning: {{$showSku['prompt_info']}}</div>
                                 @endif
                             </div>
