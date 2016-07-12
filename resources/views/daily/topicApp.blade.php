@@ -111,7 +111,7 @@
                         token: "key",
                         data: {
                             "title": "Look at this on Motif:",
-                            "content": {{$topic['title']}},
+                            "content": "{{$topic['title']}}",
                             "image": "",
                             "url": "http://m.motif.me/topic/{{$topicID}}"
                         }
