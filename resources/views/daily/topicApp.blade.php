@@ -108,8 +108,8 @@
                         name: "share",
                         token: "key",
                         data: {
-                            "title": "motif topic",
-                            "content": "motif test topic",
+                            "title": "Look at this on Motif:",
+                            "content": {{$topic['title']}},
                             "image": "",
                             "url": "http://m.motif.me/topic/{{$topicID}}"
                         }
