@@ -27,7 +27,6 @@ Class PayOrder
 
     const clientID = 'AV8SZ3C16kSXKT4-vPI3pRf0Fo2j-kHLj9jDc3Eg346Q74XcbxJyAMlQsSPy3x5iiRFsXhn3xM57Pj4b';
     const secret = 'EApPC9Qkz0WFkK76gFbz8miNMgsMeZT27LTc24ABFpAcyUqMqBXiLKjR73xX-U7Q8Xlc_szx_5yGP52q';
-    const SITE_URL = 'http://motif.app';
 
     public static function createOrder($orderid, $product, $price, $shipping)
     {

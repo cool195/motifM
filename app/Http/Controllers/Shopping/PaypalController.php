@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\ApiController;
 use App\libs\PayOrder;
 use Illuminate\Support\Facades\Session;
+
 class PaypalController extends ApiController
 {
 
@@ -21,24 +22,16 @@ class PaypalController extends ApiController
         if ($request->input('success')) {
             $result = PayOrder::paypalStatic($request);
             if ($result) {
-
-                $value['response'] = array(
-                    'create_time' => $result->create_time,
-                    'id' => $result->id,
-                    'intent' => $result->intent,
-                    'state' => $result->state,
-                );
-                $value['response_type'] = 'payment';
-
                 $params = array(
                     'cmd' => "dopay",
                     'uuid' => $_COOKIE['uid'],
                     'token' => Session::get('user.token'),
                     'pin' => Session::get('user.pin'),
                     'orderid' => $result->transactions[0]->item_list->items[0]->name,
-                    'paytype' => 'PayPal',
+                    'paytype' => 'PayPalNative',
                     'showname' => 'PayPal',
-                    'devicedata' => "H5"
+                    'devicedata' => "H5",
+                    'nonce' => '{"response_type":"payment","response":{"id":"'.$result->id.'","state":"'.$result->state.'","create_time":"'.$result->create_time.'","intent":"'.$result->intent.'"}}',
                 );
                 $this->request('openapi', "", "pay", $params);
             }
