@@ -64,7 +64,8 @@ $app->singleton(
  ]);
 
  $app->routeMiddleware([
-     'logincheck' => 'App\Http\Middleware\LogincheckMiddleware'
+     'logincheck' => 'App\Http\Middleware\LogincheckMiddleware',
+     'pcguide' => 'App\Http\Middleware\PcGuideMiddleware'
  ]);
 
 /*

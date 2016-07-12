@@ -142,14 +142,9 @@ class ShoppingController extends ApiController
 		return $result;
 	}
 
-
-
-
-
-
-
-
-
-
+	public function guide()
+	{
+		return view('shopping.pcguide');
+	}
 
 }

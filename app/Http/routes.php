@@ -161,3 +161,4 @@ $app->group(['namespace' => 'App\Http\Controllers\Other'], function ($app) {
 });
 
 $app->get('methodlist', 'Shopping\BraintreeController@methodlist');
+$app->get('guide', 'Shopping\ShoppingController@guide');
