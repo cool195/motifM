@@ -19,9 +19,9 @@
 <div class="bg">
     <nav class="navbar">
         <div class="nav">
-            <span>This URL is not supported by PC. Please use a mobile device to access this URL. </span>
+            <span>This URL is not supported by PC. Please use a mobile device to access this URL: </span>
             <div class="">
-                <span>Url</span>
+                <span>{{ Session::has('referer') ? Session::get('referer') : "Url"}}</span>
                 <span class="btn btn-copy">copy url</span>
             </div>
         </div>

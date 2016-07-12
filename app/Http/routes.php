@@ -11,21 +11,25 @@
 |
 */
 
-$app->get('/', 'Daily\DailyController@index');
-$app->get('/daily', 'Daily\DailyController@index');
-$app->get('/recdata', 'Daily\DailyController@recData');
-$app->get('/topic/{id}', 'Daily\DailyController@show');
-$app->get('/template/{id}', 'Daily\DailyController@staticShow');
-$app->get('/shopping', 'Shopping\ShoppingController@index');
+$app->group(['middleware' => 'pcguide', 'namespace' => 'App\Http\Controllers'], function ($app) {
 
-$app->get('/designer', 'Designer\DesignerController@index');
-$app->get('/designer/{id}', 'Designer\DesignerController@show');
+    $app->get('/', 'Daily\DailyController@index');
+    $app->get('/daily', 'Daily\DailyController@index');
+    $app->get('/recdata', 'Daily\DailyController@recData');
+    $app->get('/topic/{id}', 'Daily\DailyController@show');
+    $app->get('/template/{id}', 'Daily\DailyController@staticShow');
+    $app->get('/shopping', 'Shopping\ShoppingController@index');
 
-$app->post('/googlelogin', 'Auth\AuthController@googleLogin');
-$app->post('/facebooklogin', 'Auth\AuthController@facebookLogin');
-$app->get('/forgetpwd', 'Shopping\UserController@forgetPWD');
-$app->post('/forgetpwd', 'Shopping\UserController@forgetPWD');
-$app->get('/addFacebookEmail', 'Auth\AuthController@addFacebookEmail');
+    $app->get('/designer', 'Designer\DesignerController@index');
+    $app->get('/designer/{id}', 'Designer\DesignerController@show');
+
+    $app->post('/googlelogin', 'Auth\AuthController@googleLogin');
+    $app->post('/facebooklogin', 'Auth\AuthController@facebookLogin');
+    $app->get('/forgetpwd', 'Shopping\UserController@forgetPWD');
+    $app->post('/forgetpwd', 'Shopping\UserController@forgetPWD');
+    $app->get('/addFacebookEmail', 'Auth\AuthController@addFacebookEmail');
+});
+
 $app->group(['middleware' => 'logincheck', 'namespace' => 'App\Http\Controllers\Shopping'], function ($app) {
 
     $app->get('/feed', 'ShoppingController@feedback');
