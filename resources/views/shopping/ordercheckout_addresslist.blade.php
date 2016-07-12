@@ -55,9 +55,10 @@
                 </aside>
 
                 <aside class="bg-white">
-                    <div class="flex flex-alignCenter text-primary p-a-15x" data-role="add" data-action="/cart/addradd">
+                    <div class="flex flex-alignCenter text-primary p-a-15x order-option" data-role="add" data-action="/cart/addradd">
                         <i class="iconfont icon-add icon-size-sm p-r-10x"></i>
                         <span class="font-size-sm">Add New Address</span>
+                        <div class="bg-option bg-addAddress"></div>
                     </div>
                 </aside>
                 <aside class="p-a-15x">

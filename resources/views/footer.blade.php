@@ -69,8 +69,8 @@
 <!-- App 下载提示 -->
 <nav class="navbar-fixed-bottom bg-download p-y-10x p-x-15x flex flex-fullJustified flex-alignCenter" hidden>
     <div class="flex flex-alignCenter">
-        <a class="p-r-20x p-y-15x" id="closeDownloading">
-            <i class="iconfont icon-cross text-common"></i>
+        <a class="p-r-20x p-y-15x" id="closeDownloadig">
+            <i class="iconfont icon-cross text-common btn-closeDownload"></i>
         </a>
         <div class="p-r-15x">
             <img src="/images/icon/icon-motif.png" srcset="/images/icon/icon-motif@2x.png 2x,/images/icon/icon-motif@3x.png 3x">

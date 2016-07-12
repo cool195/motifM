@@ -49,13 +49,14 @@
             @else
             <!-- 没有绑定支付方式 状态 -->
                 <aside class="payPal-container m-b-10x">
-                    <div class="flex flex-alignCenter flex-fullJustified font-size-sm text-primary p-y-10x p-x-15x"
+                    <div class="flex flex-alignCenter flex-fullJustified font-size-sm text-primary p-y-10x p-x-15x pay-option"
                          id="paypal" data-braintree="{{$token}}">
                         <div class="flex flex-alignCenter font-size-sm text-primary">
                             <span class="cardImage-inline unPaypal"></span>
                             <span class="m-l-10x">Paypal</span>
                         </div>
                         <span><i class="iconfont icon-arrow-right icon-size-sm text-common"></i></span>
+                        <div class="bg-option bg-pay"></div>
                     </div>
                 </aside>
             @endif

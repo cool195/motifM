@@ -53,13 +53,14 @@
                     </fieldset>
                     <hr class="hr-base m-a-0">
                     <fieldset>
-                        <div class="flex flex-alignCenter flex-fullJustified font-size-sm text-primary p-a-15x" id="country">
+                        <div class="flex flex-alignCenter flex-fullJustified font-size-sm text-primary p-a-15x address-option" id="country">
                             <span>Country</span>
                             <div>
                                 <span>{{ $input['country']  }}</span>
                                 <i class="iconfont icon-arrow-right icon-size-xm text-common"></i>
                                 <input type="text" name="country" hidden value="{{$input['country']}}">
                             </div>
+                            <div class="bg-option bg-country"></div>
                         </div>
                     </fieldset>
                     </fieldset>
@@ -67,7 +68,7 @@
                     <fieldset>
                         <div class="flex flex-alignCenter flex-fullJustified font-size-sm text-primary p-a-15x" href="#">
                             <span>Make Primary</span>
-                            <div class="radio-checkBox @if(1 == $input['isDefault']) open @endif">
+                            <div class="radio-checkBox address-option @if(1 == $input['isDefault']) open @endif">
                                 <div class="radio-checkItem"></div>
                                 @if(1 == $input['isDefault'])
                                     <input type="radio" name="isd" id="address-default" hidden value="0">
@@ -76,6 +77,7 @@
                                     <input type="radio" name="isd" id="address-default" hidden value="0" checked="checked">
                                     <input type="radio" name="isd" id="address-primary" hidden value="1" >
                                 @endif
+                                <div class="bg-option bg-makePrimary"></div>
                             </div>
                         </div>
                     </fieldset>
