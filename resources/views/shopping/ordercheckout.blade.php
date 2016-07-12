@@ -91,7 +91,7 @@
                         <i class="iconfont icon-arrow-right icon-size-xm text-common p-r-15x"></i>
                     </div>
                 </a>
-                <hr class="hr-base">
+{{--                <hr class="hr-base">
                 <div class="flex font-size-sm text-primary p-a-10x" data-form-action="/braintree">
                     <span class="checkoutInfo-subTitle flex-fixedShrink">Pay with</span>
                     <div class="checkoutInfo-content flex flex-fullJustified flex-alignCenter">
@@ -109,7 +109,7 @@
                         @endif
                         <i class="iconfont icon-arrow-right icon-size-xm text-common p-r-15x"></i>
                     </div>
-                </div>
+                </div>--}}
                 <hr class="hr-base">
                 <div class="flex font-size-sm text-primary p-a-10x" data-form-action="/cart/coupon">
                     <span class="checkoutInfo-subTitle flex-fixedShrink">Promotion Code</span>
