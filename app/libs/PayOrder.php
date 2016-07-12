@@ -1,5 +1,6 @@
 <?php
 namespace App\libs;
+
 use \PayPal\Api\Payer;
 use \PayPal\Api\Item;
 use \PayPal\Api\ItemList;
@@ -11,6 +12,7 @@ use \PayPal\Api\Payment;
 use \PayPal\Rest\ApiContext;
 use \PayPal\Exception\PayPalConnectionException;
 use \PayPal\Auth\OAuthTokenCredential;
+use \PayPal\Api\PaymentExecution;
 use Illuminate\Http\Request;
 
 Class PayOrder
@@ -25,11 +27,11 @@ Class PayOrder
     //public static $paypalObj;
     const clientID = 'AV8SZ3C16kSXKT4-vPI3pRf0Fo2j-kHLj9jDc3Eg346Q74XcbxJyAMlQsSPy3x5iiRFsXhn3xM57Pj4b';
     const secret = 'EApPC9Qkz0WFkK76gFbz8miNMgsMeZT27LTc24ABFpAcyUqMqBXiLKjR73xX-U7Q8Xlc_szx_5yGP52q';
-    const SITE_URL = 'http://m.motif.me';
+    const SITE_URL = 'http://test.m.motif.me';
 
     public static function createOrder($product, $price, $shipping)
     {
-        $paypalObj = new \PayPal\Rest\ApiContext(new \PayPal\Auth\OAuthTokenCredential(Self::clientID, Self::secret));
+        $paypalObj = new ApiContext(new OAuthTokenCredential(Self::clientID, Self::secret));
         $total = $price + $shipping;
         $payer = new Payer();
         $payer->setPaymentMethod('paypal');
@@ -83,14 +85,12 @@ Class PayOrder
     public static function paypalStatic(Request $request)
     {
         $paypalObj = new ApiContext(new OAuthTokenCredential(Self::clientID, Self::secret));
-        if ($request->input('paymentId') || $request->input('success') || $request->input('PayerID')) {
-            die();
+        if (!$request->input('paymentId') || !$request->input('success') || !$request->input('PayerID')) {
+            return false;
         }
 
         if ((bool)$request->input('success') === 'false') {
-
-            echo 'Transaction cancelled!';
-            die();
+            return false;
         }
 
         $paymentID = $request->input('paymentId');
@@ -105,7 +105,7 @@ Class PayOrder
             $result = $payment->execute($execute, $paypalObj);
             return $result;
         } catch (Exception $e) {
-            die($e);
+            return false;
         }
     }
 }

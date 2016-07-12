@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Controllers\ApiController;
 use Illuminate\Support\Facades\Session;
-
+use App\libs\PayOrder;
 class OrderController extends ApiController
 {
     public function index(Request $request)
@@ -138,9 +138,8 @@ class OrderController extends ApiController
             'token' => Session::get('user.token'),
             'pin' => Session::get('user.pin'),
             'aid' => $request->input('aid'),
-            'paym' => $request->input('paym', ""),
+            'paym' => $request->input('paym', "PayPal"),
             'cps' => $request->input('cps', ""),
-            //todo 转码? 'remark' => mb_convert_encoding($request->input('remark'), "GBK", "UTF-8"),
             'remark' => $request->input('remark'),
             'stype' => $request->input('stype'),
             'src' => $request->input('src', "H5"),
@@ -148,45 +147,46 @@ class OrderController extends ApiController
         );
         $result = $this->request('openapi', "", "order", $params);
         if (!empty($result) && $result['success']) {
-            $orderId = $result['data']['orderID'];
+            $result['redirectUrl'] = "/paypalorder?orderDetail=".$result['data']['shortInfo']."&totalPrice=".$result['data']['pay_amount']/100;
+            return $result;
         } else {
             return $result;
         }
 
-        $params = array(
-            'cmd' => "dopay",
-            'uuid' => @$_COOKIE['uid'],
-            'token' => Session::get('user.token'),
-            'pin' => Session::get('user.pin'),
-            'orderid' => $orderId,
-            'paytype' => $request->input('paym'),
-            'cardtype' => $request->input('cardType'),
-            'showname' => $request->input('showName'),
-            'methodtoken' => $request->input('methodtoken'),
-            'setdefault' => 1,
-            'devicedata' => "H5"
-        );
-        $result = $this->request('openapi', "", "pay", $params);
-        if (!empty($result) && $result['success']) {
-            $transid = $result['data']['id'];
-        } else {
-            return $result;
-        }
-
-        $params = array(
-            'cmd' => 'checkpay',
-            'transid' => $transid,
-            'orderid' => $orderId
-        );
-        $result = $this->request('openapi', "", "pay", $params);
-        if (!empty($result) && $result['success']) {
-            //$result['redirectUrl'] = "/order/orderdetail/".$orderId;
-            $result['redirectUrl'] = "/success";
-        } else {
-            $result['success'] = false;
-        }
-
-        return $result;
+//        $params = array(
+//            'cmd' => "dopay",
+//            'uuid' => @$_COOKIE['uid'],
+//            'token' => Session::get('user.token'),
+//            'pin' => Session::get('user.pin'),
+//            'orderid' => $orderId,
+//            'paytype' => $request->input('paym'),
+//            'cardtype' => $request->input('cardType'),
+//            'showname' => $request->input('showName'),
+//            'methodtoken' => $request->input('methodtoken'),
+//            'setdefault' => 1,
+//            'devicedata' => "H5"
+//        );
+//        $result = $this->request('openapi', "", "pay", $params);
+//        if (!empty($result) && $result['success']) {
+//            $transid = $result['data']['id'];
+//        } else {
+//            return $result;
+//        }
+//
+//        $params = array(
+//            'cmd' => 'checkpay',
+//            'transid' => $transid,
+//            'orderid' => $orderId
+//        );
+//        $result = $this->request('openapi', "", "pay", $params);
+//        if (!empty($result) && $result['success']) {
+//            //$result['redirectUrl'] = "/order/orderdetail/".$orderId;
+//            $result['redirectUrl'] = "/success";
+//        } else {
+//            $result['success'] = false;
+//        }
+//
+//        return $result;
     }
 
 
