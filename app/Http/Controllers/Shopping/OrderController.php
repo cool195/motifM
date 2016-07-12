@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Controllers\ApiController;
 use Illuminate\Support\Facades\Session;
-use App\libs\PayOrder;
+
 class OrderController extends ApiController
 {
     public function index(Request $request)
@@ -34,7 +34,7 @@ class OrderController extends ApiController
         $system = "";
         $service = "order";
         $result = $this->request('openapi', $system, $service, $params);
-        if (!empty($result) && $result['success']){
+        if (!empty($result) && $result['success']) {
             $result = $this->resultJsonDecode($result);
         }
         return $result;
@@ -108,8 +108,9 @@ class OrderController extends ApiController
         return $result;
     }
 
-    private function jsonDecodeOrderDetailResult(Array $result){
-        if(!empty($result['data']['lineOrderList'])) {
+    private function jsonDecodeOrderDetailResult(Array $result)
+    {
+        if (!empty($result['data']['lineOrderList'])) {
             $lineOrderList = array();
             foreach ($result['data']['lineOrderList'] as $lineOrder) {
                 if (isset($lineOrder['attrValues'])) {
@@ -147,7 +148,7 @@ class OrderController extends ApiController
         );
         $result = $this->request('openapi', "", "order", $params);
         if (!empty($result) && $result['success']) {
-            $result['redirectUrl'] = "/paypalorder?orderDetail=".$result['data']['shortInfo']."&totalPrice=".$result['data']['pay_amount']/100;
+            $result['redirectUrl'] = "/paypalorder?orderid=" . $result['data']['orderID'] . "orderDetail=" . $result['data']['shortInfo'] . "&totalPrice=" . $result['data']['pay_amount'] / 100;
             return $result;
         } else {
             return $result;

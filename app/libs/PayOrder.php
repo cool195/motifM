@@ -24,12 +24,12 @@ Class PayOrder
 //ECmKQFY0UdanCEXHr6bHQ1PCwivwmtEMWma30r3ejfOlvQVlSW6_rwuXp4leydeHrcqSCthauqka1BYU
 //lijiang.hou-buyer2@gmail.com
 //gsx12345
-    //public static $paypalObj;
+
     const clientID = 'AV8SZ3C16kSXKT4-vPI3pRf0Fo2j-kHLj9jDc3Eg346Q74XcbxJyAMlQsSPy3x5iiRFsXhn3xM57Pj4b';
     const secret = 'EApPC9Qkz0WFkK76gFbz8miNMgsMeZT27LTc24ABFpAcyUqMqBXiLKjR73xX-U7Q8Xlc_szx_5yGP52q';
-    const SITE_URL = 'http://test.m.motif.me';
+    const SITE_URL = 'http://motif.app';
 
-    public static function createOrder($product, $price, $shipping)
+    public static function createOrder($orderid, $product, $price, $shipping)
     {
         $paypalObj = new ApiContext(new OAuthTokenCredential(Self::clientID, Self::secret));
         $total = $price + $shipping;
@@ -37,7 +37,7 @@ Class PayOrder
         $payer->setPaymentMethod('paypal');
 
         $item = new Item();
-        $item->setName($product)
+        $item->setName($orderid)
             ->setCurrency('USD')
             ->setQuantity(1)
             ->setPrice($price);
@@ -57,12 +57,13 @@ Class PayOrder
         $transaction = new Transaction();
         $transaction->setAmount($amount)
             ->setItemList($itemList)
-            ->setDescription("支付描述内容")
+            ->setDescription($product)
             ->setInvoiceNumber(uniqid());
 
         $redirectUrls = new RedirectUrls();
-        $redirectUrls->setReturnUrl(Self::SITE_URL . '/paypal?success=true')
-            ->setCancelUrl(Self::SITE_URL . '/paypal?success=false');
+
+        $redirectUrls->setReturnUrl('http://'.$_SERVER['SERVER_NAME'] . '/paypal?success=true')
+            ->setCancelUrl('http://'.$_SERVER['SERVER_NAME'] . '/paypal?success=false');
 
         $payment = new Payment();
         $payment->setIntent('sale')
