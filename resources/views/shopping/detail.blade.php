@@ -43,6 +43,7 @@
                         @if(isset($data['productImages']))
                             @foreach($data['productImages'] as $image)
                                 <div class="swiper-slide">
+                                    <img src="{{ env('APP_Api_Image').'/n1/'.$image['img_path'] }}" style="display: none">
                                     <img class="img-fluid swiper-lazy"
                                          data-src="{{ env('APP_Api_Image').'/n1/'.$image['img_path'] }}"
                                          alt="">
