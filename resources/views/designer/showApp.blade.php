@@ -277,7 +277,7 @@
             data: {
                 "title": "Look at this on MOTIF:",
                 "content": "{{ $designer['nickname'] }}",
-                "image": "",
+                "image": "{{env('APP_Api_Image')}}/n2/{{$designer['main_image_url']}}",
                 "url": "http://m.motif.me/designer/{{$designer['designer_id']}}"
             }
         });
