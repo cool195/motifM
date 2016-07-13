@@ -68,8 +68,8 @@
     <div class="text-center p-b-1 font-size-base">
         <div class="footer-content">
             <div class="footer-links">
-                <a class="pull-left text-main text-link" href="">Privacy Notice</a>
-                <a class="pull-right text-main text-link" href="">Terms & Conditions</a>
+                <a class="pull-left text-main text-link" href="/pcprivacypolicy">Privacy Notice</a>
+                <a class="pull-right text-main text-link" href="/pctermsservice">Terms & Conditions</a>
             </div>
             <div class="text-main p-t-10x">Copyright © 2016 Motif Group LLC. All rights reserved.</div>
         </div>

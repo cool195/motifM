@@ -80,6 +80,16 @@ class PageController extends ApiController
         return View('Other.page-userAgreement');
     }
 
+    public function pcPrivacyPolicy()
+    {
+        return View('Other.pc-privacyPolicy');
+    }
+
+    public function pcTermsService()
+    {
+        return view('Other.pc-termsService');
+    }
+
 }
 
 ?>
