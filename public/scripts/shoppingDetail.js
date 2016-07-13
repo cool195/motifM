@@ -109,9 +109,7 @@
 
     // 筛选 没有库存的Sku
     function inventoryNull(DataList) {
-        console.info(DataList);
         var Cache = [];
-
         for (var i = 0; i < DataList.length; i++) {
             if (DataList[i].stock_qtty === 0) {
                 Cache.push(DataList[i].sku);
@@ -181,7 +179,6 @@
             .done(function (data) {
                 if (data.success) {
                     // 获取商品所有的库存
-                    console.info(data);
                     // Inventory 为库存的商品的Sku
                     var Inventory = inventoryNull(data.data.skuExps);
                     // 所有选项
@@ -767,7 +764,6 @@
         var Action = $(e.target).data('action');
 
         if (OptionsCount.length === 0 && VasCount.length === 0 && ResultSkus.length !== 0) {
-            Modal.close();
             initCart(Action);
         } else {
             $('[data-control="continue"]').removeClass('hidden-xs-up');
