@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 
-    <title>About Motif</title>
+    <title>@if(!strstr($_SERVER['HTTP_USER_AGENT'], 'motif-android') && !strstr($_SERVER['HTTP_USER_AGENT'], 'motif-ios')){{'About Motif'}}@endif</title>
     @include('head')
 
 </head>
