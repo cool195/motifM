@@ -103,9 +103,5 @@
             changeAddress();
         }
     });
-
-    // 退出添加
-    $('#Cancel').on('click', function () {
-    });
 })(jQuery);
 //# sourceMappingURL=profileSetting-changeAddress.js.map
