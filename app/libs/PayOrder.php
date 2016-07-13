@@ -17,19 +17,28 @@ use Illuminate\Http\Request;
 
 Class PayOrder
 {
-
-    public static function createOrder($orderid, $product, $price, $shipping)
+    //出始化
+    public static function initConfig()
     {
         //lijiang.hou-buyer2@gmail.com
         //gsx12345
-        if($_SERVER['SERVER_NAME']=='m.motif.me'){
+        $mode = 'live';//sandbox / live
+        if ($_SERVER['SERVER_NAME'] == 'm.motif.me') {
             $clientID = 'AeJ0JypMpSkBh2pvVrWMSg8Km_l6fcmWXUQ0oWxom2tz8nPzBB1rWu71bkL1j4S-TGsjGYrbfDZYiWWe';
             $secret = 'ECmKQFY0UdanCEXHr6bHQ1PCwivwmtEMWma30r3ejfOlvQVlSW6_rwuXp4leydeHrcqSCthauqka1BYU';
-        }else{
+        } else {
             $clientID = 'AV8SZ3C16kSXKT4-vPI3pRf0Fo2j-kHLj9jDc3Eg346Q74XcbxJyAMlQsSPy3x5iiRFsXhn3xM57Pj4b';
             $secret = 'EApPC9Qkz0WFkK76gFbz8miNMgsMeZT27LTc24ABFpAcyUqMqBXiLKjR73xX-U7Q8Xlc_szx_5yGP52q';
+            $mode = 'sandbox';
         }
         $paypalObj = new ApiContext(new OAuthTokenCredential($clientID, $secret));
+        $paypalObj->setConfig(array('mode' => $mode));
+        return $paypalObj;
+    }
+
+    public static function createOrder($orderid, $product, $price, $shipping)
+    {
+        $paypalObj = Self::initConfig();
         $total = $price + $shipping;
         $payer = new Payer();
         $payer->setPaymentMethod('paypal');
@@ -60,8 +69,8 @@ Class PayOrder
 
         $redirectUrls = new RedirectUrls();
 
-        $redirectUrls->setReturnUrl('http://'.$_SERVER['SERVER_NAME'] . '/paypal?success=true')
-            ->setCancelUrl('http://'.$_SERVER['SERVER_NAME'] . '/paypal?success=false');
+        $redirectUrls->setReturnUrl('http://' . $_SERVER['SERVER_NAME'] . '/paypal?success=true')
+            ->setCancelUrl('http://' . $_SERVER['SERVER_NAME'] . '/paypal?success=false');
 
         $payment = new Payment();
         $payment->setIntent('sale')
@@ -83,14 +92,7 @@ Class PayOrder
     //paypal回调
     public static function paypalStatic(Request $request)
     {
-        if($_SERVER['SERVER_NAME']=='m.motif.me'){
-            $clientID = 'AeJ0JypMpSkBh2pvVrWMSg8Km_l6fcmWXUQ0oWxom2tz8nPzBB1rWu71bkL1j4S-TGsjGYrbfDZYiWWe';
-            $secret = 'ECmKQFY0UdanCEXHr6bHQ1PCwivwmtEMWma30r3ejfOlvQVlSW6_rwuXp4leydeHrcqSCthauqka1BYU';
-        }else{
-            $clientID = 'AV8SZ3C16kSXKT4-vPI3pRf0Fo2j-kHLj9jDc3Eg346Q74XcbxJyAMlQsSPy3x5iiRFsXhn3xM57Pj4b';
-            $secret = 'EApPC9Qkz0WFkK76gFbz8miNMgsMeZT27LTc24ABFpAcyUqMqBXiLKjR73xX-U7Q8Xlc_szx_5yGP52q';
-        }
-        $paypalObj = new ApiContext(new OAuthTokenCredential($clientID, $secret));
+        $paypalObj = Self::initConfig();
         if (!$request->input('paymentId') || !$request->input('success') || !$request->input('PayerID')) {
             return false;
         }
