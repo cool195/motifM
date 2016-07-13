@@ -50,9 +50,9 @@
                                 <li class="flex-center m-b-3">
                                     <div class="item-title">Follow Us:</div>
                                     <div>
-                                        <a href="https://www.facebook.com/564721193713231" class="btn btn-secondary"><img src="/images/pc/icon-facebook.png" alt=""></a>
-                                        <a href="https://plus.google.com/u/0/113666794179158439426" class="btn btn-secondary"><img src="/images/pc/icon-google.png" alt=""></a>
-                                        <a href="https://instagram.com/motif.jewelry/" class="btn btn-secondary"><img src="/images/pc/icon-ins.png" alt=""></a>
+                                        <a href="https://www.facebook.com/564721193713231" class="p-r-1 m-r-1"><img src="/images/pc/icon-facebook.png" alt=""></a>
+                                        <a href="https://plus.google.com/u/0/113666794179158439426" class="p-r-1 m-r-1"><img src="/images/pc/icon-google.png" alt=""></a>
+                                        <a href="https://instagram.com/motif.jewelry/" class="p-r-1 m-r-1"><img src="/images/pc/icon-ins.png" alt=""></a>
                                     </div>
                                 </li>
                             </ul>
