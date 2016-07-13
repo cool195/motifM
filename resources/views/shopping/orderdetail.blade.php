@@ -113,7 +113,7 @@
                 <span class="orderInfo-subTitle flex-fixedShrink">Shipping Method</span>
                 <span>{{$data['logistics_name']}} ${{number_format(($data['logistics_price'] / 100), 2)}}</span>
             </div>
-            @if(!empty($data['pay_type']))
+            @if(!in_array($data['status_code'], array(11, 21)))
                 <hr class="hr-base">
                 <div class="flex font-size-sm text-primary p-y-10x p-x-15x">
                     <span class="orderInfo-subTitle flex-fixedShrink">Pay with</span>
