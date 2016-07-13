@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>shopping detail</title>
+    <title>{{$data['main_title']}}</title>
     @include('head')
     <link rel="stylesheet" href="/styles/shoppingDetail.css">
 </head>
