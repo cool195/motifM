@@ -5,11 +5,11 @@
     <meta charset="utf-8">
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>motif pc</title>
+    <title>Motif Exclusive Fashion Accessories Designed by the World’s Top Fashion Bloggers, Instagrammers and Digital Influencers</title>
+    <meta name="keywords" content="fashion,style,shop,accessory,jewelry,watch,blogger,Instagram,designer,limited,edition,ecommerce,buy" />
+
     <link rel="apple-touch-icon" href="apple-touch-icon.png">
-
     <link rel="stylesheet" href="/styles/pc-main.css">
-
 </head>
 
 <body>
@@ -22,7 +22,7 @@
             <span>This URL is not supported by PC. Please use a mobile device to access this URL: </span>
             <div class="">
                 <span>{{ Session::has('referer') ? Session::get('referer') : "Url"}}</span>
-                <span class="btn btn-copy">copy url</span>
+                {{--<span class="btn btn-copy">copy url</span>--}}
             </div>
         </div>
     </nav>
@@ -63,6 +63,15 @@
                     </div>
                 </div>
             </div>
+        </div>
+    </div>
+    <div class="text-center p-b-1 font-size-base">
+        <div class="footer-content">
+            <div class="footer-links">
+                <a class="pull-left text-main text-link" href="">Privacy Notice</a>
+                <a class="pull-right text-main text-link" href="">Terms & Conditions</a>
+            </div>
+            <div class="text-main p-t-10x">Copyright © 2016 Motif Group LLC. All rights reserved.</div>
         </div>
     </div>
 </div>
