@@ -11,7 +11,7 @@
 |
 */
 
-//$app->group(['middleware' => 'pcguide', 'namespace' => 'App\Http\Controllers'], function ($app) {
+$app->group(['middleware' => 'pcguide', 'namespace' => 'App\Http\Controllers'], function ($app) {
 
     $app->get('/', 'Daily\DailyController@index');
     $app->get('/daily', 'Daily\DailyController@index');
@@ -28,9 +28,11 @@
     $app->get('/forgetpwd', 'Shopping\UserController@forgetPWD');
     $app->post('/forgetpwd', 'Shopping\UserController@forgetPWD');
     $app->get('/addFacebookEmail', 'Auth\AuthController@addFacebookEmail');
-//});
 
-$app->group(['middleware' => 'logincheck', 'namespace' => 'App\Http\Controllers\Shopping'], function ($app) {
+    $app->get('methodlist', 'Shopping\BraintreeController@methodlist');
+});
+
+$app->group(['middleware' => 'pcguide|logincheck', 'namespace' => 'App\Http\Controllers\Shopping'], function ($app) {
 
     $app->get('/feed', 'ShoppingController@feedback');
     $app->get('/feedback', 'ShoppingController@addSupport');
@@ -115,7 +117,7 @@ $app->group(['middleware' => 'logincheck', 'namespace' => 'App\Http\Controllers\
     $app->get('/paypal', 'PaypalController@paypal');
 });
 
-$app->group(['namespace' => 'App\Http\Controllers\Shopping'], function ($app) {
+$app->group(['middleware' => 'pcguide', 'namespace' => 'App\Http\Controllers\Shopping'], function ($app) {
     $app->get('/shopping', 'ShoppingController@index');
     $app->get('/category', 'ShoppingController@getShoppingCategoryList');
     $app->get('/products', 'ShoppingController@getShoppingProductList');
@@ -138,17 +140,17 @@ $app->group(['namespace' => 'App\Http\Controllers\Shopping'], function ($app) {
 
 });
 
-$app->group(['middleware' => 'logincheck', 'namespace' => 'App\Http\Controllers\Other'], function ($app) {
+$app->group(['middleware' => 'pcguide|logincheck', 'namespace' => 'App\Http\Controllers\Other'], function ($app) {
     $app->get('/askshopping', 'AskController@show');
     $app->put('/askshopping', 'AskController@install');
 });
 
-$app->group(['middleware' => 'logincheck', 'namespace' => 'App\Http\Controllers\Designer'], function ($app) {
+$app->group(['middleware' => 'pcguide|logincheck', 'namespace' => 'App\Http\Controllers\Designer'], function ($app) {
     $app->get('/followDesigner/{id}', 'DesignerController@follow');
 });
 
 
-$app->group(['namespace' => 'App\Http\Controllers\Other'], function ($app) {
+$app->group(['middleware' => 'pcguide', 'namespace' => 'App\Http\Controllers\Other'], function ($app) {
     $app->get('/aboutmotif', 'PageController@aboutMotif');
     $app->get('/contactus', 'PageController@contactUs');
     $app->get('/faq', 'PageController@faq');
@@ -164,5 +166,5 @@ $app->group(['namespace' => 'App\Http\Controllers\Other'], function ($app) {
 
 });
 
-$app->get('methodlist', 'Shopping\BraintreeController@methodlist');
+
 $app->get('guide', 'Shopping\ShoppingController@guide');
