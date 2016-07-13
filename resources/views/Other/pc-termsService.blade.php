@@ -16,7 +16,21 @@
             <!-- 主体内容 -->
     @if(!strstr($_SERVER['HTTP_USER_AGENT'], 'motif-android') && !strstr($_SERVER['HTTP_USER_AGENT'], 'motif-ios'))
         <div class="body-container">
-            @include('navigator')
+            <header class="navbar-fixed-top" id="header">
+                <nav class="navbar navbar-full bg-primary">
+                    <ul class="nav navbar-primary" style="height: 44px;">
+                        <li class="nav-item">
+                        </li>
+                        <li class="nav-item nav-logo">
+                            <a  href="/daily">
+                                <img class="motif-logo" src="/images/logo/logo.png"
+                                     srcset="/images/logo/logo@2x.png 2x,/images/logo/logo@3x.png 3x"></a>
+                        </li>
+                        <li class="nav-item">
+                        </li>
+                    </ul>
+                </nav>
+            </header>
             @else
                 <div class="body-container" style="padding-top:0px">
                     @endif
@@ -689,7 +703,13 @@
                     </section>
                     <!-- 页脚 功能链接 -->
                     @if(!strstr($_SERVER['HTTP_USER_AGENT'], 'motif-android') && !strstr($_SERVER['HTTP_USER_AGENT'], 'motif-ios'))
-                        @include('footer')
+                        <footer class="p-y-10x">
+                            <div class="links-group container-fluid p-x-0 flex flex-fullJustified">
+                                <a class="font-size-sm text-primary text-underLine" href="/pcprivacypolicy">Privacy Notice</a>
+                                <a class="font-size-sm text-primary text-underLine" href="/pctermsservice">Terms & Conditions</a>
+                            </div>
+                            <div class="text-primary text-center font-size-sm p-t-5x">Copyright © 2016 Motif Group LLC. All rights reserved.</div>
+                        </footer>
                     @endif
                 </div>
         </div>
