@@ -22,6 +22,22 @@
         }, 500);
     }
 
+    // 打开失败 loading
+    function openAddError() {
+        $('#error').toggleClass('loading-hidden');
+        setTimeout(function () {
+            $('#error').toggleClass('loading-open');
+        }, 25);
+    }
+
+    // 关闭失败 loading
+    function closeAddError() {
+        $('#error').addClass('loading-close');
+        setTimeout(function () {
+            $('#error').toggleClass('loading-hidden loading-open').removeClass('loading-close');
+        }, 500);
+    }
+
     // loading 打开
     function openLoading() {
         $('#loading').toggleClass('loading-hidden');
@@ -174,6 +190,7 @@
     (function initOptions() {
         var SpuId = $('#modalDialog').data('spu');
         $.ajax({
+                async: false,
                 url: '/products/' + SpuId
             })
             .done(function (data) {
@@ -739,8 +756,13 @@
                         }, 1500);
                     }
                 } else {
-                    $('.warning-info').removeClass('off');
-                    $('.warning-info').children('span').text(data.error_msg);
+                    //$('.warning-info').removeClass('off');
+                    //$('.warning-info').children('span').text(data.error_msg);
+                    $('#error-info').text(data.error_msg);
+                    openAddError();
+                    setTimeout(function () {
+                        closeAddError();
+                    }, 1500);
                 }
             })
             .always(function () {

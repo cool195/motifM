@@ -384,6 +384,17 @@
         <div class="text-white font-size-md text-center m-t-10x">Item Added</div>
     </div>
 </div>
+
+<!-- 失败 loading 效果 -->
+<div class="loading loading-screen loading-transprant loading-hidden" id="error">
+    <div class="loading-modal">
+        <div class="">
+            <img class="img-fluid m-x-auto" src="/images/icon-success.png"
+                 srcset="/images/icon-success@2x.png 2x, /images/icon-success@3x.png 3x">
+        </div>
+        <div class="text-white font-size-md text-center m-t-10x" id="error-info"></div>
+    </div>
+</div>
 </body>
 <script src="/scripts/vendor.js"></script>
 
