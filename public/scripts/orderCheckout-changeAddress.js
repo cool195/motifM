@@ -38,15 +38,17 @@
         openLoading();
         // 获取表单数据
         $.ajax({
-            url: '/addr/modify',
-            type: 'POST',
-            data: $('#addressInfo').serialize()
-        }).done(function () {
-            console.log('success');
-            $('#infoForm').submit();
-        }).fail(function () {
-            console.log('error');
-        }).always(function () {
+                url: '/addr/modify',
+                type: 'POST',
+                data: $('#addressInfo').serialize()
+            })
+            .done(function () {
+                console.log('success');
+                $('#infoForm').submit();
+            })
+            .fail(function () {
+                console.log('error');
+            }).always(function () {
             closeLoading();
             console.log('complete');
         });
@@ -55,12 +57,11 @@
     // 表单非空验证
     function checkInput() {
         var Result = true;
-        $('input[type="text"]').each(function () {
-            if ($(this).val() === '') {
-                Result = false;
-                return Result;
+        $('input[data-optional="false"]').each(function() {
+            if ($(this).val() === '' && !$(this).data('optional')) {
+                Result = $(this);
+                return false;
             }
-            // TODO 添加警告
         });
         return Result;
     }
@@ -77,23 +78,34 @@
         selectCountry();
     });
 
-    $('#Cancel').on('click', function(){
+    // 输入框非空验证
+    $('input[data-optional="false"]').on('blur keyup', function () {
+        var $Error = checkInput();
+        if ($Error === true) {
+            $('.warning-info').addClass('hidden-xs-up');
+            $('#btn-addAddress').removeClass('disabled');
+        } else {
+            $('.warning-info').removeClass('hidden-xs-up');
+            $('.warning-info').children('span').text('Please enter your ' + $Error.data('role') + ' !');
+            $('#btn-addAddress').addClass('disabled');
+        }
+    });
+
+    // 退出添加
+    $('#Cancel').on('click', function () {
         $('#infoForm').attr('action', $('#Cancel').attr('data-action'));
         $('#infoForm').submit();
     });
 
     // 点击提交表单
     $('#btn-addAddress').on('click', function (e) {
-        $(e.target).removeClass('disabled');
-        // 表单非空验证
-        if (checkInput()) {
+        if (!$(e.target).hasClass('disabled')) {
             changeAddress();
-        } else {
-            $(e.target).addClass('disabled');
         }
     });
 
     // 退出添加
-    $('#Cancel').on('click', function () {});
+    $('#Cancel').on('click', function () {
+    });
 })(jQuery);
 //# sourceMappingURL=profileSetting-changeAddress.js.map

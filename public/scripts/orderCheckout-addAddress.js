@@ -4,9 +4,9 @@
 /*global jQuery*/
 
 'use strict';
-(function($) {
+(function ($) {
     // 设置默认地址 开关按钮
-    $('.radio-checkBox').on('click', function() {
+    $('.radio-checkBox').on('click', function () {
         $(this).toggleClass('open');
 
         if ($(this).hasClass('open')) {
@@ -18,21 +18,23 @@
     //
     function openAddSuccess() {
         $('#success').toggleClass('loading-hidden');
-        setTimeout(function() {
+        setTimeout(function () {
             $('#success').toggleClass('loading-open');
         }, 25);
     }
+
     //
     function closeAddSuccess() {
         $('#success').addClass('loading-close');
-        setTimeout(function() {
+        setTimeout(function () {
             $('#success').toggleClass('loading-hidden loading-open').removeClass('loading-close');
         }, 500);
     }
+
     // loading 打开
     function openLoading() {
         $('.loading').toggleClass('loading-hidden');
-        setTimeout(function() {
+        setTimeout(function () {
             $('.loading').toggleClass('loading-open');
         }, 25);
     }
@@ -40,7 +42,7 @@
     // loading 隐藏
     function closeLoading() {
         $('.loading').addClass('loading-close');
-        setTimeout(function() {
+        setTimeout(function () {
             $('.loading').toggleClass('loading-hidden loading-open').removeClass('loading-close');
         }, 500);
     }
@@ -53,17 +55,17 @@
             url: '/useraddr/addUserAddress',
             type: 'POST',
             data: $('#addressInfo').serialize()
-        }).done(function(data) {
+        }).done(function (data) {
             if (data.success) {
                 openAddSuccess();
-                setTimeout(function() {
+                setTimeout(function () {
                     closeAddSuccess();
                     $('#infoForm').submit();
                 }, 1500);
             }
-        }).fail(function() {
+        }).fail(function () {
             console.log('error');
-        }).always(function() {
+        }).always(function () {
             closeLoading();
             console.log('complete');
         });
@@ -77,7 +79,6 @@
                 Result = $(this);
                 return false;
             }
-            // TODO 添加警告
         });
         return Result;
     }
@@ -90,12 +91,12 @@
     }
 
     // 跳转页面,
-    $('#country').on('click', function(e) {
+    $('#country').on('click', function (e) {
         selectCountry();
     });
 
     // 输入框非空验证
-    $('input[data-optional="false"]').on('blur keyup', function() {
+    $('input[data-optional="false"]').on('blur keyup', function () {
         var $Error = checkInput();
         if ($Error === true) {
             $('.warning-info').addClass('hidden-xs-up');
@@ -108,14 +109,14 @@
     });
 
     // 点击提交表单
-    $('#btn-addAddress').on('click', function(e) {
+    $('#btn-addAddress').on('click', function (e) {
         if (!$(e.target).hasClass('disabled')) {
             addUserAddress();
         }
     });
 
     // 退出添加
-    $('#Cancel').on('click', function() {
+    $('#Cancel').on('click', function () {
         $('#infoForm').attr('action', $('#Cancel').attr('data-action'));
         $('#infoForm').submit();
     });
