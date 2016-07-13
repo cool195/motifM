@@ -48,10 +48,27 @@
             });
     }
 
-    $('input[name="coupon"]').on('keyup', function() {
-        if($(this).val() === ''){
+    // 键盘输入内容 触发事件
+    $('input[name="coupon"]').on('keyup', function (e) {
+        if ($(this).val() === '') {
             $('div[data-role="submit"]').addClass('disabled');
-        }else {
+        } else {
+            $('div[data-role="submit"]').removeClass('disabled');
+        }
+    });
+
+    // 粘贴内容 触发事件
+    $('input[name="coupon"]').on('paste', function (e) {
+        var pastedText = undefined;
+        if (window.clipboardData && window.clipboardData.getData) {
+            pastedText = window.clipboardData.getData('Text');
+        } else {
+            pastedText = e.originalEvent.clipboardData.getData('Text');
+        }
+
+        if (pastedText === '' || pastedText === undefined) {
+            $('div[data-role="submit"]').addClass('disabled');
+        } else {
             $('div[data-role="submit"]').removeClass('disabled');
         }
     });
