@@ -40,7 +40,7 @@
     <div class="bg-white m-b-10x">
         <a href="@{{ if $value.skipType == 1 }}/detail/@{{ else if $value.skipType == 2 }}/designer/@{{ else if $value.skipType == 3 }}/topic/@{{ else if $value.skipType == 4 }}/shopping#@{{ /if }}@{{ $value.skipId }}">
             <img class="img-fluid img-lazy"
-                 data-original="{{env('APP_Api_Image')}}/n2/@{{ $value.imgPath }}"
+                 data-original="{{env('APP_Api_Image')}}/n1/@{{ $value.imgPath }}"
                  src="/images/product/bg-product@750.png">
         </a>
     </div>
@@ -52,7 +52,7 @@
         <div class="bg-white m-b-10x">
             <div class="daily-imgInfo">
                 <img class="img-fluid img-lazy"
-                     data-original="{{env('APP_Api_Image')}}/n2/@{{ $value.imgPath }}"
+                     data-original="{{env('APP_Api_Image')}}/n1/@{{ $value.imgPath }}"
                      src="/images/product/bg-product@750.png" alt="@{{ $value.title }}">
                 @{{ if $value.imgtextType }}<span class="img-icon font-size-sm"><strong>@{{ $value.imgtextType }}</strong></span>@{{ /if }}
             </div>
