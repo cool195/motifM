@@ -171,33 +171,37 @@
                     <div class="container-fluid p-a-10x" data-impr="{{ $recommended['impr'] }}">
                         <div class="row">
                             @if(isset($recommended['list']))
-                            @foreach($recommended['list'] as $value)
-                                <div class="col-xs-6">
-                                    <div class="productList-item">
-                                        <div class="image-bg">
-                                            <div class="image-container">
-                                                <a href="/detail/{{ $value['spu'] }}" data-impr="{{ $value['impr'] }}" data-clk="{{ $value['clk'] }}">
-                                                    <img class="img-fluid img-lazy"
-                                                         data-original="{{env('APP_Api_Image')}}/n1/{{ $value['main_image_url'] }}"
-                                                         src="/images/product/bg-product@336.png"
-                                                         alt="{{ $value['main_title'] }}">
-                                                </a>
-                                                @if($value['skuPrice']['sale_price'] != $value['skuPrice']['price'])
-                                                    <div class="price-off"><strong
-                                                                class="font-size-sm">{{$value['skuPrice']['skuPromotion']['display']}}</strong>
+                                @foreach($recommended['list'] as $key => $value)
+                                    @if($key < 20)
+                                        <div class="col-xs-6">
+                                            <div class="productList-item">
+                                                <div class="image-bg">
+                                                    <div class="image-container">
+                                                        <a href="/detail/{{ $value['spu'] }}"
+                                                           data-impr="{{ $value['impr'] }}"
+                                                           data-clk="{{ $value['clk'] }}">
+                                                            <img class="img-fluid img-lazy"
+                                                                 data-original="{{env('APP_Api_Image')}}/n1/{{ $value['main_image_url'] }}"
+                                                                 src="/images/product/bg-product@336.png"
+                                                                 alt="{{ $value['main_title'] }}">
+                                                        </a>
+                                                        @if($value['skuPrice']['sale_price'] != $value['skuPrice']['price'])
+                                                            <div class="price-off"><strong
+                                                                        class="font-size-sm">{{$value['skuPrice']['skuPromotion']['display']}}</strong>
+                                                            </div>
+                                                        @endif
                                                     </div>
-                                                @endif
+                                                </div>
+                                                <div class="price-caption">
+                                                    <span class="font-size-sm m-l-5x"><strong>${{ number_format(($value['skuPrice']['sale_price'] / 100), 2) }}</strong></span>
+                                                    @if($value['skuPrice']['sale_price'] != $value['skuPrice']['price'])
+                                                        <span class="font-size-xs text-common text-throughLine m-l-5x">${{ number_format(($value['skuPrice']['price'] / 100), 2) }}</span>
+                                                    @endif
+                                                </div>
                                             </div>
                                         </div>
-                                        <div class="price-caption">
-                                            <span class="font-size-sm m-l-5x"><strong>${{ number_format(($value['skuPrice']['sale_price'] / 100), 2) }}</strong></span>
-                                            @if($value['skuPrice']['sale_price'] != $value['skuPrice']['price'])
-                                                <span class="font-size-xs text-common text-throughLine m-l-5x">${{ number_format(($value['skuPrice']['price'] / 100), 2) }}</span>
-                                            @endif
-                                        </div>
-                                    </div>
-                                </div>
-                            @endforeach
+                                    @endif
+                                @endforeach
                             @endif
                         </div>
                     </div>
