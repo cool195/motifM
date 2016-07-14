@@ -1,5 +1,5 @@
 <?php
-$domain = $_SERVER['SERVER_NAME'] == 'm.motif.me' ? 'm.motif.me' : null;
+$domain = $_SERVER['SERVER_NAME'] == 'motif.me' ? 'motif.me' : null;
 return [
 
     /*
