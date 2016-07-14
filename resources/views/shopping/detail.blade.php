@@ -60,7 +60,7 @@
             </div>
 
             <!-- 产品 标题 简介 价格 基本信息 -->
-            <article class="product-baseInfo bg-white m-b-10x">
+            <article class="product-baseInfo bg-white m-b-10x" data-impr='http://clk.motif.me/log.gif?t=pv.100001&m=H5_M2016-1&pin={{ Session::get('user.pin') }}&uuid={{ Session::get('user.uuid') }}&v={"spu":{{$data['spu']}},"main_sku":{{$data['skuPrice']['sku']}},"price":{{ $data['skuPrice']['sale_price'] }},"version":"1.0.1","ver":"9.2","src":"H5"}'>
                 <div class="product-text">
                     <h6 class="text-main">{{$data['main_title']}}</h6>
                     <p class="text-primary font-size-sm">{{ $data['sub_title'] }} @if(isset($data['skuPrice']['skuPromotion']['promo_words'])){{$data['skuPrice']['skuPromotion']['promo_words']}}@endif</p>
