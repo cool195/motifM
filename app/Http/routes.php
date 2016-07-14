@@ -25,12 +25,15 @@ $app->group(['middleware' => 'pcguide', 'namespace' => 'App\Http\Controllers'], 
 
     $app->post('/googlelogin', 'Auth\AuthController@googleLogin');
     $app->post('/facebooklogin', 'Auth\AuthController@facebookLogin');
-    $app->get('/forgetpwd', 'Shopping\UserController@forgetPWD');
-    $app->post('/forgetpwd', 'Shopping\UserController@forgetPWD');
+    //$app->get('/forgetpwd', 'Shopping\UserController@forgetPWD');
+    //$app->post('/forgetpwd', 'Shopping\UserController@forgetPWD');
     $app->get('/addFacebookEmail', 'Auth\AuthController@addFacebookEmail');
 
     $app->get('methodlist', 'Shopping\BraintreeController@methodlist');
 });
+
+$app->get('/forgetpwd', 'Shopping\UserController@forgetPWD');
+$app->post('/forgetpwd', 'Shopping\UserController@forgetPWD');
 
 $app->group(['middleware' => 'pcguide|logincheck', 'namespace' => 'App\Http\Controllers\Shopping'], function ($app) {
 
