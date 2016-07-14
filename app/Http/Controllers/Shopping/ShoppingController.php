@@ -145,7 +145,7 @@ class ShoppingController extends ApiController
 
     public function guide(Request $request)
     {
-        return view('shopping.pcguide', ['referer' => $request->input('referer')]);
+        return view('shopping.pcguide', ['referer' => $_SERVER['HTTP_REFERER']]);
     }
 
 }
