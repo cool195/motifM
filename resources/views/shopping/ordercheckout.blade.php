@@ -27,9 +27,9 @@
                                 <div class="flex-fixedShrink">
                                     <img class="img-thumbnail img-lazy" src="/images/product/bg-product@70.png" data-original="{{env('APP_Api_Image').'/n2/'.$showSku['main_image_url']}}" width="70px" height="70px">
                                 </div>
-                                <div class="p-l-10x flex-width">
-                                    <article class="flex flex-fullJustified">
-                                        <h6 class="text-main font-size-md p-r-10x">
+                                <div class="p-l-10x flex-width text-overflow">
+                                    <article class="flex flex-fullJustified text-overflow">
+                                        <h6 class="text-main font-size-md p-r-10x text-truncate">
                                             <strong>{{$showSku['main_title']}}</strong>
                                         </h6>
                                         <span class="text-primary font-size-sm flex-fixedShrink">${{ number_format(($showSku['sale_price'] / 100), 2) }}</span>
@@ -52,11 +52,12 @@
                                             @endforeach
                                         @endif
                                     </aside>
+                                    <div class="flex flex-rightJustify p-t-10x text-primary font-size-sm">
+                                        <span>x&nbsp;{{$showSku['sale_qtty']}}</span>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="flex flex-rightJustify p-t-10x text-primary font-size-sm">
-                                <span>x&nbsp;{{$showSku['sale_qtty']}}</span>
-                            </div>
+
                         </div>
                     @endforeach
                 @endif
