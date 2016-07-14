@@ -143,9 +143,10 @@ class ShoppingController extends ApiController
         return $result;
     }
 
-    public function guide(Request $request)
+    public function guide()
     {
-        return view('shopping.pcguide', ['referer' => $_SERVER['HTTP_REFERER']]);
+        $referer = strstr($_SERVER['HTTP_REFERER'], 'http://motif') ? false : $_SERVER['HTTP_REFERER'];
+        return view('shopping.pcguide', ['referer' => $referer]);
     }
 
 }
