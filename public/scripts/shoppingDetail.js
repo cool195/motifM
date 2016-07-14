@@ -72,7 +72,9 @@
     });
     // 暂存 根据所选项所筛选出的 Skus 的结果
     var ResultSkus = [];
-
+    // 临时是否可用的SKU数组
+    var tempSkusStatic = [];
+    var tempInventory = [];
     // 注意联动的设置顺序
     DetailImgSwiper.params.control = BaseImgSwiper;
     BaseImgSwiper.params.control = DetailImgSwiper;
@@ -197,11 +199,13 @@
                 if (data.success) {
                     // 获取商品所有的库存
                     // Inventory 为库存的商品的Sku
-                    var Inventory = inventoryNull(data.data.skuExps);
+                    var Inventory = tempInventory = inventoryNull(data.data.skuExps);
+
                     // 所有选项
                     if (data.data.spuAttrs === undefined || data.data.spuAttrs == '') {
                         ResultSkus = data.data.skus;
                     } else {
+                        tempSkusStatic = data.data.spuAttrs;
                         newOptions(data.data.spuAttrs, Inventory, Options);
                     }
                     // 所有sku对应的库存
@@ -522,23 +526,9 @@
             $('[data-role]').removeClass('disabled');
         } else if (RadioList.length < 1) {
             // 全都未选
-            $('#modalDialog').find('.btn-itemProperty').removeClass('disabled');
+            newOptions(tempSkusStatic, tempInventory, Options);
             // 重置交集
             ResultSkus = [];
-        } else if (RadioList.length === 0) {
-            // 只选中一项时
-            getResultSku(RadioList); // 取得交集
-            filterWaitOptions(OptionsStatus.wait);
-            filterSelectOptions(OptionsStatus.select, SpaId, SkaId);
-            // 非全选状态时, 不可以购买
-            $('[data-role]').addClass('disabled');
-        } else if (RadioList.length === 1) {
-            // 只选中一项时
-            getResultSku(RadioList); // 取得交集
-            filterWaitOptions(OptionsStatus.wait);
-            filterSelectOptions(OptionsStatus.select, SpaId, SkaId);
-            // 非全选状态时, 不可以购买
-            $('[data-role]').addClass('disabled');
         } else {
             getResultSku(RadioList);
             filterWaitOptions(OptionsStatus.wait);
