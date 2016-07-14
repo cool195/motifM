@@ -33,7 +33,10 @@ class PaypalController extends ApiController
                     'devicedata' => "H5",
                     'nonce' => '{"response_type":"payment","response":{"id":"'.$result->id.'","state":"'.$result->state.'","create_time":"'.$result->create_time.'","intent":"'.$result->intent.'"}}',
                 );
-                $this->request('openapi', "", "pay", $params);
+                $content = $this->request('openapi', "", "pay", $params);
+                if(!empty($content) && $content['success']){
+                    return redirect('/success?orderid='.$params['orderid']);
+                }
             }
         }
         return redirect('/order/orderlist');
