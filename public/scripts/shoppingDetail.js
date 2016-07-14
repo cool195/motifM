@@ -199,7 +199,6 @@
                     // Inventory 为库存的商品的Sku
                     var Inventory = inventoryNull(data.data.skuExps);
                     // 所有选项
-                    alert(data.data.spuAttrs)
                     if (data.data.spuAttrs === undefined || data.data.spuAttrs == '') {
                         ResultSkus = data.data.skus;
                     } else {
