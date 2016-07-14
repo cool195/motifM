@@ -43,7 +43,7 @@ class ProductController extends ApiController
             'spu' => $spu,
         );
         $params['cid'] = isset($cid) ? $cid : -1;
-        return $this->request('openapi', '', "rec", $params,10);
+        return $this->request('openapi', '', "rec", $params,0);
     }
 
     /*
@@ -59,7 +59,7 @@ class ProductController extends ApiController
             'cmd' => 'productdetail',
             'spu' => $spu,
         );
-        $result = $this->request('openapi', self::API_SYSTEM, self::API_SERVICE, $params,10);
+        $result = $this->request('openapi', self::API_SYSTEM, self::API_SERVICE, $params,0);
         if (empty($result)) {
             $result['success'] = false;
             $result['data'] = array();
