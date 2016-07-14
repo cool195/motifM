@@ -199,7 +199,8 @@
                     // Inventory 为库存的商品的Sku
                     var Inventory = inventoryNull(data.data.skuExps);
                     // 所有选项
-                    if (data.data.spuAttrs === undefined) {
+                    alert(data.data.spuAttrs)
+                    if (data.data.spuAttrs === undefined || data.data.spuAttrs == '') {
                         ResultSkus = data.data.skus;
                     } else {
                         newOptions(data.data.spuAttrs, Inventory, Options);
@@ -784,7 +785,6 @@
         var OptionsCount = Object.keys(Options);
         var VasCount = Object.keys(Vas);
         var Action = $(e.target).data('action');
-
         if (OptionsCount.length === 0 && VasCount.length === 0 && ResultSkus.length !== 0) {
             initCart(Action);
         } else {
