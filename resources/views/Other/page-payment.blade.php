@@ -69,9 +69,7 @@
 
                                     <p class="m-b-15x">
                                         If you are experiencing difficulties with your payment or order please contact
-                                        our Customer Service Team via Live Chat or email <a
-                                                href="mailto:service@motif.me" class="text-underLine">service@motif
-                                            .me</a>.
+                                        our Customer Service Team via Live Chat or email <a href="mailto:service@motif.me" class="text-underLine">service@motif.me</a>.
                                     </p>
                                 </div>
                             </div>
