@@ -27,7 +27,7 @@
                     </div>
                 @else
                     <img src="{{env('APP_Api_Image')}}/n0/{{$designer['img_video_path']}}" hidden>
-                    <img class="img-fluid img-lazy designer-Img" data-original="{{env('APP_Api_Image')}}/n0/{{$designer['img_video_path']}}" src="/images/designer/bg-designer@750x550.png">
+                    <img style="height: 100%" class="img-fluid img-lazy designer-Img" data-original="{{env('APP_Api_Image')}}/n0/{{$designer['img_video_path']}}" src="/images/designer/bg-designer@750x550.png">
                 @endif
             </div>
 
