@@ -26,8 +26,9 @@
                         </div>
                     </div>
                 @else
-                    {{--<img src="{{env('APP_Api_Image')}}/n0/{{$designer['img_video_path']}}" class="designer-realImg" hidden>--}}
-                    <img class="img-fluid img-lazy designer-Img" data-original="{{env('APP_Api_Image')}}/n0/{{$designer['img_video_path']}}" src="/images/designer/bg-designer@750x550.png">
+                    <img src="{{env('APP_Api_Image')}}/n0/{{$designer['img_video_path']}}" class="designer-realImg" hidden>
+                    {{--<img class="img-fluid img-lazy designer-Img" data-original="{{env('APP_Api_Image')}}/n0/{{$designer['img_video_path']}}" src="/images/designer/bg-designer@750x550.png">--}}
+                    <img class="img-fluid img-lazy designer-Img" src="{{env('APP_Api_Image')}}/n0/{{$designer['img_video_path']}}">
                 @endif
             </div>
 
