@@ -5,8 +5,10 @@
     <meta charset="utf-8">
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Motif Exclusive Fashion Accessories Designed by the World’s Top Fashion Bloggers, Instagrammers and Digital Influencers</title>
-    <meta name="keywords" content="fashion,style,shop,accessory,jewelry,watch,blogger,Instagram,designer,limited,edition,ecommerce,buy" />
+    <title>Motif Exclusive Fashion Accessories Designed by the World’s Top Fashion Bloggers, Instagrammers and Digital
+        Influencers</title>
+    <meta name="keywords"
+          content="fashion,style,shop,accessory,jewelry,watch,blogger,Instagram,designer,limited,edition,ecommerce,buy"/>
 
     <link rel="apple-touch-icon" href="apple-touch-icon.png">
     <link rel="stylesheet" href="/styles/pc-main.css">
@@ -14,18 +16,21 @@
 
 <body>
 <!--[if lt IE 10]>
-<p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+<p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade
+    your browser</a> to improve your experience.</p>
 <![endif]-->
 <div class="bg">
-    <nav class="navbar">
-        <div class="nav">
-            <span>This URL is not supported by PC. Please use a mobile device to access this URL: </span>
-            <div class="">
-                <span>{{ Session::has('referer') ? Session::get('referer') : "Url"}}</span>
-                {{--<span class="btn btn-copy">copy url</span>--}}
+    @if(Session::has('referer'))
+        <nav class="navbar">
+            <div class="nav">
+                <span>This URL is not supported by PC. Please use a mobile device to access this URL: </span>
+                <div class="">
+                    <span>{{ Session::get('referer') }}</span>
+                    {{--<span class="btn btn-copy">copy url</span>--}}
+                </div>
             </div>
-        </div>
-    </nav>
+        </nav>
+    @endif
     <div class="main-container">
         <div class="content p-t-3">
             <div class="container-fluid">
@@ -43,16 +48,21 @@
                                 <li class="flex-center m-b-2">
                                     <div class="item-title">Download:</div>
                                     <div>
-                                        <a href="https://itunes.apple.com/cn/app/id1125850409" class="btn btn-primary"><img src="/images/pc/button-iphone.png" alt=""></a>
-                                        <a href="https://play.google.com/store/apps/details?id=me.motif.motif" class="btn btn-primary"><img src="/images/pc/button-google.png" alt=""></a>
+                                        <a href="https://itunes.apple.com/cn/app/id1125850409"
+                                           class="btn btn-primary"><img src="/images/pc/button-iphone.png" alt=""></a>
+                                        <a href="https://play.google.com/store/apps/details?id=me.motif.motif"
+                                           class="btn btn-primary"><img src="/images/pc/button-google.png" alt=""></a>
                                     </div>
                                 </li>
                                 <li class="flex-center m-b-3">
                                     <div class="item-title">Follow Us:</div>
                                     <div>
-                                        <a href="https://www.facebook.com/564721193713231" class="p-r-1 m-r-1"><img src="/images/pc/icon-facebook.png" alt=""></a>
-                                        <a href="https://plus.google.com/u/0/113666794179158439426" class="p-r-1 m-r-1"><img src="/images/pc/icon-google.png" alt=""></a>
-                                        <a href="https://instagram.com/motif.jewelry/" class="p-r-1 m-r-1"><img src="/images/pc/icon-ins.png" alt=""></a>
+                                        <a href="https://www.facebook.com/564721193713231" class="p-r-1 m-r-1"><img
+                                                    src="/images/pc/icon-facebook.png" alt=""></a>
+                                        <a href="https://plus.google.com/u/0/113666794179158439426" class="p-r-1 m-r-1"><img
+                                                    src="/images/pc/icon-google.png" alt=""></a>
+                                        <a href="https://instagram.com/motif.jewelry/" class="p-r-1 m-r-1"><img
+                                                    src="/images/pc/icon-ins.png" alt=""></a>
                                     </div>
                                 </li>
                             </ul>
