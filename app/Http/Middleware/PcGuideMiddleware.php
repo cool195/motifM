@@ -24,7 +24,7 @@ class PcGuideMiddleware
         {
             return $next($request);
         }
-        echo '<script language="javascript" type="text/javascript"> window.location.href="http://motif.me/guide"</script>';
+        echo '<script language="javascript" type="text/javascript"> window.location.href="http://motif.me/home"</script>';
     }
 
     private function isMobile()

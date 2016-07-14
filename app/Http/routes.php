@@ -167,6 +167,6 @@ $app->group(['middleware' => 'pcguide', 'namespace' => 'App\Http\Controllers\Oth
 });
 
 
-$app->get('guide', 'Shopping\ShoppingController@guide');
+$app->get('home', 'Shopping\ShoppingController@guide');
 $app->get('pcprivacypolicy', 'Other\PageController@pcPrivacyPolicy');
 $app->get('pctermsservice', 'Other\PageController@pcTermsService');
