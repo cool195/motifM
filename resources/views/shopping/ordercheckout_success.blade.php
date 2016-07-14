@@ -34,5 +34,15 @@
     </div>
 </body>
 <script src="/scripts/vendor.js"></script>
+<script>
+    $(document).ready(function(){
+        $.ajax({
+            type: "GET",
+            url: $(".reserve-height").data('impr')
+        }).done(function(){
+
+        });
+    })
+</script>
 @include('global')
 </html>
