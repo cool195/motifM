@@ -20,12 +20,12 @@
     your browser</a> to improve your experience.</p>
 <![endif]-->
 <div class="bg">
-    @if(Session::has('referer'))
+    @if($referer)
         <nav class="navbar">
             <div class="nav">
                 <span>This URL is not supported by PC. Please use a mobile device to access this URL: </span>
                 <div class="">
-                    <span>{{ Session::get('referer') }}</span>
+                    <span>{{$referer}}</span>
                     {{--<span class="btn btn-copy">copy url</span>--}}
                 </div>
             </div>

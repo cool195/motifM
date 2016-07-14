@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Designer</title>
+    <title>DESIGNER</title>
     @include('head')
     <link rel="stylesheet" href="/styles/designerDetail.css">
 </head>
