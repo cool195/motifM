@@ -25,7 +25,7 @@ class PcGuideMiddleware
             return $next($request);
         }
         $this->putRefererInSession();
-        return redirect('guide');
+        return redirect('http://motif.me/guide');
     }
 
     private function putRefererInSession()
