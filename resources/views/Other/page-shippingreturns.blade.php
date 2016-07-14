@@ -166,8 +166,7 @@
                                 <p class="m-b-15x">We want to make sure you’re 100% satisfied with your purchases, if
                                     you are not
                                     happy for any reason, email your request to <a href="mailto:service@motif.me"
-                                                                                   class="text-underLine">service@motif
-                                        .me</a> and
+                                                                                   class="text-underLine">service@motif.me</a> and
                                     return your item within 30 days of delivery for a full refund or exchange. Without
                                     email
                                     notification or if 30 days have gone by, unfortunately, we can’t process any refund
@@ -217,8 +216,7 @@
                                     posted.<br>
                                     d) If you’ve done all of this and you still have not received your refund yet,
                                     please
-                                    contact us at <a href="mailto:service@motif.me" class="text-underLine">service@motif
-                                        .me</a>.
+                                    contact us at <a href="mailto:service@motif.me" class="text-underLine">service@motif.me</a>.
                                 </p>
 
                                 <p class="m-b-15x"><strong>Exchanges (if applicable)</strong></p>

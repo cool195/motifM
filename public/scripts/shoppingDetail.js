@@ -471,7 +471,7 @@
 
 
     // 为所有选项绑定事件
-    $('#modalDialog').on('click', '.btn-itemProperty', function (e) {
+    $('.btn-itemProperty').on('click',function (e) {
 
         var $WarningInfo = $('.warning-info');
         if (!$WarningInfo.hasClass('off')) {
@@ -796,17 +796,22 @@
             if ($(e.target).hasClass('icon-checkcircle')) {
                 var $Check = $(e.target);
                 var $Input = $(e.target).siblings('.input-engraving');
+                if ($Check.hasClass('active')) {
+                    $Input.addClass('disabled');
+                    $Check.removeClass('active');
+                    $Input.val('');
+                } else {
+                    $Input.removeClass('disabled');
+                    $Check.addClass('active');
+                }
             } else if ($(e.target).hasClass('input-engraving')) {
                 var $Check = $(e.target).siblings('.icon-checkcircle');
                 var $Input = $(e.target);
-            }
-            if ($Check.hasClass('active')) {
-                $Input.addClass('disabled');
-                $Check.removeClass('active');
-                $Input.val('');
-            } else {
-                $Input.removeClass('disabled');
-                $Check.addClass('active');
+                if ($Input.hasClass('disabled')) {
+                    $Input.removeClass('disabled');
+                    $Check.addClass('active');
+                    $Input.val('');
+                }
             }
         }
     });

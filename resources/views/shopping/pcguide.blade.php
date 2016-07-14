@@ -20,6 +20,7 @@
     your browser</a> to improve your experience.</p>
 <![endif]-->
 <div class="bg">
+    <div class="nav-content">
     @if($referer)
         <nav class="navbar">
             <div class="nav">
@@ -31,6 +32,7 @@
             </div>
         </nav>
     @endif
+    </div>
     <div class="main-container">
         <div class="content p-t-3">
             <div class="container-fluid">
