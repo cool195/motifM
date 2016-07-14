@@ -461,6 +461,7 @@ class UserController extends ApiController
                 'pw' => md5($request->input('pw')),
                 'tp' => $request->input('tp'),
                 'sig' => $request->input('sig'),
+                'token' => self::Token
             );
             $result = $this->request('openapi', '', 'user', $params);
             if ($result['success']) {
