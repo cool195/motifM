@@ -19,7 +19,7 @@
 <div class="bg">
     <nav class="navbar">
         <div class="nav">
-            <span>This URL is not supported by PC. Please use a mobile device to access this URL: </span>
+            <span>This URL is not supported by PC. Please use a mobile device to access this URL:&nbsp;</span>
             <div class="">
                 <span>{{ Session::has('referer') ? Session::get('referer') : "Url"}}</span>
                 {{--<span class="btn btn-copy">copy url</span>--}}
@@ -50,9 +50,9 @@
                                 <li class="flex-center m-b-3">
                                     <div class="item-title">Follow Us:</div>
                                     <div>
-                                        <a href="https://www.facebook.com/564721193713231" class="p-r-1 m-r-1"><img src="/images/pc/icon-facebook.png" alt=""></a>
-                                        <a href="https://plus.google.com/u/0/113666794179158439426" class="p-r-1 m-r-1"><img src="/images/pc/icon-google.png" alt=""></a>
-                                        <a href="https://instagram.com/motif.jewelry/" class="p-r-1 m-r-1"><img src="/images/pc/icon-ins.png" alt=""></a>
+                                        <a target="_blank" href="https://www.facebook.com/564721193713231" class="p-r-1 m-r-1"><img src="/images/pc/icon-facebook.png" alt=""></a>
+                                        <a target="_blank" href="https://plus.google.com/u/0/113666794179158439426" class="p-r-1 m-r-1"><img src="/images/pc/icon-google.png" alt=""></a>
+                                        <a target="_blank" href="https://instagram.com/motif.jewelry/" class="p-r-1 m-r-1"><img src="/images/pc/icon-ins.png" alt=""></a>
                                     </div>
                                 </li>
                             </ul>

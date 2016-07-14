@@ -14,7 +14,7 @@
 <!-- 主体内容 -->
 <div class="resetPwd-container p-t-20x">
     <section class="resetPwd-content m-t-10x p-y-20x reserve-height">
-        <form id="reset" action="">
+        <form id="reset">
             <fieldset>
                 <a href="/daily">
                     <div class="p-b-20x"><img src="/images/login/register-logo.png" srcset="/images/login/register-logo@2x.png 2x,/images/login/register-logo@3x.png 3x"></div>
@@ -24,8 +24,8 @@
                     Motif account.
                 </div>
             </fieldset>
-            <div class="warning-info text-warning font-size-sm flex flex-alignCenter text-left p-x-15x m-y-10x hidden-xs-up">
-                <i class="iconfont icon-caveat icon-size-md p-r-5x"></i>
+            <div class="warning-info text-warning font-size-sm flex flex-alignCenter text-left m-y-10x hidden-xs-up">
+                <i class="iconfont icon-caveat icon-size-md p-r-10x"></i>
                 <span></span>
             </div>
             <fieldset>
