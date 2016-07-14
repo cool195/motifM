@@ -24,17 +24,7 @@ class PcGuideMiddleware
         {
             return $next($request);
         }
-        $this->putRefererInSession();
-        return redirect('guide');
-    }
-
-    private function putRefererInSession()
-    {
-        $referer = "http://".$_SERVER['HTTP_HOST'];
-        if(isset($_SERVER['REQUEST_URI']) && "/" != $_SERVER['REQUEST_URI'] ){
-            $referer .= $_SERVER['REQUEST_URI'];
-        }
-        Session::put('referer', $referer);
+        echo '<script language="javascript" type="text/javascript"> window.location.href="http://motif.me/home"</script>';
     }
 
     private function isMobile()

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Designer</title>
+    <title>DESIGNER</title>
     @include('head')
     <link rel="stylesheet" href="/styles/designerDetail.css">
 </head>
@@ -15,7 +15,7 @@
         <section class="reserve-height">
             <!-- 视频/图片 -->
             <div class="designer-media flex flex-justifyCenter flex-alignCenter">
-                <img class="designer-placeImg" src="/images/designer/placeholder.jpg" alt="" hidden>
+                <img class="designer-placeImg" src="/images/designer/placeholder.jpg" hidden>
                 @if($designer['path_type']==2)
                     <div id="ytplayer" data-playid="{{$designer['img_video_path']}}">
                         <div class="loading loading-screen loading-transprant loading-hidden">
@@ -26,11 +26,8 @@
                         </div>
                     </div>
                 @else
-                    <img src="{{env('APP_Api_Image')}}/n0/{{$designer['img_video_path']}}" alt=""
-                         class="designer-realImg" hidden>
-                    <img class="img-fluid img-lazy designer-Img"
-                         data-original="{{env('APP_Api_Image')}}/n0/{{$designer['img_video_path']}}"
-                         src="/images/designer/bg-designer@750x550.png" alt="">
+                    <img src="{{env('APP_Api_Image')}}/n0/{{$designer['img_video_path']}}" hidden>
+                    <img style="height: 100%" class="img-fluid img-lazy designer-Img" data-original="{{env('APP_Api_Image')}}/n0/{{$designer['img_video_path']}}" src="/images/designer/bg-designer@750x550.png">
                 @endif
             </div>
 

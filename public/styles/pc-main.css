@@ -2135,6 +2135,7 @@ fieldset[disabled] a.btn {
     background-image: url("../images/pc/background.jpg");
     background-position: center;
     background-size: cover;
+    min-width: 1200px;
 }
 
 .main-container {

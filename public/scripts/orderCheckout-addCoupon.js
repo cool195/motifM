@@ -40,6 +40,7 @@
                     $('#infoForm').submit();
                 } else {
                     $('.warning-info').removeAttr('hidden');
+                    data.prompt_msg = data.prompt_msg == '' ? 'Invalid code' : data.prompt_msg;
                     $('.warning-info').children('span').text(data.prompt_msg);
                 }
             })

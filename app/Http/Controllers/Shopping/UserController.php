@@ -208,7 +208,7 @@ class UserController extends ApiController
             'cmd' => "forgetpwd",
             'uuid' => @$_COOKIE['uid'],
             'email' => $request->input('email'),
-            //'token' => Session::get('user.token'),
+            'token' => self::Token,
             //'pin' => Session::get('user.pin'),
         );
         $result = $this->request('openapi', self::API_SYSTEM, self::API_SERVICE, $params);
@@ -461,6 +461,7 @@ class UserController extends ApiController
                 'pw' => md5($request->input('pw')),
                 'tp' => $request->input('tp'),
                 'sig' => $request->input('sig'),
+                'token' => self::Token
             );
             $result = $this->request('openapi', '', 'user', $params);
             if ($result['success']) {
