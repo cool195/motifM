@@ -235,6 +235,13 @@
     // 为页面绑定 滚动条事件
     $(document).ready(function() {
         $(window).scroll(function() {
+            $('img.img-lazy').each(function () {
+                var Src = $(this).attr('src'),
+                    Original = $(this).attr('data-original');
+                if (Src === Original) {
+                    $(this).removeClass('img-lazy');
+                }
+            });
             pullLoading();
             console.log('滚动条滚动');
         });
