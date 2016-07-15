@@ -22,13 +22,13 @@ class DesignerController extends ApiController
 
         if (empty($params['cmd'])) {
             //首次加载,请求推荐设计师数据
-            $result = $this->request('openapi', '', 'designer', array(
+/*            $result = $this->request('openapi', '', 'designer', array(
                 'cmd' => 'recdesignerlist',
                 'token' => Session::get('user.token'),
                 'pin' => Session::get('user.pin')
-            ));
+            ));*/
 
-            return View('designer.index', ['recdesigner' => isset($result['data']['list']) ? $result['data']['list'] : array()]);
+            return View('designer.index'/*, ['recdesigner' => isset($result['data']['list']) ? $result['data']['list'] : array()]*/);
         } else {
             //非首次加载,请求设计师列表数据
             $result = $this->request('openapi', '', 'designer', $params);
