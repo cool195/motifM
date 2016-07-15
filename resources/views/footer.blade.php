@@ -11,14 +11,14 @@
             Follow Us:&nbsp;
         </div>
         <div class="field-items">
-            <a class="share-btn" href="https://instagram.com/motif.jewelry/">
-                <img src="/images/icon/ins.png" srcset="/images/icon/ins@2x.png 2x,/images/icon/ins@3x.png 3x">
-            </a>
             <a class="share-btn" href="https://www.facebook.com/564721193713231">
                 <img src="/images/icon/facebook.png" srcset="/images/icon/facebook@2x.png 2x,/images/icon/facebook@3x.png 3x">
             </a>
-            <a class="share-btn" href="https://plus.google.com/u/0/113666794179158439426">
-                <img src="/images/icon/google.png" srcset="/images/icon/google@2x.png 2x,/images/icon/google@3x.png 3x">
+            <a class="share-btn" href="https://instagram.com/motif.jewelry/">
+                <img src="/images/icon/ins.png" srcset="/images/icon/ins@2x.png 2x,/images/icon/ins@3x.png 3x">
+            </a>
+            <a class="share-btn" href="https://www.pinterest.com/motifme/">
+                <img src="/images/icon/pinterest.png" srcset="/images/icon/pinterest@2x.png 2x,/images/icon/pinterest@3x.png 3x">
             </a>
         </div>
     </div>
