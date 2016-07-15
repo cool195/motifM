@@ -59,7 +59,7 @@ class DesignerController extends ApiController
         $params = array(
             'recid' => '100004',
             'pagenum' => 1,
-            'pagesize' => 16,
+            'pagesize' => 50,
             'uuid' => $_COOKIE['uid'] ? $_COOKIE['uid'] : 'ioscookieuidnull',
             'extra_kv' => 'designerId:'.$id,
             'pin' => Session::get('user.pin'),
