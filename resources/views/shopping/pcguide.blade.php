@@ -50,7 +50,7 @@
                                 <li class="flex-center m-b-2">
                                     <div class="item-title">Download:</div>
                                     <div>
-                                        <a href="https://itunes.apple.com/cn/app/id1125850409"
+                                        <a href="https://itunes.apple.com/us/app/id1125850409"
                                            class="btn btn-primary"><img src="/images/pc/button-iphone.png" alt=""></a>
                                         <a href="https://play.google.com/store/apps/details?id=me.motif.motif"
                                            class="btn btn-primary"><img src="/images/pc/button-google.png" alt=""></a>
