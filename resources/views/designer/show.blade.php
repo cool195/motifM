@@ -55,32 +55,40 @@
                         <i class="iconfont icon-arrow-bottom icon-size-xm text-common"></i>
                     </a>
                 </div>
-                <div class="p-x-10x p-t-5x p-b-15x">
-                    @if(!empty($designer['instagram_link']))
+
+                @if(!empty($designer['instagram_link']))
+                    <div class="p-x-10x p-t-5x p-b-15x">
                         <a href="{{$designer['instagram_link']}}" target="_blank" class="p-r-20x SocialMedia">
                             <img src="/images/designer/ins.png"
                                  srcset="/images/designer/ins@2x.png 2x,/images/designer/ins@3x.png 3x">
                         </a>
-                    @endif
-                    @if(!empty($designer['snapchat_link']))
+                    </div>
+                @endif
+                @if(!empty($designer['snapchat_link']))
+                    <div class="p-x-10x p-t-5x p-b-15x">
                         <a href="{{$designer['snapchat_link']}}" target="_blank" class="p-r-20x SocialMedia">
                             <img src="/images/designer/snapchat.png"
                                  srcset="/images/designer/snapchat@2x.png 2x,/images/designer/snapchat@3x.png 3x">
                         </a>
-                    @endif
-                    @if(!empty($designer['youtube_link']))
+                    </div>
+                @endif
+                @if(!empty($designer['youtube_link']))
+                    <div class="p-x-10x p-t-5x p-b-15x">
                         <a href="{{$designer['youtube_link']}}" target="_blank" class="p-r-20x SocialMedia">
                             <img src="/images/designer/youtube.png"
                                  srcset="/images/designer/youtube@2x.png 2x,/images/designer/youtube@3x.png 3x">
                         </a>
-                    @endif
-                    @if(!empty($designer['facebook_link']))
+                    </div>
+                @endif
+                @if(!empty($designer['facebook_link']))
+                    <div class="p-x-10x p-t-5x p-b-15x">
                         <a href="{{$designer['facebook_link']}}" target="_blank" class="p-r-20x SocialMedia">
                             <img src="/images/designer/facebook.png"
                                  srcset="/images/designer/facebook@2x.png 2x,/images/designer/facebook@3x.png 3x">
                         </a>
-                    @endif
-                </div>
+                    </div>
+                @endif
+
             </div>
             <!-- 设计师 对应模版商品 -->
             <aside class="bg-white p-b-10x">
@@ -89,8 +97,8 @@
                 @if($value['type']=='banner' || (!isset($value['spus']) && $value['type']=='product'))
                         <!-- 第一个 banner 图 -->
                 <a href="@if($value['skipType']=='1')/detail/{{$value['skipId']}}{{$value['skipId']}}@elseif($value['skipType']=='2')/designer/{{$value['skipId']}}@elseif($value['skipType']=='3')/topic/{{$value['skipId']}}@elseif($value['skipType']=='4')/shopping#{{$value['skipId']}}@else{{$value['imgUrl']}}@endif"
-                    data-impr='http://clk.motif.me/log.gif?t=designer.400001&m=H5_M2016-1&pin={{Session::get('user.pin')}}&uuid={{ Session::get('user.uuid') }}&v={"action":0,"skipType":{{$value['skipType']}},"skipId"{{$value['skipId']}},"expid":0,"version":"1.0.1","ver":"9.2","src":"H5"}'
-                    data-clk='http://clk.motif.me/log.gif?t=designer.400001&m=H5_M2016-1&pin={{Session::get('user.pin')}}&uuid={{ Session::get('user.uuid') }}&v={"action":1,"skipType":{{$value['skipType']}},"skipId":{{$value['skipId']}},expid":0,"version":"1.0.1","ver":"9.2","src":"H5"}'>
+                   data-impr='http://clk.motif.me/log.gif?t=designer.400001&m=H5_M2016-1&pin={{Session::get('user.pin')}}&uuid={{ Session::get('user.uuid') }}&v={"action":0,"skipType":{{$value['skipType']}},"skipId"{{$value['skipId']}},"expid":0,"version":"1.0.1","ver":"9.2","src":"H5"}'
+                   data-clk='http://clk.motif.me/log.gif?t=designer.400001&m=H5_M2016-1&pin={{Session::get('user.pin')}}&uuid={{ Session::get('user.uuid') }}&v={"action":1,"skipType":{{$value['skipType']}},"skipId":{{$value['skipId']}},expid":0,"version":"1.0.1","ver":"9.2","src":"H5"}'>
                     <div @if($k!=0)class="p-y-10x"@endif>
                         <img class="img-fluid"
                              src="{{env('APP_Api_Image')}}/n2/{{$value['imgPath']}}">
@@ -140,7 +148,7 @@
                                         <div class="col-xs-6">
                                             <a href="/detail/{{$spu}}"
                                                data-clk='http://clk.motif.me/log.gif?t=designer.400001&m=H5_M2016-1&pin={{ Session::get('user.pin') }}&uuid={{ Session::get('user.uuid') }}&v={"action":1,"skipType":1,"skipId"{{$spu}},"expid":0,"version":"1.0.1","ver":"9.2","src":"H5"}'
-                                               data-impr='http://clk.motif.me/log.gif?t=designer.400001&m=H5_M2016-1&pin={{ Session::get('user.pin') }}&uuid={{ Session::get('user.uuid') }}&v={"action":0,"skipType":1,"skipId":{{$spu}},expid":0,"version":"1.0.1","ver":"9.2","src":"H5"}' >
+                                               data-impr='http://clk.motif.me/log.gif?t=designer.400001&m=H5_M2016-1&pin={{ Session::get('user.pin') }}&uuid={{ Session::get('user.uuid') }}&v={"action":0,"skipType":1,"skipId":{{$spu}},expid":0,"version":"1.0.1","ver":"9.2","src":"H5"}'>
                                                 <div class="p-t-10x">
                                                     <img class="img-thumbnail img-lazy"
                                                          src="/images/product/bg-product@336.png"
