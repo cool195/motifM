@@ -31,6 +31,7 @@ class Net
             CURLOPT_USERAGENT => 'jason curl lib',
             CURLOPT_HEADER => false,
             CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_SSL_VERIFYPEER => false,
             #CURLOPT_FOLLOWLOCATION => true,
         );
         if (defined('CURLOPT_TIMEOUT_MS')) {
