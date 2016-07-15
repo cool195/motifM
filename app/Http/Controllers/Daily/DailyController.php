@@ -25,7 +25,6 @@ class DailyController extends ApiController
                 $result['error_msg'] = "Data access failed";
                 $result['data']['list'] = array();
             }
-
             return $result;
         }
     }
@@ -51,6 +50,8 @@ class DailyController extends ApiController
         );
 
         $result = $this->request('openapi', 'topicf', "content", $params);
+        error_log(print_r("------------------\n", "\n"), 3, '/tmp/myerror.log');
+        error_log(print_r($result, "\n"), 3, '/tmp/myerror.log');
         $view = '';
         if (strstr($_SERVER['HTTP_USER_AGENT'], 'motif-android') || strstr($_SERVER['HTTP_USER_AGENT'], 'motif-ios')) {
             $view = 'daily.topicApp';

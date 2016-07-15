@@ -39,7 +39,7 @@ class ProductController extends ApiController
             'recid' => '100002',
             'uuid' => @$_COOKIE['uid'],
             'pagenum' => 1,
-            'pagesize' => 16,
+            'pagesize' => 20,
             'spu' => $spu,
         );
         $params['cid'] = isset($cid) ? $cid : -1;
