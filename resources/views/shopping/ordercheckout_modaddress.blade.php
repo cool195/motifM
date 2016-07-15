@@ -3,7 +3,7 @@
 <head>
     <title>Add Address</title>
     @include('head')
-    <link rel="stylesheet" href="/styles/profileSetting-addAddress.css">
+    <link rel="stylesheet" href="{{env('CDN_Static')}}/styles/profileSetting-addAddress.css">
 
 </head>
 <body>
@@ -123,9 +123,9 @@
         @endif
     </form>
 </body>
-<script src="/scripts/vendor.js"></script>
+<script src="{{env('CDN_Static')}}/scripts/vendor.js"></script>
 
-<script src="/scripts/orderCheckout-changeAddress.js"></script>
+<script src="{{env('CDN_Static')}}/scripts/orderCheckout-changeAddress.js"></script>
 
 <meta name="csrf-token" content="{{ csrf_token() }}" />
 <script>

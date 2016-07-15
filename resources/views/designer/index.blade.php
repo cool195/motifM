@@ -3,7 +3,7 @@
 <head>
     <title>designer</title>
     @include('head')
-    <link rel="stylesheet" href="/styles/designer.css">
+    <link rel="stylesheet" href="{{env('CDN_Static')}}/styles/designer.css">
 </head>
 <body>
 @include('check.tagmanager')
@@ -40,7 +40,7 @@
     <aside class="bg-white m-b-10x">
         <div class="">
             <a href="/designer/@{{$value.designerId}}" data-impr='http://clk.motif.me/log.gif?t=designer.200001&m=H5_M2016-1&pin={{ Session::get('user.pin') }}&uuid={{ Session::get('user.uuid') }}&v=<?="\"action\":0,\"skipType\":2,\"skipId\":"?>@{{ $value.designerId }}<?=",\"expid\":0,\"version\":\"1.0.1\", \"ver\":\"9.2\",\"src\":\"H5\" "?>' data-clk='http://clk.motif.me/log.gif?t=designer.200001&m=H5_M2016-1&pin={{ Session::get('user.pin') }}&uuid={{ Session::get('user.uuid') }}&v=<?="\"action\":0,\"skipType\":2,\"skipId\":"?>@{{ $value.designerId }}<?=",\"expid\":0,\"version\":\"1.0.1\",\"ver\":\"9.2\",\"src\":\"H5\" "?>'>
-                <img class="img-fluid img-lazy" data-original="{{env('APP_Api_Image')}}/n2/@{{ $value.listImg }}" src="/images/product/bg-product@750.png" alt="@{{ $value.name }}">
+                <img class="img-fluid img-lazy" data-original="{{env('APP_Api_Image')}}/n2/@{{ $value.listImg }}" src="{{env('CDN_Static')}}/images/product/bg-product@750.png" alt="@{{ $value.name }}">
             </a>
         </div>
         <div class="p-x-10x p-y-15x swiper-container" id="designer-container">
@@ -58,8 +58,8 @@
     </aside>
     @{{ /each }}
 </template>
-<script src="/scripts/vendor.js"></script>
+<script src="{{env('CDN_Static')}}/scripts/vendor.js"></script>
 
-<script src="/scripts/designer.js"></script>
+<script src="{{env('CDN_Static')}}/scripts/designer.js"></script>
 @include('global')
 </html>

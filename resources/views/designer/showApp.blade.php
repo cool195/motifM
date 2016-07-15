@@ -3,7 +3,7 @@
 <head>
     <title>DESIGNER</title>
     @include('head')
-    <link rel="stylesheet" href="/styles/designerDetail.css">
+    <link rel="stylesheet" href="{{env('CDN_Static')}}/styles/designerDetail.css">
 </head>
 <body>
 @include('check.tagmanager')
@@ -15,7 +15,7 @@
         <section class="reserve-height">
             <!-- 视频/图片 -->
             <div class="designer-media flex flex-justifyCenter flex-alignCenter">
-                <img class="designer-placeImg" src="/images/designer/placeholder.jpg" hidden>
+                <img class="designer-placeImg" src="{{env('CDN_Static')}}/images/designer/placeholder.jpg" hidden>
                 @if($designer['path_type']==2)
                     <div id="ytplayer" data-playid="{{$designer['img_video_path']}}">
                         <div class="loading loading-screen loading-transprant loading-hidden">
@@ -52,11 +52,11 @@
                         </span>
                         <span>
                             @if($designer['osType']=='ios')
-                                <a id="shareDesigner" href="#"><img src="/images/icon/share-ios.png"
-                                                                    srcset="/images/icon/share-ios@2x.png 2x,/images/icon/share-ios@3x.png 3x"></a>
+                                <a id="shareDesigner" href="#"><img src="{{env('CDN_Static')}}/images/icon/share-ios.png"
+                                                                    srcset="{{env('CDN_Static')}}/images/icon/share-ios@2x.png 2x,{{env('CDN_Static')}}/images/icon/share-ios@3x.png 3x"></a>
                             @else
-                                <a id="shareDesigner" href="#"><img src="/images/icon/share-android.png"
-                                                                    srcset="/images/icon/share-android@2x.png 2x,/images/icon/share-android@3x.png 3x"></a>
+                                <a id="shareDesigner" href="#"><img src="{{env('CDN_Static')}}/images/icon/share-android.png"
+                                                                    srcset="{{env('CDN_Static')}}/images/icon/share-android@2x.png 2x,{{env('CDN_Static')}}/images/icon/share-android@3x.png 3x"></a>
                             @endif
                         </span>
                     </div>
@@ -77,29 +77,29 @@
                     @if(!empty($designer['instagram_link']))
                         <a href="motif://o.c?a=outurl&url={{$designer['instagram_link']}}" target="_blank"
                            class="p-r-20x">
-                            <img src="/images/designer/ins.png"
-                                 srcset="/images/designer/ins@2x.png 2x,/images/designer/ins@3x.png 3x">
+                            <img src="{{env('CDN_Static')}}/images/designer/ins.png"
+                                 srcset="{{env('CDN_Static')}}/images/designer/ins@2x.png 2x,{{env('CDN_Static')}}/images/designer/ins@3x.png 3x">
                         </a>
                     @endif
                     @if(!empty($designer['snapchat_link']))
                         <a href="motif://o.c?a=outurl&url={{$designer['snapchat_link']}}" target="_blank"
                            class="p-r-20x">
-                            <img src="/images/designer/snapchat.png"
-                                 srcset="/images/designer/snapchat@2x.png 2x,/images/designer/snapchat@3x.png 3x">
+                            <img src="{{env('CDN_Static')}}/images/designer/snapchat.png"
+                                 srcset="{{env('CDN_Static')}}/images/designer/snapchat@2x.png 2x,{{env('CDN_Static')}}/images/designer/snapchat@3x.png 3x">
                         </a>
                     @endif
                     @if(!empty($designer['youtube_link']))
                         <a href="motif://o.c?a=outurl&url={{$designer['youtube_link']}}" target="_blank"
                            class="p-r-20x">
-                            <img src="/images/designer/youtube.png"
-                                 srcset="/images/designer/youtube@2x.png 2x,/images/designer/youtube@3x.png 3x">
+                            <img src="{{env('CDN_Static')}}/images/designer/youtube.png"
+                                 srcset="{{env('CDN_Static')}}/images/designer/youtube@2x.png 2x,{{env('CDN_Static')}}/images/designer/youtube@3x.png 3x">
                         </a>
                     @endif
                     @if(!empty($designer['facebook_link']))
                         <a href="motif://o.c?a=outurl&url={{$designer['facebook_link']}}" target="_blank"
                            class="p-r-20x">
-                            <img src="/images/designer/facebook.png"
-                                 srcset="/images/designer/facebook@2x.png 2x,/images/designer/facebook@3x.png 3x">
+                            <img src="{{env('CDN_Static')}}/images/designer/facebook.png"
+                                 srcset="{{env('CDN_Static')}}/images/designer/facebook@2x.png 2x,{{env('CDN_Static')}}/images/designer/facebook@3x.png 3x">
                         </a>
                     @endif
                 </div>
@@ -147,7 +147,7 @@
                                         <div class="p-x-15x p-y-10x">
                                             <a href="motif://o.c?a=pd&spu={{$spu}}">
                                                 <img class="img-fluid img-lazy"
-                                                     src="/images/product/bg-product@336.png"
+                                                     src="{{env('CDN_Static')}}/images/product/bg-product@336.png"
                                                      data-original="{{env('APP_Api_Image')}}/n2/{{$product['spuInfos'][$spu]['spuBase']['main_image_url']}}"
                                                      alt="{{$product['spuInfos'][$spu]['spuBase']['main_title']}}">
                                             </a>
@@ -197,7 +197,7 @@
                                        data-impr="{{ $value['impr'] }}">
                                         <div class="p-t-10x">
                                             <img class="img-thumbnail img-lazy"
-                                                 src="/images/product/bg-product@336.png"
+                                                 src="{{env('CDN_Static')}}/images/product/bg-product@336.png"
                                                  data-original="{{env('APP_Api_Image')}}/n2/{{$value['main_image_url']}}"
                                                  alt="{{$value['main_title']}}">
                                             <div class="p-y-10x">
@@ -224,10 +224,10 @@
 </div>
 
 </body>
-<script src="/scripts/vendor.js"></script>
-<script src="/scripts/designerDetail.js"></script>
-<script src="/scripts/videoPlay.js"></script>
-<script src="/scripts/JockeyJS.js"></script>
+<script src="{{env('CDN_Static')}}/scripts/vendor.js"></script>
+<script src="{{env('CDN_Static')}}/scripts/designerDetail.js"></script>
+<script src="{{env('CDN_Static')}}/scripts/videoPlay.js"></script>
+<script src="{{env('CDN_Static')}}/scripts/JockeyJS.js"></script>
 <script>
     var actionsShow = [{"icon": "", "name": "wish"}, {"icon": "", "name": "bag"}]
     Jockey.send("action", {

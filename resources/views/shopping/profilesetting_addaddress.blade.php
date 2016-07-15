@@ -3,7 +3,7 @@
 <head>
     <title>Add Address</title>
     @include('head')
-    <link rel="stylesheet" href="/styles/profileSetting-addAddress.css">
+    <link rel="stylesheet" href="{{env('CDN_Static')}}/styles/profileSetting-addAddress.css">
 
 </head>
 <body>
@@ -106,9 +106,9 @@
         <div class="loader loader-screen"></div>
     </div>
 </body>
-<script src="/scripts/vendor.js"></script>
+<script src="{{env('CDN_Static')}}/scripts/vendor.js"></script>
 
-<script src="/scripts/profileSetting-addAddress.js"></script>
+<script src="{{env('CDN_Static')}}/scripts/profileSetting-addAddress.js"></script>
 <meta name="csrf-token" content="{{ csrf_token() }}" />
 <script>
     $.ajaxSetup({

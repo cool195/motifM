@@ -3,7 +3,7 @@
 <head>
     <title>shopping</title>
     @include('head')
-    <link rel="stylesheet" href="/styles/shoppingList.css">
+    <link rel="stylesheet" href="{{env('CDN_Static')}}/styles/shoppingList.css">
 </head>
 <body>
 @include('check.tagmanager')
@@ -99,10 +99,10 @@
         <div class="p-x-15x p-t-5x p-b-15x">
             <div class="field-items">
                 <a href="#" class="btn btn-secondary btn-xs">
-                    <img src="/images/icon/icon-appStore.png" srcset="/images/icon/icon-appStore@2x.png 2x, /images/icon/icon-appStore@3x.png 3x">
+                    <img src="{{env('CDN_Static')}}/images/icon/icon-appStore.png" srcset="{{env('CDN_Static')}}/images/icon/icon-appStore@2x.png 2x, {{env('CDN_Static')}}/images/icon/icon-appStore@3x.png 3x">
                 </a>
                 <a href="#" class="btn btn-secondary btn-xs">
-                    <img src="/images/icon/icon-googlePlay.png" srcset="/images/icon/icon-googlePlay@2x.png 2x, /images/icon/icon-googlePlay@3x.png 3x">
+                    <img src="{{env('CDN_Static')}}/images/icon/icon-googlePlay.png" srcset="{{env('CDN_Static')}}/images/icon/icon-googlePlay@2x.png 2x, {{env('CDN_Static')}}/images/icon/icon-googlePlay@3x.png 3x">
                 </a>
             </div>
         </div>
@@ -118,7 +118,7 @@
             <div class="image-bg">
                 <div class="image-container">
                     <a href="/detail/@{{ $value.spu }}" data-impr="@{{ $value.impr }}" data-clk="@{{ $value.clk }}">
-                        <img class="img-fluid img-lazy" data-original="{{env('APP_Api_Image')}}/n1/@{{ $value.main_image_url }}" src="/images/product/bg-product@336.png" alt="@{{ $value.main_title }}">
+                        <img class="img-fluid img-lazy" data-original="{{env('APP_Api_Image')}}/n1/@{{ $value.main_image_url }}" src="{{env('CDN_Static')}}/images/product/bg-product@336.png" alt="@{{ $value.main_title }}">
                         @{{ if $value.skuPrice.sale_price !== $value.skuPrice.price }}
 
                         <div class="price-off">
@@ -141,8 +141,8 @@
     </div>
     @{{ /each }}
 </template>
-<script src="/scripts/vendor.js"></script>
+<script src="{{env('CDN_Static')}}/scripts/vendor.js"></script>
 
-<script src="/scripts/shoppingList.js"></script>
+<script src="{{env('CDN_Static')}}/scripts/shoppingList.js"></script>
 @include('global')
 </html>

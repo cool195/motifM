@@ -46,9 +46,9 @@
 </form>
 
 </body>
-<script src="/scripts/vendor.js"></script>
+<script src="{{env('CDN_Static')}}/scripts/vendor.js"></script>
 
-<script src="/scripts/orderCheckout-addCoupon.js"></script>
+<script src="{{env('CDN_Static')}}/scripts/orderCheckout-addCoupon.js"></script>
 <meta name="csrf-token" content="{{ csrf_token() }}" />
 <script>
     $.ajaxSetup({

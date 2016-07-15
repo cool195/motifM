@@ -4,9 +4,9 @@
 
     <title>RESET PASSWORD</title>
     @include('head')
-    <link rel="stylesheet" href="/styles/resetPassword.css">
+    <link rel="stylesheet" href="{{env('CDN_Static')}}/styles/resetPassword.css">
 
-    <link rel="stylesheet" href="/styles/remodal.css">
+    <link rel="stylesheet" href="{{env('CDN_Static')}}/styles/remodal.css">
 
 </head>
 <body>
@@ -17,7 +17,7 @@
         <form id="reset">
             <fieldset>
                 <a href="/daily">
-                    <div class="p-b-20x"><img src="/images/login/register-logo.png" srcset="/images/login/register-logo@2x.png 2x,/images/login/register-logo@3x.png 3x"></div>
+                    <div class="p-b-20x"><img src="{{env('CDN_Static')}}/images/login/register-logo.png" srcset="{{env('CDN_Static')}}/images/login/register-logo@2x.png 2x,{{env('CDN_Static')}}/images/login/register-logo@3x.png 3x"></div>
                 </a>
                 <div class="text-main m-t-10x"><strong>Reset Password</strong></div>
                 <div class="text-primary text-left m-t-15x font-size-sm">You will use the new password to login to your
@@ -66,8 +66,8 @@
 </div>
 
 </body>
-<script src="/scripts/vendor.js"></script>
-<script src="/scripts/forgetPassword.js"></script>
+<script src="{{env('CDN_Static')}}/scripts/vendor.js"></script>
+<script src="{{env('CDN_Static')}}/scripts/forgetPassword.js"></script>
 <meta name="csrf-token" content="{{ csrf_token() }}"/>
 <script>
     $.ajaxSetup({

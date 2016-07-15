@@ -3,7 +3,7 @@
 <head>
     <title>404</title>
     @include('head')
-    <link rel="stylesheet" href="/styles/404.css">
+    <link rel="stylesheet" href="{{env('CDN_Static')}}/styles/404.css">
 </head>
 <body>
 <!-- 外层容器 -->
@@ -18,8 +18,8 @@
             <div class="p-x-20x">
                 <div class="text-center">
                     <div>
-                        <img class="img-fluid" src="/images/404/404.png"
-                             srcset="/images/404/404@2x.png 2x,/images/404/404@3x.png 3x">
+                        <img class="img-fluid" src="{{env('CDN_Static')}}/images/404/404.png"
+                             srcset="{{env('CDN_Static')}}/images/404/404@2x.png 2x,{{env('CDN_Static')}}/images/404/404@3x.png 3x">
                     </div>
                     <div class="p-t-10x p-b-5x font-size-lg">
                         <strong>Oops,You've lost...</strong>
@@ -35,6 +35,6 @@
     </div>
 </div>
 </body>
-<script src="/scripts/vendor.js"></script>
+<script src="{{env('CDN_Static')}}/scripts/vendor.js"></script>
 @include('global')
 </html>

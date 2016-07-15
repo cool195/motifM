@@ -4,7 +4,7 @@
 
     <title>Designer Detail</title>
     @include('head')
-    <link rel="stylesheet" href="/styles/designerDetail.css">
+    <link rel="stylesheet" href="{{env('CDN_Static')}}/styles/designerDetail.css">
 </head>
 <body>
 @include('check.tagmanager')
@@ -20,7 +20,7 @@
             <!-- 视频/图片-->
             <img src="{{ env('APP_Api_Image').'/n1/'.$designer['main_image_url'] }}" style="display: none">
             <div class="designer-media flex flex-justifyCenter flex-alignCenter">
-                <img class="designer-placeImg" src="/images/designer/placeholder.jpg" alt="" hidden>
+                <img class="designer-placeImg" src="{{env('CDN_Static')}}/images/designer/placeholder.jpg" alt="" hidden>
                 @if($designer['path_type']==2)
                     <div id="ytplayer" data-playid="{{$designer['img_video_path']}}">
                         <div class="loading loading-screen loading-transprant loading-hidden">
@@ -33,9 +33,9 @@
                 @else
                     <img src="{{env('APP_Api_Image')}}/n2/{{$designer['img_video_path']}}" alt=""
                          class="designer-realImg" hidden>
-                    <img class="img-fluid img-lazy designer-Img"
+                    <img style="height: 100%" class="img-fluid img-lazy designer-Img"
                          data-original="{{env('APP_Api_Image')}}/n2/{{$designer['img_video_path']}}"
-                         src="/images/designer/bg-designer@750x550.png" alt="">
+                         src="{{env('CDN_Static')}}/images/designer/bg-designer@750x550.png" alt="">
                 @endif
             </div>
 
@@ -59,32 +59,32 @@
                 @if(!empty($designer['instagram_link']))
                     <div class="p-x-10x p-t-5x p-b-15x">
                         <a href="{{$designer['instagram_link']}}" target="_blank" class="p-r-20x SocialMedia">
-                            <img src="/images/designer/ins.png"
-                                 srcset="/images/designer/ins@2x.png 2x,/images/designer/ins@3x.png 3x">
+                            <img src="{{env('CDN_Static')}}/images/designer/ins.png"
+                                 srcset="{{env('CDN_Static')}}/images/designer/ins@2x.png 2x,{{env('CDN_Static')}}/images/designer/ins@3x.png 3x">
                         </a>
                     </div>
                 @endif
                 @if(!empty($designer['snapchat_link']))
                     <div class="p-x-10x p-t-5x p-b-15x">
                         <a href="{{$designer['snapchat_link']}}" target="_blank" class="p-r-20x SocialMedia">
-                            <img src="/images/designer/snapchat.png"
-                                 srcset="/images/designer/snapchat@2x.png 2x,/images/designer/snapchat@3x.png 3x">
+                            <img src="{{env('CDN_Static')}}/images/designer/snapchat.png"
+                                 srcset="{{env('CDN_Static')}}/images/designer/snapchat@2x.png 2x,{{env('CDN_Static')}}/images/designer/snapchat@3x.png 3x">
                         </a>
                     </div>
                 @endif
                 @if(!empty($designer['youtube_link']))
                     <div class="p-x-10x p-t-5x p-b-15x">
                         <a href="{{$designer['youtube_link']}}" target="_blank" class="p-r-20x SocialMedia">
-                            <img src="/images/designer/youtube.png"
-                                 srcset="/images/designer/youtube@2x.png 2x,/images/designer/youtube@3x.png 3x">
+                            <img src="{{env('CDN_Static')}}/images/designer/youtube.png"
+                                 srcset="{{env('CDN_Static')}}/images/designer/youtube@2x.png 2x,{{env('CDN_Static')}}/images/designer/youtube@3x.png 3x">
                         </a>
                     </div>
                 @endif
                 @if(!empty($designer['facebook_link']))
                     <div class="p-x-10x p-t-5x p-b-15x">
                         <a href="{{$designer['facebook_link']}}" target="_blank" class="p-r-20x SocialMedia">
-                            <img src="/images/designer/facebook.png"
-                                 srcset="/images/designer/facebook@2x.png 2x,/images/designer/facebook@3x.png 3x">
+                            <img src="{{env('CDN_Static')}}/images/designer/facebook.png"
+                                 srcset="{{env('CDN_Static')}}/images/designer/facebook@2x.png 2x,{{env('CDN_Static')}}/images/designer/facebook@3x.png 3x">
                         </a>
                     </div>
                 @endif
@@ -132,7 +132,7 @@
                                 <div class="p-x-15x p-y-10x">
                                     <a href="/detail/{{$spu}}">
                                         <img class="img-fluid img-lazy"
-                                             src="/images/product/bg-product@336.png"
+                                             src="{{env('CDN_Static')}}/images/product/bg-product@336.png"
                                              data-original="{{env('APP_Api_Image')}}/n2/{{$product['spuInfos'][$spu]['spuBase']['main_image_url']}}"
                                              alt="{{$product['spuInfos'][$spu]['spuBase']['main_title']}}">
                                     </a>
@@ -151,7 +151,7 @@
                                                data-impr='http://clk.motif.me/log.gif?t=designer.400001&m=H5_M2016-1&pin={{ Session::get('user.pin') }}&uuid={{ Session::get('user.uuid') }}&v={"action":0,"skipType":1,"skipId":{{$spu}},expid":0,"version":"1.0.1","ver":"9.2","src":"H5"}'>
                                                 <div class="p-t-10x">
                                                     <img class="img-thumbnail img-lazy"
-                                                         src="/images/product/bg-product@336.png"
+                                                         src="{{env('CDN_Static')}}/images/product/bg-product@336.png"
                                                          data-original="{{env('APP_Api_Image')}}/n2/{{$product['spuInfos'][$spu]['spuBase']['main_image_url']}}"
                                                          alt="{{$product['spuInfos'][$spu]['spuBase']['main_title']}}">
                                                     <div class="p-y-10x">
@@ -182,7 +182,7 @@
                                        data-impr="{{ $value['impr'] }}">
                                         <div class="p-t-10x">
                                             <img class="img-thumbnail img-lazy"
-                                                 src="/images/product/bg-product@336.png"
+                                                 src="{{env('CDN_Static')}}/images/product/bg-product@336.png"
                                                  data-original="{{env('APP_Api_Image')}}/n2/{{$value['main_image_url']}}"
                                                  alt="{{$value['main_title']}}">
                                             <div class="p-y-10x">
@@ -206,8 +206,8 @@
     </div>
 </div>
 </body>
-<script src="/scripts/vendor.js"></script>
-<script src="/scripts/designerDetail.js"></script>
-<script src="/scripts/videoPlay.js"></script>
+<script src="{{env('CDN_Static')}}/scripts/vendor.js"></script>
+<script src="{{env('CDN_Static')}}/scripts/designerDetail.js"></script>
+<script src="{{env('CDN_Static')}}/scripts/videoPlay.js"></script>
 @include('global')
 </html>

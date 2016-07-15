@@ -3,7 +3,7 @@
 <head>
     <title>Add New Card</title>
     @include('head')
-    <link rel="stylesheet" href="/styles/paymentMethod-addCard.css">
+    <link rel="stylesheet" href="{{env('CDN_Static')}}/styles/paymentMethod-addCard.css">
 
 </head>
 <body>
@@ -62,13 +62,13 @@
             <div class="bg-white m-b-15x p-a-15x">
                 <div class="font-size-md text-main m-b-10x"><strong>Acceptable Bank Cards</strong></div>
                 <div class="flex flex-fullJustified">
-                    <span><img src="/images/payment/icon-americanexpress.png" srcset="/images/payment/icon-americanexpress@2x.png 2x,/images/payment/icon-americanexpress@3x.png 3x" alt=""></span>
-                    <span><img src="/images/payment/icon-discover.png" srcset="/images/payment/icon-discover@2x.png 2x,/images/payment/icon-discover@3x.png 3x" alt=""></span>
-                    <span><img src="/images/payment/icon-duversclub.png" srcset="/images/payment/icon-duversclub@2x.png 2x,/images/payment/icon-duversclub@3x.png 3x" alt=""></span>
-                    <span><img src="/images/payment/icon-jcb.png" srcset="/images/payment/icon-jcb@2x.png 2x,/images/payment/icon-jcb@3x.png 3x" alt=""></span>
-                    <span><img src="/images/payment/icon-maestro.png" srcset="/images/payment/icon-maestro@2x.png 2x,/images/payment/icon-maestro@3x.png 3x" alt=""></span>
-                    <span><img src="/images/payment/icon-mastercard.png" srcset="/images/payment/icon-mastercard@2x.png 2x,/images/payment/icon-mastercard@3x.png 3x" alt=""></span>
-                    <span><img src="/images/payment/icon-visa.png" srcset="/images/payment/icon-visa@2x.png 2x,/images/payment/icon-visa@3x.png 3x" alt=""></span>
+                    <span><img src="{{env('CDN_Static')}}/images/payment/icon-americanexpress.png" srcset="{{env('CDN_Static')}}/images/payment/icon-americanexpress@2x.png 2x,{{env('CDN_Static')}}/images/payment/icon-americanexpress@3x.png 3x" alt=""></span>
+                    <span><img src="{{env('CDN_Static')}}/images/payment/icon-discover.png" srcset="{{env('CDN_Static')}}/images/payment/icon-discover@2x.png 2x,{{env('CDN_Static')}}/images/payment/icon-discover@3x.png 3x" alt=""></span>
+                    <span><img src="{{env('CDN_Static')}}/images/payment/icon-duversclub.png" srcset="{{env('CDN_Static')}}/images/payment/icon-duversclub@2x.png 2x,{{env('CDN_Static')}}/images/payment/icon-duversclub@3x.png 3x" alt=""></span>
+                    <span><img src="{{env('CDN_Static')}}/images/payment/icon-jcb.png" srcset="{{env('CDN_Static')}}/images/payment/icon-jcb@2x.png 2x,{{env('CDN_Static')}}/images/payment/icon-jcb@3x.png 3x" alt=""></span>
+                    <span><img src="{{env('CDN_Static')}}/images/payment/icon-maestro.png" srcset="{{env('CDN_Static')}}/images/payment/icon-maestro@2x.png 2x,{{env('CDN_Static')}}/images/payment/icon-maestro@3x.png 3x" alt=""></span>
+                    <span><img src="{{env('CDN_Static')}}/images/payment/icon-mastercard.png" srcset="{{env('CDN_Static')}}/images/payment/icon-mastercard@2x.png 2x,{{env('CDN_Static')}}/images/payment/icon-mastercard@3x.png 3x" alt=""></span>
+                    <span><img src="{{env('CDN_Static')}}/images/payment/icon-visa.png" srcset="{{env('CDN_Static')}}/images/payment/icon-visa@2x.png 2x,{{env('CDN_Static')}}/images/payment/icon-visa@3x.png 3x" alt=""></span>
                 </div>
             </div>
 
@@ -90,7 +90,7 @@
 <div class="loading loading-screen loading-transprant loading-hidden" id="success">
     <div class="loading-modal">
         <div class="">
-            <img class="img-fluid m-x-auto" src="/images/icon-success.png" srcset="/images/icon-success@2x.png 2x, /images/icon-success@3x.png 3x">
+            <img class="img-fluid m-x-auto" src="{{env('CDN_Static')}}/images/icon-success.png" srcset="{{env('CDN_Static')}}/images/icon-success@2x.png 2x, {{env('CDN_Static')}}/images/icon-success@3x.png 3x">
         </div>
         <div class="text-white font-size-md text-center m-t-10x">Card Added</div>
     </div>
@@ -104,9 +104,9 @@
 @endif
 </body>
 <!-- BrainTree -->
-<script src="/scripts/braintree-2.24.1.min.js"></script>
-<script src="/scripts/vendor.js"></script>
-<script src="/scripts/paymentMethod-addCard.js"></script>
-<script src="/scripts/creditCardType.js"></script>
+<script src="{{env('CDN_Static')}}/scripts/braintree-2.24.1.min.js"></script>
+<script src="{{env('CDN_Static')}}/scripts/vendor.js"></script>
+<script src="{{env('CDN_Static')}}/scripts/paymentMethod-addCard.js"></script>
+<script src="{{env('CDN_Static')}}/scripts/creditCardType.js"></script>
 @include('global')
 </html>

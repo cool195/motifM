@@ -5,11 +5,11 @@
     <title>Sign in</title>
     @include('head')
 
-    <link rel="stylesheet" href="/styles/login.css">
+    <link rel="stylesheet" href="{{env('CDN_Static')}}/styles/login.css">
 
-    <link rel="stylesheet" href="/styles/remodal.css">
+    <link rel="stylesheet" href="{{env('CDN_Static')}}/styles/remodal.css">
 
-    <script src="/scripts/vendor/template-native.js"></script>
+    <script src="{{env('CDN_Static')}}/scripts/vendor/template-native.js"></script>
 
 </head>
 <body>
@@ -19,8 +19,8 @@
     <section class="login-content p-y-20x">
         <div class="m-x-auto m-b-20x text-center p-b-20x">
             <a href="/daily">
-                <img class="motif-logo" src="/images/login/login-logo.png"
-                 srcset="/images/login/login-logo@2x.png 2x,/images/login/login-logo@3x.png 3x">
+                <img class="motif-logo" src="{{env('CDN_Static')}}/images/login/login-logo.png"
+                 srcset="{{env('CDN_Static')}}/images/login/login-logo@2x.png 2x,{{env('CDN_Static')}}/images/login/login-logo@3x.png 3x">
             </a>
         </div>
         <form id="login">
@@ -75,8 +75,8 @@
     <div class="loader loader-screen"></div>
 </div>
 </body>
-<script src="/scripts/vendor.js"></script>
-<script src="/scripts/login.js"></script>
+<script src="{{env('CDN_Static')}}/scripts/vendor.js"></script>
+<script src="{{env('CDN_Static')}}/scripts/login.js"></script>
 <meta name="csrf-token" content="{{ csrf_token() }}"/>
 <script>
     $.ajaxSetup({
@@ -86,7 +86,7 @@
     });
 </script>
 <script src="https://apis.google.com/js/api:client.js"></script>
-<script src="/scripts/signWith.js"></script>
+<script src="{{env('CDN_Static')}}/scripts/signWith.js"></script>
 
 @include('global')
 </html>

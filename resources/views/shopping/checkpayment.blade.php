@@ -3,7 +3,7 @@
 <head>
     <title>Payment Methods</title>
     @include('head')
-    <link rel="stylesheet" href="/styles/orderCheckout-payment.css">
+    <link rel="stylesheet" href="{{env('CDN_Static')}}/styles/orderCheckout-payment.css">
 
 </head>
 <body>
@@ -146,10 +146,10 @@
 @endif
 </body>
 <!-- BrainTree -->
-<script src="/scripts/braintree-2.24.1.min.js"></script>
+<script src="{{env('CDN_Static')}}/scripts/braintree-2.24.1.min.js"></script>
 
-<script src="/scripts/vendor.js"></script>
+<script src="{{env('CDN_Static')}}/scripts/vendor.js"></script>
 
-<script src="/scripts/orderCheckout-payment.js"></script>
+<script src="{{env('CDN_Static')}}/scripts/orderCheckout-payment.js"></script>
 @include('global')
 </html>

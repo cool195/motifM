@@ -4,8 +4,8 @@
 
     <title>Shopping Cart</title>
     @include('head')
-    <link rel="stylesheet" href="/styles/shoppingCart.css">
-    <link rel="stylesheet" href="/styles/remodal.css">
+    <link rel="stylesheet" href="{{env('CDN_Static')}}/styles/shoppingCart.css">
+    <link rel="stylesheet" href="{{env('CDN_Static')}}/styles/remodal.css">
 
 
 </head>
@@ -42,7 +42,7 @@
                                     <div class="productInfo flex">
                                         <div class="flex-fixedShrink">
                                             <img class="img-thumbnail img-lazy"
-                                                 src="/images/product/bg-product@70.png"
+                                                 src="{{env('CDN_Static')}}/images/product/bg-product@70.png"
                                                  data-original="{{ env('APP_Api_Image').'/n2/'.$showSku['main_image_url'] }}"
                                                  width="70px" height="70px">
                                         </div>
@@ -150,7 +150,7 @@
                                     <div class="productInfo flex">
                                         <div class="flex-fixedShrink">
                                             <img class="img-thumbnail img-lazy"
-                                                 src="/images/product/bg-product@70.png"
+                                                 src="{{env('CDN_Static')}}/images/product/bg-product@70.png"
                                                  data-original="{{ env('APP_Api_Image').'/n2/'.$showSku['main_image_url'] }}"
                                                  width="70px" height="70px">
                                         </div>
@@ -231,9 +231,9 @@
 </div>
 
 </body>
-<script src="/scripts/vendor.js"></script>
+<script src="{{env('CDN_Static')}}/scripts/vendor.js"></script>
 
-<script src="/scripts/shoppingCart.js"></script>
+<script src="{{env('CDN_Static')}}/scripts/shoppingCart.js"></script>
 <meta name="csrf-token" content="{{ csrf_token() }}"/>
 <script>
     $.ajaxSetup({

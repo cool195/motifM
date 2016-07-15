@@ -5,6 +5,6 @@
 <link rel="icon" href="/favicon.ico">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <!-- Place favicon.ico in the root directory -->
-<link rel="stylesheet" href="/styles/vendor.css">
-<script src="/scripts/vendor/modernizr.js"></script>
-<script src="/scripts/vendor/fastclick.js"></script>
+<link rel="stylesheet" href="{{env('CDN_Static')}}/styles/vendor.css">
+<script src="{{env('CDN_Static')}}/scripts/vendor/modernizr.js"></script>
+<script src="{{env('CDN_Static')}}/scripts/vendor/fastclick.js"></script>

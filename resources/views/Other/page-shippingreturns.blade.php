@@ -253,6 +253,6 @@
                 </div>
         </div>
 </body>
-<script src="scripts/vendor.js"></script>
+<script src="{{env('CDN_Static')}}/scripts/vendor.js"></script>
 @include('global')
 </html>

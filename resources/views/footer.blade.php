@@ -12,13 +12,13 @@
         </div>
         <div class="field-items">
             <a class="share-btn" href="https://www.facebook.com/564721193713231">
-                <img src="/images/icon/facebook.png" srcset="/images/icon/facebook@2x.png 2x,/images/icon/facebook@3x.png 3x">
+                <img src="{{env('CDN_Static')}}/images/icon/facebook.png" srcset="{{env('CDN_Static')}}/images/icon/facebook@2x.png 2x,{{env('CDN_Static')}}/images/icon/facebook@3x.png 3x">
             </a>
             <a class="share-btn" href="https://instagram.com/motif.jewelry/">
-                <img src="/images/icon/ins.png" srcset="/images/icon/ins@2x.png 2x,/images/icon/ins@3x.png 3x">
+                <img src="{{env('CDN_Static')}}/images/icon/ins.png" srcset="{{env('CDN_Static')}}/images/icon/ins@2x.png 2x,{{env('CDN_Static')}}/images/icon/ins@3x.png 3x">
             </a>
             <a class="share-btn" href="https://www.pinterest.com/motifme/">
-                <img src="/images/icon/pinterest.png" srcset="/images/icon/pinterest@2x.png 2x,/images/icon/pinterest@3x.png 3x">
+                <img src="{{env('CDN_Static')}}/images/icon/pinterest.png" srcset="{{env('CDN_Static')}}/images/icon/pinterest@2x.png 2x,{{env('CDN_Static')}}/images/icon/pinterest@3x.png 3x">
             </a>
         </div>
     </div>
@@ -28,12 +28,12 @@
         </div>
         <div class="field-items">
             <a href="https://itunes.apple.com/us/app/id1125850409" class="btn btn-black btn-xs">
-                <img class="img-fluid m-x-auto" src="/images/icon/icon-appStore.png"
-                     srcset="/images/icon/icon-appStore@2x.png 2x, /images/icon/icon-appStore@3x.png 3x">
+                <img class="img-fluid m-x-auto" src="{{env('CDN_Static')}}/images/icon/icon-appStore.png"
+                     srcset="{{env('CDN_Static')}}/images/icon/icon-appStore@2x.png 2x, {{env('CDN_Static')}}/images/icon/icon-appStore@3x.png 3x">
             </a>
             <a href="https://play.google.com/store/apps/details?id=me.motif.motif" class="btn btn-black btn-xs">
-                <img class="img-fluid m-x-auto" src="/images/icon/icon-googlePlay.png"
-                     srcset="/images/icon/icon-googlePlay@2x.png 2x, /images/icon/icon-googlePlay@3x.png 3x">
+                <img class="img-fluid m-x-auto" src="{{env('CDN_Static')}}/images/icon/icon-googlePlay.png"
+                     srcset="{{env('CDN_Static')}}/images/icon/icon-googlePlay@2x.png 2x, {{env('CDN_Static')}}/images/icon/icon-googlePlay@3x.png 3x">
             </a>
         </div>
     </div>
@@ -72,7 +72,7 @@
             <i class="iconfont icon-cross text-common btn-closeDownload"></i>
         </a>
         <div class="p-r-15x">
-            <img src="/images/icon/icon-motif.png" srcset="/images/icon/icon-motif@2x.png 2x,/images/icon/icon-motif@3x.png 3x">
+            <img src="{{env('CDN_Static')}}/images/icon/icon-motif.png" srcset="{{env('CDN_Static')}}/images/icon/icon-motif@2x.png 2x,{{env('CDN_Static')}}/images/icon/icon-motif@3x.png 3x">
         </div>
         <span class="p-r-15x font-size-sm text-primary">Find More With Motif App</span>
     </div>

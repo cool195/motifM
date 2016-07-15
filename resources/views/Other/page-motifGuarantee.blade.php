@@ -27,8 +27,8 @@
             <aside class="product-secondaryInfo p-a-15x">
                 <div class="media m-a-0">
                     <div class="media-left media-middle">
-                        <img class="media-object" src="/images/icon/icon-guarantee.png"
-                             srcset="/images/icon/icon-guarantee@2x.png 2x, /images/icon/icon-guarantee@3x.png 3x"
+                        <img class="media-object" src="{{env('CDN_Static')}}/images/icon/icon-guarantee.png"
+                             srcset="{{env('CDN_Static')}}/images/icon/icon-guarantee@2x.png 2x, {{env('CDN_Static')}}/images/icon/icon-guarantee@3x.png 3x"
                              alt="">
                     </div>
                     <div class="media-body media-middle">
@@ -46,6 +46,6 @@
     </div>
 </div>
 </body>
-<script src="scripts/vendor.js"></script>
+<script src="{{env('CDN_Static')}}/scripts/vendor.js"></script>
 @include('global')
 </html>

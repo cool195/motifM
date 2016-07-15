@@ -3,7 +3,7 @@
 <head>
     <title>Order Detail</title>
     @include('head')
-    <link rel="stylesheet" href="/styles/orderDetail.css">
+    <link rel="stylesheet" href="{{env('CDN_Static')}}/styles/orderDetail.css">
 
 </head>
 <body id="body-content">
@@ -186,9 +186,9 @@
 <!-- 页脚 功能链接 end-->
 </div>
 </body>
-<script src="/scripts/vendor.js"></script>
+<script src="{{env('CDN_Static')}}/scripts/vendor.js"></script>
 
-<script src="/scripts/orderDetail.js"></script>
+<script src="{{env('CDN_Static')}}/scripts/orderDetail.js"></script>
 <meta name="csrf-token" content="{{ csrf_token() }}" />
 <script>
     $.ajaxSetup({
