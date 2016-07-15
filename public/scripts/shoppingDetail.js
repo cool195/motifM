@@ -896,6 +896,11 @@
             threshold: 200,
             effect: 'fadeIn'
         });
+
+        $.ajax({
+            url: $(".product-baseInfo").data('impr'),
+            type : "GET"
+        });
     });
 })(jQuery, Swiper);
 

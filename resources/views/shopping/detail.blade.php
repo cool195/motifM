@@ -401,14 +401,6 @@
 <meta name="csrf-token" content="{{ csrf_token() }}"/>
 
 <script>
-    $(document).ready(function(){
-        $.ajax({
-            type: "GET",
-            url: $(".product-baseInfo").data('impr')
-        }).done(function(){
-
-        });
-    });
     $.ajaxSetup({
         headers: {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
