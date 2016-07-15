@@ -121,6 +121,13 @@
         getDesignerList();
         initSwiper();
         $(window).scroll(function () {
+            $('img.img-lazy').each(function () {
+                var Src = $(this).attr('src'),
+                    Original = $(this).attr('data-original');
+                if (Src === Original) {
+                    $(this).removeClass('img-lazy');
+                }
+            });
             pullLoading();
         });
     });

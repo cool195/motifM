@@ -27,7 +27,7 @@
             Download:
         </div>
         <div class="field-items">
-            <a href="https://itunes.apple.com/cn/app/id1125850409" class="btn btn-black btn-xs">
+            <a href="https://itunes.apple.com/us/app/id1125850409" class="btn btn-black btn-xs">
                 <img class="img-fluid m-x-auto" src="{{env('CDN_Static')}}/images/icon/icon-appStore.png"
                      srcset="{{env('CDN_Static')}}/images/icon/icon-appStore@2x.png 2x, {{env('CDN_Static')}}/images/icon/icon-appStore@3x.png 3x">
             </a>
