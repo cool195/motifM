@@ -144,7 +144,7 @@
                         $Current.data('pagenum', PageNum);
 
                         $.ajax({
-                            url: data.impr
+                            url: data.data.impr
                         });
 
                         // 图片延迟加载

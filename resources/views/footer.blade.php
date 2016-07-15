@@ -59,7 +59,6 @@
                     <a class="list-group-item list-group-itemText-lg text-primary" href="/shippingreturns">Shipping &
                         Returns</a>
                 </div>
-
             </div>
         </div>
         <hr class="hr-dark m-t-20x m-b-15x">
