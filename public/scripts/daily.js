@@ -38,13 +38,13 @@
 
         loadingShow();
         $.ajax({
-            url: '/daily',
-            data: {
-                cmd: 'list',
-                pagenum: NextNum,
-                pagesize: 3
-            }
-        })
+                url: '/daily',
+                data: {
+                    cmd: 'list',
+                    pagenum: NextNum,
+                    pagesize: 3
+                }
+            })
             .done(function (data) {
                 console.info(data);
                 if (data.data === null || data.data === '') {
@@ -92,12 +92,12 @@
 
         loadingShow();
         $.ajax({
-            url: '/recdata',
-            data: {
-                pagenum: NextProductNum,
-                pagesize: 3
-            }
-        })
+                url: '/recdata',
+                data: {
+                    pagenum: NextProductNum,
+                    pagesize: 3
+                }
+            })
             .done(function (data) {
                 console.info(data);
                 if (data.data === null || data.data === '') {
@@ -151,6 +151,13 @@
         // 首次加载
         getDailyList();
         $(window).scroll(function () {
+            $('img.img-lazy').each(function () {
+                var Src = $(this).attr('src'),
+                    Original = $(this).attr('data-original');
+                if (Src === Original) {
+                    $(this).removeClass('img-lazy');
+                }
+            });
             pullLoading();
         });
     });
