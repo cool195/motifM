@@ -17,7 +17,7 @@ abstract class ApiController extends Controller
     protected $ApiUrl = [
         'openapi_local' => array('api' => 'http://192.168.0.230', 'rec' => 'http://192.168.0.230'),//本地
         'openapi_test' => array('api' => 'http://54.222.233.255', 'rec' => 'http://54.222.233.255'),//预发布
-        'openapi' => array('api' => 'http://api.motif.me', 'rec' => 'http://rec.motif.me'),//生产
+        'openapi' => array('api' => 'https://api.motif.me', 'rec' => 'https://rec.motif.me'),//生产
     ];
 
     protected function request($ApiName, $system, $service, array $params, $cacheTime = 0)
