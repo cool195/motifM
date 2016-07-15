@@ -790,57 +790,31 @@
         $('[data-control="modalButton"]').removeClass('hidden-xs-up');
     });
     // 增值服务是否选中
-    //$('fieldset[data-vas-type]').on('click', function (e) {
-    //    // 判断增值服务类型
-    //    if (parseInt($(this).data('vas-type')) === 1) {
-    //        if ($(e.target).hasClass('icon-checkcircle')) {
-    //            var $Check = $(e.target);
-    //            var $Input = $(e.target).siblings('.input-engraving');
-    //            if ($Check.hasClass('active')) {
-    //                $Input.addClass('disabled');
-    //                $Check.removeClass('active');
-    //                $Input.val('');
-    //            } else {
-    //                $Input.removeClass('disabled');
-    //                $Check.addClass('active');
-    //            }
-    //        } else if ($(e.target).hasClass('input-engraving')) {
-    //            var $Check = $(e.target).siblings('.icon-checkcircle');
-    //            var $Input = $(e.target);
-    //            if ($Input.hasClass('disabled')) {
-    //                $Input.removeClass('disabled');
-    //                $Check.addClass('active');
-    //                $Input.val('');
-    //            }
-    //        }
-    //    }
-    //});
-    $('.icon-checkcircle').on('click',function (e) {
+    $('fieldset[data-vas-type]').on('click', function (e) {
+        // 判断增值服务类型
         if (parseInt($(this).data('vas-type')) === 1) {
-            var $Check = $(e.target);
-            var $Input = $(e.target).siblings('.input-engraving');
-            if ($Check.hasClass('active')) {
-                $Input.addClass('disabled');
-                $Check.removeClass('active');
-                $Input.val('');
-            } else {
-                $Input.removeClass('disabled');
-                $Check.addClass('active');
+            if ($(e.target).hasClass('icon-checkcircle')) {
+                var $Check = $(e.target);
+                var $Input = $(e.target).siblings('.input-engraving');
+                if ($Check.hasClass('active')) {
+                    $Input.addClass('disabled');
+                    $Check.removeClass('active');
+                    $Input.val('');
+                } else {
+                    $Input.removeClass('disabled');
+                    $Check.addClass('active');
+                }
+            } else if ($(e.target).hasClass('input-engraving')) {
+                var $Check = $(e.target).siblings('.icon-checkcircle');
+                var $Input = $(e.target);
+                if ($Input.hasClass('disabled')) {
+                    $Input.removeClass('disabled');
+                    $Check.addClass('active');
+                    $Input.val('');
+                }
             }
         }
     });
-    $('.input-engraving').on('click',function (e) {
-        if (parseInt($(this).data('vas-type')) === 1) {
-            var $Check = $(e.target).siblings('.icon-checkcircle');
-            var $Input = $(e.target);
-            if ($Input.hasClass('disabled')) {
-                $Input.removeClass('disabled');
-                $Check.addClass('active');
-                $Input.val('');
-            }
-        }
-    });
-
 
     // 过滤增值服务 不能输入中文
     function validateChinese(VasStr) {
