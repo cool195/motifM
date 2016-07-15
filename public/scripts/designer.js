@@ -127,4 +127,13 @@
 
 })(jQuery, Swiper);
 
+$(document).ready(function(){
+    $.ajax({
+        type: "GET",
+        url: $(".swiper-wrapper").data('impr')
+    }).done(function(){
+
+    });
+})
+
 //# sourceMappingURL=designer.js.map
