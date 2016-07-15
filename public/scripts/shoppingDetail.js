@@ -875,6 +875,11 @@
             url: $(".product-baseInfo").data('impr'),
             type : "GET"
         });
+
+        $.ajax({
+            url: $("#recommend").data('impr'),
+            type: "GET"
+        });
     });
 })(jQuery, Swiper);
 
