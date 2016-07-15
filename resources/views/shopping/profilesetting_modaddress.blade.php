@@ -108,9 +108,9 @@
         <div class="loader loader-screen"></div>
     </div>
 </body>
-<script src="/scripts/vendor.js"></script>
+<script src="{{env('CDN_Static')}}/scripts/vendor.js"></script>
 
-<script src="/scripts/profileSetting-changeAddress.js"></script>
+<script src="{{env('CDN_Static')}}/scripts/profileSetting-changeAddress.js"></script>
 <meta name="csrf-token" content="{{ csrf_token() }}" />
 <script>
     $.ajaxSetup({

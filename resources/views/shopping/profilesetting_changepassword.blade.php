@@ -3,7 +3,7 @@
 <head>
     <title>Change Password</title>
     @include('head')
-    <link rel="stylesheet" href="/styles/profileSetting-changePassword.css">
+    <link rel="stylesheet" href="{{env('CDN_Static')}}/styles/profileSetting-changePassword.css">
 
 </head>
 <body>
@@ -59,9 +59,9 @@
     <div class="loader loader-screen"></div>
 </div>
 </body>
-<script src="/scripts/vendor.js"></script>
+<script src="{{env('CDN_Static')}}/scripts/vendor.js"></script>
 
-<script src="/scripts/profileSetting-changePassword.js"></script>
+<script src="{{env('CDN_Static')}}/scripts/profileSetting-changePassword.js"></script>
 <meta name="csrf-token" content="{{ csrf_token() }}" />
 <script>
     $.ajaxSetup({

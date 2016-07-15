@@ -8,14 +8,14 @@
             </li>
             <li class="nav-item nav-logo">
                 <a  href="/daily">
-                    <img class="motif-logo" src="/images/logo/logo.png"
-                        srcset="/images/logo/logo@2x.png 2x,/images/logo/logo@3x.png 3x"></a>
+                    <img class="motif-logo" src="{{env('CDN_Static')}}/images/logo/logo.png"
+                        srcset="{{env('CDN_Static')}}/images/logo/logo@2x.png 2x,{{env('CDN_Static')}}/images/logo/logo@3x.png 3x"></a>
             </li>
             <li class="nav-item">
                 <a href="/cart" class="head-cart">
                     <div class="nav-shoppingCart" data-login="@if(Session::has('user')){{'true'}}@else{{'false'}}@endif">
                         @if(!isset($pageScope))
-                            <img class="nav-tap" src="/images/icon/icon-bag.png" srcset="/images/icon/icon-bag@2x.png 2x,/images/icon/icon-bag@3x.png 3x">
+                            <img class="nav-tap" src="{{env('CDN_Static')}}/images/icon/icon-bag.png" srcset="{{env('CDN_Static')}}/images/icon/icon-bag@2x.png 2x,{{env('CDN_Static')}}/images/icon/icon-bag@3x.png 3x">
                             <span class="shoppingCart-number" style="display: none;"></span>
                         @endif
                     </div>

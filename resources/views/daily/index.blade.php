@@ -5,8 +5,8 @@
 
     @include('head')
 
-    <link rel="stylesheet" href="/styles/daily.css">
-    <script src="/scripts/vendor/template-native.js"></script>
+    <link rel="stylesheet" href="{{env('CDN_Static')}}/styles/daily.css">
+    <script src="{{env('CDN_Static')}}/scripts/vendor/template-native.js"></script>
 </head>
 <body>
 @include('check.tagmanager')
@@ -46,14 +46,14 @@
     </div>
     @{{ /if }}
     @{{ if $value.type == "2" }}
-    <a data-impr='http://clk.motif.me/log.gif?t=daily.100001&m=H5_M2016-1&pin={{ Session::get('user.pin') }}&uuid={{ Session::get('user.uuid') }}&v=<?="{\"action\":0,\"type\":"?>@{{ $value.type }}<?=",\"imgtextType\":"?>@{{ $value.imgtextType }}<?=",\"skipType\","?>@{{ $value.skipType }}<?=",\"skipId\":"?>@{{ $value.skipId }}<?=",\"sortNo\":" ?>@{{ $value.sortNo }}<?=",\"expid\":0,\"index\":"?>@{{ xxx }}<?=",\"version\":\"1.0.1\", \"ver\":\"9.2\", \"src\":\"H5\"}"?>'
-       data-clk='http://clk.motif.me/log.gif?t=daily.100001&m=H5_M2016-1&pin={{ Session::get('user.pin') }}&uuid={{ Session::get('user.uuid') }}&v=<?="{\"action\":0,\"type\":"?>@{{ $value.type }}<?=",\"imgtextType\":"?>@{{ $value.imgtextType }}<?=",\"skipType\","?>@{{ $value.skipType }}<?=",\"skipId\":"?>@{{ $value.skipId }}<?=",\"sortNo\":" ?>@{{ $value.sortNo }}<?=",\"expid\":0,\"index\":"?>@{{ xxx }}<?=",\"version\":\"1.0.1\", \"ver\":\"9.2\", \"src\":\"H5\"}"?>'
+    <a data-impr='http://clk.motif.me/log.gif?t=daily.100001&m=H5_M2016-1&pin={{ Session::get('user.pin') }}&uuid={{ Session::get('user.uuid') }}&v=<?="{\"action\":0,\"type\":"?>@{{ $value.type }}<?=",\"imgtextType\":"?>@{{ $value.imgtextType }}<?=",\"skipType\","?>@{{ $value.skipType }}<?=",\"skipId\":"?>@{{ $value.skipId }}<?=",\"sortNo\":" ?>@{{ $value.sortNo }}<?=",\"expid\":0,\"index\": 1"?>@{{ xxx }}<?=",\"version\":\"1.0.1\", \"ver\":\"9.2\", \"src\":\"H5\"}"?>'
+       data-clk='http://clk.motif.me/log.gif?t=daily.100001&m=H5_M2016-1&pin={{ Session::get('user.pin') }}&uuid={{ Session::get('user.uuid') }}&v=<?="{\"action\":0,\"type\":"?>@{{ $value.type }}<?=",\"imgtextType\":"?>@{{ $value.imgtextType }}<?=",\"skipType\","?>@{{ $value.skipType }}<?=",\"skipId\":"?>@{{ $value.skipId }}<?=",\"sortNo\":" ?>@{{ $value.sortNo }}<?=",\"expid\":0,\"index\": 1"?>@{{ xxx }}<?=",\"version\":\"1.0.1\", \"ver\":\"9.2\", \"src\":\"H5\"}"?>'
        href="@{{ if $value.skipType == 1 }}/detail/@{{ else if $value.skipType == 2 }}/designer/@{{ else if $value.skipType == 3 }}/topic/@{{ else if $value.skipType == 4 }}/shopping#@{{ /if }}@{{ $value.skipId }}">
         <div class="bg-white m-b-10x">
             <div class="daily-imgInfo">
                 <img class="img-fluid img-lazy"
                      data-original="{{env('APP_Api_Image')}}/n1/@{{ $value.imgPath }}"
-                     src="/images/product/bg-product@750.png" alt="@{{ $value.title }}">
+                     src="{{env('CDN_Static')}}/images/product/bg-product@750.png" alt="@{{ $value.title }}">
                 @{{ if $value.imgtextType }}<span class="img-icon font-size-sm"><strong>@{{ $value.imgtextType }}</strong></span>@{{ /if }}
             </div>
             <div class="p-a-15x">
@@ -82,8 +82,8 @@
     {{--@{{ /each }}--}}
 {{--</template>--}}
 
-<script src="/scripts/vendor.js"></script>
+<script src="{{env('CDN_Static')}}/scripts/vendor.js"></script>
 
-<script src="/scripts/daily.js"></script>
+<script src="{{env('CDN_Static')}}/scripts/daily.js"></script>
 @include('global')
 </html>

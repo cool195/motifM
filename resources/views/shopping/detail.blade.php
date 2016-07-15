@@ -3,7 +3,7 @@
 <head>
     <title>{{$data['main_title']}}</title>
     @include('head')
-    <link rel="stylesheet" href="/styles/shoppingDetail.css">
+    <link rel="stylesheet" href="{{env('CDN_Static')}}/styles/shoppingDetail.css">
 </head>
 <body>
 @include('check.tagmanager')
@@ -182,7 +182,7 @@
                                                            data-clk="{{ $value['clk'] }}">
                                                             <img class="img-fluid img-lazy"
                                                                  data-original="{{env('APP_Api_Image')}}/n1/{{ $value['main_image_url'] }}"
-                                                                 src="/images/product/bg-product@336.png"
+                                                                 src="{{env('CDN_Static')}}/images/product/bg-product@336.png"
                                                                  alt="{{ $value['main_title'] }}">
                                                         </a>
                                                         @if($value['skuPrice']['sale_price'] != $value['skuPrice']['price'])
@@ -377,8 +377,8 @@
 <div class="loading loading-screen loading-transprant loading-hidden" id="success">
     <div class="loading-modal">
         <div class="">
-            <img class="img-fluid m-x-auto" src="/images/icon-success.png"
-                 srcset="/images/icon-success@2x.png 2x, /images/icon-success@3x.png 3x">
+            <img class="img-fluid m-x-auto" src="{{env('CDN_Static')}}/images/icon-success.png"
+                 srcset="{{env('CDN_Static')}}/images/icon-success@2x.png 2x, {{env('CDN_Static')}}/images/icon-success@3x.png 3x">
         </div>
         <div class="text-white font-size-md text-center m-t-10x">Item Added</div>
     </div>
@@ -388,16 +388,16 @@
 <div class="loading loading-screen loading-transprant loading-hidden" id="error">
     <div class="loading-modal">
         <div class="">
-            <img class="img-fluid m-x-auto" src="/images/icon-success.png"
-                 srcset="/images/icon-success@2x.png 2x, /images/icon-success@3x.png 3x">
+            <img class="img-fluid m-x-auto" src="{{env('CDN_Static')}}/images/icon-success.png"
+                 srcset="{{env('CDN_Static')}}/images/icon-success@2x.png 2x, {{env('CDN_Static')}}/images/icon-success@3x.png 3x">
         </div>
         <div class="text-white font-size-md text-center m-t-10x" id="error-info"></div>
     </div>
 </div>
 </body>
-<script src="/scripts/vendor.js"></script>
+<script src="{{env('CDN_Static')}}/scripts/vendor.js"></script>
 
-<script src="/scripts/shoppingDetail.js"></script>
+<script src="{{env('CDN_Static')}}/scripts/shoppingDetail.js"></script>
 <meta name="csrf-token" content="{{ csrf_token() }}"/>
 
 <script>

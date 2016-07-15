@@ -4,9 +4,9 @@
 <head>
     <title>Add Email</title>
     @include('head')
-    <link rel="stylesheet" href="/styles/resetPassword.css">
-    <link rel="stylesheet" href="/styles/remodal.css">
-    <script src="/scripts/vendor/template-native.js"></script>
+    <link rel="stylesheet" href="{{env('CDN_Static')}}/styles/resetPassword.css">
+    <link rel="stylesheet" href="{{env('CDN_Static')}}/styles/remodal.css">
+    <script src="{{env('CDN_Static')}}/scripts/vendor/template-native.js"></script>
 
 </head>
 
@@ -16,7 +16,7 @@
         <section class="resetPwd-content m-t-10x p-y-20x">
             <form id="register">
                 <fieldset>
-                    <div class="p-b-20x"><img src="/images/login/register-logo.png" srcset="/images/login/register-logo@2x.png 2x,/images/login/register-logo@3x.png 3x">
+                    <div class="p-b-20x"><img src="{{env('CDN_Static')}}/images/login/register-logo.png" srcset="{{env('CDN_Static')}}/images/login/register-logo@2x.png 2x,{{env('CDN_Static')}}/images/login/register-logo@3x.png 3x">
                     </div>
                     <div class="text-main m-t-10x"><strong>Add Email</strong></div>
                     <div class="text-primary text-left m-t-15x font-size-sm">
@@ -60,8 +60,8 @@
         <div class="loader loader-screen"></div>
     </div>
 </body>
-<script src="/scripts/vendor.js"></script>
+<script src="{{env('CDN_Static')}}/scripts/vendor.js"></script>
 
-<script src="/scripts/registerAddEmial.js"></script>
+<script src="{{env('CDN_Static')}}/scripts/registerAddEmial.js"></script>
 
 </html>

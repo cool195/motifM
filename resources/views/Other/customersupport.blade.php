@@ -4,7 +4,7 @@
     <title>Customer Support</title>
     @include('head')
 
-    <link rel="stylesheet" href="/styles/profileSetting-customerSupport.css">
+    <link rel="stylesheet" href="{{env('CDN_Static')}}/styles/profileSetting-customerSupport.css">
 
 </head>
 
@@ -88,8 +88,8 @@
         }
     });
 </script>
-<script src="/scripts/vendor.js"></script>
+<script src="{{env('CDN_Static')}}/scripts/vendor.js"></script>
 
-<script src="/scripts/profileSetting-customerSupport.js"></script>
+<script src="{{env('CDN_Static')}}/scripts/profileSetting-customerSupport.js"></script>
 @include('global')
 </html>

@@ -11,7 +11,7 @@
           content="fashion,style,shop,accessory,jewelry,watch,blogger,Instagram,designer,limited,edition,ecommerce,buy"/>
 
     <link rel="apple-touch-icon" href="apple-touch-icon.png">
-    <link rel="stylesheet" href="/styles/pc-main.css">
+    <link rel="stylesheet" href="{{env('CDN_Static')}}/styles/pc-main.css">
 </head>
 
 <body>
@@ -51,24 +51,24 @@
                                     <div class="item-title">Download:</div>
                                     <div>
                                         <a href="https://itunes.apple.com/cn/app/id1125850409"
-                                           class="btn btn-primary"><img src="/images/pc/button-iphone.png" alt=""></a>
+                                           class="btn btn-primary"><img src="{{env('CDN_Static')}}/images/pc/button-iphone.png" alt=""></a>
                                         <a href="https://play.google.com/store/apps/details?id=me.motif.motif"
-                                           class="btn btn-primary"><img src="/images/pc/button-google.png" alt=""></a>
+                                           class="btn btn-primary"><img src="{{env('CDN_Static')}}/images/pc/button-google.png" alt=""></a>
                                     </div>
                                 </li>
                                 <li class="flex-center m-b-3">
                                     <div class="item-title">Follow Us:</div>
                                     <div>
-                                        <a target="_blank" href="https://www.facebook.com/564721193713231" class="p-r-1 m-r-1"><img src="/images/pc/icon-facebook.png" alt=""></a>
-                                        <a target="_blank" href="https://plus.google.com/u/0/113666794179158439426" class="p-r-1 m-r-1"><img src="/images/pc/icon-google.png" alt=""></a>
-                                        <a target="_blank" href="https://instagram.com/motif.jewelry/" class="p-r-1 m-r-1"><img src="/images/pc/icon-ins.png" alt=""></a>
+                                        <a target="_blank" href="https://www.facebook.com/564721193713231" class="p-r-1 m-r-1"><img src="{{env('CDN_Static')}}/images/pc/icon-facebook.png" alt=""></a>
+                                        <a target="_blank" href="https://plus.google.com/u/0/113666794179158439426" class="p-r-1 m-r-1"><img src="{{env('CDN_Static')}}/images/pc/icon-google.png" alt=""></a>
+                                        <a target="_blank" href="https://instagram.com/motif.jewelry/" class="p-r-1 m-r-1"><img src="{{env('CDN_Static')}}/images/pc/icon-ins.png" alt=""></a>
                                     </div>
                                 </li>
                             </ul>
                         </section>
                     </div>
                     <div class="col-xs-6">
-                        <img class="img-fluid" src="/images/pc/img-phone.png" alt="">
+                        <img class="img-fluid" src="{{env('CDN_Static')}}/images/pc/img-phone.png" alt="">
                     </div>
                 </div>
             </div>

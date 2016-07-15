@@ -3,7 +3,7 @@
 <head>
     <title>Order List</title>
     @include('head')
-    <link rel="stylesheet" href="/styles/orderList.css">
+    <link rel="stylesheet" href="{{env('CDN_Static')}}/styles/orderList.css">
 
 </head>
 <body>
@@ -68,7 +68,7 @@
         <div class="flex p-a-10x">
             <div class="flex-fixedShrink">
                 <img class="img-thumbnail img-lazy"
-                     src="/images/product/bg-product@70.png"
+                     src="{{env('CDN_Static')}}/images/product/bg-product@70.png"
                      data-original="{{env('APP_Api_Image')}}/n4/@{{ $value.img_path }}"
                      width="70px" height="70px">
             </div>
@@ -108,8 +108,8 @@
     @{{ /each }}
 </template>
 
-<script src="/scripts/vendor.js"></script>
+<script src="{{env('CDN_Static')}}/scripts/vendor.js"></script>
 
-<script src="/scripts/orderList.js"></script>
+<script src="{{env('CDN_Static')}}/scripts/orderList.js"></script>
 @include('global')
 </html>

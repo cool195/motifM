@@ -43,17 +43,17 @@
 <div class="loading loading-screen loading-transprant loading-hidden" id="success">
     <div class="loading-modal">
         <div class="">
-            <img class="img-fluid m-x-auto" src="/images/icon-success.png"
-                 srcset="/images/icon-success@2x.png 2x, /images/icon-success@3x.png 3x">
+            <img class="img-fluid m-x-auto" src="{{env('CDN_Static')}}/images/icon-success.png"
+                 srcset="{{env('CDN_Static')}}/images/icon-success@2x.png 2x, {{env('CDN_Static')}}/images/icon-success@3x.png 3x">
         </div>
         <div class="text-white font-size-md text-center m-t-10x">Update successfull!</div>
     </div>
 </div>
 
 </body>
-<script src="/scripts/vendor.js"></script>
+<script src="{{env('CDN_Static')}}/scripts/vendor.js"></script>
 
-<script src="/scripts/profileSetting-changeProfile.js"></script>
+<script src="{{env('CDN_Static')}}/scripts/profileSetting-changeProfile.js"></script>
 <meta name="csrf-token" content="{{ csrf_token() }}" />
 <script>
     $.ajaxSetup({

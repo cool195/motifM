@@ -34,7 +34,7 @@
                 <hr class="hr-base m-y-0">
                 <div class="p-x-15x p-y-10x font-size-md text-main">Contact Us on Facebook:&nbsp;
                     <a target="_blank" href="@if(!strstr($_SERVER['HTTP_USER_AGENT'], 'motif-android') && !strstr($_SERVER['HTTP_USER_AGENT'], 'motif-ios')){{'https://www.facebook.com/564721193713231'}}@else{{'motif://o.c?a=outurl&url='.urlencode('https://www.facebook.com/564721193713231')}}@endif">
-                        <img src="/images/contactus/icon-facebook.png" srcset="/images/contactus/icon-facebook@2x.png 2x,/images/contactus/icon-facebook@3x.png 3x"></a>
+                        <img src="{{env('CDN_Static')}}/images/contactus/icon-facebook.png" srcset="{{env('CDN_Static')}}/images/contactus/icon-facebook@2x.png 2x,/images/contactus/icon-facebook@3x.png 3x"></a>
                 </div>
             </div>
         </section>
@@ -45,6 +45,6 @@
     </div>
 </div>
 </body>
-<script src="scripts/vendor.js"></script>
+<script src="{{env('CDN_Static')}}/scripts/vendor.js"></script>
 @include('global')
 </html>

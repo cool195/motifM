@@ -4,7 +4,7 @@
 
     <title>Order Checkout</title>
     @include('head')
-    <link rel="stylesheet" href="/styles/orderCheckout.css">
+    <link rel="stylesheet" href="{{env('CDN_Static')}}/styles/orderCheckout.css">
 
 </head>
 <body>
@@ -25,7 +25,7 @@
                         <div class="checkoutList-item p-a-10x">
                             <div class="flex">
                                 <div class="flex-fixedShrink">
-                                    <img class="img-thumbnail img-lazy" src="/images/product/bg-product@70.png" data-original="{{env('APP_Api_Image').'/n2/'.$showSku['main_image_url']}}" width="70px" height="70px">
+                                    <img class="img-thumbnail img-lazy" src="{{env('CDN_Static')}}/images/product/bg-product@70.png" data-original="{{env('APP_Api_Image').'/n2/'.$showSku['main_image_url']}}" width="70px" height="70px">
                                 </div>
                                 <div class="p-l-10x flex-width text-overflow">
                                     <article class="flex flex-fullJustified text-overflow">
@@ -219,9 +219,9 @@
     @endif
 </form>
 </body>
-<script src="/scripts/vendor.js"></script>
+<script src="{{env('CDN_Static')}}/scripts/vendor.js"></script>
 
-<script src="/scripts/orderCheckout.js"></script>
+<script src="{{env('CDN_Static')}}/scripts/orderCheckout.js"></script>
 <meta name="csrf-token" content="{{ csrf_token() }}" />
 <script>
     $.ajaxSetup({

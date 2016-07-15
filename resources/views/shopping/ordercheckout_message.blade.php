@@ -3,7 +3,7 @@
 <head>
     <title>Special Request</title>
     @include('head')
-    <link rel="stylesheet" href="/styles/orderCheckout-message.css">
+    <link rel="stylesheet" href="{{env('CDN_Static')}}/styles/orderCheckout-message.css">
 
 
 </head>
@@ -47,8 +47,8 @@
         <div class="loader loader-screen"></div>
     </div>
 </body>
-<script src="/scripts/vendor.js"></script>
+<script src="{{env('CDN_Static')}}/scripts/vendor.js"></script>
 
-<script src="/scripts/orderCheckout-message.js"></script>
+<script src="{{env('CDN_Static')}}/scripts/orderCheckout-message.js"></script>
 @include('global')
 </html>

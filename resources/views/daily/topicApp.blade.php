@@ -93,8 +93,8 @@
     </div>
 </div>
 </body>
-<script src="/scripts/vendor.js"></script>
-<script src="/scripts/JockeyJS.js"></script>
+<script src="{{env('CDN_Static')}}/scripts/vendor.js"></script>
+<script src="{{env('CDN_Static')}}/scripts/JockeyJS.js"></script>
 @if($shareFlag)
 <script>
     var actionsShow = [{"icon": "", "name": "share"}]
