@@ -14,7 +14,7 @@
 <!-- 主体内容 -->
 <div class="resetPwd-container p-t-20x">
     <section class="resetPwd-content m-t-10x p-y-20x">
-        <form id="reset" action="">
+        <form id="reset">
             <fieldset>
                 <a href="/daily">
                     <div class="p-b-20x"><img src="/images/login/register-logo.png" srcset="/images/login/register-logo@2x.png 2x,/images/login/register-logo@3x.png 3x"></div>
