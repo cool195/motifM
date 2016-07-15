@@ -120,6 +120,13 @@
         $('#infoForm').attr('action', $('#Cancel').attr('data-action'));
         $('#infoForm').submit();
     });
+
+    $(document).ready(function () {
+        var $Error = checkInput();
+        if ($Error === true) {
+            $('#btn-addAddress').removeClass('disabled');
+        }
+    });
 })(jQuery);
 //# sourceMappingURL=profileSetting-addAddress.js.map
 
