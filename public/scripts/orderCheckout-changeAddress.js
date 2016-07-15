@@ -103,5 +103,11 @@
             changeAddress();
         }
     });
+    $(document).ready(function () {
+        var $Error = checkInput();
+        if ($Error === true) {
+            $('#btn-addAddress').removeClass('disabled');
+        }
+    });
 })(jQuery);
 //# sourceMappingURL=profileSetting-changeAddress.js.map

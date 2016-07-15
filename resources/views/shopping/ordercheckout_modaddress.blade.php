@@ -101,7 +101,7 @@
                             <div data-action="/cart/addresslist" class="btn btn-primary-outline btn-block" id="Cancel">Cancel</div>
                         </div>
                         <div class="col-xs-6">
-                            <div class="btn btn-primary btn-block" id="btn-addAddress">Confirm</div>
+                            <div class="btn btn-primary btn-block disabled" id="btn-addAddress">Confirm</div>
                         </div>
                     </div>
                 </div>
