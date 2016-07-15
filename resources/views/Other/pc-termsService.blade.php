@@ -23,8 +23,8 @@
                         </li>
                         <li class="nav-item nav-logo">
                             <a  href="/daily">
-                                <img class="motif-logo" src="/images/logo/logo.png"
-                                     srcset="/images/logo/logo@2x.png 2x,/images/logo/logo@3x.png 3x"></a>
+                                <img class="motif-logo" src="{{env('CDN_Static')}}/images/logo/logo.png"
+                                     srcset="{{env('CDN_Static')}}/images/logo/logo@2x.png 2x,{{env('CDN_Static')}}/images/logo/logo@3x.png 3x"></a>
                         </li>
                         <li class="nav-item">
                         </li>

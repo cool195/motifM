@@ -27,7 +27,7 @@
             <aside class="product-secondaryInfo p-a-15x">
                 <div class="media m-a-0">
                     <div class="media-left media-middle">
-                        <img class="media-object" src="/images/icon/icon-guarantee.png"
+                        <img class="media-object" src="{{env('CDN_Static')}}/images/icon/icon-guarantee.png"
                              srcset="{{env('CDN_Static')}}/images/icon/icon-guarantee@2x.png 2x, {{env('CDN_Static')}}/images/icon/icon-guarantee@3x.png 3x"
                              alt="">
                     </div>

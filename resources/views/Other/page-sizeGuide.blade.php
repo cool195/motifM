@@ -56,7 +56,7 @@
                         into account when measuring your fingers.
                     </p>
 
-                    <div class="m-b-15x"><img class="img-fluid" src="/images/sizeguild/gide-size.jpg" alt=""></div>
+                    <div class="m-b-15x"><img class="img-fluid" src="{{env('CDN_Static')}}/images/sizeguild/gide-size.jpg" alt=""></div>
 
                     <p class="m-b-15x"><strong>Finding the Ring Size for Your Loved Ones</strong></p>
                     <div class="m-b-15x">

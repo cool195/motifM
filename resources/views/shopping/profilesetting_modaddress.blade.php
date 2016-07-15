@@ -3,7 +3,7 @@
 <head>
     <title>Add Address</title>
     @include('head')
-    <link rel="stylesheet" href="/styles/profileSetting-addAddress.css">
+    <link rel="stylesheet" href="{{env('CDN_Static')}}/styles/profileSetting-addAddress.css">
 
 
 </head>

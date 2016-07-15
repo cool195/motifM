@@ -40,7 +40,7 @@
                     <div class="col-xs-6">
                         <section>
                             <div class="p-b-3">
-                                <img class="img-fluid" src="/images/pc/img-title.png" alt="">
+                                <img class="img-fluid" src="{{env('CDN_Static')}}/images/pc/img-title.png" alt="">
                             </div>
                             <ul class="list-unstyled p-y-3 text-main">
                                 <li class="flex-center m-b-2">

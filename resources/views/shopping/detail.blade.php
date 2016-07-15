@@ -24,7 +24,7 @@
                                 <img class="img-fluid swiper-lazy"
                                      data-src="{{ env('APP_Api_Image').'/n1/'.$image['img_path'] }}"
                                      alt="">
-                                <img class="img-fluid preloader" src="/images/product/bg-product@750.png" alt="">
+                                <img class="img-fluid preloader" src="{{env('CDN_Static')}}/images/product/bg-product@750.png" alt="">
                             </div>
                         @endforeach
                     @endif
@@ -47,7 +47,7 @@
                                     <img class="img-fluid swiper-lazy"
                                          data-src="{{ env('APP_Api_Image').'/n1/'.$image['img_path'] }}"
                                          alt="">
-                                    <img class="img-fluid preloader" src="/images/product/bg-product@750.png" alt="">
+                                    <img class="img-fluid preloader" src="{{env('CDN_Static')}}/images/product/bg-product@750.png" alt="">
                                 </div>
                             @endforeach
                         @else
