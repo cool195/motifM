@@ -861,7 +861,7 @@
     });
 
     $(document).ready(function () {
-        if ($('.message-info').children('p').height() <= 56) {
+        if ($('.message-info').children('p').height() <= 64) {
             $('.btn-showMore').hide();
         }
 
