@@ -444,10 +444,10 @@ class UserController extends ApiController
             'uuid' => $_COOKIE['uid'],
         ));
         if (Session::get('user.pin')) {
-            new Log(print_r(Session::get('user.pin'),1));
+            new Log(Session::get('user.pin'));
             return array('success' => true);
         } else {
-            new Log(print_r(Session::get('user.pin'),1));
+            new Log('error');
             return array('success' => false);
         }
     }
