@@ -1,0 +1,1 @@
+"use strict";!function(t){t("#messageContent").keyup(function(){var n=t(this).data("length"),s=t(this).val(),e=s.length;e<=n?t("#wordNum").html(e):(t(this).val(s.substring(0,n)),t("#wordNum").html(n))})}(jQuery);
