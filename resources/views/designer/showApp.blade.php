@@ -249,8 +249,8 @@
 
     Jockey.on("action", function (action) {
         //login
-        alert(action.name)
         if (action.name == "authInfo") {
+            alert(action.name)
             //ajax post session info
             $.ajax({
                 url: '/rsyncLogin',
