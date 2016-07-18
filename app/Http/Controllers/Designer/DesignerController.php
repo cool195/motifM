@@ -89,14 +89,17 @@ class DesignerController extends ApiController
                         'uuid' => $_COOKIE['UUID'],
                     ));
                 }
-                $followParams = array(
-                    'cmd' => 'is',
-                    'pin' => Session::get('user.pin'),
-                    'token' => Session::get('user.token'),
-                    'did' => $result['data']['designer_id'],
-                );
-                $follow = $this->request('openapi', '', 'follow', $followParams);
-                $result['data']['followStatus'] = $follow['data']['isFC'];
+                if($result['data']['designer_id']){
+                    $followParams = array(
+                        'cmd' => 'is',
+                        'pin' => Session::get('user.pin'),
+                        'token' => Session::get('user.token'),
+                        'did' => $result['data']['designer_id'],
+                    );
+                    $follow = $this->request('openapi', '', 'follow', $followParams);
+                    $result['data']['followStatus'] = $follow['data']['isFC'];
+                }
+
             } else {
                 Session::forget('user');
             }
@@ -110,7 +113,7 @@ class DesignerController extends ApiController
     //关注或取消设计师
     public function follow($id)
     {
-        if (is_numeric($id)) {
+        if (!empty($id)) {
             $followParams = array(
                 'cmd' => 'is',
                 'pin' => Session::get('user.pin'),
