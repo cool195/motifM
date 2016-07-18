@@ -10,7 +10,7 @@
         <div class="field-text font-size-sm">
             Follow Us:&nbsp;
         </div>
-        <div class="field-items">
+        <div class="p-l-15x">
             <a class="share-btn" href="https://www.facebook.com/motifme">
                 <img src="{{env('CDN_Static')}}/images/icon/facebook.png" srcset="{{env('CDN_Static')}}/images/icon/facebook@2x.png 2x,{{env('CDN_Static')}}/images/icon/facebook@3x.png 3x">
             </a>
