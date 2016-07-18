@@ -97,7 +97,7 @@ class DesignerController extends ApiController
                 );
                 $follow = $this->request('openapi', '', 'follow', $followParams);
                 $result['data']['followStatus'] = $follow['data']['isFC'];
-            }else{
+            } else {
                 Session::forget('user');
             }
             $view = 'designer.showApp';
@@ -110,33 +110,35 @@ class DesignerController extends ApiController
     //关注或取消设计师
     public function follow($id)
     {
-        $followParams = array(
-            'cmd' => 'is',
-            'pin' => Session::get('user.pin'),
-            'token' => Session::get('user.token'),
-            'did' => $id,
-        );
-        $follow = $this->request('openapi', '', 'follow', $followParams);
-        if ($follow['data']['isFC']) {
-            //取消关注
+        if (is_numeric($id)) {
             $followParams = array(
-                'cmd' => 'del',
+                'cmd' => 'is',
                 'pin' => Session::get('user.pin'),
                 'token' => Session::get('user.token'),
                 'did' => $id,
             );
             $follow = $this->request('openapi', '', 'follow', $followParams);
-        } else {
-            //关注
-            $followParams = array(
-                'cmd' => 'add',
-                'pin' => Session::get('user.pin'),
-                'token' => Session::get('user.token'),
-                'did' => $id,
-            );
-            $follow = $this->request('openapi', '', 'follow', $followParams);
+            if ($follow['data']['isFC']) {
+                //取消关注
+                $followParams = array(
+                    'cmd' => 'del',
+                    'pin' => Session::get('user.pin'),
+                    'token' => Session::get('user.token'),
+                    'did' => $id,
+                );
+                $follow = $this->request('openapi', '', 'follow', $followParams);
+            } else {
+                //关注
+                $followParams = array(
+                    'cmd' => 'add',
+                    'pin' => Session::get('user.pin'),
+                    'token' => Session::get('user.token'),
+                    'did' => $id,
+                );
+                $follow = $this->request('openapi', '', 'follow', $followParams);
+            }
+            return $follow;
         }
-        return $follow;
     }
 }
 
