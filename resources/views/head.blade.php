@@ -1,7 +1,7 @@
 <meta charset="UTF-8">
 <meta name="description" content="">
 <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
-<meta name="apple-itunes-app" content="app-id=432274380">
+<meta name="apple-itunes-app" content="app-id=1125850409">
 <meta http-equiv="Access-Control-Allow-Origin" content="*">
 <link rel="icon" href="/favicon.ico">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
