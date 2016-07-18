@@ -61,8 +61,8 @@
                                     <div class="item-title">Follow Us:</div>
                                     <div>
                                         <a target="_blank" href="https://www.facebook.com/motifme" class="p-r-1 m-r-1"><img src="{{env('CDN_Static')}}/images/pc/icon-facebook.png" alt=""></a>
-                                        <a target="_blank" href="https://plus.google.com/u/0/113666794179158439426" class="p-r-1 m-r-1"><img src="{{env('CDN_Static')}}/images/pc/icon-google.png" alt=""></a>
-                                        <a target="_blank" href="https://instagram.com/motif.jewelry/" class="p-r-1 m-r-1"><img src="{{env('CDN_Static')}}/images/pc/icon-ins.png" alt=""></a>
+                                        <a target="_blank" href="https://www.instagram.com/motifme/" class="p-r-1 m-r-1"><img src="{{env('CDN_Static')}}/images/pc/icon-ins.png" alt=""></a>
+                                        <a target="_blank" href="https://www.pinterest.com/motifme/" class="p-r-1 m-r-1"><img src="{{env('CDN_Static')}}/images/pc/icon-pinterest.png" alt=""></a>
                                     </div>
                                 </li>
                             </ul>

@@ -27,7 +27,7 @@
                         <div class="bg-white  m-b-10x">
                             <div class="p-x-15x p-y-10x font-size-md text-main"><strong>Shipping</strong></div>
                             <hr class="hr-base m-y-0">
-                            <div class="p-a-15x font-size-sm text-primary">
+                            <div class="p-x-15x p-t-15x font-size-sm text-primary">
                                 <p class="m-b-15x">Our estimated delivery dates are based on the following factors:
                                     processing time
                                     for your order, the shipping options you've chosen and the destination address. You
@@ -36,114 +36,93 @@
                                     the
                                     delivery time based on the shipping method you've chosen.
                                 </p>
-                                <p class="m-b-15x"><strong>For Non-Personalized items:</strong></p>
-                                <div class="m-b-15x">
-                                    <table class="table text-center">
-                                        <thead class="thead-default">
-                                        <tr>
-                                            <th class="">Shipping Method</th>
-                                            <th class="">Shipping Cost</th>
-                                            <th class="text-center">Processing Time for Non-Personalized Items</th>
-                                            <th class="text-center">Time from Shipping until delivery</th>
-                                        </tr>
-                                        </thead>
-                                        <tbody>
-                                        <tr>
-                                            <td>Registered Airmail</td>
-                                            <td>Free</td>
-                                            <td>2-4 business days</td>
-                                            <td>7-15 business days</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Expedited Shipping</td>
-                                            <td>20 US Dollars</td>
-                                            <td>2-4 business days</td>
-                                            <td>3-4 business days</td>
-                                        </tr>
-                                        </tbody>
-                                    </table>
+                                <p class="m-b-0"><strong>For Non-Personalized items:</strong></p>
+                                {{--<div class="m-b-15x">--}}
+                                {{--<table class="table text-center">--}}
+                                {{--<thead class="thead-default">--}}
+                                {{--<tr>--}}
+                                {{--<th class="">Shipping Method</th>--}}
+                                {{--<th class="">Shipping Cost</th>--}}
+                                {{--<th class="text-center">Processing Time for Non-Personalized Items</th>--}}
+                                {{--<th class="text-center">Time from Shipping until delivery</th>--}}
+                                {{--</tr>--}}
+                                {{--</thead>--}}
+                                {{--<tbody>--}}
+                                {{--<tr>--}}
+                                {{--<td>Registered Airmail</td>--}}
+                                {{--<td>Free</td>--}}
+                                {{--<td>2-4 business days</td>--}}
+                                {{--<td>7-15 business days</td>--}}
+                                {{--</tr>--}}
+                                {{--<tr>--}}
+                                {{--<td>Expedited Shipping</td>--}}
+                                {{--<td>20 US Dollars</td>--}}
+                                {{--<td>2-4 business days</td>--}}
+                                {{--<td>3-4 business days</td>--}}
+                                {{--</tr>--}}
+                                {{--</tbody>--}}
+                                {{--</table>--}}
 
-                                    {{--<table class="table text-left">--}}
+
+                                {{--<table class="table text-left">--}}
+                                {{--<tr>--}}
+                                {{--<th>Shipping Method</th>--}}
+                                {{--<td>Registered Airmail</td>--}}
+                                {{--<td>Expedited Shipping</td>--}}
+                                {{--</tr>--}}
+                                {{--<tr>--}}
+                                {{--<th>Shipping Cost</th>--}}
+                                {{--<td>Free</td>--}}
+                                {{--<td>20 US Dollars</td>--}}
+                                {{--</tr>--}}
+                                {{--<tr>--}}
+                                {{--<th>Processing Time for Non-Personalized Items</th>--}}
+                                {{--<td colspan="2">2-4 business days</td>--}}
+                                {{--</tr>--}}
+                                {{--<tr>--}}
+                                {{--<th>Time from Shipping until delivery</th>--}}
+                                {{--<td>7-15 business days</td>--}}
+                                {{--<td>3-4 business days</td>--}}
+                                {{--</tr>--}}
+                                {{--</table>--}}
+                                {{--</div>--}}
+
+                            </div>
+                            <div class="m-b-0"><img class="img-fluid" src="/images/sizeguild/page-shopping@3x.png"
+                                                    alt=""></div>
+                            <div class="p-x-15x font-size-sm text-primary">
+                                <p class="m-b-0"><strong>For Non-Personalized items:</strong></p>
+                                {{--<div class="m-b-15x">--}}
+                                    {{--<table class="table text-center">--}}
+                                    {{--<thead class="thead-default">--}}
                                     {{--<tr>--}}
-                                    {{--<th>Shipping Method</th>--}}
+                                    {{--<th class="">Shipping Method</th>--}}
+                                    {{--<th class="">Shipping Cost</th>--}}
+                                    {{--<th class="text-center">Processing Time for Personalized Items</th>--}}
+                                    {{--<th class="text-center">Time from Shipping until delivery</th>--}}
+                                    {{--</tr>--}}
+                                    {{--</thead>--}}
+                                    {{--<tbody>--}}
+                                    {{--<tr>--}}
                                     {{--<td>Registered Airmail</td>--}}
-                                    {{--<td>Expedited Shipping</td>--}}
-                                    {{--</tr>--}}
-                                    {{--<tr>--}}
-                                    {{--<th>Shipping Cost</th>--}}
                                     {{--<td>Free</td>--}}
+                                    {{--<td>7 business days</td>--}}
+                                    {{--<td>7-15 business days</td>--}}
+                                    {{--</tr>--}}
+                                    {{--<tr>--}}
+                                    {{--<td>Expedited Shipping</td>--}}
                                     {{--<td>20 US Dollars</td>--}}
-                                    {{--</tr>--}}
-                                    {{--<tr>--}}
-                                    {{--<th>Processing Time for Non-Personalized Items</th>--}}
-                                    {{--<td colspan="2">4 business days</td>--}}
-                                    {{--</tr>--}}
-                                    {{--<tr>--}}
-                                    {{--<th>Shipping Time</th>--}}
-                                    {{--<td>7-20 business days</td>--}}
+                                    {{--<td>7 business days</td>--}}
                                     {{--<td>3-4 business days</td>--}}
                                     {{--</tr>--}}
-                                    {{--<tr>--}}
-                                    {{--<th>Time from placing to receiving order</th>--}}
-                                    {{--<td>11-24 business days</td>--}}
-                                    {{--<td>7-8 business days</td>--}}
-                                    {{--</tr>--}}
+                                    {{--</tbody>--}}
                                     {{--</table>--}}
-                                </div>
 
-                                <p class="m-b-15x"><strong>For Non-Personalized items:</strong></p>
-                                <div class="m-b-15x">
-                                    <table class="table text-center">
-                                        <thead class="thead-default">
-                                        <tr>
-                                            <th class="">Shipping Method</th>
-                                            <th class="">Shipping Cost</th>
-                                            <th class="text-center">Processing Time for Personalized Items</th>
-                                            <th class="text-center">Time from Shipping until delivery</th>
-                                        </tr>
-                                        </thead>
-                                        <tbody>
-                                        <tr>
-                                            <td>Registered Airmail</td>
-                                            <td>Free</td>
-                                            <td>7 business days</td>
-                                            <td>7-15 business days</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Expedited Shipping</td>
-                                            <td>20 US Dollars</td>
-                                            <td>7 business days</td>
-                                            <td>3-4 business days</td>
-                                        </tr>
-                                        </tbody>
-                                    </table>
-                                    {{--<table class="table text-left">--}}
-                                    {{--<tr>--}}
-                                    {{--<th>Shipping Method</th>--}}
-                                    {{--<td>Registered Airmail</td>--}}
-                                    {{--<td>Expedited Shipping</td>--}}
-                                    {{--</tr>--}}
-                                    {{--<tr>--}}
-                                    {{--<th>Shipping Cost</th>--}}
-                                    {{--<td>Free</td>--}}
-                                    {{--<td>20 US Dollars</td>--}}
-                                    {{--</tr>--}}
-                                    {{--<tr>--}}
-                                    {{--<th>Processing Time for Personalized Items</th>--}}
-                                    {{--<td colspan="2">7-15 business days</td>--}}
-                                    {{--</tr>--}}
-                                    {{--<tr>--}}
-                                    {{--<th>Shipping Time</th>--}}
-                                    {{--<td>7-20 business days</td>--}}
-                                    {{--<td>3-4 business days</td>--}}
-                                    {{--</tr>--}}
-                                    {{--<tr>--}}
-                                    {{--<th>Time from placing to receiving order</th>--}}
-                                    {{--<td>14-30 business days</td>--}}
-                                    {{--<td>10-19 business days</td>--}}
-                                    {{--</tr>--}}
-                                    {{--</table>--}}
-                                </div>
+                                {{--</div>--}}
+                            </div>
+                            <div class="m-b-0"><img class="img-fluid" src="/images/sizeguild/page-shopping@3x.png"
+                                                    alt=""></div>
+                            <div class="p-a-15x font-size-sm text-primary">
                                 <p class="m-b-15x">
                                     Note: For countries beside the US, Canada and Australia, Registered Airmail may take
                                     up to
@@ -166,7 +145,8 @@
                                 <p class="m-b-15x">We want to make sure you’re 100% satisfied with your purchases, if
                                     you are not
                                     happy for any reason, email your request to <a href="mailto:service@motif.me"
-                                                                                   class="text-underLine">service@motif.me</a> and
+                                                                                   class="text-underLine">service@motif
+                                        .me</a> and
                                     return your item within 30 days of delivery for a full refund or exchange. Without
                                     email
                                     notification or if 30 days have gone by, unfortunately, we can’t process any refund
@@ -216,7 +196,8 @@
                                     posted.<br>
                                     d) If you’ve done all of this and you still have not received your refund yet,
                                     please
-                                    contact us at <a href="mailto:service@motif.me" class="text-underLine">service@motif.me</a>.
+                                    contact us at <a href="mailto:service@motif.me" class="text-underLine">service@motif
+                                        .me</a>.
                                 </p>
 
                                 <p class="m-b-15x"><strong>Exchanges (if applicable)</strong></p>
