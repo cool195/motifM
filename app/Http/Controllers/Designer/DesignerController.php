@@ -40,6 +40,9 @@ class DesignerController extends ApiController
     //设计师详情
     public function show(Request $request, $id)
     {
+        if(empty($id)){
+            return false;
+        }
         //设计师详情
         $params = array(
             'cmd' => 'designerdetail',
