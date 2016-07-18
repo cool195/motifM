@@ -97,14 +97,14 @@ class DesignerController extends ApiController
                 );
                 $follow = $this->request('openapi', '', 'follow', $followParams);
                 $result['data']['followStatus'] = $follow['data']['isFC'];
-            }else{
+            } else {
                 Session::forget('user');
             }
             $view = 'designer.showApp';
         } else {
             $view = 'designer.show';
         }
-        return View($view, ['designer' => $result['data'], 'productAll' => $productAll, 'product' => $product['data']]);
+        return View($view, ['designerid' => $id, 'designer' => $result['data'], 'productAll' => $productAll, 'product' => $product['data']]);
     }
 
     //关注或取消设计师
