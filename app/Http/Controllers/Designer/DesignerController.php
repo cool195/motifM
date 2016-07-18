@@ -40,59 +40,57 @@ class DesignerController extends ApiController
     //设计师详情
     public function show(Request $request, $id)
     {
-        if(empty($id)){
-            return false;
-        }
-        //设计师详情
-        $params = array(
-            'cmd' => 'designerdetail',
-            'pin' => Session::get('user.pin'),
-            'token' => Session::get('user.token'),
-            'd_id' => $id,
-        );
+        if (is_numeric($id)) {
+            //设计师详情
+            $params = array(
+                'cmd' => 'designerdetail',
+                'pin' => Session::get('user.pin'),
+                'token' => Session::get('user.token'),
+                'd_id' => $id,
+            );
 
-        $result = $this->request('openapi', '', 'designer', $params);
-        //设计师商品动态模版
-        $params = array(
-            'id' => $id,
-        );
-        $product = $this->request('openapi', 'designerf', 'content', $params);
+            $result = $this->request('openapi', '', 'designer', $params);
+            //设计师商品动态模版
+            $params = array(
+                'id' => $id,
+            );
+            $product = $this->request('openapi', 'designerf', 'content', $params);
 
-        //设计师商品
-        $params = array(
-            'recid' => '100004',
-            'pagenum' => 1,
-            'pagesize' => 50,
-            'uuid' => $_COOKIE['uid'] ? $_COOKIE['uid'] : 'ioscookieuidnull',
-            'extra_kv' => 'designerId:' . $id,
-            'pin' => Session::get('user.pin'),
-        );
-        $productAll = $this->request('openapi', '', 'rec', $params);
+            //设计师商品
+            $params = array(
+                'recid' => '100004',
+                'pagenum' => 1,
+                'pagesize' => 50,
+                'uuid' => $_COOKIE['uid'] ? $_COOKIE['uid'] : 'ioscookieuidnull',
+                'extra_kv' => 'designerId:' . $id,
+                'pin' => Session::get('user.pin'),
+            );
+            $productAll = $this->request('openapi', '', 'rec', $params);
 
 
-        $view = '';
-        $result['data']['osType'] = strstr($_SERVER['HTTP_USER_AGENT'], 'motif-ios') ? 'ios' : 'android';
-        if ($_GET['test'] || strstr($_SERVER['HTTP_USER_AGENT'], 'motif-android') || strstr($_SERVER['HTTP_USER_AGENT'], 'motif-ios')) {
+            $view = '';
+            $result['data']['osType'] = strstr($_SERVER['HTTP_USER_AGENT'], 'motif-ios') ? 'ios' : 'android';
+            if ($_GET['test'] || strstr($_SERVER['HTTP_USER_AGENT'], 'motif-android') || strstr($_SERVER['HTTP_USER_AGENT'], 'motif-ios')) {
 
-            if ($request->input('token') || !empty($_COOKIE['PIN'])) {
-                if ($request->input('token')) {
-                    Session::put('user', array(
-                        'login_email' => $request->input('email'),
-                        'nickname' => $request->input('name'),
-                        'pin' => $request->input('pin'),
-                        'token' => $request->input('token'),
-                        'uuid' => $_COOKIE['uid'],
-                    ));
-                } else {
-                    Session::put('user', array(
-                        'login_email' => $_COOKIE['EMAIL'],
-                        'nickname' => urldecode($_COOKIE['NAME']),
-                        'pin' => $_COOKIE['PIN'],
-                        'token' => $_COOKIE['TOKEN'],
-                        'uuid' => $_COOKIE['UUID'],
-                    ));
-                }
-                if($result['data']['designer_id']){
+                if ($request->input('token') || !empty($_COOKIE['PIN'])) {
+                    if ($request->input('token')) {
+                        Session::put('user', array(
+                            'login_email' => $request->input('email'),
+                            'nickname' => $request->input('name'),
+                            'pin' => $request->input('pin'),
+                            'token' => $request->input('token'),
+                            'uuid' => $_COOKIE['uid'],
+                        ));
+                    } else {
+                        Session::put('user', array(
+                            'login_email' => $_COOKIE['EMAIL'],
+                            'nickname' => urldecode($_COOKIE['NAME']),
+                            'pin' => $_COOKIE['PIN'],
+                            'token' => $_COOKIE['TOKEN'],
+                            'uuid' => $_COOKIE['UUID'],
+                        ));
+                    }
+
                     $followParams = array(
                         'cmd' => 'is',
                         'pin' => Session::get('user.pin'),
@@ -101,16 +99,18 @@ class DesignerController extends ApiController
                     );
                     $follow = $this->request('openapi', '', 'follow', $followParams);
                     $result['data']['followStatus'] = $follow['data']['isFC'];
-                }
+                    
 
+                } else {
+                    Session::forget('user');
+                }
+                $view = 'designer.showApp';
             } else {
-                Session::forget('user');
+                $view = 'designer.show';
             }
-            $view = 'designer.showApp';
-        } else {
-            $view = 'designer.show';
+            return View($view, ['designer' => $result['data'], 'productAll' => $productAll, 'product' => $product['data']]);
         }
-        return View($view, ['designer' => $result['data'], 'productAll' => $productAll, 'product' => $product['data']]);
+
     }
 
     //关注或取消设计师
