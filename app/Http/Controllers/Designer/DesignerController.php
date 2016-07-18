@@ -97,6 +97,8 @@ class DesignerController extends ApiController
                 );
                 $follow = $this->request('openapi', '', 'follow', $followParams);
                 $result['data']['followStatus'] = $follow['data']['isFC'];
+            }else{
+                Session::forget('user');
             }
             $view = 'designer.showApp';
         } else {
