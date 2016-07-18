@@ -251,6 +251,7 @@
                     uuid: action.data.uuid
                 },
                 success: function (data) {
+                    alert(data.success)
                     if (data.success) {
                         window.location.href = "http://m.motif.me/designer/{{$designer['designer_id']}}?rsync=1"
                     }
