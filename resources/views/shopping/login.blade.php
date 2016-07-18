@@ -26,7 +26,7 @@
         <form id="login">
             <div class="warning-info off flex text-warning flex-alignCenter text-left m-b-5x">
                 <i class="iconfont icon-caveat icon-size-md p-r-5x"></i>
-                <span class="font-size-sm"></span>
+                <span class="font-size-xs"></span>
             </div>
             <fieldset class="m-t-10x login-text">
                 <input class="input-login form-control font-size-sm" name="email" placeholder="Email"

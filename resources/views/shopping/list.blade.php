@@ -32,7 +32,7 @@
                             <a class="nav-flex flex-alignCenter underLine-item text-primary m-x-15x p-y-10x nav-productType @if($key!=0) inactive @endif" data-categoryid="{{ $c['category_id'] }}">
                                 <img class="img-fluid img-icon" src="{{env('APP_Api_Image')}}/n1/{{$c['img_path'] }}" srcset="{{env('APP_Api_Image')}}/n1/{{$c['img_path'] }} 2x,{{env('APP_Api_Image')}}/n0/{{$c['img_path'] }} 3x">
                                 <img class="img-fluid img-icon-active" src="{{env('APP_Api_Image')}}/n1/{{$c['img_path2'] }}" srcset="{{env('APP_Api_Image')}}/n1/{{$c['img_path2'] }} 2x, {{env('APP_Api_Image')}}/n0/{{$c['img_path2'] }} 3x">
-                                <span class="font-size-sm m-l-5x">{{ $c['category_name'] }}</span>
+                                <span class="font-size-xs m-l-5x">{{ $c['category_name'] }}</span>
                             </a>
                         </li>
                     @endforeach
@@ -122,7 +122,7 @@
                         @{{ if $value.skuPrice.sale_price !== $value.skuPrice.price }}
 
                         <div class="price-off">
-                            <strong class="font-size-sm">@{{ $value.skuPrice.skuPromotion.display }}</strong>
+                            <strong class="font-size-xs">@{{ $value.skuPrice.skuPromotion.display }}</strong>
                         </div>
                         @{{ /if }}
                     </a>

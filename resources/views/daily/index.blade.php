@@ -54,7 +54,7 @@
                 <img class="img-fluid img-lazy"
                      data-original="{{env('APP_Api_Image')}}/n1/@{{ $value.imgPath }}"
                      src="{{env('CDN_Static')}}/images/product/bg-product@750.png" alt="@{{ $value.title }}">
-                @{{ if $value.imgtextType }}<span class="img-icon font-size-sm"><strong>@{{ $value.imgtextType }}</strong></span>@{{ /if }}
+                @{{ if $value.imgtextType }}<span class="img-icon font-size-xs"><strong>@{{ $value.imgtextType }}</strong></span>@{{ /if }}
             </div>
             <div class="p-a-15x">
                 <h6 class="text-main font-size-base m-b-5x"><strong>@{{ $value.title }}</strong></h6>

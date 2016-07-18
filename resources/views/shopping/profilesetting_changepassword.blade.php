@@ -21,7 +21,7 @@
                 <article class="p-x-15x p-y-10x font-size-md text-main"><strong>Change Password</strong></article>
                 <!-- 个人中心 sitting list -->
 
-                <div class="warning-info text-warning font-size-sm flex flex-alignCenter text-left p-x-15x m-b-10x off">
+                <div class="warning-info text-warning font-size-xs flex flex-alignCenter text-left p-x-15x m-b-10x off">
                     <i class="iconfont icon-caveat icon-size-md p-r-5x"></i>
                     <span>Sorry, this email has already been registered.</span>
                 </div>

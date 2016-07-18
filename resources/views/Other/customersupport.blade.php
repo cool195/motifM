@@ -22,7 +22,7 @@
             <form method="post" id="form-customerSupport">
                 <article class="font-size-md text-main p-y-10x p-x-15x" data-type="{{$customers['feedback_type']}}"><strong>{{ $customers['feedback_name'] }}</strong></article>
 
-                <div class="warning-info text-warning font-size-sm flex flex-alignCenter text-left p-x-15x m-b-10x off">
+                <div class="warning-info text-warning font-size-xs flex flex-alignCenter text-left p-x-15x m-b-10x off">
                     <i class="iconfont icon-caveat icon-size-md p-r-5x"></i>
                     <span>Warning:Please fill out all fieldes.</span>
                 </div>

@@ -11,7 +11,7 @@
             Follow Us:&nbsp;
         </div>
         <div class="field-items">
-            <a class="share-btn" href="https://www.facebook.com/564721193713231">
+            <a class="share-btn" href="https://www.facebook.com/motifme">
                 <img src="{{env('CDN_Static')}}/images/icon/facebook.png" srcset="{{env('CDN_Static')}}/images/icon/facebook@2x.png 2x,{{env('CDN_Static')}}/images/icon/facebook@3x.png 3x">
             </a>
             <a class="share-btn" href="https://instagram.com/motif.jewelry/">
@@ -63,7 +63,7 @@
         </div>
         <hr class="hr-dark m-t-20x m-b-15x">
     </div>
-    <div class="text-common text-center font-size-sm">Copyright © 2016 Motif Group LLC. All rights reserved.</div>
+    <div class="text-common text-center font-size-xs">Copyright © 2016 Motif Group LLC. All rights reserved.</div>
 </footer>
 <!-- App 下载提示 -->
 <nav class="navbar-fixed-bottom bg-download p-y-10x p-x-15x flex flex-fullJustified flex-alignCenter" hidden>

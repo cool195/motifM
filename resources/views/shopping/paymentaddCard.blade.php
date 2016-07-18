@@ -50,7 +50,7 @@
                 </div>
                 <div class="warning-info off text-warning flex flex-alignCenter p-a-15x">
                     <i class="iconfont icon-caveat icon-size-md p-r-5x"></i>
-                    <span class="font-size-sm"></span>
+                    <span class="font-size-xs"></span>
                 </div>
 
                 <div class="p-a-15x">

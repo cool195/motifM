@@ -20,7 +20,7 @@
                 <article class="p-x-15x p-y-10x font-size-md text-main"><strong>Modify Address</strong></article>
                 <div class="warning-info off flex text-warning flex-alignCenter text-left p-x-15x p-b-10x hidden-xs-up">
                     <i class="iconfont icon-caveat icon-size-md p-r-5x"></i>
-                    <span class="font-size-sm"></span>
+                    <span class="font-size-xs"></span>
                 </div>
                 <form class="bg-white" id="addressInfo" method="get" action="/cart/countrylist">
                     <!-- 个人中心 sitting list -->

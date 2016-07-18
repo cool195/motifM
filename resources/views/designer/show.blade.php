@@ -50,7 +50,7 @@
                     <div class="message-info">
                         <p class="m-b-0">{{$designer['describe']}}</p>
                     </div>
-                    <a class="flex flex-alignCenter flex-fullJustified font-size-sm p-t-5x text-common btn-showMore">
+                    <a class="flex flex-alignCenter flex-fullJustified font-size-xs p-t-5x text-common btn-showMore">
                         <span class="showMore">Show More</span>
                         <i class="iconfont icon-arrow-bottom icon-size-xm text-common"></i>
                     </a>

@@ -24,7 +24,7 @@
                     Motif account.
                 </div>
             </fieldset>
-            <div class="warning-info text-warning font-size-sm flex flex-alignCenter text-left m-y-10x hidden-xs-up">
+            <div class="warning-info text-warning font-size-xs flex flex-alignCenter text-left m-y-10x hidden-xs-up">
                 <i class="iconfont icon-caveat icon-size-md p-r-10x"></i>
                 <span></span>
             </div>

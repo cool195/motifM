@@ -62,7 +62,7 @@
             <!-- 产品 标题 简介 价格 基本信息 -->
             <article class="product-baseInfo bg-white m-b-10x" data-impr='http://clk.motif.me/log.gif?t=pv.100001&m=H5_M2016-1&pin={{ Session::get('user.pin') }}&uuid={{ Session::get('user.uuid') }}&v={"spu":{{$data['spu']}},"main_sku":{{$data['skuPrice']['sku']}},"price":{{ $data['skuPrice']['sale_price'] }},"version":"1.0.1","ver":"9.2","src":"H5"}'>
                 <div class="product-text">
-                    <h6 class="text-main">{{$data['main_title']}}</h6>
+                    <h6 class="text-main font-size-base">{{$data['main_title']}}</h6>
                     <p class="text-primary font-size-sm">{{ $data['sub_title'] }} @if(isset($data['skuPrice']['skuPromotion']['promo_words'])){{$data['skuPrice']['skuPromotion']['promo_words']}}@endif</p>
                     @if(!empty($data['designer']))
                         <p class="text-primary font-size-sm">
@@ -139,7 +139,7 @@
                         <div class="message-info">
                             <p class="m-b-0"><?php  echo str_replace("\n", "<br/>",  $data['intro_short']) ?></p>
                         </div>
-                        <a class="flex flex-alignCenter flex-fullJustified font-size-sm p-t-5x text-common btn-showMore">
+                        <a class="flex flex-alignCenter flex-fullJustified font-size-xs p-t-5x text-common btn-showMore">
                             <span class="showMore">Show More</span>
                             <i class="iconfont icon-arrow-bottom icon-size-xm text-common"></i>
                         </a>
@@ -187,7 +187,7 @@
                                                         </a>
                                                         @if($value['skuPrice']['sale_price'] != $value['skuPrice']['price'])
                                                             <div class="price-off"><strong
-                                                                        class="font-size-sm">{{$value['skuPrice']['skuPromotion']['display']}}</strong>
+                                                                        class="font-size-xs">{{$value['skuPrice']['skuPromotion']['display']}}</strong>
                                                             </div>
                                                         @endif
                                                     </div>
@@ -261,7 +261,7 @@
                 </fieldset>
                 <div class="warning-info off flex text-warning flex-alignCenter text-left p-x-15x p-b-10x">
                     <i class="iconfont icon-caveat icon-size-md p-r-5x"></i>
-                    <span class="font-size-sm"></span>
+                    <span class="font-size-xs"></span>
                 </div>
                 <hr class="hr-base m-a-0">
                 @if(isset($data['spuAttrs']))
