@@ -93,18 +93,18 @@ class DesignerController extends ApiController
                     'cmd' => 'is',
                     'pin' => Session::get('user.pin'),
                     'token' => Session::get('user.token'),
-                    'did' => $id,
+                    'did' => $result['data']['designer_id'],
                 );
                 $follow = $this->request('openapi', '', 'follow', $followParams);
                 $result['data']['followStatus'] = $follow['data']['isFC'];
-            } else {
+            }else{
                 Session::forget('user');
             }
             $view = 'designer.showApp';
         } else {
             $view = 'designer.show';
         }
-        return View($view, ['designerid' => $id, 'designer' => $result['data'], 'productAll' => $productAll, 'product' => $product['data']]);
+        return View($view, ['designer' => $result['data'], 'productAll' => $productAll, 'product' => $product['data']]);
     }
 
     //关注或取消设计师
