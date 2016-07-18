@@ -40,6 +40,7 @@ class DesignerController extends ApiController
     //设计师详情
     public function show(Request $request, $id)
     {
+        Log::info("-----show-----".$id);
         if (is_numeric($id)) {
             //设计师详情
             $params = array(
@@ -116,7 +117,7 @@ class DesignerController extends ApiController
     //关注或取消设计师
     public function follow($id)
     {
-        Log::info("follow".$id);
+        Log::info("-----follow-----".$id);
         if (!empty($id)) {
             $followParams = array(
                 'cmd' => 'is',

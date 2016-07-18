@@ -148,7 +148,7 @@ $app->group(['middleware' => 'pcguide|logincheck', 'namespace' => 'App\Http\Cont
     $app->put('/askshopping', 'AskController@install');
 });
 
-$app->group(['namespace' => 'App\Http\Controllers\Designer'], function ($app) {
+$app->group(['middleware' => 'logincheck', 'namespace' => 'App\Http\Controllers\Designer'], function ($app) {
     $app->get('/followDesigner/{id}', 'DesignerController@follow');
 });
 
