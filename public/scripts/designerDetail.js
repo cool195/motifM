@@ -139,8 +139,7 @@
 
     // 修改 Follow 状态
     function changeFollow(id) {
-        //openLoading();
-        alert('changeFollow'+id)
+        openLoading();
         $.ajax({
             url: '/followDesigner/' + id,
             type: 'GET'
@@ -161,7 +160,6 @@
 
         //修改 Follow 状态
         var followId = $(this).data('followid');
-        alert(followId)
         changeFollow(followId);
     });
 
