@@ -249,6 +249,7 @@
 
     Jockey.on("action", function (action) {
         //login
+        alert(action.name)
         if (action.name == "authInfo") {
             //ajax post session info
             $.ajax({

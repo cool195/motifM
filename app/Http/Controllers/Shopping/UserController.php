@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Shopping;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\ApiController;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Session;
 
 class UserController extends ApiController
@@ -440,11 +441,13 @@ class UserController extends ApiController
             'nickname' => $request->input('name'),
             'pin' => $request->input('pin'),
             'token' => $request->input('token'),
-            'uuid' => @$_COOKIE['uid'],
+            'uuid' => $_COOKIE['uid'],
         ));
         if (Session::get('user.pin')) {
+            new Log(print_r(Session::get('user.pin'),1));
             return array('success' => true);
         } else {
+            new Log(print_r(Session::get('user.pin'),1));
             return array('success' => false);
         }
     }
