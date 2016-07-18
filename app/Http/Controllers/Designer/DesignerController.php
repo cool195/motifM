@@ -99,7 +99,7 @@ class DesignerController extends ApiController
                     );
                     $follow = $this->request('openapi', '', 'follow', $followParams);
                     $result['data']['followStatus'] = $follow['data']['isFC'];
-                    
+
 
                 } else {
                     Session::forget('user');
@@ -116,6 +116,7 @@ class DesignerController extends ApiController
     //关注或取消设计师
     public function follow($id)
     {
+        Log::info("follow".$id);
         if (!empty($id)) {
             $followParams = array(
                 'cmd' => 'is',

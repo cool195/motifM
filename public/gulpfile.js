@@ -22,7 +22,7 @@ gulp.task('minifycss', function() {
 
 //压缩,合并 js
 gulp.task('minifyjs', function() {
-    return gulp.src('scripts/*/*.js')      //需要操作的文件
+    return gulp.src('scripts/*.js')      //需要操作的文件
         //.pipe(concat('vendor.js'))    //合并所有js到main.js
         //.pipe(gulp.dest('js'))       //输出到文件夹
         .pipe(rename({suffix: ''}))   //rename压缩后的文件名
