@@ -1,5 +1,5 @@
 <?php
-$domain = ($_SERVER['SERVER_NAME'] == 'test.m.motif.me' || $_SERVER['SERVER_NAME'] == 'm.motif.me' || $_SERVER['SERVER_NAME'] == 'motif.me') ? 'motif.me' : null;
+$domain = ($_SERVER['SERVER_NAME'] == 'test.m.motif.me' || $_SERVER['SERVER_NAME'] == 'm.motif.me' || $_SERVER['SERVER_NAME'] == 'motif.me' || strstr($_SERVER['HTTP_USER_AGENT'], 'motif-android') || strstr($_SERVER['HTTP_USER_AGENT'], 'motif-ios')) ? 'motif.me' : null;
 return [
 
     /*
