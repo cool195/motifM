@@ -117,7 +117,7 @@
                 <hr class="hr-base">
                 <div class="flex font-size-sm text-primary p-y-10x p-x-15x">
                     <span class="orderInfo-subTitle flex-fixedShrink">Pay with</span>
-                    @if($data['pay_type']=="PayPal")
+                    @if("PayPal" == $data['pay_type'] || "PayPayNative" == $data['pay_type'])
                         <span class="cardImage-inline paypal"></span>
                     @elseif(array_get($data['cardlist'],$data['orderPayInfo']['card_type']))
                         <span class="cardImage-inline {{array_get($data['cardlist'],$data['orderPayInfo']['card_type'])}}"></span>
