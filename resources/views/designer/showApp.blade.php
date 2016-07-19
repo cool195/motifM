@@ -34,7 +34,7 @@
             </div>
 
             <!-- 设计师 文字信息 -->
-            <div class="bg-white p-a-5x">
+            <xdiv class="bg-white p-a-5x">
                 <div class="flex flex-alignCenter flex-fullJustified p-x-10x p-t-10x">
                     <div class="font-size-base text-main"><strong>{{$designer['nickname']}}</strong></div>
                     <div class="flex flex-alignCenter">
@@ -77,44 +77,41 @@
                         <i class="iconfont icon-arrow-bottom icon-size-xm text-common"></i>
                     </a>
                 </div>
-
-                @if(!empty($designer['instagram_link']))
+                @if(!empty($designer['instagram_link']) || !empty($designer['snapchat_link']) || !empty($designer['youtube_link']) || !empty($designer['facebook_link']))
                     <div class="p-x-10x p-t-5x p-b-15x">
+                @endif
+                    @if(!empty($designer['instagram_link']))
                         <a href="motif://o.c?a=outurl&url={{$designer['instagram_link']}}" target="_blank"
                            class="p-r-20x">
                             <img src="{{env('CDN_Static')}}/images/designer/ins.png"
                                  srcset="{{env('CDN_Static')}}/images/designer/ins@2x.png 2x,{{env('CDN_Static')}}/images/designer/ins@3x.png 3x">
                         </a>
-                    </div>
-                @endif
-                @if(!empty($designer['snapchat_link']))
-                    <div class="p-x-10x p-t-5x p-b-15x">
+                    @endif
+                    @if(!empty($designer['snapchat_link']))
                         <a href="motif://o.c?a=outurl&url={{$designer['snapchat_link']}}" target="_blank"
                            class="p-r-20x">
                             <img src="{{env('CDN_Static')}}/images/designer/snapchat.png"
                                  srcset="{{env('CDN_Static')}}/images/designer/snapchat@2x.png 2x,{{env('CDN_Static')}}/images/designer/snapchat@3x.png 3x">
                         </a>
-                    </div>
-                @endif
-                @if(!empty($designer['youtube_link']))
-                    <div class="p-x-10x p-t-5x p-b-15x">
+                    @endif
+                    @if(!empty($designer['youtube_link']))
                         <a href="motif://o.c?a=outurl&url={{$designer['youtube_link']}}" target="_blank"
                            class="p-r-20x">
                             <img src="{{env('CDN_Static')}}/images/designer/youtube.png"
                                  srcset="{{env('CDN_Static')}}/images/designer/youtube@2x.png 2x,{{env('CDN_Static')}}/images/designer/youtube@3x.png 3x">
                         </a>
-                    </div>
-                @endif
-                @if(!empty($designer['facebook_link']))
-                    <div class="p-x-10x p-t-5x p-b-15x">
+                    @endif
+                    @if(!empty($designer['facebook_link']))
                         <a href="motif://o.c?a=outurl&url={{$designer['facebook_link']}}" target="_blank"
                            class="p-r-20x">
                             <img src="{{env('CDN_Static')}}/images/designer/facebook.png"
                                  srcset="{{env('CDN_Static')}}/images/designer/facebook@2x.png 2x,{{env('CDN_Static')}}/images/designer/facebook@3x.png 3x">
                         </a>
+                    @endif
+                @if(!empty($designer['instagram_link']) || !empty($designer['snapchat_link']) || !empty($designer['youtube_link']) || !empty($designer['facebook_link']))
                     </div>
                 @endif
-            </div>
+
 
             <!-- 设计师 对应商品 -->
             <aside class="bg-white p-b-10x">

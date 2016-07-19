@@ -18,7 +18,7 @@
                 <!-- designerDetail 设计师详情 -->
         <section class="reserve-height">
             <!-- 视频/图片-->
-            <img src="{{ env('APP_Api_Image').'/n1/'.$designer['main_img_path'] }}" style="display: none">
+            <img src="{{ env('APP_Api_Image').'/n1/'.$designer['main_image_url'] }}" style="display: none">
             <div class="designer-media flex flex-justifyCenter flex-alignCenter">
                 <img class="designer-placeImg" src="{{env('CDN_Static')}}/images/designer/placeholder.jpg" alt="" hidden>
                 @if($designer['path_type']==2)
@@ -50,46 +50,41 @@
                     <div class="message-info">
                         <p class="m-b-0">{{$designer['describe']}}</p>
                     </div>
-                    <a class="flex flex-alignCenter flex-fullJustified font-size-xs p-t-5x text-common btn-showMore">
+                    <a class="flex flex-alignCenter flex-fullJustified font-size-sm p-t-5x text-common btn-showMore">
                         <span class="showMore">Show More</span>
                         <i class="iconfont icon-arrow-bottom icon-size-xm text-common"></i>
                     </a>
                 </div>
-
-                @if(!empty($designer['instagram_link']))
+                @if(!empty($designer['instagram_link']) || !empty($designer['snapchat_link']) || !empty($designer['youtube_link']) || !empty($designer['facebook_link']))
                     <div class="p-x-10x p-t-5x p-b-15x">
+                @endif
+                    @if(!empty($designer['instagram_link']))
                         <a href="{{$designer['instagram_link']}}" target="_blank" class="p-r-20x SocialMedia">
                             <img src="{{env('CDN_Static')}}/images/designer/ins.png"
                                  srcset="{{env('CDN_Static')}}/images/designer/ins@2x.png 2x,{{env('CDN_Static')}}/images/designer/ins@3x.png 3x">
                         </a>
-                    </div>
-                @endif
-                @if(!empty($designer['snapchat_link']))
-                    <div class="p-x-10x p-t-5x p-b-15x">
+                    @endif
+                    @if(!empty($designer['snapchat_link']))
                         <a href="{{$designer['snapchat_link']}}" target="_blank" class="p-r-20x SocialMedia">
                             <img src="{{env('CDN_Static')}}/images/designer/snapchat.png"
                                  srcset="{{env('CDN_Static')}}/images/designer/snapchat@2x.png 2x,{{env('CDN_Static')}}/images/designer/snapchat@3x.png 3x">
                         </a>
-                    </div>
-                @endif
-                @if(!empty($designer['youtube_link']))
-                    <div class="p-x-10x p-t-5x p-b-15x">
+                    @endif
+                    @if(!empty($designer['youtube_link']))
                         <a href="{{$designer['youtube_link']}}" target="_blank" class="p-r-20x SocialMedia">
                             <img src="{{env('CDN_Static')}}/images/designer/youtube.png"
                                  srcset="{{env('CDN_Static')}}/images/designer/youtube@2x.png 2x,{{env('CDN_Static')}}/images/designer/youtube@3x.png 3x">
                         </a>
-                    </div>
-                @endif
-                @if(!empty($designer['facebook_link']))
-                    <div class="p-x-10x p-t-5x p-b-15x">
+                    @endif
+                    @if(!empty($designer['facebook_link']))
                         <a href="{{$designer['facebook_link']}}" target="_blank" class="p-r-20x SocialMedia">
                             <img src="{{env('CDN_Static')}}/images/designer/facebook.png"
                                  srcset="{{env('CDN_Static')}}/images/designer/facebook@2x.png 2x,{{env('CDN_Static')}}/images/designer/facebook@3x.png 3x">
                         </a>
-                    </div>
+                    @endif
+                @if(!empty($designer['instagram_link']) || !empty($designer['snapchat_link']) || !empty($designer['youtube_link']) || !empty($designer['facebook_link']))
+                     </div>
                 @endif
-
-            </div>
             <!-- 设计师 对应模版商品 -->
             <aside class="bg-white p-b-10x">
                 @if(isset($product['infos']))
