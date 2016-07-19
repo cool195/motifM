@@ -19,8 +19,9 @@
                     <!-- 第一个 banner 图 -->
                         <div @if($k!=0)class="p-y-10x"@endif>
                             <a href="@if($value['skipType']=='1')motif://o.c?a=pd&spu={{$value['skipId']}}@elseif($value['skipType']=='2')/designer/{{$value['skipId']}}@elseif($value['skipType']=='3')/topic/{{$value['skipId']}}@elseif($value['skipType']=='4')motif://o.c?a=shoppinglist&cid={{$value['skipId']}}@else{{'motif://o.c?a=outurl&url='.urlencode($value['imgUrl'])}}@endif">
-                                <img class="img-fluid"
-                                     src="{{env('APP_Api_Image')}}/n0/{{$value['imgPath']}}"
+                                <img class="img-fluid img-lazy"
+                                     data-original="{{env('APP_Api_Image')}}/n0/{{$value['imgPath']}}"
+                                     src="{{env('CDN_Static')}}/images/product/bg-product@750.png"
                                      alt="">
                             </a>
                         </div>
@@ -47,16 +48,18 @@
                                 @foreach($value['spus'] as $spu)
                                     <div class="p-x-15x p-y-10x">
                                         <a href="motif://o.c?a=pd&spu={{$spu}}">
-                                            <img class="img-fluid"
-                                                 src="{{env('APP_Api_Image')}}/n0/{{$topic['spuInfos'][$spu]['spuBase']['main_image_url']}}"
+                                            <img class="img-fluid img-lazy"
+                                                 data-original="{{env('APP_Api_Image')}}/n0/{{$topic['spuInfos'][$spu]['spuBase']['main_image_url']}}"
+                                                 src="{{env('CDN_Static')}}/images/product/bg-product@750.png"
                                                  alt="{{$topic['spuInfos'][$spu]['spuBase']['main_title']}}">
                                         </a>
                                     </div>
                                 @endforeach
                             @else
                                 <a href="@if($value['skipType']=='1')motif://o.c?a=pd&spu=@elseif($value['skipType']=='2')/designer/@elseif($value['skipType']=='3')/topic/@elseif($value['skipType']=='4')motif://o.c?a=shoppinglist&cid=@endif{{$value['skipId']}}">
-                                    <img class="img-fluid"
-                                         src="{{env('APP_Api_Image')}}/n0/{{$value['imgPath']}}"
+                                    <img class="img-fluid img-lazy"
+                                         data-original="{{env('APP_Api_Image')}}/n0/{{$value['imgPath']}}"
+                                         src="{{env('CDN_Static')}}/images/product/bg-product@750.png"
                                          alt="">
                                 </a>
                             @endif
@@ -69,8 +72,9 @@
                                             <div class="col-xs-6">
                                                 <a href="motif://o.c?a=pd&spu={{$spu}}">
                                                     <div class="p-t-10x">
-                                                        <img class="img-thumbnail"
-                                                             src="{{env('APP_Api_Image')}}/n2/{{$topic['spuInfos'][$spu]['spuBase']['main_image_url']}}"
+                                                        <img class="img-thumbnail img-lazy"
+                                                             data-original="{{env('APP_Api_Image')}}/n2/{{$topic['spuInfos'][$spu]['spuBase']['main_image_url']}}"
+                                                             src="{{env('CDN_Static')}}/images/product/bg-product@336.png"
                                                              alt="{{$topic['spuInfos'][$spu]['spuBase']['main_title']}}">
                                                         <div class="p-y-10x">
                                                             <span class="text-primary font-size-sm m-l-5x"><strong>${{number_format($topic['spuInfos'][$spu]['skuPrice']['sale_price']/100,2)}}</strong></span>
@@ -122,4 +126,12 @@
 </script>
 @endif
 @include('global')
+<script>
+    $(document).ready(function () {
+        $('img.img-lazy').lazyload({
+            threshold: 200,
+            effect: 'fadeIn'
+        });
+    });
+</script>
 </html>
