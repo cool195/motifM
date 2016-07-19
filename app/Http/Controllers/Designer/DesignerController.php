@@ -83,6 +83,7 @@ class DesignerController extends ApiController
                             'uuid' => $_COOKIE['uid'],
                         ));
                     } else {
+                        Log::info("-----pin-----".$_COOKIE['PIN']);
                         Session::put('user', array(
                             'login_email' => $_COOKIE['EMAIL'],
                             'nickname' => urldecode($_COOKIE['NAME']),
