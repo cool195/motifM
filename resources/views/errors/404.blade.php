@@ -9,10 +9,14 @@
 <!-- 外层容器 -->
 <div id="body-content">
     <!-- 展开的汉堡菜单 -->
-@include('nav')
+@if(!strstr($_SERVER['HTTP_USER_AGENT'], 'motif-android') && !strstr($_SERVER['HTTP_USER_AGENT'], 'motif-ios'))
+    @include('nav')
+@endif
 <!-- 主体内容 -->
     <div class="body-container">
-    @include('navigator')
+    @if(!strstr($_SERVER['HTTP_USER_AGENT'], 'motif-android') && !strstr($_SERVER['HTTP_USER_AGENT'], 'motif-ios'))
+        @include('navigator')
+    @endif
     <!-- 404 内容 -->
         <section class="reserve-height flex flex-justifyCenter flex-alignCenter">
             <div class="p-x-20x">
@@ -26,7 +30,12 @@
                     </div>
                     <div class="text-primary font-size-sm">Your requested URL was not found</div>
                     <div class="text-primary font-size-sm p-t-20x p-b-10x">You may want to</div>
-                    <div><a href="/daily" class="btn btn-primary btn-block btn-goHome">Go Home</a></div>
+                    @if(!strstr($_SERVER['HTTP_USER_AGENT'], 'motif-android') && !strstr($_SERVER['HTTP_USER_AGENT'], 'motif-ios'))
+                        <div><a href="/daily" class="btn btn-primary btn-block btn-goHome">Go Home</a></div>
+                    @else
+                        <div><a href="motif://o.c?a=daily" class="btn btn-primary btn-block btn-goHome">Go Home</a></div>
+                    @endif
+
                 </div>
             </div>
         </section>
