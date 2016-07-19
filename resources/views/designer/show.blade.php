@@ -144,11 +144,17 @@
                                             <a href="/detail/{{$spu}}"
                                                data-clk='http://clk.motif.me/log.gif?t=designer.400001&m=H5_M2016-1&pin={{ Session::get('user.pin') }}&uuid={{ Session::get('user.uuid') }}&v={"action":1,"skipType":1,"skipId"{{$spu}},"expid":0,"version":"1.0.1","ver":"9.2","src":"H5"}'
                                                data-impr='http://clk.motif.me/log.gif?t=designer.400001&m=H5_M2016-1&pin={{ Session::get('user.pin') }}&uuid={{ Session::get('user.uuid') }}&v={"action":0,"skipType":1,"skipId":{{$spu}},expid":0,"version":"1.0.1","ver":"9.2","src":"H5"}'>
-                                                <div class="p-t-10x">
-                                                    <img class="img-thumbnail img-lazy"
-                                                         src="{{env('CDN_Static')}}/images/product/bg-product@336.png"
-                                                         data-original="{{env('APP_Api_Image')}}/n2/{{$product['spuInfos'][$spu]['spuBase']['main_image_url']}}"
-                                                         alt="{{$product['spuInfos'][$spu]['spuBase']['main_title']}}">
+                                                <div class="p-t-10x productList-item m-b-0">
+                                                    <div class="image-container">
+                                                        <img class="img-thumbnail img-lazy"
+                                                             src="{{env('CDN_Static')}}/images/product/bg-product@336.png"
+                                                             data-original="{{env('APP_Api_Image')}}/n2/{{$product['spuInfos'][$spu]['spuBase']['main_image_url']}}"
+                                                             alt="{{$product['spuInfos'][$spu]['spuBase']['main_title']}}">
+                                                        <div class="price-off">
+                                                            <img class="img-fluid" src="http://image.motif.me/n1/icon/motif/6036/300X300/d35e32ad392645b56a04df111ffef100.png" alt="">
+                                                        </div>
+                                                    </div>
+
                                                     <div class="p-y-10x">
                                                         <span class="text-primary font-size-sm m-l-5x"><strong>${{number_format($product['spuInfos'][$spu]['skuPrice']['sale_price']/100,2)}}</strong></span>
                                                         @if($product['spuInfos'][$spu]['skuPrice']['sale_price'] != $product['spuInfos'][$spu]['skuPrice']['price'])
@@ -175,11 +181,16 @@
                                 <div class="col-xs-6">
                                     <a href="/detail/{{$value['spu']}}" data-clk="{{ $value['clk'] }}"
                                        data-impr="{{ $value['impr'] }}">
-                                        <div class="p-t-10x">
-                                            <img class="img-thumbnail img-lazy"
-                                                 src="{{env('CDN_Static')}}/images/product/bg-product@336.png"
-                                                 data-original="{{env('APP_Api_Image')}}/n2/{{$value['main_image_url']}}"
-                                                 alt="{{$value['main_title']}}">
+                                        <div class="p-t-10x productList-item m-b-0">
+                                            <div class="image-container">
+                                                <img class="img-thumbnail img-lazy"
+                                                     src="{{env('CDN_Static')}}/images/product/bg-product@336.png"
+                                                     data-original="{{env('APP_Api_Image')}}/n2/{{$value['main_image_url']}}"
+                                                     alt="{{$value['main_title']}}">
+                                                <div class="price-off">
+                                                    <img class="img-fluid" src="http://image.motif.me/n1/icon/motif/6036/300X300/d35e32ad392645b56a04df111ffef100.png" alt="">
+                                                </div>
+                                            </div>
                                             <div class="p-y-10x">
                                                 <span class="text-primary font-size-sm m-l-5x"><strong>${{number_format($value['skuPrice']['sale_price']/100,2)}}</strong></span>
                                                 @if($value['skuPrice']['sale_price'] != $value['skuPrice']['price'])

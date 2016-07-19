@@ -203,11 +203,17 @@
                                 <div class="col-xs-6">
                                     <a href="motif://o.c?a=pd&spu={{$value['spu']}}" data-clk="{{ $value['clk'] }}"
                                        data-impr="{{ $value['impr'] }}">
-                                        <div class="p-t-10x">
-                                            <img class="img-thumbnail img-lazy"
+                                        <div class="p-t-10x productList-item m-b-0">
+                                            <div class="image-container">
+                                                <img class="img-thumbnail img-lazy"
                                                  src="{{env('CDN_Static')}}/images/product/bg-product@336.png"
                                                  data-original="{{env('APP_Api_Image')}}/n2/{{$value['main_image_url']}}"
                                                  alt="{{$value['main_title']}}">
+
+                                                <div class="price-off">
+                                                    <img class="img-fluid" src="http://image.motif.me/n1/icon/motif/6036/300X300/d35e32ad392645b56a04df111ffef100.png" alt="">
+                                                </div>
+                                            </div>
                                             <div class="p-y-10x">
                                                 <span class="text-primary font-size-sm m-l-5x"><strong>${{number_format($value['skuPrice']['sale_price']/100,2)}}</strong></span>
                                                 @if($value['skuPrice']['sale_price'] != $value['skuPrice']['price'])
