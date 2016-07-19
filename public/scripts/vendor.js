@@ -16512,7 +16512,7 @@ else if (typeof define === 'function' && define.amd) {
     }
 
     function switchDownload() {
-        var Android = 'https://play.google.com/apps/testing/me.motif.motif',
+        var Android = 'https://play.google.com/store/apps/details?id=me.motif.motif',
             iPhone = 'https://itunes.apple.com/us/app/id1125850409';
 
         var $Downloading = $('a[data-role="downloading"]');
