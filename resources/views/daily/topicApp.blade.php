@@ -71,11 +71,17 @@
                                         @foreach($value['spus'] as $spu)
                                             <div class="col-xs-6">
                                                 <a href="motif://o.c?a=pd&spu={{$spu}}">
-                                                    <div class="p-t-10x">
-                                                        <img class="img-thumbnail img-lazy"
-                                                             data-original="{{env('APP_Api_Image')}}/n2/{{$topic['spuInfos'][$spu]['spuBase']['main_image_url']}}"
-                                                             src="{{env('CDN_Static')}}/images/product/bg-product@336.png"
-                                                             alt="{{$topic['spuInfos'][$spu]['spuBase']['main_title']}}">
+                                                    <div class="p-t-10x productList-item m-b-0">
+                                                        <div class="image-container">
+                                                            <img class="img-thumbnail img-lazy"
+                                                                 data-original="{{env('APP_Api_Image')}}/n2/{{$topic['spuInfos'][$spu]['spuBase']['main_image_url']}}"
+                                                                 src="{{env('CDN_Static')}}/images/product/bg-product@336.png"
+                                                                 alt="{{$topic['spuInfos'][$spu]['spuBase']['main_title']}}">
+                                                            <div class="price-off">
+                                                                <strong class="font-size-xs">40%</strong>
+                                                            </div>
+                                                        </div>
+
                                                         <div class="p-y-10x">
                                                             <span class="text-primary font-size-sm m-l-5x"><strong>${{number_format($topic['spuInfos'][$spu]['skuPrice']['sale_price']/100,2)}}</strong></span>
                                                             @if($topic['spuInfos'][$spu]['skuPrice']['price'] != $topic['spuInfos'][$spu]['skuPrice']['sale_price'])
