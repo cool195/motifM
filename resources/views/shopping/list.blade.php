@@ -28,10 +28,15 @@
             <ul class="nav nav-tabs swiper-wrapper">
                 @if(isset($categories))
                     @foreach($categories as $key => $c)
-                        <li class="nav-item swiper-slide" data-tab-index="{{ $c['category_id'] }}" id="{{ $c['category_id'] }}">
-                            <a class="nav-flex flex-alignCenter underLine-item text-primary m-x-15x p-y-10x nav-productType @if($key!=0) inactive @endif" data-categoryid="{{ $c['category_id'] }}">
-                                <img class="img-fluid img-icon" src="{{env('APP_Api_Image')}}/n1/{{$c['img_path'] }}" srcset="{{env('APP_Api_Image')}}/n1/{{$c['img_path'] }} 2x,{{env('APP_Api_Image')}}/n0/{{$c['img_path'] }} 3x">
-                                <img class="img-fluid img-icon-active" src="{{env('APP_Api_Image')}}/n1/{{$c['img_path2'] }}" srcset="{{env('APP_Api_Image')}}/n1/{{$c['img_path2'] }} 2x, {{env('APP_Api_Image')}}/n0/{{$c['img_path2'] }} 3x">
+                        <li class="nav-item swiper-slide" data-tab-index="{{ $c['category_id'] }}"
+                            id="{{ $c['category_id'] }}">
+                            <a class="nav-flex flex-alignCenter underLine-item text-primary m-x-15x p-y-10x nav-productType @if($key!=0) inactive @endif"
+                               data-categoryid="{{ $c['category_id'] }}">
+                                <img class="img-fluid img-icon" src="{{env('APP_Api_Image')}}/n1/{{$c['img_path'] }}"
+                                     srcset="{{env('APP_Api_Image')}}/n1/{{$c['img_path'] }} 2x,{{env('APP_Api_Image')}}/n0/{{$c['img_path'] }} 3x">
+                                <img class="img-fluid img-icon-active"
+                                     src="{{env('APP_Api_Image')}}/n1/{{$c['img_path2'] }}"
+                                     srcset="{{env('APP_Api_Image')}}/n1/{{$c['img_path2'] }} 2x, {{env('APP_Api_Image')}}/n0/{{$c['img_path2'] }} 3x">
                                 <span class="font-size-xs m-l-5x">{{ $c['category_name'] }}</span>
                             </a>
                         </li>
@@ -99,10 +104,12 @@
         <div class="p-x-15x p-t-5x p-b-15x">
             <div class="field-items">
                 <a href="#" class="btn btn-secondary btn-xs">
-                    <img src="{{env('CDN_Static')}}/images/icon/icon-appStore.png" srcset="{{env('CDN_Static')}}/images/icon/icon-appStore@2x.png 2x, {{env('CDN_Static')}}/images/icon/icon-appStore@3x.png 3x">
+                    <img src="{{env('CDN_Static')}}/images/icon/icon-appStore.png"
+                         srcset="{{env('CDN_Static')}}/images/icon/icon-appStore@2x.png 2x, {{env('CDN_Static')}}/images/icon/icon-appStore@3x.png 3x">
                 </a>
                 <a href="#" class="btn btn-secondary btn-xs">
-                    <img src="{{env('CDN_Static')}}/images/icon/icon-googlePlay.png" srcset="{{env('CDN_Static')}}/images/icon/icon-googlePlay@2x.png 2x, {{env('CDN_Static')}}/images/icon/icon-googlePlay@3x.png 3x">
+                    <img src="{{env('CDN_Static')}}/images/icon/icon-googlePlay.png"
+                         srcset="{{env('CDN_Static')}}/images/icon/icon-googlePlay@2x.png 2x, {{env('CDN_Static')}}/images/icon/icon-googlePlay@3x.png 3x">
                 </a>
             </div>
         </div>
@@ -118,11 +125,15 @@
             <div class="image-bg">
                 <div class="image-container">
                     <a href="/detail/@{{ $value.spu }}" data-impr="@{{ $value.impr }}" data-clk="@{{ $value.clk }}">
-                        <img class="img-fluid img-lazy" data-original="{{env('APP_Api_Image')}}/n1/@{{ $value.main_image_url }}" src="{{env('CDN_Static')}}/images/product/bg-product@336.png" alt="@{{ $value.main_title }}">
+                        <img class="img-fluid img-lazy"
+                             data-original="{{env('APP_Api_Image')}}/n1/@{{ $value.main_image_url }}"
+                             src="{{env('CDN_Static')}}/images/product/bg-product@336.png"
+                             alt="@{{ $value.main_title }}">
                         @{{ if $value.skuPrice.sale_price !== $value.skuPrice.price }}
-
                         <div class="price-off">
-                            <img class="img-fluid" src="http://image.motif.me/n1/icon/motif/6036/300X300/d35e32ad392645b56a04df111ffef100.png" alt="">
+                            <img class="img-fluid"
+                                 src="{{env('APP_Api_Image')}}/n0/@{{ $value.skuPrice.skuPromotion.logo_path }}"
+                                 alt="">
                         </div>
                         @{{ /if }}
                     </a>
