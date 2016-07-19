@@ -211,7 +211,7 @@
                                                  alt="{{$value['main_title']}}">
 
                                                 <div class="price-off">
-                                                    <img class="img-fluid" src="http://image.motif.me/n1/icon/motif/6036/300X300/d35e32ad392645b56a04df111ffef100.png" alt="">
+                                                    <img class="img-fluid" src="{{env('APP_Api_Image')}}/n0/{{ $value['skuPrice']['skuPromotion']['logo_path']}}" alt="">
                                                 </div>
                                             </div>
                                             <div class="p-y-10x">
