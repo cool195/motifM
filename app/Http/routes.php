@@ -149,7 +149,7 @@ $app->group(['middleware' => 'pcguide|logincheck', 'namespace' => 'App\Http\Cont
 });
 
 $app->group(['namespace' => 'App\Http\Controllers\Designer'], function ($app) {
-    $app->get('/followDesigner/{id}', 'DesignerController@follow');
+    $app->get('/followDesigner/{id:[0-9]+}', 'DesignerController@follow');
 });
 
 
