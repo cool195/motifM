@@ -186,8 +186,8 @@
                                                                  alt="{{ $value['main_title'] }}">
                                                         </a>
                                                         @if($value['skuPrice']['sale_price'] != $value['skuPrice']['price'])
-                                                            <div class="price-off"><strong
-                                                                        class="font-size-xs">{{$value['skuPrice']['skuPromotion']['display']}}</strong>
+                                                            <div class="price-off">
+                                                                <img class="img-fluid" src="http://image.motif.me/n1/icon/motif/6036/300X300/d35e32ad392645b56a04df111ffef100.png" alt="">
                                                             </div>
                                                         @endif
                                                     </div>
