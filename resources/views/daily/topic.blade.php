@@ -69,7 +69,7 @@
                                                 <a href="/detail/{{$spu}}">
                                                     <div class="p-t-10x">
                                                         <img class="img-thumbnail"
-                                                             src="{{env('APP_Api_Image')}}/n0/{{$topic['spuInfos'][$spu]['spuBase']['main_image_url']}}"
+                                                             src="{{env('APP_Api_Image')}}/n2/{{$topic['spuInfos'][$spu]['spuBase']['main_image_url']}}"
                                                              alt="{{$topic['spuInfos'][$spu]['spuBase']['main_title']}}">
                                                         <div class="p-y-10x">
                                                             <span class="text-primary font-size-sm m-l-5x"><strong>${{number_format($topic['spuInfos'][$spu]['skuPrice']['sale_price']/100,2)}}</strong></span>
