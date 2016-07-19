@@ -46,7 +46,7 @@ class CartController extends ApiController
 			'data'=>$result['data'], 
 			'addr'=>$this->getUserAddrByAid($request->input('aid', 0)),
 			//'paym'=> $request->input('paym', !empty($defaultPayMethod['data']['type']) ? $defaultPayMethod['data']['type'] : ""),
-			'paym' => $request->input('paym', "PayPayNative"),
+			'paym' => $request->input('paym', "PayPalNative"),
 			'cardType' => $request->input('cardType', !empty($defaultPayMethod['data']['cardType']) ? $defaultPayMethod['data']['cardType'] : ""),
 			//'methodtoken' => $request->input('methodtoken', !empty($defaultPayMethod['data']['token']) ? $defaultPayMethod['data']['token'] : "" ),
 			//'showName' => $request->input('showName', !empty($defaultPayMethod['data']['showName']) ? $defaultPayMethod['data']['showName'] : "" ),
