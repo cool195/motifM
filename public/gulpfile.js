@@ -1,36 +1,68 @@
-var gulp = require('gulp'),
-    minifycss = require('gulp-minify-css'),
-    concat = require('gulp-concat'),
-    uglify = require('gulp-uglify'),
-    rename = require('gulp-rename');
-    //jshint=require('gulp-jshint');
+// 引入 gulp
+var gulp = require('gulp');
 
-//语法检查
-// gulp.task('jshint', function () {
-//     return gulp.src('scripts/*.js')
-//         .pipe(jshint())
-//         .pipe(jshint.reporter('default'));
-// });
+// 引入组件
+var imagemin = require('gulp-imagemin'),//图片压缩
+    pngcrush = require('imagemin-pngcrush'),
+    minifycss = require('gulp-minify-css'),//css压缩
+    uglify = require('gulp-uglify'),//js压缩
+    concat = require('gulp-concat'),//文件合并
+    rename = require('gulp-rename'),//文件更名
+    notify = require('gulp-notify');//提示信息
 
-//压缩css
-gulp.task('minifycss', function() {
-    return gulp.src('styles/*.css')    //需要操作的文件
-        .pipe(rename({suffix: ''}))   //rename压缩后的文件名
-        .pipe(minifycss())   //执行压缩
-        .pipe(gulp.dest('min/styles'));   //输出文件夹
+// 压缩图片
+gulp.task('img', function() {
+    return gulp.src('images/*/*')
+        .pipe(imagemin({
+            progressive: true,
+            svgoPlugins: [{removeViewBox: false}],
+            use: [pngcrush()]
+        }))
+        .pipe(gulp.dest('min/images/'))
+        .pipe(notify({ message: 'img task ok' }));
 });
 
-//压缩,合并 js
-gulp.task('minifyjs', function() {
-    return gulp.src('scripts/*.js')      //需要操作的文件
-        //.pipe(concat('vendor.js'))    //合并所有js到main.js
-        //.pipe(gulp.dest('js'))       //输出到文件夹
-        .pipe(rename({suffix: ''}))   //rename压缩后的文件名
-        .pipe(uglify())    //压缩
-        .pipe(gulp.dest('min/scripts'));  //输出
+// 压缩图片
+gulp.task('imgfile', function() {
+    return gulp.src('images/*')
+        .pipe(imagemin({
+            progressive: true,
+            svgoPlugins: [{removeViewBox: false}],
+            use: [pngcrush()]
+        }))
+        .pipe(gulp.dest('min/images/'))
+        .pipe(notify({ message: 'img task ok' }));
 });
 
-//默认命令，在cmd中输入gulp后，执行的就是这个任务(压缩js需要在检查js之后操作)
-gulp.task('default',function() {
-    gulp.start('minifycss','minifyjs');
+// 合并、压缩、重命名css
+gulp.task('css', function() {
+    return gulp.src('styles/*.css')
+        .pipe(rename({ suffix: '' }))
+        .pipe(minifycss())
+        .pipe(gulp.dest('min/styles'))
+        .pipe(notify({ message: 'css task ok' }));
+});
+
+// 合并、压缩js文件
+gulp.task('js', function() {
+    return gulp.src('scripts/*.js')
+        .pipe(rename({ suffix: '' }))
+        .pipe(uglify())
+        .pipe(gulp.dest('min/scripts'))
+        .pipe(notify({ message: 'js task ok' }));
+});
+
+// 合并、压缩js文件
+gulp.task('jstwo', function() {
+    return gulp.src('scripts/*/*.js')
+        .pipe(rename({ suffix: '' }))
+        .pipe(uglify())
+        .pipe(gulp.dest('min/scripts/'))
+        .pipe(notify({ message: 'js task ok' }));
+});
+
+// 默认任务
+gulp.task('default', function(){
+    gulp.start('js','jstwo','css','img','imgfile');
+
 });
