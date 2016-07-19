@@ -77,9 +77,11 @@
                                                                  data-original="{{env('APP_Api_Image')}}/n2/{{$topic['spuInfos'][$spu]['spuBase']['main_image_url']}}"
                                                                  src="{{env('CDN_Static')}}/images/product/bg-product@336.png"
                                                                  alt="{{$topic['spuInfos'][$spu]['spuBase']['main_title']}}">
-                                                            <div class="price-off">
-                                                                <strong class="font-size-xs">40%</strong>
-                                                            </div>
+                                                            @if($topic['spuInfos'][$spu]['skuPrice']['price'] != $topic['spuInfos'][$spu]['skuPrice']['sale_price'])
+                                                                <div class="price-off">
+                                                                    <strong class="font-size-xs">{{$topic['spuInfos'][$spu]['skuPrice']['skuPromotion']['display']}}</strong>
+                                                                </div>
+                                                            @endif
                                                         </div>
 
                                                         <div class="p-y-10x">
@@ -105,33 +107,6 @@
 </body>
 <script src="{{env('CDN_Static')}}/scripts/vendor.js"></script>
 <script src="{{env('CDN_Static')}}/scripts/JockeyJS.js"></script>
-@if($shareFlag)
-<script>
-    var actionsShow = [{"icon": "", "name": "share"}]
-    Jockey.send("action", {
-        name: "showActions",
-        token: "key",
-        data: {"actions": actionsShow}
-    });
-
-    Jockey.on("action", function (actionName) {
-                if (actionName.name == "menuClick" && actionName.data.name == "share") {
-                    Jockey.send("action", {
-                        name: "share",
-                        token: "key",
-                        data: {
-                            "title": "Look at this on Motif:",
-                            "content": "{{$topic['title']}}",
-                            "image": "",
-                            "url": "http://m.motif.me/topic/{{$topicID}}"
-                        }
-                    });
-                }
-            }
-    );
-</script>
-@endif
-@include('global')
 <script>
     $(document).ready(function () {
         $('img.img-lazy').lazyload({
@@ -140,4 +115,31 @@
         });
     });
 </script>
+@if($shareFlag)
+    <script>
+        var actionsShow = [{"icon": "", "name": "share"}]
+        Jockey.send("action", {
+            name: "showActions",
+            token: "key",
+            data: {"actions": actionsShow}
+        });
+
+        Jockey.on("action", function (actionName) {
+                    if (actionName.name == "menuClick" && actionName.data.name == "share") {
+                        Jockey.send("action", {
+                            name: "share",
+                            token: "key",
+                            data: {
+                                "title": "Look at this on Motif:",
+                                "content": "{{$topic['title']}}",
+                                "image": "",
+                                "url": "http://m.motif.me/topic/{{$topicID}}"
+                            }
+                        });
+                    }
+                }
+        );
+    </script>
+@endif
+@include('global')
 </html>

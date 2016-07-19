@@ -22,7 +22,9 @@
                     <!-- 第一个 banner 图 -->
                         <div @if($k!=0)class="p-y-10x"@endif>
                             <a href="@if($value['skipType']=='1')/detail/@elseif($value['skipType']=='2')/designer/@elseif($value['skipType']=='3')/topic/@elseif($value['skipType']=='4')/shopping#@endif{{$value['skipId']}}">
-                                <img class="img-fluid img-lazy" data-original="{{env('APP_Api_Image')}}/n0/{{$value['imgPath']}}" src="{{env('CDN_Static')}}/images/product/bg-product@750.png" alt="">
+                                <img class="img-fluid img-lazy"
+                                     data-original="{{env('APP_Api_Image')}}/n0/{{$value['imgPath']}}"
+                                     src="{{env('CDN_Static')}}/images/product/bg-product@750.png" alt="">
                             </a>
                         </div>
                 @elseif($value['type']=='title')
@@ -57,7 +59,9 @@
                                 @endforeach
                             @else
                                 <a href="@if($value['skipType']=='1')/detail/@elseif($value['skipType']=='2')/designer/@elseif($value['skipType']=='3')/topic/@elseif($value['skipType']=='4')/shopping#@endif{{$value['skipId']}}">
-                                    <img class="img-fluid img-lazy" data-original="{{env('APP_Api_Image')}}/n0/{{$value['imgPath']}}" src="{{env('CDN_Static')}}/images/product/bg-product@750.png" alt="">
+                                    <img class="img-fluid img-lazy"
+                                         data-original="{{env('APP_Api_Image')}}/n0/{{$value['imgPath']}}"
+                                         src="{{env('CDN_Static')}}/images/product/bg-product@750.png" alt="">
                                 </a>
                             @endif
                         @else
@@ -74,9 +78,11 @@
                                                                  data-original="{{env('APP_Api_Image')}}/n2/{{$topic['spuInfos'][$spu]['spuBase']['main_image_url']}}"
                                                                  src="{{env('CDN_Static')}}/images/product/bg-product@336.png"
                                                                  alt="{{$topic['spuInfos'][$spu]['spuBase']['main_title']}}">
-                                                            <div class="price-off">
-                                                                <strong class="font-size-xs">40%</strong>
-                                                            </div>
+                                                            @if($topic['spuInfos'][$spu]['skuPrice']['price'] != $topic['spuInfos'][$spu]['skuPrice']['sale_price'])
+                                                                <div class="price-off">
+                                                                    <strong class="font-size-xs">{{$topic['spuInfos'][$spu]['skuPrice']['skuPromotion']['display']}}</strong>
+                                                                </div>
+                                                            @endif
                                                         </div>
                                                         <div class="p-y-10x">
                                                             <span class="text-primary font-size-sm m-l-5x"><strong>${{number_format($topic['spuInfos'][$spu]['skuPrice']['sale_price']/100,2)}}</strong></span>
@@ -102,13 +108,13 @@
 </div>
 </body>
 <script src="{{env('CDN_Static')}}/scripts/vendor.js"></script>
-<script> 
-    $(document).ready(function () { 
-        $('img.img-lazy').lazyload({ 
-            threshold: 200, 
-            effect: 'fadeIn' 
-        }); 
-    }); 
+<script>
+    $(document).ready(function () {
+        $('img.img-lazy').lazyload({
+            threshold: 200,
+            effect: 'fadeIn'
+        });
+    });
 </script>
 @include('global')
 </html>
