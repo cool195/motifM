@@ -235,47 +235,47 @@
 </div>
 
 </body>
-<script src="{{env('CDN_Static')}}/scripts/vendor.js"></script>
-<script src="{{env('CDN_Static')}}/scripts/designerDetail.js"></script>
-<script src="{{env('CDN_Static')}}/scripts/videoPlay.js"></script>
-<script src="{{env('CDN_Static')}}/scripts/JockeyJS.js"></script>
-<script>
-    var actionsShow = [{"icon": "", "name": "wish"}, {"icon": "", "name": "bag"}]
-    Jockey.send("action", {
-        name: "showActions",
-        token: "key",
-        data: {"actions": actionsShow}
-    });
+{{--<script src="{{env('CDN_Static')}}/scripts/vendor.js"></script>--}}
+{{--<script src="{{env('CDN_Static')}}/scripts/designerDetail.js"></script>--}}
+{{--<script src="{{env('CDN_Static')}}/scripts/videoPlay.js"></script>--}}
+{{--<script src="{{env('CDN_Static')}}/scripts/JockeyJS.js"></script>--}}
+{{--<script>--}}
+    {{--var actionsShow = [{"icon": "", "name": "wish"}, {"icon": "", "name": "bag"}]--}}
+    {{--Jockey.send("action", {--}}
+        {{--name: "showActions",--}}
+        {{--token: "key",--}}
+        {{--data: {"actions": actionsShow}--}}
+    {{--});--}}
 
-    Jockey.on("action", function (action) {
-        //login
-        if (action.name == "authInfo") {
-            window.location.href = "http://m.motif.me/designer/{{$designer['designer_id']}}?token=" + action.data.token + "&pin=" + action.data.pin + "&email=" + action.data.email + "&name=" + decodeURIComponent(action.data.name)
-        }
-    });
+    {{--Jockey.on("action", function (action) {--}}
+        {{--//login--}}
+        {{--if (action.name == "authInfo") {--}}
+            {{--window.location.href = "http://m.motif.me/designer/{{$designer['designer_id']}}?token=" + action.data.token + "&pin=" + action.data.pin + "&email=" + action.data.email + "&name=" + decodeURIComponent(action.data.name)--}}
+        {{--}--}}
+    {{--});--}}
 
-    //login send
-    $('#sendLogin').on('click', function () {
-        Jockey.send("action", {
-            name: "login",
-            token: "key",
-        });
-    })
+    {{--//login send--}}
+    {{--$('#sendLogin').on('click', function () {--}}
+        {{--Jockey.send("action", {--}}
+            {{--name: "login",--}}
+            {{--token: "key",--}}
+        {{--});--}}
+    {{--})--}}
 
-    $('#shareDesigner').on('click', function () {
-        Jockey.send("action", {
-            name: "share",
-            token: "key",
-            data: {
-                "title": "Look at this on MOTIF:",
-                "content": "{{ $designer['nickname'] }}",
-                "image": "{{env('APP_Api_Image')}}/n2/{{$designer['main_image_url']}}",
-                "url": "http://m.motif.me/designer/{{$designer['designer_id']}}"
-            }
-        });
-    })
+    {{--$('#shareDesigner').on('click', function () {--}}
+        {{--Jockey.send("action", {--}}
+            {{--name: "share",--}}
+            {{--token: "key",--}}
+            {{--data: {--}}
+                {{--"title": "Look at this on MOTIF:",--}}
+                {{--"content": "{{ $designer['nickname'] }}",--}}
+                {{--"image": "{{env('APP_Api_Image')}}/n2/{{$designer['main_image_url']}}",--}}
+                {{--"url": "http://m.motif.me/designer/{{$designer['designer_id']}}"--}}
+            {{--}--}}
+        {{--});--}}
+    {{--})--}}
 
 
-</script>
+{{--</script>--}}
 @include('global')
 </html>
