@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Designer;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\ApiController;
-use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Session;
 
 class DesignerController extends ApiController
@@ -40,7 +39,6 @@ class DesignerController extends ApiController
     //设计师详情
     public function show(Request $request, $id)
     {
-        Log::info("-----show-----".$id);
         if (is_numeric($id)) {
             //设计师详情
             $params = array(
@@ -83,7 +81,6 @@ class DesignerController extends ApiController
                             'uuid' => $_COOKIE['uid'],
                         ));
                     } else {
-                        Log::info("-----pin-----".$_COOKIE['PIN']);
                         Session::put('user', array(
                             'login_email' => $_COOKIE['EMAIL'],
                             'nickname' => urldecode($_COOKIE['NAME']),
@@ -118,7 +115,6 @@ class DesignerController extends ApiController
     //关注或取消设计师
     public function follow($id)
     {
-        Log::info("-----follow-----".$id);
         if (!empty($id)) {
             $followParams = array(
                 'cmd' => 'is',
