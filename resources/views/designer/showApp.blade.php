@@ -34,7 +34,7 @@
             </div>
 
             <!-- 设计师 文字信息 -->
-            <xdiv class="bg-white p-a-5x">
+            <div class="bg-white p-a-5x">
                 <div class="flex flex-alignCenter flex-fullJustified p-x-10x p-t-10x">
                     <div class="font-size-base text-main"><strong>{{$designer['nickname']}}</strong></div>
                     <div class="flex flex-alignCenter">
