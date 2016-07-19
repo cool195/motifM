@@ -23,7 +23,7 @@
     <div class="nav-content">
     @if($referer)
         <nav class="navbar">
-            <div class="nav">
+            <div class="nav nav-url">
                 <span>This URL is not supported by PC. Please use a mobile device to access this URL:&nbsp;</span>
                 <div class="">
                     <span>{{$referer}}</span>
