@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Privacy Policy</title>
+    <title>Privacy Notice</title>
     @include('head')
 
 </head>
@@ -174,7 +174,7 @@
                                 <p class="m-b-15x">We may also disclose your Personal Information:</p>
                                 <p class="m-b-15x">(a) To comply with any court order, law or legal process, including
                                     to respond to any government or regulatory request;</p>
-                                <p class="m-b-15x">(b) To enforce or apply our <a href="/termsconditions"
+                                <p class="m-b-15x">(b) To enforce or apply our <a href="/pctermsservice"
                                                                                   class="text-underLine"> Terms &
                                         Conditions</a> and other agreements,
                                     including for billing and collection purposes; or</p>

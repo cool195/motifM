@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>TERMS OF SERVICE</title>
+    <title>TERMS & CONDITIONS</title>
     @include('head')
 
 </head>
@@ -212,7 +212,7 @@
                                 </p>
                                 <p class="m-b-15x">We collect and store personal information when you register, browse
                                     through Our Services, and complete transactions. Users of Our Services should refer
-                                    to our <a class="text-underLine" href="/privacynotice">Privacy Notice</a> for more
+                                    to our <a class="text-underLine" href="/pcprivacypolicy">Privacy Notice</a> for more
                                     detailed information about how we collect and use
                                     personal information. By using Our Services and accepting these Terms, you expressly
                                     consent to our use of your personal information as described in our Privacy Notice,
