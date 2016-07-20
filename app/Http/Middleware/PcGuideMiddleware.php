@@ -20,7 +20,7 @@ class PcGuideMiddleware
      */
     public function handle($request, Closure $next)
     {
-        if($this->isMobile())
+        if($this->isMobile() || $request->input('nopc'))
         {
             return $next($request);
         }
