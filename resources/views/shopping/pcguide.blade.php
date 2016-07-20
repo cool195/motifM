@@ -43,10 +43,10 @@
                                 <img class="" src="{{env('CDN_Static')}}/images/pc/img-title.png" alt="">
                             </div>
                             <ul class="list-unstyled p-y-3 text-main">
-                                <li class="flex-center m-b-2">
-                                    <div class="item-title">Mobile URL:</div>
-                                    <div><a class="text-main text-link" href="/">www.motif.me</a></div>
-                                </li>
+                                {{--<li class="flex-center m-b-2">--}}
+                                    {{--<div class="item-title">Mobile URL:</div>--}}
+                                    {{--<div><a class="text-main text-link" href="/">www.motif.me</a></div>--}}
+                                {{--</li>--}}
                                 <li class="flex-center m-b-2">
                                     <div class="item-title">Download:</div>
                                     <div>
