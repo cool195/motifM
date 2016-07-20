@@ -93,7 +93,8 @@ class UserController extends ApiController
         if (Session::has('user')) {
             return redirect('/daily');
         }
-        return view('shopping.login', ['referer' => $request->header('referer')]);
+        $referer = $request->input('url') ? $request->input('url') : $request->header('referer');
+        return view('shopping.login', ['referer' => $referer]);
     }
 
     /*

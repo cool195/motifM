@@ -23,6 +23,6 @@ class LoginCheckMiddleware
         if(Session::has('user')){
             return $next($request);
         }
-        return redirect('/login');
+        return redirect('/login?url='.urlencode($_SERVER['REQUEST_URI']));
     }
 }
