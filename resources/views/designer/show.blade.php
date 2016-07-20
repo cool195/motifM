@@ -149,11 +149,13 @@
                                                              src="{{env('CDN_Static')}}/images/product/bg-product@336.png"
                                                              data-original="{{env('APP_Api_Image')}}/n2/{{$product['spuInfos'][$spu]['spuBase']['main_image_url']}}"
                                                              alt="{{$product['spuInfos'][$spu]['spuBase']['main_title']}}">
-                                                        <div class="price-off">
-                                                            <img class="img-fluid"
-                                                                 src="{{env('APP_Api_Image')}}/n0/{{ $product['spuInfos'][$spu]['skuPrice']['skuPromotion']['logo_path']}}"
-                                                                 alt="">
-                                                        </div>
+                                                        @if($product['spuInfos'][$spu]['skuPrice']['sale_price'] != $product['spuInfos'][$spu]['skuPrice']['price'])
+                                                            <div class="price-off">
+                                                                <img class="img-fluid"
+                                                                     src="{{env('APP_Api_Image')}}/n0/{{ $product['spuInfos'][$spu]['skuPrice']['skuPromotion']['logo_path']}}"
+                                                                     alt="">
+                                                            </div>
+                                                        @endif
                                                     </div>
 
                                                     <div class="p-y-10x">
