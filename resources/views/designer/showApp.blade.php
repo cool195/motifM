@@ -115,84 +115,84 @@
 
             <!-- 设计师 对应商品 -->
                 <aside class="bg-white p-b-10x">
-                @if(isset($product['infos']))
+                    @if(isset($product['infos']))
                     @foreach($product['infos'] as $k=>$value)
-                        @if($value['type']=='banner' || (!isset($value['spus']) && $value['type']=='product'))
+                    @if($value['type']=='banner' || (!isset($value['spus']) && $value['type']=='product'))
                             <!-- 第一个 banner 图 -->
-                                <a href="@if($value['skipType']=='1')motif://o.c?a=pd&spu={{$value['skipId']}}@elseif($value['skipType']=='2')/designer/{{$value['skipId']}}@elseif($value['skipType']=='3')/topic/{{$value['skipId']}}@elseif($value['skipType']=='4')motif://o.c?a=shoppinglist&cid={{$value['skipId']}}@else{{'motif://o.c?a=outurl&url='.urlencode($value['imgUrl'])}}@endif"
-                                   data-impr='http://clk.motif.me/log.gif?t=designer.400001&m=H5_M2016-1&pin={{Session::get('user.pin')}}&uuid={{ Session::get('user.uuid') }}&v={"action":0,"skipType":{{$value['skipType']}},"skipId"{{$value['skipId']}},"expid":0,"version":"1.0.1","ver":"9.2","src":"H5"}'
-                                   data-clk='http://clk.motif.me/log.gif?t=designer.400001&m=H5_M2016-1&pin={{Session::get('user.pin')}}&uuid={{ Session::get('user.uuid') }}&v={"action":1,"skipType":{{$value['skipType']}},"skipId":{{$value['skipId']}},expid":0,"version":"1.0.1","ver":"9.2","src":"H5"}'>
-                                    <div @if($k!=0)class="p-y-10x"@endif>
-                                        <img class="img-fluid"
-                                             src="{{env('APP_Api_Image')}}/n2/{{$value['imgPath']}}">
-                                    </div>
-                                </a>
-                        @elseif($value['type']=='title')
+                    <a href="@if($value['skipType']=='1')motif://o.c?a=pd&spu={{$value['skipId']}}@elseif($value['skipType']=='2')/designer/{{$value['skipId']}}@elseif($value['skipType']=='3')/topic/{{$value['skipId']}}@elseif($value['skipType']=='4')motif://o.c?a=shoppinglist&cid={{$value['skipId']}}@else{{'motif://o.c?a=outurl&url='.urlencode($value['imgUrl'])}}@endif"
+                       data-impr='http://clk.motif.me/log.gif?t=designer.400001&m=H5_M2016-1&pin={{Session::get('user.pin')}}&uuid={{ Session::get('user.uuid') }}&v={"action":0,"skipType":{{$value['skipType']}},"skipId"{{$value['skipId']}},"expid":0,"index":{{$k}},"version":"1.0.1","ver":"9.2","src":"H5"}'
+                       data-clk='http://clk.motif.me/log.gif?t=designer.400001&m=H5_M2016-1&pin={{Session::get('user.pin')}}&uuid={{ Session::get('user.uuid') }}&v={"action":1,"skipType":{{$value['skipType']}},"skipId":{{$value['skipId']}},expid":0,"index":{{$k}},"version":"1.0.1","ver":"9.2","src":"H5"}'>
+                        <div @if($k!=0)class="p-y-10x"@endif>
+                            <img class="img-fluid"
+                                 src="{{env('APP_Api_Image')}}/n2/{{$value['imgPath']}}">
+                        </div>
+                    </a>
+                    @elseif($value['type']=='title')
                             <!-- 标题 -->
-                                <a href="@if($value['skipType']=='1')motif://o.c?a=pd&spu={{$value['skipId']}}@elseif($value['skipType']=='2')/designer/{{$value['skipId']}}@elseif($value['skipType']=='3')/topic/{{$value['skipId']}}@elseif($value['skipType']=='4')motif://o.c?a=shoppinglist&cid={{$value['skipId']}}@else{{'motif://o.c?a=outurl&url='.urlencode($value['imgUrl'])}}@endif"
-                                   data-impr='http://clk.motif.me/log.gif?t=designer.400001&m=H5_M2016-1&pin={{Session::get('user.pin')}}&uuid={{ Session::get('user.uuid') }}&v={"action":0,"skipType":{{$value['skipType']}},"skipId"{{$value['skipId']}},"expid":0,"version":"1.0.1","ver":"9.2","src":"H5"}'
-                                   data-clk='http://clk.motif.me/log.gif?t=designer.400001&m=H5_M2016-1&pin={{Session::get('user.pin')}}&uuid={{ Session::get('user.uuid') }}&v={"action":1,"skipType":{{$value['skipType']}},"skipId":{{$value['skipId']}},expid":0,"version":"1.0.1","ver":"9.2","src":"H5"}'>
-                                    <div class="p-x-15x p-y-10x text-primary">
-                                        <strong>{{$value['value']}}</strong>
+                    <a href="@if($value['skipType']=='1')motif://o.c?a=pd&spu={{$value['skipId']}}@elseif($value['skipType']=='2')/designer/{{$value['skipId']}}@elseif($value['skipType']=='3')/topic/{{$value['skipId']}}@elseif($value['skipType']=='4')motif://o.c?a=shoppinglist&cid={{$value['skipId']}}@else{{'motif://o.c?a=outurl&url='.urlencode($value['imgUrl'])}}@endif"
+                       data-impr='http://clk.motif.me/log.gif?t=designer.400001&m=H5_M2016-1&pin={{Session::get('user.pin')}}&uuid={{ Session::get('user.uuid') }}&v={"action":0,"skipType":{{$value['skipType']}},"skipId"{{$value['skipId']}},"expid":0,"index":{{$k}},"version":"1.0.1","ver":"9.2","src":"H5"}'
+                       data-clk='http://clk.motif.me/log.gif?t=designer.400001&m=H5_M2016-1&pin={{Session::get('user.pin')}}&uuid={{ Session::get('user.uuid') }}&v={"action":1,"skipType":{{$value['skipType']}},"skipId":{{$value['skipId']}},expid":0,"index":{{$k}},"version":"1.0.1","ver":"9.2","src":"H5"}'>
+                        <div class="p-x-15x p-y-10x text-primary">
+                            <strong>{{$value['value']}}</strong>
+                        </div>
+                    </a>
+                    @elseif($value['type']=='boxline')
+                        <hr class="hr-base m-x-5x m-y-0">
+                    @elseif($value['type']=='context')
+                                <!-- 描述 -->
+                        <a href="@if($value['skipType']=='1')motif://o.c?a=pd&spu={{$value['skipId']}}@elseif($value['skipType']=='2')/designer/{{$value['skipId']}}@elseif($value['skipType']=='3')/topic/{{$value['skipId']}}@elseif($value['skipType']=='4')motif://o.c?a=shoppinglist&cid={{$value['skipId']}}@else{{'motif://o.c?a=outurl&url='.urlencode($value['imgUrl'])}}@endif"
+                           data-impr='http://clk.motif.me/log.gif?t=designer.400001&m=H5_M2016-1&pin={{Session::get('user.pin')}}&uuid={{ Session::get('user.uuid') }}&v={"action":0,"skipType":{{$value['skipType']}},"skipId"{{$value['skipId']}},"expid":0,"index":{{$k}},"version":"1.0.1","ver":"9.2","src":"H5"}'
+                           data-clk='http://clk.motif.me/log.gif?t=designer.400001&m=H5_M2016-1&pin={{Session::get('user.pin')}}&uuid={{ Session::get('user.uuid') }}&v={"action":1,"skipType":{{$value['skipType']}},"skipId":{{$value['skipId']}},expid":0,"index":{{$k}},"version":"1.0.1","ver":"9.2","src":"H5"}'>
+                            <div class="p-x-15x p-y-10x text-primary font-size-sm">
+                                {{$value['value']}}
+                            </div>
+                        </a>
+                    @elseif($value['type']=='product')
+                        @if($value['style']=='box-vertical')
+                            {{-- 商品列表竖向 --}}
+                            @if(isset($value['spus']))
+                                @foreach($value['spus'] as $spu)
+                                    <div class="p-x-15x p-y-10x">
+                                        <a href="motif://o.c?a=pd&spu={{$spu}}">
+                                            <img class="img-fluid img-lazy"
+                                                 src="{{env('CDN_Static')}}/images/product/bg-product@336.png"
+                                                 data-original="{{env('APP_Api_Image')}}/n2/{{$product['spuInfos'][$spu]['spuBase']['main_image_url']}}"
+                                                 alt="{{$product['spuInfos'][$spu]['spuBase']['main_title']}}">
+                                        </a>
                                     </div>
-                                </a>
-                            @elseif($value['type']=='boxline')
-                                <hr class="hr-base m-x-5x m-y-0">
-                            @elseif($value['type']=='context')
-                            <!-- 描述 -->
-                                <a href="@if($value['skipType']=='1')motif://o.c?a=pd&spu={{$value['skipId']}}@elseif($value['skipType']=='2')/designer/{{$value['skipId']}}@elseif($value['skipType']=='3')/topic/{{$value['skipId']}}@elseif($value['skipType']=='4')motif://o.c?a=shoppinglist&cid={{$value['skipId']}}@else{{'motif://o.c?a=outurl&url='.urlencode($value['imgUrl'])}}@endif"
-                                   data-impr='http://clk.motif.me/log.gif?t=designer.400001&m=H5_M2016-1&pin={{Session::get('user.pin')}}&uuid={{ Session::get('user.uuid') }}&v={"action":0,"skipType":{{$value['skipType']}},"skipId"{{$value['skipId']}},"expid":0,"version":"1.0.1","ver":"9.2","src":"H5"}'
-                                   data-clk='http://clk.motif.me/log.gif?t=designer.400001&m=H5_M2016-1&pin={{Session::get('user.pin')}}&uuid={{ Session::get('user.uuid') }}&v={"action":1,"skipType":{{$value['skipType']}},"skipId":{{$value['skipId']}},expid":0,"version":"1.0.1","ver":"9.2","src":"H5"}'>
-                                    <div class="p-x-15x p-y-10x text-primary font-size-sm">
-                                        {{$value['value']}}
-                                    </div>
-                                </a>
-                            @elseif($value['type']=='product')
-                                @if($value['style']=='box-vertical')
-                                    {{-- 商品列表竖向 --}}
+                                @endforeach
+                            @endif
+                        @else
+                            {{-- 商品列表横向 --}}
+                            <div class="container-fluid p-x-15x">
+                                <div class="row">
                                     @if(isset($value['spus']))
-                                        @foreach($value['spus'] as $spu)
-                                            <div class="p-x-15x p-y-10x">
-                                                <a href="motif://o.c?a=pd&spu={{$spu}}">
-                                                    <img class="img-fluid img-lazy"
-                                                         src="{{env('CDN_Static')}}/images/product/bg-product@336.png"
-                                                         data-original="{{env('APP_Api_Image')}}/n2/{{$product['spuInfos'][$spu]['spuBase']['main_image_url']}}"
-                                                         alt="{{$product['spuInfos'][$spu]['spuBase']['main_title']}}">
+                                        @foreach($value['spus'] as $key => $spu)
+                                            <div class="col-xs-6">
+                                                <a href="motif://o.c?a=pd&spu={{$spu}}"
+                                                   data-clk='http://clk.motif.me/log.gif?t=designer.400001&m=H5_M2016-1&pin={{ Session::get('user.pin') }}&uuid={{ Session::get('user.uuid') }}&v={"action":1,"skipType":1,"skipId"{{$spu}},"expid":0,"index":{{$key}},"version":"1.0.1","ver":"9.2","src":"H5"}'
+                                                   data-impr='http://clk.motif.me/log.gif?t=designer.400001&m=H5_M2016-1&pin={{ Session::get('user.pin') }}&uuid={{ Session::get('user.uuid') }}&v={"action":0,"skipType":1,"skipId":{{$spu}},expid":0,"index":{{$key}},"version":"1.0.1","ver":"9.2","src":"H5"}'>
+                                                    <div class="p-t-10x">
+                                                        <img class="img-thumbnail img-lazy"
+                                                             src="/images/product/bg-product@336.png"
+                                                             data-original="{{env('APP_Api_Image')}}/n2/{{$product['spuInfos'][$spu]['spuBase']['main_image_url']}}"
+                                                             alt="{{$product['spuInfos'][$spu]['spuBase']['main_title']}}">
+                                                        <div class="p-y-10x">
+                                                            <span class="text-primary font-size-sm m-l-5x"><strong>${{number_format($product['spuInfos'][$spu]['skuPrice']['sale_price']/100,2)}}</strong></span>
+                                                            @if($product['spuInfos'][$spu]['skuPrice']['sale_price'] != $product['spuInfos'][$spu]['skuPrice']['price'])
+                                                                <span class="font-size-xs text-common text-throughLine m-l-5x">${{number_format($product['spuInfos'][$spu]['skuPrice']['price']/100,2)}}</span>
+                                                            @endif
+                                                        </div>
+                                                    </div>
                                                 </a>
                                             </div>
                                         @endforeach
                                     @endif
-                                @else
-                                    {{-- 商品列表横向 --}}
-                                    <div class="container-fluid p-x-15x">
-                                        <div class="row">
-                                            @if(isset($value['spus']))
-                                                @foreach($value['spus'] as $spu)
-                                                    <div class="col-xs-6">
-                                                        <a href="motif://o.c?a=pd&spu={{$spu}}"
-                                                           data-clk='http://clk.motif.me/log.gif?t=designer.400001&m=H5_M2016-1&pin={{ Session::get('user.pin') }}&uuid={{ Session::get('user.uuid') }}&v={"action":1,"skipType":1,"skipId"{{$spu}},"expid":0,"version":"1.0.1","ver":"9.2","src":"H5"}'
-                                                           data-impr='http://clk.motif.me/log.gif?t=designer.400001&m=H5_M2016-1&pin={{ Session::get('user.pin') }}&uuid={{ Session::get('user.uuid') }}&v={"action":0,"skipType":1,"skipId":{{$spu}},expid":0,"version":"1.0.1","ver":"9.2","src":"H5"}'>
-                                                            <div class="p-t-10x">
-                                                                <img class="img-thumbnail img-lazy"
-                                                                     src="/images/product/bg-product@336.png"
-                                                                     data-original="{{env('APP_Api_Image')}}/n2/{{$product['spuInfos'][$spu]['spuBase']['main_image_url']}}"
-                                                                     alt="{{$product['spuInfos'][$spu]['spuBase']['main_title']}}">
-                                                                <div class="p-y-10x">
-                                                                    <span class="text-primary font-size-sm m-l-5x"><strong>${{number_format($product['spuInfos'][$spu]['skuPrice']['sale_price']/100,2)}}</strong></span>
-                                                                    @if($product['spuInfos'][$spu]['skuPrice']['sale_price'] != $product['spuInfos'][$spu]['skuPrice']['price'])
-                                                                        <span class="font-size-xs text-common text-throughLine m-l-5x">${{number_format($product['spuInfos'][$spu]['skuPrice']['price']/100,2)}}</span>
-                                                                    @endif
-                                                                </div>
-                                                            </div>
-                                                        </a>
-                                                    </div>
-                                                @endforeach
-                                            @endif
-                                        </div>
-                                    </div>
-                                @endif
-                            @endif
-                        @endforeach
+                                </div>
+                            </div>
+                        @endif
+                    @endif
+                    @endforeach
                     @endif
 
                     @if(isset($productAll['data']['list']))
