@@ -42,9 +42,10 @@ class UserController extends ApiController
      * 跳转至注册页面
      *
      * */
-    public function register()
+    public function register(Request $request)
     {
-        return View('shopping.register');
+        $referer = $request->input('referer');
+        return View('shopping.register', ['referer' => $referer]);
     }
 
     /*
@@ -59,24 +60,18 @@ class UserController extends ApiController
         $email = $request->input('email');
         $params = array(
             'cmd' => 'signup',
-            'uuid' => @$_COOKIE['uid'],
+            'uuid' => $_COOKIE['uid'],
             'email' => $email,
             'pw' => md5($request->input('pw')),
             'nick' => $request->input('nick'),
             'token' => self::Token,
         );
         $result = $this->request('openapi', self::API_SYSTEM, self::API_SERVICE, $params);
-        /*        if (empty($result) ) {
-                    $result['success'] = false;
-                    $result['error_msg'] = "Data access failed";
-                    $result['data'] = array();
-                } else {
-                    if ($result['success']) {
-                        $result['redirectUrl'] = "/login";
-                    }
-                }*/
+
         if ($result['success']) {
-            $result['redirectUrl'] = "/login";
+            Session::forget('user');
+            Session::put('user', $result['data']);
+            $result['redirectUrl'] = ($request->input('referer') && !strstr($request->input('referer'), 'login')) ? $request->input('referer') : "/daily";
         } else {
             $result['prompt_msg'] = $result['error_msg'];
         }
@@ -93,7 +88,9 @@ class UserController extends ApiController
         if (Session::has('user')) {
             return redirect('/daily');
         }
+
         $referer = $request->input('url') ? $request->input('url') : $request->header('referer');
+        Session::put('redirectUrl', $referer);
         return view('shopping.login', ['referer' => $referer]);
     }
 
@@ -109,7 +106,7 @@ class UserController extends ApiController
         $email = $request->input('email');
         $params = array(
             'cmd' => "login",
-            'uuid' => @$_COOKIE['uid'],
+            'uuid' => $_COOKIE['uid'],
             'email' => $email,
             'pw' => md5($request->input('pw')),
             'token' => self::Token,
@@ -208,7 +205,7 @@ class UserController extends ApiController
     {
         $params = array(
             'cmd' => "forgetpwd",
-            'uuid' => @$_COOKIE['uid'],
+            'uuid' => $_COOKIE['uid'],
             'email' => $request->input('email'),
             'token' => self::Token,
             //'pin' => Session::get('user.pin'),
@@ -335,7 +332,7 @@ class UserController extends ApiController
         $cmd = 'list';
         $params = array(
             'cmd' => $cmd,
-            'uuid' => @$_COOKIE['uid'],
+            'uuid' => $_COOKIE['uid'],
             'token' => Session::get('user.token'),
             'pin' => Session::get('user.pin'),
         );

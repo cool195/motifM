@@ -53,7 +53,8 @@
         var $WarningInfo = $('.warning-info');
         var InputText = $Email.val();
         // 邮箱验证的正则表达式
-        var Reg = /^[a-z0-9]([a-z0-9]*[-_]?[a-z0-9]+)*@([a-z0-9]*[-_]?[a-z0-9]+)+[\.][a-z]{2,3}([\.][a-z]{2})?$/i;
+        //var Reg = /^[a-z0-9]([a-z0-9]*[-_]?[a-z0-9]+)*@([a-z0-9]*[-_]?[a-z0-9]+)+[\.][a-z]{2,3}([\.][a-z]{2})?$/i;
+        var Reg = /^[a-zA-Z0-9_-]+@([a-z0-9]*[-_]?[a-z0-9]+)+[\.][a-z]{2,3}([\.][a-z]{2})?$/i;
         if (InputText === '') {
             $WarningInfo.removeClass('off');
             $WarningInfo.children('span').html(EmailNull);
