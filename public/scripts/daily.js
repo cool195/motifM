@@ -42,7 +42,8 @@
                 data: {
                     cmd: 'list',
                     pagenum: NextNum,
-                    pagesize: 3
+                    pagesize: 3,
+                    puton: $('#puton').val(),
                 }
             })
             .done(function (data) {

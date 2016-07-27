@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Daily;
 use Illuminate\Http\Request;
 use App\Http\Controllers\ApiController;
 use Illuminate\Support\Facades\Session;
+
 class DailyController extends ApiController
 {
     //Daily首页列表
@@ -18,7 +19,7 @@ class DailyController extends ApiController
             'puton' => $request->input('puton', 1),
         );
         if (empty($params['cmd'])) {
-            return View('daily.index');
+            return View('daily.index', ['puton' => $params['puton']]);
         } else {
             $result = $this->request('openapi', '', 'daily', $params);
             if (empty($result)) {
@@ -31,7 +32,8 @@ class DailyController extends ApiController
     }
 
     //Daily无数据加载
-    public function recData(Request $request){
+    public function recData(Request $request)
+    {
         $params = array(
             'recid' => '100001',
             'pagesize' => $request->input('pagesize', 3),
@@ -58,7 +60,7 @@ class DailyController extends ApiController
             $view = 'daily.topic';
         }
 
-        return View($view, ['topic' => $result['data'], 'topicID' => $id, 'shareFlag'=>true]);
+        return View($view, ['topic' => $result['data'], 'topicID' => $id, 'shareFlag' => true]);
     }
 
     //商品详情动态模版
@@ -76,7 +78,7 @@ class DailyController extends ApiController
             $view = 'daily.topic';
         }
 
-        return View($view, ['topic' => $result['data'], 'topicID' => $id, 'shareFlag'=>false]);
+        return View($view, ['topic' => $result['data'], 'topicID' => $id, 'shareFlag' => false]);
     }
 }
 
