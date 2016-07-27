@@ -57,7 +57,7 @@ class AuthController extends ApiController
         );
         $result = $this->request('openapi', '', "user", $params);
         if ($result['success']) {
-            $result['redirectUrl'] = Session::get('user.referer') ? Session::get('user.referer') : "/daily";
+            $result['redirectUrl'] = Session::get('redirectUrl') ? Session::get('redirectUrl') : "/daily";
             Session::forget('user');
             Session::put('user', $result['data']);
         }
