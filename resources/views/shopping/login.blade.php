@@ -76,7 +76,7 @@
 </div>
 </body>
 <script src="{{env('CDN_Static')}}/scripts/vendor.js"></script>
-<script src="{{env('CDN_Static')}}/scripts/login.js?v=1"></script>
+<script src="{{env('CDN_Static')}}/scripts/login.js?v=2"></script>
 <meta name="csrf-token" content="{{ csrf_token() }}"/>
 <script>
     $.ajaxSetup({
