@@ -18,7 +18,12 @@ class OrderController extends ApiController
 
     public function orderSuccess(Request $request)
     {
-        return view('shopping.ordercheckout_success', ['orderid'=>$request->input('orderid')]);
+        $view = view('shopping.ordercheckout_success');
+        if($request->has('orderid')){
+            $result = $this->getOrderDetail($request->input('orderid'));
+            $view = view('shopping.ordercheckout_success', ['order'=>$result['data']]);
+        }
+        return $view;
     }
 
     public function getOrderList(Request $request)

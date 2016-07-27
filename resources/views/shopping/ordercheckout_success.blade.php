@@ -21,7 +21,7 @@
                     <div class="font-size-sm text-primary p-t-5x">A confirmation email has been sent to:</div>
                     <div class="font-size-sm text-primary m-b-20x"><strong>{{Session::get('user.login_email')}}</strong></div>
                     <p class="font-size-xs text-common m-b-15x p-t-10x">You can track
-                        <a href="@if(!empty($orderid))/order/orderdetail/{{$orderid}}@else /order/orderlist @endif" class="text-primary text-underLine">your order</a>
+                        <a href="@if(!empty($order))/order/orderdetail/{{$order['sub_order_no']}}@else /order/orderlist @endif" class="text-primary text-underLine">your order</a>
                         at any time by visting the Orders tab
                     </p>
                     <a href="/shopping" class="btn btn-primary btn-block btn-sm" type="submit">Continue Shopping</a>
@@ -46,27 +46,27 @@
 </script>
 @include('global')
 
+@if(!empty($order))
 <script type="text/javascript">
     window.dataLayer = window.dataLayer || [];
     dataLayer.push({
-        'transactionId': '1234',
-        'transactionAffiliation': 'Acme Clothing',
-        'transactionTotal': 38.26,
-        'transactionTax': 1.29,
-        'transactionShipping': 5,
-        'transactionProducts': [{
-            'sku': 'DD44',
-            'name': 'T-Shirt',
-            'category': 'Apparel',
-            'price': 11.99,
-            'quantity': 1
-        },{
-            'sku': 'AA1243544',
-            'name': 'Socks',
-            'category': 'Apparel',
-            'price': 9.99,
-            'quantity': 2
-        }]
+        'transactionId': '{{ $order['sub_order_no'] }}',
+        'transactionAffiliation': 'Online Store',
+        'transactionTotal': '{{ number_format($order['total_amount'] / 100, 2) }}',
+        'transactionTax': 0,
+        'transactionShipping': '{{ number_format($order['freight_amount'] / 100, 2) }}',
+        'transactionProducts': [
+            @foreach($order['lineOrderList'] as $lineOrder)
+            {
+                'sku': '{{ $lineOrder['sku'] }}',
+                'name': '{{ $lineOrder['main_title'] }}',
+                'category': '',
+                'price': '{{ number_format($lineOrder['sale_price'] / 100, 2) }}',
+                'quantity': '{{ $lineOrder['sale_qtty'] }}'
+            },
+            @endforeach
+        ]
     });
 </script>
+@endif
 </html>

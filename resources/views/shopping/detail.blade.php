@@ -137,7 +137,7 @@
                     <p class="font-size-md text-main"><strong>Description</strong></p>
                     <div class="font-size-sm text-primary">
                         <div class="message-info">
-                            <p class="m-b-0"><?php  echo str_replace("\n", "<br/>",  $data['intro_short']) ?></p>
+                            <p class="m-b-0">{!! str_replace("\n", "<br/>",  $data['intro_short']) !!}</p>
                         </div>
                         <a class="flex flex-alignCenter flex-fullJustified font-size-xs p-t-5x text-common btn-showMore">
                             <span class="showMore">Show More</span>
