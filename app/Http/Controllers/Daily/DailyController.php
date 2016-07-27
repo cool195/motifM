@@ -15,6 +15,7 @@ class DailyController extends ApiController
             'token' => Session::get('user.token'),
             'pagesize' => $request->input('pagesize', 10),
             'pagenum' => $request->input('pagenum', 1),
+            'puton' => $request->input('puton', 1),
         );
         if (empty($params['cmd'])) {
             return View('daily.index');
