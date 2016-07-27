@@ -20,6 +20,7 @@
         <div class="text-main text-center p-t-10x m-b-20x p-b-5x"><strong>Create Your Account</strong></div>
 
         <form id="register">
+            <input type="hidden" name="referer" value="{{$referer}}">
             <div class="warning-info off flex text-warning flex-alignCenter text-left m-b-10x">
                 <i class="iconfont icon-caveat icon-size-md p-r-5x"></i>
                 <span class="font-size-xs"></span>

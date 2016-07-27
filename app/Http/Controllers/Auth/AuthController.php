@@ -15,7 +15,7 @@ class AuthController extends ApiController
     {
         $params = array(
             'cmd' => 'tplogin',
-            'uuid' => @$_COOKIE['uid'],
+            'uuid' => $_COOKIE['uid'],
             'type' => 4,
             'token' => self::Token,
         );
@@ -30,7 +30,7 @@ class AuthController extends ApiController
         );
         $result = $this->request('openapi', '', "user", $params);
         if ($result['success']) {
-            $result['redirectUrl'] = "/daily";
+            $result['redirectUrl'] = Session::get('user.referer') ? Session::get('user.referer') : "/daily";
             Session::forget('user');
             Session::put('user', $result['data']);
         }
@@ -42,7 +42,7 @@ class AuthController extends ApiController
     {
         $params = array(
             'cmd' => 'tplogin',
-            'uuid' => @$_COOKIE['uid'],
+            'uuid' => $_COOKIE['uid'],
             'type' => 2,
             'token' => self::Token,
         );
@@ -57,7 +57,7 @@ class AuthController extends ApiController
         );
         $result = $this->request('openapi', '', "user", $params);
         if ($result['success']) {
-            $result['redirectUrl'] = "/daily";
+            $result['redirectUrl'] = Session::get('user.referer') ? Session::get('user.referer') : "/daily";
             Session::forget('user');
             Session::put('user', $result['data']);
         }

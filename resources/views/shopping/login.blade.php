@@ -46,7 +46,7 @@
         <div class="container-fluid p-a-0 m-t-20x">
             <div class="row">
                 <div class="col-xs-6">
-                    <a class="btn btn-primary-outline btn-lg btn-block" href="/register" id="register">Register</a>
+                    <a class="btn btn-primary-outline btn-lg btn-block" href="{{'/register?referer='.$referer}}" id="register">Register</a>
                 </div>
                 <div class="col-xs-6">
                     <div class="btn btn-primary btn-lg btn-block" data-role="submit" id="login">Sign in</div>
