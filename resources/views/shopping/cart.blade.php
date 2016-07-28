@@ -134,7 +134,9 @@
                     <a href="/cart/ordercheckout" class="btn btn-primary btn-block @if($cartData['pay_amount'] <= 0) disabled @endif" type="submit">Proceed to
                         Checkout</a>
                 </section>
-
+            <script>
+                var totalPrice="${{ number_format($cartData['pay_amount'] / 100, 2)}}";
+            </script>
         @endif
 
         @if(!empty($saveData['showSkus']))
