@@ -35,7 +35,7 @@
                          class="designer-realImg" hidden>
                     <img style="height: 100%" class="img-fluid img-lazy designer-Img"
                          data-original="{{env('APP_Api_Image')}}/n2/{{$designer['img_video_path']}}"
-                         src="{{env('CDN_Static')}}/images/designer/bg-designer@750x550.png" alt="">
+                         src="{{env('APP_Api_Image')}}/n4/{{$designer['img_video_path']}}" alt="">
                 @endif
             </div>
 

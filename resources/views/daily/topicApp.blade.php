@@ -20,8 +20,8 @@
                         <div @if($k!=0)class="p-y-10x"@endif>
                             <a href="@if($value['skipType']=='1')motif://o.c?a=pd&spu={{$value['skipId']}}@elseif($value['skipType']=='2')/designer/{{$value['skipId']}}@elseif($value['skipType']=='3')/topic/{{$value['skipId']}}@elseif($value['skipType']=='4')motif://o.c?a=shoppinglist&cid={{$value['skipId']}}@else{{'motif://o.c?a=outurl&url='.urlencode($value['imgUrl'])}}@endif">
                                 <img class="img-fluid img-lazy"
-                                     data-original="{{env('APP_Api_Image')}}/n0/{{$value['imgPath']}}"
-                                     src="{{env('CDN_Static')}}/images/product/bg-product@750.png"
+                                     data-original="{{env('APP_Api_Image')}}/n1/{{$value['imgPath']}}"
+                                     src="{{env('APP_Api_Image')}}/n4/{{$value['imgPath']}}"
                                      alt="">
                             </a>
                         </div>
@@ -49,8 +49,8 @@
                                     <div class="p-x-15x p-y-10x">
                                         <a href="motif://o.c?a=pd&spu={{$spu}}">
                                             <img class="img-fluid img-lazy"
-                                                 data-original="{{env('APP_Api_Image')}}/n0/{{$topic['spuInfos'][$spu]['spuBase']['main_image_url']}}"
-                                                 src="{{env('CDN_Static')}}/images/product/bg-product@750.png"
+                                                 data-original="{{env('APP_Api_Image')}}/n1/{{$topic['spuInfos'][$spu]['spuBase']['main_image_url']}}"
+                                                 src="{{env('APP_Api_Image')}}/n4/{{$topic['spuInfos'][$spu]['spuBase']['main_image_url']}}"
                                                  alt="{{$topic['spuInfos'][$spu]['spuBase']['main_title']}}">
                                         </a>
                                     </div>
@@ -58,8 +58,8 @@
                             @else
                                 <a href="@if($value['skipType']=='1')motif://o.c?a=pd&spu=@elseif($value['skipType']=='2')/designer/@elseif($value['skipType']=='3')/topic/@elseif($value['skipType']=='4')motif://o.c?a=shoppinglist&cid=@endif{{$value['skipId']}}">
                                     <img class="img-fluid img-lazy"
-                                         data-original="{{env('APP_Api_Image')}}/n0/{{$value['imgPath']}}"
-                                         src="{{env('CDN_Static')}}/images/product/bg-product@750.png"
+                                         data-original="{{env('APP_Api_Image')}}/n1/{{$value['imgPath']}}"
+                                         src="{{env('APP_Api_Image')}}/n4/{{$value['imgPath']}}"
                                          alt="">
                                 </a>
                             @endif
@@ -79,7 +79,7 @@
                                                                  alt="{{$topic['spuInfos'][$spu]['spuBase']['main_title']}}">
                                                             @if($topic['spuInfos'][$spu]['skuPrice']['price'] != $topic['spuInfos'][$spu]['skuPrice']['sale_price'])
                                                                 <div class="price-off">
-                                                                    <img class="img-fluid" src="{{env('APP_Api_Image')}}/n0/{{ $topic['spuInfos'][$spu]['skuPrice']['skuPromotion']['logo_path']}}" alt="">
+                                                                    <img class="img-fluid" src="{{env('APP_Api_Image')}}/n1/{{ $topic['spuInfos'][$spu]['skuPrice']['skuPromotion']['logo_path']}}" alt="">
                                                                 </div>
                                                             @endif
                                                         </div>
