@@ -6,6 +6,38 @@
 
 </head>
 <body>
+@if(!empty($order))
+    <script type="text/javascript">
+        window.dataLayer = window.dataLayer || [];
+        dataLayer.push({
+            'ecommerce': {
+                'purchase': {
+                    'actionField': {
+                        'id': '{{ $order['sub_order_no'] }}',
+                        'affiliation': 'Online Store',
+                        'revenue': '{{ number_format($order['total_amount'] / 100, 2) }}',
+                        'tax': '0',
+                        'shipping': '{{ number_format($order['freight_amount'] / 100, 2) }}',
+                        'coupon': ''
+                    },
+                    'products': [
+                            @foreach($order['lineOrderList'] as $lineOrder)
+                        {
+                            'name': '{{ $lineOrder['main_title'] }}',
+                            'sku': '{{ $lineOrder['sku'] }}',
+                            'price': '{{ number_format($lineOrder['sale_price'] / 100, 2) }}',
+                            'brand': 'Motif',
+                            'category': '',
+                            'quantity': '{{ $lineOrder['sale_qtty'] }}'
+                        },
+                        @endforeach
+                    ]
+                }
+            }
+        });
+    </script>
+@endif
+
 @include('check.tagmanager')
         <!-- 外层容器 -->
 <div id="body-content">
@@ -48,55 +80,4 @@
     })
 </script>
 @include('global')
-
-@if(!empty($order))
-    <script type="text/javascript">
-        window.dataLayer = window.dataLayer || [];
-        {{--dataLayer.push({--}}
-            {{--'transactionId': '{{ $order['sub_order_no'] }}',--}}
-            {{--'transactionAffiliation': 'Online Store',--}}
-            {{--'transactionTotal': '{{ number_format($order['total_amount'] / 100, 2) }}',--}}
-            {{--'transactionTax': 0,--}}
-            {{--'transactionShipping': '{{ number_format($order['freight_amount'] / 100, 2) }}',--}}
-            {{--'transactionProducts': [--}}
-                    {{--@foreach($order['lineOrderList'] as $lineOrder)--}}
-                {{--{--}}
-                    {{--'sku': '{{ $lineOrder['sku'] }}',--}}
-                    {{--'name': '{{ $lineOrder['main_title'] }}',--}}
-                    {{--'category': '',--}}
-                    {{--'price': '{{ number_format($lineOrder['sale_price'] / 100, 2) }}',--}}
-                    {{--'quantity': '{{ $lineOrder['sale_qtty'] }}'--}}
-                {{--},--}}
-                {{--@endforeach--}}
-            {{--]--}}
-        {{--});--}}
-        dataLayer.push({
-            'ecommerce': {
-                'purchase': {
-                    'actionField': {
-                        'id': '{{ $order['sub_order_no'] }}',                         // Transaction ID. Required for purchases and refunds.
-                        'affiliation': 'Online Store',
-                        'revenue': '{{ number_format($order['total_amount'] / 100, 2) }}',                     // Total transaction value (incl. tax and shipping)
-                        'tax': '0',
-                        'shipping': '{{ number_format($order['freight_amount'] / 100, 2) }}',
-                        'coupon': ''
-                    },
-                    'products': [
-                            @foreach($order['lineOrderList'] as $lineOrder)
-                        {
-                            'name': '{{ $lineOrder['main_title'] }}',
-                            'id': '{{ $lineOrder['sku'] }}',
-                            'price': '{{ number_format($lineOrder['sale_price'] / 100, 2) }}',
-                            'brand': 'Motif',
-                            'category': '',
-                            'variant': '',
-                            'quantity': '{{ $lineOrder['sale_qtty'] }}'
-                        },
-                        @endforeach
-                    ]
-                }
-            }
-        });
-    </script>
-@endif
 </html>
