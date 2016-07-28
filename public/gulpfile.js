@@ -7,10 +7,10 @@ var imagemin = require('gulp-imagemin'),//图片压缩
     minifycss = require('gulp-minify-css'),//css压缩
     uglify = require('gulp-uglify'),//js压缩
     concat = require('gulp-concat'),//文件合并
-    rename = require('gulp-rename'),//文件更名
+    rename = require('gulp-rename');//文件更名
 
 // 压缩图片
-gulp.task('img', function() {
+    gulp.task('img', function() {
     return gulp.src('images/*/*')
         .pipe(imagemin({
             progressive: true,
