@@ -35,7 +35,7 @@
                          class="designer-realImg" hidden>
                     <img style="height: 100%" class="img-fluid img-lazy designer-Img"
                          data-original="{{env('APP_Api_Image')}}/n2/{{$designer['img_video_path']}}"
-                         src="{{env('APP_Api_Image')}}/n4/{{$designer['img_video_path']}}" alt="">
+                         src="{{env('CDN_Static')}}/images/designer/bg-designer@750x550.png" alt="">
                 @endif
             </div>
 
@@ -153,7 +153,7 @@
                                                                     @if($product['spuInfos'][$spu]['skuPrice']['sale_price'] != $product['spuInfos'][$spu]['skuPrice']['price'])
                                                                         <div class="price-off">
                                                                             <img class="img-fluid"
-                                                                                 src="{{env('APP_Api_Image')}}/n0/{{ $product['spuInfos'][$spu]['skuPrice']['skuPromotion']['logo_path']}}"
+                                                                                 src="{{env('APP_Api_Image')}}/n1/{{ $product['spuInfos'][$spu]['skuPrice']['skuPromotion']['logo_path']}}"
                                                                                  alt="">
                                                                         </div>
                                                                     @endif
@@ -194,7 +194,7 @@
                                                     @if($value['skuPrice']['sale_price'] != $value['skuPrice']['price'])
                                                         <div class="price-off">
                                                             <img class="img-fluid"
-                                                                 src="{{env('APP_Api_Image')}}/n0/{{ $value['skuPrice']['skuPromotion']['logo_path']}}"
+                                                                 src="{{env('APP_Api_Image')}}/n1/{{ $value['skuPrice']['skuPromotion']['logo_path']}}"
                                                                  alt="">
                                                         </div>
                                                     @endif
