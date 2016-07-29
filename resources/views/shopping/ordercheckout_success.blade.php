@@ -39,6 +39,9 @@
 @endif
 
 @include('check.tagmanager')
+<script>
+    var totalPrice="{{ number_format($order['total_amount'] / 100, 2) }}";
+</script>
         <!-- 外层容器 -->
 <div id="body-content">
     <!-- 展开的汉堡菜单 -->
