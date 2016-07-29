@@ -135,7 +135,7 @@
                         Checkout</a>
                 </section>
             <script>
-                var totalPrice="${{ number_format($cartData['pay_amount'] / 100, 2)}}";
+                var totalPrice="{{ number_format($cartData['pay_amount'] / 100, 2)}}";
             </script>
         @endif
 
