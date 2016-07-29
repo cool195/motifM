@@ -85,7 +85,7 @@
         var scrollCurrent = window.pageYOffset,
             scrollMax = $(document).height() - $(window).height();
         // 当页面在底部区域时, 触发加载事件
-        if (scrollCurrent !== scrollMax && scrollMax <= 200 + scrollCurrent) {
+        if (scrollCurrent !== scrollMax && scrollMax <= 300 + scrollCurrent) {
             listLoading();
         }
     }

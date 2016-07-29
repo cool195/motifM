@@ -154,6 +154,6 @@
 </template>
 <script src="{{env('CDN_Static')}}/scripts/vendor.js"></script>
 
-<script src="{{env('CDN_Static')}}/scripts/shoppingList.js?v=1"></script>
+<script src="{{env('CDN_Static')}}/scripts/shoppingList.js?v=2"></script>
 @include('global')
 </html>
