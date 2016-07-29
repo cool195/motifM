@@ -30,7 +30,7 @@
         //  Size 当前页显示条数
         var $DesignerContainer = $('#designerContainer'),
             Start = $DesignerContainer.data('start'),
-            Size = 3;
+            Size = 10;
         // 判断是否还有数据要加载
         if (Start === -1) {
             return;
@@ -110,7 +110,7 @@
         var scrollCurrent = window.pageYOffset,
             scrollMax = $(document).height() - $(window).height();
         // 当页面在底部区域时, 触发加载事件
-        if (scrollCurrent !== scrollMax & scrollMax <= 100 + scrollCurrent) {
+        if (scrollCurrent !== scrollMax & scrollMax <= 300 + scrollCurrent) {
             getDesignerList();
         }
     }
