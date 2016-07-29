@@ -110,6 +110,6 @@
 
 <script src="{{env('CDN_Static')}}/scripts/vendor.js"></script>
 
-<script src="{{env('CDN_Static')}}/scripts/orderList.js"></script>
+<script src="{{env('CDN_Static')}}/scripts/orderList.js?v=1"></script>
 @include('global')
 </html>
