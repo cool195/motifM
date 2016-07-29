@@ -119,7 +119,7 @@
 
                 <hr class="hr-base">
                 <div class="flex font-size-sm text-primary p-a-10x order-option" data-form-action="/cart/coupon">
-                    <span class="checkoutInfo-subTitle flex-fixedShrink">Promotion Code</span>
+                    <span class="checkoutInfo-subTitle flex-fixedShrink">Promotion code</span>
                     <div class="checkoutInfo-content flex flex-fullJustified flex-alignCenter">
                         <span>{{ $cps }}</span>
                         <i class="iconfont icon-arrow-right icon-size-xm text-common p-r-15x"></i>
@@ -128,7 +128,7 @@
                 </div>
                 <hr class="hr-base">
                 <div class="flex font-size-sm text-primary p-a-10x order-option" data-form-action="/cart/message">
-                    <span class="checkoutInfo-subTitle flex-fixedShrink">Special Request(optional)</span>
+                    <span class="checkoutInfo-subTitle flex-fixedShrink">Special request (optional)</span>
                     <div class="checkoutInfo-content flex flex-fullJustified flex-alignCenter">
                         <span class="text-truncate">{{$remark}}</span>
                         <i class="iconfont icon-arrow-right icon-size-xm text-common p-r-15x flex-fixedShrink"></i>
@@ -140,7 +140,7 @@
             <!-- 结算总价 -->
             <aside class="bg-white p-a-10x m-b-10x">
                 <div class="flex flex-fullJustified text-primary font-size-sm">
-                    <span>Items({{$data['total_sku_qtty']}})</span><span>${{ number_format(($data['total_amount'] / 100), 2)}}</span>
+                    <span>Items ({{$data['total_sku_qtty']}})</span><span>${{ number_format(($data['total_amount'] / 100), 2)}}</span>
                 </div>
                 @if($data['vas_amount'] > 0)
                 <div class="flex flex-fullJustified text-primary font-size-sm">

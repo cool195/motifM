@@ -103,7 +103,6 @@
                 </div>
             </section>
             <!-- 页脚 功能链接 -->
-            @include('footer')
         </div>
     </div>
 

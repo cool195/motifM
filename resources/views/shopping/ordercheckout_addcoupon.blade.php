@@ -31,7 +31,7 @@
             </section>
         </div>
     </div>
-@include('footer')
+
     <!-- loading 效果 -->
     <div class="loading loading-screen loading-switch loading-hidden">
         <div class="loader loader-screen"></div>

@@ -38,7 +38,7 @@
             </section>
 
 <!-- 页脚 功能链接 start-->
-@include('footer')
+
 <!-- 页脚 功能链接 end-->
         </div>
     </div>

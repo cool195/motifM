@@ -67,7 +67,6 @@
             </section>
 
             <!-- 页脚 功能链接 -->
-            @include('footer')
         </div>
     </div>
     <!-- 弹出选择 size color Engraving -->
