@@ -54,7 +54,7 @@
                     </fieldset>
                     <hr class="hr-base m-a-0">
                     <fieldset>
-                        <input class="form-control form-control-block p-a-15x font-size-sm" name="tel" type="tel" maxlength="20" data-optional="true" value="{{!empty($input['tel']) ? $input['tel'] : ""}}" placeholder="Phone (optional)">
+                        <input class="form-control form-control-block p-a-15x font-size-sm" name="tel" type="tel" maxlength="20" data-optional="false" value="{{!empty($input['tel']) ? $input['tel'] : ""}}" placeholder="Phone">
                     </fieldset>
                     <hr class="hr-base m-a-0">
                     <fieldset>
