@@ -53,7 +53,7 @@
                     </fieldset>
                     <hr class="hr-base m-a-0">
                     <fieldset>
-                        <input class="form-control form-control-block p-a-15x font-size-sm" maxlength="20" data-optional="false" name="tel" type="text" value="{{$input['telephone']}}" placeholder="Phone">
+                        <input class="form-control form-control-block p-a-15x font-size-sm" maxlength="20" data-optional="false" name="tel" type="text" data-role="Phone" value="{{$input['telephone']}}" placeholder="Phone">
                     </fieldset>
                     <hr class="hr-base m-a-0">
                     <fieldset>
