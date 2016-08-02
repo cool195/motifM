@@ -491,11 +491,10 @@ class CartController extends ApiController
 
 	public function getShippingMethodByStypeOrDefault($stype)
 	{
-		$defaultStype = 1;
 		$method = array();
 		$methodList = $this->getShippingMethod();
 		if( !empty($methodList) ){
-			$method = $methodList[$defaultStype];
+			$method = current($methodList);
 			if(isset($methodList[$stype])){
 				$method = $methodList[$stype];
 			}
