@@ -176,7 +176,7 @@
                             Jockey.send("action", {
                                 name: "updateWish",
                                 token: "key",
-                                data: {"spu": $this.data('id'), "isAdd": data.cmd}
+                                data: {"spu": $this.data('id').toString(), "isAdd": data.cmd}
                             });
                         }
                     })
