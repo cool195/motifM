@@ -94,7 +94,7 @@
                                                             @if(Session::get('user.pin'))
                                                                 <span class="font-size-xs text-common text-throughLine m-l-5x" id="{{'wish'.$spu}}">no</span>
                                                             @else
-                                                                <span class="font-size-xs text-common text-throughLine m-l-5x" id="sendLogin">login</span>
+                                                                <a id="sendLogin">login</a>
                                                             @endif
                                                         </div>
                                                     </div>
