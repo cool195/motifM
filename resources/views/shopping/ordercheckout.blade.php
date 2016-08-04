@@ -169,7 +169,7 @@
 
             <!-- 结算按钮 -->
             <aside class="bg-white m-t-10x p-a-10x">
-                <div class="btn btn-primary btn-block @if(empty($paym) || empty($addr) || "" == $paym || "" == $addr) disabled @endif"  data-role="submit">Pay with PayPal</div>
+                <div class="btn btn-primary btn-block @if(empty($paym) || empty($addr) || "" == $paym || "" == $addr) disabled @endif"  data-role="submit">Pay Now</div>
             </aside>
         </section>
         <!-- 页脚 功能链接 start-->
