@@ -146,7 +146,6 @@
                             }
                         });
                     } else if (actionName.name == "addWish") {
-                        alert(actionName.data.spu)
                         var spus = actionName.data.spu.split(',');
                         $.each(spus, function (n, value) {
                             $('#wish' + value).html('yes');
@@ -174,6 +173,11 @@
                     .done(function (data) {
                         if (data.success) {
                             $this.html('yes');
+                            Jockey.send("action", {
+                                name: "updateWish",
+                                token: "key",
+                                data: {"spu": $this.data('id'), "isAdd": data.cmd}
+                            });
                         }
                     })
         });
@@ -181,7 +185,6 @@
         @if(Session::get('user.pin'))
             var spuStr = $('#spuArray').val().replace("[", "");
             spuStr = spuStr.replace("]", "");
-            alert(spuStr)
             Jockey.send("action", {
                 name: "checkWish",
                 token: "key",
