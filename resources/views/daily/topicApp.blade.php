@@ -166,7 +166,6 @@
 
         $('.wish').on('click', function () {
             $this = $(this);
-            alert($this.data('id'))
             $.ajax({
                 url: '/wish/' + $this.data('id'),
                 type: 'GET'
