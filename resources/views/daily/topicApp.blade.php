@@ -134,6 +134,7 @@
         });
 
         Jockey.on("action", function (actionName) {
+            alert(actionName)
                     if (actionName.name == "menuClick" && actionName.data.name == "share") {
                         Jockey.send("action", {
                             name: "share",
@@ -151,6 +152,7 @@
                             $('#wish' + value).html('yes');
                         });
                     } else if (actionName.name == "authInfo") {
+                        alert(actionName)
                         window.location.href = "http://m.motif.me/topic/{{$topicID}}?token=" + action.data.token + "&pin=" + action.data.pin + "&email=" + action.data.email + "&name=" + decodeURIComponent(action.data.name)
                     }
                 }
