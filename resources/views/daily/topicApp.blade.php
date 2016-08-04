@@ -172,7 +172,7 @@
             })
                     .done(function (data) {
                         if (data.success) {
-                            $this.html('yes');
+                            data.cmd ? $this.html('yes') : $this.html('no');
                             Jockey.send("action", {
                                 name: "updateWish",
                                 token: "key",
