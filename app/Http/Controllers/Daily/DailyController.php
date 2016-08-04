@@ -46,7 +46,7 @@ class DailyController extends ApiController
     }
 
     //动态模版专题详情
-    public function show($id)
+    public function show(Request $request, $id)
     {
         $params = array(
             'id' => $id
@@ -54,7 +54,36 @@ class DailyController extends ApiController
 
         $result = $this->request('openapi', 'topicf', "content", $params);
         $view = '';
+
         if (strstr($_SERVER['HTTP_USER_AGENT'], 'motif-android') || strstr($_SERVER['HTTP_USER_AGENT'], 'motif-ios')) {
+            if ($request->input('token') || !empty($_COOKIE['PIN'])) {
+                if ($request->input('token')) {
+                    Session::put('user', array(
+                        'login_email' => $request->input('email'),
+                        'nickname' => $request->input('name'),
+                        'pin' => $request->input('pin'),
+                        'token' => $request->input('token'),
+                        'uuid' => $_COOKIE['uid'],
+                    ));
+                } else {
+                    Session::put('user', array(
+                        'login_email' => $_COOKIE['EMAIL'],
+                        'nickname' => urldecode($_COOKIE['NAME']),
+                        'pin' => $_COOKIE['PIN'],
+                        'token' => $_COOKIE['TOKEN'],
+                        'uuid' => $_COOKIE['UUID'],
+                    ));
+                }
+                $spuArray = array();
+                foreach ($result['data']['infos'] as $value) {
+                    if (isset($value['spus'])) {
+                        $spuArray = array_merge($value['spus'], $spuArray);
+                    }
+                }
+                $result['data']['spuArray'] = json_encode($spuArray);
+            } else {
+                Session::forget('user');
+            }
             $view = 'daily.topicApp';
         } else {
             $view = 'daily.topic';

@@ -104,6 +104,7 @@
         </section>
     </div>
 </div>
+<input type="hidden" id="spuArray" value="{{$topic['spuArray']}}">
 </body>
 <script src="{{env('CDN_Static')}}/scripts/vendor.js"></script>
 <script src="{{env('CDN_Static')}}/scripts/JockeyJS.js"></script>
@@ -136,9 +137,35 @@
                                 "url": "http://m.motif.me/topic/{{$topicID}}"
                             }
                         });
+                    }else if(actionName.name == "addWish"){
+                        alert(actionName.data.spu)
                     }
                 }
         );
+
+        Jockey.on("action", function (action) {
+            //login
+            if (action.name == "authInfo") {
+                window.location.href = "http://m.motif.me/topic/{{$topicID}}?token=" + action.data.token + "&pin=" + action.data.pin + "&email=" + action.data.email + "&name=" + decodeURIComponent(action.data.name)
+            }
+        });
+
+        //login send
+        $('#sendLogin').on('click', function () {
+            Jockey.send("action", {
+                name: "login",
+                token: "key",
+            });
+        })
+
+        @if(Session::has('user'))
+            Jockey.send("action", {
+                name: "checkWish",
+                token: "key",
+                data: {"spu": actionsShow,"callback":'addWish'}
+            });
+        @endif
+
     </script>
 @endif
 @include('global')
