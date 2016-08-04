@@ -34,22 +34,24 @@
                                 <strong>{{$value['value']}}</strong>
                             </div>
                         </a>
-                    @elseif($value['type']=='boxline')
+                @elseif($value['type']=='boxline')
                         <hr class="hr-base m-x-5x m-y-0">
-                    @elseif($value['type']=='context')
+                @elseif($value['type']=='context')
                     <!-- 描述 -->
                         <a href="@if($value['skipType']=='1')/detail/@elseif($value['skipType']=='2')/designer/@elseif($value['skipType']=='3')/topic/@elseif($value['skipType']=='4')/shopping#@endif{{$value['skipId']}}">
                             <div class="p-x-15x p-y-10x text-primary font-size-sm">
                                 {{$value['value']}}
                             </div>
                         </a>
-                    @elseif($value['type']=='product')
+                @elseif($value['type']=='product')
                         @if($value['style']=='box-vertical')
                             {{-- 商品列表竖向 --}}
                             @if(isset($value['spus']))
                                 @foreach($value['spus'] as $spu)
                                     <div class="p-x-15x p-y-10x">
-                                        <a href="/detail/{{$spu}}">
+                                        <a data-impr='http://clk.motif.me/log.gif?t=daily.200001&m=H5_M2016-1&pin={{Session::get('user.pin')}}&uuid={{ Session::get('user.uuid') }}&v={"action":0,"skipType":1,"skipId":{{$spu}},"topicId":{{$topicID}},"expid":0,"ver":"1.0.1","src":"H5"}'
+                                           data-clk='http://clk.motif.me/log.gif?t=daily.200001&m=H5_M2016-1&pin={{Session::get('user.pin')}}&uuid={{Session::get('user.uuid')}}&v={"action":1,"skipType":1,"skipId":{{$spu}},"topicId":{{$topicID}},"expid":0,"ver":"1.0.1","src":"H5"}'
+                                           href="/detail/{{$spu}}">
                                             <img class="img-fluid img-lazy"
                                                  data-original="{{env('APP_Api_Image')}}/n1/{{$topic['spuInfos'][$spu]['spuBase']['main_image_url']}}"
                                                  src="{{env('CDN_Static')}}/images/product/bg-product@750.png"
@@ -71,7 +73,9 @@
                                     @if(isset($value['spus']))
                                         @foreach($value['spus'] as $spu)
                                             <div class="col-xs-6">
-                                                <a href="/detail/{{$spu}}">
+                                                <a data-impr='http://clk.motif.me/log.gif?t=daily.200001&m=H5_M2016-1&pin={{Session::get('user.pin')}}&uuid={{ Session::get('user.uuid') }}&v={"action":0,"skipType":1,"skipId":{{$spu}},"topicId":{{$topicID}},"expid":0,"ver":"1.0.1","src":"H5"}'
+                                                   data-clk='http://clk.motif.me/log.gif?t=daily.200001&m=H5_M2016-1&pin={{Session::get('user.pin')}}&uuid={{Session::get('user.uuid')}}&v={"action":1,"skipType":1,"skipId":{{$spu}},"topicId":{{$topicID}},"expid":0,"ver":"1.0.1","src":"H5"}'
+                                                   href="/detail/{{$spu}}">
                                                     <div class="p-t-10x productList-item m-b-0">
                                                         <div class="image-container">
                                                             <img class="img-thumbnail img-lazy"
@@ -98,9 +102,9 @@
                                 </div>
                             </div>
                         @endif
-                    @endif
-                @endforeach
-            @endif
+                @endif
+            @endforeach
+        @endif
         </section>
         <!-- 页脚 功能链接 -->
         @include('footer')

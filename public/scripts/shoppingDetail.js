@@ -693,6 +693,7 @@
             'VAList': [] // 增值服务
         };
 
+
         var i = 0;
         var VarList = [];
 
@@ -762,7 +763,7 @@
     }
 
     // 添加购物车 购买商品
-    $('[data-role]').on('click', function (e) {
+    $('[data-role="continue"]').on('click', function (e) {
         if (!$(e.target).hasClass('disabled')) {
             $(e.target).addClass('disabled');
             var Action = $(e.target).data('action');
