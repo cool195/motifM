@@ -151,10 +151,7 @@
                             $('#wish' + value).html('yes');
                         });
                     } else if (actionName.name == "authInfo") {
-                        alert(actionName.name)
-                        //location.href = "http://test.m.motif.me/topic/{{$topicID}}?token=" + action.data.token + "&pin=" + action.data.pin + "&email=" + action.data.email + "&name=" + decodeURIComponent(action.data.name)
-                        alert("http://test.m.motif.me/topic/{{$topicID}}?token=" + action.data.token + "&pin=" + action.data.pin + "&email=" + action.data.email + "&name=" + decodeURIComponent(action.data.name))
-                        //alert(location.href);
+                        window.location.href = "http://test.m.motif.me/topic/{{$topicID}}?token=" + actionName.data.token + "&pin=" + actionName.data.pin + "&email=" + actionName.data.email + "&name=" + decodeURIComponent(actionName.data.name);
                     }
                 }
         );
