@@ -1,5 +1,5 @@
 <?php
-//$domain = ($_SERVER['SERVER_NAME'] == 'test.m.motif.me' || $_SERVER['SERVER_NAME'] == 'm.motif.me' || $_SERVER['SERVER_NAME'] == 'motif.me') ? 'motif.me' : null;
+$domain = ($_SERVER['SERVER_NAME'] == 'test.m.motif.me' || $_SERVER['SERVER_NAME'] == 'm.motif.me' || $_SERVER['SERVER_NAME'] == 'motif.me') ? 'motif.me' : null;
 return [
 
     /*
@@ -135,7 +135,7 @@ return [
     |
     */
 
-    'domain' => null,
+    'domain' => $domain,
 
     /*
     |--------------------------------------------------------------------------
