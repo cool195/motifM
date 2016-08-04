@@ -151,7 +151,7 @@
                             $('#wish' + value).html('yes');
                         });
                     } else if (actionName.name == "authInfo") {
-                        window.location.href = "http://test.m.motif.me/topic/{{$topicID}}?token=" + actionName.data.token + "&pin=" + actionName.data.pin + "&email=" + actionName.data.email + "&name=" + decodeURIComponent(actionName.data.name);
+                        window.location.href = "/topic/{{$topicID}}?token=" + actionName.data.token + "&pin=" + actionName.data.pin + "&email=" + actionName.data.email + "&name=" + decodeURIComponent(actionName.data.name);
                     }
                 }
         );
