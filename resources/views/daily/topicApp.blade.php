@@ -160,11 +160,12 @@
             });
         })
 
-
+        var spuStr = $('#spuArray').val().replace("[", "");
+        spuStr = spuStr.replace("]", "");
         Jockey.send("action", {
             name: "checkWish",
             token: "key",
-            data: {"spu": eval('(' + $('#spuArray').val() + ')'), "callback": 'addWish'}
+            data: {"spu": spuStr, "callback": 'addWish'}
         });
 
 
