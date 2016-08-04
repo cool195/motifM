@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Shopping;
 
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Session;
 use App\Http\Controllers\ApiController;
 
 class ProductController extends ApiController
@@ -119,7 +119,7 @@ class ProductController extends ApiController
             'pin' => Session::get('user.pin'),
             'token' => Session::get('user.token'),
         );
-        
+
         return $this->request('openapi', self::API_SYSTEM, 'wishlist', $params);
     }
 
