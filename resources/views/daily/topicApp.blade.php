@@ -158,14 +158,14 @@
             });
         })
 
-        @if(Session::has('user'))
+
         alert($('#spuArray').val())
             Jockey.send("action", {
                 name: "checkWish",
                 token: "key",
                 data: {"spu": $('#spuArray').val(),"callback":'addWish'}
             });
-        @endif
+
 
     </script>
 @endif
