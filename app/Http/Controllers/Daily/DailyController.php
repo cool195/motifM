@@ -54,7 +54,6 @@ class DailyController extends ApiController
 
         $result = $this->request('openapi', 'topicf', "content", $params);
         $view = '';
-        echo $request->input('token').'<br>';
         return $_COOKIE;
         if (strstr($_SERVER['HTTP_USER_AGENT'], 'motif-android') || strstr($_SERVER['HTTP_USER_AGENT'], 'motif-ios')) {
             if ($request->input('token') || !empty($_COOKIE['PIN'])) {
