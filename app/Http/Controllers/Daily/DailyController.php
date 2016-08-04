@@ -74,16 +74,17 @@ class DailyController extends ApiController
                         'uuid' => $_COOKIE['UUID'],
                     ));
                 }
-                $spuArray = array();
-                foreach ($result['data']['infos'] as $value) {
-                    if (isset($value['spus'])) {
-                        $spuArray = array_merge($value['spus'], $spuArray);
-                    }
-                }
-                $result['data']['spuArray'] = json_encode($spuArray);
+
             } else {
                 Session::forget('user');
             }
+            $spuArray = array();
+            foreach ($result['data']['infos'] as $value) {
+                if (isset($value['spus'])) {
+                    $spuArray = array_merge($value['spus'], $spuArray);
+                }
+            }
+            $result['data']['spuArray'] = json_encode($spuArray);
             $view = 'daily.topicApp';
         } else {
             $view = 'daily.topic';
