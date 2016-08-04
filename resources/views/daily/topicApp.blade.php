@@ -173,8 +173,6 @@
                 token: "key",
                 data: {"spu": spuStr, "callback": 'addWish'}
             });
-        @else
-            alert('login')
         @endif
 
     </script>
