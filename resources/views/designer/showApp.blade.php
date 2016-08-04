@@ -256,7 +256,7 @@
     Jockey.on("action", function (action) {
         //login
         if (action.name == "authInfo") {
-            window.location.href = "http://m.motif.me/designer/{{$designer['designer_id']}}?token=" + action.data.token + "&pin=" + action.data.pin + "&email=" + action.data.email + "&name=" + decodeURIComponent(action.data.name)
+            window.location.href = "/designer/{{$designer['designer_id']}}?token=" + action.data.token + "&pin=" + action.data.pin + "&email=" + action.data.email + "&name=" + decodeURIComponent(action.data.name)
         }
     });
 
