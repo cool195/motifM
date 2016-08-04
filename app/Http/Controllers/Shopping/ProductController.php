@@ -120,7 +120,7 @@ class ProductController extends ApiController
             'token' => Session::get('user.token'),
         );
         $result = $this->request('openapi', self::API_SYSTEM, 'wishlist', $params);
-        $result['cmd'] = $cmd;
+        $result['cmd'] = $cmd == 'add' ? true : false;
         return $result;
     }
 
