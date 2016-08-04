@@ -58,6 +58,8 @@
                     <div class="swiper-pagination text-right p-r-20x font-size-sm" id="baseImg-pagination"></div>
                 </div>
             </div>
+            <!-- 预售标题 -->
+            <div class="limited-title"><strong>PRE ORDER 20% OFF</strong></div>
 
             <!-- 产品 标题 简介 价格 基本信息 -->
             <article class="product-baseInfo bg-white m-b-10x" data-impr='http://clk.motif.me/log.gif?t=pv.100001&m=H5_M2016-1&pin={{ Session::get('user.pin') }}&uuid={{ Session::get('user.uuid') }}&v={"spu":{{$data['spu']}},"main_sku":{{$data['skuPrice']['sku']}},"price":{{ $data['skuPrice']['sale_price'] }},"version":"1.0.1","ver":"9.2","src":"H5"}'>
@@ -85,6 +87,27 @@
 
                 <div class="text-warning font-size-xs p-x-15x" data-impr='http://clk.motif.me/log.gif?t=rec.100002&m=OPEN_M2016-1&pin={{ Session::get('user.pin') }}&uuid={{Session::get('user.uuid')}}&v={" action ":0,"cspus ":{{ $data['skus'] }},"expid ":0,"index ":1,"rec_type ":1,"spu":{{ $data['spu'] }},"ver ":"9.00 "}&sig=2291a58454115c8136169111738de65696add43d'>{{ $data['prompt_words'] }}</div>
             </article>
+
+            <!-- 产品 预售信息 -->
+            <section class="limited-content" data-begintime="1470292373000" data-endtime="1470897175000" data-lefttime="604358742" data-qtty="30">
+                <div class="bg-white m-b-10x">
+                    <div class="p-x-15x limited-subtitle"><strong>LIMITED EDITION</strong></div>
+                    <div class="p-x-15x p-t-10x">
+                        <img src="/images/icon/icon-limited.png"
+                             srcset="/images/icon/icon-limited@2x.png 2x, /images/icon/icon-limited@3x.png 3x" alt="">
+                        <span class="text-primary font-size-sm">Only 45 Left</span>
+                    </div>
+                    <div class="p-x-15x p-t-5x">
+                        <img src="/images/icon/icon-limited.png"
+                             srcset="/images/icon/icon-limited@2x.png 2x, /images/icon/icon-limited@3x.png 3x" alt="">
+                        <span class="text-primary font-size-sm">Orders Close In <span class="time_show"></span></span>
+                    </div>
+                    <div class="p-x-15x p-y-5x m-x-15x">
+                        <progress class="progress progress-primary" id="limited-progress" value="" max="100">0%</progress>
+                    </div>
+                </div>
+            </section>
+
             <!-- 产品 其他信息 -->
             <section>
 
