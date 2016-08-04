@@ -91,7 +91,8 @@
                                                             @if($topic['spuInfos'][$spu]['skuPrice']['price'] != $topic['spuInfos'][$spu]['skuPrice']['sale_price'])
                                                                 <span class="font-size-xs text-common text-throughLine m-l-5x">${{number_format($topic['spuInfos'][$spu]['skuPrice']['price']/100,2)}}</span>
                                                             @endif
-                                                            <span class="font-size-xs text-common text-throughLine m-l-5x" id="{{'wish'.$spu}}">no</span>
+                                                            <span class="font-size-xs text-common text-throughLine m-l-5x"
+                                                                  id="{{'wish'.$spu}}">no</span>
                                                         </div>
                                                     </div>
                                                 </a>
@@ -142,8 +143,8 @@
                         });
                     } else if (actionName.name == "addWish") {
                         var spus = actionName.data.spu.split(',');
-                        $.each(spus,function(n,value){
-                            $('#wish'+value).html('yes');
+                        $.each(spus, function (n, value) {
+                            $('#wish' + value).html('yes');
                         });
                     }
                 }
@@ -162,16 +163,19 @@
                 name: "login",
                 token: "key",
             });
-        })
-
-        var spuStr = $('#spuArray').val().replace("[", "");
-        spuStr = spuStr.replace("]", "");
-        Jockey.send("action", {
-            name: "checkWish",
-            token: "key",
-            data: {"spu": spuStr, "callback": 'addWish'}
         });
 
+        @if(Session::get('user.pin'))
+            var spuStr = $('#spuArray').val().replace("[", "");
+            spuStr = spuStr.replace("]", "");
+            Jockey.send("action", {
+                name: "checkWish",
+                token: "key",
+                data: {"spu": spuStr, "callback": 'addWish'}
+            });
+        @else
+            alert('login')
+        @endif
 
     </script>
 @endif
