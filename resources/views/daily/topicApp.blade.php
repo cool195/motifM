@@ -150,7 +150,7 @@
                         $.each(spus, function (n, value) {
                             $('#wish' + value).html('yes');
                         });
-                    } else if (action.name == "authInfo") {
+                    } else if (actionName.name == "authInfo") {
                         window.location.href = "http://m.motif.me/topic/{{$topicID}}?token=" + action.data.token + "&pin=" + action.data.pin + "&email=" + action.data.email + "&name=" + decodeURIComponent(action.data.name)
                     }
                 }
