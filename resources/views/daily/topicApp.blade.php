@@ -93,7 +93,7 @@
                                                             @endif
 
                                                             @if(Session::get('user.pin'))
-                                                                <a class="wish" id="{{'wish'.$spu}}">no</a>
+                                                                <a class="wish" data-id="{{$spu}}" id="{{'wish'.$spu}}">no</a>
                                                             @else
                                                                 <a class="sendLogin">login</a>
                                                             @endif
@@ -166,9 +166,8 @@
 
         $('.wish').on('click', function () {
             $this = $(this);
-            alert($this.attr('id'))
             $.ajax({
-                url: '/wish/' + $this.attr('id'),
+                url: '/wish/' + $this.data('id'),
                 type: 'GET'
             })
                     .done(function (data) {
