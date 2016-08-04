@@ -94,7 +94,7 @@
                                                             @if(Session::get('user.pin'))
                                                                 <span class="font-size-xs text-common text-throughLine m-l-5x" id="{{'wish'.$spu}}">no</span>
                                                             @else
-                                                                <a id="sendLogin">login</a>
+                                                                <a class="sendLogin">login</a>
                                                             @endif
                                                         </div>
                                                     </div>
@@ -156,7 +156,7 @@
         );
 
         //login send
-        $('#sendLogin').on('click', function () {
+        $('.sendLogin').on('click', function () {
             Jockey.send("action", {
                 name: "login",
                 token: "key",
