@@ -79,7 +79,9 @@
                                                                  alt="{{$topic['spuInfos'][$spu]['spuBase']['main_title']}}">
                                                             @if($topic['spuInfos'][$spu]['skuPrice']['price'] != $topic['spuInfos'][$spu]['skuPrice']['sale_price'])
                                                                 <div class="price-off">
-                                                                    <img class="img-fluid" src="{{env('APP_Api_Image')}}/n1/{{ $topic['spuInfos'][$spu]['skuPrice']['skuPromotion']['logo_path']}}" alt="">
+                                                                    <img class="img-fluid"
+                                                                         src="{{env('APP_Api_Image')}}/n1/{{ $topic['spuInfos'][$spu]['skuPrice']['skuPromotion']['logo_path']}}"
+                                                                         alt="">
                                                                 </div>
                                                             @endif
                                                         </div>
@@ -137,7 +139,7 @@
                                 "url": "http://m.motif.me/topic/{{$topicID}}"
                             }
                         });
-                    }else if(actionName.name == "addWish"){
+                    } else if (actionName.name == "addWish") {
                         alert(actionName.data.spu)
                     }
                 }
@@ -159,12 +161,11 @@
         })
 
 
-        alert($('#spuArray').val())
-            Jockey.send("action", {
-                name: "checkWish",
-                token: "key",
-                data: {"spu": $('#spuArray').val(),"callback":'addWish'}
-            });
+        Jockey.send("action", {
+            name: "checkWish",
+            token: "key",
+            data: {"spu": eval('(' + $('#spuArray').val() + ')'), "callback": 'addWish'}
+        });
 
 
     </script>
