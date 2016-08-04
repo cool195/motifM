@@ -126,6 +126,7 @@ $app->group(['middleware' => 'pcguide', 'namespace' => 'App\Http\Controllers\Sho
     $app->get('/products', 'ShoppingController@getShoppingProductList');
     $app->get('/stock/checkstock', 'ShoppingController@checkStock');
 
+    $app->get('/wish/{spu}', 'ProductController@wishProduct');
     $app->get('/products/{spu}', 'ProductController@getProductDetail');
     $app->get('/detail/{spu}', 'ProductController@index');
 

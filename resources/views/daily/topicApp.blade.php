@@ -91,8 +91,9 @@
                                                             @if($topic['spuInfos'][$spu]['skuPrice']['price'] != $topic['spuInfos'][$spu]['skuPrice']['sale_price'])
                                                                 <span class="font-size-xs text-common text-throughLine m-l-5x">${{number_format($topic['spuInfos'][$spu]['skuPrice']['price']/100,2)}}</span>
                                                             @endif
+
                                                             @if(Session::get('user.pin'))
-                                                                <span class="font-size-xs text-common text-throughLine m-l-5x" id="{{'wish'.$spu}}">no</span>
+                                                                <a class="wish" id="{{'wish'.$spu}}">no</a>
                                                             @else
                                                                 <a class="sendLogin">login</a>
                                                             @endif
@@ -149,7 +150,7 @@
                         $.each(spus, function (n, value) {
                             $('#wish' + value).html('yes');
                         });
-                    } else if(action.name == "authInfo") {
+                    } else if (action.name == "authInfo") {
                         window.location.href = "http://m.motif.me/topic/{{$topicID}}?token=" + action.data.token + "&pin=" + action.data.pin + "&email=" + action.data.email + "&name=" + decodeURIComponent(action.data.name)
                     }
                 }
@@ -161,6 +162,19 @@
                 name: "login",
                 token: "key",
             });
+        });
+
+        $('.wish').on('click', function () {
+            $this = $(this);
+            $.ajax({
+                url: '/wish/' + $this.attr('id'),
+                type: 'GET'
+            })
+                    .done(function (data) {
+                        if (data.success) {
+                            $this.html('yes');
+                        }
+                    })
         });
 
         @if(Session::get('user.pin'))

@@ -103,5 +103,25 @@ class ProductController extends ApiController
         return $flag;
     }
 
+    //收藏操作
+    public function wishProduct($id){
+        $params = array(
+            'cmd' => 'is',
+            'spu' => $id,
+            'pin' => Session::get('user.pin'),
+            'token' => Session::get('user.token'),
+        );
+        $result = $this->request('openapi', self::API_SYSTEM, 'wishlist', $params);
+        $cmd = $result['data']['isFC'] ? 'del' : 'add';
+        $params = array(
+            'cmd' => $cmd,
+            'spu' => $id,
+            'pin' => Session::get('user.pin'),
+            'token' => Session::get('user.token'),
+        );
+        
+        return $this->request('openapi', self::API_SYSTEM, 'wishlist', $params);
+    }
+
 
 }
