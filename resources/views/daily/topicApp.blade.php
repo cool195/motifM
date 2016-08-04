@@ -91,8 +91,11 @@
                                                             @if($topic['spuInfos'][$spu]['skuPrice']['price'] != $topic['spuInfos'][$spu]['skuPrice']['sale_price'])
                                                                 <span class="font-size-xs text-common text-throughLine m-l-5x">${{number_format($topic['spuInfos'][$spu]['skuPrice']['price']/100,2)}}</span>
                                                             @endif
-                                                            <span class="font-size-xs text-common text-throughLine m-l-5x"
-                                                                  id="{{'wish'.$spu}}">no</span>
+                                                            @if(Session::get('user.pin'))
+                                                                <span class="font-size-xs text-common text-throughLine m-l-5x" id="{{'wish'.$spu}}">no</span>
+                                                            @else
+                                                                <span class="font-size-xs text-common text-throughLine m-l-5x" id="sendLogin">login</span>
+                                                            @endif
                                                         </div>
                                                     </div>
                                                 </a>
@@ -146,16 +149,11 @@
                         $.each(spus, function (n, value) {
                             $('#wish' + value).html('yes');
                         });
+                    } else if(action.name == "authInfo") {
+                        window.location.href = "http://m.motif.me/topic/{{$topicID}}?token=" + action.data.token + "&pin=" + action.data.pin + "&email=" + action.data.email + "&name=" + decodeURIComponent(action.data.name)
                     }
                 }
         );
-
-        Jockey.on("action", function (action) {
-            //login
-            if (action.name == "authInfo") {
-                window.location.href = "http://m.motif.me/topic/{{$topicID}}?token=" + action.data.token + "&pin=" + action.data.pin + "&email=" + action.data.email + "&name=" + decodeURIComponent(action.data.name)
-            }
-        });
 
         //login send
         $('#sendLogin').on('click', function () {
