@@ -141,9 +141,9 @@
     function changeFollow(id) {
         openLoading();
         $.ajax({
-            url: '/followDesigner/' + id,
-            type: 'GET'
-        })
+                url: '/followDesigner/' + id,
+                type: 'GET'
+            })
             .done(function (data) {
                 if (data.success) {
                     closeLoading();
@@ -161,6 +161,11 @@
         //修改 Follow 状态
         var followId = $(this).data('followid');
         changeFollow(followId);
+    });
+
+    // 点击 "心" 关注商品
+    $('.product-heart').on('click', function () {
+        $(this).toggleClass('active');
     });
 
 })(jQuery);

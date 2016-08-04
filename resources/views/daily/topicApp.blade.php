@@ -65,38 +65,75 @@
                             @endif
                         @else
                             {{-- 商品列表横向 --}}
-                            <div class="container-fluid p-x-15x">
-                                <div class="row">
-                                    @if(isset($value['spus']))
-                                        @foreach($value['spus'] as $spu)
-                                            <div class="col-xs-6">
-                                                <a href="motif://o.c?a=pd&spu={{$spu}}">
-                                                    <div class="p-t-10x productList-item m-b-0">
-                                                        <div class="image-container">
-                                                            <img class="img-thumbnail img-lazy"
-                                                                 data-original="{{env('APP_Api_Image')}}/n2/{{$topic['spuInfos'][$spu]['spuBase']['main_image_url']}}"
-                                                                 src="{{env('CDN_Static')}}/images/product/bg-product@336.png"
-                                                                 alt="{{$topic['spuInfos'][$spu]['spuBase']['main_title']}}">
-                                                            @if($topic['spuInfos'][$spu]['skuPrice']['price'] != $topic['spuInfos'][$spu]['skuPrice']['sale_price'])
-                                                                <div class="price-off">
-                                                                    <img class="img-fluid" src="{{env('APP_Api_Image')}}/n1/{{ $topic['spuInfos'][$spu]['skuPrice']['skuPromotion']['logo_path']}}" alt="">
-                                                                </div>
-                                                            @endif
-                                                        </div>
+                            {{--<div class="container-fluid p-x-15x">--}}
+                                {{--<div class="row">--}}
+                                    {{--@if(isset($value['spus']))--}}
+                                        {{--@foreach($value['spus'] as $spu)--}}
+                                            {{--<div class="col-xs-6">--}}
+                                                {{--<a href="motif://o.c?a=pd&spu={{$spu}}">--}}
+                                                    {{--<div class="p-t-10x productList-item m-b-0">--}}
+                                                        {{--<div class="image-container">--}}
+                                                            {{--<img class="img-thumbnail img-lazy"--}}
+                                                                 {{--data-original="{{env('APP_Api_Image')}}/n2/{{$topic['spuInfos'][$spu]['spuBase']['main_image_url']}}"--}}
+                                                                 {{--src="{{env('CDN_Static')}}/images/product/bg-product@336.png"--}}
+                                                                 {{--alt="{{$topic['spuInfos'][$spu]['spuBase']['main_title']}}">--}}
+                                                            {{--@if($topic['spuInfos'][$spu]['skuPrice']['price'] != $topic['spuInfos'][$spu]['skuPrice']['sale_price'])--}}
+                                                                {{--<div class="price-off">--}}
+                                                                    {{--<img class="img-fluid" src="{{env('APP_Api_Image')}}/n1/{{ $topic['spuInfos'][$spu]['skuPrice']['skuPromotion']['logo_path']}}" alt="">--}}
+                                                                {{--</div>--}}
+                                                            {{--@endif--}}
+                                                        {{--</div>--}}
 
-                                                        <div class="p-y-10x">
-                                                            <span class="text-primary font-size-sm m-l-5x"><strong>${{number_format($topic['spuInfos'][$spu]['skuPrice']['sale_price']/100,2)}}</strong></span>
-                                                            @if($topic['spuInfos'][$spu]['skuPrice']['price'] != $topic['spuInfos'][$spu]['skuPrice']['sale_price'])
-                                                                <span class="font-size-xs text-common text-throughLine m-l-5x">${{number_format($topic['spuInfos'][$spu]['skuPrice']['price']/100,2)}}</span>
-                                                            @endif
+                                                        {{--<div class="p-y-10x">--}}
+                                                            {{--<span class="text-primary font-size-sm m-l-5x"><strong>${{number_format($topic['spuInfos'][$spu]['skuPrice']['sale_price']/100,2)}}</strong></span>--}}
+                                                            {{--@if($topic['spuInfos'][$spu]['skuPrice']['price'] != $topic['spuInfos'][$spu]['skuPrice']['sale_price'])--}}
+                                                                {{--<span class="font-size-xs text-common text-throughLine m-l-5x">${{number_format($topic['spuInfos'][$spu]['skuPrice']['price']/100,2)}}</span>--}}
+                                                            {{--@endif--}}
+                                                        {{--</div>--}}
+                                                    {{--</div>--}}
+                                                {{--</a>--}}
+                                            {{--</div>--}}
+                                        {{--@endforeach--}}
+                                    {{--@endif--}}
+                                {{--</div>--}}
+                            {{--</div>--}}
+                    <div class="container-fluid p-x-0 bg-topic">
+                        <div class="row m-a-0 topic-product p-y-10x">
+                            @if(isset($value['spus']))
+                                @foreach($value['spus'] as $spu)
+                                    <div class="col-xs-6 p-a-0">
+                                        <div class="bg-white topic-product-item productList-item">
+                                            <a href="/detail/{{$spu}}">
+                                                <div class="image-container">
+                                                    <img class="img-fluid img-lazy"
+                                                         data-original="{{env('APP_Api_Image')}}/n2/{{$topic['spuInfos'][$spu]['spuBase']['main_image_url']}}"
+                                                         src="{{env('CDN_Static')}}/images/product/bg-product@336.png"
+                                                         alt="{{$topic['spuInfos'][$spu]['spuBase']['main_title']}}">
+                                                    @if($topic['spuInfos'][$spu]['skuPrice']['price'] != $topic['spuInfos'][$spu]['skuPrice']['sale_price'])
+                                                        <div class="price-off">
+                                                            <img class="img-fluid"
+                                                                 src="{{env('APP_Api_Image')}}/n1/{{ $topic['spuInfos'][$spu]['skuPrice']['skuPromotion']['logo_path']}}"
+                                                                 alt="">
                                                         </div>
-                                                    </div>
-                                                </a>
+                                                    @endif
+                                                </div>
+                                            </a>
+                                            <div class="p-a-10x flex flex-alignCenter flex-fullJustified">
+                                                <div>
+                                                    <span class="text-primary font-size-sm m-l-5x"><strong>${{number_format($topic['spuInfos'][$spu]['skuPrice']['sale_price']/100,2)}}</strong></span>
+                                                    @if($topic['spuInfos'][$spu]['skuPrice']['price'] != $topic['spuInfos'][$spu]['skuPrice']['sale_price'])
+                                                        <span class="font-size-xs text-common text-throughLine m-l-5x">${{number_format($topic['spuInfos'][$spu]['skuPrice']['price']/100,2)}}</span>
+                                                    @endif
+                                                </div>
+                                                <span class="p-r-5x"><i
+                                                            class="iconfont icon-like product-heart"></i></span>
                                             </div>
-                                        @endforeach
-                                    @endif
-                                </div>
-                            </div>
+                                        </div>
+                                    </div>
+                                @endforeach
+                            @endif
+                        </div>
+                    </div>
                         @endif
                     @endif
                 @endforeach
