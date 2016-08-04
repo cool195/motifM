@@ -152,7 +152,7 @@
                         });
                     } else if (actionName.name == "authInfo") {
                         alert(actionName.name)
-                        window.location.href = "/topic/{{$topicID}}?token=" + action.data.token + "&pin=" + action.data.pin + "&email=" + action.data.email + "&name=" + decodeURIComponent(action.data.name)
+                        window.location.href = "http://test.m.motif.me/topic/{{$topicID}}?token=" + action.data.token + "&pin=" + action.data.pin + "&email=" + action.data.email + "&name=" + decodeURIComponent(action.data.name)
                     }
                 }
         );
