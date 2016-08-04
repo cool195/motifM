@@ -143,7 +143,7 @@
                     @if(Session::has('user'))
                         <div class="row">
                             <div class="col-xs-12">
-                                <div class="btn btn-primary btn-block up-btn-addToBag" data-control="openModal" data-action="PUT">Add to Bag</div>
+                                <div class="btn btn-primary btn-block up-btn-addToBag" data-control="openModal" @if(1 == $data['sale_type']) data-action="PUT" @else data-action="PATCH"@endif>@if(1 == $data['sale_type']) Pre Order Now @else Add to Bag @endif</div>
                             </div>
                             {{--<div class="col-xs-6">--}}
                                 {{--<div class="btn btn-primary btn-block" data-control="openModal" data-action="PUT">Buy Now</div>--}}
@@ -239,8 +239,7 @@
                     @if(Session::has('user'))
                         <div class="row">
                             <div class="col-xs-12">
-                                <div class="btn btn-primary btn-block down-btn-addToBag" data-control="openModal" data-action="PATCH">Add to
-                                    Bag</div>
+                                <div class="btn btn-primary btn-block down-btn-addToBag" data-control="openModal" @if(1 == $data['sale_type']) data-action="PUT" @else data-action="PATCH"@endif>@if(1 == $data['sale_type']) Pre Order Now @else Add to Bag @endif</div>
                             </div>
                             {{--<div class="col-xs-6">--}}
                                 {{--<div class="btn btn-primary btn-block" data-control="openModal" data-action="PUT">Buy Now</div>--}}
@@ -249,7 +248,7 @@
                     @else
                         <div class="row">
                             <div class="col-xs-12">
-                                <a href="/login" class="btn btn-primary btn-block down-btn-addToBag" id="addCart">Add to Bag</a>
+                                <a href="/login" class="btn btn-primary btn-block down-btn-addToBag" id="addCart">@if(1 == $data['sale_type']) Pre Order Now @else Add to Bag @endif</a>
                             </div>
                             {{--<div class="col-xs-6">--}}
                                 {{--<a href="/login" class="btn btn-primary btn-block" id="buyNow">Buy Now</a>--}}
@@ -367,7 +366,7 @@
                     <div class="row" data-control="modalButton">
                         <div class="col-xs-12">
                             <div class="btn btn-primary btn-block @if(!(!empty($data['vasBases']) && empty($data['spuAttrs'])))disabled @endif"
-                                 data-role="modalButton" data-action="PATCH">Add to Bag
+                                 data-role="modalButton" @if(1 == $data['sale_type']) data-action="PUT" @else data-action="PATCH"@endif>@if(1 == $data['sale_type']) Pre Order Now @else Add to Bag @endif
                             </div>
                         </div>
                         {{--<div class="col-xs-6">--}}
@@ -379,7 +378,7 @@
                     @else
                         <div class="row">
                             <div class="col-xs-12">
-                                <a href="/login" class="btn btn-primary btn-block" id="addCart">Add to Bag</a>
+                                <a href="/login" class="btn btn-primary btn-block" id="addCart">@if(1 == $data['sale_type']) Pre Order Now @else Add to Bag @endif</a>
                             </div>
                             {{--<div class="col-xs-6">--}}
                                 {{--<a href="/login" class="btn btn-primary btn-block" id="buyNow">Buy Now</a>--}}
