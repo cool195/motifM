@@ -159,6 +159,7 @@
         })
 
         @if(Session::has('user'))
+        alert('action')
             Jockey.send("action", {
                 name: "checkWish",
                 token: "key",
