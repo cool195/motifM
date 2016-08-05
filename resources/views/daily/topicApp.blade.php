@@ -175,11 +175,13 @@
                     .done(function (data) {
                         if (data.success) {
                             if(data.cmd){
-                                alert('add')
+                                alert($this.attr('class'))
                                 $this.addClass('active');
+                                alert($this.attr('class'))
                             } else{
-                                alert('del')
+                                alert($this.attr('class'))
                                 $this.removeClass('active');
+                                alert($this.attr('class'))
                             }
                             Jockey.send("action", {
                                 name: "updateWish",
