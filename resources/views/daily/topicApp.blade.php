@@ -175,11 +175,11 @@
                     .done(function (data) {
                         if (data.success) {
                             data.cmd ? $this.addClass('active') : $this.removeClass('active');
-                            Jockey.send("action", {
-                                name: "updateWish",
-                                token: "key",
-                                data: {"spu": $this.data('id').toString(), "isAdd": data.cmd}
-                            });
+//                            Jockey.send("action", {
+//                                name: "updateWish",
+//                                token: "key",
+//                                data: {"spu": $this.data('id').toString(), "isAdd": data.cmd}
+//                            });
                         }
                     })
         });
