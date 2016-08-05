@@ -73,7 +73,7 @@
                                         @foreach($value['spus'] as $spu)
                                             <div class="col-xs-6 p-a-0">
                                                 <div class="bg-white topic-product-item productList-item">
-                                                    <a href="/detail/{{$spu}}">
+                                                    <a href="motif://o.c?a=pd&spu={{$spu}}">
                                                         <div class="image-container">
                                                             <img class="img-fluid img-lazy"
                                                                  data-original="{{env('APP_Api_Image')}}/n2/{{$topic['spuInfos'][$spu]['spuBase']['main_image_url']}}"
