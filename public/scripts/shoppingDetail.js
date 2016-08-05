@@ -901,6 +901,7 @@
                 $('.stock-qtty').html('Sold Out');
                 $('#limited-progress').attr('value', '0');
                 $('.up-btn-addToBag').addClass('disabled');
+                $('.down-btn-addToBag').addClass('disabled');
             }
             var day = 0,
                 hour = 0,
