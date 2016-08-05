@@ -68,7 +68,7 @@
                         @else
                             {{-- 商品列表横向 --}}
                             <div class="container-fluid p-x-0 bg-topic">
-                                <div class="row m-a-0 topic-product p-y-10x">
+                                <div class="row m-a-0 topic-product">
                                     @if(isset($value['spus']))
                                         @foreach($value['spus'] as $spu)
                                             <div class="col-xs-6 p-a-0">
@@ -95,8 +95,11 @@
                                                                 <span class="font-size-xs text-common text-throughLine m-l-5x">${{number_format($topic['spuInfos'][$spu]['skuPrice']['price']/100,2)}}</span>
                                                             @endif
                                                         </div>
-                                                        <span class="p-r-5x"><i
-                                                                    class="iconfont icon-like product-heart"></i></span>
+                                                        @if(Session::get('user.pin'))
+                                                            <span class="p-r-5x"><i class="iconfont icon-like product-heart wish" data-id="{{$spu}}" id="{{'wish'.$spu}}"></i></span>
+                                                        @else
+                                                            <span class="p-r-5x"><i class="iconfont icon-like product-heart sendLogin"></i></span>
+                                                        @endif
                                                     </div>
                                                 </div>
                                             </div>
