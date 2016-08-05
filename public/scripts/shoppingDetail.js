@@ -471,7 +471,7 @@
 
 
     // 为所有选项绑定事件
-    $('.btn-itemProperty').on('click',function (e) {
+    $('.btn-itemProperty').on('click', function (e) {
 
         var $WarningInfo = $('.warning-info');
         if (!$WarningInfo.hasClass('off')) {
@@ -874,13 +874,48 @@
 
         $.ajax({
             url: $(".product-baseInfo").data('impr'),
-            type : "GET"
+            type: "GET"
         });
 
         $.ajax({
             url: $("#recommend").data('impr'),
             type: "GET"
         });
+    });
+
+    // 预售产品
+    var beginTimes = $('.limited-content').data('begintime'); // 开始时间
+    var endTimes = $('.limited-content').data('endtime');   // 结束时间
+    var leftNum = $('.limited-content').data('lefttime');     // 剩余秒数  604358742
+    var qtty = $('.limited-content').data('qtty');            //  库存亮
+    var secondnum = parseInt(endTimes - beginTimes);   //604802000    // 预售总时长
+    var rate = ((leftNum / secondnum).toFixed(2) * 100); //剩余时间所占总时长的比例
+    $('#limited-progress').attr('value', rate);
+    function timer(intDiff) {
+        window.setInterval(function () {
+            var day = 0,
+                hour = 0,
+                minute = 0,
+                second = 0;//时间默认值
+            if (intDiff > 0) {
+                day = Math.floor(intDiff / (60 * 60 * 24));
+                hour = Math.floor(intDiff / (60 * 60)) - (day * 24);
+                minute = Math.floor(intDiff / 60) - (day * 24 * 60) - (hour * 60);
+                second = Math.floor(intDiff) - (day * 24 * 60 * 60) - (hour * 60 * 60) - (minute * 60);
+            }
+            if (minute <= 9) minute = '0' + minute;
+            if (second <= 9) second = '0' + second;
+            if (leftNum < 259200000) {
+                $('.time_show').html(day * 24 + hour + 'h: ' + minute + 'm: ' + second + 's');
+            } else {
+                $('.time_show').html(day + 'd: ' + hour + 'h: ' + minute + 'm: ' + second + 's');
+            }
+            intDiff--;
+        }, 1000);
+    }
+
+    $(function () {
+        timer(leftNum / 1000);
     });
 })(jQuery, Swiper);
 
