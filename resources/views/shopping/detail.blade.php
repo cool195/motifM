@@ -156,7 +156,7 @@
                     @else
                         <div class="row">
                             <div class="col-xs-12">
-                                <a href="/login" class="btn btn-primary btn-block up-btn-addToBag">@if(1 == $data['sale_type']) Pre Order Now @else Add to Bag @endif</a>
+                                <a href="/login" class="btn btn-primary btn-block up-btn-addToBag @if(!$data['sale_status']) disabled @endif">@if(1 == $data['sale_type']) Pre Order Now @else Add to Bag @endif</a>
                             </div>
                             {{--<div class="col-xs-6">--}}
                                 {{--<a href="/login" class="btn btn-primary btn-block" id="buyNow">Buy Now</a>--}}
@@ -252,7 +252,7 @@
                     @else
                         <div class="row">
                             <div class="col-xs-12">
-                                <a href="/login" class="btn btn-primary btn-block down-btn-addToBag">@if(1 == $data['sale_type']) Pre Order Now @else Add to Bag @endif</a>
+                                <a href="/login" class="btn btn-primary btn-block down-btn-addToBag @if(!$data['sale_status']) disabled @endif">@if(1 == $data['sale_type']) Pre Order Now @else Add to Bag @endif</a>
                             </div>
                             {{--<div class="col-xs-6">--}}
                                 {{--<a href="/login" class="btn btn-primary btn-block" id="buyNow">Buy Now</a>--}}
@@ -382,7 +382,7 @@
                     @else
                         <div class="row">
                             <div class="col-xs-12">
-                                <a href="/login" class="btn btn-primary btn-block">@if(1 == $data['sale_type']) Pre Order Now @else Add to Bag @endif</a>
+                                <a href="/login" class="btn btn-primary btn-block @if(!$data['sale_status']) disabled @endif">@if(1 == $data['sale_type']) Pre Order Now @else Add to Bag @endif</a>
                             </div>
                             {{--<div class="col-xs-6">--}}
                                 {{--<a href="/login" class="btn btn-primary btn-block" id="buyNow">Buy Now</a>--}}
