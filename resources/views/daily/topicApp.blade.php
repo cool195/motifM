@@ -150,7 +150,7 @@
                     } else if (actionName.name == "addWish") {
                         var spus = actionName.data.spu.split(',');
                         $.each(spus, function (n, value) {
-                            $('#wish' + value).html('yes');
+                            $('#wish' + value).addClass('active');
                         });
                     } else if (actionName.name == "authInfo") {
                         window.location.href = "/topic/{{$topicID}}?token=" + actionName.data.token + "&pin=" + actionName.data.pin + "&email=" + actionName.data.email + "&name=" + decodeURIComponent(actionName.data.name);
@@ -174,7 +174,7 @@
             })
                     .done(function (data) {
                         if (data.success) {
-                            data.cmd ? $this.html('yes') : $this.html('no');
+                            data.cmd ? $this.addClass('active') : $this.removeClass('active');
                             Jockey.send("action", {
                                 name: "updateWish",
                                 token: "key",
