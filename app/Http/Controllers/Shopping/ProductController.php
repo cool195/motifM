@@ -82,11 +82,15 @@ class ProductController extends ApiController
         {
             $flag = false;
         }
-        if($data['spuStock']['stock_qtty'] == $data['spuStock']['saled_qtty'] ){
+        elseif($data['spuStock']['stock_qtty'] == $data['spuStock']['saled_qtty'] )
+        {
             $flag = false;
         }
-        if(0 == $data['skuPrice']['skuPromotion']['remain_time']){
+        elseif(0 == $data['skuPrice']['skuPromotion']['remain_time'])
+        {
             $flag = false;
+        }else{
+
         }
         return $flag;
     }

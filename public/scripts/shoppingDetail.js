@@ -772,6 +772,9 @@
     });
 
     $('[data-control="openModal"]').on('click', function (e) {
+        if($(this).hasClass('disabled')){
+            return;
+        }
         var OptionsCount = Object.keys(Options);
         var VasCount = Object.keys(Vas);
         var Action = $(e.target).data('action');
