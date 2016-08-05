@@ -4250,6 +4250,10 @@ html.remodal-is-locked {
   content: "\e635";
 }
 
+.icon-onheart:before {
+    content: "\e60d";
+}
+
 /* 暂时停用
 // Dropdowns
 */

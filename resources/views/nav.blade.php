@@ -19,8 +19,10 @@
         </li>
         <li class="nav-item">
             <a href="/shopping" class="flex flex-alignCenter flex-fullJustified p-a-15x menu">
-                <div class="font-size-sm text-primary flex flex-alignCenter"><i
-                            class="iconfont icon-shopping icon-size-md p-r-15x"></i><span>Shopping</span></div>
+                <div class="font-size-sm text-primary flex flex-alignCenter">
+                    {{--<i class="iconfont icon-shopping icon-size-md p-r-15x"></i>--}}
+                    <img src="/images/icon/icon-shopping.png" alt="">
+                    <span>Shopping</span></div>
                 <span class="text-common"><i class="iconfont icon-arrow-right icon-size-sm"></i></span>
             </a>
         </li>

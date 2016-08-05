@@ -96,7 +96,8 @@
                                                             @endif
                                                         </div>
                                                         @if(Session::get('user.pin'))
-                                                            <span class="p-r-5x wish" data-id="{{$spu}}" id="{{'wish'.$spu}}"><i class="iconfont icon-like product-heart"></i></span>
+                                                            <span class="p-r-5x wish" data-id="{{$spu}}" id="{{'wish'.$spu}}"><i class="iconfont icon-like product-heart" ></i></span>
+                                                            {{--<span class="p-r-5x wish" data-id="{{$spu}}" id="{{'wish'.$spu}}"><i class="iconfont icon-onheart product-heart active" ></i></span>--}}
                                                         @else
                                                             <span class="p-r-5x"><i class="iconfont icon-like product-heart sendLogin"></i></span>
                                                         @endif
