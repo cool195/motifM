@@ -68,6 +68,7 @@ class ProductController extends ApiController
             if (isset($result['data']['spuAttrs'])) {
                 $result['data']['spuAttrs'] = $this->getSpuAttrsStockStatus($result['data']['spuAttrs'], $result['data']['skuExps']);
             }
+            $result['data']['sale_status'] = true;
             if(1 == $result['data']['sale_type']){
                 $result['data']['sale_status'] = $this->getSaleStatus($result['data']);
             }
