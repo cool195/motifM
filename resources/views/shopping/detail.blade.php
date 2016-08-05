@@ -59,10 +59,8 @@
                 </div>
             </div>
             <!-- 预售标题 -->
-            @if(1 == $data['sale_type'] && $data['sale_status'])
-                <div class="limited-title"><strong>PRE SALE {{  $data['skuPrice']['skuPromotion']['display'] }}</strong></div>
-            @else
-                <div class="limited-title"><strong>PRE SALE has ended</strong></div>
+            @if(1 == $data['sale_type'] )
+                <div class="limited-title"><strong>@if($data['sale_status'])PRE SALE {{  $data['skuPrice']['skuPromotion']['display'] }} @else Pre Sale has ended @endif</strong></div>
             @endif
 
             <!-- 产品 标题 简介 价格 基本信息 -->
