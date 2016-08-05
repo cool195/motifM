@@ -68,8 +68,27 @@ class ProductController extends ApiController
             if (isset($result['data']['spuAttrs'])) {
                 $result['data']['spuAttrs'] = $this->getSpuAttrsStockStatus($result['data']['spuAttrs'], $result['data']['skuExps']);
             }
+            if(1 == $result['data']['sale_type']){
+                $result['data']['sale_status'] = $this->getSaleStatus($result['data']);
+            }
         }
         return $result;
+    }
+
+    private function getSaleStatus(Array $data)
+    {
+        $flag = true;
+        if(1 == $data['sale_type'] && !isset($data['skuPrice']['skuPromotion']))
+        {
+            $flag = false;
+        }
+        if($data['spuStock']['stock_qtty'] == $data['spuStock']['saled_qtty'] ){
+            $flag = false;
+        }
+        if(0 == $data['skuPrice']['skuPromotion']['remain_time']){
+            $flag = false;
+        }
+        return $flag;
     }
 
     private function getSpuAttrsStockStatus(Array $spuAttrs, Array $skuExps)

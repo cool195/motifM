@@ -59,8 +59,10 @@
                 </div>
             </div>
             <!-- 预售标题 -->
-            @if(1 == $data['sale_type'])
-            <div class="limited-title"><strong>PRE ORDER 20% OFF</strong></div>
+            @if(1 == $data['sale_type'] && $data['sale_status'])
+                <div class="limited-title"><strong>PRE SALE {{  $data['skuPrice']['skuPromotion']['display'] }}</strong></div>
+            @else
+                <div class="limited-title"><strong>PRE SALE has ended</strong></div>
             @endif
 
             <!-- 产品 标题 简介 价格 基本信息 -->
@@ -92,13 +94,13 @@
 
             <!-- 产品 预售信息 -->
             @if(1 == $data['sale_type'])
-            <section class="limited-content" data-begintime="{{  $data['skuExps'][0]['skuPrice']['skuPromotion']['start_time'] }}" data-endtime="{{  $data['skuExps'][0]['skuPrice']['skuPromotion']['end_time'] }}" data-lefttime="{{  $data['skuExps'][0]['skuPrice']['skuPromotion']['remain_time'] }}" data-qtty="{{$data['spuStock']['stock_qtty']}}">
+            <section class="limited-content" data-begintime="{{  $data['skuPrice']['skuPromotion']['start_time'] }}" data-endtime="{{  $data['skuPrice']['skuPromotion']['end_time'] }}" data-lefttime="@if($data['sale_status']){{$data['skuPrice']['skuPromotion']['remain_time']}}@else{{'0'}}@endif" data-qtty="{{$data['spuStock']['stock_qtty']}}">
                 <div class="bg-white m-b-10x">
                     <div class="p-x-15x limited-subtitle"><strong>LIMITED EDITION</strong></div>
                     @if($data['spuStock']['stock_qtty'] < 10000)
                     <div class="p-x-15x p-t-10x">
                         <img src="/images/icon/icon-limited.png" srcset="/images/icon/icon-limited@2x.png 2x, /images/icon/icon-limited@3x.png 3x" alt="">
-                        <span class="text-primary font-size-sm">@if($data['spuStock']['stock_qtty'] > 0)Only {{$data['spuStock']['stock_qtty']}} Left @else Sold Out @endif </span>
+                        <span class="text-primary font-size-sm">@if($data['spuStock']['stock_qtty'] > 0 && $data['sale_status'])Only {{$data['spuStock']['stock_qtty']}} Left @else Sold Out @endif </span>
 
                     </div>
                     @endif
@@ -107,7 +109,11 @@
                         <span class="text-primary font-size-sm">Orders Close In <span class="time_show"></span></span>
                     </div>
                     <div class="p-x-15x p-y-5x m-x-15x">
-                        <progress class="progress progress-primary" id="limited-progress" value="" max="100">0%</progress>
+                        @if(!$data['sale_status'])
+                            <progress class="progress progress-primary" value="0" max="100">0%</progress>
+                        @else
+                            <progress class="progress progress-primary" id="limited-progress" value="" max="100">0%</progress>
+                        @endif
                     </div>
                 </div>
             </section>
@@ -143,7 +149,7 @@
                     @if(Session::has('user'))
                         <div class="row">
                             <div class="col-xs-12">
-                                <div class="btn btn-primary btn-block up-btn-addToBag" data-control="openModal" @if(1 == $data['sale_type']) data-action="PUT" @else data-action="PATCH"@endif>@if(1 == $data['sale_type']) Pre Order Now @else Add to Bag @endif</div>
+                                <div class="btn btn-primary btn-block up-btn-addToBag @if(!$data['sale_status']) disabled @endif" data-control="openModal" @if(1 == $data['sale_type']) data-action="PUT" @else data-action="PATCH"@endif>@if(1 == $data['sale_type']) Pre Order Now @else Add to Bag @endif</div>
                             </div>
                             {{--<div class="col-xs-6">--}}
                                 {{--<div class="btn btn-primary btn-block" data-control="openModal" data-action="PUT">Buy Now</div>--}}
@@ -239,7 +245,7 @@
                     @if(Session::has('user'))
                         <div class="row">
                             <div class="col-xs-12">
-                                <div class="btn btn-primary btn-block down-btn-addToBag" data-control="openModal" @if(1 == $data['sale_type']) data-action="PUT" @else data-action="PATCH"@endif>@if(1 == $data['sale_type']) Pre Order Now @else Add to Bag @endif</div>
+                                <div class="btn btn-primary btn-block down-btn-addToBag @if(!$data['sale_status']) disabled @endif" data-control="openModal" @if(1 == $data['sale_type']) data-action="PUT" @else data-action="PATCH"@endif>@if(1 == $data['sale_type']) Pre Order Now @else Add to Bag @endif</div>
                             </div>
                             {{--<div class="col-xs-6">--}}
                                 {{--<div class="btn btn-primary btn-block" data-control="openModal" data-action="PUT">Buy Now</div>--}}
