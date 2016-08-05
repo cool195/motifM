@@ -10,6 +10,6 @@
 <link rel="icon" href="/favicon.ico">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <!-- Place favicon.ico in the root directory -->
-<link rel="stylesheet" href="{{env('CDN_Static')}}/styles/vendor.css?v=1.0">
+<link rel="stylesheet" href="{{env('CDN_Static')}}/styles/vendor.css?v=1.1">
 <script src="{{env('CDN_Static')}}/scripts/vendor/modernizr.js"></script>
 <script src="{{env('CDN_Static')}}/scripts/vendor/fastclick.js"></script>
