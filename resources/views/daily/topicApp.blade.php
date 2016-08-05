@@ -97,7 +97,6 @@
                                                         </div>
                                                         @if(Session::get('user.pin'))
                                                             <span class="p-r-5x wish" data-id="{{$spu}}" id="{{'wish'.$spu}}"><i class="iconfont icon-like product-heart" ></i></span>
-                                                            {{--<span class="p-r-5x wish" data-id="{{$spu}}" id="{{'wish'.$spu}}"><i class="iconfont icon-onheart product-heart active" ></i></span>--}}
                                                         @else
                                                             <span class="p-r-5x"><i class="iconfont icon-like product-heart sendLogin"></i></span>
                                                         @endif
@@ -151,7 +150,7 @@
                     } else if (actionName.name == "addWish") {
                         var spus = actionName.data.spu.split(',');
                         $.each(spus, function (n, value) {
-                            $('#wish' + value).html('<i class="iconfont icon-like product-heart active"></i>');
+                            $('#wish' + value).html('<i class="iconfont icon-onheart product-heart active"></i>');
                         });
                     } else if (actionName.name == "authInfo") {
                         window.location.href = "/topic/{{$topicID}}?token=" + actionName.data.token + "&pin=" + actionName.data.pin + "&email=" + actionName.data.email + "&name=" + decodeURIComponent(actionName.data.name);
@@ -175,7 +174,7 @@
             })
                     .done(function (data) {
                         if (data.success) {
-                            data.cmd ? $this.html('<i class="iconfont icon-like product-heart active"></i>') : $this.html('<i class="iconfont icon-like product-heart"></i>');;
+                            data.cmd ? $this.html('<i class="iconfont icon-onheart product-heart active"></i>') : $this.html('<i class="iconfont icon-like product-heart"></i>');;
                             Jockey.send("action", {
                                 name: "updateWish",
                                 token: "key",
