@@ -98,7 +98,7 @@
                     @if($data['spuStock']['stock_qtty'] < 10000)
                     <div class="p-x-15x p-t-10x">
                         <img src="/images/icon/icon-limited.png" srcset="/images/icon/icon-limited@2x.png 2x, /images/icon/icon-limited@3x.png 3x" alt="">
-                        <span class="text-primary font-size-sm">@if($data['spuStock']['stock_qtty'] > 0 && $data['sale_status'])Only {{$data['spuStock']['stock_qtty']}} Left @else Sold Out @endif </span>
+                        <span class="text-primary font-size-sm stock-qtty">@if($data['spuStock']['stock_qtty'] > 0 && $data['sale_status'])Only {{$data['spuStock']['stock_qtty']}} Left @else Sold Out @endif </span>
 
                     </div>
                     @endif

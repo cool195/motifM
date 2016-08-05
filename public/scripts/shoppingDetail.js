@@ -897,7 +897,10 @@
     function timer(intDiff) {
         window.setInterval(function () {
             if (intDiff === 0) {
-                window.location.reload();
+                $('.limited-title').html('<strong>Pre Sale has ended</strong>');
+                $('.stock-qtty').html('Sold Out');
+                $('#limited-progress').attr('value', '0');
+                $('.up-btn-addToBag').addClass('disabled');
             }
             var day = 0,
                 hour = 0,
