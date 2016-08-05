@@ -174,15 +174,7 @@
             })
                     .done(function (data) {
                         if (data.success) {
-                            if(data.cmd){
-                                alert($this.attr('class'))
-                                $this.addClass('active');
-                                alert($this.attr('class'))
-                            } else{
-                                alert($this.attr('class'))
-                                $this.removeClass('active');
-                                alert($this.attr('class'))
-                            }
+                            data.cmd ? $this.addClass('active') : $this.removeClass('active');
                             Jockey.send("action", {
                                 name: "updateWish",
                                 token: "key",
