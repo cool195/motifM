@@ -95,12 +95,6 @@
                                                             @if($topic['spuInfos'][$spu]['skuPrice']['price'] != $topic['spuInfos'][$spu]['skuPrice']['sale_price'])
                                                                 <span class="font-size-xs text-common text-throughLine m-l-5x">${{number_format($topic['spuInfos'][$spu]['skuPrice']['price']/100,2)}}</span>
                                                             @endif
-
-                                                            @if(Session::get('user.pin'))
-                                                                <a class="wish" data-id="{{$spu}}" id="{{'wish'.$spu}}">no</a>
-                                                            @else
-                                                                <a class="sendLogin">login</a>
-                                                            @endif
                                                         </div>
                                                     </div>
                                                 </a>
