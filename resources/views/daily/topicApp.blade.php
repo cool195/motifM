@@ -7,16 +7,16 @@
 
 <body>
 @include('check.tagmanager')
-<!-- 外层容器 -->
+{{--外层容器--}}
 <div id="body-content">
-    <!-- 主体内容 -->
+    {{--主体内容--}}
     <div class="body-container" style="padding-top:0px">
-        <!-- daily 详细内容 -->
+        {{--daily 详细内容--}}
         <section class="bg-white p-b-10x reserve-height">
-        @if(isset($topic['infos']))
-            @foreach($topic['infos'] as $k=>$value)
-                @if($value['type']=='banner')
-                    <!-- 第一个 banner 图 -->
+            @if(isset($topic['infos']))
+                @foreach($topic['infos'] as $k=>$value)
+                    @if($value['type']=='banner')
+                        {{--第一个 banner 图--}}
                         <div @if($k!=0)class="p-y-10x"@endif>
                             <a href="@if($value['skipType']=='1')motif://o.c?a=pd&spu={{$value['skipId']}}@elseif($value['skipType']=='2')/designer/{{$value['skipId']}}@elseif($value['skipType']=='3')/topic/{{$value['skipId']}}@elseif($value['skipType']=='4')motif://o.c?a=shoppinglist&cid={{$value['skipId']}}@else{{'motif://o.c?a=outurl&url='.urlencode($value['imgUrl'])}}@endif">
                                 <img class="img-fluid img-lazy"
@@ -25,8 +25,8 @@
                                      alt="">
                             </a>
                         </div>
-                @elseif($value['type']=='title')
-                    <!-- 标题 -->
+                    @elseif($value['type']=='title')
+                        {{--标题--}}
                         <a href="@if($value['skipType']=='1')motif://o.c?a=pd&spu={{$value['skipId']}}@elseif($value['skipType']=='2')/designer/{{$value['skipId']}}@elseif($value['skipType']=='3')/topic/{{$value['skipId']}}@elseif($value['skipType']=='4')motif://o.c?a=shoppinglist&cid={{$value['skipId']}}@else{{'motif://o.c?a=outurl&url='.urlencode($value['imgUrl'])}}@endif">
                             <div class="p-x-15x p-y-10x text-primary">
                                 <strong>{{$value['value']}}</strong>
@@ -35,7 +35,7 @@
                     @elseif($value['type']=='boxline')
                         <hr class="hr-base m-x-5x m-y-0">
                     @elseif($value['type']=='context')
-                    <!-- 描述 -->
+                        {{--描述--}}
                         <a href="@if($value['skipType']=='1')motif://o.c?a=pd&spu={{$value['skipId']}}@elseif($value['skipType']=='2')/designer/{{$value['skipId']}}@elseif($value['skipType']=='3')/topic/{{$value['skipId']}}@elseif($value['skipType']=='4')motif://o.c?a=shoppinglist&cid={{$value['skipId']}}@else{{'motif://o.c?a=outurl&url='.urlencode($value['imgUrl'])}}@endif">
                             <div class="p-x-15x p-y-10x text-primary font-size-sm">
                                 {{$value['value']}}
@@ -67,6 +67,7 @@
                             @endif
                         @else
                             {{-- 商品列表横向 --}}
+
                             <div class="container-fluid p-x-15x">
                                 <div class="row">
                                     @if(isset($value['spus']))
@@ -89,6 +90,7 @@
                                                                 </div>
                                                             @endif
                                                         </div>
+
                                                         <div class="container-fluid p-x-0 bg-topic">
                                                             <div class="row m-a-0 topic-product p-y-10x">
                                                                 @if(isset($value['spus']))
@@ -117,7 +119,8 @@
                                                                                             <span class="font-size-xs text-common text-throughLine m-l-5x">${{number_format($topic['spuInfos'][$spu]['skuPrice']['price']/100,2)}}</span>
                                                                                         @endif
                                                                                     </div>
-                                                                                    <span class="p-r-5x"><i class="iconfont icon-like product-heart"></i></span>
+                                                                                    <span class="p-r-5x"><i
+                                                                                                class="iconfont icon-like product-heart"></i></span>
                                                                                 </div>
                                                                             </div>
                                                                         </div>
@@ -125,6 +128,13 @@
                                                                 @endif
                                                             </div>
                                                         </div>
+                                                    </div>
+                                                </a>
+                                            </div>
+                                        @endforeach
+                                    @endif
+                                </div>
+                            </div>
                         @endif
                     @endif
                 @endforeach
