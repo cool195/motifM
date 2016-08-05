@@ -44,7 +44,7 @@
                             </div>
                         </a>
                 @elseif($value['type']=='product')
-                        <div class="imprCheck" data-impr='http://clk.motif.me/log.gif?t=daily.200001&m=H5_M2016-1&pin={{Session::get('user.pin')}}&uuid={{ Session::get('user.uuid') }}&v={"action":0,"skipType":1,"skipId":{{ implode("_", $value['spus']) }},"topicId":{{$topicID}},"expid":0,"ver":"1.0.1","src":"H5"}'></div>
+                        <div data-impr='http://clk.motif.me/log.gif?t=daily.200001&m=H5_M2016-1&pin={{Session::get('user.pin')}}&uuid={{ Session::get('user.uuid') }}&v={"action":0,"skipType":1,"skipId":{{ implode("_", $value['spus']) }},"topicId":{{$topicID}},"expid":0,"ver":"1.0.1","src":"H5"}'></div>
                         @if($value['style']=='box-vertical')
                             {{-- 商品列表竖向 --}}
                             @if(isset($value['spus']))
@@ -118,6 +118,20 @@
             effect: 'fadeIn'
         });
     });
+
+    $(document).ready(function() {
+        $.ajax({
+            url: $('[data-impr]').data('impr'),
+            type: "GET"
+        });
+
+        $('[data-clk]').click(function() {
+            $.ajax({
+                url: $(this).data('clk'),
+                type: "GET"
+            });
+        })
+    })
 </script>
 @include('global')
 </html>
