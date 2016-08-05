@@ -163,9 +163,4 @@
         changeFollow(followId);
     });
 
-    // 点击 "心" 关注商品
-    $('.product-heart').on('click', function () {
-        $(this).toggleClass('active');
-    });
-
 })(jQuery);
