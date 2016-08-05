@@ -896,6 +896,9 @@
     $('#limited-progress').attr('value', rate);
     function timer(intDiff) {
         window.setInterval(function () {
+            if (intDiff === 0) {
+                window.location.reload();
+            }
             var day = 0,
                 hour = 0,
                 minute = 0,
