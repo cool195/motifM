@@ -84,9 +84,15 @@
                             </aside>
                         </div>
                     </div>
-                </a>
-                    <hr class="hr-base m-y-0 m-l-15x">
+                 </a>
+                 <hr class="hr-base m-y-0 m-l-15x">
                 @endforeach
+            @endif
+            @if(isset($data['logistics_info_url']))
+            <a class="flex flex-alignCenter flex-fullJustified font-size-sm text-primary p-a-15x" href="{{ $data['logistics_info_url'] }}">
+                Track Order
+                <i class="iconfont icon-arrow-right icon-size-xm text-common"></i>
+            </a>
             @endif
             @if(in_array($data['status_code'], array(21, 22, 23)))
                 <div class="p-a-10x">
