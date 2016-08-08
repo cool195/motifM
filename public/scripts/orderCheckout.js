@@ -87,13 +87,16 @@
                     if (data.success) {
                         console.log('success');
                         window.location.href = data.redirectUrl;
+                    }else{
+                        alert(data.error_msg);
+                        window.location.href = data.redirectUrl;
                     }
                 })
                 .fail(function () {
                     console.log('error');
                 })
                 .always(function () {
-                    //closeLoading();
+                    closeLoading();
                     console.log('complete');
                 });
         }

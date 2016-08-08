@@ -60,7 +60,7 @@
             </div>
             <!-- 预售标题 -->
             @if(1 == $data['sale_type'] )
-                <div class="limited-title"><strong>@if($data['sale_status'])PRE SALE {{  $data['skuPrice']['skuPromotion']['display'] }} @else Pre Sale has ended @endif</strong></div>
+                <div class="limited-title"><strong>@if($data['sale_status']) {{  $data['skuPrice']['skuPromotion']['presale_title'] }} @else Pre Sale has ended @endif</strong></div>
             @endif
 
             <!-- 产品 标题 简介 价格 基本信息 -->
@@ -95,11 +95,10 @@
             <section class="limited-content" data-begintime="{{  $data['skuPrice']['skuPromotion']['start_time'] }}" data-endtime="{{  $data['skuPrice']['skuPromotion']['end_time'] }}" data-lefttime="@if($data['sale_status']){{$data['skuPrice']['skuPromotion']['remain_time']}}@else{{'0'}}@endif" data-qtty="{{$data['spuStock']['stock_qtty']}}">
                 <div class="bg-white m-b-10x">
                     <div class="p-x-15x limited-subtitle"><strong>LIMITED EDITION</strong></div>
-                    @if($data['spuStock']['stock_qtty'] < 10000)
+                    @if($data['spuStock']['stock_qtty'] - $data['spuStock']['saled_qtty'] < 10000)
                     <div class="p-x-15x p-t-10x">
                         <img src="/images/icon/icon-limited.png" srcset="/images/icon/icon-limited@2x.png 2x, /images/icon/icon-limited@3x.png 3x" alt="">
-                        <span class="text-primary font-size-sm stock-qtty">@if($data['spuStock']['stock_qtty'] > 0 && $data['sale_status'])Only {{$data['spuStock']['stock_qtty']}} Left @else Sold Out @endif </span>
-
+                        <span class="text-primary font-size-sm stock-qtty">@if($data['spuStock']['stock_qtty'] - $data['spuStock']['saled_qtty'] > 0 && $data['sale_status']) Only {{$data['spuStock']['stock_qtty'] - $data['spuStock']['saled_qtty']}} Left @else Sold Out @endif </span>
                     </div>
                     @endif
                     <div class="p-x-15x p-t-5x">
