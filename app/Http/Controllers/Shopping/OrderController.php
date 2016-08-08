@@ -155,7 +155,7 @@ class OrderController extends ApiController
         if (!empty($result) && $result['success']) {
             $result['redirectUrl'] = "/paypalorder?orderid=" . $result['data']['orderID'] . "&orderDetail=" . $result['data']['shortInfo'] . "&totalPrice=" . $result['data']['pay_amount'] / 100;
         } else {
-            $result['redirectUrl'] = '/shopping';
+            $result['redirectUrl'] = Session::has('referer') ? Session::get('referer') : '/shopping';
         }
         return $result;
 

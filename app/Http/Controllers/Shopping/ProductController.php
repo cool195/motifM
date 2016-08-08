@@ -70,6 +70,7 @@ class ProductController extends ApiController
             }
             $result['data']['sale_status'] = true;
             if(1 == $result['data']['sale_type']){
+                Session::put('referer', "/detail/$spu");
                 $result['data']['sale_status'] = $this->getSaleStatus($result['data']);
             }
         }

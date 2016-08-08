@@ -39,8 +39,9 @@ class CartController extends ApiController
 		$defaultMethod = $this->getShippingMethodByStypeOrDefault($stype);
 		$result = $this->getCartAccountList($request, $defaultMethod['logistics_type'], $cps);
 		$result['data']['cardlist'] = array('Diners' => 'diners-club', 'Discover' => 'discover', 'JCB' => 'jcb', 'Maestro' => 'maestro', 'AmericanExpress' => 'american-express', 'Visa' => 'visa', 'MasterCard' => 'master-card');
-		if(empty($result['data'])){
-			return redirect('/shopping');
+		if(empty($result['success']) && !$result['success']){
+			$referer = Session::has('referer') ? Session::get('referer') : '/shopping';
+			return redirect($referer);
 		}
 		return View('shopping.ordercheckout', [
 			'data'=>$result['data'], 
@@ -424,7 +425,6 @@ class CartController extends ApiController
 	 * */
 	public function promptlyBuy(Request $request)
 	{
-
 		$params = array(
 			'cmd' => 'promptlybuy',
 			'operate' => json_encode($request->input('operate')),
