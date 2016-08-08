@@ -90,7 +90,7 @@
             @endif
             @if(isset($data['logistics_info_url']))
             <a class="flex flex-alignCenter flex-fullJustified font-size-sm text-primary p-a-15x" href="{{ $data['logistics_info_url'] }}">
-                Track Order
+                Track order
                 <i class="iconfont icon-arrow-right icon-size-xm text-common"></i>
             </a>
             @endif
