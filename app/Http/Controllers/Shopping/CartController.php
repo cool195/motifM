@@ -38,11 +38,11 @@ class CartController extends ApiController
 		$cps = $request->input('cps');
 		$defaultMethod = $this->getShippingMethodByStypeOrDefault($stype);
 		$result = $this->getCartAccountList($request, $defaultMethod['logistics_type'], $cps);
-		$result['data']['cardlist'] = array('Diners' => 'diners-club', 'Discover' => 'discover', 'JCB' => 'jcb', 'Maestro' => 'maestro', 'AmericanExpress' => 'american-express', 'Visa' => 'visa', 'MasterCard' => 'master-card');
-		if(empty($result['success']) && !$result['success']){
+		if(empty($result['data']) || empty($result['success']) || !$result['success']){
 			$referer = Session::has('referer') ? Session::get('referer') : '/shopping';
 			return redirect($referer);
 		}
+		$result['data']['cardlist'] = array('Diners' => 'diners-club', 'Discover' => 'discover', 'JCB' => 'jcb', 'Maestro' => 'maestro', 'AmericanExpress' => 'american-express', 'Visa' => 'visa', 'MasterCard' => 'master-card');
 		return View('shopping.ordercheckout', [
 			'data'=>$result['data'], 
 			'addr'=>$this->getUserAddrByAid($request->input('aid', 0)),
