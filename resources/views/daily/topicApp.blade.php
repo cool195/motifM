@@ -25,6 +25,13 @@
                                      alt="">
                             </a>
                         </div>
+                @elseif($value['type']=='multilink')
+                    <!-- 锚点图 -->
+                        <div class="m-y-10x">
+                            <div class="hotspot-image" data-hotspot='@foreach($value['squas'] as $v){{'{"beginX":'.$v['startX'].',"beginY":'.$v['startY'].',"skipId":"'.$v['skipId'].'","skipType":"'.$v['skipType'].'","endX":'.$v['endX'].',"endY":'.$v['endY'].'},'}}@endforeach'>
+                                <img class="img-fluid" src="{{env('APP_Api_Image')}}/n1/{{$value['imgPath']}}">
+                            </div>
+                        </div>
                 @elseif($value['type']=='title')
                     <!-- 标题 -->
                         <a href="@if($value['skipType']=='1')motif://o.c?a=pd&spu={{$value['skipId']}}@elseif($value['skipType']=='2')/designer/{{$value['skipId']}}@elseif($value['skipType']=='3')/topic/{{$value['skipId']}}@elseif($value['skipType']=='4')motif://o.c?a=shoppinglist&cid={{$value['skipId']}}@else{{'motif://o.c?a=outurl&url='.urlencode($value['imgUrl'])}}@endif">
@@ -125,6 +132,56 @@
             threshold: 200,
             effect: 'fadeIn'
         });
+    });
+
+    // 锚点图
+    function getHotSpot() {
+        $('.hotspot-image').each(function () {
+            var $this = $(this);
+            var obj = $(this).data('hotspot');
+            // 获取最后一个字符
+            var lastStr = obj.charAt(obj.length - 1);
+            if (lastStr === ',') {
+                obj = obj.substring(0, obj.length - 1);
+            }
+            // 转化为json
+            var objJson = eval('[' + obj + ']');
+            $.each(objJson, function (n, value) {
+                var BeginX = value.beginX;
+                var BeginY = value.beginY;
+                var EndX = value.endX;
+                var EndY = value.endY;
+                var url = '';
+
+                switch (value.skipType){
+                    case '1':
+                        url = 'motif://o.c?a=pd&spu=';
+                        break;
+                    case '2':
+                        url = '/designer/';
+                        break;
+                    case '3':
+                        url = '/topic/';
+                        break;
+                    case '4':
+                        url = 'motif://o.c?a=shoppinglist&cid=';
+                        break;
+                }
+                url += value.skipId;
+                var parenta = $('<a></a>').attr('href', url);
+                var childdiv = $('<div class="hotspot-spot"></div>').css({
+                    width: (EndX - BeginX) * 100 + "%",
+                    height: (EndY - BeginY) * 100 + "%",
+                    left: BeginX * 100 + "%",
+                    top: BeginY * 100 + "%"
+                });
+                parenta.prepend(childdiv).appendTo($this);
+            });
+        });
+    }
+
+    $(function () {
+        getHotSpot();
     });
 </script>
 @if($shareFlag)

@@ -27,15 +27,13 @@
                                      src="{{env('CDN_Static')}}/images/product/bg-product@750.png" alt="">
                             </a>
                         </div>
-
+                @elseif($value['type']=='multilink')
                     <!-- 锚点图 -->
                     <div class="m-y-10x">
-                        <div class="hotspot-image" data-hotspot='{"beginX": 0.1,"beginY": 0.1,"url": "http://www.baidu.com","endX": 0.5,"endY": 0.5}, {"beginX": 0.2, "beginY": 0.6, "url": "http://www.sina.com.cn", "endX": 0.6, "endY": 0.8}'>
-                            <img class="img-fluid" src="/images/daily/daily1.jpg" alt="">
+                        <div class="hotspot-image" data-hotspot='@foreach($value['squas'] as $v){{'{"beginX":'.$v['startX'].',"beginY":'.$v['startY'].',"skipId":"'.$v['skipId'].'","skipType":"'.$v['skipType'].'","endX":'.$v['endX'].',"endY":'.$v['endY'].'},'}}@endforeach'>
+                            <img class="img-fluid" src="{{env('APP_Api_Image')}}/n1/{{$value['imgPath']}}">
                         </div>
                     </div>
-
-
                 @elseif($value['type']=='title')
                     <!-- 标题 -->
                         <a href="@if($value['skipType']=='1')/detail/@elseif($value['skipType']=='2')/designer/@elseif($value['skipType']=='3')/topic/@elseif($value['skipType']=='4')/shopping#@endif{{$value['skipId']}}">
@@ -133,20 +131,40 @@
         $('.hotspot-image').each(function () {
             var $this = $(this);
             var obj = $(this).data('hotspot');
-            var objJson = jQuery.parseJSON("[" + obj + "]");
-
+            // 获取最后一个字符
+            var lastStr = obj.charAt(obj.length - 1);
+            if (lastStr === ',') {
+                obj = obj.substring(0, obj.length - 1);
+            }
+            // 转化为json
+            var objJson = eval('[' + obj + ']');
             $.each(objJson, function (n, value) {
                 var BeginX = value.beginX;
                 var BeginY = value.beginY;
                 var EndX = value.endX;
                 var EndY = value.endY;
-                var url = value.url;
+                var url = '';
+                switch (value.skipType){
+                    case '1':
+                            url = '/detail/';
+                        break;
+                    case '2':
+                        url = '/designer/';
+                        break;
+                    case '3':
+                        url = '/topic/';
+                        break;
+                    case '4':
+                        url = '/shopping#';
+                        break;
+                }
+                url += value.skipId;
                 var parenta = $('<a></a>').attr('href', url);
                 var childdiv = $('<div class="hotspot-spot"></div>').css({
                     width: (EndX - BeginX) * 100 + "%",
                     height: (EndY - BeginY) * 100 + "%",
-                    top: BeginX * 100 + "%",
-                    left: BeginY * 100 + "%"
+                    left: BeginX * 100 + "%",
+                    top: BeginY * 100 + "%"
                 });
                 parenta.prepend(childdiv).appendTo($this);
             });
