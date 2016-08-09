@@ -32,24 +32,24 @@
                                 <strong>{{$value['value']}}</strong>
                             </div>
                         </a>
-                    @elseif($value['type']=='boxline')
+                @elseif($value['type']=='boxline')
                         <hr class="hr-base m-x-5x m-y-0">
-                    @elseif($value['type']=='context')
+                @elseif($value['type']=='context')
                     <!-- 描述 -->
                         <a href="@if($value['skipType']=='1')motif://o.c?a=pd&spu={{$value['skipId']}}@elseif($value['skipType']=='2')/designer/{{$value['skipId']}}@elseif($value['skipType']=='3')/topic/{{$value['skipId']}}@elseif($value['skipType']=='4')motif://o.c?a=shoppinglist&cid={{$value['skipId']}}@else{{'motif://o.c?a=outurl&url='.urlencode($value['imgUrl'])}}@endif">
                             <div class="p-x-15x p-y-10x text-primary font-size-sm">
                                 {{$value['value']}}
                             </div>
                         </a>
-                    @elseif($value['type']=='product')
+                @elseif($value['type']=='product')
+                        <div data-impr='http://clk.motif.me/log.gif?t=daily.200001&m=H5_M2016-1&pin={{Session::get('user.pin')}}&uuid={{ Session::get('user.uuid') }}&v={"action":0,"skipType":1,"skipId":{{ implode("_", $value['spus']) }},"topicId":{{$topicID}},"expid":0,"ver":"1.0.1","src":"H5"}'></div>
                         @if($value['style']=='box-vertical')
                             {{-- 商品列表竖向 --}}
                             @if(isset($value['spus']))
                                 @foreach($value['spus'] as $spu)
                                     <div class="p-x-15x p-y-10x">
-                                        <a data-impr='http://clk.motif.me/log.gif?t=daily.200001&m=H5_M2016-1&pin={{Session::get('user.pin')}}&uuid={{ Session::get('user.uuid') }}&v={"action":0,"skipType":1,"skipId":{{$spu}},"topicId":{{$topicID}},"expid":0,"ver":"1.0.1","src":"H5"}'
-                                           data-clk='http://clk.motif.me/log.gif?t=daily.200001&m=H5_M2016-1&pin={{Session::get('user.pin')}}&uuid={{Session::get('user.uuid')}}&v={"action":1,"skipType":1,"skipId":{{$spu}},"topicId":{{$topicID}},"expid":0,"ver":"1.0.1","src":"H5"}'
-                                           href="motif://o.c?a=pd&spu={{$spu}}">
+                                        <a data-clk='http://clk.motif.me/log.gif?t=daily.200001&m=H5_M2016-1&pin={{Session::get('user.pin')}}&uuid={{Session::get('user.uuid')}}&v={"action":1,"skipType":1,"skipId":{{$spu}},"topicId":{{$topicID}},"expid":0,"ver":"1.0.1","src":"H5"}'
+                                           data-link="motif://o.c?a=pd&spu={{$spu}}" href="javascript:void(0)">
                                             <img class="img-fluid img-lazy"
                                                  data-original="{{env('APP_Api_Image')}}/n1/{{$topic['spuInfos'][$spu]['spuBase']['main_image_url']}}"
                                                  src="{{env('CDN_Static')}}/images/product/bg-product@750.png"
@@ -73,7 +73,8 @@
                                         @foreach($value['spus'] as $spu)
                                             <div class="col-xs-6 p-a-0">
                                                 <div class="bg-white topic-product-item productList-item">
-                                                    <a href="motif://o.c?a=pd&spu={{$spu}}">
+                                                    <a data-clk='http://clk.motif.me/log.gif?t=daily.200001&m=H5_M2016-1&pin={{Session::get('user.pin')}}&uuid={{Session::get('user.uuid')}}&v={"action":1,"skipType":1,"skipId":{{$spu}},"topicId":{{$topicID}},"expid":0,"ver":"1.0.1","src":"H5"}'
+                                                       data-link="/detail/{{$spu}}" href="javascript:void(0)">
                                                         <div class="image-container">
                                                             <img class="img-fluid img-lazy"
                                                                  data-original="{{env('APP_Api_Image')}}/n2/{{$topic['spuInfos'][$spu]['spuBase']['main_image_url']}}"
@@ -108,9 +109,9 @@
                                 </div>
                             </div>
                         @endif
-                    @endif
-                @endforeach
-            @endif
+                @endif
+            @endforeach
+        @endif
         </section>
     </div>
 </div>
@@ -193,6 +194,7 @@
                 data: {"spu": spuStr, "callback": 'addWish'}
             });
         @endif
+
 
     </script>
 @endif

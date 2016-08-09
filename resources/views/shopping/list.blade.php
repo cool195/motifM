@@ -124,7 +124,7 @@
         <div class="productList-item">
             <div class="image-bg">
                 <div class="image-container">
-                    <a href="/detail/@{{ $value.spu }}" data-impr="@{{ $value.impr }}" data-clk="@{{ $value.clk }}">
+                    <a data-link="/detail/@{{ $value.spu }}" data-impr="@{{ $value.impr }}" data-clk="@{{ $value.clk }}" href="javascript:void(0)">
                         <img class="img-fluid img-lazy"
                              data-original="{{env('APP_Api_Image')}}/n1/@{{ $value.main_image_url }}"
                              src="{{env('CDN_Static')}}/images/product/bg-product@336.png"

@@ -64,6 +64,21 @@
                         container: $('#dailyContainer'),
                         effect: 'fadeIn'
                     });
+
+                    //给模板a标签绑定事件
+                    $('[data-clk]').unbind('click');
+                    $('[data-clk]').bind('click', function() {
+                        var $this = $(this);
+                        if(undefined !== $this.data('link')){
+                            $.ajax({
+                                url: $this.data('clk'),
+                                type: "GET"
+                            });
+                            setTimeout(function() {
+                                window.location.href = $this.data('link');
+                            }, 100);
+                        }
+                    })
                 }
             })
             .always(function () {

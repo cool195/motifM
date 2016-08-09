@@ -32,7 +32,7 @@ class ProductController extends ApiController
     }
 
     //获取相关推荐商品
-    public function recommended($spu,$cid,$designerid)
+    public function recommended($spu,$cid,$designerId)
     {
         $params = array(
             'recid' => '100002',
@@ -40,7 +40,7 @@ class ProductController extends ApiController
             'pagenum' => 1,
             'pagesize' => 20,
             'spu' => $spu,
-            'extra_kv'=>$designerid
+            'extra_kv'=>!empty($designerId) ? $designerId : -1
         );
         $params['cid'] = isset($cid) ? $cid : -1;
         return $this->request('openapi', '', "rec", $params,0);

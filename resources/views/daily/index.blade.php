@@ -41,7 +41,8 @@
     <div class="bg-white m-b-10x">
         <a data-impr='http://clk.motif.me/log.gif?t=daily.100001&m=H5_M2016-1&pin={{ Session::get('user.pin') }}&uuid={{ Session::get('user.uuid') }}&v=<?="{\"action\":0,\"type\":"?>@{{ $value.type }}<?=",\"imgtextType\":"?>@{{ $value.imgtextType }}<?=",\"skipType\","?>@{{ $value.skipType }}<?=",\"skipId\":"?>@{{ $value.skipId }}<?=",\"sortNo\":" ?>@{{ $value.sortNo }}<?=",\"expid\":0,\"index\": 1"?>@{{ xxx }}<?=",\"version\":\"1.0.1\", \"ver\":\"9.2\", \"src\":\"H5\"}"?>'
            data-clk='http://clk.motif.me/log.gif?t=daily.100001&m=H5_M2016-1&pin={{ Session::get('user.pin') }}&uuid={{ Session::get('user.uuid') }}&v=<?="{\"action\":0,\"type\":"?>@{{ $value.type }}<?=",\"imgtextType\":"?>@{{ $value.imgtextType }}<?=",\"skipType\","?>@{{ $value.skipType }}<?=",\"skipId\":"?>@{{ $value.skipId }}<?=",\"sortNo\":" ?>@{{ $value.sortNo }}<?=",\"expid\":0,\"index\": 1"?>@{{ xxx }}<?=",\"version\":\"1.0.1\", \"ver\":\"9.2\", \"src\":\"H5\"}"?>'
-           href="@{{ if $value.skipType == 1 }}/detail/@{{ else if $value.skipType == 2 }}/designer/@{{ else if $value.skipType == 3 }}/topic/@{{ else if $value.skipType == 4 }}/shopping#@{{ /if }}@{{ $value.skipId }}">
+           data-link="@{{ if $value.skipType == 1 }}/detail/@{{ else if $value.skipType == 2 }}/designer/@{{ else if $value.skipType == 3 }}/topic/@{{ else if $value.skipType == 4 }}/shopping#@{{ /if }}@{{ $value.skipId }}"
+           href="javascript:void(0)">
             <img class="img-fluid img-lazy"
                  data-original="{{env('APP_Api_Image')}}/n1/@{{ $value.imgPath }}"
                  src="{{env('CDN_Static')}}/images/product/bg-product@750.png">
@@ -51,7 +52,8 @@
     @{{ if $value.type == "2" }}
     <a data-impr='http://clk.motif.me/log.gif?t=daily.100001&m=H5_M2016-1&pin={{ Session::get('user.pin') }}&uuid={{ Session::get('user.uuid') }}&v=<?="{\"action\":0,\"type\":"?>@{{ $value.type }}<?=",\"imgtextType\":"?>@{{ $value.imgtextType }}<?=",\"skipType\","?>@{{ $value.skipType }}<?=",\"skipId\":"?>@{{ $value.skipId }}<?=",\"sortNo\":" ?>@{{ $value.sortNo }}<?=",\"expid\":0,\"index\": 1"?>@{{ xxx }}<?=",\"version\":\"1.0.1\", \"ver\":\"9.2\", \"src\":\"H5\"}"?>'
        data-clk='http://clk.motif.me/log.gif?t=daily.100001&m=H5_M2016-1&pin={{ Session::get('user.pin') }}&uuid={{ Session::get('user.uuid') }}&v=<?="{\"action\":0,\"type\":"?>@{{ $value.type }}<?=",\"imgtextType\":"?>@{{ $value.imgtextType }}<?=",\"skipType\","?>@{{ $value.skipType }}<?=",\"skipId\":"?>@{{ $value.skipId }}<?=",\"sortNo\":" ?>@{{ $value.sortNo }}<?=",\"expid\":0,\"index\": 1"?>@{{ xxx }}<?=",\"version\":\"1.0.1\", \"ver\":\"9.2\", \"src\":\"H5\"}"?>'
-       href="@{{ if $value.skipType == 1 }}/detail/@{{ else if $value.skipType == 2 }}/designer/@{{ else if $value.skipType == 3 }}/topic/@{{ else if $value.skipType == 4 }}/shopping#@{{ /if }}@{{ $value.skipId }}">
+       data-link="@{{ if $value.skipType == 1 }}/detail/@{{ else if $value.skipType == 2 }}/designer/@{{ else if $value.skipType == 3 }}/topic/@{{ else if $value.skipType == 4 }}/shopping#@{{ /if }}@{{ $value.skipId }}"
+       href="javascript:void(0)">
         <div class="bg-white m-b-10x">
             <div class="daily-imgInfo">
                 <img class="img-fluid img-lazy"
