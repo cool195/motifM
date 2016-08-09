@@ -84,7 +84,7 @@ class ProductController extends ApiController
         {
             $flag = false;
         }
-        elseif($data['spuStock']['stock_qtty'] == $data['spuStock']['saled_qtty'] )
+        elseif(!empty($data['spuStock']) && $data['spuStock']['stock_qtty'] == $data['spuStock']['saled_qtty'] )
         {
             $flag = false;
         }
