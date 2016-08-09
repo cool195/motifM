@@ -896,7 +896,7 @@
     $('#limited-progress').attr('value', rate);
     function timer(intDiff) {
         window.setInterval(function () {
-            if (intDiff === 0) {
+            if (intDiff <= 0) {
                 $('.limited-title').html('<strong>Pre Sale has ended</strong>');
                 $('.stock-qtty').html('Sold Out');
                 $('#limited-progress').attr('value', '0');
