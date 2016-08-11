@@ -1,13 +1,13 @@
 @servers(['local' => 'juchao@192.168.0.235 -p 60000','test' => 'juchao@test.m.motif.me -p 60000','product' => 'juchao@m.motif.me -p 60000'])
 
 {{--更新测试,预发M站 宏--}}
-@macro('gitm')
+@macro('gitpullm')
 localm
 testm
 @endmacro
 
 {{--更新测试,预发PC站 宏--}}
-@macro('gitpc')
+@macro('gitpullpc')
 localp
 testp
 @endmacro
