@@ -81,7 +81,7 @@
                                         @foreach($value['spus'] as $spu)
                                             <div class="col-xs-6">
                                                 <a data-clk='http://clk.motif.me/log.gif?t=daily.200001&m=H5_M2016-1&pin={{Session::get('user.pin')}}&uuid={{Session::get('user.uuid')}}&v={"action":1,"skipType":1,"skipId":{{$spu}},"topicId":{{$topicID}},"expid":0,"ver":"1.0.1","src":"H5"}'
-                                                   data-link=/detail/{{$spu}}" href="javascript:void(0)">
+                                                   data-link="/detail/{{$spu}}" href="javascript:void(0)">
                                                     <div class="p-t-10x productList-item m-b-0">
                                                         <div class="image-container">
                                                             <img class="img-thumbnail img-lazy"
