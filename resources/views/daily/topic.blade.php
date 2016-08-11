@@ -117,7 +117,7 @@
     </div>
 </div>
 </body>
-<script src="{{env('CDN_Static')}}/scripts/vendor.js"></script>
+<script src="{{env('CDN_Static')}}/scripts/vendor.js?v=3"></script>
 <script>
     $(document).ready(function () {
         $('img.img-lazy').lazyload({
