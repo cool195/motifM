@@ -3,7 +3,7 @@
 <head>
     <title>{{$data['main_title']}}</title>
     @include('head')
-    <link rel="stylesheet" href="{{env('CDN_Static')}}/styles/shoppingDetail.css">
+    <link rel="stylesheet" href="{{env('CDN_Static')}}/styles/shoppingDetail.css?v=3">
 </head>
 <body>
 @include('check.tagmanager')
@@ -427,7 +427,7 @@
 </body>
 <script src="{{env('CDN_Static')}}/scripts/vendor.js"></script>
 
-<script src="{{env('CDN_Static')}}/scripts/shoppingDetail.js"></script>
+<script src="{{env('CDN_Static')}}/scripts/shoppingDetail.js?v=3"></script>
 <meta name="csrf-token" content="{{ csrf_token() }}"/>
 
 <script>

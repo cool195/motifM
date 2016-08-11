@@ -221,7 +221,7 @@
 </body>
 <script src="{{env('CDN_Static')}}/scripts/vendor.js"></script>
 
-<script src="{{env('CDN_Static')}}/scripts/orderCheckout.js"></script>
+<script src="{{env('CDN_Static')}}/scripts/orderCheckout.js?v=3"></script>
 <meta name="csrf-token" content="{{ csrf_token() }}" />
 <script>
     $.ajaxSetup({

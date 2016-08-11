@@ -3,7 +3,7 @@
 <head>
     <title>shopping</title>
     @include('head')
-    <link rel="stylesheet" href="{{env('CDN_Static')}}/styles/shoppingList.css">
+    <link rel="stylesheet" href="{{env('CDN_Static')}}/styles/shoppingList.css?v=3">
 </head>
 <body>
 @include('check.tagmanager')
@@ -154,6 +154,6 @@
 </template>
 <script src="{{env('CDN_Static')}}/scripts/vendor.js"></script>
 
-<script src="{{env('CDN_Static')}}/scripts/shoppingList.js?v=2"></script>
+<script src="{{env('CDN_Static')}}/scripts/shoppingList.js?v=3"></script>
 @include('global')
 </html>

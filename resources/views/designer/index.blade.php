@@ -65,6 +65,6 @@
 </template>
 <script src="{{env('CDN_Static')}}/scripts/vendor.js"></script>
 
-<script src="{{env('CDN_Static')}}/scripts/designer.js?v=2"></script>
+<script src="{{env('CDN_Static')}}/scripts/designer.js?v=3"></script>
 @include('global')
 </html>

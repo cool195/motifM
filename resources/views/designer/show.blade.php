@@ -3,7 +3,7 @@
 <head>
     <title>Designer Detail</title>
     @include('head')
-    <link rel="stylesheet" href="{{env('CDN_Static')}}/styles/designerDetail.css">
+    <link rel="stylesheet" href="{{env('CDN_Static')}}/styles/designerDetail.css?v=3">
 </head>
 <body>
 @include('check.tagmanager')
@@ -227,7 +227,7 @@
 </div>
 </body>
 <script src="{{env('CDN_Static')}}/scripts/vendor.js"></script>
-<script src="{{env('CDN_Static')}}/scripts/designerDetail.js"></script>
+<script src="{{env('CDN_Static')}}/scripts/designerDetail.js?v=3"></script>
 <script src="{{env('CDN_Static')}}/scripts/videoPlay.js"></script>
 @include('global')
 </html>

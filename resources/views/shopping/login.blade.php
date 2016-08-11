@@ -86,7 +86,7 @@
     });
 </script>
 <script src="https://apis.google.com/js/api:client.js"></script>
-<script src="{{env('CDN_Static')}}/scripts/signWith.js"></script>
+<script src="{{env('CDN_Static')}}/scripts/signWith.js?v=3"></script>
 
 @include('global')
 </html>
