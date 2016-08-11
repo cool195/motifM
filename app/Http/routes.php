@@ -30,6 +30,10 @@ $app->group(['middleware' => 'pcguide', 'namespace' => 'App\Http\Controllers'], 
     $app->get('/addFacebookEmail', 'Auth\AuthController@addFacebookEmail');
 
     $app->get('methodlist', 'Shopping\BraintreeController@methodlist');
+
+    $app->get('/wishlist', 'Shopping\ShoppingController@wishlist');
+
+    $app->get('/updateWish', 'Shopping\ShoppingController@updateWish');
 });
 
 $app->get('/forgetpwd', 'Shopping\UserController@forgetPWD');

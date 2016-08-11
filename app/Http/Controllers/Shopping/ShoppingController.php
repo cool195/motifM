@@ -149,4 +149,62 @@ class ShoppingController extends ApiController
         return view('shopping.pcguide', ['referer' => $referer]);
     }
 
+    //Wishlist Start
+    public function wishlist()
+    {
+        if ( Session::get('user.pin')){
+
+            $value = Cache::rememberForever(Session::get('user.pin') . 'wishlist', function () {
+                $params = array(
+                    'cmd' => 'list',
+                    'num' => 1,
+                    'size' => 500,
+                    'pin' => Session::get('user.pin'),
+                    'token' => Session::get('user.token')
+                );
+                $result = $this->request('openapi', '', 'wishlist', $params);
+                $result['cacheList'] = array();
+                if ($result['success'] && $result['data']['amount'] > 0) {
+                    foreach ($result['data']['list'] as $value) {
+                        $result['cacheList'][] = $value['spu'];
+                    }
+                }
+                return $result['cacheList'];
+            });
+            return $value;
+        }
+        return false;
+    }
+
+    public function updateWish(Request $request)
+    {
+        $params = array(
+            'cmd' => $this->isWished($request) ? 'del' : 'add',
+            'spu' => $request->input('spu'),
+            'pin' => Session::get('user.pin'),
+            'token' => Session::get('user.token')
+        );
+        $result = $this->request('openapi', '', 'wishlist', $params);
+        if ($result['success']) {
+            Cache::forget(Session::get('user.pin') . 'wishlist');
+        }
+        return $result;
+    }
+
+    public function isWished(Request $request)
+    {
+        $params = array(
+            'cmd' => 'is',
+            'pin' => Session::get('user.pin'),
+            'token' => Session::get('user.token'),
+            'spu' => $request->input('spu')
+        );
+        $result = $this->request('openapi', '', 'wishlist', $params);
+        return $result['data']['isFC'];
+    }
+
+    //Wishlist End
+
+
+
 }
