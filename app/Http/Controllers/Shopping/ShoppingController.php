@@ -150,6 +150,11 @@ class ShoppingController extends ApiController
     }
 
     //Wishlist Start
+    public function wish()
+    {
+        return view('Other.wishlist');
+    }
+
     public function wishlist()
     {
         if ( Session::get('user.pin')){

@@ -31,6 +31,8 @@ $app->group(['middleware' => 'pcguide', 'namespace' => 'App\Http\Controllers'], 
 
     $app->get('methodlist', 'Shopping\BraintreeController@methodlist');
 
+    $app->get('/wish', 'Shopping\ShoppingController@wish');
+
     $app->get('/wishlist', 'Shopping\ShoppingController@wishlist');
 
     $app->get('/updateWish', 'Shopping\ShoppingController@updateWish');
