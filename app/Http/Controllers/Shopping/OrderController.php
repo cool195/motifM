@@ -195,5 +195,20 @@ class OrderController extends ApiController
 //        return $result;
     }
 
+    //重新获取订单信息
+    public function orderPayInfo($orderid)
+    {
+        $params = array(
+            'cmd' => "payinfo",
+            'ordno' => $orderid,
+            'token' => Session::get('user.token'),
+            'pin' => Session::get('user.pin')
+        );
+        $result = $this->request('openapi', "", "order", $params);
+
+        if($result['success']){
+            return redirect("/paypalorder?orderid={$result['data']['orderID']}&orderDetail={$result['data']['orderID']}&totalPrice=".$result['data']['pay_amount']/100);
+        }
+    }
 
 }
