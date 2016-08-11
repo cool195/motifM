@@ -103,10 +103,12 @@
                                                                 <span class="font-size-xs text-common text-throughLine m-l-5x">${{number_format($topic['spuInfos'][$spu]['skuPrice']['price']/100,2)}}</span>
                                                             @endif
                                                         </div>
-                                                        @if(Session::get('user.pin'))
-                                                            <span class="p-r-5x wish" data-id="{{$spu}}" id="{{'wish'.$spu}}"><i class="iconfont icon-like product-heart" ></i></span>
-                                                        @else
-                                                            <span class="p-r-5x"><i class="iconfont icon-like product-heart sendLogin"></i></span>
+                                                        @if(false)
+                                                            @if(Session::get('user.pin'))
+                                                                <span class="p-r-5x wish" data-id="{{$spu}}" id="{{'wish'.$spu}}"><i class="iconfont icon-like product-heart" ></i></span>
+                                                            @else
+                                                                <span class="p-r-5x"><i class="iconfont icon-like product-heart sendLogin"></i></span>
+                                                            @endif
                                                         @endif
                                                     </div>
                                                 </div>
@@ -241,8 +243,8 @@
                         }
                     })
         });
-
-        @if(Session::get('user.pin'))
+                {{--App 发版一周后打开--}}
+        @if(false && Session::get('user.pin'))
             var spuStr = $('#spuArray').val().replace("[", "");
             spuStr = spuStr.replace("]", "");
             Jockey.send("action", {
