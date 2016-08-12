@@ -174,64 +174,47 @@
                                      data-impr='http://clk.motif.me/log.gif?t=designer.400001&m=H5_M2016-1&pin={{ Session::get('user.pin') }}&uuid={{ Session::get('user.uuid') }}&v={"action":0,"skipType":1,"skipId":{{ implode("_", $value['spus']) }},expid":0,"index":{{$key}},"version":"1.0.1","ver":"9.2","src":"H5"}'>
                                     <div class="row">
                                         @if(isset($value['spus']))
-                                            @foreach($value['spus'] as $key => $spu)
-                                                <div class="col-xs-6">
-                                                    <a data-link="motif://o.c?a=pd&spu={{$spu}}"
-                                                       data-clk='http://clk.motif.me/log.gif?t=designer.400001&m=H5_M2016-1&pin={{ Session::get('user.pin') }}&uuid={{ Session::get('user.uuid') }}&v={"action":1,"skipType":1,"skipId"{{$spu}},"expid":0,"index":{{$key}},"version":"1.0.1","ver":"9.2","src":"H5"}'
-                                                       href="javascript:void(0)">
-                                                        <div class="p-t-10x">
-                                                            <img class="img-thumbnail img-lazy"
-                                                                 src="{{env('CDN_Static')}}/images/product/bg-product@336.png"
-                                                                 data-original="{{env('APP_Api_Image')}}/n2/{{$product['spuInfos'][$spu]['spuBase']['main_image_url']}}"
-                                                                 alt="{{$product['spuInfos'][$spu]['spuBase']['main_title']}}">
-                                                            <div class="p-y-10x">
+                                            @foreach($value['spus'] as $spu)
+                                                <div class="col-xs-6 p-a-0">
+                                                    <div class="bg-white topic-product-item productList-item">
+                                                        <a data-link="motif://o.c?a=pd&spu={{$spu}}"
+                                                           data-clk='http://clk.motif.me/log.gif?t=designer.400001&m=H5_M2016-1&pin={{ Session::get('user.pin') }}&uuid={{ Session::get('user.uuid') }}&v={"action":1,"skipType":1,"skipId"{{$spu}},"expid":0,"index":{{$key}},"version":"1.0.1","ver":"9.2","src":"H5"}'
+                                                           href="javascript:void(0)">
+                                                            <div class="image-container">
+                                                                <img class="img-fluid img-lazy"
+                                                                     data-original="{{env('APP_Api_Image')}}/n2/{{$product['spuInfos'][$spu]['spuBase']['main_image_url']}}"
+                                                                     src="{{env('CDN_Static')}}/images/product/bg-product@336.png"
+                                                                     alt="{{$product['spuInfos'][$spu]['spuBase']['main_title']}}">
+                                                                @if($product['spuInfos'][$spu]['skuPrice']['price'] != $product['spuInfos'][$spu]['skuPrice']['sale_price'])
+                                                                    <div class="price-off">
+                                                                        <img class="img-fluid"
+                                                                             src="{{env('APP_Api_Image')}}/n1/{{ $product['spuInfos'][$spu]['skuPrice']['skuPromotion']['logo_path']}}"
+                                                                             alt="">
+                                                                    </div>
+                                                                @endif
+                                                            </div>
+                                                        </a>
+                                                        <div class="p-a-10x flex flex-alignCenter flex-fullJustified">
+                                                            <div>
                                                                 <span class="text-primary font-size-sm m-l-5x"><strong>${{number_format($product['spuInfos'][$spu]['skuPrice']['sale_price']/100,2)}}</strong></span>
-                                                                @if($product['spuInfos'][$spu]['skuPrice']['sale_price'] != $product['spuInfos'][$spu]['skuPrice']['price'])
+                                                                @if($product['spuInfos'][$spu]['skuPrice']['price'] != $product['spuInfos'][$spu]['skuPrice']['sale_price'])
                                                                     <span class="font-size-xs text-common text-throughLine m-l-5x">${{number_format($product['spuInfos'][$spu]['skuPrice']['price']/100,2)}}</span>
                                                                 @endif
                                                             </div>
-                                                        </div>
-                                                    </a>
-                                                </div>
-                                            @endforeach
-                                                @foreach($value['spus'] as $spu)
-                                                    <div class="col-xs-6 p-a-0">
-                                                        <div class="bg-white topic-product-item productList-item">
-                                                            <a data-link="motif://o.c?a=pd&spu={{$spu}}"
-                                                               data-clk='http://clk.motif.me/log.gif?t=designer.400001&m=H5_M2016-1&pin={{ Session::get('user.pin') }}&uuid={{ Session::get('user.uuid') }}&v={"action":1,"skipType":1,"skipId"{{$spu}},"expid":0,"index":{{$key}},"version":"1.0.1","ver":"9.2","src":"H5"}'
-                                                               href="javascript:void(0)">
-                                                                <div class="image-container">
-                                                                    <img class="img-fluid img-lazy"
-                                                                         data-original="{{env('APP_Api_Image')}}/n2/{{$product['spuInfos'][$spu]['spuBase']['main_image_url']}}"
-                                                                         src="{{env('CDN_Static')}}/images/product/bg-product@336.png"
-                                                                         alt="{{$product['spuInfos'][$spu]['spuBase']['main_title']}}">
-                                                                    @if($product['spuInfos'][$spu]['skuPrice']['price'] != $product['spuInfos'][$spu]['skuPrice']['sale_price'])
-                                                                        <div class="price-off">
-                                                                            <img class="img-fluid"
-                                                                                 src="{{env('APP_Api_Image')}}/n1/{{ $product['spuInfos'][$spu]['skuPrice']['skuPromotion']['logo_path']}}"
-                                                                                 alt="">
-                                                                        </div>
-                                                                    @endif
-                                                                </div>
-                                                            </a>
-                                                            <div class="p-a-10x flex flex-alignCenter flex-fullJustified">
-                                                                <div>
-                                                                    <span class="text-primary font-size-sm m-l-5x"><strong>${{number_format($product['spuInfos'][$spu]['skuPrice']['sale_price']/100,2)}}</strong></span>
-                                                                    @if($product['spuInfos'][$spu]['skuPrice']['price'] != $product['spuInfos'][$spu]['skuPrice']['sale_price'])
-                                                                        <span class="font-size-xs text-common text-throughLine m-l-5x">${{number_format($product['spuInfos'][$spu]['skuPrice']['price']/100,2)}}</span>
-                                                                    @endif
-                                                                </div>
-                                                                @if(false)
-                                                                    @if(Session::get('user.pin'))
-                                                                        <span class="p-r-5x wish" data-id="{{$spu}}" id="{{'wish'.$spu}}"><i class="iconfont icon-like product-heart" ></i></span>
-                                                                    @else
-                                                                        <span class="p-r-5x"><i class="iconfont icon-like product-heart sendLogin"></i></span>
-                                                                    @endif
+
+                                                                @if(Session::get('user.pin'))
+                                                                    <span class="p-r-5x wish" data-id="{{$spu}}"
+                                                                          id="{{'wish'.$spu}}"><i
+                                                                                class="iconfont icon-like product-heart"></i></span>
+                                                                @else
+                                                                    <span class="p-r-5x"><i
+                                                                                class="iconfont icon-like product-heart sendLogin"></i></span>
                                                                 @endif
-                                                            </div>
+
                                                         </div>
                                                     </div>
-                                                @endforeach
+                                                </div>
+                                            @endforeach
                                         @endif
                                     </div>
                                 </div>
