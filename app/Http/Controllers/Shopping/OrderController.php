@@ -208,6 +208,8 @@ class OrderController extends ApiController
 
         if($result['success']){
             return redirect("/paypalorder?orderid={$result['data']['orderID']}&orderDetail={$result['data']['orderID']}&totalPrice=".$result['data']['pay_amount']/100);
+        }else{
+            return redirect("/order/orderdetail/{$result['data']['orderID']}");
         }
     }
 
