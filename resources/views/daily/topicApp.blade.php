@@ -28,7 +28,8 @@
                 @elseif($value['type']=='multilink')
                     <!-- 锚点图 -->
                         <div class="m-y-10x">
-                            <div class="hotspot-image" data-hotspot='@foreach($value['squas'] as $v){{'{"beginX":'.$v['startX'].',"beginY":'.$v['startY'].',"skipId":"'.$v['skipId'].'","skipType":"'.$v['skipType'].'","endX":'.$v['endX'].',"endY":'.$v['endY'].'},'}}@endforeach'>
+                            <div class="hotspot-image"
+                                 data-hotspot='@foreach($value['squas'] as $v){{'{"beginX":'.$v['startX'].',"beginY":'.$v['startY'].',"skipId":"'.$v['skipId'].'","skipType":"'.$v['skipType'].'","endX":'.$v['endX'].',"endY":'.$v['endY'].'},'}}@endforeach'>
                                 <img class="img-fluid" src="{{env('APP_Api_Image')}}/n1/{{$value['imgPath']}}">
                             </div>
                         </div>
@@ -39,16 +40,16 @@
                                 <strong>{{$value['value']}}</strong>
                             </div>
                         </a>
-                @elseif($value['type']=='boxline')
+                    @elseif($value['type']=='boxline')
                         <hr class="hr-base m-x-5x m-y-0">
-                @elseif($value['type']=='context')
+                    @elseif($value['type']=='context')
                     <!-- 描述 -->
                         <a href="@if($value['skipType']=='1')motif://o.c?a=pd&spu={{$value['skipId']}}@elseif($value['skipType']=='2')/designer/{{$value['skipId']}}@elseif($value['skipType']=='3')/topic/{{$value['skipId']}}@elseif($value['skipType']=='4')motif://o.c?a=shoppinglist&cid={{$value['skipId']}}@else{{'motif://o.c?a=outurl&url='.urlencode($value['imgUrl'])}}@endif">
                             <div class="p-x-15x p-y-10x text-primary font-size-sm">
                                 {{$value['value']}}
                             </div>
                         </a>
-                @elseif($value['type']=='product')
+                    @elseif($value['type']=='product')
                         <div data-impr='http://clk.motif.me/log.gif?t=daily.200001&m=H5_M2016-1&pin={{Session::get('user.pin')}}&uuid={{ Session::get('user.uuid') }}&v={"action":0,"skipType":1,"skipId":{{ implode("_", $value['spus']) }},"topicId":{{$topicID}},"expid":0,"ver":"1.0.1","src":"H5"}'></div>
                         @if($value['style']=='box-vertical')
                             {{-- 商品列表竖向 --}}
@@ -81,7 +82,8 @@
                                             <div class="col-xs-6 p-a-0">
                                                 <div class="bg-white topic-product-item productList-item">
                                                     <a data-clk='http://clk.motif.me/log.gif?t=daily.200001&m=H5_M2016-1&pin={{Session::get('user.pin')}}&uuid={{Session::get('user.uuid')}}&v={"action":1,"skipType":1,"skipId":{{$spu}},"topicId":{{$topicID}},"expid":0,"ver":"1.0.1","src":"H5"}'
-                                                       data-link="motif://o.c?a=pd&spu={{$spu}}" href="javascript:void(0)">
+                                                       data-link="motif://o.c?a=pd&spu={{$spu}}"
+                                                       href="javascript:void(0)">
                                                         <div class="image-container">
                                                             <img class="img-fluid img-lazy"
                                                                  data-original="{{env('APP_Api_Image')}}/n2/{{$topic['spuInfos'][$spu]['spuBase']['main_image_url']}}"
@@ -103,13 +105,16 @@
                                                                 <span class="font-size-xs text-common text-throughLine m-l-5x">${{number_format($topic['spuInfos'][$spu]['skuPrice']['price']/100,2)}}</span>
                                                             @endif
                                                         </div>
-                                                        @if(false)
-                                                            @if(Session::get('user.pin'))
-                                                                <span class="p-r-5x wish" data-id="{{$spu}}" id="{{'wish'.$spu}}"><i class="iconfont icon-like product-heart" ></i></span>
-                                                            @else
-                                                                <span class="p-r-5x"><i class="iconfont icon-like product-heart sendLogin"></i></span>
-                                                            @endif
+
+                                                        @if(Session::get('user.pin'))
+                                                            <span class="p-r-5x wish" data-id="{{$spu}}"
+                                                                  id="{{'wish'.$spu}}"><i
+                                                                        class="iconfont icon-like product-heart"></i></span>
+                                                        @else
+                                                            <span class="p-r-5x"><i
+                                                                        class="iconfont icon-like product-heart sendLogin"></i></span>
                                                         @endif
+
                                                     </div>
                                                 </div>
                                             </div>
@@ -118,9 +123,9 @@
                                 </div>
                             </div>
                         @endif
-                @endif
-            @endforeach
-        @endif
+                    @endif
+                @endforeach
+            @endif
         </section>
     </div>
 </div>
@@ -155,7 +160,7 @@
                 var EndY = value.endY;
                 var url = '';
 
-                switch (value.skipType){
+                switch (value.skipType) {
                     case '1':
                         url = 'motif://o.c?a=pd&spu=';
                         break;
@@ -234,7 +239,8 @@
             })
                     .done(function (data) {
                         if (data.success) {
-                            data.cmd ? $this.html('<i class="iconfont icon-onheart product-heart active"></i>') : $this.html('<i class="iconfont icon-like product-heart"></i>');;
+                            data.cmd ? $this.html('<i class="iconfont icon-onheart product-heart active"></i>') : $this.html('<i class="iconfont icon-like product-heart"></i>');
+                            ;
                             Jockey.send("action", {
                                 name: "updateWish",
                                 token: "key",
@@ -244,14 +250,14 @@
                     })
         });
                 {{--App 发版一周后打开--}}
-        @if(false && Session::get('user.pin'))
-            var spuStr = $('#spuArray').val().replace("[", "");
-            spuStr = spuStr.replace("]", "");
-            Jockey.send("action", {
-                name: "checkWish",
-                token: "key",
-                data: {"spu": spuStr, "callback": 'addWish'}
-            });
+                @if(Session::get('user.pin'))
+        var spuStr = $('#spuArray').val().replace("[", "");
+        spuStr = spuStr.replace("]", "");
+        Jockey.send("action", {
+            name: "checkWish",
+            token: "key",
+            data: {"spu": spuStr, "callback": 'addWish'}
+        });
         @endif
 
 
