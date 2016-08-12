@@ -40,7 +40,7 @@ class ProductController extends ApiController
             'pagenum' => 1,
             'pagesize' => 20,
             'spu' => $spu,
-            'extra_kv'=>!empty($designerId) ? $designerId : -1
+            'extra_kv'=>!empty($designerId) ? "designerId:".$designerId : "designerId:-1"
         );
         $params['cid'] = isset($cid) ? $cid : -1;
         return $this->request('openapi', '', "rec", $params,0);

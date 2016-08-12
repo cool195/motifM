@@ -117,6 +117,7 @@
 </div>
 
 </body>
+@inject('wishlist', 'App\Http\Controllers\Shopping\ShoppingController')
 <!-- 模板 -->
 <template id="tpl-product">
     @{{ each list }}
@@ -137,6 +138,7 @@
                         </div>
                         @{{ /if }}
                     </a>
+                    <span class="product-heart active" data-spu="">收藏</span>
                 </div>
             </div>
             <div class="price-caption">

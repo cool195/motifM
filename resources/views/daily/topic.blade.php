@@ -16,6 +16,7 @@
     @include('navigator')
     <!-- daily 详细内容 -->
         <section class="bg-white p-b-10x reserve-height">
+        @inject('wishlist', 'App\Http\Controllers\Shopping\ShoppingController')
         @if(isset($topic['infos']))
             @foreach($topic['infos'] as $k=>$value)
                 @if($value['type']=='banner')
@@ -64,6 +65,7 @@
                                                  src="{{env('CDN_Static')}}/images/product/bg-product@750.png"
                                                  alt="{{$topic['spuInfos'][$spu]['spuBase']['main_title']}}">
                                         </a>
+                                        <span class="product-heart @if(in_array($spu, $wishlist->wishlist())){{'active'}}@endif" data-spu="{{$spu}}">收藏</span>
                                     </div>
                                 @endforeach
                             @else
@@ -102,6 +104,7 @@
                                                         </div>
                                                     </div>
                                                 </a>
+                                                <span class="product-heart @if(in_array($spu, $wishlist->wishlist())){{'active'}}@endif" data-spu="{{$spu}}">收藏</span>
                                             </div>
                                         @endforeach
                                     @endif

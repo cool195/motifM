@@ -87,6 +87,7 @@
                 @endif
             <!-- 设计师 对应模版商品 -->
                 <aside class="bg-white p-b-10x">
+                @inject('wishlist', 'App\Http\Controllers\Shopping\ShoppingController')
                 @if(isset($product['infos']))
                     @foreach($product['infos'] as $k=>$value)
                         @if($value['type']=='banner' || (!isset($value['spus']) && $value['type']=='product'))
@@ -137,6 +138,7 @@
                                                          data-original="{{env('APP_Api_Image')}}/n2/{{$product['spuInfos'][$spu]['spuBase']['main_image_url']}}"
                                                          alt="{{$product['spuInfos'][$spu]['spuBase']['main_title']}}">
                                                 </a>
+                                                <span class="product-heart @if(in_array($spu, $wishlist->wishlist())){{'active'}}@endif" data-spu="{{$spu}}">收藏</span>
                                             </div>
                                         @endforeach
                                     @endif
@@ -173,6 +175,7 @@
                                                                 </div>
                                                             </div>
                                                         </a>
+                                                        <span class="product-heart @if(in_array($spu, $wishlist->wishlist())){{'active'}}@endif" data-spu="{{$spu}}">收藏</span>
                                                     </div>
                                                 @endforeach
                                             @endif
@@ -213,6 +216,7 @@
                                                 </div>
                                             </div>
                                         </a>
+                                        <span class="product-heart @if(in_array($value['spu'], $wishlist->wishlist())){{'active'}}@endif" data-spu="{{$value['spu']}}">收藏</span>
                                     </div>
                                 @endforeach
                             </div>
