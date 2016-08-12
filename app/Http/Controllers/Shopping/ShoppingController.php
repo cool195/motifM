@@ -152,7 +152,14 @@ class ShoppingController extends ApiController
     //Wishlist Start
     public function wish()
     {
-        $result = $this->wishlist();
+        $params = array(
+            'cmd' => 'list',
+            'num' => 1,
+            'size' => 500,
+            'pin' => Session::get('user.pin'),
+            'token' => Session::get('user.token')
+        );
+        $result = $this->request('openapi', '', 'wishlist', $params);
         return view('Other.wishlist', ['data' => $result['data']]);
     }
 
@@ -175,8 +182,7 @@ class ShoppingController extends ApiController
                         $result['cacheList'][] = $value['spu'];
                     }
                 }
-                //return $result['cacheList'];
-                return $result;
+                return $result['cacheList'];
             });
             return $value;
         }
