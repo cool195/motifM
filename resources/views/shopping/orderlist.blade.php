@@ -8,14 +8,14 @@
 </head>
 <body>
 @include('check.tagmanager')
-<!-- 外层容器 -->
+        <!-- 外层容器 -->
 <div id="body-content">
     <!-- 展开的汉堡菜单 -->
-@include('nav')
-<!-- 主体内容 -->
+    @include('nav')
+            <!-- 主体内容 -->
     <div class="body-container">
-    @include('navigator')
-    <!-- 订单列表 -->
+        @include('navigator')
+                <!-- 订单列表 -->
         <section class="p-b-20x reserve-height">
             <article class="font-size-md text-main p-a-10x"><strong>ORDERS</strong></article>
 
@@ -37,8 +37,8 @@
             </section>
         </section>
         <!-- 页脚 功能链接 start-->
-    @include('footer')
-    <!-- 页脚 功能链接 end-->
+        @include('footer')
+                <!-- 页脚 功能链接 end-->
     </div>
 </div>
 </body>
@@ -46,25 +46,29 @@
 <template id="tpl-orderList">
     @{{ each list }}
     @{{ each $value.subOrderList }}
-    <div class="orderList-item bg-white m-b-10x">
-        <div class="p-a-10x">
-            <div class="flex flex-fullJustified flex-alignCenter">
-                <span class="font-size-sm text-primary">
-                    <strong>@{{ $value.status_info }}: </strong>@{{ $value.update_time }}
-                </span>
-                <a class="btn btn-primary btn-sm" href="/order/orderdetail/@{{ $value.sub_order_no }}">Order
-                    Detail</a>
+    <a href="#">
+        <div class="orderList-item bg-white m-b-10x">
+            <div class="p-y-10x status-red">
+                <div class="p-l-5x">
+                    <span class="font-size-sm text-primary">
+                        <strong>@{{ $value.status_info }}: </strong>@{{ $value.update_time }}
+                    </span>
+                    {{--<a class="btn btn-primary btn-sm" href="/order/orderdetail/@{{ $value.sub_order_no }}">Order--}}
+                    {{--Detail</a>--}}
+                </div>
             </div>
             @{{ if $value.status_explain !== '' || $value.status_explain !== null }}
-            <div class="font-size-sm text-primary p-t-10x">
-                @{{ $value.status_explain }}
+            <div class="p-b-10x p-x-15x">
+                <div class="font-size-sm text-primary">
+                    @{{ $value.status_explain }}
+                </div>
             </div>
             @{{ /if }}
         </div>
         <hr class="hr-base m-y-0 m-l-10x">
 
         @{{ each $value.lineOrderList }}
-        <a href="/detail/@{{ $value.spu }}">
+        {{--<a href="/detail/@{{ $value.spu }}">--}}
         <div class="flex p-a-10x">
             <div class="flex-fixedShrink">
                 <img class="img-thumbnail img-lazy"
@@ -91,7 +95,7 @@
                 </aside>
             </div>
         </div>
-        </a>
+        {{--</a>--}}
         @{{ /each }}
 
         <hr class="hr-base m-y-0 m-l-10x">
@@ -103,7 +107,8 @@
                 <span>Order Total: </span><span>$@{{ ($value.pay_amount/100).toFixed(2) }}</span>
             </div>
         </div>
-    </div>
+        </div>
+    </a>
     @{{ /each }}
     @{{ /each }}
 </template>
