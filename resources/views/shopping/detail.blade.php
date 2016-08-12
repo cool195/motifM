@@ -13,6 +13,7 @@
 @include('nav')
 <!-- 主体内容 -->
     <div class="body-container">
+    @inject('wishlist', 'App\Http\Controllers\Shopping\ShoppingController')
     @include('navigator')
     <!-- 图片详情 --><!-- 弹出图片轮播 -->
         <div class="product-detailImg fade">
@@ -58,6 +59,7 @@
                     <div class="swiper-pagination text-right p-r-20x font-size-sm" id="baseImg-pagination"></div>
                 </div>
             </div>
+            <span class="product-heart @if(in_array($data['spu'], $wishlist->wishlist())){{'active'}}@endif" data-spu="{{$data['spu']}}">收藏</span>
             <!-- 预售标题 -->
             @if(1 == $data['sale_type'] )
                 <div class="limited-title"><strong>@if($data['sale_status']) {{  $data['skuPrice']['skuPromotion']['presale_title'] }} @else Pre Sale has ended @endif</strong></div>
@@ -221,6 +223,7 @@
                                                                 <img class="img-fluid" src="{{env('APP_Api_Image')}}/n0/{{ $value['skuPrice']['skuPromotion']['logo_path']}}" alt="">
                                                             </div>
                                                         @endif
+                                                        <span class="product-heart @if(in_array($value['spu'], $wishlist->wishlist())){{'active'}}@endif" data-spu="{{$value['spu']}}">收藏</span>
                                                     </div>
                                                 </div>
                                                 <div class="price-caption">
