@@ -210,7 +210,7 @@
                                 <p class="m-b-15x"><strong>Shipping</strong></p>
                                 <p class="m-b-15x">After your application is approved, please follow the Return
                                     Instruction email from Customer Service and send your product to: 1937 Davis Street,
-                                    Ste. B Unit 30，San Leandro CA 94577-1226.</p>
+                                    Ste. B Unit 30，San Leandro CA 94577-1226, address for return.</p>
                                 <p class="m-b-15x">You will be responsible for the shipping costs for returning your
                                     item. Shipping costs are non-refundable. If you receive a refund, the cost of return
                                     shipping will be deducted from your refund (exceptions may apply).</p>
