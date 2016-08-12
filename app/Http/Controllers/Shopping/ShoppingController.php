@@ -152,7 +152,8 @@ class ShoppingController extends ApiController
     //Wishlist Start
     public function wish()
     {
-        return view('Other.wishlist');
+        $result = $this->wishlist();
+        return view('Other.wishlist', ['data' => $result['data']]);
     }
 
     public function wishlist()
@@ -174,11 +175,12 @@ class ShoppingController extends ApiController
                         $result['cacheList'][] = $value['spu'];
                     }
                 }
-                return $result['cacheList'];
+                //return $result['cacheList'];
+                return $result;
             });
             return $value;
         }
-        return false;
+        return array();
     }
 
     public function updateWish(Request $request)

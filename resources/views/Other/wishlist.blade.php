@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 
-    <title>Shopping Cart</title>
+    <title>Wishlist</title>
     @include('head')
     <link rel="stylesheet" href="{{env('CDN_Static')}}/styles/shoppingCart.css">
     <link rel="stylesheet" href="{{env('CDN_Static')}}/styles/remodal.css">
@@ -21,111 +21,33 @@
         <section class="reserve-height">
             <!-- 商品列表 -->
             <aside class="wishList bg-white m-b-20x">
-                <div class="wishlist-item p-a-15x">
+                @foreach($data['list'] as $list)
+                <div class="wishlist-item p-a-15x" data-spu="{{$list['spu']}}">
                     <div class="flex">
-                        <div class="flex-fixedShrink">
-                            <img class="img-thumbnail img-lazy" src="/images/product/bg-product@70.png"
-                                 data-original="images/product/product1.jpg" width="70px" height="70px">
-                        </div>
+                        <a href="/detail/{{$list['spu']}}">
+                            <div class="flex-fixedShrink">
+                                <img class="img-thumbnail img-lazy"
+                                     src="{{env('CDN_Static')}}/images/product/bg-product@70.png"
+                                     data-original="{{ env('APP_Api_Image').'/n1/'.$list['main_image_url']}}"
+                                     width="70px" height="70px">
+                            </div>
+                        </a>
                         <div class="p-l-10x flex-width">
                             <article class="flex flex-fullJustified wishlist-title">
                                 <h6 class="text-main font-size-md p-r-20x">
-                                    <strong>Shape CZ Inlaid Women's Stud Earrings</strong>
+                                    <strong>{{$list['main_title']}}</strong>
                                 </h6>
                                 <span class="text-primary font-size-sm flex-fixedShrink">
-                                    <i class="iconfont icon-cross icon-size-md text-common"></i>
+                                    <i class="iconfont icon-cross icon-size-md text-common delwish" data-spu="{{$list['spu']}}"></i>
                                 </span>
                             </article>
                             <aside class="text-primary font-size-sm">
-                                <div>$47.95</div>
+                                <div>${{ number_format(( $list['skuPrice']['sale_price'] / 100), 2) }}</div>
                             </aside>
                         </div>
                     </div>
                 </div>
-                <div class="wishlist-item p-a-15x">
-                    <div class="flex">
-                        <div class="flex-fixedShrink">
-                            <img class="img-thumbnail img-lazy" src="/images/product/bg-product@70.png"
-                                 data-original="images/product/product1.jpg" width="70px" height="70px">
-                        </div>
-                        <div class="p-l-10x flex-width">
-                            <article class="flex flex-fullJustified wishlist-title">
-                                <h6 class="text-main font-size-md p-r-20x">
-                                    <strong>Shape CZ Inlaid Women's Stud Earrings</strong>
-                                </h6>
-                                <span class="text-primary font-size-sm flex-fixedShrink">
-                                    <i class="iconfont icon-cross icon-size-md text-common"></i>
-                                </span>
-                            </article>
-                            <aside class="text-primary font-size-sm">
-                                <div>$47.95</div>
-                            </aside>
-                        </div>
-                    </div>
-                </div>
-                <div class="wishlist-item p-a-15x">
-                    <div class="flex">
-                        <div class="flex-fixedShrink">
-                            <img class="img-thumbnail img-lazy" src="/images/product/bg-product@70.png"
-                                 data-original="images/product/product1.jpg" width="70px" height="70px">
-                        </div>
-                        <div class="p-l-10x flex-width">
-                            <article class="flex flex-fullJustified wishlist-title">
-                                <h6 class="text-main font-size-md p-r-20x">
-                                    <strong>Shape CZ Inlaid Women's Stud Earrings</strong>
-                                </h6>
-                                <span class="text-primary font-size-sm flex-fixedShrink">
-                                    <i class="iconfont icon-cross icon-size-md text-common"></i>
-                                </span>
-                            </article>
-                            <aside class="text-primary font-size-sm">
-                                <div>$47.95</div>
-                            </aside>
-                        </div>
-                    </div>
-                </div>
-                <div class="wishlist-item p-a-15x">
-                    <div class="flex">
-                        <div class="flex-fixedShrink">
-                            <img class="img-thumbnail img-lazy" src="/images/product/bg-product@70.png"
-                                 data-original="images/product/product1.jpg" width="70px" height="70px">
-                        </div>
-                        <div class="p-l-10x flex-width">
-                            <article class="flex flex-fullJustified wishlist-title">
-                                <h6 class="text-main font-size-md p-r-20x">
-                                    <strong>Shape CZ Inlaid Women's Stud Earrings</strong>
-                                </h6>
-                                <span class="text-primary font-size-sm flex-fixedShrink">
-                                    <i class="iconfont icon-cross icon-size-md text-common"></i>
-                                </span>
-                            </article>
-                            <aside class="text-primary font-size-sm">
-                                <div>$47.95</div>
-                            </aside>
-                        </div>
-                    </div>
-                </div>
-                <div class="wishlist-item p-a-15x">
-                    <div class="flex">
-                        <div class="flex-fixedShrink">
-                            <img class="img-thumbnail img-lazy" src="/images/product/bg-product@70.png"
-                                 data-original="images/product/product1.jpg" width="70px" height="70px">
-                        </div>
-                        <div class="p-l-10x flex-width">
-                            <article class="flex flex-fullJustified wishlist-title">
-                                <h6 class="text-main font-size-md p-r-20x">
-                                    <strong>Shape CZ Inlaid Women's Stud Earrings</strong>
-                                </h6>
-                                <span class="text-primary font-size-sm flex-fixedShrink">
-                                    <i class="iconfont icon-cross icon-size-md text-common"></i>
-                                </span>
-                            </article>
-                            <aside class="text-primary font-size-sm">
-                                <div>$47.95</div>
-                            </aside>
-                        </div>
-                    </div>
-                </div>
+                @endforeach
             </aside>
 
         </section>
@@ -138,7 +60,7 @@
 
 <!-- 删除将要购买的商品 -->
 <!-- TODO remodal 有多余的样式 需要整理 -->
-<div class="remodal remodal-md modal-content" data-remodal-id="modal" id="cartDialog">
+<div class="remodal remodal-md modal-content" data-remodal-id="modal" id="wishDialog" data-spu="">
     <div class="font-size-sm p-t-20x p-x-15x p-b-15x">
         Are you sure you want to remove this item?
     </div>
@@ -155,7 +77,7 @@
 </body>
 <script src="{{env('CDN_Static')}}/scripts/vendor.js"></script>
 
-<script src="{{env('CDN_Static')}}/scripts/shoppingCart.js"></script>
+<script src="{{env('CDN_Static')}}/scripts/wishlist.js"></script>
 <meta name="csrf-token" content="{{ csrf_token() }}"/>
 <script>
     $.ajaxSetup({
