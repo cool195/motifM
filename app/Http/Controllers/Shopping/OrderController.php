@@ -207,9 +207,9 @@ class OrderController extends ApiController
         $result = $this->request('openapi', "", "order", $params);
 
         if($result['success']){
-            return redirect("/paypalorder?orderid={$result['data']['orderID']}&orderDetail={$result['data']['orderID']}&totalPrice=".$result['data']['pay_amount']/100);
+            return redirect("/paypalorder?orderid={$orderid}&orderDetail={$orderid}&totalPrice=".$result['data']['pay_amount']/100);
         }else{
-            return redirect("/order/orderdetail/{$result['data']['orderID']}");
+            return redirect("/order/orderdetail/$orderid");
         }
     }
 
