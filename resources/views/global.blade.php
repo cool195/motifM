@@ -64,6 +64,21 @@
         $(document).on('scroll', function(event) {
            imprList();
         });
+
+        //收藏服务
+        $('.product-heart').click(function(e) {
+            var spu = $(e.target).data('spu');
+            $.ajax({
+                        url: '/updateWish',
+                        type: 'get',
+                        data: {spu:spu}
+                    })
+                    .done(function(data){
+                        if(data.success){
+
+                        }
+                    });
+        });
     })
 </script>
 
