@@ -48,7 +48,7 @@
                                        data-followid="{{$designer['designer_id']}}">Follow</a>
                                 @endif
                             @else
-                                <a href="#" class="btn btn-sm btn-follow active" id="sendLogin"
+                                <a href="#" class="btn btn-sm btn-follow active sendLogin"
                                    data-followid="1">Follow</a>
                             @endif
                         </span>
@@ -307,7 +307,7 @@
     });
 
     //login send
-    $('#sendLogin').on('click', function () {
+    $('.sendLogin').on('click', function () {
         Jockey.send("action", {
             name: "login",
             token: "key",
