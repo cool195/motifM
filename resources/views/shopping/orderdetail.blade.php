@@ -36,7 +36,8 @@
         @if(in_array($data['status_code'], array(21, 22, 23)))
             <!--被取消的订单 取消原因、取消日期-->
                 <div class="p-a-10x">
-                    <div class="font-size-sm text-primary" id="orderState" data-state="true"><strong>{{ $data['status_info'] }}:</strong>
+                    <div class="font-size-sm text-primary" id="orderState" data-state="true">
+                        <strong>{{ $data['status_info'] }}:</strong>
                         <span>{{$data['create_time']}}</span></div>
                     <div class="font-size-sm text-primary">
                         <div>{{ $data['status_explain'] }}</div>
@@ -47,55 +48,61 @@
                 <div class="p-y-10x p-x-15x ">
                     <span class="font-size-sm text-primary flex flex-fullJustified flex-alignCenter">
                         <span><strong>{{ $data['status_info'] }}:</strong> {{$data['create_time']}}</span>
-                        <a class="btn btn-primary btn-sm p-x-20x" href="/payAgain/{{$data['sub_order_no']}}">Pay</a>
+                        @if($data['status_code']==11)
+                            <a class="btn btn-primary btn-sm p-x-20x"
+                               href="/payAgain/{{$data['sub_order_no']}}">Pay</a>
+                        @endif
                     </span>
-                    <span class="font-size-sm text-primary"><p class="m-b-0">@if(in_array($data['status_code'], array(11, 12, 14))) {{ $data['status_explain'] }} @endif</p></span>
+                    <span class="font-size-sm text-primary"><p
+                                class="m-b-0">@if(in_array($data['status_code'], array(11, 12, 14))) {{ $data['status_explain'] }} @endif</p></span>
                 </div>
             @endif
 
             <hr class="hr-base m-y-0 m-l-15x">
             @if(isset($data['lineOrderList']))
                 @foreach($data['lineOrderList'] as $lineOrder)
-                 <a href="/detail/{{ $lineOrder['spu'] }}" class="btn-orderDetail">
-                    <div class="flex p-y-10x p-x-15x">
-                        <div class="flex-fixedShrink">
-                            <img class="img-thumbnail"
-                                 src="{{ env('APP_Api_Image').'/n2/'.$lineOrder['img_path'] }}"
-                                 width="70px" height="70px">
+                    <a href="/detail/{{ $lineOrder['spu'] }}" class="btn-orderDetail">
+                        <div class="flex p-y-10x p-x-15x">
+                            <div class="flex-fixedShrink">
+                                <img class="img-thumbnail"
+                                     src="{{ env('APP_Api_Image').'/n2/'.$lineOrder['img_path'] }}"
+                                     width="70px" height="70px">
+                            </div>
+                            <!-- TODO 缩略号的兼容性不好, 需要改样式 -->
+                            <div class="p-x-10x order-product-title">
+                                <h6 class="text-main font-size-md text-truncate">
+                                    <strong>{{$lineOrder['main_title']}}</strong>
+                                </h6>
+                                <aside class="text-primary font-size-sm">
+                                    @if(isset($lineOrder['attrValues']) && !empty($lineOrder['attrValues']))
+                                        @foreach($lineOrder['attrValues'] as $attr)
+                                            <div><span>{{$attr['attr_type_value']}}
+                                                    : </span><span>{{$attr['attr_value'] }}</span></div>
+                                        @endforeach
+                                    @endif
+                                    <div><span>Qty: </span><span>{{$lineOrder['sale_qtty']}}</span></div>
+                                    @if(isset($lineOrder['vas_info']) && !empty($lineOrder['vas_info']))
+                                        @foreach($lineOrder['vas_info'] as $info)
+                                            <div>
+                                                <span>{{$info['vas_name']}}: </span>
+                                                <span>{{$info['user_remark'] }}</span>
+                                                <span>+${{number_format(($info['vas_price'] / 100), 2)}}</span>
+                                            </div>
+                                        @endforeach
+                                    @endif
+                                </aside>
+                            </div>
                         </div>
-                        <!-- TODO 缩略号的兼容性不好, 需要改样式 -->
-                        <div class="p-x-10x order-product-title">
-                            <h6 class="text-main font-size-md text-truncate">
-                                <strong>{{$lineOrder['main_title']}}</strong>
-                            </h6>
-                            <aside class="text-primary font-size-sm">
-                                @if(isset($lineOrder['attrValues']) && !empty($lineOrder['attrValues']))
-                                    @foreach($lineOrder['attrValues'] as $attr)
-                                        <div><span>{{$attr['attr_type_value']}}: </span><span>{{$attr['attr_value'] }}</span></div>
-                                    @endforeach
-                                @endif
-                                <div><span>Qty: </span><span>{{$lineOrder['sale_qtty']}}</span></div>
-                                @if(isset($lineOrder['vas_info']) && !empty($lineOrder['vas_info']))
-                                    @foreach($lineOrder['vas_info'] as $info)
-                                        <div>
-                                            <span>{{$info['vas_name']}}: </span>
-                                            <span>{{$info['user_remark'] }}</span>
-                                            <span>+${{number_format(($info['vas_price'] / 100), 2)}}</span>
-                                        </div>
-                                    @endforeach
-                                @endif
-                            </aside>
-                        </div>
-                    </div>
-                 </a>
-                 <hr class="hr-base m-y-0 m-l-15x">
+                    </a>
+                    <hr class="hr-base m-y-0 m-l-15x">
                 @endforeach
             @endif
             @if(isset($data['logistics_info_url']))
-            <a class="flex flex-alignCenter flex-fullJustified font-size-sm text-primary p-a-15x" href="{{ $data['logistics_info_url'] }}">
-                Track order
-                <i class="iconfont icon-arrow-right icon-size-xm text-common"></i>
-            </a>
+                <a class="flex flex-alignCenter flex-fullJustified font-size-sm text-primary p-a-15x"
+                   href="{{ $data['logistics_info_url'] }}">
+                    Track order
+                    <i class="iconfont icon-arrow-right icon-size-xm text-common"></i>
+                </a>
             @endif
             @if(in_array($data['status_code'], array(21, 22, 23)))
                 <div class="p-a-10x">
@@ -111,8 +118,10 @@
                 <div>
                     <div>{{ $data['userAddr']['name'] }}</div>
                     <div>{{ $data['userAddr']['detail_address1'] }}</div>
-                    @if(!empty($data['userAddr']['detail_address2'])) <div>{{ $data['userAddr']['detail_address2'] }} </div>@endif
-                    <div>{{ $data['userAddr']['city'] }},{{ $data['userAddr']['state'] }} {{  $data['userAddr']['zip'] }}</div>
+                    @if(!empty($data['userAddr']['detail_address2']))
+                        <div>{{ $data['userAddr']['detail_address2'] }} </div>@endif
+                    <div>{{ $data['userAddr']['city'] }}
+                        ,{{ $data['userAddr']['state'] }} {{  $data['userAddr']['zip'] }}</div>
                     <div>{{$data['userAddr']['country']}}</div>
                     <div> @if(!empty($data['userAddr']['telephone'])) {{ $data['userAddr']['telephone'] }} @endif </div>
                 </div>
@@ -155,15 +164,17 @@
         <aside class="bg-white m-b-10x">
             <div class="p-a-10x">
                 <div class="flex flex-fullJustified text-primary font-size-sm">
-                    <span>Items({{ $data['item_qtty'] }})</span><span>${{number_format(($data['total_amount'] / 100), 2)}}</span>
+                    <span>Items({{ $data['item_qtty'] }}
+                        )</span><span>${{number_format(($data['total_amount'] / 100), 2)}}</span>
                 </div>
                 @if($data['vas_amount'] > 0)
-                <div class="flex flex-fullJustified text-primary font-size-sm">
-                    <span>Additional Services</span><span>${{number_format(($data['vas_amount'] / 100), 2)}}</span>
-                </div>
+                    <div class="flex flex-fullJustified text-primary font-size-sm">
+                        <span>Additional Services</span><span>${{number_format(($data['vas_amount'] / 100), 2)}}</span>
+                    </div>
                 @endif
                 <div class="flex flex-fullJustified text-primary font-size-sm">
-                    <span>Ship to {{ $data['userAddr']['zip'] }}</span><span>@if(0 == $data['freight_amount']) Free @else${{ number_format(($data['freight_amount'] / 100), 2)}} @endif</span>
+                    <span>Ship to {{ $data['userAddr']['zip'] }}</span><span>@if(0 == $data['freight_amount'])
+                            Free @else${{ number_format(($data['freight_amount'] / 100), 2)}} @endif</span>
                 </div>
                 @if($data['promot_discount_amount'] > 0)
                     <div class="flex flex-fullJustified text-primary font-size-sm">
@@ -171,9 +182,9 @@
                     </div>
                 @endif
                 @if($data['cps_amount'] > 0)
-                <div class="flex flex-fullJustified text-primary font-size-sm">
-                    <span>Promotion Code</span><span>-${{ number_format(($data['cps_amount'] / 100), 2)}}</span>
-                </div>
+                    <div class="flex flex-fullJustified text-primary font-size-sm">
+                        <span>Promotion Code</span><span>-${{ number_format(($data['cps_amount'] / 100), 2)}}</span>
+                    </div>
                 @endif
                 <div class="flex flex-fullJustified p-t-10x text-primary font-size-sm">
                     <span><strong>Order Total</strong></span><span><strong>${{ number_format(($data['pay_amount'] / 100), 2)}}</strong></span>
@@ -198,7 +209,7 @@
 <script src="{{env('CDN_Static')}}/scripts/vendor.js"></script>
 
 <script src="{{env('CDN_Static')}}/scripts/orderDetail.js"></script>
-<meta name="csrf-token" content="{{ csrf_token() }}" />
+<meta name="csrf-token" content="{{ csrf_token() }}"/>
 <script>
     $.ajaxSetup({
         headers: {
