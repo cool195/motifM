@@ -263,7 +263,6 @@
         </section>
 
         <!-- 弹出选择 size color Engraving -->
-        <!-- TODO remodal 有多余的样式 需要整理 -->
         <div class="remodal p-a-0 modal-content" data-remodal-id="modal" id="modalDialog" data-spu="{{$data['spu']}}">
             <form action="">
                 <div class="p-x-15x p-t-15x text-right">
