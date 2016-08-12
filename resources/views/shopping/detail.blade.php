@@ -59,7 +59,7 @@
                     <div class="swiper-pagination text-right p-r-20x font-size-sm" id="baseImg-pagination"></div>
                 </div>
             </div>
-            <span class="product-heart @if(in_array($data['spu'], $wishlist->wishlist())){{'active'}}@endif" data-spu="{{$data['spu']}}">收藏</span>
+            <span class="wish-item p-r-10x"><i class="iconfont text-common btn-wish @if(in_array($data['spu'], $wishlist->wishlist())){{'active'}}@endif" data-spu="{{$data['spu']}}"></i></span>
             <!-- 预售标题 -->
             @if(1 == $data['sale_type'] )
                 <div class="limited-title"><strong>@if($data['sale_status']) {{  $data['skuPrice']['skuPromotion']['presale_title'] }} @else Pre Sale has ended @endif</strong></div>
@@ -223,7 +223,6 @@
                                                                 <img class="img-fluid" src="{{env('APP_Api_Image')}}/n0/{{ $value['skuPrice']['skuPromotion']['logo_path']}}" alt="">
                                                             </div>
                                                         @endif
-                                                        <span class="product-heart @if(in_array($value['spu'], $wishlist->wishlist())){{'active'}}@endif" data-spu="{{$value['spu']}}">收藏</span>
                                                     </div>
                                                 </div>
                                                 <div class="price-caption">
@@ -231,6 +230,7 @@
                                                     @if($value['skuPrice']['sale_price'] != $value['skuPrice']['price'])
                                                         <span class="font-size-xs text-common text-throughLine m-l-5x">${{ number_format(($value['skuPrice']['price'] / 100), 2) }}</span>
                                                     @endif
+                                                    <span class="wish-item p-r-10x"><i class="iconfont text-common btn-wish @if(in_array($value['spu'], $wishlist->wishlist())){{'active'}}@endif" data-spu="{{$value['spu']}}"></i></span>
                                                 </div>
                                             </div>
                                         </div>

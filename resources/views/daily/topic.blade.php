@@ -65,7 +65,7 @@
                                                  src="{{env('CDN_Static')}}/images/product/bg-product@750.png"
                                                  alt="{{$topic['spuInfos'][$spu]['spuBase']['main_title']}}">
                                         </a>
-                                        <span class="product-heart @if(in_array($spu, $wishlist->wishlist())){{'active'}}@endif" data-spu="{{$spu}}">收藏</span>
+                                        <span class="wish-item p-r-10x"><i class="iconfont text-common btn-wish @if(in_array($spu, $wishlist->wishlist())){{'active'}}@endif" data-spu="{{$spu}}"></i></span>
                                     </div>
                                 @endforeach
                             @else
@@ -96,15 +96,15 @@
                                                                 </div>
                                                             @endif
                                                         </div>
+                                                    </div>
+                                                </a>
                                                         <div class="p-y-10x">
                                                             <span class="text-primary font-size-sm m-l-5x"><strong>${{number_format($topic['spuInfos'][$spu]['skuPrice']['sale_price']/100,2)}}</strong></span>
                                                             @if($topic['spuInfos'][$spu]['skuPrice']['price'] != $topic['spuInfos'][$spu]['skuPrice']['sale_price'])
                                                                 <span class="font-size-xs text-common text-throughLine m-l-5x">${{number_format($topic['spuInfos'][$spu]['skuPrice']['price']/100,2)}}</span>
                                                             @endif
+                                                            <span class="wish-item p-r-10x"><i class="iconfont text-common btn-wish @if(in_array($spu, $wishlist->wishlist())){{'active'}}@endif" data-spu="{{$spu}}"></i></span>
                                                         </div>
-                                                    </div>
-                                                </a>
-                                                <span class="product-heart @if(in_array($spu, $wishlist->wishlist())){{'active'}}@endif" data-spu="{{$spu}}">收藏</span>
                                             </div>
                                         @endforeach
                                     @endif

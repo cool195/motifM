@@ -264,12 +264,24 @@
     });
 
     // 点击 wish
-    $('.swiper-wrapper').on('click', '.btn-wish', function () {
-        if (!$(this).hasClass('active')) {
-            $(this).addClass('active');
-        } else {
-            $(this).removeClass('active');
-        }
+    $('.swiper-wrapper').on('click', '.btn-wish', function (e) {
+        var $this = $(e.target);
+        var spu = $(e.target).data('spu');
+        $.ajax({
+                url: '/updateWish',
+                type: 'get',
+                data: {spu:spu}
+            })
+            .done(function(data){
+                if(data.success){
+                    if (!$this.hasClass('active')) {
+                        $this.addClass('active');
+                    } else {
+                        $this.removeClass('active');
+                    }
+                }
+            });
+
     });
 
 })(jQuery, Swiper);

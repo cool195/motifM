@@ -79,6 +79,25 @@
                         }
                     });
         });
+
+        $('.btn-wish').click(function(e) {
+            var $this = $(e.target);
+            var spu = $this.data('spu');
+            $.ajax({
+                        url: '/updateWish',
+                        type: 'get',
+                        data: {spu:spu}
+                    })
+                    .done(function(data){
+                        if(data.success){
+                            if (!$this.hasClass('active')) {
+                                $this.addClass('active');
+                            } else {
+                                $this.removeClass('active');
+                            }
+                        }
+                    });
+        });
     })
 </script>
 
