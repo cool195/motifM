@@ -66,7 +66,6 @@ class DesignerController extends ApiController
             );
             $productAll = $this->request('openapi', '', 'rec', $params);
 
-
             $view = '';
             $result['data']['osType'] = strstr($_SERVER['HTTP_USER_AGENT'], 'motif-ios') ? 'ios' : 'android';
             if ($_GET['test'] || strstr($_SERVER['HTTP_USER_AGENT'], 'motif-android') || strstr($_SERVER['HTTP_USER_AGENT'], 'motif-ios')) {
@@ -99,7 +98,19 @@ class DesignerController extends ApiController
                     $follow = $this->request('openapi', '', 'follow', $followParams);
                     $result['data']['followStatus'] = $follow['data']['isFC'];
 
+                    $spuArray = array();
+                    foreach ($product['data']['infos'] as $value) {
+                        if (isset($value['spus'])) {
+                            $spuArray = array_merge($value['spus'], $spuArray);
+                        }
+                    }
 
+                    foreach ($productAll['data']['list'] as $value) {
+                        if (isset($value['spu'])) {
+                            $spuArray = array_merge([$value['spu']], $spuArray);
+                        }
+                    }
+                    $result['data']['spuArray'] = json_encode($spuArray);
                 } else {
                     Session::forget('user');
                 }
