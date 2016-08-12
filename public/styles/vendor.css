@@ -5684,6 +5684,10 @@ footer .links-group {
   border-top: 1px solid #e2e5ed;
 }
 
+.wishlist-item img{
+  max-width: none;
+}
+
 .wishlist-title {
   min-height: 3rem;
 }

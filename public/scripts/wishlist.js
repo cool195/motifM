@@ -2,18 +2,21 @@
 /* global jQuery */
 
 (function ($) {
+    // loading 打开
+    function openLoading() {
+        $('.loading').toggleClass('loading-hidden');
+        setTimeout(function () {
+            $('.loading').toggleClass('loading-open');
+        }, 25);
+    }
 
-    // 初始化 模态框
-    // $('#wishDialog').remodal({
-    //     closeOnOutsideClick: false,
-    //     hashTracking: false
-    // });
-    //
-    // $('.delwish').click(function (e) {
-    //     // 暂存数据 to modal , 为拼接 ajax url 做准备
-    //     $('#wishDialog').data('sku', $(e.target).parents('.wishlist-item').data('sku'));
-    //     console.log('open');
-    // });
+    // loading 隐藏
+    function closeLoading() {
+        $('.loading').addClass('loading-close');
+        setTimeout(function () {
+            $('.loading').toggleClass('loading-hidden loading-open').removeClass('loading-close');
+        }, 500);
+    }
 
     var Options = {
         closeOnOutsideClick: false,
@@ -26,9 +29,41 @@
     $('.delwish').click(function (e) {
         // 暂存数据 to modal , 为拼接 ajax url 做准备
         $('#wishDialog').data('spu', $(e.target).data('spu'));
-        //wishModal.open();
-        console.log('open');
-     });
+        wishModal.open();
+    });
+
+    // ajax 删除 wishlist 商品
+    $('[data-remodal-action="confirm"]').on('click', function () {
+        var WishId = $('#wishDialog').data('spu');
+        openLoading();
+        $.ajax({
+                url: '/updateWish',
+                type: 'GET',
+                data: {spu: WishId}
+            })
+            .done(function (data) {
+                if (data.success) {
+                    $('[data-wishspu="' + WishId + '"]').remove();
+                }
+            })
+            .always(function () {
+                closeLoading();
+            });
+    });
+
+    // 取消删除
+    $('[data-remodal-action="cancel"]').on('click', function () {
+        $('#wishDialog').data('spu', '');
+        wishModal.close();
+    });
+
+    // 图片延迟加载
+    $(function(){
+        $('img.img-lazy').lazyload({
+            threshold: 200,
+            effect: 'fadeIn'
+        });
+    });
 
 })(jQuery);
 

@@ -22,14 +22,14 @@
             <!-- 商品列表 -->
             <aside class="wishList bg-white m-b-20x">
                 @foreach($data['list'] as $list)
-                <div class="wishlist-item p-a-15x" data-spu="{{$list['spu']}}">
+                <div class="wishlist-item p-a-15x" data-wishspu="{{$list['spu']}}">
                     <div class="flex">
                         <a href="/detail/{{$list['spu']}}">
                             <div class="flex-fixedShrink">
                                 <img class="img-thumbnail img-lazy"
                                      src="{{env('CDN_Static')}}/images/product/bg-product@70.png"
                                      data-original="{{ env('APP_Api_Image').'/n1/'.$list['main_image_url']}}"
-                                     width="70px" height="70px">
+                                     width="70" height="70">
                             </div>
                         </a>
                         <div class="p-l-10x flex-width">
@@ -59,7 +59,6 @@
 </div>
 
 <!-- 删除将要购买的商品 -->
-<!-- TODO remodal 有多余的样式 需要整理 -->
 <div class="remodal remodal-md modal-content" data-remodal-id="modal" id="wishDialog" data-spu="">
     <div class="font-size-sm p-t-20x p-x-15x p-b-15x">
         Are you sure you want to remove this item?
