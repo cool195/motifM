@@ -148,7 +148,7 @@
                 @{{ if $value.skuPrice.sale_price !== $value.skuPrice.price }}
                 <span class="font-size-xs text-common text-throughLine m-l-5x">$@{{ ($value.skuPrice.skuPromotion.price/100).toFixed(2) }}</span>
                 @{{ /if }}
-
+                <span class="wish-item p-r-10x"><i class="iconfont text-common btn-wish"></i></span>
             </div>
         </div>
     </div>

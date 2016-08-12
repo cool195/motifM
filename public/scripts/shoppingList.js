@@ -5,7 +5,7 @@
 
 'use strict';
 
-(function($, Swiper) {
+(function ($, Swiper) {
     // 选项卡导航
     var TabIndexSwiper = new Swiper('#tabIndex-container', {
         freeMode: true,
@@ -81,6 +81,7 @@
         console.info(ActiveTabHeight);
         $ActiveTab.siblings('.swiper-slide').height(ActiveTabHeight);
     }
+
     // 加载动画显示
     function loadingShow(CurrentTab) {
         $(TabsContainerSwiper.slides[CurrentTab]).find('.loading').show();
@@ -128,13 +129,13 @@
         loadingShow(ActiveTab);
         // ajax 请求加载数据
         $.ajax({
-                url: '/products',
-                data: {
-                    pagenum: NextPage,
-                    pagesize: 20,
-                    cid: CurrentCid
-                }
-            }).done(function(data) {
+            url: '/products',
+            data: {
+                pagenum: NextPage,
+                pagesize: 20,
+                cid: CurrentCid
+            }
+        }).done(function (data) {
                 if (data.success) {
                     if (data.data === null || data.data === '' || data.data.list.length === 0) {
                         $Current.data('pagenum', -1);
@@ -156,14 +157,14 @@
 
                         //给模板a标签绑定事件
                         $('[data-clk]').unbind('click');
-                        $('[data-clk]').bind('click', function() {
+                        $('[data-clk]').bind('click', function () {
                             var $this = $(this);
-                            if(undefined !== $this.data('link')){
+                            if (undefined !== $this.data('link')) {
                                 $.ajax({
                                     url: $this.data('clk'),
                                     type: "GET"
                                 });
-                                setTimeout(function() {
+                                setTimeout(function () {
                                     window.location.href = $this.data('link');
                                 }, 100);
                             }
@@ -172,7 +173,7 @@
                 }
             })
             // TODO failed 时的提示
-            .always(function() {
+            .always(function () {
                 // 隐藏加载动画
                 loadingHide(ActiveTab);
                 // 请求结束, loading = false
@@ -180,7 +181,7 @@
             });
     }
 
-    $('#tabIndex-container').on('click', '.nav-item', function() {
+    $('#tabIndex-container').on('click', '.nav-item', function () {
         /* Act on the event */
         tabSwitch(TabIndexSwiper.clickedIndex, 500);
         tabsLoading();
@@ -241,15 +242,15 @@
     }
 
     // 为选项卡导航, 绑定一次性事件, 加载商品数据
-    $('#tabIndex-container').find('li[data-tab-index]').one('click', function() {
+    $('#tabIndex-container').find('li[data-tab-index]').one('click', function () {
         console.log('一次性事件');
         $('body').animate({
             scrollTop: 0
         }, 200);
     });
     // 为页面绑定 滚动条事件
-    $(document).ready(function() {
-        $(window).scroll(function() {
+    $(document).ready(function () {
+        $(window).scroll(function () {
             $('img.img-lazy').each(function () {
                 var Src = $(this).attr('src'),
                     Original = $(this).attr('data-original');
@@ -260,6 +261,15 @@
             pullLoading();
             console.log('滚动条滚动');
         });
+    });
+
+    // 点击 wish
+    $('.swiper-wrapper').on('click', '.btn-wish', function () {
+        if (!$(this).hasClass('active')) {
+            $(this).addClass('active');
+        } else {
+            $(this).removeClass('active');
+        }
     });
 
 })(jQuery, Swiper);
