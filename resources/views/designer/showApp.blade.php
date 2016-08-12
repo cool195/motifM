@@ -286,6 +286,7 @@
 <script src="{{env('CDN_Static')}}/scripts/videoPlay.js"></script>
 <script src="{{env('CDN_Static')}}/scripts/JockeyJS.js"></script>
 <script>
+
     var actionsShow = [{"icon": "", "name": "wish"}, {"icon": "", "name": "bag"}]
     Jockey.send("action", {
         name: "showActions",
