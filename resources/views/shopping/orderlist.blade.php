@@ -48,7 +48,7 @@
     @{{ each $value.subOrderList }}
     <a href="/order/orderdetail/@{{ $value.sub_order_no }}">
         <div class="orderList-item bg-white m-b-10x">
-            <div class="p-y-10x @{{ if $value.status_code == 11 || $value.status_code == 21  || $value.status_code == 27 }} status-red @{{ else if $value.status_code == 23}} status-gray @{{ else if $value.status_code == 25 || $value.status_code == 20}} status-blue @{{ else if $value.status_code == 17}} status-green @{{ else if $value.status_code == 18}} status-green @{{ else if $value.status_code == 19}} status-green @{{ else }} status-yellow @{{ /if }}">
+            <div class="p-y-10x @{{ if $value.status_code == 11 }} status-red @{{ else if $value.status_code == 23 || $value.status_code == 21  || $value.status_code == 27 }} status-gray @{{ else if $value.status_code == 25 || $value.status_code == 20}} status-blue @{{ else if $value.status_code == 17}} status-green @{{ else if $value.status_code == 18}} status-green @{{ else if $value.status_code == 19}} status-green @{{ else }} status-yellow @{{ /if }}">
                 <div class="p-l-5x">
                     <span class="font-size-sm text-primary">
                         <strong>@{{ $value.status_info }}: </strong>@{{ $value.update_time }}
