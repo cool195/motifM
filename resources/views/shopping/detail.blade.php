@@ -208,7 +208,8 @@
                                             <div class="productList-item">
                                                 <div class="image-bg">
                                                     <div class="image-container">
-                                                        <a href="/detail/{{ $value['spu'] }}"
+                                                        <a href="javascript:void(0)"
+                                                           data-link="/detail/{{ $value['spu'] }}"
                                                            data-impr="{{ $value['impr'] }}"
                                                            data-clk="{{ $value['clk'] }}">
                                                             <img class="img-fluid img-lazy"
