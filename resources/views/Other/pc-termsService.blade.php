@@ -696,6 +696,8 @@
                                     shall waive or impede our right to comply with law enforcement requests or
                                     requirements relating to your use of Our Services or information provided to or
                                     gathered by us with respect to such use. </p>
+                                <p class="m-b-15x">BUMPERR LTD<br/>
+                                    71-75, Shelton Street, Covent Garden, London, WC2H 9JQ, UNITED KINGDOM (This address is only for billing, not for return).</p>
                                 <p class="m-b-0">(Last Updated June 20, 2016)</p>
                             </div>
                         </div>
