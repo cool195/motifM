@@ -10,6 +10,35 @@
 
 </head>
 <body>
+<input type="text" id="removeFromCart-name" value="" hidden>
+<input type="text" id="removeFromCart-sku" value="" hidden>
+<input type="text" id="removeFromCart-price" value="" hidden>
+<input type="text" id="removeFromCart-quantity" value="" hidden>
+<script type="text/javascript">
+    function onRemoveFromCart() {
+        var name = document.getElementById('removeFromCart-name').value;
+        var sku = document.getElementById('removeFromCart-sku').value;
+        var price = document.getElementById('removeFromCart-price').value;
+        var quantity = document.getElementById('removeFromCart-quantity').value;
+        dataLayer.push({
+            'event': 'removeFromCart',
+            'ecommerce': {
+                'remove': {
+                    'products': [{
+                        'name': name,
+                        'sku': sku,
+                        'price': price,
+                        'brand': 'Motif',
+                        'category': '',
+                        'variant': '',
+                        'quantity': quantity
+                    }]
+                }
+            }
+        });
+    }
+</script>
+
 @include('check.tagmanager')
 <!-- 外层容器 -->
 <div id="body-content">
@@ -83,7 +112,8 @@
                                 <div class="flex flex-alignCenter flex-fullJustified p-y-10x">
                                     <div class="flex">
                                         <a class="btn btn-cartUpdate btn-sm btn-inBag" data-remodal-target="modal"
-                                           data-sku="{{$showSku['sku']}}" data-action="delsku">Remove</a>
+                                           data-sku="{{$showSku['sku']}}" data-action="delsku" data-title="{{$showSku['main_title']}}" data-price="{{number_format(($showSku['sale_price'] / 100), 2)}}"
+                                        data-qtty="{{$showSku['sale_qtty']}}">Remove</a>
                                         <a href="#" class="btn btn-cartUpdate btn-sm btn-inBag" data-product-move="save"
                                            data-sku="{{$showSku['sku']}}">Save for Later</a>
                                     </div>

@@ -75,6 +75,7 @@
     });
 
     $('[data-role="submit"]').on('click', function () {
+        onCheckout();
 
         if (!$(this).hasClass('disabled')) {
             openLoading();

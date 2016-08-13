@@ -27,6 +27,8 @@
     // 删除对应商品
     // TODO loading , ajax返回后 , 刷新页面
     function deleteCart() {
+        onRemoveFromCart();
+
         // 判断相应的参数里是否有相应的值
         var sku = $('#cartDialog').data('sku'),
             action = $('#cartDialog').data('action');
@@ -36,10 +38,10 @@
         }
         openLoading();
         $.ajax({
-            url: '/cart/operate',
-            type: 'POST',
-            data: {cmd: action, sku: sku}
-        })
+                url: '/cart/operate',
+                type: 'POST',
+                data: {cmd: action, sku: sku}
+            })
             .done(function (data) {
                 if (data.success) {
                     console.log('success');
@@ -69,10 +71,10 @@
         }
         openLoading();
         $.ajax({
-            url: '/cart/operate',
-            type: 'POST',
-            data: {cmd: action, sku: sku}
-        })
+                url: '/cart/operate',
+                type: 'POST',
+                data: {cmd: action, sku: sku}
+            })
             .done(function (data) {
                 console.log('success');
                 // 操作成功刷新页面
@@ -98,10 +100,10 @@
     function changeQtty(Sku, Qtty, $Count) {
         openLoading();
         $.ajax({
-            url: '/cart/alterQtty',
-            type: 'POST',
-            data: {sku: Sku, qtty: Qtty}
-        })
+                url: '/cart/alterQtty',
+                type: 'POST',
+                data: {sku: Sku, qtty: Qtty}
+            })
             .done(function (data) {
                 // TODO 操作失败时 需要进行什么操作
                 // 操作成功刷新页面
@@ -156,6 +158,11 @@
         // 暂存数据 to modal , 为拼接 ajax url 做准备
         $('#cartDialog').data('sku', $(e.target).data('sku'));
         $('#cartDialog').data('action', $(e.target).data('action'));
+
+        $('#removeFromCart-name').val($(this).data('title'));
+        $('#removeFromCart-sku').val($(this).data('sku'));
+        $('#removeFromCart-price').val($(this).data('price'));
+        $('#removeFromCart-quantity').val($(this).data('qtty'));
         console.log('open');
     });
 

@@ -656,6 +656,7 @@
             Qtty = Count;
         }
         // 将计数更新
+        $('#addToCart-quantity').val(Qtty);
         $QtyCount.siblings('[data-num]').html(Qtty);
     });
 
@@ -692,7 +693,7 @@
             'sku': ResultSkus[0], // SKU
             'VAList': [] // 增值服务
         };
-
+        $('#addToCart-sku').val(ResultSkus[0]);
 
         var i = 0;
         var VarList = [];
@@ -720,6 +721,8 @@
                 i++;
             }
         });
+
+        onAddToCart();
 
         Operate.VAList = VarList;
         openLoading();
@@ -772,7 +775,7 @@
     });
 
     $('[data-control="openModal"]').on('click', function (e) {
-        if($(this).hasClass('disabled')){
+        if ($(this).hasClass('disabled')) {
             return;
         }
         var OptionsCount = Object.keys(Options);

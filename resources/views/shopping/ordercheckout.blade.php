@@ -8,7 +8,33 @@
 
 </head>
 <body>
+<script type="text/javascript">
+    function onCheckout() {
+        dataLayer.push({
+            'event': 'checkout',
+            'ecommerce': {
+                'checkout': {
+                    'actionField': {'step': 1, 'total': '{{ number_format(($data['pay_amount'] / 100), 2)}}'},
+                    'products': [
+                            @foreach($data['showSkus'] as $showSku)
+                        {
+                        'name': '{{$showSku['main_title']}}',
+                        'sku': '{{$showSku['sku']}}',
+                        'price': '{{ number_format(($showSku['sale_price'] / 100), 2) }}',
+                        'brand': 'Motif',
+                        'category': '',
+                        'variant': '',
+                        'quantity': '{{$showSku['sale_qtty']}}'
+                    },
+                        @endforeach
+                    ]
+                }
+            },
+        });
+    }
+</script>
 @include('check.tagmanager')
+
 <!-- 外层容器 -->
 <div id="body-content">
     <!-- 展开的汉堡菜单 -->
