@@ -48,7 +48,7 @@
                                        data-followid="{{$designer['designer_id']}}">Follow</a>
                                 @endif
                             @else
-                                <a href="#" class="btn btn-sm btn-follow active" id="sendLogin"
+                                <a href="#" class="btn btn-sm btn-follow active sendLogin"
                                    data-followid="1">Follow</a>
                             @endif
                         </span>
@@ -201,7 +201,7 @@
                                                                     <span class="font-size-xs text-common text-throughLine m-l-5x">${{number_format($product['spuInfos'][$spu]['skuPrice']['price']/100,2)}}</span>
                                                                 @endif
                                                             </div>
-
+                                                            @if(false)
                                                                 @if(Session::get('user.pin'))
                                                                     <span class="p-r-5x wish" data-id="{{$spu}}"
                                                                           id="{{'wish'.$spu}}"><i
@@ -210,7 +210,7 @@
                                                                     <span class="p-r-5x"><i
                                                                                 class="iconfont icon-like product-heart sendLogin"></i></span>
                                                                 @endif
-
+                                                            @endif
                                                         </div>
                                                     </div>
                                                 </div>
@@ -253,7 +253,7 @@
                                                     <span class="font-size-xs text-common text-throughLine m-l-5x">${{number_format($value['skuPrice']['price']/100,2)}}</span>
                                                 @endif
                                             </div>
-
+                                            @if(false)
                                             @if(Session::get('user.pin'))
                                                 <span class="p-r-5x wish" data-id="{{$value['spu']}}"
                                                       id="{{'wish'.$value['spu']}}"><i
@@ -262,7 +262,7 @@
                                                 <span class="p-r-5x"><i
                                                             class="iconfont icon-like product-heart sendLogin"></i></span>
                                             @endif
-
+                                            @endif
                                         </div>
                                     </div>
                                 </div>
@@ -286,6 +286,7 @@
 <script src="{{env('CDN_Static')}}/scripts/videoPlay.js"></script>
 <script src="{{env('CDN_Static')}}/scripts/JockeyJS.js"></script>
 <script>
+
     var actionsShow = [{"icon": "", "name": "wish"}, {"icon": "", "name": "bag"}]
     Jockey.send("action", {
         name: "showActions",
@@ -307,7 +308,7 @@
     });
 
     //login send
-    $('#sendLogin').on('click', function () {
+    $('.sendLogin').on('click', function () {
         Jockey.send("action", {
             name: "login",
             token: "key",
@@ -347,7 +348,7 @@
     });
 
             {{--App 发版一周后打开--}}
-            @if(Session::get('user.pin'))
+            @if(false && Session::get('user.pin'))
     var spuStr = $('#spuArray').val().replace("[", "");
     spuStr = spuStr.replace("]", "");
     Jockey.send("action", {
