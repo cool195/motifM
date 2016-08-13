@@ -523,7 +523,7 @@
 </body>
 <script src="{{env('CDN_Static')}}/scripts/vendor.js"></script>
 
-<script src="{{env('CDN_Static')}}/scripts/shoppingDetail.js?v=3"></script>
+<script src="{{env('CDN_Static')}}/scripts/shoppingDetail.js?v=4"></script>
 <meta name="csrf-token" content="{{ csrf_token() }}"/>
 
 <script>
