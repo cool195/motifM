@@ -70,6 +70,26 @@
         $(document).on('scroll', function(event) {
            imprList();
         });
+
+        //收藏服务
+        $('.btn-wished').click(function(e) {
+            var $this = $(e.target);
+            var spu = $this.data('spu');
+            $.ajax({
+                url: '/updateWish',
+                type: 'post',
+                data: {spu:spu}
+            })
+            .done(function(data){
+                if(data.success){
+                    if (!$this.hasClass('active')) {
+                        $this.addClass('active');
+                    } else {
+                        $this.removeClass('active');
+                    }
+                }
+            });
+        });
     })
 </script>
 

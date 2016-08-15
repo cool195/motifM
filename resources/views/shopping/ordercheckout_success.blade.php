@@ -72,6 +72,7 @@
 </div>
 </body>
 <script src="{{env('CDN_Static')}}/scripts/vendor.js{{'?v='.config('app.version')}}"></script>
+@if(!empty($order['sub_order_no']))
 <script>
     $(document).ready(function () {
         $.ajax({
@@ -82,5 +83,6 @@
         });
     })
 </script>
+@endif
 @include('global')
 </html>

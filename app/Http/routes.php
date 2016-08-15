@@ -30,6 +30,7 @@ $app->group(['middleware' => 'pcguide', 'namespace' => 'App\Http\Controllers'], 
     $app->get('/addFacebookEmail', 'Auth\AuthController@addFacebookEmail');
 
     $app->get('methodlist', 'Shopping\BraintreeController@methodlist');
+
 });
 
 $app->get('/forgetpwd', 'Shopping\UserController@forgetPWD');
@@ -109,6 +110,12 @@ $app->group(['middleware' => 'pcguide|logincheck', 'namespace' => 'App\Http\Cont
     $app->get('/order/orderSubmit', 'OrderController@orderSubmit');
     $app->post('/order/orderSubmit', 'OrderController@orderSubmit');
     $app->get('/success', 'OrderController@orderSuccess');
+
+    $app->get('/wish', 'ShoppingController@wish');
+
+    $app->get('/wishlist', 'ShoppingController@wishlist');
+
+    $app->post('/updateWish', 'ShoppingController@updateWish');
 
     //第三方支付
     $app->get('/braintree', 'BraintreeController@index');
