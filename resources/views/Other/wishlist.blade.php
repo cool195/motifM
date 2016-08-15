@@ -28,7 +28,7 @@
                             <div class="flex-fixedShrink">
                                 <img class="img-thumbnail img-lazy"
                                      src="{{env('CDN_Static')}}/images/product/bg-product@70.png"
-                                     data-original="{{ env('APP_Api_Image').'/n1/'.$list['main_image_url']}}"
+                                     data-original="{{ env('APP_Api_Image').'/n2/'.$list['main_image_url']}}"
                                      width="70" height="70">
                             </div>
                         </a>

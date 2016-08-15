@@ -161,16 +161,19 @@ class ShoppingController extends ApiController
     }
 
     //Wishlist Start
-    public function wish()
+    public function wish(Reqeust $request)
     {
         $params = array(
             'cmd' => 'list',
-            'num' => 1,
-            'size' => 500,
+            'num' => $request->input('num', 1),
+            'size' => $request->input('size', 20),
             'pin' => Session::get('user.pin'),
             'token' => Session::get('user.token')
         );
         $result = $this->request('openapi', '', 'wishlist', $params);
+        if($request->input('ajax')){
+            return $result;
+        }
         return view('Other.wishlist', ['data' => $result['data']]);
     }
 
