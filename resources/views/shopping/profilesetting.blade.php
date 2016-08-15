@@ -3,7 +3,7 @@
 <head>
     <title>Profile Setting</title>
     @include('head')
-    <script src="{{env('CDN_Static')}}/scripts/vendor/fastclick.js"></script>
+    <script src="{{env('CDN_Static')}}/scripts/vendor/fastclick.js{{'?v='.config('app.version')}}"></script>
 
 </head>
 <body>
@@ -46,6 +46,6 @@
         </div>
     </div>
 </body>
-<script src="{{env('CDN_Static')}}/scripts/vendor.js"></script>
+<script src="{{env('CDN_Static')}}/scripts/vendor.js{{'?v='.config('app.version')}}"></script>
 @include('global')
 </html>

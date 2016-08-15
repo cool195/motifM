@@ -4,7 +4,7 @@
 
     <title>Order Checkout</title>
     @include('head')
-    <link rel="stylesheet" href="{{env('CDN_Static')}}/styles/orderCheckout.css">
+    <link rel="stylesheet" href="{{env('CDN_Static')}}/styles/orderCheckout.css{{'?v='.config('app.version')}}">
 
 </head>
 <body>
@@ -245,9 +245,9 @@
     @endif
 </form>
 </body>
-<script src="{{env('CDN_Static')}}/scripts/vendor.js"></script>
+<script src="{{env('CDN_Static')}}/scripts/vendor.js{{'?v='.config('app.version')}}"></script>
 
-<script src="{{env('CDN_Static')}}/scripts/orderCheckout.js?v=4"></script>
+<script src="{{env('CDN_Static')}}/scripts/orderCheckout.js{{'?v='.config('app.version')}}"></script>
 <meta name="csrf-token" content="{{ csrf_token() }}" />
 <script>
     $.ajaxSetup({

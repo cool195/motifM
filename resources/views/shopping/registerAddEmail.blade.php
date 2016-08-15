@@ -4,9 +4,9 @@
 <head>
     <title>Add Email</title>
     @include('head')
-    <link rel="stylesheet" href="{{env('CDN_Static')}}/styles/resetPassword.css">
-    <link rel="stylesheet" href="{{env('CDN_Static')}}/styles/remodal.css">
-    <script src="{{env('CDN_Static')}}/scripts/vendor/template-native.js"></script>
+    <link rel="stylesheet" href="{{env('CDN_Static')}}/styles/resetPassword.css{{'?v='.config('app.version')}}">
+    <link rel="stylesheet" href="{{env('CDN_Static')}}/styles/remodal.css{{'?v='.config('app.version')}}">
+    <script src="{{env('CDN_Static')}}/scripts/vendor/template-native.js{{'?v='.config('app.version')}}"></script>
 
 </head>
 
@@ -60,8 +60,8 @@
         <div class="loader loader-screen"></div>
     </div>
 </body>
-<script src="{{env('CDN_Static')}}/scripts/vendor.js"></script>
+<script src="{{env('CDN_Static')}}/scripts/vendor.js{{'?v='.config('app.version')}}"></script>
 
-<script src="{{env('CDN_Static')}}/scripts/registerAddEmial.js"></script>
+<script src="{{env('CDN_Static')}}/scripts/registerAddEmial.js{{'?v='.config('app.version')}}"></script>
 
 </html>

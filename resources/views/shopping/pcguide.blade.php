@@ -11,7 +11,7 @@
           content="fashion,style,shop,accessory,jewelry,watch,blogger,Instagram,designer,limited,edition,ecommerce,buy"/>
 
     <link rel="apple-touch-icon" href="apple-touch-icon.png">
-    <link rel="stylesheet" href="{{env('CDN_Static')}}/styles/pc-main.css">
+    <link rel="stylesheet" href="{{env('CDN_Static')}}/styles/pc-main.css{{'?v='.config('app.version')}}">
 </head>
 
 <body>

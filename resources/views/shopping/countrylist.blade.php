@@ -58,7 +58,7 @@
     @endif
 </form>
 </body>
-<script src="{{env('CDN_Static')}}/scripts/vendor.js"></script>
+<script src="{{env('CDN_Static')}}/scripts/vendor.js{{'?v='.config('app.version')}}"></script>
 <script>
 $("[data-country]").on('click',function () {
     $('input[name="country"]').val($(this).data('country'));

@@ -3,7 +3,7 @@
 <head>
     <title>shopping</title>
     @include('head')
-    <link rel="stylesheet" href="{{env('CDN_Static')}}/styles/shoppingList.css?v=3">
+    <link rel="stylesheet" href="{{env('CDN_Static')}}/styles/shoppingList.css{{'?v='.config('app.version')}}">
 </head>
 <body>
 <input type="text" id="productClick-name" value="name" hidden>
@@ -181,8 +181,8 @@
     </div>
     @{{ /each }}
 </template>
-<script src="{{env('CDN_Static')}}/scripts/vendor.js"></script>
+<script src="{{env('CDN_Static')}}/scripts/vendor.js{{'?v='.config('app.version')}}"></script>
 
-<script src="{{env('CDN_Static')}}/scripts/shoppingList.js?v=3"></script>
+<script src="{{env('CDN_Static')}}/scripts/shoppingList.js{{'?v='.config('app.version')}}"></script>
 @include('global')
 </html>

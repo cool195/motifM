@@ -3,7 +3,7 @@
 <head>
     <title>Add New Card</title>
     @include('head')
-    <link rel="stylesheet" href="{{env('CDN_Static')}}/styles/paymentMethod-addCard.css">
+    <link rel="stylesheet" href="{{env('CDN_Static')}}/styles/paymentMethod-addCard.css{{'?v='.config('app.version')}}">
 
 </head>
 <body>
@@ -105,8 +105,8 @@
 </body>
 <!-- BrainTree -->
 <script src="{{env('CDN_Static')}}/scripts/braintree-2.24.1.min.js"></script>
-<script src="{{env('CDN_Static')}}/scripts/vendor.js"></script>
-<script src="{{env('CDN_Static')}}/scripts/paymentMethod-addCard.js"></script>
-<script src="{{env('CDN_Static')}}/scripts/creditCardType.js"></script>
+<script src="{{env('CDN_Static')}}/scripts/vendor.js{{'?v='.config('app.version')}}"></script>
+<script src="{{env('CDN_Static')}}/scripts/paymentMethod-addCard.js{{'?v='.config('app.version')}}"></script>
+<script src="{{env('CDN_Static')}}/scripts/creditCardType.js{{'?v='.config('app.version')}}"></script>
 @include('global')
 </html>

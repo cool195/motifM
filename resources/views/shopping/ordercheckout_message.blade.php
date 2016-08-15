@@ -3,7 +3,7 @@
 <head>
     <title>Special Request</title>
     @include('head')
-    <link rel="stylesheet" href="{{env('CDN_Static')}}/styles/orderCheckout-message.css">
+    <link rel="stylesheet" href="{{env('CDN_Static')}}/styles/orderCheckout-message.css{{'?v='.config('app.version')}}">
 
 
 </head>
@@ -47,8 +47,8 @@
         <div class="loader loader-screen"></div>
     </div>
 </body>
-<script src="{{env('CDN_Static')}}/scripts/vendor.js"></script>
+<script src="{{env('CDN_Static')}}/scripts/vendor.js{{'?v='.config('app.version')}}"></script>
 
-<script src="{{env('CDN_Static')}}/scripts/orderCheckout-message.js"></script>
+<script src="{{env('CDN_Static')}}/scripts/orderCheckout-message.js{{'?v='.config('app.version')}}"></script>
 @include('global')
 </html>

@@ -3,9 +3,9 @@
 <head>
     <title>Register</title>
     @include('head')
-    <link rel="stylesheet" href="{{env('CDN_Static')}}/styles/register.css">
-    <link rel="stylesheet" href="{{env('CDN_Static')}}/styles/remodal.css">
-    <script src="{{env('CDN_Static')}}/scripts/vendor/template-native.js"></script>
+    <link rel="stylesheet" href="{{env('CDN_Static')}}/styles/register.css{{'?v='.config('app.version')}}">
+    <link rel="stylesheet" href="{{env('CDN_Static')}}/styles/remodal.css{{'?v='.config('app.version')}}">
+    <script src="{{env('CDN_Static')}}/scripts/vendor/template-native.js{{'?v='.config('app.version')}}"></script>
 
 </head>
 
@@ -74,8 +74,8 @@
 </div>
 </body>
 
-<script src="{{env('CDN_Static')}}/scripts/vendor.js"></script>
-<script src="{{env('CDN_Static')}}/scripts/register.js?v=2"></script>
+<script src="{{env('CDN_Static')}}/scripts/vendor.js{{'?v='.config('app.version')}}"></script>
+<script src="{{env('CDN_Static')}}/scripts/register.js{{'?v='.config('app.version')}}"></script>
 <meta name="csrf-token" content="{{ csrf_token() }}"/>
 <script>
     $.ajaxSetup({
@@ -85,6 +85,6 @@
     });
 </script>
 <script src="https://apis.google.com/js/api:client.js"></script>
-<script src="{{env('CDN_Static')}}/scripts/signWith.js?v=3"></script>
+<script src="{{env('CDN_Static')}}/scripts/signWith.js{{'?v='.config('app.version')}}"></script>
 @include('global')
 </html>

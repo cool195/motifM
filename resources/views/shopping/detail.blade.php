@@ -3,7 +3,7 @@
 <head>
     <title>{{$data['main_title']}}</title>
     @include('head')
-    <link rel="stylesheet" href="{{env('CDN_Static')}}/styles/shoppingDetail.css?v=3">
+    <link rel="stylesheet" href="{{env('CDN_Static')}}/styles/shoppingDetail.css{{'?v='.config('app.version')}}">
 </head>
 <body>
 <!-- 添加购物车 -->
@@ -537,9 +537,9 @@
 </div>
 
 </body>
-<script src="{{env('CDN_Static')}}/scripts/vendor.js"></script>
+<script src="{{env('CDN_Static')}}/scripts/vendor.js{{'?v='.config('app.version')}}"></script>
 
-<script src="{{env('CDN_Static')}}/scripts/shoppingDetail.js?v=4"></script>
+<script src="{{env('CDN_Static')}}/scripts/shoppingDetail.js{{'?v='.config('app.version')}}"></script>
 <meta name="csrf-token" content="{{ csrf_token() }}"/>
 
 <script>

@@ -3,7 +3,7 @@
 <head>
     <title>Order List</title>
     @include('head')
-    <link rel="stylesheet" href="{{env('CDN_Static')}}/styles/orderList.css">
+    <link rel="stylesheet" href="{{env('CDN_Static')}}/styles/orderList.css{{'?v='.config('app.version')}}">
 
 </head>
 <body>
@@ -108,8 +108,8 @@
     @{{ /each }}
 </template>
 
-<script src="{{env('CDN_Static')}}/scripts/vendor.js"></script>
+<script src="{{env('CDN_Static')}}/scripts/vendor.js{{'?v='.config('app.version')}}"></script>
 
-<script src="{{env('CDN_Static')}}/scripts/orderList.js?v=2"></script>
+<script src="{{env('CDN_Static')}}/scripts/orderList.js{{'?v='.config('app.version')}}"></script>
 @include('global')
 </html>
