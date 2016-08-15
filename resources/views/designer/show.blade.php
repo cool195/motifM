@@ -139,12 +139,9 @@
                                                      alt="{{$product['spuInfos'][$spu]['spuBase']['main_title']}}">
                                             </a>
                                             @if(Session::has('user'))
-                                                <span class="wish-item p-r-10x"><i
-                                                            class="iconfont text-common btn-wish @if(in_array($spu, $wishlist->wishlist())){{'active'}}@endif"
-                                                            data-spu="{{$spu}}"></i></span>
+                                                <span class="wish-item p-r-10x"><i class="iconfont text-common btn-wish btn-wished @if(in_array($spu, $wishlist->wishlist())) {{'active'}} @endif" data-spu="{{$spu}}"></i></span>
                                             @else
-                                                <a class="wish-item p-r-10x" href="/login"><i
-                                                            class="iconfont text-common btn-wish"></i></a>
+                                                <a class="wish-item p-r-10x" href="/login"><i class="iconfont text-common btn-wish"></i></a>
                                             @endif
                                         </div>
                                     @endforeach
@@ -168,9 +165,7 @@
                                                                      alt="{{$product['spuInfos'][$spu]['spuBase']['main_title']}}">
                                                                 @if($product['spuInfos'][$spu]['skuPrice']['sale_price'] != $product['spuInfos'][$spu]['skuPrice']['price'])
                                                                     <div class="price-off">
-                                                                        <img class="img-fluid"
-                                                                             src="{{env('APP_Api_Image')}}/n1/{{ $product['spuInfos'][$spu]['skuPrice']['skuPromotion']['logo_path']}}"
-                                                                             alt="">
+                                                                        <img class="img-fluid" src="{{env('APP_Api_Image')}}/n1/{{ $product['spuInfos'][$spu]['skuPrice']['skuPromotion']['logo_path']}}" alt="">
                                                                     </div>
                                                                 @endif
                                                             </div>
@@ -183,12 +178,9 @@
                                                                 @endif
                                                             </div>
                                                             @if(Session::has('user'))
-                                                                <span class="wish-item p-r-10x"><i
-                                                                            class="iconfont text-common btn-wish @if(in_array($spu, $wishlist->wishlist())){{'active'}}@endif"
-                                                                            data-spu="{{$spu}}"></i></span>
+                                                                <span class="wish-item p-r-10x"><i class="iconfont text-common btn-wish btn-wished @if(in_array($spu, $wishlist->wishlist())){{'active'}}@endif" data-spu="{{$spu}}"></i></span>
                                                             @else
-                                                                <a class="wish-item p-r-10x" href="/login"><i
-                                                                            class="iconfont text-common btn-wish"></i></a>
+                                                                <a class="wish-item p-r-10x" href="/login"><i class="iconfont text-common btn-wish"></i></a>
                                                             @endif
                                                         </div>
                                                     </div>
@@ -233,12 +225,9 @@
                                                         @endif
                                                     </div>
                                                     @if(Session::has('user'))
-                                                        <span class="wish-item p-r-10x"><i
-                                                                    class="iconfont text-common btn-wish @if(in_array($spu, $wishlist->wishlist())){{'active'}}@endif"
-                                                                    data-spu="{{$spu}}"></i></span>
+                                                        <span class="wish-item p-r-10x"><i class="iconfont text-common btn-wish btn-wished @if(in_array($spu, $wishlist->wishlist())){{'active'}}@endif" data-spu="{{$spu}}"></i></span>
                                                     @else
-                                                        <a class="wish-item p-r-10x" href="/login"><i
-                                                                    class="iconfont text-common btn-wish"></i></a>
+                                                        <a class="wish-item p-r-10x" href="/login"><i class="iconfont text-common btn-wish"></i></a>
                                                     @endif
                                                 </div>
                                             </div>
