@@ -94,7 +94,7 @@
                                             <a data-clk='http://clk.motif.me/log.gif?t=daily.200001&m=H5_M2016-1&pin={{Session::get('user.pin')}}&uuid={{Session::get('user.uuid')}}&v={"action":1,"skipType":1,"skipId":{{$spu}},"topicId":{{$topicID}},"expid":0,"ver":"1.0.1","src":"H5"}'
                                                data-link="/detail/{{$spu}}" href="javascript:void(0)">
                                                 <div class="image-container">
-                                                    <img class="img-fluid img-lazy"
+                                                    <img class="img-thumbnail img-lazy"
                                                          data-original="{{env('APP_Api_Image')}}/n2/{{$topic['spuInfos'][$spu]['spuBase']['main_image_url']}}"
                                                          src="{{env('CDN_Static')}}/images/product/bg-product@336.png"
                                                          alt="{{$topic['spuInfos'][$spu]['spuBase']['main_title']}}">
