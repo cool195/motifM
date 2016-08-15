@@ -59,6 +59,22 @@
             },
         });
     }
+
+    dataLayer.push({
+        'ecommerce': {
+            'detail': {
+                'actionField': {'list': 'shopping Detail'},    // 'detail' actions have an optional list property.
+                'products': [{
+                    'name': '{{$data['main_title']}}',         // Name or ID is required.
+                    'id': '{{ $data['spu'] }}',
+                    'price': '{{ number_format(($data['skuPrice']['sale_price'] / 100), 2) }}',
+                    'brand': 'Motif',
+                    'category': '',
+                    'variant': ''
+                }]
+            }
+        }
+    });
 </script>
 
 @include('check.tagmanager')
