@@ -160,5 +160,13 @@
 <script src="{{env('CDN_Static')}}/scripts/vendor.js"></script>
 
 <script src="{{env('CDN_Static')}}/scripts/shoppingList.js?v=3"></script>
+<meta name="csrf-token" content="{{ csrf_token() }}"/>
+<script>
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+</script>
 @include('global')
 </html>

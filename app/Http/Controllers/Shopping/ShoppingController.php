@@ -161,7 +161,7 @@ class ShoppingController extends ApiController
     }
 
     //Wishlist Start
-    public function wish(Reqeust $request)
+    public function wish(Request $request)
     {
         $params = array(
             'cmd' => 'list',

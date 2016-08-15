@@ -35,7 +35,7 @@ $app->group(['middleware' => 'pcguide', 'namespace' => 'App\Http\Controllers'], 
 
     $app->get('/wishlist', 'Shopping\ShoppingController@wishlist');
 
-    $app->get('/updateWish', 'Shopping\ShoppingController@updateWish');
+    $app->post('/updateWish', 'Shopping\ShoppingController@updateWish');
 });
 
 $app->get('/forgetpwd', 'Shopping\UserController@forgetPWD');
