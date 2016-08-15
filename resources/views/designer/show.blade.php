@@ -139,7 +139,7 @@
                                                          alt="{{$product['spuInfos'][$spu]['spuBase']['main_title']}}">
                                                 </a>
                                                 @if(Session::has('user'))
-                                                    <span class="wish-item p-r-10x"><i class="iconfont text-common btn-wish @if(in_array($spu, $wishlist->wishlist())){{'active'}}@endif" data-spu="{{$spu}}"></i></span>
+                                                    <span class="wish-item p-r-10x"><i class="iconfont text-common btn-wish btn-wished@if(in_array($spu, $wishlist->wishlist())){{'active'}}@endif" data-spu="{{$spu}}"></i></span>
                                                 @else
                                                     <a class="wish-item p-r-10x" href="/login"><i class="iconfont text-common btn-wish"></i></a>
                                                 @endif
@@ -178,7 +178,7 @@
                                                                 <span class="font-size-xs text-common text-throughLine m-l-5x">${{number_format($product['spuInfos'][$spu]['skuPrice']['price']/100,2)}}</span>
                                                             @endif
                                                             @if(Session::has('user'))
-                                                                <span class="wish-item p-r-10x"><i class="iconfont text-common btn-wish @if(in_array($spu, $wishlist->wishlist())){{'active'}}@endif" data-spu="{{$spu}}"></i></span>
+                                                                <span class="wish-item p-r-10x"><i class="iconfont text-common btn-wish btn-wished @if(in_array($spu, $wishlist->wishlist())){{'active'}}@endif" data-spu="{{$spu}}"></i></span>
                                                             @else
                                                                 <a class="wish-item p-r-10x" href="/login"><i class="iconfont text-common btn-wish"></i></a>
                                                             @endif
@@ -223,7 +223,7 @@
                                                 <span class="font-size-xs text-common text-throughLine m-l-5x">${{number_format($value['skuPrice']['price']/100,2)}}</span>
                                             @endif
                                             @if(Session::has('user'))
-                                                <span class="wish-item p-r-10x"><i class="iconfont text-common btn-wish @if(in_array($spu, $wishlist->wishlist())){{'active'}}@endif" data-spu="{{$spu}}"></i></span>
+                                                <span class="wish-item p-r-10x"><i class="iconfont text-common btn-wish btn-wished @if(in_array($spu, $wishlist->wishlist())){{'active'}}@endif" data-spu="{{$spu}}"></i></span>
                                             @else
                                                 <a class="wish-item p-r-10x" href="/login"><i class="iconfont text-common btn-wish"></i></a>
                                             @endif

@@ -117,7 +117,7 @@
 </div>
 
 </body>
-@inject('wishlist', 'App\Http\Controllers\Shopping\ShoppingController')
+
 <!-- 模板 -->
 <template id="tpl-product">
     @{{ each list }}
@@ -138,7 +138,6 @@
                         </div>
                         @{{ /if }}
                     </a>
-                    <span class="product-heart active" data-spu="">收藏</span>
                 </div>
             </div>
             <div class="price-caption">
@@ -148,7 +147,11 @@
                 @{{ if $value.skuPrice.sale_price !== $value.skuPrice.price }}
                 <span class="font-size-xs text-common text-throughLine m-l-5x">$@{{ ($value.skuPrice.skuPromotion.price/100).toFixed(2) }}</span>
                 @{{ /if }}
-                <span class="wish-item p-r-10x"><i class="iconfont text-common btn-wish" data-spu="@{{ $value.spu }}"></i></span>
+                @if(Session::has('user'))
+                    <span class="wish-item p-r-10x"><i class="iconfont text-common btn-wish @{{ if $value.isWished == 1  }} active @{{ /if }}" data-spu="@{{ $value.spu }}"></i></span>
+                @else
+                    <a class="wish-item p-r-10x" href="/login"><i class="iconfont text-common btn-wish"></i></a>
+                @endif
             </div>
         </div>
     </div>
