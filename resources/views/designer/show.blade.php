@@ -44,7 +44,6 @@
                 <!-- designerDetail 设计师详情 -->
         <section class="reserve-height">
             <!-- 视频/图片-->
-            <img src="{{ env('APP_Api_Image').'/n1/'.$designer['main_image_url'] }}" style="display: none">
             <div class="designer-media flex flex-justifyCenter flex-alignCenter">
                 <img class="designer-placeImg" src="{{env('CDN_Static')}}/images/designer/placeholder.jpg" alt=""
                      hidden>
