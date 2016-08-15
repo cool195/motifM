@@ -170,16 +170,17 @@
                             @endif
                         @else
                             {{-- 商品列表横向 --}}
-                            <div class="container-fluid p-x-15x" data-impr='http://clk.motif.me/log.gif?t=designer.400001&m=H5_M2016-1&pin={{ Session::get('user.pin') }}&uuid={{ Session::get('user.uuid') }}&v={"action":0,"skipType":1,"skipId":{{ implode("_", $value['spus']) }},expid":0,"index":{{$key}},"version":"1.0.1","ver":"9.2","src":"H5"}'>
-                                <div class="row">
+                            <div class="container-fluid p-x-0 bg-topic" data-impr='http://clk.motif.me/log.gif?t=designer.400001&m=H5_M2016-1&pin={{ Session::get('user.pin') }}&uuid={{ Session::get('user.uuid') }}&v={"action":0,"skipType":1,"skipId":{{ implode("_", $value['spus']) }},expid":0,"index":{{$key}},"version":"1.0.1","ver":"9.2","src":"H5"}'>
+                                <div class="row m-a-0 topic-product">
                                     @if(isset($value['spus']))
                                         @foreach($value['spus'] as $key => $spu)
-                                            <div class="col-xs-6">
+                                            <div class="col-xs-6 p-a-0">
+                                                <div class="bg-white topic-product-item productList-item">
                                                 <a data-link="motif://o.c?a=pd&spu={{$spu}}"
                                                    data-clk='http://clk.motif.me/log.gif?t=designer.400001&m=H5_M2016-1&pin={{ Session::get('user.pin') }}&uuid={{ Session::get('user.uuid') }}&v={"action":1,"skipType":1,"skipId"{{$spu}},"expid":0,"index":{{$key}},"version":"1.0.1","ver":"9.2","src":"H5"}'
                                                    href="javascript:void(0)">
-                                                    <div class="p-t-10x">
-                                                        <img class="img-thumbnail img-lazy"
+                                                    <div class="image-container">
+                                                        <img class="img-fluid img-lazy"
                                                              src="{{env('CDN_Static')}}/images/product/bg-product@336.png"
                                                              data-original="{{env('APP_Api_Image')}}/n2/{{$product['spuInfos'][$spu]['spuBase']['main_image_url']}}"
                                                              alt="{{$product['spuInfos'][$spu]['spuBase']['main_title']}}">
@@ -191,6 +192,7 @@
                                                         </div>
                                                     </div>
                                                 </a>
+                                                </div>
                                             </div>
                                         @endforeach
                                     @endif
@@ -203,15 +205,15 @@
 
                     @if(isset($productAll['data']['list']))
                         {{-- 商品列表横向 --}}
-                        <div class="container-fluid p-x-15x" data-impr="{{ $productAll['data']['impr'] }}">
-                            <div class="row">
+                        <div class="container-fluid  p-x-0 bg-topic" data-impr="{{ $productAll['data']['impr'] }}">
+                            <div class="row m-a-0 topic-product">
                                 @foreach($productAll['data']['list'] as $value)
-                                    <div class="col-xs-6">
+                                    <div class="col-xs-6 p-a-0">
+                                        <div class="bg-white topic-product-item productList-item">
                                         <a data-link="motif://o.c?a=pd&spu={{$value['spu']}}" data-clk="{{ $value['clk'] }}"
                                            data-impr="{{ $value['impr'] }}" href="javascript:void(0)">
-                                            <div class="p-t-10x productList-item m-b-0">
                                                 <div class="image-container">
-                                                    <img class="img-thumbnail img-lazy"
+                                                    <img class="img-fluid img-lazy"
                                                          src="{{env('CDN_Static')}}/images/product/bg-product@336.png"
                                                          data-original="{{env('APP_Api_Image')}}/n2/{{$value['main_image_url']}}"
                                                          alt="{{$value['main_title']}}">
@@ -229,8 +231,8 @@
                                                         <span class="font-size-xs text-common text-throughLine m-l-5x">${{number_format($value['skuPrice']['price']/100,2)}}</span>
                                                     @endif
                                                 </div>
-                                            </div>
                                         </a>
+                                        </div>
                                     </div>
                                 @endforeach
                             </div>

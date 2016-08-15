@@ -49,7 +49,9 @@
                 </div>
                 @endforeach
             </aside>
-
+            <div class="loading" style="display: block">
+                <div class="loader"></div>
+            </div>
         </section>
 
         <!-- 页脚 功能链接 start-->
@@ -57,6 +59,36 @@
     <!-- 页脚 功能链接 end-->
     </div>
 </div>
+
+{{--<template id="tpl-wishlist">--}}
+    {{--@{{ each list }}--}}
+    {{--<div class="wishlist-item p-a-15x" data-wishspu="{{$list['spu']}}">--}}
+        {{--<div class="flex">--}}
+            {{--<a href="/detail/{{$list['spu']}}">--}}
+                {{--<div class="flex-fixedShrink">--}}
+                    {{--<img class="img-thumbnail img-lazy"--}}
+                         {{--src="{{env('CDN_Static')}}/images/product/bg-product@70.png"--}}
+                         {{--data-original="{{ env('APP_Api_Image').'/n2/'.$list['main_image_url']}}"--}}
+                         {{--width="70" height="70">--}}
+                {{--</div>--}}
+            {{--</a>--}}
+            {{--<div class="p-l-10x flex-width">--}}
+                {{--<article class="flex flex-fullJustified wishlist-title">--}}
+                    {{--<h6 class="text-main font-size-md p-r-20x">--}}
+                        {{--<strong>{{$list['main_title']}}</strong>--}}
+                    {{--</h6>--}}
+                                    {{--<span class="text-primary font-size-sm flex-fixedShrink">--}}
+                                        {{--<i class="iconfont icon-cross icon-size-md text-common delwish" data-spu="{{$list['spu']}}"></i>--}}
+                                    {{--</span>--}}
+                {{--</article>--}}
+                {{--<aside class="text-primary font-size-sm">--}}
+                    {{--<div>${{ number_format(( $list['skuPrice']['sale_price'] / 100), 2) }}</div>--}}
+                {{--</aside>--}}
+            {{--</div>--}}
+        {{--</div>--}}
+    {{--</div>--}}
+    {{--@{{ /each }}--}}
+{{--</template>--}}
 
 <!-- 删除将要购买的商品 -->
 <div class="remodal remodal-md modal-content" data-remodal-id="modal" id="wishDialog" data-spu="">
