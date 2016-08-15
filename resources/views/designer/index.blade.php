@@ -40,8 +40,8 @@
     <aside class="bg-white m-b-10x">
         <div class="">
             <a data-link="/designer/@{{$value.designerId}}"
-               data-impr='http://clk.motif.me/log.gif?t=designer.200001&m=H5_M2016-1&pin={{ Session::get('user.pin') }}&uuid={{ Session::get('user.uuid') }}&v=<?="\"action\":0,\"skipType\":2,\"skipId\":"?>@{{ $value.designerId }}<?=",\"expid\":0,\"version\":\"1.0.1\", \"ver\":\"9.2\",\"src\":\"H5\" "?>'
-               data-clk='http://clk.motif.me/log.gif?t=designer.200001&m=H5_M2016-1&pin={{ Session::get('user.pin') }}&uuid={{ Session::get('user.uuid') }}&v=<?="\"action\":0,\"skipType\":2,\"skipId\":"?>@{{ $value.designerId }}<?=",\"expid\":0,\"version\":\"1.0.1\",\"ver\":\"9.2\",\"src\":\"H5\" "?>'
+               data-impr='http://clk.motif.me/log.gif?t=designer.200001&m=H5_M2016-1&pin={{ Session::get('user.pin') }}&uuid={{ Session::get('user.uuid') }}&v={"action":"0","skiptype":2,"skipid":"@{{ $value.designerId }}","expid":0,"version":"1.0.1", "ver":"9.2","src":"h5"}'
+               data-clk='http://clk.motif.me/log.gif?t=designer.200001&m=H5_M2016-1&pin={{ Session::get('user.pin') }}&uuid={{ Session::get('user.uuid') }}&v={"action":"1","skiptype":2,"skipid":"@{{ $value.designerId }}","expid":0,"version":"1.0.1", "ver":"9.2","src":"h5"}'
                href="javascript:void(0)">
                 <img class="img-fluid img-lazy" data-original="{{env('APP_Api_Image')}}/n2/@{{ $value.listImg }}" src="{{env('CDN_Static')}}/images/product/bg-product@750.png" alt="@{{ $value.name }}">
             </a>
@@ -52,7 +52,7 @@
                 <div class="product-item swiper-slide p-x-5x">
                     <a data-link="/detail/@{{$value.spu}}" href="javascript:void(0)"
                        data-designerid="@{{ $value.designerId }}"
-                       data-clk='http://clk.motif.me/log.gif?t=designer.300001&m=H5_M2016-1&pin={{ Session::get('user.pin') }}&uuid={{ Session::get('user.uuid') }}&v=<?="\"action\":0,\"skipType\":2,\"skipId\":"?>@{{ $value.designerId }}<?=",\"expid\":0,\"version\":\"1.0.1\", \"ver\":\"9.2\",\"src\":\"H5\" "?>'>
+                       data-clk='http://clk.motif.me/log.gif?t=designer.300001&m=H5_M2016-1&pin={{ Session::get('user.pin') }}&uuid={{ Session::get('user.uuid') }}&v={"action":"1","skiptype":2,"skipid":"@{{ $value.designerId }}","expid":0,"version":"1.0.1", "ver":"9.2","src":"h5"}'>
                         <img class="img-fluid"
                              src="{{env('APP_Api_Image')}}/n2/@{{ $value.mainImage }}">
                     </a>
