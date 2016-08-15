@@ -71,7 +71,7 @@
             var spu = $this.data('spu');
             $.ajax({
                 url: '/updateWish',
-                type: 'get',
+                type: 'post',
                 data: {spu:spu}
             })
             .done(function(data){

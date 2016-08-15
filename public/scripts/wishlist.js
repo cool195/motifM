@@ -38,7 +38,7 @@
         openLoading();
         $.ajax({
                 url: '/updateWish',
-                type: 'GET',
+                type: 'post',
                 data: {spu: WishId}
             })
             .done(function (data) {
