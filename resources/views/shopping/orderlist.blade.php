@@ -46,13 +46,16 @@
 <template id="tpl-orderList">
     @{{ each list }}
     @{{ each $value.subOrderList }}
-    <a href="/order/orderdetail/@{{ $value.sub_order_no }}">
+
         <div class="orderList-item bg-white m-b-10x">
             <div class="p-y-10x @{{ if $value.status_code == 11 }} status-red @{{ else if $value.status_code == 23 || $value.status_code == 21  || $value.status_code == 27 }} status-gray @{{ else if $value.status_code == 25 || $value.status_code == 20}} status-blue @{{ else if $value.status_code == 17}} status-green @{{ else if $value.status_code == 18}} status-green @{{ else if $value.status_code == 19}} status-green @{{ else }} status-yellow @{{ /if }}">
-                <div class="p-l-5x">
+                <div class="p-l-5x p-r-10x flex flex-fullJustified flex-alignCenter">
                     <span class="font-size-sm text-primary">
                         <strong>@{{ $value.status_info }}: </strong>@{{ $value.update_time }}
                     </span>
+                    @{{ if $value.status_code == 11 }}
+                        <a class="btn btn-primary btn-sm p-x-20x" href="/payAgain/@{{ $value.sub_order_no }}">Pay</a>
+                    @{{ /if }}
                 </div>
             </div>
             @{{ if $value.status_explain !== '' || $value.status_explain !== null }}
@@ -66,7 +69,8 @@
             <hr class="hr-base m-y-0 m-l-10x">
 
             @{{ each $value.lineOrderList }}
-            <div class="flex p-a-10x">
+            <a href="/order/orderdetail/@{{ $value.sub_order_no }}">
+                <div class="flex p-a-10x">
                 <div class="flex-fixedShrink">
                     <img class="img-thumbnail img-lazy"
                          src="{{env('CDN_Static')}}/images/product/bg-product@70.png"
@@ -92,6 +96,7 @@
                     </aside>
                 </div>
             </div>
+            </a>
             @{{ /each }}
 
             <hr class="hr-base m-y-0 m-l-10x">
@@ -104,7 +109,7 @@
                 </div>
             </div>
         </div>
-    </a>
+
     @{{ /each }}
     @{{ /each }}
 </template>
