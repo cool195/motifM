@@ -4,7 +4,7 @@
 
     <title>@if(2==$skiptype) Contact Service @else Ask a Question @endif</title>
     @include('head')
-    <link rel="stylesheet" href="{{env('CDN_Static')}}/styles/shoppingDetail-askQuestion.css">
+    <link rel="stylesheet" href="{{env('CDN_Static')}}/styles/shoppingDetail-askQuestion.css{{'?v='.config('app.version')}}">
 
 </head>
 
@@ -68,9 +68,9 @@
     <div class="loader loader-screen"></div>
 </div>
 </body>
-<script src="{{env('CDN_Static')}}/scripts/vendor.js"></script>
+<script src="{{env('CDN_Static')}}/scripts/vendor.js{{'?v='.config('app.version')}}"></script>
 
-<script src="{{env('CDN_Static')}}/scripts/shoppingDetail-askQuestion.js"></script>
+<script src="{{env('CDN_Static')}}/scripts/shoppingDetail-askQuestion.js{{'?v='.config('app.version')}}"></script>
 <meta name="csrf-token" content="{{ csrf_token() }}"/>
 <script>
     $.ajaxSetup({

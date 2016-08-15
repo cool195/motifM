@@ -3,7 +3,7 @@
 <head>
     <title>Designer Detail</title>
     @include('head')
-    <link rel="stylesheet" href="{{env('CDN_Static')}}/styles/designerDetail.css?v=3">
+    <link rel="stylesheet" href="{{env('CDN_Static')}}/styles/designerDetail.css{{'?v='.config('app.version')}}">
 </head>
 <body>
 <input type="text" id="productClick-name" value="name" hidden>
@@ -253,8 +253,8 @@
     </div>
 </div>
 </body>
-<script src="{{env('CDN_Static')}}/scripts/vendor.js"></script>
-<script src="{{env('CDN_Static')}}/scripts/designerDetail.js?v=3"></script>
-<script src="{{env('CDN_Static')}}/scripts/videoPlay.js"></script>
+<script src="{{env('CDN_Static')}}/scripts/vendor.js{{'?v='.config('app.version')}}"></script>
+<script src="{{env('CDN_Static')}}/scripts/designerDetail.js{{'?v='.config('app.version')}}"></script>
+<script src="{{env('CDN_Static')}}/scripts/videoPlay.js{{'?v='.config('app.version')}}"></script>
 @include('global')
 </html>

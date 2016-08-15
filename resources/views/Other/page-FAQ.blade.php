@@ -228,6 +228,6 @@
                 </div>
         </div>
 </body>
-<script src="{{env('CDN_Static')}}/scripts/vendor.js"></script>
+<script src="{{env('CDN_Static')}}/scripts/vendor.js{{'?v='.config('app.version')}}"></script>
 @include('global')
 </html>
