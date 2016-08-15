@@ -122,7 +122,8 @@
             @endif
 
             <!-- 产品 标题 简介 价格 基本信息 -->
-            <article class="product-baseInfo bg-white m-b-10x" data-impr='http://clk.motif.me/log.gif?t=pv.100001&m=H5_M2016-1&pin={{ Session::get('user.pin') }}&uuid={{ Session::get('user.uuid') }}&v={"spu":{{$data['spu']}},"main_sku":{{$data['skuPrice']['sku']}},"price":{{ $data['skuPrice']['sale_price'] }},"version":"1.0.1","ver":"9.2","src":"H5"}'>
+            <article class="product-baseInfo bg-white m-b-10x"
+                     data-impr='http://clk.motif.me/log.gif?t=pv.100001&m=H5_M2016-1&pin={{ Session::get('user.pin') }}&uuid={{ Session::get('user.uuid') }}&v={"spu":{{$data['spu']}},"main_sku":{{$data['skuPrice']['sku']}},"price":{{ $data['skuPrice']['sale_price'] }},"version":"1.0.1","ver":"9.2","src":"H5"}'>
                 <div class="product-text">
                     <h6 class="text-main font-size-base">{{$data['main_title']}}</h6>
                     <p class="text-primary font-size-sm">{{ $data['sub_title'] }} @if(isset($data['skuPrice']['skuPromotion']['promo_words'])){{$data['skuPrice']['skuPromotion']['promo_words']}}@endif</p>
@@ -145,38 +146,8 @@
                     @endif
                 </div>
 
-                <div class="text-warning font-size-xs p-x-15x" data-impr='http://clk.motif.me/log.gif?t=rec.100002&m=OPEN_M2016-1&pin={{ Session::get('user.pin') }}&uuid={{Session::get('user.uuid')}}&v={" action ":0,"cspus ":{{ $data['skus'] or "" }},"expid ":0,"index ":1,"rec_type ":1,"spu":{{ $data['spu'] }},"ver ":"9.00 "}&sig=2291a58454115c8136169111738de65696add43d'>{{ $data['prompt_words'] }}</div>
+                <div class="text-warning font-size-xs p-x-15x" data-impr='http://clk.motif.me/log.gif?t=rec.100002&m=OPEN_M2016-1&pin={{ Session::get('user.pin') }}&uuid={{Session::get('user.uuid')}}&v={" action ":0,"cspus ":"{{ $data['skus']}}","expid ":0,"index ":1,"rec_type ":1,"spu":{{ $data['spu'] }},"ver ":"9.00 "}&sig=2291a58454115c8136169111738de65696add43d'>{{ $data['prompt_words'] }}</div>
             </article>
-
-                        <!-- 产品 标题 简介 价格 基本信息 -->
-                <article class="product-baseInfo bg-white m-b-10x"
-                         data-impr='http://clk.motif.me/log.gif?t=pv.100001&m=H5_M2016-1&pin={{ Session::get('user.pin') }}&uuid={{ Session::get('user.uuid') }}&v={"spu":{{$data['spu']}},"main_sku":{{$data['skuPrice']['sku']}},"price":{{ $data['skuPrice']['sale_price'] }},"version":"1.0.1","ver":"9.2","src":"H5"}'>
-                    <div class="product-text">
-                        <h6 class="text-main font-size-base">{{$data['main_title']}}</h6>
-                        <p class="text-primary font-size-sm">{{ $data['sub_title'] }} @if(isset($data['skuPrice']['skuPromotion']['promo_words'])){{$data['skuPrice']['skuPromotion']['promo_words']}}@endif</p>
-                        @if(!empty($data['designer']))
-                            <p class="text-primary font-size-sm">
-                                <span>Designer:</span>
-                                <a href="{{$data['designer']['designer_home_page']}}"
-                                   class="text-primary text-underLine">{{$data['designer']['designer_name']}}</a>
-                            </p>
-                        @endif
-                    </div>
-                    <hr class="hr-light m-x-10x">
-                    <div class="product-price">
-                        @if(isset($data['skuPrice']['skuPromotion']))
-                            <span class="font-size-lx text-primary">${{ number_format(($data['skuPrice']['skuPromotion']['promot_price'] / 100), 2) }}</span>
-                            <span class="font-size-sm text-throughLine text-common">${{ number_format(($data['skuPrice']['skuPromotion']['price'] /100), 2) }}</span>
-                            <span class="font-size-sm text-primary">({{ $data['skuPrice']['skuPromotion']['display'] }}
-                                )</span>
-                        @else
-                            <span class="font-size-lx text-primary">${{ number_format(($data['skuPrice']['sale_price'] / 100), 2) }}</span>
-                        @endif
-                    </div>
-
-                    <div class="text-warning font-size-xs p-x-15x"
-                         data-impr='http://clk.motif.me/log.gif?t=rec.100002&m=OPEN_M2016-1&pin={{ Session::get('user.pin') }}&uuid={{Session::get('user.uuid')}}&v={" action ":0,"cspus ":{{ $data['skus'] }},"expid ":0,"index ":1,"rec_type ":1,"spu":{{ $data['spu'] }},"ver ":"9.00 "}&sig=2291a58454115c8136169111738de65696add43d'>{{ $data['prompt_words'] }}</div>
-                </article>
 
                 <!-- 产品 预售信息 -->
                 @if(1 == $data['sale_type'])
@@ -552,7 +523,7 @@
 </body>
 <script src="{{env('CDN_Static')}}/scripts/vendor.js"></script>
 
-<script src="{{env('CDN_Static')}}/scripts/shoppingDetail.js?v=3"></script>
+<script src="{{env('CDN_Static')}}/scripts/shoppingDetail.js?v=4"></script>
 <meta name="csrf-token" content="{{ csrf_token() }}"/>
 
 <script>

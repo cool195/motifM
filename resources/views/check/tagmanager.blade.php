@@ -1,4 +1,4 @@
-{{--@if($_SERVER['SERVER_NAME'] == 'm.motif.me')--}}
+@if($_SERVER['SERVER_NAME'] == 'm.motif.me')
     {{--Google Tag Manager--}}
     <noscript>
         <iframe src="//www.googletagmanager.com/ns.html?id=GTM-M54JN5"
@@ -16,4 +16,4 @@
             f.parentNode.insertBefore(j, f);
         })(window, document, 'script', 'dataLayer', 'GTM-M54JN5');</script>
     {{--End Google Tag Manager--}}
-{{--@endif--}}
+@endif

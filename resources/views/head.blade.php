@@ -13,3 +13,6 @@
 <link rel="stylesheet" href="{{env('CDN_Static')}}/styles/vendor.css?v=1.1">
 <script src="{{env('CDN_Static')}}/scripts/vendor/modernizr.js"></script>
 <script src="{{env('CDN_Static')}}/scripts/vendor/fastclick.js"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+</script>
