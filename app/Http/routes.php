@@ -111,11 +111,11 @@ $app->group(['middleware' => 'pcguide|logincheck', 'namespace' => 'App\Http\Cont
     $app->post('/order/orderSubmit', 'OrderController@orderSubmit');
     $app->get('/success', 'OrderController@orderSuccess');
 
-    $app->get('/wish', 'Shopping\ShoppingController@wish');
+    $app->get('/wish', 'ShoppingController@wish');
 
-    $app->get('/wishlist', 'Shopping\ShoppingController@wishlist');
+    $app->get('/wishlist', 'ShoppingController@wishlist');
 
-    $app->post('/updateWish', 'Shopping\ShoppingController@updateWish');
+    $app->post('/updateWish', 'ShoppingController@updateWish');
 
     //第三方支付
     $app->get('/braintree', 'BraintreeController@index');
