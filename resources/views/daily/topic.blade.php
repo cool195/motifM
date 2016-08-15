@@ -65,7 +65,11 @@
                                                  src="{{env('CDN_Static')}}/images/product/bg-product@750.png"
                                                  alt="{{$topic['spuInfos'][$spu]['spuBase']['main_title']}}">
                                         </a>
-                                        <span class="wish-item p-r-10x"><i class="iconfont text-common btn-wish @if(in_array($spu, $wishlist->wishlist())){{'active'}}@endif" data-spu="{{$spu}}"></i></span>
+                                        @if(Session::has('user'))
+                                            <span class="wish-item p-r-10x"><i class="iconfont text-common btn-wish @if(in_array($spu, $wishlist->wishlist())){{'active'}}@endif" data-spu="{{$spu}}"></i></span>
+                                        @else
+                                            <a class="wish-item p-r-10x" href="/login"><i class="iconfont text-common btn-wish"></i></a>
+                                        @endif
                                     </div>
                                 @endforeach
                             @else
@@ -106,7 +110,7 @@
                                                             @if(Session::has('user'))
                                                                 <span class="wish-item p-r-10x"><i class="iconfont text-common btn-wish @if(in_array($spu, $wishlist->wishlist())){{'active'}}@endif" data-spu="{{$spu}}"></i></span>
                                                             @else
-                                                                <a class="wish-item p-r-10x"><i class="iconfont text-common btn-wish"></i></a>
+                                                                <a class="wish-item p-r-10x" href="/login"><i class="iconfont text-common btn-wish"></i></a>
                                                             @endif
                                                         </div>
                                             </div>

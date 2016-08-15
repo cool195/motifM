@@ -138,7 +138,11 @@
                                                          data-original="{{env('APP_Api_Image')}}/n2/{{$product['spuInfos'][$spu]['spuBase']['main_image_url']}}"
                                                          alt="{{$product['spuInfos'][$spu]['spuBase']['main_title']}}">
                                                 </a>
-                                                <span class="wish-item p-r-10x"><i class="iconfont text-common btn-wish @if(in_array($spu, $wishlist->wishlist())){{'active'}}@endif" data-spu="{{$spu}}"></i></span>
+                                                @if(Session::has('user'))
+                                                    <span class="wish-item p-r-10x"><i class="iconfont text-common btn-wish @if(in_array($spu, $wishlist->wishlist())){{'active'}}@endif" data-spu="{{$spu}}"></i></span>
+                                                @else
+                                                    <a class="wish-item p-r-10x" href="/login"><i class="iconfont text-common btn-wish"></i></a>
+                                                @endif
                                             </div>
                                         @endforeach
                                     @endif
@@ -173,7 +177,11 @@
                                                             @if($product['spuInfos'][$spu]['skuPrice']['sale_price'] != $product['spuInfos'][$spu]['skuPrice']['price'])
                                                                 <span class="font-size-xs text-common text-throughLine m-l-5x">${{number_format($product['spuInfos'][$spu]['skuPrice']['price']/100,2)}}</span>
                                                             @endif
-                                                            <span class="wish-item p-r-10x"><i class="iconfont text-common btn-wish @if(in_array($spu, $wishlist->wishlist())){{'active'}}@endif" data-spu="{{$spu}}"></i></span>
+                                                            @if(Session::has('user'))
+                                                                <span class="wish-item p-r-10x"><i class="iconfont text-common btn-wish @if(in_array($spu, $wishlist->wishlist())){{'active'}}@endif" data-spu="{{$spu}}"></i></span>
+                                                            @else
+                                                                <a class="wish-item p-r-10x" href="/login"><i class="iconfont text-common btn-wish"></i></a>
+                                                            @endif
                                                         </div>
                                                     </div>
                                                 @endforeach
@@ -214,7 +222,11 @@
                                             @if($value['skuPrice']['sale_price'] != $value['skuPrice']['price'])
                                                 <span class="font-size-xs text-common text-throughLine m-l-5x">${{number_format($value['skuPrice']['price']/100,2)}}</span>
                                             @endif
-                                            <span class="wish-item p-r-10x"><i class="iconfont text-common btn-wish @if(in_array($value['spu'], $wishlist->wishlist())){{'active'}}@endif" data-spu="{{$value['spu']}}"></i></span>
+                                            @if(Session::has('user'))
+                                                <span class="wish-item p-r-10x"><i class="iconfont text-common btn-wish @if(in_array($spu, $wishlist->wishlist())){{'active'}}@endif" data-spu="{{$spu}}"></i></span>
+                                            @else
+                                                <a class="wish-item p-r-10x" href="/login"><i class="iconfont text-common btn-wish"></i></a>
+                                            @endif
                                         </div>
                                     </div>
                                 @endforeach
@@ -222,7 +234,6 @@
                         </div>
                 @endif
                 </aside>
-
         </section>
         <!-- 页脚 功能链接 -->
         @include('footer')
