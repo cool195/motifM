@@ -6,6 +6,33 @@
     <link rel="stylesheet" href="{{env('CDN_Static')}}/styles/designerDetail.css?v=3">
 </head>
 <body>
+<input type="text" id="productClick-name" value="name" hidden>
+<input type="text" id="productClick-spu" value="1" hidden>
+<input type="text" id="productClick-price" value="1" hidden>
+<script type="text/javascript">
+    function onProductClick() {
+        var name = document.getElementById('productClick-name').value;
+        var spu = document.getElementById('productClick-spu').value;
+        var price = document.getElementById('productClick-price').value;
+        dataLayer.push({
+            'event': 'productClick',
+            'ecommerce': {
+                'click': {
+                    'actionField': {'list': 'designer'},      // Optional list property.
+                    'products': [{
+                        'name': name,                      // Name or ID is required.
+                        'id': spu,
+                        'price': price,
+                        'brand': 'Motif',
+                        'category': '',
+                        'variant': '',
+                        'position': ''
+                    }]
+                }
+            },
+        });
+    }
+</script>
 @include('check.tagmanager')
 <!-- 外层容器 -->
 <div id="body-content">
@@ -131,7 +158,7 @@
                                             <div class="p-x-15x p-y-10x">
                                                 <a data-link="/detail/{{$spu}}"
                                                    data-clk='http://clk.motif.me/log.gif?t=designer.400001&m=H5_M2016-1&pin={{ Session::get('user.pin') }}&uuid={{ Session::get('user.uuid') }}&v={"action":1,"skipType":1,"skipId"{{$spu}},"expid":0,"index":{{$key or -1}},"version":"1.0.1","ver":"9.2","src":"H5"}'
-                                                   href="javascript:void(0)">
+                                                   href="javascript:void(0)" data-spu="{{$spu}}" data-title="{{$product['spuInfos'][$spu]['spuBase']['main_title']}}" data-price="{{number_format($product['spuInfos'][$spu]['skuPrice']['sale_price']/100,2)}}">
                                                     <img class="img-fluid img-lazy"
                                                          src="{{env('CDN_Static')}}/images/product/bg-product@336.png"
                                                          data-original="{{env('APP_Api_Image')}}/n2/{{$product['spuInfos'][$spu]['spuBase']['main_image_url']}}"
@@ -149,7 +176,7 @@
                                                     <div class="col-xs-6">
                                                         <a data-link="/detail/{{$spu}}"
                                                            data-clk='http://clk.motif.me/log.gif?t=designer.400001&m=H5_M2016-1&pin={{ Session::get('user.pin') }}&uuid={{ Session::get('user.uuid') }}&v={"action":1,"skipType":1,"skipId"{{$spu}},"expid":0,"index":{{$key or -1}},"version":"1.0.1","ver":"9.2","src":"H5"}'
-                                                           href="javascript:void(0)">
+                                                           href="javascript:void(0)" data-spu="{{$spu}}" data-title="{{$product['spuInfos'][$spu]['spuBase']['main_title']}}" data-price="{{number_format($product['spuInfos'][$spu]['skuPrice']['sale_price']/100,2)}}">
                                                             <div class="p-t-10x productList-item m-b-0">
                                                                 <div class="image-container">
                                                                     <img class="img-thumbnail img-lazy"
@@ -190,7 +217,7 @@
                                 @foreach($productAll['data']['list'] as $value)
                                     <div class="col-xs-6">
                                         <a data-link="/detail/{{$value['spu']}}" data-clk="{{ $value['clk'] }}"
-                                           data-impr="{{ $value['impr'] }}" href="javascript:void(0)">
+                                           data-impr="{{ $value['impr'] }}" href="javascript:void(0)" data-spu="{{$value['spu']}}" data-title="{{$value['main_title']}}" data-price="{{number_format($value['skuPrice']['sale_price']/100,2)}}">
                                             <div class="p-t-10x productList-item m-b-0">
                                                 <div class="image-container">
                                                     <img class="img-thumbnail img-lazy"

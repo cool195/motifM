@@ -6,8 +6,36 @@
     <link rel="stylesheet" href="{{env('CDN_Static')}}/styles/shoppingList.css?v=3">
 </head>
 <body>
+<input type="text" id="productClick-name" value="name" hidden>
+<input type="text" id="productClick-spu" value="1" hidden>
+<input type="text" id="productClick-price" value="1" hidden>
+<script type="text/javascript">
+    function onProductClick() {
+        var name = document.getElementById('productClick-name').value;
+        var spu = document.getElementById('productClick-spu').value;
+        var price = document.getElementById('productClick-price').value;
+        dataLayer.push({
+            'event': 'productClick',
+            'ecommerce': {
+                'click': {
+                    'actionField': {'list': 'shopping list'},      // Optional list property.
+                    'products': [{
+                        'name': name,                      // Name or ID is required.
+                        'id': spu,
+                        'price': price,
+                        'brand': 'Motif',
+                        'category': '',
+                        'variant': '',
+                        'position': ''
+                    }]
+                }
+            },
+        });
+    }
+</script>
+
 @include('check.tagmanager')
-<!-- App 下载提示 -->
+        <!-- App 下载提示 -->
 <!--<nav class="navbar-fixed-bottom bg-download p-y-10x p-x-15x flex flex-fullJustified flex-alignCenter">-->
 <!--<div class="flex flex-alignCenter">-->
 <!--<span class="p-r-20x"><a href="#"><i class="iconfont icon-cross text-common"></i></a></span>-->
@@ -124,7 +152,8 @@
         <div class="productList-item">
             <div class="image-bg">
                 <div class="image-container">
-                    <a data-link="/detail/@{{ $value.spu }}" data-impr="@{{ $value.impr }}" data-clk="@{{ $value.clk }}" href="javascript:void(0)">
+                    <a data-link="/detail/@{{ $value.spu }}" data-impr="@{{ $value.impr }}" data-clk="@{{ $value.clk }}"
+                       href="javascript:void(0)" data-spu="@{{ $value.spu }}" data-title="@{{ $value.main_title }}" data-price="@{{ ($value.skuPrice.sale_price/100).toFixed(2) }}">
                         <img class="img-fluid img-lazy"
                              data-original="{{env('APP_Api_Image')}}/n1/@{{ $value.main_image_url }}"
                              src="{{env('CDN_Static')}}/images/product/bg-product@336.png"

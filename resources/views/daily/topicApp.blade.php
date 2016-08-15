@@ -6,6 +6,33 @@
 </head>
 
 <body>
+<input type="text" id="productClick-name" value="name" hidden>
+<input type="text" id="productClick-spu" value="1" hidden>
+<input type="text" id="productClick-price" value="1" hidden>
+<script type="text/javascript">
+    function onProductClick() {
+        var name = document.getElementById('productClick-name').value;
+        var spu = document.getElementById('productClick-spu').value;
+        var price = document.getElementById('productClick-price').value;
+        dataLayer.push({
+            'event': 'productClick',
+            'ecommerce': {
+                'click': {
+                    'actionField': {'list': 'topicApp'},      // Optional list property.
+                    'products': [{
+                        'name': name,                      // Name or ID is required.
+                        'id': spu,
+                        'price': price,
+                        'brand': 'Motif',
+                        'category': '',
+                        'variant': '',
+                        'position': ''
+                    }]
+                }
+            },
+        });
+    }
+</script>
 @include('check.tagmanager')
 <!-- 外层容器 -->
 <div id="body-content">
@@ -56,7 +83,7 @@
                                 @foreach($value['spus'] as $spu)
                                     <div class="p-x-15x p-y-10x">
                                         <a data-clk='http://clk.motif.me/log.gif?t=daily.200001&m=H5_M2016-1&pin={{Session::get('user.pin')}}&uuid={{Session::get('user.uuid')}}&v={"action":1,"skipType":1,"skipId":{{$spu}},"topicId":{{$topicID}},"expid":0,"ver":"1.0.1","src":"H5"}'
-                                           data-link="motif://o.c?a=pd&spu={{$spu}}" href="javascript:void(0)">
+                                           data-link="motif://o.c?a=pd&spu={{$spu}}" href="javascript:void(0)" data-spu="{{$spu}}" data-title="{{$topic['spuInfos'][$spu]['spuBase']['main_title']}}" data-price="{{number_format($topic['spuInfos'][$spu]['skuPrice']['sale_price']/100,2)}}">
                                             <img class="img-fluid img-lazy"
                                                  data-original="{{env('APP_Api_Image')}}/n1/{{$topic['spuInfos'][$spu]['spuBase']['main_image_url']}}"
                                                  src="{{env('CDN_Static')}}/images/product/bg-product@750.png"
@@ -81,7 +108,7 @@
                                             <div class="col-xs-6 p-a-0">
                                                 <div class="bg-white topic-product-item productList-item">
                                                     <a data-clk='http://clk.motif.me/log.gif?t=daily.200001&m=H5_M2016-1&pin={{Session::get('user.pin')}}&uuid={{Session::get('user.uuid')}}&v={"action":1,"skipType":1,"skipId":{{$spu}},"topicId":{{$topicID}},"expid":0,"ver":"1.0.1","src":"H5"}'
-                                                       data-link="motif://o.c?a=pd&spu={{$spu}}" href="javascript:void(0)">
+                                                       data-link="motif://o.c?a=pd&spu={{$spu}}" href="javascript:void(0)" data-spu="{{$spu}}" data-title="{{$topic['spuInfos'][$spu]['spuBase']['main_title']}}" data-price="{{number_format($topic['spuInfos'][$spu]['skuPrice']['sale_price']/100,2)}}">
                                                         <div class="image-container">
                                                             <img class="img-fluid img-lazy"
                                                                  data-original="{{env('APP_Api_Image')}}/n2/{{$topic['spuInfos'][$spu]['spuBase']['main_image_url']}}"

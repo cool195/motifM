@@ -6,8 +6,14 @@
     <link rel="stylesheet" href="{{env('CDN_Static')}}/styles/shoppingDetail.css?v=3">
 </head>
 <body>
+<!-- 添加购物车 -->
 <input type="text" id="addToCart-quantity" value="1" hidden>
 <input type="text" id="addToCart-sku" value="1" hidden>
+
+<!-- 点击商品 -->
+<input type="text" id="productClick-name" value="name" hidden>
+<input type="text" id="productClick-spu" value="1" hidden>
+<input type="text" id="productClick-price" value="1" hidden>
 <script type="text/javascript">
     function onAddToCart() {
         var quantity = document.getElementById('addToCart-quantity').value;
@@ -28,6 +34,29 @@
                     }]
                 }
             }
+        });
+    }
+
+    function onProductClick() {
+        var name = document.getElementById('productClick-name').value;
+        var spu = document.getElementById('productClick-spu').value;
+        var price = document.getElementById('productClick-price').value;
+        dataLayer.push({
+            'event': 'productClick',
+            'ecommerce': {
+                'click': {
+                    'actionField': {'list': 'shopping Detail'},      // Optional list property.
+                    'products': [{
+                        'name': name,                      // Name or ID is required.
+                        'id': spu,
+                        'price': price,
+                        'brand': 'Motif',
+                        'category': '',
+                        'variant': '',
+                        'position': ''
+                    }]
+                }
+            },
         });
     }
 </script>
@@ -288,7 +317,7 @@
                                                                 <a href="javascript:void(0)"
                                                                    data-link="/detail/{{ $value['spu'] }}"
                                                                    data-impr="{{ $value['impr'] }}"
-                                                                   data-clk="{{ $value['clk'] }}">
+                                                                   data-clk="{{ $value['clk'] }}" data-spu="{{ $value['spu'] }}" data-title="{{ $value['main_title'] }}" data-price="{{ number_format(($value['skuPrice']['sale_price'] / 100), 2) }}">
                                                                     <img class="img-fluid img-lazy"
                                                                          data-original="{{env('APP_Api_Image')}}/n1/{{ $value['main_image_url'] }}"
                                                                          src="{{env('CDN_Static')}}/images/product/bg-product@336.png"

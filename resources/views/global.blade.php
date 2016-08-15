@@ -26,14 +26,14 @@
      * @param  { Object } $Item 需要曝光的项
      */
     function pushAjax($Item) {
-        $.each($Item, function(index, element) {
+        $.each($Item, function (index, element) {
             if (switchImpr(element)) {
                 var impr = $(element).data('impr');
                 $(element).removeAttr('data-impr');
                 $.ajax({
                             url: impr
                         })
-                        .always(function() {
+                        .always(function () {
                             //$(element).removeAttr('data-impr');
                         });
             }
@@ -47,9 +47,15 @@
         }
     }
 
-    $(document).ready(function() {
-        $('[data-clk]').click(function() {
+    $(document).ready(function () {
+        $('[data-clk]').click(function () {
             var $this = $(this);
+            $('#productClick-name').val($this.data('title'));
+            $('#productClick-spu').val($this.data('spu'));
+            $('#productClick-price').val($this.data('price'));
+
+            onProductClick();
+
             if(undefined !== $this.data('link')){
                 $.ajax({
                     url: $this.data('clk'),
