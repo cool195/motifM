@@ -38,14 +38,14 @@
     @{{ each list }}
     <div class="wishlist-item p-a-15x" data-wishspu="@{{ $value.spu }}">
         <div class="flex">
-            <a href="/detail/@{{ $value.spu }}">
-                <div class="flex-fixedShrink">
+            <div class="flex-fixedShrink">
+                <a href="/detail/@{{ $value.spu }}">
                     <img class="img-thumbnail img-lazy"
                          src="{{env('CDN_Static')}}/images/product/bg-product@70.png"
                          data-original="{{env('APP_Api_Image')}}/n1/@{{ $value.main_image_url }}"
                          width="70" height="70">
-                </div>
-            </a>
+                </a>
+            </div>
             <div class="p-l-10x flex-width">
                 <article class="flex flex-fullJustified wishlist-title">
                     <h6 class="text-main font-size-md p-r-20x">
