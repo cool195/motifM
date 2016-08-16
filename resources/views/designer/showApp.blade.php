@@ -239,9 +239,9 @@
                                 @endif
                             @else
                                 {{-- 商品列表横向 --}}
-                                <div class="container-fluid p-x-15x"
+                                <div class="container-fluid p-x-0 bg-topic"
                                      data-impr='http://clk.motif.me/log.gif?t=designer.400001&m=H5_M2016-1&pin={{ Session::get('user.pin') }}&uuid={{ Session::get('user.uuid') }}&v={"action":0,"skipType":1,"skipId":{{ implode("_", $value['spus']) }},expid":0,"index":{{$key}},"version":"1.0.1","ver":"9.2","src":"H5"}'>
-                                    <div class="row">
+                                    <div class="row m-a-0 topic-product">
                                         @if(isset($value['spus']))
                                             @foreach($value['spus'] as $spu)
                                                 <div class="col-xs-6 p-a-0">
