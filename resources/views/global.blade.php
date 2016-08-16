@@ -49,6 +49,7 @@
     }
 
     $(document).ready(function () {
+        $('[data-clk]').unbind('click');
         $('[data-clk]').click(function () {
             var $this = $(this);
             $('#productClick-name').val($this.data('title'));
