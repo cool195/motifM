@@ -158,7 +158,7 @@
                                                                 <span class="font-size-xs text-common text-throughLine m-l-5x">${{number_format($topic['spuInfos'][$spu]['skuPrice']['price']/100,2)}}</span>
                                                             @endif
                                                         </div>
-
+                                                        @if(false)
                                                         @if(Session::get('user.pin'))
                                                             <span class="p-r-5x wish" data-id="{{$spu}}"
                                                                   id="{{'wish'.$spu}}"><i
@@ -167,7 +167,7 @@
                                                             <span class="p-r-5x"><i
                                                                         class="iconfont icon-like product-heart sendLogin"></i></span>
                                                         @endif
-
+                                                        @endif
                                                     </div>
                                                 </div>
                                             </div>
