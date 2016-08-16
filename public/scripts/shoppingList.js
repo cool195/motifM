@@ -160,6 +160,13 @@
                         $('[data-clk]').unbind('click');
                         $('[data-clk]').bind('click', function () {
                             var $this = $(this);
+
+                            $('#productClick-name').val($this.data('title'));
+                            $('#productClick-spu').val($this.data('spu'));
+                            $('#productClick-price').val($this.data('price'));
+
+                            onProductClick();
+
                             if (undefined !== $this.data('link')) {
                                 $.ajax({
                                     url: $this.data('clk'),
