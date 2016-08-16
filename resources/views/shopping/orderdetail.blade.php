@@ -49,12 +49,12 @@
                     <span class="font-size-sm text-primary flex flex-fullJustified flex-alignCenter">
                         <span><strong>{{ $data['status_info'] }}:</strong> {{$data['create_time']}}</span>
                         @if($data['status_code']==11)
-                            <a class="btn btn-primary btn-sm p-x-20x"
-                               href="/payAgain/{{$data['sub_order_no']}}">Pay</a>
+                            <a class="btn btn-primary btn-sm p-x-10x"
+                               href="/payAgain/{{$data['sub_order_no']}}">Check Out</a>
                         @endif
                     </span>
                     <span class="font-size-sm text-primary"><p
-                                class="m-b-0">@if(in_array($data['status_code'], array(11, 12, 14))) {{ $data['status_explain'] }} @endif</p></span>
+                                class="m-b-0 p-r-20x">@if(in_array($data['status_code'], array(11, 12, 14))) {{ $data['status_explain'] }} @endif</p></span>
                 </div>
             @endif
 

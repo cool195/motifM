@@ -54,12 +54,12 @@
                         <strong>@{{ $value.status_info }}: </strong>@{{ $value.update_time }}
                     </span>
                     @{{ if $value.status_code == 11 }}
-                        <a class="btn btn-primary btn-sm p-x-20x" href="/payAgain/@{{ $value.sub_order_no }}">Pay</a>
+                        <a class="btn btn-primary btn-sm p-x-10x" href="/payAgain/@{{ $value.sub_order_no }}">Check Out</a>
                     @{{ /if }}
                 </div>
             </div>
             @{{ if $value.status_explain !== '' || $value.status_explain !== null }}
-            <div class="p-b-10x p-x-15x">
+            <div class="p-b-10x p-x-15x p-r-20x">
                 <div class="font-size-sm text-primary">
                     @{{ $value.status_explain }}
                 </div>
