@@ -137,6 +137,7 @@
             }
         }).done(function (data) {
                 if (data.success) {
+                    onImpressProduct(data.data.list);
                     if (data.data === null || data.data === '' || data.data.list.length === 0) {
                         $Current.data('pagenum', -1);
                     } else {
@@ -270,10 +271,10 @@
         $.ajax({
                 url: '/updateWish',
                 type: 'post',
-                data: {spu:spu}
+                data: {spu: spu}
             })
-            .done(function(data){
-                if(data.success){
+            .done(function (data) {
+                if (data.success) {
                     if (!$this.hasClass('active')) {
                         $this.addClass('active');
                     } else {

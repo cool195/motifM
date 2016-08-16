@@ -32,6 +32,32 @@
             },
         });
     }
+
+    dataLayer.push({
+        'ecommerce': {
+            'currencyCode': 'EUR',                       // Local currency is optional.
+            'impressions': [
+                    @foreach($topic['infos'] as $k=>$value)
+                    @if($value['type']=='product')
+                    @if(isset($value['spus']))
+                    @foreach($value['spus'] as $spu)
+                {
+                    'name': '{{$topic['spuInfos'][$spu]['spuBase']['main_title']}}',       // Name or ID is required.
+                    'id': '{{$spu}}',
+                    'price': '{{number_format($topic['spuInfos'][$spu]['skuPrice']['sale_price']/100,2)}}',
+                    'brand': 'Motif',
+                    'category': '',
+                    'variant': '',
+                    'list': 'topicApp',
+                    'position': ''
+                },
+                @endforeach
+                @endif
+                @endif
+                @endforeach
+            ]
+        }
+    });
 </script>
 @include('check.tagmanager')
 <!-- 外层容器 -->

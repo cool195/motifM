@@ -32,6 +32,23 @@
             },
         });
     }
+
+    //shoppinglist 产品埋点
+    function onImpressProduct(item) {
+        var jsonStr='';
+        for(var key in item){
+
+            jsonStr +='{"name":"' + item[key].main_title + '","id":"' + item[key].spu + '","price":"' + (item[key].skuPrice.sale_price/100).toFixed(2) + '","brand":"Motif","list":"shopping list"},';
+        }
+        var obj=eval("["+jsonStr+"]");
+        dataLayer.push({
+            'event': 'impressProduct',
+            'ecommerce': {
+                'currencyCode': 'EUR',
+                'impressions': obj
+            }
+        });
+    }
 </script>
 
 @include('check.tagmanager')
@@ -154,7 +171,8 @@
             <div class="image-bg">
                 <div class="image-container">
                     <a data-link="/detail/@{{ $value.spu }}" data-impr="@{{ $value.impr }}" data-clk="@{{ $value.clk }}"
-                       href="javascript:void(0)" data-spu="@{{ $value.spu }}" data-title="@{{ $value.main_title }}" data-price="@{{ ($value.skuPrice.sale_price/100).toFixed(2) }}">
+                       href="javascript:void(0)" data-spu="@{{ $value.spu }}" data-title="@{{ $value.main_title }}"
+                       data-price="@{{ ($value.skuPrice.sale_price/100).toFixed(2) }}">
                         <img class="img-fluid img-lazy"
                              data-original="{{env('APP_Api_Image')}}/n1/@{{ $value.main_image_url }}"
                              src="{{env('CDN_Static')}}/images/product/bg-product@336.png"
@@ -177,7 +195,9 @@
                 <span class="font-size-xs text-common text-throughLine m-l-5x">$@{{ ($value.skuPrice.skuPromotion.price/100).toFixed(2) }}</span>
                 @{{ /if }}
                 @if(Session::has('user'))
-                    <span class="wish-item p-r-10x"><i class="iconfont text-common btn-wish @{{ if $value.isWished == 1  }} active @{{ /if }}" data-spu="@{{ $value.spu }}"></i></span>
+                    <span class="wish-item p-r-10x"><i
+                                class="iconfont text-common btn-wish @{{ if $value.isWished == 1  }} active @{{ /if }}"
+                                data-spu="@{{ $value.spu }}"></i></span>
                 @else
                     <a class="wish-item p-r-10x" href="/login"><i class="iconfont text-common btn-wish"></i></a>
                 @endif

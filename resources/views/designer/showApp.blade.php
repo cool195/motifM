@@ -32,6 +32,48 @@
             },
         });
     }
+
+    dataLayer.push({
+        'ecommerce': {
+            'currencyCode': 'EUR',                       // Local currency is optional.
+            'impressions': [
+                    @foreach($product['infos'] as $k=>$value)
+                    @if($value['type']=='product')
+                    @if(isset($value['spus']))
+                    @foreach($value['spus'] as $spu)
+                {
+                    'name': '{{$product['spuInfos'][$spu]['spuBase']['main_title']}}',       // Name or ID is required.
+                    'id': '{{$spu}}',
+                    'price': '{{number_format($product['spuInfos'][$spu]['skuPrice']['sale_price']/100,2)}}',
+                    'brand': 'Motif',
+                    'category': '',
+                    'variant': '',
+                    'list': 'designerApp',
+                    'position': ''
+                },
+                    @endforeach
+                    @endif
+                    @endif
+                    @endforeach
+
+                    @if(isset($productAll['data']['list']))
+                    @foreach($productAll['data']['list'] as $value)
+                {
+                    'name': '{{$value['main_title']}}',       // Name or ID is required.
+                    'id': '{{$value['spu']}}',
+                    'price': '{{number_format($value['skuPrice']['sale_price']/100,2)}}',
+                    'brand': 'Motif',
+                    'category': '',
+                    'variant': '',
+                    'list': 'designerApp',
+                    'position': ''
+                },
+                @endforeach
+                @endif
+
+            ]
+        }
+    });
 </script>
 @include('check.tagmanager')
 {{--外层容器--}}

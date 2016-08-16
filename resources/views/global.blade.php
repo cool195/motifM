@@ -30,6 +30,7 @@
             if (switchImpr(element)) {
                 var impr = $(element).data('impr');
                 $(element).removeAttr('data-impr');
+
                 $.ajax({
                             url: impr
                         })
@@ -56,39 +57,39 @@
 
             onProductClick();
 
-            if(undefined !== $this.data('link')){
+            if (undefined !== $this.data('link')) {
                 $.ajax({
                     url: $this.data('clk'),
                     type: "GET"
                 });
-                setTimeout(function() {
+                setTimeout(function () {
                     window.location.href = $this.data('link');
                 }, 100);
             }
         })
 
-        $(document).on('scroll', function(event) {
-           imprList();
+        $(document).on('scroll', function (event) {
+            imprList();
         });
 
         //收藏服务
-        $('.btn-wished').click(function(e) {
+        $('.btn-wished').click(function (e) {
             var $this = $(e.target);
             var spu = $this.data('spu');
             $.ajax({
-                url: '/updateWish',
-                type: 'post',
-                data: {spu:spu}
-            })
-            .done(function(data){
-                if(data.success){
-                    if (!$this.hasClass('active')) {
-                        $this.addClass('active');
-                    } else {
-                        $this.removeClass('active');
-                    }
-                }
-            });
+                        url: '/updateWish',
+                        type: 'post',
+                        data: {spu: spu}
+                    })
+                    .done(function (data) {
+                        if (data.success) {
+                            if (!$this.hasClass('active')) {
+                                $this.addClass('active');
+                            } else {
+                                $this.removeClass('active');
+                            }
+                        }
+                    });
         });
     })
 </script>
