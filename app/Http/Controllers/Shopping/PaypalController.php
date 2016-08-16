@@ -39,6 +39,7 @@ class PaypalController extends ApiController
                 }
             }
         }
-        return redirect('/order/orderlist');
+
+        return redirect('/order/orderdetail/'.$request->input('orderid'));
     }
 }

@@ -23,7 +23,7 @@ Class PayOrder
         //lijiang.hou-buyer2@gmail.com
         //gsx12345
         $mode = 'live';//sandbox / live
-        if ($_SERVER['SERVER_NAME'] == 'm.motif.me') {
+        if ($_SERVER['HTTP_HOST'] == 'm.motif.me') {
             $clientID = 'AeJ0JypMpSkBh2pvVrWMSg8Km_l6fcmWXUQ0oWxom2tz8nPzBB1rWu71bkL1j4S-TGsjGYrbfDZYiWWe';
             $secret = 'ECmKQFY0UdanCEXHr6bHQ1PCwivwmtEMWma30r3ejfOlvQVlSW6_rwuXp4leydeHrcqSCthauqka1BYU';
         } else {
@@ -69,8 +69,8 @@ Class PayOrder
 
         $redirectUrls = new RedirectUrls();
 
-        $redirectUrls->setReturnUrl('http://' . $_SERVER['SERVER_NAME'] . '/paypal?success=true')
-            ->setCancelUrl('http://' . $_SERVER['SERVER_NAME'] . '/paypal?success=false');
+        $redirectUrls->setReturnUrl('http://' . $_SERVER['HTTP_HOST'] . '/paypal?success=true')
+            ->setCancelUrl('http://' . $_SERVER['HTTP_HOST'] . '/paypal?success=false&orderid='.$orderid);
 
         $payment = new Payment();
         $payment->setIntent('sale')

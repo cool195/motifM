@@ -46,64 +46,70 @@
 <template id="tpl-orderList">
     @{{ each list }}
     @{{ each $value.subOrderList }}
-    <div class="orderList-item bg-white m-b-10x">
-        <div class="p-a-10x">
-            <div class="flex flex-fullJustified flex-alignCenter">
-                <span class="font-size-sm text-primary">
-                    <strong>@{{ $value.status_info }}: </strong>@{{ $value.update_time }}
-                </span>
-                <a class="btn btn-primary btn-sm" href="/order/orderdetail/@{{ $value.sub_order_no }}">Order
-                    Detail</a>
+
+        <div class="orderList-item bg-white m-b-10x">
+            <div class="p-y-10x @{{ if $value.status_code == 11 }} status-red @{{ else if $value.status_code == 23 || $value.status_code == 21  || $value.status_code == 27 }} status-gray @{{ else if $value.status_code == 25 || $value.status_code == 20}} status-blue @{{ else if $value.status_code == 17}} status-green @{{ else if $value.status_code == 18}} status-green @{{ else if $value.status_code == 19}} status-green @{{ else }} status-yellow @{{ /if }}">
+                <div class="p-l-5x p-r-10x flex flex-fullJustified flex-alignCenter">
+                    <span class="font-size-sm text-primary">
+                        <strong>@{{ $value.status_info }}: </strong>@{{ $value.update_time }}
+                    </span>
+                    @{{ if $value.status_code == 11 }}
+                        <a class="btn btn-primary btn-sm p-x-20x" href="/payAgain/@{{ $value.sub_order_no }}">Pay</a>
+                    @{{ /if }}
+                </div>
             </div>
             @{{ if $value.status_explain !== '' || $value.status_explain !== null }}
-            <div class="font-size-sm text-primary p-t-10x">
-                @{{ $value.status_explain }}
+            <div class="p-b-10x p-x-15x">
+                <div class="font-size-sm text-primary">
+                    @{{ $value.status_explain }}
+                </div>
             </div>
             @{{ /if }}
-        </div>
-        <hr class="hr-base m-y-0 m-l-10x">
 
-        @{{ each $value.lineOrderList }}
-        <a href="/detail/@{{ $value.spu }}">
-        <div class="flex p-a-10x">
-            <div class="flex-fixedShrink">
-                <img class="img-thumbnail img-lazy"
-                     src="{{env('CDN_Static')}}/images/product/bg-product@70.png"
-                     data-original="{{env('APP_Api_Image')}}/n4/@{{ $value.img_path }}"
-                     width="70px" height="70px">
-            </div>
-            <div class="p-x-10x order-product-title">
-                <h6 class="text-main font-size-md text-truncate">
-                    <strong>@{{ $value.main_title }}</strong>
-                </h6>
-                <aside class="text-primary font-size-sm">
-                    @{{ each $value.attrValues }}
-                    <div><span>@{{ $value.attr_type_value }}: </span><span>@{{ $value.attr_value }}</span></div>
-                    @{{ /each }}
+            <hr class="hr-base m-y-0 m-l-10x">
 
-                    <div><span>Qty: </span><span>@{{ $value.sale_qtty }}</span></div>
-                    {{-- TODO 这里的数据加载还没有验证 --}}
-                    @{{ if $value.vas_info !== null }}
-                    @{{ each $value.vas_info }}
-                    <div><span>@{{ $value.vas_name }}: </span><span>@{{ $value.user_remark }}</span></div>
-                    @{{ /each }}
-                    @{{ /if }}
-                </aside>
+            @{{ each $value.lineOrderList }}
+            <a href="/order/orderdetail/@{{ $value.sub_order_no }}">
+                <div class="flex p-a-10x">
+                <div class="flex-fixedShrink">
+                    <img class="img-thumbnail img-lazy"
+                         src="{{env('CDN_Static')}}/images/product/bg-product@70.png"
+                         data-original="{{env('APP_Api_Image')}}/n4/@{{ $value.img_path }}"
+                         width="70px" height="70px">
+                </div>
+                <div class="p-x-10x order-product-title">
+                    <h6 class="text-main font-size-md text-truncate">
+                        <strong>@{{ $value.main_title }}</strong>
+                    </h6>
+                    <aside class="text-primary font-size-sm">
+                        @{{ each $value.attrValues }}
+                        <div><span>@{{ $value.attr_type_value }}: </span><span>@{{ $value.attr_value }}</span></div>
+                        @{{ /each }}
+
+                        <div><span>Qty: </span><span>@{{ $value.sale_qtty }}</span></div>
+                        {{-- TODO 这里的数据加载还没有验证 --}}
+                        @{{ if $value.vas_info !== null }}
+                        @{{ each $value.vas_info }}
+                        <div><span>@{{ $value.vas_name }}: </span><span>@{{ $value.user_remark }}</span></div>
+                        @{{ /each }}
+                        @{{ /if }}
+                    </aside>
+                </div>
+            </div>
+            </a>
+            @{{ /each }}
+
+            <hr class="hr-base m-y-0 m-l-10x">
+            <div class="flex flex-alignCenter flex-fullJustified p-a-10x">
+                <div class="text-primary font-size-sm">
+                    <span>Order # </span><span>@{{ $value.sub_order_no }}</span>
+                </div>
+                <div class="text-primary font-size-sm">
+                    <span>Order Total: </span><span>$@{{ ($value.pay_amount/100).toFixed(2) }}</span>
+                </div>
             </div>
         </div>
-        </a>
-        @{{ /each }}
 
-        <hr class="hr-base m-y-0 m-l-10x">
-        <div class="flex flex-alignCenter flex-fullJustified p-a-10x">
-            <div class="text-primary font-size-sm">
-                <span>Order # </span><span>@{{ $value.sub_order_no }}</span>
-            </div>
-            <div class="text-primary font-size-sm">
-                <span>Order Total: </span><span>$@{{ ($value.pay_amount/100).toFixed(2) }}</span>
-            </div>
-        </div>
-    </div>
     @{{ /each }}
     @{{ /each }}
 </template>
