@@ -28,6 +28,7 @@
                 'add': {
                     'products': [{
                         'name': '{{$data['main_title']}}',
+                        'id': '{{ $value['spu'] }}',
                         'sku': sku,
                         'price': '{{ number_format(($data['skuPrice']['sale_price'] / 100), 2) }}',
                         'brand': 'Motif',

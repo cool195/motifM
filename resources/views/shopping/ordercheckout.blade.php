@@ -19,6 +19,7 @@
                             @foreach($data['showSkus'] as $showSku)
                         {
                         'name': '{{$showSku['main_title']}}',
+                        'id': '{{$showSku['spu']}}',
                         'sku': '{{$showSku['sku']}}',
                         'price': '{{ number_format(($showSku['sale_price'] / 100), 2) }}',
                         'brand': 'Motif',
