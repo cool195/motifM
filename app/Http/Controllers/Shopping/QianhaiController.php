@@ -58,7 +58,7 @@ class QianhaiController extends ApiController
                 'paytype' => 'Oceanpay',
                 'showname' => 'QianhaiCard',
                 'devicedata' => "H5",
-                'nonce' => '{"response":{"order_number":"' . $request->input('order_number') . '","payment_id":"' . $request->input('payment_id') . '","order_amount":"' . $request->input('order_amount') . '","payment_status":"' . $request->input('payment_status') . '","methods":"' . $request->input('payment_Method') . '","card_number":"' . $request->input('card_number') . '"}}',
+                'nonce' => '{"order_number":"' . $request->input('order_number') . '","payment_id":"' . $request->input('payment_id') . '","order_amount":"' . $request->input('order_amount') . '","payment_status":"' . $request->input('payment_status') . '","methods":"' . $request->input('payment_Method') . '","card_number":"' . $request->input('card_number') . '"}',
             );
             if (strstr($_SERVER['HTTP_USER_AGENT'], 'motif-android') || strstr($_SERVER['HTTP_USER_AGENT'], 'motif-ios')) {
                 return redirect('http://motif.pay/apppaywithstatus=' . $params['nonce']);
