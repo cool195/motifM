@@ -117,7 +117,7 @@ $app->group(['middleware' => 'pcguide|logincheck', 'namespace' => 'App\Http\Cont
 
     $app->post('/updateWish', 'ShoppingController@updateWish');
 
-    //第三方支付
+    //braintree
     $app->get('/braintree', 'BraintreeController@index');
     $app->delete('/braintree', 'BraintreeController@delMethod');
     $app->post('/braintree', 'BraintreeController@checkout');
@@ -126,6 +126,9 @@ $app->group(['middleware' => 'pcguide|logincheck', 'namespace' => 'App\Http\Cont
     $app->get('/paypalorder', 'PaypalController@index');
     $app->get('/paypal', 'PaypalController@paypal');
     $app->get('/payAgain/{orderid}','OrderController@orderPayInfo');
+    //钱海
+    $app->get('/qianhai', 'QianhaiController@index');
+    $app->post('/qianhai', 'QianhaiController@checkStatus');
 });
 
 $app->group(['middleware' => 'pcguide', 'namespace' => 'App\Http\Controllers\Shopping'], function ($app) {

@@ -198,6 +198,16 @@
             <aside class="bg-white m-t-10x p-a-10x">
                 <div class="btn btn-primary btn-block @if(empty($paym) || empty($addr) || "" == $paym || "" == $addr) disabled @endif"  data-role="submit">Pay Now</div>
             </aside>
+
+            <aside class="bg-white m-t-10x p-a-10x">
+                @inject('qianhai', 'App\Http\Controllers\Shopping\QianhaiController')
+                <form method="post" action="{{$qianhai->index(1,1)['postUrl']}}">
+                    @foreach($qianhai->index(1,1)['data'] as $k=>$value)
+                        <input type="hidden" name="{{$k}}" value="{{$value}}">
+                    @endforeach
+                    <div class="btn btn-primary btn-block"><input type="submit" value="Credit Card"></div>
+                </form>
+            </aside>
         </section>
         <!-- 页脚 功能链接 start-->
     @include('footer')

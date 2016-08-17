@@ -88,9 +88,9 @@ class VerifyCsrfToken
     protected function isReading($request)
     {
         /*
-         * juchao add 2016.6.13 支付SDK 请求表单过滤CSRF规则
+         * juchao add 2016.8.17 支付SDK 请求表单过滤CSRF规则
          * */
-        if(strstr($request->url(),"braintree")){
+        if(strstr($request->url(),"braintree") || strstr($request->url(),"qianhai")){
             return true;
         }
         return in_array($request->method(), ['HEAD', 'GET', 'OPTIONS']);
