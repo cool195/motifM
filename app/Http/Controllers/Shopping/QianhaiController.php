@@ -47,6 +47,18 @@ class QianhaiController extends ApiController
     public function checkStatus(Request $request)
     {
         if ($request->input('payment_status') == 1) {
+            $params = array(
+                'cmd' => "dopay",
+                'uuid' => $_COOKIE['uid'],
+                'token' => Session::get('user.token'),
+                'pin' => Session::get('user.pin'),
+                'orderid' => $request->input('order_number'),
+                'paytype' => 'Oceanpay',
+                'showname' => 'QianhaiCard',
+                'devicedata' => "H5",
+                'nonce' => '{"response":{"order_number":"'.$request->input('order_number').'","payment_id":"'.$request->input('payment_id').'","order_amount":"'.$request->input('order_amount').'","payment_status":"'.$request->input('payment_status').'","methods":"'.$request->input('payment_Method').'","card_number":"'.$request->input('card_number').'"}}',
+            );
+            $this->request('openapi', "", "pay", $params);
             return redirect('/success?orderid='.$request->input('order_number'));
         } else {
             return redirect('/order/orderdetail/'.$request->input('order_number'));

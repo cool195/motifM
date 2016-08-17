@@ -128,8 +128,10 @@ $app->group(['middleware' => 'pcguide|logincheck', 'namespace' => 'App\Http\Cont
     $app->get('/payAgain/{orderid}','OrderController@orderPayInfo');
     //钱海
     $app->get('/qianhai', 'QianhaiController@index');
-    $app->post('/qianhai', 'QianhaiController@checkStatus');
 });
+
+//钱海
+$app->post('/qianhai', 'Shopping\QianhaiController@checkStatus');
 
 $app->group(['middleware' => 'pcguide', 'namespace' => 'App\Http\Controllers\Shopping'], function ($app) {
     $app->get('/shopping', 'ShoppingController@index');
