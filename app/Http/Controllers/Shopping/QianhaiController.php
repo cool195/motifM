@@ -10,7 +10,7 @@ class QianhaiController extends ApiController
 {
 
     //请求钱海支付
-    public function index($orderid, $price)
+    public function index($orderid = 0, $price = 0)
     {
         $secureCode = 'v842rr80';
         $postData = array(
@@ -22,10 +22,9 @@ class QianhaiController extends ApiController
                 'noticeUrl' => 'http://54.222.233.255/oceanpaycb',
                 'methods' => 'Credit Card',
                 'pages' => '1',
-                'order_number' => rand(0, 100000),//$orderid,
+                'order_number' => $orderid,
                 'order_currency' => 'USD',
-                'order_amount' => 99.00,//$price
-                'order_notes' => $orderid,
+                'order_amount' => $price,
                 'billing_firstName' => 'N/A',
                 'billing_lastName' => 'N/A',
                 'billing_email' => Session::get('user.login_email'),
@@ -56,12 +55,16 @@ class QianhaiController extends ApiController
                 'paytype' => 'Oceanpay',
                 'showname' => 'QianhaiCard',
                 'devicedata' => "H5",
-                'nonce' => '{"response":{"order_number":"'.$request->input('order_number').'","payment_id":"'.$request->input('payment_id').'","order_amount":"'.$request->input('order_amount').'","payment_status":"'.$request->input('payment_status').'","methods":"'.$request->input('payment_Method').'","card_number":"'.$request->input('card_number').'"}}',
+                'nonce' => '{"response":{"order_number":"' . $request->input('order_number') . '","payment_id":"' . $request->input('payment_id') . '","order_amount":"' . $request->input('order_amount') . '","payment_status":"' . $request->input('payment_status') . '","methods":"' . $request->input('payment_Method') . '","card_number":"' . $request->input('card_number') . '"}}',
             );
-            $this->request('openapi', "", "pay", $params);
-            return redirect('/success?orderid='.$request->input('order_number'));
+            if (strstr($_SERVER['HTTP_USER_AGENT'], 'motif-android') || strstr($_SERVER['HTTP_USER_AGENT'], 'motif-ios')) {
+                return redirect('motif://AppPayWithStatus='.$params['nonce']);
+            }else{
+                $this->request('openapi', "", "pay", $params);
+                return redirect('/success?orderid=' . $request->input('order_number'));
+            }
         } else {
-            return redirect('/order/orderdetail/'.$request->input('order_number'));
+            return redirect('/order/orderdetail/' . $request->input('order_number'));
         }
     }
 }
