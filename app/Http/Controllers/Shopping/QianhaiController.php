@@ -10,36 +10,33 @@ class QianhaiController extends ApiController
 {
 
     //请求钱海支付
-    public function index($orderid = 0, $price = 0)
+    public function index(Request $request)
     {
         $secureCode = 'v842rr80';
+        $postUrl = $_SERVER['HTTP_HOST'] == 'm.motif.me' ? 'https://secure.oceanpayment.com/gateway/service/pay' : 'https://secure.oceanpayment.com/gateway/service/test';
         $postData = array(
-            'postUrl' => $_SERVER['HTTP_HOST'] == 'm.motif.me' ? 'https://secure.oceanpayment.com/gateway/service/pay' : 'https://secure.oceanpayment.com/gateway/service/test',
-            'data' => array(
-                'account' => '160444',
-                'terminal' => '16044401',
-                'backUrl' => 'http://' . $_SERVER['HTTP_HOST'] . '/qianhai',
-                'noticeUrl' => 'http://54.222.233.255/oceanpaycb',
-                'methods' => 'Credit Card',
-                'pages' => '1',
-                'order_number' => $orderid,
-                'order_currency' => 'USD',
-                'order_amount' => $price,
-                'billing_firstName' => 'N/A',
-                'billing_lastName' => 'N/A',
-                'billing_email' => Session::get('user.login_email'),
-                'billing_phone' => 'N/A',
-                'billing_country' => 'N/A',
-                'billing_city' => 'N/A',
-                'billing_address' => 'N/A',
-                'billing_zip' => 'N/A',
-                'productSku' => 'N/A',
-                'productName' => 'N/A',
-                'productNum' => 'N/A'
-            )
+            'account' => '160444',
+            'terminal' => '16044401',
+            'backUrl' => 'http://' . $_SERVER['HTTP_HOST'] . '/qianhai',
+            'noticeUrl' => 'http://54.222.233.255/oceanpaycb',
+            'methods' => 'Credit Card',
+            'pages' => '1',
+            'order_number' => $request->input('orderid'),
+            'order_currency' => 'USD',
+            'order_amount' => $request->input('totalPrice'),
+            'billing_firstName' => 'N/A',
+            'billing_lastName' => 'N/A',
+            'billing_email' => Session::get('user.login_email'),
+            'billing_phone' => 'N/A',
+            'billing_country' => 'N/A',
+            'billing_city' => 'N/A',
+            'billing_address' => 'N/A',
+            'billing_zip' => 'N/A',
+            'productSku' => 'N/A',
+            'productName' => 'N/A',
+            'productNum' => 'N/A'
         );
-        $postData['data']['signValue'] = hash("sha256", $postData['data']['account'] . $postData['data']['terminal'] . $postData['data']['backUrl'] . $postData['data']['order_number'] . $postData['data']['order_currency'] . $postData['data']['order_amount'] . $postData['data']['billing_firstName'] . $postData['data']['billing_lastName'] . $postData['data']['billing_email'] . $secureCode);
-        return $postData;
+        $postData['signValue'] = hash("sha256", $postData['account'] . $postData['terminal'] . $postData['backUrl'] . $postData['order_number'] . $postData['order_currency'] . $postData['order_amount'] . $postData['billing_firstName'] . $postData['billing_lastName'] . $postData['billing_email'] . $secureCode);
     }
 
     //钱海回调
@@ -58,13 +55,18 @@ class QianhaiController extends ApiController
                 'nonce' => '{"response":{"order_number":"' . $request->input('order_number') . '","payment_id":"' . $request->input('payment_id') . '","order_amount":"' . $request->input('order_amount') . '","payment_status":"' . $request->input('payment_status') . '","methods":"' . $request->input('payment_Method') . '","card_number":"' . $request->input('card_number') . '"}}',
             );
             if (strstr($_SERVER['HTTP_USER_AGENT'], 'motif-android') || strstr($_SERVER['HTTP_USER_AGENT'], 'motif-ios')) {
-                return redirect('http://motif.pay/apppaywithstatus='.$params['nonce']);
-            }else{
+                return redirect('http://motif.pay/apppaywithstatus=' . $params['nonce']);
+            } else {
                 $this->request('openapi', "", "pay", $params);
                 return redirect('/success?orderid=' . $request->input('order_number'));
             }
         } else {
-            return redirect('/order/orderdetail/' . $request->input('order_number'));
+            if (strstr($_SERVER['HTTP_USER_AGENT'], 'motif-android') || strstr($_SERVER['HTTP_USER_AGENT'], 'motif-ios')) {
+                return redirect('http://motif.pay/error=true');
+            } else {
+                return redirect('/order/orderdetail/' . $request->input('order_number'));
+            }
+
         }
     }
 }
