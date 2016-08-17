@@ -121,28 +121,9 @@
                     </div>
                 </a>
 
-                {{--<hr class="hr-base">--}}
-                {{--<div class="flex font-size-sm text-primary p-a-10x order-option" data-form-action="/braintree">--}}
-
-                    {{--<span class="checkoutInfo-subTitle flex-fixedShrink">Pay with</span>--}}
-                    {{--<div class="checkoutInfo-content flex flex-fullJustified flex-alignCenter">--}}
-                        {{--@if(empty($paym) || "" == $paym )--}}
-                            {{--<span class="text-warning">Select payment method</span>--}}
-                        {{--@else--}}
-                            {{--<div class="flex">--}}
-                            {{--@if($cardType=="PayPal")--}}
-                                {{--<span class="cardImage-inline  paypal"></span>--}}
-                            {{--@elseif(array_get($data['cardlist'],$cardType))--}}
-                                {{--<span class="cardImage-inline  {{array_get($data['cardlist'],$cardType)}}"></span>--}}
-                            {{--@endif--}}
-                            {{--<span class="m-l-10x">{{$showName}}</span>--}}
-                            {{--</div>--}}
-                        {{--@endif--}}
-                        {{--<i class="iconfont icon-arrow-right icon-size-xm text-common p-r-15x"></i>--}}
-                    {{--</div>--}}
-
-                    {{--<div class="bg-option bg-payWith"></div>--}}
-                {{--</div>--}}
+                <hr class="hr-base">
+                <input type="radio" name="paywith" value="Oceanpay" checked>card
+                <input type="radio" name="paywith" value="PayPalNative">paypal
 
                 <hr class="hr-base">
                 <div class="flex font-size-sm text-primary p-a-10x order-option" data-form-action="/cart/coupon">
@@ -198,16 +179,6 @@
             <aside class="bg-white m-t-10x p-a-10x">
                 <div class="btn btn-primary btn-block @if(empty($paym) || empty($addr) || "" == $paym || "" == $addr) disabled @endif"  data-role="submit">Pay Now</div>
             </aside>
-
-            <aside class="bg-white m-t-10x p-a-10x">
-                @inject('qianhai', 'App\Http\Controllers\Shopping\QianhaiController')
-                <form method="post" action="{{$qianhai->index(1,1)['postUrl']}}">
-                    @foreach($qianhai->index(1,1)['data'] as $k=>$value)
-                        <input type="hidden" name="{{$k}}" value="{{$value}}">
-                    @endforeach
-                    <div class="btn btn-primary btn-block"><input type="submit" value="Credit Card"></div>
-                </form>
-            </aside>
         </section>
         <!-- 页脚 功能链接 start-->
     @include('footer')
@@ -246,9 +217,6 @@
     <input type="hidden" name="aid" value="{{$addr['receiving_id']}}">
     <input type="hidden" name="stype" value="{{$stype}}">
     <input type="hidden" name="paym" value="{{$paym}}">
-    <input type="hidden" name="cardType" value="{{ $cardType }}">
-    <input type="hidden" name="methodtoken" value="{{ $methodtoken }}">
-    <input type="hidden" name="showName" value="{{ $showName }}">
     @if(isset($input) && !empty($input))
         @foreach($input as $name=>$value)
             <input type="hidden" name="{{$name}}" value="{{$value}}">

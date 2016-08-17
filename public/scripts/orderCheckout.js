@@ -102,6 +102,10 @@
                 });
         }
     });
+
+    $('input[name="paywith"]').on('click',function(){
+        $('input[name="paym"]').val($(this).val());
+    });
 })(jQuery);
 
 //# sourceMappingURL=orderCheckout.js.map

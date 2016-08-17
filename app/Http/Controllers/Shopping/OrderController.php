@@ -144,7 +144,7 @@ class OrderController extends ApiController
             'token' => Session::get('user.token'),
             'pin' => Session::get('user.pin'),
             'aid' => $request->input('aid'),
-            'paym' => $request->input('paym', "PayPal"),
+            'paym' => $request->input('paym', "Oceanpay"),
             'cps' => $request->input('cps', ""),
             'remark' => $request->input('remark'),
             'stype' => $request->input('stype'),
@@ -153,7 +153,11 @@ class OrderController extends ApiController
         );
         $result = $this->request('openapi', "", "order", $params);
         if (!empty($result) && $result['success']) {
-            $result['redirectUrl'] = "/paypalorder?orderid=" . $result['data']['orderID'] . "&orderDetail=" . $result['data']['shortInfo'] . "&totalPrice=" . $result['data']['pay_amount'] / 100;
+            if($params['paym']=='Oceanpay'){
+                $result['redirectUrl'] = "/qianhai?orderid=" . $result['data']['orderID']. "&totalPrice=" . $result['data']['pay_amount'] / 100;
+            }else{
+                $result['redirectUrl'] = "/paypalorder?orderid=" . $result['data']['orderID'] . "&orderDetail=" . $result['data']['shortInfo'] . "&totalPrice=" . $result['data']['pay_amount'] / 100;
+            }
         } else {
             $result['redirectUrl'] = Session::has('referer') ? Session::get('referer') : '/shopping';
         }
