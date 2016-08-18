@@ -23,8 +23,8 @@
                         'name': name,                      // Name or ID is required.
                         'id': spu,
                         'price': price,
-                        'brand': 'Motif',
-                        'category': '',
+                        'brand': '{{$designer['nickname']}}',
+                        'category': 'designerDetail',
                         'variant': '',
                         'position': ''
                     }]
@@ -37,19 +37,19 @@
         'ecommerce': {
             'currencyCode': 'EUR',                       // Local currency is optional.
             'impressions': [
-                    @foreach($product['infos'] as $k=>$value)
+                    @foreach($product['infos'] as $value)
                     @if($value['type']=='product')
                     @if(isset($value['spus']))
-                    @foreach($value['spus'] as $spu)
+                    @foreach($value['spus'] as $k=>$spu)
                 {
                     'name': '{{$product['spuInfos'][$spu]['spuBase']['main_title']}}',       // Name or ID is required.
                     'id': '{{$spu}}',
                     'price': '{{number_format($product['spuInfos'][$spu]['skuPrice']['sale_price']/100,2)}}',
-                    'brand': 'Motif',
-                    'category': '',
+                    'brand': '{{$designer['nickname']}}',
+                    'category': 'designerDetail',
                     'variant': '',
-                    'list': 'designer',
-                    'position': ''
+                    'list': '{{'designer_'.$designer['nickname']}}',
+                    'position': '{{$k}}'
                 },
                 @endforeach
                 @endif
@@ -57,16 +57,16 @@
                 @endforeach
 
                 @if(isset($productAll['data']['list']))
-                @foreach($productAll['data']['list'] as $value)
+                @foreach($productAll['data']['list'] as $k=>$value)
                 {
                     'name': '{{$value['main_title']}}',       // Name or ID is required.
                     'id': '{{$value['spu']}}',
                     'price': '{{number_format($value['skuPrice']['sale_price']/100,2)}}',
-                    'brand': 'Motif',
-                    'category': '',
+                    'brand': '{{$designer['nickname']}}',
+                    'category': 'designerDetail',
                     'variant': '',
-                    'list': 'designer',
-                    'position': ''
+                    'list': '{{'designer_'.$designer['nickname']}}',
+                    'position': '{{$k}}'
                 },
                 @endforeach
                 @endif

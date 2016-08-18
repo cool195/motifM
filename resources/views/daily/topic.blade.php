@@ -23,8 +23,8 @@
                         'name': name,                      // Name or ID is required.
                         'id': spu,
                         'price': price,
-                        'brand': 'Motif',
-                        'category': '',
+                        'brand': '{{$topic['title']}}',
+                        'category': 'topicWeb',
                         'variant': '',
                         'position': ''
                     }]
@@ -45,8 +45,8 @@
                     'name': '{{$topic['spuInfos'][$spu]['spuBase']['main_title']}}',       // Name or ID is required.
                     'id': '{{$spu}}',
                     'price': '{{number_format($topic['spuInfos'][$spu]['skuPrice']['sale_price']/100,2)}}',
-                    'brand': 'Motif',
-                    'category': '',
+                    'brand': '{{$topic['title']}}',
+                    'category': 'topicWeb',
                     'variant': '',
                     'list': '{{'mobileWeb_'.$topic['title']}}',
                     'position': '{{$k}}'
