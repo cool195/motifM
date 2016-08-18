@@ -48,7 +48,7 @@
                     'brand': 'Motif',
                     'category': '',
                     'variant': '',
-                    'list': '{{'topicApp->'.$topic['title']}}',
+                    'list': '{{$_SERVER['HTTP_USER_AGENT'].'->'.$topic['title']}}',
                     'position': '{{$k}}'
                 },
                 @endforeach
