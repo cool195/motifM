@@ -48,7 +48,7 @@
                     'brand': 'Motif',
                     'category': '',
                     'variant': '',
-                    'list': '{{'mobileWeb->'.$topic['title']}}',
+                    'list': '{{'mobileWeb_'.$topic['title']}}',
                     'position': '{{$k}}'
                 },
                 @endforeach
