@@ -48,7 +48,7 @@
                     'brand': '{{$topic['title']}}',
                     'category': 'topicApp',
                     'variant': '',
-                    'list': '{{strstr($_SERVER['HTTP_USER_AGENT'], 'motif-android') ? 'app_android_'.$topic['title'] : 'app_ios_'.$topic['title']}}',
+                    'list': '{{strstr($_SERVER['HTTP_USER_AGENT'], 'motif-android') ? 'android_topic_'.$topic['title'] : 'ios_topic_'.$topic['title']}}',
                     'position': '{{$k}}'
                 },
                 @endforeach

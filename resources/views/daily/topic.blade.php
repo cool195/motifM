@@ -48,7 +48,7 @@
                     'brand': '{{$topic['title']}}',
                     'category': 'topicWeb',
                     'variant': '',
-                    'list': '{{'mobileWeb_'.$topic['title']}}',
+                    'list': '{{'mobileWeb_topic_'.$topic['title']}}',
                     'position': '{{$k}}'
                 },
                 @endforeach
