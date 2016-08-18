@@ -112,6 +112,12 @@
     //PayWithModal.open();
     // 关闭窗口
     //PayWithModal.close();
+
+    $('#orderContainer').on('click','.checkoutPay',function () {
+        $('#payAgain1').attr('href','/payAgain/'+$(this).data('orderid')+'/0');
+        $('#payAgain2').attr('href','/payAgain/'+$(this).data('orderid')+'/1');
+        PayWithModal.open();
+    });
 })(jQuery);
 
 //# sourceMappingURL=orderList.js.map

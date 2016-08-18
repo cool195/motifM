@@ -125,7 +125,7 @@ $app->group(['middleware' => 'pcguide|logincheck', 'namespace' => 'App\Http\Cont
     //paypal
     $app->get('/paypalorder', 'PaypalController@index');
     $app->get('/paypal', 'PaypalController@paypal');
-    $app->get('/payAgain/{orderid}','OrderController@orderPayInfo');
+    $app->get('/payAgain/{orderid}/{paytype}','OrderController@orderPayInfo');
     //钱海
     $app->get('/qianhai', 'QianhaiController@index');
 });

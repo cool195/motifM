@@ -47,7 +47,7 @@
     <div class="p-a-15x text-left font-size-base p-l-20x"><strong>Pay with</strong></div>
     <div class="font-size-sm">
         <hr class="hr-base m-a-0">
-        <a class="p-a-15x flex flex-fullJustified flex-alignCenter">
+        <a class="p-a-15x flex flex-fullJustified flex-alignCenter" id="payAgain1">
             <div>
                 <img src="/images/payment/icon-cardCredit.png" srcset="/images/payment/icon-cardCredit@2x.png 2x,/images/payment/icon-cardCredit@3x.png 3x" alt="">
                 <span class="p-l-15x text-primary">Direct debit/credit card</span>
@@ -55,7 +55,7 @@
             <i class="iconfont icon-arrow-right icon-size-sm text-common"></i>
         </a>
         <hr class="hr-base m-a-0">
-        <a class="p-a-15x flex flex-fullJustified flex-alignCenter">
+        <a class="p-a-15x flex flex-fullJustified flex-alignCenter" id="payAgain2">
             <div>
                 <img src="/images/payment/icon-Paypal-inactive.png" srcset="/images/payment/icon-Paypal-inactive@2x.png 2x,/images/payment/icon-Paypal-inactive@3x.png 3x" alt="">
                 <span class="p-l-15x text-primary">Paypal</span>
@@ -78,7 +78,7 @@
                         <strong>@{{ $value.status_info }}: </strong>@{{ $value.update_time }}
                     </span>
                     @{{ if $value.status_code == 11 }}
-                        <a class="btn btn-primary btn-sm p-x-10x" href="/payAgain/@{{ $value.sub_order_no }}">Check Out</a>
+                        <a class="btn btn-primary btn-sm p-x-10x checkoutPay" data-orderid="@{{ $value.sub_order_no }}" href="javascript:;">Check Out</a>
                     @{{ /if }}
                 </div>
             </div>

@@ -19,9 +19,9 @@ class OrderController extends ApiController
     public function orderSuccess(Request $request)
     {
         $view = view('shopping.ordercheckout_success');
-        if($request->has('orderid')){
+        if ($request->has('orderid')) {
             $result = $this->getOrderDetail($request->input('orderid'));
-            $view = view('shopping.ordercheckout_success', ['order'=>$result['data']]);
+            $view = view('shopping.ordercheckout_success', ['order' => $result['data']]);
         }
         return $view;
     }
@@ -153,9 +153,9 @@ class OrderController extends ApiController
         );
         $result = $this->request('openapi', "", "order", $params);
         if (!empty($result) && $result['success']) {
-            if($params['paym']=='Oceanpay'){
-                $result['redirectUrl'] = "/qianhai?orderid=" . $result['data']['orderID']. "&totalPrice=" . $result['data']['pay_amount'] / 100;
-            }else{
+            if ($params['paym'] == 'Oceanpay') {
+                $result['redirectUrl'] = "/qianhai?orderid=" . $result['data']['orderID'] . "&totalPrice=" . $result['data']['pay_amount'] / 100;
+            } else {
                 $result['redirectUrl'] = "/paypalorder?orderid=" . $result['data']['orderID'] . "&orderDetail=" . $result['data']['shortInfo'] . "&totalPrice=" . $result['data']['pay_amount'] / 100;
             }
         } else {
@@ -200,7 +200,7 @@ class OrderController extends ApiController
     }
 
     //重新获取订单信息
-    public function orderPayInfo($orderid)
+    public function orderPayInfo($orderid, $paytype)
     {
         $params = array(
             'cmd' => "payinfo",
@@ -210,9 +210,13 @@ class OrderController extends ApiController
         );
         $result = $this->request('openapi', "", "order", $params);
 
-        if($result['success']){
-            return redirect("/paypalorder?orderid={$orderid}&orderDetail={$orderid}&totalPrice=".$result['data']['pay_amount']/100);
-        }else{
+        if ($result['success']) {
+            if ($paytype == 1) {
+                return redirect("/paypalorder?orderid={$orderid}&orderDetail={$orderid}&totalPrice=" . $result['data']['pay_amount'] / 100);
+            } else {
+                return redirect("/qianhai?orderid={$orderid}&totalPrice=" . $result['data']['pay_amount'] / 100);
+            }
+        } else {
             return redirect("/order/orderdetail/$orderid");
         }
     }

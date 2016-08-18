@@ -99,7 +99,9 @@
     //PayWithModal.open();
     // 关闭窗口
     //PayWithModal.close();
-
+    $('.checkoutPay').on('click',function () {
+        PayWithModal.open();
+    });
 })(jQuery);
 
 //# sourceMappingURL=orderDetail.js.map
