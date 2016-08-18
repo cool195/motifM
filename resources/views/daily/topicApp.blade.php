@@ -48,7 +48,7 @@
                     'brand': 'Motif',
                     'category': '',
                     'variant': '',
-                    'list': '{{$_SERVER['HTTP_USER_AGENT'].'_'.$topic['title']}}',
+                    'list': '{{strstr($_SERVER['HTTP_USER_AGENT'], 'motif-android') ? 'android_'.$topic['title'] : 'ios_'.$topic['title']}}',
                     'position': '{{$k}}'
                 },
                 @endforeach
