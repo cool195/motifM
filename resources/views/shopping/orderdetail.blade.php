@@ -205,6 +205,29 @@
 @include('footer')
 <!-- 页脚 功能链接 end-->
 </div>
+
+<!-- 弹出 选择支付方式 -->
+<div class="remodal remodal-lg modal-content" data-remodal-id="paywith-modal" id="paywithDialog">
+    <div class="p-a-15x text-left font-size-base p-l-20x"><strong>Pay with</strong></div>
+    <div class="font-size-sm">
+        <hr class="hr-base m-a-0">
+        <a class="p-a-15x flex flex-fullJustified flex-alignCenter">
+            <div>
+                <img src="{{env('CDN_Static')}}/images/payment/icon-cardCredit.png" srcset="{{env('CDN_Static')}}/images/payment/icon-cardCredit@2x.png 2x,{{env('CDN_Static')}}/images/payment/icon-cardCredit@3x.png 3x" alt="">
+                <span class="p-l-15x text-primary">Direct debit/credit card</span>
+            </div>
+            <i class="iconfont icon-arrow-right icon-size-sm text-common"></i>
+        </a>
+        <hr class="hr-base m-a-0">
+        <a class="p-a-15x flex flex-fullJustified flex-alignCenter">
+            <div>
+                <img src="{{env('CDN_Static')}}/images/payment/icon-Paypal-inactive.png" srcset="{{env('CDN_Static')}}/images/payment/icon-Paypal-inactive@2x.png 2x,{{env('CDN_Static')}}/images/payment/icon-Paypal-inactive@3x.png 3x" alt="">
+                <span class="p-l-15x text-primary">Paypal</span>
+            </div>
+            <i class="iconfont icon-arrow-right icon-size-sm text-common"></i>
+        </a>
+    </div>
+</div>
 </body>
 <script src="{{env('CDN_Static')}}/scripts/vendor.js{{'?v='.config('app.version')}}"></script>
 <script src="{{env('CDN_Static')}}/scripts/orderDetail.js{{'?v='.config('app.version')}}"></script>

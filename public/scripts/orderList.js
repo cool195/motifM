@@ -99,6 +99,19 @@
     window.onload = function() {
         listLoading();
     };
+
+    // 初始化 弹出 paywith 选择框
+    var Options = {
+        closeOnOutsideClick: true,
+        closeOnCancel: false,
+        hashTracking: false
+    };
+    // 选择支付方式框
+    var PayWithModal = $('[data-remodal-id="paywith-modal"]').remodal(Options);
+    // 打开窗口
+    //PayWithModal.open();
+    // 关闭窗口
+    //PayWithModal.close();
 })(jQuery);
 
 //# sourceMappingURL=orderList.js.map
