@@ -37,10 +37,10 @@
         'ecommerce': {
             'currencyCode': 'EUR',                       // Local currency is optional.
             'impressions': [
-                    @foreach($topic['infos'] as $k=>$value)
+                    @foreach($topic['infos'] as $value)
                     @if($value['type']=='product')
                     @if(isset($value['spus']))
-                    @foreach($value['spus'] as $spu)
+                    @foreach($value['spus'] as $k=>$spu)
                 {
                     'name': '{{$topic['spuInfos'][$spu]['spuBase']['main_title']}}',       // Name or ID is required.
                     'id': '{{$spu}}',
@@ -48,8 +48,8 @@
                     'brand': 'Motif',
                     'category': '',
                     'variant': '',
-                    'list': 'topicApp',
-                    'position': ''
+                    'list': '{{'topicApp->'.$topic['title']}}',
+                    'position': '{{$k}}'
                 },
                 @endforeach
                 @endif
