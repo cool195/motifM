@@ -129,19 +129,22 @@
                     <span class="checkoutInfo-subTitle flex-fixedShrink p-y-5x">Pay with</span>
                     <div class="checkoutInfo-content flex flex-alignCenter">
                         <div class="row flex-width">
-                            <div class="col-xs-6 p-y-5x border-right">
-                                <span class="delivery-text"><img src="{{env('CDN_Static')}}/images/payment/icon-card2-color.png" srcset="{{env('CDN_Static')}}/images/payment/icon-card2-color@2x.png 2x,{{env('CDN_Static')}}/images/payment/icon-card2-color@3x.png 3x" alt=""></span>
-                                <i class="iconfont icon-check icon-size-md text-common p-l-5x"></i>
-
+                            <div class="col-xs-6 p-y-5x border-right active" id="payWith-card">
+                                <div class="payWith-card-active">
+                                    <span class="delivery-text"><img src="{{env('CDN_Static')}}/images/payment/icon-card2-color.png" srcset="{{env('CDN_Static')}}/images/payment/icon-card2-color@2x.png 2x,{{env('CDN_Static')}}/images/payment/icon-card2-color@3x.png 3x" alt=""></span>
+                                    <i class="iconfont icon-check icon-size-md text-common p-l-5x"></i>
+                                </div>
                                 <!-- 灰色 -->
-                                {{--<span class="delivery-text"><img src="{{env('CDN_Static')}}/images/payment/icon-card2.png" srcset="{{env('CDN_Static')}}/images/payment/icon-card2@2x.png 2x,{{env('CDN_Static')}}/images/payment/icon-card2@3x.png 3x" alt=""></span>--}}
+                                <span class="delivery-text payWith-card"><img src="{{env('CDN_Static')}}/images/payment/icon-card2.png" srcset="{{env('CDN_Static')}}/images/payment/icon-card2@2x.png 2x,{{env('CDN_Static')}}/images/payment/icon-card2@3x.png 3x" alt=""></span>
                             </div>
-                            <div class="col-xs-6 p-y-5x">
-                                <span class="delivery-text p-l-5x"><img src="{{env('CDN_Static')}}/images/payment/icon-Paypal-inactive.png" srcset="{{env('CDN_Static')}}/images/payment/icon-Paypal-inactive@2x.png 2x,{{env('CDN_Static')}}/images/payment/icon-Paypal-inactive@3x.png 3x" alt=""></span>
-                                
+                            <div class="col-xs-6 p-y-5x" id="payWith-paypal">
+                                <span class="payWith-paypal delivery-text p-l-5x"><img src="{{env('CDN_Static')}}/images/payment/icon-Paypal-inactive.png" srcset="{{env('CDN_Static')}}/images/payment/icon-Paypal-inactive@2x.png 2x,{{env('CDN_Static')}}/images/payment/icon-Paypal-inactive@3x.png 3x" alt=""></span>
+
                                 <!-- 彩色图标 -->
-                                {{--<span class="delivery-text p-l-5x"><img src="{{env('CDN_Static')}}/images/payment/icon-paypal2-color.png" srcset="{{env('CDN_Static')}}/images/payment/icon-paypal2-color@2x.png 2x,{{env('CDN_Static')}}/images/payment/icon-paypal2-color@3x.png 3x" alt=""></span>--}}
-                                {{--<i class="iconfont icon-check icon-size-md text-common p-l-5x"></i>--}}
+                                <div class="payWith-paypal-active">
+                                    <span class="delivery-text p-l-5x"><img src="{{env('CDN_Static')}}/images/payment/icon-paypal2-color.png" srcset="{{env('CDN_Static')}}/images/payment/icon-paypal2-color@2x.png 2x,{{env('CDN_Static')}}/images/payment/icon-paypal2-color@3x.png 3x" alt=""></span>
+                                    <i class="iconfont icon-check icon-size-md text-common p-l-5x"></i>
+                                </div>
                             </div>
                         </div>
                     </div>

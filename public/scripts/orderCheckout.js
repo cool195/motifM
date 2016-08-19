@@ -106,6 +106,16 @@
     $('input[name="paywith"]').on('click',function(){
         $('input[name="paym"]').val($(this).val());
     });
+
+    // 切换 支付方式
+    $('#payWith-card').on('click',function(){
+        $('#payWith-paypal').removeClass('active');
+        $(this).addClass('active');
+    });
+    $('#payWith-paypal').on('click',function(){
+        $('#payWith-card').removeClass('active');
+        $(this).addClass('active');
+    });
 })(jQuery);
 
 //# sourceMappingURL=orderCheckout.js.map
