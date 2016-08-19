@@ -125,6 +125,18 @@
         }
     });
 
+    // 初始化 弹出 paywith 选择框
+    var Options = {
+        closeOnOutsideClick: true,
+        closeOnCancel: false,
+        hashTracking: false
+    };
+    // 选择支付方式框
+    var CVVModal = $('[data-remodal-id="cvvquestion-modal"]').remodal(Options);
+    $('.icon-question').on('click',function () {
+        CVVModal.open();
+    })
+
 })(jQuery);
 
 //# sourceMappingURL=paymentMethod-addCard.js.map
