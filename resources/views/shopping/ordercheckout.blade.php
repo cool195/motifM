@@ -122,8 +122,30 @@
                 </a>
 
                 <hr class="hr-base">
-                <input type="radio" name="paywith" value="Oceanpay" checked>card
-                <input type="radio" name="paywith" value="PayPalNative">paypal
+                {{--<input type="radio" name="paywith" value="Oceanpay" checked>card--}}
+                {{--<input type="radio" name="paywith" value="PayPalNative">paypal--}}
+
+                <div class="flex font-size-sm text-primary p-x-10x p-y-5x" href="#">
+                    <span class="checkoutInfo-subTitle flex-fixedShrink p-y-5x">Pay with</span>
+                    <div class="checkoutInfo-content flex flex-alignCenter">
+                        <div class="row flex-width">
+                            <div class="col-xs-6 p-y-5x border-right">
+                                <span class="delivery-text"><img src="{{env('CDN_Static')}}/images/payment/icon-card2-color.png" srcset="{{env('CDN_Static')}}/images/payment/icon-card2-color@2x.png 2x,{{env('CDN_Static')}}/images/payment/icon-card2-color@3x.png 3x" alt=""></span>
+                                <i class="iconfont icon-check icon-size-md text-common p-l-5x"></i>
+
+                                <!-- 灰色 -->
+                                {{--<span class="delivery-text"><img src="{{env('CDN_Static')}}/images/payment/icon-card2.png" srcset="{{env('CDN_Static')}}/images/payment/icon-card2@2x.png 2x,{{env('CDN_Static')}}/images/payment/icon-card2@3x.png 3x" alt=""></span>--}}
+                            </div>
+                            <div class="col-xs-6 p-y-5x">
+                                <span class="delivery-text p-l-5x"><img src="{{env('CDN_Static')}}/images/payment/icon-Paypal-inactive.png" srcset="{{env('CDN_Static')}}/images/payment/icon-Paypal-inactive@2x.png 2x,{{env('CDN_Static')}}/images/payment/icon-Paypal-inactive@3x.png 3x" alt=""></span>
+                                
+                                <!-- 彩色图标 -->
+                                {{--<span class="delivery-text p-l-5x"><img src="{{env('CDN_Static')}}/images/payment/icon-paypal2-color.png" srcset="{{env('CDN_Static')}}/images/payment/icon-paypal2-color@2x.png 2x,{{env('CDN_Static')}}/images/payment/icon-paypal2-color@3x.png 3x" alt=""></span>--}}
+                                {{--<i class="iconfont icon-check icon-size-md text-common p-l-5x"></i>--}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
                 <hr class="hr-base">
                 <div class="flex font-size-sm text-primary p-a-10x order-option" data-form-action="/cart/coupon">

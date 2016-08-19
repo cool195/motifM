@@ -5758,3 +5758,7 @@ footer .links-group {
 .wishlist-title {
   min-height: 3rem;
 }
+
+.border-right {
+  border-right: 1px solid #e2e5ed;
+}
