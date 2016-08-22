@@ -35,7 +35,7 @@
             <!-- 正常订单 下单日期 -->
             @if(in_array($data['status_code'], array(21, 22, 23)))
             <!--被取消的订单 取消原因、取消日期-->
-                <div class="p-a-10x @if($data['status_code'] == 21 || $data['status_code'] == 23) status-gray @else status-yellow @endif">
+                <div class="p-y-10x p-x-5x @if($data['status_code'] == 21 || $data['status_code'] == 23) status-gray @else status-yellow @endif">
                     <div class="font-size-sm text-primary" id="orderState" data-state="true">
                         <strong>{{ $data['status_info'] }}:</strong>
                         <span>{{$data['create_time']}}</span></div>
