@@ -39,9 +39,10 @@
                     <div class="font-size-sm text-primary" id="orderState" data-state="true">
                         <strong>{{ $data['status_info'] }}:</strong>
                         <span>{{$data['create_time']}}</span></div>
+                </div>
+                <div class="p-b-10x p-x-15x p-r-20x">
                     <div class="font-size-sm text-primary">
-                        <div>{{ $data['status_explain'] }}</div>
-                        {{--<div>Apr 15, 2016 - Apr 17, 2016</div>--}}
+                        {{ $data['status_explain'] }}
                     </div>
                 </div>
             @else
@@ -52,9 +53,12 @@
                             <a class="btn btn-primary btn-sm p-x-10x checkoutPay" href="javascript:;">Check Out</a>
                         @endif
                     </span>
-                    <span class="font-size-sm text-primary"><p
-                                class="m-b-0 p-r-20x">@if(in_array($data['status_code'], array(11, 12, 14))) {{ $data['status_explain'] }} @endif</p></span>
                 </div>
+                    <div class="p-b-10x p-x-15x p-r-20x">
+                        <div class="font-size-sm text-primary">
+                            @if(in_array($data['status_code'], array(11, 12, 14))) {{ $data['status_explain'] }} @endif
+                        </div>
+                    </div>
             @endif
 
             <hr class="hr-base m-y-0 m-l-15x">
