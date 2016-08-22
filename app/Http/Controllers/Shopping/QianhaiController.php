@@ -46,7 +46,7 @@ class QianhaiController extends ApiController
             'productName' => 'N/A',
             'productNum' => 'N/A'
         );
-        Log::info(print_r($postData));
+        Log::info($postData['billing_country'].'---'.$postData['billing_city'].'---'.$postData['billing_address'].'---'.$postData['billing_zip']);
         $postData['signValue'] = hash("sha256", $postData['account'] . $postData['terminal'] . $postData['backUrl'] . $postData['order_number'] . $postData['order_currency'] . $postData['order_amount'] . $postData['billing_firstName'] . $postData['billing_lastName'] . $postData['billing_email'] . $secureCode);
         $postStr = "<form style='display:none;' id='payform' name='payform' method='post' action='$postUrl'>";
         foreach ($postData as $k => $value) {
