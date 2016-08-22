@@ -46,7 +46,7 @@
                     </div>
                 </div>
             @else
-                <div class="p-y-10x p-x-15x @if($data['status_code'] == 11) status-red @elseif($data['status_code'] == 23 || $data['status_code'] == 21  || $data['status_code'] == 27) status-gray @elseif($data['status_code'] == 25 || $data['status_code'] == 20) status-blue @elseif($data['status_code'] >= 17 && $data['status_code'] <= 19)  status-green @else status-yellow @endif ">
+                <div class="p-y-10x p-x-5x @if($data['status_code'] == 11) status-red @elseif($data['status_code'] == 23 || $data['status_code'] == 21  || $data['status_code'] == 27) status-gray @elseif($data['status_code'] == 25 || $data['status_code'] == 20) status-blue @elseif($data['status_code'] >= 17 && $data['status_code'] <= 19)  status-green @else status-yellow @endif ">
                     <span class="font-size-sm text-primary flex flex-fullJustified flex-alignCenter">
                         <span><strong>{{ $data['status_info'] }}:</strong> {{$data['create_time']}}</span>
                         @if($data['status_code']==11)
