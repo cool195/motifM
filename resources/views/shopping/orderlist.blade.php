@@ -49,7 +49,9 @@
         <hr class="hr-base m-a-0">
         <a class="p-a-15x flex flex-fullJustified flex-alignCenter" id="payAgain1">
             <div>
-                <img src="/images/payment/icon-cardCredit.png" srcset="/images/payment/icon-cardCredit@2x.png 2x,/images/payment/icon-cardCredit@3x.png 3x" alt="">
+                <img src="/images/payment/icon-cardCredit.png"
+                     srcset="/images/payment/icon-cardCredit@2x.png 2x,/images/payment/icon-cardCredit@3x.png 3x"
+                     alt="">
                 <span class="p-l-15x text-primary">Direct debit/credit card</span>
             </div>
             <i class="iconfont icon-arrow-right icon-size-sm text-common"></i>
@@ -57,7 +59,9 @@
         <hr class="hr-base m-a-0">
         <a class="p-a-15x flex flex-fullJustified flex-alignCenter" id="payAgain2">
             <div>
-                <img src="/images/payment/icon-Paypal-inactive.png" srcset="/images/payment/icon-Paypal-inactive@2x.png 2x,/images/payment/icon-Paypal-inactive@3x.png 3x" alt="">
+                <img src="/images/payment/icon-Paypal-inactive.png"
+                     srcset="/images/payment/icon-Paypal-inactive@2x.png 2x,/images/payment/icon-Paypal-inactive@3x.png 3x"
+                     alt="">
                 <span class="p-l-15x text-primary">Paypal</span>
             </div>
             <i class="iconfont icon-arrow-right icon-size-sm text-common"></i>
@@ -71,14 +75,16 @@
     @{{ each list }}
     @{{ each $value.subOrderList }}
 
-        <div class="orderList-item bg-white m-b-10x">
+    <div class="orderList-item bg-white m-b-10x">
+        <a href="/order/orderdetail/@{{ $value.sub_order_no }}">
             <div class="p-y-10x @{{ if $value.status_code == 11 }} status-red @{{ else if $value.status_code == 23 || $value.status_code == 21  || $value.status_code == 27 }} status-gray @{{ else if $value.status_code == 25 || $value.status_code == 20}} status-blue @{{ else if $value.status_code == 17}} status-green @{{ else if $value.status_code == 18}} status-green @{{ else if $value.status_code == 19}} status-green @{{ else }} status-yellow @{{ /if }}">
                 <div class="p-l-5x p-r-10x flex flex-fullJustified flex-alignCenter">
                     <span class="font-size-sm text-primary">
                         <strong>@{{ $value.status_info }}: </strong>@{{ $value.update_time }}
                     </span>
                     @{{ if $value.status_code == 11 }}
-                        <a class="btn btn-primary btn-sm p-x-10x checkoutPay" data-orderid="@{{ $value.sub_order_no }}" href="javascript:;">Check Out</a>
+                    <a class="btn btn-primary btn-sm p-x-10x checkoutPay" data-orderid="@{{ $value.sub_order_no }}"
+                       href="javascript:;">Check Out</a>
                     @{{ /if }}
                 </div>
             </div>
@@ -89,12 +95,12 @@
                 </div>
             </div>
             @{{ /if }}
+        </a>
+        <hr class="hr-base m-y-0 m-l-10x">
 
-            <hr class="hr-base m-y-0 m-l-10x">
-
-            @{{ each $value.lineOrderList }}
-            <a href="/order/orderdetail/@{{ $value.sub_order_no }}">
-                <div class="flex p-a-10x">
+        @{{ each $value.lineOrderList }}
+        <a href="/order/orderdetail/@{{ $value.sub_order_no }}">
+            <div class="flex p-a-10x">
                 <div class="flex-fixedShrink">
                     <img class="img-thumbnail img-lazy"
                          src="{{env('CDN_Static')}}/images/product/bg-product@70.png"
@@ -120,19 +126,19 @@
                     </aside>
                 </div>
             </div>
-            </a>
-            @{{ /each }}
+        </a>
+        @{{ /each }}
 
-            <hr class="hr-base m-y-0 m-l-10x">
-            <div class="flex flex-alignCenter flex-fullJustified p-a-10x">
-                <div class="text-primary font-size-sm">
-                    <span>Order # </span><span>@{{ $value.sub_order_no }}</span>
-                </div>
-                <div class="text-primary font-size-sm">
-                    <span>Order Total: </span><span>$@{{ ($value.pay_amount/100).toFixed(2) }}</span>
-                </div>
+        <hr class="hr-base m-y-0 m-l-10x">
+        <div class="flex flex-alignCenter flex-fullJustified p-a-10x">
+            <div class="text-primary font-size-sm">
+                <span>Order # </span><span>@{{ $value.sub_order_no }}</span>
+            </div>
+            <div class="text-primary font-size-sm">
+                <span>Order Total: </span><span>$@{{ ($value.pay_amount/100).toFixed(2) }}</span>
             </div>
         </div>
+    </div>
 
     @{{ /each }}
     @{{ /each }}
