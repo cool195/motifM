@@ -137,7 +137,7 @@
             @if(!in_array($data['status_code'], array(11, 21, 27)))
                 <hr class="hr-base">
                 <div class="flex font-size-sm text-primary p-y-10x p-x-15x">
-                    <span class="orderInfo-subTitle flex-fixedShrink">Pay with</span>
+                    <span class="orderInfo-subTitle flex-fixedShrink">Pay With</span>
                     @if("PayPal" == $data['pay_type'] || "PayPayNative" == $data['pay_type'] || "PayPalNative" == $data['pay_type'])
                         <span class="cardImage-inline paypal"></span>
                     @elseif(array_get($data['cardlist'],$data['orderPayInfo']['card_type']))
@@ -211,7 +211,7 @@
 
 <!-- 弹出 选择支付方式 -->
 <div class="remodal remodal-lg modal-content" data-remodal-id="paywith-modal" id="paywithDialog">
-    <div class="p-a-15x text-left font-size-base p-l-20x"><strong>Pay with</strong></div>
+    <div class="p-a-15x text-left font-size-base p-l-20x"><strong>CheckOut With</strong></div>
     <div class="font-size-sm">
         <hr class="hr-base m-a-0">
         <a class="p-a-15x flex flex-fullJustified flex-alignCenter" href="/payAgain/{{$data['sub_order_no']}}/0">
