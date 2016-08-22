@@ -14,7 +14,7 @@
             <li class="nav-item">
                 <div style="width: 68px;">
                     <a href="/wish" class="head-wish">
-                        <span class="nav-shoppingWish" data-login="@if(Session::has('user')){{'true'}}@else{{'false'}}@endif">
+                        <span class="nav-shoppingWish">
                             <icon class="iconfont text-white icon-like nav-tap icon-size-md"></icon>
                         </span>
                     </a>
