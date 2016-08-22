@@ -33,9 +33,9 @@
         <!-- 订单商品列表 -->
         <aside class="bg-white m-b-10x">
             <!-- 正常订单 下单日期 -->
-        @if(in_array($data['status_code'], array(21, 22, 23)))
+            @if(in_array($data['status_code'], array(21, 22, 23)))
             <!--被取消的订单 取消原因、取消日期-->
-                <div class="p-a-10x">
+                <div class="p-a-10x @if($data['status_code'] == 21 || $data['status_code'] == 23) status-gray @else status-yellow @endif">
                     <div class="font-size-sm text-primary" id="orderState" data-state="true">
                         <strong>{{ $data['status_info'] }}:</strong>
                         <span>{{$data['create_time']}}</span></div>
@@ -45,7 +45,7 @@
                     </div>
                 </div>
             @else
-                <div class="p-y-10x p-x-15x ">
+                <div class="p-y-10x p-x-15x @if($data['status_code'] == 11) status-red @elseif($data['status_code'] == 23 || $data['status_code'] == 21  || $data['status_code'] == 27) status-gray @elseif($data['status_code'] == 25 || $data['status_code'] == 20) status-blue @elseif($data['status_code'] >= 17 && $data['status_code'] <= 19)  status-green @else status-yellow @endif ">
                     <span class="font-size-sm text-primary flex flex-fullJustified flex-alignCenter">
                         <span><strong>{{ $data['status_info'] }}:</strong> {{$data['create_time']}}</span>
                         @if($data['status_code']==11)
