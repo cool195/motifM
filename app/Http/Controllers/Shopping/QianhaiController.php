@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Shopping;
 use Illuminate\Http\Request;
 use App\Http\Controllers\ApiController;
 use Illuminate\Support\Facades\Session;
+use Log;
 
 class QianhaiController extends ApiController
 {
@@ -45,7 +46,7 @@ class QianhaiController extends ApiController
             'productName' => 'N/A',
             'productNum' => 'N/A'
         );
-
+        Log::info($postData);
         $postData['signValue'] = hash("sha256", $postData['account'] . $postData['terminal'] . $postData['backUrl'] . $postData['order_number'] . $postData['order_currency'] . $postData['order_amount'] . $postData['billing_firstName'] . $postData['billing_lastName'] . $postData['billing_email'] . $secureCode);
         $postStr = "<form style='display:none;' id='payform' name='payform' method='post' action='$postUrl'>";
         foreach ($postData as $k => $value) {
