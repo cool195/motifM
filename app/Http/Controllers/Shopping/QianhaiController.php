@@ -13,14 +13,13 @@ class QianhaiController extends ApiController
     public function index(Request $request)
     {
         $params = array(
-            'cmd' => 'detail',
+            'cmd' => 'payinfo',
             'token' => Session::get('user.token'),
             'pin' => Session::get('user.pin'),
-            'subno' => $request->input('orderid'),
+            'ordno' => $request->input('orderid'),
         );
-        $system = "";
-        $service = "order";
-        $addrData = $this->request('openapi', $system, $service, $params);
+        $addrData = $this->request('openapi', '', 'order', $params);
+
         $secureCode = 'v842rr80';
         $postUrl = $_SERVER['HTTP_HOST'] == 'm.motif.me' ? 'https://secure.oceanpayment.com/gateway/service/pay' : 'https://secure.oceanpayment.com/gateway/service/test';
         $postData = array(
@@ -33,10 +32,10 @@ class QianhaiController extends ApiController
             'order_number' => $request->input('orderid'),
             'order_currency' => 'USD',
             'order_amount' => $request->input('totalPrice'),
-            'billing_firstName' => 'N/A',
+            'billing_firstName' => $addrData['data']['userAddr']['name'],
             'billing_lastName' => 'N/A',
             'billing_email' => Session::get('user.login_email'),
-            'billing_phone' => 'N/A',
+            'billing_phone' => $addrData['data']['userAddr']['telephone'] ? $addrData['data']['userAddr']['telephone'] : 'N/A',
             'billing_country' => $addrData['data']['userAddr']['country'] ? $addrData['data']['userAddr']['country'] : 'N/A',
             'billing_city' => $addrData['data']['userAddr']['city'] ? $addrData['data']['userAddr']['city'] : 'N/A',
             'billing_address' => $addrData['data']['userAddr']['detail_address1'] ? $addrData['data']['userAddr']['detail_address1'] : 'N/A',
