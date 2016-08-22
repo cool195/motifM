@@ -35,17 +35,16 @@
 
     //shoppinglist 产品埋点
     function onImpressProduct(item) {
-        var jsonStr='';
-        for(var key in item){
 
-            jsonStr +='{"name":"' + item[key].main_title + '","id":"' + item[key].spu + '","price":"' + (item[key].skuPrice.sale_price/100).toFixed(2) + '","brand":"Motif","list":"shopping list"},';
+        var json = [];
+        for(var key in item){
+            json.push({"name":item[key].main_title,"id":item[key].spu,"price":(item[key].skuPrice.sale_price/100).toFixed(2),"brand":"Motif","list":"shopping list"});
         }
-        var obj=eval("["+jsonStr+"]");
         dataLayer.push({
             'event': 'impressProduct',
             'ecommerce': {
                 'currencyCode': 'EUR',
-                'impressions': obj
+                'impressions': json
             }
         });
     }
