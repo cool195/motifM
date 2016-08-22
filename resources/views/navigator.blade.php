@@ -12,14 +12,21 @@
                         srcset="{{env('CDN_Static')}}/images/logo/logo@2x.png 2x,{{env('CDN_Static')}}/images/logo/logo@3x.png 3x"></a>
             </li>
             <li class="nav-item">
-                <a href="/cart" class="head-cart">
-                    <div class="nav-shoppingCart" data-login="@if(Session::has('user')){{'true'}}@else{{'false'}}@endif">
-                        @if(!isset($pageScope))
-                            <img class="nav-tap" src="{{env('CDN_Static')}}/images/icon/icon-bag.png" srcset="{{env('CDN_Static')}}/images/icon/icon-bag@2x.png 2x,{{env('CDN_Static')}}/images/icon/icon-bag@3x.png 3x">
-                            <span class="shoppingCart-number" style="display: none;"></span>
-                        @endif
-                    </div>
-                </a>
+                <div style="width: 68px;">
+                    <a href="/wish" class="head-wish">
+                        <span class="nav-shoppingWish" data-login="@if(Session::has('user')){{'true'}}@else{{'false'}}@endif">
+                            <icon class="iconfont text-white icon-like nav-tap icon-size-md"></icon>
+                        </span>
+                    </a>
+                    <a href="/cart" class="head-cart">
+                        <span class="nav-shoppingCart" data-login="@if(Session::has('user')){{'true'}}@else{{'false'}}@endif">
+                            @if(!isset($pageScope))
+                                <img class="nav-tap" src="{{env('CDN_Static')}}/images/icon/icon-bag.png" srcset="{{env('CDN_Static')}}/images/icon/icon-bag@2x.png 2x,{{env('CDN_Static')}}/images/icon/icon-bag@3x.png 3x">
+                                <span class="shoppingCart-number" style="display: none;"></span>
+                            @endif
+                        </span>
+                    </a>
+                </div>
             </li>
         </ul>
     </nav>
