@@ -123,7 +123,7 @@
 
                 <hr class="hr-base">
                 <div class="flex font-size-sm text-primary p-x-10x p-y-5x" href="#">
-                    <span class="checkoutInfo-subTitle flex-fixedShrink p-y-5x">Pay with</span>
+                    <span class="checkoutInfo-subTitle flex-fixedShrink p-y-5x">CheckOut With</span>
                     <div class="checkoutInfo-content flex flex-alignCenter">
                         <div class="row flex-width">
                             <div class="col-xs-6 p-y-5x border-right active" id="payWith-card" data-with="Oceanpay">
