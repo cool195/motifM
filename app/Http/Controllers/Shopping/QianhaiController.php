@@ -84,22 +84,4 @@ class QianhaiController extends ApiController
 
         }
     }
-
-    private function replace($string, $keyArray, $replacement, $i)
-    {
-        $result = '';
-        if ($i < (count($keyArray))) {
-            $strSegArray = explode($keyArray[$i], $string);
-            foreach ($strSegArray as $index => $strSeg) {
-                $x = $i + 1;
-                if ($index == (count($strSegArray) - 1))
-                    $result = $result . replace($strSeg, $keyArray, $replacement, $x);
-                else
-                    $result = $result . replace($strSeg, $keyArray, $replacement, $x) . $replacement[$i];
-            }
-            return $result;
-        } else {
-            return $string;
-        }
-    }
 }
