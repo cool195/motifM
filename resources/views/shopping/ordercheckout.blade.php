@@ -199,7 +199,10 @@
 
             <!-- 结算按钮 -->
             <aside class="bg-white m-t-10x p-a-10x">
-                <div class="btn btn-primary btn-block @if(empty($paym) || empty($addr) || "" == $paym || "" == $addr) disabled @endif"  data-role="submit">Pay Now</div>
+                <div>
+                    <a class="btn btn-primary btn-block @if(empty($paym) || empty($addr) || "" == $paym || "" == $addr) disabled @endif"  data-role="submit">Pay with Credit Card</a>
+                    <a class="btn btn-primary btn-block m-t-10x m-l-0 @if(empty($paym) || empty($addr) || "" == $paym || "" == $addr) disabled @endif"  data-role="submit">Pay with PayPal</a>
+                </div>
             </aside>
         </section>
         <!-- 页脚 功能链接 start-->
