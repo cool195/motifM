@@ -32,7 +32,7 @@ class QianhaiController extends ApiController
             'order_number' => $request->input('orderid'),
             'order_currency' => 'USD',
             'order_amount' => $request->input('totalPrice'),
-            'billing_firstName' => urlencode($addrData['data']['userAddr']['name']),
+            'billing_firstName' => $this->replace($addrData['data']['userAddr']['name'],["'",'"',">","<"],['&#039;','&quot;','&gt;','&lt;']),
             'billing_lastName' => 'N/A',
             'billing_email' => Session::get('user.login_email'),
             'billing_phone' => $addrData['data']['userAddr']['telephone'] ? $addrData['data']['userAddr']['telephone'] : 'N/A',
@@ -82,6 +82,24 @@ class QianhaiController extends ApiController
                 return redirect('/order/orderdetail/' . $request->input('order_number'));
             }
 
+        }
+    }
+
+    private function replace($string, $keyArray, $replacement, $i)
+    {
+        $result = '';
+        if ($i < (count($keyArray))) {
+            $strSegArray = explode($keyArray[$i], $string);
+            foreach ($strSegArray as $index => $strSeg) {
+                $x = $i + 1;
+                if ($index == (count($strSegArray) - 1))
+                    $result = $result . replace($strSeg, $keyArray, $replacement, $x);
+                else
+                    $result = $result . replace($strSeg, $keyArray, $replacement, $x) . $replacement[$i];
+            }
+            return $result;
+        } else {
+            return $string;
         }
     }
 }
