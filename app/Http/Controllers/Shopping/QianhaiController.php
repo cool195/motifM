@@ -32,7 +32,7 @@ class QianhaiController extends ApiController
             'order_number' => $request->input('orderid'),
             'order_currency' => 'USD',
             'order_amount' => $request->input('totalPrice'),
-            'billing_firstName' => $this->replace(trim($addrData['data']['userAddr']['name']),["'",'"',">","<"],['&#039;','&quot;','&gt;','&lt;']),
+            'billing_firstName' => $this->replace(trim($addrData['data']['userAddr']['name']),["'",'"',">","<"],['&#039;','&quot;','&gt;','&lt;'],0),
             'billing_lastName' => 'N/A',
             'billing_email' => Session::get('user.login_email'),
             'billing_phone' => $addrData['data']['userAddr']['telephone'] ? $addrData['data']['userAddr']['telephone'] : 'N/A',
