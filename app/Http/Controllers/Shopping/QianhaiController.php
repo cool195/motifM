@@ -36,7 +36,7 @@ class QianhaiController extends ApiController
             'billing_lastName' => 'N/A',
             'billing_email' => Session::get('user.login_email'),
             'billing_phone' => $addrData['data']['userAddr']['telephone'] ? $addrData['data']['userAddr']['telephone'] : 'N/A',
-            'billing_country' => $addrData['data']['userAddr']['country'] ? $addrData['data']['userAddr']['country'] : 'N/A',
+            'billing_country' => $addrData['data']['userAddr']['country_name_sn'] ? $addrData['data']['userAddr']['country_name_sn'] : 'N/A',
             'billing_city' => $addrData['data']['userAddr']['city'] ? $addrData['data']['userAddr']['city'] : 'N/A',
             'billing_address' => $addrData['data']['userAddr']['detail_address1'] ? $addrData['data']['userAddr']['detail_address1'] : 'N/A',
             'billing_zip' => $addrData['data']['userAddr']['zip'] ? $addrData['data']['userAddr']['zip'] : 'N/A',
