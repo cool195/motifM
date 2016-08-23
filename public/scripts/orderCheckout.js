@@ -78,6 +78,7 @@
         onCheckout();
 
         if (!$(this).hasClass('disabled')) {
+            $('input[name="paym"]').val($(this).data('with'));
             openLoading();
             $.ajax({
                 url: '/order/orderSubmit',
@@ -86,7 +87,6 @@
             })
                 .done(function (data) {
                     if (data.success) {
-                        console.log('success');
                         window.location.href = data.redirectUrl;
                     }else{
                         alert(data.error_msg);
@@ -101,22 +101,6 @@
                     console.log('complete');
                 });
         }
-    });
-
-    $('input[name="paywith"]').on('click',function(){
-
-    });
-
-    // 切换 支付方式
-    $('#payWith-card').on('click',function(){
-        $('#payWith-paypal').removeClass('active');
-        $(this).addClass('active');
-        $('input[name="paym"]').val($(this).data('with'));
-    });
-    $('#payWith-paypal').on('click',function(){
-        $('#payWith-card').removeClass('active');
-        $(this).addClass('active');
-        $('input[name="paym"]').val($(this).data('with'));
     });
 })(jQuery);
 

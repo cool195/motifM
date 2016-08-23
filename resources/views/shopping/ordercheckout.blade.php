@@ -120,33 +120,6 @@
                         <i class="iconfont icon-arrow-right icon-size-xm text-common p-r-15x"></i>
                     </div>
                 </a>
-
-                <hr class="hr-base">
-                <div class="flex font-size-sm text-primary p-x-10x p-y-5x" href="#">
-                    <span class="checkoutInfo-subTitle flex-fixedShrink p-y-5x">CheckOut With</span>
-                    <div class="checkoutInfo-content flex flex-alignCenter">
-                        <div class="row flex-width">
-                            <div class="col-xs-6 p-y-5x border-right active" id="payWith-card" data-with="Oceanpay">
-                                <div class="payWith-card-active">
-                                    <span class="delivery-text"><img src="{{env('CDN_Static')}}/images/payment/icon-card2-color.png" srcset="{{env('CDN_Static')}}/images/payment/icon-card2-color@2x.png 2x,{{env('CDN_Static')}}/images/payment/icon-card2-color@3x.png 3x" alt=""></span>
-                                    <i class="iconfont icon-check icon-size-md text-common p-l-5x"></i>
-                                </div>
-                                <!-- 灰色 -->
-                                <span class="delivery-text payWith-card"><img src="{{env('CDN_Static')}}/images/payment/icon-card2.png" srcset="{{env('CDN_Static')}}/images/payment/icon-card2@2x.png 2x,{{env('CDN_Static')}}/images/payment/icon-card2@3x.png 3x" alt=""></span>
-                            </div>
-                            <div class="col-xs-6 p-y-5x" id="payWith-paypal" data-with="PayPalNative">
-                                <span class="payWith-paypal delivery-text p-l-5x"><img src="{{env('CDN_Static')}}/images/payment/icon-Paypal-inactive.png" srcset="{{env('CDN_Static')}}/images/payment/icon-Paypal-inactive@2x.png 2x,{{env('CDN_Static')}}/images/payment/icon-Paypal-inactive@3x.png 3x" alt=""></span>
-
-                                <!-- 彩色图标 -->
-                                <div class="payWith-paypal-active">
-                                    <span class="delivery-text p-l-5x"><img src="{{env('CDN_Static')}}/images/payment/icon-paypal2-color.png" srcset="{{env('CDN_Static')}}/images/payment/icon-paypal2-color@2x.png 2x,{{env('CDN_Static')}}/images/payment/icon-paypal2-color@3x.png 3x" alt=""></span>
-                                    <i class="iconfont icon-check icon-size-md text-common p-l-5x"></i>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
                 <hr class="hr-base">
                 <div class="flex font-size-sm text-primary p-a-10x order-option" data-form-action="/cart/coupon">
                     <span class="checkoutInfo-subTitle flex-fixedShrink">Promotion code</span>
@@ -200,8 +173,8 @@
             <!-- 结算按钮 -->
             <aside class="bg-white m-t-10x p-a-10x">
                 <div>
-                    <a class="btn btn-primary btn-block @if(empty($paym) || empty($addr) || "" == $paym || "" == $addr) disabled @endif"  data-role="submit">Pay with Credit Card</a>
-                    <a class="btn btn-primary btn-block m-t-10x m-l-0 @if(empty($paym) || empty($addr) || "" == $paym || "" == $addr) disabled @endif"  data-role="submit">Pay with PayPal</a>
+                    <a class="btn btn-primary btn-block @if(empty($paym) || empty($addr) || "" == $paym || "" == $addr) disabled @endif"  data-role="submit" data-with="Oceanpay">Pay with Credit Card</a>
+                    <a class="btn btn-primary btn-block m-t-10x m-l-0 @if(empty($paym) || empty($addr) || "" == $paym || "" == $addr) disabled @endif"  data-role="submit" data-with="PayPalNative">Pay with PayPal</a>
                 </div>
             </aside>
         </section>
