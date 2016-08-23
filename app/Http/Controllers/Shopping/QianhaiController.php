@@ -78,7 +78,7 @@ class QianhaiController extends ApiController
             }
         } else {
             if (strstr($_SERVER['HTTP_USER_AGENT'], 'motif-android') || strstr($_SERVER['HTTP_USER_AGENT'], 'motif-ios')) {
-                return redirect('http://motif.pay/error=true');
+                return redirect('http://motif.pay/error=true?payment_details='.$request->input('payment_details'));
             } else {
                 return redirect('/order/orderdetail/' . $request->input('order_number'));
             }
