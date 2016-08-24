@@ -89,7 +89,7 @@
         @if(isset($designer['detailVideoPath']))
             <!-- 视频 -->
                 <div class="designer-media bg-white m-b-10x">
-                    <div class="player-item" data-playid="M7lc1UVf-VE">
+                    <div class="player-item" data-playid="{{$designer['detailVideoPath']}}">
                         <div id="{{$designer['detailVideoPath']}}" class="ytplayer" data-playid="{{$designer['detailVideoPath']}}"></div>
                         <div class="bg-player">
                             <img class="bg-img" src="{{env('APP_Api_Image')}}/n2/{{$designer['img_video_path']}}" alt="">

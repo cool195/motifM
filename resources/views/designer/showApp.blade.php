@@ -4,6 +4,7 @@
     <title>DESIGNER</title>
     @include('head')
     <link rel="stylesheet" href="{{env('CDN_Static')}}/styles/designerDetail.css?v=3">
+    <script src="https://www.youtube.com/player_api"></script>
 </head>
 <body>
 <input type="text" id="productClick-name" value="name" hidden>
@@ -82,25 +83,35 @@
     <div class="body-container" style="padding-top:0px">
         {{--designerDetail 设计师详情--}}
         <section class="reserve-height">
-            {{--视频/图片--}}
-            <div class="designer-media flex flex-justifyCenter flex-alignCenter">
-                <img class="designer-placeImg" src="{{env('CDN_Static')}}/images/designer/placeholder.jpg" hidden>
-                @if($designer['path_type']==2)
-                    <div id="ytplayer" data-playid="{{$designer['img_video_path']}}">
-                        <div class="loading loading-screen loading-transprant loading-hidden">
-                            <div class="">
-                                <div class="loader"></div>
-                                <div class="text-white font-size-md text-center m-t-10x">Loading</div>
+        @if(isset($designer['detailVideoPath']))
+            <!-- 视频 -->
+                <div class="designer-media bg-white m-b-10x">
+                    <div class="player-item" data-playid="{{$designer['detailVideoPath']}}">
+                        <div id="{{$designer['detailVideoPath']}}" class="ytplayer"
+                             data-playid="{{$designer['detailVideoPath']}}"></div>
+                        <div class="bg-player">
+                            <img class="bg-img" src="{{env('APP_Api_Image')}}/n2/{{$designer['img_video_path']}}"
+                                 alt="">
+                            <div class="btn-beginPlayer">
+                                <img src="/images/daily/icon-player.png"
+                                     srcset="/images/daily/icon-player@2x.png 2x,/images/daily/icon-player@3x.png 3x"
+                                     alt="">
                             </div>
                         </div>
                     </div>
-                @else
-                    <img src="{{env('APP_Api_Image')}}/n1/{{$designer['img_video_path']}}" hidden>
+                </div>
+        @else
+            <!-- 图片-->
+                <div class="designer-media flex flex-justifyCenter flex-alignCenter">
+                    <img class="designer-placeImg" src="{{env('CDN_Static')}}/images/designer/placeholder.jpg" alt=""
+                         hidden>
+                    <img src="{{env('APP_Api_Image')}}/n2/{{$designer['img_video_path']}}" alt=""
+                         class="designer-realImg" hidden>
                     <img style="height: 100%" class="img-fluid img-lazy designer-Img"
-                         data-original="{{env('APP_Api_Image')}}/n1/{{$designer['img_video_path']}}"
-                         src="/images/designer/bg-designer@750x550.png">
-                @endif
-            </div>
+                         data-original="{{env('APP_Api_Image')}}/n2/{{$designer['img_video_path']}}"
+                         src="{{env('CDN_Static')}}/images/designer/bg-designer@750x550.png" alt="">
+                </div>
+            @endif
 
             {{--设计师 文字信息--}}
             <div class="bg-white p-a-5x">
@@ -228,7 +239,9 @@
                                         <div class="p-x-15x p-y-10x">
                                             <a data-link="motif://o.c?a=pd&spu={{$spu}}"
                                                data-clk='http://clk.motif.me/log.gif?t=designer.400001&m=H5_M2016-1&pin={{ Session::get('user.pin') }}&uuid={{ Session::get('user.uuid') }}&v={"action":1,"skipType":1,"skipId"{{$spu}},"expid":0,"index":{{$key}},"version":"1.0.1","ver":"9.2","src":"H5"}'
-                                               href="javascript:void(0)" data-spu="{{$spu}}" data-title="{{$product['spuInfos'][$spu]['spuBase']['main_title']}}" data-price="{{number_format($product['spuInfos'][$spu]['skuPrice']['sale_price']/100,2)}}">
+                                               href="javascript:void(0)" data-spu="{{$spu}}"
+                                               data-title="{{$product['spuInfos'][$spu]['spuBase']['main_title']}}"
+                                               data-price="{{number_format($product['spuInfos'][$spu]['skuPrice']['sale_price']/100,2)}}">
                                                 <img class="img-fluid img-lazy"
                                                      src="{{env('CDN_Static')}}/images/product/bg-product@336.png"
                                                      data-original="{{env('APP_Api_Image')}}/n2/{{$product['spuInfos'][$spu]['spuBase']['main_image_url']}}"
@@ -248,7 +261,9 @@
                                                     <div class="bg-white topic-product-item productList-item">
                                                         <a data-link="motif://o.c?a=pd&spu={{$spu}}"
                                                            data-clk='http://clk.motif.me/log.gif?t=designer.400001&m=H5_M2016-1&pin={{ Session::get('user.pin') }}&uuid={{ Session::get('user.uuid') }}&v={"action":1,"skipType":1,"skipId"{{$spu}},"expid":0,"index":{{$key}},"version":"1.0.1","ver":"9.2","src":"H5"}'
-                                                           href="javascript:void(0)" data-spu="{{$spu}}" data-title="{{$product['spuInfos'][$spu]['spuBase']['main_title']}}" data-price="{{number_format($product['spuInfos'][$spu]['skuPrice']['sale_price']/100,2)}}">
+                                                           href="javascript:void(0)" data-spu="{{$spu}}"
+                                                           data-title="{{$product['spuInfos'][$spu]['spuBase']['main_title']}}"
+                                                           data-price="{{number_format($product['spuInfos'][$spu]['skuPrice']['sale_price']/100,2)}}">
                                                             <div class="image-container">
                                                                 <img class="img-fluid img-lazy"
                                                                      data-original="{{env('APP_Api_Image')}}/n2/{{$product['spuInfos'][$spu]['spuBase']['main_image_url']}}"
@@ -301,7 +316,9 @@
                                     <div class="bg-white topic-product-item productList-item">
                                         <a data-clk='{{ $value['clk'] }}'
                                            data-link="motif://o.c?a=pd&spu={{$value['spu']}}"
-                                           data-impr="{{ $value['impr'] }}" href="javascript:void(0)" data-spu="{{$value['spu']}}" data-title="{{$value['main_title']}}" data-price="{{number_format($value['skuPrice']['sale_price']/100,2)}}">
+                                           data-impr="{{ $value['impr'] }}" href="javascript:void(0)"
+                                           data-spu="{{$value['spu']}}" data-title="{{$value['main_title']}}"
+                                           data-price="{{number_format($value['skuPrice']['sale_price']/100,2)}}">
                                             <div class="image-container">
                                                 <img class="img-fluid img-lazy"
                                                      data-original="{{env('APP_Api_Image')}}/n2/{{$value['main_image_url']}}"
@@ -323,14 +340,14 @@
                                                 @endif
                                             </div>
                                             @if(false)
-                                            @if(Session::get('user.pin'))
-                                                <span class="p-r-5x wish" data-id="{{$value['spu']}}"
-                                                      id="{{'wish'.$value['spu']}}"><i
-                                                            class="iconfont icon-like product-heart"></i></span>
-                                            @else
-                                                <span class="p-r-5x"><i
-                                                            class="iconfont icon-like product-heart sendLogin"></i></span>
-                                            @endif
+                                                @if(Session::get('user.pin'))
+                                                    <span class="p-r-5x wish" data-id="{{$value['spu']}}"
+                                                          id="{{'wish'.$value['spu']}}"><i
+                                                                class="iconfont icon-like product-heart"></i></span>
+                                                @else
+                                                    <span class="p-r-5x"><i
+                                                                class="iconfont icon-like product-heart sendLogin"></i></span>
+                                                @endif
                                             @endif
                                         </div>
                                     </div>
