@@ -92,7 +92,7 @@
                         <div class="bg-player">
                             <img class="bg-img" src="{{env('APP_Api_Image')}}/n2/{{$designer['img_video_path']}}"
                                  alt="">
-                            <div class="btn-beginPlayer">
+                            <div class="btn-beginPlayer designer-beginPlayer">
                                 <img src="/images/daily/icon-player.png"
                                      srcset="/images/daily/icon-player@2x.png 2x,/images/daily/icon-player@3x.png 3x"
                                      alt="">

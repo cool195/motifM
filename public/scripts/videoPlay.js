@@ -26,9 +26,10 @@ switch (switchDevice()) {
     default:
         break;
 }
-if ($('#ytplayer').length > 0) {
+if ($('.ytplayer').length > 0) {
     // 初始化 外边框尺寸
     $('.designer-media').css('height', MediaHeight);
+    $('.designer-beginPlayer').css('display','block');
     //$('#ytplayer').find('.loading').removeClass('loading-hidden');
 
     // 加载视频

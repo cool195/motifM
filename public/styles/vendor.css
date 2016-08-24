@@ -5791,6 +5791,9 @@ footer .links-group {
   width: 100%;
   text-align: center;
 }
+.designer-beginPlayer{
+  display: none;
+}
 
 .player-item .btn-morePlayer {
   position: absolute;
