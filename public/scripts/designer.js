@@ -58,6 +58,15 @@
 
                 appendDesignerList(data.data);
 
+                // 视频区域高度
+                var MediaScale = 9 / 16;
+                var Width = $(window).width(),
+                    MediaHeight = Width * MediaScale;
+                if ($('.ytplayer').length > 0) {
+                    // 初始化 外边框尺寸
+                    $('.designer-media').css('height', MediaHeight);
+                }
+
                 // 判断当前页是否是最后一页
                 // CurrentSize 当前页显示条数
                 // StartNum 下一页开始条数

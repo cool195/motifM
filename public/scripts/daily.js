@@ -55,6 +55,16 @@
                 } else {
                     // 遍历模板 插入页面
                     appendDailyList('tpl-daily', data.data);
+
+                    // 视频区域高度
+                    var MediaScale = 9 / 16;
+                    var Width = $(window).width(),
+                        MediaHeight = Width * MediaScale;
+                    if ($('.ytplayer').length > 0) {
+                        // 初始化 外边框尺寸
+                        $('.designer-media').css('height', MediaHeight);
+                    }
+
                     // 页数 +1
                     $DailyContainer.data('pagenum', PageNum);
 
@@ -177,6 +187,7 @@
             pullLoading();
         });
     });
+
 })(jQuery);
 
 //# sourceMappingURL=daily.js.map

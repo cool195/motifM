@@ -7,6 +7,7 @@
 
     <link rel="stylesheet" href="{{env('CDN_Static')}}/styles/daily.css{{'?v='.config('app.version')}}">
     <script src="{{env('CDN_Static')}}/scripts/vendor/template-native.js{{'?v='.config('app.version')}}"></script>
+    <script src="https://www.youtube.com/player_api"></script>
 </head>
 <body>
 @include('check.tagmanager')
@@ -21,6 +22,23 @@
         <section id="dailyContainer" class="reserve-height" data-loading="false" data-pagenum="0"
                  data-productpagenum="0">
             <div class="daily-content">
+
+                <!-- 视频 -->
+                {{--<div class="designer-media bg-white m-b-10x">--}}
+                    {{--<div class="player-item" data-playid="M7lc1UVf-VE">--}}
+                        {{--<div id="M7lc1UVf-VE" class="ytplayer" data-playid="M7lc1UVf-VE"></div>--}}
+                        {{--<div class="bg-player">--}}
+                            {{--<img class="img-fluid bg-img" src="/images/daily/daily1.jpg" alt="">--}}
+                            {{--<div class="btn-beginPlayer">--}}
+                                {{--<img src="/images/daily/icon-player.png"--}}
+                                     {{--srcset="/images/daily/icon-player@2x.png 2x,/images/daily/icon-player@3x.png 3x" alt="">--}}
+                            {{--</div>--}}
+                        {{--</div>--}}
+                        {{--<div class="btn-morePlayer">--}}
+                            {{--<a class="text-white font-size-sm" href=""><strong>Click for More</strong></a>--}}
+                        {{--</div>--}}
+                    {{--</div>--}}
+                {{--</div>--}}
 
             </div>
             <input hidden id="puton" value="{{$puton}}">
@@ -70,6 +88,24 @@
         </div>
     </a>
     @{{ /if }}
+
+    @{{ if $value.type == "3" }}
+    <div class="designer-media bg-white m-b-10x">
+        <div class="player-item" data-playid="@{{ $value.videoId }}">
+            <div id="@{{ $value.videoId }}" class="ytplayer" data-playid="@{{ $value.videoId }}"></div>
+            <div class="bg-player">
+                <img class="bg-img" src="{{env('APP_Api_Image')}}/n1/@{{ $value.imgPath }}" alt="">
+                <div class="btn-beginPlayer">
+                    <img src="/images/daily/icon-player.png"
+                         srcset="/images/daily/icon-player@2x.png 2x,/images/daily/icon-player@3x.png 3x" alt="">
+                </div>
+            </div>
+            <div class="btn-morePlayer">
+                <a class="text-white font-size-sm" href="@{{ if $value.skipType == 1 }}/detail/@{{ else if $value.skipType == 2 }}/designer/@{{ else if $value.skipType == 3 }}/topic/@{{ else if $value.skipType == 4 }}/shopping#@{{ /if }}@{{ $value.skipId }}"><strong>Click for More</strong></a>
+            </div>
+        </div>
+    </div>
+    @{{ /if }}
     @{{ /each }}
 </template>
 <!-- 更多商品图片 模板 -->
@@ -89,8 +125,11 @@
 {{--@{{ /each }}--}}
 {{--</template>--}}
 
+
 <script src="{{env('CDN_Static')}}/scripts/vendor.js{{'?v='.config('app.version')}}"></script>
 
 <script src="{{env('CDN_Static')}}/scripts/daily.js{{'?v='.config('app.version')}}"></script>
+
+<script src="{{env('CDN_Static')}}/scripts/dailyVideoPlay.js"></script>
 @include('global')
 </html>

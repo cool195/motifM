@@ -5763,3 +5763,46 @@ footer .links-group {
 .border-right {
   border-right: 1px solid #e2e5ed;
 }
+
+/* 视频 */
+.player-item {
+  position: relative;
+  height: 100%;
+}
+
+.player-item .bg-player {
+  position: absolute;
+  background-color: #333;
+  top: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.player-item .bg-img {
+  opacity: .7;
+  width: 100%;
+  height: 100%;
+}
+
+.player-item .btn-beginPlayer {
+  position: absolute;
+  top: 50%;
+  transform: translate(0px, -50%);
+  width: 100%;
+  text-align: center;
+}
+
+.player-item .btn-morePlayer {
+  position: absolute;
+  right: 10px;
+  bottom: 15px;
+  display: none;
+
+}
+
+.player-item .btn-morePlayer a {
+  padding: 6px 9px 7px;
+  border-radius: 5px;
+  border: 1px solid #ffffff;
+  background: rgba(0, 0, 0, 0.3);
+}

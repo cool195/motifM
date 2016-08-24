@@ -8,6 +8,7 @@
 // youtube 视频播放
 // 视频比例
 var MediaScale = 9 / 16;
+var $ClickPlayer;
 
 var Width = $(window).width(),
     MediaHeight = Width * MediaScale,
@@ -28,38 +29,44 @@ switch (switchDevice()) {
 if ($('#ytplayer').length > 0) {
     // 初始化 外边框尺寸
     $('.designer-media').css('height', MediaHeight);
-    $('#ytplayer').find('.loading').removeClass('loading-hidden');
+    //$('#ytplayer').find('.loading').removeClass('loading-hidden');
 
     // 加载视频
-    var tag = document.createElement('script');
-    tag.src = 'https://www.youtube.com/player_api';
-    var firstScriptTag = document.getElementsByTagName('script')[0];
-    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+    //var tag = document.createElement('script');
+    //tag.src = 'https://www.youtube.com/player_api';
+    //var firstScriptTag = document.getElementsByTagName('script')[0];
+    //firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
 }
 var player;
-var PlayId = $('#ytplayer').data('playid');
-
-function onYouTubePlayerAPIReady() {
-    player = new YT.Player('ytplayer', {
+$('.bg-player').on('click', function () {
+    var PlayId = $(this).siblings('.ytplayer').data('playid');
+    player = new YT.Player(PlayId, {
         height: MediaHeight,
         width: Width,
         videoId: PlayId,
-        //playerVars: {'autoplay': 0},
+        playerVars: {'autoplay': 1},
         events: {
             'onReady': onPlayerReady,
             'onError': onPlayerError
         }
     });
-}
+
+    $ClickPlayer = $(this);
+    $(this).css('display', 'none');
+    $(this).children('.bg-img').hide();
+    $(this).children('.btn-beginPlayer').hide();
+    $(this).siblings('.btn-morePlayer').show();
+    $(this).parents('.player-item').addClass('active');
+});
 
 // 设置 视频默认播放 和 关闭音量 和 视频继续播放
 function onPlayerReady(event) {
-    if (autoplay == 0) {
-        event.target.stopVideo();
-    } else {
-        event.target.playVideo();
-    }
+    //if (autoplay == 0) {
+    //    event.target.stopVideo();
+    //} else {
+    event.target.playVideo();
+    //}
     event.target.mute();
 }
 

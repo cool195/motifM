@@ -76,6 +76,7 @@
     });
 </script>
 @include('check.tagmanager')
+<script src="https://www.youtube.com/player_api"></script>
         <!-- 外层容器 -->
 <div id="body-content">
     <!-- 展开的汉堡菜单 -->
@@ -85,6 +86,26 @@
         @include('navigator')
                 <!-- designerDetail 设计师详情 -->
         <section class="reserve-height">
+
+            <!-- 视频 -->
+            <div class="designer-media bg-white m-b-10x">
+                <div class="player-item" data-playid="M7lc1UVf-VE">
+                    <div id="M7lc1UVf-VE" class="ytplayer" data-playid="M7lc1UVf-VE"></div>
+                    <div class="bg-player">
+                        <img class="bg-img" src="/images/daily/daily1.jpg" alt="">
+                        <div class="btn-beginPlayer">
+                            <img src="/images/daily/icon-player.png"
+                                 srcset="/images/daily/icon-player@2x.png 2x,/images/daily/icon-player@3x.png 3x" alt="">
+                        </div>
+                    </div>
+                    <div class="btn-morePlayer">
+                        <a class="text-white font-size-sm" href=""><strong>Click for More</strong></a>
+                    </div>
+                </div>
+            </div>
+            
+
+
             <!-- 视频/图片-->
             <div class="designer-media flex flex-justifyCenter flex-alignCenter">
                 <img class="designer-placeImg" src="{{env('CDN_Static')}}/images/designer/placeholder.jpg" alt=""
