@@ -54,7 +54,7 @@ $('.daily-content').on('click', '.bg-player', function () {
     $(this).css('display', 'none');
     $(this).children('.bg-img').hide();
     $(this).children('.btn-beginPlayer').hide();
-    $(this).siblings('.btn-morePlayer').show();
+    //$(this).siblings('.btn-morePlayer').show();
     $(this).parents('.player-item').addClass('active');
 });
 
@@ -76,7 +76,7 @@ $('.designer-content').on('click', '.bg-player', function () {
     $(this).css('display', 'none');
     $(this).children('.bg-img').hide();
     $(this).children('.btn-beginPlayer').hide();
-    $(this).siblings('.btn-morePlayer').show();
+    //$(this).siblings('.btn-morePlayer').show();
     $(this).parents('.player-item').addClass('active');
 });
 
@@ -93,7 +93,7 @@ $(document).on('scroll', function (event) {
                 $Player.children('.bg-player').css('display', 'block');
                 $Player.children('.bg-player').children('.bg-img').css('display', 'block');
                 $Player.children('.bg-player').children('.btn-beginPlayer').css('display', 'block');
-                $Player.children('.btn-morePlayer').css('display', 'none');
+                //$Player.children('.btn-morePlayer').css('display', 'none');
                 $Player.removeClass('active');
                 $Player.children('iframe').remove();
                 if (!isAdd) {
