@@ -68,7 +68,7 @@ function onPlayerReady(event) {
     //} else {
     event.target.playVideo();
     //}
-    event.target.mute();
+    //event.target.mute();
 }
 
 // 视频播放失败

@@ -8,7 +8,7 @@
 // 设置 视频默认播放 和 关闭音量 和 视频继续播放
 function onPlayerReady(event) {
     event.target.playVideo();
-    event.target.mute();
+    //event.target.mute();
 }
 
 // 视频播放失败
