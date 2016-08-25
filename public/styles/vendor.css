@@ -5673,6 +5673,7 @@ footer .links-group {
   position: relative;
   width: 34px;
   color: #FFFFFF;
+  display: flex;
 }
 
 .nav-shoppingCart .shoppingCart-number {
