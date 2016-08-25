@@ -278,6 +278,7 @@
 
         //login send
         $('.sendLogin').on('click', function () {
+            alert($(this).data('id'))
             Jockey.send("action", {
                 name: "login",
                 token: $(this).data('id'),
