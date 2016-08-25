@@ -118,7 +118,7 @@
                                 @endif
                             @else
                                 <a href="#" class="btn btn-sm btn-follow active sendLogin"
-                                   data-followid="1">Follow</a>
+                                   data-id="{{'follow-'.$designer['designer_id']}}">Follow</a>
                             @endif
                         </span>
                         <span>
@@ -277,7 +277,7 @@
                                                                                 class="iconfont icon-like product-heart"></i></span>
                                                                 @else
                                                                     <span class="p-r-5x"><i
-                                                                                class="iconfont icon-like product-heart sendLogin"></i></span>
+                                                                                class="iconfont icon-like product-heart sendLogin" data-id="{{'wish-'.$spu}}"></i></span>
                                                                 @endif
 
                                                         </div>
@@ -329,7 +329,7 @@
                                                             class="iconfont icon-like product-heart"></i></span>
                                             @else
                                                 <span class="p-r-5x"><i
-                                                            class="iconfont icon-like product-heart sendLogin"></i></span>
+                                                            class="iconfont icon-like product-heart sendLogin" data-id="{{'wish-'.$value['spu']}}"></i></span>
                                             @endif
                                         </div>
                                     </div>

@@ -165,7 +165,7 @@
                                                                         class="iconfont icon-like product-heart"></i></span>
                                                         @else
                                                             <span class="p-r-5x"><i
-                                                                        class="iconfont icon-like product-heart sendLogin"></i></span>
+                                                                        class="iconfont icon-like product-heart sendLogin" data-id="{{'wish-'.$spu}}"></i></span>
                                                         @endif
                                                     </div>
                                                 </div>
@@ -270,7 +270,7 @@
                             $('#wish' + value).html('<i class="iconfont icon-onheart product-heart active"></i>');
                         });
                     } else if (actionName.name == "authInfo") {
-                        window.location.href = "/topic/{{$topicID}}?token=" + actionName.data.token + "&pin=" + actionName.data.pin + "&email=" + actionName.data.email + "&name=" + decodeURIComponent(actionName.data.name);
+                        window.location.href = "/topic/{{$topicID}}?dataid="+actionName.token+"&token=" + actionName.data.token + "&pin=" + actionName.data.pin + "&email=" + actionName.data.email + "&name=" + decodeURIComponent(actionName.data.name);
                     }
                 }
         );
@@ -279,7 +279,7 @@
         $('.sendLogin').on('click', function () {
             Jockey.send("action", {
                 name: "login",
-                token: "key",
+                token: $(this).data('id'),
             });
         });
 

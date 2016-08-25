@@ -73,6 +73,25 @@ class DailyController extends ApiController
                         'uuid' => $_COOKIE['UUID'],
                     ));
                 }
+                //执行登录前操作
+                if($request->input('dataid')){
+                    $dataid = explode($request->input('dataid'),'-');
+                    $params = array(
+                        'cmd' => 'is',
+                        'spu' => $dataid[1],
+                        'pin' => Session::get('user.pin'),
+                        'token' => Session::get('user.token'),
+                    );
+                    $result = $this->request('openapi', '', 'wishlist', $params);
+                    $cmd = $result['data']['isFC'] ? 'del' : 'add';
+                    $params = array(
+                        'cmd' => $cmd,
+                        'spu' => $dataid[1],
+                        'pin' => Session::get('user.pin'),
+                        'token' => Session::get('user.token'),
+                    );
+                    $result = $this->request('openapi', '', 'wishlist', $params);
+                }
                 $spuArray = array();
                 foreach ($result['data']['infos'] as $value) {
                     if (isset($value['spus'])) {
