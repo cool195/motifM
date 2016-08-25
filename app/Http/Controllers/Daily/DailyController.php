@@ -87,7 +87,7 @@ class DailyController extends ApiController
                         'token' => $data['token'],
                     );
                     $resultIS = $this->request('openapi', '', 'wishlist', $params);
-                    Log::info('dataid:::'.$resultIS['data']['isFC']);
+                    Log::info('spu:::'.$dataid[1].'pin:::'.$data['pin'].'token:::'.$data['token']);
                     if(!$resultIS['data']['isFC']){
                         $params = array(
                             'cmd' => 'add',
@@ -95,7 +95,6 @@ class DailyController extends ApiController
                             'pin' => $data['pin'],
                             'token' => $data['token'],
                         );
-                        Log::info('asdf:::');
                         $this->request('openapi', '', 'wishlist', $params);
                     }
                 }
