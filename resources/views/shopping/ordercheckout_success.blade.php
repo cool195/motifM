@@ -53,14 +53,14 @@
         <section class="reserve-height"
                  data-impr='http://clk.motif.me/log.gif?t=order.100001&m=H5_M2016-1&pin={{Session::get('user.pin')}}&uuid={{Session::get('user.uuid')}}&v={"orderno":"{{ $order['sub_order_no'] }}","version":"1.0.1","ver":"9.2","src":"H5"}'>
             <article class="bg-white m-b-10x p-a-15x text-center">
-                <h5 class="font-size-lx text-primary p-t-5x m-b-20x">Order Comfirmed</h5>
+                <h5 class="font-size-lx text-primary p-t-5x m-y-20x">Thank You!<br>Your Order is Confirmed</h5>
                 <div class="font-size-sm text-primary p-t-5x">A confirmation email has been sent to:</div>
                 <div class="font-size-sm text-primary m-b-20x"><strong>{{Session::get('user.login_email')}}</strong>
                 </div>
-                <p class="font-size-xs text-common m-b-15x p-t-10x">You can track
+                <p class="font-size-xs text-common m-b-15x p-t-10x p-x-20x m-x-10x">You can track
                     <a href="@if(!empty($order))/order/orderdetail/{{$order['sub_order_no']}}@else /order/orderlist @endif"
                        class="text-primary text-underLine">your order</a>
-                    at any time by visting the Orders tab
+                    at any time by visting the Orders tab in settings.
                 </p>
                 <a href="/shopping" class="btn btn-primary btn-block btn-sm" type="submit">Continue Shopping</a>
             </article>
