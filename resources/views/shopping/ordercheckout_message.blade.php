@@ -50,5 +50,13 @@
 <script src="{{env('CDN_Static')}}/scripts/vendor.js{{'?v='.config('app.version')}}"></script>
 
 <script src="{{env('CDN_Static')}}/scripts/orderCheckout-message.js{{'?v='.config('app.version')}}"></script>
+<script>
+    $(document).ready(function(){
+        setTimeout(function () {
+            $('#messageContent').focus();
+        }, 500);
+
+    })
+</script>
 @include('global')
 </html>
