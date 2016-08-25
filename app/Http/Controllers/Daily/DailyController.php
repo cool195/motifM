@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Daily;
 use Illuminate\Http\Request;
 use App\Http\Controllers\ApiController;
 use Illuminate\Support\Facades\Session;
+use Log;
 
 class DailyController extends ApiController
 {
@@ -74,8 +75,10 @@ class DailyController extends ApiController
                     ));
                 }
                 //执行登录前操作
+                Log::info('dataid:::'.$request->input('dataid'));
                 if($request->input('dataid')){
                     $dataid = explode($request->input('dataid'),'-');
+                    Log::info('dataid:::'.$dataid[1]);
                     $params = array(
                         'cmd' => 'is',
                         'spu' => $dataid[1],
@@ -83,13 +86,15 @@ class DailyController extends ApiController
                         'token' => Session::get('user.token'),
                     );
                     $resultIS = $this->request('openapi', '', 'wishlist', $params);
-                    $cmd = $resultIS['data']['isFC'] ? 'del' : 'add';
-                    $params = array(
-                        'cmd' => $cmd,
-                        'spu' => $dataid[1],
-                        'pin' => Session::get('user.pin'),
-                        'token' => Session::get('user.token'),
-                    );
+                    if(!$resultIS['data']['isFC']){
+                        $params = array(
+                            'cmd' => 'add',
+                            'spu' => $dataid[1],
+                            'pin' => Session::get('user.pin'),
+                            'token' => Session::get('user.token'),
+                        );
+                    }
+
                     $this->request('openapi', '', 'wishlist', $params);
                 }
                 $spuArray = array();
