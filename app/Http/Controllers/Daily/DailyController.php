@@ -82,15 +82,15 @@ class DailyController extends ApiController
                         'pin' => Session::get('user.pin'),
                         'token' => Session::get('user.token'),
                     );
-                    $result = $this->request('openapi', '', 'wishlist', $params);
-                    $cmd = $result['data']['isFC'] ? 'del' : 'add';
+                    $resultIS = $this->request('openapi', '', 'wishlist', $params);
+                    $cmd = $resultIS['data']['isFC'] ? 'del' : 'add';
                     $params = array(
                         'cmd' => $cmd,
                         'spu' => $dataid[1],
                         'pin' => Session::get('user.pin'),
                         'token' => Session::get('user.token'),
                     );
-                    $result = $this->request('openapi', '', 'wishlist', $params);
+                    $this->request('openapi', '', 'wishlist', $params);
                 }
                 $spuArray = array();
                 foreach ($result['data']['infos'] as $value) {
