@@ -24,7 +24,6 @@ class PcGuideMiddleware
         {
             if ($_SERVER['HTTP_HOST'] == 'motif.me'){
                 echo '<script language="javascript" type="text/javascript"> window.location.href="http://m.motif.me'.$request->getRequestUri().'"</script>';
-                return $request->getRequestUri();
             }else{
                 return $next($request);
             }
