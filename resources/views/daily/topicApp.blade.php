@@ -270,6 +270,7 @@
                             $('#wish' + value).html('<i class="iconfont icon-onheart product-heart active"></i>');
                         });
                     } else if (actionName.name == "authInfo") {
+                        alert(actionName.token)
                         window.location.href = "/topic/{{$topicID}}?dataid="+actionName.token+"&token=" + actionName.data.token + "&pin=" + actionName.data.pin + "&email=" + actionName.data.email + "&name=" + decodeURIComponent(actionName.data.name);
                     }
                 }
