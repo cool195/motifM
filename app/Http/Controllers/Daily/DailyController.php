@@ -58,21 +58,23 @@ class DailyController extends ApiController
         if ($request->input('test') || strstr($_SERVER['HTTP_USER_AGENT'], 'motif-android') || strstr($_SERVER['HTTP_USER_AGENT'], 'motif-ios')) {
             if ($request->input('token') || !empty($_COOKIE['PIN'])) {
                 if ($request->input('token')) {
-                    Session::put('user', array(
+                    $data = array(
                         'login_email' => $request->input('email'),
                         'nickname' => $request->input('name'),
                         'pin' => $request->input('pin'),
                         'token' => $request->input('token'),
                         'uuid' => $_COOKIE['uid'],
-                    ));
+                    );
+                    Session::put('user', $data);
                 } else {
-                    Session::put('user', array(
+                    $data = array(
                         'login_email' => $_COOKIE['EMAIL'],
                         'nickname' => urldecode($_COOKIE['NAME']),
                         'pin' => $_COOKIE['PIN'],
                         'token' => $_COOKIE['TOKEN'],
                         'uuid' => $_COOKIE['UUID'],
-                    ));
+                    );
+                    Session::put('user', $data);
                 }
                 //执行登录前操作
                 Log::info('dataid:::'.$request->input('dataid'));
@@ -82,16 +84,16 @@ class DailyController extends ApiController
                     $params = array(
                         'cmd' => 'is',
                         'spu' => $dataid[1],
-                        'pin' => Session::get('user.pin'),
-                        'token' => Session::get('user.token'),
+                        'pin' => $data['pin'],
+                        'token' => $data['token'],
                     );
                     $resultIS = $this->request('openapi', '', 'wishlist', $params);
                     if(!$resultIS['data']['isFC']){
                         $params = array(
                             'cmd' => 'add',
                             'spu' => $dataid[1],
-                            'pin' => Session::get('user.pin'),
-                            'token' => Session::get('user.token'),
+                            'pin' => $data['pin'],
+                            'token' => $data['token'],
                         );
                     }
 

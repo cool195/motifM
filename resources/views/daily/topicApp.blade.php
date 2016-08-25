@@ -182,6 +182,7 @@
     </div>
 </div>
 <input type="hidden" id="spuArray" value="{{$topic['spuArray']}}">
+<input type="hidden" id="dataid" value="">
 </body>
 <script src="{{env('CDN_Static')}}/scripts/vendor.js{{'?v='.config('app.version')}}"></script>
 <script src="{{env('CDN_Static')}}/scripts/JockeyJS.js"></script>
@@ -270,18 +271,18 @@
                             $('#wish' + value).html('<i class="iconfont icon-onheart product-heart active"></i>');
                         });
                     } else if (actionName.name == "authInfo") {
-                        alert(actionName.token)
-                        window.location.href = "/topic/{{$topicID}}?dataid="+actionName.token+"&token=" + actionName.data.token + "&pin=" + actionName.data.pin + "&email=" + actionName.data.email + "&name=" + decodeURIComponent(actionName.data.name);
+                        alert($('#dataid').val())
+                        window.location.href = "/topic/{{$topicID}}?dataid="+$('#dataid').val()+"&token=" + actionName.data.token + "&pin=" + actionName.data.pin + "&email=" + actionName.data.email + "&name=" + decodeURIComponent(actionName.data.name);
                     }
                 }
         );
 
         //login send
         $('.sendLogin').on('click', function () {
-            alert($(this).data('id'))
+            $('#dataid').val($(this).data('id'));
             Jockey.send("action", {
                 name: "login",
-                token: $(this).data('id'),
+                token: "key",
             });
         });
 
