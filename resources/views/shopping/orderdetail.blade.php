@@ -117,7 +117,7 @@
         <!-- 订单地址、物流、支付 等信息 -->
         <aside class="bg-white m-b-10x">
             <div class="flex font-size-sm text-primary p-y-10x p-x-15x">
-                <span class="orderInfo-subTitle flex-fixedShrink">Ship to</span>
+                <span class="orderInfo-subTitle flex-fixedShrink">Shipping to</span>
                 <div>
                     <div>{{ $data['userAddr']['name'] }}</div>
                     <div>{{ $data['userAddr']['detail_address1'] }}</div>
