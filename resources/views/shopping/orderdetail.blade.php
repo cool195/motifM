@@ -167,8 +167,7 @@
         <aside class="bg-white m-b-10x">
             <div class="p-a-10x">
                 <div class="flex flex-fullJustified text-primary font-size-sm">
-                    <span>Items({{ $data['item_qtty'] }}
-                        )</span><span>${{number_format(($data['total_amount'] / 100), 2)}}</span>
+                    <span>Items({{ $data['item_qtty'] }})</span><span>${{number_format(($data['total_amount'] / 100), 2)}}</span>
                 </div>
                 @if($data['vas_amount'] > 0)
                     <div class="flex flex-fullJustified text-primary font-size-sm">
@@ -176,7 +175,7 @@
                     </div>
                 @endif
                 <div class="flex flex-fullJustified text-primary font-size-sm">
-                    <span>Ship to {{ $data['userAddr']['zip'] }}</span><span>@if(0 == $data['freight_amount'])
+                    <span>Shipping and handling</span><span>@if(0 == $data['freight_amount'])
                             Free @else${{ number_format(($data['freight_amount'] / 100), 2)}} @endif</span>
                 </div>
                 @if($data['promot_discount_amount'] > 0)

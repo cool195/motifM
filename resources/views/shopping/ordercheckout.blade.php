@@ -114,7 +114,7 @@
                 </div>
                 <hr class="hr-base">
                 <a class="flex font-size-sm text-primary p-a-10x btn-method" data-remodal-target="delivery-modal" href="#">
-                    <span class="checkoutInfo-subTitle flex-fixedShrink">Shipping method</span>
+                    <span class="checkoutInfo-subTitle flex-fixedShrink">Shipping</span>
                     <div class="checkoutInfo-content flex flex-fullJustified flex-alignCenter">
                         <span class="delivery-text">{{$defaultMethod['logistics_name']}} +${{ number_format(($defaultMethod['price'] / 100), 2) }}</span>
                         <i class="iconfont icon-arrow-right icon-size-xm text-common p-r-15x"></i>
@@ -152,7 +152,7 @@
                 @endif
                 @if(!empty($addr))
                     <div class="flex flex-fullJustified text-primary font-size-sm">
-                        <span>Shipping to {{$addr['zip']}}</span><span>@if(0 == $data['freight_amount']) Free @else${{ number_format(($data['freight_amount'] / 100), 2)}} @endif</span>
+                        <span>Shipping and handling</span><span>@if(0 == $data['freight_amount']) Free @else${{ number_format(($data['freight_amount'] / 100), 2)}} @endif</span>
                     </div>
                 @endif
                 @if($data['promot_discount_amount'] > 0)
