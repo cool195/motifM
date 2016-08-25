@@ -22,7 +22,7 @@
                 <form id="infoForm" action="/cart/ordercheckout" method="get">
                     <fieldset>
                         <div class="message-info">
-                            <textarea class="form-control form-control-block p-a-15x font-size-sm" name="remark" id="messageContent"  placeholder="Message to us" rows="12" data-length="1000">{{$remark}}</textarea>
+                            <textarea class="form-control form-control-block p-a-15x font-size-sm" name="remark" id="messageContent"  placeholder="Special Note" rows="12" data-length="1000">{{$remark}}</textarea>
                             <span class="message-wordNumber font-size-sm text-primary"><span id="wordNum">0</span>/1000</span>
                         </div>
                     </fieldset>
@@ -48,7 +48,6 @@
     </div>
 </body>
 <script src="{{env('CDN_Static')}}/scripts/vendor.js{{'?v='.config('app.version')}}"></script>
-
 <script src="{{env('CDN_Static')}}/scripts/orderCheckout-message.js{{'?v='.config('app.version')}}"></script>
 @include('global')
 </html>
