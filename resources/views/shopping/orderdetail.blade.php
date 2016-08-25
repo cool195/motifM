@@ -131,13 +131,13 @@
             </div>
             <hr class="hr-base">
             <div class="flex font-size-sm text-primary p-y-10x p-x-15x">
-                <span class="orderInfo-subTitle flex-fixedShrink">Shipping Method</span>
+                <span class="orderInfo-subTitle flex-fixedShrink">Shipping</span>
                 <span>{{$data['logistics_name']}} ${{number_format(($data['logistics_price'] / 100), 2)}}</span>
             </div>
             @if(!in_array($data['status_code'], array(11, 21, 27)))
                 <hr class="hr-base">
                 <div class="flex font-size-sm text-primary p-y-10x p-x-15x">
-                    <span class="orderInfo-subTitle flex-fixedShrink">Pay With</span>
+                    <span class="orderInfo-subTitle flex-fixedShrink">Paid With</span>
                     @if("PayPal" == $data['pay_type'] || "PayPayNative" == $data['pay_type'] || "PayPalNative" == $data['pay_type'])
                         <span class="cardImage-inline paypal"></span>
                     @elseif(array_get($data['cardlist'],$data['orderPayInfo']['card_type']))

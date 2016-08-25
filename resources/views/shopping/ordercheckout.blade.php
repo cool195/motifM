@@ -93,7 +93,7 @@
             <aside class="bg-white m-b-10x">
                 {{--<a class="flex font-size-sm text-primary p-a-10x" href="/cart/addresslist">--}}
                 <div class="flex font-size-sm text-primary p-a-10x order-option" data-form-action="/cart/addresslist" id="btn-shipTo">
-                    <span class="checkoutInfo-subTitle flex-fixedShrink">Ship to</span>
+                    <span class="checkoutInfo-subTitle flex-fixedShrink">Shipping to</span>
                     <div class="checkoutInfo-content flex flex-fullJustified flex-alignCenter">
                         @if(empty($addr) || "" == $addr)
                             <div class="text-warning">Add new address</div>
@@ -152,7 +152,7 @@
                 @endif
                 @if(!empty($addr))
                     <div class="flex flex-fullJustified text-primary font-size-sm">
-                        <span>Ship to {{$addr['zip']}}</span><span>@if(0 == $data['freight_amount']) Free @else${{ number_format(($data['freight_amount'] / 100), 2)}} @endif</span>
+                        <span>Shipping to {{$addr['zip']}}</span><span>@if(0 == $data['freight_amount']) Free @else${{ number_format(($data['freight_amount'] / 100), 2)}} @endif</span>
                     </div>
                 @endif
                 @if($data['promot_discount_amount'] > 0)
