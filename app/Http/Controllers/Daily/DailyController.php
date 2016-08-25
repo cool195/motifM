@@ -77,10 +77,9 @@ class DailyController extends ApiController
                     Session::put('user', $data);
                 }
                 //执行登录前操作
-                Log::info('dataid:::'.$request->input('dataid'));
                 if($request->input('dataid')){
                     $dataid = explode('-',$request->input('dataid'));
-                    Log::info('dataid:::'.$dataid[1]);
+
                     $params = array(
                         'cmd' => 'is',
                         'spu' => $dataid[1],
@@ -88,6 +87,7 @@ class DailyController extends ApiController
                         'token' => $data['token'],
                     );
                     $resultIS = $this->request('openapi', '', 'wishlist', $params);
+                    Log::info('dataid:::'.$resultIS['data']['isFC']);
                     if(!$resultIS['data']['isFC']){
                         $params = array(
                             'cmd' => 'add',
@@ -95,9 +95,9 @@ class DailyController extends ApiController
                             'pin' => $data['pin'],
                             'token' => $data['token'],
                         );
+                        Log::info('asdf:::');
+                        $this->request('openapi', '', 'wishlist', $params);
                     }
-
-                    $this->request('openapi', '', 'wishlist', $params);
                 }
                 $spuArray = array();
                 foreach ($result['data']['infos'] as $value) {
