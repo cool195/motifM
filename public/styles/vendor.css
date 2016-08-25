@@ -5807,3 +5807,7 @@ footer .links-group {
   border: 1px solid #ffffff;
   background: rgba(0, 0, 0, 0.3);
 }
+
+.text-red{
+  color: #d6141c;
+}

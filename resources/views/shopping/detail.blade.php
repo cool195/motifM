@@ -194,10 +194,9 @@
                         <hr class="hr-light m-x-10x">
                         <div class="product-price">
                             @if(isset($data['skuPrice']['skuPromotion']))
-                                <span class="font-size-lx text-primary">${{ number_format(($data['skuPrice']['skuPromotion']['promot_price'] / 100), 2) }}</span>
+                                <span class="font-size-lx text-red">${{ number_format(($data['skuPrice']['skuPromotion']['promot_price'] / 100), 2) }}</span>
                                 <span class="font-size-sm text-throughLine text-common">${{ number_format(($data['skuPrice']['skuPromotion']['price'] /100), 2) }}</span>
-                                <span class="font-size-sm text-primary">({{ $data['skuPrice']['skuPromotion']['display'] }}
-                                    )</span>
+                                {{--<span class="font-size-sm text-primary">({{ $data['skuPrice']['skuPromotion']['display'] }})</span>--}}
                             @else
                                 <span class="font-size-lx text-primary">${{ number_format(($data['skuPrice']['sale_price'] / 100), 2) }}</span>
                             @endif
