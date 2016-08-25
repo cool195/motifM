@@ -79,7 +79,7 @@ class DailyController extends ApiController
                 //执行登录前操作
                 Log::info('dataid:::'.$request->input('dataid'));
                 if($request->input('dataid')){
-                    $dataid = explode($request->input('dataid'),'-');
+                    $dataid = explode('-',$request->input('dataid'));
                     Log::info('dataid:::'.$dataid[1]);
                     $params = array(
                         'cmd' => 'is',
