@@ -72,7 +72,7 @@ class AuthController extends ApiController
             'name' => $request->get('name'),
             'avatar' => urldecode($request->get('avatar')),
         );
-        return view('shopping.fbaddemail', ['params' => $params]);
+        return view('shopping.registerAddEmail', ['params' => $params]);
     }
 }
 
