@@ -70,6 +70,7 @@ class Publicfun
             'did' => $id,
         );
         $follow = self::request('', 'follow', $followParams);
+        Log::info('follow',$follow);
         return $follow;
     }
 
