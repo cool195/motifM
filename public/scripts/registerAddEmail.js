@@ -1,9 +1,5 @@
-/**
- * Created by zhaozhe on 16/5/24.
- */
-/*global jQuery*/
-'use strict';
-(function($) {
+
+(function() {
     var options = {
         closeOnOutsideClick: false,
         closeOnCancel: false,
@@ -85,4 +81,4 @@
         }
     });
 
-})(jQuery);
+})();
