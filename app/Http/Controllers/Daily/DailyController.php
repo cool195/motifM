@@ -79,22 +79,6 @@ class DailyController extends ApiController
                 //执行登录前操作
                 if($request->input('dataid')){
                     $dataid = explode('-',$request->input('dataid'));
-                    $params = array(
-                        'cmd' => 'is',
-                        'spu' => $dataid[1],
-                        'pin' => $data['pin'],
-                        'token' => $data['token'],
-                    );
-                    $resultIS = $this->request('openapi', '', 'wishlist', $params);
-                    if(!$resultIS['data']['isFC']){
-                        $params = array(
-                            'cmd' => 'add',
-                            'spu' => $dataid[1],
-                            'pin' => $data['pin'],
-                            'token' => $data['token'],
-                        );
-                        $this->request('openapi', '', 'wishlist', $params);
-                    }
                     Publicfun::addWishProduct($dataid[1],$data['pin'],$data['token']);
                 }
                 $spuArray = array();
