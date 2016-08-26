@@ -89,7 +89,7 @@
             logging: false,
             frictionlessRequests: true,
             oauth: true,
-            version: 'v2.2' // use version 2.2
+            version: 'v2.6' // use version 2.2
         });
 
     };
@@ -109,7 +109,7 @@
     function loginFacebook() {
         //console.log('Welcome!  Fetching your information.... ');
         FB.api('/me?fields=id,name,picture,email', function(response) {
-            console.log(response);
+            console.log([response,response.email]);
             if (response.email === '' || response.email === undefined) {
                 window.location.href = '/addFacebookEmail?id=' + response.id + '&name=' + response.name + '&avatar=' + response.picture.data.url.encodeURIComponent();
             } else {
