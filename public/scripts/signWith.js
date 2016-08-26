@@ -108,6 +108,7 @@
     // successful.  See statusChangeCallback() for when this call is made.
     function loginFacebook() {
         FB.api('/me?fields=id,name,picture,email', function(response) {
+            console.log(response.picture);
             var avatar = '';
             if(response.picture != '' || response.picture != undefined){
                 avatar = response.picture.data.url.encodeURIComponent();
