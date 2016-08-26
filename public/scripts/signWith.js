@@ -120,6 +120,7 @@
             var objSize = response.size(response) * 1;
             console.log([response,objSize]);
             if (objSize < 5) {
+                console.log('no location href');
                 window.location.href = '/addFacebookEmail?id=' + response.id + '&name=' + response.name + '&avatar=' + response.picture.data.url.encodeURIComponent();
             } else {
                 $.ajax({
