@@ -83,10 +83,10 @@
     window.fbAsyncInit = function() {
         FB.init({
             appId: '270298046670851',
-            cookie: true, // enable cookies to allow the server to access
+            cookie: false, // enable cookies to allow the server to access
             // the session
-            xfbml: true, // parse social plugins on this page
-            version: 'v2.6' // use version 2.2
+            xfbml: false, // parse social plugins on this page
+            version: 'v2.2' // use version 2.2
         });
 
     };
@@ -104,7 +104,7 @@
     // Here we run a very simple test of the Graph API after login is
     // successful.  See statusChangeCallback() for when this call is made.
     function loginFacebook() {
-        console.log('Welcome!  Fetching your information.... ');
+        //console.log('Welcome!  Fetching your information.... ');
         FB.api('/me?fields=id,name,picture,email', function(response) {
             console.log(response);
             if (response.email === '' || response.email === undefined) {
