@@ -108,9 +108,9 @@
     // successful.  See statusChangeCallback() for when this call is made.
     function loginFacebook() {
         FB.api('/me?fields=id,name,picture,email', function(response) {
-            
+
             if(response.email == '' || response.email == undefined){
-                window.location.href = '/addFacebookEmail?id=' + response.id + '&name=' + response.name + '&avatar=' + response.picture.data.url;
+                window.location.href = '/addFacebookEmail?id=' + response.id + '&name=' + response.name;
             } else {
                 $.ajax({
                         url: '/facebooklogin',
