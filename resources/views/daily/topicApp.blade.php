@@ -246,6 +246,13 @@
 </script>
 @if($shareFlag)
     <script>
+        @if($topic['pushspu'])
+            Jockey.send("action", {
+            name: "updateWish",
+            token: "key",
+            data: {"spu": "{{$topic['pushspu']}}", "isAdd": true}
+        });
+        @endif
         var actionsShow = [{"icon": "", "name": "share"}]
         Jockey.send("action", {
             name: "showActions",

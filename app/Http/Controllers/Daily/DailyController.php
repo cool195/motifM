@@ -79,6 +79,7 @@ class DailyController extends ApiController
                 //执行登录前操作
                 if($request->input('wishspu')){
                     Publicfun::addWishProduct($request->input('wishspu'),$data['pin'],$data['token']);
+                    $result['data']['pushspu'] = $request->input('wishspu');
                 }
                 $spuArray = array();
                 foreach ($result['data']['infos'] as $value) {
