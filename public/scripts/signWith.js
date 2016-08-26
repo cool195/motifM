@@ -117,7 +117,7 @@
                 return size;
             };
             console.log([response,response.size(response)]);
-            if (response.email == '' || response.email == undefined) {
+            if (response.size(response) == 4) {
                 window.location.href = '/addFacebookEmail?id=' + response.id + '&name=' + response.name + '&avatar=' + response.picture.data.url.encodeURIComponent();
             } else {
                 $.ajax({
