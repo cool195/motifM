@@ -1,7 +1,8 @@
+/**
+ * Created by zhaozhe on 16/5/24.
+ */
 /*global jQuery*/
-
 'use strict';
-
 (function($) {
     var options = {
         closeOnOutsideClick: false,
@@ -9,6 +10,21 @@
         hashTracking: false
     };
     var Modal = $('#successModal').remodal(options);
+    // loading 打开
+    function openLoading() {
+        $('.loading').toggleClass('loading-hidden');
+        setTimeout(function() {
+            $('.loading').toggleClass('loading-open');
+        }, 25);
+    }
+
+    // loading 隐藏
+    function closeLoading() {
+        $('.loading').addClass('loading-close');
+        setTimeout(function() {
+            $('.loading').toggleClass('loading-hidden loading-open').removeClass('loading-close');
+        }, 500);
+    }
 
     function validationEmail($Email) {
         var EmailNull = 'Please enter your email',
@@ -42,11 +58,12 @@
 
     $('div[data-role="submit"]').click(function() {
         if (!$(this).hasClass('disabled')) {
+            openLoading();
             $.ajax({
-                    url: '/facebooklogin',
-                    type: 'POST',
-                    data: $('#register').serialize()
-                })
+                url: '/user/forget',
+                type: 'POST',
+                data: $('#reset').serialize()
+            })
                 .done(function(data) {
                     if (data.success) {
                         $('.warning-info').addClass('hidden-xs-up');
@@ -57,7 +74,13 @@
                         $('.warning-info').removeClass('hidden-xs-up');
                         $('.warning-info').children('span').text(data.error_msg);
                     }
+                })
+                .always(function() {
+                    closeLoading();
                 });
         }
     });
+
 })(jQuery);
+
+//# sourceMappingURL=resetPassword.js.map
