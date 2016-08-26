@@ -194,11 +194,11 @@
                 <span class="font-size-xs text-common text-throughLine m-l-5x">$@{{ ($value.skuPrice.skuPromotion.price/100).toFixed(2) }}</span>
                 @{{ /if }}
                 @if(Session::has('user'))
-                    <span class="wish-item p-r-10x" test="{{Session::get('wishSpu')}}" ><i
+                    <span class="wish-item p-r-10x" ><i
                                 class="iconfont text-common btn-wish @{{ if $value.isWished == 1  }} active @{{ /if }}"
                                 data-spu="@{{ $value.spu }}"></i></span>
                 @else
-                    <a class="wish-item p-r-10x" href="javascript:;"><i class="iconfont text-common btn-wish"></i></a>
+                    <a class="wish-item p-r-10x" href="javascript:;"><i class="iconfont text-common btn-wish" data-actionspu="@{{ $value.spu }}"></i></a>
                 @endif
             </div>
         </div>

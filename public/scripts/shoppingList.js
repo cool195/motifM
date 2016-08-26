@@ -291,6 +291,7 @@
                     }
                 });
         } else {
+            spu = $this.data('actionspu');
             $.ajax({
                 url: '/notesaction',
                 type: 'get',

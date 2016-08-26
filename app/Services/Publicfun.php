@@ -44,6 +44,7 @@ class Publicfun
         );
         $result = self::request('', 'wishlist', $params);
         $result['cmd'] = $cmd == 'add' ? true : false;
+        Cache::forget(Session::get('user.pin') . 'wishlist');
         return $result;
     }
 

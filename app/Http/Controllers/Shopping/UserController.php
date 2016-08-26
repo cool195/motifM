@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Shopping;
 use Illuminate\Http\Request;
 use App\Http\Controllers\ApiController;
 use Illuminate\Support\Facades\Session;
+use App\Services\Publicfun;
 
 class UserController extends ApiController
 {
@@ -70,6 +71,9 @@ class UserController extends ApiController
         if ($result['success']) {
             Session::forget('user');
             Session::put('user', $result['data']);
+            if($_COOKIE['wishSpu']){
+                Publicfun::addWishProduct($_COOKIE['wishSpu']);
+            }
             $result['redirectUrl'] = ($request->input('referer') && !strstr($request->input('referer'), 'login')) ? $request->input('referer') : "/daily";
         } else {
             $result['prompt_msg'] = $result['error_msg'];
@@ -120,6 +124,9 @@ class UserController extends ApiController
                 $result['redirectUrl'] = ($request->input('referer') && !strstr($request->input('referer'), 'register')) ? $request->input('referer') : "/daily";
                 Session::forget('user');
                 Session::put('user', $result['data']);
+                if($_COOKIE['wishSpu']){
+                    Publicfun::addWishProduct($_COOKIE['wishSpu']);
+                }
             }
         }
 
@@ -459,8 +466,7 @@ class UserController extends ApiController
     //记录登录前操作
     public function notesAction(Request $request){
         if($request->input('action') == 'wish'){
-            Session::put('wishSpu',$request->input('spu'));
-            return true;
+            setcookie("wishSpu",$request->input('spu'),time() + 300,'/');
         }
     }
 }
