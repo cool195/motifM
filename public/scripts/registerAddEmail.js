@@ -1,5 +1,9 @@
-
-(function() {
+/**
+ * Created by zhaozhe on 16/5/24.
+ */
+/*global jQuery*/
+'use strict';
+(function($) {
     var options = {
         closeOnOutsideClick: false,
         closeOnCancel: false,
@@ -57,13 +61,8 @@
             openLoading();
             $.ajax({
                 url: '/facebooklogin',
-                type: 'post',
-                data: {
-                    email: $('input[name="email"]'),
-                    id: $('input[name="id"]'),
-                    name: $('input[name="name"]'),
-                    avatar: $('input[name="avatar"]'),
-                }
+                type: 'POST',
+                data: $('#register').serialize()
             })
                 .done(function(data) {
                     if (data.success) {
@@ -81,4 +80,4 @@
         }
     });
 
-})();
+})(jQuery);
