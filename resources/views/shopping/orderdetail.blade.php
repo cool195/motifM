@@ -56,7 +56,7 @@
                 </div>
                     <div class="p-b-10x p-x-15x p-r-20x">
                         <div class="font-size-sm text-primary">
-                            @if(in_array($data['status_code'], array(11, 12, 14))) {{ $data['status_explain'] }} @endif
+                            {{ $data['status_explain'] }}
                         </div>
                     </div>
             @endif
