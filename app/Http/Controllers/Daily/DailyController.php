@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Daily;
 use Illuminate\Http\Request;
 use App\Http\Controllers\ApiController;
 use Illuminate\Support\Facades\Session;
+use App\Services\Publicfun;
 
 class DailyController extends ApiController
 {
@@ -72,6 +73,11 @@ class DailyController extends ApiController
                         'token' => $_COOKIE['TOKEN'],
                         'uuid' => $_COOKIE['UUID'],
                     ));
+                }
+                //执行登录前操作
+                if($request->input('wishspu')){
+                    Publicfun::addWishProduct($request->input('wishspu'));
+                    $result['data']['pushspu'] = $request->input('wishspu');
                 }
                 $spuArray = array();
                 foreach ($result['data']['infos'] as $value) {

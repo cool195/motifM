@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Designer;
 use Illuminate\Http\Request;
 use App\Http\Controllers\ApiController;
 use Illuminate\Support\Facades\Session;
+use App\Services\Publicfun;
 
 class DesignerController extends ApiController
 {
@@ -89,14 +90,28 @@ class DesignerController extends ApiController
                         ));
                     }
 
-                    $followParams = array(
-                        'cmd' => 'is',
-                        'pin' => Session::get('user.pin'),
-                        'token' => Session::get('user.token'),
-                        'did' => $result['data']['designer_id'],
-                    );
-                    $follow = $this->request('openapi', '', 'follow', $followParams);
-                    $result['data']['followStatus'] = $follow['data']['isFC'];
+                    //执行登录前wish操作
+                    if($request->input('wishspu')){
+                        Publicfun::addWishProduct($request->input('wishspu'));
+                        $result['data']['pushspu'] = $request->input('wishspu');
+                    }
+
+                    //执行登录前follow操作
+                    if($request->input('des')){
+                        Publicfun::addFollowDesigner($request->input('des'));
+                        $result['data']['followStatus'] = true;
+                    }else{
+                        $followParams = array(
+                            'cmd' => 'is',
+                            'pin' => Session::get('user.pin'),
+                            'token' => Session::get('user.token'),
+                            'did' => $result['data']['designer_id'],
+                        );
+                        $follow = $this->request('openapi', '', 'follow', $followParams);
+                        $result['data']['followStatus'] = $follow['data']['isFC'];
+                    }
+
+
 
                     $spuArray = array();
                     foreach ($product['data']['infos'] as $value) {
@@ -127,33 +142,7 @@ class DesignerController extends ApiController
     public function follow($id)
     {
         if (!empty($id)) {
-            $followParams = array(
-                'cmd' => 'is',
-                'pin' => Session::get('user.pin'),
-                'token' => Session::get('user.token'),
-                'did' => $id,
-            );
-            $follow = $this->request('openapi', '', 'follow', $followParams);
-            if ($follow['data']['isFC']) {
-                //取消关注
-                $followParams = array(
-                    'cmd' => 'del',
-                    'pin' => Session::get('user.pin'),
-                    'token' => Session::get('user.token'),
-                    'did' => $id,
-                );
-                $follow = $this->request('openapi', '', 'follow', $followParams);
-            } else {
-                //关注
-                $followParams = array(
-                    'cmd' => 'add',
-                    'pin' => Session::get('user.pin'),
-                    'token' => Session::get('user.token'),
-                    'did' => $id,
-                );
-                $follow = $this->request('openapi', '', 'follow', $followParams);
-            }
-            return $follow;
+            return Publicfun::addFollowDesigner($id,true);
         }
     }
 }
