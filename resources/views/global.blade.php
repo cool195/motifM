@@ -77,20 +77,36 @@
         $('.btn-wished').click(function (e) {
             var $this = $(e.target);
             var spu = $this.data('spu');
-            $.ajax({
-                        url: '/updateWish',
-                        type: 'post',
-                        data: {spu: spu}
-                    })
-                    .done(function (data) {
-                        if (data.success) {
-                            if (!$this.hasClass('active')) {
-                                $this.addClass('active');
-                            } else {
-                                $this.removeClass('active');
+            if(spu != undefined){
+                $.ajax({
+                    url: '/updateWish',
+                    type: 'post',
+                    data: {spu: spu}
+                })
+                        .done(function (data) {
+                            if (data.success) {
+                                if (!$this.hasClass('active')) {
+                                    $this.addClass('active');
+                                } else {
+                                    $this.removeClass('active');
+                                }
                             }
-                        }
-                    });
+                        });
+            }else{
+                spu = $this.data('actionspu');
+                $.ajax({
+                    url: '/notesaction',
+                    type: 'get',
+                    data: {
+                        action: 'wish',
+                        spu: spu
+                    }
+                })
+                        .done(function (data) {
+                            window.location.href = '/login';
+                        });
+            }
+
         });
     })
 </script>

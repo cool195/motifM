@@ -209,7 +209,7 @@
                                             @if(Session::has('user'))
                                                 <span class="wish-item p-r-10x"><i class="iconfont text-common btn-wish btn-wished @if(in_array($spu, $wishlist->wishlist())) {{'active'}} @endif" data-spu="{{$spu}}"></i></span>
                                             @else
-                                                <a class="wish-item p-r-10x" href="/login"><i class="iconfont text-common btn-wish"></i></a>
+                                                <a class="wish-item p-r-10x" href="javascript:;"><i class="iconfont text-common btn-wish btn-wished"  data-actionspu="{{$spu}}"></i></a>
                                             @endif
                                         </div>
                                     @endforeach
@@ -248,7 +248,7 @@
                                                             @if(Session::has('user'))
                                                                 <span class="wish-item p-r-10x"><i class="iconfont text-common btn-wish btn-wished @if(in_array($spu, $wishlist->wishlist())){{'active'}}@endif" data-spu="{{$spu}}"></i></span>
                                                             @else
-                                                                <a class="wish-item p-r-10x" href="/login"><i class="iconfont text-common btn-wish"></i></a>
+                                                                <a class="wish-item p-r-10x" href="javascript:;"><i class="iconfont text-common btn-wish btn-wished" data-actionspu="{{$spu}}"></i></a>
                                                             @endif
                                                         </div>
                                                     </div>
@@ -296,7 +296,7 @@
                                                     @if(Session::has('user'))
                                                         <span class="wish-item p-r-10x"><i class="iconfont text-common btn-wish btn-wished @if(in_array($value['spu'], $wishlist->wishlist())){{'active'}}@endif" data-spu="{{$value['spu']}}"></i></span>
                                                     @else
-                                                        <a class="wish-item p-r-10x" href="/login"><i class="iconfont text-common btn-wish"></i></a>
+                                                        <a class="wish-item p-r-10x" href="javascript:;"><i class="iconfont text-common btn-wish btn-wished" data-actionspu="{{$value['spu']}}"></i></a>
                                                     @endif
                                                 </div>
                                             </div>

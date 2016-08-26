@@ -183,3 +183,6 @@ $app->group(['middleware' => 'pcguide', 'namespace' => 'App\Http\Controllers\Oth
 $app->get('home', 'Shopping\ShoppingController@guide');
 $app->get('pcprivacypolicy', 'Other\PageController@pcPrivacyPolicy');
 $app->get('pctermsservice', 'Other\PageController@pcTermsService');
+
+//记录登录前操作
+$app->get('notesaction','Shopping\UserController@notesAction');
