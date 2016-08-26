@@ -60,7 +60,7 @@
         if (!$(this).hasClass('disabled')) {
             openLoading();
             $.ajax({
-                url: '/user/signup',
+                url: '/facebooklogin',
                 type: 'POST',
                 data: $('#register').serialize()
             })
