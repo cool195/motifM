@@ -47,8 +47,8 @@
     <!-- 提示添加成功 -->
     <div class="remodal remodal-md modal-content" data-remodal-id="question-modal" id="successModal">
         <div class="font-size-sm p-t-20x p-x-15x p-b-15x">
-            <div class="font-size-base">Register Success!</div>
-            <div class="p-t-5x">You will Register Success. </div>
+            <div class="font-size-base">Login Success!</div>
+            <div class="p-t-5x">You will Login Success. </div>
         </div>
         <hr class="hr-base m-a-0">
         <div class="btn-group flex">
