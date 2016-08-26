@@ -58,7 +58,7 @@ class Publicfun
                 'did' => $id,
             );
             $follow = self::request('', 'follow', $followParams);
-            $cmd = $follow['data']['isFC'];
+            $cmd = $follow['data']['isFC'] ? 'del' : 'add';
         } else {
             $cmd = 'add';
         }
@@ -70,7 +70,6 @@ class Publicfun
             'did' => $id,
         );
         $follow = self::request('', 'follow', $followParams);
-        Log::info('follow',$follow);
         return $follow;
     }
 
