@@ -247,6 +247,12 @@
                                                                                  alt="">
                                                                         </div>
                                                                     @endif
+
+                                                                    <!-- 预售产品 预定信息 -->
+                                                                    <div class="preorder-info P-a-5x">
+                                                                        {{--<span class="text-white font-size-xs bg-preordering">LIMITED EDITION</span>--}}
+                                                                        <span class="text-white font-size-xs bg-preordered">SOLD OUT</span>
+                                                                    </div>
                                                                 </div>
                                                             </a>
                                                             <div class="p-a-10x flex flex-alignCenter flex-fullJustified">
@@ -301,6 +307,12 @@
                                                                  alt="">
                                                         </div>
                                                     @endif
+
+                                                    <!-- 预售产品 预定信息 -->
+                                                    <div class="preorder-info P-a-5x">
+                                                        {{--<span class="text-white font-size-xs bg-preordering">LIMITED EDITION</span>--}}
+                                                        <span class="text-white font-size-xs bg-preordered">SOLD OUT</span>
+                                                    </div>
                                                 </div>
                                             </a>
                                             <div class="p-a-10x flex flex-alignCenter flex-fullJustified">

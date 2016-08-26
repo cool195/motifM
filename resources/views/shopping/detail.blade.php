@@ -206,6 +206,16 @@
                              data-impr='http://clk.motif.me/log.gif?t=rec.100002&m=OPEN_M2016-1&pin={{ Session::get('user.pin') }}&uuid={{Session::get('user.uuid')}}&v={" action ":0,"cspus ":"{{ $data['skus']}}","expid ":0,"index ":1,"rec_type ":1,"spu":{{ $data['spu'] }},"ver ":"9.00 "}&sig=2291a58454115c8136169111738de65696add43d'>{{ $data['prompt_words'] }}</div>
                     </article>
 
+                    <!-- 预售产品 预定信息 -->
+                    <section class="limited-content">
+                        <div class="bg-white m-b-10x">
+                            <div class="p-x-15x limited-subtitle"><strong>PREORDER</strong></div>
+                                <div class="p-x-15x p-t-10x p-b-15x text-primary font-size-sm">
+                                    Expected to ship on <strong>November 25, 2016</strong>.
+                                </div>
+                        </div>
+                    </section>
+
                     <!-- 产品 预售信息 -->
                     @if(1 == $data['sale_type'])
                         <section class="limited-content"
@@ -363,6 +373,12 @@
                                                                                  alt="">
                                                                         </div>
                                                                     @endif
+
+                                                                    <!-- 预售产品 预定信息 -->
+                                                                    <div class="preorder-info P-a-5x">
+                                                                        <span class="text-white font-size-xs bg-preordering">LIMITED EDITION</span>
+                                                                        {{--<span class="text-white font-size-xs bg-preordered">SOLD OUT</span>--}}
+                                                                    </div>
                                                                 </div>
                                                             </div>
                                                             <div class="price-caption">

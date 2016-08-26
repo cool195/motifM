@@ -5812,3 +5812,24 @@ footer .links-group {
 .text-red{
   color: #d6141c;
 }
+
+.preorder-info {
+    position: absolute;
+    bottom: 0;
+    text-align: center;
+    width: 100%;
+}
+
+.preorder-info span {
+    padding: 2px 4px;
+    min-width: 75%;
+    display: inline-block;
+}
+
+.bg-preordering {
+    background: #c3a77d;
+}
+
+.bg-preordered {
+    background: #b2b2b2;
+}
