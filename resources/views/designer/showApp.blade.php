@@ -360,7 +360,7 @@
         Jockey.send("action", {
             name: "updateWish",
             token: "key",
-            data: {"spu": "{{$topic['pushspu']}}", "isAdd": true}
+            data: {"spu": "{{$designer['pushspu']}}", "isAdd": true}
         });
     @endif
     var actionsShow = [{"icon": "", "name": "wish"}, {"icon": "", "name": "bag"}]
