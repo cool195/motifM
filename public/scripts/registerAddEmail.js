@@ -62,12 +62,16 @@
             $.ajax({
                 url: '/facebooklogin',
                 type: 'POST',
-                data: $('#register').serialize()
+                data: {
+                    email: $('input[name="email"]'),
+                    id: $('input[name="id"]'),
+                    name: $('input[name="name"]'),
+                    avatar: $('input[name="avatar"]'),
+                }
             })
                 .done(function(data) {
                     if (data.success) {
                         $('.warning-info').addClass('hidden-xs-up');
-
                         Modal.open();
                         $('#confirm').attr('href', data.redirectUrl);
                     } else {
