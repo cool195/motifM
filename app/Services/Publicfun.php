@@ -2,7 +2,7 @@
 
 namespace App\Services;
 
-use App\Services\Net;
+use Net;
 use Log;
 use Illuminate\Support\Facades\Cache;
 
@@ -42,6 +42,7 @@ class Publicfun
             'token' => $token,
         );
         $result = self::request('', 'wishlist', $params);
+        Log::info('wish:::',$result);
         $result['cmd'] = $cmd == 'add' ? true : false;
         return $result;
     }
