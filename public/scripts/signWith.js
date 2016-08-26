@@ -107,12 +107,11 @@
     // Here we run a very simple test of the Graph API after login is
     // successful.  See statusChangeCallback() for when this call is made.
     function loginFacebook() {
-        //console.log('Welcome!  Fetching your information.... ');
         FB.api('/me?fields=id,name,picture,email', function(response) {
             console.log([response,response.length]);
-            // if (response.email == '' || response.email == undefined) {
-            //     window.location.href = '/addFacebookEmail?id=' + response.id + '&name=' + response.name + '&avatar=' + response.picture.data.url.encodeURIComponent();
-            // } else {
+            if (response.email == '' || response.email == undefined) {
+                window.location.href = '/addFacebookEmail?id=' + response.id + '&name=' + response.name + '&avatar=' + response.picture.data.url.encodeURIComponent();
+            } else {
                 $.ajax({
                         url: '/facebooklogin',
                         type: 'POST',
@@ -139,7 +138,7 @@
                         console.log("complete");
                     });
 
-            //}
+            }
 
         });
     }
