@@ -60,7 +60,7 @@
         if (!$(this).hasClass('disabled')) {
             openLoading();
             $.ajax({
-                url: '/user/forget',
+                url: '/user/signup',
                 type: 'POST',
                 data: $('#reset').serialize()
             })
