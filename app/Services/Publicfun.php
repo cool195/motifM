@@ -42,7 +42,7 @@ class Publicfun
             'token' => $token,
         );
         $result = self::request('', 'wishlist', $params);
-        Log::info('wish:::',$result);
+        Log::info('wish:::',[$params,$result]);
         $result['cmd'] = $cmd == 'add' ? true : false;
         return $result;
     }
