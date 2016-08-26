@@ -61,7 +61,7 @@
             openLoading();
             $.ajax({
                 url: '/facebooklogin',
-                type: 'POST',
+                type: 'get',
                 data: $('#register').serialize()
             })
                 .done(function(data) {
