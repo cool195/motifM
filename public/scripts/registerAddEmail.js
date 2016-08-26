@@ -62,7 +62,7 @@
             $.ajax({
                 url: '/user/signup',
                 type: 'POST',
-                data: $('#reset').serialize()
+                data: $('#register').serialize()
             })
                 .done(function(data) {
                     if (data.success) {
@@ -82,5 +82,3 @@
     });
 
 })(jQuery);
-
-//# sourceMappingURL=resetPassword.js.map
