@@ -5,6 +5,7 @@ namespace App\Services;
 use App\Services\Net;
 use Log;
 use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\Session;
 
 class Publicfun
 {
@@ -20,14 +21,14 @@ class Publicfun
     ];
 
     //收藏商品操作
-    public static function addWishProduct($spu, $pin, $token, $action = false)
+    public static function addWishProduct($spu,$action = false)
     {
         if ($action) {
             $params = array(
                 'cmd' => 'is',
                 'spu' => $spu,
-                'pin' => $pin,
-                'token' => $token,
+                'pin' => Session::get('user.pin'),
+                'token' => Session::get('user.token'),
             );
             $result = self::request('', 'wishlist', $params);
             $cmd = $result['data']['isFC'] ? 'del' : 'add';
@@ -38,23 +39,22 @@ class Publicfun
         $params = array(
             'cmd' => $cmd,
             'spu' => $spu,
-            'pin' => $pin,
-            'token' => $token,
+            'pin' => Session::get('user.pin'),
+            'token' => Session::get('user.token'),
         );
         $result = self::request('', 'wishlist', $params);
-        Log::info('wish:::',[$params,$result]);
         $result['cmd'] = $cmd == 'add' ? true : false;
         return $result;
     }
 
     //关注设计师服务
-    public static function addFollowDesigner($id, $pin, $token, $action = false)
+    public static function addFollowDesigner($id,$action = false)
     {
         if ($action) {
             $followParams = array(
                 'cmd' => 'is',
-                'pin' => $pin,
-                'token' => $token,
+                'pin' => Session::get('user.pin'),
+                'token' => Session::get('user.token'),
                 'did' => $id,
             );
             $follow = self::request('openapi', '', 'follow', $followParams);
@@ -65,8 +65,8 @@ class Publicfun
 
         $followParams = array(
             'cmd' => $cmd,
-            'pin' => $pin,
-            'token' => $token,
+            'pin' => Session::get('user.pin'),
+            'token' => Session::get('user.token'),
             'did' => $id,
         );
         $follow = self::request('openapi', '', 'follow', $followParams);

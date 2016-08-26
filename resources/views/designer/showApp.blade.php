@@ -277,7 +277,7 @@
                                                                                 class="iconfont icon-like product-heart"></i></span>
                                                                 @else
                                                                     <span class="p-r-5x"><i
-                                                                                class="iconfont icon-like product-heart sendLogin" data-id="{{'wish-'.$spu}}"></i></span>
+                                                                                class="iconfont icon-like product-heart sendLogin" data-id="{{$spu}}"></i></span>
                                                                 @endif
 
                                                         </div>
@@ -329,7 +329,7 @@
                                                             class="iconfont icon-like product-heart"></i></span>
                                             @else
                                                 <span class="p-r-5x"><i
-                                                            class="iconfont icon-like product-heart sendLogin" data-id="{{'wish-'.$value['spu']}}"></i></span>
+                                                            class="iconfont icon-like product-heart sendLogin" data-id="{{$value['spu']}}"></i></span>
                                             @endif
                                         </div>
                                     </div>
@@ -348,13 +348,21 @@
     <div class="loader loader-screen"></div>
 </div>
 <input type="hidden" id="spuArray" value="{{$designer['spuArray']}}">
+<input type="hidden" id="wishspu" value="">
+<input type="hidden" id="followDes" value="">
 </body>
 <script src="{{env('CDN_Static')}}/scripts/vendor.js{{'?v='.config('app.version')}}"></script>
 <script src="{{env('CDN_Static')}}/scripts/designerDetail.js{{'?v='.config('app.version')}}"></script>
 <script src="{{env('CDN_Static')}}/scripts/videoPlay.js{{'?v='.config('app.version')}}"></script>
 <script src="{{env('CDN_Static')}}/scripts/JockeyJS.js"></script>
 <script>
-
+    @if($topic['pushspu'])
+        Jockey.send("action", {
+            name: "updateWish",
+            token: "key",
+            data: {"spu": "{{$topic['pushspu']}}", "isAdd": true}
+        });
+    @endif
     var actionsShow = [{"icon": "", "name": "wish"}, {"icon": "", "name": "bag"}]
     Jockey.send("action", {
         name: "showActions",
@@ -365,7 +373,7 @@
     Jockey.on("action", function (action) {
         //login
         if (action.name == "authInfo") {
-            window.location.href = "/designer/{{$designer['designer_id']}}?token=" + action.data.token + "&pin=" + action.data.pin + "&email=" + action.data.email + "&name=" + decodeURIComponent(action.data.name)
+            window.location.href = "/designer/{{$designer['designer_id']}}?wishspu="+$('#wishspu').val()+"&token=" + action.data.token + "&pin=" + action.data.pin + "&email=" + action.data.email + "&name=" + decodeURIComponent(action.data.name)
         }
         else if (action.name == "addWish") {
             var spus = action.data.spu.split(',');
@@ -377,6 +385,7 @@
 
     //login send
     $('.sendLogin').on('click', function () {
+        $('#wishspu').val($(this).data('id'));
         Jockey.send("action", {
             name: "login",
             token: "key",
