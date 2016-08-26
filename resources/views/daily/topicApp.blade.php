@@ -271,7 +271,7 @@
                             $('#wish' + value).html('<i class="iconfont icon-onheart product-heart active"></i>');
                         });
                     } else if (actionName.name == "authInfo") {
-                        window.location.href = "/topic/{{$topicID}}?wishspu="+$('#dataid').val()+"&token=" + actionName.data.token + "&pin=" + actionName.data.pin + "&email=" + actionName.data.email + "&name=" + decodeURIComponent(actionName.data.name);
+                        window.location.href = "/topic/{{$topicID}}?wishspu="+$('#wishspu').val()+"&token=" + actionName.data.token + "&pin=" + actionName.data.pin + "&email=" + actionName.data.email + "&name=" + decodeURIComponent(actionName.data.name);
                     }
                 }
         );
