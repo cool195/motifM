@@ -2,7 +2,7 @@
 
 namespace App\Services;
 
-use Net;
+use App\Services\Net;
 use Log;
 use Illuminate\Support\Facades\Cache;
 
