@@ -62,6 +62,6 @@
 </body>
 <script src="{{env('CDN_Static')}}/scripts/vendor.js{{'?v='.config('app.version')}}"></script>
 
-<script src="{{env('CDN_Static')}}/scripts/registerAddEmial.js{{'?v='.config('app.version')}}"></script>
+<script src="{{env('CDN_Static')}}/scripts/registerAddEmail.js{{'?v='.config('app.version')}}"></script>
 
 </html>
