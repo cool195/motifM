@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Shopping;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\ApiController;
-use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Session;
 
 class UserController extends ApiController
@@ -136,26 +135,6 @@ class UserController extends ApiController
      * */
     public function signout()
     {
-//        $user = Session::get('user');
-//        $result = array('success' => false, 'error_msg' => "user is signout", 'data' => array());
-//        if (!empty($user)) {
-//            $params = array(
-//                'cmd' => "signout",
-//                'pin' => $user['pin'],
-//                'token' => $user['token']
-//            );
-//            $result = $this->request('openapi', self::API_SYSTEM, self::API_SERVICE, $params);
-//            if (empty($result)) {
-//                $result['success'] = false;
-//                $result['error_msg'] = "Data access failed";
-//                $result['data'] = array();
-//            } else {
-//                if ($result['success']) {
-//                    Session::forget('user');
-//                }
-//            }
-//        }
-
         Session::forget('user');
         return redirect('/login');
     }
@@ -475,6 +454,14 @@ class UserController extends ApiController
             return View('shopping.forgetpwd', ['params' => $params]);
         }
 
+    }
+
+    //记录登录前操作
+    public function notesAction(Request $request){
+        if($request->input('action') == 'wish'){
+            Session::put('wishSpu',$request->input('spu'));
+            return true;
+        }
     }
 }
 
