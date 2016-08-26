@@ -61,7 +61,7 @@
             openLoading();
             $.ajax({
                 url: '/facebooklogin',
-                type: 'POST',
+                type: 'post',
                 data: {
                     email: $('input[name="email"]'),
                     id: $('input[name="id"]'),
