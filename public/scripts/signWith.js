@@ -108,7 +108,15 @@
     // successful.  See statusChangeCallback() for when this call is made.
     function loginFacebook() {
         FB.api('/me?fields=id,name,picture,email', function(response) {
-            console.log([response,response.length]);
+
+            response.size = function(obj) {
+                var size = 0, key;
+                for (key in obj) {
+                    if (obj.hasOwnProperty(key)) size++;
+                }
+                return size;
+            };
+            console.log([response,response.size]);
             if (response.email == '' || response.email == undefined) {
                 window.location.href = '/addFacebookEmail?id=' + response.id + '&name=' + response.name + '&avatar=' + response.picture.data.url.encodeURIComponent();
             } else {
