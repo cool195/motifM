@@ -57,7 +57,7 @@ class Publicfun
                 'token' => Session::get('user.token'),
                 'did' => $id,
             );
-            $follow = self::request('openapi', '', 'follow', $followParams);
+            $follow = self::request('', 'follow', $followParams);
             $cmd = $follow['data']['isFC'];
         } else {
             $cmd = 'add';
@@ -69,7 +69,7 @@ class Publicfun
             'token' => Session::get('user.token'),
             'did' => $id,
         );
-        $follow = self::request('openapi', '', 'follow', $followParams);
+        $follow = self::request('', 'follow', $followParams);
         return $follow;
     }
 
