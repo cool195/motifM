@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Daily;
 use Illuminate\Http\Request;
 use App\Http\Controllers\ApiController;
 use Illuminate\Support\Facades\Session;
-use Log;
+use App\Services\Publicfun;
 
 class DailyController extends ApiController
 {
@@ -95,6 +95,7 @@ class DailyController extends ApiController
                         );
                         $this->request('openapi', '', 'wishlist', $params);
                     }
+                    Publicfun::addWishProduct($dataid[1],$data['pin'],$data['token']);
                 }
                 $spuArray = array();
                 foreach ($result['data']['infos'] as $value) {
