@@ -118,7 +118,7 @@
                                 @endif
                             @else
                                 <a href="#" class="btn btn-sm btn-follow active sendLogin"
-                                   data-id="{{'follow-'.$designer['designer_id']}}">Follow</a>
+                                   data-des="{{$designer['designer_id']}}">Follow</a>
                             @endif
                         </span>
                         <span>
@@ -373,7 +373,7 @@
     Jockey.on("action", function (action) {
         //login
         if (action.name == "authInfo") {
-            window.location.href = "/designer/{{$designer['designer_id']}}?wishspu="+$('#wishspu').val()+"&token=" + action.data.token + "&pin=" + action.data.pin + "&email=" + action.data.email + "&name=" + decodeURIComponent(action.data.name)
+            window.location.href = "/designer/{{$designer['designer_id']}}?des="+$('#followDes').val()+"&wishspu="+$('#wishspu').val()+"&token=" + action.data.token + "&pin=" + action.data.pin + "&email=" + action.data.email + "&name=" + decodeURIComponent(action.data.name)
         }
         else if (action.name == "addWish") {
             var spus = action.data.spu.split(',');
@@ -386,6 +386,7 @@
     //login send
     $('.sendLogin').on('click', function () {
         $('#wishspu').val($(this).data('id'));
+        $('#followDes').val($(this).data('des'));
         Jockey.send("action", {
             name: "login",
             token: "key",
