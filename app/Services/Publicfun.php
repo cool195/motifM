@@ -2,7 +2,7 @@
 
 namespace App\Services;
 
-use Net;
+use App\Services\Net;
 use Log;
 
 class Publicfun
@@ -47,9 +47,8 @@ class Publicfun
     }
 
     //接口服务
-    private static function request($system, $service, array $params, $cacheTime = 0)
+    public static function request($system, $service, array $params, $cacheTime = 0)
     {
-
         $ApiName = $_SERVER['SERVER_NAME'] == 'm.motif.me' ? 'openapi' : ($_SERVER['SERVER_NAME'] == 'test.m.motif.me' ? 'openapi_test' : 'openapi_local');
         $Api = $service == 'rec' ? self::ApiUrl[$ApiName]['rec'] : self::ApiUrl[$ApiName]['api'];
         $buildParams = http_build_query($params);
