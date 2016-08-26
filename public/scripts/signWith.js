@@ -109,10 +109,10 @@
     function loginFacebook() {
         //console.log('Welcome!  Fetching your information.... ');
         FB.api('/me?fields=id,name,picture,email', function(response) {
-            console.log([response,response.email]);
-            if (response.email == '' || response.email == undefined) {
-                window.location.href = '/addFacebookEmail?id=' + response.id + '&name=' + response.name + '&avatar=' + response.picture.data.url.encodeURIComponent();
-            } else {
+            console.log([response,response.length]);
+            // if (response.email == '' || response.email == undefined) {
+            //     window.location.href = '/addFacebookEmail?id=' + response.id + '&name=' + response.name + '&avatar=' + response.picture.data.url.encodeURIComponent();
+            // } else {
                 $.ajax({
                         url: '/facebooklogin',
                         type: 'POST',
@@ -139,7 +139,7 @@
                         console.log("complete");
                     });
 
-            }
+            //}
 
         });
     }
