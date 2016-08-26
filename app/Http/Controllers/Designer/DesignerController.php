@@ -142,7 +142,7 @@ class DesignerController extends ApiController
     public function follow($id)
     {
         if (!empty($id)) {
-            return Publicfun::addFollowDesigner($id);
+            return Publicfun::addFollowDesigner($id,true);
         }
     }
 }
