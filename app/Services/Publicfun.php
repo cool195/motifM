@@ -4,6 +4,7 @@ namespace App\Services;
 
 use App\Services\Net;
 use Log;
+use Illuminate\Support\Facades\Cache;
 
 class Publicfun
 {
@@ -21,7 +22,6 @@ class Publicfun
     //收藏商品操作
     public static function addWishProduct($spu, $pin, $token, $action = false)
     {
-        Log::info($spu.$pin.$token);
         if ($action) {
             $params = array(
                 'cmd' => 'is',
@@ -29,7 +29,7 @@ class Publicfun
                 'pin' => $pin,
                 'token' => $token,
             );
-            $result = self::request('openapi', '', 'wishlist', $params);
+            $result = self::request('', 'wishlist', $params);
             $cmd = $result['data']['isFC'] ? 'del' : 'add';
         } else {
             $cmd = 'add';
@@ -41,7 +41,7 @@ class Publicfun
             'pin' => $pin,
             'token' => $token,
         );
-        $result = self::request('openapi', '', 'wishlist', $params);
+        $result = self::request('', 'wishlist', $params);
         $result['cmd'] = $cmd == 'add' ? true : false;
         return $result;
     }
