@@ -46,6 +46,32 @@ class Publicfun
         return $result;
     }
 
+    //关注设计师服务
+    public static function addFollowDesigner($id, $pin, $token, $action = false)
+    {
+        if ($action) {
+            $followParams = array(
+                'cmd' => 'is',
+                'pin' => $pin,
+                'token' => $token,
+                'did' => $id,
+            );
+            $follow = self::request('openapi', '', 'follow', $followParams);
+            $cmd = $follow['data']['isFC'];
+        } else {
+            $cmd = 'add';
+        }
+
+        $followParams = array(
+            'cmd' => $cmd,
+            'pin' => $pin,
+            'token' => $token,
+            'did' => $id,
+        );
+        $follow = self::request('openapi', '', 'follow', $followParams);
+        return $follow;
+    }
+
     //接口服务
     public static function request($system, $service, array $params, $cacheTime = 0)
     {
