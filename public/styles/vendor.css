@@ -5736,7 +5736,6 @@ footer .links-group {
   top: 20%;
   left: 20%;
   position: absolute;
-  background: rgba(255, 255, 255, 0.3);
   border-radius: 5px;
   cursor: pointer;
   z-index: 200;
