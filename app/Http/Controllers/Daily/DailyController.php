@@ -79,7 +79,7 @@ class DailyController extends ApiController
                 //执行登录前操作
                 if($request->input('dataid')){
                     $dataid = explode('-',$request->input('dataid'));
-                    //Publicfun::addWishProduct($dataid[1],$data['pin'],$data['token']);
+                    Publicfun::addWishProduct($dataid[1],$data['pin'],$data['token']);
                 }
                 $spuArray = array();
                 foreach ($result['data']['infos'] as $value) {

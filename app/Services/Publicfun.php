@@ -21,6 +21,7 @@ class Publicfun
     //收藏商品操作
     public static function addWishProduct($spu, $pin, $token, $action = false)
     {
+        Log::info($spu.$pin.$token);
         if ($action) {
             $params = array(
                 'cmd' => 'is',
