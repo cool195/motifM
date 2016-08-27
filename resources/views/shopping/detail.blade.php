@@ -276,10 +276,10 @@
                                 @if(Session::has('user'))
                                     <div class="row">
                                         <div class="col-xs-12">
-                                            <div class="btn btn-primary btn-block up-btn-addToBag @if(!$data['sale_status']) disabled @endif"
+                                            <button class="btn btn-primary btn-block up-btn-addToBag @if(!$data['sale_status']) disabled @endif"
                                                  data-control="openModal" @if(1 == $data['sale_type']) data-action="PUT"
                                                  @else data-action="PATCH"@endif>@if(1 == $data['sale_type']) Pre Order
-                                                Now @else Add to Bag @endif</div>
+                                                Now @else Add to Bag @endif</button>
                                         </div>
                                         {{--<div class="col-xs-6">--}}
                                         {{--<div class="btn btn-primary btn-block" data-control="openModal" data-action="PUT">Buy Now</div>--}}
@@ -288,8 +288,8 @@
                                 @else
                                     <div class="row">
                                         <div class="col-xs-12">
-                                            <a href="/login"
-                                               class="btn btn-primary btn-block up-btn-addToBag @if(!$data['sale_status']) disabled @endif">@if(1 == $data['sale_type'])
+                                            <a href="javascript:;"
+                                               class="notesLogin btn btn-primary btn-block up-btn-addToBag @if(!$data['sale_status']) disabled @endif">@if(1 == $data['sale_type'])
                                                     Pre Order Now @else Add to Bag @endif</a>
                                         </div>
                                         {{--<div class="col-xs-6">--}}
@@ -405,8 +405,8 @@
                                 @else
                                     <div class="row">
                                         <div class="col-xs-12">
-                                            <a href="/login"
-                                               class="btn btn-primary btn-block down-btn-addToBag @if(!$data['sale_status']) disabled @endif">@if(1 == $data['sale_type'])
+                                            <a href="javascript:;"
+                                               class="notesLogin btn btn-primary btn-block down-btn-addToBag @if(!$data['sale_status']) disabled @endif">@if(1 == $data['sale_type'])
                                                     Pre Order Now @else Add to Bag @endif</a>
                                         </div>
                                         {{--<div class="col-xs-6">--}}
@@ -545,8 +545,8 @@
                     @else
                         <div class="row">
                             <div class="col-xs-12">
-                                <a href="/login"
-                                   class="btn btn-primary btn-block @if(!$data['sale_status']) disabled @endif">@if(1 == $data['sale_type'])
+                                <a href="javascript:;"
+                                   class="notesLogin btn btn-primary btn-block @if(!$data['sale_status']) disabled @endif">@if(1 == $data['sale_type'])
                                         Pre Order Now @else Add to Bag @endif</a>
                             </div>
                             {{--<div class="col-xs-6">--}}
@@ -603,6 +603,31 @@
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
         }
     });
+    {{--设置cookie--}}
+    function setCookie(name, value) {
+        var Time = 24;
+        var exp = new Date();
+        exp.setTime(exp.getTime() + Time * 60 * 60 * 1000);
+        document.cookie = name + '=' + escape(value) + ';expires=' + exp.toGMTString();
+    }
+    {{--读取cookie--}}
+    function getCookie(name) {
+        var arr = document.cookie.match(new RegExp('(^| )' + name + '=([^;]*)(;|$)'));
+        if (arr != null) {
+            return unescape(arr[2]);
+        }
+        return null;
+    }
+    {{--未登录添加购物车操作--}}
+    $('.notesLogin').on('click',function () {
+        setCookie('notesLogin','AddBagAction');
+        window.location.href = '/login';
+    });
+
+    if(getCookie('notesLogin')=='AddBagAction' && !$('.notesLogin').hasClass('btn')){
+        $('.up-btn-addToBag').click();
+        setCookie('notesLogin','');
+    }
 </script>
 @include('global')
 </html>
