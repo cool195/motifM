@@ -292,11 +292,13 @@
         $('.wish-item').on('click', function () {
             $this = $(this);
             var cmd = true;
-            if($this.find('i').hasClass('active') && !$this.find('i').hasClass('sendLogin')){
+            if($this.find('i').hasClass('active')){
                 cmd = false;
                 $this.html('<i class="iconfont text-common btn-wish"></i>');
             }else{
-                $this.html('<i class="iconfont text-common btn-wish active"></i>');
+                if(!$this.find('i').hasClass('sendLogin')){
+                    $this.html('<i class="iconfont text-common btn-wish active"></i>');
+                }
             }
             Jockey.send("action", {
                 name: "updateWish",
