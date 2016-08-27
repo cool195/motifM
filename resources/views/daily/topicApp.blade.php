@@ -291,21 +291,22 @@
 
         $('.wish-item').on('click', function () {
             $this = $(this);
+            var cmd = true;
+            if($this.find('i').hasClass('active')){
+                cmd = false;
+                $this.html('<i class="iconfont text-common btn-wish"></i>');
+            }else{
+                $this.html('<i class="iconfont text-common btn-wish active"></i>');
+            }
+            Jockey.send("action", {
+                name: "updateWish",
+                token: "key",
+                data: {"spu": $this.data('id').toString(), "isAdd": cmd}
+            });
             $.ajax({
                 url: '/wish/' + $this.data('id'),
                 type: 'GET'
-            })
-                    .done(function (data) {
-                        if (data.success) {
-                            data.cmd ? $this.html('<i class="iconfont text-common btn-wish btn-wished active"></i>') : $this.html('<i class="iconfont text-common btn-wish"></i>');
-                            ;
-                            Jockey.send("action", {
-                                name: "updateWish",
-                                token: "key",
-                                data: {"spu": $this.data('id').toString(), "isAdd": data.cmd}
-                            });
-                        }
-                    })
+            });
         });
 
                 @if(Session::get('user.pin'))

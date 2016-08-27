@@ -276,20 +276,16 @@
         var $this = $(e.target);
         var spu = $(e.target).data('spu');
         if (spu != undefined) {
+            if (!$this.hasClass('active')) {
+                $this.addClass('active');
+            } else {
+                $this.removeClass('active');
+            }
             $.ajax({
                 url: '/updateWish',
                 type: 'post',
                 data: {spu: spu}
-            })
-                .done(function (data) {
-                    if (data.success) {
-                        if (!$this.hasClass('active')) {
-                            $this.addClass('active');
-                        } else {
-                            $this.removeClass('active');
-                        }
-                    }
-                });
+            });
         } else {
             spu = $this.data('actionspu');
             $.ajax({
