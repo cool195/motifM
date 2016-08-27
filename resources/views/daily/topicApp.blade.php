@@ -159,13 +159,10 @@
                                                             @endif
                                                         </div>
 
-                                                        @if(Session::get('user.pin'))
-                                                            <span class="p-r-5x wish" data-id="{{$spu}}"
-                                                                  id="{{'wish'.$spu}}"><i
-                                                                        class="iconfont icon-like product-heart"></i></span>
+                                                        @if(Session::has('user'))
+                                                            <span class="wish-item p-r-10x" data-id="{{$spu}}" id="{{'wish'.$spu}}"><i class="iconfont text-common btn-wish" data-spu="{{$spu}}"></i></span>
                                                         @else
-                                                            <span class="p-r-5x"><i
-                                                                        class="iconfont icon-like product-heart sendLogin" data-id="{{$spu}}"></i></span>
+                                                            <a class="wish-item p-r-10x" href="javascript:;"><i class="iconfont text-common btn-wish" data-id="{{$spu}}"></i></a>
                                                         @endif
                                                     </div>
                                                 </div>
@@ -275,7 +272,7 @@
                     } else if (actionName.name == "addWish") {
                         var spus = actionName.data.spu.split(',');
                         $.each(spus, function (n, value) {
-                            $('#wish' + value).html('<i class="iconfont icon-onheart product-heart active"></i>');
+                            $('#wish' + value).html('<i class="iconfont text-common btn-wish active"></i>');
                         });
                     } else if (actionName.name == "authInfo") {
                         window.location.href = "/topic/{{$topicID}}?wishspu="+$('#wishspu').val()+"&token=" + actionName.data.token + "&pin=" + actionName.data.pin + "&email=" + actionName.data.email + "&name=" + decodeURIComponent(actionName.data.name);
@@ -292,7 +289,7 @@
             });
         });
 
-        $('.wish').on('click', function () {
+        $('.wish-item').on('click', function () {
             $this = $(this);
             $.ajax({
                 url: '/wish/' + $this.data('id'),
@@ -300,7 +297,7 @@
             })
                     .done(function (data) {
                         if (data.success) {
-                            data.cmd ? $this.html('<i class="iconfont icon-onheart product-heart active"></i>') : $this.html('<i class="iconfont icon-like product-heart"></i>');
+                            data.cmd ? $this.html('<i class="iconfont text-common btn-wish btn-wished active"></i>') : $this.html('<i class="iconfont text-common btn-wish"></i>');
                             ;
                             Jockey.send("action", {
                                 name: "updateWish",

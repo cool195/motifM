@@ -4025,6 +4025,7 @@ html.remodal-is-locked {
 */
 .iconfont {
   display: inline-block;
+  font-size: 1.25rem;
   font-family: "iconfont" !important;
   font-style: normal;
   line-height: 1;
