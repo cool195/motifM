@@ -191,7 +191,7 @@
                     <strong>$@{{ ($value.skuPrice.sale_price/100).toFixed(2) }}</strong>
                 </span>
                 @{{ if $value.skuPrice.sale_price !== $value.skuPrice.price }}
-                <span class="font-size-xs text-common text-throughLine m-l-5x">$@{{ ($value.skuPrice.skuPromotion.price/100).toFixed(2) }}</span>
+                <span class="font-size-xs text-common text-throughLine">$@{{ ($value.skuPrice.skuPromotion.price/100).toFixed(2) }}</span>
                 @{{ /if }}
                 @if(Session::has('user'))
                     <span class="wish-item p-r-10x" ><i

@@ -369,7 +369,7 @@
                                                             <div class="price-caption">
                                                                 <span class="font-size-sm m-l-5x"><strong>${{ number_format(($value['skuPrice']['sale_price'] / 100), 2) }}</strong></span>
                                                                 @if($value['skuPrice']['sale_price'] != $value['skuPrice']['price'])
-                                                                    <span class="font-size-xs text-common text-throughLine m-l-5x">${{ number_format(($value['skuPrice']['price'] / 100), 2) }}</span>
+                                                                    <span class="font-size-xs text-common text-throughLine">${{ number_format(($value['skuPrice']['price'] / 100), 2) }}</span>
                                                                 @endif
                                                                 @if(Session::has('user'))
                                                                     <span class="wish-item p-r-5x"><i
