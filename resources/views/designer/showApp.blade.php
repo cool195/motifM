@@ -270,15 +270,11 @@
                                                                     <span class="font-size-xs text-common text-throughLine m-l-5x">${{number_format($product['spuInfos'][$spu]['skuPrice']['price']/100,2)}}</span>
                                                                 @endif
                                                             </div>
-
-                                                                @if(Session::get('user.pin'))
-                                                                    <span class="p-r-5x wish" data-id="{{$spu}}"
-                                                                          id="{{'wish'.$spu}}"><i
-                                                                                class="iconfont icon-like product-heart"></i></span>
-                                                                @else
-                                                                    <span class="p-r-5x"><i
-                                                                                class="iconfont icon-like product-heart sendLogin" data-id="{{$spu}}"></i></span>
-                                                                @endif
+                                                            @if(Session::has('user'))
+                                                                <span class="wish-item p-r-10x" data-id="{{$spu}}" id="{{'wish'.$spu}}"><i class="iconfont text-common btn-wish"></i></span>
+                                                            @else
+                                                                <a class="wish-item p-r-10x" href="javascript:;"><i class="iconfont text-common btn-wish sendLogin" data-id="{{$spu}}"></i></a>
+                                                            @endif
 
                                                         </div>
                                                     </div>
@@ -322,14 +318,10 @@
                                                     <span class="font-size-xs text-common text-throughLine m-l-5x">${{number_format($value['skuPrice']['price']/100,2)}}</span>
                                                 @endif
                                             </div>
-
-                                            @if(Session::get('user.pin'))
-                                                <span class="p-r-5x wish" data-id="{{$value['spu']}}"
-                                                      id="{{'wish'.$value['spu']}}"><i
-                                                            class="iconfont icon-like product-heart"></i></span>
+                                            @if(Session::has('user'))
+                                                <span class="wish-item p-r-10x" data-id="{{$value['spu']}}" id="{{'wish'.$value['spu']}}"><i class="iconfont text-common btn-wish"></i></span>
                                             @else
-                                                <span class="p-r-5x"><i
-                                                            class="iconfont icon-like product-heart sendLogin" data-id="{{$value['spu']}}"></i></span>
+                                                <a class="wish-item p-r-10x" href="javascript:;"><i class="iconfont text-common btn-wish sendLogin" data-id="{{$value['spu']}}"></i></a>
                                             @endif
                                         </div>
                                     </div>
@@ -378,7 +370,7 @@
         else if (action.name == "addWish") {
             var spus = action.data.spu.split(',');
             $.each(spus, function (n, value) {
-                $('#wish' + value).html('<i class="iconfont icon-onheart product-heart active"></i>');
+                $('#wish' + value).html('<i class="iconfont text-common btn-wish active"></i>');
             });
         }
     });
@@ -406,7 +398,7 @@
         });
     });
 
-    $('.wish').on('click', function () {
+    $('.wish-item').on('click', function () {
         $this = $(this);
         $.ajax({
             url: '/wish/' + $this.data('id'),
@@ -414,7 +406,7 @@
         })
                 .done(function (data) {
                     if (data.success) {
-                        data.cmd ? $this.html('<i class="iconfont icon-onheart product-heart active"></i>') : $this.html('<i class="iconfont icon-like product-heart"></i>');
+                        data.cmd ? $this.html('<i class="iconfont text-common btn-wish active"></i>') : $this.html('<i class="iconfont text-common btn-wish"></i>');
                         ;
                         Jockey.send("action", {
                             name: "updateWish",
