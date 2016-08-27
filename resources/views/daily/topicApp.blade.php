@@ -162,7 +162,7 @@
                                                         @if(Session::has('user'))
                                                             <span class="wish-item p-r-10x" data-id="{{$spu}}" id="{{'wish'.$spu}}"><i class="iconfont text-common btn-wish" data-spu="{{$spu}}"></i></span>
                                                         @else
-                                                            <a class="wish-item p-r-10x" href="javascript:;"><i class="iconfont text-common btn-wish" data-id="{{$spu}}"></i></a>
+                                                            <a class="wish-item p-r-10x" href="javascript:;"><i class="iconfont text-common btn-wish sendLogin" data-id="{{$spu}}"></i></a>
                                                         @endif
                                                     </div>
                                                 </div>
