@@ -401,7 +401,7 @@
     $('.wish-item').on('click', function () {
         $this = $(this);
         var cmd = true;
-        if($this.find('i').hasClass('active')){
+        if($this.find('i').hasClass('active') && !$this.find('i').hasClass('sendLogin')){
             cmd = false;
             $this.html('<i class="iconfont text-common btn-wish"></i>');
         }else{
