@@ -212,7 +212,7 @@
                         <section class="limited-content"
                                  data-begintime="{{  $data['skuPrice']['skuPromotion']['start_time'] }}"
                                  data-endtime="{{  $data['skuPrice']['skuPromotion']['end_time'] }}"
-                                 data-lefttime="@if($data['sale_status']){{$data['skuPrice']['skuPromotion']['remain_time']}}@else{{'0'}}@endif"
+                                 data-lefttime="@if($data['sale_status'] && $data['isPutOn']==1){{$data['skuPrice']['skuPromotion']['remain_time']}}@else{{'0'}}@endif"
                                  data-qtty="{{$data['spuStock']['stock_qtty']}}">
                             <div class="bg-white m-b-10x">
                                 <div class="p-x-15x limited-subtitle"><strong>LIMITED EDITION</strong></div>
@@ -221,7 +221,7 @@
                                         <img src="/images/icon/icon-limited.png"
                                              srcset="/images/icon/icon-limited@2x.png 2x, /images/icon/icon-limited@3x.png 3x"
                                              alt="">
-                                    <span class="text-primary font-size-sm stock-qtty">@if($data['spuStock']['stock_qtty'] - $data['spuStock']['saled_qtty'] > 0 && $data['sale_status'])
+                                    <span class="text-primary font-size-sm stock-qtty">@if(($data['spuStock']['stock_qtty'] - $data['spuStock']['saled_qtty'] > 0 && $data['sale_status']) && $data['isPutOn']==1)
                                             Only {{$data['spuStock']['stock_qtty'] - $data['spuStock']['saled_qtty']}}
                                             Left @else Sold Out @endif </span>
                                     </div>
@@ -234,7 +234,7 @@
                                                 class="time_show"></span></span>
                                 </div>
                                 <div class="p-x-15x p-y-5x m-x-15x">
-                                    @if(!$data['sale_status'])
+                                    @if(!$data['sale_status'] &&  $data['isPutOn']==1)
                                         <progress class="progress progress-primary" value="0" max="100">0%</progress>
                                     @else
                                         <progress class="progress progress-primary" id="limited-progress" value=""
@@ -276,7 +276,7 @@
                                 @if(Session::has('user'))
                                     <div class="row">
                                         <div class="col-xs-12">
-                                            <div class="btn btn-primary btn-block up-btn-addToBag @if(!$data['sale_status']) disabled @endif"
+                                            <div class="btn btn-primary btn-block up-btn-addToBag @if(!$data['sale_status'] || $data['isPutOn']==0) disabled @endif"
                                                  data-control="openModal" @if(1 == $data['sale_type']) data-action="PUT"
                                                  @else data-action="PATCH"@endif>@if(1 == $data['sale_type']) Pre Order
                                                 Now @else Add to Bag @endif</div>
@@ -289,7 +289,7 @@
                                     <div class="row">
                                         <div class="col-xs-12">
                                             <a href="/login"
-                                               class="btn btn-primary btn-block up-btn-addToBag @if(!$data['sale_status']) disabled @endif">@if(1 == $data['sale_type'])
+                                               class="btn btn-primary btn-block up-btn-addToBag @if(!$data['sale_status'] || $data['isPutOn']==0) disabled @endif">@if(1 == $data['sale_type'])
                                                     Pre Order Now @else Add to Bag @endif</a>
                                         </div>
                                         {{--<div class="col-xs-6">--}}
@@ -395,7 +395,7 @@
                                 @if(Session::has('user'))
                                     <div class="row">
                                         <div class="col-xs-12">
-                                            <div class="btn btn-primary btn-block down-btn-addToBag @if(!$data['sale_status']) disabled @endif"
+                                            <div class="btn btn-primary btn-block down-btn-addToBag @if(!$data['sale_status'] || $data['isPutOn']==0) disabled @endif"
                                                  data-control="openModal" @if(1 == $data['sale_type']) data-action="PUT"
                                                  @else data-action="PATCH"@endif>@if(1 == $data['sale_type']) Pre Order
                                                 Now @else Add to Bag @endif</div>
@@ -408,7 +408,7 @@
                                     <div class="row">
                                         <div class="col-xs-12">
                                             <a href="/login"
-                                               class="btn btn-primary btn-block down-btn-addToBag @if(!$data['sale_status']) disabled @endif">@if(1 == $data['sale_type'])
+                                               class="btn btn-primary btn-block down-btn-addToBag @if(!$data['sale_status'] || $data['isPutOn']==0) disabled @endif">@if(1 == $data['sale_type'])
                                                     Pre Order Now @else Add to Bag @endif</a>
                                         </div>
                                         {{--<div class="col-xs-6">--}}
