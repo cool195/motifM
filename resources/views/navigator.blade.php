@@ -11,6 +11,7 @@
                     <img class="motif-logo" src="{{env('CDN_Static')}}/images/logo/logo.png"
                         srcset="{{env('CDN_Static')}}/images/logo/logo@2x.png 2x,{{env('CDN_Static')}}/images/logo/logo@3x.png 3x"></a>
             </li>
+            @if(!isset($pageScope))
             <li class="nav-item">
                 <div style="width: 68px;">
                     <a href="/wish" class="head-wish">
@@ -20,14 +21,13 @@
                     </a>
                     <a href="/cart" class="head-cart">
                         <span class="nav-shoppingCart" data-login="@if(Session::has('user')){{'true'}}@else{{'false'}}@endif">
-                            @if(!isset($pageScope))
                                 <img class="nav-tap" src="{{env('CDN_Static')}}/images/icon/icon-bag.png" srcset="{{env('CDN_Static')}}/images/icon/icon-bag@2x.png 2x,{{env('CDN_Static')}}/images/icon/icon-bag@3x.png 3x">
                                 <span class="shoppingCart-number" style="display: none;"></span>
-                            @endif
                         </span>
                     </a>
                 </div>
             </li>
+            @endif
         </ul>
     </nav>
 </header>
