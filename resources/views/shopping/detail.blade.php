@@ -189,7 +189,6 @@
                             @if(isset($data['skuPrice']['skuPromotion']))
                                 <span class="font-size-lx text-red">${{ number_format(($data['skuPrice']['skuPromotion']['promot_price'] / 100), 2) }}</span>
                                 <span class="font-size-sm text-throughLine text-common">${{ number_format(($data['skuPrice']['skuPromotion']['price'] /100), 2) }}</span>
-                                {{--<span class="font-size-sm text-primary">({{ $data['skuPrice']['skuPromotion']['display'] }})</span>--}}
                             @else
                                 <span class="font-size-lx text-primary">${{ number_format(($data['skuPrice']['sale_price'] / 100), 2) }}</span>
                             @endif
@@ -205,7 +204,11 @@
                             <div class="bg-white m-b-10x">
                                 <div class="p-x-15x limited-subtitle"><strong>PREORDER</strong></div>
                                 <div class="p-x-15x p-t-10x p-b-15x text-primary font-size-sm">
-                                    Expected to ship on <strong>{{$data['skuPrice']['skuPromotion']['ship_desc']}}</strong>.
+                                    @if($data['isPutOn']==1)
+                                        Expected to ship on <strong>{{$data['skuPrice']['skuPromotion']['ship_desc']}}</strong>.
+                                    @else
+                                        Sold Out
+                                    @endif
                                 </div>
                             </div>
                         </section>
@@ -248,29 +251,6 @@
 
                                 <!-- 产品 其他信息 -->
                         <section>
-
-                            <!-- 选择商品参数 -->
-                            {{--@if(isset($data['spuAttrs']) || isset($data['vasBases']))--}}
-                            {{--<aside class="bg-white m-b-10x">--}}
-                            {{--<a class="flex flex-alignCenter flex-fullJustified font-size-sm text-primary p-a-15x"--}}
-                            {{--data-remodal-target="modal" href="#">--}}
-                            {{--<span data-select>Select</span>--}}
-                            {{--<span class="flex flex-alignCenter flex-fullJustified">--}}
-                            {{--<span class="m-r-10x" data-select-options>--}}
-                            {{--@foreach($data['spuAttrs'] as $key => $attrs)--}}
-                            {{--@if((count($data['spuAttrs']) - 1) == $key)--}}
-                            {{--{{$attrs['attr_type_value']}}--}}
-                            {{--@else--}}
-                            {{--{{$attrs['attr_type_value'].", "}}--}}
-                            {{--@endif--}}
-                            {{--@endforeach--}}
-
-                            {{--</span>--}}
-                            {{--<i class="iconfont icon-arrow-right icon-size-xm text-common"></i>--}}
-                            {{--</span>--}}
-                            {{--</a>--}}
-                            {{--</aside>--}}
-                            {{--@endif--}}
                                     <!-- 添加到购物车 立即购买 -->
                             <aside class="container-fluid bg-white p-y-10x p-x-15x m-b-10x">
                                 @if(Session::has('user'))
@@ -281,9 +261,6 @@
                                                  @else data-action="PATCH"@endif>@if(1 == $data['sale_type']) Pre Order
                                                 Now @else Add to Bag @endif</button>
                                         </div>
-                                        {{--<div class="col-xs-6">--}}
-                                        {{--<div class="btn btn-primary btn-block" data-control="openModal" data-action="PUT">Buy Now</div>--}}
-                                        {{--</div>--}}
                                     </div>
                                 @else
                                     <div class="row">
@@ -292,9 +269,6 @@
                                                class="notesLogin btn btn-primary btn-block up-btn-addToBag @if(!$data['sale_status'] || $data['isPutOn']==0) disabled @endif">@if(1 == $data['sale_type'])
                                                     Pre Order Now @else Add to Bag @endif</a>
                                         </div>
-                                        {{--<div class="col-xs-6">--}}
-                                        {{--<a href="/login" class="btn btn-primary btn-block" id="buyNow">Buy Now</a>--}}
-                                        {{--</div>--}}
                                     </div>
                                 @endif
                             </aside>
@@ -311,12 +285,6 @@
                                     </a>
                                 </div>
                             </aside>
-                            <!-- 用户 Q & A -->
-                            {{--<aside class="product-secondaryInfo">--}}
-                            {{--<a class="flex flex-alignCenter flex-fullJustified font-size-sm text-primary p-a-15x"--}}
-                            {{--href="/askshopping?skiptype=3&id={{$data['spu']}}">--}}
-                            {{--Inquiries <i class="iconfont icon-arrow-right icon-size-xm text-common"></i></a>--}}
-                            {{--</aside>--}}
                             <aside class="product-secondaryInfo">
                                 @if(isset($data['templates']) && !empty($data['templates']))
                                     @foreach($data['templates'] as $template)
