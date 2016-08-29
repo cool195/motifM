@@ -20,13 +20,26 @@ class QianhaiController extends ApiController
         );
         $addrData = $this->request('openapi', '', 'order', $params);
 
-        $secureCode = 'v842rr80';
-        $postUrl = $_SERVER['HTTP_HOST'] == 'm.motif.me' ? 'https://secure.oceanpayment.com/gateway/service/pay' : 'https://secure.oceanpayment.com/gateway/service/test';
+
+        if($_SERVER['HTTP_HOST'] != 'm.motif.me'){
+            $secureCode = 'jt688j00';
+            $account = '160444';
+            $terminal = '16044405';
+            $noticeUrl = 'http://54.222.233.255/oceanpaycb';
+            $postUrl = 'https://secure.oceanpayment.com/gateway/service/test';
+        }else{
+            //生产环境
+            $secureCode = 'v842rr80';
+            $account = '160444';
+            $terminal = '16044401';
+            $noticeUrl = 'http://54.222.233.255/oceanpaycb';
+            $postUrl = 'https://secure.oceanpayment.com/gateway/service/pay';
+        }
         $postData = array(
-            'account' => '160444',
-            'terminal' => '16044401',
+            'account' => $account,
+            'terminal' => $terminal,
             'backUrl' => 'http://' . $_SERVER['HTTP_HOST'] . '/qianhai',
-            'noticeUrl' => 'http://54.222.233.255/oceanpaycb',
+            'noticeUrl' => $noticeUrl,
             'methods' => 'Credit Card',
             'pages' => '1',
             'order_number' => $request->input('orderid'),
