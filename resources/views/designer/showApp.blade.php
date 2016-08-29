@@ -270,11 +270,18 @@
                                                                      src="{{env('CDN_Static')}}/images/product/bg-product@336.png"
                                                                      alt="{{$product['spuInfos'][$spu]['spuBase']['main_title']}}">
 
-                                                                @if(1 == $data['sale_type'])
+                                                                @if(1 == $product['spuInfos'][$spu]['spuBase']['sale_type'])
                                                                     {{--预售产品 预定信息--}}
-                                                                    <div class="preorder-info P-a-5x">
-                                                                        <span class="text-white font-size-xs bg-preordering">LIMITED EDITION</span>
-                                                                    </div>
+                                                                    @if($product['spuInfos'][$spu]['stockStatus']=='NO')
+                                                                        <div class="preorder-info P-a-5x">
+                                                                            <span class="text-white font-size-xs bg-preordered">SOLD OUT</span>
+                                                                        </div>
+                                                                    @else
+                                                                        <div class="preorder-info P-a-5x">
+                                                                            <span class="text-white font-size-xs bg-preordering">LIMITED EDITION</span>
+                                                                        </div>
+                                                                    @endif
+
                                                                 @endif
                                                             </div>
                                                         </a>
@@ -328,7 +335,7 @@
                                                      src="{{env('CDN_Static')}}/images/product/bg-product@336.png"
                                                      alt="{{$value['main_title']}}">
 
-                                                @if(1 == $data['sale_type'])
+                                                @if(1 == $value['sale_type'])
                                                     {{--预售产品 预定信息--}}
                                                     <div class="preorder-info P-a-5x">
                                                         <span class="text-white font-size-xs bg-preordering">LIMITED EDITION</span>

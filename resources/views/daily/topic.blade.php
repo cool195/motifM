@@ -148,7 +148,7 @@
                                                          data-original="{{env('APP_Api_Image')}}/n2/{{$topic['spuInfos'][$spu]['spuBase']['main_image_url']}}"
                                                          src="{{env('CDN_Static')}}/images/product/bg-product@336.png"
                                                          alt="{{$topic['spuInfos'][$spu]['spuBase']['main_title']}}">
-                                                    @if(1 == $data['sale_type'])
+                                                    @if(1 == $topic['spuInfos'][$spu]['spuBase']['sale_type'])
                                                         {{--预售产品 预定信息--}}
                                                         <div class="preorder-info P-a-5x">
                                                             <span class="text-white font-size-xs bg-preordering">LIMITED EDITION</span>

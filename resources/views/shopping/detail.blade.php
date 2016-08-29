@@ -201,11 +201,11 @@
 
                     <!-- 产品 预售信息 -->
                     @if(1 == $data['sale_type'])
-                        <section class="limited-content">
+                        <section class="limited">
                             <div class="bg-white m-b-10x">
                                 <div class="p-x-15x limited-subtitle"><strong>PREORDER</strong></div>
                                 <div class="p-x-15x p-t-10x p-b-15x text-primary font-size-sm">
-                                    Expected to ship on <strong>{{$data['ship_desc']}}</strong>.
+                                    Expected to ship on <strong>{{$data['skuPrice']['skuPromotion']['ship_desc']}}</strong>.
                                 </div>
                             </div>
                         </section>
@@ -357,7 +357,7 @@
                                                                              src="{{env('CDN_Static')}}/images/product/bg-product@336.png"
                                                                              alt="{{ $value['main_title'] }}">
                                                                     </a>
-                                                                    @if(1 == $data['sale_type'])
+                                                                    @if(1 == $value['sale_type'])
                                                                         {{--预售产品 预定信息--}}
                                                                         <div class="preorder-info P-a-5x">
                                                                             <span class="text-white font-size-xs bg-preordering">LIMITED EDITION</span>

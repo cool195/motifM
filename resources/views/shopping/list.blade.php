@@ -178,12 +178,12 @@
                              alt="@{{ $value.main_title }}">
                     </a>
 
-                    @if(1 == $data['sale_type'])
+                    @{{ if $value.sale_type == 1 }}
                         {{--预售产品 预定信息--}}
                         <div class="preorder-info P-a-5x">
                             <span class="text-white font-size-xs bg-preordering">LIMITED EDITION</span>
                         </div>
-                    @endif
+                    @{{ /if }}
                 </div>
             </div>
             <div class="price-caption">
