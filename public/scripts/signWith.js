@@ -3,6 +3,21 @@
  */
 /* eslint-disable */
 (function() {
+    // loading 打开
+    function openLoading() {
+        $('.loading').toggleClass('loading-hidden');
+        setTimeout(function () {
+            $('.loading').toggleClass('loading-open');
+        }, 25);
+    }
+
+    // loading 隐藏
+    function closeLoading() {
+        $('.loading').addClass('loading-close');
+        setTimeout(function () {
+            $('.loading').toggleClass('loading-hidden loading-open').removeClass('loading-close');
+        }, 500);
+    }
     // google 第三方登录
     function attachSignin(element) {
         console.log(element.id);
@@ -144,6 +159,7 @@
     }
 
     $('#facebookLogin').click(function() {
+        openLoading();
         /* Act on the event */
         FB.login(function(response) {
             // handle the response
@@ -152,6 +168,9 @@
             scope: 'public_profile,email'
         });
     });
+    $('#googleLogin').click(function(){
+        openLoading();
+    })
 })();
 
 //# sourceMappingURL=signWith.js.map
