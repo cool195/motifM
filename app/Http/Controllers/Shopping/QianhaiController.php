@@ -32,7 +32,7 @@ class QianhaiController extends ApiController
             $secureCode = 'v842rr80';
             $account = '160444';
             $terminal = '16044401';
-            $noticeUrl = 'http://54.222.233.255/oceanpaycb';
+            $noticeUrl = 'https://api.motif.me/oceanpaycb';
             $postUrl = 'https://secure.oceanpayment.com/gateway/service/pay';
         }
         $postData = array(
