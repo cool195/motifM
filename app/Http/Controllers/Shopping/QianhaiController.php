@@ -22,7 +22,6 @@ class QianhaiController extends ApiController
 
         $secureCode = 'v842rr80';
         $postUrl = $_SERVER['HTTP_HOST'] == 'm.motif.me' ? 'https://secure.oceanpayment.com/gateway/service/pay' : 'https://secure.oceanpayment.com/gateway/service/test';
-        $postUrl = 'https://secure.oceanpayment.com/gateway/service/pay';
         $postData = array(
             'account' => '160444',
             'terminal' => '16044401',
