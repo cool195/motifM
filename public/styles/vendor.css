@@ -2813,6 +2813,7 @@ input[type="button"].btn-block {
   position: absolute;
   right: 10px;
   top: 0;
+  z-index: 101;
 }
 
 .media {
