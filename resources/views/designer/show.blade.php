@@ -286,13 +286,13 @@
                                                         @endif
                                                     </div>
                                                 </a>
-                                                <div class="p-a-10x flex flex-alignCenter flex-fullJustified">
-                                                    <div>
+                                                <div class="p-a-10x">
+                                                    <span>
                                                         <span class="text-primary font-size-sm m-l-5x"><strong>${{number_format($value['skuPrice']['sale_price']/100,2)}}</strong></span>
                                                         @if($value['skuPrice']['sale_price'] != $value['skuPrice']['price'])
                                                             <span class="font-size-xs text-common text-throughLine m-l-5x">${{number_format($value['skuPrice']['price']/100,2)}}</span>
                                                         @endif
-                                                    </div>
+                                                    </span>
                                                     @if(Session::has('user'))
                                                         <span class="wish-item p-r-10x"><i class="iconfont text-common btn-wish btn-wished @if(in_array($value['spu'], $wishlist->wishlist())){{'active'}}@endif" data-spu="{{$value['spu']}}"></i></span>
                                                     @else
