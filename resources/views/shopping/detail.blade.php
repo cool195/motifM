@@ -168,7 +168,7 @@
                             class="iconfont text-common btn-wish btn-wished @if(in_array($data['spu'], $wishlist->wishlist())){{'active'}}@endif"
                             data-spu="{{$data['spu']}}"></i></span>
             @else
-                <a class="wish-item p-r-10x p-t-10x" href="/login"><i class="iconfont text-common btn-wish"></i></a>
+                <a class="wish-item p-r-10x p-t-10x" href="javascript:;"><i class="iconfont text-common btn-wish btn-wished" data-actionspu="{{$data['spu']}}"></i></a>
                 @endif
                             <!-- 产品 标题 简介 价格 基本信息 -->
                     <article class="product-baseInfo bg-white m-b-10x"
@@ -230,7 +230,7 @@
                                     <img src="/images/icon/icon-limited.png"
                                          srcset="/images/icon/icon-limited@2x.png 2x, /images/icon/icon-limited@3x.png 3x"
                                          alt="">
-                                    <span class="text-primary font-size-sm">Pre-sale Ends in <span
+                                    <span class="text-primary font-size-sm">Orders Close <span
                                                 class="time_show"></span></span>
                                 </div>
                                 <div class="p-x-15x p-y-5x m-x-15x">
@@ -368,18 +368,15 @@
                                                             <div class="price-caption">
 
                                                                 @if($value['skuPrice']['sale_price'] != $value['skuPrice']['price'])
-                                                                    <span class="font-size-sm m-l-5x text-red"><strong>${{ number_format(($value['skuPrice']['sale_price'] / 100), 2) }}</strong></span>
-                                                                    <span class="font-size-xs text-common text-throughLine m-l-5x">${{ number_format(($value['skuPrice']['price'] / 100), 2) }}</span>
-                                                                @else
-                                                                    <span class="font-size-sm m-l-5x"><strong>${{ number_format(($value['skuPrice']['sale_price'] / 100), 2) }}</strong></span>
+                                                                    <span class="font-size-xs text-common text-throughLine">${{ number_format(($value['skuPrice']['price'] / 100), 2) }}</span>
                                                                 @endif
                                                                 @if(Session::has('user'))
                                                                     <span class="wish-item p-r-5x"><i
                                                                                 class="iconfont text-common btn-wish btn-wished @if(in_array($value['spu'], $wishlist->wishlist())){{'active'}}@endif"
                                                                                 data-spu="{{$value['spu']}}"></i></span>
                                                                 @else
-                                                                    <a class="wish-item p-r-5x" href="/login"><i
-                                                                                class="iconfont text-common btn-wish"></i></a>
+                                                                    <a class="wish-item p-r-5x" href="javascript:;"><i
+                                                                                class="iconfont text-common btn-wish btn-wished" data-actionspu="{{$value['spu']}}"></i></a>
                                                                 @endif
                                                             </div>
                                                         </div>

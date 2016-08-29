@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use Illuminate\Http\Request;
 use App\Http\Controllers\ApiController;
 use Illuminate\Support\Facades\Session;
+use App\Services\Publicfun;
 
 class AuthController extends ApiController
 {
@@ -33,6 +34,9 @@ class AuthController extends ApiController
             $result['redirectUrl'] = Session::get('redirectUrl') ? Session::get('redirectUrl') : "/daily";
             Session::forget('user');
             Session::put('user', $result['data']);
+            if($_COOKIE['wishSpu']){
+                Publicfun::addWishProduct($_COOKIE['wishSpu']);
+            }
         }
         return $result;
     }
@@ -60,6 +64,9 @@ class AuthController extends ApiController
             $result['redirectUrl'] = Session::get('redirectUrl') ? Session::get('redirectUrl') : "/daily";
             Session::forget('user');
             Session::put('user', $result['data']);
+            if($_COOKIE['wishSpu']){
+                Publicfun::addWishProduct($_COOKIE['wishSpu']);
+            }
         }
         return $result;
     }
@@ -72,7 +79,7 @@ class AuthController extends ApiController
             'name' => $request->get('name'),
             'avatar' => urldecode($request->get('avatar')),
         );
-        return view('shopping.fbaddemail', ['params' => $params]);
+        return view('shopping.registerAddEmail', ['params' => $params]);
     }
 }
 

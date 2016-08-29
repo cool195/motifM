@@ -136,51 +136,51 @@
                 cid: CurrentCid
             }
         }).done(function (data) {
-                if (data.success) {
-                    onImpressProduct(data.data.list);
-                    if (data.data === null || data.data === '' || data.data.list.length === 0) {
-                        $Current.data('pagenum', -1);
-                    } else {
-                        // 遍历模板 插入页面
-                        appendProductsList(data.data, ActiveTab);
-                        $Current.data('pagenum', PageNum);
+            if (data.success) {
+                onImpressProduct(data.data.list);
+                if (data.data === null || data.data === '' || data.data.list.length === 0) {
+                    $Current.data('pagenum', -1);
+                } else {
+                    // 遍历模板 插入页面
+                    appendProductsList(data.data, ActiveTab);
+                    $Current.data('pagenum', PageNum);
 
-                        $.ajax({
-                            url: data.data.impr
-                        });
+                    $.ajax({
+                        url: data.data.impr
+                    });
 
-                        // 图片延迟加载
-                        $('img.img-lazy').lazyload({
-                            threshold: 200,
-                            container: $('#tabs-container'),
-                            effect: 'fadeIn'
-                        });
+                    // 图片延迟加载
+                    $('img.img-lazy').lazyload({
+                        threshold: 200,
+                        container: $('#tabs-container'),
+                        effect: 'fadeIn'
+                    });
 
-                        //给模板a标签绑定事件
-                        $('[data-clk]').unbind('click');
-                        $('[data-clk]').bind('click', function () {
-                            var $this = $(this);
+                    //给模板a标签绑定事件
+                    $('[data-clk]').unbind('click');
+                    $('[data-clk]').bind('click', function () {
+                        var $this = $(this);
 
-                            $('#productClick-name').val($this.data('title'));
-                            $('#productClick-spu').val($this.data('spu'));
-                            $('#productClick-price').val($this.data('price'));
+                        $('#productClick-name').val($this.data('title'));
+                        $('#productClick-spu').val($this.data('spu'));
+                        $('#productClick-price').val($this.data('price'));
 
-                            onProductClick();
+                        onProductClick();
 
-                            if (undefined !== $this.data('link')) {
-                                $.ajax({
-                                    url: $this.data('clk'),
-                                    type: "GET"
-                                });
-                                setTimeout(function () {
-                                    window.location.href = $this.data('link');
-                                }, 100);
-                            }
-                        })
-                    }
+                        if (undefined !== $this.data('link')) {
+                            $.ajax({
+                                url: $this.data('clk'),
+                                type: "GET"
+                            });
+                            setTimeout(function () {
+                                window.location.href = $this.data('link');
+                            }, 100);
+                        }
+                    })
                 }
-            })
-            // TODO failed 时的提示
+            }
+        })
+        // TODO failed 时的提示
             .always(function () {
                 // 隐藏加载动画
                 loadingHide(ActiveTab);
@@ -275,20 +275,33 @@
     $('.swiper-wrapper').on('click', '.btn-wish', function (e) {
         var $this = $(e.target);
         var spu = $(e.target).data('spu');
-        $.ajax({
+        if (spu != undefined) {
+            if (!$this.hasClass('active')) {
+                $this.addClass('active');
+            } else {
+                $this.removeClass('active');
+            }
+            $.ajax({
                 url: '/updateWish',
                 type: 'post',
                 data: {spu: spu}
-            })
-            .done(function (data) {
-                if (data.success) {
-                    if (!$this.hasClass('active')) {
-                        $this.addClass('active');
-                    } else {
-                        $this.removeClass('active');
-                    }
-                }
             });
+        } else {
+            spu = $this.data('actionspu');
+            $.ajax({
+                url: '/notesaction',
+                type: 'get',
+                data: {
+                    action: 'wish',
+                    spu: spu
+                }
+            })
+                .done(function (data) {
+                    window.location.href = '/login';
+                });
+
+        }
+
 
     });
 

@@ -23,8 +23,8 @@
                         'name': name,                      // Name or ID is required.
                         'id': spu,
                         'price': price,
-                        'brand': 'Motif',
-                        'category': '',
+                        'brand': '{{$topic['title']}}',
+                        'category': 'topicApp',
                         'variant': '',
                         'position': ''
                     }]
@@ -37,19 +37,19 @@
         'ecommerce': {
             'currencyCode': 'EUR',                       // Local currency is optional.
             'impressions': [
-                    @foreach($topic['infos'] as $k=>$value)
+                    @foreach($topic['infos'] as $value)
                     @if($value['type']=='product')
                     @if(isset($value['spus']))
-                    @foreach($value['spus'] as $spu)
+                    @foreach($value['spus'] as $k=>$spu)
                 {
                     'name': '{{$topic['spuInfos'][$spu]['spuBase']['main_title']}}',       // Name or ID is required.
                     'id': '{{$spu}}',
                     'price': '{{number_format($topic['spuInfos'][$spu]['skuPrice']['sale_price']/100,2)}}',
-                    'brand': 'Motif',
-                    'category': '',
+                    'brand': '{{$topic['title']}}',
+                    'category': 'topicApp',
                     'variant': '',
-                    'list': 'topicApp',
-                    'position': ''
+                    'list': '{{strstr($_SERVER['HTTP_USER_AGENT'], 'motif-android') ? 'android_topic_'.$topic['title'] : 'ios_topic_'.$topic['title']}}',
+                    'position': '{{$k}}'
                 },
                 @endforeach
                 @endif
@@ -150,25 +150,19 @@
                                                             @endif
                                                         </div>
                                                     </a>
-                                                    <div class="p-a-10x flex flex-alignCenter flex-fullJustified">
-                                                        <div>
 
+                                                    <div class="p-a-10x">
+                                                        <span>
+                                                            <span class="text-primary font-size-sm m-l-5x"><strong>${{number_format($topic['spuInfos'][$spu]['skuPrice']['sale_price']/100,2)}}</strong></span>
                                                             @if($topic['spuInfos'][$spu]['skuPrice']['price'] != $topic['spuInfos'][$spu]['skuPrice']['sale_price'])
-                                                                <span class="text-red font-size-sm m-l-5x"><strong>${{number_format($topic['spuInfos'][$spu]['skuPrice']['sale_price']/100,2)}}</strong></span>
-                                                                <span class="font-size-xs text-common text-throughLine m-l-5x">${{number_format($topic['spuInfos'][$spu]['skuPrice']['price']/100,2)}}</span>
-                                                            @else
-                                                                <span class="text-primary font-size-sm m-l-5x"><strong>${{number_format($topic['spuInfos'][$spu]['skuPrice']['sale_price']/100,2)}}</strong></span>
+                                                                <span class="font-size-xs text-common text-throughLine">${{number_format($topic['spuInfos'][$spu]['skuPrice']['price']/100,2)}}</span>
                                                             @endif
-                                                        </div>
-                                                        @if(false)
-                                                        @if(Session::get('user.pin'))
-                                                            <span class="p-r-5x wish" data-id="{{$spu}}"
-                                                                  id="{{'wish'.$spu}}"><i
-                                                                        class="iconfont icon-like product-heart"></i></span>
+                                                        </span>
+
+                                                        @if(Session::has('user'))
+                                                            <span class="wish-item p-r-10x" data-id="{{$spu}}" id="{{'wish'.$spu}}"><i class="iconfont text-common btn-wish" data-spu="{{$spu}}"></i></span>
                                                         @else
-                                                            <span class="p-r-5x"><i
-                                                                        class="iconfont icon-like product-heart sendLogin"></i></span>
-                                                        @endif
+                                                            <a class="wish-item p-r-10x" href="javascript:;"><i class="iconfont text-common btn-wish sendLogin" data-id="{{$spu}}"></i></a>
                                                         @endif
                                                     </div>
                                                 </div>
@@ -185,6 +179,7 @@
     </div>
 </div>
 <input type="hidden" id="spuArray" value="{{$topic['spuArray']}}">
+<input type="hidden" id="wishspu" value="">
 </body>
 <script src="{{env('CDN_Static')}}/scripts/vendor.js{{'?v='.config('app.version')}}"></script>
 <script src="{{env('CDN_Static')}}/scripts/JockeyJS.js"></script>
@@ -248,6 +243,13 @@
 </script>
 @if($shareFlag)
     <script>
+        @if($topic['pushspu'])
+            Jockey.send("action", {
+            name: "updateWish",
+            token: "key",
+            data: {"spu": "{{$topic['pushspu']}}", "isAdd": true}
+        });
+        @endif
         var actionsShow = [{"icon": "", "name": "share"}]
         Jockey.send("action", {
             name: "showActions",
@@ -270,42 +272,46 @@
                     } else if (actionName.name == "addWish") {
                         var spus = actionName.data.spu.split(',');
                         $.each(spus, function (n, value) {
-                            $('#wish' + value).html('<i class="iconfont icon-onheart product-heart active"></i>');
+                            $('#wish' + value).html('<i class="iconfont text-common btn-wish active"></i>');
                         });
                     } else if (actionName.name == "authInfo") {
-                        window.location.href = "/topic/{{$topicID}}?token=" + actionName.data.token + "&pin=" + actionName.data.pin + "&email=" + actionName.data.email + "&name=" + decodeURIComponent(actionName.data.name);
+                        window.location.href = "/topic/{{$topicID}}?wishspu="+$('#wishspu').val()+"&token=" + actionName.data.token + "&pin=" + actionName.data.pin + "&email=" + actionName.data.email + "&name=" + decodeURIComponent(actionName.data.name);
                     }
                 }
         );
 
         //login send
         $('.sendLogin').on('click', function () {
+            $('#wishspu').val($(this).data('id'));
             Jockey.send("action", {
                 name: "login",
                 token: "key",
             });
         });
 
-        $('.wish').on('click', function () {
+        $('.wish-item').on('click', function () {
             $this = $(this);
+            var cmd = true;
+            if($this.find('i').hasClass('active')){
+                cmd = false;
+                $this.html('<i class="iconfont text-common btn-wish"></i>');
+            }else{
+                if(!$this.find('i').hasClass('sendLogin')){
+                    $this.html('<i class="iconfont text-common btn-wish active"></i>');
+                }
+            }
+            Jockey.send("action", {
+                name: "updateWish",
+                token: "key",
+                data: {"spu": $this.data('id').toString(), "isAdd": cmd}
+            });
             $.ajax({
                 url: '/wish/' + $this.data('id'),
                 type: 'GET'
-            })
-                    .done(function (data) {
-                        if (data.success) {
-                            data.cmd ? $this.html('<i class="iconfont icon-onheart product-heart active"></i>') : $this.html('<i class="iconfont icon-like product-heart"></i>');
-                            ;
-                            Jockey.send("action", {
-                                name: "updateWish",
-                                token: "key",
-                                data: {"spu": $this.data('id').toString(), "isAdd": data.cmd}
-                            });
-                        }
-                    })
+            });
         });
-                {{--App 发版一周后打开--}}
-                @if(false && Session::get('user.pin'))
+
+                @if(Session::get('user.pin'))
             var spuStr = $('#spuArray').val().replace("[", "");
             spuStr = spuStr.replace("]", "");
             Jockey.send("action", {

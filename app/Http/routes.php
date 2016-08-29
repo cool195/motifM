@@ -25,6 +25,7 @@ $app->group(['middleware' => 'pcguide', 'namespace' => 'App\Http\Controllers'], 
 
     $app->post('/googlelogin', 'Auth\AuthController@googleLogin');
     $app->post('/facebooklogin', 'Auth\AuthController@facebookLogin');
+    $app->get('/facebooklogin', 'Auth\AuthController@facebookLogin');
     //$app->get('/forgetpwd', 'Shopping\UserController@forgetPWD');
     //$app->post('/forgetpwd', 'Shopping\UserController@forgetPWD');
     $app->get('/addFacebookEmail', 'Auth\AuthController@addFacebookEmail');
@@ -187,3 +188,6 @@ $app->group(['middleware' => 'pcguide', 'namespace' => 'App\Http\Controllers\Oth
 $app->get('home', 'Shopping\ShoppingController@guide');
 $app->get('pcprivacypolicy', 'Other\PageController@pcPrivacyPolicy');
 $app->get('pctermsservice', 'Other\PageController@pcTermsService');
+
+//记录登录前操作
+$app->get('notesaction','Shopping\UserController@notesAction');

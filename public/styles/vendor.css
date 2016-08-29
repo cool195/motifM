@@ -4030,6 +4030,7 @@ html.remodal-is-locked {
 */
 .iconfont {
   display: inline-block;
+  font-size: 1.25rem;
   font-family: "iconfont" !important;
   font-style: normal;
   line-height: 1;
@@ -5741,9 +5742,7 @@ footer .links-group {
   height: 10%;
   top: 20%;
   left: 20%;
-  border: 1px dashed #999;
   position: absolute;
-  background: rgba(255, 255, 255, 0.3);
   border-radius: 5px;
   cursor: pointer;
   z-index: 200;

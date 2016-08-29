@@ -3,6 +3,21 @@
  */
 /* eslint-disable */
 (function() {
+    // loading 打开
+    function openLoading() {
+        $('.loading').toggleClass('loading-hidden');
+        setTimeout(function () {
+            $('.loading').toggleClass('loading-open');
+        }, 25);
+    }
+
+    // loading 隐藏
+    function closeLoading() {
+        $('.loading').addClass('loading-close');
+        setTimeout(function () {
+            $('.loading').toggleClass('loading-hidden loading-open').removeClass('loading-close');
+        }, 500);
+    }
     // google 第三方登录
     function attachSignin(element) {
         console.log(element.id);
@@ -83,9 +98,12 @@
     window.fbAsyncInit = function() {
         FB.init({
             appId: '270298046670851',
-            cookie: true, // enable cookies to allow the server to access
-            // the session
-            xfbml: true, // parse social plugins on this page
+            cookie: false,
+            status: false,
+            xfbml: false,
+            logging: false,
+            frictionlessRequests: true,
+            oauth: true,
             version: 'v2.6' // use version 2.2
         });
 
@@ -104,11 +122,10 @@
     // Here we run a very simple test of the Graph API after login is
     // successful.  See statusChangeCallback() for when this call is made.
     function loginFacebook() {
-        console.log('Welcome!  Fetching your information.... ');
         FB.api('/me?fields=id,name,picture,email', function(response) {
-            console.log(response);
-            if (response.email === '' || response.email === undefined) {
-                window.location.href = '/addFacebookEmail?id=' + response.id + '&name=' + response.name + '&avatar=' + response.picture.data.url.encodeURIComponent();
+
+            if(response.email == '' || response.email == undefined){
+                window.location.href = '/addFacebookEmail?id=' + response.id + '&name=' + response.name;
             } else {
                 $.ajax({
                         url: '/facebooklogin',
@@ -142,6 +159,7 @@
     }
 
     $('#facebookLogin').click(function() {
+        openLoading();
         /* Act on the event */
         FB.login(function(response) {
             // handle the response
@@ -150,6 +168,9 @@
             scope: 'public_profile,email'
         });
     });
+    $('#googleLogin').click(function(){
+        openLoading();
+    })
 })();
 
 //# sourceMappingURL=signWith.js.map

@@ -22,7 +22,11 @@ class PcGuideMiddleware
     {
         if($this->isMobile() || $request->input('nopc'))
         {
-            return $next($request);
+            if ($_SERVER['HTTP_HOST'] == 'motif.me' || $_SERVER['HTTP_HOST'] == 'www.motif.me'){
+                echo '<script language="javascript" type="text/javascript"> window.location.href="http://m.motif.me'.$request->getRequestUri().'"</script>';
+            }else{
+                return $next($request);
+            }
         }
         echo '<script language="javascript" type="text/javascript"> window.location.href="http://motif.me/home"</script>';
     }

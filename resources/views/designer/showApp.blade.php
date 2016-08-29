@@ -24,8 +24,8 @@
                         'name': name,                      // Name or ID is required.
                         'id': spu,
                         'price': price,
-                        'brand': 'Motif',
-                        'category': '',
+                        'brand': '{{$designer['nickname']}}',
+                        'category': 'designerDetail',
                         'variant': '',
                         'position': ''
                     }]
@@ -38,19 +38,19 @@
         'ecommerce': {
             'currencyCode': 'EUR',                       // Local currency is optional.
             'impressions': [
-                    @foreach($product['infos'] as $k=>$value)
+                    @foreach($product['infos'] as $value)
                     @if($value['type']=='product')
                     @if(isset($value['spus']))
-                    @foreach($value['spus'] as $spu)
+                    @foreach($value['spus'] as $k=>$spu)
                 {
                     'name': '{{$product['spuInfos'][$spu]['spuBase']['main_title']}}',       // Name or ID is required.
                     'id': '{{$spu}}',
                     'price': '{{number_format($product['spuInfos'][$spu]['skuPrice']['sale_price']/100,2)}}',
-                    'brand': 'Motif',
-                    'category': '',
+                    'brand': '{{$designer['nickname']}}',
+                    'category': 'designerDetail',
                     'variant': '',
-                    'list': 'designerApp',
-                    'position': ''
+                    'list': '{{strstr($_SERVER['HTTP_USER_AGENT'], 'motif-android') ? 'designer_android_'.$designer['nickname'] : 'designer_ios_'.$designer['nickname']}}',
+                    'position': '{{$k}}'
                 },
                     @endforeach
                     @endif
@@ -63,11 +63,11 @@
                     'name': '{{$value['main_title']}}',       // Name or ID is required.
                     'id': '{{$value['spu']}}',
                     'price': '{{number_format($value['skuPrice']['sale_price']/100,2)}}',
-                    'brand': 'Motif',
-                    'category': '',
+                    'brand': '{{$designer['nickname']}}',
+                    'category': 'designerDetail',
                     'variant': '',
-                    'list': 'designerApp',
-                    'position': ''
+                    'list': '{{strstr($_SERVER['HTTP_USER_AGENT'], 'motif-android') ? 'designer_android_'.$designer['nickname'] : 'designer_ios_'.$designer['nickname']}}',
+                    'position': '{{$k}}'
                 },
                 @endforeach
                 @endif
@@ -129,7 +129,7 @@
                                 @endif
                             @else
                                 <a href="#" class="btn btn-sm btn-follow active sendLogin"
-                                   data-followid="1">Follow</a>
+                                   data-des="{{$designer['designer_id']}}">Follow</a>
                             @endif
                         </span>
                         <span>
@@ -285,26 +285,20 @@
                                                                 @endif
                                                             </div>
                                                         </a>
-                                                        <div class="p-a-10x flex flex-alignCenter flex-fullJustified">
-                                                            <div>
 
+                                                        <div class="p-a-10x">
+                                                            <span>
+                                                                <span class="text-primary font-size-sm m-l-5x"><strong>${{number_format($product['spuInfos'][$spu]['skuPrice']['sale_price']/100,2)}}</strong></span>
                                                                 @if($product['spuInfos'][$spu]['skuPrice']['price'] != $product['spuInfos'][$spu]['skuPrice']['sale_price'])
-                                                                    <span class="text-red font-size-sm m-l-5x"><strong>${{number_format($product['spuInfos'][$spu]['skuPrice']['sale_price']/100,2)}}</strong></span>
-                                                                    <span class="font-size-xs text-common text-throughLine m-l-5x">${{number_format($product['spuInfos'][$spu]['skuPrice']['price']/100,2)}}</span>
-                                                                @else
-                                                                    <span class="text-primary font-size-sm m-l-5x"><strong>${{number_format($product['spuInfos'][$spu]['skuPrice']['sale_price']/100,2)}}</strong></span>
+                                                                    <span class="font-size-xs text-common text-throughLine">${{number_format($product['spuInfos'][$spu]['skuPrice']['price']/100,2)}}</span>
                                                                 @endif
-                                                            </div>
-                                                            @if(false)
-                                                                @if(Session::get('user.pin'))
-                                                                    <span class="p-r-5x wish" data-id="{{$spu}}"
-                                                                          id="{{'wish'.$spu}}"><i
-                                                                                class="iconfont icon-like product-heart"></i></span>
-                                                                @else
-                                                                    <span class="p-r-5x"><i
-                                                                                class="iconfont icon-like product-heart sendLogin"></i></span>
-                                                                @endif
+                                                            </span>
+                                                            @if(Session::has('user'))
+                                                                <span class="wish-item p-r-10x" data-id="{{$spu}}" id="{{'wish'.$spu}}"><i class="iconfont text-common btn-wish"></i></span>
+                                                            @else
+                                                                <a class="wish-item p-r-10x" href="javascript:;"><i class="iconfont text-common btn-wish sendLogin" data-id="{{$spu}}"></i></a>
                                                             @endif
+
                                                         </div>
                                                     </div>
                                                 </div>
@@ -343,25 +337,18 @@
                                                 @endif
                                             </div>
                                         </a>
-                                        <div class="p-a-10x flex flex-alignCenter flex-fullJustified">
-                                            <div>
 
+                                        <div class="p-a-10x">
+                                            <span>
+                                                <span class="text-primary font-size-sm m-l-5x"><strong>${{number_format($value['skuPrice']['sale_price']/100,2)}}</strong></span>
                                                 @if($value['skuPrice']['sale_price'] != $value['skuPrice']['price'])
-                                                    <span class="text-red font-size-sm m-l-5x"><strong>${{number_format($value['skuPrice']['sale_price']/100,2)}}</strong></span>
-                                                    <span class="font-size-xs text-common text-throughLine m-l-5x">${{number_format($value['skuPrice']['price']/100,2)}}</span>
-                                                @else
-                                                    <span class="text-primary font-size-sm m-l-5x"><strong>${{number_format($value['skuPrice']['sale_price']/100,2)}}</strong></span>
+                                                    <span class="font-size-xs text-common text-throughLine">${{number_format($value['skuPrice']['price']/100,2)}}</span>
                                                 @endif
-                                            </div>
-                                            @if(false)
-                                                @if(Session::get('user.pin'))
-                                                    <span class="p-r-5x wish" data-id="{{$value['spu']}}"
-                                                          id="{{'wish'.$value['spu']}}"><i
-                                                                class="iconfont icon-like product-heart"></i></span>
-                                                @else
-                                                    <span class="p-r-5x"><i
-                                                                class="iconfont icon-like product-heart sendLogin"></i></span>
-                                                @endif
+                                            </span>
+                                            @if(Session::has('user'))
+                                                <span class="wish-item p-r-10x" data-id="{{$value['spu']}}" id="{{'wish'.$value['spu']}}"><i class="iconfont text-common btn-wish"></i></span>
+                                            @else
+                                                <a class="wish-item p-r-10x" href="javascript:;"><i class="iconfont text-common btn-wish sendLogin" data-id="{{$value['spu']}}"></i></a>
                                             @endif
                                         </div>
                                     </div>
@@ -380,13 +367,21 @@
     <div class="loader loader-screen"></div>
 </div>
 <input type="hidden" id="spuArray" value="{{$designer['spuArray']}}">
+<input type="hidden" id="wishspu" value="">
+<input type="hidden" id="followDes" value="">
 </body>
 <script src="{{env('CDN_Static')}}/scripts/vendor.js{{'?v='.config('app.version')}}"></script>
 <script src="{{env('CDN_Static')}}/scripts/designerDetail.js{{'?v='.config('app.version')}}"></script>
 <script src="{{env('CDN_Static')}}/scripts/videoPlay.js{{'?v='.config('app.version')}}"></script>
 <script src="{{env('CDN_Static')}}/scripts/JockeyJS.js"></script>
 <script>
-
+    @if($designer['pushspu'])
+        Jockey.send("action", {
+            name: "updateWish",
+            token: "key",
+            data: {"spu": "{{$designer['pushspu']}}", "isAdd": true}
+        });
+    @endif
     var actionsShow = [{"icon": "", "name": "wish"}, {"icon": "", "name": "bag"}]
     Jockey.send("action", {
         name: "showActions",
@@ -397,18 +392,20 @@
     Jockey.on("action", function (action) {
         //login
         if (action.name == "authInfo") {
-            window.location.href = "/designer/{{$designer['designer_id']}}?token=" + action.data.token + "&pin=" + action.data.pin + "&email=" + action.data.email + "&name=" + decodeURIComponent(action.data.name)
+            window.location.href = "/designer/{{$designer['designer_id']}}?des="+$('#followDes').val()+"&wishspu="+$('#wishspu').val()+"&token=" + action.data.token + "&pin=" + action.data.pin + "&email=" + action.data.email + "&name=" + decodeURIComponent(action.data.name)
         }
         else if (action.name == "addWish") {
             var spus = action.data.spu.split(',');
             $.each(spus, function (n, value) {
-                $('#wish' + value).html('<i class="iconfont icon-onheart product-heart active"></i>');
+                $('#wish' + value).html('<i class="iconfont text-common btn-wish active"></i>');
             });
         }
     });
 
     //login send
     $('.sendLogin').on('click', function () {
+        $('#wishspu').val($(this).data('id'));
+        $('#followDes').val($(this).data('des'));
         Jockey.send("action", {
             name: "login",
             token: "key",
@@ -428,27 +425,30 @@
         });
     });
 
-    $('.wish').on('click', function () {
+    $('.wish-item').on('click', function () {
         $this = $(this);
+        var cmd = true;
+        if($this.find('i').hasClass('active')){
+            cmd = false;
+            $this.html('<i class="iconfont text-common btn-wish"></i>');
+        }else{
+            if(!$this.find('i').hasClass('sendLogin')){
+                $this.html('<i class="iconfont text-common btn-wish active"></i>');
+            }
+        }
+        Jockey.send("action", {
+            name: "updateWish",
+            token: "key",
+            data: {"spu": $this.data('id').toString(), "isAdd": cmd}
+        });
         $.ajax({
             url: '/wish/' + $this.data('id'),
             type: 'GET'
-        })
-                .done(function (data) {
-                    if (data.success) {
-                        data.cmd ? $this.html('<i class="iconfont icon-onheart product-heart active"></i>') : $this.html('<i class="iconfont icon-like product-heart"></i>');
-                        ;
-                        Jockey.send("action", {
-                            name: "updateWish",
-                            token: "key",
-                            data: {"spu": $this.data('id').toString(), "isAdd": data.cmd}
-                        });
-                    }
-                })
+        });
     });
 
             {{--App 发版一周后打开--}}
-            @if(false && Session::get('user.pin'))
+            @if(Session::get('user.pin'))
     var spuStr = $('#spuArray').val().replace("[", "");
     spuStr = spuStr.replace("]", "");
     Jockey.send("action", {

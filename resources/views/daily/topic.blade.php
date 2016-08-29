@@ -23,8 +23,8 @@
                         'name': name,                      // Name or ID is required.
                         'id': spu,
                         'price': price,
-                        'brand': 'Motif',
-                        'category': '',
+                        'brand': '{{$topic['title']}}',
+                        'category': 'topicWeb',
                         'variant': '',
                         'position': ''
                     }]
@@ -37,19 +37,19 @@
         'ecommerce': {
             'currencyCode': 'EUR',                       // Local currency is optional.
             'impressions': [
-                    @foreach($topic['infos'] as $k=>$value)
+                    @foreach($topic['infos'] as $value)
                     @if($value['type']=='product')
                     @if(isset($value['spus']))
-                    @foreach($value['spus'] as $spu)
+                    @foreach($value['spus'] as $k=>$spu)
                 {
                     'name': '{{$topic['spuInfos'][$spu]['spuBase']['main_title']}}',       // Name or ID is required.
                     'id': '{{$spu}}',
                     'price': '{{number_format($topic['spuInfos'][$spu]['skuPrice']['sale_price']/100,2)}}',
-                    'brand': 'Motif',
-                    'category': '',
+                    'brand': '{{$topic['title']}}',
+                    'category': 'topicWeb',
                     'variant': '',
-                    'list': 'topic',
-                    'position': ''
+                    'list': '{{'mobileWeb_topic_'.$topic['title']}}',
+                    'position': '{{$k}}'
                 },
                 @endforeach
                 @endif
@@ -122,7 +122,7 @@
                                 @if(Session::has('user'))
                                     <span class="wish-item p-r-10x"><i class="iconfont text-common btn-wish btn-wished @if(in_array($spu, $wishlist->wishlist())){{'active'}}@endif" data-spu="{{$spu}}"></i></span>
                                 @else
-                                    <a class="wish-item p-r-10x" href="/login"><i class="iconfont text-common btn-wish"></i></a>
+                                    <a class="wish-item p-r-10x" href="javascript:;"><i class="iconfont text-common btn-wish btn-wished" data-actionspu="{{$spu}}"></i></a>
                                 @endif
                             </div>
                         @endforeach
@@ -156,20 +156,17 @@
                                                     @endif
                                                 </div>
                                             </a>
-                                            <div class="p-a-10x flex flex-alignCenter flex-fullJustified">
-                                                <div>
-
+                                            <div class="p-a-10x">
+                                                <span>
+                                                    <span class="text-primary font-size-sm m-l-5x"><strong>${{number_format($topic['spuInfos'][$spu]['skuPrice']['sale_price']/100,2)}}</strong></span>
                                                     @if($topic['spuInfos'][$spu]['skuPrice']['price'] != $topic['spuInfos'][$spu]['skuPrice']['sale_price'])
-                                                        <span class="text-red font-size-sm m-l-5x"><strong>${{number_format($topic['spuInfos'][$spu]['skuPrice']['sale_price']/100,2)}}</strong></span>
-                                                        <span class="font-size-xs text-common text-throughLine m-l-5x">${{number_format($topic['spuInfos'][$spu]['skuPrice']['price']/100,2)}}</span>
-                                                    @else
-                                                        <span class="text-primary font-size-sm m-l-5x"><strong>${{number_format($topic['spuInfos'][$spu]['skuPrice']['sale_price']/100,2)}}</strong></span>
+                                                        <span class="font-size-xs text-common text-throughLine">${{number_format($topic['spuInfos'][$spu]['skuPrice']['price']/100,2)}}</span>
                                                     @endif
-                                                </div>
+                                                </span>
                                                 @if(Session::has('user'))
                                                     <span class="wish-item p-r-10x"><i class="iconfont text-common btn-wish btn-wished @if(in_array($spu, $wishlist->wishlist())){{'active'}}@endif" data-spu="{{$spu}}"></i></span>
                                                 @else
-                                                    <a class="wish-item p-r-10x" href="/login"><i class="iconfont text-common btn-wish"></i></a>
+                                                    <a class="wish-item p-r-10x" href="javascript:;"><i class="iconfont text-common btn-wish btn-wished" data-actionspu="{{$spu}}"></i></a>
                                                 @endif
                                             </div>
                                         </div>

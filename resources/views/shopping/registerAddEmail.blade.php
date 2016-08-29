@@ -20,7 +20,7 @@
                     </div>
                     <div class="text-main m-t-10x"><strong>Add Email</strong></div>
                     <div class="text-primary text-left m-t-15x font-size-sm">
-                        Enter the email address associated with your Motif account, then click Continue.
+                        In order to receive your order information,you must enter your email address.
                     </div>
                 </fieldset>
                 <fieldset>
@@ -47,8 +47,7 @@
     <!-- 提示添加成功 -->
     <div class="remodal remodal-md modal-content" data-remodal-id="question-modal" id="successModal">
         <div class="font-size-sm p-t-20x p-x-15x p-b-15x">
-            <div class="font-size-base">Register Success!</div>
-            <div class="p-t-5x">You will Register Success. </div>
+            <div class="font-size-base">Login Success!</div>
         </div>
         <hr class="hr-base m-a-0">
         <div class="btn-group flex">
@@ -62,6 +61,6 @@
 </body>
 <script src="{{env('CDN_Static')}}/scripts/vendor.js{{'?v='.config('app.version')}}"></script>
 
-<script src="{{env('CDN_Static')}}/scripts/registerAddEmial.js{{'?v='.config('app.version')}}"></script>
+<script src="{{env('CDN_Static')}}/scripts/registerAddEmail.js{{'?v='.config('app.version')}}"></script>
 
 </html>
