@@ -366,13 +366,6 @@
                                                                              src="{{env('CDN_Static')}}/images/product/bg-product@336.png"
                                                                              alt="{{ $value['main_title'] }}">
                                                                     </a>
-                                                                    @if($value['skuPrice']['sale_price'] != $value['skuPrice']['price'])
-                                                                        <div class="price-off">
-                                                                            <img class="img-fluid"
-                                                                                 src="{{env('APP_Api_Image')}}/n0/{{ $value['skuPrice']['skuPromotion']['logo_path']}}"
-                                                                                 alt="">
-                                                                        </div>
-                                                                    @endif
 
                                                                     <!-- 预售产品 预定信息 -->
                                                                     <div class="preorder-info P-a-5x">
