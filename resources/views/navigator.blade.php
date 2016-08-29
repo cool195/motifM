@@ -1,7 +1,7 @@
 <header class="navbar-fixed-top" id="header">
     <nav class="navbar navbar-full bg-primary">
         <ul class="nav navbar-primary nav-top">
-            <li class="nav-item">
+            <li class="nav-item nav-hamburger">
                 <div class="nav-icon" id="nav-menu-control">
                     <i class="nav-tap iconfont icon-hamburger icon-size-lg"></i>
                 </div>

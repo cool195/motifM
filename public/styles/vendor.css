@@ -2790,6 +2790,10 @@ input[type="button"].btn-block {
   position: relative;
 }
 
+.navbar-primary .nav-hamburger{
+  z-index: 101;
+}
+
 .navbar-primary .nav-logo {
   /*-webkit-box-flex: 1;*/
       /*-ms-flex-positive: 1;*/
@@ -2802,6 +2806,7 @@ input[type="button"].btn-block {
   height: 100%;
   text-align: center;
   padding-top: 5px;
+  z-index: 10;
 }
 
 .navbar-primary .nav-cart {
