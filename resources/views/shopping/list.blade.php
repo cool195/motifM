@@ -192,8 +192,11 @@
                 <span class="font-size-sm m-l-5x text-red">
                     <strong>$@{{ ($value.skuPrice.sale_price/100).toFixed(2) }}</strong>
                 </span>
-                @{{ if $value.skuPrice.sale_price !== $value.skuPrice.price }}
-                <span class="font-size-xs text-common text-throughLine">$@{{ ($value.skuPrice.skuPromotion.price/100).toFixed(2) }}</span>
+                <span class="font-size-xs text-common text-throughLine m-l-5x">$@{{ ($value.skuPrice.skuPromotion.price/100).toFixed(2) }}</span>
+                @{{ else }}
+                <span class="font-size-sm m-l-5x">
+                    <strong>$@{{ ($value.skuPrice.sale_price/100).toFixed(2) }}</strong>
+                </span>
                 @{{ /if }}
                 @if(Session::has('user'))
                     <span class="wish-item p-r-10x" ><i
