@@ -170,13 +170,6 @@
             @else
                 <a class="wish-item p-r-10x p-t-10x" href="/login"><i class="iconfont text-common btn-wish"></i></a>
                 @endif
-                        <!-- 预售标题 -->
-                @if(1 == $data['sale_type'] )
-                    <div class="limited-title">
-                        <strong>@if($data['sale_status']) {{  $data['skuPrice']['skuPromotion']['presale_title'] }} @else
-                                Pre Sale has ended @endif</strong></div>
-                    @endif
-
                             <!-- 产品 标题 简介 价格 基本信息 -->
                     <article class="product-baseInfo bg-white m-b-10x"
                              data-impr='http://clk.motif.me/log.gif?t=pv.100001&m=H5_M2016-1&pin={{ Session::get('user.pin') }}&uuid={{ Session::get('user.uuid') }}&v={"spu":{{$data['spu']}},"main_sku":{{$data['skuPrice']['sku']}},"price":{{ $data['skuPrice']['sale_price'] }},"version":"1.0.1","ver":"9.2","src":"H5"}'>
@@ -206,18 +199,16 @@
                              data-impr='http://clk.motif.me/log.gif?t=rec.100002&m=OPEN_M2016-1&pin={{ Session::get('user.pin') }}&uuid={{Session::get('user.uuid')}}&v={" action ":0,"cspus ":"{{ $data['skus']}}","expid ":0,"index ":1,"rec_type ":1,"spu":{{ $data['spu'] }},"ver ":"9.00 "}&sig=2291a58454115c8136169111738de65696add43d'>{{ $data['prompt_words'] }}</div>
                     </article>
 
-                    <!-- 预售产品 预定信息 -->
-                    <section class="limited-content">
-                        <div class="bg-white m-b-10x">
-                            <div class="p-x-15x limited-subtitle"><strong>PREORDER</strong></div>
-                                <div class="p-x-15x p-t-10x p-b-15x text-primary font-size-sm">
-                                    Expected to ship on <strong>November 25, 2016</strong>.
-                                </div>
-                        </div>
-                    </section>
-
                     <!-- 产品 预售信息 -->
                     @if(1 == $data['sale_type'])
+                        <section class="limited-content">
+                            <div class="bg-white m-b-10x">
+                                <div class="p-x-15x limited-subtitle"><strong>PREORDER</strong></div>
+                                <div class="p-x-15x p-t-10x p-b-15x text-primary font-size-sm">
+                                    Expected to ship on <strong>{{$data['ship_desc']}}</strong>.
+                                </div>
+                            </div>
+                        </section>
                         <section class="limited-content"
                                  data-begintime="{{  $data['skuPrice']['skuPromotion']['start_time'] }}"
                                  data-endtime="{{  $data['skuPrice']['skuPromotion']['end_time'] }}"
@@ -366,12 +357,12 @@
                                                                              src="{{env('CDN_Static')}}/images/product/bg-product@336.png"
                                                                              alt="{{ $value['main_title'] }}">
                                                                     </a>
-
-                                                                    <!-- 预售产品 预定信息 -->
-                                                                    <div class="preorder-info P-a-5x">
-                                                                        <span class="text-white font-size-xs bg-preordering">LIMITED EDITION</span>
-                                                                        {{--<span class="text-white font-size-xs bg-preordered">SOLD OUT</span>--}}
-                                                                    </div>
+                                                                    @if(1 == $data['sale_type'])
+                                                                        {{--预售产品 预定信息--}}
+                                                                        <div class="preorder-info P-a-5x">
+                                                                            <span class="text-white font-size-xs bg-preordering">LIMITED EDITION</span>
+                                                                        </div>
+                                                                    @endif
                                                                 </div>
                                                             </div>
                                                             <div class="price-caption">

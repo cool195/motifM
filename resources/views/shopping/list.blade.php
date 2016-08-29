@@ -178,11 +178,12 @@
                              alt="@{{ $value.main_title }}">
                     </a>
 
-                    <!-- 预售产品 预定信息 -->
-                    <div class="preorder-info P-a-5x">
-                        {{--<span class="text-white font-size-xs bg-preordering">LIMITED EDITION</span>--}}
-                        <span class="text-white font-size-xs bg-preordered">SOLD OUT</span>
-                    </div>
+                    @if(1 == $data['sale_type'])
+                        {{--预售产品 预定信息--}}
+                        <div class="preorder-info P-a-5x">
+                            <span class="text-white font-size-xs bg-preordering">LIMITED EDITION</span>
+                        </div>
+                    @endif
                 </div>
             </div>
             <div class="price-caption">
