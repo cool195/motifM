@@ -2786,11 +2786,28 @@ input[type="button"].btn-block {
   float: left;
 }
 
+.nav-top{
+  position: relative;
+}
+
 .navbar-primary .nav-logo {
-  -webkit-box-flex: 1;
-      -ms-flex-positive: 1;
-          flex-grow: 1;
+  /*-webkit-box-flex: 1;*/
+      /*-ms-flex-positive: 1;*/
+          /*flex-grow: 1;*/
+  /*text-align: center;*/
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
   text-align: center;
+  padding-top: 5px;
+}
+
+.navbar-primary .nav-cart {
+  position: absolute;
+  right: 10px;
+  top: 0;
 }
 
 .media {

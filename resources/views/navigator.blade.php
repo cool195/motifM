@@ -1,6 +1,6 @@
 <header class="navbar-fixed-top" id="header">
     <nav class="navbar navbar-full bg-primary">
-        <ul class="nav navbar-primary">
+        <ul class="nav navbar-primary nav-top">
             <li class="nav-item">
                 <div class="nav-icon" id="nav-menu-control">
                     <i class="nav-tap iconfont icon-hamburger icon-size-lg"></i>
@@ -12,7 +12,7 @@
                         srcset="{{env('CDN_Static')}}/images/logo/logo@2x.png 2x,{{env('CDN_Static')}}/images/logo/logo@3x.png 3x"></a>
             </li>
             @if(!isset($pageScope))
-            <li class="nav-item">
+            <li class="nav-item nav-cart">
                 <div style="width: 68px;">
                     <a href="/wish" class="head-wish">
                         <span class="nav-shoppingWish">
