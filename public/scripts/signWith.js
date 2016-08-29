@@ -125,8 +125,20 @@
         FB.api('/me?fields=id,name,picture,email', function(response) {
 
             if(response.email == '' || response.email == undefined){
-                window.location.href = '/addFacebookEmail?id=' + response.id + '&name=' + response.name;
-            } else {
+                $.ajax({
+                    url: '/facebookstatus/'+response.id,
+                    type: 'GET'
+                })
+                    .done(function(data) {
+
+                        if (data.status) {
+                            response.email = data.data.email;
+                        } else {
+                            window.location.href = '/addFacebookEmail?id=' + response.id + '&name=' + response.name;
+                        }
+                    })
+
+            }
                 $.ajax({
                         url: '/facebooklogin',
                         type: 'POST',
@@ -153,7 +165,7 @@
                         console.log("complete");
                     });
 
-            }
+
 
         });
     }
