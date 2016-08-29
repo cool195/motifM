@@ -85,7 +85,7 @@
         <section class="reserve-height">
         @if(isset($designer['detailVideoPath']))
             <!-- 视频 -->
-                <div class="designer-media bg-white m-b-10x">
+                <div class="designer-media bg-white">
                     <div class="player-item" data-playid="{{$designer['detailVideoPath']}}">
                         <div id="{{$designer['detailVideoPath']}}" class="ytplayer"
                              data-playid="{{$designer['detailVideoPath']}}"></div>

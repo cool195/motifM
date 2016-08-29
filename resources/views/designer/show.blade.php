@@ -89,7 +89,7 @@
         <section class="reserve-height">
         @if(isset($designer['detailVideoPath']))
             <!-- 视频 -->
-                <div class="designer-media bg-white m-b-10x">
+                <div class="designer-media bg-white">
                     <div class="player-item" data-playid="{{$designer['detailVideoPath']}}">
                         <div id="{{$designer['detailVideoPath']}}" class="ytplayer" data-playid="{{$designer['detailVideoPath']}}"></div>
                         <div class="bg-player">
@@ -240,11 +240,6 @@
                                                                              src="{{env('CDN_Static')}}/images/product/bg-product@336.png"
                                                                              data-original="{{env('APP_Api_Image')}}/n2/{{$product['spuInfos'][$spu]['spuBase']['main_image_url']}}"
                                                                              alt="{{$product['spuInfos'][$spu]['spuBase']['main_title']}}">
-                                                                        @if($product['spuInfos'][$spu]['skuPrice']['sale_price'] != $product['spuInfos'][$spu]['skuPrice']['price'])
-                                                                            <div class="price-off">
-                                                                                <img class="img-fluid" src="{{env('APP_Api_Image')}}/n1/{{ $product['spuInfos'][$spu]['skuPrice']['skuPromotion']['logo_path']}}" alt="">
-                                                                            </div>
-                                                                        @endif
                                                                     </div>
                                                                 </a>
                                                                 <div class="p-a-10x">
@@ -286,13 +281,6 @@
                                                              src="{{env('CDN_Static')}}/images/product/bg-product@336.png"
                                                              data-original="{{env('APP_Api_Image')}}/n2/{{$value['main_image_url']}}"
                                                              alt="{{$value['main_title']}}">
-                                                        @if($value['skuPrice']['sale_price'] != $value['skuPrice']['price'])
-                                                            <div class="price-off">
-                                                                <img class="img-fluid"
-                                                                     src="{{env('APP_Api_Image')}}/n1/{{ $value['skuPrice']['skuPromotion']['logo_path']}}"
-                                                                     alt="">
-                                                            </div>
-                                                        @endif
                                                     </div>
                                                 </a>
                                                 <div class="p-a-10x">
