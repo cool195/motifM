@@ -55,28 +55,17 @@ function onYouTubeIframeAPIReady() {
     });
 }
 
-$('.bg-player').on('click', function (player) {
-    //var PlayId = $(this).siblings('.ytplayer').data('playid');
-    //player = new YT.Player(PlayId, {
-    //    height: MediaHeight,
-    //    width: Width,
-    //    videoId: PlayId,
-    //    playerVars: {'autoplay': 1, 'controls': 2, 'showinfo': 0, 'fs': 0, 'playsinline': 1},
-    //    events: {
-    //        'onReady': onPlayerReady,
-    //        'onError': onPlayerError,
-    //        'onStateChange': onPlayerStateChange
-    //    }
-    //});
 
-    //$ClickPlayer = $(this);
-    $(this).css('display', 'none');
-    $(this).children('.bg-img').hide();
-    $(this).children('.btn-beginPlayer').hide();
-    $(this).siblings('.btn-morePlayer').show();
+
+function playVideoTest() {
+    var thiss = $('.bg-player');
+    thiss.css('display', 'none');
+    thiss.children('.bg-img').hide();
+    thiss.children('.btn-beginPlayer').hide();
+    thiss.siblings('.btn-morePlayer').show();
     //$(this).parents('.player-item').addClass('active');
     player.playVideo();
-});
+}
 
 // 设置 视频默认播放 和 关闭音量 和 视频继续播放
 function onPlayerReady(event) {

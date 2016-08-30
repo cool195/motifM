@@ -97,7 +97,7 @@
                             <div class="btn-beginPlayer designer-beginPlayer">
                                 <img src="/images/daily/icon-player.png"
                                      srcset="/images/daily/icon-player@2x.png 2x,/images/daily/icon-player@3x.png 3x"
-                                     alt="">
+                                     onclick="playVideoTest()">
                             </div>
                         </div>
                     </div>
