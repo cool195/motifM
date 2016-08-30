@@ -227,8 +227,8 @@
                                             Left @else Sold Out @endif </span>
                                     </div>
                                 @endif
-
-                                    <div @if($data['skuPrice']['skuPromotion']['remain_time'] < 0) {{'style="display:none"'}}@endif>
+                                @if($data['skuPrice']['skuPromotion']['remain_time'] >= 0)
+                                    <div>
                                         <div class="p-x-15x p-t-5x">
                                             <img src="/images/icon/icon-limited.png"
                                                  srcset="/images/icon/icon-limited@2x.png 2x, /images/icon/icon-limited@3x.png 3x"
@@ -246,7 +246,7 @@
                                             @endif
                                         </div>
                                     </div>
-
+                                @endif
                             </div>
                         </section>
                     @endif

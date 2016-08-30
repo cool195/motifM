@@ -930,10 +930,13 @@
 
         }, 1000);
     }
+    
+    if(leftNum != -1){
+        $(function () {
+            timer(leftNum / 1000);
+        });
+    }
 
-    $(function () {
-        timer(leftNum / 1000);
-    });
 })(jQuery, Swiper);
 
 //# sourceMappingURL=shoppingDetail.js.map
