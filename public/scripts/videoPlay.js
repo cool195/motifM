@@ -49,7 +49,8 @@ $('.bg-player').on('click', function () {
         playerVars: {'autoplay': 1, 'controls': 2, 'showinfo': 0, 'fs': 0, 'playsinline': 1},
         events: {
             'onReady': onPlayerReady,
-            'onError': onPlayerError
+            'onError': onPlayerError,
+            'onStateChange': onPlayerStateChange
         }
     });
 
@@ -66,7 +67,7 @@ function onPlayerReady(event) {
     //if (autoplay == 0) {
     //    event.target.stopVideo();
     //} else {
-    event.target.playVideo();
+    setTimeout(event.target.playVideo(), 6000);
     //}
     //event.target.mute();
 }
@@ -74,6 +75,17 @@ function onPlayerReady(event) {
 // 视频播放失败
 function onPlayerError(event) {
     event.target.playVideo();
+}
+
+var done = false;
+function onPlayerStateChange(event) {
+    if (event.data == 3 && !done) {
+        setTimeout(playVideo, 5000);
+        done = true;
+    }
+}
+function playVideo() {
+    player.playVideo();
 }
 
 function switchDevice() {
