@@ -42,18 +42,18 @@
 <script>
     var totalPrice="{{ number_format($order['total_amount'] / 100, 2) }}";
 </script>
-        <!-- 外层容器 -->
+<!-- 外层容器 -->
 <div id="body-content">
     <!-- 展开的汉堡菜单 -->
-    @include('nav')
-            <!-- 主体内容 -->
+@include('nav')
+<!-- 主体内容 -->
     <div class="body-container">
-        @include('navigator')
-                <!-- 订单结算确认信息 -->
+    @include('navigator')
+    <!-- 订单结算确认信息 -->
         <section class="reserve-height"
                  data-impr='http://clk.motif.me/log.gif?t=order.100001&m=H5_M2016-1&pin={{Session::get('user.pin')}}&uuid={{Session::get('user.uuid')}}&v={"orderno":"{{ $order['sub_order_no'] }}","version":"1.0.1","ver":"9.2","src":"H5"}'>
             <article class="bg-white m-b-10x p-a-15x text-center">
-                <h5 class="font-size-lx text-primary p-t-5x m-b-20x">Order Confirmed</h5>
+                <h5 class="font-size-lx text-primary p-t-5x m-y-20x">Thank You!<br>Your Order is Confirmed</h5>
                 <div class="font-size-sm text-primary p-t-5x">A confirmation email has been sent to:</div>
                 <div class="font-size-sm text-primary m-b-20x"><strong>{{Session::get('user.login_email')}}</strong>
                 </div>
@@ -73,16 +73,16 @@
 </body>
 <script src="{{env('CDN_Static')}}/scripts/vendor.js{{'?v='.config('app.version')}}"></script>
 @if(!empty($order['sub_order_no']))
-<script>
-    $(document).ready(function () {
-        $.ajax({
-            type: "GET",
-            url: $(".reserve-height").data('impr')
-        }).done(function () {
+    <script>
+        $(document).ready(function () {
+            $.ajax({
+                type: "GET",
+                url: $(".reserve-height").data('impr')
+            }).done(function () {
 
-        });
-    })
-</script>
+            });
+        })
+    </script>
 @endif
 @include('global')
 </html>
