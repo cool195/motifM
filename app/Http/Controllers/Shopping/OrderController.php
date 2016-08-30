@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Controllers\ApiController;
 use Illuminate\Support\Facades\Session;
+use App\Services\Publicfun;
 
 class OrderController extends ApiController
 {
@@ -52,6 +53,7 @@ class OrderController extends ApiController
             foreach ($result['data']['list'] as $order) {
                 $subOrderList = array();
                 foreach ($order['subOrderList'] as $subOrder) {
+                    $subOrder['update_time'] = Publicfun::getMyDate($subOrder['update_time']);
                     $lineOrderList = array();
                     foreach ($subOrder['lineOrderList'] as $lineOrder) {
                         if (!empty($lineOrder['attrValues'])) {
