@@ -227,24 +227,26 @@
                                             Left @else Sold Out @endif </span>
                                     </div>
                                 @endif
-                                @if($data['skuPrice']['skuPromotion']['remain_time'] >= 0)
-                                    <div class="p-x-15x p-t-5x">
-                                        <img src="/images/icon/icon-limited.png"
-                                             srcset="/images/icon/icon-limited@2x.png 2x, /images/icon/icon-limited@3x.png 3x"
-                                             alt="">
-                                        <span class="text-primary font-size-sm">Orders Close <span
-                                                    class="time_show"></span></span>
+
+                                    <div @if($data['skuPrice']['skuPromotion']['remain_time'] < 0) {{'style="display:none"'}}@endif>
+                                        <div class="p-x-15x p-t-5x">
+                                            <img src="/images/icon/icon-limited.png"
+                                                 srcset="/images/icon/icon-limited@2x.png 2x, /images/icon/icon-limited@3x.png 3x"
+                                                 alt="">
+                                            <span class="text-primary font-size-sm">Orders Close <span
+                                                        class="time_show"></span></span>
+                                        </div>
+                                        <div class="p-x-15x p-y-5x m-x-15x">
+                                            @if(!$data['sale_status'] &&  $data['isPutOn']==1)
+                                                <progress class="progress progress-primary" value="0" max="10000">0%</progress>
+                                            @else
+                                                <progress class="progress progress-primary" id="limited-progress" value=""
+                                                          max="10000">0%
+                                                </progress>
+                                            @endif
+                                        </div>
                                     </div>
-                                    <div class="p-x-15x p-y-5x m-x-15x">
-                                        @if(!$data['sale_status'] &&  $data['isPutOn']==1)
-                                            <progress class="progress progress-primary" value="0" max="10000">0%</progress>
-                                        @else
-                                            <progress class="progress progress-primary" id="limited-progress" value=""
-                                                      max="10000">0%
-                                            </progress>
-                                        @endif
-                                    </div>
-                                @endif
+
                             </div>
                         </section>
                     @endif
