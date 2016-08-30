@@ -10,22 +10,9 @@
 var MediaScale = 9 / 16;
 
 var Width = $(window).width(),
-    MediaHeight = Width * MediaScale,
-    autoplay = 0;
-switch (switchDevice()) {
-    case 1:
-        autoplay = 0;
-        break;
-    case 0:
-        autoplay = 1;
-        break;
-    case -1:
-        autoplay = 1;
-        break;
-    default:
-        break;
-}
-if ($('.ytplayer').length > 0) {
+    MediaHeight = Width * MediaScale;
+
+if ($('#ytplayer').length > 0) {
     // 初始化 外边框尺寸
     $('.designer-media').css('height', MediaHeight);
     $('.designer-beginPlayer').css('display', 'block');
@@ -38,9 +25,8 @@ if ($('.ytplayer').length > 0) {
 
 }
 var player;
-$(document).ready(function () {
-    console.info('ok');
-    var PlayId = $('#ytplayer').data('playid');
+var PlayId = $('#ytplayer').data('playid');
+function onYouTubePlayerAPIReady() {
     player = new YT.Player('ytplayer', {
         height: MediaHeight,
         width: Width,
@@ -50,22 +36,11 @@ $(document).ready(function () {
             'onReady': onPlayerReady
         }
     });
-})
+}
 
 // 设置 视频默认播放 和 关闭音量 和 视频继续播放
 function onPlayerReady(event) {
     $('.bg-player').css('display', 'none');
-}
-
-function switchDevice() {
-    var Agent = navigator.userAgent;
-    if (/iPhone/i.test(Agent)) {
-        return 1;
-    } else if (/Android/i.test(Agent) || /Linux/i.test(Agent)) {
-        return 0;
-    } else {
-        return -1;
-    }
 }
 
 //# sourceMappingURL=videoPlay.js.map
