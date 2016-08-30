@@ -85,21 +85,22 @@
         <section class="reserve-height">
         @if(isset($designer['detailVideoPath']))
             <!-- 视频 -->
-                <div class="designer-media bg-white">
-                    <div class="player-item" data-playid="{{$designer['detailVideoPath']}}">
-                        <div id="{{$designer['detailVideoPath']}}" class="ytplayer"
-                             data-playid="{{$designer['detailVideoPath']}}"></div>
-                        <div class="bg-player">
-                            <img class="bg-img" src="{{env('APP_Api_Image')}}/n2/{{$designer['img_video_path']}}"
-                                 alt="">
-                            <div class="btn-beginPlayer designer-beginPlayer">
-                                <img src="/images/daily/icon-player.png"
-                                     srcset="/images/daily/icon-player@2x.png 2x,/images/daily/icon-player@3x.png 3x"
-                                     alt="">
+            <div class="designer-media bg-white">
+                <div class="player-item" data-playid="{{$designer['detailVideoPath']}}">
+                    <div id="ytplayer" class="ytplayer" data-playid="{{$designer['detailVideoPath']}}"></div>
+                    <div class="bg-player">
+                        <img class="bg-img" src="{{env('APP_Api_Image')}}/n2/{{$designer['img_video_path']}}" alt="">
+                        <div class="btn-beginPlayer designer-beginPlayer">
+                            <div class="loading loading-screen loading-transprant">
+                                <div class="">
+                                    <div class="loader"></div>
+                                </div>
                             </div>
                         </div>
                     </div>
+                    <div class="youtube_mask"></div>
                 </div>
+            </div>
         @else
             <!-- 图片-->
                 <div class="designer-media flex flex-justifyCenter flex-alignCenter">
