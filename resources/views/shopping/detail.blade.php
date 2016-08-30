@@ -200,18 +200,16 @@
 
                     <!-- 产品 预售信息 -->
                     @if(1 == $data['sale_type'])
-                        <section class="limited">
-                            <div class="bg-white m-b-10x">
-                                <div class="p-x-15x limited-subtitle"><strong>PREORDER</strong></div>
-                                <div class="p-x-15x p-t-10x p-b-15x text-primary font-size-sm">
-                                    @if($data['sale_status'] && $data['isPutOn']==1)
-                                        Expected to ship on <strong>{{$data['skuPrice']['skuPromotion']['ship_desc']}}</strong>
-                                    @else
-                                        Sold Out
-                                    @endif
+                        @if($data['skuPrice']['skuPromotion']['ship_desc'])
+                            <section class="limited">
+                                <div class="bg-white m-b-10x">
+                                    <div class="p-x-15x limited-subtitle"><strong>PREORDER</strong></div>
+                                    <div class="p-x-15x p-t-10x p-b-15x text-primary font-size-sm">
+                                            Expected to ship on <strong>{{$data['skuPrice']['skuPromotion']['ship_desc']}}</strong>
+                                    </div>
                                 </div>
-                            </div>
-                        </section>
+                            </section>
+                        @endif
                         <section class="limited-content"
                                  data-begintime="{{  $data['skuPrice']['skuPromotion']['start_time'] }}"
                                  data-endtime="{{  $data['skuPrice']['skuPromotion']['end_time'] }}"
@@ -219,7 +217,7 @@
                                  data-qtty="{{$data['spuStock']['stock_qtty']}}">
                             <div class="bg-white m-b-10x">
                                 <div class="p-x-15x limited-subtitle"><strong>LIMITED EDITION</strong></div>
-                                @if(!empty($data['spuStock']) && $data['spuStock']['stock_qtty'] - $data['spuStock']['saled_qtty'] < 10000)
+                                @if(!empty($data['spuStock']))
                                     <div class="p-x-15x p-t-10x">
                                         <img src="/images/icon/icon-limited.png"
                                              srcset="/images/icon/icon-limited@2x.png 2x, /images/icon/icon-limited@3x.png 3x"
