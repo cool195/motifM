@@ -38,7 +38,6 @@ if ($('.ytplayer').length > 0) {
 
 }
 var player;
-
 $(document).ready(function () {
     console.info('ok');
     var PlayId = $('#ytplayer').data('playid');
