@@ -895,16 +895,17 @@
     var leftNum = $('.limited-content').data('lefttime');     // 剩余秒数  604358742
     var qtty = $('.limited-content').data('qtty');            //  库存亮
     var secondnum = parseInt(endTimes - beginTimes);   //604802000    // 预售总时长
-    var rate = ((leftNum / secondnum).toFixed(2) * 100); //剩余时间所占总时长的比例
+    var rate = ((leftNum / secondnum).toFixed(4) * 10000); //剩余时间所占总时长的比例
     $('#limited-progress').attr('value', rate);
     function timer(intDiff) {
-        window.setInterval(function () {
+        var timer = window.setInterval(function () {
             if (intDiff <= 1) {
                 $('.limited-title').html('<strong>Pre Sale has ended</strong>');
                 $('.stock-qtty').html('Sold Out');
                 $('#limited-progress').attr('value', '0');
                 $('.up-btn-addToBag').addClass('disabled');
                 $('.down-btn-addToBag').addClass('disabled');
+                clearInterval(timer);
             }
             var day = 0,
                 hour = 0,
@@ -924,6 +925,9 @@
                 $('.time_show').html(day + 'd: ' + hour + 'h: ' + minute + 'm: ' + second + 's');
             }
             intDiff--;
+            rate = ((intDiff * 1000 / secondnum).toFixed(4) * 10000);
+            $('#limited-progress').attr('value', rate);
+
         }, 1000);
     }
 

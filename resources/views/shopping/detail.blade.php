@@ -238,10 +238,10 @@
                                 </div>
                                 <div class="p-x-15x p-y-5x m-x-15x">
                                     @if(!$data['sale_status'] &&  $data['isPutOn']==1)
-                                        <progress class="progress progress-primary" value="0" max="100">0%</progress>
+                                        <progress class="progress progress-primary" value="0" max="10000">0%</progress>
                                     @else
                                         <progress class="progress progress-primary" id="limited-progress" value=""
-                                                  max="100">0%
+                                                  max="10000">0%
                                         </progress>
                                     @endif
                                 </div>
