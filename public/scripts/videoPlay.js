@@ -38,7 +38,9 @@ if ($('.ytplayer').length > 0) {
 
 }
 var player;
-function onYouTubeIframeAPIReady() {
+
+$(document).ready(function () {
+    console.info('ok');
     var PlayId = $('#ytplayer').data('playid');
     player = new YT.Player('ytplayer', {
         height: MediaHeight,
@@ -49,7 +51,7 @@ function onYouTubeIframeAPIReady() {
             'onReady': onPlayerReady
         }
     });
-}
+})
 
 // 设置 视频默认播放 和 关闭音量 和 视频继续播放
 function onPlayerReady(event) {
