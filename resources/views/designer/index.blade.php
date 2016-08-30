@@ -64,6 +64,7 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="youtube_mask"></div>
                         <div class="btn-morePlayer">
                             <a class="text-white font-size-sm" data-link="/designer/@{{$value.designerId}}"
                                data-impr='http://clk.motif.me/log.gif?t=designer.200001&m=H5_M2016-1&pin={{ Session::get('user.pin') }}&uuid={{ Session::get('user.uuid') }}&v={"action":"0","skiptype":2,"skipid":"@{{ $value.designerId }}","expid":0,"version":"1.0.1", "ver":"9.2","src":"h5"}'
