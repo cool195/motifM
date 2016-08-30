@@ -39,6 +39,7 @@ if ($('.ytplayer').length > 0) {
 }
 var player;
 function onYouTubeIframeAPIReady() {
+    console.log('onYouTubeIframeAPIReady');
     var PlayId = $('#ytplayer').data('playid');
     player = new YT.Player('ytplayer', {
         height: MediaHeight,
