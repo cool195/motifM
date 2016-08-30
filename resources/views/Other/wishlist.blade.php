@@ -47,6 +47,7 @@
                 </a>
             </div>
             <div class="p-l-10x flex-width">
+                <a href="/detail/@{{ $value.spu }}">
                 <article class="flex flex-fullJustified wishlist-title">
                     <h6 class="text-main font-size-md p-r-20x">
                         <strong>@{{ $value.main_title }}</strong>
@@ -58,6 +59,7 @@
                 <aside class="text-primary font-size-sm">
                     <div>$@{{ ($value.skuPrice.sale_price/100).toFixed(2) }}</div>
                 </aside>
+                </a>
             </div>
         </div>
     </div>
