@@ -272,7 +272,7 @@
 
                                                                 @if(1 == $product['spuInfos'][$spu]['spuBase']['sale_type'])
                                                                     {{--预售产品 预定信息--}}
-                                                                    @if($product['spuInfos'][$spu]['stockStatus']=='NO')
+                                                                    @if($product['spuInfos'][$spu]['stockStatus']=='NO' || $product['spuInfos'][$spu]['spuBase']['isPutOn']==0)
                                                                         <div class="preorder-info P-a-5x">
                                                                             <span class="text-white font-size-xs bg-preordered">SOLD OUT</span>
                                                                         </div>

@@ -29,7 +29,7 @@ $app->group(['middleware' => 'pcguide', 'namespace' => 'App\Http\Controllers'], 
     //$app->get('/forgetpwd', 'Shopping\UserController@forgetPWD');
     //$app->post('/forgetpwd', 'Shopping\UserController@forgetPWD');
     $app->get('/addFacebookEmail', 'Auth\AuthController@addFacebookEmail');
-
+    $app->get('/facebookstatus/{trdid}', 'Auth\AuthController@faceBookAuthStatus');
     $app->get('methodlist', 'Shopping\BraintreeController@methodlist');
 
 });

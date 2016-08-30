@@ -34,7 +34,7 @@ class AuthController extends ApiController
             $result['redirectUrl'] = Session::get('redirectUrl') ? Session::get('redirectUrl') : "/daily";
             Session::forget('user');
             Session::put('user', $result['data']);
-            if($_COOKIE['wishSpu']){
+            if ($_COOKIE['wishSpu']) {
                 Publicfun::addWishProduct($_COOKIE['wishSpu']);
             }
         }
@@ -64,7 +64,7 @@ class AuthController extends ApiController
             $result['redirectUrl'] = Session::get('redirectUrl') ? Session::get('redirectUrl') : "/daily";
             Session::forget('user');
             Session::put('user', $result['data']);
-            if($_COOKIE['wishSpu']){
+            if ($_COOKIE['wishSpu']) {
                 Publicfun::addWishProduct($_COOKIE['wishSpu']);
             }
         }
@@ -80,6 +80,20 @@ class AuthController extends ApiController
             'avatar' => urldecode($request->get('avatar')),
         );
         return view('shopping.registerAddEmail', ['params' => $params]);
+    }
+
+    //验证是否新用户
+    public function faceBookAuthStatus($trdid)
+    {
+        $params = json_encode(array(
+                'cmd' => 'email',
+                'type' => 2,
+                'trdid' => $trdid
+            )
+        );
+        $result = $this->request('openapi', '', "user", $params);
+        $result['status'] = isset($result['data']) ? true : false;
+        return $result;
     }
 }
 
