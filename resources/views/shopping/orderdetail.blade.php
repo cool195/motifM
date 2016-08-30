@@ -12,13 +12,14 @@
 <div class="body-container">
     @include('navigator')
     <section class="reserve-height">
+        @inject('getDate', 'App\Services\Publicfun')
         <article class="font-size-md text-main p-y-10x p-x-15x"><strong>Order Detail</strong></article>
 
         <!-- 订单主要信息:日期、订单号、总金额 -->
         <article class="bg-white font-size-sm p-y-10x p-x-15x m-b-10x" data-order-number="{{ $data['sub_order_no'] }}">
             <div class="flex text-primary">
                 <span class="orderInfo-subTitle flex-fixedShrink">Order Date</span>
-                <span>{{$data['create_time']}}</span>
+                <span>{{ $getDate->getMyDate($data['create_time']) }}</span>
             </div>
             <div class="flex text-primary">
                 <span class="orderInfo-subTitle flex-fixedShrink">Order #</span>
@@ -38,7 +39,7 @@
                 <div class="p-y-10x p-x-5x @if($data['status_code'] == 21 || $data['status_code'] == 23) status-gray @else status-yellow @endif">
                     <div class="font-size-sm text-primary" id="orderState" data-state="true">
                         <strong>{{ $data['status_info'] }}:</strong>
-                        <span>{{$data['create_time']}}</span></div>
+                        <span>{{ $getDate->getMyDate($data['create_time']) }}</span></div>
                 </div>
                 <div class="p-b-10x p-x-15x p-r-20x">
                     <div class="font-size-sm text-primary">
@@ -48,7 +49,7 @@
             @else
                 <div class="p-y-10x p-x-5x @if($data['status_code'] == 11) status-red @elseif($data['status_code'] == 23 || $data['status_code'] == 21  || $data['status_code'] == 27) status-gray @elseif($data['status_code'] == 25 || $data['status_code'] == 20) status-blue @elseif($data['status_code'] >= 17 && $data['status_code'] <= 19)  status-green @else status-yellow @endif ">
                     <span class="font-size-sm text-primary flex flex-fullJustified flex-alignCenter">
-                        <span><strong>{{ $data['status_info'] }}:</strong> {{$data['create_time']}}</span>
+                        <span><strong>{{ $data['status_info'] }}:</strong> {{ $getDate->getMyDate($data['create_time']) }}</span>
                         @if($data['status_code']==11)
                             <a class="btn btn-primary btn-sm p-x-10x checkoutPay" href="javascript:;">Check Out</a>
                         @endif

@@ -93,4 +93,12 @@ class Publicfun
         }
         return json_decode($result, true);
     }
+
+    //时间转换英文
+    public static function getMyDate($d){
+        $marr=array('January','February','March','April','May','June','July','August','September','October','November','December');
+        $stamp = strtotime($d);
+        $m = date('m',$stamp);
+        return substr($marr[$m-1], 0,3).' '.date('d',$stamp).', '.date('Y',$stamp);
+    }
 }
