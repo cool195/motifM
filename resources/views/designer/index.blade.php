@@ -54,9 +54,14 @@
                         <div class="bg-player">
                             <img class="bg-img" src="{{env('APP_Api_Image')}}/n1/@{{ $value.listImg }}" alt="">
                             <div class="btn-beginPlayer">
-                                <img src="/images/daily/icon-player.png"
-                                     srcset="/images/daily/icon-player@2x.png 2x,/images/daily/icon-player@3x.png 3x"
-                                     alt="">
+                                {{--<img src="/images/daily/icon-player.png"--}}
+                                     {{--srcset="/images/daily/icon-player@2x.png 2x,/images/daily/icon-player@3x.png 3x"--}}
+                                     {{--alt="">--}}
+                                <div class="loading-screen loading-play">
+                                    <div class="">
+                                        <div class="loader"></div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                         <div class="btn-morePlayer">
@@ -68,9 +73,6 @@
                     </div>
                 </div>
             @{{ /if }}
-
-
-
 
         </div>
         <div class="p-x-10x p-y-15x swiper-container" id="designer-container">

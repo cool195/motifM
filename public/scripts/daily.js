@@ -65,6 +65,36 @@
                         $('.designer-media').css('height', MediaHeight);
                     }
 
+
+                    // 加载视频
+                    var tag = document.createElement('script');
+                    tag.src = 'https://www.youtube.com/player_api';
+                    var firstScriptTag = document.getElementsByTagName('script')[0];
+                    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+                    var $PlayerItem = $('.player-item');
+                    if ($PlayerItem.length !== 0) {
+                        $.each($PlayerItem, function (index, element) {
+                            if (!switchPlayer(element) && !($(element).hasClass('active'))) {
+                                var $Player = $(element),
+                                    PlayerId = $Player.data('playid');
+                                player = new YT.Player(PlayerId, {
+                                    height: MediaHeight,
+                                    width: Width,
+                                    videoId: PlayerId,
+                                    playerVars: {'autoplay': 1, 'controls': 2, 'showinfo': 0, 'fs': 0, 'playsinline': 1},
+                                    events: {
+                                        'onReady': onPlayerReady($Player)
+                                        //'onStateChange':onPlayerStateChange($Player)
+                                    }
+                                });
+                                $(this).addClass('active');
+                            }
+                        });
+                    }
+
+
+
                     // 页数 +1
                     $DailyContainer.data('pagenum', PageNum);
 
@@ -95,6 +125,30 @@
                 $DailyContainer.data('loading', false);
                 loadingHide();
             });
+    }
+
+    // 设置 视频默认播放 和 关闭音量 和 视频继续播放
+    function onPlayerReady($Player) {
+        //event.target.playVideo();
+        //event.target.mute();
+        $Player.children('.bg-player').css('display','none');
+    }
+
+    // 判断视频是否在曝光处
+    function switchPlayer(Player) {
+        // 当前视窗浏览位置
+        var CurrentPosition = $(window).scrollTop() + $(window).height();
+        // 元素本身聚顶部高度
+        var ItemPositionBottom = $(Player).offset().top;
+        // 如果是曝光项，加上本身的高度
+        // 完全出现在视窗内时，再曝光
+        var ItemPositionTop = ItemPositionBottom + $(Player).height();
+        // 判断是否在视窗内
+        if (ItemPositionBottom > CurrentPosition || ItemPositionTop < $(window).scrollTop()) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     // ajax 请求 获取 product 数据

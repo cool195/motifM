@@ -6,15 +6,23 @@
 'use strict';
 
 // 设置 视频默认播放 和 关闭音量 和 视频继续播放
-function onPlayerReady(event) {
-    event.target.playVideo();
+function onPlayerReady($Player) {
+    //event.target.playVideo();
     //event.target.mute();
+    $Player.children('.bg-player').css('display','none');
 }
 
 // 视频播放失败
 function onPlayerError(event) {
     event.target.playVideo();
 }
+
+// 改变视频状态
+//function onPlayerStateChange(event,$Player){
+//    if(event.data === 5){
+//        $Player.children('.bg-player').css('display','none');
+//    }
+//}
 
 // youtube 视频播放
 // 视频比例
@@ -37,49 +45,48 @@ if ($('.ytplayer').length > 0) {
 }
 var player;
 // daily 页面
-$('.daily-content').on('click', '.bg-player', function () {
-    var PlayId = $(this).siblings('.ytplayer').data('playid');
-    player = new YT.Player(PlayId, {
-        height: MediaHeight,
-        width: Width,
-        videoId: PlayId,
-        playerVars: {'autoplay': 1, 'controls': 2, 'showinfo': 0, 'fs': 0, 'playsinline': 1},
-        events: {
-            'onReady': onPlayerReady,
-            'onError': onPlayerError
-        }
-    });
-
-    $ClickPlayer = $(this);
-    $(this).css('display', 'none');
-    $(this).children('.bg-img').hide();
-    $(this).children('.btn-beginPlayer').hide();
-    //$(this).siblings('.btn-morePlayer').show();
-    $(this).parents('.player-item').addClass('active');
-});
+//$('.daily-content').on('click', '.bg-player', function () {
+//    var PlayId = $(this).siblings('.ytplayer').data('playid');
+//    player = new YT.Player(PlayId, {
+//        height: MediaHeight,
+//        width: Width,
+//        videoId: PlayId,
+//        playerVars: {'autoplay': 1, 'controls': 2, 'showinfo': 0, 'fs': 0, 'playsinline': 1},
+//        events: {
+//            'onReady': onPlayerReady,
+//            'onError': onPlayerError
+//        }
+//    });
+//
+//    $ClickPlayer = $(this);
+//    $(this).css('display', 'none');
+//    $(this).children('.bg-img').hide();
+//    $(this).children('.btn-beginPlayer').hide();
+//    //$(this).siblings('.btn-morePlayer').show();
+//    $(this).parents('.player-item').addClass('active');
+//});
 
 // designer 页面
-$('.designer-content').on('click', '.bg-player', function () {
-    var PlayId = $(this).siblings('.ytplayer').data('playid');
-    player = new YT.Player(PlayId, {
-        height: MediaHeight,
-        width: Width,
-        videoId: PlayId,
-        playerVars: {'autoplay': 1, 'controls': 2, 'showinfo': 0, 'fs': 0, 'playsinline': 1},
-        events: {
-            'onReady': onPlayerReady,
-            'onError': onPlayerError
-        }
-    });
-
-    $ClickPlayer = $(this);
-    $(this).css('display', 'none');
-    $(this).children('.bg-img').hide();
-    $(this).children('.btn-beginPlayer').hide();
-    //$(this).siblings('.btn-morePlayer').show();
-    $(this).parents('.player-item').addClass('active');
-});
-
+//$('.designer-content').on('click', '.bg-player', function () {
+//    var PlayId = $(this).siblings('.ytplayer').data('playid');
+//    player = new YT.Player(PlayId, {
+//        height: MediaHeight,
+//        width: Width,
+//        videoId: PlayId,
+//        playerVars: {'autoplay': 1, 'controls': 2, 'showinfo': 0, 'fs': 0, 'playsinline': 1},
+//        events: {
+//            'onReady': onPlayerReady,
+//            'onError': onPlayerError
+//        }
+//    });
+//
+//    $ClickPlayer = $(this);
+//    $(this).css('display', 'none');
+//    $(this).children('.bg-img').hide();
+//    $(this).children('.btn-beginPlayer').hide();
+//    //$(this).siblings('.btn-morePlayer').show();
+//    $(this).parents('.player-item').addClass('active');
+//});
 
 // 判断是否离开曝光
 $(document).on('scroll', function (event) {
@@ -93,7 +100,6 @@ $(document).on('scroll', function (event) {
                 $Player.children('.bg-player').css('display', 'block');
                 $Player.children('.bg-player').children('.bg-img').css('display', 'block');
                 $Player.children('.bg-player').children('.btn-beginPlayer').css('display', 'block');
-                //$Player.children('.btn-morePlayer').css('display', 'none');
                 $Player.removeClass('active');
                 $Player.children('iframe').remove();
                 if (!isAdd) {
@@ -104,6 +110,62 @@ $(document).on('scroll', function (event) {
         });
     }
 });
+
+// 判断是否在曝光处(在曝光处)
+$(document).on('scroll', function () {
+    var $PlayerItem = $('.player-item');
+    if ($PlayerItem.length !== 0) {
+        $.each($PlayerItem, function (index, element) {
+            if (!switchPlayer(element) && !($(element).hasClass('active'))) {
+                var $Player = $(element),
+                    PlayerId = $Player.data('playid');
+                //alert(PlayerId);
+                player = new YT.Player(PlayerId, {
+                    height: MediaHeight,
+                    width: Width,
+                    videoId: PlayerId,
+                    playerVars: {'autoplay': 1, 'controls': 2, 'showinfo': 0, 'fs': 0, 'playsinline': 1},
+                    events: {
+                        'onReady': onPlayerReady($Player)
+                        //'onStateChange':onPlayerStateChange($Player)
+                    }
+                });
+
+                //$ClickPlayer = $(this);
+                //$(this).css('display', 'none');
+                //$(this).children('.bg-img').hide();
+                //$(this).children('.btn-beginPlayer').hide();
+                //$(this).siblings('.btn-morePlayer').show();
+                $(this).addClass('active');
+            }
+        });
+    }
+});
+
+$(document).ready(function (){
+    var $PlayerItem = $('.player-item');
+    if ($PlayerItem.length !== 0) {
+        $.each($PlayerItem, function (index, element) {
+            if (!switchPlayer(element) && !($(element).hasClass('active'))) {
+                var $Player = $(element),
+                    PlayerId = $Player.data('playid');
+                alert(PlayerId);
+                player = new YT.Player(PlayerId, {
+                    height: MediaHeight,
+                    width: Width,
+                    videoId: PlayerId,
+                    playerVars: {'autoplay': 1, 'controls': 2, 'showinfo': 0, 'fs': 0, 'playsinline': 1},
+                    events: {
+                        'onReady': onPlayerReady($Player)
+                        //'onStateChange':onPlayerStateChange($Player)
+                    }
+                });
+                $(this).addClass('active');
+            }
+        });
+    }
+});
+
 
 // 判断视频是否在曝光处
 function switchPlayer(Player) {
@@ -121,4 +183,5 @@ function switchPlayer(Player) {
         return false;
     }
 }
+
 

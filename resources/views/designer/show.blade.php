@@ -4,6 +4,7 @@
     <title>Designer Detail</title>
     @include('head')
     <link rel="stylesheet" href="{{env('CDN_Static')}}/styles/designerDetail.css{{'?v='.config('app.version')}}">
+    <script src="https://www.youtube.com/player_api"></script>
 </head>
 <body>
 <input type="text" id="productClick-name" value="name" hidden>
@@ -77,7 +78,6 @@
     });
 </script>
 @include('check.tagmanager')
-<script src="https://www.youtube.com/player_api"></script>
 {{--外层容器--}}
 <div id="body-content">
     <!-- 展开的汉堡菜单 -->
@@ -95,9 +95,6 @@
                         <div class="bg-player">
                             <img class="bg-img" src="{{env('APP_Api_Image')}}/n2/{{$designer['img_video_path']}}" alt="">
                             <div class="btn-beginPlayer designer-beginPlayer">
-                                {{--<img src="/images/daily/icon-player.png"--}}
-                                     {{--srcset="/images/daily/icon-player@2x.png 2x,/images/daily/icon-player@3x.png 3x"--}}
-                                     {{--alt="">--}}
                                 <div class="loading loading-screen loading-transprant">
                                     <div class="">
                                         <div class="loader"></div>
