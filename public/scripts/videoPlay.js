@@ -29,7 +29,7 @@ switch (switchDevice()) {
 if ($('.ytplayer').length > 0) {
     // 初始化 外边框尺寸
     $('.designer-media').css('height', MediaHeight);
-    $('.designer-beginPlayer').css('display','block');
+    $('.designer-beginPlayer').css('display', 'block');
     //$('#ytplayer').find('.loading').removeClass('loading-hidden');
 
     // 加载视频
@@ -43,7 +43,7 @@ var player;
 var html5Player;
 function onYouTubeIframeAPIReady() {
     var PlayId = $('.ytplayer').data('playid');
-    player = new YT.Player(PlayId, {
+    player = new YT.Player('play' + PlayId, {
         height: MediaHeight,
         width: Width,
         videoId: PlayId,
@@ -79,7 +79,6 @@ function onYouTubeIframeAPIReady() {
 //    //$(this).parents('.player-item').addClass('active');
 //    player.playVideo();
 //});
-
 
 
 // 设置 视频默认播放 和 关闭音量 和 视频继续播放
