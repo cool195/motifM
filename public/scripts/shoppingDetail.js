@@ -917,8 +917,8 @@
                 minute = Math.floor(intDiff / 60) - (day * 24 * 60) - (hour * 60);
                 second = Math.floor(intDiff) - (day * 24 * 60 * 60) - (hour * 60 * 60) - (minute * 60);
             }
-            if (minute <= 9) minute = '0' + minute;
-            if (second <= 9) second = '0' + second;
+            //if (minute <= 9) minute = '0' + minute;
+            //if (second <= 9) second = '0' + second;
             if (leftNum < 259200000) {
                 $('.time_show').html(day * 24 + hour + 'h: ' + minute + 'm: ' + second + 's');
             } else {
