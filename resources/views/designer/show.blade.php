@@ -102,6 +102,7 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="youtube_mask"></div>
                     </div>
                 </div>
         @else

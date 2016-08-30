@@ -5822,6 +5822,7 @@ footer .links-group {
   position: absolute;
   right: 10px;
   bottom: 15px;
+  z-index: 101;
 }
 
 .player-item .btn-morePlayer a {
@@ -5854,4 +5855,14 @@ footer .links-group {
 
 .bg-preordered {
     background: #b2b2b2;
+}
+
+.youtube_mask{
+  position: absolute;
+  right: 10px;
+  bottom: 40px;
+  width: 100px;
+  height: 65px;
+  z-index: 10;
+  display: block;
 }
