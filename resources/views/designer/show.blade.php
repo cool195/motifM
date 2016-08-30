@@ -95,9 +95,14 @@
                         <div class="bg-player">
                             <img class="bg-img" src="{{env('APP_Api_Image')}}/n2/{{$designer['img_video_path']}}" alt="">
                             <div class="btn-beginPlayer designer-beginPlayer">
-                                <img src="/images/daily/icon-player.png"
-                                     srcset="/images/daily/icon-player@2x.png 2x,/images/daily/icon-player@3x.png 3x"
-                                     alt="" onclick="play();">
+                                {{--<img src="/images/daily/icon-player.png"--}}
+                                     {{--srcset="/images/daily/icon-player@2x.png 2x,/images/daily/icon-player@3x.png 3x"--}}
+                                     {{--alt="">--}}
+                                <div class="loading loading-screen loading-transprant">
+                                    <div class="">
+                                        <div class="loader"></div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>

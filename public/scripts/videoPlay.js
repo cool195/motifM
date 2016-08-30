@@ -87,14 +87,15 @@ function onPlayerReady(event) {
     //if (autoplay == 0) {
     //    event.target.stopVideo();
     //} else {
-    //setTimeout(event.target.playVideo(), 6000);
+    $('.bg-player').css('display', 'none')
+    //event.target.playVideo();
     //}
     //event.target.mute();
-    console.log('chenggong');
-
-    if (event) {
-        html5Player = event.target;
-    }
+    //console.log('chenggong');
+    //
+    //if (event) {
+    //    html5Player = event.target;
+    //}
 }
 
 
@@ -110,14 +111,14 @@ function onPlayerReady(event) {
 //        done = true;
 //    }
 //}
-function play() {
-    $('.bg-player').css('display', 'none');
-    $('.bg-player').children('.bg-img').hide();
-    $('.bg-player').children('.btn-beginPlayer').hide();
-    $('.bg-player').siblings('.btn-morePlayer').show();
-    //$(this).parents('.player-item').addClass('active');
-    html5Player.playVideo();
-}
+//function play() {
+//    $('.bg-player').css('display', 'none');
+//    $('.bg-player').children('.bg-img').hide();
+//    $('.bg-player').children('.btn-beginPlayer').hide();
+//    $('.bg-player').siblings('.btn-morePlayer').show();
+//    //$(this).parents('.player-item').addClass('active');
+//    html5Player.playVideo();
+//}
 
 function switchDevice() {
     var Agent = navigator.userAgent;
