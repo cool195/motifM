@@ -86,7 +86,7 @@
                             </div>
                         </div>
                         {{--预售产品 预定信息 --}}
-                    @if($showSku['sale_type']==1)
+                    @if($showSku['sale_type']==1 && $showSku['skuPromotion']['ship_desc'])
                         <section class="limited-content">
                             <div class="bg-white m-b-10x">
                                 <div class="p-x-15x limited-subtitle"><strong>PREORDER</strong></div>

@@ -247,7 +247,7 @@
                                 </div>
                             </div>
                         </section>
-                        @endif
+                    @endif
 
                                 <!-- 产品 其他信息 -->
                         <section>
