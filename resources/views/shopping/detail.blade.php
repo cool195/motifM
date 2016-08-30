@@ -234,7 +234,7 @@
                                     <span class="text-primary font-size-sm">Orders Close <span
                                                 class="time_show"></span></span>
                                 </div>
-                                @if($data['skuPrice']['skuPromotion']['end_time'] >= 0)
+                                @if($data['skuPrice']['skuPromotion']['remain_time'] >= 0)
                                     <div class="p-x-15x p-y-5x m-x-15x">
                                         @if(!$data['sale_status'] &&  $data['isPutOn']==1)
                                             <progress class="progress progress-primary" value="0" max="10000">0%</progress>
