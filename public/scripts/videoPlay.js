@@ -56,6 +56,7 @@ function onYouTubeIframeAPIReady() {
     });
 }
 
+
 //$('.bg-player').on('click', function (player) {
 //    //var PlayId = $(this).siblings('.ytplayer').data('playid');
 //    //player = new YT.Player(PlayId, {
@@ -78,6 +79,8 @@ function onYouTubeIframeAPIReady() {
 //    //$(this).parents('.player-item').addClass('active');
 //    player.playVideo();
 //});
+
+
 
 // 设置 视频默认播放 和 关闭音量 和 视频继续播放
 function onPlayerReady(event) {
