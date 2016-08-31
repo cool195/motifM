@@ -170,7 +170,7 @@
                 <div class="bg-white m-y-10x">
                     <div class="p-x-15x limited-subtitle"><strong>PREORDER</strong></div>
                     <div class="p-x-15x p-t-10x p-b-15x text-primary font-size-sm">
-                        Expected to ship on <strong id="shipToDate">2016.10.10</strong>
+                        Expected to ship on <strong id="shipToDate"></strong>
                     </div>
                 </div>
             </section>
@@ -261,7 +261,7 @@
                                                 @if(isset($value['spus']))
                                                     @foreach($value['spus'] as $key => $spu)
                                                         @if($key==0 && $product['spuInfos'][$spu]['spuBase']['sale_type']==1 && isset($product['spuInfos'][$spu]['skuPrice']['skuPromotion']) && $product['spuInfos'][$spu]['spuBase']['isPutOn']==1)
-                                                            <p class="limited-data" data-ship="" data-begintime="{{$product['spuInfos'][$spu]['skuPrice']['skuPromotion']['start_time']}}" data-endtime="{{$product['spuInfos'][$spu]['skuPrice']['skuPromotion']['end_time']}}" data-lefttime="{{$product['spuInfos'][$spu]['skuPrice']['skuPromotion']['remain_time']}}"></p>
+                                                            <p class="limited-data" data-ship="{{$product['spuInfos'][$spu]['skuPrice']['skuPromotion']['ship_desc']}}" data-begintime="{{$product['spuInfos'][$spu]['skuPrice']['skuPromotion']['start_time']}}" data-endtime="{{$product['spuInfos'][$spu]['skuPrice']['skuPromotion']['end_time']}}" data-lefttime="{{$product['spuInfos'][$spu]['skuPrice']['skuPromotion']['remain_time']}}"></p>
                                                         @endif
                                                         <div class="col-xs-6 p-a-0">
                                                             <div class="bg-white topic-product-item productList-item">

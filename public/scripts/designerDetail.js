@@ -169,6 +169,7 @@
     if(beginTimes != undefined){
         $('.limited-content').removeAttr('hidden');
         $('.limited').removeAttr('hidden');
+        $('#shipToDate').html($('.limited-data').data('ship'));
     }
     var endTimes = $('.limited-data').data('endtime');   // 结束时间
     var leftNum = $('.limited-data').data('lefttime');     // 剩余秒数  604358742
