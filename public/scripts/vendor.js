@@ -16558,7 +16558,6 @@ else if (typeof define === 'function' && define.amd) {
     });
     // 汉堡菜单打开
     $('#nav-menu-control').on('click', function() {
-        alert('11');
         setTimeout(function() {
             $('#body-content').addClass('nav-menu-open');
         }, 25);
