@@ -378,7 +378,7 @@
 <script src="{{env('CDN_Static')}}/scripts/vendor.js{{'?v='.config('app.version')}}"></script>
 <script src="{{env('CDN_Static')}}/scripts/designerDetail.js{{'?v='.config('app.version')}}"></script>
 <script src="{{env('CDN_Static')}}/scripts/videoPlay.js{{'?v='.config('app.version')}}"></script>
-<script src="https://www.youtube.com/player_api"></script>
+
 <script src="{{env('CDN_Static')}}/scripts/JockeyJS.js"></script>
 <script>
     @if($designer['pushspu'])
