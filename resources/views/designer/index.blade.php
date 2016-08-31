@@ -78,19 +78,19 @@
         <div class="swiper-container" id="designer-container">
             <div class="swiper-wrapper">
                 @{{ each $value.products }}
-                <a data-link="/detail/@{{$value.spu}}" href="javascript:void(0)"
-                   data-designerid="@{{ $value.designerId }}"
-                   data-clk='http://clk.motif.me/log.gif?t=designer.300001&m=H5_M2016-1&pin={{ Session::get('user.pin') }}&uuid={{ Session::get('user.uuid') }}&v={"action":"1","skiptype":2,"skipid":"@{{ $value.designerId }}","expid":0,"version":"1.0.1", "ver":"9.2","src":"h5"}'>
-                <div class="product-item swiper-slide border-right">
 
+                <div class="product-item swiper-slide border-right">
+                    <a data-link="/detail/@{{$value.spu}}" href="javascript:void(0)"
+                       data-designerid="@{{ $value.designerId }}"
+                       data-clk='http://clk.motif.me/log.gif?t=designer.300001&m=H5_M2016-1&pin={{ Session::get('user.pin') }}&uuid={{ Session::get('user.uuid') }}&v={"action":"1","skiptype":2,"skipid":"@{{ $value.designerId }}","expid":0,"version":"1.0.1", "ver":"9.2","src":"h5"}'>
                         <img class="img-fluid"
                              src="{{env('APP_Api_Image')}}/n2/@{{ $value.mainImage }}">
 
                     @{{ if $value.stockStatus == 0 || $value.isPutOn == 0 }}
                             <div class="designerList-mask"></div>
                     @{{ /if }}
+                    </a>
                 </div>
-                </a>
                 @{{ /each }}
             </div>
         </div>
