@@ -164,6 +164,39 @@
                     </div>
                 @endif
                 </div>
+
+            <!-- 预售信息 -->
+            <section class="limited">
+                <div class="bg-white m-y-10x">
+                    <div class="p-x-15x limited-subtitle"><strong>PREORDER</strong></div>
+                    <div class="p-x-15x p-t-10x p-b-15x text-primary font-size-sm">
+                        Expected to ship on <strong>2016.10.10</strong>
+                    </div>
+                </div>
+            </section>
+            <section class="limited-content" data-begintime="1472560657000" data-endtime="1474115859000" data-lefttime="1492404491" data-qtty="500">
+                <div class="bg-white m-b-10x">
+                    <div class="p-x-15x limited-subtitle"><strong>LIMITED EDITION</strong></div>
+                        <div class="p-x-15x p-t-10x">
+                            <img src="/images/icon/icon-limited.png"
+                                 srcset="/images/icon/icon-limited@2x.png 2x, /images/icon/icon-limited@3x.png 3x"
+                                 alt="">
+                            <span class="text-primary font-size-sm stock-qtty">Sold Out</span>
+                        </div>
+                        <div>
+                            <div class="p-x-15x p-t-5x">
+                                <img src="/images/icon/icon-limited.png"
+                                     srcset="/images/icon/icon-limited@2x.png 2x, /images/icon/icon-limited@3x.png 3x"
+                                     alt="">
+                                <span class="text-primary font-size-sm">Orders Close <span class="time_show"></span></span>
+                            </div>
+                            <div class="p-x-15x p-y-5x m-x-15x">
+                                    <progress class="progress progress-primary" id="limited-progress" value="" max="10000">0%</progress>
+                            </div>
+                        </div>
+                </div>
+            </section>
+
             <!-- 设计师 对应模版商品 -->
                 <aside class="bg-white p-b-10x">
                         @inject('wishlist', 'App\Http\Controllers\Shopping\ShoppingController')
