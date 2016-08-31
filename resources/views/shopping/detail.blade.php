@@ -332,9 +332,7 @@
                                                                     </a>
                                                                     @if(1 == $value['sale_type'])
                                                                         {{--预售产品 预定信息--}}
-                                                                        <div class="preorder-info P-a-5x">
-                                                                            <span class="text-white font-size-xs bg-preordering">LIMITED EDITION</span>
-                                                                        </div>
+                                                                        <span class="preorder-info font-size-xs">Limited Edition</span>
                                                                     @endif
                                                                 </div>
                                                             </div>

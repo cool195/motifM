@@ -5838,15 +5838,46 @@ footer .links-group {
 
 .preorder-info {
     position: absolute;
-    bottom: 0;
+    top: 10px;
+    right:10px;
     text-align: center;
-    width: 100%;
+    display: inline-block;
+    min-width: 6rem;
+    padding: 2px 0 1px;
+    border: solid 1px #171a2b;
+    color: #171a2b;
+    font-style: italic;
 }
 
-.preorder-info span {
-    padding: 2px 4px;
-    min-width: 75%;
-    display: inline-block;
+.preorderSold-info{
+  position: absolute;
+  top:0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content:center;
+}
+
+.preorderSold-info span{
+  border: solid 1px #ffffff;
+  color: #ffffff;
+  font-style: italic;
+  text-align: center;
+  display: inline-block;
+  min-width: 6rem;
+  padding: 2px 0 1px;
+}
+
+.designerList-mask{
+  position: absolute;
+  top:0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.3);
 }
 
 .bg-preordering {

@@ -144,9 +144,7 @@
                                                                  alt="{{$topic['spuInfos'][$spu]['spuBase']['main_title']}}">
                                                             @if(1 == $topic['spuInfos'][$spu]['spuBase']['sale_type'])
                                                                 {{--预售产品 预定信息--}}
-                                                                <div class="preorder-info P-a-5x">
-                                                                    <span class="text-white font-size-xs bg-preordering">LIMITED EDITION</span>
-                                                                </div>
+                                                                <span class="preorder-info font-size-xs">Limited Edition</span>
                                                             @endif
                                                         </div>
                                                     </a>
