@@ -166,7 +166,6 @@
 
     // 预售产品
     var beginTimes = $('.limited-data').data('begintime'); // 开始时间
-    alert('hidden')
     if(beginTimes != undefined){
         $('.limited-content').removeAttr('hidden');
         $('.limited').removeAttr('hidden');
