@@ -2791,7 +2791,7 @@ input[type="button"].btn-block {
 }
 
 .navbar-primary .nav-hamburger{
-  z-index: 101;
+  z-index: 10001;
 }
 
 .navbar-primary .nav-logo {
