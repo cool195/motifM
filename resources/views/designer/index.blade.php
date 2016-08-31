@@ -4,7 +4,6 @@
     <title>designer</title>
     @include('head')
     <link rel="stylesheet" href="{{env('CDN_Static')}}/styles/designer.css{{'?v='.config('app.version')}}">
-    <script src="https://www.youtube.com/player_api"></script>
 </head>
 <body>
 @include('check.tagmanager')

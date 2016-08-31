@@ -37,56 +37,13 @@ if ($('.ytplayer').length > 0) {
     $('.designer-media').css('height', MediaHeight);
 
     // 加载视频
-    //var tag = document.createElement('script');
-    //tag.src = 'https://www.youtube.com/player_api';
-    //var firstScriptTag = document.getElementsByTagName('script')[0];
-    //firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+    var tag = document.createElement('script');
+    tag.src = 'https://www.youtube.com/player_api';
+    var firstScriptTag = document.getElementsByTagName('script')[0];
+    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
 }
 var player;
-// daily 页面
-//$('.daily-content').on('click', '.bg-player', function () {
-//    var PlayId = $(this).siblings('.ytplayer').data('playid');
-//    player = new YT.Player(PlayId, {
-//        height: MediaHeight,
-//        width: Width,
-//        videoId: PlayId,
-//        playerVars: {'autoplay': 1, 'controls': 2, 'showinfo': 0, 'fs': 0, 'playsinline': 1},
-//        events: {
-//            'onReady': onPlayerReady,
-//            'onError': onPlayerError
-//        }
-//    });
-//
-//    $ClickPlayer = $(this);
-//    $(this).css('display', 'none');
-//    $(this).children('.bg-img').hide();
-//    $(this).children('.btn-beginPlayer').hide();
-//    //$(this).siblings('.btn-morePlayer').show();
-//    $(this).parents('.player-item').addClass('active');
-//});
-
-// designer 页面
-//$('.designer-content').on('click', '.bg-player', function () {
-//    var PlayId = $(this).siblings('.ytplayer').data('playid');
-//    player = new YT.Player(PlayId, {
-//        height: MediaHeight,
-//        width: Width,
-//        videoId: PlayId,
-//        playerVars: {'autoplay': 1, 'controls': 2, 'showinfo': 0, 'fs': 0, 'playsinline': 1},
-//        events: {
-//            'onReady': onPlayerReady,
-//            'onError': onPlayerError
-//        }
-//    });
-//
-//    $ClickPlayer = $(this);
-//    $(this).css('display', 'none');
-//    $(this).children('.bg-img').hide();
-//    $(this).children('.btn-beginPlayer').hide();
-//    //$(this).siblings('.btn-morePlayer').show();
-//    $(this).parents('.player-item').addClass('active');
-//});
 
 // 判断是否离开曝光
 $(document).on('scroll', function (event) {
