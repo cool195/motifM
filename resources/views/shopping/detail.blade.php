@@ -200,16 +200,7 @@
 
                     <!-- 产品 预售信息 -->
                     @if(1 == $data['sale_type'])
-                        @if($data['skuPrice']['skuPromotion']['ship_desc'])
-                            <section class="limited">
-                                <div class="bg-white m-b-10x">
-                                    <div class="p-x-15x limited-subtitle"><strong>PREORDER</strong></div>
-                                    <div class="p-x-15x p-t-10x p-b-15x text-primary font-size-sm">
-                                            Expected to ship on <strong>{{$data['skuPrice']['skuPromotion']['ship_desc']}}</strong>
-                                    </div>
-                                </div>
-                            </section>
-                        @endif
+
                        @if($data['skuPrice']['skuPromotion']['remain_time'] >= 0 && !empty($data['spuStock']))
                         <section class="limited-content"
                                  data-begintime="{{  $data['skuPrice']['skuPromotion']['start_time'] }}"
@@ -251,6 +242,16 @@
                             </div>
                         </section>
                         @endif
+                           @if($data['skuPrice']['skuPromotion']['ship_desc'])
+                               <section class="limited">
+                                   <div class="bg-white m-b-10x">
+                                       <div class="p-x-15x limited-subtitle"><strong>PREORDER</strong></div>
+                                       <div class="p-x-15x p-t-10x p-b-15x text-primary font-size-sm">
+                                           Expected to ship on <strong>{{$data['skuPrice']['skuPromotion']['ship_desc']}}</strong>
+                                       </div>
+                                   </div>
+                               </section>
+                       @endif
                     @endif
 
                                 <!-- 产品 其他信息 -->

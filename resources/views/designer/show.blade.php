@@ -166,14 +166,6 @@
                 </div>
 
             <!-- 预售信息 -->
-            <section class="limited" hidden>
-                <div class="bg-white m-y-10x">
-                    <div class="p-x-15x limited-subtitle"><strong>PREORDER</strong></div>
-                    <div class="p-x-15x p-t-10x p-b-15x text-primary font-size-sm">
-                        Expected to ship on <strong id="shipToDate"></strong>
-                    </div>
-                </div>
-            </section>
             <section class="limited-content" hidden>
                 <div class="bg-white m-b-10x">
                     <div class="p-x-15x limited-subtitle"><strong>LIMITED EDITION</strong></div>
@@ -190,7 +182,14 @@
                         </div>
                 </div>
             </section>
-
+            <section class="limited" hidden>
+                <div class="bg-white m-y-10x">
+                    <div class="p-x-15x limited-subtitle"><strong>PREORDER</strong></div>
+                    <div class="p-x-15x p-t-10x p-b-15x text-primary font-size-sm">
+                        Expected to ship on <strong id="shipToDate"></strong>
+                    </div>
+                </div>
+            </section>
             <!-- 设计师 对应模版商品 -->
                 <aside class="bg-white p-b-10x">
                         @inject('wishlist', 'App\Http\Controllers\Shopping\ShoppingController')
