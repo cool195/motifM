@@ -83,7 +83,7 @@
                                 height: MediaHeight,
                                 width: Width,
                                 videoId: PlayerId,
-                                playerVars: {'autoplay': 1, 'controls': 2, 'showinfo': 0, 'fs': 0, 'playsinline': 1},
+                                playerVars: {'autoplay': 1, 'controls': 2, 'showinfo': 0},
                                 events: {
                                     'onReady': onPlayerReady($Player)
                                     //'onStateChange':onPlayerStateChange($Player)
