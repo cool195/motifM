@@ -67,4 +67,4 @@
     });
 })(jQuery);
 
-//# sourceMappingURL=profileSetting-changeProfile.js.map
+

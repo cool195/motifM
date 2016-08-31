@@ -20,4 +20,4 @@
     });
 })(jQuery);
 
-//# sourceMappingURL=orderCheckout-message.js.map
+

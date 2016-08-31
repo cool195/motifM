@@ -130,4 +130,4 @@
     });
 })(jQuery);
 
-//# sourceMappingURL=paymentMethod-paypal.js.map
+
