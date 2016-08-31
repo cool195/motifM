@@ -849,4 +849,3 @@ document.addEventListener('DOMContentLoaded', function () {
     console.log('FastClick');
 }, false);
 
-//# sourceMappingURL=fastclick.js.map

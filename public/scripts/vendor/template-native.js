@@ -690,4 +690,3 @@
 
 })(window);
 
-//# sourceMappingURL=template-native.js.map
