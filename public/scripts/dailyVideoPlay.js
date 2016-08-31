@@ -17,13 +17,6 @@ function onPlayerError(event) {
     event.target.playVideo();
 }
 
-// 改变视频状态
-//function onPlayerStateChange(event,$Player){
-//    if(event.data === 5){
-//        $Player.children('.bg-player').css('display','none');
-//    }
-//}
-
 // youtube 视频播放
 // 视频比例
 var MediaScale = 9 / 16;
@@ -35,13 +28,6 @@ var Width = $(window).width(),
 if ($('.ytplayer').length > 0) {
     // 初始化 外边框尺寸
     $('.designer-media').css('height', MediaHeight);
-
-    // 加载视频
-    var tag = document.createElement('script');
-    tag.src = 'https://www.youtube.com/player_api';
-    var firstScriptTag = document.getElementsByTagName('script')[0];
-    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-
 }
 var player;
 
@@ -87,42 +73,11 @@ $(document).on('scroll', function () {
                         //'onStateChange':onPlayerStateChange($Player)
                     }
                 });
-
-                //$ClickPlayer = $(this);
-                //$(this).css('display', 'none');
-                //$(this).children('.bg-img').hide();
-                //$(this).children('.btn-beginPlayer').hide();
-                //$(this).siblings('.btn-morePlayer').show();
                 $(this).addClass('active');
             }
         });
     }
 });
-
-$(document).ready(function (){
-    var $PlayerItem = $('.player-item');
-    if ($PlayerItem.length !== 0) {
-        $.each($PlayerItem, function (index, element) {
-            if (!switchPlayer(element) && !($(element).hasClass('active'))) {
-                var $Player = $(element),
-                    PlayerId = $Player.data('playid');
-                alert(PlayerId);
-                player = new YT.Player(PlayerId, {
-                    height: MediaHeight,
-                    width: Width,
-                    videoId: PlayerId,
-                    playerVars: {'autoplay': 1, 'controls': 2, 'showinfo': 0},
-                    events: {
-                        'onReady': onPlayerReady($Player)
-                        //'onStateChange':onPlayerStateChange($Player)
-                    }
-                });
-                $(this).addClass('active');
-            }
-        });
-    }
-});
-
 
 // 判断视频是否在曝光处
 function switchPlayer(Player) {

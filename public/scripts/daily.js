@@ -65,29 +65,26 @@
                         $('.designer-media').css('height', MediaHeight);
                     }
 
-
-                    // 加载视频
-                    var tag = document.createElement('script');
-                    tag.src = 'https://www.youtube.com/player_api';
-                    var firstScriptTag = document.getElementsByTagName('script')[0];
-                    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-
                     var $PlayerItem = $('.player-item');
                     if ($PlayerItem.length !== 0) {
                         $.each($PlayerItem, function (index, element) {
                             if (!switchPlayer(element) && !($(element).hasClass('active'))) {
                                 var $Player = $(element),
                                     PlayerId = $Player.data('playid');
-                                player = new YT.Player(PlayerId, {
-                                    height: MediaHeight,
-                                    width: Width,
-                                    videoId: PlayerId,
-                                    playerVars: {'autoplay': 1, 'controls': 2, 'showinfo': 0},
-                                    events: {
-                                        'onReady': onPlayerReady($Player)
-                                        //'onStateChange':onPlayerStateChange($Player)
-                                    }
-                                });
+
+                                if ( typeof(YT) != "undefined" && typeof(YT.Player) != "undefined"){
+                                    player = new YT.Player(PlayerId, {
+                                        height: MediaHeight,
+                                        width: Width,
+                                        videoId: PlayerId,
+                                        playerVars: {'autoplay': 1, 'controls': 2, 'showinfo': 0},
+                                        events: {
+                                            'onReady': onPlayerReady($Player)
+                                            //'onStateChange':onPlayerStateChange($Player)
+                                        }
+                                    });
+                                }
+
                                 $(this).addClass('active');
                             }
                         });
@@ -241,6 +238,12 @@
             pullLoading();
         });
     });
+
+    // 加载视频
+    var tag = document.createElement('script');
+    tag.src = 'https://www.youtube.com/player_api';
+    var firstScriptTag = document.getElementsByTagName('script')[0];
+    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
 })(jQuery);
 
