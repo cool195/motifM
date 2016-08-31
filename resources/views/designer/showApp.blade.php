@@ -238,7 +238,7 @@
                                     <div data-impr='http://clk.motif.me/log.gif?t=designer.400001&m=H5_M2016-1&pin={{ Session::get('user.pin') }}&uuid={{ Session::get('user.uuid') }}&v={"action":0,"skipType":1,"skipId":{{ implode("_", $value['spus']) }},expid":0,"index":{{$key}},"version":"1.0.1","ver":"9.2","src":"H5"}'></div>
                                     @foreach($value['spus'] as $spu)
                                         <div class="p-x-15x p-y-10x">
-                                            <a href="motif://o.c?a=pd&spu={{$spu}}"
+                                            <a data-link="motif://o.c?a=pd&spu={{$spu}}"
                                                data-clk='http://clk.motif.me/log.gif?t=designer.400001&m=H5_M2016-1&pin={{ Session::get('user.pin') }}&uuid={{ Session::get('user.uuid') }}&v={"action":1,"skipType":1,"skipId"{{$spu}},"expid":0,"index":{{$key}},"version":"1.0.1","ver":"9.2","src":"H5"}'
                                                href="javascript:void(0)" data-spu="{{$spu}}"
                                                data-title="{{$product['spuInfos'][$spu]['spuBase']['main_title']}}"
@@ -260,7 +260,7 @@
                                             @foreach($value['spus'] as $spu)
                                                 <div class="col-xs-6 p-a-0">
                                                     <div class="bg-white topic-product-item productList-item">
-                                                        <a href="motif://o.c?a=pd&spu={{$spu}}"
+                                                        <a data-link="motif://o.c?a=pd&spu={{$spu}}"
                                                            data-clk='http://clk.motif.me/log.gif?t=designer.400001&m=H5_M2016-1&pin={{ Session::get('user.pin') }}&uuid={{ Session::get('user.uuid') }}&v={"action":1,"skipType":1,"skipId"{{$spu}},"expid":0,"index":{{$key}},"version":"1.0.1","ver":"9.2","src":"H5"}'
                                                            href="javascript:void(0)" data-spu="{{$spu}}"
                                                            data-title="{{$product['spuInfos'][$spu]['spuBase']['main_title']}}"
@@ -322,7 +322,7 @@
                                 <div class="col-xs-6 p-a-0">
                                     <div class="bg-white topic-product-item productList-item">
                                         <a data-clk='{{ $value['clk'] }}'
-                                           href="motif://o.c?a=pd&spu={{$value['spu']}}"
+                                           data-link="motif://o.c?a=pd&spu={{$value['spu']}}"
                                            data-impr="{{ $value['impr'] }}" href="javascript:void(0)"
                                            data-spu="{{$value['spu']}}" data-title="{{$value['main_title']}}"
                                            data-price="{{number_format($value['skuPrice']['sale_price']/100,2)}}">
