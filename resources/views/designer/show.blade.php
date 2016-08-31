@@ -276,11 +276,14 @@
                                                                 </a>
 
                                                                 @if(1 == $product['spuInfos'][$spu]['spuBase']['sale_type'])
-                                                                    预售产品 预定信息
                                                                     @if(!isset($product['spuInfos'][$spu]['skuPrice']['skuPromotion']) || $product['spuInfos'][$spu]['stockStatus']=='NO' || $product['spuInfos'][$spu]['spuBase']['isPutOn']==0)
-                                                                        <div class="preorderSold-info">
-                                                                            <span class="font-size-xs">SOLD OUT</span>
-                                                                        </div>
+                                                                        <a data-link="/detail/{{$spu}}"
+                                                                           data-clk='http://clk.motif.me/log.gif?t=designer.400001&m=H5_M2016-1&pin={{ Session::get('user.pin') }}&uuid={{ Session::get('user.uuid') }}&v={"action":1,"skipType":1,"skipId"{{$spu}},"expid":0,"index":{{$key}},"version":"1.0.1","ver":"9.2","src":"H5"}'
+                                                                           href="javascript:void(0)">
+                                                                            <div class="preorderSold-info">
+                                                                                <span class="font-size-xs">SOLD OUT</span>
+                                                                            </div>
+                                                                        </a>
                                                                     @else
                                                                         <span class="preorder-info font-size-xs">Limited Edition</span>
                                                                     @endif
