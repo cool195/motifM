@@ -196,7 +196,7 @@
 
             <!-- 预售信息 -->
             <section class="limited-content" hidden>
-                <div class="bg-white m-b-10x">
+                <div class="bg-white m-b-10x m-y-10x">
                     <div class="p-x-15x limited-subtitle"><strong>LIMITED EDITION</strong></div>
                     <div>
                         <div class="p-x-15x p-t-5x">
