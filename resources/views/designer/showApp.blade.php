@@ -3,7 +3,7 @@
 <head>
     <title>DESIGNER</title>
     @include('head')
-    <link rel="stylesheet" href="{{env('CDN_Static')}}/styles/designerDetail.css?v=3">
+    <link rel="stylesheet" href="{{env('CDN_Static')}}/styles/designerDetail.css{{'?v='.config('app.version')}}">
 
 </head>
 <body>
