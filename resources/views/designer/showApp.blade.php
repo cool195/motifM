@@ -194,6 +194,32 @@
                 @endif
             </div>
 
+            <!-- 预售信息 -->
+            <section class="limited" hidden>
+                <div class="bg-white m-y-10x">
+                    <div class="p-x-15x limited-subtitle"><strong>PREORDER</strong></div>
+                    <div class="p-x-15x p-t-10x p-b-15x text-primary font-size-sm">
+                        Expected to ship on <strong id="shipToDate">2016.10.10</strong>
+                    </div>
+                </div>
+            </section>
+            <section class="limited-content" hidden>
+                <div class="bg-white m-b-10x">
+                    <div class="p-x-15x limited-subtitle"><strong>LIMITED EDITION</strong></div>
+                    <div>
+                        <div class="p-x-15x p-t-5x">
+                            <img src="/images/icon/icon-limited.png"
+                                 srcset="/images/icon/icon-limited@2x.png 2x, /images/icon/icon-limited@3x.png 3x"
+                                 alt="">
+                            <span class="text-primary font-size-sm">Orders Close <span class="time_show"></span></span>
+                        </div>
+                        <div class="p-x-15x p-y-5x m-x-15x">
+                            <progress class="progress progress-primary" id="limited-progress" value="" max="10000">0%</progress>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
             {{--设计师 对应商品--}}
             <aside class="bg-white p-b-10x">
                 @if(isset($product['infos']))
@@ -258,6 +284,9 @@
                                     <div class="row m-a-0 topic-product">
                                         @if(isset($value['spus']))
                                             @foreach($value['spus'] as $spu)
+                                                @if($key==0 && $product['spuInfos'][$spu]['spuBase']['sale_type']==1 && isset($product['spuInfos'][$spu]['skuPrice']['skuPromotion']) && $product['spuInfos'][$spu]['spuBase']['isPutOn']==1)
+                                                    <p class="limited-data" data-ship="" data-begintime="{{$product['spuInfos'][$spu]['skuPrice']['skuPromotion']['start_time']}}" data-endtime="{{$product['spuInfos'][$spu]['skuPrice']['skuPromotion']['end_time']}}" data-lefttime="{{$product['spuInfos'][$spu]['skuPrice']['skuPromotion']['remain_time']}}"></p>
+                                                @endif
                                                 <div class="col-xs-6 p-a-0">
                                                     <div class="bg-white topic-product-item productList-item">
                                                         <a data-link="motif://o.c?a=pd&spu={{$spu}}"
@@ -273,7 +302,7 @@
 
                                                                 @if(1 == $product['spuInfos'][$spu]['spuBase']['sale_type'])
                                                                     {{--预售产品 预定信息--}}
-                                                                    @if($product['spuInfos'][$spu]['stockStatus']=='NO' || $product['spuInfos'][$spu]['spuBase']['isPutOn']==0)
+                                                                    @if(!isset($product['spuInfos'][$spu]['skuPrice']['skuPromotion']) || $product['spuInfos'][$spu]['stockStatus']=='NO' || $product['spuInfos'][$spu]['spuBase']['isPutOn']==0)
                                                                         <div class="preorder-info P-a-5x">
                                                                             <span class="text-white font-size-xs bg-preordered">SOLD OUT</span>
                                                                         </div>
