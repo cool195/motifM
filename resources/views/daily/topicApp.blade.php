@@ -71,7 +71,7 @@
                 @if($value['type']=='banner')
                     <!-- 第一个 banner 图 -->
                         <div @if($k!=0)class="p-y-10x"@endif>
-                            <a href="@if($value['skipType']=='1')motif://o.c?a=pd&spu={{$value['skipId']}}@elseif($value['skipType']=='2')/designer/{{$value['skipId']}}@elseif($value['skipType']=='3')motif://o.c?a=url&url={{urlencode($_SERVER['HTTP_HOST'].'/topic/'.$value['skipId'])}}@elseif($value['skipType']=='4')motif://o.c?a=shoppinglist&cid={{$value['skipId']}}@else{{'motif://o.c?a=outurl&url='.urlencode($value['imgUrl'])}}@endif">
+                            <a href="@if($value['skipType']=='1')motif://o.c?a=pd&spu={{$value['skipId']}}@elseif($value['skipType']=='2')motif://o.c?a=url&url={{urlencode($_SERVER['HTTP_HOST'].'/designer/'.$value['skipId'])}}@elseif($value['skipType']=='3')motif://o.c?a=url&url={{urlencode($_SERVER['HTTP_HOST'].'/topic/'.$value['skipId'])}}@elseif($value['skipType']=='4')motif://o.c?a=shoppinglist&cid={{$value['skipId']}}@else{{'motif://o.c?a=outurl&url='.urlencode($value['imgUrl'])}}@endif">
                                 <img class="img-fluid img-lazy"
                                      data-original="{{env('APP_Api_Image')}}/n1/{{$value['imgPath']}}"
                                      src="{{env('CDN_Static')}}/images/product/bg-product@750.png"
