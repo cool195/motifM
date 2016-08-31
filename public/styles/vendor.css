@@ -5821,7 +5821,7 @@ footer .links-group {
 .player-item .btn-morePlayer {
   position: absolute;
   right: 10px;
-  bottom: 15px;
+  top: 10px;
   z-index: 101;
 }
 
@@ -5860,9 +5860,9 @@ footer .links-group {
 .youtube_mask{
   position: absolute;
   right: 10px;
-  bottom: 40px;
+  bottom: 10px;
   width: 100px;
-  height: 65px;
+  height: 90px;
   z-index: 10;
   display: block;
 }
