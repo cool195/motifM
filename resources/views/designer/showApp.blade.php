@@ -283,7 +283,7 @@
                                     <div class="row m-a-0 topic-product">
                                         @if(isset($value['spus']))
                                             @foreach($value['spus'] as $spu)
-                                                @if($key==0 && $product['spuInfos'][$spu]['spuBase']['sale_type']==1 && isset($product['spuInfos'][$spu]['skuPrice']['skuPromotion']) && $product['spuInfos'][$spu]['spuBase']['isPutOn']==1)
+                                                @if($key==0 && $product['spuInfos'][$spu]['spuBase']['sale_type']==1 && isset($product['spuInfos'][$spu]['skuPrice']['skuPromotion']) && $product['spuInfos'][$spu]['spuBase']['isPutOn']==1 && $product['spuInfos'][$spu]['stockStatus']=='YES')
                                                     <p class="limited-data" data-ship="{{$product['spuInfos'][$spu]['skuPrice']['skuPromotion']['ship_desc']}}" data-begintime="{{$product['spuInfos'][$spu]['skuPrice']['skuPromotion']['start_time']}}" data-endtime="{{$product['spuInfos'][$spu]['skuPrice']['skuPromotion']['end_time']}}" data-lefttime="{{$product['spuInfos'][$spu]['skuPrice']['skuPromotion']['remain_time']}}"></p>
                                                 @endif
                                                 <div class="col-xs-6 p-a-0">
