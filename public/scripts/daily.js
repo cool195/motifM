@@ -65,31 +65,12 @@
                         $('.designer-media').css('height', MediaHeight);
                     }
 
-                    var $PlayerItem = $('.player-item');
-                    if ($PlayerItem.length !== 0) {
-                        $.each($PlayerItem, function (index, element) {
-                            if (!switchPlayer(element) && !($(element).hasClass('active'))) {
-                                var $Player = $(element),
-                                    PlayerId = $Player.data('playid');
 
-                                if ( typeof(YT) != "undefined" && typeof(YT.Player) != "undefined"){
-                                    player = new YT.Player(PlayerId, {
-                                        height: MediaHeight,
-                                        width: Width,
-                                        videoId: PlayerId,
-                                        playerVars: {'autoplay': 1, 'controls': 2, 'showinfo': 0},
-                                        events: {
-                                            'onReady': onPlayerReady($Player)
-                                            //'onStateChange':onPlayerStateChange($Player)
-                                        }
-                                    });
-                                }
-
-                                $(this).addClass('active');
-                            }
-                        });
-                    }
-
+                    loadJS('https://www.youtube.com/player_api', function(){
+                        setTimeout(function(){
+                            loadYoutube();
+                        }, 1000);
+                    });
 
 
                     // 页数 +1
@@ -239,11 +220,47 @@
         });
     });
 
-    // 加载视频
-    var tag = document.createElement('script');
-    tag.src = 'https://www.youtube.com/player_api';
-    var firstScriptTag = document.getElementsByTagName('script')[0];
-    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+
+    function loadJS(src, callback){
+        // 加载视频
+        var tag = document.createElement('script');
+        tag.src = src;
+        var firstScriptTag = document.getElementsByTagName('script')[0];
+        firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+        callback();
+    }
+
+    loadJS('https://www.youtube.com/player_api', function(){
+        loadYoutube();
+    });
+
+    function loadYoutube() {
+        console.log('load true');
+        var $PlayerItem = $('.player-item');
+        if ($PlayerItem.length !== 0) {
+            $.each($PlayerItem, function (index, element) {
+                if (!switchPlayer(element) && !($(element).hasClass('active'))) {
+                    var $Player = $(element),
+                        PlayerId = $Player.data('playid');
+
+                    if ( typeof(YT) != "undefined" && typeof(YT.Player) != "undefined"){
+                    player = new YT.Player(PlayerId, {
+                        height: MediaHeight,
+                        width: Width,
+                        videoId: PlayerId,
+                        playerVars: {'autoplay': 1, 'controls': 2, 'showinfo': 0},
+                        events: {
+                            'onReady': onPlayerReady($Player)
+                        }
+                    });
+                    }
+
+                    $(this).addClass('active');
+                }
+            });
+        }
+    }
 
 })(jQuery);
 
