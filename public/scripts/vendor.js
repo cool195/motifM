@@ -690,7 +690,6 @@
 
 })(window);
 
-//# sourceMappingURL=template-native.js.map
 
 /*!
  * jQuery JavaScript Library v2.2.4
@@ -14950,7 +14949,7 @@ else if (typeof define === 'function' && define.amd) {
         return window.Swiper;
     });
 }
-//# sourceMappingURL=maps/swiper.js.map
+
 
 /*
  *  Remodal - v1.0.7
