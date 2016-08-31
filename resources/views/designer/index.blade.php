@@ -85,9 +85,9 @@
                         <img class="img-fluid"
                              src="{{env('APP_Api_Image')}}/n2/@{{ $value.mainImage }}">
                     </a>
-
-                    <div class="designerList-mask"></div>
-
+                    @{{ if $value.stockStatus == 0 || $value.isPutOn == 0 }}
+                        <div class="designerList-mask"></div>
+                    @{{ /if }}
                 </div>
                 @{{ /each }}
             </div>
