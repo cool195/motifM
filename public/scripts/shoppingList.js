@@ -306,6 +306,3 @@
     });
 
 })(jQuery, Swiper);
-//# sourceMappingURL=shoppingList.js.map
-
-//# sourceMappingURL=shoppingList.js.map

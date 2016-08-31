@@ -215,4 +215,3 @@
     });
 })(jQuery);
 
-//# sourceMappingURL=shoppingCart.js.map

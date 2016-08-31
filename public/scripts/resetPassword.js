@@ -83,4 +83,3 @@
 
 })(jQuery);
 
-//# sourceMappingURL=resetPassword.js.map

@@ -120,4 +120,3 @@
     });
 })(jQuery);
 
-//# sourceMappingURL=orderList.js.map

@@ -939,4 +939,3 @@
 
 })(jQuery, Swiper);
 
-//# sourceMappingURL=shoppingDetail.js.map

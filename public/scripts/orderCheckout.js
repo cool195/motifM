@@ -104,4 +104,3 @@
     });
 })(jQuery);
 
-//# sourceMappingURL=orderCheckout.js.map

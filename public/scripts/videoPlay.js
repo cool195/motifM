@@ -43,4 +43,3 @@ function onPlayerReady(event) {
     $('.bg-player').css('display', 'none');
 }
 
-//# sourceMappingURL=videoPlay.js.map

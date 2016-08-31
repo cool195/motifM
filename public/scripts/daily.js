@@ -263,5 +263,3 @@
     }
 
 })(jQuery);
-
-//# sourceMappingURL=daily.js.map

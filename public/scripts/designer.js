@@ -228,6 +228,3 @@
     }
 
 })(jQuery, Swiper);
-
-
-//# sourceMappingURL=designer.js.map

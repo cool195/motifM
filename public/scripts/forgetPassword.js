@@ -106,5 +106,3 @@
     }
 
 })(jQuery);
-
-//# sourceMappingURL=forgetPassword.js.map

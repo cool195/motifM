@@ -141,4 +141,3 @@
 
 })(jQuery);
 
-//# sourceMappingURL=shoppingDetail-askQuestion.js.map
