@@ -377,8 +377,6 @@
 </body>
 <script src="{{env('CDN_Static')}}/scripts/vendor.js{{'?v='.config('app.version')}}"></script>
 <script src="{{env('CDN_Static')}}/scripts/designerDetail.js{{'?v='.config('app.version')}}"></script>
-<script src="{{env('CDN_Static')}}/scripts/videoPlay.js{{'?v='.config('app.version')}}"></script>
-
 <script src="{{env('CDN_Static')}}/scripts/JockeyJS.js"></script>
 <script>
     @if($designer['pushspu'])
@@ -467,4 +465,5 @@
 
 </script>
 @include('global')
+<script src="{{env('CDN_Static')}}/scripts/videoPlay.js{{'?v='.config('app.version')}}"></script>
 </html>

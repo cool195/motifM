@@ -93,8 +93,7 @@
     @{{ /each }}
 </template>
 <script src="{{env('CDN_Static')}}/scripts/vendor.js{{'?v='.config('app.version')}}"></script>
-
 <script src="{{env('CDN_Static')}}/scripts/designer.js{{'?v='.config('app.version')}}"></script>
-<script src="{{env('CDN_Static')}}/scripts/dailyVideoPlay.js"></script>
 @include('global')
+<script src="{{env('CDN_Static')}}/scripts/dailyVideoPlay.js"></script>
 </html>
