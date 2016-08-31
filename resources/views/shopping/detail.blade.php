@@ -201,7 +201,7 @@
                     <!-- 产品 预售信息 -->
                     @if(1 == $data['sale_type'])
 
-                       @if($data['skuPrice']['skuPromotion']['remain_time'] >= 0 && !empty($data['spuStock']))
+                       @if($data['skuPrice']['skuPromotion']['remain_time'] >= 0 || !empty($data['spuStock']))
                         <section class="limited-content"
                                  data-begintime="{{  $data['skuPrice']['skuPromotion']['start_time'] }}"
                                  data-endtime="{{  $data['skuPrice']['skuPromotion']['end_time'] }}"
