@@ -102,7 +102,7 @@
             <!-- 结算订单 地址、物流、支付等其他信息 -->
             <aside class="bg-white m-b-10x">
                 {{--<a class="flex font-size-sm text-primary p-a-10x" href="/cart/addresslist">--}}
-                <div class="flex font-size-sm text-primary p-a-10x order-option" data-form-action="/cart/addresslist" id="btn-shipTo">
+                <div class="flex font-size-sm text-primary p-a-10x order-option" data-form-action="@if(empty($addr) || "" == $addr){{'/cart/addradd'}}@else{{'/cart/addresslist'}}@endif" id="btn-shipTo">
                     <span class="checkoutInfo-subTitle flex-fixedShrink">Shipping to</span>
                     <div class="checkoutInfo-content flex flex-fullJustified flex-alignCenter">
                         @if(empty($addr) || "" == $addr)
@@ -225,6 +225,9 @@
     <input type="hidden" name="aid" value="{{$addr['receiving_id']}}">
     <input type="hidden" name="stype" value="{{$stype}}">
     <input type="hidden" name="paym" value="{{$paym}}">
+    @if(empty($addr) || "" == $addr)
+        <input type="hidden" name="first" value="1">
+    @endif
     @if(isset($input) && !empty($input))
         @foreach($input as $name=>$value)
             <input type="hidden" name="{{$name}}" value="{{$value}}">
