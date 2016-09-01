@@ -85,11 +85,10 @@ class AuthController extends ApiController
     //验证是否新用户
     public function faceBookAuthStatus($trdid)
     {
-        $params = json_encode(array(
-                'cmd' => 'email',
-                'type' => 2,
-                'trdid' => $trdid
-            )
+        $params = array(
+            'cmd' => 'email',
+            'type' => 2,
+            'trdid' => $trdid
         );
         $result = $this->request('openapi', '', "user", $params);
         $result['status'] = isset($result['data']) ? true : false;
