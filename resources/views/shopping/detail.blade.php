@@ -201,7 +201,7 @@
                     <!-- 产品 预售信息 -->
                     @if(1 == $data['sale_type'])
 
-                       @if($data['skuPrice']['skuPromotion']['remain_time'] >= 0 || $data['isPutOn'] !=1 || !empty($data['spuStock']))
+                       @if(!isset($data['skuPrice']['skuPromotion']) || $data['skuPrice']['skuPromotion']['remain_time'] >= 0 || $data['isPutOn'] ==0 || !empty($data['spuStock']))
                         <section class="limited-content"
                                  data-begintime="{{  $data['skuPrice']['skuPromotion']['start_time'] }}"
                                  data-endtime="{{  $data['skuPrice']['skuPromotion']['end_time'] }}"
@@ -209,7 +209,7 @@
                                  data-qtty="{{$data['spuStock']['stock_qtty']}}">
                             <div class="bg-white m-b-10x">
                                 <div class="p-x-15x limited-subtitle"><strong>LIMITED EDITION</strong></div>
-                                @if($data['isPutOn'] !=1 || !empty($data['spuStock']))
+                                @if(!isset($data['skuPrice']['skuPromotion']) || $data['isPutOn'] ==0 || !empty($data['spuStock']))
                                     <div class="p-x-15x p-t-10x">
                                         <img src="/images/icon/icon-limited.png"
                                              srcset="/images/icon/icon-limited@2x.png 2x, /images/icon/icon-limited@3x.png 3x"
@@ -219,7 +219,7 @@
                                             Left @else Sold Out @endif </span>
                                     </div>
                                 @endif
-                                @if($data['skuPrice']['skuPromotion']['remain_time'] >= 0 || $data['isPutOn'] != 1)
+                                @if(!isset($data['skuPrice']['skuPromotion']) || $data['skuPrice']['skuPromotion']['remain_time'] >= 0 || $data['isPutOn'] ==0)
                                     <div>
                                         <div class="p-x-15x p-t-5x">
                                             <img src="/images/icon/icon-limited.png"
