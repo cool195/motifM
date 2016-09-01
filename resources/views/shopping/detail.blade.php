@@ -209,7 +209,7 @@
                                  data-qtty="{{$data['spuStock']['stock_qtty']}}">
                             <div class="bg-white m-b-10x">
                                 <div class="p-x-15x limited-subtitle"><strong>LIMITED EDITION</strong></div>
-                                @if(!empty($data['spuStock']))
+                                @if(!empty($data['spuStock']) || $data['isPutOn']==0)
                                     <div class="p-x-15x p-t-10x">
                                         <img src="/images/icon/icon-limited.png"
                                              srcset="/images/icon/icon-limited@2x.png 2x, /images/icon/icon-limited@3x.png 3x"
