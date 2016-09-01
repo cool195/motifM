@@ -68,7 +68,7 @@
     <div class="body-container">
         @include('navigator')
                 <!-- daily 详细内容 -->
-        <section class="bg-white p-b-10x reserve-height">
+        <section class="bg-white reserve-height">
             @inject('wishlist', 'App\Http\Controllers\Shopping\ShoppingController')
             @if(isset($topic['infos']))
             @foreach($topic['infos'] as $k=>$value)
