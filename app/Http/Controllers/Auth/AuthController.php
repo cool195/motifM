@@ -88,7 +88,8 @@ class AuthController extends ApiController
         $params = array(
             'cmd' => 'email',
             'type' => 2,
-            'trdid' => $trdid
+            'trdid' => $trdid,
+            'token' => self::Token,
         );
         $result = $this->request('openapi', '', "user", $params);
         $result['status'] = isset($result['data']) ? true : false;
