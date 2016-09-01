@@ -46,7 +46,7 @@
                             </div>
                             <div class="flex flex-alignCenter">
                                 @if(1 == $addr['isDefault']) <span class="text-common p-r-20x">Primary</span> @endif
-                                <i class="iconfont icon-radio icon-size-sm text-common @if($aid == $addr['receiving_id']) active @endif"></i>
+                                <i class="iconfont icon-radio icon-size-sm text-common @if($aid == $addr['receiving_id'] || count($data['list'])==1) active @endif"></i>
                             </div>
                         </div>
                     </div>
