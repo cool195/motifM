@@ -92,7 +92,7 @@ class AuthController extends ApiController
             'token' => self::Token,
         );
         $result = $this->request('openapi', '', "user", $params);
-        $result['status'] = isset($result['data']) ? true : false;
+        $result['status'] = empty($result['data']['email']) ? false : true;
         return $result;
     }
 }
