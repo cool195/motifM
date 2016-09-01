@@ -127,7 +127,7 @@
             if(response.email == '' || response.email == undefined){
                 $.ajax({
                     url: '/facebookstatus/'+response.id,
-                    type: 'GET'
+                    type: 'get'
                 })
                     .done(function(data) {
 
