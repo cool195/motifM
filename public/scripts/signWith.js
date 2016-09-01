@@ -133,41 +133,37 @@
 
                         if (data.status) {
                             response.email = data.data.email;
+                            loginSuccess(response);
                         } else {
                             window.location.href = '/addFacebookEmail?id=' + response.id + '&name=' + response.name;
                         }
                     })
 
+            }else{
+                loginSuccess(response);
             }
-                $.ajax({
-                        url: '/facebooklogin',
-                        type: 'POST',
-                        data: {
-                            email: response.email,
-                            id: response.id,
-                            name: response.name,
-                            avatar: response.picture.data.url
-                        }
-                    })
-                    .done(function(data) {
-                        console.log("success");
-                        if (data.success) {
-                            window.location.href = data.redirectUrl;
-                        } else {
-                            $('.warning-info').removeClass('off');
-                            $('.warning-info').children('span').html(data.prompt_msg);
-                        }
-                    })
-                    .fail(function() {
-                        console.log("error");
-                    })
-                    .always(function() {
-                        console.log("complete");
-                    });
-
-
-
         });
+    }
+
+    function loginSuccess(response){
+        $.ajax({
+            url: '/facebooklogin',
+            type: 'POST',
+            data: {
+                email: response.email,
+                id: response.id,
+                name: response.name,
+                avatar: response.picture.data.url
+            }
+        })
+            .done(function(data) {
+                if (data.success) {
+                    window.location.href = data.redirectUrl;
+                } else {
+                    $('.warning-info').removeClass('off');
+                    $('.warning-info').children('span').html(data.prompt_msg);
+                }
+            });
     }
 
     $('#facebookLogin').click(function() {
