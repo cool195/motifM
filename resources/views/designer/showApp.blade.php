@@ -159,7 +159,7 @@
                     </a>
                 </div>
                 @if(!empty($designer['instagram_link']) || !empty($designer['snapchat_link']) || !empty($designer['youtube_link']) || !empty($designer['facebook_link']))
-                    <div class="p-x-10x p-t-5x p-b-15x">
+                    <div class="p-x-15x p-t-5x p-b-15x">
                         @endif
                         @if(!empty($designer['instagram_link']))
                             <a href="motif://o.c?a=outurl&url={{$designer['instagram_link']}}" target="_blank"
@@ -189,6 +189,12 @@
                                      srcset="{{env('CDN_Static')}}/images/designer/facebook@2x.png 2x,{{env('CDN_Static')}}/images/designer/facebook@3x.png 3x">
                             </a>
                         @endif
+
+                        {{--<a href="{{$designer['facebook_link']}}" target="_blank" class="p-r-20x SocialMedia">--}}
+                        {{--<img src="{{env('CDN_Static')}}/images/designer/blog.png"--}}
+                        {{--srcset="{{env('CDN_Static')}}/images/designer/blog@2x.png 2x,{{env('CDN_Static')}}/images/designer/blog@3x.png 3x">--}}
+                        {{--</a>--}}
+
                         @if(!empty($designer['instagram_link']) || !empty($designer['snapchat_link']) || !empty($designer['youtube_link']) || !empty($designer['facebook_link']))
                     </div>
                 @endif
