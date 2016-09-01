@@ -5597,6 +5597,7 @@ footer .links-group {
   padding-right: 1px;
   background-image: -webkit-linear-gradient(bottom, #a0aab5, #fff);
   background-image: linear-gradient(0deg, #a0aab5, #fff);
+  margin-bottom: -1px;
 }
 
 .productList-item .price-caption {
@@ -5856,9 +5857,8 @@ footer .links-group {
   left: 0;
   right: 0;
   background: rgba(0, 0, 0, 0.3);
-  display: flex;
-  align-items: center;
-  justify-content:center;
+  width: 100%;
+  text-align: center;
 }
 
 .preorderSold-info span{
@@ -5869,6 +5869,12 @@ footer .links-group {
   display: inline-block;
   min-width: 6rem;
   padding: 2px 0 1px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
+
 }
 
 .designerList-mask{
