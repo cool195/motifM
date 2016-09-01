@@ -198,7 +198,7 @@
                 </div>
             </section>
             <!-- 设计师 对应模版商品 -->
-                <aside class="bg-white p-b-10x">
+                <aside class="bg-white">
                         @inject('wishlist', 'App\Http\Controllers\Shopping\ShoppingController')
                         @if(isset($product['infos']))
                             @foreach($product['infos'] as $k=>$value)
