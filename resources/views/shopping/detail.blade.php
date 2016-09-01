@@ -219,7 +219,7 @@
                                             Left @else Sold Out @endif </span>
                                     </div>
                                 @endif
-                                @if($data['skuPrice']['skuPromotion']['remain_time'] >= 0)
+                                @if($data['skuPrice']['skuPromotion']['remain_time'] >= 0 || $data['isPutOn']==0)
                                     <div>
                                         <div class="p-x-15x p-t-5x">
                                             <img src="/images/icon/icon-limited.png"
