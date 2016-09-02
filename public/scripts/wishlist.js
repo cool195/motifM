@@ -57,6 +57,12 @@
                 }
             })
             .always(function () {
+                if ($('.wishlist-item').length <= 0) {
+                    if (isEmpty) {
+                        $('#emptyWishlist').removeClass('hidden-xs-up');
+                        isEmpty = true;
+                    }
+                }
                 closeLoading();
             });
     });
@@ -75,6 +81,7 @@
         });
     });
 
+    var isEmpty = false;
     // ajax 获取 wishlist 列表
     function getWishList() {
         //  $wishContainer 列表容器
@@ -108,7 +115,15 @@
                     $wishContainer.data('wishpagenum', -1);
                 } else if (data.data.list === null || data.data.list === '' || data.data.list === undefined || data.data.list.length === 0) {
                     $wishContainer.data('wishpagenum', -1);
+                    if (!isEmpty) {
+                        $('#emptyWishlist').removeClass('hidden-xs-up');
+                        isEmpty = true;
+                    }
                 } else {
+                    if (!isEmpty) {
+                        $('#emptyWishlist').addClass('hidden-xs-up');
+                        isEmpty = true;
+                    }
                     // 遍历模板 插入页面
                     appendWishList('tpl-wishlist', data.data);
                     // 页数 +1
