@@ -16,12 +16,20 @@
     @include('nav')
     <div class="body-container">
     @include('navigator')
-
+        <article class="font-size-md text-main p-a-10x"><strong>Wishlist</strong></article>
         <!-- wishlist 商品列表 -->
         <section class="reserve-height">
-            <!-- 商品列表 -->
-            <aside id="wishContainer" class="wishList bg-white m-b-20x" data-loading="false" data-pagenum="0" data-wishpagenum="0">
+            <aside id="wishContainer" class="wishList m-b-20x" data-loading="false" data-pagenum="0" data-wishpagenum="0">
 
+                <!-- 空 wishlist 提示信息 -->
+                <div class="shopbag-empty-content p-x-10x hidden-xs-up" id="emptyWishlist">
+                    <div class="container shopbag-emptyInfo">
+                        <div class="m-b-20x p-b-5x"><i class="btn-shopbagEmpty iconfont icon-like"></i></div>
+                        <p class="text-primary font-size-sm m-b-20x p-b-20x">Your wishlist is empty!</p>
+                    </div>
+                </div>
+
+                <!-- 商品列表 -->
             </aside>
             <div class="loading wishloading" style="display: none">
                 <div class="loader"></div>
@@ -36,7 +44,7 @@
 
 <template id="tpl-wishlist">
     @{{ each list }}
-    <div class="wishlist-item p-a-15x" data-wishspu="@{{ $value.spu }}">
+    <div class="wishlist-item bg-white p-a-15x" data-wishspu="@{{ $value.spu }}">
         <div class="flex">
             <div class="flex-fixedShrink">
                 <a href="/detail/@{{ $value.spu }}">
@@ -47,7 +55,6 @@
                 </a>
             </div>
             <div class="p-l-10x flex-width">
-                <a href="/detail/@{{ $value.spu }}">
                 <article class="flex flex-fullJustified wishlist-title">
                     <h6 class="text-main font-size-md p-r-20x">
                         <strong>@{{ $value.main_title }}</strong>
@@ -59,7 +66,6 @@
                 <aside class="text-primary font-size-sm">
                     <div>$@{{ ($value.skuPrice.sale_price/100).toFixed(2) }}</div>
                 </aside>
-                </a>
             </div>
         </div>
     </div>
