@@ -263,16 +263,14 @@
                                         <div class="col-xs-12">
                                             <button class="btn btn-primary btn-block up-btn-addToBag @if(!$data['sale_status'] || $data['isPutOn']==0) disabled @endif"
                                                  data-control="openModal" @if(1 == $data['sale_type']) data-action="PUT"
-                                                 @else data-action="PATCH"@endif>@if(1 == $data['sale_type']) Pre Order
-                                                Now @else Add to Bag @endif</button>
+                                                 @else data-action="PATCH"@endif>@if(1 == $data['sale_type']) Pre Order Now @else Add to Bag @endif</button>
                                         </div>
                                     </div>
                                 @else
                                     <div class="row">
                                         <div class="col-xs-12">
                                             <a href="javascript:;"
-                                               class="notesLogin btn btn-primary btn-block up-btn-addToBag @if(!$data['sale_status'] || $data['isPutOn']==0) disabled @endif">@if(1 == $data['sale_type'])
-                                                    Pre Order Now @else Add to Bag @endif</a>
+                                               class="notesLogin btn btn-primary btn-block up-btn-addToBag @if(!$data['sale_status'] || $data['isPutOn']==0) disabled @endif">@if(1 == $data['sale_type']) Pre Order Now @else Add to Bag @endif</a>
                                         </div>
                                     </div>
                                 @endif
@@ -368,8 +366,7 @@
                                         <div class="col-xs-12">
                                             <div class="btn btn-primary btn-block down-btn-addToBag @if(!$data['sale_status'] || $data['isPutOn']==0) disabled @endif"
                                                  data-control="openModal" @if(1 == $data['sale_type']) data-action="PUT"
-                                                 @else data-action="PATCH"@endif>@if(1 == $data['sale_type']) Pre Order
-                                                Now @else Add to Bag @endif</div>
+                                                 @else data-action="PATCH"@endif>@if(1 == $data['sale_type']) Pre Order Now @else Add to Bag @endif</div>
                                         </div>
                                         {{--<div class="col-xs-6">--}}
                                         {{--<div class="btn btn-primary btn-block" data-control="openModal" data-action="PUT">Buy Now</div>--}}
@@ -379,8 +376,7 @@
                                     <div class="row">
                                         <div class="col-xs-12">
                                             <a href="javascript:;"
-                                               class="notesLogin btn btn-primary btn-block down-btn-addToBag @if(!$data['sale_status'] || $data['isPutOn']==0) disabled @endif">@if(1 == $data['sale_type'])
-                                                    Pre Order Now @else Add to Bag @endif</a>
+                                               class="notesLogin btn btn-primary btn-block down-btn-addToBag @if(!$data['sale_status'] || $data['isPutOn']==0) disabled @endif">@if(1 == $data['sale_type']) Pre Order Now @else Add to Bag @endif</a>
                                         </div>
                                         {{--<div class="col-xs-6">--}}
                                         {{--<a href="/login" class="btn btn-primary btn-block" id="buyNow">Buy Now</a>--}}
@@ -504,8 +500,7 @@
                         <div class="col-xs-12">
                             <div class="btn btn-primary btn-block @if(!(!empty($data['vasBases']) && empty($data['spuAttrs'])))disabled @endif"
                                  data-role="modalButton" @if(1 == $data['sale_type']) data-action="PUT"
-                                 @else data-action="PATCH"@endif>@if(1 == $data['sale_type']) Pre Order Now @else Add to
-                                Bag @endif
+                                 @else data-action="PATCH"@endif>@if(1 == $data['sale_type']) Pre Order Now @else Add to Bag @endif
                             </div>
                         </div>
                         {{--<div class="col-xs-6">--}}
@@ -518,8 +513,7 @@
                         <div class="row">
                             <div class="col-xs-12">
                                 <a href="javascript:;"
-                                   class="notesLogin btn btn-primary btn-block @if(!$data['sale_status']) disabled @endif">@if(1 == $data['sale_type'])
-                                        Pre Order Now @else Add to Bag @endif</a>
+                                   class="notesLogin btn btn-primary btn-block @if(!$data['sale_status']) disabled @endif">@if(1 == $data['sale_type']) Pre Order Now @else Add to Bag @endif</a>
                             </div>
                             {{--<div class="col-xs-6">--}}
                             {{--<a href="/login" class="btn btn-primary btn-block" id="buyNow">Buy Now</a>--}}

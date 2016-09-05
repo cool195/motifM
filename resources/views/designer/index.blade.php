@@ -48,7 +48,7 @@
                 </a>
             @{{ else }}
                 <div class="designer-media bg-white">
-                    <div class="player-item" data-playid="@{{$value.listVideoId}}">
+                    <div class="player-item" data-playid="@{{$value.listVideoId}}" data-designerid="@{{$value.designerId}}">
                         <div id="@{{$value.listVideoId}}" class="ytplayer" data-playid="@{{$value.listVideoId}}"></div>
                         <div class="bg-player">
                             <img class="bg-img" src="{{env('APP_Api_Image')}}/n1/@{{ $value.listImg }}" alt="">
@@ -65,7 +65,7 @@
                         </div>
                         <div class="youtube_mask"></div>
                         <div class="btn-morePlayer">
-                            <a class="text-white font-size-sm" data-link="/designer/@{{$value.designerId}}"
+                            <a class="text-white font-size-sm video-formore" data-link="/designer/@{{$value.designerId}}"
                                data-impr='http://clk.motif.me/log.gif?t=designer.200001&m=H5_M2016-1&pin={{ Session::get('user.pin') }}&uuid={{ Session::get('user.uuid') }}&v={"action":"0","skiptype":2,"skipid":"@{{ $value.designerId }}","expid":0,"version":"1.0.1", "ver":"9.2","src":"h5"}'
                                data-clk='http://clk.motif.me/log.gif?t=designer.200001&m=H5_M2016-1&pin={{ Session::get('user.pin') }}&uuid={{ Session::get('user.uuid') }}&v={"action":"1","skiptype":2,"skipid":"@{{ $value.designerId }}","expid":0,"version":"1.0.1", "ver":"9.2","src":"h5"}'
                                href="javascript:void(0)"><strong>Click for More</strong></a>

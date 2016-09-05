@@ -214,7 +214,7 @@
     <div class="p-a-15x text-left font-size-base p-l-20x"><strong>CheckOut With</strong></div>
     <div class="font-size-sm">
         <hr class="hr-base m-a-0">
-        <a class="p-a-15x flex flex-fullJustified flex-alignCenter" href="/payAgain/{{$data['sub_order_no']}}/0">
+        <a class="p-a-15x flex flex-fullJustified flex-alignCenter payAgainCard" href="/payAgain/{{$data['sub_order_no']}}/0">
             <div>
                 <img src="{{env('CDN_Static')}}/images/payment/icon-cardCredit.png" srcset="{{env('CDN_Static')}}/images/payment/icon-cardCredit@2x.png 2x,{{env('CDN_Static')}}/images/payment/icon-cardCredit@3x.png 3x" alt="">
                 <span class="p-l-15x text-primary">Direct debit/credit card</span>
@@ -222,7 +222,7 @@
             <i class="iconfont icon-arrow-right icon-size-sm text-common"></i>
         </a>
         <hr class="hr-base m-a-0">
-        <a class="p-a-15x flex flex-fullJustified flex-alignCenter" href="/payAgain/{{$data['sub_order_no']}}/1">
+        <a class="p-a-15x flex flex-fullJustified flex-alignCenter payAgainPaypal" href="/payAgain/{{$data['sub_order_no']}}/1">
             <div>
                 <img src="{{env('CDN_Static')}}/images/payment/icon-Paypal-inactive.png" srcset="{{env('CDN_Static')}}/images/payment/icon-Paypal-inactive@2x.png 2x,{{env('CDN_Static')}}/images/payment/icon-Paypal-inactive@3x.png 3x" alt="">
                 <span class="p-l-15x text-primary">Paypal</span>
