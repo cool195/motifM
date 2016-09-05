@@ -31,7 +31,7 @@ function onYouTubePlayerAPIReady() {
         height: MediaHeight,
         width: Width,
         videoId: PlayId,
-        playerVars: {'autoplay': 1,'controls': 2, 'showinfo': 0},
+        playerVars: {'html5':1,'autoplay': 1,'controls': 2, 'showinfo': 0},
         events: {
             'onReady': onPlayerReady
         }
