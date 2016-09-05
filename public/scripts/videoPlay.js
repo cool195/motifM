@@ -42,5 +42,8 @@ function onYouTubePlayerAPIReady() {
 function onPlayerReady(event) {
     $('.bg-player').css('display', 'none');
     event.target.playVideo();
+    setTimeout(function() {
+        event.target.playVideo();
+    }, 1000);
 }
 
