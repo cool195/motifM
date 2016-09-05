@@ -41,9 +41,9 @@ function onYouTubePlayerAPIReady() {
 // 设置 视频默认播放 和 关闭音量 和 视频继续播放
 function onPlayerReady(event) {
     $('.bg-player').css('display', 'none');
-    event.target.playVideo();
+
     setTimeout(function() {
         event.target.playVideo();
-    }, 1000);
+    }, 5000);
 }
 
