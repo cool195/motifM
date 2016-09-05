@@ -31,7 +31,7 @@ function onYouTubePlayerAPIReady() {
         height: MediaHeight,
         width: Width,
         videoId: PlayId,
-        playerVars: {'html5':1,'autoplay': 1,'controls': 2, 'showinfo': 0},
+        playerVars: {'autoplay': 0,'controls': 2, 'showinfo': 0},
         events: {
             'onReady': onPlayerReady
         }
@@ -41,6 +41,5 @@ function onYouTubePlayerAPIReady() {
 // 设置 视频默认播放 和 关闭音量 和 视频继续播放
 function onPlayerReady(event) {
     $('.bg-player').css('display', 'none');
-    //event.target.playVideo();
 }
 
