@@ -68,7 +68,7 @@
 <!-- App 下载提示 -->
 <nav class="navbar-fixed-bottom bg-download p-y-10x p-x-15x flex flex-fullJustified flex-alignCenter" hidden>
     <div class="flex flex-alignCenter">
-        <a class="p-r-20x p-y-15x" id="closeDownloadig">
+        <a class="p-r-20x p-y-15x" id="closeDownloading">
             <i class="iconfont icon-cross text-common btn-closeDownload"></i>
         </a>
         <div class="p-r-15x">
