@@ -422,7 +422,7 @@
                     @foreach($data['spuAttrs'] as $value)
                         <fieldset class="p-x-15x p-y-10x text-left">
                             <div class="container-fluid p-a-0">
-                                <div class="text-primary font-size-sm">{{$value['attr_type_value']}}</div>
+                                <div class="text-primary font-size-sm sparow" id="{{'spa'.$value['attr_type']}}" data-click="false" data-msg="{{$value['attr_type_value']}}">{{$value['attr_type_value']}}</div>
                                 <div class="row">
                                     @if(isset($value['skuAttrValues']))
                                         @foreach($value['skuAttrValues'] as $skuValue)
@@ -493,7 +493,7 @@
                 <fieldset class="container-fluid p-a-15x">
                     @if(Session::has('user'))
                             <!-- 添加 购物车 控制按钮显示 -->
-                    <div class="btn btn-primary btn-block  hidden-xs-up @if(!(!empty($data['vasBases']) && empty($data['spuAttrs'])))disabled @endif"
+                    <div class="btn btn-primary btn-block  hidden-xs-up"
                          data-control="continue" data-role="continue" data-action="">Continue
                     </div>
                     <div class="row" data-control="modalButton">
@@ -543,6 +543,12 @@
                  srcset="{{env('CDN_Static')}}/images/icon-success@2x.png 2x, {{env('CDN_Static')}}/images/icon-success@3x.png 3x">
         </div>
         <div class="text-white font-size-md text-center m-t-10x">Item Added</div>
+    </div>
+</div>
+
+<div class="loading loading-screen loading-transprant loading-hidden" style="z-index: 10001" id="selectmsg">
+    <div class="loading-modal">
+        <div class="text-white font-size-md text-center m-t-10x" id="selectspa"></div>
     </div>
 </div>
 
