@@ -478,19 +478,23 @@
             $WarningInfo.addClass('off');
         }
 
+        var SpaId = $(e.target).data('spa'),
+            SkaId = $(e.target).data('ska');
+
         if ($(e.target).hasClass('disabled')) {
             return;
         } else if ($(e.target).hasClass('active')) {
+            $('#spa'+SpaId).data('click','false');
             $(e.target).removeClass('active');
         } else {
             $(e.target).parents('.row').find('.btn-itemProperty').removeClass('active');
+            $('#spa'+SpaId).data('click','true');
             $(e.target).addClass('active');
         }
 
         selectOptionsText();
 
-        var SpaId = $(e.target).data('spa'),
-            SkaId = $(e.target).data('ska');
+
 
 
         // RadioList 选中的选项数量
@@ -521,9 +525,6 @@
             if (StockCache > 1) { // 如果库存大于1 加号可用
                 $Count.children('[data-item="add"]').removeClass('disabled');
             }
-
-            // 全选状态时, 可以购买
-            $('[data-role]').removeClass('disabled');
         } else if (RadioList.length < 1) {
             // 全都未选
             newOptions(tempSkusStatic, tempInventory, Options);
@@ -533,8 +534,6 @@
             getResultSku(RadioList);
             filterWaitOptions(OptionsStatus.wait);
             filterSelectOptions(OptionsStatus.select, SpaId, SkaId);
-            // 非全选状态时, 不可以购买
-            $('[data-role]').addClass('disabled');
         }
 
     });
@@ -767,11 +766,27 @@
 
     // 添加购物车 购买商品
     $('[data-role="continue"]').on('click', function (e) {
-        if (!$(e.target).hasClass('disabled')) {
-            $(e.target).addClass('disabled');
+        var submit = true;
+        var msg = '';
+        $('.sparow').each(function (index) {
+            if($(this).data('click')==false || $(this).data('click')=='false'){
+                submit = false;
+                msg += $(this).data('msg') + ',';
+            }
+        })
+
+
+        if(submit){
             var Action = $(e.target).data('action');
             initCart(Action);
+        }else{
+            $('#selectspa').html(msg+' not selected');
+            $('#selectmsg').removeClass('loading-hidden');
+            setTimeout(function () {
+                $('#selectmsg').addClass('loading-hidden');
+            }, 2000);
         }
+
     });
 
     $('[data-control="openModal"]').on('click', function (e) {
