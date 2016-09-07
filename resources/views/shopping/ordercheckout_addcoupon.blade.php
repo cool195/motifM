@@ -36,9 +36,7 @@
                             <div class="text-white">10% OFF</div>
                             <div class="font-size-sm text-white">10% Off For You First Orde</div>
                         </div>
-                        <div class="promotion-time">
-                            
-                        </div>
+                        <div class="promotion-time bg-white p-a-10x text-right text-primary">Expire: Jul 31,2016</div>
                     </div>
                 </div>
 
