@@ -18,16 +18,30 @@
             <!-- 添加coupon -->
             <section class="m-b-20x reserve-height">
                 <article class="font-size-md text-main p-a-10x"><strong>Promotion code</strong></article>
-                    <fieldset>
-                        <div class="warning-info flex text-warning flex-alignCenter text-left p-a-15x" hidden>
-                            <i class="iconfont icon-caveat icon-size-md p-r-5x"></i>
-                            <span class="font-size-xs"></span>
-                        </div>
-                        <input class="form-control form-control-block p-a-15x font-size-sm" type="text" name="coupon" placeholder="Enter your code" value="{{$cps}}">
-                    </fieldset>
-                    <div class="bg-white p-a-15x">
-                        <div class="btn btn-primary btn-block disabled" data-role="submit">Apply</div>
+                <fieldset>
+                    <div class="warning-info flex text-warning flex-alignCenter text-left p-a-15x" hidden>
+                        <i class="iconfont icon-caveat icon-size-md p-r-5x"></i>
+                        <span class="font-size-xs"></span>
                     </div>
+                    <input class="form-control form-control-block p-a-15x font-size-sm" type="text" name="coupon" placeholder="Enter your code" value="{{$cps}}">
+                </fieldset>
+                <div class="p-a-15x">
+                    <div class="btn btn-primary btn-block disabled" data-role="submit">Apply</div>
+                </div>
+
+                <!-- 优惠券列表 -->
+                <div class="p-a-15x">
+                    <div class="promotion-item">
+                        <div class="promotion-title p-t-15x p-x-10x p-b-5x">
+                            <div class="text-white">10% OFF</div>
+                            <div class="font-size-sm text-white">10% Off For You First Orde</div>
+                        </div>
+                        <div class="promotion-time">
+                            
+                        </div>
+                    </div>
+                </div>
+
             </section>
         </div>
     </div>

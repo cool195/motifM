@@ -93,8 +93,8 @@
                 @if(isset($categories))
                     @foreach($categories as $c)
                         <div class="swiper-slide" data-loading="false" data-pagenum="0">
-                            <div class="container-fluid p-x-10x p-t-10x">
-                                <div class="row">
+                            <div class="container-fluid p-t-10x">
+                                <div class="row productList">
                                 </div>
                             </div>
                             <div class="loading" style="display: none">
@@ -165,7 +165,7 @@
 <!-- 模板 -->
 <template id="tpl-product">
     @{{ each list }}
-    <div class="col-xs-6">
+    <div class="col-xs-6 p-a-0">
         <div class="productList-item">
             <div class="image-bg">
                 <div class="image-container">

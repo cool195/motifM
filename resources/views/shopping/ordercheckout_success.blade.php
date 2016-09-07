@@ -62,8 +62,23 @@
                        class="text-primary text-underLine">your order</a>
                     at any time by visting the Orders tab in settings.
                 </p>
-                <a href="/shopping" class="btn btn-primary btn-block btn-sm" type="submit">Continue Shopping</a>
+                {{--<a href="/shopping" class="btn btn-primary btn-block btn-sm" type="submit">Continue Shopping</a>--}}
             </article>
+
+            <!-- 订单完成 邀请好友 -->
+            <aside class="p-t-20x">
+                <div class="text-center text-primary font-size-sm p-t-20x">Give a friend $20 on Motif,<br/>and get $20 when they order.</div>
+                <div class="container-fluid p-x-10x p-y-20x">
+                    <div class="row">
+                        <div class="col-xs-6">
+                            <a href="#" class="btn btn-common btn-block">ignore</a>
+                        </div>
+                        <div class="col-xs-6">
+                            <a href="#" class="btn btn-primary btn-block">Invite Friends</a>
+                        </div>
+                    </div>
+                </div>
+            </aside>
         </section>
 
         <!-- 页脚 功能链接 -->

@@ -306,13 +306,13 @@
                             <aside class="m-b-20x">
                                 <article class="font-size-md text-primary p-x-15x"><strong>You May Also Like</strong>
                                 </article>
-                                <div class="container-fluid p-a-10x" id="recommend"
+                                <div class="container-fluid p-t-10x" id="recommend"
                                      data-impr="{{ $recommended['impr'] }}">
-                                    <div class="row">
+                                    <div class="row productList">
                                         @if(isset($recommended['list']))
                                             @foreach($recommended['list'] as $key => $value)
                                                 @if($key < 20)
-                                                    <div class="col-xs-6">
+                                                    <div class="col-xs-6 p-a-0">
                                                         <div class="productList-item">
                                                             <div class="image-bg">
                                                                 <div class="image-container">

@@ -287,14 +287,14 @@
                                 {{-- 商品列表横向 --}}
                                 <div class="container-fluid p-x-0 bg-topic"
                                      data-impr='http://clk.motif.me/log.gif?t=designer.400001&m=H5_M2016-1&pin={{ Session::get('user.pin') }}&uuid={{ Session::get('user.uuid') }}&v={"action":0,"skipType":1,"skipId":{{ implode("_", $value['spus']) }},expid":0,"index":{{$key}},"version":"1.0.1","ver":"9.2","src":"H5"}'>
-                                    <div class="row m-a-0 topic-product">
+                                    <div class="row m-a-0 productList">
                                         @if(isset($value['spus']))
                                             @foreach($value['spus'] as $key => $spu)
                                                 <div class="col-xs-6 p-a-0">
                                                     @if($key==0 && $product['spuInfos'][$spu]['spuBase']['sale_type']==1 && isset($product['spuInfos'][$spu]['skuPrice']['skuPromotion']) && $product['spuInfos'][$spu]['spuBase']['isPutOn']==1 && $product['spuInfos'][$spu]['stockStatus']=='YES')
                                                         <p class="limited-data" hidden data-ship="{{$product['spuInfos'][$spu]['skuPrice']['skuPromotion']['ship_desc']}}" data-begintime="{{$product['spuInfos'][$spu]['skuPrice']['skuPromotion']['start_time']}}" data-endtime="{{$product['spuInfos'][$spu]['skuPrice']['skuPromotion']['end_time']}}" data-lefttime="{{$product['spuInfos'][$spu]['skuPrice']['skuPromotion']['remain_time']}}"></p>
                                                     @endif
-                                                    <div class="bg-white topic-product-item productList-item">
+                                                    <div class="topic-product-item productList-item">
                                                         <a data-link="motif://o.c?a=pd&spu={{$spu}}"
                                                            data-clk='http://clk.motif.me/log.gif?t=designer.400001&m=H5_M2016-1&pin={{ Session::get('user.pin') }}&uuid={{ Session::get('user.uuid') }}&v={"action":1,"skipType":1,"skipId"{{$spu}},"expid":0,"index":{{$key}},"version":"1.0.1","ver":"9.2","src":"H5"}'
                                                            href="javascript:void(0)" data-spu="{{$spu}}"
@@ -327,7 +327,7 @@
 
 
 
-                                                        <div class="p-a-10x">
+                                                        <div class="p-a-10x bg-white">
                                                             <span>
                                                                 @if($product['spuInfos'][$spu]['skuPrice']['sale_price'] != $product['spuInfos'][$spu]['skuPrice']['price'])
                                                                     <span class="text-red font-size-sm m-l-5x"><strong>${{number_format($product['spuInfos'][$spu]['skuPrice']['sale_price']/100,2)}}</strong></span>
@@ -357,10 +357,10 @@
                 @if(isset($productAll['data']['list']))
                     {{-- 商品列表横向 --}}
                     <div class="container-fluid p-x-0 bg-topic">
-                        <div class="row m-a-0 topic-product">
+                        <div class="row m-a-0 productList">
                             @foreach($productAll['data']['list'] as $value)
                                 <div class="col-xs-6 p-a-0">
-                                    <div class="bg-white topic-product-item productList-item">
+                                    <div class="topic-product-item productList-item">
                                         <a data-clk='{{ $value['clk'] }}'
                                            data-link="motif://o.c?a=pd&spu={{$value['spu']}}"
                                            data-impr="{{ $value['impr'] }}" href="javascript:void(0)"
@@ -379,7 +379,7 @@
                                             </div>
                                         </a>
 
-                                        <div class="p-a-10x">
+                                        <div class="p-a-10x bg-white">
                                             <span>
                                                 @if($value['skuPrice']['sale_price'] != $value['skuPrice']['price'])
                                                     <span class="text-red font-size-sm m-l-5x"><strong>${{number_format($value['skuPrice']['sale_price']/100,2)}}</strong></span>

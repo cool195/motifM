@@ -130,11 +130,11 @@
                         @else
                             {{-- 商品列表横向 --}}
                             <div class="container-fluid p-x-0 bg-topic">
-                                <div class="row m-a-0 topic-product">
+                                <div class="row m-a-0 productList">
                                     @if(isset($value['spus']))
                                         @foreach($value['spus'] as $spu)
                                             <div class="col-xs-6 p-a-0">
-                                                <div class="bg-white topic-product-item productList-item">
+                                                <div class="topic-product-item productList-item">
                                                     <a data-clk='http://clk.motif.me/log.gif?t=daily.200001&m=H5_M2016-1&pin={{Session::get('user.pin')}}&uuid={{Session::get('user.uuid')}}&v={"action":1,"skipType":1,"skipId":"{{$spu}}","topicId":"{{$topicID}}","expid":0,"ver":"1.0.1","src":"H5"}'
                                                        data-link="motif://o.c?a=pd&spu={{$spu}}" href="javascript:void(0)" data-spu="{{$spu}}" data-title="{{$topic['spuInfos'][$spu]['spuBase']['main_title']}}" data-price="{{number_format($topic['spuInfos'][$spu]['skuPrice']['sale_price']/100,2)}}">
                                                         <div class="image-container">
@@ -149,7 +149,7 @@
                                                         </div>
                                                     </a>
 
-                                                    <div class="p-a-10x">
+                                                    <div class="p-a-10x bg-white">
                                                         <span>
                                                             @if($topic['spuInfos'][$spu]['skuPrice']['price'] != $topic['spuInfos'][$spu]['skuPrice']['sale_price'])
                                                                 <span class="text-red font-size-sm m-l-5x"><strong>${{number_format($topic['spuInfos'][$spu]['skuPrice']['sale_price']/100,2)}}</strong></span>

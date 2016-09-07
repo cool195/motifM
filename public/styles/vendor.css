@@ -2481,6 +2481,12 @@ fieldset[disabled] a.btn {
   border-color: #374146;
 }
 
+.btn-common {
+  color: #fff;
+  background-color: #cccccc;
+  border-color: #cccccc;
+}
+
 .btn-secondary {
   color: #fff;
   background-color: #36405b;
@@ -3273,12 +3279,16 @@ input[type="button"].btn-block {
 
 .bg-gray {
   color: #fff !important;
-  background-color: #ececf1 !important;
+  background-color: #f4f4f7 !important;
 }
 
 .bg-white {
   color: #fff !important;
   background-color: white !important;
+}
+
+.bg-yellow {
+  background-color: #feefb4 !important;
 }
 
 .m-x-auto {
@@ -5582,7 +5592,16 @@ footer .links-group {
 
 .productList-item {
   overflow: hidden;
-  margin-bottom: 10px;
+  //margin-bottom: 10px;
+  margin-right: 1px;
+  margin-bottom: 1px;
+}
+
+.productList .col-xs-6:nth-child(2n) .productList-item{
+  padding-right: 1px;
+  background-color: #ffffff;
+  margin-bottom: 1px;
+  margin-right: 0;
 }
 
 .productList-item .image-container {
@@ -5592,22 +5611,22 @@ footer .links-group {
 }
 
 .productList-item .image-bg {
-  padding-top: 1px;
-  padding-left: 1px;
-  padding-right: 1px;
-  background-image: -webkit-linear-gradient(bottom, #a0aab5, #fff);
-  background-image: linear-gradient(0deg, #a0aab5, #fff);
+  //padding-top: 1px;
+  //padding-left: 1px;
+  //padding-right: 1px;
+  //background-image: -webkit-linear-gradient(bottom, #a0aab5, #fff);
+  //background-image: linear-gradient(0deg, #a0aab5, #fff);
   margin-bottom: -1px;
 }
 
 .productList-item .price-caption {
   padding: 10px 5px;
   background-color: #fff;
-  border-bottom-left-radius: 8px;
-  border-bottom-right-radius: 8px;
-  border-left: 1px solid #a0aab5;
-  border-right: 1px solid #a0aab5;
-  border-bottom: 1px solid #a0aab5;
+  //border-bottom-left-radius: 8px;
+  //border-bottom-right-radius: 8px;
+  //border-left: 1px solid #a0aab5;
+  //border-right: 1px solid #a0aab5;
+  //border-bottom: 1px solid #a0aab5;
 }
 
 .btn-wish:after {
@@ -5730,22 +5749,23 @@ footer .links-group {
 
 .bg-topic {
   background-color: #e2e5ed;
+  padding-top:1px;
 }
 
 .topic-product-item {
-  margin: 1px;
+  //margin: 1px;
 }
 
 .topic-product {
-  overflow: auto;
+  //overflow: auto;
 }
 
 .topic-product .col-xs-6:nth-child(2n) .topic-product-item {
-  margin-right: 0px;
+  //margin-right: 0px;
 }
 
 .topic-product .col-xs-6:nth-child(2n+1) .topic-product-item {
-  margin-left: 0px;
+  //margin-left: 0px;
 }
 
 .product-heart {
@@ -5902,4 +5922,9 @@ footer .links-group {
   height: 90px;
   z-index: 10;
   display: block;
+}
+
+.promotion-item .promotion-title{
+    background-color: #a3bbff;
+    border-radius: 7px 7px 0 0;
 }
