@@ -780,11 +780,11 @@
             var Action = $(e.target).data('action');
             initCart(Action);
         }else{
-            $('#selectspa').html(msg+' not selected');
+            $('#selectspa').html(msg.substring(0,msg.length-1)+' not selected');
             $('#selectmsg').removeClass('loading-hidden');
             setTimeout(function () {
                 $('#selectmsg').addClass('loading-hidden');
-            }, 2000);
+            }, 1500);
         }
 
     });
