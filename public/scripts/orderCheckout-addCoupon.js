@@ -1,12 +1,12 @@
 /*global jQuery*/
 
 'use strict';
-(function($) {
+(function ($) {
 
     // loading 打开
     function openLoading() {
         $('.loading').toggleClass('loading-hidden');
-        setTimeout(function() {
+        setTimeout(function () {
             $('.loading').toggleClass('loading-open');
         }, 25);
     }
@@ -14,7 +14,7 @@
     // loading 隐藏
     function closeLoading() {
         $('.loading').addClass('loading-close');
-        setTimeout(function() {
+        setTimeout(function () {
             $('.loading').toggleClass('loading-hidden loading-open').removeClass('loading-close');
         }, 500);
     }
@@ -34,7 +34,7 @@
                     cps: Coupon
                 }
             })
-            .done(function(data) {
+            .done(function (data) {
                 if (data.success) {
                     $('input[name="cps"]').val(Coupon);
                     $('#infoForm').submit();
@@ -44,7 +44,7 @@
                     $('.warning-info').children('span').text(data.prompt_msg);
                 }
             })
-            .always(function() {
+            .always(function () {
                 closeLoading();
             });
     }
@@ -74,12 +74,24 @@
         }
     });
 
-    $('div[data-role="submit"]').on('click', function(e) {
+    $('div[data-role="submit"]').on('click', function (e) {
         if (!$(e.target).hasClass('disabled')) {
             var Coupon = $('input[name="coupon"]').val();
             verifyCoupon(Coupon);
         }
     });
+
+
+    // 选择 promotion code
+    //$('.promotion-item').on('click', function () {
+    //    var PromotionCode = $(this).data('code');
+    //    $('.promotion-radio').removeClass('active');
+    //    if (!$(this).find('.promotion-radio').hasClass('hidden')) {
+    //        $(this).find('.promotion-radio').addClass('active');
+    //        $('input[name="coupon"]').val(PromotionCode);
+    //        $('div[data-role="submit"]').removeClass('disabled');
+    //    }
+    //});
 
 })(jQuery);
 

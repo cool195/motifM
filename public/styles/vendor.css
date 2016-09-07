@@ -5924,7 +5924,79 @@ footer .links-group {
   display: block;
 }
 
-.promotion-item .promotion-title{
+.promotion-item{
+    overflow: hidden;
+    margin-bottom:15px;
+}
+
+.promotion-item .promotion-info{
+    border-radius: 6px 6px 0 0;
+    position: relative;
+}
+
+.promotion-item .bg-promotion{
     background-color: #a3bbff;
-    border-radius: 7px 7px 0 0;
+}
+
+.promotion-item .bg-promotionOver{
+    background-color: #dadada;
+}
+
+.promotion-item .promotion-title{
+    font-size: 30px;
+}
+
+.promotion-item  .promotion-time{
+    background-color: #ffffff;
+}
+
+.promotion-radio{
+    position: absolute;
+    right:1rem;
+    top:1.5rem;
+    display:none;
+}
+
+.promotion-radio.active{
+    display:block;
+}
+
+.promotion-style{
+    position: absolute;
+    bottom:-2px;
+    left:0;
+    margin:0;
+    padding:0;
+    display: inline-flex;
+    margin-left:8px;
+}
+.promotion-style li{
+    float:left;
+    margin-right:5px;
+    width:4px;
+    height:4px;
+    border-radius:50%;
+    background-color: #e2e5ed;
+    list-style: none;
+    display:inline;
+}
+
+.bg-point-right{
+    position: absolute;
+    bottom:-3px;
+    right:-3px;
+    width:6px;
+    height:6px;
+    border-radius:50%;
+    background-color: #e2e5ed;
+}
+
+.bg-point-left{
+    position: absolute;
+    bottom:-3px;
+    left:-3px;
+    width:6px;
+    height:6px;
+    border-radius:50%;
+    background-color: #e2e5ed;
 }
