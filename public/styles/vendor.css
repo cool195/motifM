@@ -6000,3 +6000,19 @@ footer .links-group {
     border-radius:50%;
     background-color: #e2e5ed;
 }
+
+.hr-invite{
+    position: relative;
+}
+
+.hr-invite span{
+    position: absolute;
+    top: 14px;
+    left: 48%;
+    background-color: #e2e5ed;
+}
+.input-invite{
+    background-color: #ffffff;
+    border: 1px solid #ffffff;
+    text-align: center;
+}

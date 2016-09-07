@@ -95,6 +95,10 @@ class PageController extends ApiController
         return view('Other.invite', ['device' => $device]);
     }
 
+    public function inviteFriends()
+    {
+        return view('Other.invite-friend');
+    }
 }
 
 ?>
