@@ -191,3 +191,5 @@ $app->get('pctermsservice', 'Other\PageController@pcTermsService');
 
 //记录登录前操作
 $app->get('notesaction','Shopping\UserController@notesAction');
+$app->get('/download/invite/{device}','Other\PageController@invite');
+$app->get('/download/invite', 'Other\PageController@invite');

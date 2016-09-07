@@ -16506,8 +16506,9 @@ else if (typeof define === 'function' && define.amd) {
         var Agent = navigator.userAgent;
         if (/iPhone/i.test(Agent) && /Safari/i.test(Agent) && !(/Chrome/i.test(Agent))) {
             return true;
+        } else {
+            return false;
         }
-        return false;
     }
 
     function switchDownload() {
@@ -16608,10 +16609,10 @@ else if (typeof define === 'function' && define.amd) {
             $('.nav-shoppingCart').children('span').remove();
         }
         // downloading 是否显示
-        if (getCookie('downloadingApp') || switchSafari()) {
-            $('#closeDownloading').parents('nav').remove();
+        if (getCookie('downloadingApp')) {
+            $('#closeDownloading').parents('.bg-download').remove();
         }else {
-            $('#closeDownloading').parents('nav').removeAttr('hidden');
+            $('#closeDownloading').parents('.bg-download').removeAttr('hidden');
         }
     })();
 

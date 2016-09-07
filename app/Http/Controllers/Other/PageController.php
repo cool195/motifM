@@ -90,6 +90,11 @@ class PageController extends ApiController
         return view('Other.pc-termsService');
     }
 
+    public function invite($device = "")
+    {
+        return view('Other.invite', ['device' => $device]);
+    }
+
 }
 
 ?>
