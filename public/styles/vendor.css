@@ -6001,18 +6001,18 @@ footer .links-group {
     background-color: #e2e5ed;
 }
 
-.hr-invite{
+.invite-code{
     position: relative;
 }
 
-.hr-invite span{
+.invite-code .invite-copy{
     position: absolute;
-    top: 14px;
-    left: 48%;
-    background-color: #e2e5ed;
+    top:50%;
+    right:10px;
+    transform: translate(0px, -50%);
 }
+
 .input-invite{
-    background-color: #ffffff;
-    border: 1px solid #ffffff;
-    text-align: center;
+    background-color: #f8f8f8;
+    border: 1px solid #f8f8f8;
 }
