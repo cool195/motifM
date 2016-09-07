@@ -66,8 +66,8 @@
             </article>
 
             <!-- 订单完成 邀请好友 -->
-            <aside class="p-t-20x">
-                <div class="text-center text-primary font-size-sm p-t-20x">Give a friend $20 on Motif,<br/>and get $20 when they order.</div>
+            <aside class="p-y-20x">
+                <div class="text-center text-primary font-size-sm p-y-20x"><strong>Give a friend $20 on Motif,<br/>and get $20 when they order.</strong></div>
                 <div class="container-fluid p-x-10x p-y-20x">
                     <div class="row">
                         <div class="col-xs-6">
