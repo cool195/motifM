@@ -55,6 +55,15 @@
             <hr class="hr-base m-a-0">
         </li>
         <li class="nav-item">
+            <a href="#" class="flex flex-alignCenter flex-fullJustified p-a-15x menu">
+                <div class="font-size-sm text-primary flex flex-alignCenter">
+                    <img src="/images/icon/promocode.png" srcset="/images/icon/promocode@2x.png 2x,/images/icon/promocode@3x.png 3x">
+                    <span class="p-l-15x">Promo Code</span></div>
+                <span class="text-common"><i class="iconfont icon-arrow-right icon-size-sm"></i></span>
+            </a>
+            <hr class="hr-base m-a-0">
+        </li>
+        <li class="nav-item">
             <a href="/user/setting" class="flex flex-alignCenter flex-fullJustified p-a-15x menu">
                 <div class="font-size-sm text-primary flex flex-alignCenter"><i
                             class="iconfont icon-setting icon-size-md p-r-15x"></i><span>Settings</span></div>
