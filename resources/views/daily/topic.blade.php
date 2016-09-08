@@ -154,7 +154,10 @@
                                                     @endif
                                                 </div>
                                             </a>
-                                            <div class="p-a-10x bg-white">
+                                            <div class="font-size-sm product-title text-main">
+                                                {{$topic['spuInfos'][$spu]['spuBase']['main_title']}}
+                                            </div>
+                                            <div class="price-caption">
                                                 <span>
                                                     @if($topic['spuInfos'][$spu]['skuPrice']['price'] != $topic['spuInfos'][$spu]['skuPrice']['sale_price'])
                                                         <span class="text-red font-size-sm m-l-5x"><strong>${{number_format($topic['spuInfos'][$spu]['skuPrice']['sale_price']/100,2)}}</strong></span>

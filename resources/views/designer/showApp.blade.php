@@ -382,8 +382,10 @@
                                                 @endif
                                             </div>
                                         </a>
-
-                                        <div class="p-a-10x bg-white">
+                                        <div class="font-size-sm product-title text-main">
+                                            {{$product['spuInfos'][$spu]['spuBase']['main_title']}}
+                                        </div>
+                                        <div class="price-caption">
                                             <span>
                                                 @if($value['skuPrice']['sale_price'] != $value['skuPrice']['price'])
                                                     <span class="text-red font-size-sm m-l-5x"><strong>${{number_format($value['skuPrice']['sale_price']/100,2)}}</strong></span>
