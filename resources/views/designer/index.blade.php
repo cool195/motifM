@@ -79,7 +79,7 @@
             <div class="swiper-wrapper">
                 @{{ each $value.products }}
 
-                <div class="product-item swiper-slide border-right">
+                <div class="product-item swiper-slide">
                     <a data-link="/detail/@{{$value.spu}}" href="javascript:void(0)"
                        data-designerid="@{{ $value.designerId }}"
                        data-clk='http://clk.motif.me/log.gif?t=designer.300001&m=H5_M2016-1&pin={{ Session::get('user.pin') }}&uuid={{ Session::get('user.uuid') }}&v={"action":"1","skiptype":2,"skipid":"@{{ $value.designerId }}","expid":0,"version":"1.0.1", "ver":"9.2","src":"h5"}'>
