@@ -5593,15 +5593,15 @@ footer .links-group {
 .productList-item {
   overflow: hidden;
   //margin-bottom: 10px;
-  margin-right: 1px;
-  margin-bottom: 1px;
+  //margin-right: 1px;
+  //margin-bottom: 1px;
 }
 
 .productList .col-xs-6:nth-child(2n) .productList-item{
-  padding-right: 1px;
-  background-color: #ffffff;
-  margin-bottom: 1px;
-  margin-right: 0;
+  //padding-right: 1px;
+  //background-color: #ffffff;
+  //margin-bottom: 1px;
+  //margin-right: 0;
 }
 
 .productList-item .image-container {
@@ -5620,13 +5620,21 @@ footer .links-group {
 }
 
 .productList-item .price-caption {
-  padding: 10px 5px;
+  padding: 0px 5px 10px 5px;
   background-color: #fff;
   //border-bottom-left-radius: 8px;
   //border-bottom-right-radius: 8px;
   //border-left: 1px solid #a0aab5;
   //border-right: 1px solid #a0aab5;
   //border-bottom: 1px solid #a0aab5;
+}
+
+.productList-item .product-title{
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
+    background-color: #fff;
+    padding:10px 15px 0px 10px;
 }
 
 .btn-wish:after {

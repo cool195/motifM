@@ -184,6 +184,9 @@
                     @{{ /if }}
                 </div>
             </div>
+            <div class="font-size-sm product-title text-main">
+                @{{ $value.main_title }}
+            </div>
             <div class="price-caption">
 
                 @{{ if $value.skuPrice.sale_price !== $value.skuPrice.price }}
