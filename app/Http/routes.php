@@ -118,6 +118,10 @@ $app->group(['middleware' => 'pcguide|logincheck', 'namespace' => 'App\Http\Cont
 
     $app->post('/updateWish', 'ShoppingController@updateWish');
 
+    //promocode
+    $app->get('/promocode', 'UserController@promocode');
+    $app->post('/promocode', 'UserController@promocode');
+
     //braintree
     $app->get('/braintree', 'BraintreeController@index');
     $app->delete('/braintree', 'BraintreeController@delMethod');
