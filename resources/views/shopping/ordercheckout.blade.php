@@ -162,9 +162,11 @@
                 </div>
 
                 <!-- 收税提示 -->
-                <div class="flex flex-fullJustified text-primary font-size-sm">
-                    <span>Sale Tax </span><span>$4.87</span>
-                </div>
+                @if($data['tax_amount'])
+                    <div class="flex flex-fullJustified text-primary font-size-sm">
+                        <span>Sale Tax </span><span>${{ number_format(($data['tax_amount'] / 100), 2)}}</span>
+                    </div>
+                @endif
 
                 @if($data['vas_amount'] > 0)
                 <div class="flex flex-fullJustified text-primary font-size-sm">
