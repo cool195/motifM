@@ -20,10 +20,10 @@
                 <div class="text-center p-y-20x">
                     <img src="/images/icon/gift-big.png" srcset="/images/icon/gift-big@2x.png 2x,/images/icon/gift-big@3x.png 3x">
                 </div>
-                <div class="text-center text-primary font-size-sm p-t-20x p-b-10x">Give a friend $20 on Motif,<br/>and get $20 when they order.</div>
+                <div class="text-center text-primary font-size-sm p-t-20x p-b-10x">Share Motif with friends.<br/> They get $20 off, and you will<br/> too after their first purchase.</div>
 
                 <div class="text-center p-b-20x">
-                    <a href="/termsconditions" class="text-common font-size-sm">Terms & Conditions</a>
+                    <a href="/termsconditions" class="text-primary font-size-xs text-underLine">Terms & Conditions</a>
                 </div>
             </article>
         </section>
@@ -37,9 +37,9 @@
                     <span class="p-l-15x invite-copy text-primary font-size-sm text-underLine">Copy</span>
                 </div>
             </div>
-            <div class="p-x-20x p-b-20x">
-            <a href="/shopping" class="btn btn-primary btn-block">Invite Contacts</a>
-            </div>
+            {{--<div class="p-x-20x p-b-20x">--}}
+                {{--<a href="/shopping" class="btn btn-primary btn-block">Invite Contacts</a>--}}
+            {{--</div>--}}
         </aside>
 
         <!-- 页脚 功能链接 -->
