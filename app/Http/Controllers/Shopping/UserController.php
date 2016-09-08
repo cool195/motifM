@@ -469,5 +469,16 @@ class UserController extends ApiController
             setcookie("wishSpu",$request->input('spu'),time() + 300,'/');
         }
     }
+
+    //promocode
+    public function promocode(){
+        $params = array(
+            'cmd' => 'couponlist',
+            'token' => Session::get('user.token'),
+            'pin' => Session::get('user.pin'),
+        );
+        $result = $this->request('openapi', '', 'coupon', $params);
+        return View('profile.promocode', ['couponlist'=>$result['data']]);
+    }
 }
 

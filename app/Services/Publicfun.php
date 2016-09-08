@@ -101,4 +101,17 @@ class Publicfun
         $m = date('m',$stamp);
         return substr($marr[$m-1], 0,3).' '.date('d',$stamp).', '.date('Y',$stamp);
     }
+
+    //字典表
+    public function configMap(){
+
+        $config = Cache::rememberForever('configMap', function () {
+            $params = array(
+                'cmd' => 'config',
+            );
+            return self::request('', 'general', $params);
+        });
+
+        return $config['data']['cart_checkout_top_notification'];
+    }
 }
