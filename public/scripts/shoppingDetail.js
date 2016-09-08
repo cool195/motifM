@@ -6,6 +6,8 @@
 'use strict';
 
 (function ($, Swiper) {
+
+
     //
     function openAddSuccess() {
         $('#success').toggleClass('loading-hidden');
@@ -72,6 +74,13 @@
     });
     // 暂存 根据所选项所筛选出的 Skus 的结果
     var ResultSkus = [];
+
+    //唯一属性
+    if([$('.sparow').length==1 && $('.skarow').length]==1){
+        $('.sparow').data('click',true);
+        $('.skarow').addClass('active');
+        ResultSkus[0] = $('[data-onlysku]').data('onlysku');
+    }
     // 临时是否可用的SKU数组
     var tempSkusStatic = [];
     var tempInventory = [];
@@ -506,7 +515,7 @@
         var OptionsStatus = resolutOptions(RadioList);
 
         // 重置 调整数量按钮组
-        $Count.children('[data-item]').addClass('disabled');
+        //$Count.children('[data-item]').addClass('disabled');
         $Count.children('[data-num="num"]').html(1);
 
         // 全选状态的筛选
@@ -579,6 +588,9 @@
     // 绑定计数事件,商品数量
     // 需要添加库存验证
     $('#item-count').on('click', '[data-item]', function (e) {
+        if(!showmsg()){
+            return false;
+        }
         var $WarningInfo = $('.warning-info');
 
         // 已选中的选项 以及 商品的选项组数
@@ -766,6 +778,16 @@
 
     // 添加购物车 购买商品
     $('[data-role="continue"]').on('click', function (e) {
+
+        if(showmsg()){
+            var Action = $(e.target).data('action');
+            initCart(Action);
+        }
+
+    });
+
+    //是否提示选择属性
+    function showmsg() {
         var submit = true;
         var msg = '';
         $('.sparow').each(function (index) {
@@ -775,10 +797,8 @@
             }
         })
 
-
         if(submit){
-            var Action = $(e.target).data('action');
-            initCart(Action);
+            return true;
         }else{
             $('#selectspa').html(msg.substring(0,msg.length-1)+' not selected');
             $('#selectmsg').removeClass('loading-hidden');
@@ -786,8 +806,8 @@
                 $('#selectmsg').addClass('loading-hidden');
             }, 1500);
         }
-
-    });
+        return false;
+    }
 
     $('[data-control="openModal"]').on('click', function (e) {
         if ($(this).hasClass('disabled')) {

@@ -417,7 +417,7 @@
                     <i class="iconfont icon-caveat icon-size-md p-r-5x"></i>
                     <span class="font-size-xs"></span>
                 </div>
-                <hr class="hr-base m-a-0">
+                <hr class="hr-base m-a-0" data-onlysku="@if(count($data['skus'])==1){{$data['skus'][0]}}@endif">
                 @if(isset($data['spuAttrs']))
                     @foreach($data['spuAttrs'] as $value)
                         <fieldset class="p-x-15x p-y-10x text-left">
@@ -427,7 +427,7 @@
                                     @if(isset($value['skuAttrValues']))
                                         @foreach($value['skuAttrValues'] as $skuValue)
                                             <div class="p-t-10x p-x-5x">
-                                                <div class="btn btn-itemProperty btn-sm @if(!$skuValue['stock']) disabled @endif"
+                                                <div class="btn btn-itemProperty btn-sm skarow @if(!$skuValue['stock']) disabled @endif"
                                                      id="{{$skuValue['attr_value_id']}}"
                                                      data-spa="{{$value['attr_type']}}"
                                                      data-ska="{{$skuValue['attr_value_id']}}">
@@ -482,7 +482,7 @@
                             </div>
                             <div class="btn btn-cartCount btn-sm" data-num="num">1</div>
 
-                            <div class="btn btn-cartCount btn-sm @if(!(!empty($data['vasBases']) && empty($data['spuAttrs'])))disabled @endif"
+                            <div class="btn btn-cartCount btn-sm"
                                  data-item="add">
                                 <i class="iconfont icon-add"></i>
                             </div>
@@ -491,35 +491,10 @@
                 </fieldset>
                 <hr class="hr-dark m-a-0">
                 <fieldset class="container-fluid p-a-15x">
-                    @if(Session::has('user'))
-                            <!-- 添加 购物车 控制按钮显示 -->
+                    <!-- 添加 购物车 控制按钮显示 -->
                     <div class="btn btn-primary btn-block  hidden-xs-up"
                          data-control="continue" data-role="continue" data-action="">Continue
                     </div>
-                    <div class="row" data-control="modalButton">
-                        <div class="col-xs-12">
-                            <div class="btn btn-primary btn-block @if(!(!empty($data['vasBases']) && empty($data['spuAttrs'])))disabled @endif"
-                                 data-role="modalButton" @if(1 == $data['sale_type']) data-action="PUT"
-                                 @else data-action="PATCH"@endif>@if(1 == $data['sale_type']) Pre Order Now @else Add to Bag @endif
-                            </div>
-                        </div>
-                        {{--<div class="col-xs-6">--}}
-                        {{--<div class="btn btn-primary btn-block @if(!(!empty($data['vasBases']) && empty($data['spuAttrs'])))disabled @endif"--}}
-                        {{--data-role="modalButton" data-action="PUT">Buy Now--}}
-                        {{--</div>--}}
-                        {{--</div>--}}
-                    </div>
-                    @else
-                        <div class="row">
-                            <div class="col-xs-12">
-                                <a href="javascript:;"
-                                   class="notesLogin btn btn-primary btn-block @if(!$data['sale_status']) disabled @endif">@if(1 == $data['sale_type']) Pre Order Now @else Add to Bag @endif</a>
-                            </div>
-                            {{--<div class="col-xs-6">--}}
-                            {{--<a href="/login" class="btn btn-primary btn-block" id="buyNow">Buy Now</a>--}}
-                            {{--</div>--}}
-                        </div>
-                    @endif
                 </fieldset>
             </form>
         </div>
