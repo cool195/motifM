@@ -477,7 +477,7 @@ class UserController extends ApiController
             'token' => Session::get('user.token'),
             'pin' => Session::get('user.pin'),
         );
-        $result = $this->request('openapi', '', 'cart', $params);
+        $result = $this->request('openapi', '', 'coupon', $params);
         return View('profile.promocode', ['couponlist'=>$result['data']]);
     }
 }
