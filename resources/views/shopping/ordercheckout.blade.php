@@ -137,7 +137,7 @@
                 <div class="flex font-size-sm text-primary p-a-10x order-option" data-form-action="/cart/coupon">
                     <span class="checkoutInfo-subTitle flex-fixedShrink">Promotion code</span>
                     <div class="checkoutInfo-content flex flex-fullJustified flex-alignCenter">
-                        <span>{{ $cps }}</span>
+                        <span>{{ $data['cp_title'] }}</span>
                         <i class="iconfont icon-arrow-right icon-size-xm text-common p-r-15x"></i>
                     </div>
                     <div class="bg-option bg-promotion"></div>

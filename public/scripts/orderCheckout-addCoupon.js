@@ -36,7 +36,7 @@
             })
             .done(function (data) {
                 if (data.success) {
-                    $('input[name="cps"]').val(Coupon);
+                    $('input[name="bindid"]').val(data.data.bindid);
                     $('#infoForm').submit();
                 } else {
                     $('.warning-info').removeAttr('hidden');
@@ -79,6 +79,11 @@
             var Coupon = $('input[name="coupon"]').val();
             verifyCoupon(Coupon);
         }
+    });
+
+    $('.bindidcode').on('click',function (e) {
+        $('input[name="bindid"]').val($(this).data('bindid'));
+        $('#infoForm').submit();
     });
 
 

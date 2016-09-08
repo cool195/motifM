@@ -35,9 +35,9 @@ class CartController extends ApiController
 	{
 		//$defaultPayMethod = $this->getDefaultPayMethod();
 		$stype = !empty($request->input('stype')) ? $request->input('stype', 1) : 1; //必须加非空验证
-		$cps = $request->input('cps');
+		$bindid = $request->input('bindid');
 		$defaultMethod = $this->getShippingMethodByStypeOrDefault($stype);
-		$result = $this->getCartAccountList($request, $defaultMethod['logistics_type'], $cps);
+		$result = $this->getCartAccountList($request, $defaultMethod['logistics_type'], $bindid);
 		if(empty($result['data']) || empty($result['success']) || !$result['success']){
 			$referer = Session::has('referer') ? Session::get('referer') : '/shopping';
 			return redirect($referer);
@@ -54,7 +54,7 @@ class CartController extends ApiController
 			'showName' => $request->input('showName', 'PayPal'),
 			'shipMethodList' => $this->getShippingMethod(),
 			'defaultMethod' => $defaultMethod,
-			'cps' => $cps,
+			'bindid' => $bindid,
 			'remark' => $request->input('remark', ""),
 			'stype' => $defaultMethod['logistics_type'],
 			'input' => $request->except('pageSrc', 'aid', 'stype', 'paym', 'cardType', 'methodtoken', 'showName', 'eid')
@@ -222,9 +222,16 @@ class CartController extends ApiController
 	 * */
 	public function coupon(Request $request)
 	{
-		$input = $request->except('cps');
-		$cps = $request->input('cps', "");
-		return View('shopping.ordercheckout_addcoupon', ['input'=>$input, 'cps'=>$cps ]);
+		$input = $request->except('bindid');
+		$bindid = $request->input('bindid', "");
+
+		$params = array(
+			'cmd' => 'couponlist',
+			'token' => Session::get('user.token'),
+			'pin' => Session::get('user.pin'),
+		);
+		$result = $this->request('openapi', '', 'cart', $params);
+		return View('shopping.ordercheckout_addcoupon', ['couponlist'=>$result['data'],'input'=>$input, 'bindid'=>$bindid ]);
 	}
 
 	public function message(Request $request)
@@ -300,7 +307,7 @@ class CartController extends ApiController
 	 * @return Array
 	 *
 	 * */
-	public function getCartAccountList(Request $request , $logisticstype = 1, $couponcode = "", $paytype = "")
+	public function getCartAccountList(Request $request , $logisticstype = 1, $bindid = "", $paytype = "")
 	{
 
 		$params = array(
@@ -309,7 +316,7 @@ class CartController extends ApiController
 			'pin' => Session::get('user.pin'),
 			'logisticstype'=>$request->input('logisticstype', $logisticstype),
 			'paytype'=>$request->input('paytype', $paytype),
-			'couponcode'=>$request->input('couponcode', $couponcode )
+			'bindid'=>$request->input('bindid', $bindid )
 		);
 		$system = "";
 		$service = "cart";
@@ -478,13 +485,13 @@ class CartController extends ApiController
 	public function verifyCoupon(Request $request)
 	{
 		$params = array(
-			'cmd' => 'verifycoupon',
+			'cmd' => 'bind',
 			'couponcode' => $request->input('couponcode', $request->input('cps')),
 			'token' => Session::get('user.token'),
 			'pin' => Session::get('user.pin'),
 		);
 		$system = "";
-		$service = "cart";
+		$service = "coupon";
 		$result = $this->request('openapi', $system, $service, $params);
 		return $result;
 	}
