@@ -48,8 +48,10 @@
             <!-- 商品列表 -->
             <aside class="checkoutList bg-white m-b-10x">
                 <!-- 满额包邮 -->
-                <article class="font-size-sm text-primary p-t-10x p-x-10x p-b-5x text-center bg-yellow">Limited Edition: Order Over $75 Get Expedited Shipping Free</article>
-
+                @inject('getDate', 'App\Services\Publicfun')
+                @if(!empty($getDate->configMap()))
+                    <article class="font-size-sm text-primary p-t-10x p-x-10x p-b-5x text-center bg-yellow">{{$getDate->configMap()}}</article>
+                @endif
                 @if(isset($data['showSkus']))
                     @foreach($data['showSkus'] as $showSku)
                         <div class="checkoutList-item p-a-10x">

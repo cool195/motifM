@@ -45,12 +45,13 @@
     @include('nav')
     <div class="body-container">
     @include('navigator')
-
     <!-- 购物袋 商品列表 -->
         <section class="p-b-20x reserve-height">
             <!-- 满额包邮 -->
-            <article class="font-size-sm text-primary p-t-10x p-x-10x p-b-5x text-center bg-yellow">Limited Edition: Order Over $75 Get Expedited Shipping Free</article>
-
+            @inject('getDate', 'App\Services\Publicfun')
+            @if(!empty($getDate->configMap()))
+                <article class="font-size-sm text-primary p-t-10x p-x-10x p-b-5x text-center bg-yellow">{{$getDate->configMap()}}</article>
+            @endif
             <!-- "Shopping Bag" 标题 -->
             <article class="font-size-md text-main p-a-10x"><strong>My Bag</strong></article>
 
