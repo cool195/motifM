@@ -500,7 +500,7 @@ class CartController extends ApiController
     {
         $params = array(
             'cmd' => 'bind',
-            'couponcode' => $request->input('couponcode', $request->input('cps')),
+            'couponcode' => $request->input('couponcode'),
             'token' => Session::get('user.token'),
             'pin' => Session::get('user.pin'),
         );

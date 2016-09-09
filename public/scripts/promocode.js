@@ -31,7 +31,7 @@
                 url: '/cart/verifycoupon',
                 type: 'POST',
                 data: {
-                    cps: Coupon
+                    couponcode: Coupon
                 }
             })
             .done(function (data) {
