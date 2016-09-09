@@ -35,7 +35,7 @@
                 }
             })
             .done(function (data) {
-                if (data.success) {
+                if (data.code==0) {
                     $('input[name="bindid"]').val(data.data.bindid);
                     $('#infoForm').submit();
                 } else {

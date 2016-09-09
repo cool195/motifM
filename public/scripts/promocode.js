@@ -35,7 +35,7 @@
                 }
             })
             .done(function (data) {
-                if (data.success) {
+                if (data.code==0) {
                     window.location.reload();
                 } else {
                     $('.warning-info').removeAttr('hidden');
