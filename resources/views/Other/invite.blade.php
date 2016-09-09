@@ -2,7 +2,6 @@
 <html lang="en">
 <head>
     <title>Invite Code</title>
-    <meta property="og:url" content="http://test.m.motif.me/d/invite/asdf">
     @include('head')
     <meta property="og:image" content="{{env('CDN_Static')}}/images/background/invite.jpg"/>
     <link rel="stylesheet" href="{{env('CDN_Static')}}/styles/login.css{{'?v='.config('app.version')}}">
