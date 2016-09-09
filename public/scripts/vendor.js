@@ -16608,7 +16608,7 @@ else if (typeof define === 'function' && define.amd) {
             $('.nav-shoppingCart').children('span').remove();
         }
         // downloading 是否显示
-        if (getCookie('downloadingApp') || switchSafari()) {
+        if (getCookie('downloadingApp')) {
             $('#closeDownloading').parents('nav').remove();
         }else {
             $('#closeDownloading').parents('nav').removeAttr('hidden');
