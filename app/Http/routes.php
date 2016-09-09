@@ -166,7 +166,7 @@ $app->group(['middleware' => 'pcguide', 'namespace' => 'App\Http\Controllers\Sho
 $app->group(['middleware' => 'pcguide|logincheck', 'namespace' => 'App\Http\Controllers\Other'], function ($app) {
     $app->get('/askshopping', 'AskController@show');
     $app->put('/askshopping', 'AskController@install');
-    $app->get('/invitefriends', 'Other\PageController@inviteFriends');
+    $app->get('/invitefriends', 'PageController@inviteFriends');
 });
 
 $app->group(['namespace' => 'App\Http\Controllers\Designer'], function ($app) {
