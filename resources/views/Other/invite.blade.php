@@ -18,6 +18,7 @@
 
         <div class="invite-container">
             <div class="text-center">
+                <div class="m-b-20x">USE CODE: asdf</div>
                 <div class="m-b-20x p-b-10x"><span class="invite-arrow"></span></div>
                 <div class="p-x-20x p-y-10x bg-primary font-size-sm" onclick="invite();"><span class="p-x-10x">DOWNLOAD MOTIF</span>
                 </div>
