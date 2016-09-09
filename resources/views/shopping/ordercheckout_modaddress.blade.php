@@ -24,7 +24,6 @@
                 </div>
                 <form class="bg-white" id="addressInfo" method="get" action="/cart/countrylist">
                     <!-- 个人中心 sitting list -->
-                    <hr class="hr-base m-a-0">
                     <fieldset>
                         <div class="flex flex-alignCenter flex-fullJustified font-size-sm text-primary p-a-15x address-option" id="country">
                             <span>Country</span>
@@ -36,7 +35,7 @@
                             <div class="bg-option bg-country"></div>
                         </div>
                     </fieldset>
-                    </fieldset>
+                    <hr class="hr-base m-a-0">
                     <fieldset>
                         <input class="form-control form-control-block p-a-15x font-size-sm" data-optional="true" data-role="email" name="email" type="hidden" value="{{$input['email']}}" placeholder="Email Address">
                     </fieldset>

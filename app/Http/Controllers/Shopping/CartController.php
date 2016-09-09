@@ -209,29 +209,6 @@ class CartController extends ApiController
         return View('shopping.countrylist', ['list' => $result['data']['list'], 'commonlist' => $result['data']['commonlist'], 'route' => $route, 'input' => $input]);
     }
 
-    public function statelist(Request $request)
-    {
-        $input = $request->except('route');
-
-        //$checkout = $request->except('email', 'name', 'addr1', 'addr2', 'state', 'city', 'zip', 'tel', 'idnum', 'country', 'isd', 'route');
-        $params = array(
-            'cmd' => 'state',
-            'countryid' => $input['countryid']
-        );
-        $route = $request->input('route');
-        $result = $this->request('openapi', '', 'addr', $params);
-
-        if ($result['success'] && !empty($result['data']['list'])) {
-            $commonlist = array();
-            for ($index = 0; $index < $result['data']['amount']; $index++) {
-                $commonlist[] = array_shift($result['data']['list']);
-            }
-            $result['data']['commonlist'] = $commonlist;
-        }
-        return View('shopping.statelist', ['route'=>$route,'list' => $result['data']['list'], 'commonlist' => $result['data']['commonlist'],'input' => $input]);
-    }
-
-
     private function getDefaultPayMethod()
     {
         $params = array(
