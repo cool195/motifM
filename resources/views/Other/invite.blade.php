@@ -2,7 +2,9 @@
 <html lang="en">
 <head>
     <title>Invite Code</title>
-    @include('head')
+    <link rel="stylesheet" href="{{env('CDN_Static')}}/styles/vendor.css{{'?v='.config('app.version')}}">
+    <script src="{{env('CDN_Static')}}/scripts/vendor/modernizr.js{{'?v='.config('app.version')}}"></script>
+    <script src="{{env('CDN_Static')}}/scripts/vendor/fastclick.js{{'?v='.config('app.version')}}"></script>
     <meta property="og:image" content="{{env('CDN_Static')}}/images/background/invite.jpg"/>
     <link rel="stylesheet" href="{{env('CDN_Static')}}/styles/login.css{{'?v='.config('app.version')}}">
 </head>
