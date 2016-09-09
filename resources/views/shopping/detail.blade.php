@@ -391,7 +391,7 @@
         </section>
 
         <!-- 弹出选择 size color Engraving -->
-        <div class="remodal p-a-0 modal-content" data-remodal-id="modal" id="modalDialog" data-spu="{{$data['spu']}}">
+        <div class="remodal p-a-0 modal-content" data-remodal-id="modal" id="modalDialog" data-spu="{{$data['spu']}}" data-status="{{$data['status_code']}}">
             <form action="">
                 <div class="p-x-15x p-t-15x text-right">
                     <a data-remodal-action="close"><i class="iconfont icon-cross text-common icon-size-lg"></i>

@@ -778,7 +778,13 @@
 
     // 添加购物车 购买商品
     $('[data-role="continue"]').on('click', function (e) {
-
+        if($('#modalDialog').data('status') != 100){
+            $('#error-info').text('not invalid');
+            openAddError();
+            setTimeout(function () {
+                closeAddError();
+            }, 1500);
+        }
         if(showmsg()){
             var Action = $(e.target).data('action');
             initCart(Action);
