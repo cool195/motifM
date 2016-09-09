@@ -4,7 +4,9 @@
     <title>Daily</title>
 
     @include('head')
-
+    <meta property="og:image" content="http://cdn.m.motif.me/apple-touch-icon.png" />
+    <meta property="og:title" content="MOTIF Exclusive Fashion Accessories Designed by the World’s Top Fashion Bloggers, Instagrammers and Digital Influencers" />
+    <meta property="og:url" content="http://m.motif.me" />
     <link rel="stylesheet" href="{{env('CDN_Static')}}/styles/daily.css{{'?v='.config('app.version')}}">
     <script src="{{env('CDN_Static')}}/scripts/vendor/template-native.js{{'?v='.config('app.version')}}"></script>
 </head>
