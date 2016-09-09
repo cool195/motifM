@@ -355,18 +355,20 @@ class UserController extends ApiController
 
     public function addrAdd(Request $request)
     {
-        $defaultCountry = array('country_id' => 1, 'country_name_cn' => '美国', 'country_name_en' => "United States", 'iDnumberReq' => 0, 'isFreq' => 1, 'sort_no' => 100);
-        $country = json_decode(base64_decode($request->input('country', base64_encode(json_encode($defaultCountry)))), true);
+        $defaultCountry = array('country_id' => 1, 'child_label' => "State", 'child_type' => 2, 'country_name_cn' => '美国', 'country_name_sn'=>'US','country_name_en' => "United States", 'iDnumberReq' => 0, 'isFreq' => 1, 'sort_no' => 100);
+        $country = json_decode(base64_decode($request->input('countryState',$request->input('country', base64_encode(json_encode($defaultCountry))))), true);
+        $state = json_decode(base64_decode($request->input('state')), true);
         $input = $request->except('country');
-        $view = View('shopping.profilesetting_addaddress', ['input' => $input, 'first' => $request->get('first')]);
+        $view = View('shopping.profilesetting_addaddress', ['state'=>$state,'input' => $input, 'first' => $request->get('first')]);
         if (!empty($country)) {
-            $view = View('shopping.profilesetting_addaddress', ['country' => $country, 'input' => $input, 'first' => $request->get('first')]);
+            $view = View('shopping.profilesetting_addaddress', ['state'=>$state,'country' => $country, 'input' => $input, 'first' => $request->get('first')]);
         }
         return $view;
     }
 
     public function addrModify(Request $request, $aid)
     {
+        $state = json_decode(base64_decode($request->input('state')), true);
         if ($request->has('aid')) {
             $input = $request->all();
             $input['detail_address1'] = $input['addr1'];
@@ -379,14 +381,28 @@ class UserController extends ApiController
             $addrList = $res['data']['list'];
             $input = $addrList[$aid];
         }
+        $state = $state ? $state : array('state_name_sn'=>$input['state']);
         $country = json_decode(base64_decode($request->input('country')), true);
         if (!empty($country)) {
             $input['country'] = $country['country_name_en'];
+        }else{
+            $params = array(
+                'cmd' => 'country',
+                'token' => Session::get('user.token'),
+                'pin' => Session::get('user.pin')
+            );
+            $countrylist = $this->request('openapi', '', 'addr', $params);
+            foreach ($countrylist['data']['list'] as $value){
+                if($value['country_name_en']==$input['country']){
+                    $country = $value;
+                    break;
+                }
+            }
         }
         if (empty($input)) {
             return redirect('/user/shippingaddress');
         }
-        return View('shopping.profilesetting_modaddress', ['input' => $input]);
+        return View('shopping.profilesetting_modaddress', ['country'=>$country,'input' => $input,'state'=>$state]);
     }
 
     public function countryList(Request $request)
@@ -399,7 +415,7 @@ class UserController extends ApiController
             'pin' => Session::get('user.pin')
         );
         $system = "";
-        $service = "useraddr";
+        $service = "addr";
         $result = $this->request('openapi', $system, $service, $params);
         if (empty($result)) {
             $result['success'] = false;
@@ -415,6 +431,26 @@ class UserController extends ApiController
             }
         }
         return View('shopping.countrylist', ['list' => $result['data']['list'], 'commonlist' => $result['data']['commonlist'], 'route' => $request->input('route'), 'input' => $input]);
+    }
+
+    public function statelist(Request $request)
+    {
+        $input = $request->except('route');
+        $params = array(
+            'cmd' => 'state',
+            'countryid' => $input['countryid']
+        );
+        $route = $request->input('route');
+        $result = $this->request('openapi', '', 'addr', $params);
+
+        if ($result['success'] && !empty($result['data']['list'])) {
+            $commonlist = array();
+            for ($index = 0; $index < $result['data']['amount']; $index++) {
+                $commonlist[] = array_shift($result['data']['list']);
+            }
+            $result['data']['commonlist'] = $commonlist;
+        }
+        return View('shopping.statelist', ['route'=>$route,'list' => $result['data']['list'], 'commonlist' => $result['data']['commonlist'],'input' => $input]);
     }
 
     //APP同步登录

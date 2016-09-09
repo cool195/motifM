@@ -82,7 +82,7 @@
     // 跳转页面,
     $('#stateselect').on('click', function () {
         openLoading();
-        $('#addressInfo').attr("action",'/cart/statelist');
+        $('#addressInfo').attr("action",'/user/statelist');
         $('#addressInfo').submit();
     });
 

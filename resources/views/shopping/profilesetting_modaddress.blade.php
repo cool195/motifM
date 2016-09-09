@@ -26,7 +26,19 @@
                 <form class="bg-white" id="addressInfo" method="get" action="/user/countrylist">
                     <!-- 个人中心 sitting list -->
                     <fieldset>
-                        <input class="form-control form-control-block p-a-15x font-size-sm" data-optional="false" data-role="email" name="email" type="text" value="{{$input['email']}}" placeholder="Email Address">
+                        <div class="flex flex-alignCenter flex-fullJustified font-size-sm text-primary p-a-15x address-option" id="country">
+                            <span>Country</span>
+                            <div>
+                                <span>{{ $input['country']  }}</span>
+                                <i class="iconfont icon-arrow-right icon-size-xm text-common"></i>
+                                <input type="text" name="country" hidden value="{{$input['country']}}">
+                            </div>
+                            <div class="bg-option bg-country"></div>
+                        </div>
+                    </fieldset>
+                    <hr class="hr-base m-a-0">
+                    <fieldset>
+                        <input class="form-control form-control-block p-a-15x font-size-sm" data-optional="true" data-role="email" name="email" type="hidden" value="{{$input['email']}}" placeholder="Email Address">
                     </fieldset>
                     <hr class="hr-base m-a-0">
                     <fieldset>
@@ -46,7 +58,30 @@
                     </fieldset>
                     <hr class="hr-base m-a-0">
                     <fieldset>
-                        <input class="form-control form-control-block p-a-15x font-size-sm" data-optional="true" name="state" name="state" type="text" value="{{$input['state']}}" placeholder="State (optional)">
+                        <input type="hidden" name="countryid" value="{{ $country['country_id'] }}">
+                        <input type="hidden" name="countryState" value="{{ base64_encode(json_encode($country)) }}">
+                        @if($country['child_type']==0)
+                            <input class="form-control form-control-block p-a-15x font-size-sm" name="state" type="text"
+                                   data-optional="true" data-role="State"
+                                   value="{{$state['state_name_sn']}}"
+                                   placeholder="State (optional)">
+                        @elseif($country['child_type']==1)
+                            <input class="form-control form-control-block p-a-15x font-size-sm" name="state" type="text"
+                                   data-optional="false" value="{{$state['state_name_sn']}}"
+                                   placeholder="State">
+                        @else
+                            <div class="flex flex-alignCenter flex-fullJustified font-size-sm text-primary p-a-15x address-option"
+                                 id="stateselect">
+                                <span>{{ $country['child_label'] }}</span>
+                                <div>
+                                    <span>{{ $state['state_name_sn'] }}</span>
+                                    <i class="iconfont icon-arrow-right icon-size-xm text-common"></i>
+                                    <input type="text" name="state" data-optional="false" hidden data-role="State"
+                                           value="{{$state['state_name_sn']}}">
+                                </div>
+                                <div class="bg-option bg-country"></div>
+                            </div>
+                        @endif
                     </fieldset>
                     <hr class="hr-base m-a-0">
                     <fieldset>
@@ -55,18 +90,6 @@
                     <hr class="hr-base m-a-0">
                     <fieldset>
                         <input class="form-control form-control-block p-a-15x font-size-sm" maxlength="20" data-optional="false" name="tel" type="text" data-role="Phone" value="{{$input['telephone']}}" placeholder="Phone">
-                    </fieldset>
-                    <hr class="hr-base m-a-0">
-                    <fieldset>
-                        <div class="flex flex-alignCenter flex-fullJustified font-size-sm text-primary p-a-15x" id="country">
-                            <span>Country</span>
-                            <div>
-                                <span>{{ $input['country']  }}</span>
-                                <i class="iconfont icon-arrow-right icon-size-xm text-common"></i>
-                                <input type="text" name="country" hidden value="{{$input['country']}}">
-                            </div>
-                        </div>
-                    </fieldset>
                     </fieldset>
                     <hr class="hr-base m-a-0">
                     <fieldset>

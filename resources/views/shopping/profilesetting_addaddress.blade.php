@@ -24,6 +24,18 @@
                 </div>
                 <form class="bg-white" id="addressInfo" name="addressInfo" method="get" action="/user/countrylist">
                     <!-- 个人中心 sitting list -->
+                    <hr class="hr-base m-a-0">
+                    <fieldset>
+                        <div class="flex flex-alignCenter flex-fullJustified font-size-sm text-primary p-a-15x address-option" id="country">
+                            <span>Country</span>
+                            <div>
+                                <span>@if(!empty($country)){{ $country['country_name_en'] }} @endif</span>
+                                <i class="iconfont icon-arrow-right icon-size-xm text-common"></i>
+                                <input type="text" name="country" hidden data-optional="false" value="@if(!empty($country)) {{$country['country_name_en']}} @endif">
+                            </div>
+                            <div class="bg-option bg-country"></div>
+                        </div>
+                    </fieldset>
                     <fieldset>
                         <input name="email" type="hidden" data-optional="true" data-role="email" value="{{!empty($input['email']) ? $input['email'] : Session::get('user.login_email')}}" placeholder="Email Address">
                     </fieldset>
@@ -45,7 +57,30 @@
                     </fieldset>
                     <hr class="hr-base m-a-0">
                     <fieldset>
-                        <input class="form-control form-control-block p-a-15x font-size-sm" name="state" type="text" data-optional="true" value="{{$input['state']}}" placeholder="State (optional)">
+                        <input type="hidden" name="countryid" value="{{ $country['country_id'] }}">
+                        <input type="hidden" name="countryState" value="{{ base64_encode(json_encode($country)) }}">
+                        @if($country['child_type']==0)
+                            <input class="form-control form-control-block p-a-15x font-size-sm" name="state" type="text"
+                                   data-optional="true" data-role="State"
+                                   value="{{$state['state_name_sn']}}"
+                                   placeholder="State (optional)">
+                        @elseif($country['child_type']==1)
+                            <input class="form-control form-control-block p-a-15x font-size-sm" name="state" type="text"
+                                   data-optional="false" value="{{$state['state_name_sn']}}"
+                                   placeholder="State">
+                        @else
+                            <div class="flex flex-alignCenter flex-fullJustified font-size-sm text-primary p-a-15x address-option"
+                                 id="stateselect">
+                                <span>{{ $country['child_label'] }}</span>
+                                <div>
+                                    <span>{{ $state['state_name_sn'] }}</span>
+                                    <i class="iconfont icon-arrow-right icon-size-xm text-common"></i>
+                                    <input type="text" name="state" data-optional="false" hidden data-role="State"
+                                           value="{{$state['state_name_sn']}}">
+                                </div>
+                                <div class="bg-option bg-country"></div>
+                            </div>
+                        @endif
                     </fieldset>
                     <hr class="hr-base m-a-0">
                     <fieldset>
@@ -54,18 +89,6 @@
                     <hr class="hr-base m-a-0">
                     <fieldset>
                         <input class="form-control form-control-block p-a-15x font-size-sm" name="tel" type="tel" maxlength="20" data-optional="false" data-role="Phone" value="{{$input['tel']}}" placeholder="Phone">
-                    </fieldset>
-                    <hr class="hr-base m-a-0">
-                    <fieldset>
-                        <div class="flex flex-alignCenter flex-fullJustified font-size-sm text-primary p-a-15x address-option" id="country">
-                        <span>Country</span>
-                            <div>
-                                <span>@if(!empty($country)){{ $country['country_name_en'] }} @endif</span>
-                                <i class="iconfont icon-arrow-right icon-size-xm text-common"></i>
-                                <input type="text" name="country" hidden data-optional="false" value="@if(!empty($country)) {{$country['country_name_en']}} @endif">
-                            </div>
-                            <div class="bg-option bg-country"></div>
-                        </div>
                     </fieldset>
                     <hr class="hr-base m-a-0">
                     <fieldset>

@@ -46,7 +46,6 @@ $app->group(['middleware' => 'pcguide|logincheck', 'namespace' => 'App\Http\Cont
     $app->get('/cart', 'CartController@index');
     $app->get('/cart/ordercheckout', 'CartController@orderCheckout');
     $app->get('/cart/addresslist', 'CartController@addressList');
-    $app->get('/cart/statelist', 'CartController@statelist');
     $app->get('/cart/coupon', 'CartController@coupon');
     $app->get('/cart/message', 'CartController@message');
     //todo
@@ -89,6 +88,7 @@ $app->group(['middleware' => 'pcguide|logincheck', 'namespace' => 'App\Http\Cont
     $app->get('/user/changeprofile', 'UserController@changeProfile');
     $app->get('/user/shippingaddress', 'UserController@shippingAddress');
     $app->get('/user/addradd', 'UserController@addrAdd');
+    $app->get('/user/statelist', 'UserController@statelist');
     $app->get('/user/addrmod/{aid}', 'UserController@addrModify');
     $app->get('/user/countrylist', 'UserController@countryList');
     $app->get('/user/changepassword', 'UserController@changePassword');
