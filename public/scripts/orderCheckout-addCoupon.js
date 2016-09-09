@@ -36,7 +36,7 @@
             })
             .done(function (data) {
                 if (data.code==0) {
-                    $('input[name="bindid"]').val(data.data.bindid);
+                    $('input[name="bindid"]').val(data.data.bind_id);
                     $('#infoForm').submit();
                 } else {
                     $('.warning-info').removeAttr('hidden');
