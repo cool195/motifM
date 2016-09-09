@@ -30,7 +30,7 @@
             <div class="p-x-20x p-b-20x">
                 <div class="font-size-sm text-primary">Share your Invite code</div>
                 <div class="p-t-10x invite-code">
-                    <input class="input-invite form-control font-size-sm" readonly id="copycode" type="text" maxlength="20" value="{{$code}}">
+                    <input class="input-invite form-control font-size-sm copy" readonly type="text" maxlength="20" value="{{$code}}">
                     <span class="p-l-15x invite-copy text-primary font-size-sm text-underLine copy">Copy</span>
                 </div>
             </div>
@@ -45,10 +45,20 @@
 </div>
 </body>
 <script src="{{env('CDN_Static')}}/scripts/vendor.js{{'?v='.config('app.version')}}"></script>
-
+<script src="{{env('CDN_Static')}}/scripts/clipboard.min.js{{'?v='.config('app.version')}}"></script>
     <script type="text/javascript">
-        $('.copy').on('click',function () {
-            window.clipboardData.setData("Text", $('#copycode').prev('input').val());
+        var clipboard = new Clipboard('.copy', {
+            text: function() {
+                return '{{$code}}';
+            }
+        });
+
+        clipboard.on('success', function(e) {
+            alert('Code Copied');
+        });
+
+        clipboard.on('error', function(e) {
+            alert('Copy Faild');
         });
     </script>
 @include('global')
