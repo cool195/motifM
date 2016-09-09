@@ -53,7 +53,9 @@
     <input type="hidden" name="country" value="">
     @if(isset($input) && !empty($input))
         @foreach($input as $name => $value)
-            <input type="hidden" name="{{$name}}" value="{{$value}}">
+            @if($name!='state')
+                <input type="hidden" name="{{$name}}" value="{{$value}}">
+            @endif
         @endforeach
     @endif
 </form>
