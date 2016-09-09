@@ -329,9 +329,11 @@
                                                             </div>
                                                         </a>
 
+                                                        <div class="font-size-sm product-title text-main">
+                                                            {{$product['spuInfos'][$spu]['spuBase']['main_title']}}
+                                                        </div>
 
-
-                                                        <div class="p-a-10x bg-white">
+                                                        <div class="price-caption">
                                                             <span>
                                                                 @if($product['spuInfos'][$spu]['skuPrice']['sale_price'] != $product['spuInfos'][$spu]['skuPrice']['price'])
                                                                     <span class="text-red font-size-sm m-l-5x"><strong>${{number_format($product['spuInfos'][$spu]['skuPrice']['sale_price']/100,2)}}</strong></span>
