@@ -46,6 +46,7 @@ $app->group(['middleware' => 'pcguide|logincheck', 'namespace' => 'App\Http\Cont
     $app->get('/cart', 'CartController@index');
     $app->get('/cart/ordercheckout', 'CartController@orderCheckout');
     $app->get('/cart/addresslist', 'CartController@addressList');
+    $app->get('/cart/statelist', 'CartController@statelist');
     $app->get('/cart/coupon', 'CartController@coupon');
     $app->get('/cart/message', 'CartController@message');
     //todo
@@ -195,7 +196,7 @@ $app->get('pctermsservice', 'Other\PageController@pcTermsService');
 
 //记录登录前操作
 $app->get('notesaction','Shopping\UserController@notesAction');
-$app->get('/download/invite/{device}','Other\PageController@invite');
-$app->get('/download/invite', 'Other\PageController@invite');
+$app->get('/d/invite/{device}','Other\PageController@invite');
+$app->get('/d/invite', 'Other\PageController@invite');
 
 $app->get('/invitefriends', 'Other\PageController@inviteFriends');
