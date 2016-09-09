@@ -58,7 +58,7 @@
             <a href="/promocode" class="flex flex-alignCenter flex-fullJustified p-a-15x menu">
                 <div class="font-size-sm text-primary flex flex-alignCenter">
                     <img src="/images/icon/promocode.png" srcset="/images/icon/promocode@2x.png 2x,/images/icon/promocode@3x.png 3x">
-                    <span class="p-l-15x">Promo Code</span></div>
+                    <span class="p-l-15x">Coupons and Promotions</span></div>
                 <span class="text-common"><i class="iconfont icon-arrow-right icon-size-sm"></i></span>
             </a>
             <hr class="hr-base m-a-0">
@@ -67,7 +67,7 @@
             <a href="/invitefriends" class="flex flex-alignCenter flex-fullJustified p-a-15x menu">
                 <div class="font-size-sm text-primary flex flex-alignCenter">
                     <img src="/images/icon/invitefriends.png" srcset="/images/icon/invitefriends@2x.png 2x,/images/icon/invitefriends@3x.png 3x">
-                    <span class="p-l-15x">Invite Friends</span></div>
+                    <span class="p-l-15x">Get $20 Off</span></div>
                 <span class="text-common"><i class="iconfont icon-arrow-right icon-size-sm"></i></span>
             </a>
             <hr class="hr-base m-a-0">

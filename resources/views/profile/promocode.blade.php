@@ -24,7 +24,7 @@
                     <span class="font-size-xs"></span>
                 </div>
                 <input class="form-control form-control-block p-a-15x font-size-sm" type="text" name="coupon"
-                       placeholder="Enter your code" value="">
+                       placeholder="Promotional Code" value="">
             </fieldset>
             <div class="p-a-15x">
                 <div class="btn btn-primary btn-block disabled" data-role="submit">Apply</div>
