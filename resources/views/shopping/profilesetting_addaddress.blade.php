@@ -25,7 +25,7 @@
                 <form class="bg-white" id="addressInfo" name="addressInfo" method="get" action="/user/countrylist">
                     <!-- 个人中心 sitting list -->
                     <fieldset>
-                        <input class="form-control form-control-block p-a-15x font-size-sm" name="email" type="text" data-optional="false" data-role="email" value="{{!empty($input['email']) ? $input['email'] : Session::get('user.login_email')}}" placeholder="Email Address">
+                        <input name="email" type="hidden" data-optional="true" data-role="email" value="{{!empty($input['email']) ? $input['email'] : Session::get('user.login_email')}}" placeholder="Email Address">
                     </fieldset>
                     <hr class="hr-base m-a-0">
                     <fieldset>

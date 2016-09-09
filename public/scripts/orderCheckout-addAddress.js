@@ -87,12 +87,20 @@
     function selectCountry() {
         openLoading();
         // 获取表单数据
+        $('input[name="countryState"]').remove();
         $('#addressInfo').submit();
     }
 
     // 跳转页面,
-    $('#country').on('click', function (e) {
+    $('#country').on('click', function () {
         selectCountry();
+    });
+
+    // 跳转页面,
+    $('#stateselect').on('click', function () {
+        openLoading();
+        $('#addressInfo').attr("action",'/cart/statelist');
+        $('#addressInfo').submit();
     });
 
     // 输入框非空验证
