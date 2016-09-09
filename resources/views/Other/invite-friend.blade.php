@@ -30,8 +30,8 @@
             <div class="p-x-20x p-b-20x">
                 <div class="font-size-sm text-primary">Share your Invite code</div>
                 <div class="p-t-10x invite-code">
-                    <input class="input-invite form-control font-size-sm" type="text" maxlength="20" value="{{$code}}">
-                    <span class="p-l-15x invite-copy text-primary font-size-sm text-underLine">Copy</span>
+                    <input class="input-invite form-control font-size-sm" readonly id="copycode" type="text" maxlength="20" value="{{$code}}">
+                    <span class="p-l-15x invite-copy text-primary font-size-sm text-underLine copy">Copy</span>
                 </div>
             </div>
             {{--<div class="p-x-20x p-b-20x">--}}
@@ -45,17 +45,11 @@
 </div>
 </body>
 <script src="{{env('CDN_Static')}}/scripts/vendor.js{{'?v='.config('app.version')}}"></script>
-@if(!empty($order['sub_order_no']))
-    <script>
-        $(document).ready(function () {
-            $.ajax({
-                type: "GET",
-                url: $(".reserve-height").data('impr')
-            }).done(function () {
 
-            });
-        })
+    <script type="text/javascript">
+        $('.copy').on('click',function () {
+            window.clipboardData.setData("Text", $('#copycode').prev('input').val());
+        });
     </script>
-@endif
 @include('global')
 </html>
