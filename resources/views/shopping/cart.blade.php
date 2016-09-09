@@ -50,7 +50,7 @@
             <!-- 满额包邮 -->
             @inject('getDate', 'App\Services\Publicfun')
             @if(!empty($getDate->configMap()))
-                <article class="font-size-sm text-primary p-t-10x p-x-10x p-b-5x text-center bg-yellow">{{$getDate->configMap()}}</article>
+                <article class="font-size-sm p-a-10x m-t-10x text-center bg-primary">{{$getDate->configMap()}}</article>
             @endif
             <!-- "Shopping Bag" 标题 -->
             <article class="font-size-md text-main p-a-10x"><strong>My Bag</strong></article>

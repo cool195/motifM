@@ -20,11 +20,8 @@
                 <div class="text-center p-y-20x">
                     <img src="/images/icon/gift-big.png" srcset="/images/icon/gift-big@2x.png 2x,/images/icon/gift-big@3x.png 3x">
                 </div>
-                <div class="text-center text-primary font-size-sm p-t-20x p-b-10x">Share Motif with friends.<br/> They get $20 off, and you will<br/> too after their first purchase.</div>
-
-                <div class="text-center p-b-20x">
-                    <a href="/termsconditions" class="text-primary font-size-xs text-underLine">Terms & Conditions</a>
-                </div>
+                <div class="text-center text-primary font-size-sm p-t-20x p-b-10x">Share Motif with friends.<br/> They get $20 off, and you will<br/> too after their first purchase.
+                    <a href="/termsconditions" class="text-primary text-underLine">Details</a></div>
             </article>
         </section>
 
