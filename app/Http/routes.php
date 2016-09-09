@@ -166,6 +166,7 @@ $app->group(['middleware' => 'pcguide', 'namespace' => 'App\Http\Controllers\Sho
 $app->group(['middleware' => 'pcguide|logincheck', 'namespace' => 'App\Http\Controllers\Other'], function ($app) {
     $app->get('/askshopping', 'AskController@show');
     $app->put('/askshopping', 'AskController@install');
+    $app->get('/invitefriends', 'Other\PageController@inviteFriends');
 });
 
 $app->group(['namespace' => 'App\Http\Controllers\Designer'], function ($app) {
@@ -196,7 +197,7 @@ $app->get('pctermsservice', 'Other\PageController@pcTermsService');
 
 //记录登录前操作
 $app->get('notesaction','Shopping\UserController@notesAction');
-$app->get('/d/invite/{device}','Other\PageController@invite');
+$app->get('/d/invite/{code}','Other\PageController@invite');
 $app->get('/d/invite', 'Other\PageController@invite');
 
-$app->get('/invitefriends', 'Other\PageController@inviteFriends');
+

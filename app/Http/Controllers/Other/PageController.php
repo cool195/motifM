@@ -90,14 +90,20 @@ class PageController extends ApiController
         return view('Other.pc-termsService');
     }
 
-    public function invite($device = "")
+    public function invite($code = "")
     {
-        return view('Other.invite', ['device' => $device]);
+        return view('Other.invite', ['code' => $code]);
     }
 
     public function inviteFriends()
     {
-        return view('Other.invite-friend');
+        $params = array(
+            'cmd' => "detail",
+            'token' => Session::get('user.token'),
+            'pin' => Session::get('user.pin'),
+        );
+        $result = $this->request('openapi', '', 'user', $params);
+        return view('Other.invite-friend',['code'=>$result['data']['invite_code']]);
     }
 }
 

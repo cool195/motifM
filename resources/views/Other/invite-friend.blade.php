@@ -30,7 +30,7 @@
             <div class="p-x-20x p-b-20x">
                 <div class="font-size-sm text-primary">Share your Invite code</div>
                 <div class="p-t-10x invite-code">
-                    <input class="input-invite form-control font-size-sm" type="text" maxlength="20">
+                    <input class="input-invite form-control font-size-sm" type="text" maxlength="20" value="{{$code}}">
                     <span class="p-l-15x invite-copy text-primary font-size-sm text-underLine">Copy</span>
                 </div>
             </div>
