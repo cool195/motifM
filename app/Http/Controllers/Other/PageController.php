@@ -105,6 +105,10 @@ class PageController extends ApiController
         $result = $this->request('openapi', '', 'user', $params);
         return view('Other.invite-friend',['code'=>$result['data']['invite_code']]);
     }
+
+    public function saleinfo(){
+        return view('Other.saleinfo');
+    }
 }
 
 ?>
