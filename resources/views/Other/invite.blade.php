@@ -9,14 +9,21 @@
 <body>
 @include('check.tagmanager')
 <img src="/images/background/invite.jpg" alt="" hidden>
+<div id="body-content">
+    @include('nav')
+    <div class="body-container">
+        @include('navigator', ['pageScope'=>true])
 
-<div class="invite-container">
-    <div class="text-center">
-        <div class="m-b-20x p-b-10x"><span class="invite-arrow"></span></div>
-        <div class="p-x-20x p-y-10x bg-primary font-size-sm" onclick="invite();"><span class="p-x-10x">DOWNLOAD MOTIF</span>
+        <div class="invite-container">
+            <div class="text-center">
+                <div class="m-b-20x p-b-10x"><span class="invite-arrow"></span></div>
+                <div class="p-x-20x p-y-10x bg-primary font-size-sm" onclick="invite();"><span class="p-x-10x">DOWNLOAD MOTIF</span>
+                </div>
+            </div>
         </div>
     </div>
 </div>
+
 
 <script type="text/javascript">
     function switchDevice() {
@@ -43,4 +50,5 @@
 
 </script>
 </body>
+<script src="{{env('CDN_Static')}}/scripts/vendor.js{{'?v='.config('app.version')}}"></script>
 </html>
