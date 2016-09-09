@@ -2,13 +2,12 @@
 <html lang="en">
 <head>
     <title>Invite Code</title>
-    <meta property="og:image" content="/images/background/invite.jpg"/>
     @include('head')
+    <meta property="og:image" content="{{env('CDN_Static')}}/images/background/invite.jpg"/>
     <link rel="stylesheet" href="{{env('CDN_Static')}}/styles/login.css{{'?v='.config('app.version')}}">
 </head>
 <body>
 @include('check.tagmanager')
-<img src="/images/background/invite.jpg" alt="" hidden>
 <div id="body-content">
     @include('nav')
     <div class="body-container">
