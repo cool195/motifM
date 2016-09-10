@@ -201,5 +201,5 @@ $app->get('notesaction','Shopping\UserController@notesAction');
 $app->get('/d/invite/{code}','Other\PageController@invite');
 $app->get('/d/invite', 'Other\PageController@invite');
 $app->get('/saleinfo', 'Other\PageController@saleinfo');
-
+$app->get('/test/{spu}', 'Shopping\ProductController@index');
 
