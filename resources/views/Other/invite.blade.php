@@ -9,6 +9,7 @@
     <meta property="og:title" content="Get $20 as your accessories finance on Motif">
     <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
     <link rel="stylesheet" href="{{env('CDN_Static')}}/styles/login.css{{'?v='.config('app.version')}}">
+    <meta itemprop="image" content="http://test.m.motif.me/images/background/invite.jpg" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 </head>
 <body>
