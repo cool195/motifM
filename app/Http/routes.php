@@ -147,7 +147,6 @@ $app->group(['middleware' => 'pcguide', 'namespace' => 'App\Http\Controllers\Sho
 
     $app->get('/wish/{spu}', 'ProductController@wishProduct');
     $app->get('/products/{spu}', 'ProductController@getProductDetail');
-    $app->get('/detail/{spu}', 'ProductController@index');
 
     $app->post('/rsyncLogin', 'UserController@rsyncLogin');
     $app->get('/login', 'UserController@login');
@@ -201,5 +200,5 @@ $app->get('notesaction','Shopping\UserController@notesAction');
 $app->get('/d/invite/{code}','Other\PageController@invite');
 $app->get('/d/invite', 'Other\PageController@invite');
 $app->get('/saleinfo', 'Other\PageController@saleinfo');
-$app->get('/test/{spu}', 'Shopping\ProductController@index');
+$app->get('/detail/{spu}', 'Shopping\ProductController@index');
 
