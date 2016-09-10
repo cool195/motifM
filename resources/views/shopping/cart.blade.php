@@ -235,7 +235,7 @@
                                     </a>
                                 </div>
                                 @if(0 == $showSku['stock_status'] || 2 == $showSku['stock_status'] || 1 != $showSku['isPutOn'])
-                                    <div class="text-warning font-size-xs">Warning: {{$showSku['prompt_info']}}</div>
+                                    <div class="text-warning font-size-xs">{{$showSku['prompt_info']}}</div>
                                 @endif
                             </div>
                         @endforeach
