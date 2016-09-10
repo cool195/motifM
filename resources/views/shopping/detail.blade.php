@@ -4,6 +4,7 @@
     <title>{{$data['main_title']}}</title>
     @include('head')
     <meta property="og:image" content="{{ env('APP_Api_Image').'/n1/'.$data['main_image_url'] }}"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
     <link rel="stylesheet" href="{{env('CDN_Static')}}/styles/shoppingDetail.css{{'?v='.config('app.version')}}">
 </head>
 <body>
