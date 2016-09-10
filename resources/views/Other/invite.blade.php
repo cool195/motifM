@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="{{env('CDN_Static')}}/styles/login.css{{'?v='.config('app.version')}}">
 </head>
 <body>
+<img style="display: none;" src="http://test.m.motif.me/images/background/invite.jpg">
 @include('check.tagmanager')
 <div id="body-content">
     @include('nav')
