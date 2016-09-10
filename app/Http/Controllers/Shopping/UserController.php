@@ -392,9 +392,9 @@ class UserController extends ApiController
                 'pin' => Session::get('user.pin')
             );
             $countrylist = $this->request('openapi', '', 'addr', $params);
-            return [$countrylist,$input];
+            
             foreach ($countrylist['data']['list'] as $value){
-                if($value['country_name_en']==$input['country']){
+                if($value['country_name_en']==trim($input['country'])){
                     $country = $value;
                     break;
                 }
