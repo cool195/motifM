@@ -2,9 +2,11 @@
 <html lang="en">
 <head>
     <meta property="og:type" content="article" />
-    <meta property="og:image" content="{{ env('APP_Api_Image').'/n1/'.$data['main_image_url'] }}">
-    <meta property="og:title" content="{{$data['main_title']}}">
-
+    <meta property="og:image" content="https://s3-us-west-1.amazonaws.com/emimagetest/n1/product/motif/5934/1200X1200/8968974fea064408454b9b5358757148.jpg">
+    <meta property="og:title" content="asdf">
+    <title>{{$data['main_title']}}</title>
+    @include('head')
+    <link rel="stylesheet" href="{{env('CDN_Static')}}/styles/shoppingDetail.css{{'?v='.config('app.version')}}">
 </head>
 <body>
 <!-- 添加购物车 -->
