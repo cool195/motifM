@@ -40,7 +40,7 @@
 <template id="tpl-daily">
     @{{ each list }}
     @{{ if $value.type == "1" }}
-    <div class="bg-white m-b-10x">
+    <div class="bg-white">
         <a data-impr='http://clk.motif.me/log.gif?t=daily.100001&m=H5_M2016-1&pin={{ Session::get('user.pin') }}&uuid={{ Session::get('user.uuid') }}&v={"action":"0","type":"@{{ $value.type }}","imgtexttype":"@{{ $value.imgtextType }}","skiptype":"@{{ $value.skipType }}","skipid":"@{{ $value.skipId }}","sortno":"@{{ $value.sortNo }}","expid":0,"index": 1,"version":"1.0.1", "ver":"9.2", "src":"h5"}'
            data-clk='http://clk.motif.me/log.gif?t=daily.100001&m=H5_M2016-1&pin={{ Session::get('user.pin') }}&uuid={{ Session::get('user.uuid') }}&v={"action":"1","type":"@{{ $value.type }}","imgtexttype":"@{{ $value.imgtextType }}","skiptype":"@{{ $value.skipType }}","skipid":"@{{ $value.skipId }}","sortno":"@{{ $value.sortNo }}","expid":0,"index": 1,"version":"1.0.1", "ver":"9.2", "src":"h5"}'
            data-link="@{{ if $value.skipType == 1 }}/detail/@{{ else if $value.skipType == 2 }}/designer/@{{ else if $value.skipType == 3 }}/topic/@{{ else if $value.skipType == 4 }}/shopping#@{{ /if }}@{{ $value.skipId }}"
@@ -57,7 +57,7 @@
        data-link="@{{ if $value.skipType == 1 }}/detail/@{{ else if $value.skipType == 2 }}/designer/@{{ else if $value.skipType == 3 }}/topic/@{{ else if $value.skipType == 4 }}/shopping#@{{ /if }}@{{ $value.skipId }}"
        data-impr='http://clk.motif.me/log.gif?t=daily.100001&m=H5_M2016-1&pin={{ Session::get('user.pin') }}&uuid={{ Session::get('user.uuid') }}&v={"action":"0","type":"@{{ $value.type }}","imgtexttype":"@{{ $value.imgtextType }}","skiptype":"@{{ $value.skipType }}","skipid":"@{{ $value.skipId }}","sortno":"@{{ $value.sortNo }}","expid":0,"index": 1,"version":"1.0.1", "ver":"9.2", "src":"h5"}'
        href="javascript:void(0)">
-        <div class="bg-white m-b-10x">
+        <div class="bg-white">
             <div class="daily-imgInfo">
                 <img class="img-fluid img-lazy"
                      data-original="{{env('APP_Api_Image')}}/n1/@{{ $value.imgPath }}"
@@ -74,7 +74,7 @@
     @{{ /if }}
 
     @{{ if $value.type == "3" }}
-    <div class="designer-media bg-white m-b-10x">
+    <div class="designer-media bg-white">
         <div class="player-item" data-playid="@{{ $value.videoId }}">
             <div id="@{{ $value.videoId }}" class="ytplayer" data-playid="@{{ $value.videoId }}"></div>
             <div class="bg-player">
