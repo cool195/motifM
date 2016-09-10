@@ -35,14 +35,15 @@
                 }
             })
             .done(function (data) {
-                if (data.code==0) {
-                    $('input[name="bindid"]').val(data.data.bind_id);
-                    $('#infoForm').submit();
-                } else {
-                    $('.warning-info').removeAttr('hidden');
-                    data.prompt_msg = data.prompt_msg == '' ? 'Invalid code' : data.prompt_msg;
-                    $('.warning-info').children('span').text(data.prompt_msg);
-                }
+                console.log(data);
+                // if (data.code==0) {
+                //     $('input[name="bindid"]').val(data.data.bind_id);
+                //     $('#infoForm').submit();
+                // } else {
+                //     $('.warning-info').removeAttr('hidden');
+                //     data.prompt_msg = data.prompt_msg == '' ? 'Invalid code' : data.prompt_msg;
+                //     $('.warning-info').children('span').text(data.prompt_msg);
+                // }
             })
             .always(function () {
                 closeLoading();
