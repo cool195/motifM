@@ -21,7 +21,6 @@ $app->group(['middleware' => 'pcguide', 'namespace' => 'App\Http\Controllers'], 
     $app->get('/shopping', 'Shopping\ShoppingController@index');
 
     $app->get('/designer', 'Designer\DesignerController@index');
-    $app->get('/designer/{id}', 'Designer\DesignerController@show');
 
     $app->post('/googlelogin', 'Auth\AuthController@googleLogin');
     $app->post('/facebooklogin', 'Auth\AuthController@facebookLogin');
@@ -200,5 +199,7 @@ $app->get('notesaction','Shopping\UserController@notesAction');
 $app->get('/d/invite/{code}','Other\PageController@invite');
 $app->get('/d/invite', 'Other\PageController@invite');
 $app->get('/saleinfo', 'Other\PageController@saleinfo');
-$app->get('/detail/{spu}', 'Shopping\ProductController@index');
 
+//为解决分享链接拿不到图,不再PC跳转
+$app->get('/detail/{spu}', 'Shopping\ProductController@index');
+$app->get('/designer/{id}', 'Designer\DesignerController@show');
