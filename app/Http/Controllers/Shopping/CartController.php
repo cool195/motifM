@@ -36,15 +36,16 @@ class CartController extends ApiController
         //$defaultPayMethod = $this->getDefaultPayMethod();
         $stype = !empty($request->input('stype')) ? $request->input('stype', 1) : 1; //必须加非空验证
         $bindid = $request->input('bindid');
+        $aid = $this->getUserAddrByAid($request->input('aid', 0));
         $defaultMethod = $this->getShippingMethodByStypeOrDefault($stype);
-        $result = $this->getCartAccountList($request, $defaultMethod['logistics_type'], $bindid);
+        $result = $this->getCartAccountList($request, $defaultMethod['logistics_type'], $bindid,'',$aid);
         if (empty($result['data']) || empty($result['success']) || !$result['success']) {
             return redirect('cart/ordercheckout');
         }
         $result['data']['cardlist'] = array('Diners' => 'diners-club', 'Discover' => 'discover', 'JCB' => 'jcb', 'Maestro' => 'maestro', 'AmericanExpress' => 'american-express', 'Visa' => 'visa', 'MasterCard' => 'master-card');
         return View('shopping.ordercheckout', [
             'data' => $result['data'],
-            'addr' => $this->getUserAddrByAid($request->input('aid', 0)),
+            'addr' => $aid,
             //'paym'=> $request->input('paym', !empty($defaultPayMethod['data']['type']) ? $defaultPayMethod['data']['type'] : ""),
             'paym' => $request->input('paym', "Oceanpay"),
             'cardType' => $request->input('cardType', !empty($defaultPayMethod['data']['cardType']) ? $defaultPayMethod['data']['cardType'] : ""),
@@ -319,7 +320,7 @@ class CartController extends ApiController
      * @return Array
      *
      * */
-    public function getCartAccountList(Request $request, $logisticstype = 1, $bindid = "", $paytype = "")
+    public function getCartAccountList(Request $request, $logisticstype = 1, $bindid = "", $paytype = "",$aid)
     {
 
         $params = array(
@@ -328,7 +329,8 @@ class CartController extends ApiController
             'pin' => Session::get('user.pin'),
             'logisticstype' => $request->input('logisticstype', $logisticstype),
             'paytype' => $request->input('paytype', $paytype),
-            'bindid' => $request->input('bindid', $bindid)
+            'bindid' => $request->input('bindid', $bindid),
+            'addressid' => $aid
         );
         $system = "";
         $service = "cart";
