@@ -181,7 +181,7 @@
                     @if(isset($saveData['showSkus']))
                         @foreach($saveData['showSkus'] as $showSku)
                             {{-- TODO 需要添加 商品是否上架的判断 --}}
-                            <div class="cartList-item p-a-10x @if( 1 !== $showSku['stock_status'] ) disabled @endif">
+                            <div class="cartList-item p-a-10x @if( 0 == $showSku['stock_status'] || 1 != $showSku['isPutOn'] ) disabled @endif">
                                 <a @if(1 == $showSku['stock_status'] && 1 == $showSku['isPutOn']) href="/detail/{{$showSku['spu']}}" @endif class="inSaved">
                                     <div class="productInfo flex">
                                         <div class="flex-fixedShrink">
