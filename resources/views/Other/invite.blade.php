@@ -19,9 +19,7 @@
         @include('navigator', ['pageScope'=>true])
 
         <div class="invite-container">
-            <meta itemprop="name" content="Get $20 as your accessories finance on Motif" />
-            <meta itemprop="url" content="http://test.m.motif.me/d/invite/{{$code}}" />
-            <meta itemprop="image" content="http://test.m.motif.me/images/background/invite.jpg" />
+            <img src="http://test.m.motif.me/images/background/invite.jpg" />
             <div class="text-center">
                 <div class="m-b-20x">USE CODE: {{$code}}</div>
                 <div class="m-b-20x p-b-10x"><span class="invite-arrow"></span></div>
