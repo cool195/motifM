@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <title>{{$data['main_title']}}</title>
-    <meta property="og:title" content="{{$data['main_title']}}">
+    <meta property="og:title" content="1234">
     <meta property="og:image" content="{{ env('APP_Api_Image').'/n1/'.$data['main_image_url'] }}">
     @include('head')
     <link rel="stylesheet" href="{{env('CDN_Static')}}/styles/shoppingDetail.css{{'?v='.config('app.version')}}">
