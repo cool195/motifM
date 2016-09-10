@@ -157,37 +157,48 @@
 
             <!-- 结算总价 -->
             <aside class="bg-white p-a-10x m-b-10x">
+
+                {{--数量--}}
                 <div class="flex flex-fullJustified text-primary font-size-sm">
                     <span>Items ({{$data['total_sku_qtty']}})</span><span>${{ number_format(($data['total_amount'] / 100), 2)}}</span>
                 </div>
 
-                <!-- 收税提示 -->
+                {{--增值服务--}}
+                @if($data['vas_amount'] > 0)
+                    <div class="flex flex-fullJustified text-primary font-size-sm">
+                        <span>Additional Services:</span><span>${{number_format(($data['vas_amount'] / 100), 2)}}</span>
+                    </div>
+                @endif
+
+                {{--优惠--}}
+                @if($data['cps_amount'] > 0)
+                    <div class="flex flex-fullJustified text-primary font-size-sm">
+                        <span>Promotion code</span><span>-${{number_format(($data['cps_amount'] / 100), 2)}}</span>
+                    </div>
+                @endif
+
+                {{--折扣--}}
+                @if($data['promot_discount_amount'] > 0)
+                    <div class="flex flex-fullJustified text-primary font-size-sm">
+                        <span>Discount</span><span>-${{number_format(($data['promot_discount_amount'] / 100), 2)}}</span>
+                    </div>
+                @endif
+
+                {{--收税提示--}}
                 @if($data['tax_amount'])
                     <div class="flex flex-fullJustified text-primary font-size-sm">
                         <span>Sale Tax </span><span>${{ number_format(($data['tax_amount'] / 100), 2)}}</span>
                     </div>
                 @endif
 
-                @if($data['vas_amount'] > 0)
-                <div class="flex flex-fullJustified text-primary font-size-sm">
-                    <span>Additional Services:</span><span>${{number_format(($data['vas_amount'] / 100), 2)}}</span>
-                </div>
-                @endif
+                {{--地址服务--}}
                 @if(!empty($addr))
                     <div class="flex flex-fullJustified text-primary font-size-sm">
                         <span>Shipping and handling</span><span>@if(0 == $data['freight_amount']) Free @else${{ number_format(($data['freight_amount'] / 100), 2)}} @endif</span>
                     </div>
                 @endif
-                @if($data['promot_discount_amount'] > 0)
-                    <div class="flex flex-fullJustified text-primary font-size-sm">
-                        <span>Discount</span><span>-${{number_format(($data['promot_discount_amount'] / 100), 2)}}</span>
-                    </div>
-                @endif
-                @if($data['cps_amount'] > 0)
-                <div class="flex flex-fullJustified text-primary font-size-sm">
-                    <span>Promotion code</span><span>-${{number_format(($data['cps_amount'] / 100), 2)}}</span>
-                </div>
-                @endif
+
+                {{--结算价--}}
                 <div class="flex flex-fullJustified p-t-10x text-primary font-size-sm">
                     <span><strong>Order Total</strong></span><span><strong>${{ number_format(($data['pay_amount'] / 100), 2)}}</strong></span>
                 </div>
