@@ -1,4 +1,4 @@
-<meta charset="en">
+<meta charset="UTF-8">
 <meta name="keywords" content="fashion,style,shop,accessory,jewelry,watch,blogger,Instagram,designer,limited,edition,ecommerce,buy">
 <meta name="description" content="Your style is unique and cutting edge - your fashion should be too.Exclusive, limited edition accessories designed by the world’s top fashion bloggers, Instagrammers and digital influencers.">
 <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
