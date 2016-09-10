@@ -17,7 +17,7 @@
     @include('navigator')
     <!-- 订单列表 -->
         <section class="p-b-20x reserve-height">
-            <article class="font-size-md text-main p-a-10x"><strong>ORDERS</strong></article>
+            <article class="font-size-md text-main p-a-10x"><strong>Orders</strong></article>
 
             <!-- 订单数为0 -->
             <div class="order-empty-content m-t-20x p-x-10x hidden-xs-up" id="emptyOrder">
