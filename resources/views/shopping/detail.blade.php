@@ -2,10 +2,17 @@
 <html lang="en">
 <head>
     <title>{{$data['main_title']}}</title>
-    <meta property="og:title" content="1234">
     <meta property="og:image" content="{{ env('APP_Api_Image').'/n1/'.$data['main_image_url'] }}">
-    @include('head')
+    <link rel="icon" href="/favicon.ico">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    <link rel="stylesheet" href="{{env('CDN_Static')}}/styles/vendor.css{{'?v='.config('app.version')}}">
+    <script src="{{env('CDN_Static')}}/scripts/vendor/modernizr.js{{'?v='.config('app.version')}}"></script>
+    <script src="{{env('CDN_Static')}}/scripts/vendor/fastclick.js{{'?v='.config('app.version')}}"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+    </script>
     <link rel="stylesheet" href="{{env('CDN_Static')}}/styles/shoppingDetail.css{{'?v='.config('app.version')}}">
+
 </head>
 <body>
 <!-- 添加购物车 -->
