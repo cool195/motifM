@@ -402,7 +402,7 @@
                 </div>
                 <fieldset class="text-primary p-x-15x p-b-10x text-left">
                     <div class="font-size-base">
-                        <strong>${{number_format(($data['skuPrice']['sale_price'] / 100), 2)}}</strong>
+                        <strong id="skuNewPrice">${{number_format(($data['skuPrice']['sale_price'] / 100), 2)}}</strong>
                     </div>
                     <div class="font-size-sm" id="selectedOptions">
                         <span data-select>Select:</span>

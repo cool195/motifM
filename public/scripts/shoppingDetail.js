@@ -196,7 +196,7 @@
             objCache[vasId] = vasType;
         });
     }
-
+    var skuExps;
     // 初始化 赋值
     (function initOptions() {
         var SpuId = $('#modalDialog').data('spu');
@@ -208,8 +208,8 @@
                 if (data.success) {
                     // 获取商品所有的库存
                     // Inventory 为库存的商品的Sku
+                    skuExps = data.data.skuExps;
                     var Inventory = tempInventory = inventoryNull(data.data.skuExps);
-
                     // 所有选项
                     if (data.data.spuAttrs === undefined || data.data.spuAttrs == '') {
                         ResultSkus = data.data.skus;
@@ -478,7 +478,6 @@
 
     }
 
-
     // 为所有选项绑定事件
     $('.btn-itemProperty').on('click', function (e) {
 
@@ -513,7 +512,10 @@
         // 调整数量按钮组
         var $Count = $('#item-count');
         var OptionsStatus = resolutOptions(RadioList);
-
+        //更新SKU价格
+        if(ResultSkus[0] != undefined){
+            getNewPrice(ResultSkus[0]);
+        }
         // 重置 调整数量按钮组
         //$Count.children('[data-item]').addClass('disabled');
         $Count.children('[data-num="num"]').html(1);
@@ -525,7 +527,6 @@
 
             // 获取所选中 sku 对应的库存
             var StockCache = Stock[ResultSkus[0]];
-
             // 切换Sku时(确定一个sku时),商品购买数量归1
             // 减号不可用
             $Count.children('[data-item="minus"]').addClass('disabled');
@@ -546,6 +547,16 @@
         }
 
     });
+
+    //更新SKU价格
+    function getNewPrice(sku) {
+        $.each(skuExps,function (index,val) {
+            if(sku==val.sku){
+                $('#skuNewPrice').html('$'+val.skuPrice.sale_price/100);
+                return false;
+            }
+        });
+    }
 
     // 调整数量
     /**
