@@ -402,6 +402,7 @@ class UserController extends ApiController
         if (empty($input)) {
             return redirect('/user/shippingaddress');
         }
+        return $country;
         return View('shopping.profilesetting_modaddress', ['country'=>$country,'input' => $input,'state'=>$state]);
     }
 
