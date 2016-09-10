@@ -26,9 +26,9 @@
     function switchSelect($Edit) {
         var $IconFont = $('.addressItem-info').find('.iconfont');
         if ($Edit.hasClass('active')) {
-            $IconFont.removeClass('icon-arrow-right').addClass('icon-radio');
+            $IconFont.removeClass('icon-arrow-right');
         } else {
-            $IconFont.removeClass('icon-radio').addClass('icon-arrow-right');
+            $IconFont.addClass('icon-arrow-right');
         }
     }
 

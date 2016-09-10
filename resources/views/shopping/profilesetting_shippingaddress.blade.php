@@ -50,12 +50,14 @@
                                     <div>{{$addr['country']}}</div>
                                     <div>@if(!empty($addr['telephone'])) {{$addr['telephone']}} @endif</div>
                                 </div>
-                                @if(1 == $addr['isDefault'])
+
                                     <div class="flex flex-alignCenter">
-                                        <span class="text-common p-r-20x">Primary</span>
-                                        <i class="iconfont icon-check icon-size-sm text-common"></i>
+                                        @if(1 == $addr['isDefault'])
+                                            <span class="text-common p-r-20x">Primary</span>
+                                        @endif
+                                        <i class="iconfont icon-size-sm text-common"></i>
                                     </div>
-                                @endif
+
                             </div>
                         </div>
                     @endforeach
@@ -75,10 +77,6 @@
         @include('footer')
     </div>
 </div>
-<!-- 弹出选择 size color Engraving -->
-<!-- TODO remodal 有多余的样式 需要整理 -->
-<!-- 删除将要购买的商品 -->
-<!-- TODO remodal 有多余的样式 需要整理 -->
 <div class="remodal remodal-md modal-content" data-remodal-id="modal" id="modalDialog">
     <div class="font-size-sm p-t-20x p-x-15x p-b-15x">
         <div class="font-size-base">Remove Shipping Address</div>
