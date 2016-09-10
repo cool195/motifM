@@ -392,6 +392,7 @@ class UserController extends ApiController
                 'pin' => Session::get('user.pin')
             );
             $countrylist = $this->request('openapi', '', 'addr', $params);
+            return [$countrylist,$input];
             foreach ($countrylist['data']['list'] as $value){
                 if($value['country_name_en']==$input['country']){
                     $country = $value;
@@ -402,7 +403,7 @@ class UserController extends ApiController
         if (empty($input)) {
             return redirect('/user/shippingaddress');
         }
-        return $country;
+
         return View('shopping.profilesetting_modaddress', ['country'=>$country,'input' => $input,'state'=>$state]);
     }
 
