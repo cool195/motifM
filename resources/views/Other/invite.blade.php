@@ -19,7 +19,7 @@
         @include('navigator', ['pageScope'=>true])
 
         <div class="invite-container">
-            <img style="z-index: -1000" src="http://test.m.motif.me/images/background/invite.jpg" />
+
             <div class="text-center">
                 <div class="m-b-20x">USE CODE: {{$code}}</div>
                 <div class="m-b-20x p-b-10x"><span class="invite-arrow"></span></div>
@@ -55,6 +55,7 @@
     }
 
 </script>
+<img style="z-index: -1000" width="1" src="http://test.m.motif.me/images/background/invite.jpg" />
 </body>
 <script src="{{env('CDN_Static')}}/scripts/vendor.js{{'?v='.config('app.version')}}"></script>
 </html>
