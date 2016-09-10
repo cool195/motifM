@@ -2,10 +2,11 @@
 <html lang="en">
 <head>
     <title>Designer Detail</title>
-    <meta property="og:image" content="{{ env('APP_Api_Image').'/n1/'.$designer['img_video_path'] }}"/>
+
     @include('head')
     <link rel="stylesheet" href="{{env('CDN_Static')}}/styles/designerDetail.css{{'?v='.config('app.version')}}">
-
+    <meta property="og:image" content="{{ env('APP_Api_Image').'/n1/'.$designer['img_video_path'] }}"/>
+    <meta property="og:title" content="{{$designer['nickname']}}"/>
 </head>
 <body>
 <input type="text" id="productClick-name" value="name" hidden>
