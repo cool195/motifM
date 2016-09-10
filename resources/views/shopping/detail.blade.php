@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="{{env('CDN_Static')}}/styles/shoppingDetail.css{{'?v='.config('app.version')}}">
     <meta property="og:image" content="{{ env('APP_Api_Image').'/n1/'.$data['main_image_url'] }}">
     <meta property="og:title" content="{{$data['main_title']}}">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no" />
 </head>
 <body>
 <!-- 添加购物车 -->
