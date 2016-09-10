@@ -95,6 +95,18 @@
                 @endforeach
             </div>
 
+            <!-- 邀请好友 -->
+            <aside class="bg-white m-t-20x">
+                <a class="flex flex-alignCenter flex-fullJustified font-size-sm text-primary p-a-15x" href="/invitefriends">
+                    <div class="flex flex-alignCenter">
+                            <span class="p-r-15x">
+                                <img src="{{env('CDN_Static')}}/images/icon/gift-small.png" srcset="{{env('CDN_Static')}}/images/icon/gift-small@2x.png 2x,{{env('CDN_Static')}}/images/icon/gift-small@3x.png 3x">
+                            </span>
+                        <span>Give a friend $20 on Motif,<br/>and get $20 when they order.</span>
+                    </div>
+                    <i class="iconfont icon-arrow-right icon-size-xm text-common"></i>
+                </a>
+            </aside>
         </section>
     </div>
 </div>
