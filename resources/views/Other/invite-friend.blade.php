@@ -58,7 +58,7 @@
         });
 
         clipboard.on('error', function(e) {
-            alert('Copy Copied');
+            alert('Code Copied');
         });
     </script>
 @include('global')
