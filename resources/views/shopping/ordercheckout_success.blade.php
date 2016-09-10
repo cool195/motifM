@@ -67,7 +67,7 @@
 
             <!-- 订单完成 邀请好友 -->
             <aside class="p-y-20x">
-                <div class="text-center text-primary font-size-sm p-y-20x"><strong>Share Motif with friends.<br/>They get $20 off. <br/>and you will too after their first purchase.</strong></div>
+                <div class="text-center text-primary font-size-sm p-y-20x"><strong>Share Motif with friends.<br/>They get $20 off, and you <br/> will too after their first purchase.</strong></div>
                 <div class="container-fluid p-x-10x p-y-20x">
                     <div class="row">
                         <div class="col-xs-6">
