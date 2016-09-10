@@ -187,8 +187,7 @@ $app->group(['middleware' => 'pcguide', 'namespace' => 'App\Http\Controllers\Oth
     //$app->get('/cancellationpolicy', 'PageController@cancellationPolicy');
     //$app->get('/motifguarantee', 'PageController@motifGuarantee');
     //$app->get('/termsservice', 'PageController@termsService');
-    $app->get('/d/invite/{code}','PageController@invite');
-    $app->get('/d/invite', 'PageController@invite');
+
 });
 
 
@@ -199,7 +198,8 @@ $app->get('pctermsservice', 'Other\PageController@pcTermsService');
 //记录登录前操作
 $app->get('notesaction','Shopping\UserController@notesAction');
 
-
+$app->get('/d/invite/{code}','Other\PageController@invite');
+$app->get('/d/invite', 'Other\PageController@invite');
 $app->get('/saleinfo', 'Other\PageController@saleinfo');
 
 
