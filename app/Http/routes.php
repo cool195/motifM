@@ -187,8 +187,8 @@ $app->group(['middleware' => 'pcguide', 'namespace' => 'App\Http\Controllers\Oth
     //$app->get('/cancellationpolicy', 'PageController@cancellationPolicy');
     //$app->get('/motifguarantee', 'PageController@motifGuarantee');
     //$app->get('/termsservice', 'PageController@termsService');
-    $app->get('/d/invite/{code}','Other\PageController@invite');
-    $app->get('/d/invite', 'Other\PageController@invite');
+    $app->get('/d/invite/{code}','PageController@invite');
+    $app->get('/d/invite', 'PageController@invite');
 });
 
 
