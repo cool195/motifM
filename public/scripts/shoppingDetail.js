@@ -512,10 +512,7 @@
         // 调整数量按钮组
         var $Count = $('#item-count');
         var OptionsStatus = resolutOptions(RadioList);
-        //更新SKU价格
-        if(ResultSkus[0] != undefined){
-            getNewPrice(ResultSkus[0]);
-        }
+
         // 重置 调整数量按钮组
         //$Count.children('[data-item]').addClass('disabled');
         $Count.children('[data-num="num"]').html(1);
@@ -546,6 +543,10 @@
             filterSelectOptions(OptionsStatus.select, SpaId, SkaId);
         }
 
+        //更新SKU价格
+        if(ResultSkus[0] != undefined){
+            getNewPrice(ResultSkus[0]);
+        }
     });
 
     //更新SKU价格

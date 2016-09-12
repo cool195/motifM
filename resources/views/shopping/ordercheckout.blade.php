@@ -166,7 +166,7 @@
                 {{--增值服务--}}
                 @if($data['vas_amount'] > 0)
                     <div class="flex flex-fullJustified text-primary font-size-sm">
-                        <span>Additional Services:</span><span>${{number_format(($data['vas_amount'] / 100), 2)}}</span>
+                        <span>Additional services:</span><span>${{number_format(($data['vas_amount'] / 100), 2)}}</span>
                     </div>
                 @endif
 
@@ -187,7 +187,7 @@
                 {{--收税提示--}}
                 @if($data['tax_amount'])
                     <div class="flex flex-fullJustified text-primary font-size-sm">
-                        <span>Sale Tax </span><span>${{ number_format(($data['tax_amount'] / 100), 2)}}</span>
+                        <span>Sales tax </span><span>${{ number_format(($data['tax_amount'] / 100), 2)}}</span>
                     </div>
                 @endif
 
