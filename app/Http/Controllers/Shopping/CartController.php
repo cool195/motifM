@@ -170,7 +170,7 @@ class CartController extends ApiController
             );
             $countrylist = $this->request('openapi', '', 'addr', $params);
             foreach ($countrylist['data']['list'] as $value){
-                if($value['country_name_en']==$input['country']){
+                if($value['country_name_en']==trim($input['country'])){
                     $country = $value;
                     break;
                 }
