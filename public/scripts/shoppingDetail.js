@@ -552,7 +552,7 @@
     function getNewPrice(sku) {
         $.each(skuExps,function (index,val) {
             if(sku==val.sku){
-                $('#skuNewPrice').html('$'+val.skuPrice.sale_price/100);
+                $('#skuNewPrice').html('$'+(val.skuPrice.sale_price/100).toFixed(2));
                 return false;
             }
         });
