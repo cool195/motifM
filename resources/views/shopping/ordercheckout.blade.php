@@ -173,7 +173,7 @@
                 {{--优惠--}}
                 @if($data['cps_amount'] > 0)
                     <div class="flex flex-fullJustified text-primary font-size-sm">
-                        <span>Promotion code</span><span>-${{number_format(($data['cps_amount'] / 100), 2)}}</span>
+                        <span>Promotion Code</span><span>-${{number_format(($data['cps_amount'] / 100), 2)}}</span>
                     </div>
                 @endif
 
