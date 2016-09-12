@@ -16610,7 +16610,7 @@ else if (typeof define === 'function' && define.amd) {
         }
         // downloading 是否显示
         if (getCookie('downloadingApp')) {
-            $('#closeDownloading').parents('.bg-download').remove();
+            $('#closeDownloading').parents('nav').remove();
         }else {
             $('#closeDownloading').parents('.bg-download').removeAttr('hidden');
         }
