@@ -15,11 +15,12 @@
 <div id="body-content">
     @include('nav')
     <div class="body-container">
-    @include('navigator')
+        @include('navigator')
         <article class="font-size-md text-main p-a-10x"><strong>Wishlist</strong></article>
         <!-- wishlist 商品列表 -->
         <section class="reserve-height">
-            <aside id="wishContainer" class="wishList m-b-20x" data-loading="false" data-pagenum="0" data-wishpagenum="0">
+            <aside id="wishContainer" class="wishList m-b-20x" data-loading="false" data-pagenum="0"
+                   data-wishpagenum="0">
 
                 <!-- 空 wishlist 提示信息 -->
                 <div class="shopbag-empty-content p-x-10x hidden-xs-up" id="emptyWishlist">
@@ -56,16 +57,19 @@
             </div>
             <div class="p-l-10x flex-width">
                 <article class="flex flex-fullJustified wishlist-title">
-                    <h6 class="text-main font-size-md p-r-20x">
+                    <a href="/detail/@{{ $value.spu }}"><h6 class="text-main font-size-md p-r-20x">
                         <strong>@{{ $value.main_title }}</strong>
-                    </h6>
+                    </h6></a>
                                     <span class="text-primary font-size-sm flex-fixedShrink">
-                                        <i class="iconfont icon-cross icon-size-md text-common delwish" data-spu="@{{ $value.spu }}"></i>
+                                        <i class="iconfont icon-cross icon-size-md text-common delwish"
+                                           data-spu="@{{ $value.spu }}"></i>
                                     </span>
                 </article>
-                <aside class="text-primary font-size-sm">
-                    <div>$@{{ ($value.skuPrice.sale_price/100).toFixed(2) }}</div>
-                </aside>
+                <a href="/detail/@{{ $value.spu }}">
+                    <aside class="text-primary font-size-sm">
+                        <div>$@{{ ($value.skuPrice.sale_price/100).toFixed(2) }}</div>
+                    </aside>
+                </a>
             </div>
         </div>
     </div>

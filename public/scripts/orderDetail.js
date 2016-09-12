@@ -18,9 +18,8 @@
         }
     });
 
-    var OrderInfo = [],
-        OrderOperate = [];
-
+    var OrderInfo = [];
+    var OrderOperate = new Array();
     function getOrderInfo() {
         var OrderNum = $('[data-order-number]').data('order-number');
         $.ajax({
@@ -30,36 +29,35 @@
             .done(function(data) {
                 if (data.success) {
                     OrderInfo = data.data.lineOrderList;
-                    getOperate(OrderOperate);
+                    getOperate();
                 }
             });
     }
 
     function getOperate() {
-        var Operate = {
-            'sale_qtty': null, // 数量
-            'select': true, // 是否选中
-            'sku': null, // SKU
-            'VAList': [] // 增值服务
-        };
+
 
         $.each(OrderInfo, function(index, val) {
-            Operate.sale_qtty = val.sale_qtty;
-            Operate.sku = val.sku;
-
+            var Operate = {
+                'sale_qtty': val.sale_qtty, // 数量
+                'select': true, // 是否选中
+                'sku': val.sku, // SKU
+                'VAList': [] // 增值服务
+            };
             var Cache = [];
             $.each(val.vas_info, function(i, el) {
                 Cache[i] = {};
                 Cache[i].user_remark = el.user_remark;
                 Cache[i].vas_id = el.vas_id;
             });
-            Operate.VAList = Cache;
 
+            Operate.VAList = Cache;
             OrderOperate.push(Operate);
         });
     }
 
     function initCart() {
+
         $.ajax({
                 url: '/cart/addBatchCart',
                 type: 'POST',
@@ -79,7 +77,7 @@
             $('.btn-showMore').hide();
         }
         if ($('#orderState').data('state')) {
-            getOrderInfo(OrderInfo);
+            getOrderInfo();
         }
     });
 
