@@ -61,12 +61,12 @@
                         <input type="hidden" name="countryState" value="{{ base64_encode(json_encode($country)) }}">
                         @if($country['child_type']==0)
                             <input class="form-control form-control-block p-a-15x font-size-sm" name="state" type="text"
-                                   data-optional="true" data-role="State"
+                                   data-optional="true"
                                    value="{{$state['state_name_sn']}}"
                                    placeholder="State (optional)">
                         @elseif($country['child_type']==1)
                             <input class="form-control form-control-block p-a-15x font-size-sm" name="state" type="text"
-                                   data-optional="false" value="{{$state['state_name_sn']}}"
+                                   data-optional="false" value="{{$state['state_name_sn']}}" data-role="State"
                                    placeholder="State">
                         @else
                             <div class="flex flex-alignCenter flex-fullJustified font-size-sm text-primary p-a-15x address-option"
