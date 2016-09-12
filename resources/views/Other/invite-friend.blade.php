@@ -30,8 +30,8 @@
             <div class="p-x-20x p-b-20x">
                 <div class="font-size-sm text-primary">Share your Invite code</div>
                 <div class="p-t-10x invite-code">
-                    <input class="input-invite form-control font-size-sm copy" readonly type="text" maxlength="20" value="{{$code}}">
-                    <span class="p-l-15x invite-copy text-primary font-size-sm text-underLine copy">Copy</span>
+                    <input class="input-invite form-control font-size-sm copy" id="inviteInfo" readonly type="text" maxlength="20" value="{{$code}}">
+                    <span class="p-l-15x invite-copy text-primary font-size-sm text-underLine copy" onClick="copyUrl2()">Copy</span>
                 </div>
             </div>
             {{--<div class="p-x-20x p-b-20x">--}}
@@ -45,21 +45,29 @@
 </div>
 </body>
 <script src="{{env('CDN_Static')}}/scripts/vendor.js{{'?v='.config('app.version')}}"></script>
-<script src="{{env('CDN_Static')}}/scripts/clipboard.min.js{{'?v='.config('app.version')}}"></script>
-    <script type="text/javascript">
-        var clipboard = new Clipboard('.copy', {
-            text: function() {
-                return '{{$code}}';
-            }
-        });
+{{--<script src="{{env('CDN_Static')}}/scripts/clipboard.min.js{{'?v='.config('app.version')}}"></script>--}}
+    {{--<script type="text/javascript">--}}
+        {{--var clipboard = new Clipboard('.copy', {--}}
+            {{--text: function() {--}}
+                {{--return '{{$code}}';--}}
+            {{--}--}}
+        {{--});--}}
 
-        clipboard.on('success', function(e) {
-            alert('Code Copied');
-        });
+        {{--clipboard.on('success', function(e) {--}}
+            {{--alert('Code Copied');--}}
+        {{--});--}}
 
-        clipboard.on('error', function(e) {
-            alert('Code Copied');
-        });
-    </script>
+        {{--clipboard.on('error', function(e) {--}}
+            {{--alert('Code shibai');--}}
+        {{--});--}}
+    {{--</script>--}}
+<script type="text/javascript">
+    function copyUrl2(){
+        var Url2=document.getElementById("inviteInfo");
+        Url2.select(); // 选择对象
+        document.execCommand("Copy");
+        alert("已复制好，可贴粘。");
+    }
+</script>
 @include('global')
 </html>

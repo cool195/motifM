@@ -38,6 +38,7 @@
 .checkoutInfo-content {
   width: 100%;
   overflow: hidden;
+  padding-left: 10px;
 }
 
 .order-option {
