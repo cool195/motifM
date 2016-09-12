@@ -142,7 +142,7 @@
     <div class="download-content" hidden>
         <div class="font-size-base">Function Not Supported</div>
         <div class="font-size-sm p-x-15x p-b-15x p-t-10x">
-            We supply this function in the <br>MOTIF App,You can use there！
+            We offer this function in the <br>MOTIF App,You can use there！
         </div>
         <hr class="hr-base m-a-0">
         <div class="p-x-15x p-t-10x p-b-15x">
