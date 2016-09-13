@@ -8,13 +8,11 @@
 <body>
 
 <div id="body-content">
-<ul>
-    <li>
-        <a href="motif://o.c?a=promolist&code=1234">Promolist-Code</a>
-        <a href="motif://o.c?a=promolist">Promolist</a>
-        <a href="motif://o.c?a=invitefriend">Invitefriend</a>
-    </li>
-</ul>
+    <ul>
+        <li><a href="motif://o.c?a=promolist&code=1234">Promolist-Code</a></li>
+        <li><a href="motif://o.c?a=promolist">Promolist</a></li>
+        <li><a href="motif://o.c?a=invitefriend">Invitefriend</a></li>
+    </ul>
 </div>
 </body>
 </html>
