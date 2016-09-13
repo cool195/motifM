@@ -29,9 +29,8 @@
         <aside class="bg-white">
             <div class="p-x-20x p-b-20x">
                 <div class="font-size-sm text-primary">Share your Invite code</div>
-                <div class="p-t-10x invite-code">
-                    <input class="input-invite form-control font-size-sm copy" id="inviteInfo" readonly type="text" maxlength="20" value="{{$code}}">
-                    <span class="p-l-15x invite-copy text-primary font-size-sm text-underLine copy" onClick="copyUrl2()">Copy</span>
+                <div class="p-t-10x text-center">
+                    <span class="text-primary font-size-lg">{{$code}}</span>
                 </div>
             </div>
             {{--<div class="p-x-20x p-b-20x">--}}
