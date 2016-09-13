@@ -45,29 +45,5 @@
 </div>
 </body>
 <script src="{{env('CDN_Static')}}/scripts/vendor.js{{'?v='.config('app.version')}}"></script>
-{{--<script src="{{env('CDN_Static')}}/scripts/clipboard.min.js{{'?v='.config('app.version')}}"></script>--}}
-    {{--<script type="text/javascript">--}}
-        {{--var clipboard = new Clipboard('.copy', {--}}
-            {{--text: function() {--}}
-                {{--return '{{$code}}';--}}
-            {{--}--}}
-        {{--});--}}
-
-        {{--clipboard.on('success', function(e) {--}}
-            {{--alert('Code Copied');--}}
-        {{--});--}}
-
-        {{--clipboard.on('error', function(e) {--}}
-            {{--alert('Code shibai');--}}
-        {{--});--}}
-    {{--</script>--}}
-<script type="text/javascript">
-    function copyUrl2(){
-        var Url2=document.getElementById("inviteInfo");
-        Url2.select(); // 选择对象
-        document.execCommand("Copy");
-        alert("已复制好，可贴粘。");
-    }
-</script>
 @include('global')
 </html>
