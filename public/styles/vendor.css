@@ -5935,6 +5935,15 @@ footer .links-group {
 .promotion-item{
     overflow: hidden;
     margin-bottom:15px;
+    position: relative;
+}
+
+.promotion-item .mask{
+    position: absolute;
+    top:0;
+    left:0;
+    bottom:0;
+    right:0;
 }
 
 .promotion-item .promotion-info{

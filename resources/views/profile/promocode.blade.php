@@ -35,6 +35,7 @@
                 @inject('getDate', 'App\Services\Publicfun')
                 @foreach($couponlist['list'] as $value)
                     <div class="promotion-item">
+                        <div class="mask"></div>
                         <div class="promotion-info bg-promotion p-a-10x">
                             <div class="promotion-title text-white"><strong>{{$value['cp_title']}}</strong></div>
                             <div class="font-size-sm text-white">{{$value['prompt_words']}}</div>
