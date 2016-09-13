@@ -89,7 +89,7 @@
                                 <i class="iconfont icon-check icon-size-md text-white"></i>
                             </span>
                         </div>
-                        <div class="promotion-time text-primary p-a-10x text-right font-size-sm">Expire: {{ $getDate->getMyDate(date('Y-m-d H:i',substr($value['expiry_time'],0,10))) }}
+                        <div class="promotion-time text-primary p-a-10x text-right font-size-sm">Expires: {{ $getDate->getMyDate(date('Y-m-d H:i',substr($value['expiry_time'],0,10))) }}
                         </div>
                     </div>
                 @endforeach

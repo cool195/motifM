@@ -27,15 +27,17 @@
 
         <!-- 订单完成 邀请好友 -->
         <aside class="bg-white">
-            <div class="p-x-20x p-b-20x">
+            <div class="p-x-20x p-b-10x">
                 <div class="font-size-sm text-primary">Share your Invite code</div>
-                <div class="p-t-10x text-center">
-                    <span class="text-primary font-size-lg">{{$code}}</span>
-                </div>
             </div>
             {{--<div class="p-x-20x p-b-20x">--}}
                 {{--<a href="/shopping" class="btn btn-primary btn-block">Invite Contacts</a>--}}
             {{--</div>--}}
+        </aside>
+        <aside class="bg-white">
+            <div class="p-x-20x p-b-20x text-center">
+                <span class="text-primary font-size-lg">{{$code}}</span>
+            </div>
         </aside>
 
         <!-- 页脚 功能链接 -->
