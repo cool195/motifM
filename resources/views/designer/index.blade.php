@@ -37,7 +37,7 @@
 <!-- 模板 -->
 <template id="tpl-designer">
     @{{ each list }}
-    <aside class="bg-white m-b-10x">
+    <aside class="bg-white p-b-10x">
         <div class="">
             @{{ if $value.listVideoId == undefined }}
                 <a data-link="/designer/@{{$value.designerId}}"
