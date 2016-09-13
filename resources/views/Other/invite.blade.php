@@ -5,7 +5,7 @@
     <link rel="stylesheet" href="{{env('CDN_Static')}}/styles/vendor.css{{'?v='.config('app.version')}}">
     <script src="{{env('CDN_Static')}}/scripts/vendor/modernizr.js{{'?v='.config('app.version')}}"></script>
     <script src="{{env('CDN_Static')}}/scripts/vendor/fastclick.js{{'?v='.config('app.version')}}"></script>
-    <meta property="og:image" content="http://test.m.motif.me/images/background/invite.jpg"/>
+    <meta property="og:image" content="{{env('CDN_Static')}}/images/background/invite.jpg"/>
     <meta property="og:title" content="Get $20 as your accessories finance on Motif">
     <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
     <link rel="stylesheet" href="{{env('CDN_Static')}}/styles/login.css{{'?v='.config('app.version')}}">
