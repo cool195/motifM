@@ -109,6 +109,10 @@ class PageController extends ApiController
     public function saleinfo(){
         return view('Other.saleinfo');
     }
+
+    public function apptest(){
+        return view('Other.apptest');
+    }
 }
 
 ?>

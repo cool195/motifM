@@ -203,3 +203,5 @@ $app->get('/saleinfo', 'Other\PageController@saleinfo');
 //为解决分享链接拿不到图,不再PC跳转
 $app->get('/detail/{spu}', 'Shopping\ProductController@index');
 $app->get('/designer/{id}', 'Designer\DesignerController@show');
+
+$app->get('/apptest', 'Other\PageController@apptest');
