@@ -26,7 +26,7 @@
                         </article>
                         <div class="bg-white">
                             <div class="p-a-15x font-size-sm text-primary">
-                                <p class="m-b-15x"><strong>Anyone can Refer a Friend.</strong> Anyone with a registered Motif account can refer a friend. You do not need to have made a purchase prior to referring. Once your referred friend uses the promo code to make a qualifying purchase, the referral credit will be granted to your account. To qualify for the referral program, the referred person must (1) be a new customer, (2) use the referral promo code on checkout, and (3) complete a purchase with a subtotal of at least the promo code amount prior to the promo code's expiration. Both the referral promo code and the referral credit cannot be combined with additional coupons.</p>
+                                <p class="m-b-15x"><strong>Anyone can Refer a Friend.</strong> Anyone with a registered Motif account can refer a friend. You do not need to have made a purchase prior to referring. Once your referred friend uses the promo code to make a qualifying purchase, the referral credit will be granted to your account. To qualify for the referral program, the referred person must (1) be a new customer, (2) use the referral promo code on checkout, and (3) complete a purchase with a subtotal of at least $21 prior to the promo code's expiration. Both the referral promo code and the referral credit cannot be combined with additional coupons.</p>
 
                                 <p class="m-b-15x"><strong>Multiple referrals are welcomed! </strong>There is no limit to how many friends you may refer; however each referred friend can only use your referral code once.</p>
 
