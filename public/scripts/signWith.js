@@ -122,8 +122,7 @@
     // Here we run a very simple test of the Graph API after login is
     // successful.  See statusChangeCallback() for when this call is made.
     function loginFacebook() {
-        FB.api('/me?fields=id,name,picture,email', function(response) {
-
+        FB.api('/me', 'GET', {fields: 'id,name,picture.width(750).height(750),email'},function (response) {
             if(response.email == '' || response.email == undefined){
                 $.ajax({
                     url: '/facebookstatus/'+response.id,
