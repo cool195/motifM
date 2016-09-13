@@ -88,12 +88,13 @@
                 @endif
             </ul>
         </nav>
-        <section class="swiper-container p-b-10x reserve-height" id="tabs-container">
+        <section class="swiper-container reserve-height" id="tabs-container">
             <div class="swiper-wrapper">
                 @if(isset($categories))
                     @foreach($categories as $c)
                         <div class="swiper-slide" data-loading="false" data-pagenum="0">
-                            <div class="container-fluid p-t-10x">
+                            <div class="bg-white p-t-10x"></div>
+                            <div class="container-fluid">
                                 <div class="row productList">
                                 </div>
                             </div>
