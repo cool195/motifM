@@ -14,23 +14,37 @@
 @include('check.tagmanager')
 <div id="body-content">
     @include('nav')
-    <div class="body-container">
+    <div class="body-container bg-white">
         @include('navigator', ['pageScope'=>true])
 
         <div class="invite-container">
-
-            <div class="text-center">
-                <div class="m-b-20x">USE CODE: {{$code}}</div>
-                <div class="p-x-20x p-y-10x bg-primary font-size-sm"><span
-                            class="p-x-10x clickcode">{{$code}}</span>
+            <div class="bg-invite">
+                <img class="img-fluid" src="/images/background/bg-invite-up.jpg" alt="">
+                <div class="text-center code">
+                    <div class="m-b-20x text-white font-size-sm text-center">Claim your credit with promo code: {{$code}}</div>
+                    <div class="p-y-10x"><span class="p-x-20x p-y-10x bg-white font-size-sm clickcode"><span class="text-primary">Register Now</span></span></div>
                 </div>
+            </div>
+            <img class="img-fluid" src="/images/background/bg-invite-down.jpg" alt="">
+        </div>
+        <div class="foot-invite p-b-15x">
+            <div class="p-y-10x text-center text-primary font-size-sm"><strong>FREE US SHIPPING + EASY RETURNS</strong></div>
+            <hr class="hr-base m-a-0">
+            <div class="text-center font-size-xs p-t-10x">
+                <a class="text-common p-x-10x" href="/aboutmotif">About Motif</a>
+                <a class="text-common p-x-10x" href="/faq">FAQ</a>
+                <a class="text-common p-x-10x" href="/termsconditions">Terms & Conditions</a>
+            </div>
+            <div class="text-center p-y-10x">
+                <a class="p-x-10x" href="https://www.facebook.com/motifme"><img src="/images/icon/icon-fac.png" width="15" height="15" alt=""></a>
+                <a class="p-x-10x" href="https://www.instagram.com/motifme/"><img src="/images/icon/icon-ins.png" width="15" height="15" alt=""></a>
+                <a class="p-x-10x" href="https://www.pinterest.com/motifme/"><img src="/images/icon/icon-pin.png" width="15" height="15" alt=""></a>
             </div>
         </div>
     </div>
 </div>
 
-
-<img style="z-index: -1000" width="1" src="{{env('CDN_Static')}}/images/background/invite.jpg"/>
+<img style="z-index: -1000;display: block" width="1" height="0" src="{{env('CDN_Static')}}/images/background/invite.jpg"/>
 </body>
 <script src="{{env('CDN_Static')}}/scripts/vendor.js{{'?v='.config('app.version')}}"></script>
 <script type="text/javascript">
