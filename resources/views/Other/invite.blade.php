@@ -13,19 +13,20 @@
 <body>
 @include('check.tagmanager')
 <div id="body-content">
+    <img style="z-index: -1000;display: block" width="1" height="0" src="{{env('CDN_Static')}}/images/background/invite.jpg"/>
     @include('nav')
     <div class="body-container bg-white">
         @include('navigator', ['pageScope'=>true])
 
         <div class="invite-container">
             <div class="bg-invite">
-                <img class="img-fluid" src="/images/background/bg-invite-up.jpg" alt="">
+                <img class="img-fluid" src="{{env('CDN_Static')}}/images/background/bg-invite-up.jpg" alt="">
                 <div class="text-center code">
-                    <div class="m-b-20x text-white font-size-sm text-center">Claim your credit with promo code: {{$code}}</div>
-                    <div class="p-y-10x"><span class="p-x-20x p-y-10x bg-white font-size-sm clickcode"><span class="text-primary">Register Now</span></span></div>
+                    <div class="m-b-10x text-white font-size-sm text-center">Claim your credit with promo code: {{$code}}</div>
+                    <div class="p-y-10x"><span class="p-x-20x p-y-10x bg-white font-size-sm clickcode" data-code="{{$code}}"><span class="text-primary">Register Now</span></span></div>
                 </div>
             </div>
-            <img class="img-fluid" src="/images/background/bg-invite-down.jpg" alt="">
+            <img class="img-fluid" src="{{env('CDN_Static')}}/images/background/bg-invite-down.jpg" alt="">
         </div>
         <div class="foot-invite p-b-15x">
             <div class="p-y-10x text-center text-primary font-size-sm"><strong>FREE US SHIPPING + EASY RETURNS</strong></div>
@@ -43,14 +44,12 @@
         </div>
     </div>
 </div>
-
-<img style="z-index: -1000;display: block" width="1" height="0" src="{{env('CDN_Static')}}/images/background/invite.jpg"/>
 </body>
 <script src="{{env('CDN_Static')}}/scripts/vendor.js{{'?v='.config('app.version')}}"></script>
 <script type="text/javascript">
 
     $('.clickcode').on('click',function () {
-        setCookie('sharecode', $(this).html());
+        setCookie('sharecode', $(this).data('code'));
         window.location.href = '/login?url=%2Fpromocode';
     })
 
