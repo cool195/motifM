@@ -122,6 +122,24 @@
 <script src="{{env('CDN_Static')}}/scripts/promocode.js{{'?v='.config('app.version')}}"></script>
 <meta name="csrf-token" content="{{ csrf_token() }}"/>
 <script>
+
+    function getCookie(name) {
+        var arr = document.cookie.match(new RegExp('(^| )' + name + '=([^;]*)(;|$)'));
+        if (arr != null) {
+            $('div[data-role="submit"]').removeClass('disabled');
+            setCookie(name, '');
+            return unescape(arr[2]);
+        }
+        return null;
+    }
+    function setCookie(name, value) {
+        var exp = new Date();
+        exp.setTime(0);
+        document.cookie = name + '=' + escape(value) + ';path=/;expires=' + exp.toGMTString();
+    }
+
+    $('input[name="coupon"]').val(getCookie('sharecode'))
+
     $.ajaxSetup({
         headers: {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
