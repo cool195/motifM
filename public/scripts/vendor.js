@@ -16609,10 +16609,14 @@ else if (typeof define === 'function' && define.amd) {
             $('.nav-shoppingCart').children('span').remove();
         }
         // downloading 是否显示
-        if (getCookie('downloadingApp')) {
+        if (getCookie('downloadingApp')){
             $('#closeDownloading').parents('nav').remove();
         }else {
-            $('#closeDownloading').parents('.bg-download').removeAttr('hidden');
+            if( switchSafari() ){
+                $('#closeDownloading').parents('nav').remove();
+            } else {
+                $('#closeDownloading').parents('.bg-download').removeAttr('hidden');
+            }
         }
     })();
 
