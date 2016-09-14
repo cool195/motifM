@@ -21,7 +21,7 @@
             <div class="bg-invite">
                 <img class="img-fluid" src="/images/background/bg-invite-up.jpg" alt="">
                 <div class="text-center code">
-                    <div class="m-b-20x text-white font-size-sm text-center">Claim your credit with promo code: {{$code}}</div>
+                    <div class="m-b-20x text-white font-size-sm text-center">Claim your credit with promo code: <span class="text-primary">{{$code}}</span></div>
                     <div class="p-y-10x"><span class="p-x-20x p-y-10x bg-white font-size-sm clickcode"><span class="text-primary">Register Now</span></span></div>
                 </div>
             </div>
