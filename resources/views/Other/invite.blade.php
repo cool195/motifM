@@ -54,7 +54,7 @@
     }
 
 </script>
-<img style="z-index: -1000" width="1" src="http://test.m.motif.me/images/background/invite.jpg" />
+<img style="z-index: -1000" width="1" src="{{env('CDN_Static')}}/images/background/invite.jpg" />
 </body>
 <script src="{{env('CDN_Static')}}/scripts/vendor.js{{'?v='.config('app.version')}}"></script>
 </html>
