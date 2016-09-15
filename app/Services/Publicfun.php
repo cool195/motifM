@@ -105,12 +105,10 @@ class Publicfun
     //字典表
     public function configMap(){
 
-        $config = Cache::rememberForever('configMap', function () {
-            $params = array(
-                'cmd' => 'config',
-            );
-            return self::request('', 'general', $params);
-        });
+        $params = array(
+            'cmd' => 'config',
+        );
+        $config = self::request('', 'general', $params);
 
         return $config['data']['cart_checkout_top_notification'];
     }
