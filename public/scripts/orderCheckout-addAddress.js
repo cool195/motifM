@@ -60,7 +60,8 @@
                 openAddSuccess();
                 setTimeout(function () {
                     closeAddSuccess();
-                    $('#infoForm').submit();
+                    window.location.href = '/cart/ordercheckout';
+                    //$('#infoForm').submit();
                 }, 1500);
             }
         }).fail(function () {

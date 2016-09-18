@@ -37,6 +37,9 @@ class CartController extends ApiController
         $stype = !empty($request->input('stype')) ? $request->input('stype', 1) : 1; //必须加非空验证
         $bindid = $request->input('bindid');
         $address = $this->getUserAddrByAid($request->input('aid', 0));
+        if(empty($address)){
+            return redirect('cart/addradd?first=1');
+        }
         $defaultMethod = $this->getShippingMethodByStypeOrDefault($stype);
         $result = $this->getCartAccountList($request, $defaultMethod['logistics_type'], $bindid,'',$address['receiving_id']);
 
