@@ -245,13 +245,11 @@
     function appendProductsList(ProductsList, CurrentTab) {
         var TplHtml = template('tpl-product', ProductsList);
         var StageCache = $.parseHTML(TplHtml);
-        // TODO 插入页面相应位置
         $(TabsContainerSwiper.slides[CurrentTab]).find('.row').append(StageCache);
     }
 
     // 为选项卡导航, 绑定一次性事件, 加载商品数据
     $('#tabIndex-container').find('li[data-tab-index]').one('click', function () {
-        console.log('一次性事件');
         $('body').animate({
             scrollTop: 0
         }, 200);
