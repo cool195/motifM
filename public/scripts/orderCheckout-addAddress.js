@@ -57,12 +57,7 @@
             data: $('#addressInfo').serialize()
         }).done(function (data) {
             if (data.success) {
-                openAddSuccess();
-                setTimeout(function () {
-                    closeAddSuccess();
-                    window.location.href = '/cart/ordercheckout';
-                    //$('#infoForm').submit();
-                }, 1500);
+                window.location.href = '/cart/ordercheckout?aid='+data.data.receiving_id;
             }
         }).fail(function () {
             console.log('error');
