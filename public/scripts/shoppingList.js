@@ -327,7 +327,7 @@
         $('.btn-search').html('FILTER');
         $('.swiper-slide-active').children('.container-fluid').removeClass('search-mask');
         // 搜索条件 备用
-        var SearchType = $(this).data('search');
+        //var SearchType = $(this).data('search');
     });
 
     // reset 重置搜索条件

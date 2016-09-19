@@ -11,8 +11,13 @@ class ShoppingController extends ApiController
 {
     public function index(Request $request)
     {
+        $params = array(
+            'cmd' => 'list',
+        );
+        $search = $this->request('openapi', '', 'sea', $params);
+
         $result = $this->getShoppingCategoryList($request);
-        return View('shopping.list', ['categories' => $result['data']['list']]);
+        return View('shopping.list', ['categories' => $result['data']['list'],'search'=>$search['data']]);
     }
 
     public function getShoppingCategoryList(Request $request)
