@@ -369,7 +369,7 @@
         $('[data-pagenum]').each(function () {
             $(this).data('pagenum', 0);
         });
-        tabsLoading(1);
+        tabsLoading(2);
     });
 
 })(jQuery, Swiper);
