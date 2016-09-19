@@ -136,51 +136,51 @@
                 cid: CurrentCid
             }
         }).done(function (data) {
-            if (data.success) {
-                onImpressProduct(data.data.list);
-                if (data.data === null || data.data === '' || data.data.list.length === 0) {
-                    $Current.data('pagenum', -1);
-                } else {
-                    // 遍历模板 插入页面
-                    appendProductsList(data.data, ActiveTab);
-                    $Current.data('pagenum', PageNum);
+                if (data.success) {
+                    onImpressProduct(data.data.list);
+                    if (data.data === null || data.data === '' || data.data.list.length === 0) {
+                        $Current.data('pagenum', -1);
+                    } else {
+                        // 遍历模板 插入页面
+                        appendProductsList(data.data, ActiveTab);
+                        $Current.data('pagenum', PageNum);
 
-                    $.ajax({
-                        url: data.data.impr
-                    });
+                        $.ajax({
+                            url: data.data.impr
+                        });
 
-                    // 图片延迟加载
-                    $('img.img-lazy').lazyload({
-                        threshold: 200,
-                        container: $('#tabs-container'),
-                        effect: 'fadeIn'
-                    });
+                        // 图片延迟加载
+                        $('img.img-lazy').lazyload({
+                            threshold: 200,
+                            container: $('#tabs-container'),
+                            effect: 'fadeIn'
+                        });
 
-                    //给模板a标签绑定事件
-                    $('[data-clk]').unbind('click');
-                    $('[data-clk]').bind('click', function () {
-                        var $this = $(this);
+                        //给模板a标签绑定事件
+                        $('[data-clk]').unbind('click');
+                        $('[data-clk]').bind('click', function () {
+                            var $this = $(this);
 
-                        $('#productClick-name').val($this.data('title'));
-                        $('#productClick-spu').val($this.data('spu'));
-                        $('#productClick-price').val($this.data('price'));
+                            $('#productClick-name').val($this.data('title'));
+                            $('#productClick-spu').val($this.data('spu'));
+                            $('#productClick-price').val($this.data('price'));
 
-                        onProductClick();
+                            onProductClick();
 
-                        if (undefined !== $this.data('link')) {
-                            $.ajax({
-                                url: $this.data('clk'),
-                                type: "GET"
-                            });
-                            setTimeout(function () {
-                                window.location.href = $this.data('link');
-                            }, 100);
-                        }
-                    })
+                            if (undefined !== $this.data('link')) {
+                                $.ajax({
+                                    url: $this.data('clk'),
+                                    type: "GET"
+                                });
+                                setTimeout(function () {
+                                    window.location.href = $this.data('link');
+                                }, 100);
+                            }
+                        })
+                    }
                 }
-            }
-        })
-        // TODO failed 时的提示
+            })
+            // TODO failed 时的提示
             .always(function () {
                 // 隐藏加载动画
                 loadingHide(ActiveTab);
@@ -287,13 +287,13 @@
         } else {
             spu = $this.data('actionspu');
             $.ajax({
-                url: '/notesaction',
-                type: 'get',
-                data: {
-                    action: 'wish',
-                    spu: spu
-                }
-            })
+                    url: '/notesaction',
+                    type: 'get',
+                    data: {
+                        action: 'wish',
+                        spu: spu
+                    }
+                })
                 .done(function (data) {
                     window.location.href = '/login';
                 });
@@ -305,29 +305,33 @@
 
     // 显示隐藏搜索条件
     $('.btn-search').on('click', function () {
+        var SearchHeight = ($('.search-item').length) * 52 + 47;
         $('.search-container').toggleClass('active');
-        if($('.search-container').hasClass('active')){
+        if ($('.search-container').hasClass('active')) {
+            $('.search-container').css('height', SearchHeight);
             $('.btn-search').html('CLOSE');
             $('.swiper-slide-active').children('.container-fluid').addClass('search-mask');
         } else {
+            $('.search-container').css('height', 0);
             $('.btn-search').html('FILTER');
             $('.swiper-slide-active').children('.container-fluid').removeClass('search-mask');
         }
     });
 
     // 选择搜索条件
-    $('.search-item').on('click',function(){
+    $('.search-item').on('click', function () {
         $('.search-item').removeClass('active');
         $(this).addClass('active');
         $('.search-container').toggleClass('active');
+        $('.search-container').css('height', 0);
         $('.btn-search').html('FILTER');
         $('.swiper-slide-active').children('.container-fluid').removeClass('search-mask');
         // 搜索条件 备用
-        var SearchType=$(this).data('search');
+        var SearchType = $(this).data('search');
     });
 
     // reset 重置搜索条件
-    $('#searchReset').on('click',function(){
+    $('#searchReset').on('click', function () {
         $('.search-item').removeClass('active');
 
     });
