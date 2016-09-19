@@ -47,7 +47,7 @@ class ShoppingController extends ApiController
             'cid' => $request->input('cid', '0'),
             'pagenum' => $request->input('pagenum', 1),
             'pagesize' => $request->input('pagesize', 5),
-            'extra' => $request->input('extra_kv', "")
+            'extra_kv' => $request->input('extra_kv', "")
         );
         $data = $this->request('openapi', "", "rec", $params);
         $result = $this->getListWishedStatus($data);
