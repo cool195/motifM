@@ -319,6 +319,9 @@
     $('.search-item').on('click',function(){
         $('.search-item').removeClass('active');
         $(this).addClass('active');
+        $('.search-container').toggleClass('active');
+        $('.btn-search').html('FILTER');
+        $('.swiper-slide-active').children('.container-fluid').removeClass('search-mask');
         // 搜索条件 备用
         var SearchType=$(this).data('search');
     });

@@ -72,7 +72,7 @@
             <ul class="nav nav-tabs swiper-wrapper">
                 @if(isset($categories))
                     @foreach($categories as $key => $c)
-                        <li class="nav-item swiper-slide" data-tab-index="{{ $c['category_id'] }}"
+                        <li class="nav-item swiper-slide nav-shoppinglist" data-tab-index="{{ $c['category_id'] }}"
                             id="{{ $c['category_id'] }}">
                             <a class="nav-flex flex-alignCenter underLine-item text-primary m-x-15x p-y-10x nav-productType @if($key!=0) inactive @endif"
                                data-categoryid="{{ $c['category_id'] }}">
