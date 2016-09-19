@@ -303,4 +303,30 @@
 
     });
 
+    // 显示隐藏搜索条件
+    $('.btn-search').on('click', function () {
+        $('.search-container').toggleClass('active');
+        if($('.search-container').hasClass('active')){
+            $('.btn-search').html('CLOSE');
+            $('.swiper-slide-active').children('.container-fluid').addClass('search-mask');
+        } else {
+            $('.btn-search').html('FILTER');
+            $('.swiper-slide-active').children('.container-fluid').removeClass('search-mask');
+        }
+    });
+
+    // 选择搜索条件
+    $('.search-item').on('click',function(){
+        $('.search-item').removeClass('active');
+        $(this).addClass('active');
+        // 搜索条件 备用
+        var SearchType=$(this).data('search');
+    });
+
+    // reset 重置搜索条件
+    $('#searchReset').on('click',function(){
+        $('.search-item').removeClass('active');
+
+    });
+
 })(jQuery, Swiper);
