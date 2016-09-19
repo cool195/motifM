@@ -77,7 +77,7 @@
 }
 
 .search-container.active{
-  height: 255px;
+  height: auto;
 }
 
 .search-item i{
