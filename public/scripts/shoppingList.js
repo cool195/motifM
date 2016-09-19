@@ -6,6 +6,8 @@
 'use strict';
 
 (function ($, Swiper) {
+    // 搜索条件
+    var SearchType = "";
     // 选项卡导航
     var TabIndexSwiper = new Swiper('#tabIndex-container', {
         freeMode: true,
@@ -95,8 +97,9 @@
     /**
      * 加载商品列表, ajax请求
      * @need appendProductsList()
+     * type 加载方式 1:继续加载  2:重新加载(新的搜索条件)
      */
-    function tabsLoading() {
+    function tabsLoading(Type) {
         // 当前激活的选项卡容器
         var ActiveTab = TabsContainerSwiper.activeIndex;
 
@@ -106,7 +109,12 @@
         var $Index = $(TabIndexSwiper.slides[ActiveTab]);
 
         //  PageNum 当前页码数
-        var PageNum = $Current.data('pagenum');
+        if (Type === 1) {
+            var PageNum = $Current.data('pagenum');
+        } else {
+            var PageNum = 0;
+        }
+
         // 判断是否还有数据要加载
         if (PageNum === -1) {
             return;
@@ -127,9 +135,18 @@
 
         // 显示加载动画
         loadingShow(ActiveTab);
+
+        // 条件搜索条件
+        var Url;
+        if (SearchType != '') {
+            Url = '/products?extra_kv=sea:' + SearchType;
+        } else {
+            Url = '/products';
+        }
+
         // ajax 请求加载数据
         $.ajax({
-            url: '/products',
+            url: Url,
             data: {
                 pagenum: NextPage,
                 pagesize: 20,
@@ -142,7 +159,7 @@
                         $Current.data('pagenum', -1);
                     } else {
                         // 遍历模板 插入页面
-                        appendProductsList(data.data, ActiveTab);
+                        appendProductsList(data.data, ActiveTab, Type);
                         $Current.data('pagenum', PageNum);
 
                         $.ajax({
@@ -192,7 +209,7 @@
     $('#tabIndex-container').on('click', '.nav-item', function () {
         /* Act on the event */
         tabSwitch(TabIndexSwiper.clickedIndex, 500);
-        tabsLoading();
+        tabsLoading(1);
         setTabHeight();
     });
 
@@ -222,7 +239,7 @@
     // 页面初始化
     (function initBody() {
         initTab();
-        tabsLoading();
+        tabsLoading(1);
     })();
 
     // 下拉加载
@@ -233,7 +250,7 @@
             scrollMax = $(document).height() - $(window).height();
         // 当页面在底部区域时, 触发加载事件
         if (scrollCurrent !== scrollMax && scrollMax <= 300 + scrollCurrent) {
-            tabsLoading();
+            tabsLoading(1);
         }
     }
 
@@ -242,10 +259,18 @@
      *
      * @param ProductsList
      */
-    function appendProductsList(ProductsList, CurrentTab) {
+    function appendProductsList(ProductsList, CurrentTab, Type) {
         var TplHtml = template('tpl-product', ProductsList);
         var StageCache = $.parseHTML(TplHtml);
-        $(TabsContainerSwiper.slides[CurrentTab]).find('.row').append(StageCache);
+        if (Type === 1) {
+            $(TabsContainerSwiper.slides[CurrentTab]).find('.row').append(StageCache);
+        } else if (Type === 2) {
+            $('.swiper-wrapper .productList').each(function () {
+                $(this).html('');
+            });
+            $(TabsContainerSwiper.slides[CurrentTab]).find('.row').html(StageCache);
+        }
+
     }
 
     // 为选项卡导航, 绑定一次性事件, 加载商品数据
@@ -297,10 +322,7 @@
                 .done(function (data) {
                     window.location.href = '/login';
                 });
-
         }
-
-
     });
 
     // 显示隐藏搜索条件
@@ -327,13 +349,27 @@
         $('.btn-search').html('FILTER');
         $('.swiper-slide-active').children('.container-fluid').removeClass('search-mask');
         // 搜索条件 备用
-        //var SearchType = $(this).data('search');
+        SearchType = $(this).data('search');
+        $('[data-pagenum]').each(function () {
+            $(this).data('pagenum', 0);
+        });
+        tabsLoading(2);
+
     });
 
     // reset 重置搜索条件
     $('#searchReset').on('click', function () {
         $('.search-item').removeClass('active');
-
+        $('.search-container').toggleClass('active');
+        $('.search-container').css('height', 0);
+        $('.btn-search').html('FILTER');
+        $('.swiper-slide-active').children('.container-fluid').removeClass('search-mask');
+        // 重置
+        SearchType = '';
+        $('[data-pagenum]').each(function () {
+            $(this).data('pagenum', 0);
+        });
+        tabsLoading(1);
     });
 
 })(jQuery, Swiper);
