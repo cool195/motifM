@@ -87,13 +87,42 @@
                     @endforeach
                 @endif
             </ul>
+            <span class="btn-search font-size-xs">FILTER</span>
         </nav>
         <section class="swiper-container reserve-height" id="tabs-container">
+            <!-- 搜索条件 -->
+            <section class="search-container bg-white">
+                <div class="p-a-15x flex flex-alignCenter flex-fullJustified search-item active" data-search="newest">
+                    <span class="text-primary font-size-sm text-right">Newest</span>
+                    <i class="iconfont icon-check icon-size-md text-common"></i>
+                </div>
+                <hr class="hr-base m-a-0">
+                <div class="p-a-15x flex flex-alignCenter flex-fullJustified search-item" data-search="price">
+                    <span class="text-primary font-size-sm">Price</span>
+                    <i class="iconfont icon-check icon-size-md text-common"></i>
+                </div>
+                <hr class="hr-base m-a-0">
+                <div class="p-a-15x flex flex-alignCenter flex-fullJustified search-item" data-search="sales">
+                    <span class="text-primary font-size-sm">Sales</span>
+                    <i class="iconfont icon-check icon-size-md text-common"></i>
+                </div>
+                <hr class="hr-base m-a-0">
+                <div class="p-a-15x flex flex-alignCenter flex-fullJustified search-item" data-search="designer">
+                    <span class="text-primary font-size-sm">Designer</span>
+                    <i class="iconfont icon-check icon-size-md text-common"></i>
+                </div>
+                <hr class="hr-base m-a-0">
+                <div class="p-x-15x p-y-10x text-right"><span class="text-primary font-size-sm text-underLine" id="searchReset">Reset</span></div>
+            </section>
+            <div class="bg-white p-t-10x"></div>
             <div class="swiper-wrapper">
                 @if(isset($categories))
                     @foreach($categories as $c)
                         <div class="swiper-slide" data-loading="false" data-pagenum="0">
-                            <div class="bg-white p-t-10x"></div>
+                            <div class="lowTo p-y-15x bg-white" hidden>
+                                <hr class="hr-base m-a-0">
+                                <span class="p-x-15x text-common font-size-sm">Low to High</span>
+                            </div>
                             <div class="container-fluid">
                                 <div class="row productList">
                                 </div>
