@@ -123,7 +123,7 @@
                         </div>
                         @endif
                         <input hidden name="aid" value="{{$addr['receiving_id']}}">
-                        <i class="iconfont icon-arrow-right icon-size-xm text-common p-r-15x"></i>
+                        <i class="iconfont icon-arrow-right icon-size-xm text-red p-r-15x"></i>
                     </div>
                     <div class="bg-option bg-shipTo"></div>
                 </div>
@@ -132,15 +132,15 @@
                     <span class="checkoutInfo-subTitle flex-fixedShrink">Shipping</span>
                     <div class="checkoutInfo-content flex flex-fullJustified flex-alignCenter">
                         <span class="delivery-text">{{$defaultMethod['logistics_name']}} +${{ number_format(($defaultMethod['pay_price'] / 100), 2) }}</span>
-                        @if(count($shipMethodList)>1)<i class="iconfont icon-arrow-right icon-size-xm text-common p-r-15x"></i>@endif
+                        @if(count($shipMethodList)>1)<i class="iconfont icon-arrow-right icon-size-xm text-red p-r-15x"></i>@endif
                     </div>
                 </a>
                 <hr class="hr-base">
                 <div class="flex font-size-sm text-primary p-a-10x order-option" data-form-action="/cart/coupon">
                     <span class="checkoutInfo-subTitle flex-fixedShrink">Promotion code</span>
                     <div class="checkoutInfo-content flex flex-fullJustified flex-alignCenter">
-                        <span> {{ $data['cp_title'] }}</span>
-                        <i class="iconfont icon-arrow-right icon-size-xm text-common p-r-15x"></i>
+                        <span class="text-red"> {{ $data['cp_title'] }}</span>
+                        <i class="iconfont icon-arrow-right icon-size-xm text-red p-r-15x"></i>
                     </div>
                     <div class="bg-option bg-promotion"></div>
                 </div>
@@ -149,7 +149,7 @@
                     <span class="checkoutInfo-subTitle flex-fixedShrink">Special request (optional)</span>
                     <div class="checkoutInfo-content flex flex-fullJustified flex-alignCenter">
                         <span class="text-truncate">{{$remark}}</span>
-                        <i class="iconfont icon-arrow-right icon-size-xm text-common p-r-15x flex-fixedShrink"></i>
+                        <i class="iconfont icon-arrow-right icon-size-xm text-red p-r-15x flex-fixedShrink"></i>
                     </div>
                     <div class="bg-option bg-special"></div>
                 </div>

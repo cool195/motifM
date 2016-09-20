@@ -19,7 +19,7 @@
         @include('navigator')
         <section class="p-b-15x reserve-height">
             <article class="p-x-15x p-y-10x flex flex-fullJustified flex-alignCenter">
-                <span class="font-size-md text-main"><strong>Shipping Address</strong></span>
+                <span class="font-size-md text-main"><strong>Default Shipping Address</strong></span>
                 @if(!empty($data['list']))
                     <a class="btn btn-primary-outline btn-sm" id="address-edit">Edit</a>
                 @endif
