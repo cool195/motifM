@@ -350,6 +350,9 @@
         $('.swiper-slide-active').children('.container-fluid').removeClass('search-mask');
         // 搜索条件 备用
         SearchType = $(this).data('search');
+        // 显示搜索条件
+        $('.lowTo-info').html($(this).data('searchtext'));
+        $('.lowTo').removeClass('disabled');
         $('[data-pagenum]').each(function () {
             $(this).data('pagenum', 0);
         });
@@ -366,6 +369,9 @@
         $('.swiper-slide-active').children('.container-fluid').removeClass('search-mask');
         // 重置
         SearchType = '';
+        // 隐藏搜索条件
+        $('.lowTo-info').html(SearchType);
+        $('.lowTo').addClass('disabled');
         $('[data-pagenum]').each(function () {
             $(this).data('pagenum', 0);
         });
