@@ -335,7 +335,7 @@
             $('.swiper-slide-active').children('.container-fluid').addClass('search-mask');
         } else {
             $('.search-container').css('height', 0);
-            $('.btn-search').html('FILTER');
+            $('.btn-search').html('SORT BY');
             $('.swiper-slide-active').children('.container-fluid').removeClass('search-mask');
         }
     });
@@ -346,7 +346,7 @@
         $(this).addClass('active');
         $('.search-container').toggleClass('active');
         $('.search-container').css('height', 0);
-        $('.btn-search').html('FILTER');
+        $('.btn-search').html('SORT BY');
         $('.swiper-slide-active').children('.container-fluid').removeClass('search-mask');
         // 搜索条件 备用
         SearchType = $(this).data('search');

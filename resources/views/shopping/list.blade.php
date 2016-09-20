@@ -87,7 +87,7 @@
                     @endforeach
                 @endif
             </ul>
-            <span class="btn-search font-size-xs">FILTER</span>
+            <span class="btn-search font-size-xs">SORT BY</span>
         </nav>
         <section class="swiper-container reserve-height" id="tabs-container">
             <!-- 搜索条件 -->
