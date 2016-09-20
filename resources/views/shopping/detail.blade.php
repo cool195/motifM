@@ -372,33 +372,6 @@
                         </div>
                     </aside>
             @endif
-            <!-- 添加购物车 -->
-                <aside class="product-secondaryInfo container-fluid p-y-10x p-x-15x">
-                    @if(Session::has('user'))
-                        <div class="row">
-                            <div class="col-xs-12">
-                                <div class="btn btn-primary btn-block down-btn-addToBag @if(!$data['sale_status'] || $data['isPutOn']==0) disabled @endif"
-                                     data-control="openModal" @if(1 == $data['sale_type']) data-action="PUT"
-                                     @else data-action="PATCH"@endif>@if(1 == $data['sale_type']) Pre Order Now @elseAdd
-                                    to Bag @endif</div>
-                            </div>
-                            {{--<div class="col-xs-6">--}}
-                            {{--<div class="btn btn-primary btn-block" data-control="openModal" data-action="PUT">Buy Now</div>--}}
-                            {{--</div>--}}
-                        </div>
-                    @else
-                        <div class="row">
-                            <div class="col-xs-12">
-                                <a href="javascript:;"
-                                   class="notesLogin btn btn-primary btn-block down-btn-addToBag @if(!$data['sale_status'] || $data['isPutOn']==0) disabled @endif">@if(1 == $data['sale_type'])
-                                        Pre Order Now @else Add to Bag @endif</a>
-                            </div>
-                            {{--<div class="col-xs-6">--}}
-                            {{--<a href="/login" class="btn btn-primary btn-block" id="buyNow">Buy Now</a>--}}
-                            {{--</div>--}}
-                        </div>
-                    @endif
-                </aside>
             </section>
         </section>
 

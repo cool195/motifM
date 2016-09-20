@@ -128,7 +128,7 @@
                     <div class="bg-option bg-shipTo"></div>
                 </div>
                 <hr class="hr-base">
-                <a class="flex font-size-sm text-primary p-a-10x btn-method" data-remodal-target="delivery-modal" href="#">
+                <a class="flex font-size-sm text-primary p-a-10x btn-method" @if(count($shipMethodList)>1)data-remodal-target="delivery-modal"@endif href="javascript:;">
                     <span class="checkoutInfo-subTitle flex-fixedShrink">Shipping</span>
                     <div class="checkoutInfo-content flex flex-fullJustified flex-alignCenter">
                         <span class="delivery-text">{{$defaultMethod['logistics_name']}} +${{ number_format(($defaultMethod['price'] / 100), 2) }}</span>

@@ -37,10 +37,13 @@ class CartController extends ApiController
         $stype = !empty($request->input('stype')) ? $request->input('stype', 1) : 1; //必须加非空验证
         $bindid = $request->input('bindid');
         $address = $this->getUserAddrByAid($request->input('aid', 0));
+
         if(empty($address)){
             return redirect('cart/addradd?first=1');
         }
-        $defaultMethod = $this->getShippingMethodByStypeOrDefault($stype);
+
+        $_result = $this->getCartAccountList($request,-1, $bindid,'',$address['receiving_id']);
+        $defaultMethod = $this->getShippingMethodByStypeOrDefault($stype,$address['country_name_sn'],$_result['data']['total_amount']+$_result['data']['vas_amount']);
         $result = $this->getCartAccountList($request, $defaultMethod['logistics_type'], $bindid,'',$address['receiving_id']);
 
         if (empty($result['data']) || empty($result['success']) || !$result['success']) {
@@ -56,7 +59,7 @@ class CartController extends ApiController
             //'methodtoken' => $request->input('methodtoken', !empty($defaultPayMethod['data']['token']) ? $defaultPayMethod['data']['token'] : "" ),
             //'showName' => $request->input('showName', !empty($defaultPayMethod['data']['showName']) ? $defaultPayMethod['data']['showName'] : "" ),
             'showName' => $request->input('showName', 'PayPal'),
-            'shipMethodList' => $this->getShippingMethod(),
+            'shipMethodList' => $this->getShippingMethod($address['country_name_sn'],$_result['data']['total_amount']+$_result['data']['vas_amount']),
             'defaultMethod' => $defaultMethod,
             'bindid' => $bindid,
             'remark' => $request->input('remark', ""),
@@ -515,10 +518,10 @@ class CartController extends ApiController
         return $result;
     }
 
-    public function getShippingMethodByStypeOrDefault($stype)
+    public function getShippingMethodByStypeOrDefault($stype,$country=0,$price=0)
     {
         $method = array();
-        $methodList = $this->getShippingMethod();
+        $methodList = $this->getShippingMethod($country,$price);
         if (!empty($methodList)) {
             $method = current($methodList);
             if (isset($methodList[$stype])) {
@@ -528,12 +531,16 @@ class CartController extends ApiController
         return $method;
     }
 
-    public function getShippingMethod()
+    public function getShippingMethod($country=0,$price=0)
     {
         $params = array(
             'cmd' => 'logis',
             'token' => Session::get('user.token')
         );
+        if($price != 0){
+            $params['amount'] = $price;
+            $params['country'] = $country;
+        }
         $result = $this->request('openapi', "", "general", $params);
         if (empty($result)) {
             $result['success'] = false;
