@@ -94,7 +94,7 @@
             <section class="search-container bg-white">
                 @foreach($search['list'] as $value)
                     @if($value['attr_type']==1)
-                        <div class="p-a-15x flex flex-alignCenter flex-fullJustified search-item" data-search="{{$value['attr_id']}}">
+                        <div class="p-a-15x flex flex-alignCenter flex-fullJustified search-item" data-search="{{$value['attr_id']}}" data-searchtext="{{$value['attr_label']}}">
                             <span class="text-primary font-size-sm text-right">{{$value['attr_label']}}</span>
                             <i class="iconfont icon-check icon-size-md text-common"></i>
                         </div>
@@ -108,9 +108,9 @@
                 @if(isset($categories))
                     @foreach($categories as $c)
                         <div class="swiper-slide" data-loading="false" data-pagenum="0">
-                            <div class="lowTo p-y-15x bg-white" hidden>
+                            <div class="lowTo p-y-15x bg-white disabled">
                                 <hr class="hr-base m-a-0">
-                                <span class="p-x-15x text-common font-size-sm">Low to High</span>
+                                <span class="p-x-15x text-common font-size-sm lowTo-info">Low to High</span>
                             </div>
                             <div class="container-fluid">
                                 <div class="row productList">
