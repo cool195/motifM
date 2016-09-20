@@ -131,8 +131,8 @@
                 <a class="flex font-size-sm text-primary p-a-10x btn-method" @if(count($shipMethodList)>1)data-remodal-target="delivery-modal"@endif href="javascript:;">
                     <span class="checkoutInfo-subTitle flex-fixedShrink">Shipping</span>
                     <div class="checkoutInfo-content flex flex-fullJustified flex-alignCenter">
-                        <span class="delivery-text">{{$defaultMethod['logistics_name']}} +${{ number_format(($defaultMethod['price'] / 100), 2) }}</span>
-                        <i class="iconfont icon-arrow-right icon-size-xm text-common p-r-15x"></i>
+                        <span class="delivery-text">{{$defaultMethod['logistics_name']}} +${{ number_format(($defaultMethod['pay_price'] / 100), 2) }}</span>
+                        @if(count($shipMethodList)>1)<i class="iconfont icon-arrow-right icon-size-xm text-common p-r-15x"></i>@endif
                     </div>
                 </a>
                 <hr class="hr-base">
