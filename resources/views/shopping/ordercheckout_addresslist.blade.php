@@ -19,7 +19,7 @@
             @include('navigator', ['pageScope'=>true])
             <section class="p-b-15x reserve-height">
                 <article class="p-x-15x p-y-10x flex flex-fullJustified flex-alignCenter">
-                    <span class="font-size-md text-main"><strong>Default Shipping Address</strong></span>
+                    <span class="font-size-md text-main"><strong>Shipping Address</strong></span>
                     <a class="btn btn-primary-outline btn-sm" id="address-edit">Edit</a>
                     <!-- 修改状态 -->
                     <!--<a class="btn btn-primary btn-sm" href="#">Done</a>-->
@@ -45,7 +45,7 @@
                                 <div>@if(isset($addr['telephone'])) {{$addr['telephone']}}  @endif</div>
                             </div>
                             <div class="flex flex-alignCenter">
-                                @if(1 == $addr['isDefault']) <span class="text-common p-r-20x">Primary</span> @endif
+                                @if(1 == $addr['isDefault']) <span class="text-common p-r-20x">Default</span> @endif
                                 <i class="iconfont icon-radio icon-size-sm text-common @if($aid == $addr['receiving_id'] || count($data['list'])==1) active @endif"></i>
                             </div>
                         </div>
