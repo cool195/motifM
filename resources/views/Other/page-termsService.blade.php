@@ -684,7 +684,15 @@
                                     gathered by us with respect to such use. </p>
                                 <p class="m-b-15x">BUMPERR LTD<br/>
                                 71-75, Shelton Street, Covent Garden, London, WC2H 9JQ, UNITED KINGDOM (This address is only for billing, not for return).</p>
-                                <p class="m-b-0">(Last Updated June 20, 2016)</p>
+                                <p class="m-b-15x">
+                                    All transactions on evermarker.com are processed by MOTIF GROUP HK LIMITIED
+                                    (address: RM 19C LOCKHART CTR 301-307 LOCKHART RD WAN CHAI HK). Reach us anytime at
+                                    service@motif.me.</p>
+                                <p class="m-b-15x">
+                                    For any other type of purchases, these terms are an agreement between you and MOTIF
+                                    GROUP HK LIMITIED and goods and/or services will be delivered by MOTIF GROUP HK
+                                    LIMITIED directly.</p>
+                                <p class="m-b-0">(Last Updated September 21, 2016)</p>
                             </div>
                         </div>
 
