@@ -55,8 +55,16 @@ class DesignerController extends ApiController
                 'id' => $id,
             );
             $product = $this->request('openapi', 'designerf', 'content', $params);
+            $_spu = $product['data']['infos'][0]['spus'][0];
+            if (isset($_spu) && $product['data']['spuInfos'][$_spu]['spuBase']['sale_type'] == 1 && isset($product['data']['spuInfos'][$_spu]['skuPrice']['skuPromotion']) && $product['data']['spuInfos'][$_spu]['spuBase']['isPutOn'] == 1 && $product['data']['spuInfos'][$_spu]['stockStatus'] == 'YES') {
+                $params = array(
+                    'cmd' => 'productdetail',
+                    'spu' => $_spu,
+                );
+                $pre_product = $this->request('openapi', '', 'product', $params,0);
+            }
 
-            //设计师商品
+            //设计师推荐商品
             $params = array(
                 'recid' => '100004',
                 'pagenum' => 1,
@@ -91,16 +99,16 @@ class DesignerController extends ApiController
                     }
 
                     //执行登录前wish操作
-                    if($request->input('wishspu')){
+                    if ($request->input('wishspu')) {
                         Publicfun::addWishProduct($request->input('wishspu'));
                         $result['data']['pushspu'] = $request->input('wishspu');
                     }
 
                     //执行登录前follow操作
-                    if($request->input('des')){
+                    if ($request->input('des')) {
                         Publicfun::addFollowDesigner($request->input('des'));
                         $result['data']['followStatus'] = true;
-                    }else{
+                    } else {
                         $followParams = array(
                             'cmd' => 'is',
                             'pin' => Session::get('user.pin'),
@@ -110,7 +118,6 @@ class DesignerController extends ApiController
                         $follow = $this->request('openapi', '', 'follow', $followParams);
                         $result['data']['followStatus'] = $follow['data']['isFC'];
                     }
-
 
 
                     $spuArray = array();
@@ -133,7 +140,7 @@ class DesignerController extends ApiController
             } else {
                 $view = 'designer.show';
             }
-            return View($view, ['designer' => $result['data'], 'productAll' => $productAll, 'product' => $product['data']]);
+            return View($view, ['pre_product'=>$pre_product['data'],'designer' => $result['data'], 'productAll' => $productAll, 'product' => $product['data']]);
         }
 
     }
@@ -142,7 +149,7 @@ class DesignerController extends ApiController
     public function follow($id)
     {
         if (!empty($id)) {
-            return Publicfun::addFollowDesigner($id,true);
+            return Publicfun::addFollowDesigner($id, true);
         }
     }
 }
