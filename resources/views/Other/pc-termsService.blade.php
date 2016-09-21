@@ -696,10 +696,10 @@
                                     shall waive or impede our right to comply with law enforcement requests or
                                     requirements relating to your use of Our Services or information provided to or
                                     gathered by us with respect to such use. </p>
-                                <p class="m-b-15x">BUMPERR LTD<br/>
-                                    71-75, Shelton Street, Covent Garden, London, WC2H 9JQ, UNITED KINGDOM (This address is only for billing, not for return).</p>
+                                {{--<p class="m-b-15x">BUMPERR LTD<br/>--}}
+                                    {{--71-75, Shelton Street, Covent Garden, London, WC2H 9JQ, UNITED KINGDOM (This address is only for billing, not for return).</p>--}}
                                 <p class="m-b-15x">
-                                    All transactions on evermarker.com are processed by MOTIF GROUP HK LIMITIED
+                                    All transactions on motif.me are processed by MOTIF GROUP HK LIMITIED
                                     (address: RM 19C LOCKHART CTR 301-307 LOCKHART RD WAN CHAI HK). Reach us anytime at
                                     service@motif.me.</p>
                                 <p class="m-b-15x">
