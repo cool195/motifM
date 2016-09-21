@@ -91,16 +91,16 @@
                             </div>
                         </div>
                         {{--预售产品 预定信息 --}}
-                    @if($showSku['sale_type']==1 && $showSku['skuPromotion']['ship_desc'])
-                        <section class="limited-content">
-                            <div class="bg-white m-b-10x">
-                                <div class="p-x-15x limited-subtitle"><strong>PREORDER</strong></div>
-                                <div class="p-x-15x p-t-10x p-b-15x text-primary font-size-sm">
-                                    Expected to ship on <strong>{{$showSku['skuPromotion']['ship_desc']}}</strong>
-                                </div>
-                            </div>
-                        </section>
-                    @endif
+                    {{--@if($showSku['sale_type']==1 && $showSku['skuPromotion']['ship_desc'])--}}
+                        {{--<section class="limited-content">--}}
+                            {{--<div class="bg-white m-b-10x">--}}
+                                {{--<div class="p-x-15x limited-subtitle"><strong>PREORDER</strong></div>--}}
+                                {{--<div class="p-x-15x p-t-10x p-b-15x text-primary font-size-sm">--}}
+                                    {{--Expected to ship on <strong>{{$showSku['skuPromotion']['ship_desc']}}</strong>--}}
+                                {{--</div>--}}
+                            {{--</div>--}}
+                        {{--</section>--}}
+                    {{--@endif--}}
                     @endforeach
                 @endif
             </aside>
