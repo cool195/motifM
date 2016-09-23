@@ -338,6 +338,9 @@
             $('.btn-search').html('SORT BY');
             $('.swiper-slide-active').children('.container-fluid').removeClass('search-mask');
         }
+
+        $('body,html').animate({scrollTop:0},0);
+        return false;
     });
 
     // 选择搜索条件
