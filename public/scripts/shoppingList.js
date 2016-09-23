@@ -365,7 +365,7 @@
         $('.search-item').removeClass('active');
         $('.search-container').toggleClass('active');
         $('.search-container').css('height', 0);
-        $('.btn-search').html('FILTER');
+        $('.btn-search').html('SORT BY');
         $('.swiper-slide-active').children('.container-fluid').removeClass('search-mask');
         // 重置
         SearchType = '';
