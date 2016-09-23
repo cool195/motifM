@@ -45,7 +45,7 @@
                                 <div>@if(isset($addr['telephone'])) {{$addr['telephone']}}  @endif</div>
                             </div>
                             <div class="flex flex-alignCenter">
-                                @if(1 == $addr['isDefault']) <span class="text-common p-r-20x">Primary</span> @endif
+                                @if(1 == $addr['isDefault']) <span class="text-common p-r-20x">Default</span> @endif
                                 <i class="iconfont icon-radio icon-size-sm text-common @if($aid == $addr['receiving_id'] || count($data['list'])==1) active @endif"></i>
                             </div>
                         </div>

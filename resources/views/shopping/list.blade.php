@@ -72,7 +72,7 @@
             <ul class="nav nav-tabs swiper-wrapper">
                 @if(isset($categories))
                     @foreach($categories as $key => $c)
-                        <li class="nav-item swiper-slide" data-tab-index="{{ $c['category_id'] }}"
+                        <li class="nav-item swiper-slide nav-shoppinglist" data-tab-index="{{ $c['category_id'] }}"
                             id="{{ $c['category_id'] }}">
                             <a class="nav-flex flex-alignCenter underLine-item text-primary m-x-15x p-y-10x nav-productType @if($key!=0) inactive @endif"
                                data-categoryid="{{ $c['category_id'] }}">
@@ -87,13 +87,31 @@
                     @endforeach
                 @endif
             </ul>
+            <span class="btn-search font-size-xs">SORT BY</span>
         </nav>
         <section class="swiper-container reserve-height" id="tabs-container">
+            <!-- 搜索条件 -->
+            <section class="search-container bg-white">
+                @foreach($search['list'] as $value)
+                    @if($value['attr_type']==1)
+                        <div class="p-a-15x flex flex-alignCenter flex-fullJustified search-item" data-search="{{$value['attr_id']}}" data-searchtext="{{$value['attr_label']}}">
+                            <span class="text-primary font-size-sm text-right">{{$value['attr_label']}}</span>
+                            <i class="iconfont icon-check icon-size-md text-common"></i>
+                        </div>
+                        <hr class="hr-base m-a-0">
+                    @endif
+                @endforeach
+                <div class="p-x-15x p-y-10x text-right"><span class="text-primary font-size-sm text-underLine" id="searchReset">Reset</span></div>
+            </section>
+            <div class="bg-white p-t-10x"></div>
             <div class="swiper-wrapper">
                 @if(isset($categories))
                     @foreach($categories as $c)
                         <div class="swiper-slide" data-loading="false" data-pagenum="0">
-                            <div class="bg-white p-t-10x"></div>
+                            <div class="lowTo p-y-15x bg-white disabled">
+                                <hr class="hr-base m-a-0">
+                                <span class="p-x-15x text-common font-size-sm lowTo-info">Low to High</span>
+                            </div>
                             <div class="container-fluid">
                                 <div class="row productList">
                                 </div>

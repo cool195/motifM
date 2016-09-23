@@ -202,30 +202,47 @@
             </div>
 
             <!-- 预售信息 -->
-            <section class="limited-content" hidden>
-                <div class="bg-white m-b-10x m-y-10x">
-                    <div class="p-x-15x limited-subtitle"><strong>LIMITED EDITION</strong></div>
-                    <div>
-                        <div class="p-x-15x p-t-5x">
-                            <img src="/images/icon/icon-limited.png"
-                                 srcset="/images/icon/icon-limited@2x.png 2x, /images/icon/icon-limited@3x.png 3x"
-                                 alt="">
-                            <span class="text-primary font-size-sm">Orders Close <span class="time_show"></span></span>
-                        </div>
-                        <div class="p-x-15x p-y-5x m-x-15x">
-                            <progress class="progress progress-primary" id="limited-progress" value="" max="10000">0%</progress>
+            @if(!empty($pre_product))
+                <section class="limited-content" hidden>
+                    <div class="bg-white m-b-10x m-y-10x limited-data"
+                         data-begintime="{{$pre_product['skuPrice']['skuPromotion']['start_time']}}"
+                         data-endtime="{{$pre_product['skuPrice']['skuPromotion']['end_time']}}"
+                         data-lefttime="@if($pre_product['isPutOn']==1){{$pre_product['skuPrice']['skuPromotion']['remain_time']}}@else{{'0'}}@endif"
+                         data-ship="{{$pre_product['skuPrice']['skuPromotion']['ship_desc']}}">
+                        <div class="p-x-15x limited-subtitle"><strong>LIMITED EDITION</strong></div>
+                        <div>
+                            <div class="p-x-15x p-t-5x">
+                                <img src="/images/icon/icon-limited.png"
+                                     srcset="/images/icon/icon-limited@2x.png 2x, /images/icon/icon-limited@3x.png 3x"
+                                     alt="">
+                                <span class="text-primary font-size-sm">@if(($pre_product['spuStock']['stock_qtty'] - $pre_product['spuStock']['saled_qtty'] > 0) && $pre_product['isPutOn']==1)
+                                        Only {{$pre_product['spuStock']['stock_qtty'] - $pre_product['spuStock']['saled_qtty']}}
+                                        Left @else Sold Out @endif</span>
+                            </div>
+                            <div class="p-x-15x p-t-5x">
+                                <img src="/images/icon/icon-limited.png"
+                                     srcset="/images/icon/icon-limited@2x.png 2x, /images/icon/icon-limited@3x.png 3x"
+                                     alt="">
+                                <span class="text-primary font-size-sm">Orders Close <span
+                                            class="time_show"></span></span>
+                            </div>
+                            <div class="p-x-15x p-y-5x m-x-15x">
+                                <progress class="progress progress-primary" id="limited-progress" value="" max="10000">
+                                    0%
+                                </progress>
+                            </div>
                         </div>
                     </div>
-                </div>
-            </section>
-            <section class="limited" hidden>
-                <div class="bg-white m-y-10x">
-                    <div class="p-x-15x limited-subtitle"><strong>PREORDER</strong></div>
-                    <div class="p-x-15x p-t-10x p-b-15x text-primary font-size-sm">
-                        Expected to ship on <strong id="shipToDate"></strong>
+                </section>
+                <section class="limited" hidden>
+                    <div class="bg-white m-y-10x">
+                        <div class="p-x-15x limited-subtitle"><strong>PREORDER</strong></div>
+                        <div class="p-x-15x p-t-10x p-b-15x text-primary font-size-sm">
+                            Expected to ship on <strong id="shipToDate"></strong>
+                        </div>
                     </div>
-                </div>
-            </section>
+                </section>
+            @endif
             {{--设计师 对应商品--}}
             <aside class="bg-white">
                 @if(isset($product['infos']))
@@ -295,9 +312,6 @@
                                         @if(isset($value['spus']))
                                             @foreach($value['spus'] as $key => $spu)
                                                 <div class="col-xs-6 p-a-0">
-                                                    @if($key==0 && $product['spuInfos'][$spu]['spuBase']['sale_type']==1 && isset($product['spuInfos'][$spu]['skuPrice']['skuPromotion']) && $product['spuInfos'][$spu]['spuBase']['isPutOn']==1 && $product['spuInfos'][$spu]['stockStatus']=='YES')
-                                                        <p class="limited-data" hidden data-ship="{{$product['spuInfos'][$spu]['skuPrice']['skuPromotion']['ship_desc']}}" data-begintime="{{$product['spuInfos'][$spu]['skuPrice']['skuPromotion']['start_time']}}" data-endtime="{{$product['spuInfos'][$spu]['skuPrice']['skuPromotion']['end_time']}}" data-lefttime="{{$product['spuInfos'][$spu]['skuPrice']['skuPromotion']['remain_time']}}"></p>
-                                                    @endif
                                                     <div class="topic-product-item productList-item">
                                                         <a data-link="motif://o.c?a=pd&spu={{$spu}}"
                                                            data-clk='http://clk.motif.me/log.gif?t=designer.400001&m=H5_M2016-1&pin={{ Session::get('user.pin') }}&uuid={{ Session::get('user.uuid') }}&v={"action":1,"skipType":1,"skipId"{{$spu}},"expid":0,"index":{{$key}},"version":"1.0.1","ver":"9.2","src":"H5"}'

@@ -41,16 +41,15 @@
                 url: '/addr/modify',
                 type: 'POST',
                 data: $('#addressInfo').serialize()
-            })
-            .done(function () {
-                console.log('success');
-                $('#infoForm').submit();
-            })
-            .fail(function () {
-                console.log('error');
-            }).always(function () {
+            }).done(function (data) {
+            console.log(data);
+            if (data.success) {
+                window.location.href = '/cart/ordercheckout?aid='+data.data.receiving_id;
+            }
+        }).fail(function () {
+            
+        }).always(function () {
             closeLoading();
-            console.log('complete');
         });
     }
 

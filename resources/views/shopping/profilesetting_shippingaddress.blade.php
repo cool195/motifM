@@ -53,7 +53,7 @@
 
                                     <div class="flex flex-alignCenter">
                                         @if(1 == $addr['isDefault'])
-                                            <span class="text-common p-r-20x">Primary</span>
+                                            <span class="text-common p-r-20x">Default</span>
                                         @endif
                                         <i class="iconfont icon-size-sm text-common"></i>
                                     </div>

@@ -91,16 +91,16 @@
                             </div>
                         </div>
                         {{--预售产品 预定信息 --}}
-                    @if($showSku['sale_type']==1 && $showSku['skuPromotion']['ship_desc'])
-                        <section class="limited-content">
-                            <div class="bg-white m-b-10x">
-                                <div class="p-x-15x limited-subtitle"><strong>PREORDER</strong></div>
-                                <div class="p-x-15x p-t-10x p-b-15x text-primary font-size-sm">
-                                    Expected to ship on <strong>{{$showSku['skuPromotion']['ship_desc']}}</strong>
-                                </div>
-                            </div>
-                        </section>
-                    @endif
+                    {{--@if($showSku['sale_type']==1 && $showSku['skuPromotion']['ship_desc'])--}}
+                        {{--<section class="limited-content">--}}
+                            {{--<div class="bg-white m-b-10x">--}}
+                                {{--<div class="p-x-15x limited-subtitle"><strong>PREORDER</strong></div>--}}
+                                {{--<div class="p-x-15x p-t-10x p-b-15x text-primary font-size-sm">--}}
+                                    {{--Expected to ship on <strong>{{$showSku['skuPromotion']['ship_desc']}}</strong>--}}
+                                {{--</div>--}}
+                            {{--</div>--}}
+                        {{--</section>--}}
+                    {{--@endif--}}
                     @endforeach
                 @endif
             </aside>
@@ -123,7 +123,7 @@
                         </div>
                         @endif
                         <input hidden name="aid" value="{{$addr['receiving_id']}}">
-                        <i class="iconfont icon-arrow-right icon-size-xm text-common p-r-15x"></i>
+                        <i class="iconfont icon-arrow-right icon-size-xm text-red p-r-15x"></i>
                     </div>
                     <div class="bg-option bg-shipTo"></div>
                 </div>
@@ -131,16 +131,16 @@
                 <a class="flex font-size-sm text-primary p-a-10x btn-method" @if(count($shipMethodList)>1)data-remodal-target="delivery-modal"@endif href="javascript:;">
                     <span class="checkoutInfo-subTitle flex-fixedShrink">Shipping</span>
                     <div class="checkoutInfo-content flex flex-fullJustified flex-alignCenter">
-                        <span class="delivery-text">{{$defaultMethod['logistics_name']}} +${{ number_format(($defaultMethod['price'] / 100), 2) }}</span>
-                        <i class="iconfont icon-arrow-right icon-size-xm text-common p-r-15x"></i>
+                        <span class="delivery-text">{{$defaultMethod['logistics_name']}} +${{ number_format(($defaultMethod['pay_price'] / 100), 2) }}</span>
+                        @if(count($shipMethodList)>1)<i class="iconfont icon-arrow-right icon-size-xm text-red p-r-15x"></i>@endif
                     </div>
                 </a>
                 <hr class="hr-base">
                 <div class="flex font-size-sm text-primary p-a-10x order-option" data-form-action="/cart/coupon">
                     <span class="checkoutInfo-subTitle flex-fixedShrink">Promotion code</span>
                     <div class="checkoutInfo-content flex flex-fullJustified flex-alignCenter">
-                        <span> {{ $data['cp_title'] }}</span>
-                        <i class="iconfont icon-arrow-right icon-size-xm text-common p-r-15x"></i>
+                        <span class="text-red"> {{ $data['cp_title'] }}</span>
+                        <i class="iconfont icon-arrow-right icon-size-xm text-red p-r-15x"></i>
                     </div>
                     <div class="bg-option bg-promotion"></div>
                 </div>
@@ -149,7 +149,7 @@
                     <span class="checkoutInfo-subTitle flex-fixedShrink">Special request (optional)</span>
                     <div class="checkoutInfo-content flex flex-fullJustified flex-alignCenter">
                         <span class="text-truncate">{{$remark}}</span>
-                        <i class="iconfont icon-arrow-right icon-size-xm text-common p-r-15x flex-fixedShrink"></i>
+                        <i class="iconfont icon-arrow-right icon-size-xm text-red p-r-15x flex-fixedShrink"></i>
                     </div>
                     <div class="bg-option bg-special"></div>
                 </div>
@@ -205,7 +205,7 @@
             </aside>
 
             <!-- 结算按钮 -->
-            <aside class="bg-white m-t-10x p-a-10x">
+            <aside class="m-t-10x p-a-10x">
                 <div>
                     <a class="btn btn-primary btn-block @if(empty($paym) || empty($addr) || "" == $paym || "" == $addr) disabled @endif"  data-role="submit" data-with="Oceanpay">Pay with Credit Card</a>
                     <a class="btn btn-primary btn-block m-t-10x m-l-0 @if(empty($paym) || empty($addr) || "" == $paym || "" == $addr) disabled @endif"  data-role="submit" data-with="PayPalNative">Pay with PayPal</a>

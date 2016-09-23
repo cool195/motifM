@@ -22,7 +22,7 @@ abstract class ApiController extends Controller
 
     protected function request($ApiName, $system, $service, array $params, $cacheTime = 0)
     {
-
+        $params['src'] = 'h5';
         $ApiName = $_SERVER['SERVER_NAME'] == 'm.motif.me' ? 'openapi' : ($_SERVER['SERVER_NAME'] == 'test.m.motif.me' ? 'openapi_test' : 'openapi_local');
         $Api = $service == 'rec' ? $this->ApiUrl[$ApiName]['rec'] : $this->ApiUrl[$ApiName]['api'];
         $buildParams = http_build_query($params);
