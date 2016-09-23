@@ -16570,9 +16570,10 @@ else if (typeof define === 'function' && define.amd) {
     });
 
     function setCookie(name, value) {
-        var Time = 24;
+        //var Time = 24;
         var exp = new Date();
-        exp.setTime(exp.getTime() + Time * 60 * 60 * 1000);
+        //exp.setTime(exp.getTime() + Time * 60 * 60 * 1000);
+        exp.setTime(exp.getTime() + 5 * 60 * 1000);
         document.cookie = name + '=' + escape(value) + ';expires=' + exp.toGMTString();
     }
     //读取cookie
@@ -16612,13 +16613,13 @@ else if (typeof define === 'function' && define.amd) {
         if (getCookie('downloadingApp')){
             $('#closeDownloading').parents('nav').remove();
         }else {
-            if( switchSafari() ){
-                $('#closeDownloading').parents('nav').remove();
-            } else {
-                $('#closeDownloading').parents('.bg-download').removeAttr('hidden');
-            }
+            //if( switchSafari() ){
+            //    $('#closeDownloading').parents('nav').remove();
+            //} else {
+            $('#closeDownloading').parents('.bg-download').removeAttr('hidden');
+            //}
         }
-    })();
+    })()
 
     switchDownload();
 

@@ -5766,6 +5766,7 @@ footer .links-group {
 .bg-download {
   /* background: url("http://cdn.m.motif.me/images/background/bg-download.jpg"); */
   background-color: #fad3d8;
+  border-top:solid #e2e5ed 2px;
 }
 
 .bg-topic {
