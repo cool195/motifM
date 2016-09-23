@@ -339,7 +339,7 @@
             $('.swiper-slide-active').children('.container-fluid').removeClass('search-mask');
         }
 
-        $('body,html').animate({scrollTop:0},100);
+        $('body,html').animate({scrollTop:0},0);
         return false;
     });
 
