@@ -24,7 +24,7 @@
                             @foreach($order['lineOrderList'] as $lineOrder)
                         {
                             'name': '{{ $lineOrder['main_title'] }}',
-                            'sku': '{{ $lineOrder['sku'] }}',
+                            'id': '{{ $lineOrder['spu'] }}',
                             'price': '{{ number_format($lineOrder['sale_price'] / 100, 2) }}',
                             'brand': 'Motif',
                             'category': '',
