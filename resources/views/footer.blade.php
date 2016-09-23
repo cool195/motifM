@@ -71,18 +71,18 @@
         <div class="col-xs-4">
             <div class="flex flex-alignCenter">
                 <a class="p-r-20x p-y-15x" id="closeDownloading">
-                    <i class="iconfont icon-cross text-common btn-closeDownload"></i>
+                    <i class="iconfont icon-cross text-white btn-closeDownload"></i>
                 </a>
                 <div class="p-r-15x">
                     <img src="{{env('CDN_Static')}}/images/icon/icon-motif.png" srcset="{{env('CDN_Static')}}/images/icon/icon-motif@2x.png 2x,{{env('CDN_Static')}}/images/icon/icon-motif@3x.png 3x">
                 </div>
             </div>
         </div>
-        <div class="col-xs-4">
-            <div class="p-r-15x font-size-sm text-primary">Find More With Motif App</div>
+        <div class="col-xs-5">
+            <div class="p-r-15x font-size-sm text-white">You will Save 20% OFF with Motif app</div>
         </div>
-        <div class="col-xs-4">
-            <div class="font-size-sm"><a data-role="downloading">DOWNLOAD</a></div>
+        <div class="col-xs-3">
+            <div class="font-size-sm"><a class="btn btn-white btn-sm" data-role="downloading">Buy Now</a></div>
         </div>
     </div>
 </nav>

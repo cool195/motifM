@@ -2481,6 +2481,18 @@ fieldset[disabled] a.btn {
   border-color: #374146;
 }
 
+.btn-white {
+  color: #36405b;
+  background-color: #ffffff;
+  border-color: #ffffff;
+}
+
+.btn-white:hover {
+  color: #36405b;
+  background-color: #ffffff;
+  border-color: #ffffff;
+}
+
 .btn-common {
   color: #fff;
   background-color: #cccccc;
@@ -5752,7 +5764,8 @@ footer .links-group {
 }
 
 .bg-download {
-  background: url("http://cdn.m.motif.me/images/background/bg-download.jpg");
+  /* background: url("http://cdn.m.motif.me/images/background/bg-download.jpg"); */
+  background-color: #fad3d8;
 }
 
 .bg-topic {
