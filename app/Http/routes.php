@@ -205,3 +205,5 @@ $app->get('/detail/{spu}', 'Shopping\ProductController@index');
 $app->get('/designer/{id}', 'Designer\DesignerController@show');
 
 $app->get('/apptest', 'Other\PageController@apptest');
+
+$app->get('/orderlist', 'Other\PageController@orderlist');

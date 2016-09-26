@@ -72,7 +72,6 @@
                                      src="{{ env('APP_Api_Image').'/n2/'.$lineOrder['img_path'] }}"
                                      width="70px" height="70px">
                             </div>
-                            <!-- TODO 缩略号的兼容性不好, 需要改样式 -->
                             <div class="p-x-10x order-product-title">
                                 <h6 class="text-main font-size-md text-truncate">
                                     <strong>{{$lineOrder['main_title']}}</strong>
