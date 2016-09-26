@@ -71,21 +71,19 @@
     <div class="text-common text-center font-size-xs">Copyright © 2016 Motif Group LLC. All rights reserved.</div>
 </footer>
 <!-- App 下载提示 -->
-<nav class="navbar-fixed-bottom bg-download p-y-10x p-x-15x" hidden>
+<nav class="navbar-fixed-bottom bg-download p-y-5x p-x-15x" hidden>
     <div class="row flex flex-alignCenter">
-        <div class="col-xs-4">
+        <div class="col-xs-9">
             <div class="flex flex-alignCenter">
-                <a class="p-r-20x p-y-15x" id="closeDownloading">
-                    <i class="iconfont icon-cross text-white btn-closeDownload"></i>
+                <a class="p-r-20x p-y-10x" id="closeDownloading">
+                    <i class="iconfont icon-cross text-primary btn-closeDownload"></i>
                 </a>
                 <div class="p-r-15x">
                     <img src="{{env('CDN_Static')}}/images/icon/icon-motif.png"
-                         srcset="{{env('CDN_Static')}}/images/icon/icon-motif@2x.png 2x,{{env('CDN_Static')}}/images/icon/icon-motif@3x.png 3x">
+                         srcset="{{env('CDN_Static')}}/images/icon/icon-motif@2x.png 2x,{{env('CDN_Static')}}/images/icon/icon-motif@3x.png 3x" width="45" height="45">
                 </div>
+                <div class="p-r-15x font-size-sm text-primary">You will Save 20% OFF with Motif app</div>
             </div>
-        </div>
-        <div class="col-xs-5">
-            <div class="p-r-15x font-size-sm text-white">You will Save 20% OFF with Motif app</div>
         </div>
         <div class="col-xs-3">
             <div class="font-size-sm">
