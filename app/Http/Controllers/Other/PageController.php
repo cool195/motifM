@@ -114,6 +114,11 @@ class PageController extends ApiController
     public function apptest(){
         return view('Other.apptest');
     }
+
+    public function orderlist()
+    {
+        return view('Other.orderlist');
+    }
 }
 
 ?>
