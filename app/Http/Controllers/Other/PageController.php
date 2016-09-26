@@ -35,7 +35,8 @@ class PageController extends ApiController
     //shippingreturns
     public function shippingreturns()
     {
-        return View('Other.page-shippingreturns');
+        return redirect('/template/23');
+        //return View('Other.page-shippingreturns');
     }
 
     //payments
