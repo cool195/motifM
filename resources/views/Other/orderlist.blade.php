@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Skip Designer</title>
+    <title>Skip Order</title>
 </head>
 <body>
 @include('check.tagmanager')
