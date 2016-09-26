@@ -12,13 +12,16 @@
         </div>
         <div class="p-l-15x">
             <a class="share-btn" href="https://www.facebook.com/motifme">
-                <img src="{{env('CDN_Static')}}/images/icon/facebook.png" srcset="{{env('CDN_Static')}}/images/icon/facebook@2x.png 2x,{{env('CDN_Static')}}/images/icon/facebook@3x.png 3x">
+                <img src="{{env('CDN_Static')}}/images/icon/facebook.png"
+                     srcset="{{env('CDN_Static')}}/images/icon/facebook@2x.png 2x,{{env('CDN_Static')}}/images/icon/facebook@3x.png 3x">
             </a>
             <a class="share-btn" href="https://www.instagram.com/motifme/">
-                <img src="{{env('CDN_Static')}}/images/icon/ins.png" srcset="{{env('CDN_Static')}}/images/icon/ins@2x.png 2x,{{env('CDN_Static')}}/images/icon/ins@3x.png 3x">
+                <img src="{{env('CDN_Static')}}/images/icon/ins.png"
+                     srcset="{{env('CDN_Static')}}/images/icon/ins@2x.png 2x,{{env('CDN_Static')}}/images/icon/ins@3x.png 3x">
             </a>
             <a class="share-btn" href="https://www.pinterest.com/motifme/">
-                <img src="{{env('CDN_Static')}}/images/icon/pinterest.png" srcset="{{env('CDN_Static')}}/images/icon/pinterest@2x.png 2x,{{env('CDN_Static')}}/images/icon/pinterest@3x.png 3x">
+                <img src="{{env('CDN_Static')}}/images/icon/pinterest.png"
+                     srcset="{{env('CDN_Static')}}/images/icon/pinterest@2x.png 2x,{{env('CDN_Static')}}/images/icon/pinterest@3x.png 3x">
             </a>
         </div>
     </div>
@@ -45,8 +48,10 @@
                     <div class="list-group-item list-group-itemText-lg text-primary"><strong>MOTIF</strong>
                     </div>
                     <a class="list-group-item list-group-itemText-lg text-primary" href="/aboutmotif">About Motif</a>
-                    <a class="list-group-item list-group-itemText-lg text-primary" href="/privacynotice">Privacy Notice</a>
-                    <a class="list-group-item list-group-itemText-lg text-primary" href="/termsconditions">Terms & Conditions</a>
+                    <a class="list-group-item list-group-itemText-lg text-primary" href="/privacynotice">Privacy
+                        Notice</a>
+                    <a class="list-group-item list-group-itemText-lg text-primary" href="/termsconditions">Terms &
+                        Conditions</a>
                 </div>
             </div>
             <div class="col-xs-6">
@@ -74,7 +79,8 @@
                     <i class="iconfont icon-cross text-white btn-closeDownload"></i>
                 </a>
                 <div class="p-r-15x">
-                    <img src="{{env('CDN_Static')}}/images/icon/icon-motif.png" srcset="{{env('CDN_Static')}}/images/icon/icon-motif@2x.png 2x,{{env('CDN_Static')}}/images/icon/icon-motif@3x.png 3x">
+                    <img src="{{env('CDN_Static')}}/images/icon/icon-motif.png"
+                         srcset="{{env('CDN_Static')}}/images/icon/icon-motif@2x.png 2x,{{env('CDN_Static')}}/images/icon/icon-motif@3x.png 3x">
                 </div>
             </div>
         </div>
@@ -82,7 +88,13 @@
             <div class="p-r-15x font-size-sm text-white">You will Save 20% OFF with Motif app</div>
         </div>
         <div class="col-xs-3">
-            <div class="font-size-sm"><a class="btn btn-white btn-sm" data-role="downloading">Buy Now</a></div>
+            <div class="font-size-sm">
+                @if($designer['designer_id']==92)
+                    <a class="btn btn-white btn-sm" href="/rae">Buy Now</a>
+                @else
+                    <a class="btn btn-white btn-sm" data-role="downloading">Buy Now</a>
+                @endif
+            </div>
         </div>
     </div>
 </nav>
