@@ -55,8 +55,8 @@ class DesignerController extends ApiController
                 'id' => $id,
             );
             $product = $this->request('openapi', 'designerf', 'content', $params);
-            foreach ($product['data']['infos'] as $value){
-                if($value['type']=='product'){
+            foreach ($product['data']['infos'] as $value) {
+                if ($value['type'] == 'product') {
                     $_spu = $value['spus'][0];
                     break;
                 }
@@ -66,7 +66,7 @@ class DesignerController extends ApiController
                     'cmd' => 'productdetail',
                     'spu' => $_spu,
                 );
-                $pre_product = $this->request('openapi', '', 'product', $params,0);
+                $pre_product = $this->request('openapi', '', 'product', $params, 0);
             }
 
             //设计师推荐商品
@@ -145,7 +145,7 @@ class DesignerController extends ApiController
             } else {
                 $view = 'designer.show';
             }
-            return View($view, ['pre_product'=>$pre_product['data'],'designer' => $result['data'], 'productAll' => $productAll, 'product' => $product['data']]);
+            return View($view, ['pre_product' => $pre_product['data'], 'designer' => $result['data'], 'productAll' => $productAll, 'product' => $product['data']]);
         }
 
     }
@@ -156,6 +156,19 @@ class DesignerController extends ApiController
         if (!empty($id)) {
             return Publicfun::addFollowDesigner($id, true);
         }
+    }
+
+    public function skipDesigner()
+    {
+        $dev = '';
+        if (strpos($_SERVER['HTTP_USER_AGENT'], 'iPhone') || strpos($_SERVER['HTTP_USER_AGENT'], 'iPad')) {
+            $dev = 'systerm is IOS';
+        } else if (strpos($_SERVER['HTTP_USER_AGENT'], 'Android')) {
+            $dev = 'systerm is Android';
+        } else {
+            $dev = 'systerm is other';
+        }
+        return View('designer.skipDesigner');
     }
 }
 
