@@ -82,15 +82,15 @@
                     <img src="{{env('CDN_Static')}}/images/icon/icon-motif.png"
                          srcset="{{env('CDN_Static')}}/images/icon/icon-motif@2x.png 2x,{{env('CDN_Static')}}/images/icon/icon-motif@3x.png 3x" width="45" height="45">
                 </div>
-                <div class="p-r-15x font-size-xs text-primary">You will Save 20% OFF with Motif app</div>
+                <div class="p-r-15x font-size-xs text-primary">Make your first purchase using our free app and receive 20% off!</div>
             </div>
         </div>
         <div class="col-xs-3">
             <div class="font-size-sm">
                 @if($designer['designer_id']==92)
-                    <a class="btn btn-white btn-sm" href="/ray">Buy Now</a>
+                    <a class="btn btn-white btn-sm" href="/rae">DOWNLOAD</a>
                 @else
-                    <a class="btn btn-white btn-sm" data-role="downloading">Buy Now</a>
+                    <a class="btn btn-white btn-sm" data-role="downloading">DOWNLOAD</a>
                 @endif
             </div>
         </div>
