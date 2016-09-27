@@ -45,11 +45,9 @@
     //
     var Device = switchDevice();
     if (Device === 1) {
-        alert('ios')
         ios()
         //window.location.href = "https://control.kochava.com/v1/cpi/click?campaign_id=komotif-kvced5a25acca5c8c39f&network_id=5033&device_id=device_id&site_id=1";
     } else if (Device === 0) {
-        alert('android')
         android()
         //window.location.href = "https://c89mm.app.goo.gl/Y2QC";
     } else {
