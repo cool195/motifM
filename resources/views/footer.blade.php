@@ -71,28 +71,29 @@
     <div class="text-common text-center font-size-xs">Copyright © 2016 Motif Group LLC. All rights reserved.</div>
 </footer>
 <!-- App 下载提示 -->
-<nav class="navbar-fixed-bottom bg-download p-y-5x p-x-15x" hidden>
+<nav class="navbar-fixed-bottom bg-download p-y-5x p-x-10x" hidden>
     <div class="row flex flex-alignCenter">
-        <div class="col-xs-9">
+        <div class="col-xs-10">
             <div class="flex flex-alignCenter">
-                <a class="p-r-15x p-y-10x" id="closeDownloading">
-                    <i class="iconfont icon-cross text-primary btn-closeDownload icon-size-base"></i>
+                <a class="p-r-10x p-y-10x" id="closeDownloading">
+                    <i class="iconfont icon-cross text-primary btn-closeDownload icon-size-xm"></i>
                 </a>
-                <div class="p-r-15x">
+                <div class="p-r-10x">
                     <img src="{{env('CDN_Static')}}/images/icon/icon-motif.png"
-                         srcset="{{env('CDN_Static')}}/images/icon/icon-motif@2x.png 2x,{{env('CDN_Static')}}/images/icon/icon-motif@3x.png 3x" width="45" height="45">
+                         srcset="{{env('CDN_Static')}}/images/icon/icon-motif@2x.png 2x,{{env('CDN_Static')}}/images/icon/icon-motif@3x.png 3x" width="40" height="40">
                 </div>
-                <div class="p-r-15x font-size-xs text-primary">You will save 20% if ordered with Motif app</div>
+                <div class="p-r-5x font-size-xs text-primary">Make your first purchase using our free app and receive 20% off!</div>
             </div>
         </div>
-        <div class="col-xs-3">
+        <div class="col-xs-2 p-l-0">
             <div class="font-size-sm">
                 @if($designer['designer_id']==92)
-                    <a class="btn btn-white btn-sm" href="/rae">Buy Now</a>
+                    <a class="btn btn-white btn-sm font-size-xs" href="/rae">OPEN</a>
                 @else
-                    <a class="btn btn-white btn-sm" data-role="downloading">Buy Now</a>
+                    <a class="btn btn-white btn-sm font-size-xs" data-role="downloading">OPEN</a>
                 @endif
             </div>
         </div>
+
     </div>
 </nav>
