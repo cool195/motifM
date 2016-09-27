@@ -12,7 +12,9 @@
         <li><a href="motif://o.c?a=promolist&code=1234">Promolist-Code</a></li>
         <li><a href="motif://o.c?a=promolist">Promolist</a></li>
         <li><a href="motif://o.c?a=invitefriend">Invitefriend</a></li>
+        <li><a href="motif://o.c?a=url&url=http://m.motif.me/designer/92">androidSkip</a></li>
     </ul>
 </div>
 </body>
+
 </html>
