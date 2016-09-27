@@ -5,8 +5,7 @@
 </head>
 <body>
 @include('check.tagmanager')
-<button id="btnClick"></button>
-<script src="{{env('CDN_Static')}}/scripts/vendor.js{{'?v='.config('app.version')}}"></script>
+
 <script type="text/javascript">
 
     function switchDevice() {
@@ -29,13 +28,7 @@
     } else {
         url = "http://m.motif.me";
     }
-
-    $('#btnClick').on('click', function () {
-        window.location.href = url
-    });
-
-
-    $('#btnClick').click();
+    window.location.href = url
 </script>
 </body>
 </html>
