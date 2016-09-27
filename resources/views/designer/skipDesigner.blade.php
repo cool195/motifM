@@ -18,17 +18,17 @@
             document.body.removeChild(ifr);
             window.location.href = "https://control.kochava.com/v1/cpi/click?campaign_id=komotif-kvced5a25acca5c8c39f&network_id=5033&device_id=device_id&site_id=1";
             /***下载app的地址***/
-        }, 2000)
+        }, 3000)
     }
 
 
     function android() {
-        window.location.href = "motif://o.c?a=url&url="+encodeURI('http://m.motif.me/designer/92');
+        window.open("motif://o.c?a=url&url="+encodeURI('http://m.motif.me/designer/92'));
         /***打开app的协议，有安卓同事提供***/
         window.setTimeout(function () {
             window.location.href = "https://c89mm.app.goo.gl/Y2QC";
             /***打开app的协议，有安卓同事提供***/
-        }, 2000);
+        }, 3000);
     }
 
 
