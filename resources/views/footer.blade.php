@@ -73,24 +73,24 @@
 <!-- App 下载提示 -->
 <nav class="navbar-fixed-bottom bg-download p-y-5x p-x-10x" hidden>
     <div class="row flex flex-alignCenter">
-        <div class="col-xs-10">
+        <div class="col-xs-9">
             <div class="flex flex-alignCenter">
                 <a class="p-r-10x p-y-10x" id="closeDownloading">
                     <i class="iconfont icon-cross text-primary btn-closeDownload icon-size-xm"></i>
                 </a>
-                <div class="p-r-10x">
+                <div class="p-r-15x">
                     <img src="{{env('CDN_Static')}}/images/icon/icon-motif.png"
                          srcset="{{env('CDN_Static')}}/images/icon/icon-motif@2x.png 2x,{{env('CDN_Static')}}/images/icon/icon-motif@3x.png 3x" width="40" height="40">
                 </div>
                 <div class="p-r-5x font-size-xs text-primary">Make your first purchase using our free app and receive 20% off!</div>
             </div>
         </div>
-        <div class="col-xs-2 p-l-0">
-            <div class="font-size-sm">
+        <div class="col-xs-3">
+            <div class="font-size-sm text-right">
                 @if($designer['designer_id']==92)
-                    <a class="btn btn-white btn-sm font-size-xs" href="/rae">OPEN</a>
+                    <a class="btn btn-white btn-sm font-size-xs" href="/rae">GET IT</a>
                 @else
-                    <a class="btn btn-white btn-sm font-size-xs" data-role="downloading">OPEN</a>
+                    <a class="btn btn-white btn-sm font-size-xs" data-role="downloading">GET IT</a>
                 @endif
             </div>
         </div>
