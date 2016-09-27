@@ -75,14 +75,14 @@
     <div class="row flex flex-alignCenter">
         <div class="col-xs-9">
             <div class="flex flex-alignCenter">
-                <a class="p-r-20x p-y-10x" id="closeDownloading">
-                    <i class="iconfont icon-cross text-primary btn-closeDownload"></i>
+                <a class="p-r-15x p-y-10x" id="closeDownloading">
+                    <i class="iconfont icon-cross text-primary btn-closeDownload icon-size-base"></i>
                 </a>
                 <div class="p-r-15x">
                     <img src="{{env('CDN_Static')}}/images/icon/icon-motif.png"
                          srcset="{{env('CDN_Static')}}/images/icon/icon-motif@2x.png 2x,{{env('CDN_Static')}}/images/icon/icon-motif@3x.png 3x" width="45" height="45">
                 </div>
-                <div class="p-r-15x font-size-sm text-primary">You will Save 20% OFF with Motif app</div>
+                <div class="p-r-15x font-size-xs text-primary">You will Save 20% OFF with Motif app</div>
             </div>
         </div>
         <div class="col-xs-3">
