@@ -82,7 +82,7 @@
                     <img src="{{env('CDN_Static')}}/images/icon/icon-motif.png"
                          srcset="{{env('CDN_Static')}}/images/icon/icon-motif@2x.png 2x,{{env('CDN_Static')}}/images/icon/icon-motif@3x.png 3x" width="40" height="40">
                 </div>
-                <div class="p-r-5x font-size-xs text-primary">Make your first purchase using our free app and receive 20% off!</div>
+                <div class="p-r-5x font-size-xs text-primary">Use our free app for 20% off your first purchase!</div>
             </div>
         </div>
         <div class="col-xs-3">
