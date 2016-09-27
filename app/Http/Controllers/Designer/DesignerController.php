@@ -162,6 +162,7 @@ class DesignerController extends ApiController
     {
         return View('designer.skipDesigner');
     }
+
 }
 
 ?>
