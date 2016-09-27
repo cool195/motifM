@@ -209,6 +209,6 @@ $app->get('/apptest', 'Other\PageController@apptest');
 
 //rae网红
 $app->get('/rae','Designer\DesignerController@skipDesigner');
-
+$app->get('/ray','Designer\DesignerController@skipDesigner2');
 $app->get('/orderlist', 'Other\PageController@orderlist');
 

@@ -88,7 +88,7 @@
         <div class="col-xs-3">
             <div class="font-size-sm">
                 @if($designer['designer_id']==92)
-                    <a class="btn btn-white btn-sm" href="/rae">Buy Now</a>
+                    <a class="btn btn-white btn-sm" href="/ray">Buy Now</a>
                 @else
                     <a class="btn btn-white btn-sm" data-role="downloading">Buy Now</a>
                 @endif
