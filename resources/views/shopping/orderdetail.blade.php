@@ -72,7 +72,6 @@
                                      src="{{ env('APP_Api_Image').'/n2/'.$lineOrder['img_path'] }}"
                                      width="70px" height="70px">
                             </div>
-                            <!-- TODO 缩略号的兼容性不好, 需要改样式 -->
                             <div class="p-x-10x order-product-title">
                                 <h6 class="text-main font-size-md text-truncate">
                                     <strong>{{$lineOrder['main_title']}}</strong>
@@ -103,8 +102,8 @@
             @endif
             @if(isset($data['logistics_info_url']))
                 <a class="flex flex-alignCenter flex-fullJustified font-size-sm text-primary p-a-15x"
-                   href="{{ $data['logistics_info_url'] }}">
-                    Track order
+                   href="/orderlist">
+                    Download our free app to track your order
                     <i class="iconfont icon-arrow-right icon-size-xm text-common"></i>
                 </a>
             @endif

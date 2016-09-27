@@ -35,7 +35,8 @@ class PageController extends ApiController
     //shippingreturns
     public function shippingreturns()
     {
-        return View('Other.page-shippingreturns');
+        return redirect('/template/23');
+        //return View('Other.page-shippingreturns');
     }
 
     //payments
@@ -112,6 +113,11 @@ class PageController extends ApiController
 
     public function apptest(){
         return view('Other.apptest');
+    }
+
+    public function orderlist()
+    {
+        return view('Other.orderlist');
     }
 }
 

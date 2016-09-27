@@ -157,17 +157,9 @@ class DesignerController extends ApiController
             return Publicfun::addFollowDesigner($id, true);
         }
     }
-
+    
     public function skipDesigner()
     {
-        $dev = '';
-        if (strpos($_SERVER['HTTP_USER_AGENT'], 'iPhone') || strpos($_SERVER['HTTP_USER_AGENT'], 'iPad')) {
-            $dev = 'systerm is IOS';
-        } else if (strpos($_SERVER['HTTP_USER_AGENT'], 'Android')) {
-            $dev = 'systerm is Android';
-        } else {
-            $dev = 'systerm is other';
-        }
         return View('designer.skipDesigner');
     }
 }
