@@ -23,12 +23,12 @@
 
 
     function android() {
-        window.location = "motif://o.c?a=url&url=http://m.motif.me/designer/92";
+        window.location.href = "motif://o.c?a=url&url=http://m.motif.me/designer/92";
         /***打开app的协议，有安卓同事提供***/
-        window.setTimeout(function () {
-            window.location.href = "https://c89mm.app.goo.gl/Y2QC";
-            /***打开app的协议，有安卓同事提供***/
-        }, 3000);
+//        window.setTimeout(function () {
+//            window.location.href = "https://c89mm.app.goo.gl/Y2QC";
+//            /***打开app的协议，有安卓同事提供***/
+//        }, 3000);
     }
 
 
