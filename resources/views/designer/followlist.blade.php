@@ -31,26 +31,6 @@
                     </div>
             @else
                 <!-- 商品列表 -->
-                    {{--<div class="followlist-item bg-white p-a-15x" data-followingdid="">--}}
-                    {{--<div class="flex">--}}
-                    {{--<div class="flex-fixedShrink">--}}
-                    {{--<a href="#">--}}
-                    {{--<img class="img-thumbnail img-lazy"--}}
-                    {{--src="{{env('CDN_Static')}}/images/product/bg-product@70.png"--}}
-                    {{--data-original="{{env('CDN_Static')}}/images/product/bg-product@70.png"--}}
-                    {{--width="70" height="70">--}}
-                    {{--</a>--}}
-                    {{--</div>--}}
-                    {{--<div class="p-l-10x flex-width">--}}
-                    {{--<article class="flex flex-fullJustified followlist-title">--}}
-                    {{--<a href="#"><h6 class="text-main font-size-md p-r-20x"><strong>Bethany Mota</strong></h6></a>--}}
-                    {{--<span class="text-primary font-size-sm flex-fixedShrink middle">--}}
-                    {{--<a class="btn btn-primary btn-sm updateFollow active" data-did="">Following</a>--}}
-                    {{--</span>--}}
-                    {{--</article>--}}
-                    {{--</div>--}}
-                    {{--</div>--}}
-                    {{--</div>--}}
                     @foreach($followlist as $value)
                         <div class="followlist-item bg-white p-a-15x" data-followingdid="{{$value['id']}}">
                             <div class="flex">
@@ -73,7 +53,6 @@
                                     <aside class="text-primary font-size-xs">
                                         <a href="#" class="text-primary">{{$value['description']}}</a>
                                     </aside>
-
                                 </div>
                             </div>
                         </div>
