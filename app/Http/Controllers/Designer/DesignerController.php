@@ -162,6 +162,22 @@ class DesignerController extends ApiController
         return View('designer.skipDesigner');
     }
 
+    //关注设计师列表
+    public function following(Request $request)
+    {
+        $params = array(
+            'cmd' => 'list',
+            'pin' => Session::get('user.pin'),
+            'token' => Session::get('user.token'),
+            'num' => $request->input('num', 1),
+            'size' => $request->input('size', 8)
+        );
+        $result = $this->request('openapi', '', 'follow', $params);
+        if($request->input('ajax')){
+            return $result;
+        }
+        return $result;
+    }
 }
 
 ?>
