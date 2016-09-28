@@ -435,18 +435,16 @@
                         </div>
                     </div>
                 @endif
-                                @if($designer['designer_id']==99)
+                                @if($designer['designer_id']!=99)
                                     <div class="font-size-sm text-primary p-y-15x p-x-15x">
                                         <div class="text-center">
                                             <div>Follow Rae on our free app to be notified when Pre-sale for this collection starts.</div>
                                             <div class="p-t-15x">
-                                                    @if(Session::get('user.pin'))
+                                                    @if(!Session::get('user.pin'))
                                                         @if($designer['followStatus'])
-                                                            <a href="javascript:;" class="btn btn-sm btn-primary" id="followapp"
-                                                               data-followid="{{$designer['designer_id']}}">Following</a>
+                                                            <a href="javascript:;" class="btn btn-sm btn-primary" id="followapp" data-followid="{{$designer['designer_id']}}">Following</a>
                                                         @else
-                                                            <a href="javascript:;" class="btn btn-sm btn-follow active" id="followapp"
-                                                               data-followid="{{$designer['designer_id']}}">Follow</a>
+                                                            <a href="javascript:;" class="btn btn-sm btn-follow active" id="followapp" data-followid="{{$designer['designer_id']}}">Follow</a>
                                                         @endif
                                                     @else
                                                         <a href="javascript:;" class="btn btn-sm btn-follow active sendLogin"
@@ -475,6 +473,21 @@
 <script src="{{env('CDN_Static')}}/scripts/designerDetail.js{{'?v='.config('app.version')}}"></script>
 <script src="{{env('CDN_Static')}}/scripts/JockeyJS.js"></script>
 <script>
+    $('#followapp').on('click',function () {
+        $.ajax({
+            url: '/followDesigner/' + $(this).data('followid'),
+            type: 'GET'
+        })
+                .done(function (data) {
+                    if (data.success) {
+                        alert(1)
+                    }
+                })
+                .always(function () {
+                    alert(2)
+                });
+    });
+
     @if($designer['pushspu'])
         Jockey.send("action", {
             name: "updateWish",
