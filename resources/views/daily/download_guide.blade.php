@@ -34,6 +34,11 @@
       top: -2.5rem;
       left: 5.313rem;
     }
+
+    footer {
+      background-color: #171a2b;
+      padding: 1.875rem 0;
+    }
   </style>
 
 </head>
@@ -66,7 +71,7 @@
 </div>
 <footer>
   <div class="container">
-    <div class="row flex-center">
+    <div class="row">
       <div class="col-xs-2">
         <a href="###"><img src="{{env('CDN_Static')}}images/logo/logo-white.png"></a>
       </div>
