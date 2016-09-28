@@ -43,6 +43,7 @@
 
 </head>
 <body class="bg-white">
+@include('check.tagmanager')
 <div class="container">
   <div class="guide-title m-t-10x">
     <img src="{{env('CDN_Static')}}/images/guide/guide-title@2x.png">
