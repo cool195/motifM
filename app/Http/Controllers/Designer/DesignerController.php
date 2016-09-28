@@ -82,6 +82,14 @@ class DesignerController extends ApiController
 
             $view = '';
             $result['data']['osType'] = strstr($_SERVER['HTTP_USER_AGENT'], 'motif-ios') ? 'ios' : 'android';
+            $followParams = array(
+                'cmd' => 'is',
+                'pin' => Session::get('user.pin'),
+                'token' => Session::get('user.token'),
+                'did' => $result['data']['designer_id'],
+            );
+            $follow = $this->request('openapi', '', 'follow', $followParams);
+            $result['data']['followStatus'] = $follow['data']['isFC'];
             if ($_GET['test'] || strstr($_SERVER['HTTP_USER_AGENT'], 'motif-android') || strstr($_SERVER['HTTP_USER_AGENT'], 'motif-ios')) {
 
                 if ($request->input('token') || !empty($_COOKIE['PIN'])) {
@@ -113,15 +121,6 @@ class DesignerController extends ApiController
                     if ($request->input('des')) {
                         Publicfun::addFollowDesigner($request->input('des'));
                         $result['data']['followStatus'] = true;
-                    } else {
-                        $followParams = array(
-                            'cmd' => 'is',
-                            'pin' => Session::get('user.pin'),
-                            'token' => Session::get('user.token'),
-                            'did' => $result['data']['designer_id'],
-                        );
-                        $follow = $this->request('openapi', '', 'follow', $followParams);
-                        $result['data']['followStatus'] = $follow['data']['isFC'];
                     }
 
 

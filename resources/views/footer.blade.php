@@ -80,7 +80,7 @@
                 </a>
                 <div class="p-r-15x">
                     @if($designer['designer_id']==92)
-                        <a href="/rae"><img src="{{env('CDN_Static')}}/images/icon/icon-motif.png"
+                        <a href="/downapp"><img src="{{env('CDN_Static')}}/images/icon/icon-motif.png"
                                             srcset="{{env('CDN_Static')}}/images/icon/icon-motif@2x.png 2x,{{env('CDN_Static')}}/images/icon/icon-motif@3x.png 3x"
                                             width="40" height="40"></a>
                     @else
@@ -91,7 +91,7 @@
 
                 </div>
                 @if($designer['designer_id']==92)
-                    <a href="/rae"><div class="p-r-5x font-size-xs text-primary">Use our free app for 20% off your first purchase!</div></a>
+                    <a href="/downapp"><div class="p-r-5x font-size-xs text-primary">Use our free app for 20% off your first purchase!</div></a>
                 @else
                     <a data-role="downloading"><div class="p-r-5x font-size-xs text-primary">Use our free app for 20% off your first purchase!</div></a>
                 @endif
@@ -101,7 +101,7 @@
         <div class="col-xs-3">
             <div class="font-size-sm text-right">
                 @if($designer['designer_id']==92)
-                    <a class="btn btn-white btn-sm font-size-xs" href="/rae">GET IT</a>
+                    <a class="btn btn-white btn-sm font-size-xs" href="/downapp">GET IT</a>
                 @else
                     <a class="btn btn-white btn-sm font-size-xs" data-role="downloading">GET IT</a>
                 @endif
