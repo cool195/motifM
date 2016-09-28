@@ -45,7 +45,7 @@
 <body class="bg-white">
 <div class="container">
   <div class="guide-title m-t-10x">
-    <img src="{{env('CDN_Static')}}images/guide/guide-title@2x.png">
+    <img src="{{env('CDN_Static')}}/images/guide/guide-title@2x.png">
   </div>
 </div>
 <div class="guide-content">
@@ -58,12 +58,12 @@
             <div class="font-size-md p-t-20x p-x-20x">Follow The Raeviewer on our free Motif app and be notified when her collection launches.</div>
           </div>
           <div class="m-t-40x text-center">
-            <a href="https://itunes.apple.com/us/app/id1125850409" class="m-r-20x"><img src="{{env('CDN_Static')}}images/guide/icon-app@2x.png"></a>
-            <a href="https://play.google.com/store/apps/details?id=me.motif.motif"><img src="{{env('CDN_Static')}}images/guide/icon-goo@2x.png"></a>
+            <a href="https://itunes.apple.com/us/app/id1125850409" class="m-r-20x"><img src="{{env('CDN_Static')}}/images/guide/icon-app@2x.png"></a>
+            <a href="https://play.google.com/store/apps/details?id=me.motif.motif"><img src="{{env('CDN_Static')}}/images/guide/icon-goo@2x.png"></a>
           </div>
         </div>
         <div class="col-xs-5">
-          <div class="phone-img"><img src="{{env('CDN_Static')}}images/guide/phone@2x.png"></div>
+          <div class="phone-img"><img src="{{env('CDN_Static')}}/images/guide/phone@2x.png"></div>
         </div>
       </div>
     </div>
@@ -73,15 +73,15 @@
   <div class="container">
     <div class="row">
       <div class="col-xs-2">
-        <a href="###"><img src="{{env('CDN_Static')}}images/logo/logo-white.png"></a>
+        <a href="###"><img src="{{env('CDN_Static')}}/images/logo/logo-white.png"></a>
       </div>
       <div class="col-xs-7 text-white font-size-lg">
         <div class="p-t-10x">Exclusive accessory designs from your favorite Instagrammers & YouTubers</div>
       </div>
       <div class="col-xs-3 text-center p-t-10x">
-        <a href="https://www.instagram.com/motifme/"><img src="{{env('CDN_Static')}}images/guide/ins@2x.png"></a>
-        <a href="https://www.facebook.com/motifme" class="m-l-20x"><img src="{{env('CDN_Static')}}images/guide/fac@2x.png"></a>
-        <a href="https://www.pinterest.com/motifme/" class="m-l-20x"><img src="{{env('CDN_Static')}}images/guide/pin@2x.png"></a>
+        <a href="https://www.instagram.com/motifme/"><img src="{{env('CDN_Static')}}/images/guide/ins@2x.png"></a>
+        <a href="https://www.facebook.com/motifme" class="m-l-20x"><img src="{{env('CDN_Static')}}/images/guide/fac@2x.png"></a>
+        <a href="https://www.pinterest.com/motifme/" class="m-l-20x"><img src="{{env('CDN_Static')}}/images/guide/pin@2x.png"></a>
       </div>
     </div>
   </div>
