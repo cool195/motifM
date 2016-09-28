@@ -79,10 +79,23 @@
                     <i class="iconfont icon-cross text-primary btn-closeDownload icon-size-xm"></i>
                 </a>
                 <div class="p-r-15x">
-                    <img src="{{env('CDN_Static')}}/images/icon/icon-motif.png"
-                         srcset="{{env('CDN_Static')}}/images/icon/icon-motif@2x.png 2x,{{env('CDN_Static')}}/images/icon/icon-motif@3x.png 3x" width="40" height="40">
+                    @if($designer['designer_id']==92)
+                        <a href="/rae"><img src="{{env('CDN_Static')}}/images/icon/icon-motif.png"
+                                            srcset="{{env('CDN_Static')}}/images/icon/icon-motif@2x.png 2x,{{env('CDN_Static')}}/images/icon/icon-motif@3x.png 3x"
+                                            width="40" height="40"></a>
+                    @else
+                        <a data-role="downloading"><img src="{{env('CDN_Static')}}/images/icon/icon-motif.png"
+                                            srcset="{{env('CDN_Static')}}/images/icon/icon-motif@2x.png 2x,{{env('CDN_Static')}}/images/icon/icon-motif@3x.png 3x"
+                                            width="40" height="40"></a>
+                    @endif
+
                 </div>
-                <div class="p-r-5x font-size-xs text-primary">Use our free app for 20% off your first purchase!</div>
+                @if($designer['designer_id']==92)
+                    <a href="/rae"><div class="p-r-5x font-size-xs text-primary">Use our free app for 20% off your first purchase!</div></a>
+                @else
+                    <a data-role="downloading"><div class="p-r-5x font-size-xs text-primary">Use our free app for 20% off your first purchase!</div></a>
+                @endif
+
             </div>
         </div>
         <div class="col-xs-3">
