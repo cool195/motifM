@@ -32,7 +32,7 @@
             @else
                 <!-- 商品列表 -->
                     @foreach($followlist as $value)
-                        <div class="followlist-item bg-white p-a-15x" data-followingdid="{{$value['id']}}">
+                        <div class="followlist-item bg-white p-a-15x" data-followingdid="{{$value['userID']}}">
                             <div class="flex">
                                 <div class="flex-fixedShrink">
                                     <a href="#">
@@ -47,7 +47,7 @@
                                         <a href="#"><h6 class="text-main font-size-md p-r-20x"><strong>{{$value['nickname']}}</strong>
                                             </h6></a>
                                 <span class="text-primary font-size-sm flex-fixedShrink @if(empty($value['description'])){{'middle'}}@else{{'top'}}@endif">
-                                    <a class="btn btn-primary btn-sm updateFollow" data-did="{{$value['id']}}">Following</a>
+                                    <a class="btn btn-primary btn-sm updateFollow" data-did="{{$value['userID']}}">Following</a>
                                 </span>
                                     </article>
                                     <aside class="text-primary font-size-xs followlist-info">
