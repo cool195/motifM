@@ -21,67 +21,64 @@
         <section class="reserve-height">
             <aside id="followingContainer" class="followList m-b-20x">
 
+            @if(empty($followlist))
                 <!-- 空 followinglist 提示信息 -->
-                <div class="shopbag-empty-content p-x-10x hidden-xs-up" id="emptyFollowlist">
-                    <div class="container shopbag-emptyInfo">
-                        <div class="m-b-20x p-b-5x"><i class="btn-shopbagEmpty iconfont icon-like"></i></div>
-                        <p class="text-primary font-size-sm m-b-20x p-b-20x">Your folloinglist is empty!</p>
+                    <div class="shopbag-empty-content p-x-10x hidden-xs-up" id="emptyFollowlist">
+                        <div class="container shopbag-emptyInfo">
+                            <div class="m-b-20x p-b-5x"><i class="btn-shopbagEmpty iconfont icon-like"></i></div>
+                            <p class="text-primary font-size-sm m-b-20x p-b-20x">Your folloinglist is empty!</p>
+                        </div>
                     </div>
-                </div>
-
+            @else
                 <!-- 商品列表 -->
-                <div class="followlist-item bg-white p-a-15x" data-followingdid="">
-                    <div class="flex">
-                        <div class="flex-fixedShrink">
-                            <a href="#">
-                                <img class="img-thumbnail img-lazy"
-                                     src="{{env('CDN_Static')}}/images/product/bg-product@70.png"
-                                     data-original="{{env('CDN_Static')}}/images/product/bg-product@70.png"
-                                     width="70" height="70">
-                            </a>
-                        </div>
-                        <div class="p-l-10x flex-width">
-                            <article class="flex flex-fullJustified followlist-title">
-                                <a href="#"><h6 class="text-main font-size-md p-r-20x"><strong>Bethany Mota</strong></h6></a>
-                                <span class="text-primary font-size-sm flex-fixedShrink middle">
-                                    <a class="btn btn-primary btn-sm updateFollow active" data-did="">Following</a>
+                    {{--<div class="followlist-item bg-white p-a-15x" data-followingdid="">--}}
+                    {{--<div class="flex">--}}
+                    {{--<div class="flex-fixedShrink">--}}
+                    {{--<a href="#">--}}
+                    {{--<img class="img-thumbnail img-lazy"--}}
+                    {{--src="{{env('CDN_Static')}}/images/product/bg-product@70.png"--}}
+                    {{--data-original="{{env('CDN_Static')}}/images/product/bg-product@70.png"--}}
+                    {{--width="70" height="70">--}}
+                    {{--</a>--}}
+                    {{--</div>--}}
+                    {{--<div class="p-l-10x flex-width">--}}
+                    {{--<article class="flex flex-fullJustified followlist-title">--}}
+                    {{--<a href="#"><h6 class="text-main font-size-md p-r-20x"><strong>Bethany Mota</strong></h6></a>--}}
+                    {{--<span class="text-primary font-size-sm flex-fixedShrink middle">--}}
+                    {{--<a class="btn btn-primary btn-sm updateFollow active" data-did="">Following</a>--}}
+                    {{--</span>--}}
+                    {{--</article>--}}
+                    {{--</div>--}}
+                    {{--</div>--}}
+                    {{--</div>--}}
+                    @foreach($followlist as $value)
+                        <div class="followlist-item bg-white p-a-15x" data-followingdid="{{$value['id']}}">
+                            <div class="flex">
+                                <div class="flex-fixedShrink">
+                                    <a href="#">
+                                        <img class="img-thumbnail img-lazy"
+                                             src="{{env('CDN_Static')}}/images/product/bg-product@70.png"
+                                             data-original="{{env('APP_Api_Image')}}/n2/{{$value['avatar']}}"
+                                             width="70" height="70">
+                                    </a>
+                                </div>
+                                <div class="p-l-10x flex-width">
+                                    <article class="flex flex-fullJustified followlist-title">
+                                        <a href="#"><h6 class="text-main font-size-md p-r-20x"><strong>{{$value['nickname']}}</strong>
+                                            </h6></a>
+                                <span class="text-primary font-size-sm flex-fixedShrink @if(empty($value['description'])){{'middle'}}@else{{'top'}}@endif">
+                                    <a class="btn btn-primary btn-sm updateFollow" data-did="{{$value['id']}}">Following</a>
                                 </span>
-                            </article>
-                            {{--<aside class="text-primary font-size-xs">--}}
-                                {{--<a href="#" class="text-primary">Dulce beauty blogger on YouTube.Style her own look on videos.</a>--}}
-                            {{--</aside>--}}
+                                    </article>
+                                    <aside class="text-primary font-size-xs">
+                                        <a href="#" class="text-primary">{{$value['description']}}</a>
+                                    </aside>
 
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                </div>
-                <div class="followlist-item bg-white p-a-15x" data-followingdid="">
-                    <div class="flex">
-                        <div class="flex-fixedShrink">
-                            <a href="#">
-                                <img class="img-thumbnail img-lazy"
-                                     src="{{env('CDN_Static')}}/images/product/bg-product@70.png"
-                                     data-original="{{env('CDN_Static')}}/images/product/bg-product@70.png"
-                                     width="70" height="70">
-                            </a>
-                        </div>
-                        <div class="p-l-10x flex-width">
-                            <article class="flex flex-fullJustified followlist-title">
-                                <a href="#"><h6 class="text-main font-size-md p-r-20x"><strong>Bethany Mota</strong></h6></a>
-                                <span class="text-primary font-size-sm flex-fixedShrink top">
-                                    <a class="btn btn-primary-outline btn-sm updateFollow" data-did="">Follow</a>
-
-                                    <!-- 未登录 -->
-                                    {{--<a class="btn btn-primary-outline btn-sm updateFollow" data-actiondid="">Follow</a>--}}
-                                </span>
-                            </article>
-                            <aside class="text-primary font-size-xs">
-                                <a href="#" class="text-primary">Dulce beauty blogger on YouTube.Style her own look on videos.</a>
-                            </aside>
-
-                        </div>
-                    </div>
-                </div>
-
+                    @endforeach
+                @endif
             </aside>
             <div class="loading followLoading" style="display: none">
                 <div class="loader"></div>

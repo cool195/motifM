@@ -176,7 +176,7 @@ class DesignerController extends ApiController
         if($request->input('ajax')){
             return $result;
         }
-        return View('designer.followlist',['followlist'=>$result['data']]);
+        return View('designer.followlist',['followlist'=>$result['data']['list']]);
     }
 }
 
