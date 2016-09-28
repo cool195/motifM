@@ -199,6 +199,19 @@
                         @if(!empty($designer['instagram_link']) || !empty($designer['snapchat_link']) || !empty($designer['youtube_link']) || !empty($designer['facebook_link']))
                     </div>
                 @endif
+
+                @if($designer['designer_id']==99)
+                    <div class="p-b-10x">
+                        <div class="font-size-sm text-primary border-download m-y-5x m-x-15x">
+                            <div class="text-center p-a-15x">
+                                <div>BE NOTIFIED WHEN RAE’S <br/>LIMITED EDITION COLLECTION DROPS!</div>
+                                <div class="p-t-15x">
+                                    Follow The Raeviewer on our free app <br/>and be notified<br/>when her collection launches!
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                @endif
             </div>
 
             <!-- 预售信息 -->
@@ -422,6 +435,29 @@
                         </div>
                     </div>
                 @endif
+                                @if($designer['designer_id']==99)
+                                    <div class="font-size-sm text-primary p-y-15x p-x-15x">
+                                        <div class="text-center">
+                                            <div>Follow Rae on our free app to be notified when Pre-sale for this collection starts.</div>
+                                            <div class="p-t-15x">
+                                                @if(Session::get('user.pin'))
+                                                    @if($designer['followStatus'])
+                                                        <a href="#" class="btn btn-sm btn-primary" id="follow"
+                                                           data-followid="{{$designer['designer_id']}}">Following</a>
+                                                    @else
+                                                        <a href="#" class="btn btn-sm btn-follow active" id="follow"
+                                                           data-followid="{{$designer['designer_id']}}">Follow</a>
+                                                    @endif
+                                                @else
+                                                    <a href="#" class="btn btn-sm btn-follow active sendLogin"
+                                                       data-des="{{$designer['designer_id']}}">Follow</a>
+                                                @endif
+                                            </div>
+                                        </div>
+                                    </div>
+                                @endif
+
+
             </aside>
 
         </section>

@@ -31,7 +31,7 @@
 
     .guide-content .phone-img {
       position: absolute;
-      top: -2.5rem;
+      top: -4rem;
       left: 5.313rem;
     }
 
