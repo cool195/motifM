@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>download_guide</title>
+  <title>THE RAEVIEWER X MOTIF</title>
   <link rel="apple-touch-icon" href="{{env('CDN_Static')}}/images/guide/apple-touch-icon.png">
   <link rel="stylesheet" href="http://pc.motif.me/styles/vendor.css">
   <style>
