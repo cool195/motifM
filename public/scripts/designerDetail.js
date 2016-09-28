@@ -169,6 +169,7 @@
 
         //修改 Follow 状态
         var followId = $(this).data('followid');
+        alert(followId);
         changeFollow(followId);
     });
 
