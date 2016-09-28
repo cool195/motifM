@@ -56,7 +56,8 @@ class Handler extends ExceptionHandler
         $status = $e->getStatusCode();
 
         if (view()->exists("errors.{$status}")) {
-            return response(view("errors.{$status}", []), $status);
+            return redirect('404');
+            //return response(view("errors.{$status}", []), $status);
         } else {
             return (new SymfonyExceptionHandler(env('APP_DEBUG', false)))->createResponse($e);
         }
