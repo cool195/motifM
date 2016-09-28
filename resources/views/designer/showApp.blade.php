@@ -442,14 +442,14 @@
                                             <div class="p-t-15x">
                                                 @if(Session::get('user.pin'))
                                                     @if($designer['followStatus'])
-                                                        <a href="#" class="btn btn-sm btn-primary" id="follow"
+                                                        <a href="javascript:;" class="btn btn-sm btn-primary" id="follow"
                                                            data-followid="{{$designer['designer_id']}}">Following</a>
                                                     @else
-                                                        <a href="#" class="btn btn-sm btn-follow active" id="follow"
+                                                        <a href="javascript:;" class="btn btn-sm btn-follow active" id="follow"
                                                            data-followid="{{$designer['designer_id']}}">Follow</a>
                                                     @endif
                                                 @else
-                                                    <a href="#" class="btn btn-sm btn-follow active sendLogin"
+                                                    <a href="javascript:;" class="btn btn-sm btn-follow active sendLogin"
                                                        data-des="{{$designer['designer_id']}}">Follow</a>
                                                 @endif
                                             </div>
