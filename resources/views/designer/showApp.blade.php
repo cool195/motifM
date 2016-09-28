@@ -435,12 +435,12 @@
                         </div>
                     </div>
                 @endif
-                                @if($designer['designer_id']!=99)
+                                @if($designer['designer_id']==99)
                                     <div class="font-size-sm text-primary p-y-15x p-x-15x">
                                         <div class="text-center">
                                             <div>Follow Rae on our free app to be notified when Pre-sale for this collection starts.</div>
                                             <div class="p-t-15x">
-                                                    @if(!Session::get('user.pin'))
+                                                    @if(Session::get('user.pin'))
                                                         @if($designer['followStatus'])
                                                             <a href="javascript:;" class="btn btn-sm btn-primary" id="followapp" data-followid="{{$designer['designer_id']}}">Following</a>
                                                         @else
