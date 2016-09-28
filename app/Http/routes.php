@@ -21,7 +21,6 @@ $app->group(['middleware' => 'pcguide', 'namespace' => 'App\Http\Controllers'], 
     $app->get('/shopping', 'Shopping\ShoppingController@index');
 
     $app->get('/designer', 'Designer\DesignerController@index');
-    $app->get('/following', 'Designer\DesignerController@following');
 
     $app->post('/googlelogin', 'Auth\AuthController@googleLogin');
     $app->post('/facebooklogin', 'Auth\AuthController@facebookLogin');
@@ -168,8 +167,9 @@ $app->group(['middleware' => 'pcguide|logincheck', 'namespace' => 'App\Http\Cont
     $app->get('/invitefriends', 'PageController@inviteFriends');
 });
 
-$app->group(['namespace' => 'App\Http\Controllers\Designer'], function ($app) {
+$app->group(['middleware' => 'logincheck','namespace' => 'App\Http\Controllers\Designer'], function ($app) {
     $app->get('/followDesigner/{id:[0-9]+}', 'DesignerController@follow');
+    $app->get('/following', 'DesignerController@following');
 });
 
 

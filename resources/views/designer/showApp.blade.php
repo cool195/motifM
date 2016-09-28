@@ -119,7 +119,7 @@
                 <div class="flex flex-alignCenter flex-fullJustified p-x-10x p-t-10x">
                     <div class="font-size-base text-main"><strong>{{$designer['nickname']}}</strong></div>
                     <div class="flex flex-alignCenter">
-                        <span class="">
+                        <span class="p-r-15x">
                             @if(Session::get('user.pin'))
                                 @if($designer['followStatus'])
                                     <a href="#" class="btn btn-sm btn-primary" id="follow"
