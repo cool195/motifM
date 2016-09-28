@@ -150,6 +150,26 @@
                         <i class="iconfont icon-arrow-bottom icon-size-xm text-common"></i>
                     </a>
                 </div>
+
+                <!-- 下载 App 提示 -->
+                <div class="font-size-sm text-primary border-download m-y-5x m-x-15x">
+                    <div class="text-center p-a-15x">
+                        <div>BE NOTIFIED WHEN RAE’S <br/>LIMITED EDITION COLLECTION DROPS!</div>
+                        <div class="p-t-15x">
+                            Follow The Raeviewer on our free app <br/>and be notified<br/>when her collection launches!
+                        </div>
+                        <div class="p-t-15x"><a class="btn btn-primary-outline btn-sm" href="#">Download Motif</a></div>
+                    </div>
+                </div>
+
+                <!-- 简单版 下载 App 提示 -->
+                <div class="font-size-sm text-primary p-y-10x p-x-15x">
+                    <div class="text-center">
+                        <div>Follow Rae on our free app to be notified when Pre-sale for this collection starts.</div>
+                        <div class="p-t-15x"><a class="btn btn-primary-outline btn-sm" href="#">Download Motif</a></div>
+                    </div>
+                </div>
+
                 @if(!empty($designer['instagram_link']) || !empty($designer['snapchat_link']) || !empty($designer['youtube_link']) || !empty($designer['facebook_link']))
                     <div class="p-x-15x p-t-5x p-b-15x">
                         @endif
