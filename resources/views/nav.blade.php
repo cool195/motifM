@@ -46,14 +46,14 @@
             </a>
             <hr class="hr-base m-a-0">
         </li>
-        <li class="nav-item">
-            <a href="/following" class="flex flex-alignCenter flex-fullJustified p-a-15x menu">
-                <div class="font-size-sm text-primary flex flex-alignCenter"><i
-                            class="iconfont icon-follow icon-size-md p-r-15x"></i><span>Following</span></div>
-                <span class="text-common"><i class="iconfont icon-arrow-right icon-size-sm"></i></span>
-            </a>
-            <hr class="hr-base m-a-0">
-        </li>
+            <li class="nav-item">
+                <a href="#" class="flex flex-alignCenter flex-fullJustified p-a-15x menu" data-remodal-target="download-modal" id="menu-following">
+                    <div class="font-size-sm text-primary flex flex-alignCenter"><i
+                                class="iconfont icon-follow icon-size-md p-r-15x"></i><span>Following</span></div>
+                    <span class="text-common"><i class="iconfont icon-arrow-right icon-size-sm"></i></span>
+                </a>
+                <hr class="hr-base m-a-0">
+            </li>
         <li class="nav-item">
             <a href="/promocode" class="flex flex-alignCenter flex-fullJustified p-a-15x menu">
                 <div class="font-size-sm text-primary flex flex-alignCenter">

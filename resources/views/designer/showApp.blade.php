@@ -205,7 +205,7 @@
                         <div class="font-size-sm text-primary border-download m-y-5x m-x-15x">
                             <div class="text-center p-a-15x">
                                 <div class="font-size-md">Tap "Follow" to be notified when <br/>Rae's Limited Edition Collection Drops!</div>
-                                <div class="p-t-15x">
+                                <div class="p-t-15x" style="font-size:8px">
                                     (Make sure push notification for Motif is enabled under your phone's notification settings!)
                                 </div>
                             </div>
