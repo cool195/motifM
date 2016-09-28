@@ -474,18 +474,24 @@
 <script src="{{env('CDN_Static')}}/scripts/JockeyJS.js"></script>
 <script>
     $('#followapp').on('click',function () {
+        $this = $(this)
         $.ajax({
-            url: '/followDesigner/' + $(this).data('followid'),
+            url: '/followDesigner/' + $this.data('followid'),
             type: 'GET'
         })
                 .done(function (data) {
                     if (data.success) {
-                        alert(1)
+                        if ($this.hasClass('active')) {
+                            $this.html('Following');
+                            $this.toggleClass('active');
+                            $this.addClass('btn-primary').removeClass('btn-follow');
+                        } else {
+                            $this.html('Follow');
+                            $this.toggleClass('active');
+                            $this.addClass('btn-follow').removeClass('btn-primary');
+                        }
                     }
                 })
-                .always(function () {
-                    alert(2)
-                });
     });
 
     @if($designer['pushspu'])
