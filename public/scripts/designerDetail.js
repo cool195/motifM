@@ -163,7 +163,7 @@
         changeFollow(followId);
     });
 
-    $('.followapp').on('click', function (e) {
+    $('#followapp').on('click', function (e) {
         // 切换 Follow 按钮状态
         switchFollow($(e.target));
 
