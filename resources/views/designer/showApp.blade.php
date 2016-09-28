@@ -206,7 +206,7 @@
                             <div class="text-center p-a-15x">
                                 <div>Tap "Follow" to be notified when <br/>Rae's Limited Edition Collection Drops!</div>
                                 <div class="p-t-15x">
-                                    (Make sure push notification for Motif is enabled <br/>under your phone's notifcatio settings!)
+                                    (Make sure push notification for Motif is enabled under your phone's notifcatio settings!)
                                 </div>
                             </div>
                         </div>

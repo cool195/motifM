@@ -123,24 +123,24 @@
         @endif
         <!-- 设计师 文字信息 -->
             <div class="bg-white">
-                <div class="flex flex-alignCenter flex-fullJustified p-x-10x p-t-10x">
-                    <div class="font-size-base text-main"><strong>{{$designer['nickname']}}</strong></div>
-                    <div class="flex flex-alignCenter">
-                        <span class="">
-                            @if(Session::get('user.pin'))
-                                @if($designer['followStatus'])
-                                    <a href="#" class="btn btn-sm btn-primary" id="follow"
-                                       data-followid="{{$designer['designer_id']}}">Following</a>
-                                @else
-                                    <a href="#" class="btn btn-sm btn-follow active" id="follow"
-                                       data-followid="{{$designer['designer_id']}}">Follow</a>
-                                @endif
-                            @else
-                                <a href="/login" class="btn btn-sm btn-follow active sendLogin">Follow</a>
-                            @endif
-                        </span>
-                    </div>
-                </div>
+                {{--<div class="flex flex-alignCenter flex-fullJustified p-x-10x p-t-10x">--}}
+                    {{--<div class="font-size-base text-main"><strong>{{$designer['nickname']}}</strong></div>--}}
+                    {{--<div class="flex flex-alignCenter">--}}
+                        {{--<span class="">--}}
+                            {{--@if(Session::get('user.pin'))--}}
+                                {{--@if($designer['followStatus'])--}}
+                                    {{--<a href="#" class="btn btn-sm btn-primary" id="follow"--}}
+                                       {{--data-followid="{{$designer['designer_id']}}">Following</a>--}}
+                                {{--@else--}}
+                                    {{--<a href="#" class="btn btn-sm btn-follow active" id="follow"--}}
+                                       {{--data-followid="{{$designer['designer_id']}}">Follow</a>--}}
+                                {{--@endif--}}
+                            {{--@else--}}
+                                {{--<a href="/login" class="btn btn-sm btn-follow active sendLogin">Follow</a>--}}
+                            {{--@endif--}}
+                        {{--</span>--}}
+                    {{--</div>--}}
+                {{--</div>--}}
                 <div class="font-size-sm text-primary p-y-10x p-x-15x">
                     <div class="message-info">
                         <p class="m-b-0">{{$designer['describe']}}</p>
