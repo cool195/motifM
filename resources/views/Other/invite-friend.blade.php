@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Checkout Confirm</title>
+    <title>I'm giving you a free $20 to spend on the Motif app. Use code '{{$code}}' with your first purchase. Enjoy!</title>
     @include('head')
 
 </head>
