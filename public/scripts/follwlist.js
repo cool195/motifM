@@ -19,30 +19,27 @@
     }
 
     $('.updateFollow').on('click', function (e) {
-        var did = $(this).data('did');
+        var $this = $(this);
+        var did = $this.data('did');
         openLoading();
         $.ajax({
-                url: '/follow/' + did,
+                url: '/followDesigner/' + did,
                 type: 'GET'
             })
             .done(function (data) {
                 if (data.success) {
-                    if ('Following' == $(this).html()) {
-                        $(this).html('Follow');
-                        $(this).removeClass('active');
-                        $(this).removeClass('btn-primary');
-                        $(this).addClass('btn-primary-outline');
+                    if ('Following' == $this.html()) {
+                        $this.html('Follow');
+                        $this.removeClass('btn-primary');
+                        $this.addClass('btn-primary-outline');
                     } else {
-                        $(this).html('Following');
-                        $(this).addClass('active');
-                        $(this).removeClass('btn-primary-outline');
-                        $(this).addClass('btn-primary');
+                        $this.html('Following');
+                        $this.removeClass('btn-primary-outline');
+                        $this.addClass('btn-primary');
                     }
+                    closeLoading();
                 }
             })
-            .always(function () {
-                closeLoading();
-            });
 
     });
 

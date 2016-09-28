@@ -47,7 +47,7 @@
                                         <a href="#"><h6 class="text-main font-size-md p-r-20x"><strong>{{$value['nickname']}}</strong>
                                             </h6></a>
                                 <span class="text-primary font-size-sm flex-fixedShrink @if(empty($value['description'])){{'middle'}}@else{{'top'}}@endif">
-                                    <a class="btn btn-primary btn-sm updateFollow" data-did="{{$value['userID']}}">Following</a>
+                                    <a class="btn btn-primary btn-sm updateFollow" data-did="{{$value['userId']}}">Following</a>
                                 </span>
                                     </article>
                                     <aside class="text-primary font-size-xs followlist-info">
@@ -59,9 +59,6 @@
                     @endforeach
                 @endif
             </aside>
-            <div class="loading followLoading" style="display: none">
-                <div class="loader"></div>
-            </div>
         </section>
 
         <!-- 页脚 功能链接 start-->
