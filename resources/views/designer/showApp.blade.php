@@ -204,9 +204,9 @@
                     <div class="p-b-10x">
                         <div class="font-size-sm text-primary border-download m-y-5x m-x-15x">
                             <div class="text-center p-a-15x">
-                                <div>BE NOTIFIED WHEN RAE’S <br/>LIMITED EDITION COLLECTION DROPS!</div>
+                                <div>Tap "Follow" to be notified when <br/>Rae's Limited Edition Collection Drops!</div>
                                 <div class="p-t-15x">
-                                    Follow The Raeviewer on our free app <br/>and be notified<br/>when her collection launches!
+                                    (Make sure push notification for Motif is enabled <br/>under your phone's notifcatio settings!)
                                 </div>
                             </div>
                         </div>
