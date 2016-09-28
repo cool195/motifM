@@ -331,10 +331,12 @@
         $('.search-container').toggleClass('active');
         if ($('.search-container').hasClass('active')) {
             $('.search-container').css('height', SearchHeight);
+            $('.search-container').css('opacity',1);
             $('.btn-search').html('CLOSE');
             $('.swiper-slide-active').children('.container-fluid').addClass('search-mask');
         } else {
             $('.search-container').css('height', 0);
+            $('.search-container').css('opacity',0);
             $('.btn-search').html('SORT BY');
             $('.swiper-slide-active').children('.container-fluid').removeClass('search-mask');
         }
