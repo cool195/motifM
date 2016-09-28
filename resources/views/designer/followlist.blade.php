@@ -26,7 +26,7 @@
                     <div class="shopbag-empty-content p-x-10x" id="emptyFollowlist">
                         <div class="container shopbag-emptyInfo">
                             <div class="m-b-20x p-b-5x"><i class="btn-shopbagEmpty iconfont icon-like"></i></div>
-                            <p class="text-primary font-size-sm m-b-20x p-b-20x">Your folloinglist is empty!</p>
+                            <p class="text-primary font-size-sm m-b-20x p-b-20x">Your followinglist is empty!</p>
                         </div>
                     </div>
             @else
