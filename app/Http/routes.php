@@ -210,6 +210,8 @@ $app->get('/apptest', 'Other\PageController@apptest');
 //rae网红
 $app->get('/rae','Designer\DesignerController@skipDesigner');
 
+$app->get('/downapp','Other\PageController@downapp');
+
 $app->get('/orderlist', 'Other\PageController@orderlist');
 
 $app->get('404','Other\PageController@error404');

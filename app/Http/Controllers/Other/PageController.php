@@ -123,6 +123,10 @@ class PageController extends ApiController
     public function error404(){
         return view('errors.404');
     }
+
+    public function downapp(){
+        return View('designer.skipDesigner');
+    }
 }
 
 ?>
