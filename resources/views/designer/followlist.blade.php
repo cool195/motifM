@@ -23,7 +23,7 @@
 
             @if(empty($followlist))
                 <!-- 空 followinglist 提示信息 -->
-                    <div class="shopbag-empty-content p-x-10x hidden-xs-up" id="emptyFollowlist">
+                    <div class="shopbag-empty-content p-x-10x" id="emptyFollowlist">
                         <div class="container shopbag-emptyInfo">
                             <div class="m-b-20x p-b-5x"><i class="btn-shopbagEmpty iconfont icon-like"></i></div>
                             <p class="text-primary font-size-sm m-b-20x p-b-20x">Your folloinglist is empty!</p>
@@ -32,7 +32,7 @@
             @else
                 <!-- 商品列表 -->
                     @foreach($followlist as $value)
-                        <div class="followlist-item bg-white p-a-15x" data-followingdid="{{$value['userID']}}">
+                        <div class="followlist-item bg-white p-a-15x" data-followingdid="{{$value['userId']}}">
                             <div class="flex">
                                 <div class="flex-fixedShrink">
                                     <a href="#">

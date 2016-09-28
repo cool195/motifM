@@ -28,18 +28,15 @@
             })
             .done(function (data) {
                 if (data.success) {
-                    if ('Following' == $this.html()) {
-                        $this.html('Follow');
-                        $this.removeClass('btn-primary');
-                        $this.addClass('btn-primary-outline');
-                    } else {
-                        $this.html('Following');
-                        $this.removeClass('btn-primary-outline');
-                        $this.addClass('btn-primary');
-                    }
-                    closeLoading();
+                    $('[data-followingdid="' + did + '"]').remove();
                 }
             })
+            .always(function () {
+                //if ($('.followlist-item').length <= 0) {
+                //    $('#emptyFollowlist').removeClass('hidden-xs-up');
+                //}
+                closeLoading();
+            });
 
     });
 
