@@ -163,6 +163,15 @@
         changeFollow(followId);
     });
 
+    $('.followapp').on('click', function (e) {
+        // 切换 Follow 按钮状态
+        switchFollow($(e.target));
+
+        //修改 Follow 状态
+        var followId = $(this).data('followid');
+        changeFollow(followId);
+    });
+
 
     // 预售产品
     var beginTimes = $('.limited-data').data('begintime'); // 开始时间

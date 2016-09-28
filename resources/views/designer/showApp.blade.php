@@ -440,18 +440,18 @@
                                         <div class="text-center">
                                             <div>Follow Rae on our free app to be notified when Pre-sale for this collection starts.</div>
                                             <div class="p-t-15x">
-                                                @if(Session::get('user.pin'))
-                                                    @if($designer['followStatus'])
-                                                        <a href="javascript:;" class="btn btn-sm btn-primary" id="follow"
-                                                           data-followid="{{$designer['designer_id']}}">Following</a>
+                                                    @if(Session::get('user.pin'))
+                                                        @if($designer['followStatus'])
+                                                            <a href="javascript:;" class="btn btn-sm btn-primary followapp"
+                                                               data-followid="{{$designer['designer_id']}}">Following</a>
+                                                        @else
+                                                            <a href="javascript:;" class="btn btn-sm btn-follow active followapp"
+                                                               data-followid="{{$designer['designer_id']}}">Follow</a>
+                                                        @endif
                                                     @else
-                                                        <a href="javascript:;" class="btn btn-sm btn-follow active" id="follow"
-                                                           data-followid="{{$designer['designer_id']}}">Follow</a>
+                                                        <a href="javascript:;" class="btn btn-sm btn-follow active sendLogin"
+                                                           data-des="{{$designer['designer_id']}}">Follow</a>
                                                     @endif
-                                                @else
-                                                    <a href="javascript:;" class="btn btn-sm btn-follow active sendLogin"
-                                                       data-des="{{$designer['designer_id']}}">Follow</a>
-                                                @endif
                                             </div>
                                         </div>
                                     </div>
