@@ -212,3 +212,4 @@ $app->get('/rae','Designer\DesignerController@skipDesigner');
 
 $app->get('/orderlist', 'Other\PageController@orderlist');
 
+$app->get('404','Other\PageController@error404');
