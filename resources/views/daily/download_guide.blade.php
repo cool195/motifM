@@ -31,8 +31,8 @@
 
     .guide-content .phone-img {
       position: absolute;
-      top: -2.5rem;
-      left: 5.313rem;
+      top: -64px;
+      left: 80px;
     }
 
     footer {
