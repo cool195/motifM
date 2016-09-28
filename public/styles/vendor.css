@@ -5841,6 +5841,15 @@ footer .links-group {
   right:0;
 }
 
+.followlist-info{
+  max-height: 2.2rem;
+  word-break:break-all;
+    display:-webkit-box;
+    -webkit-line-clamp:2;
+    -webkit-box-orient:vertical;
+    overflow:hidden;
+}
+
 .followlist-title span.top{
   position: absolute;
   top:0;

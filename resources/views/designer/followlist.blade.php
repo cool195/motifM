@@ -50,7 +50,7 @@
                                     <a class="btn btn-primary btn-sm updateFollow" data-did="{{$value['id']}}">Following</a>
                                 </span>
                                     </article>
-                                    <aside class="text-primary font-size-xs">
+                                    <aside class="text-primary font-size-xs followlist-info">
                                         <a href="#" class="text-primary">{{$value['description']}}</a>
                                     </aside>
                                 </div>
