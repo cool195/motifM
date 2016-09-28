@@ -190,7 +190,7 @@
                     </div>
                 @endif
 
-                @if($designer['designer_id']!=99)
+                @if($designer['designer_id']==99)
                     <div class="p-b-10x">
                         <div class="font-size-sm text-primary border-download m-y-5x m-x-15x">
                             <div class="text-center p-a-15x">
