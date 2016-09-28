@@ -5826,6 +5826,27 @@ footer .links-group {
   min-height: 3rem;
 }
 
+.followlist-item + .followlist-item{
+  border-top: 1px solid #e2e5ed;
+}
+
+.followlist-title{
+  position: relative;
+  min-height: 2.25rem;
+}
+
+.followlist-title span.middle{
+  position: absolute;
+  top:56%;
+  right:0;
+}
+
+.followlist-title span.top{
+  position: absolute;
+  top:0;
+  right:0;
+}
+
 .border-right {
   border-right: 1px solid #e2e5ed;
 }

@@ -17,45 +17,67 @@
     <div class="body-container">
         @include('navigator')
         <article class="font-size-md text-main p-a-10x"><strong>Following</strong></article>
-        <!-- wishlist 商品列表 -->
+        <!-- folloinglist 商品列表 -->
         <section class="reserve-height">
-            <aside id="wishContainer" class="wishList m-b-20x" data-loading="false" data-pagenum="0"
-                   data-wishpagenum="0">
+            <aside id="followingContainer" class="followList m-b-20x">
 
-                <!-- 空 wishlist 提示信息 -->
-                <div class="shopbag-empty-content p-x-10x hidden-xs-up" id="emptyWishlist">
+                <!-- 空 followinglist 提示信息 -->
+                <div class="shopbag-empty-content p-x-10x hidden-xs-up" id="emptyFollowlist">
                     <div class="container shopbag-emptyInfo">
                         <div class="m-b-20x p-b-5x"><i class="btn-shopbagEmpty iconfont icon-like"></i></div>
-                        <p class="text-primary font-size-sm m-b-20x p-b-20x">Your wishlist is empty!</p>
+                        <p class="text-primary font-size-sm m-b-20x p-b-20x">Your folloinglist is empty!</p>
                     </div>
                 </div>
 
                 <!-- 商品列表 -->
-                <div class="followlist-item bg-white p-a-15x" data-followingspu="">
+                <div class="followlist-item bg-white p-a-15x" data-followingdid="">
                     <div class="flex">
                         <div class="flex-fixedShrink">
                             <a href="#">
                                 <img class="img-thumbnail img-lazy"
                                      src="{{env('CDN_Static')}}/images/product/bg-product@70.png"
-                                     data-original="{{env('APP_Api_Image')}}/n1/@{{ $value.main_image_url }}"
+                                     data-original="{{env('CDN_Static')}}/images/product/bg-product@70.png"
                                      width="70" height="70">
                             </a>
                         </div>
                         <div class="p-l-10x flex-width">
                             <article class="flex flex-fullJustified followlist-title">
-                                <a href="#"><h6 class="text-main font-size-md p-r-20x">
-                                        <strong>Bethany Mota</strong>
-                                    </h6></a>
-                                    <span class="text-primary font-size-sm flex-fixedShrink">
-                                        <i class="iconfont icon-cross icon-size-md text-common delfollow"
-                                           data-spu=""></i>
-                                    </span>
+                                <a href="#"><h6 class="text-main font-size-md p-r-20x"><strong>Bethany Mota</strong></h6></a>
+                                <span class="text-primary font-size-sm flex-fixedShrink middle">
+                                    <a class="btn btn-primary btn-sm updateFollow active" data-did="">Following</a>
+                                </span>
                             </article>
+                            {{--<aside class="text-primary font-size-xs">--}}
+                                {{--<a href="#" class="text-primary">Dulce beauty blogger on YouTube.Style her own look on videos.</a>--}}
+                            {{--</aside>--}}
+
+                        </div>
+                    </div>
+                </div>
+                <div class="followlist-item bg-white p-a-15x" data-followingdid="">
+                    <div class="flex">
+                        <div class="flex-fixedShrink">
                             <a href="#">
-                                <aside class="text-primary font-size-sm">
-                                    <div>Dulce beauty blogger on YouTube.Style her own look on videos.</div>
-                                </aside>
+                                <img class="img-thumbnail img-lazy"
+                                     src="{{env('CDN_Static')}}/images/product/bg-product@70.png"
+                                     data-original="{{env('CDN_Static')}}/images/product/bg-product@70.png"
+                                     width="70" height="70">
                             </a>
+                        </div>
+                        <div class="p-l-10x flex-width">
+                            <article class="flex flex-fullJustified followlist-title">
+                                <a href="#"><h6 class="text-main font-size-md p-r-20x"><strong>Bethany Mota</strong></h6></a>
+                                <span class="text-primary font-size-sm flex-fixedShrink top">
+                                    <a class="btn btn-primary-outline btn-sm updateFollow" data-did="">Follow</a>
+
+                                    <!-- 未登录 -->
+                                    {{--<a class="btn btn-primary-outline btn-sm updateFollow" data-actiondid="">Follow</a>--}}
+                                </span>
+                            </article>
+                            <aside class="text-primary font-size-xs">
+                                <a href="#" class="text-primary">Dulce beauty blogger on YouTube.Style her own look on videos.</a>
+                            </aside>
+
                         </div>
                     </div>
                 </div>
@@ -72,16 +94,6 @@
     </div>
 </div>
 
-<!-- 删除将要购买的商品 -->
-<div class="remodal remodal-md modal-content" data-remodal-id="modal" id="followDialog" data-spu="">
-    <div class="font-size-sm p-t-20x p-x-15x p-b-15x">
-        Are you sure you want to remove this item?
-    </div>
-    <div class="btn-group flex">
-        <div class="btn remodal-btn flex-width" data-remodal-action="confirm">Remove</div>
-        <div class="btn remodal-btn flex-width" data-remodal-action="cancel">Cancel</div>
-    </div>
-</div>
 <!-- loading 效果 -->
 <div class="loading loading-screen loading-switch loading-hidden">
     <div class="loader loader-screen"></div>
@@ -89,6 +101,6 @@
 
 </body>
 <script src="{{env('CDN_Static')}}/scripts/vendor.js{{'?v='.config('app.version')}}"></script>
-<script src="{{env('CDN_Static')}}/scripts/wishlist.js{{'?v='.config('app.version')}}"></script>
+<script src="{{env('CDN_Static')}}/scripts/follwlist.js{{'?v='.config('app.version')}}"></script>
 @include('global')
 </html>
