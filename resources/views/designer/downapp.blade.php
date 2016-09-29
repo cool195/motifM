@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>VIEW RAEVIEW’S “KOREATOWN” COLLECTION</title>
+    <title>DOWNLOAD MOTIF</title>
 </head>
 <body>
 @include('check.tagmanager')
