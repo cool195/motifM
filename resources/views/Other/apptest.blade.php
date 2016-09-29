@@ -3,7 +3,7 @@
 <head>
     <title>App Test</title>
     <link rel="stylesheet" href="{{env('CDN_Static')}}/styles/vendor.css{{'?v='.config('app.version')}}">
-    <meta http-equiv="refresh" content="1"; url="http://m.motif.me/designer/99">
+    <meta http-equiv="refresh" content="1"; url="https://itunes.apple.com/us/app/motif-shopping-fashion-jewelry/id1125850409?l=zh&ls=1&mt=8">
 </head>
 <body>
 
@@ -58,7 +58,7 @@
 
 //    <meta http-equiv="refresh" content="1"; url="https://itunes.apple.com/us/app/motif-shopping-fashion-jewelry/id1125850409?l=zh&ls=1&mt=8">
     window.onload = function() {
-        setTimeout("window.location = 'http://m.motif.me/designer/99';", 1000);
+        setTimeout("window.location = 'https://itunes.apple.com/us/app/motif-shopping-fashion-jewelry/id1125850409?l=zh&ls=1&mt=8';", 1000);
         window.location = "motif://o.c?a=url&url=http://m.motif.me/designer/99";
     }
 </script>
