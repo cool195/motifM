@@ -13,7 +13,6 @@
       top: 25px;
       z-index: 3;
     }
-
     .guide-content {
       color: #000;
       background: url("{{env('CDN_Static')}}/images/guide/guide-bg.jpg") repeat;
@@ -23,18 +22,17 @@
       margin-top: 148px;
       margin-bottom: 144px;
       background: rgba(198, 198, 200, 0.6);
+      min-height: 380px;
     }
-
     .guide-content .content {
       background: rgba(238, 238, 238, 0.9);
     }
-
     .guide-content .phone-img {
       position: absolute;
-      top: -64px;
+      top: -70px;
       left: 80px;
+      width: 260px;
     }
-
     footer {
       background-color: #171a2b;
       padding: 1.875rem 0;
@@ -58,13 +56,13 @@
             <div class="font-size-lg p-t-5x p-x-15x">VIEW <span class="sanBold">RAEVIEW’S “KOREATOWN” COLLECTION</span> WITH YOUR MOBILE DEVICE!</div>
             <div class="font-size-md p-t-20x p-x-20x">Follow The Raeviewer on our free Motif app and be notified when her collection launches.</div>
           </div>
-          <div class="m-t-40x text-center">
-            <a href="https://itunes.apple.com/us/app/id1125850409" class="m-r-20x"><img src="{{env('CDN_Static')}}/images/guide/icon-app@2x.png"></a>
-            <a href="https://play.google.com/store/apps/details?id=me.motif.motif"><img src="{{env('CDN_Static')}}/images/guide/icon-goo@2x.png"></a>
+          <div class="m-t-40x text-center img-btn">
+            <a href="https://itunes.apple.com/us/app/id1125850409" class="m-r-20x"><img src="{{env('CDN_Static')}}/images/guide/icon-app@2x.png" width="37%"></a>
+            <a href="https://play.google.com/store/apps/details?id=me.motif.motif"><img src="{{env('CDN_Static')}}/images/guide/icon-goo@2x.png" width="37%"></a>
           </div>
         </div>
         <div class="col-xs-5">
-          <div class="phone-img"><img src="{{env('CDN_Static')}}/images/guide/phone@2x.png"></div>
+          <div class="phone-img"><img src="/images/guide/phone.png" width="100%"></div>
         </div>
       </div>
     </div>
