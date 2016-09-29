@@ -16,8 +16,41 @@
         <li><a href="http://motif.me/designer/92">selfSkip</a></li>
         <li><a href="http://test.m.motif.me/downapp">Rae</a></li>
         <li><a href="http://test.m.motif.me/rae">Rae</a></li>
+
+        <li><a href="javascript:;" id="skip">testSkip</a></li>
     </ul>
 </div>
 </body>
+<script src="{{env('CDN_Static')}}/scripts/vendor.js{{'?v='.config('app.version')}}"></script>
+<script type="text/javascript">
 
+    function switchDevice() {
+        var Agent = navigator.userAgent;
+        if (/iPhone/i.test(Agent)) {
+            return 1;
+        } else if (/Android/i.test(Agent) || /Linux/i.test(Agent)) {
+            return 0;
+        } else {
+            return -1;
+        }
+    }
+
+    var Device = switchDevice();
+    $('#skip').on('click',function () {
+        if (Device === 1) {
+            window.location = "motif://o.c?a=url&url=http://m.motif.me/designer/99";
+            setTimeout(function() {
+                window.location = "http://m.motif.me/designer/99";
+            }, 2000);
+        } else if (Device === 0) {
+            window.location = "motif://o.c?a=url&url=http://m.motif.me/designer/99";
+            setTimeout(function() {
+                window.location = "http://m.motif.me/designer/99";
+            }, 2000);
+        } else {
+            window.location = "http://m.motif.me/designer/99";
+        }
+    });
+
+</script>
 </html>

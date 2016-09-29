@@ -502,6 +502,35 @@
                 })
     });
 
+    $('#follow').on('click',function () {
+        $this = $(this)
+        $.ajax({
+            url: '/followDesigner/' + $this.data('followid'),
+            type: 'GET'
+        })
+                .done(function (data) {
+                    if (data.success) {
+                        if ($this.hasClass('active')) {
+                            $this.html('Following');
+                            $this.toggleClass('active');
+                            $this.addClass('btn-primary').removeClass('btn-follow');
+
+                            $('#followapp').html('Following');
+                            $('#followapp').toggleClass('active');
+                            $('#followapp').addClass('btn-primary').removeClass('btn-follow');
+                        } else {
+                            $this.html('Follow');
+                            $this.toggleClass('active');
+                            $this.addClass('btn-follow').removeClass('btn-primary');
+
+                            $('#followapp').html('Follow');
+                            $('#followapp').toggleClass('active');
+                            $('#followapp').addClass('btn-follow').removeClass('btn-primary');
+                        }
+                    }
+                })
+    });
+
     @if($designer['pushspu'])
         Jockey.send("action", {
             name: "updateWish",

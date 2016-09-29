@@ -130,18 +130,10 @@
             $Follow.html('Following');
             $Follow.toggleClass('active');
             $Follow.addClass('btn-primary').removeClass('btn-follow');
-
-            $('#followapp').html('Following');
-            $('#followapp').toggleClass('active');
-            $('#followapp').addClass('btn-primary').removeClass('btn-follow');
         } else {
             $Follow.html('Follow');
             $Follow.toggleClass('active');
             $Follow.addClass('btn-follow').removeClass('btn-primary');
-
-            $('#followapp').html('Follow');
-            $('#followapp').toggleClass('active');
-            $('#followapp').addClass('btn-follow').removeClass('btn-primary');
         }
     }
 
@@ -162,14 +154,14 @@
             });
     }
 
-    $('#follow').on('click', function (e) {
-        // 切换 Follow 按钮状态
-        switchFollow($(e.target));
-
-        //修改 Follow 状态
-        var followId = $(this).data('followid');
-        changeFollow(followId);
-    });
+    // $('#follow').on('click', function (e) {
+    //     // 切换 Follow 按钮状态
+    //     switchFollow($(e.target));
+    //
+    //     //修改 Follow 状态
+    //     var followId = $(this).data('followid');
+    //     changeFollow(followId);
+    // });
 
 
     // 预售产品
