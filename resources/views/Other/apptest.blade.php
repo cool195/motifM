@@ -3,7 +3,7 @@
 <head>
     <title>App Test</title>
     <link rel="stylesheet" href="{{env('CDN_Static')}}/styles/vendor.css{{'?v='.config('app.version')}}">
-    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+    <meta http-equiv="refresh" content="1"; url="http://m.motif.me/designer/99">
 </head>
 <body>
 
