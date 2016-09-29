@@ -154,14 +154,14 @@
             });
     }
 
-    $('#follow').on('click', function (e) {
-        // 切换 Follow 按钮状态
-        switchFollow($(e.target));
-
-        //修改 Follow 状态
-        var followId = $(this).data('followid');
-        changeFollow(followId);
-    });
+    // $('#follow').on('click', function (e) {
+    //     // 切换 Follow 按钮状态
+    //     switchFollow($(e.target));
+    //
+    //     //修改 Follow 状态
+    //     var followId = $(this).data('followid');
+    //     changeFollow(followId);
+    // });
 
 
     // 预售产品

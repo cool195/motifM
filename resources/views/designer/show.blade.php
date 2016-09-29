@@ -457,6 +457,28 @@
 <script src="{{env('CDN_Static')}}/scripts/designerDetail.js{{'?v='.config('app.version')}}"></script>
 <meta name="csrf-token" content="{{ csrf_token() }}"/>
 <script>
+
+    $('#follow').on('click',function () {
+        $this = $(this)
+        $.ajax({
+            url: '/followDesigner/' + $this.data('followid'),
+            type: 'GET'
+        })
+                .done(function (data) {
+                    if (data.success) {
+                        if ($this.hasClass('active')) {
+                            $this.html('Following');
+                            $this.toggleClass('active');
+                            $this.addClass('btn-primary').removeClass('btn-follow');
+                        } else {
+                            $this.html('Follow');
+                            $this.toggleClass('active');
+                            $this.addClass('btn-follow').removeClass('btn-primary');
+                        }
+                    }
+                })
+    });
+
     $.ajaxSetup({
         headers: {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
