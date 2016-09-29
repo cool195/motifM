@@ -34,6 +34,9 @@
       left: 80px;
       width: 260px;
     }
+    .sanBold {
+      font-family: "sanfranciscodisplay bold";
+    }
     footer {
       background-color: #171a2b;
       padding: 1.875rem 0;
@@ -54,16 +57,16 @@
       <div class="row">
         <div class="col-xs-6 col-xs-offset-1 p-y-40x">
           <div class="content p-a-40x text-center">
-            <div class="font-size-lg p-t-5x p-x-15x">VIEW <span class="sanBold">RAEVIEW’S “KOREATOWN” COLLECTION</span> WITH YOUR MOBILE DEVICE!</div>
-            <div class="font-size-md p-t-20x p-x-20x">Follow The Raeviewer on our free Motif app and be notified when her collection launches.</div>
+            <div class="font-size-lg p-t-5x p-x-15x">VIEW <span class="sanBold">RAEVIEW’S “KOREATOWN” COLLECTION</span><br> WITH YOUR MOBILE DEVICE!</div>
+            <div class="font-size-md p-t-20x p-x-20x">Follow The Raeviewer on our free Motif app<br> and be notified when her collection launches.</div>
           </div>
-          <div class="m-t-40x text-center img-btn">
-            <a href="https://itunes.apple.com/us/app/id1125850409" class="m-r-20x"><img src="{{env('CDN_Static')}}/images/guide/icon-app@2x.png"></a>
-            <a href="https://play.google.com/store/apps/details?id=me.motif.motif"><img src="{{env('CDN_Static')}}/images/guide/icon-goo@2x.png"></a>
+          <div class="m-t-40x text-center">
+            <a href="https://itunes.apple.com/us/app/id1125850409" class="m-r-20x"><img src="{{env('CDN_Static')}}/images/guide/app1@2x.png" width="189"></a>
+            <a href="https://play.google.com/store/apps/details?id=me.motif.motif"><img src="{{env('CDN_Static')}}/images/guide/goo1@2x.png" width="189"></a>
           </div>
         </div>
         <div class="col-xs-5">
-          <div class="phone-img"><img src="/images/guide/phone.png" width="100%"></div>
+          <div class="phone-img"><img src="{{env('CDN_Static')}}/images/guide/phone1.png" width="100%"></div>
         </div>
       </div>
     </div>
@@ -73,9 +76,9 @@
   <div class="container">
     <div class="row">
       <div class="col-xs-2">
-        <a href="###"><img src="{{env('CDN_Static')}}/images/logo/logo-white.png"></a>
+        <a href="http://m.motif.me"><img src="{{env('CDN_Static')}}/images/logo/logo-white.png"></a>
       </div>
-      <div class="col-xs-7 text-white font-size-lg">
+      <div class="col-xs-7 text-white font-size-lg text-center">
         <div class="p-t-10x">Exclusive accessory designs from your favorite Instagrammers & YouTubers</div>
       </div>
       <div class="col-xs-3 text-center p-t-10x">
