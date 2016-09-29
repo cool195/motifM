@@ -125,7 +125,7 @@ class PageController extends ApiController
     }
 
     public function downapp(){
-        return View('designer.skipDesigner');
+        return View('designer.downapp');
     }
 }
 
