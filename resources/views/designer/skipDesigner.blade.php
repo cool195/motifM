@@ -29,6 +29,20 @@
         url = "http://m.motif.me/designer/99";
     }
     window.location.href = url
+
+//    if (Device === 1) {
+//        window.location.href = "motif://o.c?a=url&url=http://m.motif.me/designer/99";
+//        setTimeout(function() {
+//            window.location.href = "http://m.motif.me/designer/99";
+//        }, 2000);
+//    } else if (Device === 0) {
+//        window.location.href = "motif://o.c?a=url&url=http://m.motif.me/designer/99";
+//        setTimeout(function() {
+//            window.location.href = "http://m.motif.me/designer/99";
+//        }, 2000);
+//    } else {
+//        window.location.href = "http://m.motif.me/designer/99";
+//    }
 </script>
 </body>
 </html>
