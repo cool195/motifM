@@ -50,10 +50,11 @@ class DailyController extends ApiController
     public function show(Request $request, $id)
     {
         $params = array(
+            'cmd' => 'topic',
             'id' => $id
         );
 
-        $result = $this->request('openapi', 'topicf', "content", $params);
+        $result = $this->request('openapi', '', "topicf", $params);
         $view = '';
         if ($request->input('test') || strstr($_SERVER['HTTP_USER_AGENT'], 'motif-android') || strstr($_SERVER['HTTP_USER_AGENT'], 'motif-ios')) {
             if ($request->input('token') || !empty($_COOKIE['PIN'])) {
@@ -75,7 +76,7 @@ class DailyController extends ApiController
                     ));
                 }
                 //执行登录前操作
-                if($request->input('wishspu')){
+                if ($request->input('wishspu')) {
                     Publicfun::addWishProduct($request->input('wishspu'));
                     $result['data']['pushspu'] = $request->input('wishspu');
                 }
@@ -103,10 +104,11 @@ class DailyController extends ApiController
     public function staticShow($id)
     {
         $params = array(
+            'cmd' => 'template',
             'id' => $id
         );
 
-        $result = $this->request('openapi', 'topicf', "template", $params);
+        $result = $this->request('openapi', '', "topicf", $params);
         $view = '';
         if (strstr($_SERVER['HTTP_USER_AGENT'], 'motif-android') || strstr($_SERVER['HTTP_USER_AGENT'], 'motif-ios')) {
             $view = 'daily.topicApp';
