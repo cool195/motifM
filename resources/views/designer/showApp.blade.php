@@ -158,33 +158,33 @@
                         <i class="iconfont icon-arrow-bottom icon-size-xm text-common"></i>
                     </a>
                 </div>
-                @if(!empty($designer['instagram_link']) || !empty($designer['snapchat_link']) || !empty($designer['youtube_link']) || !empty($designer['facebook_link']))
+                @if(!empty($designer['instagram_link']) || !empty($designer['snapchat_link']) || !empty($designer['youtube_link']) || !empty($designer['facebook_link']) || !empty($designer['blog_link']))
                     <div class="p-x-15x p-t-5x p-b-15x">
                         @endif
                         @if(!empty($designer['instagram_link']))
                             <a href="motif://o.c?a=outurl&url={{$designer['instagram_link']}}" target="_blank"
-                               class="p-l-15x">
+                               class="p-r-20x">
                                 <img src="{{env('CDN_Static')}}/images/designer/ins.png"
                                      srcset="{{env('CDN_Static')}}/images/designer/ins@2x.png 2x,{{env('CDN_Static')}}/images/designer/ins@3x.png 3x">
                             </a>
                         @endif
                         @if(!empty($designer['snapchat_link']))
                             <a href="motif://o.c?a=outurl&url={{$designer['snapchat_link']}}" target="_blank"
-                               class="p-l-15x">
+                               class="p-r-20x">
                                 <img src="{{env('CDN_Static')}}/images/designer/snapchat.png"
                                      srcset="{{env('CDN_Static')}}/images/designer/snapchat@2x.png 2x,{{env('CDN_Static')}}/images/designer/snapchat@3x.png 3x">
                             </a>
                         @endif
                         @if(!empty($designer['youtube_link']))
                             <a href="motif://o.c?a=outurl&url={{$designer['youtube_link']}}" target="_blank"
-                               class="p-l-15x">
+                               class="p-r-20x">
                                 <img src="{{env('CDN_Static')}}/images/designer/youtube.png"
                                      srcset="{{env('CDN_Static')}}/images/designer/youtube@2x.png 2x,{{env('CDN_Static')}}/images/designer/youtube@3x.png 3x">
                             </a>
                         @endif
                         @if(!empty($designer['facebook_link']))
                             <a href="motif://o.c?a=outurl&url={{$designer['facebook_link']}}" target="_blank"
-                               class="p-l-15x">
+                               class="p-r-20x">
                                 <img src="{{env('CDN_Static')}}/images/designer/facebook.png"
                                      srcset="{{env('CDN_Static')}}/images/designer/facebook@2x.png 2x,{{env('CDN_Static')}}/images/designer/facebook@3x.png 3x">
                             </a>
@@ -196,7 +196,7 @@
                             </a>
                         @endif
 
-                        @if(!empty($designer['instagram_link']) || !empty($designer['snapchat_link']) || !empty($designer['youtube_link']) || !empty($designer['facebook_link']))
+                        @if(!empty($designer['instagram_link']) || !empty($designer['snapchat_link']) || !empty($designer['youtube_link']) || !empty($designer['facebook_link']) || !empty($designer['blog_link']))
                     </div>
                 @endif
 
