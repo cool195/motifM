@@ -130,10 +130,18 @@
             $Follow.html('Following');
             $Follow.toggleClass('active');
             $Follow.addClass('btn-primary').removeClass('btn-follow');
+
+            $('#followapp').html('Following');
+            $('#followapp').toggleClass('active');
+            $('#followapp').addClass('btn-primary').removeClass('btn-follow');
         } else {
             $Follow.html('Follow');
             $Follow.toggleClass('active');
             $Follow.addClass('btn-follow').removeClass('btn-primary');
+
+            $('#followapp').html('Follow');
+            $('#followapp').toggleClass('active');
+            $('#followapp').addClass('btn-follow').removeClass('btn-primary');
         }
     }
 
