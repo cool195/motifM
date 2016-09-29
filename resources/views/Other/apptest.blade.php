@@ -14,7 +14,7 @@
         <li><a href="motif://o.c?a=invitefriend">Invitefriend</a></li>
         <li><a href="motif://o.c?a=url&url=http://m.motif.me/designer/92">androidSkip</a></li>
         <li><a href="http://motif.me/designer/92">selfSkip</a></li>
-        <li><a href="http://test.m.motif.me/rae">Rae</a></li>
+        <li><a href="http://test.m.motif.me/downapp">Rae</a></li>
     </ul>
 </div>
 </body>
