@@ -18,6 +18,9 @@
         <li><a href="http://test.m.motif.me/rae">Rae</a></li>
 
         <li><a href="javascript:;" id="skip">testSkip</a></li>
+
+        <li><a href="https://control.kochava.com/v1/cpi/click?campaign_id=komotif-kvced5a40b7b7adfe749&network_id=5033&device_id=device_id&site_id=1">kochava</a></li>
+
     </ul>
 </div>
 </body>
