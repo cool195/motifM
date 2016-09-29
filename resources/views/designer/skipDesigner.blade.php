@@ -36,7 +36,6 @@
     } else {
         url = "http://m.motif.me/designer/92";
     }
-    window.location.href = url
 </script>
 </body>
 </html>
