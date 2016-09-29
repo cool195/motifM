@@ -193,12 +193,12 @@
                 @if($designer['designer_id']==99)
                     <div class="p-b-10x">
                         <div class="font-size-sm text-primary border-download m-y-5x m-x-15x">
-                            <div class="text-center p-a-15x">
+                            <div class="text-center p-x-15x p-y-20x">
                                 <div>BE NOTIFIED WHEN RAE’S <br/>LIMITED EDITION COLLECTION DROPS!</div>
-                                <div class="p-t-15x">
+                                <div class="p-t-10x">
                                     Follow The Raeviewer on our free app <br/>and be notified<br/>when her collection launches!
                                 </div>
-                                <div class="p-t-15x"><a class="btn btn-primary-outline btn-sm" href="/downapp">Download Motif</a></div>
+                                <div class="p-t-10x"><a class="btn btn-primary-outline btn-sm" href="/downapp">Download Motif</a></div>
                             </div>
                         </div>
                     </div>
