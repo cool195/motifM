@@ -52,11 +52,9 @@ class DesignerController extends ApiController
             $result = $this->request('openapi', '', 'designer', $params);
             //设计师商品动态模版
             $params = array(
-                'cmd' => 'dmodel',
                 'id' => $id,
             );
-            $product = $this->request('openapi', '', 'designer', $params);
-
+            $product = $this->request('openapi', 'designerf', 'content', $params);
             foreach ($product['data']['infos'] as $value) {
                 if ($value['type'] == 'product') {
                     $_spu = $value['spus'][0];
@@ -161,9 +159,9 @@ class DesignerController extends ApiController
 
     public function skipDesigner()
     {
-        if ($this->isMobile()) {
+        if($this->isMobile()){
             return View('designer.skipDesigner');
-        } else {
+        }else{
             return View('daily.download_guide');
         }
 
@@ -180,10 +178,10 @@ class DesignerController extends ApiController
             'size' => $request->input('size', 8)
         );
         $result = $this->request('openapi', '', 'follow', $params);
-        if ($request->input('ajax')) {
+        if($request->input('ajax')){
             return $result;
         }
-        return View('designer.followlist', ['followlist' => $result['data']['list']]);
+        return View('designer.followlist',['followlist'=>$result['data']['list']]);
     }
 
     private function isMobile()
@@ -237,8 +235,10 @@ class DesignerController extends ApiController
             }
         }
 
-        if (isset($_SERVER['HTTP_ACCEPT'])) {
-            if ((strpos($_SERVER['HTTP_ACCEPT'], 'vnd.wap.wml') !== false) && (strpos($_SERVER['HTTP_ACCEPT'], 'text/html') === false || (strpos($_SERVER['HTTP_ACCEPT'], 'vnd.wap.wml') < strpos($_SERVER['HTTP_ACCEPT'], 'text/html')))) {
+        if (isset($_SERVER['HTTP_ACCEPT']))
+        {
+            if ((strpos($_SERVER['HTTP_ACCEPT'], 'vnd.wap.wml') !== false) && (strpos($_SERVER['HTTP_ACCEPT'], 'text/html') === false || (strpos($_SERVER['HTTP_ACCEPT'], 'vnd.wap.wml') < strpos($_SERVER['HTTP_ACCEPT'], 'text/html'))))
+            {
                 return true;
             }
         }
