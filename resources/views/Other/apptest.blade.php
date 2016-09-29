@@ -38,19 +38,25 @@
     var Device = switchDevice();
     $('#skip').on('click',function () {
         if (Device === 1) {
-            window.location = "motif://o.c?a=url&url=http://m.motif.me/designer/99";
             setTimeout(function() {
                 window.location = "http://m.motif.me/designer/99";
             }, 2000);
+            window.location = "motif://o.c?a=url&url=http://m.motif.me/designer/99";
         } else if (Device === 0) {
-            window.location = "motif://o.c?a=url&url=http://m.motif.me/designer/99";
             setTimeout(function() {
                 window.location = "http://m.motif.me/designer/99";
             }, 2000);
+            window.location = "motif://o.c?a=url&url=http://m.motif.me/designer/99";
         } else {
             window.location = "http://m.motif.me/designer/99";
         }
     });
 
+
+//    <meta http-equiv="refresh" content="1"; url="https://itunes.apple.com/us/app/motif-shopping-fashion-jewelry/id1125850409?l=zh&ls=1&mt=8">
+//    <script> window.onload = function() {
+//        setTimeout("window.location = 'https://itunes.apple.com/us/app/motif-shopping-fashion-jewelry/id1125850409?l=zh&ls=1&mt=8';", 1000);
+//        window.location = "motif://o.c?a=url&url=http%3a%2f%2fm.motif.me%2fdesigner%2f99";
+//    }
 </script>
 </html>
