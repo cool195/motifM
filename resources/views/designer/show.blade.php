@@ -254,7 +254,7 @@
                 @foreach($product['infos'] as $k=>$value)
                     @if($value['type']=='banner' || (!isset($value['spus']) && $value['type']=='product'))
                         <!-- 第一个 banner 图 -->
-                            @if(!isset($value['skipType']))
+                            @if(!isset($value['skipType']) || empty($value['skipId']))
                                 <a href="javascript:void(0)">
                                     @else
                                         <a data-link="@if($value['skipType']=='1')/detail/{{$value['skipId']}}@elseif($value['skipType']=='2')/designer/{{$value['skipId']}}@elseif($value['skipType']=='3')/topic/{{$value['skipId']}}@elseif($value['skipType']=='4')/shopping#{{$value['skipId']}}@else{{$value['skipId']}}@endif"
