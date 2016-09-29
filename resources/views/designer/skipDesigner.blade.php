@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Skip Designer</title>
+    <title>VIEW RAEVIEW’S “KOREATOWN” COLLECTION</title>
 </head>
 <body>
 @include('check.tagmanager')
