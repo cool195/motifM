@@ -485,10 +485,18 @@
                             $this.html('Following');
                             $this.toggleClass('active');
                             $this.addClass('btn-primary').removeClass('btn-follow');
+
+                            $('#follow').html('Following');
+                            $('#follow').toggleClass('active');
+                            $('#follow').addClass('btn-primary').removeClass('btn-follow');
                         } else {
                             $this.html('Follow');
                             $this.toggleClass('active');
                             $this.addClass('btn-follow').removeClass('btn-primary');
+
+                            $('#follow').html('Follow');
+                            $('#follow').toggleClass('active');
+                            $('#follow').addClass('btn-follow').removeClass('btn-primary');
                         }
                     }
                 })
