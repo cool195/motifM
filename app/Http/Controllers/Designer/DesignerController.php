@@ -139,6 +139,14 @@ class DesignerController extends ApiController
                         }
                     }
                     $result['data']['spuArray'] = json_encode($spuArray);
+                    $followParams = array(
+                        'cmd' => 'is',
+                        'pin' => Session::get('user.pin'),
+                        'token' => Session::get('user.token'),
+                        'did' => $result['data']['designer_id'],
+                    );
+                    $follow = $this->request('openapi', '', 'follow', $followParams);
+                    $result['data']['followStatus'] = $follow['data']['isFC'];
                 } else {
                     Session::forget('user');
                 }
