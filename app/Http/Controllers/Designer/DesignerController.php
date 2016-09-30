@@ -71,7 +71,13 @@ class DesignerController extends ApiController
                 $pre_product = $this->request('openapi', '', 'product', $params);
             }
             if($request->input('test')){
-                return $pre_product;
+                if (isset($_spu) && $product['data']['spuInfos'][$_spu]['spuBase']['sale_type'] == 1 && isset($product['data']['spuInfos'][$_spu]['skuPrice']['skuPromotion']) && $product['data']['spuInfos'][$_spu]['spuBase']['isPutOn'] == 1 && $product['data']['spuInfos'][$_spu]['stockStatus'] == 'YES') {
+                    $params = array(
+                        'cmd' => 'productdetail',
+                        'spu' => $_spu,
+                    );
+                }
+                return [$params,$pre_product];
             }
 
             //设计师推荐商品
