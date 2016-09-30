@@ -129,7 +129,7 @@
                                        data-followid="{{$designer['designer_id']}}">Follow</div>
                                 @endif
                             @else
-                                <div class="btn btn-sm btn-follow active sendLogin"
+                                <div class="btn btn-sm btn-follow active sendLogin upFollow"
                                    data-des="{{$designer['designer_id']}}">Follow</div>
                             @endif
                         </span>
@@ -447,8 +447,8 @@
                                                             <div class="btn btn-sm btn-follow active" id="followapp" data-followid="{{$designer['designer_id']}}">Follow</div>
                                                         @endif
                                                     @else
-                                                        <a href="javascript:;" class="btn btn-sm btn-follow active sendLogin"
-                                                           data-des="{{$designer['designer_id']}}">Follow</a>
+                                                        <div class="btn btn-sm btn-follow active sendLogin downFollow"
+                                                           data-des="{{$designer['designer_id']}}">Follow</div>
                                                     @endif
                                             </div>
                                         </div>
