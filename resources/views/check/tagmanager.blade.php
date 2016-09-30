@@ -1,4 +1,4 @@
-@if($_SERVER['SERVER_NAME'] == 'm.motif.me')
+@if($_SERVER['SERVER_NAME'] == 'm.motif.me' || $_SERVER['SERVER_NAME'] == 'www.motif.me' || $_SERVER['SERVER_NAME'] == 'motif.me')
     {{--Google Tag Manager--}}
     <noscript>
         <iframe src="//www.googletagmanager.com/ns.html?id=GTM-M54JN5"
