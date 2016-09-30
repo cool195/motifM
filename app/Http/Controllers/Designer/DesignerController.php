@@ -84,14 +84,6 @@ class DesignerController extends ApiController
 
             $view = '';
             $result['data']['osType'] = strstr($_SERVER['HTTP_USER_AGENT'], 'motif-ios') ? 'ios' : 'android';
-            $followParams = array(
-                'cmd' => 'is',
-                'pin' => Session::get('user.pin'),
-                'token' => Session::get('user.token'),
-                'did' => $result['data']['designer_id'],
-            );
-            $follow = $this->request('openapi', '', 'follow', $followParams);
-            $result['data']['followStatus'] = $follow['data']['isFC'];
             if ($_GET['test'] || strstr($_SERVER['HTTP_USER_AGENT'], 'motif-android') || strstr($_SERVER['HTTP_USER_AGENT'], 'motif-ios')) {
 
                 if ($request->input('token') || !empty($_COOKIE['PIN'])) {
@@ -138,15 +130,7 @@ class DesignerController extends ApiController
                             $spuArray = array_merge([$value['spu']], $spuArray);
                         }
                     }
-                    $result['data']['spuArray'] = json_encode($spuArray);
-                    $followParams = array(
-                        'cmd' => 'is',
-                        'pin' => Session::get('user.pin'),
-                        'token' => Session::get('user.token'),
-                        'did' => $result['data']['designer_id'],
-                    );
-                    $follow = $this->request('openapi', '', 'follow', $followParams);
-                    $result['data']['followStatus'] = $follow['data']['isFC'];
+
                 } else {
                     Session::forget('user');
                 }
@@ -154,6 +138,15 @@ class DesignerController extends ApiController
             } else {
                 $view = 'designer.show';
             }
+            $result['data']['spuArray'] = json_encode($spuArray);
+            $followParams = array(
+                'cmd' => 'is',
+                'pin' => Session::get('user.pin'),
+                'token' => Session::get('user.token'),
+                'did' => $result['data']['designer_id'],
+            );
+            $follow = $this->request('openapi', '', 'follow', $followParams);
+            $result['data']['followStatus'] = $follow['data']['isFC'];
             return View($view, ['pre_product' => $pre_product['data'], 'designer' => $result['data'], 'productAll' => $productAll, 'product' => $product['data']]);
         }
 
