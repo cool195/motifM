@@ -136,7 +136,7 @@
                                        {{--data-followid="{{$designer['designer_id']}}">Follow</a>--}}
                                 {{--@endif--}}
                             {{--@else--}}
-                                {{--<a href="/login" class="btn btn-sm btn-follow active sendLogin">Follow</a>--}}
+                                {{--<a href="/login" class="btn btn-sm btn-follow active upFollow sendLogin">Follow</a>--}}
                             {{--@endif--}}
                         {{--</span>--}}
                     {{--</div>--}}
