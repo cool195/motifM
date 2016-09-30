@@ -58,7 +58,8 @@
         <div class="col-xs-6 col-xs-offset-1 p-y-40x">
           <div class="content p-a-40x text-center">
             <div class="font-size-lg p-t-5x p-x-15x">VIEW <span class="sanBold">RAEVIEW’S “KOREATOWN” COLLECTION</span><br> WITH YOUR MOBILE DEVICE!</div>
-            <div class="font-size-md p-t-20x p-x-20x">Follow The Raeviewer on our free Motif app<br> and be notified when her collection launches.</div>
+            <p class="text-red font-size-md p-t-10x">by visiting www.motif.me/rae in mobile browser</p>
+            <div class="font-size-md p-x-20x">Follow The Raeviewer on our free Motif app<br> and be notified when her collection launches.</div>
           </div>
           <div class="m-t-40x text-center">
             <a href="https://itunes.apple.com/us/app/id1125850409" class="m-r-20x"><img src="{{env('CDN_Static')}}/images/guide/app1@2x.png" width="189"></a>
