@@ -70,6 +70,9 @@ class DesignerController extends ApiController
                 );
                 $pre_product = $this->request('openapi', '', 'product', $params, 0);
             }
+            if($request->input('test')){
+                return $pre_product;
+            }
 
             //设计师推荐商品
             $params = array(
