@@ -63,16 +63,16 @@ class DesignerController extends ApiController
                     break;
                 }
             }
+            if($request->input('test')){
+                return $product;
+                return [$_spu,$product['data']['spuInfos'][$_spu]['spuBase']['sale_type'],$product['data']['spuInfos'][$_spu]['skuPrice']['skuPromotion'],$product['data']['spuInfos'][$_spu]['spuBase']['isPutOn'],$product['data']['spuInfos'][$_spu]['stockStatus']];
+            }
             if (isset($_spu) && $product['data']['spuInfos'][$_spu]['spuBase']['sale_type'] == 1 && isset($product['data']['spuInfos'][$_spu]['skuPrice']['skuPromotion']) && $product['data']['spuInfos'][$_spu]['spuBase']['isPutOn'] == 1 && $product['data']['spuInfos'][$_spu]['stockStatus'] == 'YES') {
                 $params = array(
                     'cmd' => 'productdetail',
                     'spu' => $_spu,
                 );
                 $pre_product = $this->request('openapi', '', 'product', $params);
-            }
-            if($request->input('test')){
-
-                return [$_spu,$product['data']['spuInfos'][$_spu]['spuBase']['sale_type'],$product['data']['spuInfos'][$_spu]['skuPrice']['skuPromotion'],$product['data']['spuInfos'][$_spu]['spuBase']['isPutOn'],$product['data']['spuInfos'][$_spu]['stockStatus']];
             }
 
             //设计师推荐商品
