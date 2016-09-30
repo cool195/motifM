@@ -58,15 +58,12 @@ class DesignerController extends ApiController
             $product = $this->request('openapi', '', 'designer', $params);
 
             foreach ($product['data']['infos'] as $value) {
-                if ($value['type'] == 'product') {
+                if($value['type']=='product' && isset($value['spus'])){
                     $_spu = $value['spus'][0];
                     break;
                 }
             }
-            if($request->input('test')){
-                return $product;
-                return [$_spu,$product['data']['spuInfos'][$_spu]['spuBase']['sale_type'],$product['data']['spuInfos'][$_spu]['skuPrice']['skuPromotion'],$product['data']['spuInfos'][$_spu]['spuBase']['isPutOn'],$product['data']['spuInfos'][$_spu]['stockStatus']];
-            }
+            
             if (isset($_spu) && $product['data']['spuInfos'][$_spu]['spuBase']['sale_type'] == 1 && isset($product['data']['spuInfos'][$_spu]['skuPrice']['skuPromotion']) && $product['data']['spuInfos'][$_spu]['spuBase']['isPutOn'] == 1 && $product['data']['spuInfos'][$_spu]['stockStatus'] == 'YES') {
                 $params = array(
                     'cmd' => 'productdetail',
