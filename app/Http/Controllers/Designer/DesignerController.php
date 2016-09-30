@@ -68,7 +68,7 @@ class DesignerController extends ApiController
                     'cmd' => 'productdetail',
                     'spu' => $_spu,
                 );
-                $pre_product = $this->request('openapi', '', 'product', $params, 0);
+                $pre_product = $this->request('openapi', '', 'product', $params);
             }
             if($request->input('test')){
                 return $pre_product;
