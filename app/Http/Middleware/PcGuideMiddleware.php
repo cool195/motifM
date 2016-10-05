@@ -15,7 +15,7 @@ class PcGuideMiddleware
      */
     public function handle($request, Closure $next)
     {
-        if($this->isMobile() || $request->input('nopc'))
+        if($this->isMobile() || $request->input('f')=='ios' || $request->input('f')=='android' || $request->input('nopc'))
         {
             if ($_SERVER['HTTP_HOST'] == 'motif.me' || $_SERVER['HTTP_HOST'] == 'www.motif.me'){
                 echo '<script language="javascript" type="text/javascript"> window.location.href="http://m.motif.me'.$request->getRequestUri().'"</script>';
