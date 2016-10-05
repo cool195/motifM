@@ -426,7 +426,7 @@
                                 @if($designer['designer_id']==99)
                                     <div class="font-size-sm text-primary p-y-15x p-x-15x">
                                         <div class="text-center">
-                                            <div>Follow Rae on our free app to be notified when Pre-sale for this collection starts.</div>
+                                            <div>Follow Rae for early access to shop future collections.</div>
                                             <div class="p-t-15x">
                                                     @if(Session::get('user.pin'))
                                                         @if($designer['followStatus'])
