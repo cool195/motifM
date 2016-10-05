@@ -200,18 +200,6 @@
                     </div>
                 @endif
 
-                @if($designer['designer_id']==99)
-                    <div class="p-b-10x">
-                        <div class="font-size-sm text-primary border-download m-y-5x m-x-10x">
-                            <div class="text-center p-x-15x p-y-20x">
-                                <div class="font-size-md">Tap "Follow" to be notified when <br/>Rae's Limited Edition Collection Drops!</div>
-                                <div class="p-t-10x font-size-xs">
-                                    (Make sure push notification for Motif is enabled<br/> under your phone's notification settings!)
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                @endif
             </div>
 
             <!-- 预售信息 -->

@@ -164,7 +164,8 @@ class DesignerController extends ApiController
     public function skipDesigner()
     {
         if ($this->isMobile()) {
-            return View('designer.skipDesigner');
+            return redirect('/designer/99');
+            //return View('designer.skipDesigner');
         } else {
             return View('daily.download_guide');
         }
