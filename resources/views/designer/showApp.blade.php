@@ -190,7 +190,7 @@
                             </a>
                         @endif
                         @if(!empty($designer['blog_link']))
-                            <a href="motif://o.c?a=outurl&url={{$designer['blog_link']}}" target="_blank" class="p-l-15x SocialMedia">
+                            <a href="motif://o.c?a=outurl&url={{$designer['blog_link']}}" target="_blank" class="p-r-20x SocialMedia">
                                 <img src="{{env('CDN_Static')}}/images/designer/blog.png"
                                      srcset="{{env('CDN_Static')}}/images/designer/blog@2x.png 2x,{{env('CDN_Static')}}/images/designer/blog@3x.png 3x">
                             </a>
