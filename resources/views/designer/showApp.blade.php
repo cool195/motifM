@@ -430,7 +430,7 @@
                                 @if($designer['designer_id']==99)
                                     <div class="font-size-sm text-primary p-y-15x p-x-15x">
                                         <div class="text-center">
-                                            <div>Follow Rae for early access to shop future collections.</div>
+                                            <div>Love this collection? Follow Rae for early access to shop future collections.</div>
                                             <div class="p-t-15x">
                                                     @if(Session::get('user.pin'))
                                                         @if($designer['followStatus'])

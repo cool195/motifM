@@ -429,7 +429,7 @@
                                         @if($designer['designer_id']==99)
                                             <div class="font-size-sm text-primary p-y-15x p-x-15x">
                                                 <div class="text-center">
-                                                    <div>Follow Rae on our free app for early access to shop future collections.</div>
+                                                    <div>Love this collection? Follow Rae on our free app for early access to shop future collections.</div>
                                                     <div class="p-t-15x">
                                                         <a class="btn btn-primary-outline btn-sm" href="/downapp">Download Motif</a>
                                                     </div>
