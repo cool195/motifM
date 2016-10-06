@@ -163,28 +163,28 @@
                         @endif
                         @if(!empty($designer['instagram_link']))
                             <a href="motif://o.c?a=outurl&url={{$designer['instagram_link']}}" target="_blank"
-                               class="p-r-20x">
+                               class="p-r-20x SocialMedia">
                                 <img src="{{env('CDN_Static')}}/images/designer/ins.png"
                                      srcset="{{env('CDN_Static')}}/images/designer/ins@2x.png 2x,{{env('CDN_Static')}}/images/designer/ins@3x.png 3x">
                             </a>
                         @endif
                         @if(!empty($designer['snapchat_link']))
                             <a href="motif://o.c?a=outurl&url={{$designer['snapchat_link']}}" target="_blank"
-                               class="p-r-20x">
+                               class="p-r-20x SocialMedia">
                                 <img src="{{env('CDN_Static')}}/images/designer/snapchat.png"
                                      srcset="{{env('CDN_Static')}}/images/designer/snapchat@2x.png 2x,{{env('CDN_Static')}}/images/designer/snapchat@3x.png 3x">
                             </a>
                         @endif
                         @if(!empty($designer['youtube_link']))
                             <a href="motif://o.c?a=outurl&url={{$designer['youtube_link']}}" target="_blank"
-                               class="p-r-20x">
+                               class="p-r-20x SocialMedia">
                                 <img src="{{env('CDN_Static')}}/images/designer/youtube.png"
                                      srcset="{{env('CDN_Static')}}/images/designer/youtube@2x.png 2x,{{env('CDN_Static')}}/images/designer/youtube@3x.png 3x">
                             </a>
                         @endif
                         @if(!empty($designer['facebook_link']))
                             <a href="motif://o.c?a=outurl&url={{$designer['facebook_link']}}" target="_blank"
-                               class="p-r-20x">
+                               class="p-r-20x SocialMedia">
                                 <img src="{{env('CDN_Static')}}/images/designer/facebook.png"
                                      srcset="{{env('CDN_Static')}}/images/designer/facebook@2x.png 2x,{{env('CDN_Static')}}/images/designer/facebook@3x.png 3x">
                             </a>
