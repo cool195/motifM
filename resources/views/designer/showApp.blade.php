@@ -204,7 +204,7 @@
 
             <!-- 预售信息 -->
             @if(!empty($pre_product))
-                <section class="limited-content" hidden>
+                <section class="limited-content">
                     <div class="bg-white m-b-10x m-y-10x limited-data"
                          data-begintime="{{$pre_product['skuPrice']['skuPromotion']['start_time']}}"
                          data-endtime="{{$pre_product['skuPrice']['skuPromotion']['end_time']}}"
