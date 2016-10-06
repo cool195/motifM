@@ -212,26 +212,30 @@
                          data-ship="{{$pre_product['skuPrice']['skuPromotion']['ship_desc']}}">
                         <div class="p-x-15x limited-subtitle"><strong>LIMITED EDITION</strong></div>
                         <div>
-                            <div class="p-x-15x p-t-5x">
-                                <img src="/images/icon/icon-limited.png"
-                                     srcset="/images/icon/icon-limited@2x.png 2x, /images/icon/icon-limited@3x.png 3x"
-                                     alt="">
-                                <span class="text-primary font-size-sm">@if(($pre_product['spuStock']['stock_qtty'] - $pre_product['spuStock']['saled_qtty'] > 0) && $pre_product['isPutOn']==1)
-                                        Only {{$pre_product['spuStock']['stock_qtty'] - $pre_product['spuStock']['saled_qtty']}}
-                                        Left @else Sold Out @endif</span>
-                            </div>
-                            <div class="p-x-15x p-t-5x">
-                                <img src="/images/icon/icon-limited.png"
-                                     srcset="/images/icon/icon-limited@2x.png 2x, /images/icon/icon-limited@3x.png 3x"
-                                     alt="">
-                                <span class="text-primary font-size-sm">Orders Close <span
-                                            class="time_show"></span></span>
-                            </div>
-                            <div class="p-x-15x p-y-5x m-x-15x">
-                                <progress class="progress progress-primary" id="limited-progress" value="" max="10000">
-                                    0%
-                                </progress>
-                            </div>
+                            @if($pre_product['skuPrice']['skuPromotion']['ship_desc'] != '')
+                                <div class="p-x-15x p-t-5x">
+                                    <img src="/images/icon/icon-limited.png"
+                                         srcset="/images/icon/icon-limited@2x.png 2x, /images/icon/icon-limited@3x.png 3x"
+                                         alt="">
+                                    <span class="text-primary font-size-sm">@if(($pre_product['spuStock']['stock_qtty'] - $pre_product['spuStock']['saled_qtty'] > 0) && $pre_product['isPutOn']==1)
+                                            Only {{$pre_product['spuStock']['stock_qtty'] - $pre_product['spuStock']['saled_qtty']}}
+                                            Left @else Sold Out @endif</span>
+                                </div>
+                            @endif
+                            @if($pre_product['skuPrice']['skuPromotion']['remain_time'] >0)
+                                <div class="p-x-15x p-t-5x">
+                                    <img src="/images/icon/icon-limited.png"
+                                         srcset="/images/icon/icon-limited@2x.png 2x, /images/icon/icon-limited@3x.png 3x"
+                                         alt="">
+                                    <span class="text-primary font-size-sm">Orders Close <span
+                                                class="time_show"></span></span>
+                                </div>
+                                <div class="p-x-15x p-y-5x m-x-15x">
+                                    <progress class="progress progress-primary" id="limited-progress" value="" max="10000">
+                                        0%
+                                    </progress>
+                                </div>
+                            @endif
                         </div>
                     </div>
                 </section>
