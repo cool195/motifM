@@ -84,7 +84,7 @@
                     </fieldset>
                     <hr class="hr-base m-a-0">
                     <fieldset>
-                        <input class="form-control form-control-block p-a-15x font-size-sm" name="zip" type="tel" maxlength="10" data-optional="false" data-role="zip code" value="{{$input['zip']}}"  placeholder="Zip Code">
+                        <input class="form-control form-control-block p-a-15x font-size-sm" name="zip" type="text" maxlength="10" data-optional="false" data-role="zip code" value="{{$input['zip']}}"  placeholder="Zip Code">
                     </fieldset>
                     <hr class="hr-base m-a-0">
                     <fieldset>
