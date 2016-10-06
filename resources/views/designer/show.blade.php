@@ -194,7 +194,7 @@
 
             <!-- 预售信息 -->
             @if(!empty($pre_product))
-                <section class="limited-content">
+                <section class="limited-content" hidden>
                     <div class="bg-white m-b-10x m-y-10x limited-data"
                          data-begintime="{{$pre_product['skuPrice']['skuPromotion']['start_time']}}"
                          data-endtime="{{$pre_product['skuPrice']['skuPromotion']['end_time']}}"
@@ -202,7 +202,7 @@
                          data-ship="{{$pre_product['skuPrice']['skuPromotion']['ship_desc']}}">
                         <div class="p-x-15x limited-subtitle"><strong>LIMITED EDITION</strong></div>
                         <div>
-                            @if($pre_product['skuPrice']['skuPromotion']['ship_desc'] != '')
+
                                 <div class="p-x-15x p-t-5x">
                                     <img src="/images/icon/icon-limited.png"
                                          srcset="/images/icon/icon-limited@2x.png 2x, /images/icon/icon-limited@3x.png 3x"
@@ -211,8 +211,8 @@
                                             Only {{$pre_product['spuStock']['stock_qtty'] - $pre_product['spuStock']['saled_qtty']}}
                                             Left @else Sold Out @endif</span>
                                 </div>
-                            @endif
-                            @if($pre_product['skuPrice']['skuPromotion']['remain_time'] >0)
+
+
                                 <div class="p-x-15x p-t-5x">
                                     <img src="/images/icon/icon-limited.png"
                                          srcset="/images/icon/icon-limited@2x.png 2x, /images/icon/icon-limited@3x.png 3x"
@@ -225,7 +225,7 @@
                                         0%
                                     </progress>
                                 </div>
-                                @endif
+
                         </div>
                     </div>
                 </section>
