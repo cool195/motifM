@@ -18,7 +18,7 @@
 
         <li><a href="javascript:;" id="skip">testSkip</a></li>
         @if($mobile)
-            <li>您的设备是手机</li>
+            <li>is mobile</li>
         @endif
         <li><a href="https://control.kochava.com/v1/cpi/click?campaign_id=komotif-kvced5a40b7b7adfe749&network_id=5033&device_id=device_id&site_id=1">kochava</a></li>
 
