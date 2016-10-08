@@ -19,8 +19,12 @@
         <li><a href="javascript:;" id="skip">testSkip</a></li>
         @if($mobile)
             <li>is mobile</li>
+        @else
+            <li>is pc</li>
         @endif
-        <li><a href="https://control.kochava.com/v1/cpi/click?campaign_id=komotif-kvced5a40b7b7adfe749&network_id=5033&device_id=device_id&site_id=1">kochava</a></li>
+        <li>
+            <a href="https://control.kochava.com/v1/cpi/click?campaign_id=komotif-kvced5a40b7b7adfe749&network_id=5033&device_id=device_id&site_id=1">kochava</a>
+        </li>
 
     </ul>
 </div>
@@ -40,14 +44,14 @@
     }
 
     var Device = switchDevice();
-    $('#skip').on('click',function () {
+    $('#skip').on('click', function () {
         if (Device === 1) {
-            setTimeout(function() {
+            setTimeout(function () {
                 window.location = "http://m.motif.me/designer/99";
             }, 2000);
             window.location = "motif://o.c?a=url&url=http://m.motif.me/designer/99";
         } else if (Device === 0) {
-            setTimeout(function() {
+            setTimeout(function () {
                 window.location = "http://m.motif.me/designer/99";
             }, 2000);
             window.location = "motif://o.c?a=url&url=http://m.motif.me/designer/99";
