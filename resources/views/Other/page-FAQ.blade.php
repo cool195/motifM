@@ -131,7 +131,7 @@
                                     purchase. We can help
                                     you return the product, but we reserve the right to charge shipping & handling, and
                                     restocking
-                                    fees. For more details, please visit our Return <a href="#"
+                                    fees. For more details, please visit our Return <a href="/template/23"
                                                                                        class="text-underLine">Policy</a>
                                     Page.</p>
                             </div>
