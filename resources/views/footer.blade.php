@@ -60,7 +60,7 @@
                     </div>
                     <a class="list-group-item list-group-itemText-lg text-primary" href="/contactus">Contact Us</a>
                     <a class="list-group-item list-group-itemText-lg text-primary" href="/faq">FAQ</a>
-                    <a class="list-group-item list-group-itemText-lg text-primary" href="/payments">Payments</a>
+                    {{--<a class="list-group-item list-group-itemText-lg text-primary" href="/payments">Payments</a>--}}
                     <a class="list-group-item list-group-itemText-lg text-primary" href="/template/23">Shipping &
                         Returns</a>
                 </div>
