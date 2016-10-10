@@ -262,7 +262,7 @@
                                    data-clk='http://clk.motif.me/log.gif?t=designer.400001&m=H5_M2016-1&pin={{Session::get('user.pin')}}&uuid={{ Session::get('user.uuid') }}&v={"action":1,"skipType":{{$value['skipType']}},"skipId":{{$value['skipId']}},expid":0,"index":"{{$k}}","version":"1.0.1","ver":"9.2","src":"H5"}'
                                    href="javascript:void(0)">
                                 @endif
-                                <div @if($k!=0)class="p-y-10x"@endif>
+                                <div class="p-y-10x">
                                     <img class="img-fluid"
                                          src="{{env('APP_Api_Image')}}/n2/{{$value['imgPath']}}">
                                 </div>
