@@ -267,6 +267,7 @@
                                          src="{{env('APP_Api_Image')}}/n2/{{$value['imgPath']}}">
                                 </div>
                             </a>
+                                        <p class="m-y-20x"></p>
                         @elseif($value['type']=='title')
                             {{--标题--}}
                             <a data-link="@if($value['skipType']=='1')motif://o.c?a=pd&spu={{$value['skipId']}}@elseif($value['skipType']=='2')/designer/{{$value['skipId']}}@elseif($value['skipType']=='3')/topic/{{$value['skipId']}}@elseif($value['skipType']=='4')motif://o.c?a=shoppinglist&cid={{$value['skipId']}}@else{{'motif://o.c?a=outurl&url='.urlencode($value['skipId'])}}@endif"
