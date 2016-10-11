@@ -23,7 +23,8 @@ class PcGuideMiddleware
                 return $next($request);
             }
         }
-        echo '<script language="javascript" type="text/javascript"> window.location.href="http://motif.me/home"</script>';
+        echo '<script language="javascript" type="text/javascript"> window.location.href="http://www.motif.me'.$request->getRequestUri().'"</script>';
+        //echo '<script language="javascript" type="text/javascript"> window.location.href="http://pc.motif.app'.$request->getRequestUri().'"</script>';
     }
 
     private function isMobile()
