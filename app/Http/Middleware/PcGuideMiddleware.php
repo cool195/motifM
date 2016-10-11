@@ -18,13 +18,12 @@ class PcGuideMiddleware
         if($this->isMobile() || $request->input('f')=='ios' || $request->input('f')=='android' || $request->input('nopc'))
         {
             if ($_SERVER['HTTP_HOST'] == 'motif.me' || $_SERVER['HTTP_HOST'] == 'www.motif.me'){
-                echo '<script language="javascript" type="text/javascript"> window.location.href="http://m.motif.me'.$request->getRequestUri().'"</script>';
+                return redirect("http://m.motif.me".$request->getRequestUri());
             }else{
                 return $next($request);
             }
         }
-        echo '<script language="javascript" type="text/javascript"> window.location.href="http://www.motif.me'.$request->getRequestUri().'"</script>';
-        //echo '<script language="javascript" type="text/javascript"> window.location.href="http://pc.motif.app'.$request->getRequestUri().'"</script>';
+        return redirect("http://www.motif.me".$request->getRequestUri());
     }
 
     private function isMobile()

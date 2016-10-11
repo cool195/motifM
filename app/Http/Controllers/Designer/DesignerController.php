@@ -42,12 +42,6 @@ class DesignerController extends ApiController
     {
         if (is_numeric($id)) {
 
-            if(($request->input('f')!='ios' && $request->input('f')!='android')){
-                if ($id == 99 && !$this->isMobile()) {
-                    return View('daily.download_guide');
-                }
-            }
-
             //设计师详情
             $params = array(
                 'cmd' => 'designerdetail',
