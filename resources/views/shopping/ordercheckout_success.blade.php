@@ -16,7 +16,7 @@
                         'id': '{{ $order['sub_order_no'] }}',
                         'affiliation': 'Online Store',
                         'revenue': '{{ number_format($order['total_amount'] / 100, 2) }}',
-                        'tax': '0',
+                        'tax': '{{ number_format($order['tax_amount']) }}',
                         'shipping': '{{ number_format($order['freight_amount'] / 100, 2) }}',
                         'coupon': ''
                     },
