@@ -9,9 +9,15 @@ use App\Services\MCrypt;
 
 class PageController extends ApiController
 {
-    public function aes(){
-        $aes = new MCrypt('asdfas');
-        return $aes->encrypt('test');
+    public function aes()
+    {
+        $randomKey = str_random(6);
+        $aes = new MCrypt($randomKey);
+        $str = $aes->encrypt('test');
+        $start = substr($str, 0, 4);
+        $end = substr($str, 4);
+        $aesStr = ($start . $randomKey . $end);
+        return [$randomKey, $str, $aesStr];
     }
 
     //aboutMotif
