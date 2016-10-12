@@ -160,7 +160,7 @@
         $('#cartDialog').data('action', $(e.target).data('action'));
 
         $('#removeFromCart-name').val($(this).data('title'));
-        $('#removeFromCart-sku').val($(this).data('sku'));
+        $('#removeFromCart-spu').val($(this).data('spu'));
         $('#removeFromCart-price').val($(this).data('price'));
         $('#removeFromCart-quantity').val($(this).data('qtty'));
         console.log('open');

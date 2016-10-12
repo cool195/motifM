@@ -11,13 +11,13 @@
 </head>
 <body>
 <input type="text" id="removeFromCart-name" value="" hidden>
-<input type="text" id="removeFromCart-sku" value="" hidden>
+<input type="text" id="removeFromCart-spu" value="" hidden>
 <input type="text" id="removeFromCart-price" value="" hidden>
 <input type="text" id="removeFromCart-quantity" value="" hidden>
 <script type="text/javascript">
     function onRemoveFromCart() {
         var name = document.getElementById('removeFromCart-name').value;
-        var sku = document.getElementById('removeFromCart-sku').value;
+        var spu = document.getElementById('removeFromCart-spu').value;
         var price = document.getElementById('removeFromCart-price').value;
         var quantity = document.getElementById('removeFromCart-quantity').value;
         dataLayer.push({
@@ -26,7 +26,7 @@
                 'remove': {
                     'products': [{
                         'name': name,
-                        'sku': sku,
+                        'id': spu,
                         'price': price,
                         'brand': 'Motif',
                         'category': '',
@@ -117,7 +117,7 @@
                                     <div class="flex">
                                         <a class="btn btn-cartUpdate btn-sm btn-inBag" data-remodal-target="modal"
                                            data-sku="{{$showSku['sku']}}" data-action="delsku" data-title="{{$showSku['main_title']}}" data-price="{{number_format(($showSku['sale_price'] / 100), 2)}}"
-                                        data-qtty="{{$showSku['sale_qtty']}}">Remove</a>
+                                        data-qtty="{{$showSku['sale_qtty']}}" data-spu="{{$showSku['spu']}}">Remove</a>
                                         <a href="#" class="btn btn-cartUpdate btn-sm btn-inBag" data-product-move="save"
                                            data-sku="{{$showSku['sku']}}">Save for Later</a>
                                     </div>
