@@ -5,9 +5,15 @@ namespace App\Http\Controllers\Other;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use App\Http\Controllers\ApiController;
+use App\Services\MCrypt;
 
 class PageController extends ApiController
 {
+    public function aes(){
+        $aes = new MCrypt('asdfas');
+        return $aes->encrypt('test');
+    }
+
     //aboutMotif
     public function error()
     {

@@ -206,7 +206,7 @@ $app->get('/detail/{spu}', 'Shopping\ProductController@index');
 $app->get('/designer/{id}', 'Designer\DesignerController@show');
 
 $app->get('/apptest', 'Other\PageController@apptest');
-
+$app->get('/aes', 'Other\PageController@aes');
 
 //rae网红
 $app->get('/rae','Designer\DesignerController@skipDesigner');
