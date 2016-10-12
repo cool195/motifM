@@ -23,7 +23,8 @@ class PcGuideMiddleware
                 return $next($request);
             }
         }
-        return redirect("http://www.motif.me".$request->getRequestUri());
+        //return redirect("http://www.motif.me".$request->getRequestUri());
+        return redirect("http://motif.me/home");
     }
 
     private function isMobile()

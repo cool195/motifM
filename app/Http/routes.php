@@ -21,7 +21,6 @@ $app->group(['middleware' => 'pcguide', 'namespace' => 'App\Http\Controllers'], 
     $app->get('/shopping', 'Shopping\ShoppingController@index');
 
     $app->get('/designer', 'Designer\DesignerController@index');
-    $app->get('/designer/{id}', 'Designer\DesignerController@show');
 
     $app->post('/googlelogin', 'Auth\AuthController@googleLogin');
     $app->post('/facebooklogin', 'Auth\AuthController@facebookLogin');
@@ -34,6 +33,8 @@ $app->group(['middleware' => 'pcguide', 'namespace' => 'App\Http\Controllers'], 
 
 });
 
+$app->get('/forgetpwd', 'Shopping\UserController@forgetPWD');
+$app->post('/forgetpwd', 'Shopping\UserController@forgetPWD');
 
 $app->group(['middleware' => 'pcguide|logincheck', 'namespace' => 'App\Http\Controllers\Shopping'], function ($app) {
 
@@ -101,9 +102,6 @@ $app->group(['middleware' => 'pcguide|logincheck', 'namespace' => 'App\Http\Cont
 
     $app->post('/useraddr/addUserAddress', 'AddressController@addUserAddr');
 
-    $app->get('/forgetpwd', 'UserController@forgetPWD');
-    $app->post('/forgetpwd', 'UserController@forgetPWD');
-
 
     $app->get('/shopping/orderlist', 'OrderController@index');
     $app->get('/order/orderlist', 'OrderController@index');
@@ -148,7 +146,6 @@ $app->group(['middleware' => 'pcguide', 'namespace' => 'App\Http\Controllers\Sho
 
     $app->get('/wish/{spu}', 'ProductController@wishProduct');
     $app->get('/products/{spu}', 'ProductController@getProductDetail');
-    $app->get('/detail/{spu}', 'ProductController@index');
 
     $app->post('/rsyncLogin', 'UserController@rsyncLogin');
     $app->get('/login', 'UserController@login');
@@ -162,8 +159,6 @@ $app->group(['middleware' => 'pcguide', 'namespace' => 'App\Http\Controllers\Sho
     $app->post('/user/forget', 'UserController@forgetPassword');
     $app->get('/user/resetPwd', 'UserController@resetPassword');
 
-    //记录登录前操作
-    $app->get('notesaction','UserController@notesAction');
 });
 
 $app->group(['middleware' => 'pcguide|logincheck', 'namespace' => 'App\Http\Controllers\Other'], function ($app) {
@@ -188,8 +183,6 @@ $app->group(['middleware' => 'pcguide', 'namespace' => 'App\Http\Controllers\Oth
     $app->get('/shippingreturns', 'PageController@shippingreturns');
     $app->get('/payments', 'PageController@payments');
 
-    $app->get('/d/invite/{code}','PageController@invite');
-    $app->get('/d/invite', 'PageController@invite');
     //$app->get('/cancellationpolicy', 'PageController@cancellationPolicy');
     //$app->get('/motifguarantee', 'PageController@motifGuarantee');
     //$app->get('/termsservice', 'PageController@termsService');
@@ -201,12 +194,16 @@ $app->get('home', 'Shopping\ShoppingController@guide');
 $app->get('pcprivacypolicy', 'Other\PageController@pcPrivacyPolicy');
 $app->get('pctermsservice', 'Other\PageController@pcTermsService');
 
+//记录登录前操作
+$app->get('notesaction','Shopping\UserController@notesAction');
 
+$app->get('/d/invite/{code}','Other\PageController@invite');
+$app->get('/d/invite', 'Other\PageController@invite');
 $app->get('/saleinfo', 'Other\PageController@saleinfo');
 
 //为解决分享链接拿不到图,不再PC跳转
-//$app->get('/detail/{spu}', 'Shopping\ProductController@index');
-//$app->get('/designer/{id}', 'Designer\DesignerController@show');
+$app->get('/detail/{spu}', 'Shopping\ProductController@index');
+$app->get('/designer/{id}', 'Designer\DesignerController@show');
 
 $app->get('/apptest', 'Other\PageController@apptest');
 
