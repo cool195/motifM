@@ -46,6 +46,9 @@ class DesignerController extends ApiController
                     return View('daily.download_guide');
                 }
             }
+            if ($_SERVER['HTTP_HOST'] == 'motif.me' || $_SERVER['HTTP_HOST'] == 'www.motif.me'){
+                return redirect("http://m.motif.me".$request->getRequestUri());
+            }
             //设计师详情
             $params = array(
                 'cmd' => 'designerdetail',
@@ -169,8 +172,8 @@ class DesignerController extends ApiController
     public function skipDesigner()
     {
         if ($this->isMobile()) {
-            //return redirect('/designer/99');
-            return View('designer.skipDesigner');
+            return redirect('/designer/99');
+            //return View('designer.skipDesigner');
         } else {
             return View('daily.download_guide');
         }
