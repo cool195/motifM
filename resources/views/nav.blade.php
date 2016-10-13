@@ -4,25 +4,10 @@
         <li class="nav-item">
             <a href="/daily" class="flex flex-alignCenter flex-fullJustified p-a-15x menu">
                 <div class="font-size-sm text-primary flex flex-alignCenter"><i
-                            class="iconfont icon-daily icon-size-md p-r-15x"></i><span>Daily</span></div>
+                            class="iconfont icon-home icon-size-md p-r-15x"></i><span>Home</span></div>
                 <span class="text-common"><i class="iconfont icon-arrow-right icon-size-sm"></i></span>
             </a>
             <hr class="hr-base m-a-0">
-        </li>
-        <li class="nav-item">
-            <a href="/designer" class="flex flex-alignCenter flex-fullJustified p-a-15x menu">
-                <div class="font-size-sm text-primary flex flex-alignCenter"><i
-                            class="iconfont icon-designer icon-size-md p-r-15x"></i><span>Designers</span></div>
-                <span class="text-common"><i class="iconfont icon-arrow-right icon-size-sm"></i></span>
-            </a>
-            <hr class="hr-base m-a-0">
-        </li>
-        <li class="nav-item">
-            <a href="/shopping" class="flex flex-alignCenter flex-fullJustified p-a-15x menu">
-                <div class="font-size-sm text-primary flex flex-alignCenter"><i
-                            class="iconfont icon-shopping icon-size-md p-r-15x"></i><span>Shopping</span></div>
-                <span class="text-common"><i class="iconfont icon-arrow-right icon-size-sm"></i></span>
-            </a>
         </li>
     </ul>
     <ul class="nav bg-white m-t-10x">

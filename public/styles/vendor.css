@@ -4325,6 +4325,11 @@ html.remodal-is-locked {
   content: "\e60d";
 }
 
+.icon-home:before {
+  content: "\e64a";
+}
+
+
 /* 暂时停用
 // Dropdowns
 */
