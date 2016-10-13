@@ -30,4 +30,17 @@
             @endif
         </ul>
     </nav>
+    <nav class="navbar navbar-full bg-primary">
+        <ul class="nav navbar-primary nav-top p-y-10x font-size-sm text-center nav-menuList">
+            <li class="nav-item col-xs-4">
+                <a href="/daily" class="active">DAILY</a>
+            </li>
+            <li class="nav-item col-xs-4">
+                <a href="/designer">DESIGNER</a>
+            </li>
+            <li class="nav-item col-xs-4">
+                <a href="/shopping">SHOPPING</a>
+            </li>
+        </ul>
+    </nav>
 </header>

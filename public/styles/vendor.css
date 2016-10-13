@@ -2833,7 +2833,12 @@ input[type="button"].btn-block {
   top: 0;
   z-index: 101;
 }
-
+.nav-menuList .nav-item a{
+  color: #9fa0a0;
+}
+.nav-menuList .nav-item a.active{
+  color: #fff;
+}
 .media {
   display: -webkit-box;
   display: -ms-flexbox;
