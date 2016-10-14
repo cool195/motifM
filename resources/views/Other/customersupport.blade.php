@@ -39,7 +39,7 @@
                 </fieldset>
 
                 <fieldset>
-                    <input class="form-control form-control-block p-a-15x font-size-sm" name="email" id="email" type="text" value="{{ Session::get('user.login_email') }}" placeholder="Your Email">
+                    <input class="form-control form-control-block p-a-15x font-size-sm " disabled="disabled" name="email" id="email" type="text" value="{{ Session::get('user.login_email') }}" placeholder="Your Email">
                     <hr class="hr-base m-a-0">
                     <div class="message-info">
                         <textarea class="form-control form-control-block p-a-15x font-size-sm" id="content" placeholder="Message" name="content" rows="10" data-length="1000"></textarea>
