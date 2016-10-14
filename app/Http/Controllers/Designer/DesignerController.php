@@ -41,14 +41,14 @@ class DesignerController extends ApiController
     public function show(Request $request, $id)
     {
         if (is_numeric($id)) {
-            if(($request->input('f')!='ios' && $request->input('f')!='android')){
-                if ($id == 99 && !$this->isMobile()) {
-                    return View('daily.download_guide');
-                }
-            }
-            if ($_SERVER['HTTP_HOST'] == 'motif.me' || $_SERVER['HTTP_HOST'] == 'www.motif.me'){
-                return redirect("http://m.motif.me".$request->getRequestUri());
-            }
+//            if(($request->input('f')!='ios' && $request->input('f')!='android')){
+//                if ($id == 99 && !$this->isMobile()) {
+//                    return View('daily.download_guide');
+//                }
+//            }
+//            if ($_SERVER['HTTP_HOST'] == 'motif.me' || $_SERVER['HTTP_HOST'] == 'www.motif.me'){
+//                return redirect("http://m.motif.me".$request->getRequestUri());
+//            }
             //设计师详情
             $params = array(
                 'cmd' => 'designerdetail',
