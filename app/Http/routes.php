@@ -213,7 +213,8 @@ $app->get('/apptest', 'Other\PageController@apptest');
 
 //rae网红
 $app->get('/rae','Designer\DesignerController@skipDesigner');
-
+$app->get('/Rae','Designer\DesignerController@skipDesigner');
+$app->get('/RAE','Designer\DesignerController@skipDesigner');
 $app->get('/downapp','Other\PageController@downapp');
 
 $app->get('/orderlist', 'Other\PageController@orderlist');
