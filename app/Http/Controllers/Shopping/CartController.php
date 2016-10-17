@@ -25,6 +25,11 @@ class CartController extends ApiController
         ]);
     }
 
+    public function testCheckout(Request $request)
+    {
+        return View('shopping.checkout');
+    }
+
     /*
      * 订单确认接口
      *

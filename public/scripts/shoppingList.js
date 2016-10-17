@@ -32,7 +32,7 @@
             // when scrolling down
             unpinned: 'slideOutUp'
         }
-    });
+    }); 
 
     // 导航条自动隐藏
     $('#tabIndex-container').headroom({

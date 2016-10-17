@@ -216,3 +216,5 @@ $app->get('/downapp','Other\PageController@downapp');
 $app->get('/orderlist', 'Other\PageController@orderlist');
 
 $app->get('404','Other\PageController@error404');
+
+$app->get('/test/checkout', 'Shopping\CartController@testCheckout');
