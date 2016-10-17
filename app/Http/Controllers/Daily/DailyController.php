@@ -20,7 +20,7 @@ class DailyController extends ApiController
             'puton' => $request->input('puton', 1),
         );
         if (empty($params['cmd'])) {
-            return View('daily.index', ['puton' => $params['puton']]);
+            return View('daily.index', ['puton' => $params['puton'],'daily'=>true]);
         } else {
             $result = $this->request('openapi', '', 'daily', $params);
             if (empty($result)) {

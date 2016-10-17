@@ -17,7 +17,7 @@ class ShoppingController extends ApiController
         $search = $this->request('openapi', '', 'sea', $params);
 
         $result = $this->getShoppingCategoryList($request);
-        return View('shopping.list', ['categories' => $result['data']['list'],'search'=>$search['data']]);
+        return View('shopping.list', ['categories' => $result['data']['list'],'search'=>$search['data'],'shopping'=>true]);
     }
 
     public function getShoppingCategoryList(Request $request)

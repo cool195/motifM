@@ -28,7 +28,7 @@ class DesignerController extends ApiController
                             'pin' => Session::get('user.pin')
                         ));*/
 
-            return View('designer.index'/*, ['recdesigner' => isset($result['data']['list']) ? $result['data']['list'] : array()]*/);
+            return View('designer.index', ['designer' => true]);
         } else {
             //非首次加载,请求设计师列表数据
             $result = $this->request('openapi', '', 'designer', $params);

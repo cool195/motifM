@@ -90,10 +90,11 @@
             </section>
             <select class="font-size-sm text-main btn-sortBy">
                 <option>Sort By</option>
-                <option>Price Low to High</option>
-                <option>222222</option>
-                <option>333</option>
-                <option>3333</option>
+                @foreach($search['list'] as $value)
+                    @if($value['attr_type']==1)
+                        <option data-search="{{$value['attr_id']}}" data-searchtext="{{$value['attr_label']}}">{{$value['attr_label']}}</option>
+                    @endif
+                @endforeach
             </select>
             {{--<span class="font-size-sm text-main btn-sortBy">Sort By</span>--}}
         </nav>
