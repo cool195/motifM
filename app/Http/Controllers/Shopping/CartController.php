@@ -143,7 +143,7 @@ class CartController extends ApiController
 
     public function addrAdd(Request $request)
     {
-        $defaultCountry = array('country_id' => 1, 'child_label' => "State", 'child_type' => 2, 'country_name_cn' => '美国', 'country_name_sn'=>'US','country_name_en' => "United States", 'iDnumberReq' => 0, 'isFreq' => 1, 'sort_no' => 100);
+        $defaultCountry = array('country_id' => 1, 'child_label' => "State", 'child_type' => 2, 'country_name_cn' => '美国', 'country_name_sn'=>'US','country_name_en' => "United States", 'iDnumberReq' => 0, 'isFreq' => 1, 'sort_no' => 100, 'zipcode_label' => 'Zip code');
         $country = json_decode(base64_decode($request->input('countryState',$request->input('country', base64_encode(json_encode($defaultCountry))))), true);
         $state = json_decode(base64_decode($request->input('state')), true);
         $input = $request->except('country');
