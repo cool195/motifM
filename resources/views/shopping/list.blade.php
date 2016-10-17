@@ -29,7 +29,7 @@
                         'position': ''
                     }]
                 }
-            },
+            }
         });
     }
 
@@ -65,10 +65,49 @@
 <!-- 外层容器-->
 <div id="body-content">
     @include('nav')
-    <div class="body-container">
+    <div class="body-container" style="position: relative;">
         <!-- 头部导航 -->
         @include('navigator')
-        <nav class="navbar-fixed-top swiper-container bg-gray" id="tabIndex-container">
+        <nav class="bg-white" style="position: relative;">
+            <div class="text-center p-y-10x" style="border-bottom: 1px solid #e2e5ed;">
+                <a href="javascript:void(0)" class="text-main" id="nav-categoryTit">All Shopping
+                    {{--<span class="caret caret-top m-l-5x" style="display: none"></span>--}}
+                    {{--<span class="caret caret-bottom m-l-5x"></span>--}}
+                </a>
+            </div>
+            <!-- 商品类别 二级导航 -->
+            <section class="bg-white search-container">
+                @if(isset($categories))
+                    @foreach($categories as $key => $c)
+                        <div class="p-a-15x flex flex-alignCenter flex-fullJustified search-item"
+                             data-categoryid="{{ $c['category_id'] }}" data-categoryname="{{ $c['category_name'] }}">
+                            <span class="text-primary font-size-sm text-right">{{ $c['category_name'] }}</span>
+                            <i class="iconfont icon-check icon-size-md text-common"></i>
+                        </div>
+                        <hr class="hr-base m-a-0">
+                    @endforeach
+                @endif
+            </section>
+            <select class="font-size-sm text-main btn-sortBy">
+                <option>Sort By</option>
+                <option>Price Low to High</option>
+                <option>222222</option>
+                <option>333</option>
+                <option>3333</option>
+            </select>
+            {{--<span class="font-size-sm text-main btn-sortBy">Sort By</span>--}}
+        </nav>
+        <!-- 商品列表-->
+        <div class="container-fluid" id="productList-container" data-loading="false" data-pagenum="0">
+            <div class="loading m-y-10x" style="display: none;">
+                <div class="loader"></div>
+            </div>
+            <div class="row productList">
+            </div>
+        </div>
+
+
+        {{--<nav class="navbar-fixed-top swiper-container bg-gray" id="tabIndex-container">
             <ul class="nav nav-tabs swiper-wrapper">
                 @if(isset($categories))
                     @foreach($categories as $key => $c)
@@ -88,8 +127,8 @@
                 @endif
             </ul>
             <span class="btn-search font-size-xs">SORT BY</span>
-        </nav>
-        <section class="swiper-container reserve-height" id="tabs-container">
+        </nav>--}}
+        {{--<section class="swiper-container reserve-height" id="tabs-container">
             <!-- 搜索条件 -->
             <section class="search-container bg-white">
                 @foreach($search['list'] as $value)
@@ -123,7 +162,7 @@
                     @endforeach
                 @endif
             </div>
-        </section>
+        </section>--}}
         <!-- 页脚 功能链接 -->
         @include('footer')
     </div>

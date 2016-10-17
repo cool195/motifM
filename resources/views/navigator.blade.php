@@ -16,7 +16,7 @@
                 <div style="width: 68px;">
                     <a href="/wish" class="head-wish">
                         <span class="nav-shoppingWish">
-                            <icon class="iconfont text-white icon-like nav-tap icon-size-md"></icon>
+                            <i class="iconfont text-white icon-like nav-tap icon-size-md"></i>
                         </span>
                     </a>
                     <a href="/cart" class="head-cart">
@@ -30,6 +30,7 @@
             @endif
         </ul>
     </nav>
+    <hr class="hr-dark m-a-0">
     <nav class="navbar navbar-full bg-primary">
         <ul class="nav navbar-primary nav-top p-y-10x font-size-sm text-center nav-menuList">
             <li class="nav-item col-xs-4">

@@ -4701,7 +4701,7 @@ html.remodal-is-locked {
 }
 
 .body-container {
-  padding-top: 44px;
+  padding-top: 85px;
   -webkit-transition: -webkit-transform 0.5s;
   transition: -webkit-transform 0.5s;
   transition: transform 0.5s;
