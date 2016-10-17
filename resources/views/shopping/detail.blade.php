@@ -131,6 +131,10 @@
                                      alt="">
                                 <img class="img-fluid preloader"
                                      src="{{env('CDN_Static')}}/images/product/bg-product@750.png" alt="">
+                                <!-- 视频 -->
+                                <div class="bg-productPlayer flex flex-alignCenter flex-justifyCenter">
+                                    <img class="btn-productPlayer" src="{{env('CDN_Static')}}/images/daily/icon-player.png" alt="">
+                                </div>
                             </div>
                         @endforeach
                     @endif
@@ -156,6 +160,10 @@
                                          alt="">
                                     <img class="img-fluid preloader"
                                          src="{{env('CDN_Static')}}/images/product/bg-product@750.png" alt="">
+                                    <!-- 视频 -->
+                                    <div class="bg-productPlayer flex flex-alignCenter flex-justifyCenter">
+                                        <img class="btn-productPlayer" src="{{env('CDN_Static')}}/images/daily/icon-player.png" alt="">
+                                    </div>
                                 </div>
                             @endforeach
                         @else
@@ -486,11 +494,15 @@
                 </fieldset>
             </form>
         </div>
-
-
         <!-- 页脚 功能链接 start-->
     @include('footer')
     <!-- 页脚 功能链接 end-->
+        <!-- 视频 -->
+        <div class="product-detailPlay fade">
+            <div class="play-content bg-white">
+                <div id="ytplayer" class="ytplayer" data-playid="sk2lgJraCyM"></div>
+            </div>
+        </div>
     </div>
 </div>
 <!-- loading 效果 -->
