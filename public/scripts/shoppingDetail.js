@@ -101,50 +101,49 @@
 
 
     // 视频播放 begin
+    $(function () {
+        // 加载 youtube api
+        var tag = document.createElement('script');
+        tag.src = 'https://www.youtube.com/player_api';
+        var firstScriptTag = document.getElementsByTagName('script')[0];
+        firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+    });
     function onPlayerReady(event) {
         event.target.playVideo();
     }
-    function loadJS(src, callback){
-        // 加载视频
-        var tag = document.createElement('script');
-        tag.src = src;
-        var firstScriptTag = document.getElementsByTagName('script')[0];
-        firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-        callback();
-    }
     // 视频播放-- 控制显示隐藏
     $('.btn-productPlayer').on('click',function(){
+        var PlayerId=$(this).data('ytbid');
+        $('#ytplayer').data('playid',PlayerId);
         $('.product-detailPlay').addClass('in');
         $('body').addClass('no-scroll');
 
-        loadJS('https://www.youtube.com/player_api', function(){
-            // youtube 视频播放
-            // 视频比例
-            var MediaScale = 9 / 16;
-            var Width = $(window).width(),
-                MediaHeight = Width * MediaScale;
-            $('.play-content').css('height',MediaHeight);
-            var player;
+        // youtube 视频播放
+        // 视频比例
+        var MediaScale = 9 / 16;
+        var Width = $(window).width(),
+            MediaHeight = Width * MediaScale;
+        $('.play-content').css('height',MediaHeight);
+        var player;
 
-            var $Player = $('#ytplayer'),
-                PlayerId = $Player.data('playid');
-            //alert(PlayerId);
-            player = new YT.Player('ytplayer', {
-                height: MediaHeight,
-                width: Width,
-                videoId: PlayerId,
-                playerVars: {'autoplay': 1, 'controls': 2, 'showinfo': 0},
-                events: {
-                    'onReady': onPlayerReady
-                }
-            });
+        var $Player = $('#ytplayer');
+        var PlayerId = $Player.data('playid');
+        player = new YT.Player('ytplayer', {
+            height: MediaHeight,
+            width: Width,
+            videoId: PlayerId,
+            playerVars: {'autoplay': 1, 'controls': 2, 'showinfo': 0},
+            events: {
+                'onReady': onPlayerReady
+            }
         });
-
     });
+
     $('.product-detailPlay').on('click',function(){
         $(this).removeClass('in');
         $('body').removeClass('no-scroll');
         $('.product-detailImg').removeClass('in');
+        $('.play-content').html('<div id="ytplayer" class="ytplayer" data-playid=""></div>');
     });
     // 视频播放 end
 
