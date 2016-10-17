@@ -25,6 +25,43 @@ class CartController extends ApiController
         ]);
     }
 
+    public function testCheckout(Request $request)
+    {
+        //$defaultPayMethod = $this->getDefaultPayMethod();
+        $stype = !empty($request->input('stype')) ? $request->input('stype', 1) : 1; //必须加非空验证
+        $bindid = $request->input('bindid');
+        $address = $this->getUserAddrByAid($request->input('aid', 0));
+
+        if(empty($address)){
+            return redirect('cart/addradd?first=1');
+        }
+
+        $_result = $this->getCartAccountList($request,-1, $bindid,'',$address['receiving_id']);
+        $defaultMethod = $this->getShippingMethodByStypeOrDefault($stype,$address['country_name_sn'],$_result['data']['total_amount']+$_result['data']['vas_amount']);
+        $result = $this->getCartAccountList($request, $defaultMethod['logistics_type'], $bindid,'',$address['receiving_id']);
+
+        if (empty($result['data']) || empty($result['success']) || !$result['success']) {
+            return redirect('test/checkout');
+        }
+        $result['data']['cardlist'] = array('Diners' => 'diners-club', 'Discover' => 'discover', 'JCB' => 'jcb', 'Maestro' => 'maestro', 'AmericanExpress' => 'american-express', 'Visa' => 'visa', 'MasterCard' => 'master-card');
+        return View('shopping.checkout', [
+            'data' => $result['data'],
+            'addr' => $address,
+            //'paym'=> $request->input('paym', !empty($defaultPayMethod['data']['type']) ? $defaultPayMethod['data']['type'] : ""),
+            'paym' => $request->input('paym', "Oceanpay"),
+            'cardType' => $request->input('cardType', !empty($defaultPayMethod['data']['cardType']) ? $defaultPayMethod['data']['cardType'] : ""),
+            //'methodtoken' => $request->input('methodtoken', !empty($defaultPayMethod['data']['token']) ? $defaultPayMethod['data']['token'] : "" ),
+            //'showName' => $request->input('showName', !empty($defaultPayMethod['data']['showName']) ? $defaultPayMethod['data']['showName'] : "" ),
+            'showName' => $request->input('showName', 'PayPal'),
+            'shipMethodList' => $this->getShippingMethod($address['country_name_sn'],$_result['data']['total_amount']+$_result['data']['vas_amount']),
+            'defaultMethod' => $defaultMethod,
+            'bindid' => $bindid,
+            'remark' => $request->input('remark', ""),
+            'stype' => $defaultMethod['logistics_type'],
+            'input' => $request->except('pageSrc', 'aid', 'stype', 'paym', 'cardType', 'methodtoken', 'showName', 'eid')
+        ]);
+    }
+
     /*
      * 订单确认接口
      *
