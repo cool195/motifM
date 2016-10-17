@@ -503,7 +503,7 @@
     <!-- 页脚 功能链接 end-->
         <div class="product-detailPlay fade">
             <div class="play-content bg-white">
-                <div id="ytplayer" class="ytplayer" data-playid="sk2lgJraCyM"></div>
+                <div id="ytplayer" class="ytplayer" data-playid=""></div>
             </div>
         </div>
     </div>
