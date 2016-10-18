@@ -10,6 +10,7 @@ class MCrypt
     function __construct($randomkey)
     {
         $this->key = hash('sha256', $randomkey, true);
+        $this->key = substr($this->key,0,16);
     }
 
     function encrypt($str)

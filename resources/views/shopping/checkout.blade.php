@@ -172,8 +172,7 @@
 
                 {{--数量--}}
                 <div class="flex flex-fullJustified text-primary font-size-sm">
-                    <span>Items ({{$data['total_sku_qtty']}}
-                        )</span><span>${{ number_format(($data['total_amount'] / 100), 2)}}</span>
+                    <span>Items ({{$data['total_sku_qtty']}})</span><span>${{ number_format(($data['total_amount'] / 100), 2)}}</span>
                 </div>
 
                 {{--增值服务--}}
