@@ -113,7 +113,6 @@
      * type 加载方式 1:继续加载  2:重新加载(新的搜索条件)
      */
 
-
     function getProductList(type){
         var $ProductListontainer = $('#productList-container'),
             Size = 20;
@@ -138,17 +137,17 @@
 
         // 当前选项卡所要加载的分页页码
         var NextPage = ++PageNum;
-        console.log(NextPage);
 
         //当前激活的分类ID
-        //var CategoryId = $('.search-item.active').data('categoryid');
+        var CategoryId = $('.search-item.active').data('categoryid');
 
         //显示loading动画
         loadingShow();
 
-        // 条件搜索条件
+        // 筛选搜索条件
         var Url;
         if (SearchType != '') {
+            console.log('SearchType==='+SearchType);
             Url = '/products?extra_kv=sea:' + SearchType;
         } else {
             Url = '/products';
@@ -160,7 +159,7 @@
             data: {
                 pagenum: NextPage,
                 pagesize: Size,
-                cid: categoryType
+                cid: CategoryId
             }
         }).done(function (data) {
             if (data.success) {
@@ -169,11 +168,10 @@
                     $ProductListontainer.data('pagenum', -1);
                 } else {
                     console.log(categoryType);
+                    console.log(Url);
                     // 遍历模板 插入页面
                     appendProductsList(data.data, type);
                     $ProductListontainer.data('pagenum', NextPage);
-                    console.log('NextPage='+ NextPage);
-                    console.log('PageNum='+ PageNum);
 
                     $.ajax({
                         url: data.data.impr
@@ -232,6 +230,42 @@
 
     }
 
+    // 选中 筛选条件
+    $('.btn-sortBy').on('change', function () {
+        //$('.btn-sortBy').children('option').first().hide();
+        //$('.btn-sortBy').children('option').eq(1).attr("selected", "selected");
+
+        var $currentOption = $(".btn-sortBy option:selected");
+        //$currentOption.text('Sort By');
+        
+        //改变选中的文本
+        if ( $('.btn-sortBy option').value === 0){
+            $(".btn-sortBy option").attr("selected",true);
+        }else{
+            $(".btn-sortBy option").attr("selected",false);
+        }
+        if ( $currentOption.data('searchtext') == 'reset'){
+            // 重置
+            SearchType = '';
+            // 隐藏搜索条件
+            $('.lowTo-info').html(SearchType);
+            $('.lowTo').addClass('disabled');
+        }else{
+            console.log($(this).val());
+            // 搜索条件
+            SearchType = $currentOption.data('search');
+            // 显示搜索条件
+            $('.lowTo-info').html($currentOption.data('searchtext'));
+            $('.lowTo').removeClass('disabled');
+
+
+        }
+        $('#productList-container').data('pagenum', 0);
+        $('#productList-container').data('loading', false);
+        getProductList(2);
+
+    });
+
     // 下拉加载
     function pullLoading() {
         // scrollCurrent    当前滚动距离
@@ -255,7 +289,6 @@
                 }
             });
             pullLoading();
-            console.log('滚动条滚动');
         });
     });
 

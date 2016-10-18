@@ -85,17 +85,23 @@
                     @endforeach
                 @endif
             </section>
+
             <select class="font-size-sm text-main btn-sortBy">
-                <option>Sort By</option>
+                <option value="0">Sort By</option>
                 @foreach($search['list'] as $value)
                     @if($value['attr_type']==1)
                         <option data-search="{{$value['attr_id']}}" data-searchtext="{{$value['attr_label']}}">{{$value['attr_label']}}</option>
                     @endif
                 @endforeach
+                <option data-searchtext="reset">Reset</option>
             </select>
             {{--<span class="font-size-sm text-main btn-sortBy">Sort By</span>--}}
         </nav>
         <!-- 商品列表-->
+        <div class="lowTo p-y-15x bg-white disabled">{{--disabled--}}
+            <hr class="hr-base m-a-0">
+            <span class="p-x-15x text-common font-size-sm lowTo-info">Low to High</span>
+        </div>
         <div class="container-fluid" id="productList-container" data-loading="false" data-pagenum="0">
             <div class="loading m-y-10x" style="display: none;">
                 <div class="loader"></div>
