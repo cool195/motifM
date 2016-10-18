@@ -1,3 +1,13 @@
+.body-container{
+    padding-top: 85px;
+    position: relative;
+}
+.nav-category{
+    position: relative;
+}
+.border-b{
+    border-bottom: 1px solid #e2e5ed;
+}
 #nav-categoryTit::after{
     content: '';
     display: inline-block;
@@ -40,10 +50,16 @@
     position: absolute;
     right: 10px;
     top: 15px;
-    text-decoration: underline;
     border: none;
+    outline:none;
     background: none;
     direction: rtl;
+    /*将默认的select选择框样式清除*/
+    appearance:none;
+    -moz-appearance:none;
+    -webkit-appearance:none;
+    text-decoration: underline;
+    height: 22px;
 }
 
 .dark-mask::after {

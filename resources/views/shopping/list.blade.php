@@ -65,15 +65,12 @@
 <!-- 外层容器-->
 <div id="body-content">
     @include('nav')
-    <div class="body-container" style="position: relative;">
+    <div class="body-container">
         <!-- 头部导航 -->
         @include('navigator')
-        <nav class="bg-white" style="position: relative;">
-            <div class="text-center p-y-10x" style="border-bottom: 1px solid #e2e5ed;">
-                <a href="javascript:void(0)" class="text-main" id="nav-categoryTit">All Shopping
-                    {{--<span class="caret caret-top m-l-5x" style="display: none"></span>--}}
-                    {{--<span class="caret caret-bottom m-l-5x"></span>--}}
-                </a>
+        <nav class="bg-white nav-category">
+            <div class="text-center p-y-10x border-b" style="border-bottom: 1px solid #e2e5ed;">
+                <a href="javascript:void(0)" class="text-main" id="nav-categoryTit">All Shopping</a>
             </div>
             <!-- 商品类别 二级导航 -->
             <section class="bg-white search-container">
