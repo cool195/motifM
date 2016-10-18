@@ -22,8 +22,10 @@
                 @endif
     <!-- 保障 -->
         <section class="reserve-height">
-            <article class="font-size-md text-main p-x-15x p-y-10x"><strong>Motif guarantee</strong>
+            <article class="font-size-md text-main p-x-15x p-y-10x bg-title"><strong>Motif guarantee</strong>
             </article>
+            <hr class="hr-base m-a-0">
+
             <aside class="product-secondaryInfo p-a-15x">
                 <div class="media m-a-0">
                     <div class="media-left media-middle">
@@ -37,7 +39,7 @@
                     </div>
                 </div>
             </aside>
-
+            <hr class="hr-base m-a-0">
         </section>
         <!-- 页脚 功能链接 -->
         @if(!strstr($_SERVER['HTTP_USER_AGENT'], 'motif-android') && !strstr($_SERVER['HTTP_USER_AGENT'], 'motif-ios'))

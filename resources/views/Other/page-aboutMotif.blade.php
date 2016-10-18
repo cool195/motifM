@@ -23,8 +23,9 @@
                 @endif
                 <!-- 关于我们 -->
                     <section class="m-b-20x p-b-20x reserve-height">
-                        <article class="font-size-md text-main p-x-15x p-y-10x"><strong>About Motif</strong>
+                        <article class="font-size-md text-main p-x-15x p-y-10x bg-title"><strong>About Motif</strong>
                         </article>
+                        <hr class="hr-base m-a-0">
                         <div class="bg-white">
                             <div class="p-a-15x font-size-sm text-primary">
                                 <p class="m-b-15x">Your style is unique and cutting edge - your fashion should be
@@ -58,7 +59,7 @@
                                 <p class="m-b-0">Download the app. Discover your personal Motif. Flaunt.</p>
                             </div>
                         </div>
-
+                        <hr class="hr-base m-a-0">
                     </section>
                     <!-- 页脚 功能链接 -->
                     @if(!strstr($_SERVER['HTTP_USER_AGENT'], 'motif-android') && !strstr($_SERVER['HTTP_USER_AGENT'], 'motif-ios'))

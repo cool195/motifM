@@ -195,7 +195,8 @@
             <!-- 预售信息 -->
             @if(!empty($pre_product))
                 <section class="limited-content" hidden>
-                    <div class="bg-white m-b-10x m-y-10x limited-data"
+                    <div class="hr-between"></div>
+                    <div class="bg-white limited-data"
                          data-begintime="{{$pre_product['skuPrice']['skuPromotion']['start_time']}}"
                          data-endtime="{{$pre_product['skuPrice']['skuPromotion']['end_time']}}"
                          data-lefttime="@if($pre_product['isPutOn']==1){{$pre_product['skuPrice']['skuPromotion']['remain_time']}}@else{{'0'}}@endif"
@@ -229,13 +230,15 @@
                         </div>
                     </div>
                 </section>
+                <div class="hr-between"></div>
                 <section class="limited" hidden>
-                    <div class="bg-white m-y-10x">
+                    <div class="bg-white">
                         <div class="p-x-15x limited-subtitle"><strong>PREORDER</strong></div>
                         <div class="p-x-15x p-t-10x p-b-15x text-primary font-size-sm">
                             Expected to ship on <strong id="shipToDate"></strong>
                         </div>
                     </div>
+                    <div class="hr-between"></div>
                 </section>
         @endif
         <!-- 设计师 对应模版商品 -->

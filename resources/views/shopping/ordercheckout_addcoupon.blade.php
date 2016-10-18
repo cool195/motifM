@@ -17,7 +17,8 @@
     @include('navigator', ['pageScope'=>true])
     <!-- 添加coupon -->
         <section class="m-b-20x reserve-height">
-            <article class="font-size-md text-main p-a-10x"><strong>Coupons & promotions</strong></article>
+            <article class="font-size-md text-main p-a-10x bg-title"><strong>Coupons & promotions</strong></article>
+            <hr class="hr-base m-a-0">
             <fieldset>
                 <div class="warning-info flex text-warning flex-alignCenter text-left p-a-15x" hidden>
                     <i class="iconfont icon-caveat icon-size-md p-r-5x"></i>
@@ -26,6 +27,7 @@
                 <input class="form-control form-control-block p-a-15x font-size-sm" type="text" name="coupon"
                        placeholder="Promotional Code" value="">
             </fieldset>
+            <hr class="hr-base m-a-0">
             <div class="p-a-15x">
                 <div class="btn btn-primary btn-block disabled" data-role="submit">Apply</div>
             </div>

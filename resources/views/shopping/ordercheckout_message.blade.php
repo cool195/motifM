@@ -18,7 +18,8 @@
             @include('navigator', ['pageScope'=>true])
             <!-- 提交备注 表单 -->
             <section class="m-b-20x reserve-height">
-                <article class="font-size-md text-main p-a-10x"><strong>Special Request</strong></article>
+                <article class="font-size-md text-main p-a-10x bg-title"><strong>Special Request</strong></article>
+                <hr class="hr-base m-a-0">
                 <form id="infoForm" action="/cart/ordercheckout" method="get">
                     <fieldset>
                         <div class="message-info">
@@ -26,6 +27,7 @@
                             <span class="message-wordNumber font-size-sm text-primary"><span id="wordNum">0</span>/1000</span>
                         </div>
                     </fieldset>
+                    <hr class="hr-base m-a-0">
                     <div class="p-a-15x">
                         <button class="btn btn-primary btn-block" type="submit">Save</button>
                     </div>

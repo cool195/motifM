@@ -20,7 +20,8 @@
     <!-- 提交问题反馈 表单 -->
         <section class="m-b-20x reserve-height">
             <form method="post" id="form-askQuestion" action="/askshopping">
-                <article class="font-size-md text-main p-y-10x p-x-15x"><strong>@if(2==$skiptype) Contact Service @elseif(3==$skiptype) Inquiries @else Ask a Question @endif</strong></article>
+                <article class="font-size-md text-main p-y-10x p-x-15x bg-title"><strong>@if(2==$skiptype) Contact Service @elseif(3==$skiptype) Inquiries @else Ask a Question @endif</strong></article>
+                <hr class="hr-base m-a-0">
                 <fieldset>
                     <input type="hidden" name="id" value="{{$id}}">
                     <input type="hidden" name="skiptype" value="{{$skiptype}}">
@@ -34,6 +35,7 @@
                                     id="wordNum">0</span>/1000</span>
                     </div>
                 </fieldset>
+                <hr class="hr-base m-a-0">
                 <div class="container-fluid p-a-15x">
                     <div class="row">
                         <div class="col-xs-6">

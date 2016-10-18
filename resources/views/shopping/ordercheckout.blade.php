@@ -46,7 +46,7 @@
     <!-- 结算 商品列表 -->
         <section class="reserve-height">
             <!-- 商品列表 -->
-            <aside class="checkoutList bg-white m-b-10x">
+            <aside class="checkoutList bg-white">
                 <!-- 满额包邮 -->
                 @inject('getDate', 'App\Services\Publicfun')
                 @if(!empty($getDate->configMap()))
@@ -109,8 +109,9 @@
                     @endforeach
                 @endif
             </aside>
+            <div class="hr-between"></div>
             <!-- 结算订单 地址、物流、支付等其他信息 -->
-            <aside class="bg-white m-b-10x">
+            <aside class="bg-white">
                 {{--<a class="flex font-size-sm text-primary p-a-10x" href="/cart/addresslist">--}}
                 <div class="flex font-size-sm text-primary p-a-10x order-option"
                      data-form-action="@if(empty($addr) || "" == $addr){{'/cart/addradd'}}@else{{'/cart/addresslist'}}@endif"
@@ -147,7 +148,8 @@
                     </div>
                 </a>
             </aside>
-            <aside class="bg-white m-b-10x">
+            <div class="hr-between"></div>
+            <aside class="bg-white">
                 <div class="flex font-size-sm text-primary p-a-10x order-option" data-form-action="/cart/coupon">
                     <span class="checkoutInfo-subTitle flex-fixedShrink">Promotion code</span>
                     <div class="checkoutInfo-content flex flex-fullJustified flex-alignCenter">
@@ -166,9 +168,9 @@
                     <div class="bg-option bg-special"></div>
                 </div>
             </aside>
-
+            <div class="hr-between"></div>
             <!-- 结算总价 -->
-            <aside class="bg-white p-a-10x m-b-10x">
+            <aside class="bg-white p-a-10x">
 
                 {{--数量--}}
                 <div class="flex flex-fullJustified text-primary font-size-sm">
@@ -217,9 +219,9 @@
                     <span><strong>Order Total</strong></span><span><strong>${{ number_format(($data['pay_amount'] / 100), 2)}}</strong></span>
                 </div>
             </aside>
-
+            <hr class="hr-base m-a-0">
             <!-- 结算按钮 -->
-            <aside class="m-t-10x p-a-10x">
+            <aside class="p-a-10x">
                 <div>
                     <a class="btn btn-primary btn-block @if(empty($paym) || empty($addr) || "" == $paym || "" == $addr) disabled @endif"
                        data-role="submit" data-with="Oceanpay">Pay with Credit Card</a>

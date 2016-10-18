@@ -16,7 +16,8 @@
     @include('nav')
     <div class="body-container">
         @include('navigator')
-        <article class="font-size-md text-main p-a-10x"><strong>Wishlist</strong></article>
+        <article class="font-size-md text-main p-a-10x bg-title"><strong>Wishlist</strong></article>
+        <hr class="hr-base m-a-0">
         <!-- wishlist 商品列表 -->
         <section class="reserve-height">
             <aside id="wishContainer" class="wishList m-b-20x" data-loading="false" data-pagenum="0"
@@ -73,6 +74,7 @@
             </div>
         </div>
     </div>
+    <hr class="hr-base m-a-0">
     @{{ /each }}
 </template>
 

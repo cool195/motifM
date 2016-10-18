@@ -829,7 +829,7 @@ body {
   font-size: 1.125rem;
   line-height: 1.5;
   color: #36405b;
-  background-color: #e2e5ed;
+  background-color: #ffffff;
 }
 
 [tabindex="-1"]:focus {
@@ -1065,6 +1065,16 @@ hr {
 
 .hr-light {
   border-color: #a0aab5;
+}
+
+.hr-between{
+  background-color:#f9f9f9;
+  border-top:1px solid #e2e5ed;
+  border-bottom:1px solid #e2e5ed;
+  height:10px;
+}
+.bg-title{
+  background-color:#f9f9f9;
 }
 
 .list-unstyled {
@@ -4729,7 +4739,7 @@ html.remodal-is-locked {
   bottom: 0;
   z-index: 1050;
   width: 280px;
-  background: #e2e5ed;
+  background: #ffffff;
   -webkit-transition: all 0.5s;
   transition: all 0.5s;
   overflow-x: hidden;
@@ -5517,9 +5527,9 @@ html.remodal-is-locked {
   position: relative;
   display: block;
   font-size: 10px;
-  border-top: 4px solid rgba(255, 255, 255, 0.2);
-  border-right: 4px solid rgba(255, 255, 255, 0.2);
-  border-bottom: 4px solid rgba(255, 255, 255, 0.2);
+  border-top: 4px solid rgba(200, 200, 200, 0.2);
+  border-right: 4px solid rgba(200, 200, 200, 0.2);
+  border-bottom: 4px solid rgba(200, 200, 200, 0.2);
   border-left: 4px solid #949caf;
   -webkit-animation: loading 1.5s infinite linear;
           animation: loading 1.5s infinite linear;
@@ -5736,7 +5746,6 @@ footer .links-group {
 
 .product-secondaryInfo {
   background-color: #fff;
-  margin-bottom: 0.625rem;
 }
 
 .swiper-wrapper {
@@ -5780,7 +5789,7 @@ footer .links-group {
 }
 
 .bg-topic {
-  background-color: #e2e5ed;
+  background-color: #ffffff;
   padding-top:1px;
 }
 
@@ -6018,7 +6027,7 @@ footer .links-group {
 }
 
 .promotion-item  .promotion-time{
-    background-color: #ffffff;
+    background-color: #f7f7f7;
 }
 
 .promotion-radio{
@@ -6047,7 +6056,7 @@ footer .links-group {
     width:4px;
     height:4px;
     border-radius:50%;
-    background-color: #e2e5ed;
+    background-color: #ffffff;
     list-style: none;
     display:inline;
 }
@@ -6059,7 +6068,7 @@ footer .links-group {
     width:6px;
     height:6px;
     border-radius:50%;
-    background-color: #e2e5ed;
+    background-color: #ffffff;
 }
 
 .bg-point-left{
@@ -6069,7 +6078,7 @@ footer .links-group {
     width:6px;
     height:6px;
     border-radius:50%;
-    background-color: #e2e5ed;
+    background-color: #ffffff;
 }
 
 .invite-code{

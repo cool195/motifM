@@ -22,8 +22,10 @@
                 @endif
     <!-- 尺寸指南 -->
         <section class="m-b-20x p-b-20x reserve-height">
-            <article class="font-size-md text-main p-x-15x p-y-10x"><strong>Size Guide</strong>
+            <article class="font-size-md text-main p-x-15x p-y-10x bg-title"><strong>Size Guide</strong>
             </article>
+            <hr class="hr-base m-a-0">
+
             <div class="bg-white">
                 <div class="p-a-15x font-size-sm text-primary">
                     <p class="m-b-15x"><strong>How to Find Your Ring Size?</strong></p>
@@ -124,7 +126,7 @@
 
                 </div>
             </div>
-
+            <hr class="hr-base m-a-0">
         </section>
         <!-- 页脚 功能链接 -->
         @if(!strstr($_SERVER['HTTP_USER_AGENT'], 'motif-android') && !strstr($_SERVER['HTTP_USER_AGENT'], 'motif-ios'))

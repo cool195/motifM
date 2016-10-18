@@ -17,12 +17,15 @@
             <!-- 个人中心 修改 Profile -->
             <section class="reserve-height">
                 <form method="" id="changeProfile">
-                    <article class="p-x-15x p-y-10x font-size-md text-main"><strong>Edit Profile</strong>
-                        <div class="text-common font-size-sm p-t-10x">{{$user['login_email']}}</div>
+                    <article class="p-x-15x p-y-10x font-size-md text-main bg-title"><strong>Edit Profile</strong>
                     </article>
+                    <hr class="hr-base m-a-0">
+                    <div class="p-x-15x p-y-10x text-common font-size-sm">{{$user['login_email']}}</div>
+                    <hr class="hr-base m-a-0">
                     <fieldset class="bg-white">
                         <input class="form-control form-control-block p-a-15x font-size-sm" id="nick" name="nick" type="text" value="{{$user['nickname']}}" placeholder="{{$user['nickname']}}">
                     </fieldset>
+                    <hr class="hr-base m-a-0">
                     <div class="p-a-15x">
                         <div class="btn btn-primary btn-block" data-role="submit">Save</div>
                     </div>

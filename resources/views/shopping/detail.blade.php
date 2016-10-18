@@ -187,7 +187,7 @@
                             class="iconfont text-common btn-wish btn-wished" data-actionspu="{{$data['spu']}}"></i></a>
             @endif
         <!-- 产品 标题 简介 价格 基本信息 -->
-            <article class="product-baseInfo bg-white m-b-10x"
+            <article class="product-baseInfo bg-white"
                      data-impr='http://clk.motif.me/log.gif?t=pv.100001&m=H5_M2016-1&pin={{ Session::get('user.pin') }}&uuid={{Session::has('user') ? Session::get('user.uuid') : $_COOKIE['uid']}}&v={"spu":{{$data['spu']}},"main_sku":{{$data['skuPrice']['sku']}},"price":{{ $data['skuPrice']['sale_price'] }},"version":"1.0.1","ver":"9.2","src":"H5"}'>
                 <div class="product-text">
                     <h6 class="text-main font-size-base">{{$data['main_title']}}</h6>
@@ -213,6 +213,7 @@
                 <div class="text-warning font-size-xs p-x-15x"
                      data-impr='http://clk.motif.me/log.gif?t=rec.100002&m=OPEN_M2016-1&pin={{ Session::get('user.pin') }}&uuid={{Session::has('user') ? Session::get('user.uuid') : $_COOKIE['uid']}}&v={" action ":0,"cspus ":"{{ $data['skus']}}","expid ":0,"index ":1,"rec_type ":1,"spu":{{ $data['spu'] }},"ver ":"9.00 "}&sig=2291a58454115c8136169111738de65696add43d'>{{ $data['prompt_words'] }}</div>
             </article>
+            <div class="hr-between"></div>
 
             <!-- 产品 预售信息 -->
             @if(1 == $data['sale_type'])
@@ -223,7 +224,7 @@
                              data-endtime="{{  $data['skuPrice']['skuPromotion']['end_time'] }}"
                              data-lefttime="@if($data['sale_status'] && $data['isPutOn']==1){{$data['skuPrice']['skuPromotion']['remain_time']}}@else{{'0'}}@endif"
                              data-qtty="{{$data['spuStock']['stock_qtty']}}">
-                        <div class="bg-white m-b-10x">
+                        <div class="bg-white">
                             <div class="p-x-15x limited-subtitle"><strong>LIMITED EDITION</strong></div>
                             @if(!isset($data['skuPrice']['skuPromotion']) || $data['isPutOn'] ==0 || !empty($data['spuStock']))
                                 <div class="p-x-15x p-t-10x">
@@ -257,16 +258,18 @@
                                 </div>
                             @endif
                         </div>
+                        <div class="hr-between"></div>
                     </section>
                 @endif
                 @if($data['skuPrice']['skuPromotion']['ship_desc'])
                     <section class="limited">
-                        <div class="bg-white m-b-10x">
+                        <div class="bg-white">
                             <div class="p-x-15x limited-subtitle"><strong>PREORDER</strong></div>
                             <div class="p-x-15x p-t-10x p-b-15x text-primary font-size-sm">
                                 Expected to ship on <strong>{{$data['skuPrice']['skuPromotion']['ship_desc']}}</strong>
                             </div>
                         </div>
+                        <div class="hr-between"></div>
                     </section>
             @endif
         @endif
@@ -274,7 +277,7 @@
         <!-- 产品 其他信息 -->
             <section>
                 <!-- 添加到购物车 立即购买 -->
-                <aside class="container-fluid bg-white p-y-10x p-x-15x m-b-10x">
+                <aside class="container-fluid bg-white p-y-10x p-x-15x">
                     @if(Session::has('user'))
                         <div class="row">
                             <div class="col-xs-12">
@@ -291,8 +294,9 @@
                         </div>
                     @endif
                 </aside>
+                <hr class="hr-base m-a-0">
                 <!-- 产品描述 -->
-                <aside class="bg-white p-x-15x p-y-10x m-b-10x">
+                <aside class="bg-white p-x-15x p-y-10x">
                     <p class="font-size-md text-main"><strong>Description</strong></p>
                     <div class="font-size-sm text-primary">
                         <div class="message-info">
@@ -304,6 +308,7 @@
                         </a>
                     </div>
                 </aside>
+                <div class="hr-between"></div>
                 <aside class="product-secondaryInfo">
                     @if(isset($data['templates']) && !empty($data['templates']))
                         @foreach($data['templates'] as $template)
@@ -312,7 +317,7 @@
                                 {{ $template['template_title'] }}
                                 <i class="iconfont icon-arrow-right icon-size-xm text-common"></i>
                             </a>
-                            <hr class="hr-base">
+                            <hr class="hr-base m-a-0">
                         @endforeach
                     @endif
                 </aside>
@@ -321,8 +326,8 @@
                 <!-- 推荐商品 -->
                 @if(!empty($recommended['list']))
                     <aside class="m-b-20x">
-                        <article class="font-size-md text-primary p-x-15x"><strong>You May Also Like</strong>
-                        </article>
+                        <article class="font-size-md text-primary p-x-15x p-y-10x bg-title"><strong>You May Also Like</strong></article>
+                        <hr class="hr-base m-a-0">
                         <div class="container-fluid p-t-10x" id="recommend"
                              data-impr="{{ $recommended['impr'] }}">
                             <div class="row productList">

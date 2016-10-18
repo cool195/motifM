@@ -17,8 +17,8 @@
     @include('navigator')
     <!-- 订单列表 -->
         <section class="p-b-20x reserve-height">
-            <article class="font-size-md text-main p-a-10x"><strong>Orders</strong></article>
-
+            <article class="font-size-md text-main p-a-10x bg-title"><strong>Orders</strong></article>
+            <hr class="hr-base m-a-0">
             <!-- 订单数为0 -->
             <div class="order-empty-content m-t-20x p-x-10x hidden-xs-up" id="emptyOrder">
                 <div class="container m-t-20x order-emptyInfo">
@@ -74,8 +74,7 @@
 <template id="tpl-orderList">
     @{{ each list }}
     @{{ each $value.subOrderList }}
-
-    <div class="orderList-item bg-white m-b-10x">
+    <div class="orderList-item bg-white">
         <a href="/order/orderdetail/@{{ $value.sub_order_no }}">
             <div class="p-y-10x @{{ if $value.status_code == 11 }} status-red @{{ else if $value.status_code == 23 || $value.status_code == 21  || $value.status_code == 27 }} status-gray @{{ else if $value.status_code == 25 || $value.status_code == 20}} status-blue @{{ else if $value.status_code == 17}} status-green @{{ else if $value.status_code == 18}} status-green @{{ else if $value.status_code == 19}} status-green @{{ else }} status-yellow @{{ /if }}">
                 <div class="p-l-5x p-r-10x flex flex-fullJustified flex-alignCenter">
@@ -139,7 +138,7 @@
             </div>
         </div>
     </div>
-
+    <div class="hr-between"></div>
     @{{ /each }}
     @{{ /each }}
 </template>

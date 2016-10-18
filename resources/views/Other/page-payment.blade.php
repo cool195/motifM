@@ -22,10 +22,10 @@
                     @endif
                             <!-- 物流、退货、支付 说明 -->
                     <section class="m-b-20x p-b-20x reserve-height">
-                        <article class="font-size-md text-main p-x-15x p-y-10x"><strong>Payment</strong>
+                        <article class="font-size-md text-main p-x-15x p-y-10x bg-title"><strong>Payment</strong>
                         </article>
-                        <div class="bg-white m-b-10x">
-                            <hr class="hr-base m-y-0">
+                        <hr class="hr-base m-a-0">
+                        <div class="bg-white">
                             <div class="p-a-15x font-size-sm text-primary">
                                 <p class="m-b-15x">At the checkout, you can proceed as a guest or create an online
                                     account with us once you have placed your order. By creating an online account, you
@@ -74,6 +74,7 @@
                                 </div>
                             </div>
                         </div>
+                        <hr class="hr-base m-a-0">
                     </section>
                     <!-- 页脚 功能链接 -->
                     @if(!strstr($_SERVER['HTTP_USER_AGENT'], 'motif-android') && !strstr($_SERVER['HTTP_USER_AGENT'], 'motif-ios'))

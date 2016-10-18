@@ -13,10 +13,11 @@
     @include('navigator')
     <section class="reserve-height">
         @inject('getDate', 'App\Services\Publicfun')
-        <article class="font-size-md text-main p-y-10x p-x-15x"><strong>Order Detail</strong></article>
+        <article class="font-size-md text-main p-y-10x p-x-15x bg-title"><strong>Order Detail</strong></article>
+        <hr class="hr-base m-a-0">
 
         <!-- 订单主要信息:日期、订单号、总金额 -->
-        <article class="bg-white font-size-sm p-y-10x p-x-15x m-b-10x" data-order-number="{{ $data['sub_order_no'] }}">
+        <article class="bg-white font-size-sm p-y-10x p-x-15x" data-order-number="{{ $data['sub_order_no'] }}">
             <div class="flex text-primary">
                 <span class="orderInfo-subTitle flex-fixedShrink">Order Date</span>
                 <span>{{ $getDate->getMyDate($data['create_time']) }}</span>
@@ -30,9 +31,10 @@
                 <span>${{number_format(($data['pay_amount'] / 100), 2)}}</span>
             </div>
         </article>
+        <div class="hr-between"></div>
 
         <!-- 订单商品列表 -->
-        <aside class="bg-white m-b-10x">
+        <aside class="bg-white">
             <!-- 正常订单 下单日期 -->
             @if(in_array($data['status_code'], array(21, 22, 23)))
             <!--被取消的订单 取消原因、取消日期-->
@@ -113,9 +115,10 @@
                 </div>
             @endif
         </aside>
+        <div class="hr-between"></div>
 
         <!-- 订单地址、物流、支付 等信息 -->
-        <aside class="bg-white m-b-10x">
+        <aside class="bg-white">
             <div class="flex font-size-sm text-primary p-y-10x p-x-15x">
                 <span class="orderInfo-subTitle flex-fixedShrink">Shipping to</span>
                 <div>
@@ -162,9 +165,10 @@
                 </div>
             @endif
         </aside>
+        <div class="hr-between"></div>
 
         <!-- 订单金额 -->
-        <aside class="bg-white m-b-10x">
+        <aside class="bg-white">
             <div class="p-a-10x">
 
                 {{--数量--}}
@@ -211,16 +215,13 @@
                     <span><strong>Order Total</strong></span><span><strong>${{ number_format(($data['pay_amount'] / 100), 2)}}</strong></span>
                 </div>
 
-
-
-
             </div>
             <hr class="hr-base m-a-0">
             <!-- 服务质量保证 -->
         </aside>
 
         <!-- 联系客服 -->
-        <aside class="bg-white m-b-10x p-a-10x">
+        <aside class="bg-white p-a-10x">
             <a href="/askshopping?skiptype=2&id={{$data['sub_order_no']}}" class="btn btn-primary btn-block"
                type="submit">Contact Customer Service
             </a>

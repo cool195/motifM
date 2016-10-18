@@ -53,7 +53,8 @@
                 <article class="font-size-sm p-a-10x m-t-10x text-center bg-primary">{{$getDate->configMap()}}</article>
             @endif
             <!-- "Shopping Bag" 标题 -->
-            <article class="font-size-md text-main p-a-10x"><strong>My Bag</strong></article>
+            <article class="font-size-md text-main p-a-10x bg-title"><strong>My Bag</strong></article>
+            <hr class="hr-base m-a-0">
 
         @if(empty($cartData['showSkus']))
             <!-- 空袋子 提示信息 -->
@@ -147,9 +148,9 @@
                         @endforeach
                     @endif
                 </section>
-
+                <div class="hr-between"></div>
                 <!-- 商品总价 -->
-                <section class="bg-white m-t-10x p-a-10x">
+                <section class="bg-white p-a-10x">
                     <div class="flex flex-rightJustify text-primary font-size-sm">
                         <span class="p-r-5x">Items ({{$cartData['total_sku_qtty'] }}):
                         </span><strong>${{number_format($cartData['total_amount'] /100, 2)}}</strong>
@@ -163,8 +164,9 @@
                         <span class="p-r-5x">Bag Subtotal: </span><strong>${{ number_format($cartData['pay_amount'] / 100, 2)}}</strong>
                     </div>
                 </section>
+                <hr class="hr-base m-a-0">
                 <!-- 购买按钮 -->
-                <section class="bg-white m-t-10x p-a-10x">
+                <section class="bg-white p-a-10x">
                     <a href="/cart/ordercheckout" class="btn btn-primary btn-block @if($cartData['pay_amount'] <= 0) disabled @endif" type="submit">Proceed to
                         Checkout</a>
                 </section>

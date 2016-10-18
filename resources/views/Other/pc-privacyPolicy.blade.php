@@ -36,8 +36,10 @@
                     @endif
                             <!-- 隐私政策 -->
                     <section class="m-b-20x p-b-20x reserve-height">
-                        <article class="font-size-md text-main p-x-15x p-y-10x"><strong>Privacy Notice</strong>
+                        <article class="font-size-md text-main p-x-15x p-y-10x bg-title"><strong>Privacy Notice</strong>
                         </article>
+                        <hr class="hr-base m-a-0">
+
                         <div class="bg-white">
                             <div class="p-a-15x font-size-sm text-primary">
                                 <p class="m-b-15x">Thank you for visiting the privacy notice of Motif Group LLC
@@ -248,7 +250,7 @@
                                 </p>
                             </div>
                         </div>
-
+                        <hr class="hr-base m-a-0">
                     </section>
                     <!-- 页脚 功能链接 -->
                     @if(!strstr($_SERVER['HTTP_USER_AGENT'], 'motif-android') && !strstr($_SERVER['HTTP_USER_AGENT'], 'motif-ios'))

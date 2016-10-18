@@ -18,15 +18,16 @@
         <div class="body-container">
             @include('navigator', ['pageScope'=>true])
             <section class="p-b-15x reserve-height">
-                <article class="p-x-15x p-y-10x flex flex-fullJustified flex-alignCenter">
+                <article class="p-x-15x p-y-10x flex flex-fullJustified flex-alignCenter bg-title">
                     <span class="font-size-md text-main"><strong>Shipping Address</strong></span>
                     <a class="btn btn-primary-outline btn-sm" id="address-edit">Edit</a>
                     <!-- 修改状态 -->
                     <!--<a class="btn btn-primary btn-sm" href="#">Done</a>-->
                 </article>
+                <hr class="hr-base m-a-0">
 
                 <!-- 地址列表 -->
-                <aside class="bg-white m-b-10x">
+                <aside class="bg-white">
                     @if(isset($data['list']))
                         @foreach($data['list'] as $addr)
                     <div class="addressList-container font-size-sm" id="primaryItem" data-address="{{ $addr['receiving_id'] }}">
@@ -53,6 +54,7 @@
                         @endforeach
                     @endif
                 </aside>
+                <div class="hr-between"></div>
 
                 <aside class="bg-white">
                     <div class="flex flex-alignCenter text-primary p-a-15x order-option" data-role="add" data-action="/cart/addradd">
@@ -61,6 +63,7 @@
                         <div class="bg-option bg-addAddress"></div>
                     </div>
                 </aside>
+                <hr class="hr-base m-a-0">
                 <aside class="p-a-15x">
                     <div class="btn btn-block btn-primary" data-role="submit" data-action="/cart/ordercheckout">Continue</div>
                 </aside>

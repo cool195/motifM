@@ -22,9 +22,11 @@
                     @endif
                             <!-- FQA -->
                     <section class="m-b-20x p-b-20x reserve-height">
-                        <article class="font-size-md text-main p-x-15x p-y-10x"><strong>FAQ</strong>
+                        <article class="font-size-md text-main p-x-15x p-y-10x bg-title"><strong>FAQ</strong>
                         </article>
-                        <div class="bg-white m-b-10x">
+                        <hr class="hr-base m-a-0">
+
+                        <div class="bg-white">
                             <div class="p-x-15x p-y-10x font-size-md text-main"><strong>Manage Account</strong></div>
                             <hr class="hr-base m-y-0">
                             <div class="p-a-15x font-size-sm text-primary">
@@ -35,7 +37,9 @@
                                     email you a link to easily reset your password.</p>
                             </div>
                         </div>
-                        <div class="bg-white m-b-10x">
+                        <div class="hr-between"></div>
+
+                        <div class="bg-white">
                             <div class="p-x-15x p-y-10x font-size-md text-main"><strong>Ordering, Processing and
                                     Shipping</strong>
                             </div>
@@ -80,8 +84,9 @@
                                     information.</p>
                             </div>
                         </div>
+                        <div class="hr-between"></div>
 
-                        <div class="bg-white m-b-10x">
+                        <div class="bg-white">
                             <div class="p-x-15x p-y-10x font-size-md text-main"><strong>Taxes and Fees.</strong>
                             </div>
                             <hr class="hr-base m-y-0">
@@ -96,8 +101,9 @@
                                     or service charges. All transactions through the Service are in U.S. dollars.</p>
                             </div>
                         </div>
+                        <div class="hr-between"></div>
 
-                        <div class="bg-white m-b-10x">
+                        <div class="bg-white">
                             <div class="p-x-15x p-y-10x font-size-md text-main"><strong>Return & Exchange</strong>
                             </div>
                             <hr class="hr-base m-y-0">
@@ -136,6 +142,7 @@
                                     Page.</p>
                             </div>
                         </div>
+                        <div class="hr-between"></div>
 
                         {{--            <div class="bg-white m-b-10x">
                                         <div class="p-x-15x p-y-10x font-size-md text-main"><strong>Other Queries</strong>
@@ -219,7 +226,7 @@
                                 </p>
                             </div>
                         </div>
-
+                        <hr class="hr-base m-a-0">
                     </section>
                     <!-- 页脚 功能链接 -->
                     @if(!strstr($_SERVER['HTTP_USER_AGENT'], 'motif-android') && !strstr($_SERVER['HTTP_USER_AGENT'], 'motif-ios'))

@@ -22,8 +22,9 @@
                 @endif
     <!-- 联系我们 -->
         <section class="reserve-height">
-            <article class="font-size-md text-main p-x-15x p-y-10x"><strong>Contact Us</strong>
+            <article class="font-size-md text-main p-x-15x p-y-10x bg-title"><strong>Contact Us</strong>
             </article>
+            <hr class="hr-base m-a-0">
             <div class="bg-white">
                 <div class="p-a-15x font-size-md text-main">Customer Support Email:&nbsp;<a href="mailto:service@motif.me">Service@motif.me</a>
                 </div>
@@ -42,6 +43,7 @@
                 71-75, Shelton Street, Covent Garden, London, WC2H 9JQ, UNITED KINGDOM (This address is only for billing, not for return).
                 </div>
             </div>
+            <hr class="hr-base m-a-0">
         </section>
         <!-- 页脚 功能链接 -->
         @if(!strstr($_SERVER['HTTP_USER_AGENT'], 'motif-android') && !strstr($_SERVER['HTTP_USER_AGENT'], 'motif-ios'))

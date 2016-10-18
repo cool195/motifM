@@ -20,13 +20,14 @@
         <!-- 提交问题反馈 表单 -->
         <section class="m-b-20x reserve-height">
             <form method="post" id="form-customerSupport">
-                <article class="font-size-md text-main p-y-10x p-x-15x" data-type="{{$customers['feedback_type']}}"><strong>{{ $customers['feedback_name'] }}</strong></article>
+                <article class="font-size-md text-main p-y-10x p-x-15x bg-title" data-type="{{$customers['feedback_type']}}"><strong>{{ $customers['feedback_name'] }}</strong></article>
+                <hr class="hr-base m-a-0">
 
                 <div class="warning-info text-warning font-size-xs flex flex-alignCenter text-left p-x-15x m-b-10x off">
                     <i class="iconfont icon-caveat icon-size-md p-r-5x"></i>
                     <span>Warning:Please fill out all fieldes.</span>
                 </div>
-                <fieldset class="bg-white m-b-10x message-type" data-type="{{ $customers['feedback_type'] }}" data-stype="">
+                <fieldset class="bg-white message-type" data-type="{{ $customers['feedback_type'] }}" data-stype="">
                     <a class="p-a-15x flex flex-alignCenter flex-fullJustified btn-massageType" href="#">
                         <span class="font-size-sm text-primary">Choose a Category</span>
                         <i class="iconfont icon-arrow-bottom icon-size-xm text-common"></i>
@@ -37,6 +38,7 @@
                         @endforeach
                     </div>
                 </fieldset>
+                <hr class="hr-base m-a-0">
 
                 <fieldset>
                     <input class="form-control form-control-block p-a-15x font-size-sm " disabled="disabled" name="email" id="email" type="text" value="{{ Session::get('user.login_email') }}" placeholder="Your Email">
@@ -46,6 +48,7 @@
                         <span class="message-wordNumber font-size-sm text-primary"><span id="wordNum">0</span>/1000</span>
                     </div>
                 </fieldset>
+                <hr class="hr-base m-a-0">
                 <div class="container-fluid p-a-15x">
                     <div class="row">
                         <div class="col-xs-6">

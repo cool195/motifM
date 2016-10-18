@@ -16,10 +16,11 @@
     @include('navigator', ['pageScope'=>true])
     <!-- 洲列表 -->
         <section class="p-b-10x reserve-height">
-            <article class="p-x-15x p-y-10x font-size-md text-main">
+            <article class="p-x-15x p-y-10x font-size-md text-main bg-title">
                 <strong>Select State</strong>
             </article>
-            <aside class="bg-white m-b-10x">
+            <hr class="hr-base m-a-0">
+            <aside class="bg-white">
                 @if(isset($commonlist))
                     @foreach($commonlist as $c)
                         <div class="flex flex-alignCenter font-size-sm text-primary p-x-15x p-y-10x " data-state="{{base64_encode(json_encode($c))}}" data-cid="{{$c['state_id']}}">

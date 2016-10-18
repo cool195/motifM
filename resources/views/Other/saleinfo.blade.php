@@ -22,8 +22,10 @@
                     @endif
                             <!-- 服务条款 -->
                     <section class="m-b-20x p-b-20x reserve-height">
-                        <article class="font-size-md text-main p-x-15x p-y-10x"><strong>Motif Referral Program</strong>
+                        <article class="font-size-md text-main p-x-15x p-y-10x bg-title"><strong>Motif Referral Program</strong>
                         </article>
+                        <hr class="hr-base m-a-0">
+
                         <div class="bg-white">
                             <div class="p-a-15x font-size-sm text-primary">
                                 <p class="m-b-15x"><strong>Anyone can Refer a Friend.</strong> Anyone with a registered Motif account can refer a friend. You do not need to have made a purchase prior to referring. Once your referred friend uses the promo code to make a qualifying purchase, the referral credit will be granted to your account. To qualify for the referral program, the referred person must (1) be a new customer, (2) use the referral promo code on checkout, and (3) complete a purchase with a subtotal of at least $35 prior to the promo code's expiration. Both the referral promo code and the referral credit cannot be combined with additional coupons.</p>
@@ -35,7 +37,7 @@
                                 </p>
                             </div>
                         </div>
-
+                        <hr class="hr-base m-a-0">
                     </section>
                     <!-- 页脚 功能链接 -->
                     @if(!strstr($_SERVER['HTTP_USER_AGENT'], 'motif-android') && !strstr($_SERVER['HTTP_USER_AGENT'], 'motif-ios'))

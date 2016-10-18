@@ -16,7 +16,9 @@
     <div class="body-container">
         @include('navigator')
         <section class="reserve-height">
-            <article class="p-x-15x p-y-10x font-size-md text-main"><strong>Settings</strong></article>
+            <article class="p-x-15x p-y-10x font-size-md text-main bg-title"><strong>Settings</strong></article>
+            <hr class="hr-base m-a-0">
+
             <!-- 个人中心 sitting list -->
             <aside class="bg-white m-b-20x">
                 <a class="flex flex-alignCenter flex-fullJustified font-size-sm text-primary p-a-15x"
@@ -38,6 +40,7 @@
                     <span>Shipping Address</span>
                     <i class="iconfont icon-arrow-right icon-size-xm text-common"></i>
                 </a>
+                <hr class="hr-base m-a-0">
                 {{--                    <hr class="hr-base m-a-0">
                                     <a class="flex flex-alignCenter flex-fullJustified font-size-sm text-primary p-a-15x" href="/braintree">
                                         <span>Payment Method</span>

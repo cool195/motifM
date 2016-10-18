@@ -23,8 +23,9 @@
                 @endif
     <!-- 取消政策 -->
         <section class="reserve-height">
-            <article class="font-size-md text-main p-x-15x p-y-10x"><strong>Cancellation Policy</strong>
+            <article class="font-size-md text-main p-x-15x p-y-10x bg-title"><strong>Cancellation Policy</strong>
             </article>
+            <hr class="hr-base m-a-0">
             <div class="bg-white">
                 <div class="p-a-15x font-size-sm text-primary">
                     <p class="m-b-15x">Orders, except for personalized items, can be cancelled at no charge up until
@@ -39,6 +40,7 @@
                         returns.</p>
                 </div>
             </div>
+            <hr class="hr-base m-a-0">
         </section>
         <!-- 页脚 功能链接 -->
         @if(!strstr($_SERVER['HTTP_USER_AGENT'], 'motif-android') && !strstr($_SERVER['HTTP_USER_AGENT'], 'motif-ios'))

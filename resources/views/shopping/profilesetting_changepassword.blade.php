@@ -18,9 +18,10 @@
         <!-- 修改密码 -->
         <section class="reserve-height">
             <form method="" id="changePassword">
-                <article class="p-x-15x p-y-10x font-size-md text-main"><strong>Change Password</strong></article>
-                <!-- 个人中心 sitting list -->
+                <article class="p-x-15x p-y-10x font-size-md text-main bg-title"><strong>Change Password</strong></article>
+                <hr class="hr-base m-a-0">
 
+                <!-- 个人中心 sitting list -->
                 <div class="warning-info text-warning font-size-xs flex flex-alignCenter text-left p-x-15x m-b-10x off">
                     <i class="iconfont icon-caveat icon-size-md p-r-5x"></i>
                     <span>Sorry, this email has already been registered.</span>
@@ -32,6 +33,7 @@
                     <hr class="hr-base m-a-0">
                     <input class="form-control form-control-block p-a-15x font-size-sm" type="password" placeholder="Confirm New Password" data-role="confirmPwd">
                 </fieldset>
+                <hr class="hr-base m-a-0">
                 <div class="p-a-15x">
                     <div href="#" class="btn btn-primary btn-block disabled" data-role="submit">Change Password</div>
                 </div>

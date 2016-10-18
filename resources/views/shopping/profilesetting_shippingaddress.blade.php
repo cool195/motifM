@@ -18,7 +18,7 @@
     <div class="body-container">
         @include('navigator')
         <section class="p-b-15x reserve-height">
-            <article class="p-x-15x p-y-10x flex flex-fullJustified flex-alignCenter">
+            <article class="p-x-15x p-y-10x flex flex-fullJustified flex-alignCenter bg-title">
                 <span class="font-size-md text-main"><strong>Shipping Address</strong></span>
                 @if(!empty($data['list']))
                     <a class="btn btn-primary-outline btn-sm" id="address-edit">Edit</a>
@@ -26,12 +26,12 @@
                 <!-- 修改状态 -->
                 <!--<a class="btn btn-primary btn-sm" href="#">Done</a>-->
             </article>
+            <hr class="hr-base m-a-0">
 
             <!-- 地址列表 -->
-            <aside class="bg-white m-b-10x">
+            <aside class="bg-white">
                 @if(isset($data['list']))
                     @foreach($data['list'] as $addr)
-                        <hr class="hr-base m-a-0">
                         <div class="addressList-container font-size-sm" id="primaryItem" data-address=""
                              data-aid="{{$addr['receiving_id']}}">
                             @if(1 !== $addr['isDefault'])
@@ -63,6 +63,7 @@
                     @endforeach
                 @endif
             </aside>
+            <div class="hr-between"></div>
             <aside class="bg-white">
                 <a class="flex flex-alignCenter text-primary p-a-15x"
                    href="@if(empty($data['list'])){{'/user/addradd?first=1'}}@else{{'/user/addradd'}}@endif">
@@ -70,7 +71,7 @@
                     <span class="font-size-sm">Add New Address</span>
                 </a>
             </aside>
-
+            <hr class="hr-base m-a-0">
         </section>
 
         <!-- 页脚 功能链接 -->

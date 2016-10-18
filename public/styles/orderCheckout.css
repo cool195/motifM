@@ -26,6 +26,10 @@
   border-bottom: 1px solid #e2e5ed;
 }
 
+.checkoutList-item + .checkoutList-item{
+  border-bottom: none;
+}
+
 .checkoutItem-secondaryInfo {
   border-bottom: 1px solid #e2e5ed;
     min-height: 1.25rem;

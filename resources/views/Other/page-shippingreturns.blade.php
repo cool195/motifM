@@ -22,8 +22,10 @@
                     @endif
                             <!-- 物流、退货、支付 说明 -->
                     <section class="m-b-20x p-b-20x reserve-height">
-                        <article class="font-size-md text-main p-x-15x p-y-10x"><strong>Shipping & Returns</strong>
+                        <article class="font-size-md text-main p-x-15x p-y-10x bg-title"><strong>Shipping & Returns</strong>
                         </article>
+                        <hr class="hr-base m-a-0">
+
                         <div class="bg-white  m-b-10x">
                             <div class="p-x-15x p-y-10x font-size-md text-main"><strong>Shipping</strong></div>
                             <hr class="hr-base m-y-0">
@@ -225,7 +227,7 @@
                                 <p class="m-b-0">For any further queries, please email us at service@motif.me.</p>
                             </div>
                         </div>
-
+                        <hr class="hr-base m-a-0">
                     </section>
                     <!-- 页脚 功能链接 -->
                     @if(!strstr($_SERVER['HTTP_USER_AGENT'], 'motif-android') && !strstr($_SERVER['HTTP_USER_AGENT'], 'motif-ios'))

@@ -1,16 +1,17 @@
 
 <nav class="nav-menu">
-    <ul class="nav bg-white m-t-10x">
+    <div class="hr-between"></div>
+    <ul class="nav bg-white">
         <li class="nav-item">
             <a href="/daily" class="flex flex-alignCenter flex-fullJustified p-a-15x menu">
                 <div class="font-size-sm text-primary flex flex-alignCenter"><i
                             class="iconfont icon-home icon-size-md p-r-15x"></i><span>Home</span></div>
                 <span class="text-common"><i class="iconfont icon-arrow-right icon-size-sm"></i></span>
             </a>
-            <hr class="hr-base m-a-0">
         </li>
     </ul>
-    <ul class="nav bg-white m-t-10x">
+    <div class="hr-between"></div>
+    <ul class="nav bg-white">
         @if(!Session::has('user'))
             <li class="nav-item">
                 <a href="/login"
@@ -63,7 +64,9 @@
                             class="iconfont icon-setting icon-size-md p-r-15x"></i><span>Settings</span></div>
                 <span class="text-common"><i class="iconfont icon-arrow-right icon-size-sm"></i></span>
             </a>
+            @if(Session::has('user'))
             <hr class="hr-base m-a-0">
+            @endif
         </li>
         @if(Session::has('user'))
             <li class="nav-item">
@@ -74,21 +77,21 @@
                     </div>
                     <span class="text-common"><i class="iconfont icon-arrow-right icon-size-sm"></i></span>
                 </a>
-                <hr class="hr-base m-a-0">
             </li>
         @endif
     </ul>
-    <ul class="nav bg-white m-t-10x">
+    <div class="hr-between"></div>
+    <ul class="nav bg-white">
         <li class="nav-item">
             <a href="#" class="flex flex-alignCenter flex-fullJustified p-a-15x menu" data-remodal-target="download-modal" id="downloadingApp" data-role="downloading">
                 <div class="font-size-sm text-primary flex flex-alignCenter"><i
                             class="iconfont icon-download icon-size-md p-r-15x"></i><span>Download Motif</span></div>
                 <span class="text-common"><i class="iconfont icon-arrow-right icon-size-sm"></i></span>
             </a>
-            <hr class="hr-base m-a-0">
         </li>
     </ul>
-    <ul class="nav bg-white m-t-10x m-b-10x">
+    <div class="hr-between"></div>
+    <ul class="nav bg-white m-b-10x">
         <li class="nav-item">
             <a href="/faq" class="flex flex-alignCenter flex-fullJustified p-a-15x menu">
                 <div class="font-size-sm text-primary flex flex-alignCenter"><i

@@ -22,8 +22,9 @@
                     @endif
                             <!-- 服务条款 -->
                     <section class="m-b-20x p-b-20x reserve-height">
-                        <article class="font-size-md text-main p-x-15x p-y-10x"><strong>TERMS & CONDITIONS</strong>
+                        <article class="font-size-md text-main p-x-15x p-y-10x bg-title"><strong>TERMS & CONDITIONS</strong>
                         </article>
+                        <hr class="hr-base m-a-0">
                         <div class="bg-white">
                             <div class="p-a-15x font-size-sm text-primary">
                                 <p class="m-b-15x">Thank you for visiting these Terms & Conditions (these “Terms”) of
@@ -695,7 +696,7 @@
                                 <p class="m-b-0">(Last Updated September 21, 2016)</p>
                             </div>
                         </div>
-
+                        <hr class="hr-base m-a-0">
                     </section>
                     <!-- 页脚 功能链接 -->
                     @if(!strstr($_SERVER['HTTP_USER_AGENT'], 'motif-android') && !strstr($_SERVER['HTTP_USER_AGENT'], 'motif-ios'))

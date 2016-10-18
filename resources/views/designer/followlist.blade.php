@@ -16,7 +16,8 @@
     @include('nav')
     <div class="body-container">
         @include('navigator')
-        <article class="font-size-md text-main p-a-10x"><strong>Following</strong></article>
+        <article class="font-size-md text-main p-a-10x bg-title"><strong>Following</strong></article>
+        <hr class="hr-base m-a-0">
         <!-- folloinglist 商品列表 -->
         <section class="reserve-height">
             <aside id="followingContainer" class="followList m-b-20x">
@@ -58,6 +59,7 @@
                         </div>
                     @endforeach
                 @endif
+                <hr class="hr-base m-a-0">
             </aside>
         </section>
 
