@@ -32,6 +32,16 @@ class DesignerController extends ApiController
         } else {
             //非首次加载,请求设计师列表数据
             $result = $this->request('openapi', '', 'designer', $params);
+            foreach($result['data']['list'] as &$list){
+                $list['spus'] = "";
+                if(isset($list['products'])){
+                    $spus = array();
+                    foreach($list['products'] as $product){
+                        $spus[] = $product['spu'];
+                    }
+                    $list['spus'] = implode('_', $spus);
+                }
+            }
             return $result;
         }
 
