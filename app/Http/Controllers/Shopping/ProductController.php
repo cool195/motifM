@@ -28,7 +28,7 @@ class ProductController extends ApiController
             return redirect('/shopping');
         }
         $recommended = $this->recommended($spu,$result['data']['front_category_ids'][0],$result['data']['designer']['designer_id']);
-        return View('shopping.detail', ['data' => $result['data'], 'recommended' => $recommended['data']]);
+        return View('shopping.detail', ['data' => $result['data'], 'recommended' => $recommended['data'],'NavShowShop'=>true]);
     }
 
     //获取相关推荐商品

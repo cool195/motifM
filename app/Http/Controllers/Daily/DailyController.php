@@ -20,7 +20,7 @@ class DailyController extends ApiController
             'puton' => $request->input('puton', 1),
         );
         if (empty($params['cmd'])) {
-            return View('daily.index', ['puton' => $params['puton'],'daily'=>true]);
+            return View('daily.index', ['puton' => $params['puton'],'NavShowDaily'=>true]);
         } else {
             $result = $this->request('openapi', '', 'daily', $params);
             if (empty($result)) {
@@ -56,6 +56,7 @@ class DailyController extends ApiController
 
         $result = $this->request('openapi', '', "topicf", $params);
         $view = '';
+        $NavShow = true;
         if ($request->input('test') || strstr($_SERVER['HTTP_USER_AGENT'], 'motif-android') || strstr($_SERVER['HTTP_USER_AGENT'], 'motif-ios')) {
             if ($request->input('token') || !empty($_COOKIE['PIN'])) {
                 if ($request->input('token')) {
@@ -87,7 +88,7 @@ class DailyController extends ApiController
                     }
                 }
                 $result['data']['spuArray'] = json_encode($spuArray);
-
+                $NavShow = false;
             } else {
                 Session::forget('user');
             }
@@ -97,7 +98,7 @@ class DailyController extends ApiController
             $view = 'daily.topic';
         }
 
-        return View($view, ['topic' => $result['data'], 'topicID' => $id, 'shareFlag' => true]);
+        return View($view, ['NavShowDaily'=>$NavShow,'topic' => $result['data'], 'topicID' => $id, 'shareFlag' => true]);
     }
 
     //商品详情动态模版
