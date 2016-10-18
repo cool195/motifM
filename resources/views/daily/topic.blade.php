@@ -65,7 +65,7 @@
     <!-- 展开的汉堡菜单 -->
     @include('nav')
             <!-- 主体内容 -->
-    <div class="body-container">
+    <div class="body-container" style="padding-top: 85px;">
         @include('navigator')
                 <!-- daily 详细内容 -->
         <section class="bg-white reserve-height">
