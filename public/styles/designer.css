@@ -19,6 +19,9 @@
 /* 暂时停用
 // Code
 */
+.body-container{
+  padding-top: 85px;
+}
 .designer-item {
   position: relative;
   display: block;

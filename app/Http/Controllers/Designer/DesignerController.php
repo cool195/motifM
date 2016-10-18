@@ -28,7 +28,7 @@ class DesignerController extends ApiController
                             'pin' => Session::get('user.pin')
                         ));*/
 
-            return View('designer.index', ['designer' => true]);
+            return View('designer.index', ['NavShowDesigner' => true]);
         } else {
             //非首次加载,请求设计师列表数据
             $result = $this->request('openapi', '', 'designer', $params);
@@ -41,14 +41,14 @@ class DesignerController extends ApiController
     public function show(Request $request, $id)
     {
         if (is_numeric($id)) {
-            if(($request->input('f')!='ios' && $request->input('f')!='android')){
-                if ($id == 99 && !$this->isMobile()) {
-                    return View('daily.download_guide');
-                }
-            }
-            if ($_SERVER['HTTP_HOST'] == 'motif.me' || $_SERVER['HTTP_HOST'] == 'www.motif.me'){
-                return redirect("http://m.motif.me".$request->getRequestUri());
-            }
+//            if(($request->input('f')!='ios' && $request->input('f')!='android')){
+//                if ($id == 99 && !$this->isMobile()) {
+//                    return View('daily.download_guide');
+//                }
+//            }
+//            if ($_SERVER['HTTP_HOST'] == 'motif.me' || $_SERVER['HTTP_HOST'] == 'www.motif.me'){
+//                return redirect("http://m.motif.me".$request->getRequestUri());
+//            }
             //设计师详情
             $params = array(
                 'cmd' => 'designerdetail',
@@ -92,6 +92,7 @@ class DesignerController extends ApiController
             $productAll = $this->request('openapi', '', 'rec', $params);
 
             $view = '';
+            $NavShow = true;
             $result['data']['osType'] = strstr($_SERVER['HTTP_USER_AGENT'], 'motif-ios') ? 'ios' : 'android';
             if ($_GET['test'] || strstr($_SERVER['HTTP_USER_AGENT'], 'motif-android') || strstr($_SERVER['HTTP_USER_AGENT'], 'motif-ios')) {
 
@@ -144,6 +145,7 @@ class DesignerController extends ApiController
                     Session::forget('user');
                 }
                 $view = 'designer.showApp';
+                $NavShow = false;
             } else {
                 $view = 'designer.show';
             }
@@ -156,7 +158,7 @@ class DesignerController extends ApiController
             );
             $follow = $this->request('openapi', '', 'follow', $followParams);
             $result['data']['followStatus'] = $follow['data']['isFC'];
-            return View($view, ['pre_product' => $pre_product['data'], 'designer' => $result['data'], 'productAll' => $productAll, 'product' => $product['data']]);
+            return View($view, ['NavShowDesigner'=> $NavShow,'pre_product' => $pre_product['data'], 'designer' => $result['data'], 'productAll' => $productAll, 'product' => $product['data']]);
         }
 
     }

@@ -63,11 +63,11 @@
                             <input class="form-control form-control-block p-a-15x font-size-sm" name="state" type="text"
                                    data-optional="true"
                                    value="{{$state['state_name_sn']}}"
-                                   placeholder="State (optional)">
+                                   placeholder="{{ $country['child_label'] }}">
                         @elseif($country['child_type']==1)
                             <input class="form-control form-control-block p-a-15x font-size-sm" name="state" type="text"
                                    data-optional="false" value="{{$state['state_name_sn']}}" data-role="State"
-                                   placeholder="State">
+                                   placeholder="{{ $country['child_label'] }}">
                         @else
                             <div class="flex flex-alignCenter flex-fullJustified font-size-sm text-primary p-a-15x address-option"
                                  id="stateselect">
@@ -84,7 +84,7 @@
                     </fieldset>
                     <hr class="hr-base m-a-0">
                     <fieldset>
-                        <input class="form-control form-control-block p-a-15x font-size-sm" maxlength="10" data-optional="false" data-role="zip code" name="zip" type="text" value="{{$input['zip']}}" placeholder="Zip code">
+                        <input class="form-control form-control-block p-a-15x font-size-sm" maxlength="10" data-optional="false" data-role="zip code" name="zip" type="text" value="{{$input['zip']}}" placeholder="{{$country['zipcode_label']}}">
                     </fieldset>
                     <hr class="hr-base m-a-0">
                     <fieldset>
