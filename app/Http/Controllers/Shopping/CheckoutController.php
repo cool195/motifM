@@ -23,7 +23,7 @@ class CheckoutController extends ApiController
             $shipPrice = $this->getCheckOutAccountList($address['data']['receiving_id']);
             $shippingMethod = $this->getShippingMethod($address['data']['country_name_sn'],$shipPrice['data']['total_amount']+$shipPrice['data']['vas_amount']);
         }
-
+        
         return View('checkout.shipping',['address'=>$address['data'],'shippingMethod'=>$shippingMethod]);
     }
 
@@ -69,14 +69,6 @@ class CheckoutController extends ApiController
             $result['success'] = false;
             $result['error_msg'] = "Data access failed";
             $result['data']['list'] = array();
-        } else {
-            if ($result['success'] && !empty($result['data']['list'])) {
-                $list = array();
-                foreach ($result['data']['list'] as $method) {
-                    $list[$method['logistics_type']] = $method;
-                }
-                $result['data']['list'] = $list;
-            }
         }
         return $result['data']['list'];
     }
