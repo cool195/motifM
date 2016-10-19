@@ -5,8 +5,10 @@
     <title>Order Checkout</title>
     @include('head')
     <link rel="stylesheet" href="{{env('CDN_Static')}}/styles/orderCheckout.css{{'?v='.config('app.version')}}">
-    <link rel="stylesheet" href="{{env('CDN_Static')}}/styles/profileSetting-addAddress.css{{'?v='.config('app.version')}}">
-    <link rel="stylesheet" href="{{env('CDN_Static')}}/styles/orderCheckout-addressList.css{{'?v='.config('app.version')}}">
+    <link rel="stylesheet"
+          href="{{env('CDN_Static')}}/styles/profileSetting-addAddress.css{{'?v='.config('app.version')}}">
+    <link rel="stylesheet"
+          href="{{env('CDN_Static')}}/styles/orderCheckout-addressList.css{{'?v='.config('app.version')}}">
 </head>
 <body>
 @include('check.tagmanager')
@@ -17,14 +19,15 @@
 @include('nav')
 <!-- 主体内容 -->
     <div class="body-container">
-    @include('navigator', ['pageScope'=>true])
+        @include('navigator', ['pageScope'=>true])
 
         <div class="checkout-container">
             <!-- 1.SHIPPING -->
             <!-- 1.SHIPPING SHIPTO/METHOD-->
             <div class="pageview shipping-shipTo active" id="shipping-shipTo">
                 <div class="flex flex-alignCenter flex-justifyCenter font-size-sm p-y-15x steps">
-                    <span class="p-x-15x active">1.SHIPPING</span><strong><i class="iconfont icon-arrow-right icon-size-xm"></i></strong>
+                    <span class="p-x-15x active">1.SHIPPING</span><strong><i
+                                class="iconfont icon-arrow-right icon-size-xm"></i></strong>
                     <span class="p-x-15x">2.PAYMENT</span><strong><i class="iconfont icon-arrow-right icon-size-xm"></i></strong>
                     <span class="p-x-15x">3.REVIEW</span>
                 </div>
@@ -35,11 +38,11 @@
                     <hr class="hr-base m-a-0">
                     <div class="p-y-10x p-x-15x font-size-sm flex flex-alignCenter flex-fullJustified">
                         <div class="">
-                            <span>Ming</span><br>
-                            <span>Beijing chao yang</span><br>
-                            <span>Beijing, AK 10000</span><br>
-                            <span>China</span><br>
-                            <span>130 2784 8900</span>
+                            <span>{{$address['name']}}</span><br>
+                            <span>{{$address['detail_address1']}} {{$address['detail_address2']}}</span><br>
+                            <span>{{$address['city']}} {{$address['state']}} {{$address['zip']}}</span><br>
+                            <span>{{$address['country']}}</span><br>
+                            <span>{{$address['telephone']}}</span>
                         </div>
                         <div class="text-underLine" id="edit-shipTp">Edit</div>
                     </div>
@@ -50,16 +53,13 @@
                     <div class="p-y-10x p-x-15x font-size-sm"><strong>SHIPPING METHOD</strong></div>
                     <hr class="hr-base m-a-0">
                     <div>
-                        <div class="p-a-15x font-size-sm flex flex-alignCenter flex-fullJustified">
-                            <span>Registered AirMail: 10-15 Days(FREE) $0.00</span>
-                            <i class="iconfont icon-check icon-size-base"></i>
-                        </div>
-                        <hr class="hr-base m-a-0">
-                        <div class="p-a-15x font-size-sm flex flex-alignCenter flex-fullJustified">
-                            <span>Expedited Shipping: 3-7 Days $0.00</span>
-                            <i class="iconfont icon-check icon-size-base hidden"></i>
-                        </div>
-                        <hr class="hr-base m-a-0">
+                        @foreach($shippingMethod as $k=>$value)
+                            <div class="p-a-15x font-size-sm flex flex-alignCenter flex-fullJustified">
+                                <span>{{$value['logistics_name']}} {{'$'.$value['price']/100}}</span>
+                                <i class="iconfont icon-check icon-size-base"></i>
+                            </div>
+                            <hr class="hr-base m-a-0">
+                        @endforeach
                     </div>
                     <!-- Continue 按钮 -->
                     <div class="p-a-15x submit-shipping">
