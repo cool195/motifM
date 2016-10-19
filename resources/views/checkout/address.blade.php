@@ -23,7 +23,7 @@
 
         <div class="checkout-container">
             <!-- 1.SHIPPING 添加/修改地址 -->
-            <div class="pageview shipping-editorAddress @if(!empty($address)) active @endif" id="shipping-editorAddress">
+            <div class="pageview shipping-editorAddress @if(empty($address)) active @endif" id="shipping-editorAddress">
                 <section class="p-b-20x reserve-height">
                     <article class="p-x-15x p-y-10x font-size-md text-main bg-title"><strong>Add New Address</strong>
                     </article>
@@ -159,7 +159,7 @@
                 </section>
             </div>
             <!-- 1.SHIPPING 地址列表/选择地址 -->
-            <div class="pageview shipping-chooseAddress @if(empty($address)) active @endif"
+            <div class="pageview shipping-chooseAddress @if(!empty($address)) active @endif"
                  id="shipping-chooseAddress">
 
                 <section class="p-b-15x reserve-height">
