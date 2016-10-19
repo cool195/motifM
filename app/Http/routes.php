@@ -86,6 +86,7 @@ $app->group(['middleware' => 'pcguide|logincheck', 'namespace' => 'App\Http\Cont
     $app->get('/addr/del', 'AddressController@delUserAddr');
     $app->delete('/addresses', 'AddressController@delUserAddr');
     $app->get('/addr/country', 'AddressController@getCountry');
+    $app->get('/statelist/{id}','AddressController@getState');
 
 
     $app->get('/user/setting', 'UserController@setting');

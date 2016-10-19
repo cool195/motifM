@@ -237,4 +237,19 @@ class AddressController extends ApiController
 		}
 		return $result;
 	}
+
+	//获取洲列表
+	public function getState($id)
+	{
+		$params = array(
+			'cmd' => 'state',
+			'token' => Session::get('user.token'),
+			'pin' => Session::get('user.pin'),
+			'countryid' => $id
+		);
+		
+		$result = $this->request('openapi', '', 'addr', $params);
+		return $result['data']['list'];
+
+	}
 }
