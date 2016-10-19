@@ -37,6 +37,9 @@ $app->group(['middleware' => 'pcguide', 'namespace' => 'App\Http\Controllers'], 
 
 $app->group(['middleware' => 'pcguide|logincheck', 'namespace' => 'App\Http\Controllers\Shopping'], function ($app) {
 
+    //New CheckOut
+    $app->get('/checkout', 'CheckoutController@checkout');
+
     $app->get('/feed', 'ShoppingController@feedback');
     $app->get('/feedback', 'ShoppingController@addSupport');
     $app->get('/feedbacklist', 'ShoppingController@getFeedbackList');
