@@ -6,15 +6,22 @@ use Illuminate\Http\Request;
 
 use App\Http\Controllers\ApiController;
 use Illuminate\Support\Facades\Session;
-use Illuminate\View\View;
+
 
 class CheckoutController extends ApiController
 {
     //shipping
     public function shipping()
     {
+
         //获取默认地址
-        $address = $this->getUserDefaultAddr();
+        if(Session::get('user.checkout.address')){
+            $address = Session::get('user.checkout.address');
+        }else{
+            $address = $this->getUserDefaultAddr();
+            Session::put('user.checkout.address', $address);
+        }
+
         //没有地址进入添加地址页面
         if (empty($address['data'])) {
             return redirect('/checkout/address');
@@ -106,7 +113,7 @@ class CheckoutController extends ApiController
     }
 
     //地址管理
-    public function address(Request $request)
+    public function address()
     {
         $params = array(
             'cmd' => 'list',
@@ -123,7 +130,29 @@ class CheckoutController extends ApiController
             $result['data'] = array();
         }
 
-        return View('checkout.address', ['address' => $result['data']['list']]);
+        $params = array(
+            'cmd'=>'country',
+            'token'=>Session::get('user.token'),
+            'pin'=>Session::get('user.pin')
+        );
+        $system = "";
+        $service = "useraddr";
+        $country = $this->request('openapi', $system, $service, $params);
+        if(empty($country)){
+            $country['success'] = false;
+            $country['error_msg'] = "Data access failed";
+            $country['data'] = array();
+        }else{
+            if($country['success']){
+                $commonlist = array();
+                for($index = 0; $index < $country['data']['amount']; $index++)
+                {
+                    $commonlist[] = array_shift($country['data']['list']);
+                }
+                $country['data']['commonlist'] = $commonlist;
+            }
+        }
+        return View('checkout.address', ['address' => $result['data']['list'],'country'=>$country['data']]);
     }
 
 

@@ -5,8 +5,10 @@
     <title>Order Checkout</title>
     @include('head')
     <link rel="stylesheet" href="{{env('CDN_Static')}}/styles/orderCheckout.css{{'?v='.config('app.version')}}">
-    <link rel="stylesheet" href="{{env('CDN_Static')}}/styles/profileSetting-addAddress.css{{'?v='.config('app.version')}}">
-    <link rel="stylesheet" href="{{env('CDN_Static')}}/styles/orderCheckout-addressList.css{{'?v='.config('app.version')}}">
+    <link rel="stylesheet"
+          href="{{env('CDN_Static')}}/styles/profileSetting-addAddress.css{{'?v='.config('app.version')}}">
+    <link rel="stylesheet"
+          href="{{env('CDN_Static')}}/styles/orderCheckout-addressList.css{{'?v='.config('app.version')}}">
 </head>
 <body>
 @include('check.tagmanager')
@@ -228,28 +230,27 @@
                     </article>
                     <hr class="hr-base m-a-0">
                     <aside class="bg-white">
-                        @if(isset($commonlist))
-                            @foreach($commonlist as $c)
-                                <div class="flex flex-alignCenter font-size-sm text-primary p-x-15x p-y-15x"
-                                     data-country="{{base64_encode(json_encode($c))}}" data-cid="{{$c['country_id']}}">
-                                    <span>{{$c['country_name_en']}}</span>
-                                </div>
-                                <hr class="hr-base m-a-0">
-                            @endforeach
-                        @endif
+
+                        @foreach($country['commonlist'] as $value)
+                            <div class="flex flex-alignCenter font-size-sm text-primary p-x-15x p-y-15x"
+                                 data-cid="{{$value['country_id']}}">
+                                <span>{{$value['country_name_en']}}</span>
+                            </div>
+                            <hr class="hr-base m-a-0">
+                        @endforeach
+
                     </aside>
                     <div class="p-t-10x bg-title"></div>
                     <hr class="hr-base m-a-0">
                     <aside class="bg-white">
-                        @if(isset($list))
-                            @foreach($list as $l)
-                                <div class="flex flex-alignCenter font-size-sm text-primary p-x-15x p-y-10x"
-                                     data-country="{{base64_encode(json_encode($l))}}" data-cid="{{$l['country_id']}}">
-                                    <span>{{ $l['country_name_en'] }}</span>
-                                </div>
-                                <hr class="hr-base">
-                            @endforeach
-                        @endif
+
+                        @foreach($country['list'] as $value)
+                            <div class="flex flex-alignCenter font-size-sm text-primary p-x-15x p-y-10x" data-cid="{{$value['country_id']}}">
+                                <span>{{ $value['country_name_en'] }}</span>
+                            </div>
+                            <hr class="hr-base">
+                        @endforeach
+
                     </aside>
                 </section>
             </div>
