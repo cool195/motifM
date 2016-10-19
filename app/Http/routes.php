@@ -76,7 +76,7 @@ $app->group(['middleware' => 'pcguide|logincheck', 'namespace' => 'App\Http\Cont
     $app->get('/cart/countrylist', 'CartController@countrylist');
 
     $app->get('/addr/list', 'AddressController@getUserAddrList');
-    $app->get('/addr/default', 'Shopping\AddressController@getUserDefaultAddr');
+    $app->get('/addr/default', 'AddressController@getUserDefaultAddr');
     $app->get('/addr/add', 'AddressController@addUserAddr');
     $app->post('/addr/add', 'AddressController@addUserAddr');
     $app->post('/useraddr/addUserAddress', 'AddressController@addUserAddr');
