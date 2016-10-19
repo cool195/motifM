@@ -5,10 +5,8 @@
     <title>Order Checkout</title>
     @include('head')
     <link rel="stylesheet" href="{{env('CDN_Static')}}/styles/orderCheckout.css{{'?v='.config('app.version')}}">
-    <link rel="stylesheet"
-          href="{{env('CDN_Static')}}/styles/profileSetting-addAddress.css{{'?v='.config('app.version')}}">
-    <link rel="stylesheet"
-          href="{{env('CDN_Static')}}/styles/orderCheckout-addressList.css{{'?v='.config('app.version')}}">
+    <link rel="stylesheet" href="{{env('CDN_Static')}}/styles/profileSetting-addAddress.css{{'?v='.config('app.version')}}">
+    <link rel="stylesheet" href="{{env('CDN_Static')}}/styles/orderCheckout-addressList.css{{'?v='.config('app.version')}}">
 </head>
 <body>
 @include('check.tagmanager')
@@ -37,7 +35,7 @@
                         <!-- 个人中心 sitting list -->
                         <fieldset>
                             <div class="flex flex-alignCenter flex-fullJustified font-size-sm text-primary p-a-15x address-option"
-                                 id="country">
+                                 id="btn-toCountryList">
                                 <span>Country</span>
                                 <div>
                                     <span>{{ $country['country_name_en'] }}</span>
@@ -145,8 +143,15 @@
                     </form>
                     <hr class="hr-base m-a-0">
                     <!-- Done 按钮 -->
-                    <div class="p-a-15x editor-address">
-                        <div class="btn btn-primary btn-block" id="btn-editorAddress">Done</div>
+                    <div class="container-fluid p-x-10x p-y-15x">
+                        <div class="row">
+                            <div class="col-xs-6">
+                                <div class="btn btn-primary-outline btn-block" id="btn-cancelEditorAddress">Cancel</div>
+                            </div>
+                            <div class="col-xs-6">
+                                <div class="btn btn-primary btn-block disabled" id="btn-submitEditorAddress">Done</div>
+                            </div>
+                        </div>
                     </div>
                 </section>
             </div>
@@ -192,16 +197,28 @@
                     </aside>
                     <div class="hr-between"></div>
                     <aside class="bg-white">
-                        <a class="flex flex-alignCenter text-primary p-a-15x" href="#">
+                        <div class="flex flex-alignCenter text-primary p-a-15x" id="btn-toAddAddress">
                             <i class="iconfont icon-add icon-size-sm p-r-10x"></i>
                             <span class="font-size-sm">Add New Address</span>
-                        </a>
+                        </div>
                     </aside>
                     <hr class="hr-base m-a-0">
                     <aside class="p-a-15x">
                         <div class="btn btn-block btn-primary" data-role="submit">Continue</div>
                     </aside>
                 </section>
+
+                <!-- 删除地址 确认框 -->
+                <div class="remodal remodal-md modal-content" data-remodal-id="modal" id="removeAddress-Dialog">
+                    <div class="font-size-sm p-t-20x p-x-15x p-b-15x">
+                        <div class="font-size-base">Remove Shipping Address</div>
+                        Are you sure you want to remove this address?
+                    </div>
+                    <div class="btn-group flex">
+                        <div class="btn remodal-btn flex-width" data-remodal-action="confirm">Remove</div>
+                        <div class="btn remodal-btn flex-width" data-remodal-action="cancel">Cancel</div>
+                    </div>
+                </div>
             </div>
             <!-- 选择 country -->
             <div class="pageview shipping-chooseCountry" id="shipping-chooseCountry">
@@ -211,36 +228,28 @@
                     </article>
                     <hr class="hr-base m-a-0">
                     <aside class="bg-white">
-                        {{--@if(isset($commonlist))--}}
-                        {{--@foreach($commonlist as $c)--}}
-                        {{--<div class="flex flex-alignCenter font-size-sm text-primary p-x-15x p-y-15x" data-country="{{base64_encode(json_encode($c))}}" data-cid="{{$c['country_id']}}">--}}
-                        {{--<span>{{$c['country_name_en']}}</span>--}}
-                        {{--</div>--}}
-                        {{--<hr class="hr-base m-a-0">--}}
-                        {{--@endforeach--}}
-                        {{--@endif--}}
-                        <div class="flex flex-alignCenter font-size-sm text-primary p-x-15x p-y-15x"
-                             data-country="{{base64_encode(json_encode($c))}}" data-cid="{{$c['country_id']}}">
-                            <span>beijing</span>
-                        </div>
-                        <hr class="hr-base m-a-0">
+                        @if(isset($commonlist))
+                            @foreach($commonlist as $c)
+                                <div class="flex flex-alignCenter font-size-sm text-primary p-x-15x p-y-15x"
+                                     data-country="{{base64_encode(json_encode($c))}}" data-cid="{{$c['country_id']}}">
+                                    <span>{{$c['country_name_en']}}</span>
+                                </div>
+                                <hr class="hr-base m-a-0">
+                            @endforeach
+                        @endif
                     </aside>
                     <div class="p-t-10x bg-title"></div>
                     <hr class="hr-base m-a-0">
                     <aside class="bg-white">
-                        {{--@if(isset($list))--}}
-                        {{--@foreach($list as $l)--}}
-                        {{--<div class="flex flex-alignCenter font-size-sm text-primary p-x-15x p-y-10x" data-country="{{base64_encode(json_encode($l))}}" data-cid="{{$l['country_id']}}">--}}
-                        {{--<span>{{ $l['country_name_en'] }}</span>--}}
-                        {{--</div>--}}
-                        {{--<hr class="hr-base">--}}
-                        {{--@endforeach--}}
-                        {{--@endif--}}
-                        <div class="flex flex-alignCenter font-size-sm text-primary p-x-15x p-y-10x"
-                             data-country="{{base64_encode(json_encode($l))}}" data-cid="{{$l['country_id']}}">
-                            <span>beijing</span>
-                        </div>
-                        <hr class="hr-base">
+                        @if(isset($list))
+                            @foreach($list as $l)
+                                <div class="flex flex-alignCenter font-size-sm text-primary p-x-15x p-y-10x"
+                                     data-country="{{base64_encode(json_encode($l))}}" data-cid="{{$l['country_id']}}">
+                                    <span>{{ $l['country_name_en'] }}</span>
+                                </div>
+                                <hr class="hr-base">
+                            @endforeach
+                        @endif
                     </aside>
                 </section>
             </div>
@@ -276,6 +285,10 @@
                 </section>
             </div>
 
+            <!-- loading -->
+            <div class="loading loading-screen loading-switch loading-hidden">
+                <div class="loader loader-screen"></div>
+            </div>
         </div>
 
     </div>
@@ -284,5 +297,6 @@
 </body>
 <script src="{{env('CDN_Static')}}/scripts/vendor.js{{'?v='.config('app.version')}}"></script>
 <script src="{{env('CDN_Static')}}/scripts/orderCheckout-addressList.js{{'?v='.config('app.version')}}"></script>
+<script src="{{env('CDN_Static')}}/scripts/Checkout.js{{'?v='.config('app.version')}}"></script>
 @include('global')
 </html>
