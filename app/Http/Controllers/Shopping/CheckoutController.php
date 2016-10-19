@@ -18,8 +18,7 @@ class CheckoutController extends ApiController
 
         //没有地址进入添加地址页面
         if(empty($address)){
-            return ['NewAddress'];
-            //return redirect('/checkout/address');
+
         }else{
             $shipPrice = $this->getCheckOutAccountList($address['data']['receiving_id']);
             $shippingMethod = $this->getShippingMethod($address['data']['country_name_sn'],$shipPrice['data']['total_amount']+$shipPrice['data']['vas_amount']);
@@ -110,5 +109,10 @@ class CheckoutController extends ApiController
             $result['data'] = array();
         }
         return $result;
+    }
+
+    //地址管理
+    public function address(Request $request){
+        return View('checkout.address');
     }
 }
