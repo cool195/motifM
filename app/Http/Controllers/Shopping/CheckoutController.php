@@ -15,9 +15,8 @@ class CheckoutController extends ApiController
     {
         //获取默认地址
         $address = $this->getUserDefaultAddr();
-
         //没有地址进入添加地址页面
-        if(empty($address)){
+        if(empty($address['data'])){
             return redirect('/checkout/address');
         }else{
             $shipPrice = $this->getCheckOutAccountList($address['data']['receiving_id']);
@@ -119,7 +118,7 @@ class CheckoutController extends ApiController
             $result['error_msg'] = "Data access failed";
             $result['data'] = array();
         }
-        
+
         return View('checkout.address',['address'=>$result['data']['list']]);
     }
 
