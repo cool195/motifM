@@ -156,7 +156,7 @@
         $(this).removeData('address');
     });
     $('#modalDialog').on('confirmation', function() {
-        var AddressID = $(this).data('address');
+        var AddressID = $('#modalDialog').data('address');
         if (AddressID === undefined || AddressID === null || AddressID === '') {
             return;
         }
