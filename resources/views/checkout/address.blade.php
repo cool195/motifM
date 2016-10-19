@@ -37,10 +37,10 @@
                         <!-- 个人中心 sitting list -->
                         <fieldset>
                             <div class="flex flex-alignCenter flex-fullJustified font-size-sm text-primary p-a-15x address-option"
-                                 id="btn-toCountryList">
+                                 id="btn-toCountryList" data-type="" data-id="">
                                 <span>Country</span>
                                 <div>
-                                    <span>{{ $country['country_name_en'] }}</span>
+                                    <span id="countryName">{{ $country['country_name_en'] }}</span>
                                     <i class="iconfont icon-arrow-right icon-size-xm text-common"></i>
                                     <input type="text" name="country" hidden value="{{$country['country_name_en']}}">
                                 </div>
@@ -76,6 +76,7 @@
                                    value="{{$input['city']}}" placeholder="City">
                         </fieldset>
                         <hr class="hr-base m-a-0">
+                        <!-- state -->
                         <fieldset>
                             <input type="hidden" name="countryid" value="{{ $country['country_id'] }}">
                             <input type="hidden" name="countryState" value="{{ base64_encode(json_encode($country)) }}">
@@ -104,6 +105,7 @@
                                 </div>
                             @endif
                         </fieldset>
+
                         <hr class="hr-base m-a-0">
                         <fieldset>
                             <input class="form-control form-control-block p-a-15x font-size-sm" name="zip" type="text"
@@ -151,7 +153,7 @@
                                 <div class="btn btn-primary-outline btn-block" id="btn-cancelEditorAddress">Cancel</div>
                             </div>
                             <div class="col-xs-6">
-                                <div class="btn btn-primary btn-block disabled" id="btn-submitEditorAddress">Done</div>
+                                <div class="btn btn-primary btn-block" id="btn-submitEditorAddress">Done</div>
                             </div>
                         </div>
                     </div>
@@ -172,8 +174,13 @@
                     <!-- 地址列表 -->
                     <aside class="bg-white">
                         @foreach($address as $value)
-                            <div class="addressList-container font-size-sm" id="" data-address=""
+                            <div class="addressList-container font-size-sm" id="" data-address="{{$value['receiving_id']}}"
                                  data-aid="{{$value['receiving_id']}}">
+                                @if(1 !== $value['isDefault'])
+                                    <div class="addressList-delete switch" data-remodal-target="modal">
+                                        <i class="iconfont icon-delete icon-size-md text-warning"></i>
+                                    </div>
+                                @endif
                                 <div class="addressItem-info text-primary m-l-15x p-r-15x p-y-10x" data-action="return"
                                      data-url-return="return" data-url-edit="edit" data-url="/user/addrmod/503">
                                     <div>
@@ -188,9 +195,9 @@
                                     </div>
                                     <div class="flex flex-alignCenter">
                                         @if($value['isDefault']==1)
-                                            <span class="text-common p-r-5x">Default</span>
+                                            <span class="text-common p-r-10x">Default</span>
                                         @endif
-                                        <i class="iconfont icon-size-sm text-common"></i>
+                                            <i class="iconfont icon-radio icon-size-sm text-common @if($value['isDefault']==1) active @endif"></i>
                                     </div>
 
                                 </div>
@@ -211,7 +218,7 @@
                 </section>
 
                 <!-- 删除地址 确认框 -->
-                <div class="remodal remodal-md modal-content" data-remodal-id="modal" id="removeAddress-Dialog">
+                <div class="remodal remodal-md modal-content" data-remodal-id="modal" id="modalDialog" data-address="">
                     <div class="font-size-sm p-t-20x p-x-15x p-b-15x">
                         <div class="font-size-base">Remove Shipping Address</div>
                         Are you sure you want to remove this address?
@@ -297,7 +304,15 @@
 
 </body>
 <script src="{{env('CDN_Static')}}/scripts/vendor.js{{'?v='.config('app.version')}}"></script>
-<script src="{{env('CDN_Static')}}/scripts/orderCheckout-addressList.js{{'?v='.config('app.version')}}"></script>
 <script src="{{env('CDN_Static')}}/scripts/Checkout.js{{'?v='.config('app.version')}}"></script>
 @include('global')
+
+<meta name="csrf-token" content="{{ csrf_token() }}"/>
+<script>
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+</script>
 </html>
