@@ -24,12 +24,7 @@ class CartController extends ApiController
             'saveData' => $saveList['data']
         ]);
     }
-
-    public function testCheckout(Request $request)
-    {
-        return View('shopping.checkout');
-    }
-
+    
     /*
      * 订单确认接口
      *

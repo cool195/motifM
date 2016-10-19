@@ -10,23 +10,33 @@ use Illuminate\View\View;
 
 class CheckoutController extends ApiController
 {
-
-    public function checkout(Request $request)
+    //shipping
+    public function shipping()
     {
         //获取默认地址
         $address = $this->getUserDefaultAddr();
         //没有地址进入添加地址页面
-        if(empty($address['data'])){
+        if (empty($address['data'])) {
             return redirect('/checkout/address');
-        }else{
+        } else {
             $shipPrice = $this->getCheckOutAccountList($address['data']['receiving_id']);
-            $shippingMethod = $this->getShippingMethod($address['data']['country_name_sn'],$shipPrice['data']['total_amount']+$shipPrice['data']['vas_amount']);
+            $shippingMethod = $this->getShippingMethod($address['data']['country_name_sn'], $shipPrice['data']['total_amount'] + $shipPrice['data']['vas_amount']);
         }
 
-        return View('checkout.shipping',['address'=>$address['data'],'shippingMethod'=>$shippingMethod]);
+        return View('checkout.shipping', ['address' => $address['data'], 'shippingMethod' => $shippingMethod]);
     }
 
+    //payment
+    public function payment()
+    {
+        return View('checkout.payment');
+    }
 
+    //review
+    public function review()
+    {
+        return View('checkout.review');
+    }
 
     //获取默认地址
     private function getUserDefaultAddr()
@@ -53,13 +63,13 @@ class CheckoutController extends ApiController
     }
 
     //获取物流方式
-    public function getShippingMethod($country=0,$price=0)
+    public function getShippingMethod($country = 0, $price = 0)
     {
         $params = array(
             'cmd' => 'logis',
             'token' => Session::get('user.token')
         );
-        if($price != 0){
+        if ($price != 0) {
             $params['amount'] = $price;
             $params['country'] = $country;
         }
@@ -72,15 +82,8 @@ class CheckoutController extends ApiController
         return $result['data']['list'];
     }
 
-    /*
-    * 获取购物车结算商品列表
-    *
-    * @author zhangtao@evermarker.net
-    * @param Request
-    * @return Array
-    *
-    * */
-    public function getCheckOutAccountList($aid,$logisticstype = "", $bindid = "", $paytype = "")
+    //结算商品列表
+    public function getCheckOutAccountList($aid, $logisticstype = "", $bindid = "", $paytype = "")
     {
         $params = array(
             'cmd' => 'accountlist',
@@ -103,7 +106,8 @@ class CheckoutController extends ApiController
     }
 
     //地址管理
-    public function address(Request $request){
+    public function address(Request $request)
+    {
         $params = array(
             'cmd' => 'list',
             'uuid' => $_COOKIE['uid'],
@@ -113,24 +117,15 @@ class CheckoutController extends ApiController
         $system = "";
         $service = "useraddr";
         $result = $this->request('openapi', $system, $service, $params);
-        if(empty($result)){
+        if (empty($result)) {
             $result['success'] = false;
             $result['error_msg'] = "Data access failed";
             $result['data'] = array();
         }
 
-        return View('checkout.address',['address'=>$result['data']['list']]);
+        return View('checkout.address', ['address' => $result['data']['list']]);
     }
 
-    //payment
-    public function payment(Request $request){
-        return View('checkout.payment');
-    }
-
-    //review
-    public function review(Request $request){
-        return View('checkout.review');
-    }
 
     //添加地址
     public function addUserAddr(Request $request)
@@ -156,7 +151,7 @@ class CheckoutController extends ApiController
         $system = "";
         $service = "useraddr";
         $result = $this->request('openapi', $system, $service, $params);
-        if(empty($result)){
+        if (empty($result)) {
             $result['success'] = false;
             $result['error_msg'] = "Failed to add address";
             $result['data'] = array();

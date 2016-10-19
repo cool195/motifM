@@ -38,7 +38,7 @@ $app->group(['middleware' => 'pcguide', 'namespace' => 'App\Http\Controllers'], 
 $app->group(['middleware' => 'pcguide|logincheck', 'namespace' => 'App\Http\Controllers\Shopping'], function ($app) {
 
     //New CheckOut
-    $app->get('/checkout', 'CheckoutController@checkout');
+    $app->get('/checkout/shipping', 'CheckoutController@checkout');
     $app->get('/checkout/address', 'CheckoutController@address');
     $app->get('/checkout/payment', 'CheckoutController@payment');
     $app->get('/checkout/review', 'CheckoutController@review');
@@ -227,9 +227,6 @@ $app->get('/downapp','Other\PageController@downapp');
 $app->get('/orderlist', 'Other\PageController@orderlist');
 
 $app->get('404','Other\PageController@error404');
-
-
-$app->get('/test/checkout', 'Shopping\CartController@testCheckout');
 
 $app->get('aes','Other\PageController@aes');
 
