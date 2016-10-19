@@ -56,7 +56,7 @@
                         @foreach($shippingMethod as $k=>$value)
                             <div class="p-a-15x font-size-sm flex flex-alignCenter flex-fullJustified">
                                 <span>{{$value['logistics_name']}} @if($value['pay_price']>0)${{number_format(($value['pay_price'] / 100), 2)}}@endif</span>
-                                <i class="iconfont icon-check icon-size-base @if($k>0) hidden @endif"></i>
+                                <i class="iconfont icon-check icon-size-base @if($k>0) hidden @else select @endif" data-type="{{$value['logistics_type']}}"></i>
                             </div>
                             <hr class="hr-base m-a-0">
                         @endforeach
