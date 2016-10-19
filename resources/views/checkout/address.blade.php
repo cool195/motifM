@@ -22,9 +22,8 @@
         @include('navigator', ['pageScope'=>true])
 
         <div class="checkout-container">
-
             <!-- 1.SHIPPING 添加/修改地址 -->
-            <div class="pageview shipping-editorAddress @if(empty($address)) active @endif" id="shipping-editorAddress">
+            <div class="pageview shipping-editorAddress @if(!empty($address)) active @endif" id="shipping-editorAddress">
                 <section class="p-b-20x reserve-height">
                     <article class="p-x-15x p-y-10x font-size-md text-main bg-title"><strong>Add New Address</strong>
                     </article>
@@ -37,12 +36,12 @@
                         <!-- 个人中心 sitting list -->
                         <fieldset>
                             <div class="flex flex-alignCenter flex-fullJustified font-size-sm text-primary p-a-15x address-option"
-                                 id="btn-toCountryList" data-type="" data-id="">
+                                 id="btn-toCountryList" data-type="{{ $country['commonlist'][0]['isFreq']}}" data-id="{{ $country['commonlist'][0]['country_id']}}">
                                 <span>Country</span>
                                 <div>
-                                    <span id="countryName">{{ $country['country_name_en'] }}</span>
+                                    <span id="countryName">{{ $country['commonlist'][0]['country_name_en'] }}</span>
                                     <i class="iconfont icon-arrow-right icon-size-xm text-common"></i>
-                                    <input type="text" name="country" hidden value="{{$country['country_name_en']}}">
+                                    <input type="text" name="country" hidden value="{{$country['commonlist'][0]['country_name_en']}}">
                                 </div>
                             </div>
                         </fieldset>
@@ -160,7 +159,7 @@
                 </section>
             </div>
             <!-- 1.SHIPPING 地址列表/选择地址 -->
-            <div class="pageview shipping-chooseAddress @if(!empty($address)) active @endif"
+            <div class="pageview shipping-chooseAddress @if(empty($address)) active @endif"
                  id="shipping-chooseAddress">
 
                 <section class="p-b-15x reserve-height">
