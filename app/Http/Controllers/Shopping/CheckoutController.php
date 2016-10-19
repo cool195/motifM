@@ -13,24 +13,24 @@ class CheckoutController extends ApiController
     //shipping
     public function shipping()
     {
-
         //获取默认地址
         if(Session::get('user.checkout.address')){
             $address = Session::get('user.checkout.address');
         }else{
             $address = $this->getUserDefaultAddr();
-            Session::put('user.checkout.address', $address);
+            Session::put('user.checkout.address', $address['data']);
         }
 
         //没有地址进入添加地址页面
-        if (empty($address['data'])) {
+        if (empty($address)) {
             return redirect('/checkout/address');
         } else {
             $shipPrice = $this->getCheckOutAccountList($address['data']['receiving_id']);
             $shippingMethod = $this->getShippingMethod($address['data']['country_name_sn'], $shipPrice['data']['total_amount'] + $shipPrice['data']['vas_amount']);
+            Session::put('user.checkout.shipping', $shippingMethod);
         }
 
-        return View('checkout.shipping', ['address' => $address['data'], 'shippingMethod' => $shippingMethod]);
+        return View('checkout.shipping');
     }
 
     //payment

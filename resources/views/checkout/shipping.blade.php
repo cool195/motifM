@@ -38,11 +38,11 @@
                     <hr class="hr-base m-a-0">
                     <div class="p-y-10x p-x-15x font-size-sm flex flex-alignCenter flex-fullJustified">
                         <div class="">
-                            <span>{{$address['name']}}</span><br>
-                            <span>{{$address['detail_address1']}} {{$address['detail_address2']}}</span><br>
-                            <span>{{$address['city']}} {{$address['state']}} {{$address['zip']}}</span><br>
-                            <span>{{$address['country']}}</span><br>
-                            <span>{{$address['telephone']}}</span>
+                            <span>{{Session::get('user.checkout.address.name')}}</span><br>
+                            <span>{{Session::get('user.checkout.address.detail_address1')}} {{Session::get('user.checkout.address.detail_address2')}}</span><br>
+                            <span>{{Session::get('user.checkout.address.city')}} {{Session::get('user.checkout.address.state')['state']}} {{Session::get('user.checkout.address.zip')}}</span><br>
+                            <span>{{Session::get('user.checkout.address.country')}}</span><br>
+                            <span>{{Session::get('user.checkout.address.telephone')}}</span>
                         </div>
                         <div class="text-underLine" id="edit-shipTp">Edit</div>
                     </div>
@@ -53,7 +53,7 @@
                     <div class="p-y-10x p-x-15x font-size-sm"><strong>SHIPPING METHOD</strong></div>
                     <hr class="hr-base m-a-0">
                     <div>
-                        @foreach($shippingMethod as $k=>$value)
+                        @foreach(Session::get('user.checkout.shipping') as $k=>$value)
                             <div class="p-a-15x font-size-sm flex flex-alignCenter flex-fullJustified">
                                 <span>{{$value['logistics_name']}} @if($value['pay_price']>0)${{number_format(($value['pay_price'] / 100), 2)}}@endif</span>
                                 <i class="iconfont icon-check icon-size-base @if($k>0) hidden @else select @endif" data-type="{{$value['logistics_type']}}"></i>
