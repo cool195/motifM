@@ -77,21 +77,22 @@ class CheckoutController extends ApiController
         }
 
         $params = array(
-            'cmd' => 'country',
-            'token' => Session::get('user.token'),
-            'pin' => Session::get('user.pin')
+            'cmd'=>'country',
+            'token'=>Session::get('user.token'),
+            'pin'=>Session::get('user.pin')
         );
         $system = "";
-        $service = "useraddr";
+        $service = "addr";
         $country = $this->request('openapi', $system, $service, $params);
-        if (empty($country)) {
+        if(empty($country)){
             $country['success'] = false;
             $country['error_msg'] = "Data access failed";
             $country['data'] = array();
-        } else {
-            if ($country['success']) {
+        }else{
+            if($country['success']){
                 $commonlist = array();
-                for ($index = 0; $index < $country['data']['amount']; $index++) {
+                for($index = 0; $index < $country['data']['amount']; $index++)
+                {
                     $commonlist[] = array_shift($country['data']['list']);
                 }
                 $country['data']['commonlist'] = $commonlist;
