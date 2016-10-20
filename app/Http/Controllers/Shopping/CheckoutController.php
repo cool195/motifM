@@ -12,8 +12,11 @@ class CheckoutController extends ApiController
 {
     //checkout支付控制
     public function index(){
+        //是否成功支付过
         if(false){
-            
+            return redirect('/checkout/review');
+        }else{
+            return redirect('/checkout/shipping');
         }
     }
 
