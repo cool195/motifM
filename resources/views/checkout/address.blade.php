@@ -206,8 +206,9 @@
             <!-- 选择 country -->
             <div class="pageview shipping-chooseCountry" id="shipping-chooseCountry">
                 <section class="p-b-10x reserve-height">
-                    <article class="p-x-15x p-y-10x font-size-md text-main bg-title">
-                        <strong>Select Country</strong>
+                    <article class="p-x-15x p-y-10x flex flex-fullJustified flex-alignCenter bg-title">
+                        <span class="font-size-md text-main"><strong>Select Country</strong></span>
+                        <a class="btn btn-primary-outline btn-sm" id="cancel-country">Cancel</a>
                     </article>
                     <hr class="hr-base m-a-0">
                     <aside class="bg-white">
@@ -245,8 +246,9 @@
             <!-- 选择 state -->
             <div class="pageview shipping-chooseState" id="shipping-chooseState">
                 <section class="p-b-10x reserve-height">
-                    <article class="p-x-15x p-y-10x font-size-md text-main bg-title">
-                        <strong>Select State</strong>
+                    <article class="p-x-15x p-y-10x flex flex-fullJustified flex-alignCenter bg-title">
+                        <span class="font-size-md text-main"><strong>Select State</strong></span>
+                        <a class="btn btn-primary-outline btn-sm" id="cancel-state">Cancel</a>
                     </article>
                     <hr class="hr-base m-a-0">
                     <aside class="bg-white statelist-info"></aside>

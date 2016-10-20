@@ -432,6 +432,16 @@
         return false;
     });
 
+    // 取消修改国家
+    $('#cancel-country').on('click',function(){
+        toPage($('.shipping-editorAddress'));
+    });
+
+    // 取消修改州
+    $('#cancel-state').on('click',function(){
+        toPage($('.shipping-editorAddress'));
+    });
+
     // AddAddress end
 
 
