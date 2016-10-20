@@ -72,8 +72,8 @@
                         <hr class="hr-base m-a-0">
                         <fieldset>
                             <input class="form-control form-control-block p-a-15x font-size-sm" name="city" type="text"
-                                   data-optional="true" data-role="city"
-                                   value="" placeholder="City (optional)">
+                                   data-optional="false" data-role="city"
+                                   value="" placeholder="City">
                         </fieldset>
                         <hr class="hr-base m-a-0">
                         <!-- state -->
