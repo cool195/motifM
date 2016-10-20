@@ -219,11 +219,11 @@
     function initAddAddressForm(Type, AddressId) {
         if (Type === 1 && AddressId === 0) {
             // 添加地址
-            if ($('.addressItem-info').length <= 0) {
-                $('.radio-checkBox').addClass('open');
-            } else {
-                $('.radio-checkBox').removeClass('open');
-            }
+            //if ($('.addressItem-info').length <= 0) {
+            //    $('.radio-checkBox').addClass('open');
+            //} else {
+            //    $('.radio-checkBox').removeClass('open');
+            //}
             //初始化 修改地址 from 表单
             $('input[name="name"]').val('');
             $('input[name="city"]').val('');
@@ -291,7 +291,9 @@
 
             // 洲为下拉列选择
             // 获取 洲 列表
-            var StateNameEn = '';
+            var StateNameEn = '',
+                StateNameSn = '';
+
             $.ajax({
                     url: '/statelist/' + CountryId,
                     type: 'GET'
@@ -300,12 +302,13 @@
                     // 添加选项
                     $.each(data, function (n, value) {
                         StateNameEn = value['state_name_en'];
+                        StateNameSn = value['state_name_sn'];
                         var StateId = value['state_id'];
                         if (n === 0) {
                             $('.state-info').html('<div class="flex flex-alignCenter flex-fullJustified font-size-sm text-primary p-a-15x address-option" id="stateselect"> <span id="childLabel">' + ChildLabel + '</span> <div> <span id="stateName">' + StateNameEn + '</span> <i class="iconfont icon-arrow-right icon-size-xm text-common"></i> </div><input type="text" name="state" data-optional="false" hidden value="' + StateNameEn + '"></div>');
-                            $('.statelist-info').append('<div class="flex flex-alignCenter flex-fullJustified font-size-sm text-primary p-x-15x p-y-10x state-item active" data-state="' + StateNameEn + '" data-sid="' + StateId + '"> <span>' + StateNameEn + '</span> <i class="iconfont icon-check icon-size-sm text-common"></i> </div> <hr class="hr-base">');
+                            $('.statelist-info').append('<div class="flex flex-alignCenter flex-fullJustified font-size-sm text-primary p-x-15x p-y-10x state-item active" data-statesn="' + StateNameSn + '" data-state="' + StateNameEn + '" data-sid="' + StateId + '"> <span>' + StateNameEn + '</span> <i class="iconfont icon-check icon-size-sm text-common"></i> </div> <hr class="hr-base">');
                         } else {
-                            $('.statelist-info').append('<div class="flex flex-alignCenter flex-fullJustified font-size-sm text-primary p-x-15x p-y-10x state-item" data-state="' + StateNameEn + '" data-sid="' + StateId + '"> <span>' + StateNameEn + '</span> <i class="iconfont icon-check icon-size-sm text-common"></i> </div> <hr class="hr-base">');
+                            $('.statelist-info').append('<div class="flex flex-alignCenter flex-fullJustified font-size-sm text-primary p-x-15x p-y-10x state-item" data-statesn="' + StateNameSn + '" data-state="' + StateNameEn + '" data-sid="' + StateId + '"> <span>' + StateNameEn + '</span> <i class="iconfont icon-check icon-size-sm text-common"></i> </div> <hr class="hr-base">');
                         }
                     });
                     if (State != "") {
