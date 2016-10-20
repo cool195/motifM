@@ -225,7 +225,6 @@
                 $('.radio-checkBox').removeClass('open');
             }
             //初始化 修改地址 from 表单
-            $('input[name="email"]').val('');
             $('input[name="name"]').val('');
             $('input[name="city"]').val('');
             $('input[name="state"]').val('');
@@ -245,7 +244,6 @@
                 })
                 .done(function (data) {
                     //初始化 修改地址 from 表单
-                    $('input[name="email"]').val(data.email);
                     $('input[name="name"]').val(data.name);
                     $('input[name="city"]').val(data.city);
                     $('input[name="state"]').val(data.state);
@@ -349,7 +347,7 @@
         var StateId = $(this).data('sid'),
             StateName = $(this).data('state');
         $('.state-info #stateName').html(StateName);
-        $('input[name="countryState"]').val(StateId);
+        $('input[name="state"]').val(StateName);
         // 页面跳转
         toPage($('.shipping-editorAddress'));
     });
@@ -382,13 +380,6 @@
 
     // 提交表单（新增/修改地址）
     $('#btn-submitEditorAddress').on('click', function () {
-        //var $email = $('input[name="email"]'),
-        //    $name = $('input[name="name"]'),
-        //    $addr1 = $('input[name="addr1"]'),
-        ////$addr2 = $('input[name="addr2"]'),
-        //    $city = $('input[name="city"]'),
-        //    $tel = $('input[name="tel"]'),
-        //    $zip = $('input[name="zip"]');
         var Aid = $('#shipping-editorAddress').data('aid');
         if (Aid === '' || Aid === undefined) {
             // 添加地址
