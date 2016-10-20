@@ -47,33 +47,33 @@
                             </div>
                         </fieldset>
                         <fieldset>
-                            <input name="email" type="hidden" data-optional="true" data-role="email"
-                                   value="{{ Session::get('user.login_email')}}"
+                            <input name="email" type="hidden" data-role="email"
+                                   value="{{Session::get('user.login_email')}}"
                                    placeholder="Email Address">
                         </fieldset>
                         <hr class="hr-base m-a-0">
                         <fieldset>
                             <input class="form-control form-control-block p-a-15x font-size-sm" name="name" type="text"
                                    maxlength="32" data-optional="false" data-role="name"
-                                   value="{{ !empty($input['name']) ? $input['name'] : "" }}" placeholder="Name">
+                                   value="" placeholder="Name">
                         </fieldset>
                         <hr class="hr-base m-a-0">
                         <fieldset>
                             <input class="form-control form-control-block p-a-15x font-size-sm" name="addr1" type="text"
                                    data-optional="false" data-role="street"
-                                   value="{{!empty($input['addr1']) ? $input['addr1'] : ""}}" placeholder="Street1">
+                                   value="" placeholder="Street1">
                         </fieldset>
                         <hr class="hr-base m-a-0">
                         <fieldset>
                             <input class="form-control form-control-block p-a-15x font-size-sm" name="addr2" type="text"
-                                   data-optional="true" value="{{!empty($input['addr2']) ? $input['addr2'] : ""}}"
+                                   data-optional="true" value=""
                                    placeholder="Street2 (optional)">
                         </fieldset>
                         <hr class="hr-base m-a-0">
                         <fieldset>
                             <input class="form-control form-control-block p-a-15x font-size-sm" name="city" type="text"
-                                   data-optional="false" data-role="city"
-                                   value="{{$input['city']}}" placeholder="City">
+                                   data-optional="true" data-role="city"
+                                   value="" placeholder="City (optional)">
                         </fieldset>
                         <hr class="hr-base m-a-0">
                         <!-- state -->
@@ -86,40 +86,27 @@
                         <fieldset>
                             <input class="form-control form-control-block p-a-15x font-size-sm" name="zip" type="text"
                                    maxlength="10" data-optional="false" data-role="zip code"
-                                   value="{{ !empty($input['zip']) ? $input['zip'] : "" }}"
+                                   value=""
                                    placeholder="Zip Code">
                         </fieldset>
                         <hr class="hr-base m-a-0">
                         <fieldset>
                             <input class="form-control form-control-block p-a-15x font-size-sm" name="tel" type="tel"
                                    maxlength="20" data-optional="false" data-role="Phone"
-                                   value="{{!empty($input['tel']) ? $input['tel'] : ""}}" placeholder="Phone">
+                                   value="" placeholder="Phone">
                         </fieldset>
                         <hr class="hr-base m-a-0">
                         <fieldset>
                             <div class="flex flex-alignCenter flex-fullJustified font-size-sm text-primary p-a-15x"
                                  href="#">
                                 <span>Make Default</span>
-                                <div class="@if(!$first)radio-checkBox @endif @if($first || 1 == $input['isd']) open @endif">
+                                <div class="radio-checkBox open">
                                     <div class="radio-checkItem"></div>
-                                    @if($first || 1 == $input['isd'])
                                         <input type="radio" name="isd" id="address-default" hidden value="0">
-                                        <input type="radio" name="isd" id="address-primary" hidden value="1"
-                                               checked="checked">
-                                    @else
-                                        <input type="radio" name="isd" id="address-default" hidden value="0"
-                                               checked="checked">
-                                        <input type="radio" name="isd" id="address-primary" hidden value="1">
-                                    @endif
+                                        <input type="radio" name="isd" id="address-primary" hidden value="1" checked="checked">
                                 </div>
                             </div>
                         </fieldset>
-                        <input type="hidden" name="route" value="/cart/addradd">
-                        @if(isset($checkout) && !empty($checkout))
-                            @foreach($checkout as $name => $value)
-                                <input type="hidden" name="{{$name}}" value="{{ $value }}">
-                            @endforeach
-                        @endif
                     </form>
 
                     <hr class="hr-base m-a-0">

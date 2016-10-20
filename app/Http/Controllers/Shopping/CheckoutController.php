@@ -98,7 +98,7 @@ class CheckoutController extends ApiController
                 $country['data']['commonlist'] = $commonlist;
             }
         }
-
+        
         return View('checkout.address', ['address' => $result['data']['list'], 'country' => $country['data']]);
     }
 
