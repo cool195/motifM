@@ -44,6 +44,7 @@ $app->group(['middleware' => 'pcguide|logincheck', 'namespace' => 'App\Http\Cont
     $app->get('/checkout/payment', 'CheckoutController@payment');
     $app->get('/checkout/review', 'CheckoutController@review');
     $app->post('/checkout/addcard', 'CheckoutController@addCard');
+    $app->post('/checkout/address', 'CheckoutController@addUserAddr');
 
     $app->get('/feed', 'ShoppingController@feedback');
     $app->get('/feedback', 'ShoppingController@addSupport');
