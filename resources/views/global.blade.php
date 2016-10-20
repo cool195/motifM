@@ -32,8 +32,8 @@
                 $(element).removeAttr('data-impr');
 
                 $.ajax({
-                            url: impr
-                        })
+                    url: impr
+                })
                         .always(function () {
                             //$(element).removeAttr('data-impr');
                         });
@@ -77,7 +77,7 @@
         $('.btn-wished').click(function (e) {
             var $this = $(e.target);
             var spu = $this.data('spu');
-            if(spu != undefined){
+            if (spu != undefined) {
                 if (!$this.hasClass('active')) {
                     $this.addClass('active');
                 } else {
@@ -88,7 +88,7 @@
                     type: 'post',
                     data: {spu: spu}
                 });
-            }else{
+            } else {
                 spu = $this.data('actionspu');
                 $.ajax({
                     url: '/notesaction',
@@ -106,5 +106,6 @@
         });
     })
 </script>
-
-<script src="http://clk.motif.me/wl.js"></script>
+@if($_SERVER['SERVER_NAME'] == 'm.motif.me' || $_SERVER['SERVER_NAME'] == 'www.motif.me' || $_SERVER['SERVER_NAME'] == 'motif.me')
+    <script src="http://clk.motif.me/wl.js"></script>
+@endif
