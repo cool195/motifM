@@ -19,9 +19,8 @@
         @include('navigator', ['pageScope'=>true])
 
         <div class="checkout-container">
-            <!-- 2.PAYMENT -->
             <!-- 选择支付方式 -->
-            <div class="pageview shipping-payment active" id="shipping-payment">
+            <div class="pageview shipping-payment @if(empty($payInfo['list'])) hidden @else active @endif" id="shipping-payment">
                 <div class="flex flex-alignCenter flex-justifyCenter font-size-sm p-y-15x steps">
                     <span class="p-x-15x">1.SHIPPING</span><strong><i
                                 class="iconfont icon-arrow-right icon-size-xm"></i></strong>
@@ -78,26 +77,26 @@
 
             </div>
             <!-- 添加卡 -->
-            <div class="pageview shipping-addCard hidden" id="shipping-addCard">
+            <div class="pageview shipping-addCard @if(empty($payInfo['list'])) active @else hidden @endif" id="shipping-addCard">
                 <!-- 可支付的卡列表 -->
                 <div class="text-center p-t-10x p-b-5x">
-                    <span class="m-x-10x img-card active"><img src="{{env('CDN_Static')}}/images/payment/icon-visa.png"
-                                               srcset="{{env('CDN_Static')}}/images/payment/icon-visa@2x.png 2x, {{env('CDN_Static')}}/images/payment/icon-visa@3x.png 3x"
+                    <span class="m-x-10x img-card active"><img src="{{env('CDN_Static')}}/images/payment/icon-visa.png{{'?v='.config('app.version')}}"
+                                               srcset="{{env('CDN_Static')}}/images/payment/icon-visa@2x.png{{'?v='.config('app.version')}} 2x, {{env('CDN_Static')}}/images/payment/icon-visa@3x.png{{'?v='.config('app.version')}} 3x"
                                                alt="">
                     <div class="mask"></div>
                     </span>
-                    <span class="m-x-10x img-card"><img src="{{env('CDN_Static')}}/images/payment/icon-maestro.png"
-                                               srcset="{{env('CDN_Static')}}/images/payment/icon-maestro@2x.png 2x, {{env('CDN_Static')}}/images/payment/icon-maestro@3x.png 3x"
+                    <span class="m-x-10x img-card"><img src="{{env('CDN_Static')}}/images/payment/icon-maestro.png{{'?v='.config('app.version')}}"
+                                               srcset="{{env('CDN_Static')}}/images/payment/icon-maestro@2x.png{{'?v='.config('app.version')}} 2x, {{env('CDN_Static')}}/images/payment/icon-maestro@3x.png{{'?v='.config('app.version')}} 3x"
                                                alt="">
                     <div class="mask"></div>
                     </span>
-                    <span class="m-x-10x img-card"><img src="{{env('CDN_Static')}}/images/payment/icon-americanexpress.png"
-                                               srcset="{{env('CDN_Static')}}/images/payment/icon-americanexpress@2x.png 2x, {{env('CDN_Static')}}/images/payment/icon-americanexpress@3x.png 3x"
+                    <span class="m-x-10x img-card"><img src="{{env('CDN_Static')}}/images/payment/icon-americanexpress.png{{'?v='.config('app.version')}}"
+                                               srcset="{{env('CDN_Static')}}/images/payment/icon-americanexpress@2x.png{{'?v='.config('app.version')}} 2x, {{env('CDN_Static')}}/images/payment/icon-americanexpress@3x.png{{'?v='.config('app.version')}} 3x"
                                                alt="">
                     <div class="mask"></div>
                     </span>
-                    <span class="m-x-10x img-card"><img src="{{env('CDN_Static')}}/images/payment/icon-jcb.png"
-                                               srcset="{{env('CDN_Static')}}/images/payment/icon-jcb@2x.png 2x, {{env('CDN_Static')}}/images/payment/icon-jcb@3x.png 3x"
+                    <span class="m-x-10x img-card"><img src="{{env('CDN_Static')}}/images/payment/icon-jcb.png{{'?v='.config('app.version')}}"
+                                               srcset="{{env('CDN_Static')}}/images/payment/icon-jcb@2x.png{{'?v='.config('app.version')}} 2x, {{env('CDN_Static')}}/images/payment/icon-jcb@3x.png{{'?v='.config('app.version')}} 3x"
                                                alt="">
                     <div class="mask"></div>
                     </span>
@@ -105,7 +104,7 @@
                 <hr class="hr-base m-a-0">
 
                 <!-- 填写卡号 日期 CVV -->
-                <form class="cardform-container" id="card-container" method="post" data-token="{{$token}}">
+                <form class="cardform-container" id="card-container" method="post">
                     <div class="cardinfo-wrapper font-size-sm">
                         <div class="cardinfo-item">
                             <input class="cardinfo-input" type="tel" data-braintree-name="number"

@@ -48,7 +48,8 @@ class CheckoutController extends ApiController
     //payment
     public function payment()
     {
-        return View('checkout.payment');
+        $payInfo = $this->getPayInfo();
+        return View('checkout.payment', ['payInfo' => $payInfo['data']]);
     }
 
     //review
