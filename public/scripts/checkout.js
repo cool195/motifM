@@ -160,6 +160,8 @@
             //$InfoForm.submit();
 
             // 编辑地址
+            $('#shipping-editorAddress').data('aid', Aid);
+
             toPage($('.shipping-editorAddress'));
 
         }
@@ -206,6 +208,11 @@
         toPage($('.shipping-chooseCountry'));
     });
 
+    // 点击选择 State
+    $('.state-info').on('click', '#stateselect', function () {
+        toPage($('.shipping-chooseState'));
+    });
+
     // 初始化 添加/修改地址表单 （根据地址 id 获取地址信息）
     // Type 1:添加地址  2:修改地址
     // AddressId 0:添加地址  其他:修改地址
@@ -227,11 +234,8 @@
             $('input[name="addr2"]').val('');
             $('input[name="zip"]').val('');
             $('#btn-submitEditorAddress').addClass('disabled');
-            //$('select[name="country"]').prop('selectedIndex', 0);
-
-
             // 初始化 国家,洲
-            var Country = $('select[name="country"] option:selected').text();
+            var Country = $('#countryName').text();
             initCityState(Country, '');
         } else {
             // 修改地址
@@ -269,37 +273,115 @@
     function initCityState(Country, State) {
         // CountryId  国家Id
         // SelectType 国家对应洲类型
-        var CountryId = $('select[name="country"] > option[value="' + Country + '"]').data('id');
-        var SelectType = $('select[name="country"] > option[value="' + Country + '"]').data('type');
+        var CountryId = $('#btn-toCountryList').data('id'),
+            SelectType = $('#btn-toCountryList').data('type'),
+            ChildLabel = $('#btn-toCountryList').data('childlabel'),
+            ZipCode = $('#btn-toCountryList').data('zipcode');
+        $('input[name="zip"]').attr('placeholder', ZipCode);
         if (SelectType != undefined && SelectType === 0) {
             // 洲为选填
-            $('.state-info').html('<input type="text" name="state" class="form-control contrlo-lg text-primary" placeholder="State (optional)">');
+            $('.state-info').html('<input type="text" name="state" data-optional="true" class="form-control form-control-block p-a-15x font-size-sm" placeholder="State (optional)">');
             $('input[name="state"]').val(State);
         } else if (SelectType != undefined && SelectType === 1) {
             // 洲为必填
-            $('.state-info').html('<input type="text" name="state" class="form-control contrlo-lg text-primary address-state" placeholder="State"><div class="warning-info flex flex-alignCenter text-warning p-t-5x off"> <i class="iconfont icon-caveat icon-size-md p-r-5x"></i> <span class="font-size-base">Please enter your State !</span> </div>');
+            $('.state-info').html('<input type="text" name="state" data-optional="false" data-role="' + ChildLabel + '" class="form-control form-control-block p-a-15x font-size-sm address-state" placeholder="' + ChildLabel + '">');
             $('input[name="state"]').val(State);
         } else {
+            // 初始化国家列表
+            $('.country-item').removeClass('active');
+            $('[data-cid=' + CountryId + ']').addClass('active');
+
             // 洲为下拉列选择
             // 获取 洲 列表
+            var StateNameEn = '';
             $.ajax({
                     url: '/statelist/' + CountryId,
                     type: 'GET'
                 })
                 .done(function (data) {
-                    $('.state-info').html('<select name="state" class="form-control contrlo-lg select-country"></select>');
                     // 添加选项
                     $.each(data, function (n, value) {
-                        var StateNameId = value['state_name_sn'];
-                        var StateNameEn = value['state_name_en'];
-                        $("<option></option>").val(StateNameId).text(StateNameEn).appendTo($("select"));
+                        StateNameEn = value['state_name_en'];
+                        var StateId = value['state_id'];
+                        if (n === 0) {
+                            $('.state-info').html('<div class="flex flex-alignCenter flex-fullJustified font-size-sm text-primary p-a-15x address-option" id="stateselect"> <span id="childLabel">' + ChildLabel + '</span> <div> <span id="stateName">' + StateNameEn + '</span> <i class="iconfont icon-arrow-right icon-size-xm text-common"></i> </div> </div>');
+                            $('.statelist-info').append('<div class="flex flex-alignCenter flex-fullJustified font-size-sm text-primary p-x-15x p-y-10x state-item active" data-state="' + StateNameEn + '" data-sid="' + StateId + '"> <span>' + StateNameEn + '</span> <i class="iconfont icon-check icon-size-sm text-common"></i> </div> <hr class="hr-base">');
+                        } else {
+                            $('.statelist-info').append('<div class="flex flex-alignCenter flex-fullJustified font-size-sm text-primary p-x-15x p-y-10x state-item" data-state="' + StateNameEn + '" data-sid="' + StateId + '"> <span>' + StateNameEn + '</span> <i class="iconfont icon-check icon-size-sm text-common"></i> </div> <hr class="hr-base">');
+                        }
                     });
                     if (State != "") {
-                        $('select[name="state"]').val(State);
+                        StateNameEn = State;
+                        $('.state-info').html('<div class="flex flex-alignCenter flex-fullJustified font-size-sm text-primary p-a-15x address-option" id="stateselect"> <span>' + ChildLabel + '</span> <div> <span id="stateName">' + StateNameEn + '</span> <i class="iconfont icon-arrow-right icon-size-xm text-common"></i> </div> </div>');
+
                     }
                 })
         }
     }
+
+    // 选择国家
+    $('.country-item').on('click', function () {
+        var CountryId = $(this).data('cid'),
+            CountryName = $(this).data('cname'),
+            CountryType = $(this).data('type'),
+            ChildLabel = $(this).data('childlabel'),
+            ZipCode = $(this).data('zipcode');
+        // 赋值
+        $('#btn-toCountryList').data('id', CountryId);
+        $('#btn-toCountryList').data('type', CountryType);
+        $('#btn-toCountryList').data('childlabel', ChildLabel);
+        $('#btn-toCountryList').data('zipcode', ZipCode);
+        $('#countryName').html(CountryName);
+        $('input[name="country"]').val(CountryName);
+
+        // 重新选择
+        $('.country-item').removeClass('active');
+        $('[data-cid=' + CountryId + ']').addClass('active');
+
+        // 初始化 州
+        initCityState(CountryName, '');
+        // 页面跳转
+        toPage($('.shipping-editorAddress'));
+    });
+
+    // 选择州
+    $('.statelist-info').on('click', '.state-item', function () {
+        var StateId = $(this).data('sid'),
+            StateName = $(this).data('state');
+        $('.state-info #stateName').html(StateName);
+        $('input[name="countryState"]').val(StateId);
+        // 页面跳转
+        toPage($('.shipping-editorAddress'));
+    });
+
+    // TODO 表单验证
+    // 表单非空验证
+    function checkInput() {
+        var Result = true;
+        $('input[data-optional="false"]').each(function () {
+            if ($(this).val() === '' && !$(this).data('optional')) {
+                Result = $(this);
+                return false;
+            }
+        });
+        return Result;
+    }
+
+    // 输入框非空验证
+    $('input[data-optional="false"]').on('blur keyup', function () {
+        var $Error = checkInput();
+        if ($Error === true) {
+            $('.warning-info').addClass('hidden-xs-up');
+            $('#btn-submitEditorAddress').removeClass('disabled');
+        } else {
+            $('.warning-info').removeClass('hidden-xs-up');
+            $('.warning-info').children('span').text('Please enter your ' + $Error.data('role') + ' !');
+            $('#btn-submitEditorAddress').addClass('disabled');
+        }
+    });
+
+    // 提交表单（新增/修改地址）
+
 
     // AddAddress end
 

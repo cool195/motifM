@@ -32,7 +32,7 @@
             // when scrolling down
             unpinned: 'slideOutUp'
         }
-    }); 
+    });
 
     // 导航条自动隐藏
     $('#tabIndex-container').headroom({
@@ -232,12 +232,13 @@
 
     // 选中 筛选条件
     $('.btn-sortBy').on('change', function () {
+        $('option[value="0"]').removeAttr('disabled');
         //$('.btn-sortBy').children('option').first().hide();
         //$('.btn-sortBy').children('option').eq(1).attr("selected", "selected");
 
         var $currentOption = $(".btn-sortBy option:selected");
         //$currentOption.text('Sort By');
-        
+
         //改变选中的文本
         if ( $('.btn-sortBy option').value === 0){
             $(".btn-sortBy option").attr("selected",true);
@@ -264,6 +265,9 @@
         $('#productList-container').data('loading', false);
         getProductList(2);
 
+    });
+    $('.btn-sortBy').on('click',function(){
+        $('option[value="0"]').attr('disabled','disabled');
     });
 
     // 下拉加载

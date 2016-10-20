@@ -23,12 +23,12 @@
 
         <div class="checkout-container">
             <!-- 1.SHIPPING 添加/修改地址 -->
-            <div class="pageview shipping-editorAddress @if(empty($address)) active @endif" id="shipping-editorAddress">
+            <div class="pageview shipping-editorAddress @if(empty($address)) active @endif" id="shipping-editorAddress" data-aid="">
                 <section class="p-b-20x reserve-height">
                     <article class="p-x-15x p-y-10x font-size-md text-main bg-title"><strong>Add New Address</strong>
                     </article>
                     <hr class="hr-base m-a-0">
-                    <div class="warning-info off flex text-warning flex-alignCenter text-left p-x-15x p-b-10x hidden-xs-up">
+                    <div class="warning-info off flex text-warning flex-alignCenter text-left p-x-15x p-y-10x hidden-xs-up">
                         <i class="iconfont icon-caveat icon-size-md p-r-5x"></i>
                         <span class="font-size-xs"></span>
                     </div>
@@ -36,7 +36,8 @@
                         <!-- 个人中心 sitting list -->
                         <fieldset>
                             <div class="flex flex-alignCenter flex-fullJustified font-size-sm text-primary p-a-15x address-option"
-                                 id="btn-toCountryList" data-type="{{ $country['commonlist'][0]['isFreq']}}" data-id="{{ $country['commonlist'][0]['country_id']}}">
+                                 id="btn-toCountryList" data-type="{{ $country['commonlist'][0]['child_type']}}" data-id="{{ $country['commonlist'][0]['country_id']}}"
+                                 data-childlabel="{{ $country['commonlist'][0]['child_label']}}" data-zipcode="{{ $country['commonlist'][0]['zipcode_label']}}">
                                 <span>Country</span>
                                 <div>
                                     <span id="countryName">{{ $country['commonlist'][0]['country_name_en'] }}</span>
@@ -79,30 +80,8 @@
                         <fieldset>
                             <input type="hidden" name="countryid" value="{{ $country['country_id'] }}">
                             <input type="hidden" name="countryState" value="{{ base64_encode(json_encode($country)) }}">
-                            @if($country['child_type']==0)
-                                <input class="form-control form-control-block p-a-15x font-size-sm" name="state"
-                                       type="text"
-                                       data-optional="true"
-                                       value="{{$state['state_name_sn']}}"
-                                       placeholder="{{$country['child_label']}}">
-                            @elseif($country['child_type']==1)
-                                <input class="form-control form-control-block p-a-15x font-size-sm" name="state"
-                                       type="text"
-                                       data-optional="false" value="{{$state['state_name_sn']}}" data-role="State"
-                                       placeholder="{{$country['child_label']}}">
-                            @else
-                                <div class="flex flex-alignCenter flex-fullJustified font-size-sm text-primary p-a-15x address-option"
-                                     id="stateselect">
-                                    <span>{{ $country['child_label'] }}</span>
-                                    <div>
-                                        <span>{{ $state['state_name_sn'] }}</span>
-                                        <i class="iconfont icon-arrow-right icon-size-xm text-common"></i>
-                                        <input type="text" name="state" data-optional="false" hidden data-role="State"
-                                               value="{{$state['state_name_sn']}}">
-                                    </div>
-                                    <div class="bg-option bg-country"></div>
-                                </div>
-                            @endif
+                            <div class="state-info">
+                            </div>
                         </fieldset>
 
                         <hr class="hr-base m-a-0">
@@ -110,7 +89,7 @@
                             <input class="form-control form-control-block p-a-15x font-size-sm" name="zip" type="text"
                                    maxlength="10" data-optional="false" data-role="zip code"
                                    value="{{ !empty($input['zip']) ? $input['zip'] : "" }}"
-                                   placeholder="{{$country['zipcode_label']}}">
+                                   placeholder="Zip Code">
                         </fieldset>
                         <hr class="hr-base m-a-0">
                         <fieldset>
@@ -238,9 +217,10 @@
                     <aside class="bg-white">
 
                         @foreach($country['commonlist'] as $value)
-                            <div class="flex flex-alignCenter font-size-sm text-primary p-x-15x p-y-15x"
-                                 data-cid="{{$value['country_id']}}">
+                            <div class="flex flex-alignCenter flex-fullJustified font-size-sm text-primary p-x-15x p-y-15x country-item"
+                                 data-cid="{{$value['country_id']}}" data-cname="{{$value['country_name_en']}}" data-type="{{$value['child_type']}}" data-childlabel="{{$value['child_label']}}" data-zipcode="{{$value['zipcode_label']}}">
                                 <span>{{$value['country_name_en']}}</span>
+                                <i class="iconfont icon-check icon-size-sm text-common"></i>
                             </div>
                             <hr class="hr-base m-a-0">
                         @endforeach
@@ -251,8 +231,10 @@
                     <aside class="bg-white">
 
                         @foreach($country['list'] as $value)
-                            <div class="flex flex-alignCenter font-size-sm text-primary p-x-15x p-y-10x" data-cid="{{$value['country_id']}}">
+                            <div class="flex flex-alignCenter flex-fullJustified font-size-sm text-primary p-x-15x p-y-10x country-item"
+                                 data-cid="{{$value['country_id']}}" data-cname="{{$value['country_name_en']}}" data-type="{{$value['child_type']}}" data-childlabel="{{$value['child_label']}}" data-zipcode="{{$value['zipcode_label']}}">
                                 <span>{{ $value['country_name_en'] }}</span>
+                                <i class="iconfont icon-check icon-size-sm text-common"></i>
                             </div>
                             <hr class="hr-base">
                         @endforeach
@@ -267,28 +249,7 @@
                         <strong>Select State</strong>
                     </article>
                     <hr class="hr-base m-a-0">
-                    <aside class="bg-white">
-                        @if(isset($commonlist))
-                            @foreach($commonlist as $c)
-                                <div class="flex flex-alignCenter font-size-sm text-primary p-x-15x p-y-10x "
-                                     data-state="{{base64_encode(json_encode($c))}}" data-cid="{{$c['state_id']}}">
-                                    <span>{{$c['state_name_en']}}</span>
-                                </div>
-                                <hr class="hr-base">
-                            @endforeach
-                        @endif
-                    </aside>
-                    <aside class="bg-white">
-                        @if(isset($list))
-                            @foreach($list as $l)
-                                <div class="flex flex-alignCenter font-size-sm text-primary p-x-15x p-y-10x"
-                                     data-state="{{base64_encode(json_encode($l))}}" data-cid="{{$l['state_id']}}">
-                                    <span>{{ $l['state_name_en'] }}</span>
-                                </div>
-                                <hr class="hr-base">
-                            @endforeach
-                        @endif
-                    </aside>
+                    <aside class="bg-white statelist-info"></aside>
                 </section>
             </div>
 
