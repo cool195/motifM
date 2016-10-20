@@ -32,8 +32,8 @@
                         <i class="iconfont icon-caveat icon-size-md p-r-5x"></i>
                         <span class="font-size-xs"></span>
                     </div>
-                    <form class="bg-white" id="addressInfo" name="addressInfo" method="get" action="/cart/countrylist">
-                        <!-- 个人中心 sitting list -->
+                    <form class="bg-white" id="addAddressForm" name="addressInfo">
+                        <!-- checkout sitting list -->
                         <fieldset>
                             <div class="flex flex-alignCenter flex-fullJustified font-size-sm text-primary p-a-15x address-option"
                                  id="btn-toCountryList" data-type="{{ $country['commonlist'][0]['child_type']}}" data-id="{{ $country['commonlist'][0]['country_id']}}"
@@ -48,7 +48,7 @@
                         </fieldset>
                         <fieldset>
                             <input name="email" type="hidden" data-optional="true" data-role="email"
-                                   value="{{!empty($input['email']) ? $input['email'] : Session::get('user.login_email')}}"
+                                   value="{{ Session::get('user.login_email')}}"
                                    placeholder="Email Address">
                         </fieldset>
                         <hr class="hr-base m-a-0">
@@ -78,8 +78,6 @@
                         <hr class="hr-base m-a-0">
                         <!-- state -->
                         <fieldset>
-                            <input type="hidden" name="countryid" value="{{ $country['country_id'] }}">
-                            <input type="hidden" name="countryState" value="{{ base64_encode(json_encode($country)) }}">
                             <div class="state-info">
                             </div>
                         </fieldset>
@@ -123,6 +121,7 @@
                             @endforeach
                         @endif
                     </form>
+
                     <hr class="hr-base m-a-0">
                     <!-- Done 按钮 -->
                     <div class="container-fluid p-x-10x p-y-15x">

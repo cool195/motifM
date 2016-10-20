@@ -31,6 +31,7 @@
     // 点击 添加地址
     $('#btn-toAddAddress').on('click', function () {
         toPage($('.shipping-editorAddress'));
+        $('#shipping-editorAddress').data('aid', '');
         initAddAddressForm(1, 0);
     });
 
@@ -161,9 +162,8 @@
 
             // 编辑地址
             $('#shipping-editorAddress').data('aid', Aid);
-
             toPage($('.shipping-editorAddress'));
-
+            initAddAddressForm(2, Aid);
         }
 
     });
@@ -304,7 +304,7 @@
                         StateNameEn = value['state_name_en'];
                         var StateId = value['state_id'];
                         if (n === 0) {
-                            $('.state-info').html('<div class="flex flex-alignCenter flex-fullJustified font-size-sm text-primary p-a-15x address-option" id="stateselect"> <span id="childLabel">' + ChildLabel + '</span> <div> <span id="stateName">' + StateNameEn + '</span> <i class="iconfont icon-arrow-right icon-size-xm text-common"></i> </div> </div>');
+                            $('.state-info').html('<div class="flex flex-alignCenter flex-fullJustified font-size-sm text-primary p-a-15x address-option" id="stateselect"> <span id="childLabel">' + ChildLabel + '</span> <div> <span id="stateName">' + StateNameEn + '</span> <i class="iconfont icon-arrow-right icon-size-xm text-common"></i> </div><input type="text" name="state" data-optional="false" hidden value="' + StateNameEn + '"></div>');
                             $('.statelist-info').append('<div class="flex flex-alignCenter flex-fullJustified font-size-sm text-primary p-x-15x p-y-10x state-item active" data-state="' + StateNameEn + '" data-sid="' + StateId + '"> <span>' + StateNameEn + '</span> <i class="iconfont icon-check icon-size-sm text-common"></i> </div> <hr class="hr-base">');
                         } else {
                             $('.statelist-info').append('<div class="flex flex-alignCenter flex-fullJustified font-size-sm text-primary p-x-15x p-y-10x state-item" data-state="' + StateNameEn + '" data-sid="' + StateId + '"> <span>' + StateNameEn + '</span> <i class="iconfont icon-check icon-size-sm text-common"></i> </div> <hr class="hr-base">');
@@ -381,7 +381,52 @@
     });
 
     // 提交表单（新增/修改地址）
+    $('#btn-submitEditorAddress').on('click', function () {
+        //var $email = $('input[name="email"]'),
+        //    $name = $('input[name="name"]'),
+        //    $addr1 = $('input[name="addr1"]'),
+        ////$addr2 = $('input[name="addr2"]'),
+        //    $city = $('input[name="city"]'),
+        //    $tel = $('input[name="tel"]'),
+        //    $zip = $('input[name="zip"]');
+        var Aid = $('#shipping-editorAddress').data('aid');
+        if (Aid === '' || Aid === undefined) {
+            // 添加地址
+            $.ajax({
+                    url: '/checkout/address',
+                    type: 'POST',
+                    data: $('#addAddressForm').serialize()
+                })
+                .done(function (data) {
+                    if (data.success) {
+                        window.location.reload();
+                    }
+                })
+        } else {
+            // 修改地址
+            if ($('.isDefault').hasClass('active')) {
+                $('input[name="isd"]').val(1);
+            } else {
+                $('input[name="isd"]').val(0);
+            }
 
+            $.ajax({
+                    url: '/address/' + Aid,
+                    type: 'PUT',
+                    data: $('#addAddressForm').serialize()
+                })
+                .done(function (data) {
+                    if (data.success) {
+                        $('.select-address').removeClass('disabled');
+                        $('.add-address').addClass('disabled');
+                        $('#addAddressForm').find('input[type="text"]').val('');
+                        getAddressList();
+                    }
+                })
+        }
+
+        return false;
+    });
 
     // AddAddress end
 
