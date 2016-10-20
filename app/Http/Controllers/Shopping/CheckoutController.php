@@ -14,8 +14,14 @@ class CheckoutController extends ApiController
     public function index()
     {
         $payInfo = $this->getPayInfo();
-        //是否成功支付过 TODO 暂时判断是否为空,以后更新成是否支付成功过
-        if (!empty($payInfo['data']['list'])) {
+        $isPay = false;
+        foreach ($payInfo['data']['list'] as $value){
+            if($value['isLast']==1){
+                $isPay = true;
+            }
+        }
+        //是否成功支付过
+        if ($isPay) {
             return redirect('/checkout/review');
         } else {
             return redirect('/checkout/shipping');
@@ -49,7 +55,7 @@ class CheckoutController extends ApiController
     public function payment()
     {
         $payInfo = $this->getPayInfo();
-        return View('checkout.payment', ['payInfo' => $payInfo['data']]);
+        return View('checkout.payment', ['payInfo' => $payInfo['data']['list']]);
     }
 
     //review
@@ -210,7 +216,6 @@ class CheckoutController extends ApiController
             'token' => Session::get('user.token'),
             'pin' => Session::get('user.pin'),
         );
-
         return $this->request('openapi', '', 'pay', $params);
     }
 

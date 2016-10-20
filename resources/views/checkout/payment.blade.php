@@ -5,22 +5,23 @@
     <title>Order Checkout</title>
     @include('head')
     <link rel="stylesheet" href="{{env('CDN_Static')}}/styles/orderCheckout.css{{'?v='.config('app.version')}}">
-    <link rel="stylesheet" href="{{env('CDN_Static')}}/styles/profileSetting-addAddress.css{{'?v='.config('app.version')}}">
+    <link rel="stylesheet"
+          href="{{env('CDN_Static')}}/styles/profileSetting-addAddress.css{{'?v='.config('app.version')}}">
 </head>
 <body>
 @include('check.tagmanager')
 
-        <!-- 外层容器 -->
+<!-- 外层容器 -->
 <div id="body-content">
     <!-- 展开的汉堡菜单 -->
-    @include('nav')
-            <!-- 主体内容 -->
+@include('nav')
+<!-- 主体内容 -->
     <div class="body-container">
         @include('navigator', ['pageScope'=>true])
 
         <div class="checkout-container">
             <!-- 选择支付方式 -->
-            <div class="pageview shipping-payment @if(empty($payInfo['list'])) hidden @else active @endif" id="shipping-payment">
+            <div class="pageview shipping-payment active" id="shipping-payment">
                 <div class="flex flex-alignCenter flex-justifyCenter font-size-sm p-y-15x steps">
                     <span class="p-x-15x">1.SHIPPING</span><strong><i
                                 class="iconfont icon-arrow-right icon-size-xm"></i></strong>
@@ -36,25 +37,21 @@
                         <i class="iconfont icon-arrow-right icon-size-xm text-common"></i>
                     </div>
                     <!-- card 列表 -->
-                    <div class="flex flex-alignCenter flex-fullJustified font-size-sm p-l-20x p-r-15x p-y-5x bg-title cardList">
-                        <div class="p-l-10x">Card: <span>6262 *** *** *** 3424</span><br>EXP: <span>12/19</span></div>
-                        <i class="iconfont icon-check icon-size-md text-common"></i>
-                    </div>
-                    <div class="flex flex-alignCenter flex-fullJustified font-size-sm p-l-20x p-r-15x p-y-5x bg-title cardList">
-                        <div class="p-l-10x">Card: <span>6262 *** *** *** 3424</span><br>EXP: <span>12/19</span></div>
-                        <i class="iconfont icon-check icon-size-md text-common"></i>
-                    </div>
+                    @foreach($payInfo as $value)
+                        <hr class="hr-base m-a-0">
+                        <div class="flex flex-alignCenter flex-fullJustified font-size-sm p-a-15x">
+                            <span>{{$value['pay_name']}}</span>
+                            <i class="iconfont icon-check icon-size-md text-common"></i>
+                        </div>
+                        @foreach($value['creditCards'] as $card)
+                            <div class="flex flex-alignCenter flex-fullJustified font-size-sm p-l-20x p-r-15x p-y-5x bg-title cardList">
+                                <div class="p-l-10x">Card: <span>{{$card['card_number']}}</span><br>EXP: <span>{{$card['month']}}/{{$card['year']}}</span>
+                                </div>
+                                <i class="iconfont icon-check icon-size-md text-common"></i>
+                            </div>
+                        @endforeach
+                    @endforeach
 
-                    <hr class="hr-base m-a-0">
-                    <div class="flex flex-alignCenter flex-fullJustified font-size-sm p-a-15x">
-                        <span>Pay With PayPal</span>
-                        <i class="iconfont icon-check icon-size-md text-common"></i>
-                    </div>
-                    <hr class="hr-base m-a-0">
-                    <div class="flex flex-alignCenter flex-fullJustified font-size-sm p-a-15x">
-                        <span>Pay With Apple Pay</span>
-                        <i class="iconfont icon-check icon-size-md text-common"></i>
-                    </div>
                     <hr class="hr-base m-a-0">
                     <div class="flex flex-alignCenter flex-fullJustified font-size-sm p-a-15x">
                         <span>Promotion Code</span>
@@ -77,27 +74,31 @@
 
             </div>
             <!-- 添加卡 -->
-            <div class="pageview shipping-addCard @if(empty($payInfo['list'])) active @else hidden @endif" id="shipping-addCard">
+            <div class="pageview shipping-addCard hidden" id="shipping-addCard">
                 <!-- 可支付的卡列表 -->
                 <div class="text-center p-t-10x p-b-5x">
-                    <span class="m-x-10x img-card active"><img src="{{env('CDN_Static')}}/images/payment/icon-visa.png{{'?v='.config('app.version')}}"
-                                               srcset="{{env('CDN_Static')}}/images/payment/icon-visa@2x.png{{'?v='.config('app.version')}} 2x, {{env('CDN_Static')}}/images/payment/icon-visa@3x.png{{'?v='.config('app.version')}} 3x"
-                                               alt="">
+                    <span class="m-x-10x img-card active"><img
+                                src="{{env('CDN_Static')}}/images/payment/icon-visa.png{{'?v='.config('app.version')}}"
+                                srcset="{{env('CDN_Static')}}/images/payment/icon-visa@2x.png{{'?v='.config('app.version')}} 2x, {{env('CDN_Static')}}/images/payment/icon-visa@3x.png{{'?v='.config('app.version')}} 3x"
+                                alt="">
                     <div class="mask"></div>
                     </span>
-                    <span class="m-x-10x img-card"><img src="{{env('CDN_Static')}}/images/payment/icon-maestro.png{{'?v='.config('app.version')}}"
-                                               srcset="{{env('CDN_Static')}}/images/payment/icon-maestro@2x.png{{'?v='.config('app.version')}} 2x, {{env('CDN_Static')}}/images/payment/icon-maestro@3x.png{{'?v='.config('app.version')}} 3x"
-                                               alt="">
+                    <span class="m-x-10x img-card"><img
+                                src="{{env('CDN_Static')}}/images/payment/icon-maestro.png{{'?v='.config('app.version')}}"
+                                srcset="{{env('CDN_Static')}}/images/payment/icon-maestro@2x.png{{'?v='.config('app.version')}} 2x, {{env('CDN_Static')}}/images/payment/icon-maestro@3x.png{{'?v='.config('app.version')}} 3x"
+                                alt="">
                     <div class="mask"></div>
                     </span>
-                    <span class="m-x-10x img-card"><img src="{{env('CDN_Static')}}/images/payment/icon-americanexpress.png{{'?v='.config('app.version')}}"
-                                               srcset="{{env('CDN_Static')}}/images/payment/icon-americanexpress@2x.png{{'?v='.config('app.version')}} 2x, {{env('CDN_Static')}}/images/payment/icon-americanexpress@3x.png{{'?v='.config('app.version')}} 3x"
-                                               alt="">
+                    <span class="m-x-10x img-card"><img
+                                src="{{env('CDN_Static')}}/images/payment/icon-americanexpress.png{{'?v='.config('app.version')}}"
+                                srcset="{{env('CDN_Static')}}/images/payment/icon-americanexpress@2x.png{{'?v='.config('app.version')}} 2x, {{env('CDN_Static')}}/images/payment/icon-americanexpress@3x.png{{'?v='.config('app.version')}} 3x"
+                                alt="">
                     <div class="mask"></div>
                     </span>
-                    <span class="m-x-10x img-card"><img src="{{env('CDN_Static')}}/images/payment/icon-jcb.png{{'?v='.config('app.version')}}"
-                                               srcset="{{env('CDN_Static')}}/images/payment/icon-jcb@2x.png{{'?v='.config('app.version')}} 2x, {{env('CDN_Static')}}/images/payment/icon-jcb@3x.png{{'?v='.config('app.version')}} 3x"
-                                               alt="">
+                    <span class="m-x-10x img-card"><img
+                                src="{{env('CDN_Static')}}/images/payment/icon-jcb.png{{'?v='.config('app.version')}}"
+                                srcset="{{env('CDN_Static')}}/images/payment/icon-jcb@2x.png{{'?v='.config('app.version')}} 2x, {{env('CDN_Static')}}/images/payment/icon-jcb@3x.png{{'?v='.config('app.version')}} 3x"
+                                alt="">
                     <div class="mask"></div>
                     </span>
                 </div>
@@ -108,7 +109,8 @@
                     <div class="cardinfo-wrapper font-size-sm">
                         <div class="cardinfo-item">
                             <input class="cardinfo-input" type="tel" data-braintree-name="number"
-                                   value="" placeholder="Card Number" data-role="Card Number" data-optional="" id="cardNum" maxlength="20">
+                                   value="" placeholder="Card Number" data-role="Card Number" data-optional=""
+                                   id="cardNum" maxlength="20">
                         </div>
                     </div>
                     <div class="cardinfo-wrapper font-size-sm">
@@ -138,18 +140,22 @@
                             <i class="iconfont icon-caveat icon-size-md p-r-5x"></i>
                             <span class="font-size-xs"></span>
                         </div>
-                        <form class="bg-white" id="addressInfo" name="addressInfo" method="get" action="/cart/countrylist">
+                        <form class="bg-white" id="addressInfo" name="addressInfo" method="get"
+                              action="/cart/countrylist">
                             <!-- 个人中心 sitting list -->
                             <fieldset>
-                                <div class="flex flex-alignCenter flex-fullJustified font-size-sm text-primary p-a-15x" href="#">
+                                <div class="flex flex-alignCenter flex-fullJustified font-size-sm text-primary p-a-15x"
+                                     href="#">
                                     <span>Same as Shipping Address?</span>
                                     <div class="@if(!$first)radio-checkBox @endif @if($first || 1 == $input['isd']) open @endif">
                                         <div class="radio-checkItem"></div>
                                         @if($first || 1 == $input['isd'])
                                             <input type="radio" name="isd" id="address-default" hidden value="0">
-                                            <input type="radio" name="isd" id="address-primary" hidden value="1" checked="checked">
+                                            <input type="radio" name="isd" id="address-primary" hidden value="1"
+                                                   checked="checked">
                                         @else
-                                            <input type="radio" name="isd" id="address-default" hidden value="0" checked="checked">
+                                            <input type="radio" name="isd" id="address-default" hidden value="0"
+                                                   checked="checked">
                                             <input type="radio" name="isd" id="address-primary" hidden value="1">
                                         @endif
                                     </div>
@@ -169,7 +175,8 @@
                                     <div>
                                         <span>{{ $country['country_name_en'] }}</span>
                                         <i class="iconfont icon-arrow-right icon-size-xm text-common"></i>
-                                        <input type="text" name="country" hidden value="{{$country['country_name_en']}}">
+                                        <input type="text" name="country" hidden
+                                               value="{{$country['country_name_en']}}">
                                     </div>
                                 </div>
                             </fieldset>
@@ -180,39 +187,46 @@
                             </fieldset>
                             <hr class="hr-base m-a-0">
                             <fieldset>
-                                <input class="form-control form-control-block p-a-15x font-size-sm" name="name" type="text"
+                                <input class="form-control form-control-block p-a-15x font-size-sm" name="name"
+                                       type="text"
                                        maxlength="32" data-optional="false" data-role="name"
                                        value="{{ !empty($input['name']) ? $input['name'] : "" }}" placeholder="Name">
                             </fieldset>
                             <hr class="hr-base m-a-0">
                             <fieldset>
-                                <input class="form-control form-control-block p-a-15x font-size-sm" name="addr1" type="text"
+                                <input class="form-control form-control-block p-a-15x font-size-sm" name="addr1"
+                                       type="text"
                                        data-optional="false" data-role="street"
                                        value="{{!empty($input['addr1']) ? $input['addr1'] : ""}}" placeholder="Street1">
                             </fieldset>
                             <hr class="hr-base m-a-0">
                             <fieldset>
-                                <input class="form-control form-control-block p-a-15x font-size-sm" name="addr2" type="text"
+                                <input class="form-control form-control-block p-a-15x font-size-sm" name="addr2"
+                                       type="text"
                                        data-optional="true" value="{{!empty($input['addr2']) ? $input['addr2'] : ""}}"
                                        placeholder="Street2 (optional)">
                             </fieldset>
                             <hr class="hr-base m-a-0">
                             <fieldset>
-                                <input class="form-control form-control-block p-a-15x font-size-sm" name="city" type="text"
+                                <input class="form-control form-control-block p-a-15x font-size-sm" name="city"
+                                       type="text"
                                        data-optional="false" data-role="city"
                                        value="{{$input['city']}}" placeholder="City">
                             </fieldset>
                             <hr class="hr-base m-a-0">
                             <fieldset>
                                 <input type="hidden" name="countryid" value="{{ $country['country_id'] }}">
-                                <input type="hidden" name="countryState" value="{{ base64_encode(json_encode($country)) }}">
+                                <input type="hidden" name="countryState"
+                                       value="{{ base64_encode(json_encode($country)) }}">
                                 @if($country['child_type']==0)
-                                    <input class="form-control form-control-block p-a-15x font-size-sm" name="state" type="text"
+                                    <input class="form-control form-control-block p-a-15x font-size-sm" name="state"
+                                           type="text"
                                            data-optional="true"
                                            value="{{$state['state_name_sn']}}"
                                            placeholder="{{$country['child_label']}}">
                                 @elseif($country['child_type']==1)
-                                    <input class="form-control form-control-block p-a-15x font-size-sm" name="state" type="text"
+                                    <input class="form-control form-control-block p-a-15x font-size-sm" name="state"
+                                           type="text"
                                            data-optional="false" value="{{$state['state_name_sn']}}" data-role="State"
                                            placeholder="{{$country['child_label']}}">
                                 @else
@@ -222,7 +236,8 @@
                                         <div>
                                             <span>{{ $state['state_name_sn'] }}</span>
                                             <i class="iconfont icon-arrow-right icon-size-xm text-common"></i>
-                                            <input type="text" name="state" data-optional="false" hidden data-role="State"
+                                            <input type="text" name="state" data-optional="false" hidden
+                                                   data-role="State"
                                                    value="{{$state['state_name_sn']}}">
                                         </div>
                                         <div class="bg-option bg-country"></div>
@@ -231,13 +246,16 @@
                             </fieldset>
                             <hr class="hr-base m-a-0">
                             <fieldset>
-                                <input class="form-control form-control-block p-a-15x font-size-sm" name="zip" type="text"
+                                <input class="form-control form-control-block p-a-15x font-size-sm" name="zip"
+                                       type="text"
                                        maxlength="10" data-optional="false" data-role="zip code"
-                                       value="{{ !empty($input['zip']) ? $input['zip'] : "" }}" placeholder="{{$country['zipcode_label']}}">
+                                       value="{{ !empty($input['zip']) ? $input['zip'] : "" }}"
+                                       placeholder="{{$country['zipcode_label']}}">
                             </fieldset>
                             <hr class="hr-base m-a-0">
                             <fieldset>
-                                <input class="form-control form-control-block p-a-15x font-size-sm" name="tel" type="tel"
+                                <input class="form-control form-control-block p-a-15x font-size-sm" name="tel"
+                                       type="tel"
                                        maxlength="20" data-optional="false" data-role="Phone"
                                        value="{{!empty($input['tel']) ? $input['tel'] : ""}}" placeholder="Phone">
                             </fieldset>
@@ -278,7 +296,8 @@
                             <div class="promotion-item">
                                 <div class="mask"></div>
                                 <div class="promotion-info bg-promotion p-a-10x">
-                                    <div class="promotion-title text-white"><strong>{{$value['cp_title']}}</strong></div>
+                                    <div class="promotion-title text-white"><strong>{{$value['cp_title']}}</strong>
+                                    </div>
                                     <div class="font-size-sm text-white">{{$value['prompt_words']}}</div>
                                     <span class="bg-point-right"></span>
                                     <span class="bg-point-left"></span>
@@ -331,7 +350,8 @@
                                 <i class="iconfont icon-check icon-size-md text-white"></i>
                             </span>
                                 </div>
-                                <div class="promotion-time text-primary p-a-10x text-right font-size-sm">Expire: {{ $getDate->getMyDate(date('Y-m-d H:i',substr($value['expiry_time'],0,10))) }}
+                                <div class="promotion-time text-primary p-a-10x text-right font-size-sm">
+                                    Expire: {{ $getDate->getMyDate(date('Y-m-d H:i',substr($value['expiry_time'],0,10))) }}
                                 </div>
                             </div>
                         @endforeach
@@ -340,10 +360,12 @@
                     <!-- 邀请好友 -->
                     <aside class="bg-white m-t-20x">
                         <hr class="hr-base m-a-0">
-                        <a class="flex flex-alignCenter flex-fullJustified font-size-sm text-primary p-a-15x" href="/invitefriends">
+                        <a class="flex flex-alignCenter flex-fullJustified font-size-sm text-primary p-a-15x"
+                           href="/invitefriends">
                             <div class="flex flex-alignCenter">
                             <span class="p-r-15x">
-                                <img src="{{env('CDN_Static')}}/images/icon/gift-small.png" srcset="{{env('CDN_Static')}}/images/icon/gift-small@2x.png 2x,{{env('CDN_Static')}}/images/icon/gift-small@3x.png 3x">
+                                <img src="{{env('CDN_Static')}}/images/icon/gift-small.png"
+                                     srcset="{{env('CDN_Static')}}/images/icon/gift-small@2x.png 2x,{{env('CDN_Static')}}/images/icon/gift-small@3x.png 3x">
                             </span>
                                 <span>Share Motif with friends. They get $20 off, and you will too after their first purchase.</span>
                             </div>

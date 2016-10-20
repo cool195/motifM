@@ -86,6 +86,7 @@ $app->group(['middleware' => 'pcguide|logincheck', 'namespace' => 'App\Http\Cont
     $app->post('/useraddr/addUserAddress', 'AddressController@addUserAddr');
     $app->get('/addr/modify', 'AddressController@modifyUserAddr');
     $app->post('/addr/modify', 'AddressController@modifyUserAddr');
+    $app->post('/updateUserAddr/{aid}', 'AddressController@updateUserAddr');
     $app->get('/addr/mdefault', 'AddressController@modifyUserDefaultAddr');
     $app->get('/addr/del', 'AddressController@delUserAddr');
     $app->delete('/addresses', 'AddressController@delUserAddr');
