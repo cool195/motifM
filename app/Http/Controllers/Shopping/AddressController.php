@@ -16,7 +16,7 @@ class AddressController extends ApiController
 	 * @return Array
 	 *
 	 * */
-	public function getUserAddrList(Request $request)		
+	public function getUserAddrList()
 	{
 		$params = array(
 			'cmd' => 'list',
@@ -251,5 +251,15 @@ class AddressController extends ApiController
 		$result = $this->request('openapi', '', 'addr', $params);
 		return $result['data']['list'];
 
+	}
+
+	//获取指定地址
+	public function getAddressInfo($aid){
+		$result = $this->getUserAddrList();
+		foreach ($result['data']['list'] as $value){
+			if($value['receiving_id'] == $aid){
+				return $value;
+			}
+		}
 	}
 }
