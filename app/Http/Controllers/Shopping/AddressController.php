@@ -219,7 +219,7 @@ class AddressController extends ApiController
 			'pin'=>Session::get('user.pin')
 		);
 		$system = "";
-		$service = "useraddr";
+		$service = "addr";
 		$result = $this->request('openapi', $system, $service, $params);
 		if(empty($result)){
 			$result['success'] = false;
