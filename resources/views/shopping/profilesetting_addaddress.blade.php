@@ -67,7 +67,7 @@
                                    placeholder="{{$country['child_label']}}">
                         @elseif($country['child_type']==1)
                             <input class="form-control form-control-block p-a-15x font-size-sm" name="state" type="text"
-                                   data-optional="false" value="{{$state['state_name_sn']}}" data-role="State"
+                                   data-optional="false" value="{{$state['state_name_sn']}}" data-role="{{$country['child_label']}}"
                                    placeholder="{{$country['child_label']}}">
                         @else
                             <div class="flex flex-alignCenter flex-fullJustified font-size-sm text-primary p-a-15x address-option"
@@ -76,7 +76,7 @@
                                 <div>
                                     <span>{{ $state['state_name_sn'] }}</span>
                                     <i class="iconfont icon-arrow-right icon-size-xm text-common"></i>
-                                    <input type="text" name="state" data-optional="false" hidden data-role="State"
+                                    <input type="text" name="state" data-optional="false" hidden data-role="{{$country['child_label']}}"
                                            value="{{$state['state_name_sn']}}">
                                 </div>
                                 <div class="bg-option bg-country"></div>
@@ -85,7 +85,7 @@
                     </fieldset>
                     <hr class="hr-base m-a-0">
                     <fieldset>
-                        <input class="form-control form-control-block p-a-15x font-size-sm" name="zip" type="text" maxlength="10" data-optional="false" data-role="zip code" value="{{$input['zip']}}"  placeholder="{{$country['zipcode_label']}}">
+                        <input class="form-control form-control-block p-a-15x font-size-sm" name="zip" type="text" maxlength="10" data-optional="false" data-role="{{$country['zipcode_label']}}" value="{{$input['zip']}}"  placeholder="{{$country['zipcode_label']}}">
                     </fieldset>
                     <hr class="hr-base m-a-0">
                     <fieldset>
