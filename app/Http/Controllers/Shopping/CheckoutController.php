@@ -10,6 +10,13 @@ use Illuminate\Support\Facades\Session;
 
 class CheckoutController extends ApiController
 {
+    //checkout支付控制
+    public function index(){
+        if(false){
+            
+        }
+    }
+
     //shipping
     public function shipping()
     {
@@ -43,6 +50,50 @@ class CheckoutController extends ApiController
     public function review()
     {
         return View('checkout.review');
+    }
+
+    //地址管理
+    public function address()
+    {
+        $params = array(
+            'cmd' => 'list',
+            'uuid' => $_COOKIE['uid'],
+            'token' => Session::get('user.token'),
+            'pin' => Session::get('user.pin'),
+        );
+        $system = "";
+        $service = "useraddr";
+        $result = $this->request('openapi', $system, $service, $params);
+        if (empty($result)) {
+            $result['success'] = false;
+            $result['error_msg'] = "Data access failed";
+            $result['data'] = array();
+        }
+
+        $params = array(
+            'cmd'=>'country',
+            'token'=>Session::get('user.token'),
+            'pin'=>Session::get('user.pin')
+        );
+        $system = "";
+        $service = "useraddr";
+        $country = $this->request('openapi', $system, $service, $params);
+        if(empty($country)){
+            $country['success'] = false;
+            $country['error_msg'] = "Data access failed";
+            $country['data'] = array();
+        }else{
+            if($country['success']){
+                $commonlist = array();
+                for($index = 0; $index < $country['data']['amount']; $index++)
+                {
+                    $commonlist[] = array_shift($country['data']['list']);
+                }
+                $country['data']['commonlist'] = $commonlist;
+            }
+        }
+
+        return View('checkout.address', ['address' => $result['data']['list'],'country'=>$country['data']]);
     }
 
     //获取默认地址
@@ -111,51 +162,6 @@ class CheckoutController extends ApiController
         }
         return $result;
     }
-
-    //地址管理
-    public function address()
-    {
-        $params = array(
-            'cmd' => 'list',
-            'uuid' => $_COOKIE['uid'],
-            'token' => Session::get('user.token'),
-            'pin' => Session::get('user.pin'),
-        );
-        $system = "";
-        $service = "useraddr";
-        $result = $this->request('openapi', $system, $service, $params);
-        if (empty($result)) {
-            $result['success'] = false;
-            $result['error_msg'] = "Data access failed";
-            $result['data'] = array();
-        }
-
-        $params = array(
-            'cmd'=>'country',
-            'token'=>Session::get('user.token'),
-            'pin'=>Session::get('user.pin')
-        );
-        $system = "";
-        $service = "useraddr";
-        $country = $this->request('openapi', $system, $service, $params);
-        if(empty($country)){
-            $country['success'] = false;
-            $country['error_msg'] = "Data access failed";
-            $country['data'] = array();
-        }else{
-            if($country['success']){
-                $commonlist = array();
-                for($index = 0; $index < $country['data']['amount']; $index++)
-                {
-                    $commonlist[] = array_shift($country['data']['list']);
-                }
-                $country['data']['commonlist'] = $commonlist;
-            }
-        }
-        
-        return View('checkout.address', ['address' => $result['data']['list'],'country'=>$country['data']]);
-    }
-
 
     //添加地址
     public function addUserAddr(Request $request)
