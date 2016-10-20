@@ -219,11 +219,6 @@
     function initAddAddressForm(Type, AddressId) {
         if (Type === 1 && AddressId === 0) {
             // 添加地址
-            //if ($('.addressItem-info').length <= 0) {
-            //    $('.radio-checkBox').addClass('open');
-            //} else {
-            //    $('.radio-checkBox').removeClass('open');
-            //}
             //初始化 修改地址 from 表单
             $('input[name="name"]').val('');
             $('input[name="city"]').val('');
@@ -251,18 +246,17 @@
                     $('input[name="addr1"]').val(data.detail_address1);
                     $('input[name="addr2"]').val(data.detail_address2);
                     $('input[name="zip"]').val(data.zip);
-                    $('select[name="country"]').val(data.country);
+                    $('#btn-submitEditorAddress').removeClass('disabled');
 
                     // 初始化 国家,洲
                     initCityState(data.country, data.state);
 
+                    // 判断是否 是修改默认地址
                     if (data.isDefault == 1) {
-                        $('.isDefault').addClass('active');
+                        $('#makePrimary').attr('hidden','hidden');
                     } else {
-                        $('.isDefault').removeClass('active');
+                        $('#makePrimary').removeAttr('hidden');
                     }
-                    $('.address-save').removeClass('disabled');
-
                 })
         }
     }
@@ -271,11 +265,23 @@
     function initCityState(Country, State) {
         // CountryId  国家Id
         // SelectType 国家对应洲类型
-        var CountryId = $('#btn-toCountryList').data('id'),
-            SelectType = $('#btn-toCountryList').data('type'),
-            ChildLabel = $('#btn-toCountryList').data('childlabel'),
-            ZipCode = $('#btn-toCountryList').data('zipcode');
+        var CountryId = $('[data-cname="' + Country + '"]').data('cid'),
+            SelectType = $('[data-cname="' + Country + '"]').data('type'),
+            ChildLabel = $('[data-cname="' + Country + '"]').data('childlabel'),
+            ZipCode = $('[data-cname="' + Country + '"]').data('zipcode');
+        // 初始化 ZipCode
         $('input[name="zip"]').attr('placeholder', ZipCode);
+        // 初始化国家列表
+        $('.country-item').removeClass('active');
+        $('[data-cid=' + CountryId + ']').addClass('active');
+        // 初始化国家信息
+        $('#btn-toCountryList').data('id', CountryId);
+        $('#btn-toCountryList').data('type', SelectType);
+        $('#btn-toCountryList').data('childlabel', ChildLabel);
+        $('#btn-toCountryList').data('zipcode', ZipCode);
+        $('#countryName').html(Country);
+        $('input[name="country"]').val(Country);
+
         if (SelectType != undefined && SelectType === 0) {
             // 洲为选填
             $('.state-info').html('<input type="text" name="state" data-optional="true" class="form-control form-control-block p-a-15x font-size-sm" placeholder="State (optional)">');
@@ -293,7 +299,6 @@
             // 获取 洲 列表
             var StateNameEn = '',
                 StateNameSn = '';
-
             $.ajax({
                     url: '/statelist/' + CountryId,
                     type: 'GET'
@@ -305,16 +310,25 @@
                         StateNameSn = value['state_name_sn'];
                         var StateId = value['state_id'];
                         if (n === 0) {
-                            $('.state-info').html('<div class="flex flex-alignCenter flex-fullJustified font-size-sm text-primary p-a-15x address-option" id="stateselect"> <span id="childLabel">' + ChildLabel + '</span> <div> <span id="stateName">' + StateNameEn + '</span> <i class="iconfont icon-arrow-right icon-size-xm text-common"></i> </div><input type="text" name="state" data-optional="false" hidden value="' + StateNameEn + '"></div>');
+                            $('.state-info').html('<div class="flex flex-alignCenter flex-fullJustified font-size-sm text-primary p-a-15x address-option" id="stateselect"> <span id="childLabel">' + ChildLabel + '</span> <div> <span id="stateName">' + StateNameEn + '</span> <i class="iconfont icon-arrow-right icon-size-xm text-common"></i> </div><input type="text" name="state" data-optional="false" hidden value="' + StateNameSn + '"></div>');
                             $('.statelist-info').append('<div class="flex flex-alignCenter flex-fullJustified font-size-sm text-primary p-x-15x p-y-10x state-item active" data-statesn="' + StateNameSn + '" data-state="' + StateNameEn + '" data-sid="' + StateId + '"> <span>' + StateNameEn + '</span> <i class="iconfont icon-check icon-size-sm text-common"></i> </div> <hr class="hr-base">');
                         } else {
                             $('.statelist-info').append('<div class="flex flex-alignCenter flex-fullJustified font-size-sm text-primary p-x-15x p-y-10x state-item" data-statesn="' + StateNameSn + '" data-state="' + StateNameEn + '" data-sid="' + StateId + '"> <span>' + StateNameEn + '</span> <i class="iconfont icon-check icon-size-sm text-common"></i> </div> <hr class="hr-base">');
                         }
+                        // 转化州 简写和非简写
+                        if (State != "") {
+                            if (StateNameSn === State) {
+                                State = StateNameEn;
+                            }
+                        }
                     });
                     if (State != "") {
                         StateNameEn = State;
-                        $('.state-info').html('<div class="flex flex-alignCenter flex-fullJustified font-size-sm text-primary p-a-15x address-option" id="stateselect"> <span>' + ChildLabel + '</span> <div> <span id="stateName">' + StateNameEn + '</span> <i class="iconfont icon-arrow-right icon-size-xm text-common"></i> </div> </div>');
+                        $('.state-info').html('<div class="flex flex-alignCenter flex-fullJustified font-size-sm text-primary p-a-15x address-option" id="stateselect"> <span id="childLabel">' + ChildLabel + '</span> <div> <span id="stateName">' + StateNameEn + '</span> <i class="iconfont icon-arrow-right icon-size-xm text-common"></i> </div><input type="text" name="state" data-optional="false" hidden value="' + StateNameSn + '"></div> </div>');
 
+                        // 勾选中 选择
+                        $('.state-item').removeClass('active');
+                        $('[data-state="' + StateNameEn + '"]').addClass('active');
                     }
                 })
         }
@@ -335,7 +349,7 @@
         $('#countryName').html(CountryName);
         $('input[name="country"]').val(CountryName);
 
-        // 重新选择
+        // 勾选中 选择
         $('.country-item').removeClass('active');
         $('[data-cid=' + CountryId + ']').addClass('active');
 
@@ -348,9 +362,15 @@
     // 选择州
     $('.statelist-info').on('click', '.state-item', function () {
         var StateId = $(this).data('sid'),
-            StateName = $(this).data('state');
-        $('.state-info #stateName').html(StateName);
-        $('input[name="state"]').val(StateName);
+            StateNameEn = $(this).data('state'),
+            StateNameSn = $(this).data('statesn');
+        $('.state-info #stateName').html(StateNameEn);
+        $('input[name="state"]').val(StateNameSn);
+
+        // 勾选中 选择
+        $('.state-item').removeClass('active');
+        $('[data-sid=' + StateId + ']').addClass('active');
+
         // 页面跳转
         toPage($('.shipping-editorAddress'));
     });
@@ -397,24 +417,14 @@
                     }
                 })
         } else {
-            // 修改地址
-            if ($('.isDefault').hasClass('active')) {
-                $('input[name="isd"]').val(1);
-            } else {
-                $('input[name="isd"]').val(0);
-            }
-
             $.ajax({
-                    url: '/address/' + Aid,
-                    type: 'PUT',
+                    url: '/updateUserAddr/' + Aid,
+                    type: 'POST',
                     data: $('#addAddressForm').serialize()
                 })
                 .done(function (data) {
                     if (data.success) {
-                        $('.select-address').removeClass('disabled');
-                        $('.add-address').addClass('disabled');
-                        $('#addAddressForm').find('input[type="text"]').val('');
-                        getAddressList();
+                        window.location.reload();
                     }
                 })
         }

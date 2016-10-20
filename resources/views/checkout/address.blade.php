@@ -100,7 +100,7 @@
                                    value="" placeholder="Phone">
                         </fieldset>
                         <hr class="hr-base m-a-0">
-                        <fieldset>
+                        <fieldset id="makePrimary">
                             <div class="flex flex-alignCenter flex-fullJustified font-size-sm text-primary p-a-15x"
                                  href="#">
                                 @if(empty($address))
@@ -110,17 +110,15 @@
                                     <span>Make Address</span>
                                     <div class="radio-checkBox open">
                                         <div class="radio-checkItem"></div>
-                                        <input type="radio" name="isd" id="address-default" hidden value="0"
-                                               checked="checked">
-                                        <input type="radio" name="isd" id="address-primary" hidden value="1">
+                                        <input type="radio" name="isd" id="address-default" hidden value="0">
+                                        <input type="radio" name="isd" id="address-primary" hidden value="1" checked="checked">
                                     </div>
                                 @endif
 
                             </div>
+                            <hr class="hr-base m-a-0">
                         </fieldset>
                     </form>
-
-                    <hr class="hr-base m-a-0">
                     <!-- Done 按钮 -->
                     <div class="container-fluid p-x-10x p-y-15x">
                         <div class="row">
