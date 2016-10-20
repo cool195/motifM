@@ -219,11 +219,6 @@
     function initAddAddressForm(Type, AddressId) {
         if (Type === 1 && AddressId === 0) {
             // 添加地址
-            //if ($('.addressItem-info').length <= 0) {
-            //    $('.radio-checkBox').addClass('open');
-            //} else {
-            //    $('.radio-checkBox').removeClass('open');
-            //}
             //初始化 修改地址 from 表单
             $('input[name="name"]').val('');
             $('input[name="city"]').val('');
@@ -256,12 +251,12 @@
                     // 初始化 国家,洲
                     initCityState(data.country, data.state);
 
-                    //if (data.isDefault == 1) {
-                    //    $('.isDefault').addClass('active');
-                    //} else {
-                    //    $('.isDefault').removeClass('active');
-                    //}
-
+                    // 判断是否 是修改默认地址
+                    if (data.isDefault == 1) {
+                        $('#makePrimary').attr('hidden','hidden');
+                    } else {
+                        $('#makePrimary').removeAttr('hidden');
+                    }
                 })
         }
     }
