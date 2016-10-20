@@ -32,22 +32,18 @@
                 <hr class="hr-light m-a-0">
                 <!-- 选择支付方式 -->
                 <div class="text-primary">
-                    <div class="flex flex-alignCenter flex-fullJustified font-size-sm p-a-15x">
-                        <span>Pay With Credit Card</span>
-                        <i class="iconfont icon-arrow-right icon-size-xm text-common"></i>
-                    </div>
                     <!-- card 列表 -->
                     @foreach($payInfo as $value)
                         <hr class="hr-base m-a-0">
                         <div class="flex flex-alignCenter flex-fullJustified font-size-sm p-a-15x">
                             <span>{{$value['pay_name']}}</span>
-                            <i class="iconfont icon-check icon-size-md text-common"></i>
+                            <i class="iconfont @if(isset($value['creditCards'])) icon-arrow-right @else icon-check @endif icon-size-md text-common"></i>
                         </div>
                         @foreach($value['creditCards'] as $card)
                             <div class="flex flex-alignCenter flex-fullJustified font-size-sm p-l-20x p-r-15x p-y-5x bg-title cardList">
                                 <div class="p-l-10x">Card: <span>{{$card['card_number']}}</span><br>EXP: <span>{{$card['month']}}/{{$card['year']}}</span>
                                 </div>
-                                <i class="iconfont icon-check icon-size-md text-common"></i>
+                                <i class="iconfont icon-size-md text-common"></i>
                             </div>
                         @endforeach
                     @endforeach
@@ -56,7 +52,7 @@
                     <div class="flex flex-alignCenter flex-fullJustified font-size-sm p-a-15x">
                         <span>Promotion Code</span>
                         <div>
-                            <span>20% OFF</span>
+                            <span>{{$checkinfo['cp_title']}}</span>
                             <i class="iconfont icon-arrow-right icon-size-xm text-common"></i>
                         </div>
                     </div>
