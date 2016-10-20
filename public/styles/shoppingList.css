@@ -8,6 +8,9 @@
 .border-b{
     border-bottom: 1px solid #e2e5ed;
 }
+#nav-categoryTit{
+    font-size: 1.25rem;
+}
 #nav-categoryTit::after{
     content: '';
     display: inline-block;
@@ -45,8 +48,8 @@
 
 .btn-sortBy{
     position: absolute;
-    right: 10px;
-    top: 12px;
+    right: 13px;
+    top: 19px;
     border: none;
     outline:none;
     background: none;

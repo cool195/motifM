@@ -69,8 +69,8 @@
         <!-- 头部导航 -->
         @include('navigator')
         <nav class="bg-white nav-category">
-            <div class="text-center p-y-10x border-b" style="border-bottom: 1px solid #e2e5ed;">
-                <a href="javascript:void(0)" class="text-main" id="nav-categoryTit">All Shopping</a>
+            <div class="text-center p-t-15x p-b-10x titDiv">
+                <a href="javascript:void(0)" class="text-main font-size-lg" id="nav-categoryTit">All Shopping</a>
             </div>
             <!-- 商品类别 二级导航 -->
             <section class="bg-white search-container">

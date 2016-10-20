@@ -73,9 +73,11 @@
         if ($searchContainer.hasClass('active')) {
             $searchContainer.slideDown("fast");
             $('#productList-container').addClass('dark-mask');
+            $('.nav-category .titDiv').addClass('border-b');
         } else {
             $searchContainer.slideUp("fast");
             $('#productList-container').removeClass('dark-mask');
+            $('.nav-category .titDiv').removeClass('border-b');
         }
         return false;
     });
@@ -89,6 +91,7 @@
         $('.search-container').slideUp("fast");
 
         $('#productList-container').removeClass('dark-mask');
+        $('.nav-category .titDiv').removeClass('border-b');
 
         // 选择 产品类别
         categoryType = $(this).data('categoryid');
