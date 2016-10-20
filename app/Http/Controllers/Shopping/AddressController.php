@@ -261,5 +261,6 @@ class AddressController extends ApiController
 				return $value;
 			}
 		}
+		return [];
 	}
 }
