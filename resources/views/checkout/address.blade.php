@@ -23,7 +23,8 @@
 
         <div class="checkout-container">
             <!-- 1.SHIPPING 添加/修改地址 -->
-            <div class="pageview shipping-editorAddress @if(empty($address)) active @endif" id="shipping-editorAddress" data-aid="">
+            <div class="pageview shipping-editorAddress @if(empty($address)) active @endif" id="shipping-editorAddress"
+                 data-aid="">
                 <section class="p-b-20x reserve-height">
                     <article class="p-x-15x p-y-10x font-size-md text-main bg-title"><strong>Add New Address</strong>
                     </article>
@@ -36,13 +37,16 @@
                         <!-- checkout sitting list -->
                         <fieldset>
                             <div class="flex flex-alignCenter flex-fullJustified font-size-sm text-primary p-a-15x address-option"
-                                 id="btn-toCountryList" data-type="{{ $country['commonlist'][0]['child_type']}}" data-id="{{ $country['commonlist'][0]['country_id']}}"
-                                 data-childlabel="{{ $country['commonlist'][0]['child_label']}}" data-zipcode="{{ $country['commonlist'][0]['zipcode_label']}}">
+                                 id="btn-toCountryList" data-type="{{ $country['commonlist'][0]['child_type']}}"
+                                 data-id="{{ $country['commonlist'][0]['country_id']}}"
+                                 data-childlabel="{{ $country['commonlist'][0]['child_label']}}"
+                                 data-zipcode="{{ $country['commonlist'][0]['zipcode_label']}}">
                                 <span>Country</span>
                                 <div>
                                     <span id="countryName">{{ $country['commonlist'][0]['country_name_en'] }}</span>
                                     <i class="iconfont icon-arrow-right icon-size-xm text-common"></i>
-                                    <input type="text" name="country" hidden value="{{$country['commonlist'][0]['country_name_en']}}">
+                                    <input type="text" name="country" hidden
+                                           value="{{$country['commonlist'][0]['country_name_en']}}">
                                 </div>
                             </div>
                         </fieldset>
@@ -99,12 +103,19 @@
                         <fieldset>
                             <div class="flex flex-alignCenter flex-fullJustified font-size-sm text-primary p-a-15x"
                                  href="#">
-                                <span>Make Default</span>
-                                <div class="radio-checkBox open">
-                                    <div class="radio-checkItem"></div>
-                                        <input type="radio" name="isd" id="address-default" hidden value="0">
-                                        <input type="radio" name="isd" id="address-primary" hidden value="1" checked="checked">
-                                </div>
+                                @if(empty($address))
+                                    <span>Default Address</span>
+                                    <input type="radio" name="isd" id="address-default" hidden value="1" checked="checked">
+                                @else
+                                    <span>Make Address</span>
+                                    <div class="radio-checkBox open">
+                                        <div class="radio-checkItem"></div>
+                                        <input type="radio" name="isd" id="address-default" hidden value="0"
+                                               checked="checked">
+                                        <input type="radio" name="isd" id="address-primary" hidden value="1">
+                                    </div>
+                                @endif
+
                             </div>
                         </fieldset>
                     </form>
@@ -138,7 +149,8 @@
                     <!-- 地址列表 -->
                     <aside class="bg-white">
                         @foreach($address as $value)
-                            <div class="addressList-container font-size-sm" id="" data-address="{{$value['receiving_id']}}"
+                            <div class="addressList-container font-size-sm" id=""
+                                 data-address="{{$value['receiving_id']}}"
                                  data-aid="{{$value['receiving_id']}}">
                                 @if(1 !== $value['isDefault'])
                                     <div class="addressList-delete switch" data-remodal-target="modal">
@@ -161,7 +173,7 @@
                                         @if($value['isDefault']==1)
                                             <span class="text-common p-r-10x">Default</span>
                                         @endif
-                                            <i class="iconfont icon-radio icon-size-sm text-common @if($value['isDefault']==1) active @endif"></i>
+                                        <i class="iconfont icon-radio icon-size-sm text-common @if($value['isDefault']==1) active @endif"></i>
                                     </div>
 
                                 </div>
@@ -204,7 +216,9 @@
 
                         @foreach($country['commonlist'] as $value)
                             <div class="flex flex-alignCenter flex-fullJustified font-size-sm text-primary p-x-15x p-y-15x country-item"
-                                 data-cid="{{$value['country_id']}}" data-cname="{{$value['country_name_en']}}" data-type="{{$value['child_type']}}" data-childlabel="{{$value['child_label']}}" data-zipcode="{{$value['zipcode_label']}}">
+                                 data-cid="{{$value['country_id']}}" data-cname="{{$value['country_name_en']}}"
+                                 data-type="{{$value['child_type']}}" data-childlabel="{{$value['child_label']}}"
+                                 data-zipcode="{{$value['zipcode_label']}}">
                                 <span>{{$value['country_name_en']}}</span>
                                 <i class="iconfont icon-check icon-size-sm text-common"></i>
                             </div>
@@ -218,7 +232,9 @@
 
                         @foreach($country['list'] as $value)
                             <div class="flex flex-alignCenter flex-fullJustified font-size-sm text-primary p-x-15x p-y-10x country-item"
-                                 data-cid="{{$value['country_id']}}" data-cname="{{$value['country_name_en']}}" data-type="{{$value['child_type']}}" data-childlabel="{{$value['child_label']}}" data-zipcode="{{$value['zipcode_label']}}">
+                                 data-cid="{{$value['country_id']}}" data-cname="{{$value['country_name_en']}}"
+                                 data-type="{{$value['child_type']}}" data-childlabel="{{$value['child_label']}}"
+                                 data-zipcode="{{$value['zipcode_label']}}">
                                 <span>{{ $value['country_name_en'] }}</span>
                                 <i class="iconfont icon-check icon-size-sm text-common"></i>
                             </div>
