@@ -55,8 +55,19 @@ class CheckoutController extends ApiController
     public function payment()
     {
         $payInfo = $this->getPayInfo();
-        $shipPrice = $this->getCheckOutAccountList(Session::get('user.checkout.address')['receiving_id']);
-        return View('checkout.payment', ['payInfo' => $payInfo['data']['list'], 'checkinfo' => $shipPrice['data']]);
+        $params = array(
+            'cmd' => 'couponlist',
+            'token' => Session::get('user.token'),
+            'pin' => Session::get('user.pin'),
+        );
+        $coupon = $this->request('openapi', '', 'cart', $params);
+        foreach ($coupon['data']['list'] as $value) {
+            if ($value['selected']) {
+                $couponInfo = $value;
+            }
+        }
+
+        return View('checkout.payment', ['payInfo' => $payInfo['data']['list'], 'couponInfo' => $couponInfo]);
     }
 
     //review

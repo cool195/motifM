@@ -52,7 +52,7 @@
                     <div class="flex flex-alignCenter flex-fullJustified font-size-sm p-a-15x">
                         <span>Promotion Code</span>
                         <div>
-                            <span>{{$checkinfo['cp_title']}}</span>
+                            <span>{{$couponInfo['cp_title']}}</span>
                             <i class="iconfont icon-arrow-right icon-size-xm text-common"></i>
                         </div>
                     </div>
