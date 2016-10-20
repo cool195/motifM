@@ -4,69 +4,41 @@ namespace App\Services;
 
 class MCrypt
 {
-    private $hex_iv = '00000000000000000000000000000000'; # converted JAVA byte code in to HEX and placed it here
-    private $key;
 
-    function __construct($randomkey)
+    public static function encrypt($cardInfo)
     {
-        $this->key = hash('sha256', $randomkey, true);
-        $this->key = substr($this->key,0,16);
+        $randomKey = str_random(6);
+        $encryptStr = Self::baseEncrypt($randomKey,$cardInfo);
+        $start = substr($encryptStr, 0, 4);
+        $end = substr($encryptStr, 4);
+        $aesStr = ($start . $randomKey . $end);
+        return $aesStr;
     }
 
-    function encrypt($str)
+    public static function baseEncrypt($key, $data)
     {
-        $td = mcrypt_module_open(MCRYPT_RIJNDAEL_128, '', MCRYPT_MODE_CBC, '');
-        mcrypt_generic_init($td, $this->key, $this->hexToStr($this->hex_iv));
-        $block = mcrypt_get_block_size(MCRYPT_RIJNDAEL_128, MCRYPT_MODE_CBC);
-        $pad = $block - (strlen($str) % $block);
-        $str .= str_repeat(chr($pad), $pad);
-        $encrypted = mcrypt_generic($td, $str);
-        mcrypt_generic_deinit($td);
-        mcrypt_module_close($td);
-        return base64_encode($encrypted);
-    }
+        if (empty($key) || empty($data)) {
+            return "";
+        }
+        $input = '';
+        $keyLonger = strlen($key) < strlen($data) ? false : true;
+        $len = $keyLonger ? strlen($data) : strlen($key);
 
-    function decrypt($code)
-    {
-        $td = mcrypt_module_open(MCRYPT_RIJNDAEL_128, '', MCRYPT_MODE_CBC, '');
-        mcrypt_generic_init($td, $this->key, $this->hexToStr($this->hex_iv));
-        $str = mdecrypt_generic($td, base64_decode($code));
-        $block = mcrypt_get_block_size(MCRYPT_RIJNDAEL_128, MCRYPT_MODE_CBC);
-        mcrypt_generic_deinit($td);
-        mcrypt_module_close($td);
-        return $this->strippadding($str);
-    }
+        for ($i = 0; $i < $len * 2; $i++) {
+            if ($i % 2 == 0) {
+                $input .= $key[$i / 2];
+            } else {
+                $input .= $data[$i / 2];
+            }
+        }
 
-    /*
-      For PKCS7 padding
-     */
-    private function addpadding($string, $blocksize = 16)
-    {
-        $len = strlen($string);
-        $pad = $blocksize - ($len % $blocksize);
-        $string .= str_repeat(chr($pad), $pad);
-        return $string;
-    }
-
-    private function strippadding($string)
-    {
-        $slast = ord(substr($string, -1));
-        $slastc = chr($slast);
-        $pcheck = substr($string, -$slast);
-        if (preg_match("/$slastc{" . $slast . "}/", $string)) {
-            $string = substr($string, 0, strlen($string) - $slast);
-            return $string;
+        if (!$keyLonger) {
+            // 剩余的都补上data
+            $input .= substr($data,strlen($key),strlen($data)-strlen($key)).'1';
         } else {
-            return false;
+            // 剩余的都补上key
+            $input .= substr($key,strlen($data),strlen($key)-strlen($data)).'2';
         }
-    }
-
-    function hexToStr($hex)
-    {
-        $string = '';
-        for ($i = 0; $i < strlen($hex) - 1; $i += 2) {
-            $string .= chr(hexdec($hex[$i] . $hex[$i + 1]));
-        }
-        return $string;
+        return base64_encode($input);
     }
 }

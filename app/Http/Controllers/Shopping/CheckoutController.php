@@ -6,16 +6,18 @@ use Illuminate\Http\Request;
 
 use App\Http\Controllers\ApiController;
 use Illuminate\Support\Facades\Session;
-
+use App\Services\MCrypt;
 
 class CheckoutController extends ApiController
 {
     //checkout支付控制
-    public function index(){
-        //是否成功支付过
-        if(false){
+    public function index()
+    {
+        $payInfo = $this->getPayInfo();
+        //是否成功支付过 TODO 暂时判断是否为空,以后更新成是否支付成功过
+        if (!empty($payInfo['data']['list'])) {
             return redirect('/checkout/review');
-        }else{
+        } else {
             return redirect('/checkout/shipping');
         }
     }
@@ -24,9 +26,9 @@ class CheckoutController extends ApiController
     public function shipping()
     {
         //获取默认地址
-        if(Session::get('user.checkout.address')){
+        if (Session::get('user.checkout.address')) {
             $address = Session::get('user.checkout.address');
-        }else{
+        } else {
             $address = $this->getUserDefaultAddr();
             Session::put('user.checkout.address', $address['data']);
         }
@@ -74,29 +76,28 @@ class CheckoutController extends ApiController
         }
 
         $params = array(
-            'cmd'=>'country',
-            'token'=>Session::get('user.token'),
-            'pin'=>Session::get('user.pin')
+            'cmd' => 'country',
+            'token' => Session::get('user.token'),
+            'pin' => Session::get('user.pin')
         );
         $system = "";
         $service = "useraddr";
         $country = $this->request('openapi', $system, $service, $params);
-        if(empty($country)){
+        if (empty($country)) {
             $country['success'] = false;
             $country['error_msg'] = "Data access failed";
             $country['data'] = array();
-        }else{
-            if($country['success']){
+        } else {
+            if ($country['success']) {
                 $commonlist = array();
-                for($index = 0; $index < $country['data']['amount']; $index++)
-                {
+                for ($index = 0; $index < $country['data']['amount']; $index++) {
                     $commonlist[] = array_shift($country['data']['list']);
                 }
                 $country['data']['commonlist'] = $commonlist;
             }
         }
 
-        return View('checkout.address', ['address' => $result['data']['list'],'country'=>$country['data']]);
+        return View('checkout.address', ['address' => $result['data']['list'], 'country' => $country['data']]);
     }
 
     //获取默认地址
@@ -199,4 +200,56 @@ class CheckoutController extends ApiController
         return $result;
     }
 
+    //获取支付列表
+    public function getPayInfo()
+    {
+        $params = array(
+            'cmd' => 'plist',
+            'uuid' => $_COOKIE['uid'],
+            'token' => Session::get('user.token'),
+            'pin' => Session::get('user.pin'),
+        );
+
+        return $this->request('openapi', '', 'pay', $params);
+    }
+
+    //绑定支付信息
+    public function addCard(Request $request)
+    {
+
+        $cardInfo = MCrypt::encrypt($request->get('month') . $request->get('year') . $request->get('card') . '/' . $request->get('cvv'));
+
+        $params = array(
+            'cmd' => 'acrd',
+            'uuid' => $_COOKIE['uid'],
+            'token' => Session::get('user.token'),
+            'pin' => Session::get('user.pin'),
+            'ci' => $cardInfo,//卡加密信息
+        );
+
+        if ($request->get('isDefault')) {
+            $address = $this->getUserDefaultAddr();
+            $params['tel'] = $address['data']['telephone'];
+            $params['name'] = $address['data']['name'];
+            $params['addr1'] = $address['data']['detail_address1'];
+            $params['addr2'] = $address['data']['detail_address2'];
+            $params['city'] = $address['data']['city'];
+            $params['state'] = $address['data']['state'];
+            $params['zip'] = $address['data']['zip'];
+            $params['country'] = $address['data']['country'];
+            $params['csn'] = $address['data']['country_name_sn'];
+        } else {
+            $params['tel'] = $request->get('tel');
+            $params['name'] = $request->get('name');
+            $params['addr1'] = $request->get('addr1');
+            $params['addr2'] = $request->get('addr2');
+            $params['city'] = $request->get('city');
+            $params['state'] = $request->get('state');
+            $params['zip'] = $request->get('zip');
+            $params['country'] = $request->get('country');
+            $params['csn'] = $request->get('csn');
+        }
+
+        return $this->request('openapi', '', 'pay', $params);
+    }
 }

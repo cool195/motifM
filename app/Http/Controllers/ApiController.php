@@ -20,24 +20,13 @@ abstract class ApiController extends Controller
         'openapi' => array('api' => 'https://api.motif.me', 'rec' => 'https://rec.motif.me'),//生产
     ];
 
-    protected function request($ApiName, $system, $service, array $params, $cacheTime = 0)
+    protected function request($ApiName, $system, $service, array $params)
     {
         $params['src'] = 'h5';
         $ApiName = $_SERVER['SERVER_NAME'] == 'm.motif.me' ? 'openapi' : ($_SERVER['SERVER_NAME'] == 'test.m.motif.me' ? 'openapi_test' : 'openapi_local');
         $Api = $service == 'rec' ? $this->ApiUrl[$ApiName]['rec'] : $this->ApiUrl[$ApiName]['api'];
         $buildParams = http_build_query($params);
-        //$key = md5($buildParams);
         $result = Net::api($Api, $system, $service, $buildParams);
-//        $result = "";
-//        if ($cacheTime > 0 && Cache::has($key)) {
-//            $result = Cache::get($key);
-//        }
-//        if (empty($result) || "" == $result) {
-//            $result = Net::api($Api, $system, $service, $buildParams);
-//            if ($cacheTime > 0) {
-//                Cache::put($key, $result, $cacheTime);
-//            }
-//        }
         return json_decode($result, true);
     }
 
