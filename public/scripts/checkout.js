@@ -27,6 +27,20 @@
         $pageview.addClass('active');
     }
 
+    // shipping begin
+    // 选择 shipping method
+    $('.method-item').on('click', function () {
+        $('.method-item').removeClass('active');
+        $(this).addClass('active');
+    });
+
+    // 提交 shipping 信息 （continue 按钮)
+    $('#submit-shipping').on('click', function () {
+        var MethodId = $('.method-item.active').data('type');
+        alert('提交 ship to:' + MethodId);
+    });
+    // shipping end
+
     // AddressList begin
     // 点击 添加地址
     $('#btn-toAddAddress').on('click', function () {
@@ -233,7 +247,7 @@
             initCityState(Country, '');
 
             // 判断是否默认地址
-            if($('.addressItem-info').length > 0){
+            if ($('.addressItem-info').length > 0) {
                 $('#makePrimary').removeAttr('hidden');
                 $('.radio-checkBox').removeClass('open');
                 $('#address-default').attr('checked', 'checked');
