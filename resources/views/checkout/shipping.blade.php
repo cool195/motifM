@@ -63,7 +63,7 @@
                     </div>
                     <!-- Continue 按钮 -->
                     <div class="p-a-15x submit-shipping">
-                        <div class="btn btn-primary btn-block" id="submit-shipping">Continue</div>
+                        <div class="btn btn-primary btn-block" data-url="{{$continueUrl}}" id="submit-shipping">Continue</div>
                     </div>
                 </div>
 
