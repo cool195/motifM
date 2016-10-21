@@ -254,7 +254,6 @@
 
                     <!-- 优惠券列表 -->
                     <div class="p-a-15x">
-                        @inject('getDate', 'App\Services\Publicfun')
                         @foreach($coupon['list'] as $value)
                             <div class="promotion-item @if($value['usable']){{'bindidcode'}}@endif" data-bindid="{{$value['bind_id']}}">
                                 <div class="mask"></div>
@@ -312,7 +311,7 @@
                                 <i class="iconfont icon-check icon-size-md text-white"></i>
                             </span>
                                 </div>
-                                <div class="promotion-time text-primary p-a-10x text-right font-size-sm">Expires: {{ $getDate->getMyDate(date('Y-m-d H:i',$value['expiry_time']/1000)) }}
+                                <div class="promotion-time text-primary p-a-10x text-right font-size-sm">Expires: {{date("M d, Y", ($value['expiry_time'] / 1000))}}
                                 </div>
                             </div>
                         @endforeach
