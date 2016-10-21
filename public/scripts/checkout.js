@@ -32,12 +32,16 @@
     $('.method-item').on('click', function () {
         $('.method-item').removeClass('active');
         $(this).addClass('active');
+        //更新选择配送方式
+        $.ajax({
+            url: '/checkout/selShip/' + $(this).data('type'),
+            type: 'GET',
+        })
     });
 
     // 提交 shipping 信息 （continue 按钮)
     $('#submit-shipping').on('click', function () {
-        var MethodId = $('.method-item.active').data('type');
-        alert('提交 ship to:' + MethodId);
+        window.location.href = $(this).data('url');
     });
     // shipping end
 
@@ -144,12 +148,12 @@
         openLoading();
 
         $.ajax({
-                url: '/addresses',
-                type: 'DELETE',
-                data: {
-                    aid: AddressID
-                }
-            })
+            url: '/addresses',
+            type: 'DELETE',
+            data: {
+                aid: AddressID
+            }
+        })
             .done(function () {
                 location.reload();
             })
@@ -175,12 +179,12 @@
             $('input[name="aid"]').val(Aid); // 需要提交的项
             //更新选择地址
             $.ajax({
-                url: '/checkout/selAddr/'+Aid,
+                url: '/checkout/selAddr/' + Aid,
                 type: 'GET',
             })
 
                 .done(function (data) {
-                    if(data.receiving_id == Aid){
+                    if (data.receiving_id == Aid) {
                         window.location.href = '/checkout/shipping';
                     }
                 })
@@ -274,9 +278,9 @@
         } else {
             // 修改地址
             $.ajax({
-                    url: '/address/' + AddressId,
-                    type: 'GET'
-                })
+                url: '/address/' + AddressId,
+                type: 'GET'
+            })
                 .done(function (data) {
                     //初始化 修改地址 from 表单
                     $('input[name="name"]').val(data.name);
@@ -343,9 +347,9 @@
             var StateNameEn = '',
                 StateNameSn = '';
             $.ajax({
-                    url: '/statelist/' + CountryId,
-                    type: 'GET'
-                })
+                url: '/statelist/' + CountryId,
+                type: 'GET'
+            })
                 .done(function (data) {
                     // 添加选项
                     $.each(data, function (n, value) {
@@ -450,10 +454,10 @@
         if (Aid === '' || Aid === undefined) {
             // 添加地址
             $.ajax({
-                    url: '/checkout/address',
-                    type: 'POST',
-                    data: $('#addAddressForm').serialize()
-                })
+                url: '/checkout/address',
+                type: 'POST',
+                data: $('#addAddressForm').serialize()
+            })
                 .done(function (data) {
                     if (data.success) {
                         window.location.href = '/checkout/shipping';
@@ -461,10 +465,10 @@
                 })
         } else {
             $.ajax({
-                    url: '/updateUserAddr/' + Aid,
-                    type: 'POST',
-                    data: $('#addAddressForm').serialize()
-                })
+                url: '/updateUserAddr/' + Aid,
+                type: 'POST',
+                data: $('#addAddressForm').serialize()
+            })
                 .done(function (data) {
                     if (data.success) {
                         window.location.href = '/checkout/shipping';
@@ -496,7 +500,7 @@
     });
 
     // promotion code
-    $('#btn-toPromotionCode').on('click',function(){
+    $('#btn-toPromotionCode').on('click', function () {
         toPage($('.shipping-promotion'));
     });
 

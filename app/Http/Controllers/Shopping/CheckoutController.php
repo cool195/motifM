@@ -43,9 +43,14 @@ class CheckoutController extends ApiController
         if (empty($address)) {
             return redirect('/checkout/address');
         } else {
-            $shipPrice = $this->getCheckOutAccountList($address['data']['receiving_id']);
-            $shippingMethod = $this->getShippingMethod($address['data']['country_name_sn'], $shipPrice['data']['total_amount'] + $shipPrice['data']['vas_amount']);
-            Session::put('user.checkout.shipping', $shippingMethod);
+            $shipPrice = $this->getCheckOutAccountList($address['receiving_id']);
+            $shippingMethod = $this->getShippingMethod($address['country_name_sn'], $shipPrice['data']['total_amount'] + $shipPrice['data']['vas_amount']);
+            $shipKey = md5($address['country_name_sn'] . ($shipPrice['data']['total_amount'] + $shipPrice['data']['vas_amount']));
+            if (Session::get('user.checkout.shipKey') != $shipKey) {
+                Session::put('user.checkout.shipKey', $shipKey);
+                Session::put('user.checkout.selship', $shippingMethod[0]);
+                Session::put('user.checkout.shipping', $shippingMethod);
+            }
         }
 
         $continueUrl = '/checkout/payment';
@@ -164,6 +169,15 @@ class CheckoutController extends ApiController
         }
     }
 
+    //动态切换配送方式
+    public function selShip($type){
+        foreach (Session::get('user.checkout.shipping') as $value){
+            if($value['logistics_type']==$type){
+                Session::put('user.checkout.selship', $value);
+            }
+        }
+    }
+
     //获取物流方式
     public function getShippingMethod($country = 0, $price = 0)
     {
@@ -234,7 +248,7 @@ class CheckoutController extends ApiController
             $result['success'] = false;
             $result['error_msg'] = "Failed to add address";
             $result['data'] = array();
-        }else{
+        } else {
             Session::put('user.checkout.address', $result['data']);
         }
 
@@ -242,7 +256,7 @@ class CheckoutController extends ApiController
     }
 
     //修改地址
-    public function updateUserAddr(Request $request,$aid)
+    public function updateUserAddr(Request $request, $aid)
     {
 
         $params = array(
@@ -266,11 +280,11 @@ class CheckoutController extends ApiController
         $system = "";
         $service = "useraddr";
         $result = $this->request('openapi', $system, $service, $params);
-        if(empty($result)){
+        if (empty($result)) {
             $result['success'] = false;
             $result['error_msg'] = "Failed to add address";
             $result['data'] = array();
-        }else{
+        } else {
             Session::put('user.checkout.address', $result['data']);
         }
         return $result;

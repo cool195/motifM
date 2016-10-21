@@ -47,6 +47,7 @@ $app->group(['middleware' => 'pcguide|logincheck', 'namespace' => 'App\Http\Cont
     $app->post('/checkout/address', 'CheckoutController@addUserAddr');
     $app->get('/checkout/selAddr/{aid}', 'CheckoutController@selAddr');
     $app->post('/updateUserAddr/{aid}', 'CheckoutController@updateUserAddr');
+    $app->get('/checkout/selShip/{type}', 'CheckoutController@selShip');
 
     $app->get('/feed', 'ShoppingController@feedback');
     $app->get('/feedback', 'ShoppingController@addSupport');
