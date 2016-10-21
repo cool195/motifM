@@ -462,13 +462,33 @@
     $('#cancel-country').on('click', function () {
         toPage($('.shipping-editorAddress'));
     });
-
     // 取消修改州
     $('#cancel-state').on('click', function () {
         toPage($('.shipping-editorAddress'));
     });
-
     // AddAddress end
+
+    // payment begin
+    // 添加卡
+    $('#btn-toAddCard').on('click', function () {
+        toPage($('.shipping-addCard'));
+    });
+
+    // 取消添加卡信息
+    $('#btn-cancelAddCard').on('click', function () {
+        toPage($('.shipping-payment'));
+    });
+
+    // promotion code
+    $('#btn-toPromotionCode').on('click',function(){
+        toPage($('.shipping-promotion'));
+    });
+
+    // 取消添加 promotion code
+    $('#btn-cancelPromoCode').on('click', function () {
+        toPage($('.shipping-payment'));
+    });
+    // payment end
 
 
 })(jQuery);

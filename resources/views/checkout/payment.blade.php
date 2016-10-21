@@ -5,8 +5,8 @@
     <title>Order Checkout</title>
     @include('head')
     <link rel="stylesheet" href="{{env('CDN_Static')}}/styles/orderCheckout.css{{'?v='.config('app.version')}}">
-    <link rel="stylesheet"
-          href="{{env('CDN_Static')}}/styles/profileSetting-addAddress.css{{'?v='.config('app.version')}}">
+    <link rel="stylesheet" href="{{env('CDN_Static')}}/styles/profileSetting-addAddress.css{{'?v='.config('app.version')}}">
+
 </head>
 <body>
 @include('check.tagmanager')
@@ -34,8 +34,7 @@
                 <div class="text-primary">
                     <!-- card 列表 -->
                     @foreach($payInfo as $value)
-                        <hr class="hr-base m-a-0">
-                        <div class="flex flex-alignCenter flex-fullJustified font-size-sm p-a-15x">
+                        <div class="flex flex-alignCenter flex-fullJustified font-size-sm p-a-15x" id="btn-toAddCard">
                             <span>{{$value['pay_name']}}</span>
                             <i class="iconfont @if(isset($value['creditCards'])) icon-arrow-right @else icon-check @endif icon-size-md text-common"></i>
                         </div>
@@ -46,10 +45,10 @@
                                 <i class="iconfont icon-size-md text-common"></i>
                             </div>
                         @endforeach
+                        <hr class="hr-base m-a-0">
                     @endforeach
 
-                    <hr class="hr-base m-a-0">
-                    <div class="flex flex-alignCenter flex-fullJustified font-size-sm p-a-15x">
+                    <div class="flex flex-alignCenter flex-fullJustified font-size-sm p-a-15x" id="btn-toPromotionCode">
                         <span>Promotion Code</span>
                         <div>
                             <span>{{$couponInfo['cp_title']}}</span>
@@ -257,9 +256,16 @@
                             </fieldset>
                         </form>
                         <hr class="hr-base m-a-0">
-                        <!-- Done 按钮 -->
-                        <div class="p-a-15x editor-address">
-                            <div class="btn btn-primary btn-block" id="btn-editorAddress">Save</div>
+                        <!-- Save 按钮 -->
+                        <div class="container-fluid p-x-10x p-y-15x">
+                            <div class="row">
+                                <div class="col-xs-6">
+                                    <div class="btn btn-primary-outline btn-block" id="btn-cancelAddCard">Cancel</div>
+                                </div>
+                                <div class="col-xs-6">
+                                    <div class="btn btn-primary btn-block" id="btn-submitAddCard">Save</div>
+                                </div>
+                            </div>
                         </div>
                     </section>
                 </div>
@@ -280,9 +286,15 @@
                                placeholder="Promotional Code" value="">
                     </fieldset>
                     <hr class="hr-base m-a-0">
-                    <div class="p-a-15x">
-                        <div class="btn btn-primary btn-block disabled" data-role="submit">Apply</div>
-
+                    <div class="container-fluid p-x-10x p-y-15x">
+                        <div class="row">
+                            <div class="col-xs-6">
+                                <div class="btn btn-primary-outline btn-block" id="btn-cancelPromoCode">Cancel</div>
+                            </div>
+                            <div class="col-xs-6">
+                                <div class="btn btn-primary btn-block disabled" id="btn-submitPromoCode">Apply</div>
+                            </div>
+                        </div>
                     </div>
 
                     <!-- 优惠券列表 -->
@@ -379,6 +391,15 @@
 
 </body>
 <script src="{{env('CDN_Static')}}/scripts/vendor.js{{'?v='.config('app.version')}}"></script>
+<script src="{{env('CDN_Static')}}/scripts/Checkout.js{{'?v='.config('app.version')}}"></script>
 <script src="{{env('CDN_Static')}}/scripts/orderCheckout-addressList.js{{'?v='.config('app.version')}}"></script>
 @include('global')
+<meta name="csrf-token" content="{{ csrf_token() }}"/>
+<script>
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+</script>
 </html>
