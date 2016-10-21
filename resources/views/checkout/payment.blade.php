@@ -53,7 +53,7 @@
                     <div class="flex flex-alignCenter flex-fullJustified font-size-sm p-a-15x" id="btn-toPromotionCode">
                         <span>Promotion Code</span>
                         <div>
-                            <span>{{$couponInfo['cp_title']}}</span>
+                            <span>{{Session::get('user.checkout.couponInfo')['cp_title']}}</span>
                             <i class="iconfont icon-arrow-right icon-size-xm text-common"></i>
                         </div>
                     </div>

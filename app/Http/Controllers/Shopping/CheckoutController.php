@@ -50,6 +50,7 @@ class CheckoutController extends ApiController
                 Session::put('user.checkout.shipKey', $shipKey);
                 Session::put('user.checkout.selship', $shippingMethod[0]);
                 Session::put('user.checkout.shipping', $shippingMethod);
+                Session::forget('user.checkout.couponInfo');
             }
         }
 
@@ -68,14 +69,19 @@ class CheckoutController extends ApiController
             'pin' => Session::get('user.pin'),
         );
         $coupon = $this->request('openapi', '', 'cart', $params);
-        foreach ($coupon['data']['list'] as $value) {
-            if ($value['selected']) {
-                $couponInfo = $value;
+
+        if (!Session::get('user.checkout.couponInfo')) {
+            foreach ($coupon['data']['list'] as $value) {
+                if ($value['selected']) {
+                    $couponInfo = $value;
+                    Session::put('user.checkout.couponInfo', $couponInfo);
+                }
             }
         }
+
         $country = $this->getCountry();
 
-        return View('checkout.payment', ['payInfo' => $payInfo['data']['list'], 'coupon' => $coupon['data'], 'couponInfo' => $couponInfo, 'country' => $country['data']]);
+        return View('checkout.payment', ['payInfo' => $payInfo['data']['list'], 'coupon' => $coupon['data'], 'country' => $country['data']]);
     }
 
     //review
@@ -335,8 +341,8 @@ class CheckoutController extends ApiController
         $params['zip'] = $request->get('zip');
         $params['country'] = $request->get('country');
         $params['csn'] = $request->get('csn');
-
-
-        return $this->request('openapi', '', 'pay', $params);
+        $params['cardinfo'] = [$request->get('expiry'),$request->get('card'),$request->get('cvv')];
+        return $params;
+        //return $this->request('openapi', '', 'pay', $params);
     }
 }
