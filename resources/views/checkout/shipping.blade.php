@@ -44,7 +44,7 @@
                             <span>{{Session::get('user.checkout.address.country')}}</span><br>
                             <span>{{Session::get('user.checkout.address.telephone')}}</span>
                         </div>
-                        <div class="text-underLine" id="edit-shipTp">Edit</div>
+                        <a class="text-underLine text-primary" href="/checkout/address" id="edit-shipTp">Edit</a>
                     </div>
                     <hr class="hr-base m-a-0">
                 </div>
@@ -54,9 +54,9 @@
                     <hr class="hr-base m-a-0">
                     <div>
                         @foreach(Session::get('user.checkout.shipping') as $k=>$value)
-                            <div class="p-a-15x font-size-sm flex flex-alignCenter flex-fullJustified">
+                            <div class="p-a-15x font-size-sm flex flex-alignCenter flex-fullJustified method-item @if($k<=0) active @endif" data-type="{{$value['logistics_type']}}">
                                 <span>{{$value['logistics_name']}} @if($value['pay_price']>0)${{number_format(($value['pay_price'] / 100), 2)}}@endif</span>
-                                <i class="iconfont icon-check icon-size-base @if($k>0) hidden @else select @endif" data-type="{{$value['logistics_type']}}"></i>
+                                <i class="iconfont icon-check icon-size-base" data-type="{{$value['logistics_type']}}"></i>
                             </div>
                             <hr class="hr-base m-a-0">
                         @endforeach
@@ -75,6 +75,6 @@
 
 </body>
 <script src="{{env('CDN_Static')}}/scripts/vendor.js{{'?v='.config('app.version')}}"></script>
-<script src="{{env('CDN_Static')}}/scripts/orderCheckout-addressList.js{{'?v='.config('app.version')}}"></script>
+<script src="{{env('CDN_Static')}}/scripts/Checkout.js{{'?v='.config('app.version')}}"></script>
 @include('global')
 </html>

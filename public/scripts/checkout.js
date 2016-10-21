@@ -27,6 +27,20 @@
         $pageview.addClass('active');
     }
 
+    // shipping begin
+    // 选择 shipping method
+    $('.method-item').on('click', function () {
+        $('.method-item').removeClass('active');
+        $(this).addClass('active');
+    });
+
+    // 提交 shipping 信息 （continue 按钮)
+    $('#submit-shipping').on('click', function () {
+        var MethodId = $('.method-item.active').data('type');
+        alert('提交 ship to:' + MethodId);
+    });
+    // shipping end
+
     // AddressList begin
     // 点击 添加地址
     $('#btn-toAddAddress').on('click', function () {
@@ -231,6 +245,15 @@
             // 初始化 国家,洲
             var Country = $('#countryName').text();
             initCityState(Country, '');
+
+            // 判断是否默认地址
+            if ($('.addressItem-info').length > 0) {
+                $('#makePrimary').removeAttr('hidden');
+                $('.radio-checkBox').removeClass('open');
+                $('#address-default').attr('checked', 'checked');
+                $('#address-primary').removeAttr('checked');
+            }
+
         } else {
             // 修改地址
             $.ajax({
@@ -253,9 +276,12 @@
 
                     // 判断是否 是修改默认地址
                     if (data.isDefault == 1) {
-                        $('#makePrimary').attr('hidden','hidden');
+                        $('#makePrimary').attr('hidden', 'hidden');
                     } else {
                         $('#makePrimary').removeAttr('hidden');
+                        $('.radio-checkBox').removeClass('open');
+                        $('#address-default').attr('checked', 'checked');
+                        $('#address-primary').removeAttr('checked');
                     }
                 })
         }
@@ -433,12 +459,12 @@
     });
 
     // 取消修改国家
-    $('#cancel-country').on('click',function(){
+    $('#cancel-country').on('click', function () {
         toPage($('.shipping-editorAddress'));
     });
 
     // 取消修改州
-    $('#cancel-state').on('click',function(){
+    $('#cancel-state').on('click', function () {
         toPage($('.shipping-editorAddress'));
     });
 
