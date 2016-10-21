@@ -535,9 +535,11 @@
     });
 
     // 验证卡输入信息
-    $('#card-container').card({
-        container: '.card-wrapper'
-    });
+    if ($('#payment-checkBox').length > 0) {
+        $('#card-container').card({
+            container: '.card-wrapper'
+        });
+    }
 
     // 取消选择国家
     $('#cancel-paymentCountry').on('click', function () {
