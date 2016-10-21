@@ -40,7 +40,7 @@
                         <div class="">
                             <span>{{Session::get('user.checkout.address.name')}}</span><br>
                             <span>{{Session::get('user.checkout.address.detail_address1')}} {{Session::get('user.checkout.address.detail_address2')}}</span><br>
-                            <span>{{Session::get('user.checkout.address.city')}} {{Session::get('user.checkout.address.state')['state']}} {{Session::get('user.checkout.address.zip')}}</span><br>
+                            <span>{{Session::get('user.checkout.address.city')}} {{Session::get('user.checkout.address.state')}} {{Session::get('user.checkout.address.zip')}}</span><br>
                             <span>{{Session::get('user.checkout.address.country')}}</span><br>
                             <span>{{Session::get('user.checkout.address.telephone')}}</span>
                         </div>

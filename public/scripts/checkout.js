@@ -456,7 +456,7 @@
                 })
                 .done(function (data) {
                     if (data.success) {
-                        window.location.reload();
+                        window.location.href = '/checkout/shipping';
                     }
                 })
         } else {
@@ -467,7 +467,7 @@
                 })
                 .done(function (data) {
                     if (data.success) {
-                        window.location.reload();
+                        window.location.href = '/checkout/shipping';
                     }
                 })
         }

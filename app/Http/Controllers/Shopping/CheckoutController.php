@@ -234,9 +234,47 @@ class CheckoutController extends ApiController
             $result['success'] = false;
             $result['error_msg'] = "Failed to add address";
             $result['data'] = array();
+        }else{
+            Session::put('user.checkout.address', $result['data']);
         }
 
         return $result;
+    }
+
+    //修改地址
+    public function updateUserAddr(Request $request,$aid)
+    {
+
+        $params = array(
+            'cmd' => 'modify',
+            'token' => Session::get('user.token'),
+            'pin' => Session::get('user.pin'),
+            'aid' => $aid,
+            'email' => $request->input('email'),
+            'tel' => $request->input('tel'),
+            'name' => $request->input("name"),
+            'addr1' => $request->input("addr1"),
+            'addr2' => $request->input("addr2"),
+            'city' => $request->input("city"),
+            'state' => $request->input("state"),
+            'zip' => $request->input("zip"),
+            'idnum' => $request->input("idnum"),
+            'country' => $request->input("country"),
+            'isd' => $request->input("isd", 0),
+        );
+
+        $system = "";
+        $service = "useraddr";
+        $result = $this->request('openapi', $system, $service, $params);
+        if(empty($result)){
+            $result['success'] = false;
+            $result['error_msg'] = "Failed to add address";
+            $result['data'] = array();
+        }else{
+            Session::put('user.checkout.address', $result['data']);
+        }
+        return $result;
+
     }
 
     //获取支付列表
