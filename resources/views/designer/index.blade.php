@@ -76,7 +76,7 @@
 
         </div>
         <div class="swiper-container" id="designer-container">
-            <div class="swiper-wrapper" data-impr='http://clk.motif.me/log.gif?t=designer.300001&m=H5_M2016-1&pin={{ Session::get('user.pin') }}&uuid={{Session::has('user') ? Session::get('user.uuid') : $_COOKIE['uid']}}&v={"action":0,"skipType":"1","skipId":@{{ $value.spus }},expid":0,"version":"1.0.1", "ver":"9.2","src":"H5"}'>
+            <div class="swiper-wrapper" data-impr='http://clk.motif.me/log.gif?t=designer.300001&m=H5_M2016-1&pin={{ Session::get('user.pin') }}&uuid={{Session::has('user') ? Session::get('user.uuid') : $_COOKIE['uid']}}&v={"action":0,"skipType":"1","skipId":"@{{ $value.spus }}",expid":0,"version":"1.0.1", "ver":"9.2","src":"H5"}'>
                 @{{ each $value.products }}
 
                 <div class="product-item swiper-slide">
