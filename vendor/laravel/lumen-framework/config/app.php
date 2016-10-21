@@ -12,7 +12,7 @@ return [
     | will not be safe. Please do this before deploying an application!
     |
     */
-    'version' => '1.2',
+    'version' => '1.1.1',
     'key' => env('APP_KEY', 'SomeRandomString!!!'),
 
     'cipher' => 'AES-256-CBC',
