@@ -490,7 +490,7 @@
 
     // payment begin
     // 添加卡
-    $('#btn-toAddCard').on('click', function () {
+    $('.btn-toAddCard').on('click', function () {
         toPage($('.shipping-addCard'));
     });
 

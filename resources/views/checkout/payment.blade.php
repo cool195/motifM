@@ -35,7 +35,7 @@
                 <div class="text-primary">
                     <!-- card 列表 -->
                     @foreach($payInfo as $value)
-                        <div class="flex flex-alignCenter flex-fullJustified font-size-sm p-a-15x" id="btn-toAddCard">
+                        <div class="flex flex-alignCenter flex-fullJustified font-size-sm p-a-15x btn-toAddCard">
                             <span>{{$value['pay_name']}}</span>
                             <i class="iconfont @if(isset($value['creditCards'])) icon-arrow-right @else icon-check @endif icon-size-md text-common"></i>
                         </div>
