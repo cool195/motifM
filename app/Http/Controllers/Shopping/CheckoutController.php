@@ -317,28 +317,16 @@ class CheckoutController extends ApiController
             'ci' => $cardInfo,//卡加密信息
         );
 
-        if ($request->get('isDefault')) {
-            $address = $this->getUserDefaultAddr();
-            $params['tel'] = $address['data']['telephone'];
-            $params['name'] = $address['data']['name'];
-            $params['addr1'] = $address['data']['detail_address1'];
-            $params['addr2'] = $address['data']['detail_address2'];
-            $params['city'] = $address['data']['city'];
-            $params['state'] = $address['data']['state'];
-            $params['zip'] = $address['data']['zip'];
-            $params['country'] = $address['data']['country'];
-            $params['csn'] = $address['data']['country_name_sn'];
-        } else {
-            $params['tel'] = $request->get('tel');
-            $params['name'] = $request->get('name');
-            $params['addr1'] = $request->get('addr1');
-            $params['addr2'] = $request->get('addr2');
-            $params['city'] = $request->get('city');
-            $params['state'] = $request->get('state');
-            $params['zip'] = $request->get('zip');
-            $params['country'] = $request->get('country');
-            $params['csn'] = $request->get('csn');
-        }
+        $params['tel'] = $request->get('tel');
+        $params['name'] = $request->get('name');
+        $params['addr1'] = $request->get('addr1');
+        $params['addr2'] = $request->get('addr2');
+        $params['city'] = $request->get('city');
+        $params['state'] = $request->get('state');
+        $params['zip'] = $request->get('zip');
+        $params['country'] = $request->get('country');
+        $params['csn'] = $request->get('csn');
+
 
         return $this->request('openapi', '', 'pay', $params);
     }

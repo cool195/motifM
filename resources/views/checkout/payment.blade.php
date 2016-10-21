@@ -5,7 +5,8 @@
     <title>Order Checkout</title>
     @include('head')
     <link rel="stylesheet" href="{{env('CDN_Static')}}/styles/orderCheckout.css{{'?v='.config('app.version')}}">
-    <link rel="stylesheet" href="{{env('CDN_Static')}}/styles/profileSetting-addAddress.css{{'?v='.config('app.version')}}">
+    <link rel="stylesheet"
+          href="{{env('CDN_Static')}}/styles/profileSetting-addAddress.css{{'?v='.config('app.version')}}">
 
 </head>
 <body>
@@ -138,126 +139,75 @@
                             <i class="iconfont icon-caveat icon-size-md p-r-5x"></i>
                             <span class="font-size-xs"></span>
                         </div>
-                        <form class="bg-white" id="addressInfo" name="addressInfo" method="get"
-                              action="/cart/countrylist">
-                            <!-- 个人中心 sitting list -->
-                            <fieldset>
-                                <div class="flex flex-alignCenter flex-fullJustified font-size-sm text-primary p-a-15x"
-                                     href="#">
-                                    <span>Same as Shipping Address?</span>
-                                    <div class="@if(!$first)radio-checkBox @endif @if($first || 1 == $input['isd']) open @endif">
-                                        <div class="radio-checkItem"></div>
-                                        @if($first || 1 == $input['isd'])
-                                            <input type="radio" name="isd" id="address-default" hidden value="0">
-                                            <input type="radio" name="isd" id="address-primary" hidden value="1"
-                                                   checked="checked">
-                                        @else
-                                            <input type="radio" name="isd" id="address-default" hidden value="0"
-                                                   checked="checked">
-                                            <input type="radio" name="isd" id="address-primary" hidden value="1">
-                                        @endif
-                                    </div>
+
+                        <fieldset>
+                            <div class="flex flex-alignCenter flex-fullJustified font-size-sm text-primary p-a-15x">
+                                <span>Same as Shipping Address?</span>
+                                <div class="radio-checkBox open">
+                                    <div class="radio-checkItem"></div>
                                 </div>
-                            </fieldset>
-                            <input type="hidden" name="route" value="/cart/addradd">
-                            @if(isset($checkout) && !empty($checkout))
-                                @foreach($checkout as $name => $value)
-                                    <input type="hidden" name="{{$name}}" value="{{ $value }}">
-                                @endforeach
-                            @endif
-                            <hr class="hr-base m-a-0">
-                            <fieldset>
-                                <div class="flex flex-alignCenter flex-fullJustified font-size-sm text-primary p-a-15x address-option"
-                                     id="country">
-                                    <span>Country</span>
-                                    <div>
-                                        <span>{{ $country['country_name_en'] }}</span>
-                                        <i class="iconfont icon-arrow-right icon-size-xm text-common"></i>
-                                        <input type="text" name="country" hidden
-                                               value="{{$country['country_name_en']}}">
-                                    </div>
+                            </div>
+                        </fieldset>
+                        <hr class="hr-base m-a-0">
+                        <fieldset>
+                            <div class="flex flex-alignCenter flex-fullJustified font-size-sm text-primary p-a-15x address-option"
+                                 id="country">
+                                <span>Country</span>
+                                <div>
+                                    <span>{{Session::get('user.checkout.address.country')}}</span>
+                                    <i class="iconfont icon-arrow-right icon-size-xm text-common"></i>
+                                    <input type="text" name="country" hidden value="{{Session::get('user.checkout.address.country')}}">
                                 </div>
-                            </fieldset>
-                            <fieldset>
-                                <input name="email" type="hidden" data-optional="true" data-role="email"
-                                       value="{{!empty($input['email']) ? $input['email'] : Session::get('user.login_email')}}"
-                                       placeholder="Email Address">
-                            </fieldset>
-                            <hr class="hr-base m-a-0">
-                            <fieldset>
-                                <input class="form-control form-control-block p-a-15x font-size-sm" name="name"
-                                       type="text"
-                                       maxlength="32" data-optional="false" data-role="name"
-                                       value="{{ !empty($input['name']) ? $input['name'] : "" }}" placeholder="Name">
-                            </fieldset>
-                            <hr class="hr-base m-a-0">
-                            <fieldset>
-                                <input class="form-control form-control-block p-a-15x font-size-sm" name="addr1"
-                                       type="text"
-                                       data-optional="false" data-role="street"
-                                       value="{{!empty($input['addr1']) ? $input['addr1'] : ""}}" placeholder="Street1">
-                            </fieldset>
-                            <hr class="hr-base m-a-0">
-                            <fieldset>
-                                <input class="form-control form-control-block p-a-15x font-size-sm" name="addr2"
-                                       type="text"
-                                       data-optional="true" value="{{!empty($input['addr2']) ? $input['addr2'] : ""}}"
-                                       placeholder="Street2 (optional)">
-                            </fieldset>
-                            <hr class="hr-base m-a-0">
-                            <fieldset>
-                                <input class="form-control form-control-block p-a-15x font-size-sm" name="city"
-                                       type="text"
-                                       data-optional="false" data-role="city"
-                                       value="{{$input['city']}}" placeholder="City">
-                            </fieldset>
-                            <hr class="hr-base m-a-0">
-                            <fieldset>
-                                <input type="hidden" name="countryid" value="{{ $country['country_id'] }}">
-                                <input type="hidden" name="countryState"
-                                       value="{{ base64_encode(json_encode($country)) }}">
-                                @if($country['child_type']==0)
-                                    <input class="form-control form-control-block p-a-15x font-size-sm" name="state"
-                                           type="text"
-                                           data-optional="true"
-                                           value="{{$state['state_name_sn']}}"
-                                           placeholder="{{$country['child_label']}}">
-                                @elseif($country['child_type']==1)
-                                    <input class="form-control form-control-block p-a-15x font-size-sm" name="state"
-                                           type="text"
-                                           data-optional="false" value="{{$state['state_name_sn']}}" data-role="State"
-                                           placeholder="{{$country['child_label']}}">
-                                @else
-                                    <div class="flex flex-alignCenter flex-fullJustified font-size-sm text-primary p-a-15x address-option"
-                                         id="stateselect">
-                                        <span>{{ $country['child_label'] }}</span>
-                                        <div>
-                                            <span>{{ $state['state_name_sn'] }}</span>
-                                            <i class="iconfont icon-arrow-right icon-size-xm text-common"></i>
-                                            <input type="text" name="state" data-optional="false" hidden
-                                                   data-role="State"
-                                                   value="{{$state['state_name_sn']}}">
-                                        </div>
-                                        <div class="bg-option bg-country"></div>
-                                    </div>
-                                @endif
-                            </fieldset>
-                            <hr class="hr-base m-a-0">
-                            <fieldset>
-                                <input class="form-control form-control-block p-a-15x font-size-sm" name="zip"
-                                       type="text"
-                                       maxlength="10" data-optional="false" data-role="zip code"
-                                       value="{{ !empty($input['zip']) ? $input['zip'] : "" }}"
-                                       placeholder="{{$country['zipcode_label']}}">
-                            </fieldset>
-                            <hr class="hr-base m-a-0">
-                            <fieldset>
-                                <input class="form-control form-control-block p-a-15x font-size-sm" name="tel"
-                                       type="tel"
-                                       maxlength="20" data-optional="false" data-role="Phone"
-                                       value="{{!empty($input['tel']) ? $input['tel'] : ""}}" placeholder="Phone">
-                            </fieldset>
-                        </form>
+                            </div>
+                        </fieldset>
+                        <hr class="hr-base m-a-0">
+                        <fieldset>
+                            <input class="form-control form-control-block p-a-15x font-size-sm" name="name"
+                                   type="text"
+                                   maxlength="32" data-optional="false" data-role="name"
+                                   value="{{Session::get('user.checkout.address.name')}}" placeholder="Name">
+                        </fieldset>
+                        <hr class="hr-base m-a-0">
+                        <fieldset>
+                            <input class="form-control form-control-block p-a-15x font-size-sm" name="addr1"
+                                   type="text"
+                                   data-optional="false" data-role="street"
+                                   value="{{Session::get('user.checkout.address.detail_address1')}}" placeholder="Street1">
+                        </fieldset>
+                        <hr class="hr-base m-a-0">
+                        <fieldset>
+                            <input class="form-control form-control-block p-a-15x font-size-sm" name="addr2"
+                                   type="text"
+                                   data-optional="true" value="{{Session::get('user.checkout.address.addr2')}}"
+                                   placeholder="Street2 (optional)">
+                        </fieldset>
+                        <hr class="hr-base m-a-0">
+                        <fieldset>
+                            <input class="form-control form-control-block p-a-15x font-size-sm" name="city"
+                                   type="text"
+                                   data-optional="false" data-role="city"
+                                   value="{{Session::get('user.checkout.address.city')}}" placeholder="City">
+                        </fieldset>
+                        <hr class="hr-base m-a-0">
+                        <fieldset>
+                            {{--动态加载州数据--}}
+                        </fieldset>
+                        <hr class="hr-base m-a-0">
+                        <fieldset>
+                            <input class="form-control form-control-block p-a-15x font-size-sm" name="zip"
+                                   type="text"
+                                   maxlength="10" data-optional="false" data-role="zip code"
+                                   value="{{Session::get('user.checkout.address.zip')}}"
+                                   placeholder="{{--动态提示文案--}}">
+                        </fieldset>
+                        <hr class="hr-base m-a-0">
+                        <fieldset>
+                            <input class="form-control form-control-block p-a-15x font-size-sm" name="tel"
+                                   type="tel"
+                                   maxlength="20" data-optional="false" data-role="Phone"
+                                   value="{{Session::get('user.checkout.address.telephone')}}" placeholder="Phone">
+                        </fieldset>
+
                         <hr class="hr-base m-a-0">
                         <!-- Save 按钮 -->
                         <div class="container-fluid p-x-10x p-y-15x">
