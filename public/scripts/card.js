@@ -536,17 +536,17 @@ Card = (function() {
   Card.prototype.defaults = {
     formatting: true,
     formSelectors: {
-      numberInput: 'input[name="number"]',
+      numberInput: 'input[name="card"]',
       expiryInput: 'input[name="expiry"]',
-      cvcInput: 'input[name="cvc"]'
+      cvcInput: 'input[name="cvv"]'
       //nameInput: 'input[name="name"]'
     },
     cardSelectors: {
       cardContainer: '.card-container',
       card: '.card',
-      numberDisplay: '.number',
+      numberDisplay: '.card',
       expiryDisplay: '.expiry',
-      cvcDisplay: '.cvc'
+      cvcDisplay: '.cvv'
       //nameDisplay: '.name'
     },
     messages: {

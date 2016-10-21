@@ -109,18 +109,18 @@
                     <div class="cardinfo-wrapper font-size-sm">
                         <div class="cardinfo-item">
                             <input class="cardinfo-input" type="tel" data-braintree-name="number"
-                                   value="" placeholder="Card Number" data-role="Card Number" data-optional=""
-                                   id="cardNum" maxlength="20" name="number">
+                                   value="" placeholder="Card Number" data-role="Card Number"
+                                   id="cardNum" maxlength="20" name="card">
                         </div>
                     </div>
                     <div class="cardinfo-wrapper font-size-sm">
                         <div class="cardinfo-item">
                             <input class="cardinfo-input" type="text" data-braintree-name="expiration_date"
-                                   value="" placeholder="MM/YY" data-role="expires" data-optional="" maxlength="9" name="expiry">
+                                   value="" placeholder="MM/YY" data-role="expires" maxlength="9" name="expiry">
                         </div>
                         <div class="cardinfo-item">
                             <input class="cardinfo-input" type="tel" data-braintree-name="cvv" value=""
-                                   placeholder="CVV" data-optional="" maxlength="4" name="cvc">
+                                   placeholder="CVV" maxlength="4" name="cvv">
                         </div>
                     </div>
                     <!-- 错误提示信息 -->
@@ -129,7 +129,6 @@
                         <span class="font-size-xs">错误提示信息</span>
                     </div>
                     <hr class="hr-base m-a-0">
-                </form>
 
                 <!-- BILLING ADRESS -->
                 <div class="text-primary">
@@ -158,6 +157,7 @@
                                     <span id="countryName">{{Session::get('user.checkout.address.country')}}</span>
                                     <i class="iconfont icon-arrow-right icon-size-xm text-common"></i>
                                     <input type="text" name="country" hidden value="{{Session::get('user.checkout.address.country')}}">
+                                    <input type="text" name="csn" hidden value="{{Session::get('user.checkout.address.country')}}">
                                 </div>
                             </div>
                         </fieldset>
@@ -224,7 +224,7 @@
                         </div>
                     </section>
                 </div>
-
+                </form>
             </div>
             <!-- promotion code -->
             <div class="pageview shipping-promotion" id="shipping-promotion">
@@ -336,7 +336,7 @@
                             <div class="flex flex-alignCenter flex-fullJustified font-size-sm text-primary p-x-15x p-y-15x country-item"
                                  data-cid="{{$value['country_id']}}" data-cname="{{$value['country_name_en']}}"
                                  data-type="{{$value['child_type']}}" data-childlabel="{{$value['child_label']}}"
-                                 data-zipcode="{{$value['zipcode_label']}}">
+                                 data-zipcode="{{$value['zipcode_label']}}" data-csn="{{$value['country_name_sn']}}">
                                 <span>{{$value['country_name_en']}}</span>
                                 <i class="iconfont icon-check icon-size-sm text-common"></i>
                             </div>

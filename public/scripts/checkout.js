@@ -315,9 +315,11 @@
         var CountryId = $('[data-cname="' + Country + '"]').data('cid'),
             SelectType = $('[data-cname="' + Country + '"]').data('type'),
             ChildLabel = $('[data-cname="' + Country + '"]').data('childlabel'),
-            ZipCode = $('[data-cname="' + Country + '"]').data('zipcode');
+            ZipCode = $('[data-cname="' + Country + '"]').data('zipcode'),
+            CountryCsn = $('[data-cname="' + Country + '"]').data('csn');
         // 初始化 ZipCode
-        $('input[name="zip"]').attr('placeholder', ZipCode);
+        $
+        ('input[name="zip"]').attr('placeholder', ZipCode);
         // 初始化国家列表
         $('.country-item').removeClass('active');
         $('[data-cid=' + CountryId + ']').addClass('active');
@@ -328,6 +330,7 @@
         $('#btn-toCountryList').data('zipcode', ZipCode);
         $('#countryName').html(Country);
         $('input[name="country"]').val(Country);
+        $('input[name="csn"]').val(CountryCsn);
 
         if (SelectType != undefined && SelectType === 0) {
             // 洲为选填
@@ -407,7 +410,9 @@
 
         // 判断是否在 payment 页面,修改默认国家地址
         if ($('#payment-checkBox').length > 0) {
-            var OldCountryName = $('#btn-toCountryList').data('oldcountry');
+            var OldCountryName = $('#btn-toCountryList').data('oldcountry'),
+                CountryCsn = $(this).data('csn');
+            $('input[name="csn"]').val(CountryCsn);
             if ($('#countryName').html() != OldCountryName) {
                 $('#payment-checkBox').removeClass('open');
             }
@@ -586,6 +591,19 @@
         }
     });
 
+    // 提交卡信息
+    $('#btn-submitAddCard').on('click', function () {
+        $.ajax({
+                url: '/checkout/addcard',
+                type: 'POST',
+                data: $('#card-container').serialize()
+            })
+            .done(function (data) {
+                if (data.success) {
+                    window.location.href = '/checkout/shipping';
+                }
+            })
+    });
     // payment end
 
 
