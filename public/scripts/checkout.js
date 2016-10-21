@@ -492,6 +492,10 @@
     // 添加卡
     $('.btn-toAddCard').on('click', function () {
         toPage($('.shipping-addCard'));
+        var CountryName = $('#btn-toCountryList').data('oldcountry');
+        var StateName = $('.state-info').data('oldstate');
+        // 初始化 国家,洲
+        initCityState(CountryName, StateName);
     });
 
     // 取消添加卡信息
@@ -513,6 +517,16 @@
     $('#card-container').card({
         container: '.card-wrapper'
     });
+
+    // 取消选择国家
+    $('#cancel-paymentCountry').on('click', function () {
+        toPage($('.shipping-addCard'));
+    });
+    // 取消选择州
+    $('#cancel-paymentState').on('click', function () {
+        toPage($('.shipping-addCard'));
+    });
+
     // payment end
 
 
