@@ -255,7 +255,7 @@
                     <!-- 优惠券列表 -->
                     <div class="p-a-15x">
                         @inject('getDate', 'App\Services\Publicfun')
-                        @foreach($couponlist['list'] as $value)
+                        @foreach($coupon['list'] as $value)
                             <div class="promotion-item">
                                 <div class="mask"></div>
                                 <div class="promotion-info bg-promotion p-a-10x">
@@ -314,27 +314,12 @@
                             </span>
                                 </div>
                                 <div class="promotion-time text-primary p-a-10x text-right font-size-sm">
-                                    Expire: {{ $getDate->getMyDate(date('Y-m-d H:i',substr($value['expiry_time'],0,10))) }}
+                                    Expire: {{ $getDate->getMyDate(date('Y-m-d H:i',$value['expiry_time']/1000)) }}
                                 </div>
                             </div>
                         @endforeach
                     </div>
 
-                    <!-- 邀请好友 -->
-                    <aside class="bg-white m-t-20x">
-                        <hr class="hr-base m-a-0">
-                        <a class="flex flex-alignCenter flex-fullJustified font-size-sm text-primary p-a-15x"
-                           href="/invitefriends">
-                            <div class="flex flex-alignCenter">
-                            <span class="p-r-15x">
-                                <img src="{{env('CDN_Static')}}/images/icon/gift-small.png"
-                                     srcset="{{env('CDN_Static')}}/images/icon/gift-small@2x.png 2x,{{env('CDN_Static')}}/images/icon/gift-small@3x.png 3x">
-                            </span>
-                                <span>Share Motif with friends. They get $20 off, and you will too after their first purchase.</span>
-                            </div>
-                            <i class="iconfont icon-arrow-right icon-size-xm text-common"></i>
-                        </a>
-                    </aside>
                     <hr class="hr-base m-a-0">
                 </section>
 

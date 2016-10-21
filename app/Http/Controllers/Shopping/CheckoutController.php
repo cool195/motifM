@@ -74,8 +74,8 @@ class CheckoutController extends ApiController
             }
         }
         $country = $this->getCountry();
-        
-        return View('checkout.payment', ['payInfo' => $payInfo['data']['list'], 'couponInfo' => $couponInfo, 'country' => $country['data']]);
+
+        return View('checkout.payment', ['payInfo' => $payInfo['data']['list'], 'coupon' => $coupon['data'], 'couponInfo' => $couponInfo, 'country' => $country['data']]);
     }
 
     //review
