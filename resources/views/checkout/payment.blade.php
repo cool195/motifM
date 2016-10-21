@@ -75,25 +75,25 @@
             <div class="pageview shipping-addCard hidden" id="shipping-addCard">
                 <!-- 可支付的卡列表 -->
                 <div class="text-center p-t-10x p-b-5x">
-                    <span class="m-x-10x img-card active"><img
+                    <span class="m-x-10x img-card" id="img-visa"><img
                                 src="{{env('CDN_Static')}}/images/payment/icon-visa.png{{'?v='.config('app.version')}}"
                                 srcset="{{env('CDN_Static')}}/images/payment/icon-visa@2x.png{{'?v='.config('app.version')}} 2x, {{env('CDN_Static')}}/images/payment/icon-visa@3x.png{{'?v='.config('app.version')}} 3x"
                                 alt="">
                     <div class="mask"></div>
                     </span>
-                    <span class="m-x-10x img-card"><img
+                    <span class="m-x-10x img-card" id="img-maestro"><img
                                 src="{{env('CDN_Static')}}/images/payment/icon-maestro.png{{'?v='.config('app.version')}}"
                                 srcset="{{env('CDN_Static')}}/images/payment/icon-maestro@2x.png{{'?v='.config('app.version')}} 2x, {{env('CDN_Static')}}/images/payment/icon-maestro@3x.png{{'?v='.config('app.version')}} 3x"
                                 alt="">
                     <div class="mask"></div>
                     </span>
-                    <span class="m-x-10x img-card"><img
+                    <span class="m-x-10x img-card" id="img-american"><img
                                 src="{{env('CDN_Static')}}/images/payment/icon-americanexpress.png{{'?v='.config('app.version')}}"
                                 srcset="{{env('CDN_Static')}}/images/payment/icon-americanexpress@2x.png{{'?v='.config('app.version')}} 2x, {{env('CDN_Static')}}/images/payment/icon-americanexpress@3x.png{{'?v='.config('app.version')}} 3x"
                                 alt="">
                     <div class="mask"></div>
                     </span>
-                    <span class="m-x-10x img-card"><img
+                    <span class="m-x-10x img-card" id="img-jcb"><img
                                 src="{{env('CDN_Static')}}/images/payment/icon-jcb.png{{'?v='.config('app.version')}}"
                                 srcset="{{env('CDN_Static')}}/images/payment/icon-jcb@2x.png{{'?v='.config('app.version')}} 2x, {{env('CDN_Static')}}/images/payment/icon-jcb@3x.png{{'?v='.config('app.version')}} 3x"
                                 alt="">
@@ -103,22 +103,23 @@
                 <hr class="hr-base m-a-0">
 
                 <!-- 填写卡号 日期 CVV -->
-                <form class="cardform-container" id="card-container" method="post">
+                <div class="card-wrapper" style="display: none;"></div>
+                <form class="cardform-container" id="card-container" method="">
                     <div class="cardinfo-wrapper font-size-sm">
                         <div class="cardinfo-item">
                             <input class="cardinfo-input" type="tel" data-braintree-name="number"
                                    value="" placeholder="Card Number" data-role="Card Number" data-optional=""
-                                   id="cardNum" maxlength="20">
+                                   id="cardNum" maxlength="20" name="number">
                         </div>
                     </div>
                     <div class="cardinfo-wrapper font-size-sm">
                         <div class="cardinfo-item">
                             <input class="cardinfo-input" type="text" data-braintree-name="expiration_date"
-                                   value="" placeholder="MM/YY" data-role="expires" data-optional="" maxlength="8">
+                                   value="" placeholder="MM/YY" data-role="expires" data-optional="" maxlength="9" name="expiry">
                         </div>
                         <div class="cardinfo-item">
                             <input class="cardinfo-input" type="tel" data-braintree-name="cvv" value=""
-                                   placeholder="CVV" data-optional="" maxlength="4">
+                                   placeholder="CVV" data-optional="" maxlength="4" name="cvc">
                         </div>
                     </div>
                     <!-- 错误提示信息 -->
@@ -392,10 +393,13 @@
     </div>
 </div>
 
+
 </body>
 <script src="{{env('CDN_Static')}}/scripts/vendor.js{{'?v='.config('app.version')}}"></script>
+<script src="{{env('CDN_Static')}}/scripts/card.js"></script>
 <script src="{{env('CDN_Static')}}/scripts/Checkout.js{{'?v='.config('app.version')}}"></script>
 <script src="{{env('CDN_Static')}}/scripts/orderCheckout-addressList.js{{'?v='.config('app.version')}}"></script>
+
 @include('global')
 <meta name="csrf-token" content="{{ csrf_token() }}"/>
 <script>
