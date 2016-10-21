@@ -321,8 +321,8 @@ class CheckoutController extends ApiController
     //绑定支付信息
     public function addCard(Request $request)
     {
-
-        $cardInfo = MCrypt::encrypt($request->get('month') . $request->get('year') . $request->get('card') . '/' . $request->get('cvv'));
+        $expiry = explode('/',$request->get('expiry'));
+        $cardInfo = MCrypt::encrypt(trim($expiry[0]) . trim($expiry[1]) . $request->get('card') . '/' . $request->get('cvv'));
 
         $params = array(
             'cmd' => 'acrd',
@@ -341,8 +341,8 @@ class CheckoutController extends ApiController
         $params['zip'] = $request->get('zip');
         $params['country'] = $request->get('country');
         $params['csn'] = $request->get('csn');
-        $params['cardinfo'] = [$request->get('expiry'),$request->get('card'),$request->get('cvv')];
-        return $params;
-        //return $this->request('openapi', '', 'pay', $params);
+
+
+        return $this->request('openapi', '', 'pay', $params);
     }
 }
