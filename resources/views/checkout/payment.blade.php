@@ -254,13 +254,11 @@
 
                     <!-- 优惠券列表 -->
                     <div class="p-a-15x">
-                        @inject('getDate', 'App\Services\Publicfun')
                         @foreach($coupon['list'] as $value)
-                            <div class="promotion-item">
+                            <div class="promotion-item @if($value['usable']){{'bindidcode'}}@endif" data-bindid="{{$value['bind_id']}}">
                                 <div class="mask"></div>
-                                <div class="promotion-info bg-promotion p-a-10x">
-                                    <div class="promotion-title text-white"><strong>{{$value['cp_title']}}</strong>
-                                    </div>
+                                <div class="promotion-info @if($value['usable']){{'bg-promotion'}}@else{{'bg-promotionOver'}}@endif p-a-10x">
+                                    <div class="promotion-title text-white"><strong>{{$value['cp_title']}}</strong></div>
                                     <div class="font-size-sm text-white">{{$value['prompt_words']}}</div>
                                     <span class="bg-point-right"></span>
                                     <span class="bg-point-left"></span>
@@ -309,12 +307,11 @@
                                         <li></li>
                                         <li></li>
                                     </ul>
-                            <span class="promotion-radio">
+                            <span class="promotion-radio @if($value['selected']){{'active'}}@endif">
                                 <i class="iconfont icon-check icon-size-md text-white"></i>
                             </span>
                                 </div>
-                                <div class="promotion-time text-primary p-a-10x text-right font-size-sm">
-                                    Expire: {{ $getDate->getMyDate(date('Y-m-d H:i',$value['expiry_time']/1000)) }}
+                                <div class="promotion-time text-primary p-a-10x text-right font-size-sm">Expires: {{date("M d, Y", ($value['expiry_time'] / 1000))}}
                                 </div>
                             </div>
                         @endforeach
@@ -384,7 +381,7 @@
 
 </body>
 <script src="{{env('CDN_Static')}}/scripts/vendor.js{{'?v='.config('app.version')}}"></script>
-<script src="{{env('CDN_Static')}}/scripts/card.js"></script>
+<script src="{{env('CDN_Static')}}/scripts/card.js{{'?v='.config('app.version')}}"></script>
 <script src="{{env('CDN_Static')}}/scripts/Checkout.js{{'?v='.config('app.version')}}"></script>
 <script src="{{env('CDN_Static')}}/scripts/orderCheckout-addressList.js{{'?v='.config('app.version')}}"></script>
 
