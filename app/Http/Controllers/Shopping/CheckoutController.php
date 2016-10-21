@@ -341,8 +341,8 @@ class CheckoutController extends ApiController
         $params['zip'] = $request->get('zip');
         $params['country'] = $request->get('country');
         $params['csn'] = $request->get('csn');
-
-
-        return $this->request('openapi', '', 'pay', $params);
+        $params['cardinfo'] = [$request->get('expiry'),$request->get('card'),$request->get('cvv')];
+        return $params;
+        //return $this->request('openapi', '', 'pay', $params);
     }
 }
