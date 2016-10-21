@@ -152,7 +152,7 @@
                         <hr class="hr-base m-a-0">
                         <fieldset>
                             <div class="flex flex-alignCenter flex-fullJustified font-size-sm text-primary p-a-15x address-option"
-                                 id="country" data-oldcountry="" data-newcountry="">
+                                 id="country" data-oldcountry="{{Session::get('user.checkout.address.country')}}" data-newcountry="{{$country['commonlist'][0]['country_name_en']}}">
                                 <span>Country</span>
                                 <div>
                                     <span>{{Session::get('user.checkout.address.country')}}</span>
@@ -166,25 +166,24 @@
                             <input class="form-control form-control-block p-a-15x font-size-sm" name="name"
                                    type="text"
                                    maxlength="32" data-optional="false" data-role="name"
-                                   value="{{Session::get('user.checkout.address.name')}}" placeholder="Name" data-oldname="">
+                                   value="{{Session::get('user.checkout.address.name')}}" placeholder="Name" data-oldname="{{Session::get('user.checkout.address.name')}}">
                         </fieldset>
                         <hr class="hr-base m-a-0">
                         <fieldset>
-                            <input class="form-control form-control-block p-a-15x font-size-sm" name="addr1"
-                                   type="text"
+                            <input class="form-control form-control-block p-a-15x font-size-sm" name="addr1" type="text"
                                    data-optional="false" data-role="street"
-                                   value="{{Session::get('user.checkout.address.detail_address1')}}" placeholder="Street1">
+                                   value="{{Session::get('user.checkout.address.detail_address1')}}" placeholder="Street1" data-oldaddr1="{{Session::get('user.checkout.address.detail_address1')}}">
                         </fieldset>
                         <hr class="hr-base m-a-0">
                         <fieldset>
                             <input class="form-control form-control-block p-a-15x font-size-sm" name="addr2"
                                    type="text"
-                                   data-optional="true" value="{{Session::get('user.checkout.address.addr2')}}"
+                                   data-optional="true" value="{{Session::get('user.checkout.address.detail_address2')}}" data-oldaddr2="{{Session::get('user.checkout.address.detail_address2')}}"
                                    placeholder="Street2 (optional)">
                         </fieldset>
                         <hr class="hr-base m-a-0">
                         <fieldset>
-                            <input class="form-control form-control-block p-a-15x font-size-sm" name="city"
+                            <input class="form-control form-control-block p-a-15x font-size-sm" name="city" data-oldcity="{{Session::get('user.checkout.address.city')}}"
                                    type="text"
                                    data-optional="false" data-role="city"
                                    value="{{Session::get('user.checkout.address.city')}}" placeholder="City">
@@ -197,7 +196,7 @@
                         </fieldset>
                         <hr class="hr-base m-a-0">
                         <fieldset>
-                            <input class="form-control form-control-block p-a-15x font-size-sm" name="zip"
+                            <input class="form-control form-control-block p-a-15x font-size-sm" name="zip" data-oldzip="{{Session::get('user.checkout.address.zip')}}"
                                    type="text"
                                    maxlength="10" data-optional="false" data-role="zip code"
                                    value="{{Session::get('user.checkout.address.zip')}}"
@@ -205,7 +204,7 @@
                         </fieldset>
                         <hr class="hr-base m-a-0">
                         <fieldset>
-                            <input class="form-control form-control-block p-a-15x font-size-sm" name="tel"
+                            <input class="form-control form-control-block p-a-15x font-size-sm" name="tel" data-oldtel="{{Session::get('user.checkout.address.telephone')}}"
                                    type="tel"
                                    maxlength="20" data-optional="false" data-role="Phone"
                                    value="{{Session::get('user.checkout.address.telephone')}}" placeholder="Phone">

@@ -73,8 +73,9 @@ class CheckoutController extends ApiController
                 $couponInfo = $value;
             }
         }
-
-        return View('checkout.payment', ['payInfo' => $payInfo['data']['list'], 'couponInfo' => $couponInfo]);
+        $country = $this->getCountry();
+        
+        return View('checkout.payment', ['payInfo' => $payInfo['data']['list'], 'couponInfo' => $couponInfo, 'country' => $country['data']]);
     }
 
     //review
@@ -88,6 +89,14 @@ class CheckoutController extends ApiController
     {
         $result = $this->addrList();
 
+        $country = $this->getCountry();
+
+        return View('checkout.address', ['address' => $result['data']['list'], 'country' => $country['data']]);
+    }
+
+    //获取国家列表
+    public function getCountry()
+    {
         $params = array(
             'cmd' => 'country',
             'token' => Session::get('user.token'),
@@ -109,8 +118,7 @@ class CheckoutController extends ApiController
                 $country['data']['commonlist'] = $commonlist;
             }
         }
-
-        return View('checkout.address', ['address' => $result['data']['list'], 'country' => $country['data']]);
+        return $country;
     }
 
     //获取地址列表
@@ -170,9 +178,10 @@ class CheckoutController extends ApiController
     }
 
     //动态切换配送方式
-    public function selShip($type){
-        foreach (Session::get('user.checkout.shipping') as $value){
-            if($value['logistics_type']==$type){
+    public function selShip($type)
+    {
+        foreach (Session::get('user.checkout.shipping') as $value) {
+            if ($value['logistics_type'] == $type) {
                 Session::put('user.checkout.selship', $value);
             }
         }
