@@ -191,7 +191,7 @@
                         <hr class="hr-base m-a-0">
                         <fieldset>
                             {{--动态加载州数据 state--}}
-                            <div class="state-info" data-oldstate="">
+                            <div class="state-info" data-oldstate="{{Session::get('user.checkout.address.state')}}">
                             </div>
                         </fieldset>
                         <hr class="hr-base m-a-0">
