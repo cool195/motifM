@@ -171,7 +171,7 @@
                                         @if($value['isDefault']==1)
                                             <span class="text-common p-r-10x">Default</span>
                                         @endif
-                                        <i class="iconfont icon-radio icon-size-sm text-common @if($value['isDefault']==1) active @endif"></i>
+                                        <i class="iconfont icon-radio icon-size-sm text-common @if(Session::get('user.checkout.address.receiving_id')==$value['receiving_id']) active @endif"></i>
                                     </div>
 
                                 </div>
@@ -187,7 +187,7 @@
                     </aside>
                     <hr class="hr-base m-a-0">
                     <aside class="p-a-15x">
-                        <div class="btn btn-block btn-primary" data-role="submit">Continue</div>
+                        <div class="btn btn-block btn-primary" data-url="{{'/checkout/shipping'}}" id="submit-address">Continue</div>
                     </aside>
                 </section>
 

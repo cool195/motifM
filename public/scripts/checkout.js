@@ -42,6 +42,12 @@
     // shipping end
 
     // AddressList begin
+
+    // 提交 Address 选择信息 （continue 按钮)
+    $('#submit-address').on('click', function () {
+        window.location.href = $(this).data('url')
+    });
+
     // 点击 添加地址
     $('#btn-toAddAddress').on('click', function () {
         toPage($('.shipping-editorAddress'));
@@ -167,6 +173,17 @@
             $('.icon-radio.active').removeClass('active');
             $(this).find('.icon-radio').addClass('active');
             $('input[name="aid"]').val(Aid); // 需要提交的项
+            //更新选择地址
+            $.ajax({
+                url: '/checkout/selAddr/'+Aid,
+                type: 'GET',
+            })
+
+                .done(function (data) {
+                    if(data.receiving_id == Aid){
+                        window.location.href = '/checkout/shipping';
+                    }
+                })
         } else if (Action === 'edit') {
             // 跳转到编辑页面
             //$('input[name="eid"]').val(Aid); // 需要修改的项

@@ -81,20 +81,7 @@ class CheckoutController extends ApiController
     //地址管理
     public function address()
     {
-        $params = array(
-            'cmd' => 'list',
-            'uuid' => $_COOKIE['uid'],
-            'token' => Session::get('user.token'),
-            'pin' => Session::get('user.pin'),
-        );
-        $system = "";
-        $service = "useraddr";
-        $result = $this->request('openapi', $system, $service, $params);
-        if (empty($result)) {
-            $result['success'] = false;
-            $result['error_msg'] = "Data access failed";
-            $result['data'] = array();
-        }
+        $result = $this->addrList();
 
         $params = array(
             'cmd' => 'country',
@@ -121,6 +108,26 @@ class CheckoutController extends ApiController
         return View('checkout.address', ['address' => $result['data']['list'], 'country' => $country['data']]);
     }
 
+    //获取地址列表
+    public function addrList()
+    {
+        $params = array(
+            'cmd' => 'list',
+            'uuid' => $_COOKIE['uid'],
+            'token' => Session::get('user.token'),
+            'pin' => Session::get('user.pin'),
+        );
+        $system = "";
+        $service = "useraddr";
+        $result = $this->request('openapi', $system, $service, $params);
+        if (empty($result)) {
+            $result['success'] = false;
+            $result['error_msg'] = "Data access failed";
+            $result['data'] = array();
+        }
+        return $result;
+    }
+
     //获取默认地址
     private function getUserDefaultAddr()
     {
@@ -143,6 +150,18 @@ class CheckoutController extends ApiController
             }
         }
         return $result;
+    }
+
+    //动态切换选择地址
+    public function selAddr($aid)
+    {
+        $address = $this->addrList();
+        foreach ($address['data']['list'] as $value) {
+            if ($value['receiving_id'] == $aid) {
+                Session::put('user.checkout.address', $value);
+                return $value;
+            }
+        }
     }
 
     //获取物流方式
