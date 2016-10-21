@@ -471,8 +471,7 @@
                     }
                 })
         }
-
-        return false;
+        window.location.reload();
     });
 
     // 取消修改国家
