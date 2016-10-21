@@ -45,7 +45,7 @@
                 <div class="p-y-10x p-x-15x font-size-sm text-primary">
                     <div class="p-b-5x">
                         <span><strong>SHIP TO</strong></span>
-                        <span class="text-underLine pull-right" id="review-editShipTo">Edit</span>
+                        <a class="text-underLine pull-right text-primary" href="/checkout/shipping" id="review-editShipTo">Edit</a>
                     </div>
                     <div class="">
                         <span>Ming</span><br>
@@ -61,7 +61,7 @@
                 <div class="p-y-10x p-x-15x font-size-sm text-primary">
                     <div class="p-b-5x">
                         <span><strong>SHIPPING METHOD</strong></span>
-                        <span class="text-underLine pull-right" id="review-method">Edit</span>
+                        <a class="text-underLine pull-right text-primary" href="/checkout/shipping" id="review-method">Edit</a>
                     </div>
                     <div class="">
                         Expedited Shipping / 3-4 business days $20.00
@@ -73,7 +73,7 @@
                 <div class="p-y-10x p-x-15x font-size-sm text-primary">
                     <div class="p-b-5x">
                         <span><strong>PAYMENT METHOD</strong></span>
-                        <span class="text-underLine pull-right" id="review-payment">Edit</span>
+                        <a class="text-underLine pull-right text-primary" href="/checkout/payment" id="review-payment">Edit</a>
                     </div>
                     <div class="">
                         <span>Card: 6202 *** *** *** 1203</span><br>
