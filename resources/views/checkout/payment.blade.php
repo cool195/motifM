@@ -73,7 +73,7 @@
 
             </div>
             <!-- 添加卡 -->
-            <div class="pageview shipping-addCard hidden" id="shipping-addCard">
+            <div class="pageview shipping-addCard" id="shipping-addCard">
                 <!-- 可支付的卡列表 -->
                 <div class="text-center p-t-10x p-b-5x">
                     <span class="m-x-10x img-card" id="img-visa"><img
@@ -152,7 +152,7 @@
                         <hr class="hr-base m-a-0">
                         <fieldset>
                             <div class="flex flex-alignCenter flex-fullJustified font-size-sm text-primary p-a-15x address-option"
-                                 id="country">
+                                 id="country" data-oldcountry="" data-newcountry="">
                                 <span>Country</span>
                                 <div>
                                     <span>{{Session::get('user.checkout.address.country')}}</span>
@@ -166,7 +166,7 @@
                             <input class="form-control form-control-block p-a-15x font-size-sm" name="name"
                                    type="text"
                                    maxlength="32" data-optional="false" data-role="name"
-                                   value="{{Session::get('user.checkout.address.name')}}" placeholder="Name">
+                                   value="{{Session::get('user.checkout.address.name')}}" placeholder="Name" data-oldname="">
                         </fieldset>
                         <hr class="hr-base m-a-0">
                         <fieldset>
@@ -191,7 +191,9 @@
                         </fieldset>
                         <hr class="hr-base m-a-0">
                         <fieldset>
-                            {{--动态加载州数据--}}
+                            {{--动态加载州数据 state--}}
+                            <div class="state-info" data-oldstate="">
+                            </div>
                         </fieldset>
                         <hr class="hr-base m-a-0">
                         <fieldset>
@@ -226,7 +228,7 @@
 
             </div>
             <!-- promotion code -->
-            <div class="pageview shipping-promotion hidden" id="shipping-promotion">
+            <div class="pageview shipping-promotion" id="shipping-promotion">
                 <section class="m-b-20x reserve-height">
                     <article class="font-size-md text-main p-a-10x bg-title"><strong>Promotion Code</strong></article>
                     <hr class="hr-base m-a-0">
@@ -337,6 +339,58 @@
                     <hr class="hr-base m-a-0">
                 </section>
 
+            </div>
+
+            <!-- 选择 country -->
+            <div class="pageview shipping-chooseCountry" id="shipping-chooseCountry">
+                <section class="p-b-10x reserve-height">
+                    <article class="p-x-15x p-y-10x flex flex-fullJustified flex-alignCenter bg-title">
+                        <span class="font-size-md text-main"><strong>Select Country</strong></span>
+                        <a class="btn btn-primary-outline btn-sm" id="cancel-country">Cancel</a>
+                    </article>
+                    <hr class="hr-base m-a-0">
+                    <aside class="bg-white">
+
+                        @foreach($country['commonlist'] as $value)
+                            <div class="flex flex-alignCenter flex-fullJustified font-size-sm text-primary p-x-15x p-y-15x country-item"
+                                 data-cid="{{$value['country_id']}}" data-cname="{{$value['country_name_en']}}"
+                                 data-type="{{$value['child_type']}}" data-childlabel="{{$value['child_label']}}"
+                                 data-zipcode="{{$value['zipcode_label']}}">
+                                <span>{{$value['country_name_en']}}</span>
+                                <i class="iconfont icon-check icon-size-sm text-common"></i>
+                            </div>
+                            <hr class="hr-base m-a-0">
+                        @endforeach
+
+                    </aside>
+                    <div class="p-t-10x bg-title"></div>
+                    <hr class="hr-base m-a-0">
+                    <aside class="bg-white">
+
+                        @foreach($country['list'] as $value)
+                            <div class="flex flex-alignCenter flex-fullJustified font-size-sm text-primary p-x-15x p-y-10x country-item"
+                                 data-cid="{{$value['country_id']}}" data-cname="{{$value['country_name_en']}}"
+                                 data-type="{{$value['child_type']}}" data-childlabel="{{$value['child_label']}}"
+                                 data-zipcode="{{$value['zipcode_label']}}">
+                                <span>{{ $value['country_name_en'] }}</span>
+                                <i class="iconfont icon-check icon-size-sm text-common"></i>
+                            </div>
+                            <hr class="hr-base">
+                        @endforeach
+
+                    </aside>
+                </section>
+            </div>
+            <!-- 选择 state -->
+            <div class="pageview shipping-chooseState" id="shipping-chooseState">
+                <section class="p-b-10x reserve-height">
+                    <article class="p-x-15x p-y-10x flex flex-fullJustified flex-alignCenter bg-title">
+                        <span class="font-size-md text-main"><strong>Select State</strong></span>
+                        <a class="btn btn-primary-outline btn-sm" id="cancel-state">Cancel</a>
+                    </article>
+                    <hr class="hr-base m-a-0">
+                    <aside class="bg-white statelist-info"></aside>
+                </section>
             </div>
         </div>
 
