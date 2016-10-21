@@ -352,7 +352,7 @@
                             <div class="flex flex-alignCenter flex-fullJustified font-size-sm text-primary p-x-15x p-y-10x country-item"
                                  data-cid="{{$value['country_id']}}" data-cname="{{$value['country_name_en']}}"
                                  data-type="{{$value['child_type']}}" data-childlabel="{{$value['child_label']}}"
-                                 data-zipcode="{{$value['zipcode_label']}}">
+                                 data-zipcode="{{$value['zipcode_label']}}" data-csn="{{$value['country_name_sn']}}">
                                 <span>{{ $value['country_name_en'] }}</span>
                                 <i class="iconfont icon-check icon-size-sm text-common"></i>
                             </div>
