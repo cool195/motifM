@@ -157,7 +157,7 @@
                                     <span id="countryName">{{Session::get('user.checkout.address.country')}}</span>
                                     <i class="iconfont icon-arrow-right icon-size-xm text-common"></i>
                                     <input type="text" name="country" hidden value="{{Session::get('user.checkout.address.country')}}">
-                                    <input type="text" name="csn" hidden value="{{Session::get('user.checkout.address.country')}}">
+                                    <input type="text" name="csn" hidden value="">
                                 </div>
                             </div>
                         </fieldset>
