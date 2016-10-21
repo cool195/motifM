@@ -41,7 +41,8 @@
                         </div>
                         @foreach($value['creditCards'] as $card)
                             <div class="flex flex-alignCenter flex-fullJustified font-size-sm p-l-20x p-r-15x p-y-5x bg-title cardList">
-                                <div class="p-l-10x">Card: <span>{{$card['card_number']}}</span><br>EXP: <span>{{$card['month']}}/{{$card['year']}}</span>
+                                <div class="p-l-10x">Card: <span>{{$card['card_number']}}</span><br>EXP: <span>{{$card['month']}}
+                                        /{{$card['year']}}</span>
                                 </div>
                                 <i class="iconfont icon-size-md text-common"></i>
                             </div>
@@ -64,7 +65,9 @@
                     <hr class="hr-base m-a-0">
                     <!-- Continue 按钮 -->
                     <div class="p-a-15x submit-payment">
-                        <div class="btn btn-primary btn-block" id="submit-payment">Continue</div>
+                        <div class="btn btn-primary btn-block" data-url="{{'/checkout/review'}}" id="submit-payment">
+                            Continue
+                        </div>
                     </div>
                 </div>
 

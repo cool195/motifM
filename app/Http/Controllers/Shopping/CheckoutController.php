@@ -48,7 +48,9 @@ class CheckoutController extends ApiController
             Session::put('user.checkout.shipping', $shippingMethod);
         }
 
-        return View('checkout.shipping');
+        $continueUrl = '/checkout/payment';
+
+        return View('checkout.shipping', ['continueUrl' => $continueUrl]);
     }
 
     //payment
