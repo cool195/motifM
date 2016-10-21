@@ -404,6 +404,14 @@
         initCityState(CountryName, '');
         // 页面跳转
         toPage($('.shipping-editorAddress'));
+
+        // 判断是否在 payment 页面,修改默认国家地址
+        if ($('#payment-checkBox').length > 0) {
+            var OldCountryName = $('#btn-toCountryList').data('oldcountry');
+            if ($('#countryName').html() != OldCountryName) {
+                $('#payment-checkBox').removeClass('open');
+            }
+        }
     });
 
     // 选择州
@@ -420,6 +428,14 @@
 
         // 页面跳转
         toPage($('.shipping-editorAddress'));
+
+        // 判断是否在 payment 页面,修改默认state
+        if ($('#payment-checkBox').length > 0) {
+            var OldStateName = $('.state-info').data('oldstate');
+            if ($('#stateName').html() != OldStateName) {
+                $('#payment-checkBox').removeClass('open');
+            }
+        }
     });
 
     // TODO 表单验证
@@ -525,6 +541,49 @@
     // 取消选择州
     $('#cancel-paymentState').on('click', function () {
         toPage($('.shipping-addCard'));
+    });
+
+    // 修改 是否使用默认地址 选项
+    $('#payment-checkBox').on('click', function () {
+        var OldCountryName = $('#btn-toCountryList').data('oldcountry'),
+            NewCountryName = $('#btn-toCountryList').data('newcountry'),
+            StateName = $('.state-info').data('oldstate'),
+            OldName = $('input[name="name"]').data('oldname'),
+            OldAddr1 = $('input[name="addr1"]').data('oldaddr1'),
+            OldAddr2 = $('input[name="addr2"]').data('oldaddr2'),
+            OldCity = $('input[name="city"]').data('oldcity'),
+            OldZip = $('input[name="zip"]').data('oldzip'),
+            OldTel = $('input[name="tel"]').data('oldtel');
+        if ($(this).hasClass('open')) {
+            $('input[name="name"]').val(OldName);
+            $('input[name="city"]').val(OldCity);
+            $('input[name="tel"]').val(OldTel);
+            $('input[name="addr1"]').val(OldAddr1);
+            $('input[name="addr2"]').val(OldAddr2);
+            $('input[name="zip"]').val(OldZip);
+            $('#btn-submitAddCard').removeClass('disabled');
+            // 初始化 国家,洲
+            initCityState(OldCountryName, StateName);
+        } else {
+            //初始化 修改地址 from 表单
+            $('input[name="name"]').val('');
+            $('input[name="city"]').val('');
+            $('input[name="state"]').val('');
+            $('input[name="tel"]').val('');
+            $('input[name="addr1"]').val('');
+            $('input[name="addr2"]').val('');
+            $('input[name="zip"]').val('');
+            $('#btn-submitAddCard').addClass('disabled');
+            // 初始化 国家,洲
+            initCityState(NewCountryName, '');
+        }
+    });
+
+    // 修改默认地址
+    $('input[data-optional]').on('blur keyup', function () {
+        if ($('#payment-checkBox').hasClass('open')) {
+            $('#payment-checkBox').removeClass('open');
+        }
     });
 
     // payment end

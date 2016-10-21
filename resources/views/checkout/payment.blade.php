@@ -144,7 +144,7 @@
                         <fieldset>
                             <div class="flex flex-alignCenter flex-fullJustified font-size-sm text-primary p-a-15x">
                                 <span>Same as Shipping Address?</span>
-                                <div class="radio-checkBox open">
+                                <div class="radio-checkBox open" id="payment-checkBox">
                                     <div class="radio-checkItem"></div>
                                 </div>
                             </div>
@@ -155,7 +155,7 @@
                                  id="btn-toCountryList" data-oldcountry="{{Session::get('user.checkout.address.country')}}" data-newcountry="{{$country['commonlist'][0]['country_name_en']}}">
                                 <span>Country</span>
                                 <div>
-                                    <span>{{Session::get('user.checkout.address.country')}}</span>
+                                    <span id="countryName">{{Session::get('user.checkout.address.country')}}</span>
                                     <i class="iconfont icon-arrow-right icon-size-xm text-common"></i>
                                     <input type="text" name="country" hidden value="{{Session::get('user.checkout.address.country')}}">
                                 </div>
