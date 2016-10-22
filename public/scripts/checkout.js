@@ -612,7 +612,7 @@
         $('.clickPayWith').removeClass('active');
         $(this).addClass('active');
         $.ajax({
-            url: '/checkout/paywith/' + $(this).data('type'),
+            url: '/checkout/paywith/' + $(this).data('type') + '/' + $(this).data('card'),
             type: 'GET',
         })
     });

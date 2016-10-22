@@ -88,7 +88,9 @@ class CheckoutController extends ApiController
     //review
     public function review()
     {
-        return View('checkout.review');
+        $checkInfo = $this->getCheckOutAccountList(Session::get('user.checkout.address.receiving_id'), Session::get('user.checkout.selship.logistics_type'), Session::get('user.checkout.selship.couponInfo.bind_id'), Session::get('user.checkout.selship.paywith.pay_method'));
+        
+        return View('checkout.review', ['checkInfo' => $checkInfo['data']]);
     }
 
     //地址管理
@@ -322,8 +324,8 @@ class CheckoutController extends ApiController
     //绑定支付信息
     public function addCard(Request $request)
     {
-        $expiry = explode('/',$request->get('expiry'));
-        $cardInfo = MCrypt::encrypt(trim($expiry[0]) .'20'. trim($expiry[1]) . str_replace(' ','',$request->get('card')) . '/' . $request->get('cvv'));
+        $expiry = explode('/', $request->get('expiry'));
+        $cardInfo = MCrypt::encrypt(trim($expiry[0]) . '20' . trim($expiry[1]) . str_replace(' ', '', $request->get('card')) . '/' . $request->get('cvv'));
 
         $params = array(
             'cmd' => 'acrd',
@@ -347,10 +349,18 @@ class CheckoutController extends ApiController
     }
 
     //选择支付方式
-    public function paywith($type){
+    public function paywith($type, $cardid)
+    {
         $payInfo = $this->getPayInfo();
-        foreach ($payInfo['data']['list'] as $value){
-            if($value['pay_type']==$type){
+        foreach ($payInfo['data']['list'] as $value) {
+            if ($value['pay_type'] == $type) {
+                if ($cardid > 0) {
+                    foreach ($value['creditCards'] as $card) {
+                        if ($card['card_id'] == $cardid) {
+                            $value['withCard'] = $card;
+                        }
+                    }
+                }
                 Session::put('user.checkout.paywith', $value);
                 return $value;
             }
