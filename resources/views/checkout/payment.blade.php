@@ -35,12 +35,12 @@
                 <div class="text-primary">
                     <!-- card 列表 -->
                     @foreach($payInfo as $value)
-                        <div class="flex flex-alignCenter flex-fullJustified font-size-sm p-a-15x @if(isset($value['creditCards'])) btn-toAddCard @else clickPayWith @endif" data-type="{{$value['pay_type']}}">
+                        <div class="@if(Session::get('user.checkout.paywith.pay_type')==$value['pay_type']) active @endif flex flex-alignCenter flex-fullJustified font-size-sm p-a-15x @if(isset($value['creditCards'])) btn-toAddCard @else clickPayWith @endif" data-type="{{$value['pay_type']}}" data-card="0">
                             <span>{{$value['pay_name']}}</span>
                             <i class="iconfont @if(isset($value['creditCards'])) icon-arrow-right @else icon-check @endif icon-size-md text-common"></i>
                         </div>
                         @foreach($value['creditCards'] as $card)
-                            <div class="flex flex-alignCenter flex-fullJustified font-size-sm p-l-20x p-r-15x p-y-5x bg-title cardList clickPayWith" data-type="{{$value['pay_type']}}">
+                            <div class="@if(Session::get('user.checkout.paywith.pay_type')==$value['pay_type']) active @endif flex flex-alignCenter flex-fullJustified font-size-sm p-l-20x p-r-15x p-y-5x bg-title cardList clickPayWith" data-type="{{$value['pay_type']}}" data-card="{{$card['card_id']}}">
                                 <div class="p-l-10x">Card: <span>{{$card['card_number']}}</span><br>EXP: <span>{{$card['month']}}/{{$card['year']}}</span>
                                 </div>
                                 <i class="iconfont icon-check icon-size-md text-common"></i>
@@ -381,10 +381,8 @@
 </body>
 <script src="{{env('CDN_Static')}}/scripts/vendor.js{{'?v='.config('app.version')}}"></script>
 <script src="{{env('CDN_Static')}}/scripts/card.js{{'?v='.config('app.version')}}"></script>
-<script src="{{env('CDN_Static')}}/scripts/Checkout.js{{'?v='.config('app.version')}}"></script>
+<script src="{{env('CDN_Static')}}/scripts/checkout.js{{'?v='.config('app.version')}}"></script>
 <script src="{{env('CDN_Static')}}/scripts/orderCheckout-addressList.js{{'?v='.config('app.version')}}"></script>
-
-@include('global')
 <meta name="csrf-token" content="{{ csrf_token() }}"/>
 <script>
     $.ajaxSetup({
@@ -393,4 +391,6 @@
         }
     });
 </script>
+@include('global')
+
 </html>

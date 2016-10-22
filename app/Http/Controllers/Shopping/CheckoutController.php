@@ -44,6 +44,9 @@ class CheckoutController extends ApiController
             return redirect('/checkout/address');
         } else {
             $shipPrice = $this->getCheckOutAccountList($address['receiving_id']);
+            if(empty($shipPrice['data'])){
+                return redirect('/cart');
+            }
             $shippingMethod = $this->getShippingMethod($address['country_name_sn'], $shipPrice['data']['total_amount'] + $shipPrice['data']['vas_amount']);
             $shipKey = md5($address['country_name_sn'] . ($shipPrice['data']['total_amount'] + $shipPrice['data']['vas_amount']));
             if (Session::get('user.checkout.shipKey') != $shipKey) {
@@ -62,8 +65,16 @@ class CheckoutController extends ApiController
     //payment
     public function payment()
     {
+        //AMEX("AmericanExpress"),
+        //DINERS("Diners"),
+        //DISCOVER("Discover"),
+        //JCB("JCB"),
+        //MAESTRO("Maestro"),
+        //MASTERCARD("MasterCard"),
+        //VISA("Visa"),
+
         $payInfo = $this->getPayInfo();
-        
+
         $params = array(
             'cmd' => 'couponlist',
             'token' => Session::get('user.token'),
@@ -88,7 +99,12 @@ class CheckoutController extends ApiController
     //review
     public function review()
     {
-        return View('checkout.review');
+        $checkInfo = $this->getCheckOutAccountList(Session::get('user.checkout.address.receiving_id'), Session::get('user.checkout.selship.logistics_type'), Session::get('user.checkout.selship.couponInfo.bind_id'), Session::get('user.checkout.selship.paywith.pay_method'));
+
+        if(empty($checkInfo['data'])){
+            return redirect('/cart');
+        }
+        return View('checkout.review', ['checkInfo' => $checkInfo['data']]);
     }
 
     //地址管理
@@ -322,8 +338,8 @@ class CheckoutController extends ApiController
     //绑定支付信息
     public function addCard(Request $request)
     {
-        $expiry = explode('/',$request->get('expiry'));
-        $cardInfo = MCrypt::encrypt(trim($expiry[0]) .'20'. trim($expiry[1]) . str_replace(' ','',$request->get('card')) . '/' . $request->get('cvv'));
+        $expiry = explode('/', $request->get('expiry'));
+        $cardInfo = MCrypt::encrypt(trim($expiry[0]) . '20' . trim($expiry[1]) . str_replace(' ', '', $request->get('card')) . '/' . $request->get('cvv'));
 
         $params = array(
             'cmd' => 'acrd',
@@ -344,5 +360,24 @@ class CheckoutController extends ApiController
         $params['csn'] = $request->get('csn');
 
         return $this->request('openapi', '', 'pay', $params);
+    }
+
+    //选择支付方式
+    public function paywith($type, $cardid)
+    {
+        $payInfo = $this->getPayInfo();
+        foreach ($payInfo['data']['list'] as $value) {
+            if ($value['pay_type'] == $type) {
+                if ($cardid > 0) {
+                    foreach ($value['creditCards'] as $card) {
+                        if ($card['card_id'] == $cardid) {
+                            $value['withCard'] = $card;
+                        }
+                    }
+                }
+                Session::put('user.checkout.paywith', $value);
+                return $value;
+            }
+        }
     }
 }

@@ -13,11 +13,11 @@
 <body>
 @include('check.tagmanager')
 
-        <!-- 外层容器 -->
+<!-- 外层容器 -->
 <div id="body-content">
     <!-- 展开的汉堡菜单 -->
-    @include('nav')
-            <!-- 主体内容 -->
+@include('nav')
+<!-- 主体内容 -->
     <div class="body-container">
         @include('navigator', ['pageScope'=>true])
 
@@ -34,9 +34,10 @@
 
                 <!-- 总价 + place order 按钮 -->
                 <div class="p-y-20x p-x-15x">
-                    <div class="text-center text-primary font-size-sm"><strong>ORDER TOTAL: $48.67</strong></div>
+                    <div class="text-center text-primary font-size-sm"><strong>ORDER TOTAL:
+                            ${{number_format(($checkInfo['pay_amount'] / 100), 2)}}</strong></div>
                     <div class="p-t-10x submit-placeOrder">
-                        <div class="btn btn-primary btn-block" id="submit-shipping">Continue</div>
+                        <div class="btn btn-primary btn-block submit-checkout">@if(Session::get('user.checkout.paywith.pay_method')=='PayPalNative'){{'Pay With PayPal'}}@else{{'Place Order'}}@endif</div>
                     </div>
                 </div>
                 <hr class="hr-base m-a-0">
@@ -45,14 +46,15 @@
                 <div class="p-y-10x p-x-15x font-size-sm text-primary">
                     <div class="p-b-5x">
                         <span><strong>SHIP TO</strong></span>
-                        <a class="text-underLine pull-right text-primary" href="/checkout/shipping" id="review-editShipTo">Edit</a>
+                        <a class="text-underLine pull-right text-primary" href="/checkout/shipping"
+                           id="review-editShipTo">Edit</a>
                     </div>
                     <div class="">
-                        <span>Ming</span><br>
-                        <span>Beijing chao yang</span><br>
-                        <span>Beijing, AK 10000</span><br>
-                        <span>China</span><br>
-                        <span>130 2784 8900</span>
+                        <span>{{Session::get('user.checkout.address.name')}}</span><br>
+                        <span>{{Session::get('user.checkout.address.detail_address1')}} {{Session::get('user.checkout.address.detail_address2')}}</span><br>
+                        <span>{{Session::get('user.checkout.address.city')}} {{Session::get('user.checkout.address.state')}}</span><br>
+                        <span>{{Session::get('user.checkout.address.country')}}</span><br>
+                        <span>{{Session::get('user.checkout.address.telephone')}}</span>
                     </div>
                 </div>
                 <div class="hr-between"></div>
@@ -64,7 +66,8 @@
                         <a class="text-underLine pull-right text-primary" href="/checkout/shipping" id="review-method">Edit</a>
                     </div>
                     <div class="">
-                        Expedited Shipping / 3-4 business days $20.00
+                        {{Session::get('user.checkout.selship.logistics_name')}} @if(Session::get('user.checkout.selship.pay_price')>0)
+                            ${{number_format(($value['pay_price'] / 100), 2)}}@endif
                     </div>
                 </div>
                 <div class="hr-between"></div>
@@ -76,9 +79,16 @@
                         <a class="text-underLine pull-right text-primary" href="/checkout/payment" id="review-payment">Edit</a>
                     </div>
                     <div class="">
-                        <span>Card: 6202 *** *** *** 1203</span><br>
-                        <span>Exp: 12/19</span><br>
-                        <span>Promotion code: 20% OFF</span>
+                        @if(Session::get('user.checkout.paywith.pay_method')=='PayPalNative')
+                            <span>Method: PayPal</span><br>
+                        @else
+                            <span>Card: {{Session::get('user.checkout.paywith.withCard.card_number')}}</span><br>
+                            <span>Exp: {{Session::get('user.checkout.paywith.withCard.month').'/'.Session::get('user.checkout.paywith.withCard.year')}}</span>
+                            <br>
+                        @endif
+                        @if(Session::get('user.checkout.couponInfo'))
+                            <span>Promotion code: {{Session::get('user.checkout.couponInfo.cp_title')}}</span>
+                        @endif
                     </div>
                 </div>
                 <div class="hr-between"></div>
@@ -98,25 +108,55 @@
                 <!-- 价格汇总 -->
                 <div class="p-y-10x p-x-15x font-size-sm text-primary">
                     <div class="flex flex-fullJustified text-primary font-size-sm">
-                        <span>Items(1)</span><span>$45.00</span>
+                        <span>Items({{$checkInfo['total_sku_qtty']}}
+                            )</span><span>${{number_format(($checkInfo['total_amount'] / 100), 2)}}</span>
                     </div>
-                    <div class="flex flex-fullJustified text-primary font-size-sm">
-                        <span>Promotion code</span><span>-$9.00</span>
-                    </div>
-                    <div class="flex flex-fullJustified text-primary font-size-sm">
-                        <span>Shipping and handling</span><span>$10.00 </span>
-                    </div>
-                    <div class="flex flex-fullJustified text-primary font-size-sm">
-                        <span>Tax</span><span>$0.00 </span>
-                    </div>
+
+                    {{--增值服务--}}
+                    @if($checkInfo['vas_amount'] > 0)
+                        <div class="flex flex-fullJustified text-primary font-size-sm">
+                            <span>Additional services:</span><span>${{number_format(($checkInfo['vas_amount'] / 100), 2)}}</span>
+                        </div>
+                    @endif
+
+                    {{--优惠--}}
+                    @if($checkInfo['cps_amount'] > 0)
+                        <div class="flex flex-fullJustified text-primary font-size-sm">
+                            <span>Promotion code</span><span>-${{number_format(($checkInfo['cps_amount'] / 100), 2)}}</span>
+                        </div>
+                    @endif
+
+                    {{--折扣--}}
+                    @if($checkInfo['promot_discount_amount'] > 0)
+                        <div class="flex flex-fullJustified text-primary font-size-sm">
+                            <span>Discount</span><span>-${{number_format(($checkInfo['promot_discount_amount'] / 100), 2)}}</span>
+                        </div>
+                    @endif
+
+                    {{--收税提示--}}
+                    @if($checkInfo['tax_amount'])
+                        <div class="flex flex-fullJustified text-primary font-size-sm">
+                            <span>Sales tax </span><span>${{ number_format(($checkInfo['tax_amount'] / 100), 2)}}</span>
+                        </div>
+                    @endif
+
+                    {{--地址服务--}}
+                    @if(!empty(Session::get('user.checkout.selship')))
+                        <div class="flex flex-fullJustified text-primary font-size-sm">
+                            <span>Shipping and handling</span><span>@if(0 == $checkInfo['freight_amount']) Free @else
+                                    ${{ number_format(($checkInfo['freight_amount'] / 100), 2)}} @endif</span>
+                        </div>
+                    @endif
+
                 </div>
                 <hr class="hr-base m-a-0">
 
                 <!-- 总价 + place order 按钮 -->
                 <div class="p-y-20x p-x-15x">
-                    <div class="text-center text-primary font-size-sm"><strong>ORDER TOTAL: $48.67</strong></div>
+                    <div class="text-center text-primary font-size-sm"><strong>ORDER TOTAL:
+                            ${{number_format(($checkInfo['pay_amount'] / 100), 2)}}</strong></div>
                     <div class="p-t-10x submit-placeOrder">
-                        <div class="btn btn-primary btn-block" id="submit-shipping">Continue</div>
+                        <div class="btn btn-primary btn-block submit-checkout">@if(Session::get('user.checkout.paywith.pay_method')=='PayPalNative'){{'Pay With PayPal'}}@else{{'Place Order'}}@endif</div>
                     </div>
                 </div>
                 <hr class="hr-base m-a-0">
@@ -129,6 +169,14 @@
 
 </body>
 <script src="{{env('CDN_Static')}}/scripts/vendor.js{{'?v='.config('app.version')}}"></script>
-<script src="{{env('CDN_Static')}}/scripts/orderCheckout-addressList.js{{'?v='.config('app.version')}}"></script>
+<script src="{{env('CDN_Static')}}/scripts/checkout.js{{'?v='.config('app.version')}}"></script>
+<meta name="csrf-token" content="{{ csrf_token() }}"/>
+<script>
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+</script>
 @include('global')
 </html>

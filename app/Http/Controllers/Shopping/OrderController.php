@@ -134,7 +134,7 @@ class OrderController extends ApiController
     }
 
     /*
-     * 提交订单接口
+     * Old提交订单接口
      *
      * @author zhangtao@evermarker.net
      *
@@ -164,41 +164,33 @@ class OrderController extends ApiController
             $result['redirectUrl'] = Session::has('referer') ? Session::get('referer') : '/shopping';
         }
         return $result;
+    }
 
-//        $params = array(
-//            'cmd' => "dopay",
-//            'uuid' => @$_COOKIE['uid'],
-//            'token' => Session::get('user.token'),
-//            'pin' => Session::get('user.pin'),
-//            'orderid' => $orderId,
-//            'paytype' => $request->input('paym'),
-//            'cardtype' => $request->input('cardType'),
-//            'showname' => $request->input('showName'),
-//            'methodtoken' => $request->input('methodtoken'),
-//            'setdefault' => 1,
-//            'devicedata' => "H5"
-//        );
-//        $result = $this->request('openapi', "", "pay", $params);
-//        if (!empty($result) && $result['success']) {
-//            $transid = $result['data']['id'];
-//        } else {
-//            return $result;
-//        }
-//
-//        $params = array(
-//            'cmd' => 'checkpay',
-//            'transid' => $transid,
-//            'orderid' => $orderId
-//        );
-//        $result = $this->request('openapi', "", "pay", $params);
-//        if (!empty($result) && $result['success']) {
-//            //$result['redirectUrl'] = "/order/orderdetail/".$orderId;
-//            $result['redirectUrl'] = "/success";
-//        } else {
-//            $result['success'] = false;
-//        }
-//
-//        return $result;
+    //New 提交订单并支付
+    public function payOrder(Request $request){
+        $params = array(
+            'cmd' => 'ordsubmit',
+            'token' => Session::get('user.token'),
+            'pin' => Session::get('user.pin'),
+            'aid' => Session::get('user.checkout.address.receiving_id'),
+            'paym' => Session::get('user.checkout.paywith.pay_method'),
+            'cps' => Session::get('user.checkout.couponInfo.bind_id'),
+            'remark' => $request->input('remark'),
+            'stype' => Session::get('user.checkout.selship.logistics_type')
+        );
+        $result = $this->request('openapi', "", "order", $params);
+        if (!empty($result) && $result['success']) {
+            if ($params['paym'] == 'PayPalNative') {
+                $result['redirectUrl'] = "/paypalorder?orderid=" . $result['data']['orderID'] . "&orderDetail=" . $result['data']['shortInfo'] . "&totalPrice=" . $result['data']['pay_amount'] / 100;
+            } else {
+                $result['redirectUrl'] = '/success';
+            }
+            Session::forget('user.checkout');
+        } else {
+            //支付失败
+            $result['redirectUrl'] = '/checkout/review';
+        }
+        return $result;
     }
 
     //重新获取订单信息
