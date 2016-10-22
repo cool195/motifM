@@ -606,6 +606,12 @@
                 }
             })
     });
+
+    // 选择卡
+    $('.clickPayWith').on('click', function () {
+        $('.clickPayWith').removeClass('active');
+        $(this).addClass('active');
+    });
     // payment end
 
 

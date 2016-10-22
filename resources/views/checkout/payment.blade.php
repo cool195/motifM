@@ -37,13 +37,13 @@
                     @foreach($payInfo as $value)
                         <div class="flex flex-alignCenter flex-fullJustified font-size-sm p-a-15x @if(isset($value['creditCards'])) btn-toAddCard @else clickPayWith @endif" data-type="{{$value['pay_type']}}">
                             <span>{{$value['pay_name']}}</span>
-                            <i class="iconfont @if(isset($value['creditCards'])) icon-arrow-right @endif icon-size-md text-common"></i>
+                            <i class="iconfont @if(isset($value['creditCards'])) icon-arrow-right @else icon-check @endif icon-size-md text-common"></i>
                         </div>
                         @foreach($value['creditCards'] as $card)
                             <div class="flex flex-alignCenter flex-fullJustified font-size-sm p-l-20x p-r-15x p-y-5x bg-title cardList clickPayWith" data-type="{{$value['pay_type']}}">
                                 <div class="p-l-10x">Card: <span>{{$card['card_number']}}</span><br>EXP: <span>{{$card['month']}}/{{$card['year']}}</span>
                                 </div>
-                                <i class="iconfont icon-size-md text-common"></i>
+                                <i class="iconfont icon-check icon-size-md text-common"></i>
                             </div>
                         @endforeach
                         <hr class="hr-base m-a-0">
@@ -81,13 +81,13 @@
                                 alt="">
                     <div class="mask"></div>
                     </span>
-                    <span class="m-x-10x img-card" id="img-maestro"><img
-                                src="{{env('CDN_Static')}}/images/payment/icon-maestro.png{{'?v='.config('app.version')}}"
-                                srcset="{{env('CDN_Static')}}/images/payment/icon-maestro@2x.png{{'?v='.config('app.version')}} 2x, {{env('CDN_Static')}}/images/payment/icon-maestro@3x.png{{'?v='.config('app.version')}} 3x"
+                    <span class="m-x-10x img-card" id="img-mastercard"><img
+                                src="{{env('CDN_Static')}}/images/payment/icon-mastercard.png{{'?v='.config('app.version')}}"
+                                srcset="{{env('CDN_Static')}}/images/payment/icon-mastercard@2x.png{{'?v='.config('app.version')}} 2x, {{env('CDN_Static')}}/images/payment/icon-mastercard@3x.png{{'?v='.config('app.version')}} 3x"
                                 alt="">
                     <div class="mask"></div>
                     </span>
-                    <span class="m-x-10x img-card" id="img-american"><img
+                    <span class="m-x-10x img-card" id="img-amex"><img
                                 src="{{env('CDN_Static')}}/images/payment/icon-americanexpress.png{{'?v='.config('app.version')}}"
                                 srcset="{{env('CDN_Static')}}/images/payment/icon-americanexpress@2x.png{{'?v='.config('app.version')}} 2x, {{env('CDN_Static')}}/images/payment/icon-americanexpress@3x.png{{'?v='.config('app.version')}} 3x"
                                 alt="">
