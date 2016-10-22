@@ -126,7 +126,10 @@ $app->group(['middleware' => 'pcguide|logincheck', 'namespace' => 'App\Http\Cont
     $app->get('/order/orderdetail/{subno}', 'OrderController@orderDetail');
     $app->get('/orderdetail/{subno}', 'OrderController@getOrderDetail');
     $app->get('/order/orderSubmit', 'OrderController@orderSubmit');
+    //old
     $app->post('/order/orderSubmit', 'OrderController@orderSubmit');
+    //new
+    $app->post('/payorder', 'OrderController@payOrder');
     $app->get('/success', 'OrderController@orderSuccess');
 
     $app->get('/wish', 'ShoppingController@wish');

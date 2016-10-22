@@ -44,6 +44,9 @@ class CheckoutController extends ApiController
             return redirect('/checkout/address');
         } else {
             $shipPrice = $this->getCheckOutAccountList($address['receiving_id']);
+            if(empty($shipPrice['data'])){
+                return redirect('/cart');
+            }
             $shippingMethod = $this->getShippingMethod($address['country_name_sn'], $shipPrice['data']['total_amount'] + $shipPrice['data']['vas_amount']);
             $shipKey = md5($address['country_name_sn'] . ($shipPrice['data']['total_amount'] + $shipPrice['data']['vas_amount']));
             if (Session::get('user.checkout.shipKey') != $shipKey) {
@@ -62,6 +65,14 @@ class CheckoutController extends ApiController
     //payment
     public function payment()
     {
+        //AMEX("AmericanExpress"),
+        //DINERS("Diners"),
+        //DISCOVER("Discover"),
+        //JCB("JCB"),
+        //MAESTRO("Maestro"),
+        //MASTERCARD("MasterCard"),
+        //VISA("Visa"),
+
         $payInfo = $this->getPayInfo();
 
         $params = array(
@@ -89,7 +100,10 @@ class CheckoutController extends ApiController
     public function review()
     {
         $checkInfo = $this->getCheckOutAccountList(Session::get('user.checkout.address.receiving_id'), Session::get('user.checkout.selship.logistics_type'), Session::get('user.checkout.selship.couponInfo.bind_id'), Session::get('user.checkout.selship.paywith.pay_method'));
-        
+
+        if(empty($checkInfo['data'])){
+            return redirect('/cart');
+        }
         return View('checkout.review', ['checkInfo' => $checkInfo['data']]);
     }
 

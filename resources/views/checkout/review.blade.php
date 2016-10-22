@@ -34,10 +34,10 @@
 
                 <!-- 总价 + place order 按钮 -->
                 <div class="p-y-20x p-x-15x">
-                    <div class="text-center text-primary font-size-sm"><strong>ORDER TOTAL: ${{number_format(($checkInfo['pay_amount'] / 100), 2)}}</strong></div>
+                    <div class="text-center text-primary font-size-sm"><strong>ORDER TOTAL:
+                            ${{number_format(($checkInfo['pay_amount'] / 100), 2)}}</strong></div>
                     <div class="p-t-10x submit-placeOrder">
-                        <div class="btn btn-primary btn-block"
-                             id="submit-shipping">@if(Session::get('user.checkout.paywith.pay_method')=='PayPalNative'){{'Pay With PayPal'}}@else{{'Place Order'}}@endif</div>
+                        <div class="btn btn-primary btn-block submit-checkout">@if(Session::get('user.checkout.paywith.pay_method')=='PayPalNative'){{'Pay With PayPal'}}@else{{'Place Order'}}@endif</div>
                     </div>
                 </div>
                 <hr class="hr-base m-a-0">
@@ -83,7 +83,8 @@
                             <span>Method: PayPal</span><br>
                         @else
                             <span>Card: {{Session::get('user.checkout.paywith.withCard.card_number')}}</span><br>
-                            <span>Exp: {{Session::get('user.checkout.paywith.withCard.month').'/'.Session::get('user.checkout.paywith.withCard.year')}}</span><br>
+                            <span>Exp: {{Session::get('user.checkout.paywith.withCard.month').'/'.Session::get('user.checkout.paywith.withCard.year')}}</span>
+                            <br>
                         @endif
                         @if(Session::get('user.checkout.couponInfo'))
                             <span>Promotion code: {{Session::get('user.checkout.couponInfo.cp_title')}}</span>
@@ -107,7 +108,8 @@
                 <!-- 价格汇总 -->
                 <div class="p-y-10x p-x-15x font-size-sm text-primary">
                     <div class="flex flex-fullJustified text-primary font-size-sm">
-                        <span>Items({{$checkInfo['total_sku_qtty']}})</span><span>${{number_format(($checkInfo['total_amount'] / 100), 2)}}</span>
+                        <span>Items({{$checkInfo['total_sku_qtty']}}
+                            )</span><span>${{number_format(($checkInfo['total_amount'] / 100), 2)}}</span>
                     </div>
 
                     {{--增值服务--}}
@@ -151,10 +153,10 @@
 
                 <!-- 总价 + place order 按钮 -->
                 <div class="p-y-20x p-x-15x">
-                    <div class="text-center text-primary font-size-sm"><strong>ORDER TOTAL: ${{number_format(($checkInfo['pay_amount'] / 100), 2)}}</strong></div>
+                    <div class="text-center text-primary font-size-sm"><strong>ORDER TOTAL:
+                            ${{number_format(($checkInfo['pay_amount'] / 100), 2)}}</strong></div>
                     <div class="p-t-10x submit-placeOrder">
-                        <div class="btn btn-primary btn-block"
-                             id="submit-shipping">@if(Session::get('user.checkout.paywith.pay_method')=='PayPalNative'){{'Pay With PayPal'}}@else{{'Place Order'}}@endif</div>
+                        <div class="btn btn-primary btn-block submit-checkout">@if(Session::get('user.checkout.paywith.pay_method')=='PayPalNative'){{'Pay With PayPal'}}@else{{'Place Order'}}@endif</div>
                     </div>
                 </div>
                 <hr class="hr-base m-a-0">
@@ -167,6 +169,14 @@
 
 </body>
 <script src="{{env('CDN_Static')}}/scripts/vendor.js{{'?v='.config('app.version')}}"></script>
-<script src="{{env('CDN_Static')}}/scripts/orderCheckout-addressList.js{{'?v='.config('app.version')}}"></script>
+<script src="{{env('CDN_Static')}}/scripts/checkout.js{{'?v='.config('app.version')}}"></script>
+<meta name="csrf-token" content="{{ csrf_token() }}"/>
+<script>
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+</script>
 @include('global')
 </html>

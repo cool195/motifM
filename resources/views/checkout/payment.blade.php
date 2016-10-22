@@ -381,10 +381,8 @@
 </body>
 <script src="{{env('CDN_Static')}}/scripts/vendor.js{{'?v='.config('app.version')}}"></script>
 <script src="{{env('CDN_Static')}}/scripts/card.js{{'?v='.config('app.version')}}"></script>
-<script src="{{env('CDN_Static')}}/scripts/Checkout.js{{'?v='.config('app.version')}}"></script>
+<script src="{{env('CDN_Static')}}/scripts/checkout.js{{'?v='.config('app.version')}}"></script>
 <script src="{{env('CDN_Static')}}/scripts/orderCheckout-addressList.js{{'?v='.config('app.version')}}"></script>
-
-@include('global')
 <meta name="csrf-token" content="{{ csrf_token() }}"/>
 <script>
     $.ajaxSetup({
@@ -393,4 +391,6 @@
         }
     });
 </script>
+@include('global')
+
 </html>

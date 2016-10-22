@@ -623,6 +623,29 @@
             window.location.href = '/checkout/review';
         }
     });
+
+    //提交生成订单并支付
+    $('.submit-checkout').on('click', function () {
+        $.ajax({
+            url: '/payorder',
+            type: 'POST',
+        })
+            .done(function (data) {
+                if (data.success) {
+                    window.location.href = data.redirectUrl;
+                }else{
+                    alert(data.error_msg);
+                    window.location.href = data.redirectUrl;
+                }
+            })
+            .fail(function () {
+                console.log('error');
+            })
+            .always(function () {
+                console.log('complete');
+            });
+
+    });
     // payment end
 
 

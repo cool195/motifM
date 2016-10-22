@@ -167,7 +167,7 @@
                 <hr class="hr-base m-a-0">
                 <!-- 购买按钮 -->
                 <section class="bg-white p-a-10x">
-                    <a href="/cart/ordercheckout" class="btn btn-primary btn-block @if($cartData['pay_amount'] <= 0) disabled @endif" type="submit">Proceed to
+                    <a href="/checkout" class="btn btn-primary btn-block @if($cartData['pay_amount'] <= 0) disabled @endif" type="submit">Proceed to
                         Checkout</a>
                 </section>
             <script>
