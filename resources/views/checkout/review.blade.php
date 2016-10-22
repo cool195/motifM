@@ -13,11 +13,11 @@
 <body>
 @include('check.tagmanager')
 
-<!-- 外层容器 -->
+        <!-- 外层容器 -->
 <div id="body-content">
     <!-- 展开的汉堡菜单 -->
-@include('nav')
-<!-- 主体内容 -->
+    @include('nav')
+            <!-- 主体内容 -->
     <div class="body-container">
         @include('navigator', ['pageScope'=>true])
 
@@ -108,7 +108,8 @@
                 <!-- 价格汇总 -->
                 <div class="p-y-10x p-x-15x font-size-sm text-primary">
                     <div class="flex flex-fullJustified text-primary font-size-sm">
-                        <span>Items ({{$checkInfo['total_sku_qtty']}})</span><span>${{number_format(($checkInfo['total_amount'] / 100), 2)}}</span>
+                        <span>Items ({{$checkInfo['total_sku_qtty']}}
+                            )</span><span>${{number_format(($checkInfo['total_amount'] / 100), 2)}}</span>
                     </div>
 
                     {{--增值服务--}}
@@ -160,6 +161,26 @@
                 </div>
                 <hr class="hr-base m-a-0">
 
+            </div>
+
+            <!-- 3.SPECIAL REQUEST -->
+            <div class="pageview shipping-request" id="shipping-request">
+                <section class="m-b-20x reserve-height">
+                    <article class="font-size-md text-main p-a-10x bg-title"><strong>Special Request</strong></article>
+                    <hr class="hr-base m-a-0">
+                    <fieldset>
+                        <div class="message-info">
+                            <textarea class="form-control form-control-block p-a-15x font-size-sm" name="remark"
+                                      id="messageContent" placeholder="Special Note" rows="12"
+                                      data-length="1000"></textarea>
+                            <span class="message-wordNumber font-size-sm text-primary"><span id="wordNum">0</span>/1000</span>
+                        </div>
+                    </fieldset>
+                    <hr class="hr-base m-a-0">
+                    <div class="p-a-15x">
+                        <button class="btn btn-primary btn-block" id="btn-addSpecial">Save</button>
+                    </div>
+                </section>
             </div>
         </div>
 

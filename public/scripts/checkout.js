@@ -779,12 +779,22 @@
     });
 
     $('#btn-submitPromoCode').on('click', function () {
-        if(!$(this).hasClass('disabled')){
+        if (!$(this).hasClass('disabled')) {
             alert('提交promotioncode');
         }
     });
-
     // payment end
 
+    // review begin
+    // 跳转到 提交message
+    $('#review-special').on('click', function () {
+        toPage($('.shipping-request'));
+    });
+
+    // 保存 massage
+    $('#btn-addSpecial').on('click',function(){
+        toPage($('.shipping-review'));
+    });
+    // review end
 
 })(jQuery);
