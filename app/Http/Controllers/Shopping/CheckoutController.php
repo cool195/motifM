@@ -65,13 +65,6 @@ class CheckoutController extends ApiController
     //payment
     public function payment()
     {
-        //AMEX("AmericanExpress"),
-        //DINERS("Diners"),
-        //DISCOVER("Discover"),
-        //JCB("JCB"),
-        //MAESTRO("Maestro"),
-        //MASTERCARD("MasterCard"),
-        //VISA("Visa"),
         //return Session::get('user.checkout');
         $payInfo = $this->getPayInfo();
 
@@ -358,8 +351,12 @@ class CheckoutController extends ApiController
         $params['zip'] = $request->get('zip');
         $params['country'] = $request->get('country');
         $params['csn'] = $request->get('csn');
-
-        return $this->request('openapi', '', 'pay', $params);
+        $params['ctype'] = $request->get('card_type');
+        $result = $this->request('openapi', '', 'pay', $params);
+        if($result['success']){
+            $this->paywith($request->get('add_type'),$result['data']['card_id']);
+        }
+        return $result;
     }
 
     //选择支付方式
@@ -376,7 +373,6 @@ class CheckoutController extends ApiController
                         }
                     }
                 }
-
                 Session::put('user.checkout.paywith', $value);
                 Session::forget('user.checkout.paywith.creditCards');
                 return $value;
