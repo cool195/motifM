@@ -752,8 +752,37 @@
         }
     });
 
-    // 验证卡输入情况
+    // 验证 promotion code
+    // 键盘输入内容 触发事件
+    $('input[name="coupon"]').on('keyup', function () {
+        if ($(this).val() === '') {
+            $('#btn-submitPromoCode').addClass('disabled');
+        } else {
+            $('#btn-submitPromoCode').removeClass('disabled');
+        }
+    });
 
+    // 粘贴内容 触发事件
+    $('input[name="coupon"]').on('paste', function (e) {
+        var pastedText = undefined;
+        if (window.clipboardData && window.clipboardData.getData) {
+            pastedText = window.clipboardData.getData('Text');
+        } else {
+            pastedText = e.originalEvent.clipboardData.getData('Text');
+        }
+
+        if (pastedText === '' || pastedText === undefined) {
+            $('div[data-role="submit"]').addClass('disabled');
+        } else {
+            $('div[data-role="submit"]').removeClass('disabled');
+        }
+    });
+
+    $('#btn-submitPromoCode').on('click', function () {
+        if(!$(this).hasClass('disabled')){
+            alert('提交promotioncode');
+        }
+    });
 
     // payment end
 
