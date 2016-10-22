@@ -655,7 +655,7 @@
         })
             .done(function (data) {
                 if (data.success) {
-                    window.location.href = '/checkout/shipping';
+                    window.location.href = '/checkout/payment';
                 }
             })
     });

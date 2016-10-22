@@ -72,7 +72,7 @@ class CheckoutController extends ApiController
         //MAESTRO("Maestro"),
         //MASTERCARD("MasterCard"),
         //VISA("Visa"),
-
+        //return Session::get('user.checkout');
         $payInfo = $this->getPayInfo();
 
         $params = array(
@@ -339,7 +339,7 @@ class CheckoutController extends ApiController
     public function addCard(Request $request)
     {
         $expiry = explode('/', $request->get('expiry'));
-        $cardInfo = MCrypt::encrypt(trim($expiry[0]) . '20' . trim($expiry[1]) . str_replace(' ', '', $request->get('card')) . '/' . $request->get('cvv'));
+        $cardInfo = MCrypt::encrypt(trim($expiry[0]) . trim($expiry[1]) . str_replace(' ', '', $request->get('card')) . '/' . $request->get('cvv'));
 
         $params = array(
             'cmd' => 'acrd',
@@ -372,10 +372,13 @@ class CheckoutController extends ApiController
                     foreach ($value['creditCards'] as $card) {
                         if ($card['card_id'] == $cardid) {
                             $value['withCard'] = $card;
+                            break;
                         }
                     }
                 }
+
                 Session::put('user.checkout.paywith', $value);
+                Session::forget('user.checkout.paywith.creditCards');
                 return $value;
             }
         }

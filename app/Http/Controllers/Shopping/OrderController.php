@@ -178,6 +178,9 @@ class OrderController extends ApiController
             'remark' => $request->input('remark'),
             'stype' => Session::get('user.checkout.selship.logistics_type')
         );
+        if ($params['paym'] == 'PayPalNative') {
+            $params['payid'] = Session::get('user.checkout.paywith.withCard.card_id');
+        }
         $result = $this->request('openapi', "", "order", $params);
         if (!empty($result) && $result['success']) {
             if ($params['paym'] == 'PayPalNative') {
