@@ -183,7 +183,9 @@ class OrderController extends ApiController
             $params['cmd'] = 'ordpay';
             $params['payid'] = Session::get('user.checkout.paywith.withCard.card_id');
         }
+
         $result = $this->request('openapi', "", "order", $params);
+        
         if (!empty($result) && $result['success']) {
             if ($params['paym'] == 'PayPalNative') {
                 $result['redirectUrl'] = "/paypalorder?orderid=" . $result['data']['orderID'] . "&orderDetail=" . $result['data']['shortInfo'] . "&totalPrice=" . $result['data']['pay_amount'] / 100;
