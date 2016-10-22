@@ -35,6 +35,7 @@ class PaypalController extends ApiController
                 );
                 $content = $this->request('openapi', "", "pay", $params);
                 if(!empty($content) && $content['success']){
+                    Session::forget('user.checkout');
                     return redirect('/success?orderid='.$params['orderid']);
                 }
             }
