@@ -108,22 +108,22 @@
                     <div class="cardinfo-wrapper font-size-sm">
                         <div class="cardinfo-item">
                             <input class="cardinfo-input" type="tel" data-braintree-name="number"
-                                   value="" placeholder="Card Number" data-role="Card Number"
+                                   value="" placeholder="Card Number" data-optional="false" data-role="card"
                                    id="cardNum" maxlength="20" name="card">
                         </div>
                     </div>
                     <div class="cardinfo-wrapper font-size-sm">
                         <div class="cardinfo-item">
-                            <input class="cardinfo-input" type="text" data-braintree-name="expiration_date"
-                                   value="" placeholder="MM/YY" data-role="expires" maxlength="9" name="expiry">
+                            <input class="cardinfo-input" type="text" data-braintree-name="expiration_date" data-role="expiry"
+                                   value="" placeholder="MM/YY" data-optional="false" maxlength="9" name="expiry">
                         </div>
                         <div class="cardinfo-item">
-                            <input class="cardinfo-input" type="tel" data-braintree-name="cvv" value=""
-                                   placeholder="CVV" maxlength="4" name="cvv">
+                            <input class="cardinfo-input" type="tel" data-braintree-name="cvv" value="" data-role="cvv"
+                                   placeholder="CVV" maxlength="4" data-optional="false" name="cvv">
                         </div>
                     </div>
                     <!-- 错误提示信息 -->
-                    <div class="warning-info off text-warning flex flex-alignCenter p-a-15x">
+                    <div class="warning-info text-warning flex flex-alignCenter p-a-15x hidden-xs-up" id="card-warning">
                         <i class="iconfont icon-caveat icon-size-md p-r-5x"></i>
                         <span class="font-size-xs">错误提示信息</span>
                     </div>
@@ -131,13 +131,13 @@
 
                 <!-- BILLING ADRESS -->
                 <div class="text-primary">
-                    <section class="p-b-20x reserve-height">
+                    <section class="p-b-20x reserve-height" id="cardAddress">
                         <div class="p-y-10x p-x-15x font-size-sm bg-title"><strong>BILLING ADRESS</strong></div>
                         <hr class="hr-base m-a-0">
-                        <div class="warning-info off flex text-warning flex-alignCenter text-left p-x-15x p-b-10x hidden-xs-up">
-                            <i class="iconfont icon-caveat icon-size-md p-r-5x"></i>
-                            <span class="font-size-xs"></span>
-                        </div>
+                        {{--<div class="warning-info off flex text-warning flex-alignCenter text-left p-x-15x p-y-10x hidden-xs-up">--}}
+                            {{--<i class="iconfont icon-caveat icon-size-md p-r-5x"></i>--}}
+                            {{--<span class="font-size-xs"></span>--}}
+                        {{--</div>--}}
 
                         <fieldset>
                             <div class="flex flex-alignCenter flex-fullJustified font-size-sm text-primary p-a-15x">
@@ -176,7 +176,7 @@
                         <hr class="hr-base m-a-0">
                         <fieldset>
                             <input class="form-control form-control-block p-a-15x font-size-sm" name="addr2"
-                                   type="text"
+                                   type="text" data-role="street"
                                    data-optional="true" value="{{Session::get('user.checkout.address.detail_address2')}}" data-oldaddr2="{{Session::get('user.checkout.address.detail_address2')}}"
                                    placeholder="Street2 (optional)">
                         </fieldset>
@@ -217,7 +217,7 @@
                                     <div class="btn btn-primary-outline btn-block" id="btn-cancelAddCard">Cancel</div>
                                 </div>
                                 <div class="col-xs-6">
-                                    <div class="btn btn-primary btn-block" id="btn-submitAddCard">Save</div>
+                                    <div class="btn btn-primary btn-block disabled" id="btn-submitAddCard">Save</div>
                                 </div>
                             </div>
                         </div>

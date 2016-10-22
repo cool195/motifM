@@ -318,8 +318,7 @@
             ZipCode = $('[data-cname="' + Country + '"]').data('zipcode'),
             CountryCsn = $('[data-cname="' + Country + '"]').data('csn');
         // 初始化 ZipCode
-        $
-        ('input[name="zip"]').attr('placeholder', ZipCode);
+        $('input[name="zip"]').attr('placeholder', ZipCode);
         // 初始化国家列表
         $('.country-item').removeClass('active');
         $('[data-cid=' + CountryId + ']').addClass('active');
@@ -340,6 +339,13 @@
             // 洲为必填
             $('.state-info').html('<input type="text" name="state" data-optional="false" data-role="' + ChildLabel + '" class="form-control form-control-block p-a-15x font-size-sm address-state" placeholder="' + ChildLabel + '">');
             $('input[name="state"]').val(State);
+
+            // 判断是否在添加卡页面
+            if ($('#payment-checkBox').length > 0) {
+                $('#btn-submitAddCard').addClass('disabled');
+                $('.warning-info').removeClass('hidden-xs-up');
+                $('.warning-info').children('span').text('Please enter your ' + ChildLabel + ' !');
+            }
         } else {
             // 初始化国家列表
             $('.country-item').removeClass('active');
@@ -381,6 +387,14 @@
                         $('[data-state="' + StateNameEn + '"]').addClass('active');
                     }
                 })
+
+            // 判断是否在 payment 页面,修改默认国家地址
+            if ($('#payment-checkBox').length > 0) {
+                if (input_validate($('input[name="card"]')) && input_validate($('input[name="expiry"]')) && input_validate($('input[name="cvv"]')) && input_validate($('input[name="name"]')) && input_validate($('input[name="addr1"]')) && input_validate($('input[name="city"]')) && input_validate($('input[name="zip"]')) && input_validate($('input[name="tel"]'))) {
+                    $('.warning-info').addClass('hidden-xs-up');
+                    $('#btn-submitAddCard').removeClass('disabled');
+                }
+            }
         }
     }
 
@@ -462,12 +476,47 @@
         if ($Error === true) {
             $('.warning-info').addClass('hidden-xs-up');
             $('#btn-submitEditorAddress').removeClass('disabled');
+            // 判断是否在添加卡页面
+            if ($('#payment-checkBox').length > 0) {
+                $('#btn-submitAddCard').removeClass('disabled');
+            }
         } else {
             $('.warning-info').removeClass('hidden-xs-up');
             $('.warning-info').children('span').text('Please enter your ' + $Error.data('role') + ' !');
             $('#btn-submitEditorAddress').addClass('disabled');
+            // 判断是否在添加卡页面
+            if ($('#payment-checkBox').length > 0) {
+                $('#btn-submitAddCard').addClass('disabled');
+            }
         }
     });
+
+    // 验证 State
+    $('.state-info').on('keyup blur', '.address-state', function () {
+        if (input_validate($('input[name="card"]')) && input_validate($('input[name="expiry"]')) && input_validate($('input[name="cvv"]')) && input_validate($('input[name="name"]')) && input_validate($('input[name="addr1"]')) && input_validate($('input[name="city"]')) && input_validate($('input[name="zip"]')) && input_validate($('input[name="tel"]')) && input_validate($(this))) {
+            $('.warning-info').addClass('hidden-xs-up');
+            $('#btn-submitAddCard').removeClass('disabled');
+        } else {
+            $('.warning-info').removeClass('hidden-xs-up');
+            //$('.warning-info').children('span').text('Please enter your state !');
+            $('#btn-submitAddCard').addClass('disabled');
+        }
+    });
+
+    function input_validate($addressinfo) {
+        var flag = false;
+        var $warningInfo = $('#card-warning');
+        var inputText = $addressinfo.val();
+        if ("" == inputText || undefined == inputText || null == inputText) {
+            $warningInfo.removeClass('hidden-xs-up');
+            $('#card-warning').children('span').text('Please enter your ' + $addressinfo.data('role') + ' !');
+            flag = false;
+        } else {
+            $warningInfo.addClass('hidden-xs-up');
+            flag = true;
+        }
+        return flag;
+    }
 
     // 提交表单（新增/修改地址）
     $('#btn-submitEditorAddress').on('click', function () {
@@ -568,9 +617,13 @@
             $('input[name="addr1"]').val(OldAddr1);
             $('input[name="addr2"]').val(OldAddr2);
             $('input[name="zip"]').val(OldZip);
-            $('#btn-submitAddCard').removeClass('disabled');
+            //$('#btn-submitAddCard').removeClass('disabled');
             // 初始化 国家,洲
             initCityState(OldCountryName, StateName);
+
+            if ($('#card-warning').hasClass('hidden-xs-up')) {
+                //$('#btn-submitAddCard').removeClass('disabled');
+            }
         } else {
             //初始化 修改地址 from 表单
             $('input[name="name"]').val('');
@@ -587,7 +640,7 @@
     });
 
     // 修改默认地址
-    $('input[data-optional]').on('blur keyup', function () {
+    $('#cardAddress input[data-role]').on('blur keyup', function () {
         if ($('#payment-checkBox').hasClass('open')) {
             $('#payment-checkBox').removeClass('open');
         }
@@ -646,6 +699,38 @@
             });
 
     });
+
+    $('input[name="expiry"]').on('keyup', function () {
+        var MyDate = new Date(),
+            MyYear = MyDate.getFullYear(),
+            $WarningInfo = $('#card-warning');
+        // 验证月份
+        if ($(this).val().length === 5) {
+            var month = parseInt($(this).val().substring(0, 2));
+            if (month > 12) {
+                $WarningInfo.removeClass('hidden-xs-up');
+                $WarningInfo.children('span').html('请输入正确的月份');
+            } else {
+                $WarningInfo.addClass('hidden-xs-up');
+                $WarningInfo.children('span').html('');
+            }
+        }
+        // 验证年份
+        if ($(this).val().length === 9) {
+            var year = parseInt($(this).val().substring(5, 9));
+            if (year < MyYear || year > MyYear + 30) {
+                $WarningInfo.removeClass('hidden-xs-up');
+                $WarningInfo.children('span').html('请输入正确的年份');
+            } else {
+                $WarningInfo.addClass('hidden-xs-up');
+                $WarningInfo.children('span').html('');
+            }
+        }
+    });
+
+    // 验证卡输入情况
+
+
     // payment end
 
 

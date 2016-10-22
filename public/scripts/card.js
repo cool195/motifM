@@ -443,6 +443,7 @@
         return false;
       }
       if (!/^\d+$/.test(year)) {
+      //if (!/^(20)\d{2}$/.test(year)) {
         return false;
       }
       if (!(parseInt(month, 10) <= 12)) {
