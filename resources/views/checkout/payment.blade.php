@@ -75,25 +75,25 @@
             <div class="pageview shipping-addCard shipping-editorAddress" id="shipping-addCard">
                 <!-- 可支付的卡列表 -->
                 <div class="text-center p-t-10x p-b-5x">
-                    <span class="m-x-10x img-card" id="img-visa"><img
+                    <span class="m-x-10x img-card" id="img-visa" data-type="Visa"><img
                                 src="{{env('CDN_Static')}}/images/payment/icon-visa.png{{'?v='.config('app.version')}}"
                                 srcset="{{env('CDN_Static')}}/images/payment/icon-visa@2x.png{{'?v='.config('app.version')}} 2x, {{env('CDN_Static')}}/images/payment/icon-visa@3x.png{{'?v='.config('app.version')}} 3x"
                                 alt="">
                     <div class="mask"></div>
                     </span>
-                    <span class="m-x-10x img-card" id="img-mastercard"><img
+                    <span class="m-x-10x img-card" id="img-mastercard" data-type="MasterCard"><img
                                 src="{{env('CDN_Static')}}/images/payment/icon-mastercard.png{{'?v='.config('app.version')}}"
                                 srcset="{{env('CDN_Static')}}/images/payment/icon-mastercard@2x.png{{'?v='.config('app.version')}} 2x, {{env('CDN_Static')}}/images/payment/icon-mastercard@3x.png{{'?v='.config('app.version')}} 3x"
                                 alt="">
                     <div class="mask"></div>
                     </span>
-                    <span class="m-x-10x img-card" id="img-amex"><img
+                    <span class="m-x-10x img-card" id="img-amex" data-type="AmericanExpress"><img
                                 src="{{env('CDN_Static')}}/images/payment/icon-americanexpress.png{{'?v='.config('app.version')}}"
                                 srcset="{{env('CDN_Static')}}/images/payment/icon-americanexpress@2x.png{{'?v='.config('app.version')}} 2x, {{env('CDN_Static')}}/images/payment/icon-americanexpress@3x.png{{'?v='.config('app.version')}} 3x"
                                 alt="">
                     <div class="mask"></div>
                     </span>
-                    <span class="m-x-10x img-card" id="img-jcb"><img
+                    <span class="m-x-10x img-card" id="img-jcb" data-type="JCB"><img
                                 src="{{env('CDN_Static')}}/images/payment/icon-jcb.png{{'?v='.config('app.version')}}"
                                 srcset="{{env('CDN_Static')}}/images/payment/icon-jcb@2x.png{{'?v='.config('app.version')}} 2x, {{env('CDN_Static')}}/images/payment/icon-jcb@3x.png{{'?v='.config('app.version')}} 3x"
                                 alt="">
@@ -110,6 +110,8 @@
                             <input class="cardinfo-input" type="tel" data-braintree-name="number"
                                    value="" placeholder="Card Number" data-optional="false" data-role="card"
                                    id="cardNum" maxlength="20" name="card">
+                            <input name="card_type" type="hidden">
+                            <input name="add_type" type="hidden">
                         </div>
                     </div>
                     <div class="cardinfo-wrapper font-size-sm">

@@ -582,6 +582,7 @@
     // payment begin
     // 添加卡
     $('.btn-toAddCard').on('click', function () {
+        $('input[name="add_type"]').val($(this).data('type'));
         toPage($('.shipping-addCard'));
         var CountryName = $('#btn-toCountryList').data('oldcountry');
         var StateName = $('.state-info').data('oldstate');

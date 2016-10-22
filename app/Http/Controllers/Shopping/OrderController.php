@@ -169,7 +169,6 @@ class OrderController extends ApiController
     //New 提交订单并支付
     public function payOrder(Request $request){
         $params = array(
-            'cmd' => 'ordsubmit',
             'token' => Session::get('user.token'),
             'pin' => Session::get('user.pin'),
             'aid' => Session::get('user.checkout.address.receiving_id'),
@@ -179,6 +178,9 @@ class OrderController extends ApiController
             'stype' => Session::get('user.checkout.selship.logistics_type')
         );
         if ($params['paym'] == 'PayPalNative') {
+            $params['cmd'] = 'ordsubmit';
+        }else{
+            $params['cmd'] = 'ordpay';
             $params['payid'] = Session::get('user.checkout.paywith.withCard.card_id');
         }
         $result = $this->request('openapi', "", "order", $params);
