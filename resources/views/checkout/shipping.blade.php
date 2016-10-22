@@ -68,6 +68,10 @@
                 </div>
 
             </div>
+            <!-- loading -->
+            <div class="loading loading-screen loading-switch loading-hidden">
+                <div class="loader loader-screen"></div>
+            </div>
         </div>
 
     </div>

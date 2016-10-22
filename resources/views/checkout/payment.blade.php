@@ -374,6 +374,10 @@
                     <aside class="bg-white statelist-info"></aside>
                 </section>
             </div>
+            <!-- loading -->
+            <div class="loading loading-screen loading-switch loading-hidden">
+                <div class="loader loader-screen"></div>
+            </div>
         </div>
 
     </div>

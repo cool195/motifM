@@ -108,8 +108,7 @@
                 <!-- 价格汇总 -->
                 <div class="p-y-10x p-x-15x font-size-sm text-primary">
                     <div class="flex flex-fullJustified text-primary font-size-sm">
-                        <span>Items ({{$checkInfo['total_sku_qtty']}}
-                            )</span><span>${{number_format(($checkInfo['total_amount'] / 100), 2)}}</span>
+                        <span>Items ({{$checkInfo['total_sku_qtty']}})</span><span>${{number_format(($checkInfo['total_amount'] / 100), 2)}}</span>
                     </div>
 
                     {{--增值服务--}}
@@ -181,6 +180,10 @@
                         <button class="btn btn-primary btn-block" id="btn-addSpecial">Save</button>
                     </div>
                 </section>
+            </div>
+            <!-- loading -->
+            <div class="loading loading-screen loading-switch loading-hidden">
+                <div class="loader loader-screen"></div>
             </div>
         </div>
 

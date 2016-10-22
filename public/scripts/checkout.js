@@ -144,7 +144,7 @@
      * @param AddressId
      */
     function deleteAddress(AddressID) {
-        // TODO loading 动画
+
         openLoading();
 
         $.ajax({
@@ -174,6 +174,7 @@
         var Aid = $(this).parents('.addressList-container').data('address');
 
         if (Action === 'return') {
+            openLoading();
             $('.icon-radio.active').removeClass('active');
             $(this).find('.icon-radio').addClass('active');
             $('input[name="aid"]').val(Aid); // 需要提交的项
@@ -189,11 +190,6 @@
                     }
                 })
         } else if (Action === 'edit') {
-            // 跳转到编辑页面
-            //$('input[name="eid"]').val(Aid); // 需要修改的项
-            //var $InfoForm = $('#infoForm');
-            //$InfoForm.attr('action', '/cart/addrmod');
-            //$InfoForm.submit();
 
             // 编辑地址
             $('#shipping-editorAddress').data('aid', Aid);
@@ -467,7 +463,6 @@
         }
     });
 
-    // TODO 表单验证
     // 表单非空验证
     function checkInput() {
         var Result = true;
@@ -541,6 +536,7 @@
 
     // 提交表单（新增/修改地址）
     $('#btn-submitEditorAddress').on('click', function () {
+        openLoading();
         var Aid = $('#shipping-editorAddress').data('aid');
         if (Aid === '' || Aid === undefined) {
             // 添加地址
@@ -670,6 +666,7 @@
 
     // 提交卡信息
     $('#btn-submitAddCard').on('click', function () {
+        openLoading();
         $.ajax({
             url: '/checkout/addcard',
             type: 'POST',
@@ -687,6 +684,7 @@
 
     // 选择卡
     $('.clickPayWith').on('click', function () {
+        openLoading();
         $('.clickPayWith').removeClass('active');
         $(this).addClass('active');
         $.ajax({
@@ -704,6 +702,7 @@
 
     //提交生成订单并支付
     $('.submit-checkout').on('click', function () {
+        openLoading();
         $.ajax({
             url: '/payorder',
             type: 'POST',
@@ -715,6 +714,8 @@
                 if (data.success) {
                     window.location.href = data.redirectUrl;
                 } else {
+                    closeLoading;
+                    
                     window.location.href = data.redirectUrl;
                 }
             })
