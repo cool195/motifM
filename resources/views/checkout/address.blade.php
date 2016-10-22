@@ -185,7 +185,7 @@
                             <span class="font-size-sm">Add New Address</span>
                         </div>
                     </aside>
-                    {{--<hr class="hr-base m-a-0">--}}
+                    <hr class="hr-base m-a-0">
                     {{--<aside class="p-a-15x">--}}
                         {{--<div class="btn btn-block btn-primary" data-url="{{'/checkout/shipping'}}" id="submit-address">Continue</div>--}}
                     {{--</aside>--}}
