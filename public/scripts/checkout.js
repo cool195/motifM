@@ -676,7 +676,7 @@
             })
             .done(function (data) {
                 if (data.success) {
-                    window.location.href = '/checkout/shipping';
+                    window.location.href = '/checkout/payment';
                 } else {
                     $('.warning-info').removeClass('hidden-xs-up');
                     $('.warning-info').children('span').html(data.error_msg);
