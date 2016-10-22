@@ -63,7 +63,7 @@ class CheckoutController extends ApiController
     public function payment()
     {
         $payInfo = $this->getPayInfo();
-        
+
         $params = array(
             'cmd' => 'couponlist',
             'token' => Session::get('user.token'),
@@ -344,5 +344,16 @@ class CheckoutController extends ApiController
         $params['csn'] = $request->get('csn');
 
         return $this->request('openapi', '', 'pay', $params);
+    }
+
+    //选择支付方式
+    public function paywith($type){
+        $payInfo = $this->getPayInfo();
+        foreach ($payInfo['data']['list'] as $value){
+            if($value['pay_type']==$type){
+                Session::put('user.checkout.paywith', $value);
+                return $value;
+            }
+        }
     }
 }

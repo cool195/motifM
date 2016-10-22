@@ -148,12 +148,12 @@
         openLoading();
 
         $.ajax({
-                url: '/addresses',
-                type: 'DELETE',
-                data: {
-                    aid: AddressID
-                }
-            })
+            url: '/addresses',
+            type: 'DELETE',
+            data: {
+                aid: AddressID
+            }
+        })
             .done(function () {
                 location.reload();
             })
@@ -179,9 +179,9 @@
             $('input[name="aid"]').val(Aid); // 需要提交的项
             //更新选择地址
             $.ajax({
-                    url: '/checkout/selAddr/' + Aid,
-                    type: 'GET',
-                })
+                url: '/checkout/selAddr/' + Aid,
+                type: 'GET',
+            })
 
                 .done(function (data) {
                     if (data.receiving_id == Aid) {
@@ -278,9 +278,9 @@
         } else {
             // 修改地址
             $.ajax({
-                    url: '/address/' + AddressId,
-                    type: 'GET'
-                })
+                url: '/address/' + AddressId,
+                type: 'GET'
+            })
                 .done(function (data) {
                     //初始化 修改地址 from 表单
                     $('input[name="name"]').val(data.name);
@@ -350,9 +350,9 @@
             var StateNameEn = '',
                 StateNameSn = '';
             $.ajax({
-                    url: '/statelist/' + CountryId,
-                    type: 'GET'
-                })
+                url: '/statelist/' + CountryId,
+                type: 'GET'
+            })
                 .done(function (data) {
                     // 添加选项
                     $.each(data, function (n, value) {
@@ -475,10 +475,10 @@
         if (Aid === '' || Aid === undefined) {
             // 添加地址
             $.ajax({
-                    url: '/checkout/address',
-                    type: 'POST',
-                    data: $('#addAddressForm').serialize()
-                })
+                url: '/checkout/address',
+                type: 'POST',
+                data: $('#addAddressForm').serialize()
+            })
                 .done(function (data) {
                     if (data.success) {
                         window.location.href = '/checkout/shipping';
@@ -486,10 +486,10 @@
                 })
         } else {
             $.ajax({
-                    url: '/updateUserAddr/' + Aid,
-                    type: 'POST',
-                    data: $('#addAddressForm').serialize()
-                })
+                url: '/updateUserAddr/' + Aid,
+                type: 'POST',
+                data: $('#addAddressForm').serialize()
+            })
                 .done(function (data) {
                     if (data.success) {
                         window.location.href = '/checkout/shipping';
@@ -596,10 +596,10 @@
     // 提交卡信息
     $('#btn-submitAddCard').on('click', function () {
         $.ajax({
-                url: '/checkout/addcard',
-                type: 'POST',
-                data: $('#card-container').serialize()
-            })
+            url: '/checkout/addcard',
+            type: 'POST',
+            data: $('#card-container').serialize()
+        })
             .done(function (data) {
                 if (data.success) {
                     window.location.href = '/checkout/shipping';
@@ -611,6 +611,17 @@
     $('.clickPayWith').on('click', function () {
         $('.clickPayWith').removeClass('active');
         $(this).addClass('active');
+        $.ajax({
+            url: '/checkout/paywith/' + $(this).data('type'),
+            type: 'GET',
+        })
+    });
+
+    // 进入Review
+    $('#submit-payment').on('click', function () {
+        if ($('.clickPayWith.active').length > 0) {
+            window.location.href = '/checkout/review';
+        }
     });
     // payment end
 
