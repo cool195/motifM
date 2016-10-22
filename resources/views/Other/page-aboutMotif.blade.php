@@ -52,9 +52,6 @@
                                     our app
                                     via #motifme</p>
                                 <p class="m-b-15x">- Free shipping and returns</p>
-                                <p class="m-b-15x">
-                                BUMPERR LTD<br />
-                                71-75, Shelton Street, Covent Garden, London, WC2H 9JQ, UNITED KINGDOM (This address is only for billing, not for return).</p>
                                 <p class="m-b-0">Download the app. Discover your personal Motif. Flaunt.</p>
                             </div>
                         </div>
