@@ -63,6 +63,7 @@ class CheckoutController extends ApiController
     public function payment()
     {
         $payInfo = $this->getPayInfo();
+        
         $params = array(
             'cmd' => 'couponlist',
             'token' => Session::get('user.token'),
@@ -322,7 +323,7 @@ class CheckoutController extends ApiController
     public function addCard(Request $request)
     {
         $expiry = explode('/',$request->get('expiry'));
-        $cardInfo = MCrypt::encrypt(trim($expiry[0]) . trim($expiry[1]) . $request->get('card') . '/' . $request->get('cvv'));
+        $cardInfo = MCrypt::encrypt(trim($expiry[0]) .'20'. trim($expiry[1]) . str_replace(' ','',$request->get('card')) . '/' . $request->get('cvv'));
 
         $params = array(
             'cmd' => 'acrd',
@@ -341,7 +342,6 @@ class CheckoutController extends ApiController
         $params['zip'] = $request->get('zip');
         $params['country'] = $request->get('country');
         $params['csn'] = $request->get('csn');
-
 
         return $this->request('openapi', '', 'pay', $params);
     }
