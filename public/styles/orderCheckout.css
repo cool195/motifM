@@ -132,7 +132,7 @@
   opacity: 0;
   -webkit-transform: translateX(100%);
   transform: translateX(100%);
-  z-index: 1000;
+  z-index: 10;
   background-color: #ffffff;
 }
 .pageview.active{
@@ -141,7 +141,7 @@
   transition: all .5s ease;
   -webkit-transform: translateX(0);
   transform: translateX(0);
-  z-index: 1211;
+  z-index: 100;
 }
 .steps span.active{
   font-weight: bolder;

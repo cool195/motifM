@@ -148,12 +148,12 @@
         openLoading();
 
         $.ajax({
-            url: '/addresses',
-            type: 'DELETE',
-            data: {
-                aid: AddressID
-            }
-        })
+                url: '/addresses',
+                type: 'DELETE',
+                data: {
+                    aid: AddressID
+                }
+            })
             .done(function () {
                 location.reload();
             })
@@ -179,9 +179,9 @@
             $('input[name="aid"]').val(Aid); // 需要提交的项
             //更新选择地址
             $.ajax({
-                url: '/checkout/selAddr/' + Aid,
-                type: 'GET',
-            })
+                    url: '/checkout/selAddr/' + Aid,
+                    type: 'GET',
+                })
 
                 .done(function (data) {
                     if (data.receiving_id == Aid) {
@@ -264,7 +264,7 @@
             $('input[name="zip"]').val('');
             $('#btn-submitEditorAddress').addClass('disabled');
             // 初始化 国家,洲
-            var Country = $('#countryName').text();
+            var Country = $('#countryName').data('oldcountry');
             initCityState(Country, '');
 
             // 判断是否默认地址
@@ -278,9 +278,9 @@
         } else {
             // 修改地址
             $.ajax({
-                url: '/address/' + AddressId,
-                type: 'GET'
-            })
+                    url: '/address/' + AddressId,
+                    type: 'GET'
+                })
                 .done(function (data) {
                     //初始化 修改地址 from 表单
                     $('input[name="name"]').val(data.name);
@@ -340,11 +340,16 @@
             $('.state-info').html('<input type="text" name="state" data-optional="false" data-role="' + ChildLabel + '" class="form-control form-control-block p-a-15x font-size-sm address-state" placeholder="' + ChildLabel + '">');
             $('input[name="state"]').val(State);
 
-            // 判断是否在添加卡页面
-            if ($('#payment-checkBox').length > 0) {
-                $('#btn-submitAddCard').addClass('disabled');
+            if (State === "") {
+                // 未输入 state 提示框
                 $('.warning-info').removeClass('hidden-xs-up');
                 $('.warning-info').children('span').text('Please enter your ' + ChildLabel + ' !');
+                // 判断是否在添加卡页面
+                if ($('#payment-checkBox').length > 0) {
+                    $('#btn-submitAddCard').addClass('disabled');
+                } else {
+                    $('#btn-submitEditorAddress').addClass('disabled');
+                }
             }
         } else {
             // 初始化国家列表
@@ -356,9 +361,9 @@
             var StateNameEn = '',
                 StateNameSn = '';
             $.ajax({
-                url: '/statelist/' + CountryId,
-                type: 'GET'
-            })
+                    url: '/statelist/' + CountryId,
+                    type: 'GET'
+                })
                 .done(function (data) {
                     // 添加选项
                     $.each(data, function (n, value) {
@@ -393,6 +398,11 @@
                 if (input_validate($('input[name="card"]')) && input_validate($('input[name="expiry"]')) && input_validate($('input[name="cvv"]')) && input_validate($('input[name="name"]')) && input_validate($('input[name="addr1"]')) && input_validate($('input[name="city"]')) && input_validate($('input[name="zip"]')) && input_validate($('input[name="tel"]'))) {
                     $('.warning-info').addClass('hidden-xs-up');
                     $('#btn-submitAddCard').removeClass('disabled');
+                }
+            } else {
+                if (input_validate($('input[name="name"]')) && input_validate($('input[name="addr1"]')) && input_validate($('input[name="city"]')) && input_validate($('input[name="zip"]')) && input_validate($('input[name="tel"]'))) {
+                    $('.warning-info').addClass('hidden-xs-up');
+                    $('#btn-submitEditorAddress').removeClass('disabled');
                 }
             }
         }
@@ -493,14 +503,25 @@
 
     // 验证 State
     $('.state-info').on('keyup blur', '.address-state', function () {
-        if (input_validate($('input[name="card"]')) && input_validate($('input[name="expiry"]')) && input_validate($('input[name="cvv"]')) && input_validate($('input[name="name"]')) && input_validate($('input[name="addr1"]')) && input_validate($('input[name="city"]')) && input_validate($('input[name="zip"]')) && input_validate($('input[name="tel"]')) && input_validate($(this))) {
-            $('.warning-info').addClass('hidden-xs-up');
-            $('#btn-submitAddCard').removeClass('disabled');
+        // 判断是否再添加卡页面
+        if ($('#payment-checkBox').length > 0) {
+            if (input_validate($('input[name="card"]')) && input_validate($('input[name="expiry"]')) && input_validate($('input[name="cvv"]')) && input_validate($('input[name="name"]')) && input_validate($('input[name="addr1"]')) && input_validate($('input[name="city"]')) && input_validate($('input[name="zip"]')) && input_validate($('input[name="tel"]')) && input_validate($(this))) {
+                $('.warning-info').addClass('hidden-xs-up');
+                $('#btn-submitAddCard').removeClass('disabled');
+            } else {
+                $('.warning-info').removeClass('hidden-xs-up');
+                $('#btn-submitAddCard').addClass('disabled');
+            }
         } else {
-            $('.warning-info').removeClass('hidden-xs-up');
-            //$('.warning-info').children('span').text('Please enter your state !');
-            $('#btn-submitAddCard').addClass('disabled');
+            if (input_validate($('input[name="name"]')) && input_validate($('input[name="addr1"]')) && input_validate($('input[name="city"]')) && input_validate($('input[name="zip"]')) && input_validate($('input[name="tel"]')) && input_validate($(this))) {
+                $('.warning-info').addClass('hidden-xs-up');
+                $('#btn-submitEditorAddress').removeClass('disabled');
+            } else {
+                $('.warning-info').removeClass('hidden-xs-up');
+                $('#btn-submitEditorAddress').addClass('disabled');
+            }
         }
+
     });
 
     function input_validate($addressinfo) {
@@ -524,10 +545,10 @@
         if (Aid === '' || Aid === undefined) {
             // 添加地址
             $.ajax({
-                url: '/checkout/address',
-                type: 'POST',
-                data: $('#addAddressForm').serialize()
-            })
+                    url: '/checkout/address',
+                    type: 'POST',
+                    data: $('#addAddressForm').serialize()
+                })
                 .done(function (data) {
                     if (data.success) {
                         window.location.href = '/checkout/shipping';
@@ -535,10 +556,10 @@
                 })
         } else {
             $.ajax({
-                url: '/updateUserAddr/' + Aid,
-                type: 'POST',
-                data: $('#addAddressForm').serialize()
-            })
+                    url: '/updateUserAddr/' + Aid,
+                    type: 'POST',
+                    data: $('#addAddressForm').serialize()
+                })
                 .done(function (data) {
                     if (data.success) {
                         window.location.href = '/checkout/shipping';
@@ -649,13 +670,16 @@
     // 提交卡信息
     $('#btn-submitAddCard').on('click', function () {
         $.ajax({
-            url: '/checkout/addcard',
-            type: 'POST',
-            data: $('#card-container').serialize()
-        })
+                url: '/checkout/addcard',
+                type: 'POST',
+                data: $('#card-container').serialize()
+            })
             .done(function (data) {
                 if (data.success) {
                     window.location.href = '/checkout/payment';
+                } else {
+                    $('.warning-info').removeClass('hidden-xs-up');
+                    $('.warning-info').children('span').html(data.error_msg);
                 }
             })
     });
@@ -680,13 +704,13 @@
     //提交生成订单并支付
     $('.submit-checkout').on('click', function () {
         $.ajax({
-            url: '/payorder',
-            type: 'POST',
-        })
+                url: '/payorder',
+                type: 'POST',
+            })
             .done(function (data) {
                 if (data.success) {
                     window.location.href = data.redirectUrl;
-                }else{
+                } else {
                     alert(data.error_msg);
                     window.location.href = data.redirectUrl;
                 }

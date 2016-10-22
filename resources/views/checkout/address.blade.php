@@ -43,7 +43,7 @@
                                  data-zipcode="{{ $country['commonlist'][0]['zipcode_label']}}">
                                 <span>Country</span>
                                 <div>
-                                    <span id="countryName">{{ $country['commonlist'][0]['country_name_en'] }}</span>
+                                    <span id="countryName" data-oldcountry="{{ $country['commonlist'][0]['country_name_en'] }}">{{ $country['commonlist'][0]['country_name_en'] }}</span>
                                     <i class="iconfont icon-arrow-right icon-size-xm text-common"></i>
                                     <input type="text" name="country" hidden
                                            value="{{$country['commonlist'][0]['country_name_en']}}">
