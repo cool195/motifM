@@ -55,6 +55,13 @@
         })
     });
 
+    $('.skipError').on('click', function () {
+        openFail();
+        setTimeout(function () {
+            closeFail()
+        }, 1500);
+    });
+
     // 提交 shipping 信息 （continue 按钮)
     $('#submit-shipping').on('click', function () {
         window.location.href = $(this).data('url');
@@ -186,7 +193,7 @@
 
                 .done(function (data) {
                     if (data.receiving_id == Aid) {
-                        window.location.href = '/checkout/shipping';
+                        window.location.href = $('#addressFrom').data('url');
                     }
                 })
         } else if (Action === 'edit') {
@@ -547,7 +554,7 @@
             })
                 .done(function (data) {
                     if (data.success) {
-                        window.location.href = '/checkout/shipping';
+                        window.location.href = $('#addressFrom').data('url');
                     }
                 })
         } else {
@@ -558,7 +565,7 @@
             })
                 .done(function (data) {
                     if (data.success) {
-                        window.location.href = '/checkout/shipping';
+                        window.location.href = $('#addressFrom').data('url');
                     }
                 })
         }

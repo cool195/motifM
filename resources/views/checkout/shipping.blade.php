@@ -26,10 +26,10 @@
             <!-- 1.SHIPPING SHIPTO/METHOD-->
             <div class="pageview shipping-shipTo active" id="shipping-shipTo">
                 <div class="flex flex-alignCenter flex-justifyCenter font-size-sm p-y-15x steps">
-                    <span class="p-x-15x active">1.SHIPPING</span><strong><i
+                    <span class="p-x-15x active"><a href="/checkout/shipping">1.SHIPPING</a></span><strong><i
                                 class="iconfont icon-arrow-right icon-size-xm"></i></strong>
-                    <span class="p-x-15x">2.PAYMENT</span><strong><i class="iconfont icon-arrow-right icon-size-xm"></i></strong>
-                    <span class="p-x-15x">3.REVIEW</span>
+                    <span class="p-x-15x"><a href="/checkout/payment">2.PAYMENT</a></span><strong><i class="iconfont icon-arrow-right icon-size-xm"></i></strong>
+                    <span class="p-x-15x"><a @if($isPay || $from) href="/checkout/review" @else href="javascript:;" class="skipError" @endif>3.REVIEW</a></span>
                 </div>
                 <hr class="hr-light m-a-0">
                 <!-- ship to -->
@@ -44,7 +44,7 @@
                             <span>{{Session::get('user.checkout.address.country')}}</span><br>
                             <span>{{Session::get('user.checkout.address.telephone')}}</span>
                         </div>
-                        <a class="text-underLine text-primary" href="/checkout/address" id="edit-shipTp">Edit</a>
+                        <a class="text-underLine text-primary" href="/checkout/address?from={{$from}}" id="edit-shipTp">Edit</a>
                     </div>
                     <hr class="hr-base m-a-0">
                 </div>
@@ -72,6 +72,12 @@
             <div class="loading loading-screen loading-switch loading-hidden" id="loading">
                 <div class="loader loader-screen"></div>
             </div>
+
+            <div class="loading loading-screen loading-switch loading-hidden" id="checkout-failure">
+                <div class="loading-modal">
+                    <div class="text-white font-size-md text-center m-t-10x">Please select a Payment Method</div>
+                </div>
+            </div>
         </div>
 
     </div>
@@ -79,6 +85,6 @@
 
 </body>
 <script src="{{env('CDN_Static')}}/scripts/vendor.js{{'?v='.config('app.version')}}"></script>
-<script src="{{env('CDN_Static')}}/scripts/Checkout.js{{'?v='.config('app.version')}}"></script>
+<script src="{{env('CDN_Static')}}/scripts/checkout.js{{'?v='.config('app.version')}}"></script>
 @include('global')
 </html>

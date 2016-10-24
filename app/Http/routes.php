@@ -38,7 +38,6 @@ $app->group(['middleware' => 'pcguide', 'namespace' => 'App\Http\Controllers'], 
 $app->group(['middleware' => 'pcguide|logincheck', 'namespace' => 'App\Http\Controllers\Shopping'], function ($app) {
 
     //New CheckOut
-    $app->get('/checkout', 'CheckoutController@index');
     $app->get('/checkout/shipping', 'CheckoutController@shipping');
     $app->get('/checkout/address', 'CheckoutController@address');
     $app->get('/checkout/payment', 'CheckoutController@payment');

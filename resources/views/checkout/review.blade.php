@@ -25,10 +25,10 @@
             <!-- 3.REVIEW -->
             <div class="pageview shipping-review active" id="shipping-review">
                 <div class="flex flex-alignCenter flex-justifyCenter font-size-sm p-y-15x steps">
-                    <span class="p-x-15x">1.SHIPPING</span><strong><i
+                    <span class="p-x-15x"><a href="/checkout/shipping?from=review">1.SHIPPING</a></span><strong><i
                                 class="iconfont icon-arrow-right icon-size-xm"></i></strong>
-                    <span class="p-x-15x">2.PAYMENT</span><strong><i class="iconfont icon-arrow-right icon-size-xm"></i></strong>
-                    <span class="p-x-15x active">3.REVIEW</span>
+                    <span class="p-x-15x"><a href="/checkout/payment">2.PAYMENT</a></span><strong><i class="iconfont icon-arrow-right icon-size-xm"></i></strong>
+                    <span class="p-x-15x active"><a href="/checkout/review">3.REVIEW</a></span>
                 </div>
                 <hr class="hr-light m-a-0">
 
@@ -46,7 +46,7 @@
                 <div class="p-y-10x p-x-15x font-size-sm text-primary">
                     <div class="p-b-5x">
                         <span><strong>SHIP TO</strong></span>
-                        <a class="text-underLine pull-right text-primary" href="/checkout/shipping"
+                        <a class="text-underLine pull-right text-primary" href="/checkout/shipping?from=review"
                            id="review-editShipTo">Edit</a>
                     </div>
                     <div class="">
@@ -63,7 +63,7 @@
                 <div class="p-y-10x p-x-15x font-size-sm text-primary">
                     <div class="p-b-5x">
                         <span><strong>SHIPPING METHOD</strong></span>
-                        <a class="text-underLine pull-right text-primary" href="/checkout/shipping" id="review-method">Edit</a>
+                        <a class="text-underLine pull-right text-primary" href="/checkout/shipping?from=review" id="review-method">Edit</a>
                     </div>
                     <div class="">
                         {{Session::get('user.checkout.selship.logistics_name')}} @if(Session::get('user.checkout.selship.pay_price')>0)
@@ -214,7 +214,7 @@
                     <div class="text-center">
                         <i class="iconfont icon-cross icon-size-lg text-white"></i>
                     </div>
-                    <div class="text-white font-size-md text-center m-t-10x">支付失败</div>
+                    <div class="text-white font-size-md text-center m-t-10x">Pay Error</div>
                 </div>
             </div>
         </div>

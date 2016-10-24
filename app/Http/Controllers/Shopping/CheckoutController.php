@@ -10,8 +10,9 @@ use App\Services\MCrypt;
 
 class CheckoutController extends ApiController
 {
-    //checkout支付控制
-    public function index()
+
+    //shipping
+    public function shipping(Request $request)
     {
         $payInfo = $this->getPayInfo();
         $isPay = false;
@@ -21,16 +22,10 @@ class CheckoutController extends ApiController
             }
         }
         //是否成功支付过
-        if ($isPay) {
+        if ($isPay && !$request->get('from')) {
             return redirect('/checkout/review');
-        } else {
-            return redirect('/checkout/shipping');
         }
-    }
 
-    //shipping
-    public function shipping()
-    {
         //获取默认地址
         if (Session::get('user.checkout.address')) {
             $address = Session::get('user.checkout.address');
@@ -44,7 +39,7 @@ class CheckoutController extends ApiController
             return redirect('/checkout/address');
         } else {
             $shipPrice = $this->getCheckOutAccountList($address['receiving_id']);
-            if(empty($shipPrice['data'])){
+            if (empty($shipPrice['data'])) {
                 return redirect('/cart');
             }
             $shippingMethod = $this->getShippingMethod($address['country_name_sn'], $shipPrice['data']['total_amount'] + $shipPrice['data']['vas_amount']);
@@ -57,9 +52,9 @@ class CheckoutController extends ApiController
             }
         }
 
-        $continueUrl = '/checkout/payment';
+        $continueUrl = '/checkout/' . ($request->get('from') ? $request->get('from') : 'payment');
 
-        return View('checkout.shipping', ['continueUrl' => $continueUrl]);
+        return View('checkout.shipping', ['continueUrl' => $continueUrl, 'isPay' => $isPay, 'from' => $request->get('from')]);
     }
 
     //payment
@@ -88,20 +83,20 @@ class CheckoutController extends ApiController
     {
         $checkInfo = $this->getCheckOutAccountList(Session::get('user.checkout.address.receiving_id'), Session::get('user.checkout.selship.logistics_type'), Session::get('user.checkout.couponInfo.bind_id'), Session::get('user.checkout.selship.paywith.pay_method'));
 
-        if(empty($checkInfo['data'])){
+        if (empty($checkInfo['data'])) {
             return redirect('/cart');
         }
         return View('checkout.review', ['checkInfo' => $checkInfo['data']]);
     }
 
     //地址管理
-    public function address()
+    public function address(Request $request)
     {
         $result = $this->addrList();
 
         $country = $this->getCountry();
 
-        return View('checkout.address', ['address' => $result['data']['list'], 'country' => $country['data']]);
+        return View('checkout.address', ['address' => $result['data']['list'], 'country' => $country['data'], 'from' => $request->get('from')]);
     }
 
     //获取国家列表
@@ -323,7 +318,8 @@ class CheckoutController extends ApiController
     }
 
     //获取coupon列表
-    public function getCouponInfo(){
+    public function getCouponInfo()
+    {
         $params = array(
             'cmd' => 'couponlist',
             'token' => Session::get('user.token'),
@@ -358,8 +354,8 @@ class CheckoutController extends ApiController
         $params['csn'] = $request->get('csn');
         $params['ctype'] = $request->get('card_type');
         $result = $this->request('openapi', '', 'pay', $params);
-        if($result['success']){
-            $this->paywith($request->get('add_type'),$result['data']['card_id']);
+        if ($result['success']) {
+            $this->paywith($request->get('add_type'), $result['data']['card_id']);
         }
         return $result;
     }
@@ -386,7 +382,8 @@ class CheckoutController extends ApiController
     }
 
     //选择code
-    public function selCode($bindid){
+    public function selCode($bindid)
+    {
         $coupon = $this->getCouponInfo();
         foreach ($coupon['data']['list'] as $value) {
             if ($value['bind_id'] == $bindid && $value['usable']) {
