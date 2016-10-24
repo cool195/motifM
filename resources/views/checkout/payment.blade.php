@@ -35,33 +35,37 @@
                 <div class="text-primary">
                     <!-- card 列表 -->
                     @foreach($payInfo as $value)
-                        <div class="@if(Session::get('user.checkout.paywith.pay_type')==$value['pay_type']) active @endif flex flex-alignCenter flex-fullJustified font-size-sm p-a-15x @if(isset($value['creditCards'])) btn-toAddCard @else clickPayWith @endif" data-type="{{$value['pay_type']}}" data-card="0">
+                        <div class="@if(Session::get('user.checkout.paywith.pay_type')==$value['pay_type']) active @endif flex flex-alignCenter flex-fullJustified font-size-sm p-a-15x @if(isset($value['creditCards'])) btn-toAddCard @else clickPayWith @endif"
+                             data-type="{{$value['pay_type']}}" data-card="0">
                             <span>{{$value['pay_name']}}</span>
                             <i class="iconfont @if(isset($value['creditCards'])) icon-arrow-right @else icon-check @endif icon-size-md text-common"></i>
                         </div>
                         @foreach($value['creditCards'] as $card)
-                            <div class="@if(Session::get('user.checkout.paywith.pay_type')==$value['pay_type']) active @endif flex flex-alignCenter flex-fullJustified font-size-sm p-l-20x p-r-15x p-y-5x bg-title cardList clickPayWith" data-type="{{$value['pay_type']}}" data-card="{{$card['card_id']}}">
+                            <div class="@if(Session::get('user.checkout.paywith.pay_type')==$value['pay_type']) active @endif flex flex-alignCenter flex-fullJustified font-size-sm p-l-20x p-r-15x p-y-5x bg-title cardList clickPayWith"
+                                 data-type="{{$value['pay_type']}}" data-card="{{$card['card_id']}}">
                                 <div class="p-l-10x">Card: <span>{{$card['card_number']}}</span>
 
-                                    <!-- TODO 增加判断-->
-                                    <!-- visa -->
-                                    <span class="p-l-10x"><img src="{{env('CDN_Static')}}/images/payment/icon-visa.png{{'?v='.config('app.version')}}"
-                                                srcset="{{env('CDN_Static')}}/images/payment/icon-visa@2x.png{{'?v='.config('app.version')}} 2x, {{env('CDN_Static')}}/images/payment/icon-visa@3x.png{{'?v='.config('app.version')}} 3x"
-                                                alt=""></span>
-                                    <!-- mastercard -->
-                                    <span class="p-l-10x"><img src="{{env('CDN_Static')}}/images/payment/icon-mastercard.png{{'?v='.config('app.version')}}"
-                                                srcset="{{env('CDN_Static')}}/images/payment/icon-mastercard@2x.png{{'?v='.config('app.version')}} 2x, {{env('CDN_Static')}}/images/payment/icon-mastercard@3x.png{{'?v='.config('app.version')}} 3x"
-                                                alt=""></span>
-                                    <!-- americanexpress -->
-                                    <span class="p-l-10x"><img src="{{env('CDN_Static')}}/images/payment/icon-americanexpress.png{{'?v='.config('app.version')}}"
-                                                srcset="{{env('CDN_Static')}}/images/payment/icon-americanexpress@2x.png{{'?v='.config('app.version')}} 2x, {{env('CDN_Static')}}/images/payment/icon-americanexpress@3x.png{{'?v='.config('app.version')}} 3x"
-                                                alt=""></span>
-                                    <!-- jcb -->
-                                    <span class="p-l-10x"><img src="{{env('CDN_Static')}}/images/payment/icon-jcb.png{{'?v='.config('app.version')}}"
-                                                srcset="{{env('CDN_Static')}}/images/payment/icon-jcb@2x.png{{'?v='.config('app.version')}} 2x, {{env('CDN_Static')}}/images/payment/icon-jcb@3x.png{{'?v='.config('app.version')}} 3x"
-                                                alt=""></span>
-
-
+                                    @if($card['card_type']=='Visa')
+                                        <span class="p-l-10x"><img
+                                                    src="{{env('CDN_Static')}}/images/payment/icon-visa.png{{'?v='.config('app.version')}}"
+                                                    srcset="{{env('CDN_Static')}}/images/payment/icon-visa@2x.png{{'?v='.config('app.version')}} 2x, {{env('CDN_Static')}}/images/payment/icon-visa@3x.png{{'?v='.config('app.version')}} 3x"
+                                                    alt=""></span>
+                                    @elseif($card['card_type']=='MasterCard')
+                                        <span class="p-l-10x"><img
+                                                    src="{{env('CDN_Static')}}/images/payment/icon-mastercard.png{{'?v='.config('app.version')}}"
+                                                    srcset="{{env('CDN_Static')}}/images/payment/icon-mastercard@2x.png{{'?v='.config('app.version')}} 2x, {{env('CDN_Static')}}/images/payment/icon-mastercard@3x.png{{'?v='.config('app.version')}} 3x"
+                                                    alt=""></span>
+                                    @elseif($card['card_type']=='AmericanExpress')
+                                        <span class="p-l-10x"><img
+                                                    src="{{env('CDN_Static')}}/images/payment/icon-americanexpress.png{{'?v='.config('app.version')}}"
+                                                    srcset="{{env('CDN_Static')}}/images/payment/icon-americanexpress@2x.png{{'?v='.config('app.version')}} 2x, {{env('CDN_Static')}}/images/payment/icon-americanexpress@3x.png{{'?v='.config('app.version')}} 3x"
+                                                    alt=""></span>
+                                    @elseif($card['card_type']=='JCB')
+                                        <span class="p-l-10x"><img
+                                                    src="{{env('CDN_Static')}}/images/payment/icon-jcb.png{{'?v='.config('app.version')}}"
+                                                    srcset="{{env('CDN_Static')}}/images/payment/icon-jcb@2x.png{{'?v='.config('app.version')}} 2x, {{env('CDN_Static')}}/images/payment/icon-jcb@3x.png{{'?v='.config('app.version')}} 3x"
+                                                    alt=""></span>
+                                    @endif
                                     <br>EXP: <span>{{$card['month']}}/{{$card['year']}}</span>
                                 </div>
                                 <i class="iconfont icon-check icon-size-md text-common"></i>
@@ -137,7 +141,8 @@
                     </div>
                     <div class="cardinfo-wrapper font-size-sm">
                         <div class="cardinfo-item">
-                            <input class="cardinfo-input" type="text" data-braintree-name="expiration_date" data-role="expiry"
+                            <input class="cardinfo-input" type="text" data-braintree-name="expiration_date"
+                                   data-role="expiry"
                                    value="" placeholder="MM/YY" data-optional="false" maxlength="9" name="expiry">
                         </div>
                         <div class="cardinfo-item">
@@ -152,100 +157,114 @@
                     </div>
                     <hr class="hr-base m-a-0">
 
-                <!-- BILLING ADRESS -->
-                <div class="text-primary">
-                    <section class="p-b-20x reserve-height" id="cardAddress">
-                        <div class="p-y-10x p-x-15x font-size-sm bg-title"><strong>BILLING ADRESS</strong></div>
-                        <hr class="hr-base m-a-0">
-                        {{--<div class="warning-info off flex text-warning flex-alignCenter text-left p-x-15x p-y-10x hidden-xs-up">--}}
+                    <!-- BILLING ADRESS -->
+                    <div class="text-primary">
+                        <section class="p-b-20x reserve-height" id="cardAddress">
+                            <div class="p-y-10x p-x-15x font-size-sm bg-title"><strong>BILLING ADRESS</strong></div>
+                            <hr class="hr-base m-a-0">
+                            {{--<div class="warning-info off flex text-warning flex-alignCenter text-left p-x-15x p-y-10x hidden-xs-up">--}}
                             {{--<i class="iconfont icon-caveat icon-size-md p-r-5x"></i>--}}
                             {{--<span class="font-size-xs"></span>--}}
-                        {{--</div>--}}
+                            {{--</div>--}}
 
-                        <fieldset>
-                            <div class="flex flex-alignCenter flex-fullJustified font-size-sm text-primary p-a-15x">
-                                <span>Same as Shipping Address?</span>
-                                <div class="radio-checkBox open" id="payment-checkBox">
-                                    <div class="radio-checkItem"></div>
+                            <fieldset>
+                                <div class="flex flex-alignCenter flex-fullJustified font-size-sm text-primary p-a-15x">
+                                    <span>Same as Shipping Address?</span>
+                                    <div class="radio-checkBox open" id="payment-checkBox">
+                                        <div class="radio-checkItem"></div>
+                                    </div>
                                 </div>
-                            </div>
-                        </fieldset>
-                        <hr class="hr-base m-a-0">
-                        <fieldset>
-                            <div class="flex flex-alignCenter flex-fullJustified font-size-sm text-primary p-a-15x address-option"
-                                 id="btn-toCountryList" data-oldcountry="{{Session::get('user.checkout.address.country')}}" data-newcountry="{{$country['commonlist'][0]['country_name_en']}}">
-                                <span>Country</span>
-                                <div>
-                                    <span id="countryName">{{Session::get('user.checkout.address.country')}}</span>
-                                    <i class="iconfont icon-arrow-right icon-size-xm text-common"></i>
-                                    <input type="text" name="country" hidden value="{{Session::get('user.checkout.address.country')}}">
-                                    <input type="text" name="csn" hidden value="">
+                            </fieldset>
+                            <hr class="hr-base m-a-0">
+                            <fieldset>
+                                <div class="flex flex-alignCenter flex-fullJustified font-size-sm text-primary p-a-15x address-option"
+                                     id="btn-toCountryList"
+                                     data-oldcountry="{{Session::get('user.checkout.address.country')}}"
+                                     data-newcountry="{{$country['commonlist'][0]['country_name_en']}}">
+                                    <span>Country</span>
+                                    <div>
+                                        <span id="countryName">{{Session::get('user.checkout.address.country')}}</span>
+                                        <i class="iconfont icon-arrow-right icon-size-xm text-common"></i>
+                                        <input type="text" name="country" hidden
+                                               value="{{Session::get('user.checkout.address.country')}}">
+                                        <input type="text" name="csn" hidden value="">
+                                    </div>
                                 </div>
-                            </div>
-                        </fieldset>
-                        <hr class="hr-base m-a-0">
-                        <fieldset>
-                            <input class="form-control form-control-block p-a-15x font-size-sm" name="name"
-                                   type="text"
-                                   maxlength="32" data-optional="false" data-role="name"
-                                   value="{{Session::get('user.checkout.address.name')}}" placeholder="Name" data-oldname="{{Session::get('user.checkout.address.name')}}">
-                        </fieldset>
-                        <hr class="hr-base m-a-0">
-                        <fieldset>
-                            <input class="form-control form-control-block p-a-15x font-size-sm" name="addr1" type="text"
-                                   data-optional="false" data-role="street"
-                                   value="{{Session::get('user.checkout.address.detail_address1')}}" placeholder="Street1" data-oldaddr1="{{Session::get('user.checkout.address.detail_address1')}}">
-                        </fieldset>
-                        <hr class="hr-base m-a-0">
-                        <fieldset>
-                            <input class="form-control form-control-block p-a-15x font-size-sm" name="addr2"
-                                   type="text" data-role="street"
-                                   data-optional="true" value="{{Session::get('user.checkout.address.detail_address2')}}" data-oldaddr2="{{Session::get('user.checkout.address.detail_address2')}}"
-                                   placeholder="Street2 (optional)">
-                        </fieldset>
-                        <hr class="hr-base m-a-0">
-                        <fieldset>
-                            <input class="form-control form-control-block p-a-15x font-size-sm" name="city" data-oldcity="{{Session::get('user.checkout.address.city')}}"
-                                   type="text"
-                                   data-optional="false" data-role="city"
-                                   value="{{Session::get('user.checkout.address.city')}}" placeholder="City">
-                        </fieldset>
-                        <hr class="hr-base m-a-0">
-                        <fieldset>
-                            {{--动态加载州数据 state--}}
-                            <div class="state-info" data-oldstate="{{Session::get('user.checkout.address.state')}}">
-                            </div>
-                        </fieldset>
-                        <hr class="hr-base m-a-0">
-                        <fieldset>
-                            <input class="form-control form-control-block p-a-15x font-size-sm" name="zip" data-oldzip="{{Session::get('user.checkout.address.zip')}}"
-                                   type="text"
-                                   maxlength="10" data-optional="false" data-role="zip code"
-                                   value="{{Session::get('user.checkout.address.zip')}}"
-                                   placeholder="{{--动态提示文案--}}">
-                        </fieldset>
-                        <hr class="hr-base m-a-0">
-                        <fieldset>
-                            <input class="form-control form-control-block p-a-15x font-size-sm" name="tel" data-oldtel="{{Session::get('user.checkout.address.telephone')}}"
-                                   type="tel"
-                                   maxlength="20" data-optional="false" data-role="Phone"
-                                   value="{{Session::get('user.checkout.address.telephone')}}" placeholder="Phone">
-                        </fieldset>
+                            </fieldset>
+                            <hr class="hr-base m-a-0">
+                            <fieldset>
+                                <input class="form-control form-control-block p-a-15x font-size-sm" name="name"
+                                       type="text"
+                                       maxlength="32" data-optional="false" data-role="name"
+                                       value="{{Session::get('user.checkout.address.name')}}" placeholder="Name"
+                                       data-oldname="{{Session::get('user.checkout.address.name')}}">
+                            </fieldset>
+                            <hr class="hr-base m-a-0">
+                            <fieldset>
+                                <input class="form-control form-control-block p-a-15x font-size-sm" name="addr1"
+                                       type="text"
+                                       data-optional="false" data-role="street"
+                                       value="{{Session::get('user.checkout.address.detail_address1')}}"
+                                       placeholder="Street1"
+                                       data-oldaddr1="{{Session::get('user.checkout.address.detail_address1')}}">
+                            </fieldset>
+                            <hr class="hr-base m-a-0">
+                            <fieldset>
+                                <input class="form-control form-control-block p-a-15x font-size-sm" name="addr2"
+                                       type="text" data-role="street"
+                                       data-optional="true"
+                                       value="{{Session::get('user.checkout.address.detail_address2')}}"
+                                       data-oldaddr2="{{Session::get('user.checkout.address.detail_address2')}}"
+                                       placeholder="Street2 (optional)">
+                            </fieldset>
+                            <hr class="hr-base m-a-0">
+                            <fieldset>
+                                <input class="form-control form-control-block p-a-15x font-size-sm" name="city"
+                                       data-oldcity="{{Session::get('user.checkout.address.city')}}"
+                                       type="text"
+                                       data-optional="false" data-role="city"
+                                       value="{{Session::get('user.checkout.address.city')}}" placeholder="City">
+                            </fieldset>
+                            <hr class="hr-base m-a-0">
+                            <fieldset>
+                                {{--动态加载州数据 state--}}
+                                <div class="state-info" data-oldstate="{{Session::get('user.checkout.address.state')}}">
+                                </div>
+                            </fieldset>
+                            <hr class="hr-base m-a-0">
+                            <fieldset>
+                                <input class="form-control form-control-block p-a-15x font-size-sm" name="zip"
+                                       data-oldzip="{{Session::get('user.checkout.address.zip')}}"
+                                       type="text"
+                                       maxlength="10" data-optional="false" data-role="zip code"
+                                       value="{{Session::get('user.checkout.address.zip')}}"
+                                       placeholder="{{--动态提示文案--}}">
+                            </fieldset>
+                            <hr class="hr-base m-a-0">
+                            <fieldset>
+                                <input class="form-control form-control-block p-a-15x font-size-sm" name="tel"
+                                       data-oldtel="{{Session::get('user.checkout.address.telephone')}}"
+                                       type="tel"
+                                       maxlength="20" data-optional="false" data-role="Phone"
+                                       value="{{Session::get('user.checkout.address.telephone')}}" placeholder="Phone">
+                            </fieldset>
 
-                        <hr class="hr-base m-a-0">
-                        <!-- Save 按钮 -->
-                        <div class="container-fluid p-x-10x p-y-15x">
-                            <div class="row">
-                                <div class="col-xs-6">
-                                    <div class="btn btn-primary-outline btn-block" id="btn-cancelAddCard">Cancel</div>
-                                </div>
-                                <div class="col-xs-6">
-                                    <div class="btn btn-primary btn-block disabled" id="btn-submitAddCard">Save</div>
+                            <hr class="hr-base m-a-0">
+                            <!-- Save 按钮 -->
+                            <div class="container-fluid p-x-10x p-y-15x">
+                                <div class="row">
+                                    <div class="col-xs-6">
+                                        <div class="btn btn-primary-outline btn-block" id="btn-cancelAddCard">Cancel
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-6">
+                                        <div class="btn btn-primary btn-block disabled" id="btn-submitAddCard">Save
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    </section>
-                </div>
+                        </section>
+                    </div>
                 </form>
             </div>
             <!-- promotion code -->
@@ -277,10 +296,12 @@
                     <!-- 优惠券列表 -->
                     <div class="p-a-15x">
                         @foreach($coupon['list'] as $value)
-                            <div class="promotion-item @if($value['usable']){{'bindidcode'}}@endif" data-bindid="{{$value['bind_id']}}">
+                            <div class="promotion-item @if($value['usable']){{'bindidcode'}}@endif"
+                                 data-bindid="{{$value['bind_id']}}">
                                 <div class="mask"></div>
                                 <div class="promotion-info @if($value['usable']){{'bg-promotion'}}@else{{'bg-promotionOver'}}@endif p-a-10x">
-                                    <div class="promotion-title text-white"><strong>{{$value['cp_title']}}</strong></div>
+                                    <div class="promotion-title text-white"><strong>{{$value['cp_title']}}</strong>
+                                    </div>
                                     <div class="font-size-sm text-white">{{$value['prompt_words']}}</div>
                                     <span class="bg-point-right"></span>
                                     <span class="bg-point-left"></span>
@@ -333,7 +354,8 @@
                                 <i class="iconfont icon-check icon-size-md text-white"></i>
                             </span>
                                 </div>
-                                <div class="promotion-time text-primary p-a-10x text-right font-size-sm">Expires: {{date("M d, Y", ($value['expiry_time'] / 1000))}}
+                                <div class="promotion-time text-primary p-a-10x text-right font-size-sm">
+                                    Expires: {{date("M d, Y", ($value['expiry_time'] / 1000))}}
                                 </div>
                             </div>
                         @endforeach

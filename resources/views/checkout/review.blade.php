@@ -13,11 +13,11 @@
 <body>
 @include('check.tagmanager')
 
-        <!-- 外层容器 -->
+<!-- 外层容器 -->
 <div id="body-content">
     <!-- 展开的汉堡菜单 -->
-    @include('nav')
-            <!-- 主体内容 -->
+@include('nav')
+<!-- 主体内容 -->
     <div class="body-container">
         @include('navigator', ['pageScope'=>true])
 
@@ -83,30 +83,29 @@
                             <span>Method: PayPal</span><br>
                         @else
                             <span>Card: {{Session::get('user.checkout.paywith.withCard.card_number')}}</span>
-                            <!-- TODO 增加判断-->
-                            <!-- paypal -->
-                            <span class="p-l-10x"><img src="{{env('CDN_Static')}}/images/payment/icon-Paypal.png{{'?v='.config('app.version')}}"
-                                                       srcset="{{env('CDN_Static')}}/images/payment/icon-Paypal@2x.png{{'?v='.config('app.version')}} 2x, {{env('CDN_Static')}}/images/payment/icon-Paypal@3x.png{{'?v='.config('app.version')}} 3x"
-                                                       alt=""></span>
-                            <!-- visa -->
-                            <span class="p-l-10x"><img src="{{env('CDN_Static')}}/images/payment/icon-visa.png{{'?v='.config('app.version')}}"
-                                                       srcset="{{env('CDN_Static')}}/images/payment/icon-visa@2x.png{{'?v='.config('app.version')}} 2x, {{env('CDN_Static')}}/images/payment/icon-visa@3x.png{{'?v='.config('app.version')}} 3x"
-                                                       alt=""></span>
-                            <!-- mastercard -->
-                            <span class="p-l-10x"><img src="{{env('CDN_Static')}}/images/payment/icon-mastercard.png{{'?v='.config('app.version')}}"
-                                                       srcset="{{env('CDN_Static')}}/images/payment/icon-mastercard@2x.png{{'?v='.config('app.version')}} 2x, {{env('CDN_Static')}}/images/payment/icon-mastercard@3x.png{{'?v='.config('app.version')}} 3x"
-                                                       alt=""></span>
-                            <!-- americanexpress -->
-                            <span class="p-l-10x"><img src="{{env('CDN_Static')}}/images/payment/icon-americanexpress.png{{'?v='.config('app.version')}}"
-                                                       srcset="{{env('CDN_Static')}}/images/payment/icon-americanexpress@2x.png{{'?v='.config('app.version')}} 2x, {{env('CDN_Static')}}/images/payment/icon-americanexpress@3x.png{{'?v='.config('app.version')}} 3x"
-                                                       alt=""></span>
-                            <!-- jcb -->
-                            <span class="p-l-10x"><img src="{{env('CDN_Static')}}/images/payment/icon-jcb.png{{'?v='.config('app.version')}}"
-                                                       srcset="{{env('CDN_Static')}}/images/payment/icon-jcb@2x.png{{'?v='.config('app.version')}} 2x, {{env('CDN_Static')}}/images/payment/icon-jcb@3x.png{{'?v='.config('app.version')}} 3x"
-                                                       alt=""></span>
-
-
-                            <br><span>Exp: {{Session::get('user.checkout.paywith.withCard.month').'/'.Session::get('user.checkout.paywith.withCard.year')}}</span>
+                            @if(Session::get('user.checkout.paywith.withCard.card_type')=='Visa')
+                                <span class="p-l-10x"><img
+                                            src="{{env('CDN_Static')}}/images/payment/icon-visa.png{{'?v='.config('app.version')}}"
+                                            srcset="{{env('CDN_Static')}}/images/payment/icon-visa@2x.png{{'?v='.config('app.version')}} 2x, {{env('CDN_Static')}}/images/payment/icon-visa@3x.png{{'?v='.config('app.version')}} 3x"
+                                            alt=""></span>
+                            @elseif(Session::get('user.checkout.paywith.withCard.card_type')=='MasterCard')
+                                <span class="p-l-10x"><img
+                                            src="{{env('CDN_Static')}}/images/payment/icon-mastercard.png{{'?v='.config('app.version')}}"
+                                            srcset="{{env('CDN_Static')}}/images/payment/icon-mastercard@2x.png{{'?v='.config('app.version')}} 2x, {{env('CDN_Static')}}/images/payment/icon-mastercard@3x.png{{'?v='.config('app.version')}} 3x"
+                                            alt=""></span>
+                            @elseif(Session::get('user.checkout.paywith.withCard.card_type')=='AmericanExpress')
+                                <span class="p-l-10x"><img
+                                            src="{{env('CDN_Static')}}/images/payment/icon-americanexpress.png{{'?v='.config('app.version')}}"
+                                            srcset="{{env('CDN_Static')}}/images/payment/icon-americanexpress@2x.png{{'?v='.config('app.version')}} 2x, {{env('CDN_Static')}}/images/payment/icon-americanexpress@3x.png{{'?v='.config('app.version')}} 3x"
+                                            alt=""></span>
+                            @elseif(Session::get('user.checkout.paywith.withCard.card_type')=='JCB')
+                                <span class="p-l-10x"><img
+                                            src="{{env('CDN_Static')}}/images/payment/icon-jcb.png{{'?v='.config('app.version')}}"
+                                            srcset="{{env('CDN_Static')}}/images/payment/icon-jcb@2x.png{{'?v='.config('app.version')}} 2x, {{env('CDN_Static')}}/images/payment/icon-jcb@3x.png{{'?v='.config('app.version')}} 3x"
+                                            alt=""></span>
+                            @endif
+                            <br>
+                            <span>Exp: {{Session::get('user.checkout.paywith.withCard.month').'/'.Session::get('user.checkout.paywith.withCard.year')}}</span>
                             <br>
                         @endif
                         @if(Session::get('user.checkout.couponInfo'))
@@ -131,7 +130,8 @@
                 <!-- 价格汇总 -->
                 <div class="p-y-10x p-x-15x font-size-sm text-primary">
                     <div class="flex flex-fullJustified text-primary font-size-sm">
-                        <span>Items ({{$checkInfo['total_sku_qtty']}})</span><span>${{number_format(($checkInfo['total_amount'] / 100), 2)}}</span>
+                        <span>Items ({{$checkInfo['total_sku_qtty']}}
+                            )</span><span>${{number_format(($checkInfo['total_amount'] / 100), 2)}}</span>
                     </div>
 
                     {{--增值服务--}}

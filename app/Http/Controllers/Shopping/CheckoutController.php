@@ -67,7 +67,6 @@ class CheckoutController extends ApiController
     {
         //return Session::get('user.checkout');
         $payInfo = $this->getPayInfo();
-
         $coupon = $this->getCouponInfo();
 
         if (!Session::get('user.checkout.couponInfo')) {
