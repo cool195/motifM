@@ -67,7 +67,7 @@
                     </div>
                     <div class="">
                         {{Session::get('user.checkout.selship.logistics_name')}} @if(Session::get('user.checkout.selship.pay_price')>0)
-                            ${{number_format(($value['pay_price'] / 100), 2)}}@endif
+                            ${{number_format((Session::get('user.checkout.selship.pay_price') / 100), 2)}}@endif
                     </div>
                 </div>
                 <div class="hr-between"></div>

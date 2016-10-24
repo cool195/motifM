@@ -329,7 +329,7 @@
                                         <li></li>
                                         <li></li>
                                     </ul>
-                            <span class="promotion-radio @if($value['selected']){{'active'}}@endif">
+                            <span class="promotion-radio @if($value['bind_id']==Session::get('user.checkout.couponInfo.bind_id')){{'active'}}@endif">
                                 <i class="iconfont icon-check icon-size-md text-white"></i>
                             </span>
                                 </div>

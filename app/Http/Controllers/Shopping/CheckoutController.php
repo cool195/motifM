@@ -68,12 +68,7 @@ class CheckoutController extends ApiController
         //return Session::get('user.checkout');
         $payInfo = $this->getPayInfo();
 
-        $params = array(
-            'cmd' => 'couponlist',
-            'token' => Session::get('user.token'),
-            'pin' => Session::get('user.pin'),
-        );
-        $coupon = $this->request('openapi', '', 'cart', $params);
+        $coupon = $this->getCouponInfo();
 
         if (!Session::get('user.checkout.couponInfo')) {
             foreach ($coupon['data']['list'] as $value) {
@@ -92,7 +87,7 @@ class CheckoutController extends ApiController
     //review
     public function review()
     {
-        $checkInfo = $this->getCheckOutAccountList(Session::get('user.checkout.address.receiving_id'), Session::get('user.checkout.selship.logistics_type'), Session::get('user.checkout.selship.couponInfo.bind_id'), Session::get('user.checkout.selship.paywith.pay_method'));
+        $checkInfo = $this->getCheckOutAccountList(Session::get('user.checkout.address.receiving_id'), Session::get('user.checkout.selship.logistics_type'), Session::get('user.checkout.couponInfo.bind_id'), Session::get('user.checkout.selship.paywith.pay_method'));
 
         if(empty($checkInfo['data'])){
             return redirect('/cart');
@@ -328,6 +323,17 @@ class CheckoutController extends ApiController
         return $this->request('openapi', '', 'pay', $params);
     }
 
+    //获取coupon列表
+    public function getCouponInfo(){
+        $params = array(
+            'cmd' => 'couponlist',
+            'token' => Session::get('user.token'),
+            'pin' => Session::get('user.pin'),
+        );
+        $coupon = $this->request('openapi', '', 'cart', $params);
+        return $coupon;
+    }
+
     //绑定支付信息
     public function addCard(Request $request)
     {
@@ -376,6 +382,17 @@ class CheckoutController extends ApiController
                 Session::put('user.checkout.paywith', $value);
                 Session::forget('user.checkout.paywith.creditCards');
                 return $value;
+            }
+        }
+    }
+
+    //选择code
+    public function selCode($bindid){
+        $coupon = $this->getCouponInfo();
+        foreach ($coupon['data']['list'] as $value) {
+            if ($value['bind_id'] == $bindid) {
+                $couponInfo = $value;
+                Session::put('user.checkout.couponInfo', $couponInfo);
             }
         }
     }
