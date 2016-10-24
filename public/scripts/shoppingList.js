@@ -243,11 +243,11 @@
         //$currentOption.text('Sort By');
 
         //改变选中的文本
-        if ( $('.btn-sortBy option').value === 0){
-            $(".btn-sortBy option").attr("selected",true);
-        }else{
-            $(".btn-sortBy option").attr("selected",false);
-        }
+        //if ( $('.btn-sortBy option').value === 0){
+        //    $(".btn-sortBy option").attr("selected",true);
+        //}else{
+        //    $(".btn-sortBy option").attr("selected",false);
+        //}
         if ( $currentOption.data('searchtext') == 'reset'){
             // 重置
             SearchType = '';
@@ -271,7 +271,7 @@
     });
     $('.btn-sortBy').on('click',function(){
         //$('option[value="0"]').remove();
-        $("#sortBy").val('-1');
+        //$("#sortBy").val('-1');
         //$('.falseSortBy').css('display','block');
 
 
