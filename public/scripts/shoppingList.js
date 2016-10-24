@@ -271,7 +271,7 @@
     });
     $('.btn-sortBy').on('click',function(){
         //$('option[value="0"]').remove();
-        //$("#sortBy").val('-1');
+        $("#sortBy").val('-1');
         //$('.falseSortBy').css('display','block');
 
 
