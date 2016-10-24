@@ -375,7 +375,7 @@
                 </section>
             </div>
             <!-- loading -->
-            <div class="loading loading-screen loading-switch loading-hidden">
+            <div class="loading loading-screen loading-switch loading-hidden" id="loading">
                 <div class="loader loader-screen"></div>
             </div>
         </div>

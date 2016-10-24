@@ -182,8 +182,18 @@
                 </section>
             </div>
             <!-- loading -->
-            <div class="loading loading-screen loading-switch loading-hidden">
+            <div class="loading loading-screen loading-switch loading-hidden" id="loading">
                 <div class="loader loader-screen"></div>
+            </div>
+
+            <!-- 弹出提示 -->
+            <div class="loading loading-screen loading-switch loading-hidden" id="checkout-failure">
+                <div class="loading-modal">
+                    <div class="text-center">
+                        <i class="iconfont icon-cross icon-size-lg text-white"></i>
+                    </div>
+                    <div class="text-white font-size-md text-center m-t-10x">支付失败</div>
+                </div>
             </div>
         </div>
 
