@@ -87,7 +87,7 @@
             </section>
 
             <select class="font-size-sm text-main btn-sortBy" id="sortBy">
-                <option value="0">Sort By</option>
+                {{--<option value="0">Sort By</option>--}}
                 @foreach($search['list'] as $value)
                     @if($value['attr_type']==1)
                         <option data-search="{{$value['attr_id']}}" data-searchtext="{{$value['attr_label']}}">{{$value['attr_label']}}</option>

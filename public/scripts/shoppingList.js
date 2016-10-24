@@ -267,13 +267,14 @@
         $('#productList-container').data('loading', false);
         getProductList(2);
 
-        $("#sortBy").prepend("<option value='0'>Sort By</option>");
-        $("#sortBy").val('0');
+        //$("#sortBy").prepend("<option value='0'>Sort By</option>");
+        //$("#sortBy").val('0');
     });
     $('.btn-sortBy').on('click',function(){
-        $('option[value="0"]').remove();
-        $("#sortBy").val('-1');
-        $('.falseSortBy').css('display','block');
+        //$('option[value="0"]').remove();
+        //$("#sortBy").val('-1');
+        //$('.falseSortBy').css('display','block');
+
 
     });
 
