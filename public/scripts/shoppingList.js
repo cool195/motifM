@@ -235,7 +235,6 @@
 
     // 选中 筛选条件
     $('.btn-sortBy').on('change', function () {
-        $('.falseSortBy').css('display','none');
         //$('option[value="0"]').removeAttr('disabled');
         //$('.btn-sortBy').children('option').first().hide();
         //$('.btn-sortBy').children('option').eq(1).attr("selected", "selected");
