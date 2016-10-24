@@ -262,8 +262,6 @@
             // 显示搜索条件
             $('.lowTo-info').html($currentOption.data('searchtext'));
             $('.lowTo').removeClass('disabled');
-
-
         }
         $('#productList-container').data('pagenum', 0);
         $('#productList-container').data('loading', false);
