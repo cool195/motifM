@@ -40,7 +40,7 @@ class CheckoutController extends ApiController
         }
 
         //没有地址进入添加地址页面
-        if (empty($address)) {
+        if (empty(Session::get('user.checkout.address'))) {
             return redirect('/checkout/address');
         } else {
             $shipPrice = $this->getCheckOutAccountList($address['receiving_id']);
@@ -53,7 +53,7 @@ class CheckoutController extends ApiController
                 Session::put('user.checkout.shipKey', $shipKey);
                 Session::put('user.checkout.selship', $shippingMethod[0]);
                 Session::put('user.checkout.shipping', $shippingMethod);
-                Session::forget('user.checkout.couponInfo');
+                //Session::forget('user.checkout.couponInfo');
             }
         }
 
@@ -389,7 +389,7 @@ class CheckoutController extends ApiController
     public function selCode($bindid){
         $coupon = $this->getCouponInfo();
         foreach ($coupon['data']['list'] as $value) {
-            if ($value['bind_id'] == $bindid) {
+            if ($value['bind_id'] == $bindid && $value['usable']) {
                 $couponInfo = $value;
                 Session::put('user.checkout.couponInfo', $couponInfo);
             }

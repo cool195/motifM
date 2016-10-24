@@ -677,7 +677,7 @@
                     window.location.href = '/checkout/payment';
                 } else {
                     $('.warning-info').removeClass('hidden-xs-up');
-                    $('.warning-info').children('span').html(data.error_msg);
+                    $('.warning-info').children('span').html(data.prompt_msg);
                     closeLoading();
                 }
             })
@@ -804,12 +804,13 @@
             })
                 .done(function (data) {
                     if (data.code == 0) {
-                        $('input[name="bindid"]').val(data.data.bind_id);
-                        $('#infoForm').submit();
-                    } else {
-                        $('.warning-info').removeAttr('hidden');
-                        data.prompt_msg = data.prompt_msg == '' ? 'Invalid code' : data.prompt_msg;
-                        $('.warning-info').children('span').text(data.prompt_msg);
+                        $.ajax({
+                            url: '/checkout/selCode/' + data.data.bind_id,
+                            type: 'GET',
+                        })
+                            .always(function () {
+                                window.location.href = '/checkout/payment';
+                            });
                     }
                 })
                 .always(function () {
