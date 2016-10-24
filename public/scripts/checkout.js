@@ -718,7 +718,7 @@
                     window.location.href = data.redirectUrl;
                 } else {
                     closeLoading;
-                    
+
                     window.location.href = data.redirectUrl;
                 }
             })
@@ -778,9 +778,42 @@
         }
     });
 
+    //选择code事件
+    $('.bindidcode').on('click', function (e) {
+        openLoading();
+        $.ajax({
+            url: '/checkout/selCode/' + $(this).data('bindid'),
+            type: 'GET',
+        })
+            .always(function () {
+                window.location.href = '/checkout/payment';
+            });
+    });
+
     $('#btn-submitPromoCode').on('click', function () {
         if (!$(this).hasClass('disabled')) {
-            alert('提交promotioncode');
+            openLoading();
+
+            $.ajax({
+                url: '/cart/verifycoupon',
+                type: 'POST',
+                data: {
+                    couponcode: $('input[name="coupon"]').val()
+                }
+            })
+                .done(function (data) {
+                    if (data.code == 0) {
+                        $('input[name="bindid"]').val(data.data.bind_id);
+                        $('#infoForm').submit();
+                    } else {
+                        $('.warning-info').removeAttr('hidden');
+                        data.prompt_msg = data.prompt_msg == '' ? 'Invalid code' : data.prompt_msg;
+                        $('.warning-info').children('span').text(data.prompt_msg);
+                    }
+                })
+                .always(function () {
+                    closeLoading();
+                });
         }
     });
     // payment end
