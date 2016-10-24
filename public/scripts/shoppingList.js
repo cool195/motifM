@@ -235,7 +235,7 @@
 
     // 选中 筛选条件
     $('.btn-sortBy').on('change', function () {
-        $('option[value="0"]').removeAttr('disabled');
+        //$('option[value="0"]').removeAttr('disabled');
         //$('.btn-sortBy').children('option').first().hide();
         //$('.btn-sortBy').children('option').eq(1).attr("selected", "selected");
 
@@ -268,9 +268,12 @@
         $('#productList-container').data('loading', false);
         getProductList(2);
 
+        $("#sortBy").prepend("<option value='0'>Sort By</option>");
+        $("#sortBy").val('0');
     });
     $('.btn-sortBy').on('click',function(){
-        $('option[value="0"]').attr('disabled','disabled');
+        $('option[value="0"]').remove();
+        $("#sortBy").val('-1');
     });
 
     // 下拉加载

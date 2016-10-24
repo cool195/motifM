@@ -86,7 +86,7 @@
                 @endif
             </section>
 
-            <select class="font-size-sm text-main btn-sortBy">
+            <select class="font-size-sm text-main btn-sortBy" id="sortBy">
                 <option value="0">Sort By</option>
                 @foreach($search['list'] as $value)
                     @if($value['attr_type']==1)
