@@ -82,6 +82,12 @@
         initAddAddressForm(1, 0);
     });
 
+    if ($('#shipping-editorAddress').length > 0) {
+        if($('#shipping-editorAddress').hasClass('active')){
+            initAddAddressForm(1, 0);
+        }
+    }
+
     function switchEdit($Edit) {
         if ($Edit.hasClass('active')) {
             $Edit.html('Edit');

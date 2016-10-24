@@ -24,10 +24,10 @@
             <!-- 选择支付方式 -->
             <div class="pageview shipping-payment active" id="shipping-payment">
                 <div class="flex flex-alignCenter flex-justifyCenter font-size-sm p-y-15x steps">
-                    <span class="p-x-15x"><a href="/checkout/shipping">1.SHIPPING</a></span><strong><i
+                    <span class="p-x-15x"><a class="text-primary" href="/checkout/shipping">1.SHIPPING</a></span><strong><i
                                 class="iconfont icon-arrow-right icon-size-xm"></i></strong>
-                    <span class="p-x-15x active"><a href="/checkout/payment">2.PAYMENT</a></span><strong><i class="iconfont icon-arrow-right icon-size-xm"></i></strong>
-                    <span class="p-x-15x"><a href="/checkout/review">3.REVIEW</a></span>
+                    <span class="p-x-15x active"><a class="text-primary" href="/checkout/payment">2.PAYMENT</a></span><strong><i class="iconfont icon-arrow-right icon-size-xm"></i></strong>
+                    <span class="p-x-15x"><a class="text-primary" href="/checkout/review">3.REVIEW</a></span>
                 </div>
                 <hr class="hr-light m-a-0">
                 <!-- 选择支付方式 -->
