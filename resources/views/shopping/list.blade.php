@@ -95,6 +95,7 @@
                 @endforeach
                 <option data-searchtext="reset">Reset</option>
             </select>
+            <span class="falseSortBy text-primary font-size-sm">Sort By</span>
             {{--<span class="font-size-sm text-main btn-sortBy">Sort By</span>--}}
         </nav>
         <!-- 商品列表-->
