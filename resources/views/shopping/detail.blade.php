@@ -132,7 +132,7 @@
                                 <img class="img-fluid preloader"
                                      src="{{env('CDN_Static')}}/images/product/bg-product@750.png" alt="">
                                 {{--视频--}}
-                                @if(isset($image['video_path']))
+                                @if(!empty($image['video_path']))
                                     <div class="bg-productPlayer flex flex-alignCenter flex-justifyCenter">
                                         <img class="btn-productPlayer" src="{{env('CDN_Static')}}/images/daily/icon-player.png" alt="">
                                     </div>
