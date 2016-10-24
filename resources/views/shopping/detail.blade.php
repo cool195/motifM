@@ -190,7 +190,7 @@
                 </div>
                 <hr class="hr-light m-x-10x">
                 <div class="product-price">
-                    @if(isset($data['skuPrice']['skuPromotion']))
+                    @if(isset($data['skuPrice']['skuPromotion']) && ($data['skuPrice']['skuPromotion']['price']>$data['skuPrice']['skuPromotion']['promot_price']))
                         <span class="font-size-lx text-red">${{ number_format(($data['skuPrice']['skuPromotion']['promot_price'] / 100), 2) }}</span>
                         <span class="font-size-sm text-throughLine text-common">${{ number_format(($data['skuPrice']['skuPromotion']['price'] /100), 2) }}</span>
                     @else
@@ -267,14 +267,16 @@
                         <div class="row">
                             <div class="col-xs-12">
                                 <button class="btn btn-primary btn-block up-btn-addToBag @if(!$data['sale_status'] || $data['isPutOn']==0) disabled @endif"
-                                        data-control="openModal" data-action="PATCH">Add to Bag</button>
+                                        data-control="openModal" data-action="PATCH">Add to Bag
+                                </button>
                             </div>
                         </div>
                     @else
                         <div class="row">
                             <div class="col-xs-12">
                                 <a href="javascript:;"
-                                   class="notesLogin btn btn-primary btn-block up-btn-addToBag @if(!$data['sale_status'] || $data['isPutOn']==0) disabled @endif"> Add to Bag </a>
+                                   class="notesLogin btn btn-primary btn-block up-btn-addToBag @if(!$data['sale_status'] || $data['isPutOn']==0) disabled @endif">
+                                    Add to Bag </a>
                             </div>
                         </div>
                     @endif
@@ -368,7 +370,7 @@
                             </div>
                         </div>
                     </aside>
-            @endif
+                @endif
             </section>
         </section>
 
