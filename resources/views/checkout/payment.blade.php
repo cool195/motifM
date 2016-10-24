@@ -73,7 +73,8 @@
                         @endforeach
                         <hr class="hr-base m-a-0">
                     @endforeach
-
+                    <div class="bg-title p-t-10x"></div>
+                    <hr class="hr-base m-a-0">
                     <div class="flex flex-alignCenter flex-fullJustified font-size-sm p-a-15x" id="btn-toPromotionCode">
                         <span>Promotion Code</span>
                         <div>
