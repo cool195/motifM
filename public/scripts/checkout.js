@@ -691,6 +691,9 @@
             url: '/checkout/paywith/' + $(this).data('type') + '/' + $(this).data('card'),
             type: 'GET',
         })
+            .done(function () {
+                closeLoading();
+            })
     });
 
     // 进入Review
