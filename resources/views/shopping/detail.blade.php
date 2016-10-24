@@ -223,27 +223,37 @@
                                             Left @else Sold Out @endif </span>
                                 </div>
                             @endif
-                            @if(!isset($data['skuPrice']['skuPromotion']) || $data['skuPrice']['skuPromotion']['remain_time'] >= 0 || $data['isPutOn'] ==0)
-                                <div>
-                                    <div class="p-x-15x p-t-5x">
-                                        <img src="/images/icon/icon-limited.png"
-                                             srcset="/images/icon/icon-limited@2x.png 2x, /images/icon/icon-limited@3x.png 3x"
-                                             alt="">
+                            @if(($data['spuStock']['stock_qtty'] - $data['spuStock']['saled_qtty'] <= 0))
+                                <div class="p-x-15x p-t-10x">
+                                    <img src="/images/icon/icon-limited.png"
+                                         srcset="/images/icon/icon-limited@2x.png 2x, /images/icon/icon-limited@3x.png 3x"
+                                         alt="">
+                                    <span class="text-primary font-size-sm">Orders Closed</span>
+                                </div>
+                            @else
+                                @if(!isset($data['skuPrice']['skuPromotion']) || $data['skuPrice']['skuPromotion']['remain_time'] >= 0 || $data['isPutOn'] ==0)
+                                    <div>
+                                        <div class="p-x-15x p-t-5x">
+                                            <img src="/images/icon/icon-limited.png"
+                                                 srcset="/images/icon/icon-limited@2x.png 2x, /images/icon/icon-limited@3x.png 3x"
+                                                 alt="">
                                             <span class="text-primary font-size-sm">Orders Close <span
                                                         class="time_show"></span></span>
+                                        </div>
+                                        <div class="p-x-15x p-y-5x m-x-15x">
+                                            @if(!$data['sale_status'] &&  $data['isPutOn']==1)
+                                                <progress class="progress progress-primary" value="0" max="10000">0%
+                                                </progress>
+                                            @else
+                                                <progress class="progress progress-primary" id="limited-progress" value=""
+                                                          max="10000">0%
+                                                </progress>
+                                            @endif
+                                        </div>
                                     </div>
-                                    <div class="p-x-15x p-y-5x m-x-15x">
-                                        @if(!$data['sale_status'] &&  $data['isPutOn']==1)
-                                            <progress class="progress progress-primary" value="0" max="10000">0%
-                                            </progress>
-                                        @else
-                                            <progress class="progress progress-primary" id="limited-progress" value=""
-                                                      max="10000">0%
-                                            </progress>
-                                        @endif
-                                    </div>
-                                </div>
+                                @endif
                             @endif
+
                         </div>
                     </section>
                 @endif
