@@ -88,12 +88,12 @@
 
             <select class="font-size-sm text-main btn-sortBy" id="sortBy">
                 {{--<option value="0">Sort By</option>--}}
+                <option data-searchtext="reset">Featured</option>
                 @foreach($search['list'] as $value)
                     @if($value['attr_type']==1)
                         <option data-search="{{$value['attr_id']}}" data-searchtext="{{$value['attr_label']}}">{{$value['attr_label']}}</option>
                     @endif
                 @endforeach
-                <option data-searchtext="reset">Reset</option>
             </select>
             <span class="falseSortBy text-primary font-size-sm">Sort By</span>
             {{--<span class="font-size-sm text-main btn-sortBy">Sort By</span>--}}
