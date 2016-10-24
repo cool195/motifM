@@ -82,8 +82,31 @@
                         @if(Session::get('user.checkout.paywith.pay_method')=='PayPalNative')
                             <span>Method: PayPal</span><br>
                         @else
-                            <span>Card: {{Session::get('user.checkout.paywith.withCard.card_number')}}</span><br>
-                            <span>Exp: {{Session::get('user.checkout.paywith.withCard.month').'/'.Session::get('user.checkout.paywith.withCard.year')}}</span>
+                            <span>Card: {{Session::get('user.checkout.paywith.withCard.card_number')}}</span>
+                            <!-- TODO 增加判断-->
+                            <!-- paypal -->
+                            <span class="p-l-10x"><img src="{{env('CDN_Static')}}/images/payment/icon-Paypal.png{{'?v='.config('app.version')}}"
+                                                       srcset="{{env('CDN_Static')}}/images/payment/icon-Paypal@2x.png{{'?v='.config('app.version')}} 2x, {{env('CDN_Static')}}/images/payment/icon-Paypal@3x.png{{'?v='.config('app.version')}} 3x"
+                                                       alt=""></span>
+                            <!-- visa -->
+                            <span class="p-l-10x"><img src="{{env('CDN_Static')}}/images/payment/icon-visa.png{{'?v='.config('app.version')}}"
+                                                       srcset="{{env('CDN_Static')}}/images/payment/icon-visa@2x.png{{'?v='.config('app.version')}} 2x, {{env('CDN_Static')}}/images/payment/icon-visa@3x.png{{'?v='.config('app.version')}} 3x"
+                                                       alt=""></span>
+                            <!-- mastercard -->
+                            <span class="p-l-10x"><img src="{{env('CDN_Static')}}/images/payment/icon-mastercard.png{{'?v='.config('app.version')}}"
+                                                       srcset="{{env('CDN_Static')}}/images/payment/icon-mastercard@2x.png{{'?v='.config('app.version')}} 2x, {{env('CDN_Static')}}/images/payment/icon-mastercard@3x.png{{'?v='.config('app.version')}} 3x"
+                                                       alt=""></span>
+                            <!-- americanexpress -->
+                            <span class="p-l-10x"><img src="{{env('CDN_Static')}}/images/payment/icon-americanexpress.png{{'?v='.config('app.version')}}"
+                                                       srcset="{{env('CDN_Static')}}/images/payment/icon-americanexpress@2x.png{{'?v='.config('app.version')}} 2x, {{env('CDN_Static')}}/images/payment/icon-americanexpress@3x.png{{'?v='.config('app.version')}} 3x"
+                                                       alt=""></span>
+                            <!-- jcb -->
+                            <span class="p-l-10x"><img src="{{env('CDN_Static')}}/images/payment/icon-jcb.png{{'?v='.config('app.version')}}"
+                                                       srcset="{{env('CDN_Static')}}/images/payment/icon-jcb@2x.png{{'?v='.config('app.version')}} 2x, {{env('CDN_Static')}}/images/payment/icon-jcb@3x.png{{'?v='.config('app.version')}} 3x"
+                                                       alt=""></span>
+
+
+                            <br><span>Exp: {{Session::get('user.checkout.paywith.withCard.month').'/'.Session::get('user.checkout.paywith.withCard.year')}}</span>
                             <br>
                         @endif
                         @if(Session::get('user.checkout.couponInfo'))

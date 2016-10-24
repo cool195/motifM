@@ -678,6 +678,7 @@
                 } else {
                     $('.warning-info').removeClass('hidden-xs-up');
                     $('.warning-info').children('span').html(data.error_msg);
+                    closeLoading();
                 }
             })
     });
