@@ -29,7 +29,7 @@
                     <span class="p-x-15x active"><a class="text-primary" href="/checkout/shipping">1.SHIPPING</a></span><strong><i
                                 class="iconfont icon-arrow-right icon-size-xm"></i></strong>
                     <span class="p-x-15x"><a class="text-primary" href="/checkout/payment">2.PAYMENT</a></span><strong><i class="iconfont icon-arrow-right icon-size-xm"></i></strong>
-                    <span class="p-x-15x"><a class="text-primary" @if($isPay || $from) href="/checkout/review" @else href="javascript:;" class="skipError" @endif>3.REVIEW</a></span>
+                    <span class="p-x-15x"><a @if($isPay || $from) href="/checkout/review" class="text-primary" @else href="javascript:;" class="text-primary skipError" @endif>3.REVIEW</a></span>
                 </div>
                 <hr class="hr-light m-a-0">
                 <!-- ship to -->
