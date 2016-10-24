@@ -334,7 +334,7 @@
                                                                      alt="{{$product['spuInfos'][$spu]['spuBase']['main_title']}}">
                                                                 @if(1 == $product['spuInfos'][$spu]['spuBase']['sale_type'])
                                                                     {{--预售产品 预定信息--}}
-                                                                    @if(!isset($product['spuInfos'][$spu]['skuPrice']['skuPromotion']) || $product['spuInfos'][$spu]['stockStatus']=='NO' || $product['spuInfos'][$spu]['spuBase']['isPutOn']==0)
+                                                                    @if($product['spuInfos'][$spu]['stockStatus']=='NO' || $product['spuInfos'][$spu]['spuBase']['isPutOn']==0)
                                                                         <a data-link="motif://o.c?a=pd&spu={{$spu}}"
                                                                            data-clk='http://clk.motif.me/log.gif?t=designer.400001&m=H5_M2016-1&pin={{ Session::get('user.pin') }}&uuid={{Session::has('user') ? Session::get('user.uuid') : $_COOKIE['uid']}}&v={"action":1,"skipType":1,"skipId":{{$spu}},"expid":0,"index":"{{$key}}","version":"1.0.1","ver":"9.2","src":"H5"}'
                                                                            href="javascript:void(0)" data-spu="{{$spu}}"
