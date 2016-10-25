@@ -67,17 +67,23 @@ class CheckoutController extends ApiController
         //return Session::get('user.checkout');
         $payInfo = $this->getPayInfo();
         $coupon = $this->getCouponInfo();
-        
+        $isCoupon = false;
         foreach ($coupon['data']['list'] as $value) {
-            if(Session::get('user.checkout.couponInfo.bind_id')==$value['bind_id']) {
-                brack;
-            }else{
+            if (Session::get('user.checkout.couponInfo.bind_id') == $value['bind_id']) {
+                $isCoupon = true;
+                break;
+            }
+        }
+        
+        if (!$isCoupon) {
+            foreach ($coupon['data']['list'] as $value) {
                 if ($value['selected']) {
                     $couponInfo = $value;
                     Session::put('user.checkout.couponInfo', $couponInfo);
                 }
             }
         }
+
 
         $country = $this->getCountry();
 
@@ -378,7 +384,7 @@ class CheckoutController extends ApiController
                         return $value;
                     }
                 }
-            }else{
+            } else {
                 if ($value['pay_type'] == $type) {
                     Session::put('user.checkout.paywith', $value);
                     Session::forget('user.checkout.paywith.creditCards');
