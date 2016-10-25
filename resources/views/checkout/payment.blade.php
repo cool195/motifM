@@ -421,6 +421,12 @@
             <div class="loading loading-screen loading-switch loading-hidden" id="loading">
                 <div class="loader loader-screen"></div>
             </div>
+
+            <div class="loading loading-screen loading-switch loading-hidden" id="checkout-failure">
+                <div class="loading-modal">
+                    <div class="text-white font-size-md text-center m-t-10x codeErrorMessage"></div>
+                </div>
+            </div>
         </div>
 
     </div>

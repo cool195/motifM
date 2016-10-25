@@ -817,7 +817,6 @@
 
     $('#btn-submitPromoCode').on('click', function () {
         if (!$(this).hasClass('disabled')) {
-            openLoading();
 
             $.ajax({
                 url: '/cart/verifycoupon',
@@ -835,11 +834,15 @@
                             .always(function () {
                                 window.location.href = '/checkout/payment';
                             });
+                    }else{
+                        
+                        $('.codeErrorMessage').html(data.prompt_msg);
+                        openFail();
+                        setTimeout(function () {
+                            closeFail();
+                        }, 1500);
                     }
                 })
-                .always(function () {
-                    closeLoading();
-                });
         }
     });
     // payment end
