@@ -424,7 +424,7 @@
 
             <div class="loading loading-screen loading-switch loading-hidden" id="checkout-failure">
                 <div class="loading-modal">
-                    <div class="text-white font-size-md text-center m-t-10x codeErrorMessage"></div>
+                    <div class="text-white font-size-md text-center m-t-10x ErrorMessage"></div>
                 </div>
             </div>
         </div>

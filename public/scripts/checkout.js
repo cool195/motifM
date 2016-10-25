@@ -723,6 +723,12 @@
     $('#submit-payment').on('click', function () {
         if ($('.clickPayWith.active').length > 0) {
             window.location.href = '/checkout/review';
+        }else{
+            $('.ErrorMessage').html('Please select a Payment Method');
+            openFail();
+            setTimeout(function () {
+                closeFail()
+            }, 1500);
         }
     });
 
@@ -836,7 +842,7 @@
                             });
                     }else{
 
-                        $('.codeErrorMessage').html(data.prompt_msg);
+                        $('.ErrorMessage').html(data.prompt_msg);
                         openFail();
                         setTimeout(function () {
                             closeFail();
