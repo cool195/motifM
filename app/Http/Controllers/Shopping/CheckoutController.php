@@ -84,7 +84,7 @@ class CheckoutController extends ApiController
     public function review(Request $request)
     {
         $checkInfo = $this->getCheckOutAccountList(Session::get('user.checkout.address.receiving_id'), Session::get('user.checkout.selship.logistics_type'), Session::get('user.checkout.couponInfo.bind_id'), Session::get('user.checkout.selship.paywith.pay_method'));
-return $checkInfo;
+
         if (empty($checkInfo['data'])) {
             return redirect('/cart');
         }
