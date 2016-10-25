@@ -19,28 +19,35 @@ class PaypalController extends ApiController
     //paypal回调
     public function paypal(Request $request)
     {
-        if ($request->input('success')) {
-            $result = PayOrder::paypalStatic($request);
-            if ($result) {
-                $params = array(
-                    'cmd' => "dopay",
-                    'uuid' => $_COOKIE['uid'],
-                    'token' => Session::get('user.token'),
-                    'pin' => Session::get('user.pin'),
-                    'orderid' => $result->transactions[0]->item_list->items[0]->name,
-                    'paytype' => 'PayPalNative',
-                    'showname' => 'PayPal',
-                    'devicedata' => "H5",
-                    'nonce' => '{"response_type":"payment","response":{"id":"'.$result->id.'","state":"'.$result->state.'","create_time":"'.$result->create_time.'","intent":"'.$result->intent.'"}}',
-                );
-                $content = $this->request('openapi', "", "pay", $params);
-                if(!empty($content) && $content['success']){
-                    Session::forget('user.checkout');
-                    return redirect('/success?orderid='.$params['orderid']);
-                }
-            }
+        $skipUrl = '/checkout/review';
+
+        $params = array(
+            'cmd' => "payord",
+            'uuid' => $_COOKIE['uid'],
+            'token' => Session::get('user.token'),
+            'pin' => Session::get('user.pin'),
+            'paytype' => 'PayPalNative',
+            'showname' => 'PayPal',
+            'devicedata' => "H5",
+        );
+
+        $result = PayOrder::paypalStatic($request);
+
+        if ($result) {
+            $params['orderid'] = $result->transactions[0]->item_list->items[0]->name;
+            $params['nonce'] = '{"response_type":"payment","response":{"id":"' . $result->id . '","state":"' . $result->state . '","create_time":"' . $result->create_time . '","intent":"' . $result->intent . '"}}';
+        } else {
+            $params['orderid'] = $request->get('orderid');
+            $params['nonce'] = '';
         }
 
-        return redirect('/order/orderdetail/'.$request->input('orderid'));
+        $content = $this->request('openapi', "", "pay", $params);
+
+        if (!empty($content) && $content['success'] && $content['data']['id']) {
+            Session::forget('user.checkout');
+            $skipUrl = '/success?orderid=' . $params['orderid'];
+        }
+
+        return redirect($skipUrl);
     }
 }
