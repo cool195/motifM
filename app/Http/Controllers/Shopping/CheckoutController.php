@@ -35,7 +35,7 @@ class CheckoutController extends ApiController
         }
 
         //没有地址进入添加地址页面
-        if (empty(Session::get('user.checkout.address'))) {
+        if (empty($address)) {
             return redirect('/checkout/address');
         } else {
             $shipPrice = $this->getCheckOutAccountList($address['receiving_id']);
