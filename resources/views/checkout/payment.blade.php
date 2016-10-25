@@ -143,7 +143,7 @@
                         <div class="cardinfo-item">
                             <input class="cardinfo-input" type="text" data-braintree-name="expiration_date"
                                    data-role="expiry"
-                                   value="" placeholder="MM/YY" data-optional="false" maxlength="9" name="expiry">
+                                   value="" placeholder="MM/YYYY" data-optional="false" maxlength="9" name="expiry">
                         </div>
                         <div class="cardinfo-item">
                             <input class="cardinfo-input" type="tel" data-braintree-name="cvv" value="" data-role="cvv"
@@ -153,7 +153,7 @@
                     <!-- 错误提示信息 -->
                     <div class="warning-info text-warning flex flex-alignCenter p-a-15x hidden-xs-up" id="card-warning">
                         <i class="iconfont icon-caveat icon-size-md p-r-5x"></i>
-                        <span class="font-size-xs">错误提示信息</span>
+                        <span class="font-size-xs"></span>
                     </div>
                     <hr class="hr-base m-a-0">
 

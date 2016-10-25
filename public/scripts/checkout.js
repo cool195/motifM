@@ -690,7 +690,7 @@
                     window.location.href = '/checkout/payment';
                 } else {
                     $('.warning-info').removeClass('hidden-xs-up');
-                    $('.warning-info').children('span').html(data.prompt_msg);
+                    $('.warning-info').children('span').html('Add Card Error!');
                     closeLoading();
                 }
             })
