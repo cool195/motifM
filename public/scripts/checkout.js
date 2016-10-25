@@ -764,7 +764,7 @@
             var month = parseInt($(this).val().substring(0, 2));
             if (month > 12) {
                 $WarningInfo.removeClass('hidden-xs-up');
-                $WarningInfo.children('span').html('请输入正确的月份');
+                $WarningInfo.children('span').html('Month Error');
             } else {
                 $WarningInfo.addClass('hidden-xs-up');
                 $WarningInfo.children('span').html('');
@@ -775,7 +775,7 @@
             var year = parseInt($(this).val().substring(5, 9));
             if (year < MyYear || year > MyYear + 30) {
                 $WarningInfo.removeClass('hidden-xs-up');
-                $WarningInfo.children('span').html('请输入正确的年份');
+                $WarningInfo.children('span').html('Year Error');
             } else {
                 $WarningInfo.addClass('hidden-xs-up');
                 $WarningInfo.children('span').html('');
