@@ -32,9 +32,11 @@ class CheckoutController extends ApiController
         } else {
             $address = $this->getUserDefaultAddr();
             Session::put('user.checkout.address', $address['data']);
+            $address = $address['data'];
         }
 
         //没有地址进入添加地址页面
+
         if (empty($address)) {
             return redirect('/checkout/address');
         } else {
