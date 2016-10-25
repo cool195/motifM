@@ -26,7 +26,7 @@
             <div class="pageview shipping-editorAddress @if(empty($address)) active @endif" id="shipping-editorAddress"
                  data-aid="">
                 <section class="p-b-20x reserve-height">
-                    <article class="p-x-15x p-y-10x font-size-md text-main bg-title"><strong>Add New Address</strong>
+                    <article class="p-x-15x p-y-10x font-size-md text-main bg-title"><strong>SHIP TO</strong>
                     </article>
                     <hr class="hr-base m-a-0">
                     <div class="warning-info off flex text-warning flex-alignCenter text-left p-x-15x p-y-10x hidden-xs-up">
