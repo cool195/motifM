@@ -64,12 +64,14 @@ class CheckoutController extends ApiController
     //payment
     public function payment()
     {
-        //return Session::get('user.checkout.paywith');
+        //return Session::get('user.checkout');
         $payInfo = $this->getPayInfo();
         $coupon = $this->getCouponInfo();
-
-        if (!Session::get('user.checkout.couponInfo')) {
-            foreach ($coupon['data']['list'] as $value) {
+        
+        foreach ($coupon['data']['list'] as $value) {
+            if(Session::get('user.checkout.couponInfo.bind_id')==$value['bind_id']) {
+                brack;
+            }else{
                 if ($value['selected']) {
                     $couponInfo = $value;
                     Session::put('user.checkout.couponInfo', $couponInfo);
