@@ -711,6 +711,15 @@
     });
 
     // 进入Review
+    if ($('#shipping-review').length > 0) {
+        if($('#shipping-review').data('pay')=='error'){
+            openFail();
+            setTimeout(function () {
+                closeFail()
+            }, 1500);
+        }
+    }
+
     $('#submit-payment').on('click', function () {
         if ($('.clickPayWith.active').length > 0) {
             window.location.href = '/checkout/review';

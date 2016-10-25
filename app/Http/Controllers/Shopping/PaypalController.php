@@ -19,7 +19,7 @@ class PaypalController extends ApiController
     //paypal回调
     public function paypal(Request $request)
     {
-        $skipUrl = '/checkout/review';
+        $skipUrl = '/checkout/review?pay=error';
 
         $params = array(
             'cmd' => "payord",

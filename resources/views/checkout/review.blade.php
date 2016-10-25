@@ -23,7 +23,7 @@
 
         <div class="checkout-container">
             <!-- 3.REVIEW -->
-            <div class="pageview shipping-review active" id="shipping-review">
+            <div class="pageview shipping-review active" id="shipping-review" data-pay="{{$payStatus}}">
                 <div class="flex flex-alignCenter flex-justifyCenter font-size-sm p-y-15x steps">
                     <span class="p-x-15x"><a class="text-primary" href="/checkout/shipping?from=review">1.SHIPPING</a></span><strong><i
                                 class="iconfont icon-arrow-right icon-size-xm"></i></strong>
@@ -211,9 +211,6 @@
             <!-- 弹出提示 -->
             <div class="loading loading-screen loading-switch loading-hidden" id="checkout-failure">
                 <div class="loading-modal">
-                    <div class="text-center">
-                        <i class="iconfont icon-cross icon-size-lg text-white"></i>
-                    </div>
                     <div class="text-white font-size-md text-center m-t-10x">Pay Error</div>
                 </div>
             </div>

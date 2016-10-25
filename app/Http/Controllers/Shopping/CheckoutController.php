@@ -79,14 +79,14 @@ class CheckoutController extends ApiController
     }
 
     //review
-    public function review()
+    public function review(Request $request)
     {
         $checkInfo = $this->getCheckOutAccountList(Session::get('user.checkout.address.receiving_id'), Session::get('user.checkout.selship.logistics_type'), Session::get('user.checkout.couponInfo.bind_id'), Session::get('user.checkout.selship.paywith.pay_method'));
 
         if (empty($checkInfo['data'])) {
             return redirect('/cart');
         }
-        return View('checkout.review', ['checkInfo' => $checkInfo['data']]);
+        return View('checkout.review', ['checkInfo' => $checkInfo['data'],'payStatus'=>$request->get('pay')]);
     }
 
     //地址管理
