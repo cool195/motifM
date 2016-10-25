@@ -741,8 +741,10 @@
                     window.location.href = data.redirectUrl;
                 } else {
                     closeLoading;
-
-                    window.location.href = data.redirectUrl;
+                    openFail();
+                    setTimeout(function () {
+                        window.location.href = data.redirectUrl;
+                    }, 1500);
                 }
             })
     });
