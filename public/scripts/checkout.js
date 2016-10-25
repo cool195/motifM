@@ -560,6 +560,7 @@
             })
                 .done(function (data) {
                     if (data.success) {
+                        console.log($('#addressFrom').data('url'))
                         window.location.href = $('#addressFrom').data('url');
                     }
                 })
