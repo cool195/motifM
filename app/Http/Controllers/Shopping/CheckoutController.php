@@ -10,7 +10,9 @@ use App\Services\MCrypt;
 
 class CheckoutController extends ApiController
 {
-
+    public function test(){
+        return Session::get('user.checkout');
+    }
     //shipping
     public function shipping(Request $request)
     {
