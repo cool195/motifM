@@ -27,7 +27,7 @@ class CheckoutController extends ApiController
         }
 
         //获取默认地址
-        if (Session::get('user.checkout.address')) {
+        if (!empty(Session::get('user.checkout.address'))) {
             $address = Session::get('user.checkout.address');
         } else {
             $address = $this->getUserDefaultAddr();
@@ -166,7 +166,7 @@ class CheckoutController extends ApiController
             $result['error_msg'] = "Data access failed";
             $result['data'] = array();
         }
-        
+
         return $result;
     }
 
