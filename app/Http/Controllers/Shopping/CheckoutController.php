@@ -62,7 +62,7 @@ class CheckoutController extends ApiController
     //payment
     public function payment()
     {
-        //return Session::get('user.checkout');
+        //return Session::get('user.checkout.paywith');
         $payInfo = $this->getPayInfo();
         $coupon = $this->getCouponInfo();
 

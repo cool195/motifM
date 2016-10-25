@@ -85,7 +85,7 @@
                 </div>
 
                 <!-- Coutinue 按钮 -->
-                <div class="text-primary choose-method">
+                <div class="text-primary">
                     <hr class="hr-base m-a-0">
                     <!-- Continue 按钮 -->
                     <div class="p-a-15x submit-payment">
