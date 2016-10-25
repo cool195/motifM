@@ -55,7 +55,7 @@
                     <div>
                         @foreach(Session::get('user.checkout.shipping') as $value)
                             <div class="p-a-15x font-size-sm flex flex-alignCenter flex-fullJustified method-item @if(Session::get('user.checkout.selship.logistics_type')==$value['logistics_type']) active @endif" data-type="{{$value['logistics_type']}}">
-                                <span>{{$value['logistics_name']}} @if($value['pay_price']>0)${{number_format(($value['pay_price'] / 100), 2)}}@endif</span>
+                                <span>{{$value['logistics_name']}} ${{number_format(($value['pay_price'] / 100), 2)}}</span>
                                 <i class="iconfont icon-check icon-size-base" data-type="{{$value['logistics_type']}}"></i>
                             </div>
                             <hr class="hr-base m-a-0">

@@ -42,8 +42,10 @@ class CheckoutController extends ApiController
             if (empty($shipPrice['data'])) {
                 return redirect('/cart');
             }
-            $shippingMethod = $this->getShippingMethod($address['country_name_sn'], $shipPrice['data']['total_amount'] + $shipPrice['data']['vas_amount']);
-            $shipKey = md5($address['country_name_sn'] . ($shipPrice['data']['total_amount'] + $shipPrice['data']['vas_amount']));
+
+            $shippingMethod = $this->getShippingMethod(Session::get('user.checkout.address.country_name_sn'), $shipPrice['data']['total_amount'] + $shipPrice['data']['vas_amount']);
+
+            $shipKey = md5($address['receiving_id'] . ($shipPrice['data']['total_amount'] + $shipPrice['data']['vas_amount']));
             if (Session::get('user.checkout.shipKey') != $shipKey) {
                 Session::put('user.checkout.shipKey', $shipKey);
                 Session::put('user.checkout.selship', $shippingMethod[0]);
