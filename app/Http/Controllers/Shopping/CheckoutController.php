@@ -367,18 +367,21 @@ class CheckoutController extends ApiController
     {
         $payInfo = $this->getPayInfo();
         foreach ($payInfo['data']['list'] as $value) {
-            if ($value['pay_type'] == $type) {
-                if ($cardid > 0) {
-                    foreach ($value['creditCards'] as $card) {
-                        if ($card['card_id'] == $cardid) {
-                            $value['withCard'] = $card;
-                            break;
-                        }
+            if ($cardid > 0) {
+                foreach ($value['creditCards'] as $card) {
+                    if ($card['card_id'] == $cardid) {
+                        $value['withCard'] = $card;
+                        Session::put('user.checkout.paywith', $value);
+                        Session::forget('user.checkout.paywith.creditCards');
+                        return $value;
                     }
                 }
-                Session::put('user.checkout.paywith', $value);
-                Session::forget('user.checkout.paywith.creditCards');
-                return $value;
+            }else{
+                if ($value['pay_type'] == $type) {
+                    Session::put('user.checkout.paywith', $value);
+                    Session::forget('user.checkout.paywith.creditCards');
+                    return $value;
+                }
             }
         }
     }
