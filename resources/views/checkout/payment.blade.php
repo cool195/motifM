@@ -40,7 +40,7 @@
                             <i class="iconfont @if(isset($value['creditCards'])) icon-arrow-right @else icon-check @endif icon-size-md text-common"></i>
                         </div>
                         @foreach($value['creditCards'] as $card)
-                            <div class="@if(Session::get('user.checkout.paywith.pay_type')==$value['pay_type']) active @endif flex flex-alignCenter flex-fullJustified font-size-sm p-l-20x p-r-15x p-y-5x bg-title cardList clickPayWith"
+                            <div class="@if(Session::get('user.checkout.paywith.withCard.card_id')==$card['card_id']) active @endif flex flex-alignCenter flex-fullJustified font-size-sm p-l-20x p-r-15x p-y-5x bg-title cardList clickPayWith"
                                  data-type="{{$value['pay_type']}}" data-card="{{$card['card_id']}}">
                                 <div class="p-l-10x">Card: <span>{{$card['card_number']}}</span>
 
