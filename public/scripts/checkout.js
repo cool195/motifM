@@ -575,7 +575,7 @@
                     }
                 })
         }
-        window.location.reload();
+        window.location.href = $('#addressFrom').data('url');
     });
 
     // 取消修改国家
@@ -835,7 +835,7 @@
                                 window.location.href = '/checkout/payment';
                             });
                     }else{
-                        
+
                         $('.codeErrorMessage').html(data.prompt_msg);
                         openFail();
                         setTimeout(function () {
