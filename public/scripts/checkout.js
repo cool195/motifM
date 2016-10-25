@@ -551,7 +551,7 @@
     $('#btn-submitEditorAddress').on('click', function () {
         openLoading();
         var Aid = $('#shipping-editorAddress').data('aid');
-        if (Aid === '' || Aid === undefined) {
+        if (Aid == '' || Aid === undefined) {
             // 添加地址
             $.ajax({
                 url: '/checkout/address',
@@ -560,7 +560,6 @@
             })
                 .done(function (data) {
                     if (data.success) {
-                        console.log($('#addressFrom').data('url'))
                         window.location.href = $('#addressFrom').data('url');
                     }
                 })
