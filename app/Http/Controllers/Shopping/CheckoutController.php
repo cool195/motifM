@@ -88,7 +88,7 @@ class CheckoutController extends ApiController
         if (empty($checkInfo['data'])) {
             return redirect('/cart');
         }
-        return View('checkout.review', ['checkInfo' => $checkInfo['data'],'payStatus'=>$request->get('pay')]);
+        return View('checkout.review', ['checkInfo' => $checkInfo['data'], 'payStatus' => $request->get('pay')]);
     }
 
     //地址管理
@@ -151,24 +151,22 @@ class CheckoutController extends ApiController
     //获取默认地址
     private function getUserDefaultAddr()
     {
-        if (Session::has('defaultAddr')) {
-            $result = Session::get('defaultAddr');
-        } else {
-            $params = array(
-                'cmd' => 'gdefault',
-                'uuid' => $_COOKIE['uid'],
-                'token' => Session::get('user.token'),
-                'pin' => Session::get('user.pin'),
-            );
-            $system = "";
-            $service = "useraddr";
-            $result = $this->request('openapi', $system, $service, $params);
-            if (empty($result)) {
-                $result['success'] = false;
-                $result['error_msg'] = "Data access failed";
-                $result['data'] = array();
-            }
+
+        $params = array(
+            'cmd' => 'gdefault',
+            'uuid' => $_COOKIE['uid'],
+            'token' => Session::get('user.token'),
+            'pin' => Session::get('user.pin'),
+        );
+        $system = "";
+        $service = "useraddr";
+        $result = $this->request('openapi', $system, $service, $params);
+        if (empty($result)) {
+            $result['success'] = false;
+            $result['error_msg'] = "Data access failed";
+            $result['data'] = array();
         }
+        
         return $result;
     }
 
