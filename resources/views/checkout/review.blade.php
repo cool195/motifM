@@ -122,7 +122,7 @@
                     </div>
                     <div class="" id="review-special">
                         <span>Optional</span>
-                        <span class="pull-right"><i class="iconfont icon-arrow-right icon-size-xm"></i></span>
+                        <span class="pull-right request"><span></span><i class="iconfont icon-arrow-right icon-size-xm"></i></span>
                     </div>
                 </div>
                 <div class="hr-between"></div>

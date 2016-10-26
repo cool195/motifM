@@ -739,7 +739,7 @@
             url: '/payorder',
             type: 'POST',
             data: {
-                'remark': $('input[name="remark"]').val()
+                'remark': $('textarea[name="remark"]').val()
             }
         })
             .done(function (data) {
@@ -861,6 +861,8 @@
 
     // 保存 massage
     $('#btn-addSpecial').on('click', function () {
+        var msg = $('textarea[name="remark"]').val().length > 15 ? $('textarea[name="remark"]').val().substr(0,15)+'...' : $('textarea[name="remark"]').val();
+        $('.request span').html(msg);
         toPage($('.shipping-review'));
     });
 
