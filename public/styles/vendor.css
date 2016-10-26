@@ -6097,12 +6097,6 @@ footer .links-group {
     border: 1px solid #f8f8f8;
 }
 
-.no-scroll {
-    overflow: hidden;
-    -ms-touch-action: none;
-    touch-action: none;
-}
-
 .ad-container{
     min-height: 100vh;
     position: fixed;

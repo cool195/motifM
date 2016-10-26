@@ -16647,17 +16647,14 @@ else if (typeof define === 'function' && define.amd) {
     }
     $(function(){
         if (getCookieAd('dailydownloadAd')){
-            $('body').removeClass('no-scroll');
             $('#ad-container').remove();
         }else {
             $('#ad-container').removeAttr('hidden');
-            $('body').addClass('no-scroll');
 
         }
     });
     $('.btn-closeAd').on('click',function(){
         setCookieAd('dailydownloadAd', 'true');
-        $('body').removeClass('no-scroll');
         $('#ad-container').remove();
     });
     // 关闭广告 end
