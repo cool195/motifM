@@ -1,13 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>DOWNLOAD MOTIF</title>
+    <title>Download App</title>
 </head>
 <body>
 @include('check.tagmanager')
-
 <script type="text/javascript">
-
     function switchDevice() {
         var Agent = navigator.userAgent;
         if (/iPhone/i.test(Agent)) {
@@ -20,15 +18,14 @@
     }
 
     var Device = switchDevice();
-    var url = '';
     if (Device === 1) {
-        url = "https://control.kochava.com/v1/cpi/click?campaign_id=komotif-kvced5a40b7b7adfe749&network_id=5033&device_id=device_id&site_id=1";
+        window.location.href = "https://itunes.apple.com/us/app/id1125850409";
     } else if (Device === 0) {
-        url = "https://c89mm.app.goo.gl/0XdJ";
+        window.location.href = "https://play.google.com/store/apps/details?id=me.motif.motif";
     } else {
-        url = "http://m.motif.me/designer/99";
+        window.location.href = "http://m.motif.me";
     }
-    window.location.href = url
+
 </script>
 </body>
 </html>
