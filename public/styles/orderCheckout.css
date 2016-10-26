@@ -153,10 +153,7 @@
   width: 100%;
 }
 .shipping-payment .cardList{
-  border-bottom: 1px solid #ffffff;
-}
-.shipping-payment .cardList + .cardList{
-  border-bottom: none;
+  border-top: 1px solid #ffffff;
 }
 .shipping-addCard .img-card{
   position: relative;
