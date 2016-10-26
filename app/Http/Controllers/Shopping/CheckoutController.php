@@ -19,11 +19,8 @@ class CheckoutController extends ApiController
         foreach ($payInfo['data']['list'] as $value) {
             if ($value['isLast'] == 1) {
                 $isPay = true;
+                $this->lastPay($payInfo);
             }
-        }
-        //是否成功支付过
-        if ($isPay && !$request->get('from')) {
-            return redirect('/checkout/review');
         }
 
         //获取默认地址
@@ -78,7 +75,7 @@ class CheckoutController extends ApiController
 
     //review
     public function review(Request $request)
-    {
+    {//return Session::get('user.checkout');
         $checkInfo = $this->getCheckOutAccountList(Session::get('user.checkout.address.receiving_id'), Session::get('user.checkout.selship.logistics_type'), Session::get('user.checkout.couponInfo.bind_id'), Session::get('user.checkout.selship.paywith.pay_method'));
 
         if (empty($checkInfo['data'])) {
@@ -397,6 +394,28 @@ class CheckoutController extends ApiController
                     Session::put('user.checkout.paywith', $value);
                     Session::forget('user.checkout.paywith.creditCards');
                     return $value;
+                }
+            }
+        }
+    }
+
+    //获取最后一次的支付信息
+    public function lastPay($payInfo){
+        foreach ($payInfo['data']['list'] as $value) {
+            if($value['isLast']==1){
+                if(empty($value['creditCards'])){
+                    Session::put('user.checkout.paywith', $value);
+                    Session::forget('user.checkout.paywith.creditCards');
+                    return $value;
+                }else{
+                    foreach ($value['creditCards'] as $card) {
+                        if($card['isLast']==1){
+                            $value['withCard'] = $card;
+                            Session::put('user.checkout.paywith', $value);
+                            Session::forget('user.checkout.paywith.creditCards');
+                            return $value;
+                        }
+                    }
                 }
             }
         }
