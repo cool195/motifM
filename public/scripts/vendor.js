@@ -16628,5 +16628,39 @@ else if (typeof define === 'function' && define.amd) {
         $(this).parents('nav').remove();
     });
 
+
+    // 关闭广告 begin
+    function setCookieAd(name, value) {
+        var Time = 24;
+        var exp = new Date();
+        exp.setTime(exp.getTime() + Time * 60 * 60 * 1000);
+        //exp.setTime(exp.getTime() + 5 * 60 * 1000);
+        document.cookie = name + '=' + escape(value) + ';expires=' + exp.toGMTString();
+    }
+    //读取cookie
+    function getCookieAd(name) {
+        var arr = document.cookie.match(new RegExp('(^| )' + name + '=([^;]*)(;|$)'));
+        if (arr != null) {
+            return unescape(arr[2]);
+        }
+        return null;
+    }
+    $(function(){
+        if (getCookieAd('dailydownloadAd')){
+            $('body').removeClass('no-scroll');
+            $('#ad-container').remove();
+        }else {
+            $('#ad-container').removeAttr('hidden');
+            $('body').addClass('no-scroll');
+
+        }
+    });
+    $('.btn-closeAd').on('click',function(){
+        setCookieAd('dailydownloadAd', 'true');
+        $('body').removeClass('no-scroll');
+        $('#ad-container').remove();
+    });
+    // 关闭广告 end
+
 })(jQuery);
 

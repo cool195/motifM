@@ -6096,3 +6096,21 @@ footer .links-group {
     background-color: #f8f8f8;
     border: 1px solid #f8f8f8;
 }
+
+.no-scroll {
+    overflow: hidden;
+    -ms-touch-action: none;
+    touch-action: none;
+}
+
+.ad-container{
+    min-height: 100vh;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 10000;
+}
+
+.pull-right{
+    float: right;
+}
