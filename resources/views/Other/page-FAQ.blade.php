@@ -131,7 +131,7 @@
                                 <p class="m-b-15x">Unfortunately, we can’t exchange rings which are engraved or customized, therefore, we suggest that you follow our Size Guide and carefully choose the correct size.</p>
 
                                 <p class="m-b-15x"><strong>I’ve changed my mind. Can I return a product if don’t want it anymore?</strong></p>
-                                <p class="m-b-15x">Yes, we offer a 30 day free return if you are not 100% satisfied with your purchase. We can help you return the product, but we reserve the right to charge shipping & handling, and restocking fees. For more details, please visit our Return
+                                <p class="m-b-15x">Yes, we offer a 30 day free return if you are not 100% satisfied with your purchase. We can help you return the product, but we reserve the right to charge shipping & handling, and restocking fees. For more details, please visit our Return <a href="/template/23">Policy</a> Page.
                             </div>
                         </div>
 
