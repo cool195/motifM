@@ -127,7 +127,7 @@
 </script>
 
 <!-- 弹出广告 -->
-<div class="ad-container bg-white flex flex-alignCenter" id="ad-container" hidden>
+<div class="advertising-container bg-white flex flex-alignCenter" id="advertising-container" hidden>
     <div>
         <div class="p-a-15x ">
             <span><img src="{{env('CDN_Static')}}/images/login/login-logo.png" srcset="{{env('CDN_Static')}}/images/login/login-logo@2x.png 2x, {{env('CDN_Static')}}/images/login/login-logo@3x.png 3x" alt="" width="100"></span>

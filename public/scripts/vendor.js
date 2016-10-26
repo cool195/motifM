@@ -16647,15 +16647,15 @@ else if (typeof define === 'function' && define.amd) {
     }
     $(function(){
         if (getCookieAd('dailydownloadAd')){
-            $('#ad-container').remove();
+            $('#advertising-container').remove();
         }else {
-            $('#ad-container').removeAttr('hidden');
+            $('#advertising-container').removeAttr('hidden');
 
         }
     });
     $('.btn-closeAd').on('click',function(){
         setCookieAd('dailydownloadAd', 'true');
-        $('#ad-container').remove();
+        $('#advertising-container').remove();
     });
     // 关闭广告 end
 
