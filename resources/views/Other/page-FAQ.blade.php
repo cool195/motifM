@@ -29,6 +29,7 @@
                                 <p class="m-b-0">For any further queries not addressed below, please feel free to contact us at service@motif.me. Normally, our service team will reply within 24 hours, and all emails will be replied to.</p>
                             </div>
                         </div>
+
                         <div class="bg-white m-b-10x">
                             <div class="p-x-15x p-y-10x font-size-md text-main"><strong>Account Management</strong></div>
                             <hr class="hr-base m-y-0">
@@ -120,7 +121,6 @@
                                 </p>
                             </div>
                         </div>
-
                         <div class="bg-white m-b-10x">
                             <div class="p-x-15x p-y-10x font-size-md text-main"><strong>Return & Exchange</strong>
                             </div>
@@ -131,7 +131,7 @@
                                 <p class="m-b-15x">Unfortunately, we can’t exchange rings which are engraved or customized, therefore, we suggest that you follow our Size Guide and carefully choose the correct size.</p>
 
                                 <p class="m-b-15x"><strong>I’ve changed my mind. Can I return a product if don’t want it anymore?</strong></p>
-                                <p class="m-b-15x">Yes, we offer a 30 day free return if you are not 100% satisfied with your purchase. We can help you return the product, but we reserve the right to charge shipping & handling, and restocking fees. For more details, please visit our Return <a href="/template/23"
+                                <p class="m-b-15x">Yes, we offer a 30 day free return if you are not 100% satisfied with your purchase. We can help you return the product, but we reserve the right to charge shipping & handling, and restocking fees. For more details, please visit our Return
                             </div>
                         </div>
 
