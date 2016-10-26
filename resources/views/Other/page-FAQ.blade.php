@@ -22,10 +22,15 @@
                     @endif
                             <!-- FQA -->
                     <section class="m-b-20x p-b-20x reserve-height">
-                        <article class="font-size-md text-main p-x-15x p-y-10x"><strong>FAQ</strong>
-                        </article>
                         <div class="bg-white m-b-10x">
-                            <div class="p-x-15x p-y-10x font-size-md text-main"><strong>Manage Account</strong></div>
+                            <div class="p-x-15x p-y-10x font-size-md text-main"><strong>FAQ</strong></div>
+                            <hr class="hr-base m-y-0">
+                            <div class="p-a-15x font-size-sm text-primary">
+                                <p class="m-b-0">For any further queries not addressed below, please feel free to contact us at service@motif.me. Normally, our service team will reply within 24 hours, and all emails will be replied to.</p>
+                            </div>
+                        </div>
+                        <div class="bg-white m-b-10x">
+                            <div class="p-x-15x p-y-10x font-size-md text-main"><strong>Account Management</strong></div>
                             <hr class="hr-base m-y-0">
                             <div class="p-a-15x font-size-sm text-primary">
                                 <p class="m-b-15x"><strong>What if I forget my login password?</strong></p>
@@ -36,40 +41,24 @@
                             </div>
                         </div>
                         <div class="bg-white m-b-10x">
-                            <div class="p-x-15x p-y-10x font-size-md text-main"><strong>Ordering, Processing and
-                                    Shipping</strong>
+                            <div class="p-x-15x p-y-10x font-size-md text-main"><strong>Shipping & Tracking</strong>
                             </div>
                             <hr class="hr-base m-y-0">
                             <div class="p-a-15x font-size-sm text-primary">
-                                <p class="m-b-15x"><strong>Can I change the order information before the product is
-                                        shipped?</strong></p>
-                                <p class="m-b-15x">Yes, please send us an email WITHIN 24 HOURS of ordering. We can
-                                    change it for
-                                    you before we
-                                    engrave the item or ship your package out.</p>
-
-                                <p class="m-b-15x"><strong>How long will my package be shipped after I place the
-                                        order?</strong></p>
-                                <p class="m-b-15x">For non-personalized products, we need 4 business days to process,
-                                    while for
-                                    personalized
-                                    products, such as name necklaces and pendants, it may take 7-15 business days to
-                                    process.</p>
-
-                                <p class="m-b-15x"><strong>Where do you ship from?</strong></p>
-                                <p class="m-b-15x">Our warehouse is based in China, so we ship from China.</p>
-
-                                <p class="m-b-15x"><strong>How long does the shipping takes? Why I can’t get any
-                                        tracking
-                                        information with the tracking number given?</strong></p>
-                                <p class="m-b-15x">Option 1. Registered Airmail (7-20 business days)<br>
-                                    Option 2. Standard Shipping (5-8 business days)<br>
-                                    Option 3. Expedited Shipping (3-4 business days)</p>
-                                <p class="m-b-15x">As for Registered Airmail, the Logistics website may not update so
-                                    frequently,
-                                    therefore we
-                                    suggest you check the status after 3-5 days of receiving the tracking
-                                    information.</p>
+                                <p class="m-b-15x"><strong>When will my order ship?</strong></p>
+                                <p class="m-b-15x">We process and ship orders Monday through Friday. Orders are usually fulfilled and shipped within 2-3 business days of purchase, unless otherwise noted. Shipping time for pre-order/personalized pieces may take longer, details of which can be found in the product description. When your order ships, we will email you a shipping confirmation with tracking information. Please check your spam folder if you did not receive any email. You can track your order by logging into your Motif account and select "Orders".
+                                </p>
+                                <p class="m-b-15x"><strong>Do you ship internationally?</strong></p>
+                                <p class="m-b-15x">Yes, Motif currently ships to 30+ countries and we are always adding more. Please check our Shipping Policy for list of countries that we ship to. We even offer free International Expedited Shipping for orders over USD $79.
+                                </p>
+                                <p class="m-b-15x"><strong>How long will it take for my order to arrive?</strong></p>
+                                <p class="m-b-15x">We provide three options for delivery:
+                                    <br>
+                                    Option 1. Registered Airmail (10-15 business days upon receiving shipping confirmation)
+                                    <br>
+                                    Option 2. Expedited Shipping (3-7 business days upon receiving shipping confirmation)
+                                </p>
+                                <p class="m-b-15x">Please note: For countries other than US, Canada and Australia, Registered Airmail may take up to 22 business days to arrive due to local dispatch or other reasons</p>
 
                                 <p class="m-b-15x"><strong>How can I track my order?</strong></p>
                                 <p class="m-b-0">We will send one order confirmation email to you after you complete
@@ -77,23 +66,58 @@
                                     When your
                                     package is shipped, you will get a shipping confirmation email from us with the
                                     tracking
-                                    information.</p>
+                                    information.You can also track your order by signing into your Motif account on our app and website, and select "Orders".</p>
+                                <p class="m-b-0">Please note that for Registered Airmail, their tracking system can sometimes be slow to update, and you may not see your order appear for a few days.
+                                </p>
                             </div>
                         </div>
 
                         <div class="bg-white m-b-10x">
-                            <div class="p-x-15x p-y-10x font-size-md text-main"><strong>Taxes and Fees.</strong>
+                            <div class="p-x-15x p-y-10x font-size-md text-main"><strong>Order & Payment</strong>
                             </div>
                             <hr class="hr-base m-y-0">
                             <div class="p-a-15x font-size-sm text-primary">
-                                <p class="m-b-15x"><strong>Do I need to pay tax for the products?</strong></p>
-                                <p class="m-b-15x">You are responsible for determining and paying the appropriate
-                                    government taxes, fees,
-                                    and service charges resulting from a transaction occurring through the Service.  We
-                                    are
-                                    not responsible for collecting, reporting, paying, or remitting to you any such
-                                    taxes, fees,
-                                    or service charges. All transactions through the Service are in U.S. dollars.</p>
+                                <p class="m-b-15x"><strong>Can I make changes to my order?</strong></p>
+                                <p class="m-b-15x">Yes, please send us an email WITHIN 24 HOURS of ordering. We will try our best to make changes for you before we engrave the item or ship your package out.
+                                </p>
+                                <p class="m-b-15x"><strong>Where Is my order confirmation?
+                                    </strong></p>
+                                <p class="m-b-15x">As soon as your order is approved, you will receive an email confirmation to the email address you entered on your order.  If for some reason you did not receive an email, please check your spam folder and add service@motif.me to your safe sender list.
+                                    <br>
+                                    You can also check your order status by signing into your Motif account on our app and website.
+                                </p>
+                                <p class="m-b-15x"><strong>What methods of payment do you accept?
+                                    </strong></p>
+                                <p class="m-b-15x">We accept Visa, Mastercard, American Express, JCB, PayPal, and Apple Pay.
+                                </p>
+
+                                <p class="m-b-15x"><strong>Why is my order detail showing “Payment Error”?
+                                    </strong></p>
+                                <p class="m-b-15x">If you cancelled the payment process anytime during the checkout process, the incomplete order will be temporarily labeled “Payment Error”. Do not worry, simply click “Check Out” on the order detail page again, and you will be able to pay for your items and complete the order. You can view your order history and choose to complete any incomplete order by signing into your Motif profile, and click on “Orders” page.
+                                </p>
+
+                                <p class="m-b-15x"><strong>Why was my order cancelled?
+                                    </strong></p>
+                                <p class="m-b-15x">
+                                    Our system is currently setup in a way that each attempted checkout is viewed as a separate order. If you cancelled the payment process during the checkout process, your incomplete order will be moved to your “Orders” page within your Motif profile, along with all the items that you were trying to order, and any applied promo codes. You can view your order history and choose to complete any cancelled order there.<br>
+                                    Your order can also be cancelled if your payment is declined by your bank, credit card company, PayPal, or Apple Pay. If you wish to place the order again, simply place the order again through by signing in to your Motif profile, click “Orders”, and select the order you wish to process.<br>
+                                    In rare cases, the item you ordered may have became out of stock and is no longer available. If an item in your order does become unavailable, you will be contacted within 24 to 48 hours regarding the cancellation. If your order contains additional items, these items will still be shipped to you and only the unavailable item will be removed from your order.<br>
+                                </p>
+
+                                <p class="m-b-15x"><strong>Why was my payment declined?
+                                    </strong></p>
+                                <p class="m-b-15x">Most payments are declined due to billing information entered not matching the address your bank has on file. Please be sure to check that your payment details match what your bank has on file, and if that still does not work, please send us an email at service@motif.me and we will try our best to help.
+                                </p>
+
+                                <p class="m-b-15x"><strong>Why does it look like I was charged more than once?
+                                    </strong></p>
+                                <p class="m-b-15x">Unless you received an order confirmation, we did not charge your card. If your credit card was declined, you may see pending transactions for each attempt to submit a payment. This is a common bank practice handling credit card transactions to ensure sufficient funds and account authenticity. The pending transaction will clear up within 3-5 business days, depending on your bank, and will never turn into a charge. You will always get an email confirmation for every charge that we make, when an order is successfully placed on our site.
+                                </p>
+
+                                <p class="m-b-15x"><strong>Do I need to pay tax for the products?
+                                    </strong></p>
+                                <p class="m-b-15x">You are responsible for determining and paying the appropriate government taxes, fees, and service charges resulting from a transaction occurring through the Service.  We are not responsible for collecting, reporting, paying, or remitting to you any such taxes, fees, or service charges. All transactions through the Service are in U.S. dollars.
+                                </p>
                             </div>
                         </div>
 
@@ -102,121 +126,35 @@
                             </div>
                             <hr class="hr-base m-y-0">
                             <div class="p-a-15x font-size-sm text-primary">
-                                <p class="m-b-15x"><strong>What should I do if I get the wrong-size ring?</strong></p>
-                                <p class="m-b-15x">If you receive the wrong-size ring, please contact our customer
-                                    service for help,
-                                    we’d love to
-                                    exchange the size for non-personalized rings. However, you are responsible for all
-                                    shipping fees
-                                    (exceptions may apply).</p>
-                                <p class="m-b-15x">Unfortunately, we can’t exchange rings which are engraved or
-                                    customized,
-                                    therefore, we suggest
-                                    that you follow our Size Guide and carefully choose the correct size.</p>
+                                <p class="m-b-15x"><strong>What should I do if my ring does not fit?</strong></p>
+                                <p class="m-b-15x">If you receive a ring that does not fit, please contact our customer service for help, we’d love help you exchange the size of any non-personalized rings; however, you will be responsible for shipping fees generated (exceptions may apply).</p>
+                                <p class="m-b-15x">Unfortunately, we can’t exchange rings which are engraved or customized, therefore, we suggest that you follow our Size Guide and carefully choose the correct size.</p>
 
-                                <p class="m-b-15x"><strong>What can I do if I get an empty box?</strong></p>
-                                <p class="m-b-15x">We carefully check all shipments and we make sure never to send an
-                                    empty box out.
-                                    We suggest that
-                                    you contact the delivery service which delivered the package, as they were the last
-                                    ones to
-                                    handle it. If they don’t have the product, please contact us with a picture of the
-                                    box as soon
-                                    as possible.</p>
-
-                                <p class="m-b-15x"><strong>Can I return a product because I just don’t like or want
-                                        it?</strong></p>
-                                <p class="m-b-0">Yes, we offer a 30 day free return if you are not 100% satisfied with
-                                    your
-                                    purchase. We can help
-                                    you return the product, but we reserve the right to charge shipping & handling, and
-                                    restocking
-                                    fees. For more details, please visit our Return <a href="/template/23"
-                                                                                       class="text-underLine">Policy</a>
-                                    Page.</p>
+                                <p class="m-b-15x"><strong>I’ve changed my mind. Can I return a product if don’t want it anymore?</strong></p>
+                                <p class="m-b-15x">Yes, we offer a 30 day free return if you are not 100% satisfied with your purchase. We can help you return the product, but we reserve the right to charge shipping & handling, and restocking fees. For more details, please visit our Return <a href="/template/23"
                             </div>
                         </div>
 
-                        {{--            <div class="bg-white m-b-10x">
-                                        <div class="p-x-15x p-y-10x font-size-md text-main"><strong>Other Queries</strong>
-                                        </div>
-                                        <hr class="hr-base m-y-0">
-                                        <div class="p-a-15x font-size-sm text-primary">
-                                            <p class="m-b-15x"><strong>Do you carry big size rings?</strong></p>
-                                            <p class="m-b-15x">Yes! We can make larger rings for some certain category.</p>
-                                            <p class="m-b-15x">However, there may be a $50-80 USD surcharge for customization and 15-20 days are
-                                                needed for
-                                                production. Please contact our customer service for details service@motif.me.</p>
-
-                                            <p class="m-b-15x"><strong>How can I contact your customer service?</strong></p>
-                                            <p class="m-b-0">Please email us at service@motif.me. Normally our service team will reply you
-                                                within24 hours, but
-                                                during the busy season or long holidays, it may take longer to respond. However, no emails will
-                                                be left unanswered.</p>
-                                        </div>
-                                    </div>--}}
-
-                        <div class="bg-white">
-                            <div class="p-x-15x p-y-10x font-size-md text-main"><strong>Personalized Jewelry
-                                    FAQs</strong>
+                        <div class="bg-white m-b-10x">
+                            <div class="p-x-15x p-y-10x font-size-md text-main"><strong>Promo Code & Referral Credit</strong>
                             </div>
                             <hr class="hr-base m-y-0">
                             <div class="p-a-15x font-size-sm text-primary">
-                                <p class="m-b-15x"><strong>1. What kind of personalization services do you
-                                        offer?</strong></p>
-                                <p class="m-b-15x">For now, we only offer engraving service. There will be an engraving
-                                    box on the
-                                    Personalized
-                                    Products detail page.</p>
+                                <p class="m-b-15x"><strong>My promo code is gone after I cancelled an order, help!</strong></p>
+                                <p class="m-b-15x">If you applied a promo code to an order, and ended up not completing the checkout process for that order, promo codes designated for first-time purchase may be gone when you try to place a new order. To retrieve your original order with applied discount, sign in to your Motif profile, click on “Orders” page, and retrieve your order.</p>
+                            </div>
+                            <div class="p-a-15x font-size-sm text-primary">
+                                <p class="m-b-15x"><strong>I have referral credit, how do I use it?</strong></p>
+                                <p class="m-b-15x">Simply sign into your Motif account, go to your profile, and click on “Promotions”. You will find all your coupons and referral vouchers there. Choose the credit you want to use upon checkout, and the amount will automatically be deducted from any qualifying order.</p>
+                            </div>
+                        </div>
 
-                                <p class="m-b-15x"><strong>2. Is personalized jewelry more expensive?</strong></p>
-                                <p class="m-b-15x">Not really, we offer personalization service and you can find all the
-                                    personalized jewelry in the
-                                    personalized category. We will only charge a couple of dollars for the
-                                    personalization
-                                    workmanship.</p>
-
-                                <p class="m-b-15x"><strong>3. What characters can be engraved?</strong></p>
-                                <p class="m-b-15x">Dates, names, words, and simple patterns can all be engraved.</p>
-
-                                <p class="m-b-15x"><strong>4. What part of rings, necklaces and bracelets can be
-                                        engraved?</strong></p>
-                                <p class="m-b-15x">Please note that engravings can only be done on the insides of rings
-                                    and
-                                    bracelets and on the
-                                    backs of pendants.</p>
-
-                                <p class="m-b-15x"><strong>5. How many characters can be engraved?</strong></p>
-                                <p class="m-b-15x">In order for the words to be legible, please keep the number of
-                                    characters within
-                                    15.</p>
-
-                                <p class="m-b-15x"><strong>6. How long it will take to process personalized
-                                        jewelry?</strong></p>
-                                <p class="m-b-15x">Personalized items usually take up to 7-15 days as we do need time to
-                                    meet your
-                                    specifications.</p>
-
-                                <p class="m-b-15x"><strong>7. Can you make a ring, necklace or bracelet if I just give
-                                        you a
-                                        picture?</strong></p>
-                                <p class="m-b-15x">Yes, we can make jewelry according to pictures you send to us and
-                                    your other requirements, and we will do our best to meet your specifications.</p>
-
-                                <p class="m-b-15x"><strong>8. Can I return it if I don’t like it?</strong></p>
-                                <p class="m-b-15x">Sorry, personalized jewelry cannot be returned unless it’s a quality
-                                    issue.
-                                    Because personalized
-                                    jewelry is made according to your requirements, once it has been made it cannot be
-                                    sold to
-                                    others.</p>
-
-                                <p class="m-b-0">For any further queries, please feel free to contact us at <a
-                                            href="mailto:service@motif.me" class="text-underLine">service@motif.me</a>.
-                                    Normally our service team will reply within24 hours, but during the busy season or
-                                    long holidays,
-                                    it may take longer to respond. However, no emails will be left unanswered.
-                                </p>
+                        <div class="bg-white m-b-10x">
+                            <div class="p-x-15x p-y-10x font-size-md text-main"><strong>Need more help?</strong>
+                            </div>
+                            <hr class="hr-base m-y-0">
+                            <div class="p-a-15x font-size-sm text-primary">
+                                <p class="m-b-15x">For any further queries, please feel free to contact us at service@motif.me. Normally our service team will reply within24 hours, but during the busy season or long holidays, it may take longer to respond. However, no emails will be left unanswered.</p>
                             </div>
                         </div>
 
