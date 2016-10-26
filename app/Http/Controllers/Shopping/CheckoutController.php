@@ -56,6 +56,10 @@ class CheckoutController extends ApiController
             }
         }
 
+        //是否成功支付过
+        if ($isPay && !$request->get('from')) {
+            return redirect('/checkout/review');
+        }
         $continueUrl = '/checkout/' . ($request->get('from') ? $request->get('from') : 'payment');
 
         return View('checkout.shipping', ['continueUrl' => $continueUrl, 'isPay' => $isPay, 'from' => $request->get('from')]);
@@ -66,25 +70,7 @@ class CheckoutController extends ApiController
     {
         //return Session::get('user.checkout');
         $payInfo = $this->getPayInfo();
-        $coupon = $this->getCouponInfo();
-        $isCoupon = false;
-        foreach ($coupon['data']['list'] as $value) {
-            if (Session::get('user.checkout.couponInfo.bind_id') == $value['bind_id']) {
-                $isCoupon = true;
-                break;
-            }
-        }
-        
-        if (!$isCoupon) {
-            foreach ($coupon['data']['list'] as $value) {
-                if ($value['selected']) {
-                    $couponInfo = $value;
-                    Session::put('user.checkout.couponInfo', $couponInfo);
-                }
-            }
-        }
-
-
+        $coupon = $this->couponCache();
         $country = $this->getCountry();
 
         return View('checkout.payment', ['payInfo' => $payInfo['data']['list'], 'coupon' => $coupon['data'], 'country' => $country['data']]);
@@ -99,6 +85,28 @@ class CheckoutController extends ApiController
             return redirect('/cart');
         }
         return View('checkout.review', ['checkInfo' => $checkInfo['data'], 'payStatus' => $request->get('pay')]);
+    }
+
+    //couponcache
+    public function couponCache(){
+        $coupon = $this->getCouponInfo();
+        $isCoupon = false;
+        foreach ($coupon['data']['list'] as $value) {
+            if (Session::get('user.checkout.couponInfo.bind_id') == $value['bind_id']) {
+                $isCoupon = true;
+                break;
+            }
+        }
+
+        if (!$isCoupon) {
+            foreach ($coupon['data']['list'] as $value) {
+                if ($value['selected']) {
+                    $couponInfo = $value;
+                    Session::put('user.checkout.couponInfo', $couponInfo);
+                }
+            }
+        }
+        return $coupon;
     }
 
     //地址管理
