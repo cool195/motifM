@@ -37,7 +37,7 @@
                     <div class="text-center text-primary font-size-sm"><strong>ORDER TOTAL:
                             ${{number_format(($checkInfo['pay_amount'] / 100), 2)}}</strong></div>
                     <div class="p-t-10x submit-placeOrder">
-                        <div class="btn btn-primary btn-block submit-checkout">@if(Session::get('user.checkout.paywith.pay_method')=='PayPalNative'){{'Pay With PayPal'}}@else{{'Place Order'}}@endif</div>
+                        <div class="btn btn-primary btn-block submit-checkout">@if(Session::get('user.checkout.paywith.pay_method')=='PayPalNative'){{'Pay with PayPal'}}@else{{'Place Order'}}@endif</div>
                     </div>
                 </div>
                 <hr class="hr-base m-a-0">
@@ -182,7 +182,7 @@
                     <div class="text-center text-primary font-size-sm"><strong>ORDER TOTAL:
                             ${{number_format(($checkInfo['pay_amount'] / 100), 2)}}</strong></div>
                     <div class="p-t-10x submit-placeOrder">
-                        <div class="btn btn-primary btn-block submit-checkout">@if(Session::get('user.checkout.paywith.pay_method')=='PayPalNative'){{'Pay With PayPal'}}@else{{'Place Order'}}@endif</div>
+                        <div class="btn btn-primary btn-block submit-checkout">@if(Session::get('user.checkout.paywith.pay_method')=='PayPalNative'){{'Pay with PayPal'}}@else{{'Place Order'}}@endif</div>
                     </div>
                 </div>
                 <hr class="hr-base m-a-0">
