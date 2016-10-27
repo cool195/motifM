@@ -73,8 +73,8 @@ class DesignerController extends ApiController
                     break;
                 }
             }
-            
-            if (isset($_spu) && $product['data']['spuInfos'][$_spu]['spuBase']['sale_type'] == 1 && isset($product['data']['spuInfos'][$_spu]['skuPrice']['skuPromotion']) && $product['data']['spuInfos'][$_spu]['spuBase']['isPutOn'] == 1 && $product['data']['spuInfos'][$_spu]['stockStatus'] == 'YES') {
+
+            if (isset($_spu) && $product['data']['spuInfos'][$_spu]['spuBase']['sale_type'] == 1 && $product['data']['spuInfos'][$_spu]['spuBase']['isPutOn'] == 1 && $product['data']['spuInfos'][$_spu]['stockStatus'] == 'YES') {
                 $params = array(
                     'cmd' => 'productdetail',
                     'spu' => $_spu,

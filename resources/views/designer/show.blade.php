@@ -195,11 +195,11 @@
             <!-- 预售信息 -->
             @if(!empty($pre_product))
                 @if($pre_product['skuPrice']['skuPromotion']['remain_time'] >= 0 || !empty($pre_product['spuStock']))
-                    <section class="limited-content"
-                             data-begintime="{{  $pre_product['skuPrice']['skuPromotion']['start_time'] }}"
-                             data-endtime="{{  $pre_product['skuPrice']['skuPromotion']['end_time'] }}"
-                             data-lefttime="@if($pre_product['sale_status'] && $pre_product['isPutOn']==1){{$pre_product['skuPrice']['skuPromotion']['remain_time']}}@else{{'0'}}@endif"
-                             data-qtty="{{$pre_product['spuStock']['stock_qtty']}}">
+                    <section class="limited limited-data"
+                             data-begintime="{{$pre_product['skuPrice']['skuPromotion']['start_time']}}"
+                             data-endtime="{{$pre_product['skuPrice']['skuPromotion']['end_time']}}"
+                             data-lefttime="@if($pre_product['skuPrice']['skuPromotion']['remain_time']>0){{$pre_product['skuPrice']['skuPromotion']['remain_time']}}@else{{'0'}}@endif">
+                        <div class="hr-between"></div>
                         <div class="bg-white">
                             <div class="p-x-15x limited-subtitle"><strong>LIMITED EDITION</strong></div>
                             @if($pre_product['isPutOn'] !=1)
@@ -235,7 +235,7 @@
                                 @endif
 
                                 @if($pre_product['skuPrice']['skuPromotion']['remain_time'] >= 0)
-                                    @if($pre_product['sale_status'])
+                                    @if($pre_product['skuPrice']['skuPromotion']['remain_time']>0)
                                         <div>
                                             <div class="p-x-15x p-t-5x">
                                                 <img src="/images/icon/icon-limited.png"
@@ -266,7 +266,6 @@
                     </section>
                 @endif
                 @if($pre_product['skuPrice']['skuPromotion']['ship_desc'])
-                    <div class="hr-between"></div>
                     <section class="limited">
                         <div class="bg-white">
                             <div class="p-x-15x limited-subtitle"><strong>PREORDER</strong></div>
@@ -277,8 +276,8 @@
                         </div>
                         <div class="hr-between"></div>
                     </section>
+                @endif
             @endif
-        @endif
         <!-- 设计师 对应模版商品 -->
             <aside class="bg-white">
             @inject('wishlist', 'App\Http\Controllers\Shopping\ShoppingController')
