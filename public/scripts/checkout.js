@@ -861,8 +861,8 @@
 
     // 保存 massage
     $('#btn-addSpecial').on('click', function () {
-        var msg = $('textarea[name="remark"]').val().length > 15 ? $('textarea[name="remark"]').val().substr(0,15)+'...' : $('textarea[name="remark"]').val();
-        $('.request span').html(msg);
+        var msg = $('textarea[name="remark"]').val().length > 30 ? $('textarea[name="remark"]').val().substr(0,30)+'...' : $('textarea[name="remark"]').val();
+        $('.request').html(msg);
         toPage($('.shipping-review'));
     });
 

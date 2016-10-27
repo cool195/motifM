@@ -80,7 +80,12 @@
                     </div>
                     <div class="">
                         @if(Session::get('user.checkout.paywith.pay_method')=='PayPalNative')
-                            <span>Method: PayPal</span><br>
+                            <span>Method:</span>
+                            <span class="p-l-10x"><img
+                                        src="{{env('CDN_Static')}}/images/payment/icon-paypal2-color.png{{'?v='.config('app.version')}}"
+                                        srcset="{{env('CDN_Static')}}/images/payment/icon-paypal2-color@2x.png{{'?v='.config('app.version')}} 2x, {{env('CDN_Static')}}/images/payment/icon-paypal2-color@3x.png{{'?v='.config('app.version')}} 3x"
+                                        alt=""></span>
+                            <br>
                         @else
                             <span>Card: {{Session::get('user.checkout.paywith.withCard.card_number')}}</span>
                             @if(Session::get('user.checkout.paywith.withCard.card_type')=='Visa')
@@ -121,8 +126,8 @@
                         <span><strong>SPECIAL REQUEST</strong></span>
                     </div>
                     <div class="" id="review-special">
-                        <span>Optional</span>
-                        <span class="pull-right request"><span></span><i class="iconfont icon-arrow-right icon-size-xm"></i></span>
+                        <span class="request">Optional</span>
+                        <span class="pull-right"><i class="iconfont icon-arrow-right icon-size-xm"></i></span>
                     </div>
                 </div>
                 <div class="hr-between"></div>
