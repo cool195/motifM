@@ -23,7 +23,7 @@
 <script type="text/javascript">
     function onAddToCart() {
         var quantity = document.getElementById('addToCart-quantity').value;
-        var sku = document.getElementById('addToCart-sku').value;
+        //var sku = document.getElementById('addToCart-sku').value;
         dataLayer.push({
             'event': 'addToCart',
             'ecommerce': {
@@ -31,8 +31,7 @@
                 'add': {
                     'products': [{
                         'name': '{{$data['main_title']}}',
-                        'id': '{{ $value['spu'] }}',
-                        'sku': sku,
+                        'id': '{{ $data['spu'] }}',
                         'price': '{{ number_format(($data['skuPrice']['sale_price'] / 100), 2) }}',
                         'brand': 'Motif',
                         'category': '',
