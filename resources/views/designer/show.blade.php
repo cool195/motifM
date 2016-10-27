@@ -123,22 +123,23 @@
         @endif
         <!-- 设计师 文字信息 -->
             <div class="bg-white">
-                <div class="flex flex-alignCenter flex-fullJustified p-x-10x p-t-10x" data-impr='http://clk.motif.me/log.gif?t=designer.600001&m=H5_M2016-1&pin={{Session::get('user.pin')}}&uuid={{Session::get('user.uuid')}}&ref=&v={"action":0,"skipType":2,"skipId":{{$designer['designer_id']}},"expid":0,"version":"1.0.1","ver":"9.2","src":"H5"}'>
+                <div class="flex flex-alignCenter flex-fullJustified p-x-10x p-t-10x"
+                     data-impr='http://clk.motif.me/log.gif?t=designer.600001&m=H5_M2016-1&pin={{Session::get('user.pin')}}&uuid={{Session::get('user.uuid')}}&ref=&v={"action":0,"skipType":2,"skipId":{{$designer['designer_id']}},"expid":0,"version":"1.0.1","ver":"9.2","src":"H5"}'>
                     <div class="font-size-base text-main"><strong>{{$designer['nickname']}}</strong></div>
                     {{--<div class="flex flex-alignCenter">--}}
-                        {{--<span class="">--}}
-                            {{--@if(Session::get('user.pin'))--}}
-                                {{--@if($designer['followStatus'])--}}
-                                    {{--<a href="#" class="btn btn-sm btn-primary" id="follow"--}}
-                                       {{--data-followid="{{$designer['designer_id']}}">Following</a>--}}
-                                {{--@else--}}
-                                    {{--<a href="#" class="btn btn-sm btn-follow active" id="follow"--}}
-                                       {{--data-followid="{{$designer['designer_id']}}">Follow</a>--}}
-                                {{--@endif--}}
-                            {{--@else--}}
-                                {{--<a href="/login" class="btn btn-sm btn-follow active upFollow sendLogin">Follow</a>--}}
-                            {{--@endif--}}
-                        {{--</span>--}}
+                    {{--<span class="">--}}
+                    {{--@if(Session::get('user.pin'))--}}
+                    {{--@if($designer['followStatus'])--}}
+                    {{--<a href="#" class="btn btn-sm btn-primary" id="follow"--}}
+                    {{--data-followid="{{$designer['designer_id']}}">Following</a>--}}
+                    {{--@else--}}
+                    {{--<a href="#" class="btn btn-sm btn-follow active" id="follow"--}}
+                    {{--data-followid="{{$designer['designer_id']}}">Follow</a>--}}
+                    {{--@endif--}}
+                    {{--@else--}}
+                    {{--<a href="/login" class="btn btn-sm btn-follow active upFollow sendLogin">Follow</a>--}}
+                    {{--@endif--}}
+                    {{--</span>--}}
                     {{--</div>--}}
                 </div>
                 <div class="font-size-sm text-primary p-y-10x p-x-15x">
@@ -199,21 +200,27 @@
                     <div class="bg-white limited-data"
                          data-begintime="{{$pre_product['skuPrice']['skuPromotion']['start_time']}}"
                          data-endtime="{{$pre_product['skuPrice']['skuPromotion']['end_time']}}"
-                         data-lefttime="@if($pre_product['isPutOn']==1){{$pre_product['skuPrice']['skuPromotion']['remain_time']}}@else{{'0'}}@endif"
-                         data-ship="{{$pre_product['skuPrice']['skuPromotion']['ship_desc']}}">
+                         data-lefttime="@if($pre_product['isPutOn']==1){{$pre_product['skuPrice']['skuPromotion']['remain_time']}}@else{{'0'}}@endif">
                         <div class="p-x-15x limited-subtitle"><strong>LIMITED EDITION</strong></div>
                         <div>
 
+                            <div class="p-x-15x p-t-5x">
+                                <img src="/images/icon/icon-limited.png"
+                                     srcset="/images/icon/icon-limited@2x.png 2x, /images/icon/icon-limited@3x.png 3x"
+                                     alt="">
+                                    <span class="text-primary font-size-sm">@if(($pre_product['spuStock']['stock_qtty'] - $pre_product['spuStock']['saled_qtty'] > 0) && $pre_product['isPutOn']==1)
+                                            Only {{$pre_product['spuStock']['stock_qtty'] - $pre_product['spuStock']['saled_qtty']}}
+                                            Left @else Sold Out @endif</span>
+                            </div>
+
+                            @if(isset($pre_product['spuStock']) && ($pre_product['isPutOn'] ==0  || ($pre_product['spuStock']['stock_qtty'] - $pre_product['spuStock']['saled_qtty'])<=0))
                                 <div class="p-x-15x p-t-5x">
                                     <img src="/images/icon/icon-limited.png"
                                          srcset="/images/icon/icon-limited@2x.png 2x, /images/icon/icon-limited@3x.png 3x"
                                          alt="">
-                                    <span class="text-primary font-size-sm">@if(($pre_product['spuStock']['stock_qtty'] - $pre_product['spuStock']['saled_qtty'] > 0) && $pre_product['isPutOn']==1)
-                                            Only {{$pre_product['spuStock']['stock_qtty'] - $pre_product['spuStock']['saled_qtty']}}
-                                            Left @else Sold Out @endif</span>
+                                    <span class="text-primary font-size-sm">Orders Closed</span>
                                 </div>
-
-
+                            @else
                                 <div class="p-x-15x p-t-5x">
                                     <img src="/images/icon/icon-limited.png"
                                          srcset="/images/icon/icon-limited@2x.png 2x, /images/icon/icon-limited@3x.png 3x"
@@ -226,20 +233,25 @@
                                         0%
                                     </progress>
                                 </div>
+                            @endif
+
 
                         </div>
                     </div>
                 </section>
-                <div class="hr-between"></div>
-                <section class="limited" hidden>
-                    <div class="bg-white">
-                        <div class="p-x-15x limited-subtitle"><strong>PREORDER</strong></div>
-                        <div class="p-x-15x p-t-10x p-b-15x text-primary font-size-sm">
-                            Expected to ship on <strong id="shipToDate"></strong>
-                        </div>
-                    </div>
+                @if($pre_product['skuPrice']['skuPromotion']['ship_desc'])
                     <div class="hr-between"></div>
-                </section>
+                    <section class="limited">
+                        <div class="bg-white">
+                            <div class="p-x-15x limited-subtitle"><strong>PREORDER</strong></div>
+                            <div class="p-x-15x p-t-10x p-b-15x text-primary font-size-sm">
+                                Expected to ship on
+                                <strong>{{$pre_product['skuPrice']['skuPromotion']['ship_desc']}}</strong>
+                            </div>
+                        </div>
+                        <div class="hr-between"></div>
+                    </section>
+            @endif
         @endif
         <!-- 设计师 对应模版商品 -->
             <aside class="bg-white">
@@ -428,17 +440,20 @@
                                                 @endforeach
                                             </div>
                                         </div>
-                            @endif
-                                        @if($designer['designer_id']==99)
-                                            <div class="font-size-sm text-primary p-y-15x p-x-15x">
-                                                <div class="text-center">
-                                                    <div>Love this collection? Follow Rae on our free app for early access to shop future collections.</div>
-                                                    <div class="p-t-15x">
-                                                        <a class="btn btn-primary-outline btn-sm" href="/downapp">Download Motif</a>
-                                                    </div>
+                                    @endif
+                                    @if($designer['designer_id']==99)
+                                        <div class="font-size-sm text-primary p-y-15x p-x-15x">
+                                            <div class="text-center">
+                                                <div>Love this collection? Follow Rae on our free app for early access
+                                                    to shop future collections.
+                                                </div>
+                                                <div class="p-t-15x">
+                                                    <a class="btn btn-primary-outline btn-sm" href="/downapp">Download
+                                                        Motif</a>
                                                 </div>
                                             </div>
-                                        @endif
+                                        </div>
+                            @endif
             </aside>
         </section>
         <!-- 页脚 功能链接 -->
@@ -452,7 +467,7 @@
 <meta name="csrf-token" content="{{ csrf_token() }}"/>
 <script>
 
-    $('#follow').on('click',function () {
+    $('#follow').on('click', function () {
         $this = $(this)
         $.ajax({
             url: '/followDesigner/' + $this.data('followid'),

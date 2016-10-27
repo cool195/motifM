@@ -223,7 +223,14 @@
                                             Left @else Sold Out @endif</span>
                                 </div>
 
-
+                            @if(isset($pre_product['spuStock']) && ($pre_product['isPutOn'] ==0  || ($pre_product['spuStock']['stock_qtty'] - $pre_product['spuStock']['saled_qtty'])<=0))
+                                <div class="p-x-15x p-t-5x">
+                                    <img src="/images/icon/icon-limited.png"
+                                         srcset="/images/icon/icon-limited@2x.png 2x, /images/icon/icon-limited@3x.png 3x"
+                                         alt="">
+                                    <span class="text-primary font-size-sm">Orders Closed</span>
+                                </div>
+                            @else
                                 <div class="p-x-15x p-t-5x">
                                     <img src="/images/icon/icon-limited.png"
                                          srcset="/images/icon/icon-limited@2x.png 2x, /images/icon/icon-limited@3x.png 3x"
@@ -236,20 +243,24 @@
                                         0%
                                     </progress>
                                 </div>
+                            @endif
 
                         </div>
                     </div>
                 </section>
-                <div class="hr-between"></div>
-                <section class="limited" hidden>
-                    <div class="bg-white m-y-10x">
-                        <div class="p-x-15x limited-subtitle"><strong>PREORDER</strong></div>
-                        <div class="p-x-15x p-t-10x p-b-15x text-primary font-size-sm">
-                            Expected to ship on <strong id="shipToDate"></strong>
-                        </div>
-                    </div>
+                @if($pre_product['skuPrice']['skuPromotion']['ship_desc'])
                     <div class="hr-between"></div>
-                </section>
+                    <section class="limited">
+                        <div class="bg-white">
+                            <div class="p-x-15x limited-subtitle"><strong>PREORDER</strong></div>
+                            <div class="p-x-15x p-t-10x p-b-15x text-primary font-size-sm">
+                                Expected to ship on
+                                <strong>{{$pre_product['skuPrice']['skuPromotion']['ship_desc']}}</strong>
+                            </div>
+                        </div>
+                        <div class="hr-between"></div>
+                    </section>
+                @endif
             @endif
             {{--设计师 对应商品--}}
             <aside class="bg-white">
