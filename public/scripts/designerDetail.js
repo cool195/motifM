@@ -174,10 +174,6 @@
         if(leftNum != -1){
             $('.limited-content').removeAttr('hidden');
         }
-        if($('.limited-data').data('ship') != ''){
-            $('.limited').removeAttr('hidden');
-            $('#shipToDate').html($('.limited-data').data('ship'));
-        }
     }
     $('#limited-progress').attr('value', rate);
     function timer(intDiff) {
