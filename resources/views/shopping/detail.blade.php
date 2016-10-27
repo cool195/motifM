@@ -133,8 +133,8 @@
                                      src="{{env('CDN_Static')}}/images/product/bg-product@750.png" alt="">
                                 {{--视频--}}
                                 @if(!empty($image['video_path']))
-                                    <div class="bg-productPlayer flex flex-alignCenter flex-justifyCenter">
-                                        <img class="btn-productPlayer" src="{{env('CDN_Static')}}/images/daily/icon-player.png" alt="">
+                                    <div class="bg-productPlayer flex flex-alignCenter flex-justifyCenter btn-productPlayer" data-ytbid="{{$image['video_path']}}">
+                                        <img class="" src="{{env('CDN_Static')}}/images/daily/icon-player.png" alt="">
                                     </div>
                                 @endif
                             </div>
@@ -164,8 +164,8 @@
                                          src="{{env('CDN_Static')}}/images/product/bg-product@750.png" alt="">
                                     {{--视频--}}
                                     @if(!empty($image['video_path']))
-                                        <div class="bg-productPlayer flex flex-alignCenter flex-justifyCenter">
-                                            <img class="btn-productPlayer" src="{{env('CDN_Static')}}/images/daily/icon-player.png" data-ytbid="{{$image['video_path']}}">
+                                        <div class="bg-productPlayer flex flex-alignCenter flex-justifyCenter btn-productPlayer" data-ytbid="{{$image['video_path']}}">
+                                            <img class="" src="{{env('CDN_Static')}}/images/daily/icon-player.png">
                                         </div>
                                     @endif
                                 </div>
