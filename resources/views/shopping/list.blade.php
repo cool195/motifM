@@ -70,7 +70,7 @@
         @include('navigator')
         <nav class="bg-white nav-category">
             <div class="text-center p-t-15x p-b-10x titDiv">
-                <a href="javascript:void(0)" class="text-main font-size-lg" id="nav-categoryTit">All Shopping</a>
+                <a href="javascript:void(0)" class="text-main font-size-lg" id="nav-categoryTit">All</a>
             </div>
             <!-- 商品类别 二级导航 -->
             <section class="bg-white search-container">
