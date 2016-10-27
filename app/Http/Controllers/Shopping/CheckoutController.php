@@ -151,9 +151,10 @@ class CheckoutController extends ApiController
             'uuid' => $_COOKIE['uid'],
             'token' => Session::get('user.token'),
             'pin' => Session::get('user.pin'),
+            'scope' => 0,
         );
         $system = "";
-        $service = "useraddr";
+        $service = "addr";
         $result = $this->request('openapi', $system, $service, $params);
         if (empty($result)) {
             $result['success'] = false;
