@@ -126,8 +126,8 @@
                         <span><strong>SPECIAL REQUEST</strong></span>
                     </div>
                     <div class="" id="review-special">
-                        <span class="request">Optional</span>
-                        <span class="pull-right"><i class="iconfont icon-arrow-right icon-size-xm"></i></span>
+                        <span class="request text-common">Optional</span>
+                        <span class="pull-right"><i class="iconfont icon-arrow-right icon-size-xm text-common"></i></span>
                     </div>
                 </div>
                 <div class="hr-between"></div>
