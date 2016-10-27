@@ -170,11 +170,7 @@
     var leftNum = $('.limited-data').data('lefttime');     // 剩余秒数  604358742
     var secondnum = parseInt(endTimes - beginTimes);   //604802000    // 预售总时长
     var rate = ((leftNum / secondnum).toFixed(4) * 10000); //剩余时间所占总时长的比例
-    if(beginTimes != undefined){
-        if(leftNum != -1){
-            $('.limited-content').removeAttr('hidden');
-        }
-    }
+
     $('#limited-progress').attr('value', rate);
     function timer(intDiff) {
         var timer = window.setInterval(function () {
