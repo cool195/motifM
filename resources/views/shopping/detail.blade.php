@@ -236,7 +236,7 @@
                                             Left @else Sold Out @endif </span>
                                 </div>
                             @endif
-                            @if($data['isPutOn'] ==0  || ($data['spuStock']['stock_qtty'] - $data['spuStock']['saled_qtty'])<=0)
+                            @if(isset($data['spuStock']) && ($data['isPutOn'] ==0  || ($data['spuStock']['stock_qtty'] - $data['spuStock']['saled_qtty'])<=0))
                                 <div class="p-x-15x p-t-10x">
                                     <img src="/images/icon/icon-limited.png"
                                          srcset="/images/icon/icon-limited@2x.png 2x, /images/icon/icon-limited@3x.png 3x"
