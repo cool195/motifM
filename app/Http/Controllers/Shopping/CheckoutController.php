@@ -68,7 +68,7 @@ class CheckoutController extends ApiController
         //return Session::get('user.checkout');
         $payInfo = $this->getPayInfo();
         $coupon = $this->couponCache();
-        $country = $this->getCountry();
+        $country = $this->getCountry(1);
 
         return View('checkout.payment', ['payInfo' => $payInfo['data']['list'], 'coupon' => $coupon['data'], 'country' => $country['data']]);
     }
@@ -117,12 +117,13 @@ class CheckoutController extends ApiController
     }
 
     //获取国家列表
-    public function getCountry()
+    public function getCountry($scope=0)
     {
         $params = array(
             'cmd' => 'country',
             'token' => Session::get('user.token'),
-            'pin' => Session::get('user.pin')
+            'pin' => Session::get('user.pin'),
+            'scope' => $scope ? $scope : 0
         );
         $system = "";
         $service = "addr";
@@ -151,10 +152,9 @@ class CheckoutController extends ApiController
             'uuid' => $_COOKIE['uid'],
             'token' => Session::get('user.token'),
             'pin' => Session::get('user.pin'),
-            'scope' => 0,
         );
         $system = "";
-        $service = "addr";
+        $service = "useraddr";
         $result = $this->request('openapi', $system, $service, $params);
         if (empty($result)) {
             $result['success'] = false;
