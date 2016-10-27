@@ -71,45 +71,45 @@
     <div class="text-common text-center font-size-xs">Copyright © 2016 Motif Group LLC. All rights reserved.</div>
 </footer>
 <!-- App 下载提示 -->
-<nav class="navbar-fixed-bottom bg-download p-y-5x p-x-10x" hidden>
-    <div class="row flex flex-alignCenter">
-        <div class="col-xs-9">
-            <div class="flex flex-alignCenter">
-                <a class="p-r-10x p-y-10x" id="closeDownloading">
-                    <i class="iconfont icon-cross text-primary btn-closeDownload icon-size-xm"></i>
-                </a>
-                <div class="p-r-15x">
-                    @if($designer['designer_id']==99)
-                        <a href="/downapp"><img src="{{env('CDN_Static')}}/images/icon/icon-motif.png"
-                                            srcset="{{env('CDN_Static')}}/images/icon/icon-motif@2x.png 2x,{{env('CDN_Static')}}/images/icon/icon-motif@3x.png 3x"
-                                            width="40" height="40"></a>
-                    @else
-                        <a data-role="downloading"><img src="{{env('CDN_Static')}}/images/icon/icon-motif.png"
-                                            srcset="{{env('CDN_Static')}}/images/icon/icon-motif@2x.png 2x,{{env('CDN_Static')}}/images/icon/icon-motif@3x.png 3x"
-                                            width="40" height="40"></a>
-                    @endif
+{{--<nav class="navbar-fixed-bottom bg-download p-y-5x p-x-10x" hidden>--}}
+    {{--<div class="row flex flex-alignCenter">--}}
+        {{--<div class="col-xs-9">--}}
+            {{--<div class="flex flex-alignCenter">--}}
+                {{--<a class="p-r-10x p-y-10x" id="closeDownloading">--}}
+                    {{--<i class="iconfont icon-cross text-primary btn-closeDownload icon-size-xm"></i>--}}
+                {{--</a>--}}
+                {{--<div class="p-r-15x">--}}
+                    {{--@if($designer['designer_id']==99)--}}
+                        {{--<a href="/downapp"><img src="{{env('CDN_Static')}}/images/icon/icon-motif.png"--}}
+                                            {{--srcset="{{env('CDN_Static')}}/images/icon/icon-motif@2x.png 2x,{{env('CDN_Static')}}/images/icon/icon-motif@3x.png 3x"--}}
+                                            {{--width="40" height="40"></a>--}}
+                    {{--@else--}}
+                        {{--<a data-role="downloading"><img src="{{env('CDN_Static')}}/images/icon/icon-motif.png"--}}
+                                            {{--srcset="{{env('CDN_Static')}}/images/icon/icon-motif@2x.png 2x,{{env('CDN_Static')}}/images/icon/icon-motif@3x.png 3x"--}}
+                                            {{--width="40" height="40"></a>--}}
+                    {{--@endif--}}
 
-                </div>
-                @if($designer['designer_id']==99)
-                    <a href="/downapp"><div class="p-r-5x font-size-xs text-primary">Use our free app for 20% off your first purchase!</div></a>
-                @else
-                    <a data-role="downloading"><div class="p-r-5x font-size-xs text-primary">Use our free app for 20% off your first purchase!</div></a>
-                @endif
+                {{--</div>--}}
+                {{--@if($designer['designer_id']==99)--}}
+                    {{--<a href="/downapp"><div class="p-r-5x font-size-xs text-primary">Use our free app for 20% off your first purchase!</div></a>--}}
+                {{--@else--}}
+                    {{--<a data-role="downloading"><div class="p-r-5x font-size-xs text-primary">Use our free app for 20% off your first purchase!</div></a>--}}
+                {{--@endif--}}
 
-            </div>
-        </div>
-        <div class="col-xs-3">
-            <div class="font-size-sm text-right">
-                @if($designer['designer_id']==99)
-                    <a class="btn btn-white btn-sm font-size-xs" href="/downapp">GET IT</a>
-                @else
-                    <a class="btn btn-white btn-sm font-size-xs" data-role="downloading">GET IT</a>
-                @endif
-            </div>
-        </div>
+            {{--</div>--}}
+        {{--</div>--}}
+        {{--<div class="col-xs-3">--}}
+            {{--<div class="font-size-sm text-right">--}}
+                {{--@if($designer['designer_id']==99)--}}
+                    {{--<a class="btn btn-white btn-sm font-size-xs" href="/downapp">GET IT</a>--}}
+                {{--@else--}}
+                    {{--<a class="btn btn-white btn-sm font-size-xs" data-role="downloading">GET IT</a>--}}
+                {{--@endif--}}
+            {{--</div>--}}
+        {{--</div>--}}
 
-    </div>
-</nav>
+    {{--</div>--}}
+{{--</nav>--}}
 <script type='text/javascript'>
     var _vds = _vds || [];
     window._vds = _vds;
