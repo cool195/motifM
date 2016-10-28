@@ -289,8 +289,8 @@
                                 <a href="javascript:void(0)">
                                     @else
                                         <a data-link="@if($value['skipType']=='1')/detail/{{$value['skipId']}}@elseif($value['skipType']=='2')/designer/{{$value['skipId']}}@elseif($value['skipType']=='3')/topic/{{$value['skipId']}}@elseif($value['skipType']=='4')/shopping#{{$value['skipId']}}@else{{$value['skipId']}}@endif"
-                                           data-impr='http://clk.motif.me/log.gif?t=designer.400001&m=H5_M2016-1&pin={{Session::get('user.pin')}}&uuid={{Session::has('user') ? Session::get('user.uuid') : $_COOKIE['uid']}}&v={"action":0,"skipType":{{$value['skipType']}},"skipId":{{$value['skipId']}},"expid":0,"index":"{{$k}}","version":"1.0.1","ver":"9.2","src":"H5"}'
-                                           data-clk='http://clk.motif.me/log.gif?t=designer.400001&m=H5_M2016-1&pin={{Session::get('user.pin')}}&uuid={{Session::has('user') ? Session::get('user.uuid') : $_COOKIE['uid']}}&v={"action":1,"skipType":{{$value['skipType']}},"skipId":{{$value['skipId']}},"expid":0,"index":"{{$k}}","version":"1.0.1","ver":"9.2","src":"H5"}'
+                                           data-impr='http://clk.motif.me/log.gif?t=designer.400001&m=H5_M2016-1&pin={{Session::get('user.pin')}}&uuid={{Session::has('user') ? Session::get('user.uuid') : $_COOKIE['uid']}}&v={"action":0,"skipType":"{{$value['skipType']}}","skipId":"{{$value['skipId']}}","expid":0,"index":"{{$k}}","version":"1.0.1","ver":"9.2","src":"H5"}'
+                                           data-clk='http://clk.motif.me/log.gif?t=designer.400001&m=H5_M2016-1&pin={{Session::get('user.pin')}}&uuid={{Session::has('user') ? Session::get('user.uuid') : $_COOKIE['uid']}}&v={"action":1,"skipType":"{{$value['skipType']}}","skipId":"{{$value['skipId']}}","expid":0,"index":"{{$k}}","version":"1.0.1","ver":"9.2","src":"H5"}'
                                            href="javascript:void(0)">
                                             @endif
                                             <div class="p-y-10x">
