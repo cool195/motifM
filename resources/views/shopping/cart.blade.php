@@ -15,6 +15,7 @@
 <input type="text" id="removeFromCart-price" value="" hidden>
 <input type="text" id="removeFromCart-quantity" value="" hidden>
 <script type="text/javascript">
+    window.dataLayer = window.dataLayer || [];
     function onRemoveFromCart() {
         var name = document.getElementById('removeFromCart-name').value;
         var spu = document.getElementById('removeFromCart-spu').value;

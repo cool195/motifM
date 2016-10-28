@@ -11,6 +11,7 @@
 <input type="text" id="productClick-price" value="1" hidden>
 <script type="text/javascript">
     function onProductClick() {
+        window.dataLayer = window.dataLayer || [];
         var name = document.getElementById('productClick-name').value;
         var spu = document.getElementById('productClick-spu').value;
         var price = document.getElementById('productClick-price').value;
