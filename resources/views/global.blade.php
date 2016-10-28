@@ -56,13 +56,12 @@
             $('#productClick-spu').val($this.data('spu'));
             $('#productClick-price').val($this.data('price'));
 
-            onProductClick();
-
+            //onProductClick();
+            $.ajax({
+                url: $this.data('clk'),
+                type: "GET"
+            });
             if (undefined !== $this.data('link')) {
-                $.ajax({
-                    url: $this.data('clk'),
-                    type: "GET"
-                });
                 setTimeout(function () {
                     window.location.href = $this.data('link');
                 }, 100);
