@@ -133,7 +133,7 @@
                     <div class="cardinfo-wrapper font-size-sm">
                         <div class="cardinfo-item">
                             <input class="cardinfo-input" type="tel" data-braintree-name="number"
-                                   value="" placeholder="Card Number" data-optional="false" data-role="card"
+                                   value="" placeholder="Card Number" data-optional="false" data-role="card number"
                                    id="cardNum" maxlength="20" name="card">
                             <input name="card_type" type="hidden">
                             <input name="add_type" type="hidden">
