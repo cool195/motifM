@@ -328,6 +328,7 @@
             CountryCsn = $('[data-cname="' + Country + '"]').data('csn');
         // 初始化 ZipCode
         $('input[name="zip"]').attr('placeholder', ZipCode);
+        $('input[name="zip"]').attr('data-role', ZipCode);
         // 初始化国家列表
         $('.country-item').removeClass('active');
         $('[data-cid=' + CountryId + ']').addClass('active');
