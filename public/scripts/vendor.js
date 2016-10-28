@@ -16631,7 +16631,7 @@ else if (typeof define === 'function' && define.amd) {
 
     // 关闭广告 begin
     function setCookieAd(name, value) {
-        var Time = 24;
+        var Time = 1;
         var exp = new Date();
         exp.setTime(exp.getTime() + Time * 60 * 60 * 1000);
         //exp.setTime(exp.getTime() + 5 * 60 * 1000);
