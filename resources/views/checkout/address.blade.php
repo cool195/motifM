@@ -107,7 +107,7 @@
                                     <span>Default Address</span>
                                     <input type="radio" name="isd" id="address-default" hidden value="1" checked="checked">
                                 @else
-                                    <span>Make Address</span>
+                                    <span>Make Default</span>
                                     <div class="radio-checkBox open">
                                         <div class="radio-checkItem"></div>
                                         <input type="radio" name="isd" id="address-default" hidden value="0">

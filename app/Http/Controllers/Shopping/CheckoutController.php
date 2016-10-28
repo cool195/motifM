@@ -19,7 +19,6 @@ class CheckoutController extends ApiController
         foreach ($payInfo['data']['list'] as $value) {
             if ($value['isLast'] == 1) {
                 $isPay = true;
-                $this->lastPay($payInfo);
             }
         }
 
@@ -55,6 +54,7 @@ class CheckoutController extends ApiController
 
         //是否成功支付过
         if ($isPay && !$request->get('from')) {
+            $this->lastPay($payInfo);
             return redirect('/checkout/review');
         }
         $continueUrl = '/checkout/' . ($request->get('from') ? $request->get('from') : 'payment');
