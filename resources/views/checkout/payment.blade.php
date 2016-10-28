@@ -141,7 +141,7 @@
                     </div>
                     <div class="cardinfo-wrapper font-size-sm">
                         <div class="cardinfo-item">
-                            <input class="cardinfo-input" type="text" data-braintree-name="expiration_date"
+                            <input class="cardinfo-input" type="tel" data-braintree-name="expiration_date"
                                    data-role="expiry"
                                    value="" placeholder="MM/YYYY" data-optional="false" maxlength="9" name="expiry">
                         </div>
