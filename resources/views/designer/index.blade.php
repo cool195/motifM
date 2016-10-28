@@ -82,7 +82,7 @@
                 <div class="product-item swiper-slide">
                     <a data-link="/detail/@{{$value.spu}}" href="javascript:void(0)"
                        data-designerid="@{{ $value.designerId }}"
-                       data-clk='http://clk.motif.me/log.gif?t=designer.300001&m=H5_M2016-1&pin={{ Session::get('user.pin') }}&uuid={{Session::has('user') ? Session::get('user.uuid') : $_COOKIE['uid']}}&v={"action":"1","skipType":1,"skipid":"@{{ $value.spu }}","expid":0,"version":"1.0.1", "ver":"9.2","src":"h5"}'>
+                       data-clk='http://clk.motif.me/log.gif?t=designer.300001&m=H5_M2016-1&pin={{ Session::get('user.pin') }}&uuid={{Session::has('user') ? Session::get('user.uuid') : $_COOKIE['uid']}}&v={"action":"1","skipType":1,"skipid":"@{{ $value.spu }}", "expid":0, "version":"1.0.1", "ver":"9.2","src":"h5"}'>
                         <img class="img-fluid"
                              src="{{env('APP_Api_Image')}}/n2/@{{ $value.mainImage }}">
 
