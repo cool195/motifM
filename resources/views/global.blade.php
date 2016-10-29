@@ -105,6 +105,6 @@
         });
     })
 </script>
-@if($_SERVER['SERVER_NAME'] == 'm.motif.me' || $_SERVER['SERVER_NAME'] == 'www.motif.me' || $_SERVER['SERVER_NAME'] == 'motif.me')
+@if($_SERVER['SERVER_NAME'] == 'm.motif.me')
     <script src="http://clk.motif.me/wl.js"></script>
 @endif
