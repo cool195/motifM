@@ -85,22 +85,24 @@
         <section class="reserve-height">
         @if(isset($designer['detailVideoPath']))
             <!-- 视频 -->
-            <div class="designer-media bg-white">
-                <div class="player-item" data-playid="{{$designer['detailVideoPath']}}" data-designerid="{{$designer['designer_id']}}">
-                    <div id="ytplayer" class="ytplayer" data-playid="{{$designer['detailVideoPath']}}"></div>
-                    <div class="bg-player">
-                        <img class="bg-img" src="{{env('APP_Api_Image')}}/n2/{{$designer['img_video_path']}}" alt="">
-                        <div class="btn-beginPlayer designer-beginPlayer">
-                            <div class="loading loading-screen loading-transprant">
-                                <div class="">
-                                    <div class="loader"></div>
+                <div class="designer-media bg-white">
+                    <div class="player-item" data-playid="{{$designer['detailVideoPath']}}"
+                         data-designerid="{{$designer['designer_id']}}">
+                        <div id="ytplayer" class="ytplayer" data-playid="{{$designer['detailVideoPath']}}"></div>
+                        <div class="bg-player">
+                            <img class="bg-img" src="{{env('APP_Api_Image')}}/n2/{{$designer['img_video_path']}}"
+                                 alt="">
+                            <div class="btn-beginPlayer designer-beginPlayer">
+                                <div class="loading loading-screen loading-transprant">
+                                    <div class="">
+                                        <div class="loader"></div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
+                        <div class="youtube_mask"></div>
                     </div>
-                    <div class="youtube_mask"></div>
                 </div>
-            </div>
         @else
             <!-- 图片-->
                 <div class="designer-media flex flex-justifyCenter flex-alignCenter">
@@ -123,14 +125,14 @@
                             @if(Session::get('user.pin'))
                                 @if($designer['followStatus'])
                                     <div class="btn btn-sm btn-primary" id="follow"
-                                       data-followid="{{$designer['designer_id']}}">Following</div>
+                                         data-followid="{{$designer['designer_id']}}">Following</div>
                                 @else
                                     <div class="btn btn-sm btn-follow active" id="follow"
-                                       data-followid="{{$designer['designer_id']}}">Follow</div>
+                                         data-followid="{{$designer['designer_id']}}">Follow</div>
                                 @endif
                             @else
                                 <div class="btn btn-sm btn-follow active sendLogin upFollow"
-                                   data-des="{{$designer['designer_id']}}">Follow</div>
+                                     data-des="{{$designer['designer_id']}}">Follow</div>
                             @endif
                         </span>
                         <span>
@@ -190,7 +192,8 @@
                             </a>
                         @endif
                         @if(!empty($designer['blog_link']))
-                            <a href="motif://o.c?a=outurl&url={{$designer['blog_link']}}" target="_blank" class="p-r-20x SocialMedia">
+                            <a href="motif://o.c?a=outurl&url={{$designer['blog_link']}}" target="_blank"
+                               class="p-r-20x SocialMedia">
                                 <img src="{{env('CDN_Static')}}/images/designer/blog.png"
                                      srcset="{{env('CDN_Static')}}/images/designer/blog@2x.png 2x,{{env('CDN_Static')}}/images/designer/blog@3x.png 3x">
                             </a>
@@ -275,18 +278,17 @@
                         <div class="hr-between"></div>
                     </section>
                 @endif
-                @if($pre_product['skuPrice']['skuPromotion']['ship_desc'])
+                @foreach($pre_product['skuPrice']['skuPromotion']['pre_exp_descs'] as $value)
                     <section class="limited">
                         <div class="bg-white">
-                            <div class="p-x-15x limited-subtitle"><strong>PREORDER</strong></div>
+                            <div class="p-x-15x limited-subtitle"><strong>{{$value['desc_title']}}</strong></div>
                             <div class="p-x-15x p-t-10x p-b-15x text-primary font-size-sm">
-                                Expected to ship on
-                                <strong>{{$pre_product['skuPrice']['skuPromotion']['ship_desc']}}</strong>
+                                <strong>{{$value['desc_value']}}</strong>
                             </div>
                         </div>
                         <div class="hr-between"></div>
                     </section>
-                @endif
+                @endforeach
             @endif
             {{--设计师 对应商品--}}
             <aside class="bg-white">
@@ -296,104 +298,105 @@
                             {{--第一个 banner 图--}}
                             @if(!isset($value['skipType']) || empty($value['skipId']))
                                 <a href="javascript:void(0)">
-                            @else
-                                <a data-link="@if($value['skipType']=='1')motif://o.c?a=pd&spu={{$value['skipId']}}@elseif($value['skipType']=='2')/designer/{{$value['skipId']}}@elseif($value['skipType']=='3')/topic/{{$value['skipId']}}@elseif($value['skipType']=='4')motif://o.c?a=shoppinglist&cid={{$value['skipId']}}@else{{'motif://o.c?a=outurl&url='.urlencode($value['skipId'])}}@endif"
-                                   data-impr='http://clk.motif.me/log.gif?t=designer.400001&m=H5_M2016-1&pin={{Session::get('user.pin')}}&uuid={{Session::has('user') ? Session::get('user.uuid') : $_COOKIE['uid']}}&v={"action":0,"skipType":{{$value['skipType']}},"skipId":{{$value['skipId']}},"expid":0,"index":"{{$k}}","version":"1.0.1","ver":"9.2","src":"H5"}'
-                                   data-clk='http://clk.motif.me/log.gif?t=designer.400001&m=H5_M2016-1&pin={{Session::get('user.pin')}}&uuid={{Session::has('user') ? Session::get('user.uuid') : $_COOKIE['uid']}}&v={"action":1,"skipType":{{$value['skipType']}},"skipId":{{$value['skipId']}},"expid":0,"index":"{{$k}}","version":"1.0.1","ver":"9.2","src":"H5"}'
-                                   href="javascript:void(0)">
-                                @endif
-                                <div class="p-y-10x">
-                                    <img class="img-fluid"
-                                         src="{{env('APP_Api_Image')}}/n2/{{$value['imgPath']}}">
-                                </div>
-                            </a>
+                                    @else
+                                        <a data-link="@if($value['skipType']=='1')motif://o.c?a=pd&spu={{$value['skipId']}}@elseif($value['skipType']=='2')/designer/{{$value['skipId']}}@elseif($value['skipType']=='3')/topic/{{$value['skipId']}}@elseif($value['skipType']=='4')motif://o.c?a=shoppinglist&cid={{$value['skipId']}}@else{{'motif://o.c?a=outurl&url='.urlencode($value['skipId'])}}@endif"
+                                           data-impr='http://clk.motif.me/log.gif?t=designer.400001&m=H5_M2016-1&pin={{Session::get('user.pin')}}&uuid={{Session::has('user') ? Session::get('user.uuid') : $_COOKIE['uid']}}&v={"action":0,"skipType":{{$value['skipType']}},"skipId":{{$value['skipId']}},"expid":0,"index":"{{$k}}","version":"1.0.1","ver":"9.2","src":"H5"}'
+                                           data-clk='http://clk.motif.me/log.gif?t=designer.400001&m=H5_M2016-1&pin={{Session::get('user.pin')}}&uuid={{Session::has('user') ? Session::get('user.uuid') : $_COOKIE['uid']}}&v={"action":1,"skipType":{{$value['skipType']}},"skipId":{{$value['skipId']}},"expid":0,"index":"{{$k}}","version":"1.0.1","ver":"9.2","src":"H5"}'
+                                           href="javascript:void(0)">
+                                            @endif
+                                            <div class="p-y-10x">
+                                                <img class="img-fluid"
+                                                     src="{{env('APP_Api_Image')}}/n2/{{$value['imgPath']}}">
+                                            </div>
+                                        </a>
                                         <p class="m-y-20x"></p>
-                        @elseif($value['type']=='title')
-                            {{--标题--}}
-                            <a data-link="@if($value['skipType']=='1')motif://o.c?a=pd&spu={{$value['skipId']}}@elseif($value['skipType']=='2')/designer/{{$value['skipId']}}@elseif($value['skipType']=='3')/topic/{{$value['skipId']}}@elseif($value['skipType']=='4')motif://o.c?a=shoppinglist&cid={{$value['skipId']}}@else{{'motif://o.c?a=outurl&url='.urlencode($value['skipId'])}}@endif"
-                               data-impr='http://clk.motif.me/log.gif?t=designer.400001&m=H5_M2016-1&pin={{Session::get('user.pin')}}&uuid={{Session::has('user') ? Session::get('user.uuid') : $_COOKIE['uid']}}&v={"action":0,"skipType":{{$value['skipType']}},"skipId":{{$value['skipId']}},"expid":0,"index":"{{$k}}","version":"1.0.1","ver":"9.2","src":"H5"}'
-                               data-clk='http://clk.motif.me/log.gif?t=designer.400001&m=H5_M2016-1&pin={{Session::get('user.pin')}}&uuid={{Session::has('user') ? Session::get('user.uuid') : $_COOKIE['uid']}}&v={"action":1,"skipType":{{$value['skipType']}},"skipId":{{$value['skipId']}},"expid":0,"index":"{{$k}}","version":"1.0.1","ver":"9.2","src":"H5"}'
-                               href="javascript:void(0)">
-                                <div class="p-x-15x p-y-10x text-primary">
-                                    <strong>{{$value['value']}}</strong>
-                                </div>
-                            </a>
-                        @elseif($value['type']=='boxline')
-                            <hr class="hr-base m-x-5x m-y-0">
-                        @elseif($value['type']=='context')
-                            {{--描述--}}
-                            <a data-link="@if($value['skipType']=='1')motif://o.c?a=pd&spu={{$value['skipId']}}@elseif($value['skipType']=='2')/designer/{{$value['skipId']}}@elseif($value['skipType']=='3')/topic/{{$value['skipId']}}@elseif($value['skipType']=='4')motif://o.c?a=shoppinglist&cid={{$value['skipId']}}@else{{'motif://o.c?a=outurl&url='.urlencode($value['skipId'])}}@endif"
-                               data-impr='http://clk.motif.me/log.gif?t=designer.400001&m=H5_M2016-1&pin={{Session::get('user.pin')}}&uuid={{Session::has('user') ? Session::get('user.uuid') : $_COOKIE['uid']}}&v={"action":0,"skipType":{{$value['skipType']}},"skipId":{{$value['skipId']}},"expid":0,"index":"{{$k}}","version":"1.0.1","ver":"9.2","src":"H5"}'
-                               data-clk='http://clk.motif.me/log.gif?t=designer.400001&m=H5_M2016-1&pin={{Session::get('user.pin')}}&uuid={{Session::has('user') ? Session::get('user.uuid') : $_COOKIE['uid']}}&v={"action":1,"skipType":{{$value['skipType']}},"skipId":{{$value['skipId']}},"expid":0,"index":"{{$k}}","version":"1.0.1","ver":"9.2","src":"H5"}'
-                               href="javascript:void(0)">
-                                <div class="p-x-15x p-y-10x text-primary font-size-sm">
-                                    {{$value['value']}}
-                                </div>
-                            </a>
-                        @elseif($value['type']=='product')
-                            @if($value['style']=='box-vertical')
-                                {{-- 商品列表竖向 --}}
-                                @if(isset($value['spus']))
-                                    <div data-impr='http://clk.motif.me/log.gif?t=designer.400001&m=H5_M2016-1&pin={{ Session::get('user.pin') }}&uuid={{Session::has('user') ? Session::get('user.uuid') : $_COOKIE['uid']}}&v={"action":0,"skipType":1,"skipId":"{{ implode("_", $value['spus']) }}","expid":0,"index":"{{$key}}","version":"1.0.1","ver":"9.2","src":"H5"}'></div>
-                                    @foreach($value['spus'] as $spu)
-                                        <div class="p-x-15x p-y-10x">
-                                            <a data-link="motif://o.c?a=pd&spu={{$spu}}"
-                                               data-clk='http://clk.motif.me/log.gif?t=designer.400001&m=H5_M2016-1&pin={{ Session::get('user.pin') }}&uuid={{Session::has('user') ? Session::get('user.uuid') : $_COOKIE['uid']}}&v={"action":1,"skipType":1,"skipId":{{$spu}},"expid":0,"index":"{{$key}}","version":"1.0.1","ver":"9.2","src":"H5"}'
-                                               href="javascript:void(0)" data-spu="{{$spu}}"
-                                               data-title="{{$product['spuInfos'][$spu]['spuBase']['main_title']}}"
-                                               data-price="{{number_format($product['spuInfos'][$spu]['skuPrice']['sale_price']/100,2)}}">
-                                                <img class="img-fluid img-lazy"
-                                                     src="{{env('CDN_Static')}}/images/product/bg-product@336.png"
-                                                     data-original="{{env('APP_Api_Image')}}/n2/{{$product['spuInfos'][$spu]['spuBase']['main_image_url']}}"
-                                                     alt="{{$product['spuInfos'][$spu]['spuBase']['main_title']}}">
+                                        @elseif($value['type']=='title')
+                                            {{--标题--}}
+                                            <a data-link="@if($value['skipType']=='1')motif://o.c?a=pd&spu={{$value['skipId']}}@elseif($value['skipType']=='2')/designer/{{$value['skipId']}}@elseif($value['skipType']=='3')/topic/{{$value['skipId']}}@elseif($value['skipType']=='4')motif://o.c?a=shoppinglist&cid={{$value['skipId']}}@else{{'motif://o.c?a=outurl&url='.urlencode($value['skipId'])}}@endif"
+                                               data-impr='http://clk.motif.me/log.gif?t=designer.400001&m=H5_M2016-1&pin={{Session::get('user.pin')}}&uuid={{Session::has('user') ? Session::get('user.uuid') : $_COOKIE['uid']}}&v={"action":0,"skipType":{{$value['skipType']}},"skipId":{{$value['skipId']}},"expid":0,"index":"{{$k}}","version":"1.0.1","ver":"9.2","src":"H5"}'
+                                               data-clk='http://clk.motif.me/log.gif?t=designer.400001&m=H5_M2016-1&pin={{Session::get('user.pin')}}&uuid={{Session::has('user') ? Session::get('user.uuid') : $_COOKIE['uid']}}&v={"action":1,"skipType":{{$value['skipType']}},"skipId":{{$value['skipId']}},"expid":0,"index":"{{$k}}","version":"1.0.1","ver":"9.2","src":"H5"}'
+                                               href="javascript:void(0)">
+                                                <div class="p-x-15x p-y-10x text-primary">
+                                                    <strong>{{$value['value']}}</strong>
+                                                </div>
                                             </a>
-                                        </div>
-                                    @endforeach
-                                @endif
-                            @else
-                                {{-- 商品列表横向 --}}
-                                <div class="container-fluid p-x-0 bg-topic"
-                                     data-impr='http://clk.motif.me/log.gif?t=designer.400001&m=H5_M2016-1&pin={{ Session::get('user.pin') }}&uuid={{Session::has('user') ? Session::get('user.uuid') : $_COOKIE['uid']}}&v={"action":0,"skipType":1,"skipId":"{{ implode("_", $value['spus']) }}","expid":0,"index":"{{$key}}","version":"1.0.1","ver":"9.2","src":"H5"}'>
-                                    <div class="row m-a-0 productList">
-                                        @if(isset($value['spus']))
-                                            @foreach($value['spus'] as $key => $spu)
-                                                <div class="col-xs-6 p-a-0">
-                                                    <div class="topic-product-item productList-item">
-                                                        <a data-link="motif://o.c?a=pd&spu={{$spu}}"
-                                                           data-clk='http://clk.motif.me/log.gif?t=designer.400001&m=H5_M2016-1&pin={{ Session::get('user.pin') }}&uuid={{Session::has('user') ? Session::get('user.uuid') : $_COOKIE['uid']}}&v={"action":1,"skipType":1,"skipId":{{$spu}},"expid":0,"index":"{{$key}}","version":"1.0.1","ver":"9.2","src":"H5"}'
-                                                           href="javascript:void(0)" data-spu="{{$spu}}"
-                                                           data-title="{{$product['spuInfos'][$spu]['spuBase']['main_title']}}"
-                                                           data-price="{{number_format($product['spuInfos'][$spu]['skuPrice']['sale_price']/100,2)}}">
-                                                            <div class="image-container">
+                                        @elseif($value['type']=='boxline')
+                                            <hr class="hr-base m-x-5x m-y-0">
+                                        @elseif($value['type']=='context')
+                                            {{--描述--}}
+                                            <a data-link="@if($value['skipType']=='1')motif://o.c?a=pd&spu={{$value['skipId']}}@elseif($value['skipType']=='2')/designer/{{$value['skipId']}}@elseif($value['skipType']=='3')/topic/{{$value['skipId']}}@elseif($value['skipType']=='4')motif://o.c?a=shoppinglist&cid={{$value['skipId']}}@else{{'motif://o.c?a=outurl&url='.urlencode($value['skipId'])}}@endif"
+                                               data-impr='http://clk.motif.me/log.gif?t=designer.400001&m=H5_M2016-1&pin={{Session::get('user.pin')}}&uuid={{Session::has('user') ? Session::get('user.uuid') : $_COOKIE['uid']}}&v={"action":0,"skipType":{{$value['skipType']}},"skipId":{{$value['skipId']}},"expid":0,"index":"{{$k}}","version":"1.0.1","ver":"9.2","src":"H5"}'
+                                               data-clk='http://clk.motif.me/log.gif?t=designer.400001&m=H5_M2016-1&pin={{Session::get('user.pin')}}&uuid={{Session::has('user') ? Session::get('user.uuid') : $_COOKIE['uid']}}&v={"action":1,"skipType":{{$value['skipType']}},"skipId":{{$value['skipId']}},"expid":0,"index":"{{$k}}","version":"1.0.1","ver":"9.2","src":"H5"}'
+                                               href="javascript:void(0)">
+                                                <div class="p-x-15x p-y-10x text-primary font-size-sm">
+                                                    {{$value['value']}}
+                                                </div>
+                                            </a>
+                                        @elseif($value['type']=='product')
+                                            @if($value['style']=='box-vertical')
+                                                {{-- 商品列表竖向 --}}
+                                                @if(isset($value['spus']))
+                                                    <div data-impr='http://clk.motif.me/log.gif?t=designer.400001&m=H5_M2016-1&pin={{ Session::get('user.pin') }}&uuid={{Session::has('user') ? Session::get('user.uuid') : $_COOKIE['uid']}}&v={"action":0,"skipType":1,"skipId":"{{ implode("_", $value['spus']) }}","expid":0,"index":"{{$key}}","version":"1.0.1","ver":"9.2","src":"H5"}'></div>
+                                                    @foreach($value['spus'] as $spu)
+                                                        <div class="p-x-15x p-y-10x">
+                                                            <a data-link="motif://o.c?a=pd&spu={{$spu}}"
+                                                               data-clk='http://clk.motif.me/log.gif?t=designer.400001&m=H5_M2016-1&pin={{ Session::get('user.pin') }}&uuid={{Session::has('user') ? Session::get('user.uuid') : $_COOKIE['uid']}}&v={"action":1,"skipType":1,"skipId":{{$spu}},"expid":0,"index":"{{$key}}","version":"1.0.1","ver":"9.2","src":"H5"}'
+                                                               href="javascript:void(0)" data-spu="{{$spu}}"
+                                                               data-title="{{$product['spuInfos'][$spu]['spuBase']['main_title']}}"
+                                                               data-price="{{number_format($product['spuInfos'][$spu]['skuPrice']['sale_price']/100,2)}}">
                                                                 <img class="img-fluid img-lazy"
-                                                                     data-original="{{env('APP_Api_Image')}}/n2/{{$product['spuInfos'][$spu]['spuBase']['main_image_url']}}"
                                                                      src="{{env('CDN_Static')}}/images/product/bg-product@336.png"
+                                                                     data-original="{{env('APP_Api_Image')}}/n2/{{$product['spuInfos'][$spu]['spuBase']['main_image_url']}}"
                                                                      alt="{{$product['spuInfos'][$spu]['spuBase']['main_title']}}">
-                                                                @if(1 == $product['spuInfos'][$spu]['spuBase']['sale_type'])
-                                                                    {{--预售产品 预定信息--}}
-                                                                    @if($product['spuInfos'][$spu]['stockStatus']=='NO' || $product['spuInfos'][$spu]['spuBase']['isPutOn']==0)
+                                                            </a>
+                                                        </div>
+                                                    @endforeach
+                                                @endif
+                                            @else
+                                                {{-- 商品列表横向 --}}
+                                                <div class="container-fluid p-x-0 bg-topic"
+                                                     data-impr='http://clk.motif.me/log.gif?t=designer.400001&m=H5_M2016-1&pin={{ Session::get('user.pin') }}&uuid={{Session::has('user') ? Session::get('user.uuid') : $_COOKIE['uid']}}&v={"action":0,"skipType":1,"skipId":"{{ implode("_", $value['spus']) }}","expid":0,"index":"{{$key}}","version":"1.0.1","ver":"9.2","src":"H5"}'>
+                                                    <div class="row m-a-0 productList">
+                                                        @if(isset($value['spus']))
+                                                            @foreach($value['spus'] as $key => $spu)
+                                                                <div class="col-xs-6 p-a-0">
+                                                                    <div class="topic-product-item productList-item">
                                                                         <a data-link="motif://o.c?a=pd&spu={{$spu}}"
                                                                            data-clk='http://clk.motif.me/log.gif?t=designer.400001&m=H5_M2016-1&pin={{ Session::get('user.pin') }}&uuid={{Session::has('user') ? Session::get('user.uuid') : $_COOKIE['uid']}}&v={"action":1,"skipType":1,"skipId":{{$spu}},"expid":0,"index":"{{$key}}","version":"1.0.1","ver":"9.2","src":"H5"}'
                                                                            href="javascript:void(0)" data-spu="{{$spu}}"
                                                                            data-title="{{$product['spuInfos'][$spu]['spuBase']['main_title']}}"
                                                                            data-price="{{number_format($product['spuInfos'][$spu]['skuPrice']['sale_price']/100,2)}}">
-                                                                            <div class="preorderSold-info">
-                                                                                <span class="font-size-xs">SOLD OUT</span>
+                                                                            <div class="image-container">
+                                                                                <img class="img-fluid img-lazy"
+                                                                                     data-original="{{env('APP_Api_Image')}}/n2/{{$product['spuInfos'][$spu]['spuBase']['main_image_url']}}"
+                                                                                     src="{{env('CDN_Static')}}/images/product/bg-product@336.png"
+                                                                                     alt="{{$product['spuInfos'][$spu]['spuBase']['main_title']}}">
+                                                                                @if(1 == $product['spuInfos'][$spu]['spuBase']['sale_type'])
+                                                                                    {{--预售产品 预定信息--}}
+                                                                                    @if($product['spuInfos'][$spu]['stockStatus']=='NO' || $product['spuInfos'][$spu]['spuBase']['isPutOn']==0)
+                                                                                        <a data-link="motif://o.c?a=pd&spu={{$spu}}"
+                                                                                           data-clk='http://clk.motif.me/log.gif?t=designer.400001&m=H5_M2016-1&pin={{ Session::get('user.pin') }}&uuid={{Session::has('user') ? Session::get('user.uuid') : $_COOKIE['uid']}}&v={"action":1,"skipType":1,"skipId":{{$spu}},"expid":0,"index":"{{$key}}","version":"1.0.1","ver":"9.2","src":"H5"}'
+                                                                                           href="javascript:void(0)"
+                                                                                           data-spu="{{$spu}}"
+                                                                                           data-title="{{$product['spuInfos'][$spu]['spuBase']['main_title']}}"
+                                                                                           data-price="{{number_format($product['spuInfos'][$spu]['skuPrice']['sale_price']/100,2)}}">
+                                                                                            <div class="preorderSold-info">
+                                                                                                <span class="font-size-xs">SOLD OUT</span>
+                                                                                            </div>
+                                                                                        </a>
+                                                                                    @else
+                                                                                        <span class="preorder-info font-size-xs">Limited Edition</span>
+                                                                                    @endif
+
+                                                                                @endif
                                                                             </div>
                                                                         </a>
-                                                                    @else
-                                                                        <span class="preorder-info font-size-xs">Limited Edition</span>
-                                                                    @endif
 
-                                                                @endif
-                                                            </div>
-                                                        </a>
+                                                                        <div class="font-size-sm product-title text-main">
+                                                                            {{$product['spuInfos'][$spu]['spuBase']['main_title']}}
+                                                                        </div>
 
-                                                        <div class="font-size-sm product-title text-main">
-                                                            {{$product['spuInfos'][$spu]['spuBase']['main_title']}}
-                                                        </div>
-
-                                                        <div class="price-caption">
+                                                                        <div class="price-caption">
                                                             <span>
                                                                 @if($product['spuInfos'][$spu]['skuPrice']['sale_price'] != $product['spuInfos'][$spu]['skuPrice']['price'])
                                                                     <span class="text-red font-size-sm m-l-5x"><strong>${{number_format($product['spuInfos'][$spu]['skuPrice']['sale_price']/100,2)}}</strong></span>
@@ -402,52 +405,60 @@
                                                                     <span class="text-primary font-size-sm m-l-5x"><strong>${{number_format($product['spuInfos'][$spu]['skuPrice']['sale_price']/100,2)}}</strong></span>
                                                                 @endif
                                                             </span>
-                                                            @if(Session::has('user'))
-                                                                <span class="wish-item p-r-10x" data-id="{{$spu}}" id="{{'wish'.$spu}}"><i class="iconfont text-common btn-wish"></i></span>
-                                                            @else
-                                                                <a class="wish-item p-r-10x" href="javascript:;"><i class="iconfont text-common btn-wish sendLogin" data-id="{{$spu}}"></i></a>
-                                                            @endif
+                                                                            @if(Session::has('user'))
+                                                                                <span class="wish-item p-r-10x"
+                                                                                      data-id="{{$spu}}"
+                                                                                      id="{{'wish'.$spu}}"><i
+                                                                                            class="iconfont text-common btn-wish"></i></span>
+                                                                            @else
+                                                                                <a class="wish-item p-r-10x"
+                                                                                   href="javascript:;"><i
+                                                                                            class="iconfont text-common btn-wish sendLogin"
+                                                                                            data-id="{{$spu}}"></i></a>
+                                                                            @endif
 
-                                                        </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            @endforeach
+                                                        @endif
                                                     </div>
                                                 </div>
-                                            @endforeach
+                                            @endif
                                         @endif
-                                    </div>
-                                </div>
-                            @endif
-                        @endif
-                    @endforeach
-                @endif
+                                        @endforeach
+                                    @endif
 
-                @if(isset($productAll['data']['list']))
-                    {{-- 商品列表横向 --}}
-                    <div class="container-fluid p-x-0 bg-topic">
-                        <div class="row m-a-0 productList">
-                            @foreach($productAll['data']['list'] as $value)
-                                <div class="col-xs-6 p-a-0">
-                                    <div class="topic-product-item productList-item">
-                                        <a data-clk='{{ $value['clk'] }}'
-                                           data-link="motif://o.c?a=pd&spu={{$value['spu']}}"
-                                           data-impr="{{ $value['impr'] }}" href="javascript:void(0)"
-                                           data-spu="{{$value['spu']}}" data-title="{{$value['main_title']}}"
-                                           data-price="{{number_format($value['skuPrice']['sale_price']/100,2)}}">
-                                            <div class="image-container">
-                                                <img class="img-fluid img-lazy"
-                                                     data-original="{{env('APP_Api_Image')}}/n2/{{$value['main_image_url']}}"
-                                                     src="{{env('CDN_Static')}}/images/product/bg-product@336.png"
-                                                     alt="{{$value['main_title']}}">
+                                    @if(isset($productAll['data']['list']))
+                                        {{-- 商品列表横向 --}}
+                                        <div class="container-fluid p-x-0 bg-topic">
+                                            <div class="row m-a-0 productList">
+                                                @foreach($productAll['data']['list'] as $value)
+                                                    <div class="col-xs-6 p-a-0">
+                                                        <div class="topic-product-item productList-item">
+                                                            <a data-clk='{{ $value['clk'] }}'
+                                                               data-link="motif://o.c?a=pd&spu={{$value['spu']}}"
+                                                               data-impr="{{ $value['impr'] }}"
+                                                               href="javascript:void(0)"
+                                                               data-spu="{{$value['spu']}}"
+                                                               data-title="{{$value['main_title']}}"
+                                                               data-price="{{number_format($value['skuPrice']['sale_price']/100,2)}}">
+                                                                <div class="image-container">
+                                                                    <img class="img-fluid img-lazy"
+                                                                         data-original="{{env('APP_Api_Image')}}/n2/{{$value['main_image_url']}}"
+                                                                         src="{{env('CDN_Static')}}/images/product/bg-product@336.png"
+                                                                         alt="{{$value['main_title']}}">
 
-                                                @if(1 == $value['sale_type'])
-                                                    {{--预售产品 预定信息--}}
-                                                    <span class="preorder-info font-size-xs">Limited Edition</span>
-                                                @endif
-                                            </div>
-                                        </a>
-                                        <div class="font-size-sm product-title text-main">
-                                            {{$product['spuInfos'][$spu]['spuBase']['main_title']}}
-                                        </div>
-                                        <div class="price-caption">
+                                                                    @if(1 == $value['sale_type'])
+                                                                        {{--预售产品 预定信息--}}
+                                                                        <span class="preorder-info font-size-xs">Limited Edition</span>
+                                                                    @endif
+                                                                </div>
+                                                            </a>
+                                                            <div class="font-size-sm product-title text-main">
+                                                                {{$product['spuInfos'][$spu]['spuBase']['main_title']}}
+                                                            </div>
+                                                            <div class="price-caption">
                                             <span>
                                                 @if($value['skuPrice']['sale_price'] != $value['skuPrice']['price'])
                                                     <span class="text-red font-size-sm m-l-5x"><strong>${{number_format($value['skuPrice']['sale_price']/100,2)}}</strong></span>
@@ -456,37 +467,49 @@
                                                     <span class="text-primary font-size-sm m-l-5x"><strong>${{number_format($value['skuPrice']['sale_price']/100,2)}}</strong></span>
                                                 @endif
                                             </span>
-                                            @if(Session::has('user'))
-                                                <span class="wish-item p-r-10x" data-id="{{$value['spu']}}" id="{{'wish'.$value['spu']}}"><i class="iconfont text-common btn-wish"></i></span>
-                                            @else
-                                                <a class="wish-item p-r-10x" href="javascript:;"><i class="iconfont text-common btn-wish sendLogin" data-id="{{$value['spu']}}"></i></a>
-                                            @endif
+                                                                @if(Session::has('user'))
+                                                                    <span class="wish-item p-r-10x"
+                                                                          data-id="{{$value['spu']}}"
+                                                                          id="{{'wish'.$value['spu']}}"><i
+                                                                                class="iconfont text-common btn-wish"></i></span>
+                                                                @else
+                                                                    <a class="wish-item p-r-10x" href="javascript:;"><i
+                                                                                class="iconfont text-common btn-wish sendLogin"
+                                                                                data-id="{{$value['spu']}}"></i></a>
+                                                                @endif
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                @endforeach
+                                            </div>
                                         </div>
-                                    </div>
-                                </div>
-                            @endforeach
-                        </div>
-                    </div>
-                @endif
-                                @if($designer['designer_id']==99)
-                                    <div class="font-size-sm text-primary p-y-15x p-x-15x">
-                                        <div class="text-center">
-                                            <div>Love this collection? Follow Rae for early access to shop future collections.</div>
-                                            <div class="p-t-15x">
+                                    @endif
+                                    @if($designer['designer_id']==99)
+                                        <div class="font-size-sm text-primary p-y-15x p-x-15x">
+                                            <div class="text-center">
+                                                <div>Love this collection? Follow Rae for early access to shop future
+                                                    collections.
+                                                </div>
+                                                <div class="p-t-15x">
                                                     @if(Session::get('user.pin'))
                                                         @if($designer['followStatus'])
-                                                            <div class="btn btn-sm btn-primary" id="followapp" data-followid="{{$designer['designer_id']}}">Following</div>
+                                                            <div class="btn btn-sm btn-primary" id="followapp"
+                                                                 data-followid="{{$designer['designer_id']}}">Following
+                                                            </div>
                                                         @else
-                                                            <div class="btn btn-sm btn-follow active" id="followapp" data-followid="{{$designer['designer_id']}}">Follow</div>
+                                                            <div class="btn btn-sm btn-follow active" id="followapp"
+                                                                 data-followid="{{$designer['designer_id']}}">Follow
+                                                            </div>
                                                         @endif
                                                     @else
                                                         <div class="btn btn-sm btn-follow active sendLogin downFollow"
-                                                           data-des="{{$designer['designer_id']}}">Follow</div>
+                                                             data-des="{{$designer['designer_id']}}">Follow
+                                                        </div>
                                                     @endif
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-                                @endif
+                            @endif
 
 
             </aside>
@@ -506,7 +529,7 @@
 <script src="{{env('CDN_Static')}}/scripts/designerDetail.js{{'?v='.config('app.version')}}"></script>
 <script src="{{env('CDN_Static')}}/scripts/JockeyJS.js"></script>
 <script>
-    $('#followapp').on('click',function () {
+    $('#followapp').on('click', function () {
         $this = $(this)
         $.ajax({
             url: '/followDesigner/' + $this.data('followid'),
@@ -535,7 +558,7 @@
                 })
     });
 
-    $('#follow').on('click',function () {
+    $('#follow').on('click', function () {
         $this = $(this)
         $.ajax({
             url: '/followDesigner/' + $this.data('followid'),
@@ -566,11 +589,11 @@
 
     @if($designer['pushspu'])
         Jockey.send("action", {
-            name: "updateWish",
-            token: "key",
-            data: {"spu": "{{$designer['pushspu']}}", "isAdd": true}
-        });
-    @endif
+        name: "updateWish",
+        token: "key",
+        data: {"spu": "{{$designer['pushspu']}}", "isAdd": true}
+    });
+            @endif
     var actionsShow = [{"icon": "", "name": "wish"}, {"icon": "", "name": "bag"}]
     Jockey.send("action", {
         name: "showActions",
@@ -581,7 +604,7 @@
     Jockey.on("action", function (action) {
         //login
         if (action.name == "authInfo") {
-            window.location.href = "/designer/{{$designer['designer_id']}}?des="+$('#followDes').val()+"&wishspu="+$('#wishspu').val()+"&token=" + action.data.token + "&pin=" + action.data.pin + "&email=" + action.data.email + "&name=" + decodeURIComponent(action.data.name)
+            window.location.href = "/designer/{{$designer['designer_id']}}?des=" + $('#followDes').val() + "&wishspu=" + $('#wishspu').val() + "&token=" + action.data.token + "&pin=" + action.data.pin + "&email=" + action.data.email + "&name=" + decodeURIComponent(action.data.name)
         }
         else if (action.name == "addWish") {
             var spus = action.data.spu.split(',');
@@ -617,11 +640,11 @@
     $('.wish-item').on('click', function () {
         $this = $(this);
         var cmd = true;
-        if($this.find('i').hasClass('active')){
+        if ($this.find('i').hasClass('active')) {
             cmd = false;
             $this.html('<i class="iconfont text-common btn-wish"></i>');
-        }else{
-            if(!$this.find('i').hasClass('sendLogin')){
+        } else {
+            if (!$this.find('i').hasClass('sendLogin')) {
                 $this.html('<i class="iconfont text-common btn-wish active"></i>');
             }
         }
