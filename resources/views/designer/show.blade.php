@@ -271,7 +271,7 @@
                             <div class="bg-white">
                                 <div class="p-x-15x limited-subtitle"><strong>{{$value['desc_title']}}</strong></div>
                                 <div class="p-x-15x p-t-10x p-b-15x text-primary font-size-sm">
-                                    <strong>{{$value['desc_value']}}</strong>
+                                    {{$value['desc_value']}}
                                 </div>
                             </div>
                             <div class="hr-between"></div>
