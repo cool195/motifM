@@ -737,6 +737,7 @@
     //提交生成订单并支付
     $('.submit-checkout').on('click', function () {
         openLoading();
+        var clkurl = $(this).data('clkurl');
         $.ajax({
             url: '/payorder',
             type: 'POST',
@@ -745,6 +746,11 @@
             }
         })
             .done(function (data) {
+                //结算埋点
+                $.ajax({
+                    url: clkurl,
+                    type: "GET"
+                });
                 if (data.success) {
                     window.location.href = data.redirectUrl;
                 } else {
