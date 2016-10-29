@@ -21,7 +21,7 @@
         }, 500);
     }
 
-    // 支付成功 打开
+    // 支付状态 打开
     function openFail() {
         $('#checkout-failure').toggleClass('loading-hidden');
         setTimeout(function () {
@@ -29,7 +29,7 @@
         }, 25);
     }
 
-    // 支付成功 关闭
+    // 支付状态 关闭
     function closeFail() {
         $('#checkout-failure').addClass('loading-close');
         setTimeout(function () {
@@ -59,7 +59,7 @@
         openFail();
         setTimeout(function () {
             closeFail()
-        }, 1500);
+        }, 3000);
     });
 
     // 提交 shipping 信息 （continue 按钮)
@@ -717,7 +717,7 @@
             openFail();
             setTimeout(function () {
                 closeFail()
-            }, 1500);
+            }, 3000);
         }
     }
 
@@ -729,7 +729,7 @@
             openFail();
             setTimeout(function () {
                 closeFail()
-            }, 1500);
+            }, 2000);
         }
     });
 
@@ -747,7 +747,7 @@
                 if (data.success) {
                     window.location.href = data.redirectUrl;
                 } else {
-                    closeLoading;
+                    closeLoading();
                     openFail();
                     setTimeout(function () {
                         window.location.href = data.redirectUrl;
