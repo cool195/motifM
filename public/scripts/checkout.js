@@ -56,10 +56,11 @@
     });
 
     $('.skipError').on('click', function () {
-        openFail();
-        setTimeout(function () {
-            closeFail()
-        }, 3000);
+        alert('There was a problem validating your payment. Please verify all payment details and try placing your order again. Thank you.');
+        // openFail();
+        // setTimeout(function () {
+        //     closeFail()
+        // }, 3000);
     });
 
     // 提交 shipping 信息 （continue 按钮)
@@ -748,10 +749,12 @@
                     window.location.href = data.redirectUrl;
                 } else {
                     closeLoading();
-                    openFail();
-                    setTimeout(function () {
-                        window.location.href = data.redirectUrl;
-                    }, 1500);
+                    alert('There was a problem validating your payment. Please verify all payment details and try placing your order again. Thank you.');
+                    window.location.href = data.redirectUrl;
+                    // openFail();
+                    // setTimeout(function () {
+                    //     window.location.href = data.redirectUrl;
+                    // }, 1500);
                 }
             })
     });
