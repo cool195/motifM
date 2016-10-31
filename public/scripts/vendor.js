@@ -16635,7 +16635,7 @@ else if (typeof define === 'function' && define.amd) {
         var exp = new Date();
         exp.setTime(exp.getTime() + Time * 60 * 60 * 1000);
         //exp.setTime(exp.getTime() + 5 * 60 * 1000);
-        document.cookie = name + '=' + escape(value) + ';expires=' + exp.toGMTString();
+        document.cookie = name + '=' + escape(value) + ';path=/;expires=' + exp.toGMTString();
     }
     //读取cookie
     function getCookieAd(name) {
