@@ -152,10 +152,10 @@
             @if(!empty($data['order_remark']))
                 <hr class="hr-base">
                 <div class="flex font-size-sm text-primary p-y-10x p-x-15x">
-                    <span class="orderInfo-subTitle flex-fixedShrink">Special Request</span>
+                    <span class="orderInfo-subTitle flex-fixedShrink">Special<br>Request</span>
                     <div>
                         <div class="message-info">
-                            <p class="m-b-5x">{{ $data['order_remark'] }} </p>
+                            <p class="m-b-0">{{ $data['order_remark'] }} </p>
                         </div>
                         <a class="flex flex-alignCenter flex-fullJustified font-size-xs p-t-5x text-common btn-showMore">
                             <span class="showMore">Show More</span>
