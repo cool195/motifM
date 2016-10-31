@@ -201,7 +201,7 @@
                              data-lefttime="@if($pre_product['skuPrice']['skuPromotion']['remain_time']>0){{$pre_product['skuPrice']['skuPromotion']['remain_time']}}@else{{'0'}}@endif">
                         <div class="hr-between"></div>
                         <div class="bg-white">
-                            <div class="p-x-15x limited-subtitle"><strong>LIMITED EDITION</strong></div>
+                            <div class="limited-subtitle"><span class="p-l-15x p-r-10x bg-limited"><strong>LIMITED EDITION</strong></span></div>
                             @if($pre_product['isPutOn'] !=1)
                                 <div class="p-x-15x p-t-10x">
                                     <img src="/images/icon/icon-limited.png"
@@ -269,7 +269,9 @@
                 @foreach($pre_product['skuPrice']['skuPromotion']['pre_exp_descs'] as $value)
                         <section class="limited">
                             <div class="bg-white">
-                                <div class="p-x-15x limited-subtitle"><strong>{{$value['desc_title']}}</strong></div>
+                                <div class="limited-subtitle">
+                                    <span class="p-l-15x p-r-10x bg-limited">
+                                    <strong>{{$value['desc_title']}}</strong></span></div>
                                 <div class="p-x-15x p-t-10x p-b-15x text-primary font-size-sm">
                                     {{$value['desc_value']}}
                                 </div>
