@@ -155,7 +155,7 @@
                     <span class="orderInfo-subTitle flex-fixedShrink">Special Request</span>
                     <div>
                         <div class="message-info">
-                            <p class="m-b-0">{{ $data['order_remark'] }} </p>
+                            <p class="m-b-5x">{{ $data['order_remark'] }} </p>
                         </div>
                         <a class="flex flex-alignCenter flex-fullJustified font-size-xs p-t-5x text-common btn-showMore">
                             <span class="showMore">Show More</span>
