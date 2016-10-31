@@ -28,6 +28,7 @@ $app->group(['middleware' => 'pcguide', 'namespace' => 'App\Http\Controllers'], 
     $app->get('/facebooklogin', 'Auth\AuthController@facebookLogin');
     //$app->get('/forgetpwd', 'Shopping\UserController@forgetPWD');
     //$app->post('/forgetpwd', 'Shopping\UserController@forgetPWD');
+
     $app->get('/addFacebookEmail', 'Auth\AuthController@addFacebookEmail');
     $app->get('/facebookstatus/{trdid}', 'Auth\AuthController@faceBookAuthStatus');
     $app->get('methodlist', 'Shopping\BraintreeController@methodlist');
@@ -116,10 +117,6 @@ $app->group(['middleware' => 'pcguide|logincheck', 'namespace' => 'App\Http\Cont
 
     $app->post('/useraddr/addUserAddress', 'AddressController@addUserAddr');
 
-    $app->get('/forgetpwd', 'UserController@forgetPWD');
-    $app->post('/forgetpwd', 'UserController@forgetPWD');
-
-
     $app->get('/shopping/orderlist', 'OrderController@index');
     $app->get('/order/orderlist', 'OrderController@index');
     $app->get('/orders', 'OrderController@getOrderList');
@@ -179,6 +176,8 @@ $app->group(['middleware' => 'pcguide', 'namespace' => 'App\Http\Controllers\Sho
     $app->get('/reset', 'UserController@reset');
     $app->post('/user/forget', 'UserController@forgetPassword');
     $app->get('/user/resetPwd', 'UserController@resetPassword');
+    $app->get('/forgetpwd', 'UserController@forgetPWD');
+    $app->post('/forgetpwd', 'UserController@forgetPWD');
 
     //记录登录前操作
     $app->get('notesaction','UserController@notesAction');
