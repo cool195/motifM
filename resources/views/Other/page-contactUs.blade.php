@@ -29,8 +29,10 @@
                 <div class="p-a-15x font-size-md text-main">Customer Support Email:&nbsp;<a href="mailto:service@motif.me">Service@motif.me</a>
                 </div>
                 <hr class="hr-base m-y-0">
-                <div class="p-x-15x p-y-10x font-size-md text-main">Business Contact Email:&nbsp;
-                    <a href="mailto:Business@motif.me">Business@motif.me</a>
+                <div class="p-a-15x font-size-md text-main">Want to partner with us?&nbsp;<a href="mailto:service@motif.me">Creators@motif.me</a>
+                </div>
+                <hr class="hr-base m-y-0">
+                <div class="p-x-15x p-y-10x font-size-md text-main">Other business enquiries?&nbsp;<a href="mailto:Business@motif.me">Business@motif.me</a>
                 </div>
                 <hr class="hr-base m-y-0">
                 <div class="p-x-15x p-y-10x font-size-md text-main">Contact Us on Facebook:&nbsp;
