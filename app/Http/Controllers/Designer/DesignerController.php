@@ -32,11 +32,11 @@ class DesignerController extends ApiController
         } else {
             //非首次加载,请求设计师列表数据
             $result = $this->request('openapi', '', 'designer', $params);
-            foreach($result['data']['list'] as &$list){
+            foreach ($result['data']['list'] as &$list) {
                 $list['spus'] = "";
-                if(isset($list['products'])){
+                if (isset($list['products'])) {
                     $spus = array();
-                    foreach($list['products'] as $product){
+                    foreach ($list['products'] as $product) {
                         $spus[] = $product['spu'];
                     }
                     $list['spus'] = implode('_', $spus);
@@ -68,7 +68,7 @@ class DesignerController extends ApiController
             $product = $this->request('openapi', '', 'designer', $params);
 
             foreach ($product['data']['infos'] as $value) {
-                if($value['type']=='product' && isset($value['spus'])){
+                if ($value['type'] == 'product' && isset($value['spus'])) {
                     $_spu = $value['spus'][0];
                     break;
                 }
@@ -160,7 +160,11 @@ class DesignerController extends ApiController
             );
             $follow = $this->request('openapi', '', 'follow', $followParams);
             $result['data']['followStatus'] = $follow['data']['isFC'];
-            return View($view, ['NavShowDesigner'=> $NavShow,'pre_product' => $pre_product['data'], 'designer' => $result['data'], 'productAll' => $productAll, 'product' => $product['data']]);
+
+            $maidian['uuid'] = $_COOKIE['UUID'] ? $_COOKIE['UUID'] : $_COOKIE['uid'];
+            $maidian['utm_medium'] = $request->get('utm_medium');
+            $maidian['utm_source'] = $request->get('utm_source');
+            return View($view, ['maidian' => $maidian, 'NavShowDesigner' => $NavShow, 'pre_product' => $pre_product['data'], 'designer' => $result['data'], 'productAll' => $productAll, 'product' => $product['data']]);
         }
 
     }
