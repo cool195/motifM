@@ -143,7 +143,7 @@
                         <div class="cardinfo-item">
                             <input class="cardinfo-input" type="tel" data-braintree-name="expiration_date"
                                    data-role="expiry"
-                                   value="" placeholder="MM/YYYY" data-optional="false" maxlength="9" name="expiry">
+                                   value="" placeholder="MM/YY" data-optional="false" maxlength="9" name="expiry">
                         </div>
                         <div class="cardinfo-item">
                             <input class="cardinfo-input" type="tel" data-braintree-name="cvv" value="" data-role="cvv"

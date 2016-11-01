@@ -349,7 +349,7 @@ class CheckoutController extends ApiController
     public function addCard(Request $request)
     {
         $expiry = explode('/', $request->get('expiry'));
-        $cardInfo = MCrypt::encrypt(trim($expiry[0]) . trim($expiry[1]) . str_replace(' ', '', $request->get('card')) . '/' . $request->get('cvv'));
+        $cardInfo = MCrypt::encrypt(trim($expiry[0]) . '20'.trim($expiry[1]) . str_replace(' ', '', $request->get('card')) . '/' . $request->get('cvv'));
 
         $params = array(
             'cmd' => 'acrd',
