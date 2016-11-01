@@ -781,8 +781,8 @@
             }
         }
         // 验证年份
-        if ($(this).val().length === 9) {
-            var year = parseInt($(this).val().substring(5, 9));
+        if ($(this).val().length === 7) {
+            var year = parseInt('20'+$(this).val().substring(5, 7));
             if (year < MyYear || year > MyYear + 30) {
                 $WarningInfo.removeClass('hidden-xs-up');
                 $WarningInfo.children('span').html('Year Error');
