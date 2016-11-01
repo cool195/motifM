@@ -194,7 +194,7 @@
 
             </div>
             <!-- 预售信息 -->
-            @if(!empty($pre_product))
+            @if(!empty($pre_product) && $designer['designer_id'] !=99)
                 @if($pre_product['skuPrice']['skuPromotion']['remain_time'] >= 0 || !empty($pre_product['spuStock']))
                     <section class="limited limited-data"
                              data-begintime="{{$pre_product['skuPrice']['skuPromotion']['start_time']}}"
