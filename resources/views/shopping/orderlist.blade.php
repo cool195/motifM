@@ -74,6 +74,7 @@
 <template id="tpl-orderList">
     @{{ each list }}
     @{{ each $value.subOrderList }}
+    @{{ if $value.status_code != 11 }}
     <div class="orderList-item bg-white">
         <a href="/order/orderdetail/@{{ $value.sub_order_no }}">
             <div class="p-y-10x @{{ if $value.status_code == 11 }} status-red @{{ else if $value.status_code == 23 || $value.status_code == 21  || $value.status_code == 27 }} status-gray @{{ else if $value.status_code == 25 || $value.status_code == 20}} status-blue @{{ else if $value.status_code == 17}} status-green @{{ else if $value.status_code == 18}} status-green @{{ else if $value.status_code == 19}} status-green @{{ else }} status-yellow @{{ /if }}">
@@ -139,6 +140,7 @@
         </div>
     </div>
     <div class="hr-between"></div>
+    @{{ /if }}
     @{{ /each }}
     @{{ /each }}
 </template>
