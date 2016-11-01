@@ -41,7 +41,7 @@
                     <a href="/designer" @if($NavShowDesigner) class="active" @endif>DESIGNER</a>
                 </li>
                 <li class="nav-item col-xs-4">
-                    <a href="/shopping" @if($NavShowShop) class="active" @endif>SHOP</a>
+                    <a href="/shopping" @if($NavShowShop) class="active" @endif>SHOPPING</a>
                 </li>
             </ul>
         </nav>
