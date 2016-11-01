@@ -52,17 +52,6 @@
 </script>
 
 @include('check.tagmanager')
-        <!-- App 下载提示 -->
-<!--<nav class="navbar-fixed-bottom bg-download p-y-10x p-x-15x flex flex-fullJustified flex-alignCenter">-->
-<!--<div class="flex flex-alignCenter">-->
-<!--<span class="p-r-20x"><a href="#"><i class="iconfont icon-cross text-common"></i></a></span>-->
-<!--<span class="p-r-15x"><img src="/images/icon/icon-motif.png"-->
-<!--srcset="/images/icon/icon-motif@2x.png 2x,/images/icon/icon-motif@3x.png 3x">-->
-<!--</span>-->
-<!--<span class="p-r-15x font-size-sm text-primary">Find More With MOTIF App</span>-->
-<!--</div>-->
-<!--<div class="font-size-sm"><a href="#">DOWNLOAD</a></div>-->
-<!--</nav>-->
 <!-- 外层容器-->
 <div id="body-content">
     @include('nav')
@@ -88,7 +77,6 @@
             </section>
 
             <select class="font-size-sm text-main btn-sortBy" id="sortBy">
-                {{--<option value="0">Sort By</option>--}}
                 <option data-searchtext="reset">Reset</option>
                 @foreach($search['list'] as $value)
                     @if($value['attr_type']==1)
@@ -97,7 +85,6 @@
                 @endforeach
             </select>
             <span class="falseSortBy text-primary font-size-sm">Sort By</span>
-            {{--<span class="font-size-sm text-main btn-sortBy">Sort By</span>--}}
         </nav>
         <!-- 商品列表-->
         <div class="lowTo p-y-15x bg-white disabled">{{--disabled--}}
@@ -111,64 +98,6 @@
             <div class="row productList">
             </div>
         </div>
-
-
-        {{--<nav class="navbar-fixed-top swiper-container bg-gray" id="tabIndex-container">
-            <ul class="nav nav-tabs swiper-wrapper">
-                @if(isset($categories))
-                    @foreach($categories as $key => $c)
-                        <li class="nav-item swiper-slide nav-shoppinglist" data-tab-index="{{ $c['category_id'] }}"
-                            id="{{ $c['category_id'] }}">
-                            <a class="nav-flex flex-alignCenter underLine-item text-primary m-x-15x p-y-10x nav-productType @if($key!=0) inactive @endif"
-                               data-categoryid="{{ $c['category_id'] }}">
-                                <img class="img-fluid img-icon" src="{{env('APP_Api_Image')}}/n1/{{$c['img_path'] }}"
-                                     srcset="{{env('APP_Api_Image')}}/n1/{{$c['img_path'] }} 2x,{{env('APP_Api_Image')}}/n0/{{$c['img_path'] }} 3x">
-                                <img class="img-fluid img-icon-active"
-                                     src="{{env('APP_Api_Image')}}/n1/{{$c['img_path2'] }}"
-                                     srcset="{{env('APP_Api_Image')}}/n1/{{$c['img_path2'] }} 2x, {{env('APP_Api_Image')}}/n0/{{$c['img_path2'] }} 3x">
-                                <span class="font-size-xs m-l-5x">{{ $c['category_name'] }}</span>
-                            </a>
-                        </li>
-                    @endforeach
-                @endif
-            </ul>
-            <span class="btn-search font-size-xs">SORT BY</span>
-        </nav>--}}
-        {{--<section class="swiper-container reserve-height" id="tabs-container">
-            <!-- 搜索条件 -->
-            <section class="search-container bg-white">
-                @foreach($search['list'] as $value)
-                    @if($value['attr_type']==1)
-                        <div class="p-a-15x flex flex-alignCenter flex-fullJustified search-item" data-search="{{$value['attr_id']}}" data-searchtext="{{$value['attr_label']}}">
-                            <span class="text-primary font-size-sm text-right">{{$value['attr_label']}}</span>
-                            <i class="iconfont icon-check icon-size-md text-common"></i>
-                        </div>
-                        <hr class="hr-base m-a-0">
-                    @endif
-                @endforeach
-                <div class="p-x-15x p-y-10x text-right"><span class="text-primary font-size-sm text-underLine" id="searchReset">Reset</span></div>
-            </section>
-            <div class="bg-white p-t-10x"></div>
-            <div class="swiper-wrapper">
-                @if(isset($categories))
-                    @foreach($categories as $c)
-                        <div class="swiper-slide" data-loading="false" data-pagenum="0">
-                            <div class="lowTo p-y-15x bg-white disabled">
-                                <hr class="hr-base m-a-0">
-                                <span class="p-x-15x text-common font-size-sm lowTo-info">Low to High</span>
-                            </div>
-                            <div class="container-fluid">
-                                <div class="row productList">
-                                </div>
-                            </div>
-                            <div class="loading" style="display: none">
-                                <div class="loader"></div>
-                            </div>
-                        </div>
-                    @endforeach
-                @endif
-            </div>
-        </section>--}}
         <!-- 页脚 功能链接 -->
         @include('footer')
     </div>
