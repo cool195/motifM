@@ -86,7 +86,7 @@
     <!-- 展开的汉堡菜单 -->
 @include('nav')
 <!-- 主体内容 -->
-    <div id="body-content" data-impr='http://clk.motif.me/log.gif?t=page.100001&m=H5_M2016-1&pin={{Session::get('user.pin')}}&uuid={{$maidian['uuid']}}&ref=&v={"skipType":2,"skipId":"{{$designer['designer_id']}}","expid":"0","version":"1.0.1","ver":"9.2","src":"H5","utm_medium":"{{$maidian['utm_medium']}}","utm_source":"{{$maidian['utm_source']}}","mdeviceid":"{{$maidian['uuid']}}"}'>
+    <div class="body-container" data-impr='http://clk.motif.me/log.gif?t=page.100001&m=H5_M2016-1&pin={{Session::get('user.pin')}}&uuid={{$maidian['uuid']}}&ref=&v={"skipType":2,"skipId":"{{$designer['designer_id']}}","expid":"0","version":"1.0.1","ver":"9.2","src":"H5","utm_medium":"{{$maidian['utm_medium']}}","utm_source":"{{$maidian['utm_source']}}","mdeviceid":"{{$maidian['uuid']}}"}'>
     @include('navigator')
     <!-- designerDetail 设计师详情 -->
         <section class="reserve-height">
