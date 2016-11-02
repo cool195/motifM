@@ -1,5 +1,10 @@
 <?php
 
+    if('local' == env('APP_ENV')){
+        $clk_url = '//test.clk.motif.me';
+    } else{
+        $clk_url = '//clk.motif.me';
+    }
 return [
 
     /*
@@ -17,6 +22,8 @@ return [
     'key' => env('APP_KEY', 'SomeRandomString!!!'),
 
     'cipher' => 'AES-256-CBC',
+
+    'clk_url' => $clk_url,
 
     /*
     |--------------------------------------------------------------------------

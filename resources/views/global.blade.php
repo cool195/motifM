@@ -106,5 +106,5 @@
     })
 </script>
 @if($_SERVER['SERVER_NAME'] == 'm.motif.me')
-    <script src="http://clk.motif.me/wl.js"></script>
+    <script src="{{ config('app.clk_url') }}/wl.js"></script>
 @endif

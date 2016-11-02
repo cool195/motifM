@@ -86,7 +86,7 @@
     <!-- 展开的汉堡菜单 -->
 @include('nav')
 <!-- 主体内容 -->
-    <div id="body-content" data-impr='http://clk.motif.me/log.gif?t=page.100001&m=H5_M2016-1&pin={{Session::get('user.pin')}}&uuid={{$maidian['uuid']}}&ref=&v={"skipType":2,"skipId":"{{$designer['designer_id']}}","expid":"0","version":"1.0.1","ver":"9.2","src":"H5","utm_medium":"{{$maidian['utm_medium']}}","utm_source":"{{$maidian['utm_source']}}","mdeviceid":"{{$maidian['uuid']}}"}'>
+    <div id="body-content" data-impr='{{ config('app.clk_url') }}/log.gif?t=page.100001&m=H5_M2016-1&pin={{Session::get('user.pin')}}&uuid={{$maidian['uuid']}}&ref=&v={"skipType":2,"skipId":"{{$designer['designer_id']}}","expid":"0","version":"1.0.1","ver":"9.2","src":"H5","utm_medium":"{{$maidian['utm_medium']}}","utm_source":"{{$maidian['utm_source']}}","mdeviceid":"{{$maidian['uuid']}}"}'>
     @include('navigator')
     <!-- designerDetail 设计师详情 -->
         <section class="reserve-height">
@@ -125,7 +125,7 @@
         <!-- 设计师 文字信息 -->
             <div class="bg-white">
                 <div class="flex flex-alignCenter flex-fullJustified p-x-10x p-t-10x"
-                     data-impr='http://clk.motif.me/log.gif?t=designer.600001&m=H5_M2016-1&pin={{Session::get('user.pin')}}&uuid={{Session::get('user.uuid')}}&ref=&v={"action":0,"skipType":2,"skipId":{{$designer['designer_id']}},"expid":0,"version":"1.0.1","ver":"9.2","src":"H5"}'>
+                     data-impr='{{ config('app.clk_url') }}/log.gif?t=designer.600001&m=H5_M2016-1&pin={{Session::get('user.pin')}}&uuid={{Session::get('user.uuid')}}&ref=&v={"action":0,"skipType":2,"skipId":{{$designer['designer_id']}},"expid":0,"version":"1.0.1","ver":"9.2","src":"H5"}'>
                     <div class="font-size-base text-main"><strong>{{$designer['nickname']}}</strong></div>
                     {{--<div class="flex flex-alignCenter">--}}
                     {{--<span class="">--}}
@@ -292,8 +292,8 @@
                                 <a href="javascript:void(0)">
                                     @else
                                         <a data-link="@if($value['skipType']=='1')/detail/{{$value['skipId']}}@elseif($value['skipType']=='2')/designer/{{$value['skipId']}}@elseif($value['skipType']=='3')/topic/{{$value['skipId']}}@elseif($value['skipType']=='4')/shopping#{{$value['skipId']}}@else{{$value['skipId']}}@endif"
-                                           data-impr='http://clk.motif.me/log.gif?t=designer.400001&m=H5_M2016-1&pin={{Session::get('user.pin')}}&uuid={{Session::has('user') ? Session::get('user.uuid') : $_COOKIE['uid']}}&v={"action":0,"skipType":"{{$value['skipType']}}", "skipId":"{{$value['skipId']}}", "expid":0,"index":"{{$k}}","version":"1.0.1","ver":"9.2","src":"H5"}'
-                                           data-clk='http://clk.motif.me/log.gif?t=designer.400001&m=H5_M2016-1&pin={{Session::get('user.pin')}}&uuid={{Session::has('user') ? Session::get('user.uuid') : $_COOKIE['uid']}}&v={"action":1,"skipType":"{{$value['skipType']}}", "skipId":"{{$value['skipId']}}", "expid":0,"index":"{{$k}}","version":"1.0.1","ver":"9.2","src":"H5"}'
+                                           data-impr='{{ config('app.clk_url') }}/log.gif?t=designer.400001&m=H5_M2016-1&pin={{Session::get('user.pin')}}&uuid={{Session::has('user') ? Session::get('user.uuid') : $_COOKIE['uid']}}&v={"action":0,"skipType":"{{$value['skipType']}}", "skipId":"{{$value['skipId']}}", "expid":0,"index":"{{$k}}","version":"1.0.1","ver":"9.2","src":"H5"}'
+                                           data-clk='{{ config('app.clk_url') }}/log.gif?t=designer.400001&m=H5_M2016-1&pin={{Session::get('user.pin')}}&uuid={{Session::has('user') ? Session::get('user.uuid') : $_COOKIE['uid']}}&v={"action":1,"skipType":"{{$value['skipType']}}", "skipId":"{{$value['skipId']}}", "expid":0,"index":"{{$k}}","version":"1.0.1","ver":"9.2","src":"H5"}'
                                            href="javascript:void(0)">
                                             @endif
                                             <div class="p-y-10x">
@@ -304,8 +304,8 @@
                                         @elseif($value['type']=='title')
                                         <!-- 标题 -->
                                             <a data-link="@if($value['skipType']=='1')/detail/{{$value['skipId']}}@elseif($value['skipType']=='2')/designer/{{$value['skipId']}}@elseif($value['skipType']=='3')/topic/{{$value['skipId']}}@elseif($value['skipType']=='4')/shopping#{{$value['skipId']}}@else{{$value['skipId']}}@endif"
-                                               data-impr='http://clk.motif.me/log.gif?t=designer.400001&m=H5_M2016-1&pin={{Session::get('user.pin')}}&uuid={{Session::has('user') ? Session::get('user.uuid') : $_COOKIE['uid']}}&v={"action":0,"skipType":"{{$value['skipType']}}","skipId":"{{$value['skipId']}}","expid":0,"index":"{{$k}}","version":"1.0.1","ver":"9.2","src":"H5"}'
-                                               data-clk='http://clk.motif.me/log.gif?t=designer.400001&m=H5_M2016-1&pin={{Session::get('user.pin')}}&uuid={{Session::has('user') ? Session::get('user.uuid') : $_COOKIE['uid']}}&v={"action":1,"skipType":"{{$value['skipType']}}","skipId":"{{$value['skipId']}}","expid":0,"index":"{{$k}}","version":"1.0.1","ver":"9.2","src":"H5"}'
+                                               data-impr='{{ config('app.clk_url') }}/log.gif?t=designer.400001&m=H5_M2016-1&pin={{Session::get('user.pin')}}&uuid={{Session::has('user') ? Session::get('user.uuid') : $_COOKIE['uid']}}&v={"action":0,"skipType":"{{$value['skipType']}}","skipId":"{{$value['skipId']}}","expid":0,"index":"{{$k}}","version":"1.0.1","ver":"9.2","src":"H5"}'
+                                               data-clk='{{ config('app.clk_url') }}/log.gif?t=designer.400001&m=H5_M2016-1&pin={{Session::get('user.pin')}}&uuid={{Session::has('user') ? Session::get('user.uuid') : $_COOKIE['uid']}}&v={"action":1,"skipType":"{{$value['skipType']}}","skipId":"{{$value['skipId']}}","expid":0,"index":"{{$k}}","version":"1.0.1","ver":"9.2","src":"H5"}'
                                                href="javascript:void(0)">
                                                 <div class="p-x-15x p-y-10x text-primary">
                                                     <strong>{{$value['value']}}</strong>
@@ -317,8 +317,8 @@
 
                                         <!-- 描述 -->
                                             <a data-link="@if($value['skipType']=='1')/detail/{{$value['skipId']}}@elseif($value['skipType']=='2')/designer/{{$value['skipId']}}@elseif($value['skipType']=='3')/topic/{{$value['skipId']}}@elseif($value['skipType']=='4')/shopping#{{$value['skipId']}}@else{{$value['skipId']}}@endif"
-                                               data-impr='http://clk.motif.me/log.gif?t=designer.400001&m=H5_M2016-1&pin={{Session::get('user.pin')}}&uuid={{Session::has('user') ? Session::get('user.uuid') : $_COOKIE['uid']}}&v={"action":0,"skipType":"{{$value['skipType']}}","skipId":"{{$value['skipId']}}","expid":0,"index":"{{$k}}","version":"1.0.1","ver":"9.2","src":"H5"}'
-                                               data-clk='http://clk.motif.me/log.gif?t=designer.400001&m=H5_M2016-1&pin={{Session::get('user.pin')}}&uuid={{Session::has('user') ? Session::get('user.uuid') : $_COOKIE['uid']}}&v={"action":1,"skipType":"{{$value['skipType']}}","skipId":"{{$value['skipId']}}","expid":0,"index":"{{$k}}","version":"1.0.1","ver":"9.2","src":"H5"}'
+                                               data-impr='{{ config('app.clk_url') }}/log.gif?t=designer.400001&m=H5_M2016-1&pin={{Session::get('user.pin')}}&uuid={{Session::has('user') ? Session::get('user.uuid') : $_COOKIE['uid']}}&v={"action":0,"skipType":"{{$value['skipType']}}","skipId":"{{$value['skipId']}}","expid":0,"index":"{{$k}}","version":"1.0.1","ver":"9.2","src":"H5"}'
+                                               data-clk='{{ config('app.clk_url') }}/log.gif?t=designer.400001&m=H5_M2016-1&pin={{Session::get('user.pin')}}&uuid={{Session::has('user') ? Session::get('user.uuid') : $_COOKIE['uid']}}&v={"action":1,"skipType":"{{$value['skipType']}}","skipId":"{{$value['skipId']}}","expid":0,"index":"{{$k}}","version":"1.0.1","ver":"9.2","src":"H5"}'
                                                href="javascript:void(0)">
                                                 <div class="p-x-15x p-y-10x text-primary font-size-sm">
                                                     {{$value['value']}}
@@ -328,11 +328,11 @@
                                             @if($value['style']=='box-vertical')
                                                 {{-- 商品列表竖向 --}}
                                                 @if(isset($value['spus']))
-                                                    <div data-impr='http://clk.motif.me/log.gif?t=designer.400001&m=H5_M2016-1&pin={{ Session::get('user.pin') }}&uuid={{Session::has('user') ? Session::get('user.uuid') : $_COOKIE['uid']}}&v={"action":0,"skipType":1,"skipId":"{{ implode("_", $value['spus']) }}","expid":0,"index":"{{$key}}","version":"1.0.1","ver":"9.2","src":"H5"}'></div>
+                                                    <div data-impr='{{ config('app.clk_url') }}/log.gif?t=designer.400001&m=H5_M2016-1&pin={{ Session::get('user.pin') }}&uuid={{Session::has('user') ? Session::get('user.uuid') : $_COOKIE['uid']}}&v={"action":0,"skipType":1,"skipId":"{{ implode("_", $value['spus']) }}","expid":0,"index":"{{$key}}","version":"1.0.1","ver":"9.2","src":"H5"}'></div>
                                                     @foreach($value['spus'] as $spu)
                                                         <div class="p-x-15x p-y-10x">
                                                             <a data-link="/detail/{{$spu}}"
-                                                               data-clk='http://clk.motif.me/log.gif?t=designer.400001&m=H5_M2016-1&pin={{ Session::get('user.pin') }}&uuid={{Session::has('user') ? Session::get('user.uuid') : $_COOKIE['uid']}}&v={"action":1,"skipType":1,"skipId":"{{$spu}}","expid":0,"index":"{{$key}}","version":"1.0.1","ver":"9.2","src":"H5"}'
+                                                               data-clk='{{ config('app.clk_url') }}/log.gif?t=designer.400001&m=H5_M2016-1&pin={{ Session::get('user.pin') }}&uuid={{Session::has('user') ? Session::get('user.uuid') : $_COOKIE['uid']}}&v={"action":1,"skipType":1,"skipId":"{{$spu}}","expid":0,"index":"{{$key}}","version":"1.0.1","ver":"9.2","src":"H5"}'
                                                                href="javascript:void(0)">
                                                                 <img class="img-fluid img-lazy"
                                                                      src="{{env('CDN_Static')}}/images/product/bg-product@336.png"
@@ -354,14 +354,14 @@
                                             @else
                                                 {{-- 商品列表横向 --}}
                                                 <div class="container-fluid p-x-0 bg-topic"
-                                                     data-impr='http://clk.motif.me/log.gif?t=designer.400001&m=H5_M2016-1&pin={{ Session::get('user.pin') }}&uuid={{Session::has('user') ? Session::get('user.uuid') : $_COOKIE['uid']}}&v={"action":0,"skipType":1,"skipId":"{{ implode("_", $value['spus']) }}","expid":0,"index":"{{$key}}","version":"1.0.1","ver":"9.2","src":"H5"}'>
+                                                     data-impr='{{ config('app.clk_url') }}/log.gif?t=designer.400001&m=H5_M2016-1&pin={{ Session::get('user.pin') }}&uuid={{Session::has('user') ? Session::get('user.uuid') : $_COOKIE['uid']}}&v={"action":0,"skipType":1,"skipId":"{{ implode("_", $value['spus']) }}","expid":0,"index":"{{$key}}","version":"1.0.1","ver":"9.2","src":"H5"}'>
                                                     <div class="row m-a-0 productList">
                                                         @if(isset($value['spus']))
                                                             @foreach($value['spus'] as $key => $spu)
                                                                 <div class="col-xs-6 p-a-0">
                                                                     <div class="topic-product-item productList-item">
                                                                         <a data-link="/detail/{{$spu}}"
-                                                                           data-clk='http://clk.motif.me/log.gif?t=designer.400001&m=H5_M2016-1&pin={{ Session::get('user.pin') }}&uuid={{Session::has('user') ? Session::get('user.uuid') : $_COOKIE['uid']}}&v={"action":1,"skipType":1,"skipId":"{{$spu}}","expid":0,"index":"{{$key}}","version":"1.0.1","ver":"9.2","src":"H5"}'
+                                                                           data-clk='{{ config('app.clk_url') }}/log.gif?t=designer.400001&m=H5_M2016-1&pin={{ Session::get('user.pin') }}&uuid={{Session::has('user') ? Session::get('user.uuid') : $_COOKIE['uid']}}&v={"action":1,"skipType":1,"skipId":"{{$spu}}","expid":0,"index":"{{$key}}","version":"1.0.1","ver":"9.2","src":"H5"}'
                                                                            href="javascript:void(0)">
                                                                             <div class="image-container">
                                                                                 <img class="img-fluid img-lazy"
@@ -371,7 +371,7 @@
                                                                                 @if(1 == $product['spuInfos'][$spu]['spuBase']['sale_type'])
                                                                                     @if($product['spuInfos'][$spu]['stockStatus']=='NO' || $product['spuInfos'][$spu]['spuBase']['isPutOn']==0)
                                                                                         <a data-link="/detail/{{$spu}}"
-                                                                                           data-clk='http://clk.motif.me/log.gif?t=designer.400001&m=H5_M2016-1&pin={{ Session::get('user.pin') }}&uuid={{Session::has('user') ? Session::get('user.uuid') : $_COOKIE['uid']}}&v={"action":1,"skipType":1,"skipId":"{{$spu}}","expid":0,"index":"{{$key}}","version":"1.0.1","ver":"9.2","src":"H5"}'
+                                                                                           data-clk='{{ config('app.clk_url') }}/log.gif?t=designer.400001&m=H5_M2016-1&pin={{ Session::get('user.pin') }}&uuid={{Session::has('user') ? Session::get('user.uuid') : $_COOKIE['uid']}}&v={"action":1,"skipType":1,"skipId":"{{$spu}}","expid":0,"index":"{{$key}}","version":"1.0.1","ver":"9.2","src":"H5"}'
                                                                                            href="javascript:void(0)">
                                                                                             <div class="preorderSold-info">
                                                                                                 <span class="font-size-xs">SOLD OUT</span>
