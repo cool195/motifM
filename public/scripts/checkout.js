@@ -56,7 +56,7 @@
     });
 
     $('.skipError').on('click', function () {
-        alert('There was a problem validating your payment. Please verify all payment details and try placing your order again. Thank you.');
+        alert('Please select a Payment Method');
         // openFail();
         // setTimeout(function () {
         //     closeFail()
