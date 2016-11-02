@@ -722,7 +722,7 @@
         }
     }
 
-    $('#submit-payment').on('click', function () {
+    $('.submit-payment').on('click', function () {
         if ($('.clickPayWith.active').length > 0) {
             window.location.href = '/checkout/review';
         }else{

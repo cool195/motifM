@@ -18,7 +18,7 @@ return [
     |
     */
 
-    'version' => '1.5a',
+    'version' => '1.5b',
     'key' => env('APP_KEY', 'SomeRandomString!!!'),
 
     'cipher' => 'AES-256-CBC',

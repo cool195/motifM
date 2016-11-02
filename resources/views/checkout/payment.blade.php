@@ -27,7 +27,7 @@
                     <span class="p-x-15x"><a class="text-primary" href="/checkout/shipping?from=payment">1.SHIPPING</a></span><strong><i
                                 class="iconfont icon-arrow-right icon-size-xm"></i></strong>
                     <span class="p-x-15x active"><a class="text-primary" href="/checkout/payment">2.PAYMENT</a></span><strong><i class="iconfont icon-arrow-right icon-size-xm"></i></strong>
-                    <span class="p-x-15x"><a class="text-primary" href="/checkout/review">3.REVIEW</a></span>
+                    <span class="p-x-15x"><a class="text-primary submit-payment" href="javaScript:;">3.REVIEW</a></span>
                 </div>
                 <hr class="hr-light m-a-0">
                 <!-- 选择支付方式 -->
@@ -89,7 +89,7 @@
                     <hr class="hr-base m-a-0">
                     <!-- Continue 按钮 -->
                     <div class="p-a-15x submit-payment">
-                        <div class="btn btn-primary btn-block" data-url="{{'/checkout/review'}}" id="submit-payment">
+                        <div class="btn btn-primary btn-block submit-payment" data-url="{{'/checkout/review'}}">
                             Continue
                         </div>
                     </div>
