@@ -90,7 +90,7 @@
                                 {{--</div>--}}
 
                             </div>
-                            <div class="m-b-0"><img class="img-fluid" src="/images/sizeguild/page-shopping@3x.png"
+                            <div class="m-b-0"><img class="img-fluid" src="{{env('CDN_Static')}}/images/sizeguild/page-shopping@3x.png"
                                                     alt=""></div>
                             <div class="p-x-15x font-size-sm text-primary">
                                 <p class="m-b-0"><strong>For Non-Personalized items:</strong></p>
@@ -122,7 +122,7 @@
 
                                 {{--</div>--}}
                             </div>
-                            <div class="m-b-0"><img class="img-fluid" src="/images/sizeguild/page-shopping@3x.png"
+                            <div class="m-b-0"><img class="img-fluid" src="{{env('CDN_Static')}}/images/sizeguild/page-shopping@3x.png"
                                                     alt=""></div>
                             <div class="p-a-15x font-size-sm text-primary">
                                 <p class="m-b-15x">

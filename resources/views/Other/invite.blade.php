@@ -37,9 +37,9 @@
                 <a class="text-common p-x-10x" href="/termsconditions">Terms & Conditions</a>
             </div>
             <div class="text-center p-y-10x">
-                <a class="p-x-10x" href="https://www.facebook.com/motifme"><img src="/images/icon/icon-fac.png" width="15" height="15" alt=""></a>
-                <a class="p-x-10x" href="https://www.instagram.com/motifme/"><img src="/images/icon/icon-ins.png" width="15" height="15" alt=""></a>
-                <a class="p-x-10x" href="https://www.pinterest.com/motifme/"><img src="/images/icon/icon-pin.png" width="15" height="15" alt=""></a>
+                <a class="p-x-10x" href="https://www.facebook.com/motifme"><img src="{{env('CDN_Static')}}/images/icon/icon-fac.png" width="15" height="15" alt=""></a>
+                <a class="p-x-10x" href="https://www.instagram.com/motifme/"><img src="{{env('CDN_Static')}}/images/icon/icon-ins.png" width="15" height="15" alt=""></a>
+                <a class="p-x-10x" href="https://www.pinterest.com/motifme/"><img src="{{env('CDN_Static')}}/images/icon/icon-pin.png" width="15" height="15" alt=""></a>
             </div>
         </div>
     </div>

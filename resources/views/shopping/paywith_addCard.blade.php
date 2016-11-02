@@ -29,7 +29,7 @@
                     <div class="cardinfo-item">
                         <input class="cardinfo-input" type="tel" value="" placeholder="Card Number" id="cardNum" maxlength="20">
                             <span class="card-image">
-                                <img src="/images/payment/icon-cardCredit.png" srcset="/images/payment/icon-cardCredit@2x.png 2x,/images/payment/icon-cardCredit@3x.png 3x" alt="">
+                                <img src="{{env('CDN_Static')}}/images/payment/icon-cardCredit.png" srcset="{{env('CDN_Static')}}/images/payment/icon-cardCredit@2x.png 2x,{{env('CDN_Static')}}/images/payment/icon-cardCredit@3x.png 3x" alt="">
                             </span>
                     </div>
                 </div>
@@ -49,7 +49,7 @@
                     <div class="cardinfo-item">
                         <input class="cardinfo-input" type="text" value="" placeholder="CVV" maxlength="4">
                             <span class="card-image icon-question">
-                                <img src="/images/payment/icon-question.png" srcset="/images/payment/icon-question@2x.png 2x,/images/payment/icon-question@3x.png 3x" alt="">
+                                <img src="{{env('CDN_Static')}}/images/payment/icon-question.png" srcset="{{env('CDN_Static')}}/images/payment/icon-question@2x.png 2x,{{env('CDN_Static')}}/images/payment/icon-question@3x.png 3x" alt="">
                             </span>
                     </div>
                 </div>
@@ -64,14 +64,14 @@
             <div class="p-x-15x p-y-10x font-size-md text-main"><strong>We Accept</strong></div>
             <div class="bg-white m-b-15x p-x-15x p-y-10x">
                 <div class="flex">
-                        <span class="p-r-20x"><img src="/images/payment/icon-visa.png"
-                                                   srcset="/images/payment/icon-visa@2x.png 2x,/images/payment/icon-visa@3x.png 3x"
+                        <span class="p-r-20x"><img src="{{env('CDN_Static')}}/images/payment/icon-visa.png"
+                                                   srcset="{{env('CDN_Static')}}/images/payment/icon-visa@2x.png 2x,{{env('CDN_Static')}}/images/payment/icon-visa@3x.png 3x"
                                                    alt=""></span>
-                        <span class="p-r-20x"><img src="/images/payment/icon-mastercard.png"
-                                                   srcset="/images/payment/icon-mastercard@2x.png 2x,/images/payment/icon-mastercard@3x.png 3x"
+                        <span class="p-r-20x"><img src="{{env('CDN_Static')}}/images/payment/icon-mastercard.png"
+                                                   srcset="{{env('CDN_Static')}}/images/payment/icon-mastercard@2x.png 2x,{{env('CDN_Static')}}/images/payment/icon-mastercard@3x.png 3x"
                                                    alt=""></span>
-                        <span class="p-r-20x"><img src="/images/payment/icon-maestro.png"
-                                                   srcset="/images/payment/icon-maestro@2x.png 2x,/images/payment/icon-maestro@3x.png 3x"
+                        <span class="p-r-20x"><img src="{{env('CDN_Static')}}/images/payment/icon-maestro.png"
+                                                   srcset="{{env('CDN_Static')}}/images/payment/icon-maestro@2x.png 2x,{{env('CDN_Static')}}/images/payment/icon-maestro@3x.png 3x"
                                                    alt=""></span>
                 </div>
             </div>
@@ -87,7 +87,7 @@
             <div class="font-size-sm">
                 <hr class="hr-base m-a-0">
                 <div class="p-a-15x">
-                    <img class="img-fluid" src="/images/payment/img-cvv.png" srcset="/images/payment/img-cvv@2x.png 2x,/images/payment/img-cvv@3x.png 3x" alt="">
+                    <img class="img-fluid" src="{{env('CDN_Static')}}/images/payment/img-cvv.png" srcset="{{env('CDN_Static')}}/images/payment/img-cvv@2x.png 2x,{{env('CDN_Static')}}/images/payment/img-cvv@3x.png 3x" alt="">
                 </div>
             </div>
         </div>

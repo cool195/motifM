@@ -205,24 +205,24 @@
                             <div class="limited-subtitle"><span class="p-l-15x p-r-10x bg-limited"><strong>LIMITED EDITION</strong></span></div>
                             @if($pre_product['isPutOn'] !=1)
                                 <div class="p-x-15x p-t-10x">
-                                    <img src="/images/icon/icon-limited.png"
-                                         srcset="/images/icon/icon-limited@2x.png 2x, /images/icon/icon-limited@3x.png 3x"
+                                    <img src="{{env('CDN_Static')}}/images/icon/icon-limited.png"
+                                         srcset="{{env('CDN_Static')}}/images/icon/icon-limited@2x.png 2x, {{env('CDN_Static')}}/images/icon/icon-limited@3x.png 3x"
                                          alt="">
                                     <span class="text-primary font-size-sm stock-qtty">
                                             Sold Out
                                     </span>
                                 </div>
                                 <div class="p-x-15x p-t-10x">
-                                    <img src="/images/icon/icon-limited.png"
-                                         srcset="/images/icon/icon-limited@2x.png 2x, /images/icon/icon-limited@3x.png 3x"
+                                    <img src="{{env('CDN_Static')}}/images/icon/icon-limited.png"
+                                         srcset="{{env('CDN_Static')}}/images/icon/icon-limited@2x.png 2x, {{env('CDN_Static')}}/images/icon/icon-limited@3x.png 3x"
                                          alt="">
                                     <span class="text-primary font-size-sm">Orders Closed</span>
                                 </div>
                             @else
                                 @if(!empty($pre_product['spuStock']))
                                     <div class="p-x-15x p-t-10x">
-                                        <img src="/images/icon/icon-limited.png"
-                                             srcset="/images/icon/icon-limited@2x.png 2x, /images/icon/icon-limited@3x.png 3x"
+                                        <img src="{{env('CDN_Static')}}/images/icon/icon-limited.png"
+                                             srcset="{{env('CDN_Static')}}/images/icon/icon-limited@2x.png 2x, {{env('CDN_Static')}}/images/icon/icon-limited@3x.png 3x"
                                              alt="">
                                     <span class="text-primary font-size-sm stock-qtty">
                                         @if(($pre_product['spuStock']['stock_qtty'] - $pre_product['spuStock']['saled_qtty']) > 0)
@@ -239,8 +239,8 @@
                                     @if($pre_product['skuPrice']['skuPromotion']['remain_time']>0)
                                         <div>
                                             <div class="p-x-15x p-t-5x">
-                                                <img src="/images/icon/icon-limited.png"
-                                                     srcset="/images/icon/icon-limited@2x.png 2x, /images/icon/icon-limited@3x.png 3x"
+                                                <img src="{{env('CDN_Static')}}/images/icon/icon-limited.png"
+                                                     srcset="{{env('CDN_Static')}}/images/icon/icon-limited@2x.png 2x, {{env('CDN_Static')}}/images/icon/icon-limited@3x.png 3x"
                                                      alt="">
                                             <span class="text-primary font-size-sm">Orders Close <span
                                                         class="time_show"></span></span>
@@ -254,8 +254,8 @@
                                         </div>
                                     @else
                                         <div class="p-x-15x p-t-10x">
-                                            <img src="/images/icon/icon-limited.png"
-                                                 srcset="/images/icon/icon-limited@2x.png 2x, /images/icon/icon-limited@3x.png 3x"
+                                            <img src="{{env('CDN_Static')}}/images/icon/icon-limited.png"
+                                                 srcset="{{env('CDN_Static')}}/images/icon/icon-limited@2x.png 2x, {{env('CDN_Static')}}/images/icon/icon-limited@3x.png 3x"
                                                  alt="">
                                             <span class="text-primary font-size-sm">Orders Closed</span>
                                         </div>

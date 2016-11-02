@@ -49,8 +49,8 @@
         <hr class="hr-base m-a-0">
         <a class="p-a-15x flex flex-fullJustified flex-alignCenter" id="payAgain1">
             <div>
-                <img src="/images/payment/icon-cardCredit.png"
-                     srcset="/images/payment/icon-cardCredit@2x.png 2x,/images/payment/icon-cardCredit@3x.png 3x"
+                <img src="{{env('CDN_Static')}}/images/payment/icon-cardCredit.png"
+                     srcset="{{env('CDN_Static')}}/images/payment/icon-cardCredit@2x.png 2x,{{env('CDN_Static')}}/images/payment/icon-cardCredit@3x.png 3x"
                      alt="">
                 <span class="p-l-15x text-primary">Direct debit/credit card</span>
             </div>
@@ -59,8 +59,8 @@
         <hr class="hr-base m-a-0">
         <a class="p-a-15x flex flex-fullJustified flex-alignCenter" id="payAgain2">
             <div>
-                <img src="/images/payment/icon-Paypal-inactive.png"
-                     srcset="/images/payment/icon-Paypal-inactive@2x.png 2x,/images/payment/icon-Paypal-inactive@3x.png 3x"
+                <img src="{{env('CDN_Static')}}/images/payment/icon-Paypal-inactive.png"
+                     srcset="{{env('CDN_Static')}}/images/payment/icon-Paypal-inactive@2x.png 2x,{{env('CDN_Static')}}/images/payment/icon-Paypal-inactive@3x.png 3x"
                      alt="">
                 <span class="p-l-15x text-primary">Paypal</span>
             </div>
