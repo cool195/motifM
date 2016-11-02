@@ -692,7 +692,7 @@
                     window.location.href = '/checkout/payment';
                 } else {
                     $('.warning-info').removeClass('hidden-xs-up');
-                    $('.warning-info').children('span').html('Add Card Error!');
+                    $('.warning-info').children('span').html('there was a problem validating your credit card.');
                     closeLoading();
                 }
             })
