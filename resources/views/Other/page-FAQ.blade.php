@@ -53,9 +53,9 @@
                                 <p class="m-b-15x">Yes, Motif currently ships to 30+ countries and we are always adding more. Please check our Shipping Policy for list of countries that we ship to. We even offer free International Expedited Shipping for orders over USD $79.
                                 </p>
                                 <p class="m-b-15x"><strong>How long will it take for my order to arrive?</strong></p>
-                                <p class="m-b-15x">We provide three options for delivery:
+                                <p class="m-b-15x">We provide two options for delivery:
                                     <br>
-                                    Option 1. Registered Airmail (10-15 business days upon receiving shipping confirmation)
+                                    Option 1. Registered Airmail (7-15 business days upon receiving shipping confirmation)
                                     <br>
                                     Option 2. Expedited Shipping (3-7 business days upon receiving shipping confirmation)
                                 </p>
