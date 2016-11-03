@@ -125,7 +125,7 @@
         <!-- 设计师 文字信息 -->
             <div class="bg-white">
                 <div class="flex flex-alignCenter flex-fullJustified p-x-10x p-t-10x"
-                     data-impr='{{ config('app.clk_url') }}/log.gif?t=designer.600001&m=H5_M2016-1&pin={{Session::get('user.pin')}}&uuid={{Session::get('user.uuid')}}&ref=&v={"action":0,"skipType":2,"skipId":{{$designer['designer_id']}},"expid":0,"version":"1.0.1","ver":"9.2","src":"H5"}'>
+                     data-impr='{{ config('app.clk_url') }}/log.gif?t=page.100001&m=H5_M2016-1&pin={{Session::get('user.pin')}}&uuid={{Session::get('user.uuid')}}&ref=&v={"action":0,"skipType":2,"skipId":"{{$designer['designer_id']}}","expid":0,"version":"1.0.1","ver":"9.2","src":"H5"}'>
                     <div class="font-size-base text-main"><strong>{{$designer['nickname']}}</strong></div>
                     {{--<div class="flex flex-alignCenter">--}}
                     {{--<span class="">--}}
