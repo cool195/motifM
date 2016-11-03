@@ -75,17 +75,24 @@ class CheckoutController extends ApiController
 
     //review
     public function review(Request $request)
-    {//return Session::get('user.checkout');
-        $checkInfo = $this->getCheckOutAccountList(Session::get('user.checkout.address.receiving_id'), Session::get('user.checkout.selship.logistics_type'), Session::get('user.checkout.couponInfo.bind_id'), Session::get('user.checkout.selship.paywith.pay_method'));
+    {
+        if (!Session::has('user.checkout.address.receiving_id') || !Session::has('user.checkout.selship.logistics_type')) {
+            return redirect('/checkout/shipping');
+        } else if (!Session::has('user.checkout.paywith.pay_method')) {
+            return redirect('/checkout/payment');
+        }
+        $checkInfo = $this->getCheckOutAccountList(Session::get('user.checkout.address.receiving_id'), Session::get('user.checkout.selship.logistics_type'), Session::get('user.checkout.couponInfo.bind_id'));
 
         if (empty($checkInfo['data'])) {
             return redirect('/cart');
         }
+
         return View('checkout.review', ['checkInfo' => $checkInfo['data'], 'payStatus' => $request->get('pay')]);
     }
 
     //couponcache
-    public function couponCache(){
+    public function couponCache()
+    {
         $coupon = $this->getCouponInfo();
         $isCoupon = false;
         foreach ($coupon['data']['list'] as $value) {
@@ -117,7 +124,7 @@ class CheckoutController extends ApiController
     }
 
     //获取国家列表
-    public function getCountry($scope=0)
+    public function getCountry($scope = 0)
     {
         $params = array(
             'cmd' => 'country',
@@ -349,7 +356,7 @@ class CheckoutController extends ApiController
     public function addCard(Request $request)
     {
         $expiry = explode('/', $request->get('expiry'));
-        $cardInfo = MCrypt::encrypt(trim($expiry[0]) . '20'.trim($expiry[1]) . str_replace(' ', '', $request->get('card')) . '/' . $request->get('cvv'));
+        $cardInfo = MCrypt::encrypt(trim($expiry[0]) . '20' . trim($expiry[1]) . str_replace(' ', '', $request->get('card')) . '/' . $request->get('cvv'));
 
         $params = array(
             'cmd' => 'acrd',
@@ -401,16 +408,17 @@ class CheckoutController extends ApiController
     }
 
     //获取最后一次的支付信息
-    public function lastPay($payInfo){
+    public function lastPay($payInfo)
+    {
         foreach ($payInfo['data']['list'] as $value) {
-            if($value['isLast']==1){
-                if(empty($value['creditCards'])){
+            if ($value['isLast'] == 1) {
+                if (empty($value['creditCards'])) {
                     Session::put('user.checkout.paywith', $value);
                     Session::forget('user.checkout.paywith.creditCards');
                     return $value;
-                }else{
+                } else {
                     foreach ($value['creditCards'] as $card) {
-                        if($card['isLast']==1){
+                        if ($card['isLast'] == 1) {
                             $value['withCard'] = $card;
                             Session::put('user.checkout.paywith', $value);
                             Session::forget('user.checkout.paywith.creditCards');
