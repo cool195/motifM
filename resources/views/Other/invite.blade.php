@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>I'm giving you $20 to spend on Motif! Find exclusive jewelry designed by fashion influencers. Use code '{{$code}}' with first purchase. Enjoy!</title>
+    <title>I'm giving you $20 to spend on Motif! Use code '{{$code}}' with your first purchase.Enjoy!</title>
     <link rel="stylesheet" href="{{env('CDN_Static')}}/styles/vendor.css{{'?v='.config('app.version')}}">
     <script src="{{env('CDN_Static')}}/scripts/vendor/modernizr.js{{'?v='.config('app.version')}}"></script>
     <script src="{{env('CDN_Static')}}/scripts/vendor/fastclick.js{{'?v='.config('app.version')}}"></script>

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>I'm giving you $20 to spend on Motif! Find exclusive jewelry designed by fashion influencers. Use code '{{$code}}' with first purchase. Enjoy!</title>
+    <title>I'm giving you $20 to spend on Motif! Use code '{{$code}}' with your first purchase.Enjoy!</title>
     @include('head')
 
 </head>
