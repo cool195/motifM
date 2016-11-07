@@ -15,7 +15,7 @@
         <li><a href="http://motif.me/designer/92">selfSkip</a></li>
         <li><a href="http://test.m.motif.me/downapp">Rae</a></li>
         <li><a href="http://test.m.motif.me/rae">Rae</a></li>
-
+        <li><a href="motif://o.c?a=url&url=http%3A%2F%2Fm.motif.me%2Fdesigner%2F103">103</a></li>
         <li><a href="javascript:;" id="skip">testSkip</a></li>
         @if($mobile)
             <li>is mobile</li>
