@@ -305,7 +305,7 @@
                                            data-clk='{{ config('app.clk_url') }}/log.gif?t=designer.400001&m=H5_M2016-1&pin={{Session::get('user.pin')}}&uuid={{Session::has('user') ? Session::get('user.uuid') : $_COOKIE['uid']}}&v={"action":1,"skipType":"{{$value['skipType']}}","skipId":"{{$value['skipId']}}","expid":0,"index":"{{$k}}","version":"1.0.1","ver":"9.2","src":"H5"}'
                                            href="javascript:void(0)">
                                             @endif
-                                            <div class="p-y-10x">
+                                            <div class="p-y-5x">
                                                 <img class="img-fluid"
                                                      src="{{env('APP_Api_Image')}}/n2/{{$value['imgPath']}}">
                                             </div>
