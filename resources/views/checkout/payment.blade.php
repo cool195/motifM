@@ -159,6 +159,20 @@
                         <i class="iconfont icon-caveat icon-size-md p-r-5x"></i>
                         <span class="font-size-xs"></span>
                     </div>
+
+                    <!-- Save 按钮 -->
+                    <div class="container-fluid p-x-10x p-y-15x">
+                        <div class="row">
+                            <div class="col-xs-6">
+                                <div class="btn btn-primary-outline btn-block" id="btn-cancelAddCard">Cancel
+                                </div>
+                            </div>
+                            <div class="col-xs-6">
+                                <div class="btn btn-primary btn-block disabled" id="btn-submitAddCard">Save
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                     <hr class="hr-base m-a-0">
 
                     <!-- BILLING ADRESS -->
@@ -254,19 +268,6 @@
                             </fieldset>
 
                             <hr class="hr-base m-a-0">
-                            <!-- Save 按钮 -->
-                            <div class="container-fluid p-x-10x p-y-15x">
-                                <div class="row">
-                                    <div class="col-xs-6">
-                                        <div class="btn btn-primary-outline btn-block" id="btn-cancelAddCard">Cancel
-                                        </div>
-                                    </div>
-                                    <div class="col-xs-6">
-                                        <div class="btn btn-primary btn-block disabled" id="btn-submitAddCard">Save
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
                         </section>
                     </div>
                 </form>
