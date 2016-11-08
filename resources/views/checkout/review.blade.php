@@ -49,7 +49,7 @@
                 <div class="p-y-10x p-x-15x font-size-sm text-primary">
                     <div class="p-b-5x">
                         <span><strong>SHIP TO</strong></span>
-                        <a class="text-underLine pull-right text-primary" href="/checkout/shipping?from=review"
+                        <a class="text-underLine pull-right text-primary" href="/checkout/address?from=review"
                            id="review-editShipTo">Edit</a>
                     </div>
                     <div class="">

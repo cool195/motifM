@@ -43,7 +43,7 @@
                             <div class="card-item">
                             <div class="@if(Session::get('user.checkout.paywith.withCard.card_id')==$card['card_id']) active @endif flex flex-alignCenter flex-fullJustified font-size-sm p-l-20x p-r-15x p-y-5x bg-title cardList clickPayWith"
                                  data-type="{{$value['pay_type']}}" data-card="{{$card['card_id']}}">
-                                <div class="p-l-10x">Card: <span>{{$card['card_number']}}</span>
+                                <div class="p-l-10x"><span>{{$card['card_number']}}</span>
 
                                     @if($card['card_type']=='Visa')
                                         <span class="p-l-10x"><img
@@ -66,12 +66,12 @@
                                                     srcset="{{env('CDN_Static')}}/images/payment/icon-jcb@2x.png{{'?v='.config('app.version')}} 2x, {{env('CDN_Static')}}/images/payment/icon-jcb@3x.png{{'?v='.config('app.version')}} 3x"
                                                     alt=""></span>
                                     @endif
-                                    <br>EXP: <span>{{$card['month']}}/{{$card['year']}}</span>
+                                    <br>Exp <span>{{$card['month']}}/{{$card['year']}}</span>
                                     <br><span>&nbsp;</span>
                                 </div>
                                 <i class="iconfont icon-check icon-size-md text-common"></i>
                             </div>
-                            <span class="p-l-20x font-size-sm text-common text-underLine btn-deleteCard" data-remodal-target="deletecardmodal" data-cardid="{{$card['card_id']}}">Delete</span>
+                            <span class="p-l-20x font-size-sm text-common text-underLine btn-deleteCard" data-remodal-target="deletecardmodal" data-cardid="{{$card['card_id']}}">Remove</span>
                             </div>
                         @endforeach
                         <hr class="hr-base m-a-0">
