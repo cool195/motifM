@@ -46,10 +46,10 @@
                         </div>
                         <a class="text-underLine text-primary" href="/checkout/address?from={{$from}}" id="edit-shipTp">Edit</a>
                     </div>
-                    <hr class="hr-base m-a-0">
                 </div>
+                <div class="hr-between"></div>
                 <!-- shipping method -->
-                <div class="text-primary choose-method">
+                <div class="text-primary">
                     <div class="p-y-10x p-x-15x font-size-sm"><strong>SHIPPING METHOD</strong></div>
                     <hr class="hr-base m-a-0">
                     <div>
