@@ -25,12 +25,11 @@
             <!-- 3.REVIEW -->
             <div class="pageview shipping-review active" id="shipping-review" data-pay="{{$payStatus}}">
                 <div class="flex flex-alignCenter flex-justifyCenter font-size-sm p-y-15x steps">
-                    <span class="p-x-15x"><a class="text-primary"
-                                             href="/checkout/shipping?from=review">SHIPPING</a></span><strong><i
+                    <span class="p-x-15x">SHIPPING</span><strong><i
                                 class="iconfont icon-arrow-right icon-size-xm"></i></strong>
-                    <span class="p-x-15x"><a class="text-primary" href="/checkout/payment">PAYMENT</a></span><strong><i
+                    <span class="p-x-15x">PAYMENT</span><strong><i
                                 class="iconfont icon-arrow-right icon-size-xm"></i></strong>
-                    <span class="p-x-15x active"><a class="text-primary" href="/checkout/review">CONFIRMATION</a></span>
+                    <span class="p-x-15x active">CONFIRMATION</span>
                 </div>
                 <hr class="hr-light m-a-0">
 
@@ -49,7 +48,7 @@
                 <div class="p-y-10x p-x-15x font-size-sm text-primary">
                     <div class="p-b-5x">
                         <span><strong>SHIP TO</strong></span>
-                        <a class="text-underLine pull-right text-primary" href="/checkout/shipping?from=review"
+                        <a class="text-underLine pull-right text-primary" href="/checkout/address?from=review"
                            id="review-editShipTo">Edit</a>
                     </div>
                     <div class="">
@@ -142,8 +141,7 @@
                 <!-- 价格汇总 -->
                 <div class="p-y-10x p-x-15x font-size-sm text-primary">
                     <div class="flex flex-fullJustified text-primary font-size-sm">
-                        <span>Items ({{$checkInfo['total_sku_qtty']}}
-                            )</span><span>${{number_format(($checkInfo['total_amount'] / 100), 2)}}</span>
+                        <span>Items ({{$checkInfo['total_sku_qtty']}})</span><span>${{number_format(($checkInfo['total_amount'] / 100), 2)}}</span>
                     </div>
 
                     {{--增值服务--}}

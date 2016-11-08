@@ -21,7 +21,7 @@
     <div class="body-container">
         @include('navigator', ['pageScope'=>true])
 
-        <div class="checkout-container" id="addressFrom" data-url="{{'/checkout/shipping?from='.$from}}">
+        <div class="checkout-container" id="addressFrom" data-url="{{$from ? '/checkout/'.$from: '/checkout/shipping'}}">
             <!-- 1.SHIPPING 添加/修改地址 -->
             <div class="pageview shipping-editorAddress @if(empty($address)) active @endif" id="shipping-editorAddress"
                  data-aid="">

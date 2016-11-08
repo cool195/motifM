@@ -24,10 +24,11 @@
             <!-- 选择支付方式 -->
             <div class="pageview shipping-payment active" id="shipping-payment">
                 <div class="flex flex-alignCenter flex-justifyCenter font-size-sm p-y-15x steps">
-                    <span class="p-x-15x"><a class="text-primary" href="/checkout/shipping?from=payment">SHIPPING</a></span><strong><i
+                    <span class="p-x-15x">SHIPPING</span><strong><i
                                 class="iconfont icon-arrow-right icon-size-xm"></i></strong>
-                    <span class="p-x-15x active"><a class="text-primary" href="/checkout/payment">PAYMENT</a></span><strong><i class="iconfont icon-arrow-right icon-size-xm"></i></strong>
-                    <span class="p-x-15x"><a class="text-primary submit-paymentbutton" href="javaScript:;">CONFIRMATION</a></span>
+                    <span class="p-x-15x active">PAYMENT</span><strong><i
+                                class="iconfont icon-arrow-right icon-size-xm"></i></strong>
+                    <span class="p-x-15x">CONFIRMATION</span>
                 </div>
                 <hr class="hr-light m-a-0">
                 <!-- 选择支付方式 -->
@@ -43,7 +44,7 @@
                             <div class="card-item">
                             <div class="@if(Session::get('user.checkout.paywith.withCard.card_id')==$card['card_id']) active @endif flex flex-alignCenter flex-fullJustified font-size-sm p-l-20x p-r-15x p-y-5x bg-title cardList clickPayWith"
                                  data-type="{{$value['pay_type']}}" data-card="{{$card['card_id']}}">
-                                <div class="p-l-10x">Card: <span>{{$card['card_number']}}</span>
+                                <div class="p-l-10x"><span>{{$card['card_number']}}</span>
 
                                     @if($card['card_type']=='Visa')
                                         <span class="p-l-10x"><img
@@ -66,7 +67,7 @@
                                                     srcset="{{env('CDN_Static')}}/images/payment/icon-jcb@2x.png{{'?v='.config('app.version')}} 2x, {{env('CDN_Static')}}/images/payment/icon-jcb@3x.png{{'?v='.config('app.version')}} 3x"
                                                     alt=""></span>
                                     @endif
-                                    <br>EXP: <span>{{$card['month']}}/{{$card['year']}}</span>
+                                    <br>Exp <span>{{$card['month']}}/{{$card['year']}}</span>
                                     <br><span>&nbsp;</span>
                                 </div>
                                 <i class="iconfont icon-check icon-size-md text-common"></i>
