@@ -260,6 +260,14 @@
 .clickPayWith.active .iconfont{
   display: block;
 }
+.card-item{
+  position: relative;
+}
+.btn-deleteCard{
+  position: absolute;
+  left: 10px;
+  bottom: 5px;
+}
 
 /* review */
 .message-info {

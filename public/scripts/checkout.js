@@ -861,6 +861,42 @@
                 })
         }
     });
+
+    // 删除卡
+    $('#deleteCard-modalDialog').remodal({
+        closeOnOutsideClick: false,
+        hashTracking: false
+    });
+    $('#deleteCard-modalDialog').on('closed', function () {
+        $(this).removeData('cardid');
+    });
+    $('#deleteCard-modalDialog').on('confirmation', function () {
+        var CardID = $('#deleteCard-modalDialog').data('cardid');
+        if (CardID === undefined || CardID === null || CardID === '') {
+            return;
+        }
+        deleteCard(CardID);
+    });
+
+    function deleteCard(CardID) {
+        openLoading();
+        $.ajax({
+                url: '/delcard/' + CardID,
+                type: 'POST'
+            })
+            .done(function () {
+                location.reload();
+            })
+            .always(function () {
+                closeLoading();
+            });
+    }
+
+    $('.btn-deleteCard').on('click', function () {
+        var CardId = $(this).data('cardid');
+        $('#deleteCard-modalDialog').data('cardid', CardId);
+    });
+
     // payment end
 
     // review begin

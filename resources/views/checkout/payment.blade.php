@@ -40,6 +40,7 @@
                             <i class="iconfont @if(isset($value['creditCards'])) icon-arrow-right @else icon-check @endif icon-size-md text-common"></i>
                         </div>
                         @foreach($value['creditCards'] as $card)
+                            <div class="card-item">
                             <div class="@if(Session::get('user.checkout.paywith.withCard.card_id')==$card['card_id']) active @endif flex flex-alignCenter flex-fullJustified font-size-sm p-l-20x p-r-15x p-y-5x bg-title cardList clickPayWith"
                                  data-type="{{$value['pay_type']}}" data-card="{{$card['card_id']}}">
                                 <div class="p-l-10x">Card: <span>{{$card['card_number']}}</span>
@@ -66,8 +67,11 @@
                                                     alt=""></span>
                                     @endif
                                     <br>EXP: <span>{{$card['month']}}/{{$card['year']}}</span>
+                                    <br><span>&nbsp;</span>
                                 </div>
                                 <i class="iconfont icon-check icon-size-md text-common"></i>
+                            </div>
+                            <span class="p-l-20x font-size-sm text-common text-underLine btn-deleteCard" data-remodal-target="deletecardmodal" data-cardid="{{$card['card_id']}}">Delete</span>
                             </div>
                         @endforeach
                         <hr class="hr-base m-a-0">
@@ -429,6 +433,17 @@
             </div>
         </div>
 
+    </div>
+</div>
+
+<!-- 删除卡 -->
+<div class="remodal remodal-md modal-content" data-remodal-id="deletecardmodal" id="deleteCard-modalDialog" data-cardid="">
+    <div class="font-size-sm p-t-20x p-x-15x p-b-15x">
+        Are you sure you want to remove this credit card?
+    </div>
+    <div class="btn-group flex">
+        <div class="btn remodal-btn flex-width" data-remodal-action="confirm">Remove</div>
+        <div class="btn remodal-btn flex-width" data-remodal-action="cancel">Cancel</div>
     </div>
 </div>
 
