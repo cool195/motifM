@@ -86,7 +86,8 @@
     <!-- 展开的汉堡菜单 -->
 @include('nav')
 <!-- 主体内容 -->
-    <div class="body-container" data-impr='{{ config('app.clk_url') }}/log.gif?t=page.100001&m=H5_M2016-1&pin={{Session::get('user.pin')}}&uuid={{$maidian['uuid']}}&ref=&v={"skipType":2,"skipId":"{{$designer['designer_id']}}","expid":"0","version":"1.0.1","ver":"9.2","src":"H5","utm_medium":"{{$maidian['utm_medium']}}","utm_source":"{{$maidian['utm_source']}}","mdeviceid":"{{$maidian['uuid']}}"}'>
+    <div class="body-container"
+         data-impr='{{ config('app.clk_url') }}/log.gif?t=page.100001&m=H5_M2016-1&pin={{Session::get('user.pin')}}&uuid={{$maidian['uuid']}}&ref=&v={"skipType":2,"skipId":"{{$designer['designer_id']}}","expid":"0","version":"1.0.1","ver":"9.2","src":"H5","utm_medium":"{{$maidian['utm_medium']}}","utm_source":"{{$maidian['utm_source']}}","mdeviceid":"{{$maidian['uuid']}}"}'>
     @include('navigator')
     <!-- designerDetail 设计师详情 -->
         <section class="reserve-height">
@@ -202,7 +203,8 @@
                              data-lefttime="@if($pre_product['skuPrice']['skuPromotion']['remain_time']>0){{$pre_product['skuPrice']['skuPromotion']['remain_time']}}@else{{'0'}}@endif">
                         <div class="hr-between"></div>
                         <div class="bg-white">
-                            <div class="limited-subtitle"><span class="p-l-15x p-r-10x bg-limited"><strong>LIMITED EDITION</strong></span></div>
+                            <div class="limited-subtitle"><span class="p-l-15x p-r-10x bg-limited"><strong>LIMITED EDITION</strong></span>
+                            </div>
                             @if($pre_product['isPutOn'] !=1)
                                 <div class="p-x-15x p-t-10x">
                                     <img src="{{env('CDN_Static')}}/images/icon/icon-limited.png"
@@ -266,8 +268,8 @@
                         <div class="hr-between"></div>
                     </section>
                 @endif
-
-                @foreach($pre_product['skuPrice']['skuPromotion']['pre_exp_descs'] as $value)
+                @if($designer['designer_id'] !=103)
+                    @foreach($pre_product['skuPrice']['skuPromotion']['pre_exp_descs'] as $value)
                         <section class="limited">
                             <div class="bg-white">
                                 <div class="limited-subtitle">
@@ -279,7 +281,8 @@
                             </div>
                             <div class="hr-between"></div>
                         </section>
-                @endforeach
+                    @endforeach
+                @endif
             @endif
         <!-- 设计师 对应模版商品 -->
             <aside class="bg-white">

@@ -279,17 +279,19 @@
                         <div class="hr-between"></div>
                     </section>
                 @endif
-                @foreach($pre_product['skuPrice']['skuPromotion']['pre_exp_descs'] as $value)
-                    <section class="limited">
-                        <div class="bg-white">
-                            <div class="limited-subtitle"><span class="p-l-15x p-r-10x bg-limited"><strong>{{$value['desc_title']}}</strong></span></div>
-                            <div class="p-x-15x p-t-10x p-b-15x text-primary font-size-sm">
-                                {{$value['desc_value']}}
-                            </div>
-                        </div>
-                        <div class="hr-between"></div>
-                    </section>
-                @endforeach
+                    @if($designer['designer_id'] !=103)
+                        @foreach($pre_product['skuPrice']['skuPromotion']['pre_exp_descs'] as $value)
+                            <section class="limited">
+                                <div class="bg-white">
+                                    <div class="limited-subtitle"><span class="p-l-15x p-r-10x bg-limited"><strong>{{$value['desc_title']}}</strong></span></div>
+                                    <div class="p-x-15x p-t-10x p-b-15x text-primary font-size-sm">
+                                        {{$value['desc_value']}}
+                                    </div>
+                                </div>
+                                <div class="hr-between"></div>
+                            </section>
+                        @endforeach
+                    @endif
             @endif
             {{--设计师 对应商品--}}
             <aside class="bg-white">
