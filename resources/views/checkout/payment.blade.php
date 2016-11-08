@@ -71,7 +71,7 @@
                                 </div>
                                 <i class="iconfont icon-check icon-size-md text-common"></i>
                             </div>
-                            <span class="p-l-20x font-size-sm text-common text-underLine btn-deleteCard" data-remodal-target="deletecardmodal" data-cardid="{{$card['card_id']}}">Delete</span>
+                            <span class="p-l-20x font-size-sm text-common text-underLine btn-deleteCard" data-remodal-target="deletecardmodal" data-cardid="{{$card['card_id']}}">Remove</span>
                             </div>
                         @endforeach
                         <hr class="hr-base m-a-0">
@@ -158,6 +158,20 @@
                     <div class="warning-info text-warning flex flex-alignCenter p-a-15x hidden-xs-up" id="card-warning">
                         <i class="iconfont icon-caveat icon-size-md p-r-5x"></i>
                         <span class="font-size-xs"></span>
+                    </div>
+
+                    <!-- Save 按钮 -->
+                    <div class="container-fluid p-x-10x p-y-15x">
+                        <div class="row">
+                            <div class="col-xs-6">
+                                <div class="btn btn-primary-outline btn-block" id="btn-cancelAddCard">Cancel
+                                </div>
+                            </div>
+                            <div class="col-xs-6">
+                                <div class="btn btn-primary btn-block disabled" id="btn-submitAddCard">Save
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     <hr class="hr-base m-a-0">
 
@@ -254,19 +268,6 @@
                             </fieldset>
 
                             <hr class="hr-base m-a-0">
-                            <!-- Save 按钮 -->
-                            <div class="container-fluid p-x-10x p-y-15x">
-                                <div class="row">
-                                    <div class="col-xs-6">
-                                        <div class="btn btn-primary-outline btn-block" id="btn-cancelAddCard">Cancel
-                                        </div>
-                                    </div>
-                                    <div class="col-xs-6">
-                                        <div class="btn btn-primary btn-block disabled" id="btn-submitAddCard">Save
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
                         </section>
                     </div>
                 </form>
