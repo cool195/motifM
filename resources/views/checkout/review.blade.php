@@ -25,12 +25,11 @@
             <!-- 3.REVIEW -->
             <div class="pageview shipping-review active" id="shipping-review" data-pay="{{$payStatus}}">
                 <div class="flex flex-alignCenter flex-justifyCenter font-size-sm p-y-15x steps">
-                    <span class="p-x-15x"><a class="text-primary"
-                                             href="/checkout/shipping?from=review">SHIPPING</a></span><strong><i
+                    <span class="p-x-15x">SHIPPING</span><strong><i
                                 class="iconfont icon-arrow-right icon-size-xm"></i></strong>
-                    <span class="p-x-15x"><a class="text-primary" href="/checkout/payment">PAYMENT</a></span><strong><i
+                    <span class="p-x-15x">PAYMENT</span><strong><i
                                 class="iconfont icon-arrow-right icon-size-xm"></i></strong>
-                    <span class="p-x-15x active"><a class="text-primary" href="/checkout/review">CONFIRMATION</a></span>
+                    <span class="p-x-15x active">CONFIRMATION</span>
                 </div>
                 <hr class="hr-light m-a-0">
 

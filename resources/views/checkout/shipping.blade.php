@@ -26,10 +26,11 @@
             <!-- 1.SHIPPING SHIPTO/METHOD-->
             <div class="pageview shipping-shipTo active" id="shipping-shipTo">
                 <div class="flex flex-alignCenter flex-justifyCenter font-size-sm p-y-15x steps">
-                    <span class="p-x-15x active"><a class="text-primary" href="/checkout/shipping">SHIPPING</a></span><strong><i
+                    <span class="p-x-15x active">SHIPPING</span><strong><i
                                 class="iconfont icon-arrow-right icon-size-xm"></i></strong>
-                    <span class="p-x-15x"><a class="text-primary" href="/checkout/payment">PAYMENT</a></span><strong><i class="iconfont icon-arrow-right icon-size-xm"></i></strong>
-                    <span class="p-x-15x"><a @if($isPay || $from) href="/checkout/review" class="text-primary" @else href="javascript:;" class="text-primary skipError" @endif>CONFIRMATION</a></span>
+                    <span class="p-x-15x">PAYMENT</span><strong><i
+                                class="iconfont icon-arrow-right icon-size-xm"></i></strong>
+                    <span class="p-x-15x">CONFIRMATION</span>
                 </div>
                 <hr class="hr-light m-a-0">
                 <!-- ship to -->
