@@ -94,6 +94,7 @@ class CheckoutController extends ApiController
             $shippingMethod = $this->getShippingMethod(Session::get('user.checkout.address.country_name_sn'), $checkInfo['data']['total_amount'] + $checkInfo['data']['vas_amount']);
             Session::put('user.checkout.selship', $shippingMethod[0]);
             Session::put('user.checkout.shipping', $shippingMethod);
+            return redirect('/checkout/review');
         }
         return View('checkout.review', ['checkInfo' => $checkInfo['data'], 'payStatus' => $request->get('pay')]);
     }
