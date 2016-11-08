@@ -50,6 +50,7 @@ $app->group(['middleware' => 'pcguide|logincheck', 'namespace' => 'App\Http\Cont
     $app->get('/checkout/selShip/{type}', 'CheckoutController@selShip');
     $app->get('/checkout/paywith/{type}/{cardid}', 'CheckoutController@paywith');
     $app->get('/checkout/selCode/{bindid}', 'CheckoutController@selCode');
+    $app->post('/delcard/{id}', 'CheckoutController@deleteCard');
 
     $app->get('/feed', 'ShoppingController@feedback');
     $app->get('/feedback', 'ShoppingController@addSupport');

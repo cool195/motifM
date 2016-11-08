@@ -340,6 +340,19 @@ class CheckoutController extends ApiController
         return $this->request('openapi', '', 'pay', $params);
     }
 
+    //删除支付卡
+    public function deleteCard($id)
+    {
+        $params = array(
+            'cmd' => 'dcrd',
+            'uuid' => $_COOKIE['uid'],
+            'token' => Session::get('user.token'),
+            'pin' => Session::get('user.pin'),
+            'cd' => $id,
+        );
+        return $this->request('openapi', '', 'pay', $params);
+    }
+
     //获取coupon列表
     public function getCouponInfo()
     {
