@@ -25,10 +25,12 @@
             <!-- 3.REVIEW -->
             <div class="pageview shipping-review active" id="shipping-review" data-pay="{{$payStatus}}">
                 <div class="flex flex-alignCenter flex-justifyCenter font-size-sm p-y-15x steps">
-                    <span class="p-x-15x"><a class="text-primary" href="/checkout/shipping?from=review">1.SHIPPING</a></span><strong><i
+                    <span class="p-x-15x"><a class="text-primary"
+                                             href="/checkout/shipping?from=review">SHIPPING</a></span><strong><i
                                 class="iconfont icon-arrow-right icon-size-xm"></i></strong>
-                    <span class="p-x-15x"><a class="text-primary" href="/checkout/payment">2.PAYMENT</a></span><strong><i class="iconfont icon-arrow-right icon-size-xm"></i></strong>
-                    <span class="p-x-15x active"><a class="text-primary" href="/checkout/review">3.REVIEW</a></span>
+                    <span class="p-x-15x"><a class="text-primary" href="/checkout/payment">PAYMENT</a></span><strong><i
+                                class="iconfont icon-arrow-right icon-size-xm"></i></strong>
+                    <span class="p-x-15x active"><a class="text-primary" href="/checkout/review">CONFIRMATION</a></span>
                 </div>
                 <hr class="hr-light m-a-0">
 
@@ -37,7 +39,8 @@
                     <div class="text-center text-primary font-size-sm"><strong>ORDER TOTAL:
                             ${{number_format(($checkInfo['pay_amount'] / 100), 2)}}</strong></div>
                     <div class="p-t-10x submit-placeOrder">
-                        <div class="btn btn-primary btn-block submit-checkout" data-clkurl='{{ config('app.clk_url') }}/log.gif?t=check.100002&m=H5_M2016-1&pin={{Session::get('user.pin')}}&uuid={{Session::get('user.uuid')}}&ref=&v={"skipType":"placeorder","skipId":"","version":"1.0.1","ver":"9.2","src":"H5"}'>@if(Session::get('user.checkout.paywith.pay_method')=='PayPalNative'){{'Pay with PayPal'}}@else{{'Place Order'}}@endif</div>
+                        <div class="btn btn-primary btn-block submit-checkout"
+                             data-clkurl='{{ config('app.clk_url') }}/log.gif?t=check.100002&m=H5_M2016-1&pin={{Session::get('user.pin')}}&uuid={{Session::get('user.uuid')}}&ref=&v={"skipType":"placeorder","skipId":"","version":"1.0.1","ver":"9.2","src":"H5"}'>@if(Session::get('user.checkout.paywith.pay_method')=='PayPalNative'){{'Pay with PayPal'}}@else{{'Place Order'}}@endif</div>
                     </div>
                 </div>
                 <hr class="hr-base m-a-0">
@@ -63,7 +66,10 @@
                 <div class="p-y-10x p-x-15x font-size-sm text-primary">
                     <div class="p-b-5x">
                         <span><strong>SHIPPING METHOD</strong></span>
-                        <a class="text-underLine pull-right text-primary" href="/checkout/shipping?from=review" id="review-method">Edit</a>
+                        @if(count(Session::get('user.checkout.shipping'))>1)
+                            <a class="text-underLine pull-right text-primary" href="/checkout/shipping?from=review"
+                               id="review-method">Edit</a>
+                        @endif
                     </div>
                     <div class="">
                         {{Session::get('user.checkout.selship.logistics_name')}} @if(Session::get('user.checkout.selship.pay_price')>0)
@@ -87,7 +93,7 @@
                                         alt=""></span>
                             <br>
                         @else
-                            <span>Card: {{Session::get('user.checkout.paywith.withCard.card_number')}}</span>
+                            <span>{{Session::get('user.checkout.paywith.withCard.card_number')}}</span>
                             @if(Session::get('user.checkout.paywith.withCard.card_type')=='Visa')
                                 <span class="p-l-10x"><img
                                             src="{{env('CDN_Static')}}/images/payment/icon-visa.png{{'?v='.config('app.version')}}"
@@ -110,7 +116,7 @@
                                             alt=""></span>
                             @endif
                             <br>
-                            <span>Exp: {{Session::get('user.checkout.paywith.withCard.month').'/'.Session::get('user.checkout.paywith.withCard.year')}}</span>
+                            <span>Exp {{Session::get('user.checkout.paywith.withCard.month').'/'.Session::get('user.checkout.paywith.withCard.year')}}</span>
                             <br>
                         @endif
                         @if(Session::get('user.checkout.couponInfo'))
@@ -127,7 +133,8 @@
                     </div>
                     <div class="" id="review-special">
                         <span class="request text-common">Optional</span>
-                        <span class="pull-right"><i class="iconfont icon-arrow-right icon-size-xm text-common"></i></span>
+                        <span class="pull-right"><i
+                                    class="iconfont icon-arrow-right icon-size-xm text-common"></i></span>
                     </div>
                 </div>
                 <div class="hr-between"></div>
@@ -135,7 +142,8 @@
                 <!-- 价格汇总 -->
                 <div class="p-y-10x p-x-15x font-size-sm text-primary">
                     <div class="flex flex-fullJustified text-primary font-size-sm">
-                        <span>Items ({{$checkInfo['total_sku_qtty']}})</span><span>${{number_format(($checkInfo['total_amount'] / 100), 2)}}</span>
+                        <span>Items ({{$checkInfo['total_sku_qtty']}}
+                            )</span><span>${{number_format(($checkInfo['total_amount'] / 100), 2)}}</span>
                     </div>
 
                     {{--增值服务--}}
@@ -182,7 +190,8 @@
                     <div class="text-center text-primary font-size-sm"><strong>ORDER TOTAL:
                             ${{number_format(($checkInfo['pay_amount'] / 100), 2)}}</strong></div>
                     <div class="p-t-10x submit-placeOrder">
-                        <div class="btn btn-primary btn-block submit-checkout" data-clkurl='{{ config('app.clk_url') }}/log.gif?t=check.100002&m=H5_M2016-1&pin={{Session::get('user.pin')}}&uuid={{Session::get('user.uuid')}}&ref=&v={"skipType":"placeorder","skipId":"","version":"1.0.1","ver":"9.2","src":"H5"}'>@if(Session::get('user.checkout.paywith.pay_method')=='PayPalNative'){{'Pay with PayPal'}}@else{{'Place Order'}}@endif</div>
+                        <div class="btn btn-primary btn-block submit-checkout"
+                             data-clkurl='{{ config('app.clk_url') }}/log.gif?t=check.100002&m=H5_M2016-1&pin={{Session::get('user.pin')}}&uuid={{Session::get('user.uuid')}}&ref=&v={"skipType":"placeorder","skipId":"","version":"1.0.1","ver":"9.2","src":"H5"}'>@if(Session::get('user.checkout.paywith.pay_method')=='PayPalNative'){{'Pay with PayPal'}}@else{{'Place Order'}}@endif</div>
                     </div>
                 </div>
                 <hr class="hr-base m-a-0">
@@ -216,7 +225,9 @@
             <!-- 弹出提示 -->
             <div class="loading loading-screen loading-switch loading-hidden" id="checkout-failure">
                 <div class="loading-modal">
-                    <div class="text-white font-size-md text-center m-t-10x">There was a problem validating your payment. Please verify all payment details and try placing your order again. Thank you.</div>
+                    <div class="text-white font-size-md text-center m-t-10x">There was a problem validating your
+                        payment. Please verify all payment details and try placing your order again. Thank you.
+                    </div>
                 </div>
             </div>
         </div>
