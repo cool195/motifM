@@ -22,7 +22,7 @@
 
         <div class="checkout-container">
             <!-- 选择支付方式 -->
-            <div class="pageview shipping-payment active" id="shipping-payment">
+            <div class="pageview shipping-payment active" id="shipping-payment" data-ref="{{$from}}">
                 @if($from!='review')
                     <div class="flex flex-alignCenter flex-justifyCenter font-size-sm p-y-15x steps">
                         <span class="p-x-15x">SHIPPING</span><strong><i

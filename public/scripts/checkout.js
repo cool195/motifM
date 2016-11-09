@@ -832,7 +832,7 @@
             type: 'GET',
         })
             .always(function () {
-                window.location.href = '/checkout/payment';
+                window.location.href = '/checkout/payment?from='+$('#shipping-payment').data('ref');
             });
     });
 
