@@ -23,15 +23,17 @@
         <div class="checkout-container">
             <!-- 选择支付方式 -->
             <div class="pageview shipping-payment active" id="shipping-payment">
-                <div class="flex flex-alignCenter flex-justifyCenter font-size-sm p-y-15x steps">
-                    <span class="p-x-15x">SHIPPING</span><strong><i
-                                class="iconfont icon-arrow-right icon-size-xm"></i></strong>
-                    <span class="p-x-15x active">PAYMENT</span><strong><i
-                                class="iconfont icon-arrow-right icon-size-xm"></i></strong>
-                    <span class="p-x-15x">CONFIRMATION</span>
-                </div>
-                <hr class="hr-light m-a-0">
-                <!-- 选择支付方式 -->
+                @if($from!='review')
+                    <div class="flex flex-alignCenter flex-justifyCenter font-size-sm p-y-15x steps">
+                        <span class="p-x-15x">SHIPPING</span><strong><i
+                                    class="iconfont icon-arrow-right icon-size-xm"></i></strong>
+                        <span class="p-x-15x active">PAYMENT</span><strong><i
+                                    class="iconfont icon-arrow-right icon-size-xm"></i></strong>
+                        <span class="p-x-15x">CONFIRMATION</span>
+                    </div>
+                    <hr class="hr-light m-a-0">
+                @endif
+            <!-- 选择支付方式 -->
                 <div class="text-primary">
                     <!-- card 列表 -->
                     @foreach($payInfo as $value)
@@ -42,37 +44,39 @@
                         </div>
                         @foreach($value['creditCards'] as $card)
                             <div class="card-item">
-                            <div class="@if(Session::get('user.checkout.paywith.withCard.card_id')==$card['card_id']) active @endif flex flex-alignCenter flex-fullJustified font-size-sm p-l-20x p-r-15x p-y-5x bg-title cardList clickPayWith"
-                                 data-type="{{$value['pay_type']}}" data-card="{{$card['card_id']}}">
-                                <div class="p-l-10x"><span>{{$card['card_number']}}</span>
+                                <div class="@if(Session::get('user.checkout.paywith.withCard.card_id')==$card['card_id']) active @endif flex flex-alignCenter flex-fullJustified font-size-sm p-l-20x p-r-15x p-y-5x bg-title cardList clickPayWith"
+                                     data-type="{{$value['pay_type']}}" data-card="{{$card['card_id']}}">
+                                    <div class="p-l-10x"><span>{{$card['card_number']}}</span>
 
-                                    @if($card['card_type']=='Visa')
-                                        <span class="p-l-10x"><img
-                                                    src="{{env('CDN_Static')}}/images/payment/icon-visa.png{{'?v='.config('app.version')}}"
-                                                    srcset="{{env('CDN_Static')}}/images/payment/icon-visa@2x.png{{'?v='.config('app.version')}} 2x, {{env('CDN_Static')}}/images/payment/icon-visa@3x.png{{'?v='.config('app.version')}} 3x"
-                                                    alt=""></span>
-                                    @elseif($card['card_type']=='MasterCard')
-                                        <span class="p-l-10x"><img
-                                                    src="{{env('CDN_Static')}}/images/payment/icon-mastercard.png{{'?v='.config('app.version')}}"
-                                                    srcset="{{env('CDN_Static')}}/images/payment/icon-mastercard@2x.png{{'?v='.config('app.version')}} 2x, {{env('CDN_Static')}}/images/payment/icon-mastercard@3x.png{{'?v='.config('app.version')}} 3x"
-                                                    alt=""></span>
-                                    @elseif($card['card_type']=='AmericanExpress')
-                                        <span class="p-l-10x"><img
-                                                    src="{{env('CDN_Static')}}/images/payment/icon-americanexpress.png{{'?v='.config('app.version')}}"
-                                                    srcset="{{env('CDN_Static')}}/images/payment/icon-americanexpress@2x.png{{'?v='.config('app.version')}} 2x, {{env('CDN_Static')}}/images/payment/icon-americanexpress@3x.png{{'?v='.config('app.version')}} 3x"
-                                                    alt=""></span>
-                                    @elseif($card['card_type']=='JCB')
-                                        <span class="p-l-10x"><img
-                                                    src="{{env('CDN_Static')}}/images/payment/icon-jcb.png{{'?v='.config('app.version')}}"
-                                                    srcset="{{env('CDN_Static')}}/images/payment/icon-jcb@2x.png{{'?v='.config('app.version')}} 2x, {{env('CDN_Static')}}/images/payment/icon-jcb@3x.png{{'?v='.config('app.version')}} 3x"
-                                                    alt=""></span>
-                                    @endif
-                                    <br>Exp <span>{{$card['month']}}/{{$card['year']}}</span>
-                                    <br><span>&nbsp;</span>
+                                        @if($card['card_type']=='Visa')
+                                            <span class="p-l-10x"><img
+                                                        src="{{env('CDN_Static')}}/images/payment/icon-visa.png{{'?v='.config('app.version')}}"
+                                                        srcset="{{env('CDN_Static')}}/images/payment/icon-visa@2x.png{{'?v='.config('app.version')}} 2x, {{env('CDN_Static')}}/images/payment/icon-visa@3x.png{{'?v='.config('app.version')}} 3x"
+                                                        alt=""></span>
+                                        @elseif($card['card_type']=='MasterCard')
+                                            <span class="p-l-10x"><img
+                                                        src="{{env('CDN_Static')}}/images/payment/icon-mastercard.png{{'?v='.config('app.version')}}"
+                                                        srcset="{{env('CDN_Static')}}/images/payment/icon-mastercard@2x.png{{'?v='.config('app.version')}} 2x, {{env('CDN_Static')}}/images/payment/icon-mastercard@3x.png{{'?v='.config('app.version')}} 3x"
+                                                        alt=""></span>
+                                        @elseif($card['card_type']=='AmericanExpress')
+                                            <span class="p-l-10x"><img
+                                                        src="{{env('CDN_Static')}}/images/payment/icon-americanexpress.png{{'?v='.config('app.version')}}"
+                                                        srcset="{{env('CDN_Static')}}/images/payment/icon-americanexpress@2x.png{{'?v='.config('app.version')}} 2x, {{env('CDN_Static')}}/images/payment/icon-americanexpress@3x.png{{'?v='.config('app.version')}} 3x"
+                                                        alt=""></span>
+                                        @elseif($card['card_type']=='JCB')
+                                            <span class="p-l-10x"><img
+                                                        src="{{env('CDN_Static')}}/images/payment/icon-jcb.png{{'?v='.config('app.version')}}"
+                                                        srcset="{{env('CDN_Static')}}/images/payment/icon-jcb@2x.png{{'?v='.config('app.version')}} 2x, {{env('CDN_Static')}}/images/payment/icon-jcb@3x.png{{'?v='.config('app.version')}} 3x"
+                                                        alt=""></span>
+                                        @endif
+                                        <br>Exp <span>{{$card['month']}}/{{$card['year']}}</span>
+                                        <br><span>&nbsp;</span>
+                                    </div>
+                                    <i class="iconfont icon-check icon-size-md text-common"></i>
                                 </div>
-                                <i class="iconfont icon-check icon-size-md text-common"></i>
-                            </div>
-                            <span class="p-l-20x font-size-sm text-common text-underLine btn-deleteCard" data-remodal-target="deletecardmodal" data-cardid="{{$card['card_id']}}">Remove</span>
+                                <span class="p-l-20x font-size-sm text-common text-underLine btn-deleteCard"
+                                      data-remodal-target="deletecardmodal"
+                                      data-cardid="{{$card['card_id']}}">Remove</span>
                             </div>
                         @endforeach
                         <hr class="hr-base m-a-0">
@@ -95,7 +99,7 @@
                     <!-- Continue 按钮 -->
                     <div class="p-a-15x submit-payment">
                         <div class="btn btn-primary btn-block submit-paymentbutton" data-url="{{'/checkout/review'}}">
-                            Continue
+                            @if($from!='review'){{'Continue'}}@else{{'Done'}}@endif
                         </div>
                     </div>
                 </div>
@@ -439,7 +443,8 @@
 </div>
 
 <!-- 删除卡 -->
-<div class="remodal remodal-md modal-content" data-remodal-id="deletecardmodal" id="deleteCard-modalDialog" data-cardid="">
+<div class="remodal remodal-md modal-content" data-remodal-id="deletecardmodal" id="deleteCard-modalDialog"
+     data-cardid="">
     <div class="font-size-sm p-t-20x p-x-15x p-b-15x">
         Are you sure you want to remove this credit card?
     </div>

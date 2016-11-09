@@ -63,14 +63,14 @@ class CheckoutController extends ApiController
     }
 
     //payment
-    public function payment()
+    public function payment(Request $request)
     {
         //return Session::get('user.checkout');
         $payInfo = $this->getPayInfo();
         $coupon = $this->couponCache();
         $country = $this->getCountry(1);
 
-        return View('checkout.payment', ['payInfo' => $payInfo['data']['list'], 'coupon' => $coupon['data'], 'country' => $country['data']]);
+        return View('checkout.payment', ['payInfo' => $payInfo['data']['list'], 'coupon' => $coupon['data'], 'country' => $country['data'],'from' => $request->get('from')]);
     }
 
     //review
@@ -87,6 +87,15 @@ class CheckoutController extends ApiController
             return redirect('/cart');
         }
 
+        $shipKey = md5(Session::get('user.checkout.address.receiving_id') . ($checkInfo['data']['total_amount'] + $checkInfo['data']['vas_amount']));
+
+        if (Session::get('user.checkout.shipKey') != $shipKey) {
+            Session::put('user.checkout.shipKey', $shipKey);
+            $shippingMethod = $this->getShippingMethod(Session::get('user.checkout.address.country_name_sn'), $checkInfo['data']['total_amount'] + $checkInfo['data']['vas_amount']);
+            Session::put('user.checkout.selship', $shippingMethod[0]);
+            Session::put('user.checkout.shipping', $shippingMethod);
+            return redirect('/checkout/review');
+        }
         return View('checkout.review', ['checkInfo' => $checkInfo['data'], 'payStatus' => $request->get('pay')]);
     }
 

@@ -53,6 +53,11 @@
             url: '/checkout/selShip/' + $(this).data('type'),
             type: 'GET',
         })
+            .done(function () {
+                if ($('#shipping-shipTo').data('ref') == 'review') {
+                    window.location.href = '/checkout/review';
+                }
+            })
     });
 
     $('.skipError').on('click', function () {
@@ -84,7 +89,7 @@
     });
 
     if ($('#shipping-editorAddress').length > 0) {
-        if($('#shipping-editorAddress').hasClass('active')){
+        if ($('#shipping-editorAddress').hasClass('active')) {
             initAddAddressForm(1, 0);
         }
     }
@@ -714,7 +719,7 @@
 
     // 进入Review
     if ($('#shipping-review').length > 0) {
-        if($('#shipping-review').data('pay')=='error'){
+        if ($('#shipping-review').data('pay') == 'error') {
             openFail();
             setTimeout(function () {
                 closeFail()
@@ -725,7 +730,7 @@
     $('.submit-paymentbutton').on('click', function () {
         if ($('.clickPayWith.active').length > 0) {
             window.location.href = '/checkout/review';
-        }else{
+        } else {
             $('.ErrorMessage').html('Please select a Payment Method');
             openFail();
             setTimeout(function () {
@@ -782,7 +787,7 @@
         }
         // 验证年份
         if ($(this).val().length === 7) {
-            var year = parseInt('20'+$(this).val().substring(5, 7));
+            var year = parseInt('20' + $(this).val().substring(5, 7));
             if (year < MyYear || year > MyYear + 30) {
                 $WarningInfo.removeClass('hidden-xs-up');
                 $WarningInfo.children('span').html('Year Error');
@@ -850,7 +855,7 @@
                             .always(function () {
                                 window.location.href = '/checkout/payment';
                             });
-                    }else{
+                    } else {
 
                         $('.ErrorMessage').html(data.prompt_msg);
                         openFail();
@@ -881,9 +886,9 @@
     function deleteCard(CardID) {
         openLoading();
         $.ajax({
-                url: '/delcard/' + CardID,
-                type: 'POST'
-            })
+            url: '/delcard/' + CardID,
+            type: 'POST'
+        })
             .done(function () {
                 location.reload();
             })
@@ -907,8 +912,8 @@
 
     // 保存 massage
     $('#btn-addSpecial').on('click', function () {
-        var msg = $('textarea[name="remark"]').val().length > 30 ? $('textarea[name="remark"]').val().substr(0,30)+'...' : $('textarea[name="remark"]').val();
-        if(msg != ''){
+        var msg = $('textarea[name="remark"]').val().length > 30 ? $('textarea[name="remark"]').val().substr(0, 30) + '...' : $('textarea[name="remark"]').val();
+        if (msg != '') {
             $('.request').html(msg);
             $('.request').removeClass('text-common');
         } else {
