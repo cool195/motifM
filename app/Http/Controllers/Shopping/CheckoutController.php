@@ -63,14 +63,14 @@ class CheckoutController extends ApiController
     }
 
     //payment
-    public function payment()
+    public function payment(Request $request)
     {
         //return Session::get('user.checkout');
         $payInfo = $this->getPayInfo();
         $coupon = $this->couponCache();
         $country = $this->getCountry(1);
 
-        return View('checkout.payment', ['payInfo' => $payInfo['data']['list'], 'coupon' => $coupon['data'], 'country' => $country['data']]);
+        return View('checkout.payment', ['payInfo' => $payInfo['data']['list'], 'coupon' => $coupon['data'], 'country' => $country['data'],'from' => $request->get('from')]);
     }
 
     //review

@@ -81,7 +81,7 @@
                 <div class="p-y-10x p-x-15x font-size-sm text-primary">
                     <div class="p-b-5x">
                         <span><strong>PAYMENT METHOD</strong></span>
-                        <a class="text-underLine pull-right text-primary" href="/checkout/payment" id="review-payment">Edit</a>
+                        <a class="text-underLine pull-right text-primary" href="/checkout/payment?from=review" id="review-payment">Edit</a>
                     </div>
                     <div class="">
                         @if(Session::get('user.checkout.paywith.pay_method')=='PayPalNative')
