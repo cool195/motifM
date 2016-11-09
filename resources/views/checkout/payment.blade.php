@@ -22,7 +22,8 @@
 
         <div class="checkout-container">
             <!-- 选择支付方式 -->
-            <div class="pageview shipping-payment @if($from!='editcode'){{'active'}}@endif" id="shipping-payment" data-ref="{{$from}}">
+            <div class="pageview shipping-payment @if($from!='editcode'){{'active'}}@endif" id="shipping-payment"
+                 data-ref="{{$from}}">
                 @if($from!='review')
                     <div class="flex flex-alignCenter flex-justifyCenter font-size-sm p-y-15x steps">
                         <span class="p-x-15x">SHIPPING</span><strong><i
@@ -34,7 +35,7 @@
                     <hr class="hr-light m-a-0">
                 @endif
                 <div class="p-y-15x p-x-15x font-size-sm bg-title"><strong>PAYMENT METHOD</strong></div>
-            <!-- 选择支付方式 -->
+                <!-- 选择支付方式 -->
                 <div class="text-primary">
                     <!-- card 列表 -->
                     @foreach($payInfo as $value)
@@ -83,15 +84,18 @@
                         <hr class="hr-base m-a-0">
                     @endforeach
                     <div class="bg-title p-t-10x"></div>
-                    <hr class="hr-base m-a-0">
-                    <div class="p-y-15x p-x-15x font-size-sm bg-title"><strong>PROMOTION CODE</strong></div>
-                    <div class="flex flex-alignCenter flex-fullJustified font-size-sm p-a-15x" id="btn-toPromotionCode">
-                        <span>{{Session::get('user.checkout.couponInfo')['cp_title'] ? Session::get('user.checkout.couponInfo')['cp_title'] : 'None'}}</span>
-                        <div>
-                            <i class="iconfont icon-arrow-right icon-size-xm text-common"></i>
+                    @if($from!='review')
+                        <hr class="hr-base m-a-0">
+                        <div class="p-y-15x p-x-15x font-size-sm bg-title"><strong>PROMOTION CODE</strong></div>
+                        <div class="flex flex-alignCenter flex-fullJustified font-size-sm p-a-15x"
+                             id="btn-toPromotionCode">
+                            <span>{{Session::get('user.checkout.couponInfo')['cp_title'] ? Session::get('user.checkout.couponInfo')['cp_title'] : 'None'}}</span>
+                            <div>
+                                <i class="iconfont icon-arrow-right icon-size-xm text-common"></i>
+                            </div>
                         </div>
-                    </div>
-                    <hr class="hr-base m-a-0">
+                        <hr class="hr-base m-a-0">
+                    @endif
                 </div>
 
                 <!-- Coutinue 按钮 -->
