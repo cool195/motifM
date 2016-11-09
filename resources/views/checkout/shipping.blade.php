@@ -54,7 +54,7 @@
             @endif
             <!-- shipping method -->
                 <div class="text-primary">
-                    <div class="p-y-10x p-x-15x font-size-sm"><strong>SHIPPING METHOD</strong></div>
+                    <div class="p-y-15x p-x-15x font-size-sm @if($from=='review'){{'bg-title'}}@endif"><strong>SHIPPING METHOD</strong></div>
                     <hr class="hr-base m-a-0">
                     <div>
                         @foreach(Session::get('user.checkout.shipping') as $value)

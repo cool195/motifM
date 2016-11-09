@@ -32,6 +32,8 @@
                         <span class="p-x-15x">CONFIRMATION</span>
                     </div>
                     <hr class="hr-light m-a-0">
+                @else
+                    <div class="p-y-15x p-x-15x font-size-sm @if($from=='review'){{'bg-title'}}@endif"><strong>PAYMENT METHOD</strong></div>
                 @endif
             <!-- 选择支付方式 -->
                 <div class="text-primary">
