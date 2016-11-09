@@ -132,7 +132,7 @@
             height: MediaHeight,
             width: Width,
             videoId: PlayerId,
-            playerVars: {'autoplay': 1, 'controls': 2, 'showinfo': 0},
+            playerVars: {'autoplay': 1, 'controls': 2, 'showinfo': 0, 'rel': 0},
             events: {
                 'onReady': onPlayerReady
             }
