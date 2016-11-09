@@ -34,6 +34,7 @@
                     <hr class="hr-light m-a-0">
                 @endif
                 <div class="p-y-15x p-x-15x font-size-sm bg-title"><strong>PAYMENT METHOD</strong></div>
+                <hr class="hr-base m-a-0">
             <!-- 选择支付方式 -->
                 <div class="text-primary">
                     <!-- card 列表 -->
@@ -45,7 +46,7 @@
                         </div>
                         @foreach($value['creditCards'] as $card)
                             <div class="card-item">
-                                <div class="@if(Session::get('user.checkout.paywith.withCard.card_id')==$card['card_id']) active @endif flex flex-alignCenter flex-fullJustified font-size-sm p-l-20x p-r-15x p-y-5x bg-title cardList clickPayWith"
+                                <div class="@if(Session::get('user.checkout.paywith.withCard.card_id')==$card['card_id']) active @endif flex flex-alignCenter flex-fullJustified font-size-sm m-l-20x p-r-15x p-y-5x cardList clickPayWith"
                                      data-type="{{$value['pay_type']}}" data-card="{{$card['card_id']}}">
                                     <div class="p-l-10x"><span>{{$card['card_number']}}</span>
 
@@ -82,9 +83,8 @@
                         @endforeach
                         <hr class="hr-base m-a-0">
                     @endforeach
-                    <div class="bg-title p-t-10x"></div>
-                    <hr class="hr-base m-a-0">
                     <div class="p-y-15x p-x-15x font-size-sm bg-title"><strong>PROMOTION CODE</strong></div>
+                    <hr class="hr-base m-a-0">
                     <div class="flex flex-alignCenter flex-fullJustified font-size-sm p-a-15x" id="btn-toPromotionCode">
                         <span>{{Session::get('user.checkout.couponInfo')['cp_title'] ? Session::get('user.checkout.couponInfo')['cp_title'] : 'None'}}</span>
                         <div>
