@@ -618,7 +618,11 @@
 
     // 取消添加 promotion code
     $('#btn-cancelPromoCode').on('click', function () {
-        toPage($('.shipping-payment'));
+        if($('#shipping-payment').data('ref')=='editcode'){
+            window.location.href = '/checkout/review';
+        }else{
+            toPage($('.shipping-payment'));
+        }
     });
 
     // 验证卡输入信息
@@ -832,7 +836,12 @@
             type: 'GET',
         })
             .always(function () {
-                window.location.href = '/checkout/payment?from='+$('#shipping-payment').data('ref');
+                if($('#shipping-payment').data('ref')=='editcode'){
+                    window.location.href = '/checkout/review';
+                }else{
+                    window.location.href = '/checkout/payment?from='+$('#shipping-payment').data('ref');
+                }
+
             });
     });
 
@@ -853,7 +862,11 @@
                             type: 'GET',
                         })
                             .always(function () {
-                                window.location.href = '/checkout/payment';
+                                if($('#shipping-payment').data('ref')=='editcode'){
+                                    window.location.href = '/checkout/review';
+                                }else{
+                                    window.location.href = '/checkout/payment?from='+$('#shipping-payment').data('ref');
+                                }
                             });
                     } else {
 

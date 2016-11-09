@@ -22,7 +22,7 @@
 
         <div class="checkout-container">
             <!-- 选择支付方式 -->
-            <div class="pageview shipping-payment active" id="shipping-payment" data-ref="{{$from}}">
+            <div class="pageview shipping-payment @if($from!='editcode'){{'active'}}@endif" id="shipping-payment" data-ref="{{$from}}">
                 @if($from!='review')
                     <div class="flex flex-alignCenter flex-justifyCenter font-size-sm p-y-15x steps">
                         <span class="p-x-15x">SHIPPING</span><strong><i
@@ -32,9 +32,8 @@
                         <span class="p-x-15x">CONFIRMATION</span>
                     </div>
                     <hr class="hr-light m-a-0">
-                @else
-                    <div class="p-y-15x p-x-15x font-size-sm @if($from=='review'){{'bg-title'}}@endif"><strong>PAYMENT METHOD</strong></div>
                 @endif
+                <div class="p-y-15x p-x-15x font-size-sm bg-title"><strong>PAYMENT METHOD</strong></div>
             <!-- 选择支付方式 -->
                 <div class="text-primary">
                     <!-- card 列表 -->
@@ -85,10 +84,10 @@
                     @endforeach
                     <div class="bg-title p-t-10x"></div>
                     <hr class="hr-base m-a-0">
+                    <div class="p-y-15x p-x-15x font-size-sm bg-title"><strong>PROMOTION CODE</strong></div>
                     <div class="flex flex-alignCenter flex-fullJustified font-size-sm p-a-15x" id="btn-toPromotionCode">
-                        <span>Promotion Code</span>
+                        <span>{{Session::get('user.checkout.couponInfo')['cp_title'] ? Session::get('user.checkout.couponInfo')['cp_title'] : 'None'}}</span>
                         <div>
-                            <span>{{Session::get('user.checkout.couponInfo')['cp_title']}}</span>
                             <i class="iconfont icon-arrow-right icon-size-xm text-common"></i>
                         </div>
                     </div>
@@ -280,7 +279,7 @@
                 </form>
             </div>
             <!-- promotion code -->
-            <div class="pageview shipping-promotion" id="shipping-promotion">
+            <div class="pageview shipping-promotion @if($from=='editcode'){{'active'}}@endif" id="shipping-promotion">
                 <section class="m-b-20x reserve-height">
                     <article class="font-size-md text-main p-a-10x bg-title"><strong>Promotion Code</strong></article>
                     <hr class="hr-base m-a-0">
