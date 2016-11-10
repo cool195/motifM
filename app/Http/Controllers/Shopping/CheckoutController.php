@@ -80,6 +80,8 @@ class CheckoutController extends ApiController
             return redirect('/checkout/shipping');
         } else if (!Session::has('user.checkout.paywith.pay_method')) {
             return redirect('/checkout/payment');
+        }else if(!Session::get('user.checkout.couponInfo.bind_id')){
+            $this->couponCache();
         }
         $checkInfo = $this->getCheckOutAccountList(Session::get('user.checkout.address.receiving_id'), Session::get('user.checkout.selship.logistics_type'), Session::get('user.checkout.couponInfo.bind_id'));
 
