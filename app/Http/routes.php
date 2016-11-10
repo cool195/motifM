@@ -233,12 +233,6 @@ $app->get('/apptest', 'Other\PageController@apptest');
 $app->get('rae', function (){
     return redirect("/designer/99".($_SERVER["QUERY_STRING"] ? '?'.$_SERVER["QUERY_STRING"] : ''));
 });
-$app->get('/Rae', function (){
-    return redirect("/designer/99".($_SERVER["QUERY_STRING"] ? '?'.$_SERVER["QUERY_STRING"] : ''));
-});
-$app->get('/RAE', function (){
-    return redirect("/designer/99".($_SERVER["QUERY_STRING"] ? '?'.$_SERVER["QUERY_STRING"] : ''));
-});
 $app->get('/downapp','Other\PageController@downapp');
 
 $app->get('/orderlist', 'Other\PageController@orderlist');
