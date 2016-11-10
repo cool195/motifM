@@ -12,7 +12,7 @@
 */
 $skipURI = strtolower($_SERVER['REQUEST_URI']);
 if (empty($_POST) && $skipURI != $_SERVER['REQUEST_URI']) {
-    $skipUrl = $_SERVER['SERVER_NAME'].$skipURI;
+    $skipUrl = 'http://'.$_SERVER['SERVER_NAME'].$skipURI;
     Header("Location: $skipUrl");
     exit;
 }
