@@ -179,7 +179,9 @@
 
         @if(!empty($saveData['showSkus']))
             <!-- 暂存商品列表 -->
-                <article class="font-size-md text-main p-a-10x"><strong>Saved</strong></article>
+                <hr class="hr-base m-a-0">
+                <article class="font-size-md text-main p-a-10x bg-title"><strong>Saved</strong></article>
+                <hr class="hr-base m-a-0">
                 <!-- 商品列表 -->
                 <section class="cartList bg-white">
                     @if(isset($saveData['showSkus']))
