@@ -361,10 +361,11 @@ class CheckoutController extends ApiController
             'pin' => Session::get('user.pin'),
             'cd' => $id,
         );
-        if(Session::get('user.checkout.paywith.withCard.card_id')==$id){
+        $result = $this->request('openapi', '', 'pay', $params);
+        if($result['success'] && Session::get('user.checkout.paywith.withCard.card_id')==$id){
             Session::forget('user.checkout.paywith');
         }
-        return $this->request('openapi', '', 'pay', $params);
+        return $result;
     }
 
     //获取coupon列表
