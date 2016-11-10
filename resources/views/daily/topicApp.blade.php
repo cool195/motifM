@@ -72,7 +72,7 @@
                 @if($value['type']=='banner')
                     <!-- 第一个 banner 图 -->
                         <div @if($k!=0)class="p-y-10x"@endif>
-                            <a href="@if(!isset($value['skipId']))javascript:;@elseif($value['skipType']=='1')motif://o.c?a=pd&spu={{$value['skipId']}}@elseif($value['skipType']=='2')motif://o.c?a=url&url={{urlencode('http://'.$_SERVER['HTTP_HOST'].'/designer/'.$value['skipId'])}}@elseif($value['skipType']=='3')motif://o.c?a=url&url={{urlencode('http://'.$_SERVER['HTTP_HOST'].'/topic/'.$value['skipId'])}}@elseif($value['skipType']=='4')motif://o.c?a=shoppinglist&cid={{$value['skipId']}}@else{{'motif://o.c?a=outurl&url='.urlencode($value['imgUrl'])}}@endif">
+                            <a href="@if(!isset($value['skipId']))javascript:;@elseif($value['skipType']=='1')motif://o.c?from=topic_detail&from_id={{$topicID}}&a=pd&spu={{$value['skipId']}}@elseif($value['skipType']=='2')motif://o.c?from=topic_detail&from_id={{$topicID}}&a=url&url={{urlencode('http://'.$_SERVER['HTTP_HOST'].'/designer/'.$value['skipId'])}}@elseif($value['skipType']=='3')motif://o.c?from=topic_detail&from_id={{$topicID}}&a=url&url={{urlencode('http://'.$_SERVER['HTTP_HOST'].'/topic/'.$value['skipId'])}}@elseif($value['skipType']=='4')motif://o.c?from=topic_detail&from_id={{$topicID}}&a=shoppinglist&cid={{$value['skipId']}}@else{{'motif://o.c?from=topic_detail&from_id=' + $topicID + '&a=outurl&url='.urlencode($value['imgUrl'])}}@endif">
                                 <img class="img-fluid img-lazy"
                                      data-original="{{env('APP_Api_Image')}}/n1/{{$value['imgPath']}}"
                                      src="{{env('CDN_Static')}}/images/product/bg-product@750.png"
@@ -89,7 +89,7 @@
                         </div>
                 @elseif($value['type']=='title')
                     <!-- 标题 -->
-                        <a href="@if($value['skipType']=='1')motif://o.c?a=pd&spu={{$value['skipId']}}@elseif($value['skipType']=='2')/designer/{{$value['skipId']}}@elseif($value['skipType']=='3')/topic/{{$value['skipId']}}@elseif($value['skipType']=='4')motif://o.c?a=shoppinglist&cid={{$value['skipId']}}@else{{'motif://o.c?a=outurl&url='.urlencode($value['imgUrl'])}}@endif">
+                        <a href="@if($value['skipType']=='1')motif://o.c?from=topic_detail&from_id={{$topicID}}&a=pd&spu={{$value['skipId']}}@elseif($value['skipType']=='2')/designer/{{$value['skipId']}}@elseif($value['skipType']=='3')/topic/{{$value['skipId']}}@elseif($value['skipType']=='4')motif://o.c?from=topic_detail&from_id={{$topicID}}&a=shoppinglist&cid={{$value['skipId']}}@else{{'motif://o.c?from=topic_detail&from_id=' + $topicID + '&a=outurl&url='.urlencode($value['imgUrl'])}}@endif">
                             <div class="p-x-15x p-y-10x text-primary">
                                 <strong>{{$value['value']}}</strong>
                             </div>
@@ -98,7 +98,7 @@
                         <hr class="hr-base m-x-5x m-y-0">
                     @elseif($value['type']=='context')
                     <!-- 描述 -->
-                        <a href="@if($value['skipType']=='1')motif://o.c?a=pd&spu={{$value['skipId']}}@elseif($value['skipType']=='2')/designer/{{$value['skipId']}}@elseif($value['skipType']=='3')/topic/{{$value['skipId']}}@elseif($value['skipType']=='4')motif://o.c?a=shoppinglist&cid={{$value['skipId']}}@else{{'motif://o.c?a=outurl&url='.urlencode($value['imgUrl'])}}@endif">
+                        <a href="@if($value['skipType']=='1')motif://o.c?from=topic_detail&from_id={{$topicID}}&a=pd&spu={{$value['skipId']}}@elseif($value['skipType']=='2')/designer/{{$value['skipId']}}@elseif($value['skipType']=='3')/topic/{{$value['skipId']}}@elseif($value['skipType']=='4')motif://o.c?from=topic_detail&from_id={{$topicID}}&a=shoppinglist&cid={{$value['skipId']}}@else{{'motif://o.c?from=topic_detail&from_id=' + $topicID + '&a=outurl&url='.urlencode($value['imgUrl'])}}@endif">
                             <div class="p-x-15x p-y-10x text-primary font-size-sm">
                                 {{$value['value']}}
                             </div>
@@ -112,7 +112,7 @@
                                 @foreach($value['spus'] as $spu)
                                     <div class="p-x-15x p-y-10x">
                                         <a data-clk='{{ config('app.clk_url') }}/log.gif?t=daily.200001&m=H5_M2016-1&pin={{Session::get('user.pin')}}&uuid={{Session::has('user') ? Session::get('user.uuid') : $_COOKIE['uid']}}&v={"action":1,"skipType":1,"skipId":"{{$spu}}","topicId":"{{$topicID}}","expid":0,"ver":"1.0.1","src":"H5"}'
-                                           data-link="motif://o.c?a=pd&spu={{$spu}}" href="javascript:void(0)" data-spu="{{$spu}}" data-title="{{$topic['spuInfos'][$spu]['spuBase']['main_title']}}" data-price="{{number_format($topic['spuInfos'][$spu]['skuPrice']['sale_price']/100,2)}}">
+                                           data-link="motif://o.c?from=topic_detail&from_id={{$topicID}}&a=pd&spu={{$spu}}" href="javascript:void(0)" data-spu="{{$spu}}" data-title="{{$topic['spuInfos'][$spu]['spuBase']['main_title']}}" data-price="{{number_format($topic['spuInfos'][$spu]['skuPrice']['sale_price']/100,2)}}">
                                             <img class="img-fluid img-lazy"
                                                  data-original="{{env('APP_Api_Image')}}/n1/{{$topic['spuInfos'][$spu]['spuBase']['main_image_url']}}"
                                                  src="{{env('CDN_Static')}}/images/product/bg-product@750.png"
@@ -121,7 +121,7 @@
                                     </div>
                                 @endforeach
                             @else
-                                <a href="@if(!isset($value['skipId']))javascript:;@elseif($value['skipType']=='1')motif://o.c?a=pd&spu=@elseif($value['skipType']=='2')/designer/@elseif($value['skipType']=='3')/topic/@elseif($value['skipType']=='4')motif://o.c?a=shoppinglist&cid=@endif{{$value['skipId']}}">
+                                <a href="@if(!isset($value['skipId']))javascript:;@elseif($value['skipType']=='1')motif://o.c?from=topic_detail&from_id={{$topicID}}&a=pd&spu=@elseif($value['skipType']=='2')/designer/@elseif($value['skipType']=='3')/topic/@elseif($value['skipType']=='4')motif://o.c?from=topic_detail&from_id={{$topicID}}&a=shoppinglist&cid=@endif{{$value['skipId']}}">
                                     <img class="img-fluid img-lazy"
                                          data-original="{{env('APP_Api_Image')}}/n1/{{$value['imgPath']}}"
                                          src="{{env('CDN_Static')}}/images/product/bg-product@750.png"
@@ -137,7 +137,7 @@
                                             <div class="col-xs-6 p-a-0">
                                                 <div class="topic-product-item productList-item">
                                                     <a data-clk='{{ config('app.clk_url') }}/log.gif?t=daily.200001&m=H5_M2016-1&pin={{Session::get('user.pin')}}&uuid={{Session::has('user') ? Session::get('user.uuid') : $_COOKIE['uid']}}&v={"action":1,"skipType":1,"skipId":"{{$spu}}","topicId":"{{$topicID}}","expid":0,"ver":"1.0.1","src":"H5"}'
-                                                       data-link="motif://o.c?a=pd&spu={{$spu}}" href="javascript:void(0)" data-spu="{{$spu}}" data-title="{{$topic['spuInfos'][$spu]['spuBase']['main_title']}}" data-price="{{number_format($topic['spuInfos'][$spu]['skuPrice']['sale_price']/100,2)}}">
+                                                       data-link="motif://o.c?from=topic_detail&from_id={{$topicID}}&a=pd&spu={{$spu}}" href="javascript:void(0)" data-spu="{{$spu}}" data-title="{{$topic['spuInfos'][$spu]['spuBase']['main_title']}}" data-price="{{number_format($topic['spuInfos'][$spu]['skuPrice']['sale_price']/100,2)}}">
                                                         <div class="image-container">
                                                             <img class="img-fluid img-lazy"
                                                                  data-original="{{env('APP_Api_Image')}}/n2/{{$topic['spuInfos'][$spu]['spuBase']['main_image_url']}}"

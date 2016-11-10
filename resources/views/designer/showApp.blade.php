@@ -165,35 +165,35 @@
                     <div class="p-x-15x p-t-5x p-b-15x">
                         @endif
                         @if(!empty($designer['instagram_link']))
-                            <a href="motif://o.c?a=outurl&url={{$designer['instagram_link']}}" target="_blank"
+                            <a href="motif://o.c?from=designer_detail&from_id={{$designer['designer_id']}}&a=outurl&url={{$designer['instagram_link']}}" target="_blank"
                                class="p-r-20x SocialMedia">
                                 <img src="{{env('CDN_Static')}}/images/designer/ins.png"
                                      srcset="{{env('CDN_Static')}}/images/designer/ins@2x.png 2x,{{env('CDN_Static')}}/images/designer/ins@3x.png 3x">
                             </a>
                         @endif
                         @if(!empty($designer['snapchat_link']))
-                            <a href="motif://o.c?a=outurl&url={{$designer['snapchat_link']}}" target="_blank"
+                            <a href="motif://o.c?from=designer_detail&from_id={{$designer['designer_id']}}&a=outurl&url={{$designer['snapchat_link']}}" target="_blank"
                                class="p-r-20x SocialMedia">
                                 <img src="{{env('CDN_Static')}}/images/designer/snapchat.png"
                                      srcset="{{env('CDN_Static')}}/images/designer/snapchat@2x.png 2x,{{env('CDN_Static')}}/images/designer/snapchat@3x.png 3x">
                             </a>
                         @endif
                         @if(!empty($designer['youtube_link']))
-                            <a href="motif://o.c?a=outurl&url={{$designer['youtube_link']}}" target="_blank"
+                            <a href="motif://o.c?from=designer_detail&from_id={{$designer['designer_id']}}&a=outurl&url={{$designer['youtube_link']}}" target="_blank"
                                class="p-r-20x SocialMedia">
                                 <img src="{{env('CDN_Static')}}/images/designer/youtube.png"
                                      srcset="{{env('CDN_Static')}}/images/designer/youtube@2x.png 2x,{{env('CDN_Static')}}/images/designer/youtube@3x.png 3x">
                             </a>
                         @endif
                         @if(!empty($designer['facebook_link']))
-                            <a href="motif://o.c?a=outurl&url={{$designer['facebook_link']}}" target="_blank"
+                            <a href="motif://o.c?from=designer_detail&from_id={{$designer['designer_id']}}&a=outurl&url={{$designer['facebook_link']}}" target="_blank"
                                class="p-r-20x SocialMedia">
                                 <img src="{{env('CDN_Static')}}/images/designer/facebook.png"
                                      srcset="{{env('CDN_Static')}}/images/designer/facebook@2x.png 2x,{{env('CDN_Static')}}/images/designer/facebook@3x.png 3x">
                             </a>
                         @endif
                         @if(!empty($designer['blog_link']))
-                            <a href="motif://o.c?a=outurl&url={{$designer['blog_link']}}" target="_blank"
+                            <a href="motif://o.c?from=designer_detail&from_id={{$designer['designer_id']}}&a=outurl&url={{$designer['blog_link']}}" target="_blank"
                                class="p-r-20x SocialMedia">
                                 <img src="{{env('CDN_Static')}}/images/designer/blog.png"
                                      srcset="{{env('CDN_Static')}}/images/designer/blog@2x.png 2x,{{env('CDN_Static')}}/images/designer/blog@3x.png 3x">
@@ -302,7 +302,7 @@
                             @if(!isset($value['skipType']) || empty($value['skipId']))
                                 <a href="javascript:void(0)">
                                     @else
-                                        <a data-link="@if($value['skipType']=='1')motif://o.c?a=pd&spu={{$value['skipId']}}@elseif($value['skipType']=='2')/designer/{{$value['skipId']}}@elseif($value['skipType']=='3')/topic/{{$value['skipId']}}@elseif($value['skipType']=='4')motif://o.c?a=shoppinglist&cid={{$value['skipId']}}@else{{'motif://o.c?a=outurl&url='.urlencode($value['skipId'])}}@endif"
+                                        <a data-link="@if($value['skipType']=='1')motif://o.c?from=designer_detail&from_id={{$designer['designer_id']}}&a=pd&spu={{$value['skipId']}}@elseif($value['skipType']=='2')/designer/{{$value['skipId']}}@elseif($value['skipType']=='3')/topic/{{$value['skipId']}}@elseif($value['skipType']=='4')motif://o.c?from=designer_detail&from_id={{$designer['designer_id']}}&a=shoppinglist&cid={{$value['skipId']}}@else{{'motif://o.c?from=designer_detail&from_id=' + $designer['designer_id'] + '&a=outurl&url='.urlencode($value['skipId'])}}@endif"
                                            data-impr='{{ config('app.clk_url') }}/log.gif?t=designer.400001&m=H5_M2016-1&pin={{Session::get('user.pin')}}&uuid={{Session::has('user') ? Session::get('user.uuid') : $_COOKIE['uid']}}&v={"action":0,"skipType":"{{$value['skipType']}}","skipId":"{{$value['skipId']}}","expid":0,"index":"{{$k}}","version":"1.0.1","ver":"9.2","src":"H5"}'
                                            data-clk='{{ config('app.clk_url') }}/log.gif?t=designer.400001&m=H5_M2016-1&pin={{Session::get('user.pin')}}&uuid={{Session::has('user') ? Session::get('user.uuid') : $_COOKIE['uid']}}&v={"action":1,"skipType":"{{$value['skipType']}}","skipId":"{{$value['skipId']}}","expid":0,"index":"{{$k}}","version":"1.0.1","ver":"9.2","src":"H5"}'
                                            href="javascript:void(0)">
@@ -314,7 +314,7 @@
                                         </a>
                                         @elseif($value['type']=='title')
                                             {{--标题--}}
-                                            <a data-link="@if($value['skipType']=='1')motif://o.c?a=pd&spu={{$value['skipId']}}@elseif($value['skipType']=='2')/designer/{{$value['skipId']}}@elseif($value['skipType']=='3')/topic/{{$value['skipId']}}@elseif($value['skipType']=='4')motif://o.c?a=shoppinglist&cid={{$value['skipId']}}@else{{'motif://o.c?a=outurl&url='.urlencode($value['skipId'])}}@endif"
+                                            <a data-link="@if($value['skipType']=='1')motif://o.c?from=designer_detail&from_id={{$designer['designer_id']}}&a=pd&spu={{$value['skipId']}}@elseif($value['skipType']=='2')/designer/{{$value['skipId']}}@elseif($value['skipType']=='3')/topic/{{$value['skipId']}}@elseif($value['skipType']=='4')motif://o.c?from=designer_detail&from_id={{$designer['designer_id']}}&a=shoppinglist&cid={{$value['skipId']}}@else{{'motif://o.c?from=designer_detail&from_id=' + $designer['designer_id'] + '&a=outurl&url='.urlencode($value['skipId'])}}@endif"
                                                data-impr='{{ config('app.clk_url') }}/log.gif?t=designer.400001&m=H5_M2016-1&pin={{Session::get('user.pin')}}&uuid={{Session::has('user') ? Session::get('user.uuid') : $_COOKIE['uid']}}&v={"action":0,"skipType":"{{$value['skipType']}}","skipId":"{{$value['skipId']}}","expid":0,"index":"{{$k}}","version":"1.0.1","ver":"9.2","src":"H5"}'
                                                data-clk='{{ config('app.clk_url') }}/log.gif?t=designer.400001&m=H5_M2016-1&pin={{Session::get('user.pin')}}&uuid={{Session::has('user') ? Session::get('user.uuid') : $_COOKIE['uid']}}&v={"action":1,"skipType":"{{$value['skipType']}}","skipId":"{{$value['skipId']}}","expid":0,"index":"{{$k}}","version":"1.0.1","ver":"9.2","src":"H5"}'
                                                href="javascript:void(0)">
@@ -326,7 +326,7 @@
                                             <hr class="hr-base m-x-5x m-y-0">
                                         @elseif($value['type']=='context')
                                             {{--描述--}}
-                                            <a data-link="@if($value['skipType']=='1')motif://o.c?a=pd&spu={{$value['skipId']}}@elseif($value['skipType']=='2')/designer/{{$value['skipId']}}@elseif($value['skipType']=='3')/topic/{{$value['skipId']}}@elseif($value['skipType']=='4')motif://o.c?a=shoppinglist&cid={{$value['skipId']}}@else{{'motif://o.c?a=outurl&url='.urlencode($value['skipId'])}}@endif"
+                                            <a data-link="@if($value['skipType']=='1')motif://o.c?from=designer_detail&from_id={{$designer['designer_id']}}&a=pd&spu={{$value['skipId']}}@elseif($value['skipType']=='2')/designer/{{$value['skipId']}}@elseif($value['skipType']=='3')/topic/{{$value['skipId']}}@elseif($value['skipType']=='4')motif://o.c?from=designer_detail&from_id={{$designer['designer_id']}}&a=shoppinglist&cid={{$value['skipId']}}@else{{'motif://o.c?from=designer_detail&from_id=' + $designer['designer_id'] + '&a=outurl&url='.urlencode($value['skipId'])}}@endif"
                                                data-impr='{{ config('app.clk_url') }}/log.gif?t=designer.400001&m=H5_M2016-1&pin={{Session::get('user.pin')}}&uuid={{Session::has('user') ? Session::get('user.uuid') : $_COOKIE['uid']}}&v={"action":0,"skipType":"{{$value['skipType']}}","skipId":"{{$value['skipId']}}","expid":0,"index":"{{$k}}","version":"1.0.1","ver":"9.2","src":"H5"}'
                                                data-clk='{{ config('app.clk_url') }}/log.gif?t=designer.400001&m=H5_M2016-1&pin={{Session::get('user.pin')}}&uuid={{Session::has('user') ? Session::get('user.uuid') : $_COOKIE['uid']}}&v={"action":1,"skipType":"{{$value['skipType']}}","skipId":"{{$value['skipId']}}","expid":0,"index":"{{$k}}","version":"1.0.1","ver":"9.2","src":"H5"}'
                                                href="javascript:void(0)">
@@ -341,7 +341,7 @@
                                                     <div data-impr='{{ config('app.clk_url') }}/log.gif?t=designer.400001&m=H5_M2016-1&pin={{ Session::get('user.pin') }}&uuid={{Session::has('user') ? Session::get('user.uuid') : $_COOKIE['uid']}}&v={"action":0,"skipType":1,"skipId":"{{ implode("_", $value['spus']) }}","expid":0,"index":"{{$key}}","version":"1.0.1","ver":"9.2","src":"H5"}'></div>
                                                     @foreach($value['spus'] as $spu)
                                                         <div class="p-x-15x p-y-10x">
-                                                            <a data-link="motif://o.c?a=pd&spu={{$spu}}"
+                                                            <a data-link="motif://o.c?from=designer_detail&from_id={{$designer['designer_id']}}&a=pd&spu={{$spu}}"
                                                                data-clk='{{ config('app.clk_url') }}/log.gif?t=designer.400001&m=H5_M2016-1&pin={{ Session::get('user.pin') }}&uuid={{Session::has('user') ? Session::get('user.uuid') : $_COOKIE['uid']}}&v={"action":1,"skipType":1,"skipId":"{{$spu}}","expid":0,"index":"{{$key}}","version":"1.0.1","ver":"9.2","src":"H5"}'
                                                                href="javascript:void(0)" data-spu="{{$spu}}"
                                                                data-title="{{$product['spuInfos'][$spu]['spuBase']['main_title']}}"
@@ -363,7 +363,7 @@
                                                             @foreach($value['spus'] as $key => $spu)
                                                                 <div class="col-xs-6 p-a-0">
                                                                     <div class="topic-product-item productList-item">
-                                                                        <a data-link="motif://o.c?a=pd&spu={{$spu}}"
+                                                                        <a data-link="motif://o.c?from=designer_detail&from_id={{$designer['designer_id']}}&a=pd&spu={{$spu}}"
                                                                            data-clk='{{ config('app.clk_url') }}/log.gif?t=designer.400001&m=H5_M2016-1&pin={{ Session::get('user.pin') }}&uuid={{Session::has('user') ? Session::get('user.uuid') : $_COOKIE['uid']}}&v={"action":1,"skipType":1,"skipId":"{{$spu}}","expid":0,"index":"{{$key}}","version":"1.0.1","ver":"9.2","src":"H5"}'
                                                                            href="javascript:void(0)" data-spu="{{$spu}}"
                                                                            data-title="{{$product['spuInfos'][$spu]['spuBase']['main_title']}}"
@@ -376,7 +376,7 @@
                                                                                 @if(1 == $product['spuInfos'][$spu]['spuBase']['sale_type'])
                                                                                     {{--预售产品 预定信息--}}
                                                                                     @if($product['spuInfos'][$spu]['stockStatus']=='NO' || $product['spuInfos'][$spu]['spuBase']['isPutOn']==0)
-                                                                                        <a data-link="motif://o.c?a=pd&spu={{$spu}}"
+                                                                                        <a data-link="motif://o.c?from=designer_detail&from_id={{$designer['designer_id']}}&a=pd&spu={{$spu}}"
                                                                                            data-clk='{{ config('app.clk_url') }}/log.gif?t=designer.400001&m=H5_M2016-1&pin={{ Session::get('user.pin') }}&uuid={{Session::has('user') ? Session::get('user.uuid') : $_COOKIE['uid']}}&v={"action":1,"skipType":1,"skipId":"{{$spu}}","expid":0,"index":"{{$key}}","version":"1.0.1","ver":"9.2","src":"H5"}'
                                                                                            href="javascript:void(0)"
                                                                                            data-spu="{{$spu}}"
@@ -439,7 +439,7 @@
                                                     <div class="col-xs-6 p-a-0">
                                                         <div class="topic-product-item productList-item">
                                                             <a data-clk='{{ $value['clk'] }}'
-                                                               data-link="motif://o.c?a=pd&spu={{$value['spu']}}"
+                                                               data-link="motif://o.c?from=designer_detail&from_id={{$designer['designer_id']}}&a=pd&spu={{$value['spu']}}"
                                                                data-impr="{{ $value['impr'] }}"
                                                                href="javascript:void(0)"
                                                                data-spu="{{$value['spu']}}"
