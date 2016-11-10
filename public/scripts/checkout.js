@@ -362,7 +362,7 @@
                 $('.warning-info').children('span').text('Please enter your ' + ChildLabel + ' !');
                 // 判断是否在添加卡页面
                 if ($('#payment-checkBox').length > 0) {
-                    $('#btn-submitAddCard').addClass('disabled');
+                    $('.btn-submitAddCard').addClass('disabled');
                 } else {
                     $('#btn-submitEditorAddress').addClass('disabled');
                 }
@@ -413,7 +413,7 @@
             if ($('#payment-checkBox').length > 0) {
                 if (input_validate($('input[name="card"]')) && input_validate($('input[name="expiry"]')) && input_validate($('input[name="cvv"]')) && input_validate($('input[name="name"]')) && input_validate($('input[name="addr1"]')) && input_validate($('input[name="city"]')) && input_validate($('input[name="zip"]')) && input_validate($('input[name="tel"]'))) {
                     $('.warning-info').addClass('hidden-xs-up');
-                    $('#btn-submitAddCard').removeClass('disabled');
+                    $('.btn-submitAddCard').removeClass('disabled');
                 }
             } else {
                 if (input_validate($('input[name="name"]')) && input_validate($('input[name="addr1"]')) && input_validate($('input[name="city"]')) && input_validate($('input[name="zip"]')) && input_validate($('input[name="tel"]'))) {
@@ -503,7 +503,7 @@
             $('#btn-submitEditorAddress').removeClass('disabled');
             // 判断是否在添加卡页面
             if ($('#payment-checkBox').length > 0) {
-                $('#btn-submitAddCard').removeClass('disabled');
+                $('.btn-submitAddCard').removeClass('disabled');
             }
         } else {
             $('.warning-info').removeClass('hidden-xs-up');
@@ -511,7 +511,7 @@
             $('#btn-submitEditorAddress').addClass('disabled');
             // 判断是否在添加卡页面
             if ($('#payment-checkBox').length > 0) {
-                $('#btn-submitAddCard').addClass('disabled');
+                $('.btn-submitAddCard').addClass('disabled');
             }
         }
     });
@@ -522,10 +522,10 @@
         if ($('#payment-checkBox').length > 0) {
             if (input_validate($('input[name="card"]')) && input_validate($('input[name="expiry"]')) && input_validate($('input[name="cvv"]')) && input_validate($('input[name="name"]')) && input_validate($('input[name="addr1"]')) && input_validate($('input[name="city"]')) && input_validate($('input[name="zip"]')) && input_validate($('input[name="tel"]')) && input_validate($(this))) {
                 $('.warning-info').addClass('hidden-xs-up');
-                $('#btn-submitAddCard').removeClass('disabled');
+                $('.btn-submitAddCard').removeClass('disabled');
             } else {
                 $('.warning-info').removeClass('hidden-xs-up');
-                $('#btn-submitAddCard').addClass('disabled');
+                $('.btn-submitAddCard').addClass('disabled');
             }
         } else {
             if (input_validate($('input[name="name"]')) && input_validate($('input[name="addr1"]')) && input_validate($('input[name="city"]')) && input_validate($('input[name="zip"]')) && input_validate($('input[name="tel"]')) && input_validate($(this))) {
@@ -607,7 +607,7 @@
     });
 
     // 取消添加卡信息
-    $('#btn-cancelAddCard').on('click', function () {
+    $('.btn-cancelAddCard').on('click', function () {
         toPage($('.shipping-payment'));
     });
 
@@ -659,12 +659,12 @@
             $('input[name="addr1"]').val(OldAddr1);
             $('input[name="addr2"]').val(OldAddr2);
             $('input[name="zip"]').val(OldZip);
-            //$('#btn-submitAddCard').removeClass('disabled');
+            //$('.btn-submitAddCard').removeClass('disabled');
             // 初始化 国家,洲
             initCityState(OldCountryName, StateName);
 
             if ($('#card-warning').hasClass('hidden-xs-up')) {
-                //$('#btn-submitAddCard').removeClass('disabled');
+                //$('.btn-submitAddCard').removeClass('disabled');
             }
         } else {
             //初始化 修改地址 from 表单
@@ -675,7 +675,7 @@
             $('input[name="addr1"]').val('');
             $('input[name="addr2"]').val('');
             $('input[name="zip"]').val('');
-            $('#btn-submitAddCard').addClass('disabled');
+            $('.btn-submitAddCard').addClass('disabled');
             // 初始化 国家,洲
             initCityState(NewCountryName, '');
         }
@@ -689,7 +689,7 @@
     });
 
     // 提交卡信息
-    $('#btn-submitAddCard').on('click', function () {
+    $('.btn-submitAddCard').on('click', function () {
         openLoading();
         $.ajax({
             url: '/checkout/addcard',
