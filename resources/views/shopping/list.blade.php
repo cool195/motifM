@@ -182,7 +182,7 @@
             </div>
             <div class="price-caption">
 
-                @{{ if $value.skuPrice.sale_price !== $value.skuPrice.price }}
+                @{{ if $value.skuPrice.sale_price != $value.skuPrice.price }}
                 <span class="font-size-sm m-l-5x text-red">
                     <strong>$@{{ ($value.skuPrice.sale_price/100).toFixed(2) }}</strong>
                 </span>
