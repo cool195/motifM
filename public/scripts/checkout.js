@@ -698,7 +698,7 @@
         })
             .done(function (data) {
                 if (data.success) {
-                    window.location.href = '/checkout/payment';
+                    window.location.href = '/checkout/payment?from='+$('#shipping-payment').data('ref');
                 } else {
                     $('.warning-info').removeClass('hidden-xs-up');
                     $('.warning-info').children('span').html(data.prompt_msg);
