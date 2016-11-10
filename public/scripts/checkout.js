@@ -602,6 +602,13 @@
         toPage($('.shipping-addCard'));
         var CountryName = $('#btn-toCountryList').data('oldcountry');
         var StateName = $('.state-info').data('oldstate');
+        if($(this).data('method')=='Oceanpay'){
+            $('#img-amex').css('display','none');
+            $('#img-jcb').css('display','none');
+        }else{
+            $('#img-amex').css('display','inline-flex');
+            $('#img-jcb').css('display','inline-flex');
+        }
         // 初始化 国家,洲
         initCityState(CountryName, StateName);
     });

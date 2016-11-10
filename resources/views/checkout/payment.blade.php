@@ -41,7 +41,7 @@
                     <!-- card 列表 -->
                     @foreach($payInfo as $value)
                         <div class="@if(Session::get('user.checkout.paywith.pay_type')==$value['pay_type']) active @endif flex flex-alignCenter flex-fullJustified font-size-sm p-a-15x @if(isset($value['creditCards'])) btn-toAddCard @else clickPayWith @endif"
-                             data-type="{{$value['pay_type']}}" data-card="0">
+                             data-type="{{$value['pay_type']}}" data-card="0" data-method="{{$value['pay_method']}}">
                             <span>{{$value['pay_name']}}</span>
                             <i class="iconfont @if(isset($value['creditCards'])) icon-arrow-right @else icon-check @endif icon-size-md text-common"></i>
                         </div>
