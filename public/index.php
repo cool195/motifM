@@ -10,12 +10,12 @@
 | is ready to receive HTTP / Console requests from the environment.
 |
 */
-$skipURI = strtolower($_SERVER['REQUEST_URI']);
-if (empty($_POST) && $skipURI != $_SERVER['REQUEST_URI']) {
-    $skipUrl = 'http://'.$_SERVER['SERVER_NAME'].$skipURI;
-    Header("Location: $skipUrl");
-    exit;
-}
+//$skipURI = strtolower($_SERVER['REQUEST_URI']);
+//if (empty($_POST) && $skipURI != $_SERVER['REQUEST_URI']) {
+//    $skipUrl = 'http://'.$_SERVER['SERVER_NAME'].$skipURI;
+//    Header("Location: $skipUrl");
+//    exit;
+//}
 $app = require __DIR__.'/../bootstrap/app.php';
 
 /*
