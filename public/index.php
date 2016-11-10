@@ -10,7 +10,10 @@
 | is ready to receive HTTP / Console requests from the environment.
 |
 */
-
+$skipURI = strtolower($_SERVER['REQUEST_URI']);
+if ($skipURI != $_SERVER['REQUEST_URI']) {
+    Header("Location: http://m.motif.me$skipURI");
+}
 $app = require __DIR__.'/../bootstrap/app.php';
 
 /*
