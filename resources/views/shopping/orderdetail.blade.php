@@ -144,7 +144,27 @@
                     @if("PayPal" == $data['pay_type'] || "PayPalNative" == $data['pay_type'])
                         <span class="cardImage-inline paypal"></span>
                     @else
-                        <span class="cardImage-inline cardCredit"></span>
+                        @if($data['orderPayInfo']['card_type']=='Visa')
+                            <span class="p-l-10x"><img
+                                        src="{{env('CDN_Static')}}/images/payment/icon-visa.png{{'?v='.config('app.version')}}"
+                                        srcset="{{env('CDN_Static')}}/images/payment/icon-visa@2x.png{{'?v='.config('app.version')}} 2x, {{env('CDN_Static')}}/images/payment/icon-visa@3x.png{{'?v='.config('app.version')}} 3x"
+                                        alt=""></span>
+                        @elseif($data['orderPayInfo']['card_type']=='MasterCard')
+                            <span class="p-l-10x"><img
+                                        src="{{env('CDN_Static')}}/images/payment/icon-mastercard.png{{'?v='.config('app.version')}}"
+                                        srcset="{{env('CDN_Static')}}/images/payment/icon-mastercard@2x.png{{'?v='.config('app.version')}} 2x, {{env('CDN_Static')}}/images/payment/icon-mastercard@3x.png{{'?v='.config('app.version')}} 3x"
+                                        alt=""></span>
+                        @elseif($data['orderPayInfo']['card_type']=='AmericanExpress')
+                            <span class="p-l-10x"><img
+                                        src="{{env('CDN_Static')}}/images/payment/icon-americanexpress.png{{'?v='.config('app.version')}}"
+                                        srcset="{{env('CDN_Static')}}/images/payment/icon-americanexpress@2x.png{{'?v='.config('app.version')}} 2x, {{env('CDN_Static')}}/images/payment/icon-americanexpress@3x.png{{'?v='.config('app.version')}} 3x"
+                                        alt=""></span>
+                        @elseif($data['orderPayInfo']['card_type']=='JCB')
+                            <span class="p-l-10x"><img
+                                        src="{{env('CDN_Static')}}/images/payment/icon-jcb.png{{'?v='.config('app.version')}}"
+                                        srcset="{{env('CDN_Static')}}/images/payment/icon-jcb@2x.png{{'?v='.config('app.version')}} 2x, {{env('CDN_Static')}}/images/payment/icon-jcb@3x.png{{'?v='.config('app.version')}} 3x"
+                                        alt=""></span>
+                        @endif
                     @endif
                     <span class="m-l-10x">{{$data['orderPayInfo']['show_name']}}</span>
                 </div>
