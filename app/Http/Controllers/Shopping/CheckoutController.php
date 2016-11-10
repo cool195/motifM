@@ -361,6 +361,9 @@ class CheckoutController extends ApiController
             'pin' => Session::get('user.pin'),
             'cd' => $id,
         );
+        if(Session::get('user.checkout.paywith.withCard.card_id')==$id){
+            Session::forget('user.checkout.paywith');
+        }
         return $this->request('openapi', '', 'pay', $params);
     }
 
