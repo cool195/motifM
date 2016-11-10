@@ -4,6 +4,7 @@
 |--------------------------------------------------------------------------
 | Create The Application
 |--------------------------------------------------------------------------
+|
 | First we need to get an application instance. This creates an instance
 | of the application / container and bootstraps the application so it
 | is ready to receive HTTP / Console requests from the environment.
@@ -11,7 +12,7 @@
 */
 $skipURI = strtolower($_SERVER['REQUEST_URI']);
 if (empty($_POST) && $skipURI != $_SERVER['REQUEST_URI']) {
-    $skipUrl = $_SERVER['SERVER_NAME'].$skipURI;
+    $skipUrl = 'http://'.$_SERVER['SERVER_NAME'].$skipURI;
     Header("Location: $skipUrl");
     exit;
 }
