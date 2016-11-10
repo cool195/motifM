@@ -29,7 +29,7 @@ $app->group(['middleware' => 'pcguide', 'namespace' => 'App\Http\Controllers'], 
     //$app->get('/forgetpwd', 'Shopping\UserController@forgetPWD');
     //$app->post('/forgetpwd', 'Shopping\UserController@forgetPWD');
 
-    $app->get('/addfacebookEmail', 'Auth\AuthController@addFacebookEmail');
+    $app->get('/addFacebookEmail', 'Auth\AuthController@addFacebookEmail');
     $app->get('/facebookstatus/{trdid}', 'Auth\AuthController@faceBookAuthStatus');
     $app->get('methodlist', 'Shopping\BraintreeController@methodlist');
 
@@ -45,11 +45,11 @@ $app->group(['middleware' => 'pcguide|logincheck', 'namespace' => 'App\Http\Cont
     $app->get('/checkout/review', 'CheckoutController@review');
     $app->post('/checkout/addcard', 'CheckoutController@addCard');
     $app->post('/checkout/address', 'CheckoutController@addUserAddr');
-    $app->get('/checkout/seladdr/{aid}', 'CheckoutController@selAddr');
-    $app->post('/updateUseraddr/{aid}', 'CheckoutController@updateUserAddr');
-    $app->get('/checkout/selship/{type}', 'CheckoutController@selShip');
+    $app->get('/checkout/selAddr/{aid}', 'CheckoutController@selAddr');
+    $app->post('/updateUserAddr/{aid}', 'CheckoutController@updateUserAddr');
+    $app->get('/checkout/selShip/{type}', 'CheckoutController@selShip');
     $app->get('/checkout/paywith/{type}/{cardid}', 'CheckoutController@paywith');
-    $app->get('/checkout/selcode/{bindid}', 'CheckoutController@selCode');
+    $app->get('/checkout/selCode/{bindid}', 'CheckoutController@selCode');
     $app->post('/delcard/{id}', 'CheckoutController@deleteCard');
 
     $app->get('/feed', 'ShoppingController@feedback');
@@ -112,7 +112,7 @@ $app->group(['middleware' => 'pcguide|logincheck', 'namespace' => 'App\Http\Cont
     $app->post('/user/modifyUserPwd', 'UserController@modifyUserPwd');
     $app->get('/user/trilogin', 'UserController@tryPrtLogin');
     $app->get('/user/userdetail', 'UserController@getUserDetailInfo');
-    $app->get('/user/modifyuserinfo', 'UserController@modifyUserInfo');
+    $app->get('/user/modifyUserInfo', 'UserController@modifyUserInfo');
     $app->post('/user/modifyUserInfo', 'UserController@modifyUserInfo');
     $app->put('/user/uuid', 'UserController@saveUUID');
 
@@ -123,7 +123,7 @@ $app->group(['middleware' => 'pcguide|logincheck', 'namespace' => 'App\Http\Cont
     $app->get('/orders', 'OrderController@getOrderList');
     $app->get('/order/orderdetail/{subno}', 'OrderController@orderDetail');
     $app->get('/orderdetail/{subno}', 'OrderController@getOrderDetail');
-    $app->get('/order/ordersubmit', 'OrderController@orderSubmit');
+    $app->get('/order/orderSubmit', 'OrderController@orderSubmit');
     //old
     $app->post('/order/orderSubmit', 'OrderController@orderSubmit');
     //new
@@ -148,7 +148,7 @@ $app->group(['middleware' => 'pcguide|logincheck', 'namespace' => 'App\Http\Cont
     //paypal
     $app->get('/paypalorder', 'PaypalController@index');
     $app->get('/paypal', 'PaypalController@paypal');
-    $app->get('/payagain/{orderid}/{paytype}','OrderController@orderPayInfo');
+    $app->get('/payAgain/{orderid}/{paytype}','OrderController@orderPayInfo');
     //钱海
     $app->get('/qianhai', 'QianhaiController@index');
 });
@@ -176,7 +176,7 @@ $app->group(['middleware' => 'pcguide', 'namespace' => 'App\Http\Controllers\Sho
     $app->post('/user/signup', 'UserController@signup');
     $app->get('/reset', 'UserController@reset');
     $app->post('/user/forget', 'UserController@forgetPassword');
-    $app->get('/user/resetpwd', 'UserController@resetPassword');
+    $app->get('/user/resetPwd', 'UserController@resetPassword');
     $app->get('/forgetpwd', 'UserController@forgetPWD');
     $app->post('/forgetpwd', 'UserController@forgetPWD');
 
@@ -191,7 +191,7 @@ $app->group(['middleware' => 'pcguide|logincheck', 'namespace' => 'App\Http\Cont
 });
 
 $app->group(['middleware' => 'logincheck','namespace' => 'App\Http\Controllers\Designer'], function ($app) {
-    $app->get('/followdesigner/{id:[0-9]+}', 'DesignerController@follow');
+    $app->get('/followDesigner/{id:[0-9]+}', 'DesignerController@follow');
     $app->get('/following', 'DesignerController@following');
 });
 
@@ -231,6 +231,12 @@ $app->get('/apptest', 'Other\PageController@apptest');
 
 //rae网红
 $app->get('rae', function (){
+    return redirect("/designer/99".($_SERVER["QUERY_STRING"] ? '?'.$_SERVER["QUERY_STRING"] : ''));
+});
+$app->get('/Rae', function (){
+    return redirect("/designer/99".($_SERVER["QUERY_STRING"] ? '?'.$_SERVER["QUERY_STRING"] : ''));
+});
+$app->get('/RAE', function (){
     return redirect("/designer/99".($_SERVER["QUERY_STRING"] ? '?'.$_SERVER["QUERY_STRING"] : ''));
 });
 $app->get('/downapp','Other\PageController@downapp');
