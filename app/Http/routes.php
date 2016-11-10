@@ -29,7 +29,7 @@ $app->group(['middleware' => 'pcguide', 'namespace' => 'App\Http\Controllers'], 
     //$app->get('/forgetpwd', 'Shopping\UserController@forgetPWD');
     //$app->post('/forgetpwd', 'Shopping\UserController@forgetPWD');
 
-    $app->get('/addfacebookemail', 'Auth\AuthController@addFacebookEmail');
+    $app->get('/addFacebookEmail', 'Auth\AuthController@addFacebookEmail');
     $app->get('/facebookstatus/{trdid}', 'Auth\AuthController@faceBookAuthStatus');
     $app->get('methodlist', 'Shopping\BraintreeController@methodlist');
 
@@ -45,11 +45,11 @@ $app->group(['middleware' => 'pcguide|logincheck', 'namespace' => 'App\Http\Cont
     $app->get('/checkout/review', 'CheckoutController@review');
     $app->post('/checkout/addcard', 'CheckoutController@addCard');
     $app->post('/checkout/address', 'CheckoutController@addUserAddr');
-    $app->get('/checkout/seladdr/{aid}', 'CheckoutController@selAddr');
-    $app->post('/updateUseraddr/{aid}', 'CheckoutController@updateUserAddr');
+    $app->get('/checkout/selAddr/{aid}', 'CheckoutController@selAddr');
+    $app->post('/updateUserAddr/{aid}', 'CheckoutController@updateUserAddr');
     $app->get('/checkout/selShip/{type}', 'CheckoutController@selShip');
     $app->get('/checkout/paywith/{type}/{cardid}', 'CheckoutController@paywith');
-    $app->get('/checkout/selcode/{bindid}', 'CheckoutController@selCode');
+    $app->get('/checkout/selCode/{bindid}', 'CheckoutController@selCode');
     $app->post('/delcard/{id}', 'CheckoutController@deleteCard');
 
     $app->get('/feed', 'ShoppingController@feedback');
@@ -74,9 +74,9 @@ $app->group(['middleware' => 'pcguide|logincheck', 'namespace' => 'App\Http\Cont
     $app->get('/cart/savelist', 'CartController@getCartSaveList');
     $app->patch('/cart', 'CartController@addCart');
     $app->put('/cart', 'CartController@promptlyBuy');
-    $app->post('/cart/addbatchcart', 'CartController@addBatchCart');
-    $app->get('/cart/alterqtty', 'CartController@alterCartProQtty');
-    $app->post('/cart/alterqtty', 'CartController@alterCartProQtty');
+    $app->post('/cart/addBatchCart', 'CartController@addBatchCart');
+    $app->get('/cart/alterQtty', 'CartController@alterCartProQtty');
+    $app->post('/cart/alterQtty', 'CartController@alterCartProQtty');
     $app->get('/cart/operate', 'CartController@operateCartProduct');
     $app->post('/cart/operate', 'CartController@operateCartProduct');
     $app->post('/cart/verifycoupon', 'CartController@verifyCoupon');
@@ -89,7 +89,7 @@ $app->group(['middleware' => 'pcguide|logincheck', 'namespace' => 'App\Http\Cont
     $app->get('/addr/default', 'AddressController@getUserDefaultAddr');
     $app->get('/addr/add', 'AddressController@addUserAddr');
     $app->post('/addr/add', 'AddressController@addUserAddr');
-    $app->post('/useraddr/adduseraddress', 'AddressController@addUserAddr');
+    $app->post('/useraddr/addUserAddress', 'AddressController@addUserAddr');
     $app->get('/addr/modify', 'AddressController@modifyUserAddr');
     $app->post('/addr/modify', 'AddressController@modifyUserAddr');
     $app->get('/addr/mdefault', 'AddressController@modifyUserDefaultAddr');
@@ -109,14 +109,14 @@ $app->group(['middleware' => 'pcguide|logincheck', 'namespace' => 'App\Http\Cont
     $app->get('/user/changepassword', 'UserController@changePassword');
 
     $app->get('/user/signout', 'UserController@signout');
-    $app->post('/user/modifyuserpwd', 'UserController@modifyUserPwd');
+    $app->post('/user/modifyUserPwd', 'UserController@modifyUserPwd');
     $app->get('/user/trilogin', 'UserController@tryPrtLogin');
     $app->get('/user/userdetail', 'UserController@getUserDetailInfo');
-    $app->get('/user/modifyuserinfo', 'UserController@modifyUserInfo');
-    $app->post('/user/modifyuserinfo', 'UserController@modifyUserInfo');
+    $app->get('/user/modifyUserInfo', 'UserController@modifyUserInfo');
+    $app->post('/user/modifyUserInfo', 'UserController@modifyUserInfo');
     $app->put('/user/uuid', 'UserController@saveUUID');
 
-    $app->post('/useraddr/adduseraddress', 'AddressController@addUserAddr');
+    $app->post('/useraddr/addUserAddress', 'AddressController@addUserAddr');
 
     $app->get('/shopping/orderlist', 'OrderController@index');
     $app->get('/order/orderlist', 'OrderController@index');
@@ -134,7 +134,7 @@ $app->group(['middleware' => 'pcguide|logincheck', 'namespace' => 'App\Http\Cont
 
     $app->get('/wishlist', 'ShoppingController@wishlist');
 
-    $app->post('/updatewish', 'ShoppingController@updateWish');
+    $app->post('/updateWish', 'ShoppingController@updateWish');
 
     //promocode
     $app->get('/promocode', 'UserController@promocode');
@@ -148,7 +148,7 @@ $app->group(['middleware' => 'pcguide|logincheck', 'namespace' => 'App\Http\Cont
     //paypal
     $app->get('/paypalorder', 'PaypalController@index');
     $app->get('/paypal', 'PaypalController@paypal');
-    $app->get('/payagain/{orderid}/{paytype}','OrderController@orderPayInfo');
+    $app->get('/payAgain/{orderid}/{paytype}','OrderController@orderPayInfo');
     //钱海
     $app->get('/qianhai', 'QianhaiController@index');
 });
@@ -166,7 +166,7 @@ $app->group(['middleware' => 'pcguide', 'namespace' => 'App\Http\Controllers\Sho
     $app->get('/products/{spu}', 'ProductController@getProductDetail');
     $app->get('/detail/{spu}', 'ProductController@index');
 
-    $app->post('/rsynclogin', 'UserController@rsyncLogin');
+    $app->post('/rsyncLogin', 'UserController@rsyncLogin');
     $app->get('/login', 'UserController@login');
     $app->patch('/login', 'UserController@login');
     $app->get('/user/logincheck', 'UserController@loginCheck');
@@ -176,7 +176,7 @@ $app->group(['middleware' => 'pcguide', 'namespace' => 'App\Http\Controllers\Sho
     $app->post('/user/signup', 'UserController@signup');
     $app->get('/reset', 'UserController@reset');
     $app->post('/user/forget', 'UserController@forgetPassword');
-    $app->get('/user/resetpwd', 'UserController@resetPassword');
+    $app->get('/user/resetPwd', 'UserController@resetPassword');
     $app->get('/forgetpwd', 'UserController@forgetPWD');
     $app->post('/forgetpwd', 'UserController@forgetPWD');
 
@@ -191,7 +191,7 @@ $app->group(['middleware' => 'pcguide|logincheck', 'namespace' => 'App\Http\Cont
 });
 
 $app->group(['middleware' => 'logincheck','namespace' => 'App\Http\Controllers\Designer'], function ($app) {
-    $app->get('/followdesigner/{id:[0-9]+}', 'DesignerController@follow');
+    $app->get('/followDesigner/{id:[0-9]+}', 'DesignerController@follow');
     $app->get('/following', 'DesignerController@following');
 });
 
