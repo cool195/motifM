@@ -10,13 +10,16 @@
 | is ready to receive HTTP / Console requests from the environment.
 |
 */
-//$skipURI = strtolower($_SERVER['REQUEST_URI']);
-//if (empty($_POST) && $skipURI != $_SERVER['REQUEST_URI']) {
-//    $skipUrl = 'http://'.$_SERVER['SERVER_NAME'].$skipURI;
-//    Header("Location: $skipUrl");
-//    exit;
-//}
-$app = require __DIR__.'/../bootstrap/app.php';
+if (strtolower($_SERVER['REQUEST_URI']) == '/rae' && $_SERVER['REQUEST_URI'] != '/rae') {
+    $skipUrl = ($_SERVER['SERVER_NAME'] == 'm.motif.me' ? 'https://' : 'http://') . $_SERVER['SERVER_NAME'] . '/rae';
+    Header("Location: $skipUrl");
+    exit;
+} elseif (strtolower($_SERVER['REQUEST_URI']) == '/cassandra' && $_SERVER['REQUEST_URI'] != '/cassandra') {
+    $skipUrl = ($_SERVER['SERVER_NAME'] == 'm.motif.me' ? 'https://' : 'http://') . $_SERVER['SERVER_NAME'] . '/cassandra';
+    Header("Location: $skipUrl");
+    exit;
+}
+$app = require __DIR__ . '/../bootstrap/app.php';
 
 /*
 |--------------------------------------------------------------------------
