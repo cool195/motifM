@@ -134,7 +134,7 @@
                                 {{Session::get('user.checkout.couponInfo.cp_title')}}
                                  </span>
                             @else
-                                <span class="request text-common">
+                                <span class="text-common">
                                     None
                                 </span>
                             @endif

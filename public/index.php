@@ -11,8 +11,9 @@
 |
 */
 $skipURI = strtolower($_SERVER['REQUEST_URI']);
-if ($skipURI != $_SERVER['REQUEST_URI']) {
-    Header("Location: http://m.motif.me$skipURI");
+if (empty($_POST) && $skipURI != $_SERVER['REQUEST_URI']) {
+    $skipUrl = 'http://'.$_SERVER['SERVER_NAME'].$skipURI;
+    Header("Location: $skipUrl");
     exit;
 }
 $app = require __DIR__.'/../bootstrap/app.php';
