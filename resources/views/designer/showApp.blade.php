@@ -20,7 +20,7 @@
             'event': 'productClick',
             'ecommerce': {
                 'click': {
-                    'actionField': {'list': 'designerApp'},      // Optional list property.
+                    'actionField': {'list': '{{strstr($_SERVER['HTTP_USER_AGENT'], 'motif-android') ? 'designer_android_'.$designer['nickname'] : 'designer_ios_'.$designer['nickname']}}'},      // Optional list property.
                     'products': [{
                         'name': name,                      // Name or ID is required.
                         'id': spu,

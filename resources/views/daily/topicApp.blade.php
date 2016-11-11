@@ -19,7 +19,7 @@
             'event': 'productClick',
             'ecommerce': {
                 'click': {
-                    'actionField': {'list': 'topicApp'},      // Optional list property.
+                    'actionField': {'list': '{{strstr($_SERVER['HTTP_USER_AGENT'], 'motif-android') ? 'android_topic_'.$topic['title'] : 'ios_topic_'.$topic['title']}}'},      // Optional list property.
                     'products': [{
                         'name': name,                      // Name or ID is required.
                         'id': spu,

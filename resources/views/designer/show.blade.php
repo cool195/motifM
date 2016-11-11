@@ -22,7 +22,7 @@
             'event': 'productClick',
             'ecommerce': {
                 'click': {
-                    'actionField': {'list': 'designer'},      // Optional list property.
+                    'actionField': {'list': '{{'designer_'.$designer['nickname']}}'},      // Optional list property.
                     'products': [{
                         'name': name,                      // Name or ID is required.
                         'id': spu,
