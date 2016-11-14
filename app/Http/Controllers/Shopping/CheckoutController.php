@@ -253,7 +253,7 @@ class CheckoutController extends ApiController
             'pin' => Session::get('user.pin'),
             'logisticstype' => $logisticstype,
             'paytype' => $paytype,
-            'bindid' => $bindid,
+            'bindid' => $bindid ? $bindid : '',
             'addressid' => $aid
         );
         $system = "";
