@@ -35,6 +35,7 @@
                 }
             },
         });
+        console.log(spu);
     }
 
     dataLayer.push({
