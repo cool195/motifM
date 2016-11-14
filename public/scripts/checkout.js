@@ -763,6 +763,7 @@
                     // }, 1500);
                 }
             })
+        onCheckout();
     });
 
     $('input[name="expiry"]').on('keyup', function () {
