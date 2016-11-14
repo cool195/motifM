@@ -12,7 +12,6 @@
 </head>
 <body>
 <script type="text/javascript">
-    window.dataLayer = window.dataLayer || [];
     function onCheckout() {
         dataLayer.push({
             'event': 'checkout',

@@ -21,7 +21,6 @@
 <!-- tag manager 曝光埋点 -->
 <input type="text" id="impressProduct-list" value="" hidden>
 <script type="text/javascript">
-    window.dataLayer = window.dataLayer || [];
     function onAddToCart() {
         var quantity = document.getElementById('addToCart-quantity').value;
         //var sku = document.getElementById('addToCart-sku').value;
