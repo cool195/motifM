@@ -337,7 +337,7 @@
                                                         <div class="p-x-15x p-y-10x">
                                                             <a data-link="/detail/{{$spu}}"
                                                                data-clk='{{ config('app.clk_url') }}/log.gif?t=designer.400001&m=H5_M2016-1&pin={{ Session::get('user.pin') }}&uuid={{Session::has('user') ? Session::get('user.uuid') : $_COOKIE['uid']}}&v={"action":1,"skipType":1,"skipId":"{{$spu}}","expid":0,"index":"{{$key}}","version":"1.0.1","ver":"9.2","src":"H5"}'
-                                                               href="javascript:void(0)">
+                                                               href="javascript:void(0)" data-spu="{{$spu}}">
                                                                 <img class="img-fluid img-lazy"
                                                                      src="{{env('CDN_Static')}}/images/product/bg-product@336.png"
                                                                      data-original="{{env('APP_Api_Image')}}/n2/{{$product['spuInfos'][$spu]['spuBase']['main_image_url']}}"
@@ -366,7 +366,7 @@
                                                                     <div class="topic-product-item productList-item">
                                                                         <a data-link="/detail/{{$spu}}"
                                                                            data-clk='{{ config('app.clk_url') }}/log.gif?t=designer.400001&m=H5_M2016-1&pin={{ Session::get('user.pin') }}&uuid={{Session::has('user') ? Session::get('user.uuid') : $_COOKIE['uid']}}&v={"action":1,"skipType":1,"skipId":"{{$spu}}","expid":0,"index":"{{$key}}","version":"1.0.1","ver":"9.2","src":"H5"}'
-                                                                           href="javascript:void(0)">
+                                                                           href="javascript:void(0)" data-spu="{{$spu}}">
                                                                             <div class="image-container">
                                                                                 <img class="img-fluid img-lazy"
                                                                                      src="{{env('CDN_Static')}}/images/product/bg-product@336.png"
@@ -433,7 +433,7 @@
                                                             <a data-link="/detail/{{$value['spu']}}"
                                                                data-clk="{{ $value['clk'] }}"
                                                                data-impr="{{ $value['impr'] }}"
-                                                               href="javascript:void(0)">
+                                                               href="javascript:void(0)" data-spu="{{$value['spu']}}">
                                                                 <div class="image-container">
                                                                     <img class="img-fluid img-lazy"
                                                                          src="{{env('CDN_Static')}}/images/product/bg-product@336.png"
