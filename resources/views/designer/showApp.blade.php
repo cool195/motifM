@@ -605,7 +605,8 @@
     Jockey.on("action", function (action) {
         //login
         if (action.name == "authInfo") {
-            window.location.href = "/designer/{{$designer['designer_id']}}?des=" + $('#followDes').val() + "&wishspu=" + $('#wishspu').val() + "&token=" + action.data.token + "&pin=" + action.data.pin + "&email=" + action.data.email + "&name=" + decodeURIComponent(action.data.name)
+            var f = {{strstr($_SERVER['HTTP_USER_AGENT'], 'motif-android') ? 'f=android' : 'f=ios'}}
+            window.location.href = "/designer/{{$designer['designer_id']}}?f="+f+"des=" + $('#followDes').val() + "&wishspu=" + $('#wishspu').val() + "&token=" + action.data.token + "&pin=" + action.data.pin + "&email=" + action.data.email + "&name=" + decodeURIComponent(action.data.name)
         }
         else if (action.name == "addWish") {
             var spus = action.data.spu.split(',');
