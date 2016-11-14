@@ -277,8 +277,8 @@
                             $('#wish' + value).html('<i class="iconfont text-common btn-wish active"></i>');
                         });
                     } else if (actionName.name == "authInfo") {
-                        var f = {{strstr($_SERVER['HTTP_USER_AGENT'], 'motif-android') ? 'f=android' : 'f=ios'}}
-                        window.location.href = "/topic/{{$topicID}}?f="+f+"wishspu="+$('#wishspu').val()+"&token=" + actionName.data.token + "&pin=" + actionName.data.pin + "&email=" + actionName.data.email + "&name=" + decodeURIComponent(actionName.data.name);
+                        var f = '{{strstr($_SERVER['HTTP_USER_AGENT'], 'motif-android') ? 'f=android' : 'f=ios'}}';
+                        window.location.href = "/topic/{{$topicID}}?f="+f+"&wishspu="+$('#wishspu').val()+"&token=" + actionName.data.token + "&pin=" + actionName.data.pin + "&email=" + actionName.data.email + "&name=" + decodeURIComponent(actionName.data.name);
                     }
                 }
         );
