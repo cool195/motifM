@@ -18,7 +18,7 @@
             'event': 'productClick',
             'ecommerce': {
                 'click': {
-                    'actionField': {'list': '{{'mobileWeb_topic_'.$topic['title']}}'},      // Optional list property.
+                    'actionField': {'list': '{{'topic_'.$topic['title'].'_'.$topicID}}'},      // Optional list property.
                     'products': [{
                         'name': name,                      // Name or ID is required.
                         'id': spu,
@@ -48,7 +48,7 @@
                     'brand': '{{$topic['title']}}',
                     'category': 'topicWeb',
                     'variant': '',
-                    'list': '{{'mobileWeb_topic_'.$topic['title']}}',
+                    'list': '{{'topic_'.$topic['title'].'_'.$topicID}}',
                     'position': '{{$k}}'
                 },
                 @endforeach

@@ -19,7 +19,7 @@
             'event': 'productClick',
             'ecommerce': {
                 'click': {
-                    'actionField': {'list': '{{strstr($_SERVER['HTTP_USER_AGENT'], 'motif-android') ? 'designer_android_'.$designer['nickname'] : 'designer_ios_'.$designer['nickname']}}'},      // Optional list property.
+                    'actionField': {'list': '{{'designer_'.$designer['nickname'].'_'.$designer['designer_id'].(strstr($_SERVER['HTTP_USER_AGENT'], 'motif-android') ? '_android' : '_ios')}}'},      // Optional list property.
                     'products': [{
                         'name': name,                      // Name or ID is required.
                         'id': spu,
@@ -49,7 +49,7 @@
                     'brand': '{{$designer['nickname']}}',
                     'category': 'designerDetail',
                     'variant': '',
-                    'list': '{{strstr($_SERVER['HTTP_USER_AGENT'], 'motif-android') ? 'designer_android_'.$designer['nickname'] : 'designer_ios_'.$designer['nickname']}}',
+                    'list': '{{'designer_'.$designer['nickname'].'_'.$designer['designer_id'].(strstr($_SERVER['HTTP_USER_AGENT'], 'motif-android') ? '_android' : '_ios')}}',
                     'position': '{{$k}}'
                 },
                     @endforeach

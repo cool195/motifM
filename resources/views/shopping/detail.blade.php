@@ -51,7 +51,7 @@
             'event': 'productClick',
             'ecommerce': {
                 'click': {
-                    'actionField': {'list': 'shopping Detail'},      // Optional list property.
+                    'actionField': {'list': '{{'shopping Detail_'.$data['main_title'].'_'.$data['spu']}}'},      // Optional list property.
                     'products': [{
                         'name': name,                      // Name or ID is required.
                         'id': spu,
@@ -81,7 +81,7 @@
                     'brand': 'Motif',
                     'category': '',
                     'variant': '',
-                    'list': 'shopping Detail',
+                    'list': '{{'shopping Detail_'.$data['main_title'].'_'.$data['spu']}}',
                     'position': ''
                 },
                 @endif

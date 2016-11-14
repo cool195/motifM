@@ -18,7 +18,7 @@
             'event': 'productClick',
             'ecommerce': {
                 'click': {
-                    'actionField': {'list': '{{strstr($_SERVER['HTTP_USER_AGENT'], 'motif-android') ? 'android_topic_'.$topic['title'] : 'ios_topic_'.$topic['title']}}'},      // Optional list property.
+                    'actionField': {'list': '{{'topic_'.$topic['title'].'_'.$topicID.(strstr($_SERVER['HTTP_USER_AGENT'], 'motif-android') ? '_android' : '_ios')}}'},      // Optional list property.
                     'products': [{
                         'name': name,                      // Name or ID is required.
                         'id': spu,
@@ -48,7 +48,7 @@
                     'brand': '{{$topic['title']}}',
                     'category': 'topicApp',
                     'variant': '',
-                    'list': '{{strstr($_SERVER['HTTP_USER_AGENT'], 'motif-android') ? 'android_topic_'.$topic['title'] : 'ios_topic_'.$topic['title']}}',
+                    'list': '{{'topic_'.$topic['title'].'_'.$topicID.(strstr($_SERVER['HTTP_USER_AGENT'], 'motif-android') ? '_android' : '_ios')}}',
                     'position': '{{$k}}'
                 },
                 @endforeach

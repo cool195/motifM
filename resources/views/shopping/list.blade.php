@@ -18,7 +18,7 @@
             'event': 'productClick',
             'ecommerce': {
                 'click': {
-                    'actionField': {'list': 'shopping list'},      // Optional list property.
+                    'actionField': {'list': 'shopping list__'},      // Optional list property.
                     'products': [{
                         'name': name,                      // Name or ID is required.
                         'id': spu,
