@@ -30,9 +30,8 @@
                     <hr class="hr-base m-a-0">
                     <div class="message-info">
                         <textarea class="form-control form-control-block p-a-15x font-size-sm" name="content" id="content"
-                                  placeholder="Message" rows="10" data-length="1000"></textarea>
-                        <span class="message-wordNumber font-size-sm text-primary"><span
-                                    id="wordNum">0</span>/1000</span>
+                                  placeholder="Message" rows="10" data-length="5000"></textarea>
+                        <span class="message-wordNumber font-size-sm text-primary"><span id="wordNum">0</span>/5000</span>
                     </div>
                 </fieldset>
                 <hr class="hr-base m-a-0">
