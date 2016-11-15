@@ -63,14 +63,14 @@ class CheckoutController extends ApiController
     }
 
     //payment
-    public function payment()
+    public function payment(Request $request)
     {
         //return Session::get('user.checkout');
         $payInfo = $this->getPayInfo();
         $coupon = $this->couponCache();
         $country = $this->getCountry(1);
 
-        return View('checkout.payment', ['payInfo' => $payInfo['data']['list'], 'coupon' => $coupon['data'], 'country' => $country['data']]);
+        return View('checkout.payment', ['payInfo' => $payInfo['data']['list'], 'coupon' => $coupon['data'], 'country' => $country['data'],'from' => $request->get('from')]);
     }
 
     //review
@@ -80,6 +80,8 @@ class CheckoutController extends ApiController
             return redirect('/checkout/shipping');
         } else if (!Session::has('user.checkout.paywith.pay_method')) {
             return redirect('/checkout/payment');
+        }else if(!Session::get('user.checkout.couponInfo.bind_id')){
+            $this->couponCache();
         }
         $checkInfo = $this->getCheckOutAccountList(Session::get('user.checkout.address.receiving_id'), Session::get('user.checkout.selship.logistics_type'), Session::get('user.checkout.couponInfo.bind_id'));
 
@@ -359,7 +361,11 @@ class CheckoutController extends ApiController
             'pin' => Session::get('user.pin'),
             'cd' => $id,
         );
-        return $this->request('openapi', '', 'pay', $params);
+        $result = $this->request('openapi', '', 'pay', $params);
+        if($result['success'] && Session::get('user.checkout.paywith.withCard.card_id')==$id){
+            Session::forget('user.checkout.paywith');
+        }
+        return $result;
     }
 
     //获取coupon列表

@@ -138,7 +138,7 @@
 
                 <section class="p-b-15x reserve-height">
                     <article class="p-x-15x p-y-10x flex flex-fullJustified flex-alignCenter bg-title">
-                        <span class="font-size-md text-main"><strong>Shipping Address</strong></span>
+                        <span class="font-size-md text-main"><strong>SHIPPING ADDRESS</strong></span>
                         <a class="btn btn-primary-outline btn-sm" id="address-edit">Edit</a>
                         <!-- 修改状态 -->
                         <!--<a class="btn btn-primary btn-sm" href="#">Done</a>-->

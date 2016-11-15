@@ -53,6 +53,11 @@
             url: '/checkout/selShip/' + $(this).data('type'),
             type: 'GET',
         })
+            .done(function () {
+                if ($('#shipping-shipTo').data('ref') == 'review') {
+                    window.location.href = '/checkout/review';
+                }
+            })
     });
 
     $('.skipError').on('click', function () {
@@ -84,7 +89,7 @@
     });
 
     if ($('#shipping-editorAddress').length > 0) {
-        if($('#shipping-editorAddress').hasClass('active')){
+        if ($('#shipping-editorAddress').hasClass('active')) {
             initAddAddressForm(1, 0);
         }
     }
@@ -357,7 +362,7 @@
                 $('.warning-info').children('span').text('Please enter your ' + ChildLabel + ' !');
                 // 判断是否在添加卡页面
                 if ($('#payment-checkBox').length > 0) {
-                    $('#btn-submitAddCard').addClass('disabled');
+                    $('.btn-submitAddCard').addClass('disabled');
                 } else {
                     $('#btn-submitEditorAddress').addClass('disabled');
                 }
@@ -408,7 +413,7 @@
             if ($('#payment-checkBox').length > 0) {
                 if (input_validate($('input[name="card"]')) && input_validate($('input[name="expiry"]')) && input_validate($('input[name="cvv"]')) && input_validate($('input[name="name"]')) && input_validate($('input[name="addr1"]')) && input_validate($('input[name="city"]')) && input_validate($('input[name="zip"]')) && input_validate($('input[name="tel"]'))) {
                     $('.warning-info').addClass('hidden-xs-up');
-                    $('#btn-submitAddCard').removeClass('disabled');
+                    $('.btn-submitAddCard').removeClass('disabled');
                 }
             } else {
                 if (input_validate($('input[name="name"]')) && input_validate($('input[name="addr1"]')) && input_validate($('input[name="city"]')) && input_validate($('input[name="zip"]')) && input_validate($('input[name="tel"]'))) {
@@ -498,7 +503,7 @@
             $('#btn-submitEditorAddress').removeClass('disabled');
             // 判断是否在添加卡页面
             if ($('#payment-checkBox').length > 0) {
-                $('#btn-submitAddCard').removeClass('disabled');
+                $('.btn-submitAddCard').removeClass('disabled');
             }
         } else {
             $('.warning-info').removeClass('hidden-xs-up');
@@ -506,7 +511,7 @@
             $('#btn-submitEditorAddress').addClass('disabled');
             // 判断是否在添加卡页面
             if ($('#payment-checkBox').length > 0) {
-                $('#btn-submitAddCard').addClass('disabled');
+                $('.btn-submitAddCard').addClass('disabled');
             }
         }
     });
@@ -517,10 +522,10 @@
         if ($('#payment-checkBox').length > 0) {
             if (input_validate($('input[name="card"]')) && input_validate($('input[name="expiry"]')) && input_validate($('input[name="cvv"]')) && input_validate($('input[name="name"]')) && input_validate($('input[name="addr1"]')) && input_validate($('input[name="city"]')) && input_validate($('input[name="zip"]')) && input_validate($('input[name="tel"]')) && input_validate($(this))) {
                 $('.warning-info').addClass('hidden-xs-up');
-                $('#btn-submitAddCard').removeClass('disabled');
+                $('.btn-submitAddCard').removeClass('disabled');
             } else {
                 $('.warning-info').removeClass('hidden-xs-up');
-                $('#btn-submitAddCard').addClass('disabled');
+                $('.btn-submitAddCard').addClass('disabled');
             }
         } else {
             if (input_validate($('input[name="name"]')) && input_validate($('input[name="addr1"]')) && input_validate($('input[name="city"]')) && input_validate($('input[name="zip"]')) && input_validate($('input[name="tel"]')) && input_validate($(this))) {
@@ -597,12 +602,19 @@
         toPage($('.shipping-addCard'));
         var CountryName = $('#btn-toCountryList').data('oldcountry');
         var StateName = $('.state-info').data('oldstate');
+        if($(this).data('method')=='Oceanpay'){
+            $('#img-amex').css('display','none');
+            $('#img-jcb').css('display','none');
+        }else{
+            $('#img-amex').css('display','inline-flex');
+            $('#img-jcb').css('display','inline-flex');
+        }
         // 初始化 国家,洲
         initCityState(CountryName, StateName);
     });
 
     // 取消添加卡信息
-    $('#btn-cancelAddCard').on('click', function () {
+    $('.btn-cancelAddCard').on('click', function () {
         toPage($('.shipping-payment'));
     });
 
@@ -613,7 +625,11 @@
 
     // 取消添加 promotion code
     $('#btn-cancelPromoCode').on('click', function () {
-        toPage($('.shipping-payment'));
+        if($('#shipping-payment').data('ref')=='editcode'){
+            window.location.href = '/checkout/review';
+        }else{
+            toPage($('.shipping-payment'));
+        }
     });
 
     // 验证卡输入信息
@@ -650,12 +666,12 @@
             $('input[name="addr1"]').val(OldAddr1);
             $('input[name="addr2"]').val(OldAddr2);
             $('input[name="zip"]').val(OldZip);
-            //$('#btn-submitAddCard').removeClass('disabled');
+            //$('.btn-submitAddCard').removeClass('disabled');
             // 初始化 国家,洲
             initCityState(OldCountryName, StateName);
 
             if ($('#card-warning').hasClass('hidden-xs-up')) {
-                //$('#btn-submitAddCard').removeClass('disabled');
+                //$('.btn-submitAddCard').removeClass('disabled');
             }
         } else {
             //初始化 修改地址 from 表单
@@ -666,7 +682,7 @@
             $('input[name="addr1"]').val('');
             $('input[name="addr2"]').val('');
             $('input[name="zip"]').val('');
-            $('#btn-submitAddCard').addClass('disabled');
+            $('.btn-submitAddCard').addClass('disabled');
             // 初始化 国家,洲
             initCityState(NewCountryName, '');
         }
@@ -680,7 +696,7 @@
     });
 
     // 提交卡信息
-    $('#btn-submitAddCard').on('click', function () {
+    $('.btn-submitAddCard').on('click', function () {
         openLoading();
         $.ajax({
             url: '/checkout/addcard',
@@ -689,7 +705,7 @@
         })
             .done(function (data) {
                 if (data.success) {
-                    window.location.href = '/checkout/payment';
+                    window.location.href = '/checkout/payment?from='+$('#shipping-payment').data('ref');
                 } else {
                     $('.warning-info').removeClass('hidden-xs-up');
                     $('.warning-info').children('span').html(data.prompt_msg);
@@ -714,7 +730,7 @@
 
     // 进入Review
     if ($('#shipping-review').length > 0) {
-        if($('#shipping-review').data('pay')=='error'){
+        if ($('#shipping-review').data('pay') == 'error') {
             openFail();
             setTimeout(function () {
                 closeFail()
@@ -725,7 +741,7 @@
     $('.submit-paymentbutton').on('click', function () {
         if ($('.clickPayWith.active').length > 0) {
             window.location.href = '/checkout/review';
-        }else{
+        } else {
             $('.ErrorMessage').html('Please select a Payment Method');
             openFail();
             setTimeout(function () {
@@ -783,7 +799,7 @@
         }
         // 验证年份
         if ($(this).val().length === 7) {
-            var year = parseInt('20'+$(this).val().substring(5, 7));
+            var year = parseInt('20' + $(this).val().substring(5, 7));
             if (year < MyYear || year > MyYear + 30) {
                 $WarningInfo.removeClass('hidden-xs-up');
                 $WarningInfo.children('span').html('Year Error');
@@ -828,7 +844,12 @@
             type: 'GET',
         })
             .always(function () {
-                window.location.href = '/checkout/payment';
+                if($('#shipping-payment').data('ref')=='editcode'){
+                    window.location.href = '/checkout/review';
+                }else{
+                    window.location.href = '/checkout/payment?from='+$('#shipping-payment').data('ref');
+                }
+
             });
     });
 
@@ -849,9 +870,13 @@
                             type: 'GET',
                         })
                             .always(function () {
-                                window.location.href = '/checkout/payment';
+                                if($('#shipping-payment').data('ref')=='editcode'){
+                                    window.location.href = '/checkout/review';
+                                }else{
+                                    window.location.href = '/checkout/payment?from='+$('#shipping-payment').data('ref');
+                                }
                             });
-                    }else{
+                    } else {
 
                         $('.ErrorMessage').html(data.prompt_msg);
                         openFail();
@@ -882,9 +907,9 @@
     function deleteCard(CardID) {
         openLoading();
         $.ajax({
-                url: '/delcard/' + CardID,
-                type: 'POST'
-            })
+            url: '/delcard/' + CardID,
+            type: 'POST'
+        })
             .done(function () {
                 location.reload();
             })
@@ -908,8 +933,8 @@
 
     // 保存 massage
     $('#btn-addSpecial').on('click', function () {
-        var msg = $('textarea[name="remark"]').val().length > 30 ? $('textarea[name="remark"]').val().substr(0,30)+'...' : $('textarea[name="remark"]').val();
-        if(msg != ''){
+        var msg = $('textarea[name="remark"]').val().length > 30 ? $('textarea[name="remark"]').val().substr(0, 30) + '...' : $('textarea[name="remark"]').val();
+        if (msg != '') {
             $('.request').html(msg);
             $('.request').removeClass('text-common');
         } else {
