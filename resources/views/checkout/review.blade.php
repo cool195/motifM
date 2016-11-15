@@ -108,7 +108,8 @@
                 <div class="p-y-10x p-x-15x font-size-sm text-primary">
                     <div class="p-b-5x">
                         <span><strong>PAYMENT METHOD</strong></span>
-                        <a class="text-underLine pull-right text-primary" href="/checkout/payment" id="review-payment">Edit</a>
+                        <a class="text-underLine pull-right text-primary" href="/checkout/payment?from=review"
+                           id="review-payment">Edit</a>
                     </div>
                     <div class="">
                         @if(Session::get('user.checkout.paywith.pay_method')=='PayPalNative')
@@ -145,13 +146,32 @@
                             <span>Exp {{Session::get('user.checkout.paywith.withCard.month').'/'.Session::get('user.checkout.paywith.withCard.year')}}</span>
                             <br>
                         @endif
-                        @if(Session::get('user.checkout.couponInfo'))
-                            <span>Promotion code: {{Session::get('user.checkout.couponInfo.cp_title')}}</span>
-                        @endif
                     </div>
                 </div>
                 <div class="hr-between"></div>
+                <div class="p-y-10x p-x-15x font-size-sm text-primary">
+                    <div class="p-b-5x">
+                        <span><strong>PROMOTION CODE</strong></span>
+                    </div>
+                    <a href="/checkout/payment?from=editcode" class="text-primary">
+                        <div class="" id="promotion-code">
 
+                            @if(Session::get('user.checkout.couponInfo'))
+                                <span>
+                                {{Session::get('user.checkout.couponInfo.cp_title')}}
+                                 </span>
+                            @else
+                                <span class="text-common">
+                                    None
+                                </span>
+                            @endif
+
+                            <span class="pull-right"><i
+                                        class="iconfont icon-arrow-right icon-size-xm text-common"></i></span>
+                        </div>
+                    </a>
+                </div>
+                <div class="hr-between"></div>
                 <!-- special request -->
                 <div class="p-y-10x p-x-15x font-size-sm text-primary">
                     <div class="p-b-5x">
@@ -168,7 +188,8 @@
                 <!-- 价格汇总 -->
                 <div class="p-y-10x p-x-15x font-size-sm text-primary">
                     <div class="flex flex-fullJustified text-primary font-size-sm">
-                        <span>Items ({{$checkInfo['total_sku_qtty']}})</span><span>${{number_format(($checkInfo['total_amount'] / 100), 2)}}</span>
+                        <span>Items ({{$checkInfo['total_sku_qtty']}})</span>
+                        <span>${{number_format(($checkInfo['total_amount'] / 100), 2)}}</span>
                     </div>
 
                     {{--增值服务--}}
