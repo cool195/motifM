@@ -16523,8 +16523,8 @@ else if (typeof define === 'function' && define.amd) {
                 $('.download-content').removeAttr('hidden');
                 if($('#allDownload-container').length > 0) {
                     $('#allDownload-img').attr({
-                        'src': 'http://cdn.m.motif.me/images/daily/h5-ad.png',
-                        'srcset': 'http://cdn.m.motif.me/images/daily/h5-ad@2x.png 2x, /images/daily/h5-ad@3x.png 3x'
+                        'src': 'https://cdn.m.motif.me/images/daily/h5-ad.png',
+                        'srcset': 'https://cdn.m.motif.me/images/daily/h5-ad@2x.png 2x, https://cdn.m.motif.me/images/daily/h5-ad@3x.png 3x'
                     });
                 }
                 break;
@@ -16534,8 +16534,8 @@ else if (typeof define === 'function' && define.amd) {
                 $('.download-content').removeAttr('hidden');
                 if($('#allDownload-container').length > 0) {
                     $('#allDownload-img').attr({
-                        'src': 'http://cdn.m.motif.me/images/daily/h5-adGoogle.png',
-                        'srcset': 'http://cdn.m.motif.me/images/daily/h5-adGoogle@2x.png 2x, /images/daily/h5-adGoogle@3x.png 3x'
+                        'src': 'https://cdn.m.motif.me/images/daily/h5-adGoogle.png',
+                        'srcset': 'https://cdn.m.motif.me/images/daily/h5-adGoogle@2x.png 2x, https://cdn.m.motif.me/images/daily/h5-adGoogle@3x.png 3x'
                     });
                 }
                 break;
