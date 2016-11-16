@@ -110,21 +110,6 @@
 
     {{--</div>--}}
 {{--</nav>--}}
-<script type='text/javascript'>
-    var _vds = _vds || [];
-    window._vds = _vds;
-    (function(){
-        _vds.push(['setAccountId', '94d5fde2c5246fe8']);
-        (function() {
-            var vds = document.createElement('script');
-            vds.type='text/javascript';
-            vds.async = true;
-            vds.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'dn-growing.qbox.me/vds.js';
-            var s = document.getElementsByTagName('script')[0];
-            s.parentNode.insertBefore(vds, s);
-        })();
-    })();
-</script>
 
 <!-- 弹出广告 -->
 <div class="allDownload-container bg-white flex flex-alignCenter" id="allDownload-container" hidden>
@@ -133,7 +118,7 @@
             <span><img src="{{env('CDN_Static')}}/images/login/login-logo.png" srcset="{{env('CDN_Static')}}/images/login/login-logo@2x.png 2x, {{env('CDN_Static')}}/images/login/login-logo@3x.png 3x" alt="" width="100"></span>
             <span class="text-common font-size-xs pull-right p-t-15x btn-closeAd">GO TO THE MOBILE SITE ></span>
         </div>
-        <a href="/downapp"><img class="img-fluid" src="{{env('CDN_Static')}}/images/daily/h5-ad.png" srcset="{{env('CDN_Static')}}/images/daily/h5-ad@2x.png 2x, {{env('CDN_Static')}}/images/daily/h5-ad@3x.png 3x" alt=""></a>
+        <a href="/downapp"><img class="img-fluid" id="allDownload-img" src="{{env('CDN_Static')}}/images/daily/h5-ad.png" srcset="{{env('CDN_Static')}}/images/daily/h5-ad@2x.png 2x, {{env('CDN_Static')}}/images/daily/h5-ad@3x.png 3x" alt=""></a>
         <div class="text-main font-size-xs text-center p-a-15x btn-closeAd">
             <strong>NO THANKS, JUST SHOW ME THE GOODS >></strong>
         </div>

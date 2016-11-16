@@ -55,8 +55,9 @@
             $('#productClick-name').val($this.data('title'));
             $('#productClick-spu').val($this.data('spu'));
             $('#productClick-price').val($this.data('price'));
-
-            //onProductClick();
+            if($('#productClick-spu').length > 0){
+                onProductClick();
+            }
             $.ajax({
                 url: $this.data('clk'),
                 type: "GET"

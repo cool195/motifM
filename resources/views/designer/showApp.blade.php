@@ -11,7 +11,6 @@
 <input type="text" id="productClick-spu" value="1" hidden>
 <input type="text" id="productClick-price" value="1" hidden>
 <script type="text/javascript">
-    window.dataLayer = window.dataLayer || [];
     function onProductClick() {
         var name = document.getElementById('productClick-name').value;
         var spu = document.getElementById('productClick-spu').value;
@@ -20,7 +19,7 @@
             'event': 'productClick',
             'ecommerce': {
                 'click': {
-                    'actionField': {'list': 'designerApp'},      // Optional list property.
+                    'actionField': {'list': '{{'designer_'.$designer['nickname'].'_'.$designer['designer_id'].(strstr($_SERVER['HTTP_USER_AGENT'], 'motif-android') ? '_android' : '_ios')}}'},      // Optional list property.
                     'products': [{
                         'name': name,                      // Name or ID is required.
                         'id': spu,
@@ -50,7 +49,7 @@
                     'brand': '{{$designer['nickname']}}',
                     'category': 'designerDetail',
                     'variant': '',
-                    'list': '{{strstr($_SERVER['HTTP_USER_AGENT'], 'motif-android') ? 'designer_android_'.$designer['nickname'] : 'designer_ios_'.$designer['nickname']}}',
+                    'list': '{{'designer_'.$designer['nickname'].'_'.$designer['designer_id'].(strstr($_SERVER['HTTP_USER_AGENT'], 'motif-android') ? '_android' : '_ios')}}',
                     'position': '{{$k}}'
                 },
                     @endforeach
@@ -606,7 +605,8 @@
     Jockey.on("action", function (action) {
         //login
         if (action.name == "authInfo") {
-            window.location.href = "/designer/{{$designer['designer_id']}}?des=" + $('#followDes').val() + "&wishspu=" + $('#wishspu').val() + "&token=" + action.data.token + "&pin=" + action.data.pin + "&email=" + action.data.email + "&name=" + decodeURIComponent(action.data.name)
+            var f = '{{strstr($_SERVER['HTTP_USER_AGENT'], 'motif-android') ? 'f=android' : 'f=ios'}}';
+            window.location.href = "/designer/{{$designer['designer_id']}}?f="+f+"&des=" + $('#followDes').val() + "&wishspu=" + $('#wishspu').val() + "&token=" + action.data.token + "&pin=" + action.data.pin + "&email=" + action.data.email + "&name=" + decodeURIComponent(action.data.name)
         }
         else if (action.name == "addWish") {
             var spus = action.data.spu.split(',');

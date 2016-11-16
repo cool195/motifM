@@ -11,7 +11,6 @@
 <input type="text" id="productClick-price" value="1" hidden>
 <script type="text/javascript">
     function onProductClick() {
-        window.dataLayer = window.dataLayer || [];
         var name = document.getElementById('productClick-name').value;
         var spu = document.getElementById('productClick-spu').value;
         var price = document.getElementById('productClick-price').value;
@@ -19,7 +18,7 @@
             'event': 'productClick',
             'ecommerce': {
                 'click': {
-                    'actionField': {'list': 'topicApp'},      // Optional list property.
+                    'actionField': {'list': '{{'topic_'.$topic['title'].'_'.$topicID.(strstr($_SERVER['HTTP_USER_AGENT'], 'motif-android') ? '_android' : '_ios')}}'},      // Optional list property.
                     'products': [{
                         'name': name,                      // Name or ID is required.
                         'id': spu,
@@ -49,7 +48,7 @@
                     'brand': '{{$topic['title']}}',
                     'category': 'topicApp',
                     'variant': '',
-                    'list': '{{strstr($_SERVER['HTTP_USER_AGENT'], 'motif-android') ? 'android_topic_'.$topic['title'] : 'ios_topic_'.$topic['title']}}',
+                    'list': '{{'topic_'.$topic['title'].'_'.$topicID.(strstr($_SERVER['HTTP_USER_AGENT'], 'motif-android') ? '_android' : '_ios')}}',
                     'position': '{{$k}}'
                 },
                 @endforeach
@@ -278,7 +277,8 @@
                             $('#wish' + value).html('<i class="iconfont text-common btn-wish active"></i>');
                         });
                     } else if (actionName.name == "authInfo") {
-                        window.location.href = "/topic/{{$topicID}}?wishspu="+$('#wishspu').val()+"&token=" + actionName.data.token + "&pin=" + actionName.data.pin + "&email=" + actionName.data.email + "&name=" + decodeURIComponent(actionName.data.name);
+                        var f = '{{strstr($_SERVER['HTTP_USER_AGENT'], 'motif-android') ? 'f=android' : 'f=ios'}}';
+                        window.location.href = "/topic/{{$topicID}}?f="+f+"&wishspu="+$('#wishspu').val()+"&token=" + actionName.data.token + "&pin=" + actionName.data.pin + "&email=" + actionName.data.email + "&name=" + decodeURIComponent(actionName.data.name);
                     }
                 }
         );

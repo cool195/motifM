@@ -21,7 +21,6 @@
 <!-- tag manager 曝光埋点 -->
 <input type="text" id="impressProduct-list" value="" hidden>
 <script type="text/javascript">
-    window.dataLayer = window.dataLayer || [];
     function onAddToCart() {
         var quantity = document.getElementById('addToCart-quantity').value;
         //var sku = document.getElementById('addToCart-sku').value;
@@ -52,7 +51,7 @@
             'event': 'productClick',
             'ecommerce': {
                 'click': {
-                    'actionField': {'list': 'shopping Detail'},      // Optional list property.
+                    'actionField': {'list': '{{'shopping Detail_'.$data['main_title'].'_'.$data['spu']}}'},      // Optional list property.
                     'products': [{
                         'name': name,                      // Name or ID is required.
                         'id': spu,
@@ -66,23 +65,6 @@
             },
         });
     }
-
-    // detail 总商品浏览 埋点
-    dataLayer.push({
-        'ecommerce': {
-            'detail': {
-                'actionField': {'list': 'shopping Detail'},    // 'detail' actions have an optional list property.
-                'products': [{
-                    'name': '{{$data['main_title']}}',         // Name or ID is required.
-                    'id': '{{ $data['spu'] }}',
-                    'price': '{{ number_format(($data['skuPrice']['sale_price'] / 100), 2) }}',
-                    'brand': 'Motif',
-                    'category': '',
-                    'variant': ''
-                }]
-            }
-        }
-    });
 
     // detail 推荐商品列表 埋点
     dataLayer.push({
@@ -99,7 +81,7 @@
                     'brand': 'Motif',
                     'category': '',
                     'variant': '',
-                    'list': 'shopping Detail',
+                    'list': '{{'shopping Detail_'.$data['main_title'].'_'.$data['spu']}}',
                     'position': ''
                 },
                 @endif
@@ -189,8 +171,7 @@
                             class="iconfont text-common btn-wish btn-wished" data-actionspu="{{$data['spu']}}"></i></a>
             @endif
         <!-- 产品 标题 简介 价格 基本信息 -->
-            <article class="product-baseInfo bg-white"
-                     data-impr='{{ config('app.clk_url') }}/log.gif?t=pv.100001&m=H5_M2016-1&pin={{ Session::get('user.pin') }}&uuid={{Session::has('user') ? Session::get('user.uuid') : $_COOKIE['uid']}}&v={"spu":{{$data['spu']}},"main_sku":{{$data['skuPrice']['sku']}},"price":{{ $data['skuPrice']['sale_price'] }},"version":"1.0.1","ver":"9.2","src":"H5"}'>
+            <article class="product-baseInfo bg-white">
                 <div class="product-text">
                     <h6 class="text-main font-size-base">{{$data['main_title']}}</h6>
                     <p class="text-primary font-size-sm">{{ $data['sub_title'] }} @if(isset($data['skuPrice']['skuPromotion']['promo_words'])){{$data['skuPrice']['skuPromotion']['promo_words']}}@endif</p>
@@ -346,6 +327,14 @@
                             <i class="iconfont icon-arrow-bottom icon-size-xm text-common"></i>
                         </a>
                     </div>
+                </aside>
+                <div class="hr-between"></div>
+                <aside class="product-secondaryInfo">
+                    <a class="flex flex-alignCenter flex-fullJustified font-size-sm text-primary p-a-15x"
+                       href="/askshopping?skiptype=3&id={{$data['spu']}}">
+                        Inquiries
+                        <i class="iconfont icon-arrow-right icon-size-xm text-common"></i>
+                    </a>
                 </aside>
                 <div class="hr-between"></div>
                 <aside class="product-secondaryInfo">
@@ -585,6 +574,8 @@
         <div class="text-white font-size-md text-center m-t-10x" id="error-info"></div>
     </div>
 </div>
+
+<img src='{{ config('app.clk_url') }}/log.gif?t=pv.100001&m=H5_M2016-1&pin={{ Session::get('user.pin') }}&uuid={{Session::has('user') ? Session::get('user.uuid') : $_COOKIE['uid']}}&v={"spu":{{$data['spu']}},"main_sku":{{$data['skuPrice']['sku']}},"price":{{ $data['skuPrice']['sale_price'] }},"version":"1.0.1","ver":"9.2","src":"H5"}' hidden>
 
 </body>
 <script src="{{env('CDN_Static')}}/scripts/vendor.js{{'?v='.config('app.version')}}"></script>

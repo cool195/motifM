@@ -10,7 +10,6 @@
 <input type="text" id="productClick-spu" value="1" hidden>
 <input type="text" id="productClick-price" value="1" hidden>
 <script type="text/javascript">
-    window.dataLayer = window.dataLayer || [];
     function onProductClick() {
         var name = document.getElementById('productClick-name').value;
         var spu = document.getElementById('productClick-spu').value;
@@ -19,7 +18,7 @@
             'event': 'productClick',
             'ecommerce': {
                 'click': {
-                    'actionField': {'list': 'shopping list'},      // Optional list property.
+                    'actionField': {'list': 'shopping list__'},      // Optional list property.
                     'products': [{
                         'name': name,                      // Name or ID is required.
                         'id': spu,

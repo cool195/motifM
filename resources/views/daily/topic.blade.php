@@ -11,7 +11,6 @@
 <input type="text" id="productClick-price" value="1" hidden>
 <script type="text/javascript">
     function onProductClick() {
-        window.dataLayer = window.dataLayer || [];
         var name = document.getElementById('productClick-name').value;
         var spu = document.getElementById('productClick-spu').value;
         var price = document.getElementById('productClick-price').value;
@@ -19,7 +18,7 @@
             'event': 'productClick',
             'ecommerce': {
                 'click': {
-                    'actionField': {'list': 'topic'},      // Optional list property.
+                    'actionField': {'list': '{{'topic_'.$topic['title'].'_'.$topicID}}'},      // Optional list property.
                     'products': [{
                         'name': name,                      // Name or ID is required.
                         'id': spu,
@@ -49,7 +48,7 @@
                     'brand': '{{$topic['title']}}',
                     'category': 'topicWeb',
                     'variant': '',
-                    'list': '{{'mobileWeb_topic_'.$topic['title']}}',
+                    'list': '{{'topic_'.$topic['title'].'_'.$topicID}}',
                     'position': '{{$k}}'
                 },
                 @endforeach
@@ -114,7 +113,7 @@
                         @foreach($value['spus'] as $spu)
                             <div class="p-x-15x p-y-10x">
                                 <a data-clk='{{ config('app.clk_url') }}/log.gif?t=daily.200001&m=H5_M2016-1&pin={{Session::get('user.pin')}}&uuid={{Session::has('user') ? Session::get('user.uuid') : $_COOKIE['uid']}}&v={"action":1,"skipType":1,"skipId":"{{$spu}}","topicId":{{$topicID}},"expid":0,"ver":"1.0.1","src":"H5"}'
-                                   data-link="/detail/{{$spu}}" href="javascript:void(0)">
+                                   data-link="/detail/{{$spu}}" data-spu="{{$spu}}" href="javascript:void(0)">
                                     <img class="img-fluid img-lazy"
                                          data-original="{{env('APP_Api_Image')}}/n1/{{$topic['spuInfos'][$spu]['spuBase']['main_image_url']}}"
                                          src="{{env('CDN_Static')}}/images/product/bg-product@750.png"
@@ -143,7 +142,7 @@
                                     <div class="col-xs-6 p-a-0">
                                         <div class="topic-product-item productList-item">
                                             <a data-clk='{{ config('app.clk_url') }}/log.gif?t=daily.200001&m=H5_M2016-1&pin={{Session::get('user.pin')}}&uuid={{Session::has('user') ? Session::get('user.uuid') : $_COOKIE['uid']}}&v={"action":1,"skipType":1,"skipId":"{{$spu}}","topicId":{{$topicID}},"expid":0,"ver":"1.0.1","src":"H5"}'
-                                               data-link="/detail/{{$spu}}" href="javascript:void(0)">
+                                               data-link="/detail/{{$spu}}" data-spu="{{$spu}}" href="javascript:void(0)">
                                                 <div class="image-container">
                                                     <img class="img-fluid img-lazy"
                                                          data-original="{{env('APP_Api_Image')}}/n2/{{$topic['spuInfos'][$spu]['spuBase']['main_image_url']}}"

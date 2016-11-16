@@ -11,6 +11,33 @@
           href="{{env('CDN_Static')}}/styles/orderCheckout-addressList.css{{'?v='.config('app.version')}}">
 </head>
 <body>
+<script type="text/javascript">
+    function onCheckout() {
+        dataLayer.push({
+            'event': 'checkout',
+            'ecommerce': {
+                'checkout': {
+                    'actionField': {'step': 1, 'total': '{{ number_format(($checkInfo['pay_amount'] / 100), 2)}}'},
+                    'products': [
+                            @foreach($checkInfo['showSkus'] as $showSku)
+                        {
+                            'name': '{{$showSku['main_title']}}',
+                            'id': '{{$showSku['spu']}}',
+                            'sku': '{{$showSku['sku']}}',
+                            'price': '{{ number_format(($showSku['sale_price'] / 100), 2) }}',
+                            'brand': 'Motif',
+                            'category': '',
+                            'variant': '',
+                            'quantity': '{{$showSku['sale_qtty']}}'
+                        },
+                        @endforeach
+                    ]
+                }
+            },
+        });
+    }
+</script>
+
 @include('check.tagmanager')
 
 <!-- 外层容器 -->
