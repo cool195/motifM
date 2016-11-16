@@ -171,8 +171,7 @@
                             class="iconfont text-common btn-wish btn-wished" data-actionspu="{{$data['spu']}}"></i></a>
             @endif
         <!-- 产品 标题 简介 价格 基本信息 -->
-            <article class="product-baseInfo bg-white"
-                     data-impr='{{ config('app.clk_url') }}/log.gif?t=pv.100001&m=H5_M2016-1&pin={{ Session::get('user.pin') }}&uuid={{Session::has('user') ? Session::get('user.uuid') : $_COOKIE['uid']}}&v={"spu":{{$data['spu']}},"main_sku":{{$data['skuPrice']['sku']}},"price":{{ $data['skuPrice']['sale_price'] }},"version":"1.0.1","ver":"9.2","src":"H5"}'>
+            <article class="product-baseInfo bg-white">
                 <div class="product-text">
                     <h6 class="text-main font-size-base">{{$data['main_title']}}</h6>
                     <p class="text-primary font-size-sm">{{ $data['sub_title'] }} @if(isset($data['skuPrice']['skuPromotion']['promo_words'])){{$data['skuPrice']['skuPromotion']['promo_words']}}@endif</p>
@@ -575,6 +574,8 @@
         <div class="text-white font-size-md text-center m-t-10x" id="error-info"></div>
     </div>
 </div>
+
+<img src='{{ config('app.clk_url') }}/log.gif?t=pv.100001&m=H5_M2016-1&pin={{ Session::get('user.pin') }}&uuid={{Session::has('user') ? Session::get('user.uuid') : $_COOKIE['uid']}}&v={"spu":{{$data['spu']}},"main_sku":{{$data['skuPrice']['sku']}},"price":{{ $data['skuPrice']['sale_price'] }},"version":"1.0.1","ver":"9.2","src":"H5"}' hidden>
 
 </body>
 <script src="{{env('CDN_Static')}}/scripts/vendor.js{{'?v='.config('app.version')}}"></script>
