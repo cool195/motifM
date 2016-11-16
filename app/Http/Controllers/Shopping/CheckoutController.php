@@ -46,7 +46,9 @@ class CheckoutController extends ApiController
             $shipKey = md5($address['receiving_id'] . ($shipPrice['data']['total_amount'] + $shipPrice['data']['vas_amount']));
             if (Session::get('user.checkout.shipKey') != $shipKey) {
                 Session::put('user.checkout.shipKey', $shipKey);
-                Session::put('user.checkout.selship', $shippingMethod[0]);
+                if (!$this->searchSelShip($shippingMethod)) {
+                    Session::put('user.checkout.selship', $shippingMethod[0]);
+                }
                 Session::put('user.checkout.shipping', $shippingMethod);
                 //Session::forget('user.checkout.couponInfo');
             }
@@ -70,7 +72,7 @@ class CheckoutController extends ApiController
         $coupon = $this->couponCache();
         $country = $this->getCountry(1);
 
-        return View('checkout.payment', ['payInfo' => $payInfo['data']['list'], 'coupon' => $coupon['data'], 'country' => $country['data'],'from' => $request->get('from')]);
+        return View('checkout.payment', ['payInfo' => $payInfo['data']['list'], 'coupon' => $coupon['data'], 'country' => $country['data'], 'from' => $request->get('from')]);
     }
 
     //review
@@ -80,7 +82,7 @@ class CheckoutController extends ApiController
             return redirect('/checkout/shipping');
         } else if (!Session::has('user.checkout.paywith.pay_method')) {
             return redirect('/checkout/payment');
-        }else if(!Session::get('user.checkout.couponInfo.bind_id')){
+        } else if (!Session::get('user.checkout.couponInfo.bind_id')) {
             $this->couponCache();
         }
         $checkInfo = $this->getCheckOutAccountList(Session::get('user.checkout.address.receiving_id'), Session::get('user.checkout.selship.logistics_type'), Session::get('user.checkout.couponInfo.bind_id'));
@@ -92,13 +94,31 @@ class CheckoutController extends ApiController
         $shipKey = md5(Session::get('user.checkout.address.receiving_id') . ($checkInfo['data']['total_amount'] + $checkInfo['data']['vas_amount']));
 
         if (Session::get('user.checkout.shipKey') != $shipKey) {
+            $message = '';
             Session::put('user.checkout.shipKey', $shipKey);
             $shippingMethod = $this->getShippingMethod(Session::get('user.checkout.address.country_name_sn'), $checkInfo['data']['total_amount'] + $checkInfo['data']['vas_amount']);
-            Session::put('user.checkout.selship', $shippingMethod[0]);
+            if (!$this->searchSelShip($shippingMethod)) {
+                Session::put('user.checkout.selship', $shippingMethod[0]);
+                $message = '?message=true';
+            }
             Session::put('user.checkout.shipping', $shippingMethod);
-            return redirect('/checkout/review');
+            return redirect('/checkout/review'.$message);
+        }
+        if ($request->get('message')) {
+            $checkInfo['data']['message'] = 'Opps~~ shipping method changed.';
         }
         return View('checkout.review', ['checkInfo' => $checkInfo['data'], 'payStatus' => $request->get('pay')]);
+    }
+
+    //物流方式是否变更
+    private function searchSelShip($shippingMethod)
+    {
+        foreach ($shippingMethod as $value) {
+            if ($value['logistics_type'] == Session::get('user.checkout.selship.logistics_type')) {
+                return true;
+            }
+        }
+        return false;
     }
 
     //couponcache
@@ -362,7 +382,7 @@ class CheckoutController extends ApiController
             'cd' => $id,
         );
         $result = $this->request('openapi', '', 'pay', $params);
-        if($result['success'] && Session::get('user.checkout.paywith.withCard.card_id')==$id){
+        if ($result['success'] && Session::get('user.checkout.paywith.withCard.card_id') == $id) {
             Session::forget('user.checkout.paywith');
         }
         return $result;

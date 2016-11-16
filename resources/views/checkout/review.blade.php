@@ -242,9 +242,9 @@
             </div>
 
             <!-- 弹出提示 -->
-            <div class="loading loading-screen loading-switch loading-hidden" id="checkout-failure">
+            <div class="loading loading-screen loading-switch loading-hidden" id="checkout-failure" >
                 <div class="loading-modal">
-                    <div class="text-white font-size-md text-center m-t-10x">There was a problem validating your
+                    <div class="text-white font-size-md text-center m-t-10x alertMesssage" data-message="{{$checkInfo['message']}}">There was a problem validating your
                         payment. Please verify all payment details and try placing your order again. Thank you.
                     </div>
                 </div>

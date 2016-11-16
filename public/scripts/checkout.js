@@ -735,6 +735,12 @@
             setTimeout(function () {
                 closeFail()
             }, 3000);
+        }else if($('.alertMesssage').data('message')){
+            $('.alertMesssage').html($('.alertMesssage').data('message'));
+            openFail();
+            setTimeout(function () {
+                closeFail()
+            }, 3000);
         }
     }
 
