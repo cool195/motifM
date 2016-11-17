@@ -293,10 +293,6 @@
         @endif
             <section data-spu="{{$data['spu']}}" id="modalDialog" data-status="{{$data['status_code']}}">
                 <form action="">
-                    <div class="p-x-15x p-t-15x text-right">
-                        <a data-remodal-action="close"><i class="iconfont icon-cross text-common icon-size-lg"></i>
-                        </a>
-                    </div>
                     <fieldset class="text-primary p-x-15x p-b-10x text-left">
                         <div class="font-size-base">
                             <strong id="skuNewPrice">${{number_format(($data['skuPrice']['sale_price'] / 100), 2)}}</strong>
@@ -397,13 +393,32 @@
                     <hr class="hr-dark m-a-0">
                     <fieldset class="container-fluid p-a-15x">
                         <!-- 添加 购物车 控制按钮显示 -->
-                        <div class="btn btn-primary btn-block" data-control="continue" data-role="continue" data-action="PATCH">Continue</div>
+                        <button class="btn btn-primary btn-block up-btn-addToBag" @if(!$data['sale_status'] || $data['isPutOn']==0) disabled @endif data-control="continue" data-role="continue" data-action="PATCH">Add to Bag</button>
                     </fieldset>
                 </form>
             </section>
         <!-- 产品 其他信息 -->
             <section>
-
+                {{--<!-- 添加到购物车 立即购买 -->--}}
+                {{--<aside class="container-fluid bg-white p-y-10x p-x-15x">--}}
+                    {{--@if(Session::has('user'))--}}
+                        {{--<div class="row">--}}
+                            {{--<div class="col-xs-12">--}}
+                                {{--<button class="btn btn-primary btn-block up-btn-addToBag @if(!$data['sale_status'] || $data['isPutOn']==0) disabled @endif"--}}
+                                        {{--data-control="openModal" data-action="PATCH">Add to Bag--}}
+                                {{--</button>--}}
+                            {{--</div>--}}
+                        {{--</div>--}}
+                    {{--@else--}}
+                        {{--<div class="row">--}}
+                            {{--<div class="col-xs-12">--}}
+                                {{--<a href="javascript:;"--}}
+                                   {{--class="notesLogin btn btn-primary btn-block up-btn-addToBag @if(!$data['sale_status'] || $data['isPutOn']==0) disabled @endif">--}}
+                                    {{--Add to Bag </a>--}}
+                            {{--</div>--}}
+                        {{--</div>--}}
+                    {{--@endif--}}
+                {{--</aside>--}}
                 <hr class="hr-base m-a-0">
                 <!-- 产品描述 -->
                 <aside class="bg-white p-x-15x p-y-10x">
