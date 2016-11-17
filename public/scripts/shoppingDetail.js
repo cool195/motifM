@@ -825,7 +825,7 @@
                     if (data.redirectUrl !== '') {
                         window.location.href = data.redirectUrl;
                     }
-                    Modal.close();
+                    //Modal.close();
                     if (Action === 'PATCH') {
                         openAddSuccess();
                         setTimeout(function () {
@@ -857,6 +857,7 @@
                 closeAddError();
             }, 1500);
         }
+
         if(showmsg()){
             var Action = $(e.target).data('action');
             initCart(Action);

@@ -291,29 +291,119 @@
                     </section>
                 @endforeach
         @endif
+            <section data-spu="{{$data['spu']}}" id="modalDialog" data-status="{{$data['status_code']}}">
+                <form action="">
+                    <div class="p-x-15x p-t-15x text-right">
+                        <a data-remodal-action="close"><i class="iconfont icon-cross text-common icon-size-lg"></i>
+                        </a>
+                    </div>
+                    <fieldset class="text-primary p-x-15x p-b-10x text-left">
+                        <div class="font-size-base">
+                            <strong id="skuNewPrice">${{number_format(($data['skuPrice']['sale_price'] / 100), 2)}}</strong>
+                        </div>
+                        <div class="font-size-sm" id="selectedOptions">
+                            <span data-select>Select:</span>
+                        <span data-select-options>
+                        @if(isset($data['spuAttrs']))
+                                @foreach($data['spuAttrs'] as $key => $attrs)
+                                    @if((count($data['spuAttrs']) - 1) == $key)
+                                        {{$attrs['attr_type_value']}}
+                                    @else
+                                        {{$attrs['attr_type_value'].", "}}
+                                    @endif
+                                @endforeach
+                            @endif
+                        </span>
+                        </div>
+                    </fieldset>
+                    <div class="warning-info off flex text-warning flex-alignCenter text-left p-x-15x p-b-10x">
+                        <i class="iconfont icon-caveat icon-size-md p-r-5x"></i>
+                        <span class="font-size-xs"></span>
+                    </div>
+                    <hr class="hr-base m-a-0" data-onlysku="@if(count($data['skus'])==1){{$data['skus'][0]}}@endif">
+                    @if(isset($data['spuAttrs']))
+                        @foreach($data['spuAttrs'] as $value)
+                            <fieldset class="p-x-15x p-y-10x text-left">
+                                <div class="container-fluid p-a-0">
+                                    <div class="text-primary font-size-sm sparow" id="{{'spa'.$value['attr_type']}}"
+                                         data-click="false"
+                                         data-msg="{{$value['attr_type_value']}}">{{$value['attr_type_value']}}</div>
+                                    <div class="row">
+                                        @if(isset($value['skuAttrValues']))
+                                            @foreach($value['skuAttrValues'] as $skuValue)
+                                                <div class="p-t-10x p-x-5x">
+                                                    <div class="btn btn-itemProperty btn-sm skarow @if(!$skuValue['stock']) disabled @endif"
+                                                         id="{{$skuValue['attr_value_id']}}"
+                                                         data-spa="{{$value['attr_type']}}"
+                                                         data-ska="{{$skuValue['attr_value_id']}}">
+                                                        {{$skuValue['attr_value']}}
+                                                    </div>
+                                                </div>
+                                            @endforeach
+                                        @endif
+                                    </div>
+                                </div>
+                            </fieldset>
+                            <hr class="hr-base m-a-0">
+                        @endforeach
+                    @endif
 
+                    @if(isset($data['vasBases']))
+                        @foreach($data['vasBases'] as $vas)
+                            @if(1 == $vas['vas_type'])
+                                <fieldset class="p-x-15x p-y-10x text-left" data-vas-type="{{$vas['vas_type']}}">
+                                    <div class="text-primary font-size-sm m-b-10x">{{ $vas['vas_describe'] }} +
+                                        ${{number_format(($vas['vas_price'] / 100), 2)}}</div>
+                                    <div class="flex flex-fullJustified flex-alignCenter">
+                                        <input class="input-engraving form-control font-size-sm disabled" type="text"
+                                               maxlength="20" placeholder="20 characters max"
+                                               data-vas-type="{{$vas['vas_type']}}">
+                                        {{--<input type="radio" name="vas_name" id="{{$vas['vas_id']}}" hidden>--}}
+                                        <div class="iconfont icon-checkcircle text-common m-b-0 p-l-20x"
+                                             id="{{$vas['vas_id']}}" data-vas-type="{{$vas['vas_type']}}"></div>
+                                    </div>
+                                </fieldset>
+                                <hr class="hr-base m-a-0">
+                            @else
+                                <fieldset class="p-x-15x p-y-10x text-left" data-vas-type="$vas['vas_type']">
+                                    <div class="flex flex-fullJustified flex-alignCenter">
+                                        <div class="text-primary font-size-sm">{{ $vas['vas_describe'] }}+ $4.5(optional)
+                                        </div>
+                                        {{--<input type="radio" name="vas_name2" id="{{$vas['vas_id']}}" hidden>--}}
+                                        <div class="iconfont icon-checkcircle text-common m-b-0 p-l-20x"
+                                             id="{{$vas['vas_id']}}" data-vas-type="$vas['vas_type']"></div>
+                                    </div>
+                                </fieldset>
+                                <hr class="hr-base m-a-0">
+                            @endif
+                        @endforeach
+                    @endif
+                    <fieldset class="p-x-15x p-y-10x">
+                        <div class="flex flex-fullJustified flex-alignCenter">
+                            <span class="text-primary font-size-sm">Qty:</span>
+                            <div class="btn-group flex" id="item-count">
+                                <div class="btn btn-cartCount btn-sm disabled" data-item="minus">
+                                    <i class="iconfont icon-minus"></i>
+                                </div>
+                                <div class="btn btn-cartCount btn-sm" data-num="num">1</div>
+
+                                <div class="btn btn-cartCount btn-sm"
+                                     data-item="add">
+                                    <i class="iconfont icon-add"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </fieldset>
+                    <hr class="hr-dark m-a-0">
+                    <fieldset class="container-fluid p-a-15x">
+                        <!-- 添加 购物车 控制按钮显示 -->
+                        <div class="btn btn-primary btn-block" data-control="continue" data-role="continue" data-action="PATCH">Continue</div>
+                    </fieldset>
+                </form>
+            </section>
         <!-- 产品 其他信息 -->
             <section>
-                <!-- 添加到购物车 立即购买 -->
-                <aside class="container-fluid bg-white p-y-10x p-x-15x">
-                    @if(Session::has('user'))
-                        <div class="row">
-                            <div class="col-xs-12">
-                                <button class="btn btn-primary btn-block up-btn-addToBag @if(!$data['sale_status'] || $data['isPutOn']==0) disabled @endif"
-                                        data-control="openModal" data-action="PATCH">Add to Bag
-                                </button>
-                            </div>
-                        </div>
-                    @else
-                        <div class="row">
-                            <div class="col-xs-12">
-                                <a href="javascript:;"
-                                   class="notesLogin btn btn-primary btn-block up-btn-addToBag @if(!$data['sale_status'] || $data['isPutOn']==0) disabled @endif">
-                                    Add to Bag </a>
-                            </div>
-                        </div>
-                    @endif
-                </aside>
+
                 <hr class="hr-base m-a-0">
                 <!-- 产品描述 -->
                 <aside class="bg-white p-x-15x p-y-10x">
@@ -426,119 +516,7 @@
         </section>
 
         <!-- 弹出选择 size color Engraving -->
-        <div class="remodal p-a-0 modal-content" data-remodal-id="modal" id="modalDialog" data-spu="{{$data['spu']}}"
-             data-status="{{$data['status_code']}}">
-            <form action="">
-                <div class="p-x-15x p-t-15x text-right">
-                    <a data-remodal-action="close"><i class="iconfont icon-cross text-common icon-size-lg"></i>
-                    </a>
-                </div>
-                <fieldset class="text-primary p-x-15x p-b-10x text-left">
-                    <div class="font-size-base">
-                        <strong id="skuNewPrice">${{number_format(($data['skuPrice']['sale_price'] / 100), 2)}}</strong>
-                    </div>
-                    <div class="font-size-sm" id="selectedOptions">
-                        <span data-select>Select:</span>
-                        <span data-select-options>
-                        @if(isset($data['spuAttrs']))
-                                @foreach($data['spuAttrs'] as $key => $attrs)
-                                    @if((count($data['spuAttrs']) - 1) == $key)
-                                        {{$attrs['attr_type_value']}}
-                                    @else
-                                        {{$attrs['attr_type_value'].", "}}
-                                    @endif
-                                @endforeach
-                            @endif
-                        </span>
-                    </div>
-                </fieldset>
-                <div class="warning-info off flex text-warning flex-alignCenter text-left p-x-15x p-b-10x">
-                    <i class="iconfont icon-caveat icon-size-md p-r-5x"></i>
-                    <span class="font-size-xs"></span>
-                </div>
-                <hr class="hr-base m-a-0" data-onlysku="@if(count($data['skus'])==1){{$data['skus'][0]}}@endif">
-                @if(isset($data['spuAttrs']))
-                    @foreach($data['spuAttrs'] as $value)
-                        <fieldset class="p-x-15x p-y-10x text-left">
-                            <div class="container-fluid p-a-0">
-                                <div class="text-primary font-size-sm sparow" id="{{'spa'.$value['attr_type']}}"
-                                     data-click="false"
-                                     data-msg="{{$value['attr_type_value']}}">{{$value['attr_type_value']}}</div>
-                                <div class="row">
-                                    @if(isset($value['skuAttrValues']))
-                                        @foreach($value['skuAttrValues'] as $skuValue)
-                                            <div class="p-t-10x p-x-5x">
-                                                <div class="btn btn-itemProperty btn-sm skarow @if(!$skuValue['stock']) disabled @endif"
-                                                     id="{{$skuValue['attr_value_id']}}"
-                                                     data-spa="{{$value['attr_type']}}"
-                                                     data-ska="{{$skuValue['attr_value_id']}}">
-                                                    {{$skuValue['attr_value']}}
-                                                </div>
-                                            </div>
-                                        @endforeach
-                                    @endif
-                                </div>
-                            </div>
-                        </fieldset>
-                        <hr class="hr-base m-a-0">
-                    @endforeach
-                @endif
 
-                @if(isset($data['vasBases']))
-                    @foreach($data['vasBases'] as $vas)
-                        @if(1 == $vas['vas_type'])
-                            <fieldset class="p-x-15x p-y-10x text-left" data-vas-type="{{$vas['vas_type']}}">
-                                <div class="text-primary font-size-sm m-b-10x">{{ $vas['vas_describe'] }} +
-                                    ${{number_format(($vas['vas_price'] / 100), 2)}}</div>
-                                <div class="flex flex-fullJustified flex-alignCenter">
-                                    <input class="input-engraving form-control font-size-sm disabled" type="text"
-                                           maxlength="20" placeholder="20 characters max"
-                                           data-vas-type="{{$vas['vas_type']}}">
-                                    {{--<input type="radio" name="vas_name" id="{{$vas['vas_id']}}" hidden>--}}
-                                    <div class="iconfont icon-checkcircle text-common m-b-0 p-l-20x"
-                                         id="{{$vas['vas_id']}}" data-vas-type="{{$vas['vas_type']}}"></div>
-                                </div>
-                            </fieldset>
-                            <hr class="hr-base m-a-0">
-                        @else
-                            <fieldset class="p-x-15x p-y-10x text-left" data-vas-type="$vas['vas_type']">
-                                <div class="flex flex-fullJustified flex-alignCenter">
-                                    <div class="text-primary font-size-sm">{{ $vas['vas_describe'] }}+ $4.5(optional)
-                                    </div>
-                                    {{--<input type="radio" name="vas_name2" id="{{$vas['vas_id']}}" hidden>--}}
-                                    <div class="iconfont icon-checkcircle text-common m-b-0 p-l-20x"
-                                         id="{{$vas['vas_id']}}" data-vas-type="$vas['vas_type']"></div>
-                                </div>
-                            </fieldset>
-                            <hr class="hr-base m-a-0">
-                        @endif
-                    @endforeach
-                @endif
-                <fieldset class="p-x-15x p-y-10x">
-                    <div class="flex flex-fullJustified flex-alignCenter">
-                        <span class="text-primary font-size-sm">Qty:</span>
-                        <div class="btn-group flex" id="item-count">
-                            <div class="btn btn-cartCount btn-sm disabled" data-item="minus">
-                                <i class="iconfont icon-minus"></i>
-                            </div>
-                            <div class="btn btn-cartCount btn-sm" data-num="num">1</div>
-
-                            <div class="btn btn-cartCount btn-sm"
-                                 data-item="add">
-                                <i class="iconfont icon-add"></i>
-                            </div>
-                        </div>
-                    </div>
-                </fieldset>
-                <hr class="hr-dark m-a-0">
-                <fieldset class="container-fluid p-a-15x">
-                    <!-- 添加 购物车 控制按钮显示 -->
-                    <div class="btn btn-primary btn-block  hidden-xs-up"
-                         data-control="continue" data-role="continue" data-action="">Continue
-                    </div>
-                </fieldset>
-            </form>
-        </div>
         <!-- 页脚 功能链接 start-->
     @include('footer')
     <!-- 页脚 功能链接 end-->
