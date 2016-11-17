@@ -38,7 +38,7 @@ class ProductController extends ApiController
             'recid' => '100002',
             'uuid' => $_COOKIE['uid'],
             'pagenum' => 1,
-            'pagesize' => 20,
+            'pagesize' => 8,
             'spu' => $spu,
             'extra_kv'=>!empty($designerId) ? "designerId:".$designerId : "designerId:-1"
         );
