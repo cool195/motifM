@@ -11536,12 +11536,13 @@ return jQuery;
                 var paginationHTML = '';
                 if (s.params.paginationType === 'bullets') {
                     var numberOfBullets = s.params.loop ? Math.ceil((s.slides.length - s.loopedSlides * 2) / s.params.slidesPerGroup) : s.snapGrid.length;
+                    var baifen=(1/numberOfBullets) * 100;
                     for (var i = 0; i < numberOfBullets; i++) {
                         if (s.params.paginationBulletRender) {
                             paginationHTML += s.params.paginationBulletRender(i, s.params.bulletClass);
                         }
                         else {
-                            paginationHTML += '<' + s.params.paginationElement+' class="' + s.params.bulletClass + '"></' + s.params.paginationElement + '>';
+                            paginationHTML += '<' + s.params.paginationElement+' class="' + s.params.bulletClass + '" style="width:' + baifen + '%"></' + s.params.paginationElement + '>';
                         }
                     }
                     s.paginationContainer.html(paginationHTML);
@@ -11550,6 +11551,7 @@ return jQuery;
                         s.a11y.initPagination();
                     }
                 }
+
                 if (s.params.paginationType === 'fraction') {
                     if (s.params.paginationFractionRender) {
                         paginationHTML = s.params.paginationFractionRender(s, s.params.paginationCurrentClass, s.params.paginationTotalClass);

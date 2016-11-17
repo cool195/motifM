@@ -72,6 +72,16 @@
         lazyLoading: true,
         lazyLoadingInPrevNext: true
     });
+    //推荐商品
+    var recommendProductsSwiper = new Swiper('#recommend-productList', {
+        slidesPerView: 2.5,
+        paginationClickable: true,
+        spaceBetween: 1,
+        freeMode: true,
+        lazyLoading: true,
+        lazyLoadingInPrevNext: true
+    });
+
     // 暂存 根据所选项所筛选出的 Skus 的结果
     var ResultSkus = [];
 

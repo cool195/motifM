@@ -357,59 +357,66 @@
                         <article class="font-size-md text-primary p-x-15x p-y-10x bg-title"><strong>You May Also
                                 Like</strong></article>
                         <hr class="hr-base m-a-0">
-                        <div class="container-fluid p-t-10x" id="recommend"
+                        <div class="p-t-10x" id="recommend"
                              data-impr="{{ $recommended['impr'] }}">
-                            <div class="row productList">
+                            <div class="productList">
 
-                                @foreach($recommended['list'] as $key => $value)
-                                    @if($key < 20)
-                                        <div class="col-xs-6 p-a-0">
-                                            <div class="productList-item">
-                                                <div class="image-bg">
-                                                    <div class="image-container">
-                                                        <a href="javascript:void(0)"
-                                                           data-link="/detail/{{ $value['spu'] }}"
-                                                           data-impr="{{ $value['impr'] }}"
-                                                           data-clk="{{ $value['clk'] }}"
-                                                           data-spu="{{ $value['spu'] }}"
-                                                           data-title="{{ $value['main_title'] }}"
-                                                           data-price="{{ number_format(($value['skuPrice']['sale_price'] / 100), 2) }}">
-                                                            <img class="img-fluid img-lazy"
-                                                                 data-original="{{env('APP_Api_Image')}}/n1/{{ $value['main_image_url'] }}"
-                                                                 src="{{env('CDN_Static')}}/images/product/bg-product@336.png"
-                                                                 alt="{{ $value['main_title'] }}">
-                                                        </a>
-                                                        @if(1 == $value['sale_type'])
-                                                            {{--预售产品 预定信息--}}
-                                                            <span class="preorder-info font-size-xs">Limited Edition</span>
+                                <div class="swiper-container" id="recommend-productList">
+                                    <div class="swiper-wrapper">
+                                        @foreach($recommended['list'] as $key => $value)
+                                            @if($key < 20)
+                                        <div class="swiper-slide">
+                                            <div class="p-a-0 recommend-itme">
+                                                <div class="productList-item">
+                                                    <div class="image-bg">
+                                                        <div class="image-container">
+                                                            <a href="javascript:void(0)"
+                                                               data-link="/detail/{{ $value['spu'] }}"
+                                                               data-impr="{{ $value['impr'] }}"
+                                                               data-clk="{{ $value['clk'] }}"
+                                                               data-spu="{{ $value['spu'] }}"
+                                                               data-title="{{ $value['main_title'] }}"
+                                                               data-price="{{ number_format(($value['skuPrice']['sale_price'] / 100), 2) }}">
+                                                                <img class="img-fluid swiper-lazy"
+                                                                     data-src="{{env('APP_Api_Image')}}/n1/{{ $value['main_image_url'] }}"
+                                                                     alt="">
+                                                                <img class="img-fluid preloader"
+                                                                     src="{{env('CDN_Static')}}/images/product/bg-product@336.png">
+                                                            </a>
+                                                            @if(1 == $value['sale_type'])
+                                                                {{--预售产品 预定信息--}}
+                                                                <span class="preorder-info font-size-xs">Limited Edition</span>
+                                                            @endif
+                                                        </div>
+                                                    </div>
+                                                    <div class="font-size-sm product-title text-main">
+                                                        {{ $value['main_title'] }}
+                                                    </div>
+                                                    <div class="price-caption">
+
+                                                        @if($value['skuPrice']['sale_price'] != $value['skuPrice']['price'])
+                                                            <span class="font-size-sm m-l-5x text-red"><strong>${{ number_format(($value['skuPrice']['sale_price'] / 100), 2) }}</strong></span>
+                                                            <span class="font-size-xs text-common text-throughLine">${{ number_format(($value['skuPrice']['price'] / 100), 2) }}</span>
+                                                        @else
+                                                            <span class="font-size-sm m-l-5x"><strong>${{ number_format(($value['skuPrice']['sale_price'] / 100), 2) }}</strong></span>
+                                                        @endif
+                                                        @if(Session::has('user'))
+                                                            <span class="wish-item p-r-5x"><i
+                                                                        class="iconfont text-common btn-wish btn-wished @if(in_array($value['spu'], $wishlist->wishlist())){{'active'}}@endif"
+                                                                        data-spu="{{$value['spu']}}"></i></span>
+                                                        @else
+                                                            <a class="wish-item p-r-5x" href="javascript:;"><i
+                                                                        class="iconfont text-common btn-wish btn-wished"
+                                                                        data-actionspu="{{$value['spu']}}"></i></a>
                                                         @endif
                                                     </div>
                                                 </div>
-                                                <div class="font-size-sm product-title text-main">
-                                                    {{ $value['main_title'] }}
-                                                </div>
-                                                <div class="price-caption">
-
-                                                    @if($value['skuPrice']['sale_price'] != $value['skuPrice']['price'])
-                                                        <span class="font-size-sm m-l-5x text-red"><strong>${{ number_format(($value['skuPrice']['sale_price'] / 100), 2) }}</strong></span>
-                                                        <span class="font-size-xs text-common text-throughLine">${{ number_format(($value['skuPrice']['price'] / 100), 2) }}</span>
-                                                    @else
-                                                        <span class="font-size-sm m-l-5x"><strong>${{ number_format(($value['skuPrice']['sale_price'] / 100), 2) }}</strong></span>
-                                                    @endif
-                                                    @if(Session::has('user'))
-                                                        <span class="wish-item p-r-5x"><i
-                                                                    class="iconfont text-common btn-wish btn-wished @if(in_array($value['spu'], $wishlist->wishlist())){{'active'}}@endif"
-                                                                    data-spu="{{$value['spu']}}"></i></span>
-                                                    @else
-                                                        <a class="wish-item p-r-5x" href="javascript:;"><i
-                                                                    class="iconfont text-common btn-wish btn-wished"
-                                                                    data-actionspu="{{$value['spu']}}"></i></a>
-                                                    @endif
-                                                </div>
                                             </div>
                                         </div>
-                                    @endif
-                                @endforeach
+                                            @endif
+                                        @endforeach
+                                    </div>
+                                </div>
 
                             </div>
                         </div>

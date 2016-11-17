@@ -164,12 +164,27 @@
                     <a data-link="/detail/@{{ $value.spu }}" data-impr="@{{ $value.impr }}" data-clk="@{{ $value.clk }}"
                        href="javascript:void(0)" data-spu="@{{ $value.spu }}" data-title="@{{ $value.main_title }}"
                        data-price="@{{ ($value.skuPrice.sale_price/100).toFixed(2) }}">
-                        <img class="img-fluid img-lazy"
-                             data-original="{{env('APP_Api_Image')}}/n1/@{{ $value.main_image_url }}"
-                             src="{{env('CDN_Static')}}/images/product/bg-product@336.png"
-                             alt="@{{ $value.main_title }}">
-                    </a>
+                        <div class="swiper-container productList-swiper">
+                            <div class="swiper-wrapper">
+                                <div class="swiper-slide">
+                                    <img class="img-fluid swiper-lazy"
+                                         data-src="{{env('APP_Api_Image')}}/n1/@{{ $value.main_image_url }}"
+                                         alt="">
+                                    <img class="img-fluid preloader"
+                                         src="{{env('CDN_Static')}}/images/product/bg-product@336.png" alt="">
+                                </div>
+                                @{{ each $value.image_paths as value index }}
+                                <div class="swiper-slide">
+                                    <img class="img-fluid img-lazy"
+                                         src="{{env('APP_Api_Image')}}/n1/@{{ value }}"
+                                         alt="@{{ $value.main_title }}">
+                                </div>
+                                @{{ /each }}
 
+                            </div>
+                            <div class="swiper-pagination"></div>
+                        </div>
+                    </a>
                     @{{ if $value.sale_type == 1 }}
                         {{--预售产品 预定信息--}}
                         <span class="preorder-info font-size-xs">Limited Edition</span>

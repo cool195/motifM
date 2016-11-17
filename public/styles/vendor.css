@@ -197,6 +197,25 @@
   background: #000;
   opacity: 0.2;
 }
+.productList-swiper .swiper-pagination-bullets{
+  bottom: -6px!important;
+  opacity: 1;
+}
+.productList-swiper .swiper-pagination-bullet {
+  height: 3px;
+  display: inline-block;
+  border-radius: 0;
+  background: none;
+  opacity: 0.2;
+  margin:0!important;
+  -webkit-transition: opacity 0.5s;
+      transition: opacity 0.5s;
+}
+.productList-swiper .swiper-pagination-bullet-active{
+  opacity: 0;
+  background: #949caf;
+}
+
 button.swiper-pagination-bullet {
   border: none;
   margin: 0;
@@ -5939,6 +5958,7 @@ footer .links-group {
     border: solid 1px #171a2b;
     color: #171a2b;
     font-style: italic;
+    z-index: 10;
 }
 
 .preorderSold-info{

@@ -150,7 +150,7 @@
         // 筛选搜索条件
         var Url;
         if (SearchType != '') {
-            console.log('SearchType==='+SearchType);
+            //console.log('SearchType==='+SearchType);
             Url = '/products?extra_kv=sea:' + SearchType;
         } else {
             Url = '/products';
@@ -170,12 +170,13 @@
                 if (data.data === null || data.data === '' || data.data.list.length === 0) {
                     $ProductListontainer.data('pagenum', -1);
                 } else {
-                    console.log(categoryType);
-                    console.log(Url);
+                    //console.log(categoryType);
+                    //console.log(Url);
                     // 遍历模板 插入页面
                     appendProductsList(data.data, type);
                     $ProductListontainer.data('pagenum', NextPage);
 
+                    //console.info(data.data);
                     $.ajax({
                         url: data.data.impr
                     });
@@ -185,6 +186,22 @@
                         threshold: 200,
                         container: $('#productList-container'),
                         effect: 'fadeIn'
+                    });
+
+                    // swiper
+                    var swiper = new Swiper('.swiper-container', {
+                        pagination: '.swiper-pagination',
+                        paginationClickable: true,
+                        paginationType: 'bullets',
+                        lazyLoading: true,
+                        lazyLoadingInPrevNext: true,
+                        onSlideChangeStart: function(swiper){
+                            //console.info(swiper.bullets);
+                            $(swiper.bullets).css('opacity','0.6');
+                            setTimeout(function () {
+                                $(swiper.bullets).css('opacity','0');
+                            }, 2000);
+                        },
                     });
 
                     //给模板a标签绑定事件
@@ -255,7 +272,7 @@
             $('.lowTo-info').html(SearchType);
             $('.lowTo').addClass('disabled');
         }else{
-            console.log($(this).val());
+            //console.log($(this).val());
             // 搜索条件
             SearchType = $currentOption.data('search');
             // 显示搜索条件
