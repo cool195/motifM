@@ -263,9 +263,9 @@
     (function initOptions() {
         var SpuId = $('#modalDialog').data('spu');
         $.ajax({
-            async: false,
-            url: '/products/' + SpuId
-        })
+                async: false,
+                url: '/products/' + SpuId
+            })
             .done(function (data) {
                 if (data.success) {
                     // 获取商品所有的库存
@@ -608,6 +608,29 @@
             $('#addToCart-sku').val(ResultSkus[0]);
             getNewPrice(ResultSkus[0]);
         }
+
+        // 更新显示图片
+        var ImgPath = $(this).data('image');
+        var IsHave = false;
+        if (ImgPath != undefined && ImgPath != '') {
+            $.each($('#baseImg-swiper img.swiper-lazy'), function (index, val) {
+                var CurrentImg = $(this).attr('src');
+                if (CurrentImg === ImgPath) {
+                    BaseImgSwiper.slideTo(index, 1000, false);
+                    IsHave = true;
+                    return false;
+                }
+            });
+            if (IsHave === false) {
+                if ((BaseImgSwiper.slides[1].className).indexOf('replace-img') > 0) {
+                    $('#img-replace').attr('src', ImgPath);
+                    BaseImgSwiper.slideTo(1, 1000, false);
+                } else {
+                    BaseImgSwiper.prependSlide('<div class="swiper-slide replace-img"><img class="img-fluid swiper-lazy" id="img-replace" data-src="' + ImgPath + '" alt=""><img class="img-fluid preloader" src="/images/product/bg-product@750.png" alt=""></div>');
+                    BaseImgSwiper.slideTo(1, 1000, false);
+                }
+            }
+        }
     });
 
     //更新SKU价格
@@ -629,11 +652,11 @@
         var $WarningInfo = $('.warning-info');
         openLoading();
         $.ajax({
-            url: '/stock/checkstock',
-            data: {
-                skus: RequestStock
-            }
-        })
+                url: '/stock/checkstock',
+                data: {
+                    skus: RequestStock
+                }
+            })
             .done(function (data) {
                 if (data.success) {
 
@@ -746,9 +769,9 @@
 
     function updateCartCount() {
         $.ajax({
-            url: ' /cart/amount',
-            type: 'GET'
-        })
+                url: ' /cart/amount',
+                type: 'GET'
+            })
             .done(function (data) {
                 if (data.success) {
                     if (data.data.skusAmout > 0 && data.data.skusAmout <= 99) {
@@ -816,12 +839,12 @@
         // PUT 立即购买
         // PATCH 添加购物车
         $.ajax({
-            url: '/cart',
-            type: Action,
-            data: {
-                operate: Operate
-            }
-        })
+                url: '/cart',
+                type: Action,
+                data: {
+                    operate: Operate
+                }
+            })
             .done(function (data) {
                 if (data.success) {
                     updateCartCount();
