@@ -291,7 +291,7 @@
                     </section>
                 @endforeach
             @endif
-            <section data-spu="{{$data['spu']}}" id="modalDialog" data-status="{{$data['status_code']}}">
+            <section data-spu="{{$data['spu']}}" id="modalDialog" data-login="1" data-status="{{$data['status_code']}}">
 
                     <fieldset class="text-primary p-x-15x p-b-10x text-left">
                         <div class="font-size-base">
@@ -607,11 +607,13 @@
 
     if (getCookie('notesLogin') == 'AddBagAction' && !$('.notesLogin').hasClass('btn')) {
         if(getCookie('AddBagSku') != undefined && getCookie('AddBagSku') != ''){
+            $('#modalDialog').data('login',2);
             $('#addToCart-sku').val(getCookie('AddBagSku'));
         }
         $('.up-btn-addToBag').click();
         setCookie('notesLogin', '');
         setCookie('AddBagSku', '');
+        $('#modalDialog').data('login',1);
     }
 </script>
 @include('global')

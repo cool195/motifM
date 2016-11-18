@@ -862,7 +862,7 @@
             }, 1500);
         }
 
-        if ($('#addToCart-sku').val() != 1) {
+        if ($('#addToCart-sku').val() != 1 && $('#modalDialog').data('login') != 1) {
             initCart('PATCH');
         } else {
             if (showmsg()) {
