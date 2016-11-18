@@ -170,7 +170,8 @@
                 <a class="wish-item p-r-10x p-t-10x" href="javascript:;"><i
                             class="iconfont text-common btn-wish btn-wished" data-actionspu="{{$data['spu']}}"></i></a>
             @endif
-        <!-- 产品 标题 简介 价格 基本信息 -->
+
+            <!-- 产品 标题 简介 价格 基本信息 -->
             <article class="product-baseInfo bg-white">
                 <div class="product-text">
                     <h6 class="text-main font-size-base">{{$data['main_title']}}</h6>
@@ -186,132 +187,19 @@
                 <hr class="hr-light m-x-10x">
                 <div class="product-price">
                     @if(isset($data['skuPrice']['skuPromotion']) && ($data['skuPrice']['skuPromotion']['price']>$data['skuPrice']['skuPromotion']['promot_price']))
-                        <span class="font-size-lx text-red">${{ number_format(($data['skuPrice']['skuPromotion']['promot_price'] / 100), 2) }}</span>
+                        <span class="font-size-lx text-red" id="skuNewPrice">${{ number_format(($data['skuPrice']['skuPromotion']['promot_price'] / 100), 2) }}</span>
                         <span class="font-size-sm text-throughLine text-common">${{ number_format(($data['skuPrice']['skuPromotion']['price'] /100), 2) }}</span>
                     @else
-                        <span class="font-size-lx text-primary">${{ number_format(($data['skuPrice']['sale_price'] / 100), 2) }}</span>
+                        <span class="font-size-lx text-primary" id="skuNewPrice">${{ number_format(($data['skuPrice']['sale_price'] / 100), 2) }}</span>
                     @endif
                 </div>
 
                 <div class="text-warning font-size-xs p-x-15x"
                      data-impr='{{ config('app.clk_url') }}/log.gif?t=rec.100002&m=OPEN_M2016-1&pin={{ Session::get('user.pin') }}&uuid={{Session::has('user') ? Session::get('user.uuid') : $_COOKIE['uid']}}&v={" action ":0,"cspus ":"{{ $data['skus']}}","expid ":0,"index ":1,"rec_type ":1,"spu":{{ $data['spu'] }},"ver ":"9.00 "}&sig=2291a58454115c8136169111738de65696add43d'>{{ $data['prompt_words'] }}</div>
             </article>
-            <div class="hr-between"></div>
 
-            <!-- 产品 预售信息 -->
-            @if(1 == $data['sale_type'])
 
-                @if($data['skuPrice']['skuPromotion']['remain_time'] >= 0 || !empty($data['spuStock']))
-                    <section class="limited-content"
-                             data-begintime="{{  $data['skuPrice']['skuPromotion']['start_time'] }}"
-                             data-endtime="{{  $data['skuPrice']['skuPromotion']['end_time'] }}"
-                             data-lefttime="@if($data['sale_status'] && $data['isPutOn']==1){{$data['skuPrice']['skuPromotion']['remain_time']}}@else{{'0'}}@endif"
-                             data-qtty="{{$data['spuStock']['stock_qtty']}}">
-                        <div class="bg-white">
-                            <div class="limited-subtitle">
-                                <span class="p-l-15x p-r-10x bg-limited">
-                                    <strong>LIMITED EDITION</strong>
-                                </span>
-                            </div>
-                            @if($data['isPutOn'] !=1)
-                                <div class="p-x-15x p-t-10x">
-                                    <img src="{{env('CDN_Static')}}/images/icon/icon-limited.png"
-                                         srcset="{{env('CDN_Static')}}/images/icon/icon-limited@2x.png 2x, {{env('CDN_Static')}}/images/icon/icon-limited@3x.png 3x"
-                                         alt="">
-                                    <span class="text-primary font-size-sm stock-qtty">
-                                            Sold Out
-                                    </span>
-                                </div>
-                                <div class="p-x-15x p-t-10x">
-                                    <img src="{{env('CDN_Static')}}/images/icon/icon-limited.png"
-                                         srcset="{{env('CDN_Static')}}/images/icon/icon-limited@2x.png 2x, {{env('CDN_Static')}}/images/icon/icon-limited@3x.png 3x"
-                                         alt="">
-                                    <span class="text-primary font-size-sm">Orders Closed</span>
-                                </div>
-                            @else
-                                @if(!empty($data['spuStock']))
-                                    <div class="p-x-15x p-t-10x">
-                                        <img src="{{env('CDN_Static')}}/images/icon/icon-limited.png"
-                                             srcset="{{env('CDN_Static')}}/images/icon/icon-limited@2x.png 2x, {{env('CDN_Static')}}/images/icon/icon-limited@3x.png 3x"
-                                             alt="">
-                                    <span class="text-primary font-size-sm stock-qtty">
-                                        @if(($data['spuStock']['stock_qtty'] - $data['spuStock']['saled_qtty']) > 0)
-                                            Only {{$data['spuStock']['stock_qtty'] - $data['spuStock']['saled_qtty']}}
-                                            Left
-                                        @else
-                                            Sold Out
-                                        @endif
-                                    </span>
-                                    </div>
-                                @endif
-
-                                @if($data['skuPrice']['skuPromotion']['remain_time'] >= 0)
-                                    @if($data['sale_status'])
-                                        <div>
-                                            <div class="p-x-15x p-t-5x">
-                                                <img src="{{env('CDN_Static')}}/images/icon/icon-limited.png"
-                                                     srcset="{{env('CDN_Static')}}/images/icon/icon-limited@2x.png 2x, {{env('CDN_Static')}}/images/icon/icon-limited@3x.png 3x"
-                                                     alt="">
-                                            <span class="text-primary font-size-sm">Orders Close <span
-                                                        class="time_show"></span></span>
-                                            </div>
-                                            <div class="p-x-15x p-y-5x m-x-15x">
-                                                <progress class="progress progress-primary" id="limited-progress"
-                                                          value=""
-                                                          max="10000">0%
-                                                </progress>
-                                            </div>
-                                        </div>
-                                    @else
-                                        <div class="p-x-15x p-t-10x">
-                                            <img src="{{env('CDN_Static')}}/images/icon/icon-limited.png"
-                                                 srcset="{{env('CDN_Static')}}/images/icon/icon-limited@2x.png 2x, {{env('CDN_Static')}}/images/icon/icon-limited@3x.png 3x"
-                                                 alt="">
-                                            <span class="text-primary font-size-sm">Orders Closed</span>
-                                        </div>
-                                    @endif
-                                @endif
-                            @endif
-                        </div>
-                        <div class="hr-between"></div>
-                    </section>
-                @endif
-                @foreach($data['skuPrice']['skuPromotion']['pre_exp_descs'] as $value)
-                    <section class="limited">
-                        <div class="bg-white">
-                            <div class="limited-subtitle">
-                                <span class="p-l-15x p-r-10x bg-limited">
-                                    <strong>{{$value['desc_title']}}</strong>
-                                </span></div>
-                            <div class="p-x-15x p-t-10x p-b-15x text-primary font-size-sm">
-                                {{$value['desc_value']}}
-                            </div>
-                        </div>
-                        <div class="hr-between"></div>
-                    </section>
-                @endforeach
-            @endif
             <section data-spu="{{$data['spu']}}" id="modalDialog" data-login="1" data-status="{{$data['status_code']}}">
-
-                    <fieldset class="text-primary p-x-15x p-b-10x text-left">
-                        <div class="font-size-base">
-                            <strong id="skuNewPrice">${{number_format(($data['skuPrice']['sale_price'] / 100), 2)}}</strong>
-                        </div>
-                        <div class="font-size-sm" id="selectedOptions">
-                            <span data-select>Select:</span>
-                        <span data-select-options>
-                        @if(isset($data['spuAttrs']))
-                                @foreach($data['spuAttrs'] as $key => $attrs)
-                                    @if((count($data['spuAttrs']) - 1) == $key)
-                                        {{$attrs['attr_type_value']}}
-                                    @else
-                                        {{$attrs['attr_type_value'].", "}}
-                                    @endif
-                                @endforeach
-                            @endif
-                        </span>
-                        </div>
-                    </fieldset>
                     <div class="warning-info off flex text-warning flex-alignCenter text-left p-x-15x p-b-10x">
                         <i class="iconfont icon-caveat icon-size-md p-r-5x"></i>
                         <span class="font-size-xs"></span>
@@ -391,23 +279,120 @@
                             </div>
                         </div>
                     </fieldset>
-                    <hr class="hr-dark m-a-0">
-                    <fieldset class="container-fluid p-a-15x">
-                        <!-- 添加 购物车 控制按钮显示 -->
-                        @if(Session::has('user'))
-                            <button class="btn btn-primary btn-block up-btn-addToBag"
-                                    @if(!$data['sale_status'] || $data['isPutOn']==0) disabled
-                                    @endif data-control="continue" data-role="continue" data-action="PATCH">Add to Bag
-                            </button>
-                        @else
-                            <a href="javascript:;" class="notesLogin btn btn-primary btn-block"
-                               @if(!$data['sale_status'] || $data['isPutOn']==0) disabled
-                                    @endif>Add to Bag
-                            </a>
-                        @endif
-                    </fieldset>
-
             </section>
+            <div class="hr-between"></div>
+
+            <!-- 产品 预售信息 -->
+            @if(1 == $data['sale_type'])
+                @if($data['skuPrice']['skuPromotion']['remain_time'] >= 0 || !empty($data['spuStock']))
+                    <section class="limited-content"
+                             data-begintime="{{  $data['skuPrice']['skuPromotion']['start_time'] }}"
+                             data-endtime="{{  $data['skuPrice']['skuPromotion']['end_time'] }}"
+                             data-lefttime="@if($data['sale_status'] && $data['isPutOn']==1){{$data['skuPrice']['skuPromotion']['remain_time']}}@else{{'0'}}@endif"
+                             data-qtty="{{$data['spuStock']['stock_qtty']}}">
+                        <div class="bg-white">
+                            <div class="limited-subtitle">
+                            <span class="p-l-15x p-r-10x bg-limited">
+                                <strong>LIMITED EDITION</strong>
+                            </span>
+                            </div>
+                            @if($data['isPutOn'] !=1)
+                                <div class="p-x-15x p-t-10x">
+                                    <img src="{{env('CDN_Static')}}/images/icon/icon-limited.png"
+                                         srcset="{{env('CDN_Static')}}/images/icon/icon-limited@2x.png 2x, {{env('CDN_Static')}}/images/icon/icon-limited@3x.png 3x"
+                                         alt="">
+                                <span class="text-primary font-size-sm stock-qtty">
+                                        Sold Out
+                                </span>
+                                </div>
+                                <div class="p-x-15x p-t-10x">
+                                    <img src="{{env('CDN_Static')}}/images/icon/icon-limited.png"
+                                         srcset="{{env('CDN_Static')}}/images/icon/icon-limited@2x.png 2x, {{env('CDN_Static')}}/images/icon/icon-limited@3x.png 3x"
+                                         alt="">
+                                    <span class="text-primary font-size-sm">Orders Closed</span>
+                                </div>
+                            @else
+                                @if(!empty($data['spuStock']))
+                                    <div class="p-x-15x p-y-10x">
+                                        <img src="{{env('CDN_Static')}}/images/icon/icon-limited.png"
+                                             srcset="{{env('CDN_Static')}}/images/icon/icon-limited@2x.png 2x, {{env('CDN_Static')}}/images/icon/icon-limited@3x.png 3x"
+                                             alt="">
+                                <span class="text-primary font-size-sm stock-qtty">
+                                    @if(($data['spuStock']['stock_qtty'] - $data['spuStock']['saled_qtty']) > 0)
+                                        Only {{$data['spuStock']['stock_qtty'] - $data['spuStock']['saled_qtty']}}
+                                        Left
+                                    @else
+                                        Sold Out
+                                    @endif
+                                </span>
+                                    </div>
+                                @endif
+
+                                @if($data['skuPrice']['skuPromotion']['remain_time'] >= 0)
+                                    @if($data['sale_status'])
+                                        <div>
+                                            <div class="p-x-15x p-t-5x">
+                                                <img src="{{env('CDN_Static')}}/images/icon/icon-limited.png"
+                                                     srcset="{{env('CDN_Static')}}/images/icon/icon-limited@2x.png 2x, {{env('CDN_Static')}}/images/icon/icon-limited@3x.png 3x"
+                                                     alt="">
+                                        <span class="text-primary font-size-sm">Orders Close <span
+                                                    class="time_show"></span></span>
+                                            </div>
+                                            <div class="p-x-15x p-y-5x m-x-15x">
+                                                <progress class="progress progress-primary" id="limited-progress"
+                                                          value=""
+                                                          max="10000">0%
+                                                </progress>
+                                            </div>
+                                        </div>
+                                    @else
+                                        <div class="p-x-15x p-t-10x">
+                                            <img src="{{env('CDN_Static')}}/images/icon/icon-limited.png"
+                                                 srcset="{{env('CDN_Static')}}/images/icon/icon-limited@2x.png 2x, {{env('CDN_Static')}}/images/icon/icon-limited@3x.png 3x"
+                                                 alt="">
+                                            <span class="text-primary font-size-sm">Orders Closed</span>
+                                        </div>
+                                    @endif
+                                @endif
+                            @endif
+                        </div>
+                        <div class="hr-between"></div>
+                    </section>
+                @endif
+                @foreach($data['skuPrice']['skuPromotion']['pre_exp_descs'] as $value)
+                    <section class="limited">
+                        <div class="bg-white">
+                            <div class="limited-subtitle">
+                            <span class="p-l-15x p-r-10x bg-limited">
+                                <strong>{{$value['desc_title']}}</strong>
+                            </span></div>
+                            <div class="p-x-15x p-y-10x text-primary font-size-sm">
+                                {{$value['desc_value']}}
+                            </div>
+                        </div>
+                        <div class="hr-between"></div>
+                    </section>
+                @endforeach
+            @endif
+
+            <!-- Add to Bag 按钮 -->
+            <section>
+                <fieldset class="container-fluid p-a-15x">
+                    <!-- 添加 购物车 控制按钮显示 -->
+                    @if(Session::has('user'))
+                        <button class="btn btn-primary btn-block up-btn-addToBag"
+                                @if(!$data['sale_status'] || $data['isPutOn']==0) disabled
+                                @endif data-control="continue" data-role="continue" data-action="PATCH">Add to Bag
+                        </button>
+                    @else
+                        <a href="javascript:;" class="notesLogin btn btn-primary btn-block"
+                           @if(!$data['sale_status'] || $data['isPutOn']==0) disabled
+                                @endif>Add to Bag
+                        </a>
+                    @endif
+                </fieldset>
+            </section>
+
             <!-- 产品 其他信息 -->
             <section>
                 <hr class="hr-base m-a-0">

@@ -91,7 +91,7 @@
         $('.skarow').addClass('active');
         ResultSkus[0] = $('[data-onlysku]').data('onlysku');
         $('[data-select]').text('Selected:');
-        $('[data-select-options]').text($('.skarow').html());
+        //$('[data-select-options]').text($('.skarow').html());
     }
     // 临时是否可用的SKU数组
     var tempSkusStatic = [];
@@ -532,10 +532,10 @@
                 }
             });
             $('[data-select]').text('Selected:');
-            $('[data-select-options]').text(TextOptions);
+            //$('[data-select-options]').text(TextOptions);
         } else {
             $('[data-select]').text('Select');
-            $('[data-select-options]').text('');
+            //$('[data-select-options]').text('');
         }
 
     }
