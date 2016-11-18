@@ -51,7 +51,7 @@
     <div class="body-container">
     @include('navigator')
     <!-- 订单结算确认信息 -->
-        <section class="reserve-height" data-impr='{{ config('app.clk_url') }}/log.gif?t=order.100001&m=H5_M2016-1&pin={{Session::get('user.pin')}}&uuid={{Session::get('user.uuid')}}&v={"orderno":"{{ $order['sub_order_no'] }}","version":"1.0.1","ver":"9.2","src":"H5"}'>
+        <section class="reserve-height" data-impr='{{ config('app.clk_url') }}/log.gif?time={{time()}}&t=order.100001&m=H5_M2016-1&pin={{Session::get('user.pin')}}&uuid={{Session::get('user.uuid')}}&v={"orderno":"{{ $order['sub_order_no'] }}","version":"1.0.1","ver":"9.2","src":"H5"}'>
             <article class="bg-white m-b-10x p-a-15x text-center">
                 <h5 class="font-size-lx text-primary p-t-5x m-y-20x">Thank You!<br>Your Order is Confirmed</h5>
                 <div class="font-size-sm text-primary p-t-5x">A confirmation email has been sent to:</div>
