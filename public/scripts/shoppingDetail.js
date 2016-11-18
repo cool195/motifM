@@ -860,6 +860,7 @@
             setTimeout(function () {
                 closeAddError();
             }, 1500);
+            return false;
         }
 
         if ($('#addToCart-sku').val() != 1 && $('#modalDialog').data('login') != 1) {
