@@ -290,9 +290,9 @@
                         <div class="hr-between"></div>
                     </section>
                 @endforeach
-        @endif
+            @endif
             <section data-spu="{{$data['spu']}}" id="modalDialog" data-status="{{$data['status_code']}}">
-                <form action="">
+
                     <fieldset class="text-primary p-x-15x p-b-10x text-left">
                         <div class="font-size-base">
                             <strong id="skuNewPrice">${{number_format(($data['skuPrice']['sale_price'] / 100), 2)}}</strong>
@@ -363,7 +363,8 @@
                             @else
                                 <fieldset class="p-x-15x p-y-10x text-left" data-vas-type="$vas['vas_type']">
                                     <div class="flex flex-fullJustified flex-alignCenter">
-                                        <div class="text-primary font-size-sm">{{ $vas['vas_describe'] }}+ $4.5(optional)
+                                        <div class="text-primary font-size-sm">{{ $vas['vas_describe'] }}+
+                                            $4.5(optional)
                                         </div>
                                         {{--<input type="radio" name="vas_name2" id="{{$vas['vas_id']}}" hidden>--}}
                                         <div class="iconfont icon-checkcircle text-common m-b-0 p-l-20x"
@@ -393,32 +394,22 @@
                     <hr class="hr-dark m-a-0">
                     <fieldset class="container-fluid p-a-15x">
                         <!-- 添加 购物车 控制按钮显示 -->
-                        <button class="btn btn-primary btn-block up-btn-addToBag" @if(!$data['sale_status'] || $data['isPutOn']==0) disabled @endif data-control="continue" data-role="continue" data-action="PATCH">Add to Bag</button>
+                        @if(Session::has('user'))
+                            <button class="btn btn-primary btn-block up-btn-addToBag"
+                                    @if(!$data['sale_status'] || $data['isPutOn']==0) disabled
+                                    @endif data-control="continue" data-role="continue" data-action="PATCH">Add to Bag
+                            </button>
+                        @else
+                            <a href="javascript:;" class="notesLogin btn btn-primary btn-block"
+                               @if(!$data['sale_status'] || $data['isPutOn']==0) disabled
+                                    @endif>Add to Bag
+                            </a>
+                        @endif
                     </fieldset>
-                </form>
+
             </section>
-        <!-- 产品 其他信息 -->
+            <!-- 产品 其他信息 -->
             <section>
-                {{--<!-- 添加到购物车 立即购买 -->--}}
-                {{--<aside class="container-fluid bg-white p-y-10x p-x-15x">--}}
-                    {{--@if(Session::has('user'))--}}
-                        {{--<div class="row">--}}
-                            {{--<div class="col-xs-12">--}}
-                                {{--<button class="btn btn-primary btn-block up-btn-addToBag @if(!$data['sale_status'] || $data['isPutOn']==0) disabled @endif"--}}
-                                        {{--data-control="openModal" data-action="PATCH">Add to Bag--}}
-                                {{--</button>--}}
-                            {{--</div>--}}
-                        {{--</div>--}}
-                    {{--@else--}}
-                        {{--<div class="row">--}}
-                            {{--<div class="col-xs-12">--}}
-                                {{--<a href="javascript:;"--}}
-                                   {{--class="notesLogin btn btn-primary btn-block up-btn-addToBag @if(!$data['sale_status'] || $data['isPutOn']==0) disabled @endif">--}}
-                                    {{--Add to Bag </a>--}}
-                            {{--</div>--}}
-                        {{--</div>--}}
-                    {{--@endif--}}
-                {{--</aside>--}}
                 <hr class="hr-base m-a-0">
                 <!-- 产品描述 -->
                 <aside class="bg-white p-x-15x p-y-10x">
@@ -470,54 +461,54 @@
                                     <div class="swiper-wrapper">
                                         @foreach($recommended['list'] as $key => $value)
                                             @if($key < 20)
-                                        <div class="swiper-slide">
-                                            <div class="p-a-0 recommend-itme">
-                                                <div class="productList-item">
-                                                    <div class="image-bg">
-                                                        <div class="image-container">
-                                                            <a href="javascript:void(0)"
-                                                               data-link="/detail/{{ $value['spu'] }}"
-                                                               data-impr="{{ $value['impr'] }}"
-                                                               data-clk="{{ $value['clk'] }}"
-                                                               data-spu="{{ $value['spu'] }}"
-                                                               data-title="{{ $value['main_title'] }}"
-                                                               data-price="{{ number_format(($value['skuPrice']['sale_price'] / 100), 2) }}">
-                                                                <img class="img-fluid swiper-lazy"
-                                                                     data-src="{{env('APP_Api_Image')}}/n1/{{ $value['main_image_url'] }}"
-                                                                     alt="">
-                                                                <img class="img-fluid preloader"
-                                                                     src="{{env('CDN_Static')}}/images/product/bg-product@336.png">
-                                                            </a>
-                                                            @if(1 == $value['sale_type'])
-                                                                {{--预售产品 预定信息--}}
-                                                                <span class="preorder-info font-size-xs">Limited Edition</span>
-                                                            @endif
+                                                <div class="swiper-slide">
+                                                    <div class="p-a-0 recommend-itme">
+                                                        <div class="productList-item">
+                                                            <div class="image-bg">
+                                                                <div class="image-container">
+                                                                    <a href="javascript:void(0)"
+                                                                       data-link="/detail/{{ $value['spu'] }}"
+                                                                       data-impr="{{ $value['impr'] }}"
+                                                                       data-clk="{{ $value['clk'] }}"
+                                                                       data-spu="{{ $value['spu'] }}"
+                                                                       data-title="{{ $value['main_title'] }}"
+                                                                       data-price="{{ number_format(($value['skuPrice']['sale_price'] / 100), 2) }}">
+                                                                        <img class="img-fluid swiper-lazy"
+                                                                             data-src="{{env('APP_Api_Image')}}/n1/{{ $value['main_image_url'] }}"
+                                                                             alt="">
+                                                                        <img class="img-fluid preloader"
+                                                                             src="{{env('CDN_Static')}}/images/product/bg-product@336.png">
+                                                                    </a>
+                                                                    @if(1 == $value['sale_type'])
+                                                                        {{--预售产品 预定信息--}}
+                                                                        <span class="preorder-info font-size-xs">Limited Edition</span>
+                                                                    @endif
+                                                                </div>
+                                                            </div>
+                                                            <div class="font-size-sm product-title text-main">
+                                                                {{ $value['main_title'] }}
+                                                            </div>
+                                                            <div class="price-caption">
+
+                                                                @if($value['skuPrice']['sale_price'] != $value['skuPrice']['price'])
+                                                                    <span class="font-size-sm m-l-5x text-red"><strong>${{ number_format(($value['skuPrice']['sale_price'] / 100), 2) }}</strong></span>
+                                                                    <span class="font-size-xs text-common text-throughLine">${{ number_format(($value['skuPrice']['price'] / 100), 2) }}</span>
+                                                                @else
+                                                                    <span class="font-size-sm m-l-5x"><strong>${{ number_format(($value['skuPrice']['sale_price'] / 100), 2) }}</strong></span>
+                                                                @endif
+                                                                @if(Session::has('user'))
+                                                                    <span class="wish-item p-r-5x"><i
+                                                                                class="iconfont text-common btn-wish btn-wished @if(in_array($value['spu'], $wishlist->wishlist())){{'active'}}@endif"
+                                                                                data-spu="{{$value['spu']}}"></i></span>
+                                                                @else
+                                                                    <a class="wish-item p-r-5x" href="javascript:;"><i
+                                                                                class="iconfont text-common btn-wish btn-wished"
+                                                                                data-actionspu="{{$value['spu']}}"></i></a>
+                                                                @endif
+                                                            </div>
                                                         </div>
                                                     </div>
-                                                    <div class="font-size-sm product-title text-main">
-                                                        {{ $value['main_title'] }}
-                                                    </div>
-                                                    <div class="price-caption">
-
-                                                        @if($value['skuPrice']['sale_price'] != $value['skuPrice']['price'])
-                                                            <span class="font-size-sm m-l-5x text-red"><strong>${{ number_format(($value['skuPrice']['sale_price'] / 100), 2) }}</strong></span>
-                                                            <span class="font-size-xs text-common text-throughLine">${{ number_format(($value['skuPrice']['price'] / 100), 2) }}</span>
-                                                        @else
-                                                            <span class="font-size-sm m-l-5x"><strong>${{ number_format(($value['skuPrice']['sale_price'] / 100), 2) }}</strong></span>
-                                                        @endif
-                                                        @if(Session::has('user'))
-                                                            <span class="wish-item p-r-5x"><i
-                                                                        class="iconfont text-common btn-wish btn-wished @if(in_array($value['spu'], $wishlist->wishlist())){{'active'}}@endif"
-                                                                        data-spu="{{$value['spu']}}"></i></span>
-                                                        @else
-                                                            <a class="wish-item p-r-5x" href="javascript:;"><i
-                                                                        class="iconfont text-common btn-wish btn-wished"
-                                                                        data-actionspu="{{$value['spu']}}"></i></a>
-                                                        @endif
-                                                    </div>
                                                 </div>
-                                            </div>
-                                        </div>
                                             @endif
                                         @endforeach
                                     </div>
@@ -575,7 +566,8 @@
     </div>
 </div>
 
-<img src='{{ config('app.clk_url') }}/log.gif?t=pv.100001&m=H5_M2016-1&pin={{ Session::get('user.pin') }}&uuid={{Session::has('user') ? Session::get('user.uuid') : $_COOKIE['uid']}}&v={"spu":{{$data['spu']}},"main_sku":{{$data['skuPrice']['sku']}},"price":{{ $data['skuPrice']['sale_price'] }},"version":"1.0.1","ver":"9.2","src":"H5"}' hidden>
+<img src='{{ config('app.clk_url') }}/log.gif?t=pv.100001&m=H5_M2016-1&pin={{ Session::get('user.pin') }}&uuid={{Session::has('user') ? Session::get('user.uuid') : $_COOKIE['uid']}}&v={"spu":{{$data['spu']}},"main_sku":{{$data['skuPrice']['sku']}},"price":{{ $data['skuPrice']['sale_price'] }},"version":"1.0.1","ver":"9.2","src":"H5"}'
+     hidden>
 
 </body>
 <script src="{{env('CDN_Static')}}/scripts/vendor.js{{'?v='.config('app.version')}}"></script>
@@ -607,12 +599,19 @@
     {{--未登录添加购物车操作--}}
     $('.notesLogin').on('click', function () {
         setCookie('notesLogin', 'AddBagAction');
+        if ($('#addToCart-sku').val() != 1) {
+            setCookie('AddBagSku', $('#addToCart-sku').val());
+        }
         window.location.href = '/login';
     });
 
     if (getCookie('notesLogin') == 'AddBagAction' && !$('.notesLogin').hasClass('btn')) {
+        if(getCookie('AddBagSku') != undefined && getCookie('AddBagSku') != ''){
+            $('#addToCart-sku').val(getCookie('AddBagSku'));
+        }
         $('.up-btn-addToBag').click();
         setCookie('notesLogin', '');
+        setCookie('AddBagSku', '');
     }
 </script>
 @include('global')

@@ -86,8 +86,8 @@
     var ResultSkus = [];
 
     //唯一属性
-    if([$('.sparow').length==1 && $('.skarow').length]==1){
-        $('.sparow').data('click',true);
+    if ([$('.sparow').length == 1 && $('.skarow').length] == 1) {
+        $('.sparow').data('click', true);
         $('.skarow').addClass('active');
         ResultSkus[0] = $('[data-onlysku]').data('onlysku');
         $('[data-select]').text('Selected:');
@@ -121,10 +121,11 @@
     function onPlayerReady(event) {
         event.target.playVideo();
     }
+
     // 视频播放-- 控制显示隐藏
-    $('.btn-productPlayer').on('click',function(){
-        var PlayerId=$(this).data('ytbid');
-        $('#ytplayer').data('playid',PlayerId);
+    $('.btn-productPlayer').on('click', function () {
+        var PlayerId = $(this).data('ytbid');
+        $('#ytplayer').data('playid', PlayerId);
         $('.product-detailPlay').addClass('in');
         $('body').addClass('no-scroll');
 
@@ -133,7 +134,7 @@
         var MediaScale = 9 / 16;
         var Width = $(window).width(),
             MediaHeight = Width * MediaScale;
-        $('.play-content').css('height',MediaHeight);
+        $('.play-content').css('height', MediaHeight);
         var player;
 
         var $Player = $('#ytplayer');
@@ -149,7 +150,7 @@
         });
     });
 
-    $('.product-detailPlay').on('click',function(){
+    $('.product-detailPlay').on('click', function () {
         $(this).removeClass('in');
         $('body').removeClass('no-scroll');
         $('.product-detailImg').removeClass('in');
@@ -256,14 +257,15 @@
             objCache[vasId] = vasType;
         });
     }
+
     var skuExps;
     // 初始化 赋值
     (function initOptions() {
         var SpuId = $('#modalDialog').data('spu');
         $.ajax({
-                async: false,
-                url: '/products/' + SpuId
-            })
+            async: false,
+            url: '/products/' + SpuId
+        })
             .done(function (data) {
                 if (data.success) {
                     // 获取商品所有的库存
@@ -552,17 +554,15 @@
         if ($(e.target).hasClass('disabled')) {
             return;
         } else if ($(e.target).hasClass('active')) {
-            $('#spa'+SpaId).data('click','false');
+            $('#spa' + SpaId).data('click', 'false');
             $(e.target).removeClass('active');
         } else {
             $(e.target).parents('.row').find('.btn-itemProperty').removeClass('active');
-            $('#spa'+SpaId).data('click','true');
+            $('#spa' + SpaId).data('click', 'true');
             $(e.target).addClass('active');
         }
 
         selectOptionsText();
-
-
 
 
         // RadioList 选中的选项数量
@@ -604,16 +604,17 @@
         }
 
         //更新SKU价格
-        if(ResultSkus[0] != undefined){
+        if (ResultSkus[0] != undefined) {
+            $('#addToCart-sku').val(ResultSkus[0]);
             getNewPrice(ResultSkus[0]);
         }
     });
 
     //更新SKU价格
     function getNewPrice(sku) {
-        $.each(skuExps,function (index,val) {
-            if(sku==val.sku){
-                $('#skuNewPrice').html('$'+(val.skuPrice.sale_price/100).toFixed(2));
+        $.each(skuExps, function (index, val) {
+            if (sku == val.sku) {
+                $('#skuNewPrice').html('$' + (val.skuPrice.sale_price / 100).toFixed(2));
                 return false;
             }
         });
@@ -628,11 +629,11 @@
         var $WarningInfo = $('.warning-info');
         openLoading();
         $.ajax({
-                url: '/stock/checkstock',
-                data: {
-                    skus: RequestStock
-                }
-            })
+            url: '/stock/checkstock',
+            data: {
+                skus: RequestStock
+            }
+        })
             .done(function (data) {
                 if (data.success) {
 
@@ -660,7 +661,7 @@
     // 绑定计数事件,商品数量
     // 需要添加库存验证
     $('#item-count').on('click', '[data-item]', function (e) {
-        if(!showmsg()){
+        if (!showmsg()) {
             return false;
         }
         var $WarningInfo = $('.warning-info');
@@ -745,9 +746,9 @@
 
     function updateCartCount() {
         $.ajax({
-                url: ' /cart/amount',
-                type: 'GET'
-            })
+            url: ' /cart/amount',
+            type: 'GET'
+        })
             .done(function (data) {
                 if (data.success) {
                     if (data.data.skusAmout > 0 && data.data.skusAmout <= 99) {
@@ -768,6 +769,9 @@
      * @param Action
      */
     function initCart(Action) {
+        if ($('#addToCart-sku').val() != 1) {
+            ResultSkus[0] = $('#addToCart-sku').val();
+        }
         var Qtty = $('#item-count').children('[data-num]').html();
         // ajax 请求的参数
         var Operate = {
@@ -812,12 +816,12 @@
         // PUT 立即购买
         // PATCH 添加购物车
         $.ajax({
-                url: '/cart',
-                type: Action,
-                data: {
-                    operate: Operate
-                }
-            })
+            url: '/cart',
+            type: Action,
+            data: {
+                operate: Operate
+            }
+        })
             .done(function (data) {
                 if (data.success) {
                     updateCartCount();
@@ -850,7 +854,7 @@
 
     // 添加购物车 购买商品
     $('[data-role="continue"]').on('click', function (e) {
-        if($('#modalDialog').data('status') != 100){
+        if ($('#modalDialog').data('status') != 100) {
             $('#error-info').text('not invalid');
             openAddError();
             setTimeout(function () {
@@ -858,10 +862,15 @@
             }, 1500);
         }
 
-        if(showmsg()){
-            var Action = $(e.target).data('action');
-            initCart(Action);
+        if ($('#addToCart-sku').val() != 1) {
+            initCart('PATCH');
+        } else {
+            if (showmsg()) {
+                var Action = $(e.target).data('action');
+                initCart(Action);
+            }
         }
+
 
     });
 
@@ -870,16 +879,16 @@
         var submit = true;
         var msg = '';
         $('.sparow').each(function (index) {
-            if($(this).data('click')==false || $(this).data('click')=='false'){
+            if ($(this).data('click') == false || $(this).data('click') == 'false') {
                 submit = false;
                 msg += $(this).data('msg') + ',';
             }
         })
 
-        if(submit){
+        if (submit) {
             return true;
-        }else{
-            $('#selectspa').html(msg.substring(0,msg.length-1)+' not selected');
+        } else {
+            $('#selectspa').html(msg.substring(0, msg.length - 1) + ' not selected');
             $('#selectmsg').removeClass('loading-hidden');
             setTimeout(function () {
                 $('#selectmsg').addClass('loading-hidden');
@@ -1044,8 +1053,8 @@
 
         }, 1000);
     }
-    
-    if(leftNum != -1){
+
+    if (leftNum != -1) {
         $(function () {
             timer(leftNum / 1000);
         });
