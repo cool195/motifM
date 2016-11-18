@@ -219,7 +219,7 @@
                                                     <div class="btn btn-itemProperty btn-sm skarow @if(!$skuValue['stock']) disabled @endif"
                                                          id="{{$skuValue['attr_value_id']}}"
                                                          @if($skuValue['img_path'])
-                                                            data-image="{{$skuValue['img_path']}}"
+                                                            data-image="{{env('APP_Api_Image').'/n1/'.$skuValue['img_path']}}"
                                                          @endif
                                                          data-spa="{{$value['attr_type']}}"
                                                          data-ska="{{$skuValue['attr_value_id']}}">
