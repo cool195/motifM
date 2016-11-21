@@ -59,17 +59,17 @@
         @include('navigator')
         <nav class="bg-white nav-category">
             <div class="text-center p-t-15x p-b-10x titDiv">
-                <a href="javascript:void(0)" class="text-main font-size-lg" id="nav-categoryTit">All</a>
+                <button href="javascript:void(0)" class="text-main font-size-lg" id="nav-categoryTit">All</button>
             </div>
             <!-- 商品类别 二级导航 -->
             <section class="bg-white search-container">
                 @if(isset($categories))
                     @foreach($categories as $key => $c)
-                        <div class="p-a-15x flex flex-alignCenter flex-fullJustified search-item"
+                        <button style="width:100%" class="p-a-15x flex flex-alignCenter flex-fullJustified search-item {{ 'cateClick'.$c['category_id'] }}"
                              data-categoryid="{{ $c['category_id'] }}" data-categoryname="{{ $c['category_name'] }}">
                             <span class="text-primary font-size-sm text-right">{{ $c['category_name'] }}</span>
                             <i class="iconfont icon-check icon-size-md text-common"></i>
-                        </div>
+                        </button>
                         <hr class="hr-base m-a-0">
                     @endforeach
                 @endif
@@ -213,6 +213,11 @@
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
         }
     });
+    @if($categories['selectCid'] != 0)
+        var selectCid = '{{'.cateClick'.$categories['selectCid']}}';
+        $(selectCid).click();
+        $('#nav-categoryTit').click();
+    @endif
 </script>
 @include('global')
 </html>
