@@ -617,17 +617,22 @@
                 var CurrentImg = $(this).attr('src');
                 if (CurrentImg === ImgPath) {
                     BaseImgSwiper.slideTo(index, 1000, false);
+                    DetailImgSwiper.slideTo(index, 1000, false);
                     IsHave = true;
                     return false;
                 }
             });
             if (IsHave === false) {
                 if ((BaseImgSwiper.slides[1].className).indexOf('replace-img') > 0) {
-                    $('#img-replace').attr('src', ImgPath);
+                    $('.img-replace').attr('src', ImgPath);
                     BaseImgSwiper.slideTo(1, 1000, false);
+                    DetailImgSwiper.slideTo(1, 1000, false);
                 } else {
-                    BaseImgSwiper.prependSlide('<div class="swiper-slide replace-img"><img class="img-fluid swiper-lazy" id="img-replace" data-src="' + ImgPath + '" alt=""><img class="img-fluid preloader" src="/images/product/bg-product@750.png" alt=""></div>');
+                    BaseImgSwiper.prependSlide('<div class="swiper-slide replace-img"><img class="img-fluid swiper-lazy img-replace" data-src="' + ImgPath + '" alt=""><img class="img-fluid preloader" src="/images/product/bg-product@750.png" alt=""></div>');
                     BaseImgSwiper.slideTo(1, 1000, false);
+
+                    DetailImgSwiper.prependSlide('<div class="swiper-slide replace-img"><img class="img-fluid swiper-lazy img-replace" data-src="' + ImgPath + '" alt=""><img class="img-fluid preloader" src="/images/product/bg-product@750.png" alt=""></div>');
+                    DetailImgSwiper.slideTo(1, 1000, false);
                 }
             }
         }
