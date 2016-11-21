@@ -225,8 +225,11 @@
                                                          @if($skuValue['img_path'])
                                                             data-image="{{env('APP_Api_Image').'/n1/'.$skuValue['img_path']}}"
                                                          @endif
-                                                         data-spa="{{$value['attr_type']}}"
-                                                         data-ska="{{$skuValue['attr_value_id']}}">
+                                                         @if($skuValue['stock'])
+                                                            data-spa="{{$value['attr_type']}}"
+                                                            data-ska="{{$skuValue['attr_value_id']}}"
+                                                         @endif
+                                                    >
                                                         {{$skuValue['attr_value']}}
                                                     </div>
                                                 </div>
