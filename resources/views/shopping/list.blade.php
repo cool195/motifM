@@ -213,8 +213,8 @@
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
         }
     });
-    @if($categories['selectCid'] != 0)
-        var selectCid = '{{'.cateClick'.$categories['selectCid']}}';
+    @if($selectCid != 0)
+        var selectCid = '{{'.cateClick'.$selectCid}}';
         $(selectCid).click();
         $('#nav-categoryTit').click();
     @endif
