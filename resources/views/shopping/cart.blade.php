@@ -71,9 +71,8 @@
                 <section class="cartList bg-white">
                     @if(isset($cartData['showSkus']))
                         @foreach($cartData['showSkus'] as $showSku)
-                            {{-- TODO 需要添加 商品是否上架的判断 --}}
                             <div class="cartList-item p-a-10x @if(!$showSku['stock_status'] || 1 != $showSku['isPutOn']) disabled @endif">
-                                <a @if(1 == $showSku['stock_status'] && 1 == $showSku['isPutOn']) href="/detail/{{$showSku['spu']}}" @endif class="inBag">
+                                <a @if(0 != $showSku['stock_status'] && 1 == $showSku['isPutOn']) href="/detail/{{$showSku['spu']}}" @endif class="inBag">
                                     <div class="productInfo flex">
                                         <div class="flex-fixedShrink">
                                             <img class="img-thumbnail img-lazy"
@@ -125,7 +124,6 @@
                                     </div>
                                     <div class="flex flex-alignCenter">
                                         <span class="text-primary font-size-sm m-r-5x">Qty:</span>
-                                        {{-- TODO 需要添加 商品是否上架的判断 --}}
                                         <div class="btn-group flex item-count" data-sku="{{$showSku['sku']}}">
                                             <div class="btn btn-cartCount btn-sm btn-minus @if($showSku['sale_qtty'] <=1 || !$showSku['stock_status'] || 1 != $showSku['isPutOn']) disabled @endif"
                                                  data-item="minus">
