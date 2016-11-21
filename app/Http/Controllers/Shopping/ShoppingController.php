@@ -17,6 +17,7 @@ class ShoppingController extends ApiController
         $search = $this->request('openapi', '', 'sea', $params);
 
         $result = $this->getShoppingCategoryList($request);
+        $result['data']['list']['selectCid'] = $request->get('cid',0);
         return View('shopping.list', ['categories' => $result['data']['list'],'search'=>$search['data'],'NavShowShop'=>true]);
     }
 

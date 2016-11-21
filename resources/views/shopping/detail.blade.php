@@ -90,6 +90,10 @@
             ]
         }
     });
+    var content_name = '{{$data['main_title']}}';
+    var content_category = '{{ $data['category_name'] }}';
+    var content_ids = ['{{$data['spu']}}'];
+    var totalPrice = '{{number_format(($data['skuPrice']['sale_price'] / 100), 2)}}';
 </script>
 
 @include('check.tagmanager')
@@ -195,7 +199,7 @@
                 </div>
 
                 <div class="text-warning font-size-xs p-x-15x"
-                     data-impr='{{ config('app.clk_url') }}/log.gif?t=rec.100002&m=OPEN_M2016-1&pin={{ Session::get('user.pin') }}&uuid={{Session::has('user') ? Session::get('user.uuid') : $_COOKIE['uid']}}&v={" action ":0,"cspus ":"{{ $data['skus']}}","expid ":0,"index ":1,"rec_type ":1,"spu":{{ $data['spu'] }},"ver ":"9.00 "}&sig=2291a58454115c8136169111738de65696add43d'>{{ $data['prompt_words'] }}</div>
+                     data-impr='{{ config('app.clk_url') }}/log.gif?time={{time()}}&t=rec.100002&m=OPEN_M2016-1&pin={{ Session::get('user.pin') }}&uuid={{Session::has('user') ? Session::get('user.uuid') : $_COOKIE['uid']}}&v={" action ":0,"cspus ":"{{ $data['skus']}}","expid ":0,"index ":1,"rec_type ":1,"spu":{{ $data['spu'] }},"ver ":"9.00 "}&sig=2291a58454115c8136169111738de65696add43d'>{{ $data['prompt_words'] }}</div>
             </article>
 
 
@@ -554,8 +558,7 @@
     </div>
 </div>
 
-<img src='{{ config('app.clk_url') }}/log.gif?t=pv.100001&m=H5_M2016-1&pin={{ Session::get('user.pin') }}&uuid={{Session::has('user') ? Session::get('user.uuid') : $_COOKIE['uid']}}&v={"spu":{{$data['spu']}},"main_sku":{{$data['skuPrice']['sku']}},"price":{{ $data['skuPrice']['sale_price'] }},"version":"1.0.1","ver":"9.2","src":"H5"}'
-     hidden>
+<img src='{{ config('app.clk_url') }}/log.gif?time={{time()}}&t=pv.100001&m=H5_M2016-1&pin={{ Session::get('user.pin') }}&uuid={{Session::has('user') ? Session::get('user.uuid') : $_COOKIE['uid']}}&v={"spu":{{$data['spu']}},"main_sku":{{$data['skuPrice']['sku']}},"price":{{ number_format(($data['skuPrice']['sale_price'] / 100), 2) }},"version":"1.0.1","ver":"9.2","src":"H5"}' hidden>
 
 </body>
 <script src="{{env('CDN_Static')}}/scripts/vendor.js{{'?v='.config('app.version')}}"></script>

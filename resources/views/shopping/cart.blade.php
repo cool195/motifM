@@ -168,11 +168,12 @@
                 <hr class="hr-base m-a-0">
                 <!-- 购买按钮 -->
                 <section class="bg-white p-a-10x">
-                    <a href="/checkout/shipping" data-clk='{{ config('app.clk_url') }}/log.gif?t=check.100002&m=H5_M2016-1&pin={{Session::get('user.pin')}}&uuid={{Session::get('user.uuid')}}&ref=&v={"skipType":"processedcheckout","skipId":"","version":"1.0.1","ver":"9.2","src":"H5"}'
+                    <a href="/checkout/shipping" data-clk='{{ config('app.clk_url') }}/log.gif?time={{time()}}&t=check.100002&m=H5_M2016-1&pin={{Session::get('user.pin')}}&uuid={{Session::get('user.uuid')}}&ref=&v={"skipType":"processedcheckout","skipId":"","version":"1.0.1","ver":"9.2","src":"H5"}'
                        class="btn btn-primary btn-block @if($cartData['pay_amount'] <= 0) disabled @endif" type="submit">Proceed to
                         Checkout</a>
                 </section>
             <script>
+                var content_ids = [@foreach($cartData['showSkus'] as $key => $product) @if(0 == $key)'{{$product['spu']}}' @else ,'{{$product['spu']}}' @endif @endforeach];
                 var totalPrice="{{ number_format($cartData['pay_amount'] / 100, 2)}}";
             </script>
         @endif

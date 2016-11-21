@@ -41,8 +41,8 @@
         <div class="">
             @{{ if $value.listVideoId == undefined }}
                 <a data-link="/designer/@{{$value.designerId}}"
-                   data-impr='{{ config('app.clk_url') }}/log.gif?t=designer.200001&m=H5_M2016-1&pin={{ Session::get('user.pin') }}&uuid={{Session::has('user') ? Session::get('user.uuid') : $_COOKIE['uid']}}&v={"action":"0","skiptype":2,"skipid":"@{{ $value.designerId }}","expid":0,"version":"1.0.1", "ver":"9.2","src":"h5"}'
-                   data-clk='{{ config('app.clk_url') }}/log.gif?t=designer.200001&m=H5_M2016-1&pin={{ Session::get('user.pin') }}&uuid={{Session::has('user') ? Session::get('user.uuid') : $_COOKIE['uid']}}&v={"action":"1","skiptype":2,"skipid":"@{{ $value.designerId }}","expid":0,"version":"1.0.1", "ver":"9.2","src":"h5"}'
+                   data-impr='{{ config('app.clk_url') }}/log.gif?time={{time()}}&t=designer.200001&m=H5_M2016-1&pin={{ Session::get('user.pin') }}&uuid={{Session::has('user') ? Session::get('user.uuid') : $_COOKIE['uid']}}&v={"action":"0","skiptype":2,"skipid":"@{{ $value.designerId }}","expid":0,"version":"1.0.1", "ver":"9.2","src":"h5"}'
+                   data-clk='{{ config('app.clk_url') }}/log.gif?time={{time()}}&t=designer.200001&m=H5_M2016-1&pin={{ Session::get('user.pin') }}&uuid={{Session::has('user') ? Session::get('user.uuid') : $_COOKIE['uid']}}&v={"action":"1","skiptype":2,"skipid":"@{{ $value.designerId }}","expid":0,"version":"1.0.1", "ver":"9.2","src":"h5"}'
                    href="javascript:void(0)">
                     <img class="img-fluid img-lazy" data-original="{{env('APP_Api_Image')}}/n2/@{{ $value.listImg }}" src="{{env('CDN_Static')}}/images/product/bg-product@750.png" alt="@{{ $value.name }}">
                 </a>
@@ -66,8 +66,8 @@
                         <div class="youtube_mask"></div>
                         <div class="btn-morePlayer">
                             <a class="text-white font-size-sm video-formore" data-link="/designer/@{{$value.designerId}}"
-                               data-impr='{{ config('app.clk_url') }}/log.gif?t=designer.200001&m=H5_M2016-1&pin={{ Session::get('user.pin') }}&uuid={{Session::has('user') ? Session::get('user.uuid') : $_COOKIE['uid']}}&v={"action":"0","skiptype":2,"skipid":"@{{ $value.designerId }}","expid":0,"version":"1.0.1", "ver":"9.2","src":"h5"}'
-                               data-clk='{{ config('app.clk_url') }}/log.gif?t=designer.200001&m=H5_M2016-1&pin={{ Session::get('user.pin') }}&uuid={{Session::has('user') ? Session::get('user.uuid') : $_COOKIE['uid']}}&v={"action":"1","skiptype":2,"skipid":"@{{ $value.designerId }}","expid":0,"version":"1.0.1", "ver":"9.2","src":"h5"}'
+                               data-impr='{{ config('app.clk_url') }}/log.gif?time={{time()}}&t=designer.200001&m=H5_M2016-1&pin={{ Session::get('user.pin') }}&uuid={{Session::has('user') ? Session::get('user.uuid') : $_COOKIE['uid']}}&v={"action":"0","skiptype":2,"skipid":"@{{ $value.designerId }}","expid":0,"version":"1.0.1", "ver":"9.2","src":"h5"}'
+                               data-clk='{{ config('app.clk_url') }}/log.gif?time={{time()}}&t=designer.200001&m=H5_M2016-1&pin={{ Session::get('user.pin') }}&uuid={{Session::has('user') ? Session::get('user.uuid') : $_COOKIE['uid']}}&v={"action":"1","skiptype":2,"skipid":"@{{ $value.designerId }}","expid":0,"version":"1.0.1", "ver":"9.2","src":"h5"}'
                                href="javascript:void(0)"><strong>Click for More</strong></a>
                         </div>
                     </div>
@@ -76,13 +76,13 @@
 
         </div>
         <div class="swiper-container" id="designer-container">
-            <div class="swiper-wrapper" data-impr='{{ config('app.clk_url') }}/log.gif?t=designer.300001&m=H5_M2016-1&pin={{ Session::get('user.pin') }}&uuid={{Session::has('user') ? Session::get('user.uuid') : $_COOKIE['uid']}}&v={"action":0,"skipType":"1","skipId":"@{{ $value.spus }}","expid":"0","version":"1.0.1", "ver":"9.2","src":"H5"}'>
+            <div class="swiper-wrapper" data-impr='{{ config('app.clk_url') }}/log.gif?time={{time()}}&t=designer.300001&m=H5_M2016-1&pin={{ Session::get('user.pin') }}&uuid={{Session::has('user') ? Session::get('user.uuid') : $_COOKIE['uid']}}&v={"action":0,"skipType":"1","skipId":"@{{ $value.spus }}","expid":"0","version":"1.0.1", "ver":"9.2","src":"H5"}'>
                 @{{ each $value.products }}
 
                 <div class="product-item swiper-slide">
                     <a data-link="/detail/@{{$value.spu}}" href="javascript:void(0)"
                        data-designerid="@{{ $value.designerId }}"
-                       data-clk='{{ config('app.clk_url') }}/log.gif?t=designer.300001&m=H5_M2016-1&pin={{ Session::get('user.pin') }}&uuid={{Session::has('user') ? Session::get('user.uuid') : $_COOKIE['uid']}}&v={"action":"1","skipType":1,"skipid":"@{{ $value.spu }}", "expid":0, "version":"1.0.1", "ver":"9.2","src":"h5"}'>
+                       data-clk='{{ config('app.clk_url') }}/log.gif?time={{time()}}&t=designer.300001&m=H5_M2016-1&pin={{ Session::get('user.pin') }}&uuid={{Session::has('user') ? Session::get('user.uuid') : $_COOKIE['uid']}}&v={"action":"1","skipType":1,"skipid":"@{{ $value.spu }}", "expid":0, "version":"1.0.1", "ver":"9.2","src":"h5"}'>
                         <img class="img-fluid"
                              src="{{env('APP_Api_Image')}}/n2/@{{ $value.mainImage }}">
 

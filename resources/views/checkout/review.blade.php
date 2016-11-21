@@ -66,7 +66,7 @@
                             ${{number_format(($checkInfo['pay_amount'] / 100), 2)}}</strong></div>
                     <div class="p-t-10x submit-placeOrder">
                         <div class="btn btn-primary btn-block submit-checkout"
-                             data-clkurl='{{ config('app.clk_url') }}/log.gif?t=check.100002&m=H5_M2016-1&pin={{Session::get('user.pin')}}&uuid={{Session::get('user.uuid')}}&ref=&v={"skipType":"placeorder","skipId":"","version":"1.0.1","ver":"9.2","src":"H5"}'>@if(Session::get('user.checkout.paywith.pay_method')=='PayPalNative'){{'Pay with PayPal'}}@else{{'Place Order'}}@endif</div>
+                             data-clkurl='{{ config('app.clk_url') }}/log.gif?time={{time()}}&t=check.100002&m=H5_M2016-1&pin={{Session::get('user.pin')}}&uuid={{Session::get('user.uuid')}}&ref=&v={"skipType":"placeorder","skipId":"","version":"1.0.1","ver":"9.2","src":"H5"}'>@if(Session::get('user.checkout.paywith.pay_method')=='PayPalNative'){{'Pay with PayPal'}}@else{{'Place Order'}}@endif</div>
                     </div>
                 </div>
                 <hr class="hr-base m-a-0">
@@ -237,7 +237,7 @@
                             ${{number_format(($checkInfo['pay_amount'] / 100), 2)}}</strong></div>
                     <div class="p-t-10x submit-placeOrder">
                         <div class="btn btn-primary btn-block submit-checkout"
-                             data-clkurl='{{ config('app.clk_url') }}/log.gif?t=check.100002&m=H5_M2016-1&pin={{Session::get('user.pin')}}&uuid={{Session::get('user.uuid')}}&ref=&v={"skipType":"placeorder","skipId":"","version":"1.0.1","ver":"9.2","src":"H5"}'>@if(Session::get('user.checkout.paywith.pay_method')=='PayPalNative'){{'Pay with PayPal'}}@else{{'Place Order'}}@endif</div>
+                             data-clkurl='{{ config('app.clk_url') }}/log.gif?time={{time()}}&t=check.100002&m=H5_M2016-1&pin={{Session::get('user.pin')}}&uuid={{Session::get('user.uuid')}}&ref=&v={"skipType":"placeorder","skipId":"","version":"1.0.1","ver":"9.2","src":"H5"}'>@if(Session::get('user.checkout.paywith.pay_method')=='PayPalNative'){{'Pay with PayPal'}}@else{{'Place Order'}}@endif</div>
                     </div>
                 </div>
                 <hr class="hr-base m-a-0">

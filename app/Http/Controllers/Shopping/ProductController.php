@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Shopping;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use App\Http\Controllers\ApiController;
+use Illuminate\Support\Facades\Cache;
 
 class ProductController extends ApiController
 {
@@ -20,13 +21,30 @@ class ProductController extends ApiController
      * */
     public function index(Request $request, $spu)
     {
-        if (empty($spu)) {
-            return redirect('/shopping');
-        }
         $result = $this->getProductDetail($request, $spu);
-        if (!$result['success']) {
-            return redirect('/shopping');
+        if(!$result['success']){
+            abort(404);
+        } else {
+            $category = Cache::remember('category', 60, function () {
+                $params = array(
+                    'cmd' => 'categorylist',
+                );
+                return $this->request('openapi', self::API_SYSTEM, self::API_SERVICE, $params);
+            });
+            $categoryName = '';
+            foreach ($category['data']['list'] as $value) {
+                if ($value['category_id'] == $result['data']['front_category_ids'][0]) {
+                    $categoryName = $value['category_name'];
+                    $result['data']['category_id'] = $result['data']['front_category_ids'][0];
+                    break;
+                }
+            }
+            $result['data']['category_name'] = $categoryName;
         }
+        if ($request->input('ajax')){
+            return $result;
+        }
+
         $recommended = $this->recommended($spu,$result['data']['front_category_ids'][0],$result['data']['designer']['designer_id']);
         return View('shopping.detail', ['data' => $result['data'], 'recommended' => $recommended['data'],'NavShowShop'=>true]);
     }
