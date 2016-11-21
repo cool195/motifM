@@ -59,14 +59,14 @@
         @include('navigator')
         <nav class="bg-white nav-category">
             <div class="text-center p-t-15x p-b-10x titDiv">
-                <button href="javascript:void(0)" class="text-main font-size-lg" id="nav-categoryTit">All</button>
+                <button style="border: none;background-color: white" class="text-main font-size-lg" id="nav-categoryTit">All</button>
             </div>
             <!-- 商品类别 二级导航 -->
             <section class="bg-white search-container">
                 @if(isset($categories))
                     @foreach($categories as $key => $c)
-                        <button style="width:100%" class="p-a-15x flex flex-alignCenter flex-fullJustified search-item {{ 'cateClick'.$c['category_id'] }}"
-                             data-categoryid="{{ $c['category_id'] }}" data-categoryname="{{ $c['category_name'] }}">
+                        <button style="width:100%;border: none;background-color: white" class="p-a-15x flex flex-alignCenter flex-fullJustified search-item {{ 'cateClick'.$c['category_id'] }}"
+                                data-categoryid="{{ $c['category_id'] }}" data-categoryname="{{ $c['category_name'] }}">
                             <span class="text-primary font-size-sm text-right">{{ $c['category_name'] }}</span>
                             <i class="iconfont icon-check icon-size-md text-common"></i>
                         </button>
