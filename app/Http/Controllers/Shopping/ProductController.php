@@ -46,8 +46,6 @@ class ProductController extends ApiController
         }
 
         $recommended = $this->recommended($spu,$result['data']['front_category_ids'][0],$result['data']['designer']['designer_id']);
-        error_log(print_r("------------------\n", "\n"), 3, '/tmp/myerror.log');
-        error_log(print_r($result, "\n"), 3, '/tmp/myerror.log');
         return View('shopping.detail', ['data' => $result['data'], 'recommended' => $recommended['data'],'NavShowShop'=>true]);
     }
 
