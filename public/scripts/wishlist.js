@@ -316,12 +316,12 @@
         }
 
         // 加载提示语
-        if (data.prompt_words != '') {
-            $('#Product-prompt span').html(data.prompt_words);
-            $('#Product-prompt').css('display', 'block');
-        } else {
-            $('#Product-prompt').css('display', 'none');
-        }
+        //if (data.prompt_words != '') {
+        //    $('#Product-prompt span').html(data.prompt_words);
+        //    $('#Product-prompt').css('display', 'block');
+        //} else {
+        //    $('#Product-prompt').css('display', 'none');
+        //}
 
         // 加载商品属性
         appendSkuAttrList('tpl-skuattrlist', data);

@@ -1,6 +1,6 @@
 @charset "UTF-8";
 #modalDialog{
-  max-height: 45vh;
+  max-height: 35vh;
   overflow: scroll;
 }
 

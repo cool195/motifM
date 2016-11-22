@@ -144,10 +144,10 @@
                 <span class="font-size-sm text-throughLine text-common" id="productPrice"></span>
             </div>
         </fieldset>
-        <div class="warning-info off flex text-warning flex-alignCenter text-left p-x-15x" id="Product-prompt">
-            <i class="iconfont icon-caveat icon-size-md p-r-5x"></i>
-            <span class="font-size-xs"></span>
-        </div>
+        {{--<div class="warning-info off flex text-warning flex-alignCenter text-left p-x-15x" id="Product-prompt">--}}
+            {{--<i class="iconfont icon-caveat icon-size-md p-r-5x"></i>--}}
+            {{--<span class="font-size-xs"></span>--}}
+        {{--</div>--}}
         <!-- 商品属性列表 -->
         <section data-spu="" id="modalDialog" data-login="1" data-status="">
             <div id="product-skuAttr"></div>
