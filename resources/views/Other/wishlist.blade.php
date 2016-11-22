@@ -151,6 +151,7 @@
         <!-- 商品属性列表 -->
         <section data-spu="" id="modalDialog" data-login="1" data-status="">
             <div id="product-skuAttr"></div>
+            <div id="product-vasBases"></div>
         </section>
         <fieldset class="p-x-15x p-y-10x">
             <div class="flex flex-fullJustified flex-alignCenter">
@@ -179,6 +180,7 @@
     </form>
 </div>
 
+<!-- 商品属性 -->
 <template id="tpl-skuattrlist">
     @{{ each spuAttrs }}
     <fieldset class="p-x-15x p-y-10x text-left">
@@ -204,6 +206,38 @@
         </div>
     </fieldset>
     <hr class="hr-base m-a-0">
+    @{{ /each }}
+</template>
+
+<!-- 商品增值服务 -->
+<template id="tpl-vasbaseslist">
+    @{{ each vasBases }}
+    @{{ if $value.vas_type =1 }}
+    <fieldset class="p-x-15x p-y-10x text-left" data-vas-type="@{{ $value.vas_type }}">
+        <div class="text-primary font-size-sm m-b-10x">@{{ $value.vas_describe }} +
+            $@{{ ($value.vas_price/100).toFixed(2) }}</div>
+        <div class="flex flex-fullJustified flex-alignCenter">
+            <input class="input-engraving form-control font-size-sm disabled" type="text"
+                   maxlength="20" placeholder="20 characters max"
+                   data-vas-type="@{{ $value.vas_type }}">
+            <div class="iconfont icon-checkcircle text-common m-b-0 p-l-20x"
+                 id="@{{ $value.vas_id }}" data-vas-type="@{{ $value.vas_type }}"></div>
+        </div>
+    </fieldset>
+    <hr class="hr-base m-a-0">
+    @{{ else }}
+    <fieldset class="p-x-15x p-y-10x text-left" data-vas-type="$vas['vas_type']">
+        <div class="flex flex-fullJustified flex-alignCenter">
+            <div class="text-primary font-size-sm">@{{ $value.vas_describe }} +
+                $4.5(optional)
+            </div>
+            {{--<input type="radio" name="vas_name2" id="{{$vas['vas_id']}}" hidden>--}}
+            <div class="iconfont icon-checkcircle text-common m-b-0 p-l-20x"
+                 id="@{{ $value.vas_id }}" data-vas-type="@{{ $value.vas_type }}"></div>
+        </div>
+    </fieldset>
+    <hr class="hr-base m-a-0">
+    @{{ /if }}
     @{{ /each }}
 </template>
 

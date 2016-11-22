@@ -1,4 +1,13 @@
 @charset "UTF-8";
+.input-engraving {
+  background-color: white;
+  border-color: #007afc;
+}
+
+.input-engraving.disabled {
+  background-color: #f8f8f8;
+  border: 1px solid #f8f8f8;
+}
 .btn-itemProperty {
   color: #36405b;
   background-color: transparent;

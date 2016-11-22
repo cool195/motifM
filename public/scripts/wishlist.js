@@ -260,7 +260,6 @@
                         newVas(data.data.vasBases, Vas);
 
 
-
                         $('#modalDialog').data('spu', ProductSpu);
                         $('#modalDialog').data('status', data.data.status_code);
                         moveToBagModal.open();
@@ -312,6 +311,9 @@
 
         // 加载商品属性
         appendSkuAttrList('tpl-skuattrlist', data);
+
+        // 加载商品增值服务
+        appendVasBasesList('tpl-vasbaseslist', data);
     }
 
     // 遍历 商品属性 生成html
@@ -319,6 +321,13 @@
         var TplHtml = template(tpl, SkuAttrList);
         var StageCache = $.parseHTML(TplHtml);
         $('#product-skuAttr').html(StageCache);
+    }
+
+    // 遍历 商品增值服务 生成html
+    function appendVasBasesList(tpl, VasBasesList) {
+        var TplHtml = template(tpl, VasBasesList);
+        var StageCache = $.parseHTML(TplHtml);
+        $('#product-vasBases').html(StageCache);
     }
 
     // 将商品添加到购物车
@@ -998,7 +1007,7 @@
 
         Operate.VAList = VarList;
         openLoading();
-        var spu= $('#modalDialog').data('spu');
+        var spu = $('#modalDialog').data('spu');
         // PUT 立即购买
         // PATCH 添加购物车
         $.ajax({
@@ -1026,6 +1035,63 @@
             });
 
     }
+
+    // 增值服务信息
+    // 增值服务是否选中
+    $('#product-vasBases').on('click', 'fieldset[data-vas-type]', function (e) {
+        // 判断增值服务类型
+        if (parseInt($(this).data('vas-type')) === 1) {
+            if ($(e.target).hasClass('icon-checkcircle')) {
+                var $Check = $(e.target);
+                var $Input = $(e.target).siblings('.input-engraving');
+                if ($Check.hasClass('active')) {
+                    $Input.addClass('disabled');
+                    $Check.removeClass('active');
+                    $Input.val('');
+                } else {
+                    $Input.removeClass('disabled');
+                    $Check.addClass('active');
+                }
+            } else if ($(e.target).hasClass('input-engraving')) {
+                var $Check = $(e.target).siblings('.icon-checkcircle');
+                var $Input = $(e.target);
+                if ($Input.hasClass('disabled')) {
+                    $Input.removeClass('disabled');
+                    $Check.addClass('active');
+                    $Input.val('');
+                }
+            }
+        }
+    });
+
+    // 过滤增值服务 不能输入中文
+    function validateChinese(VasStr) {
+        var InputText = '';
+        for (var i = 0; i < VasStr.length; i++) {
+            if (VasStr.charCodeAt(i) > 0 && VasStr.charCodeAt(i) < 255) {
+                InputText += VasStr.charAt(i);
+            }
+        }
+        return InputText;
+    }
+
+    /* 验证增值服务 只能输入数字和字母 '_' '-' '/' 空格 */
+    function validateVas($Vas) {
+        var InputText = validateChinese($Vas.val());
+        var Reg = /^([a-z_A-Z-/+0-9+\s]+)$/i;
+        for (var i = 0; i < InputText.length; i++) {
+            var VasStr = InputText.charAt(i);
+            if (!Reg.test(VasStr)) {
+                InputText = InputText.replace(VasStr, '');
+            }
+        }
+        $Vas.val(InputText);
+    }
+
+    // 验证增值服务输入内容
+    $('#product-vasBases').on('keyup blur','.input-engraving', function () {
+        validateVas($(this));
+    });
 
 
 })(jQuery);
