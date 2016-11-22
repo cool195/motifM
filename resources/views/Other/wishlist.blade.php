@@ -252,6 +252,17 @@
     </div>
 </div>
 
+<!-- 添加成功 -->
+<div class="loading loading-screen loading-transprant loading-hidden" id="success">
+    <div class="loading-modal">
+        <div class="">
+            <img class="img-fluid m-x-auto" src="{{env('CDN_Static')}}/images/icon-success.png"
+                 srcset="{{env('CDN_Static')}}/images/icon-success@2x.png 2x, {{env('CDN_Static')}}/images/icon-success@3x.png 3x">
+        </div>
+        <div class="text-white font-size-md text-center m-t-10x">Item Added</div>
+    </div>
+</div>
+
 <div class="loading loading-screen loading-transprant loading-hidden" style="z-index: 10001" id="selectmsg">
     <div class="loading-modal">
         <div class="text-white font-size-md text-center m-t-10x" id="selectspa"></div>

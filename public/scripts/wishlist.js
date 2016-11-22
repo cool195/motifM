@@ -28,6 +28,20 @@
         }, 500);
     }
 
+    function openAddSuccess() {
+        $('#success').toggleClass('loading-hidden');
+        setTimeout(function () {
+            $('#success').toggleClass('loading-open');
+        }, 25);
+    }
+
+    function closeAddSuccess() {
+        $('#success').addClass('loading-close');
+        setTimeout(function () {
+            $('#success').toggleClass('loading-hidden loading-open').removeClass('loading-close');
+        }, 500);
+    }
+
     // 打开失败 loading
     function openAddError() {
         $('#error').toggleClass('loading-hidden');
@@ -88,7 +102,7 @@
 
     // 删除 wishlist 商品
     function deleteWish(WishId) {
-        openLoading();
+        //openLoading();
         $.ajax({
                 url: '/updateWish',
                 type: 'post',
@@ -112,7 +126,7 @@
                         isEmpty = true;
                     }
                 }
-                closeLoading();
+                //closeLoading();
             });
     }
 
@@ -233,7 +247,7 @@
     // 移动到购物车
     var skuExps;
     $('#wishContainer').on('click', '.btn-moveToBag', function () {
-        openLoading();
+        //openLoading();
         var ProductSpu = $(this).data('spu');
         $.ajax({
                 url: '/products/' + ProductSpu
@@ -271,7 +285,7 @@
                 }
             })
             .always(function () {
-                closeLoading();
+                //closeLoading();
             });
     });
 
@@ -284,7 +298,7 @@
 
         // 加载商品价格
         var Price = 0, promot_price = 0, sale_price;
-        if (data.skuPrice.skuPromotion != '' || data.skuPrice.skuPromotion != undefined) {
+        if (data.skuPrice.skuPromotion != '' && data.skuPrice.skuPromotion != undefined && data.skuPrice.skuPromotion != 'undefined') {
             Price = (data.skuPrice.skuPromotion.price / 100).toFixed(2);  //商品原价
             promot_price = (data.skuPrice.skuPromotion.promot_price / 100).toFixed(2); //商品折扣价
         }
@@ -332,6 +346,7 @@
 
     // 将商品添加到购物车
     function addToCart(spu, sku, sale_qtty) {
+        openLoading()
         var Operate = {
             'sale_qtty': sale_qtty, // 数量
             'select': true, // 是否选中
@@ -349,6 +364,12 @@
                 if (data.success) {
                     updateCartCount();
                     deleteWish(spu);
+
+                    openAddSuccess();
+                    setTimeout(function () {
+                        closeAddSuccess();
+                    }, 1500);
+
                 } else {
                     $('#error-info').text(data.error_msg);
                     openAddError();
@@ -356,6 +377,9 @@
                         closeAddError();
                     }, 1500);
                 }
+            })
+            .always(function () {
+                closeLoading();
             });
     }
 
@@ -1022,6 +1046,11 @@
                     updateCartCount();
                     moveToBagModal.close();
                     deleteWish(spu);
+
+                    openAddSuccess();
+                    setTimeout(function () {
+                        closeAddSuccess();
+                    }, 1500);
                 } else {
                     $('#error-info').text(data.error_msg);
                     openAddError();
