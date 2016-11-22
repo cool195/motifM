@@ -12,7 +12,7 @@
 <body>
 <input type="text" id="addToCart-sku" value="1" hidden>
 @include('check.tagmanager')
-        <!-- 外层容器 -->
+<!-- 外层容器 -->
 <div id="body-content">
     @include('nav')
     <div class="body-container">
@@ -40,8 +40,8 @@
         </section>
 
         <!-- 页脚 功能链接 start-->
-        @include('footer')
-                <!-- 页脚 功能链接 end-->
+    @include('footer')
+    <!-- 页脚 功能链接 end-->
     </div>
 </div>
 
@@ -52,11 +52,17 @@
             <div class="row">
                 <div class="col-xs-6">
                     <div class="p-a-10x">
+                        @{{ if $value.isPutOn !=1 || $value.stockStatus!=1 }}
+                        <img class="img-fluid img-lazy"
+                             src="{{env('CDN_Static')}}/images/product/bg-product@336.png"
+                             data-original="{{env('APP_Api_Image')}}/n1/@{{ $value.main_image_url }}">
+                        @{{ else }}
                         <a href="/detail/@{{ $value.spu }}">
                             <img class="img-fluid img-lazy"
                                  src="{{env('CDN_Static')}}/images/product/bg-product@336.png"
                                  data-original="{{env('APP_Api_Image')}}/n1/@{{ $value.main_image_url }}">
                         </a>
+                        @{{ /if }}
                         <!-- 预售信息 -->
                         @{{ if $value.sale_type == 1 }}
                         <span class="preorder-info font-size-xs">Limited Edition</span>
@@ -67,11 +73,16 @@
                     <div class="p-a-10x">
                         <article class="wishlist-title">
                             <div class="flex flex-fullJustified">
-                                <a href="/detail/@{{ $value.spu }}">
+                                @{{ if $value.isPutOn !=1 || $value.stockStatus!=1 }}
                                     <h6 class="text-main font-size-sm p-r-5x p-t-15x">
-                                        <strong>@{{ $value.main_title }}</strong></h6>
-                                </a>
-                            <span class="text-primary font-size-sm flex-fixedShrink">
+                                    <strong>@{{ $value.main_title }}</strong></h6>
+                                @{{ else }}
+                                    <a href="/detail/@{{ $value.spu }}">
+                                        <h6 class="text-main font-size-sm p-r-5x p-t-15x">
+                                            <strong>@{{ $value.main_title }}</strong></h6>
+                                    </a>
+                                @{{ /if }}
+                                <span class="text-primary font-size-sm flex-fixedShrink">
                                 <i class="iconfont icon-cross icon-size-md text-common delwish"
                                    data-spu="@{{ $value.spu }}"></i>
                             </span>
@@ -81,15 +92,24 @@
                         </article>
                         <aside class="moveToBag">
                             <div class="moveToBag-itme">
-                                @{{ if $value.isPutOn != 1 }}
+
+                                @{{ if $value.isPutOn !=1 || $value.status!=100 || $value.stockStatus!=1 }}
                                 <div class="warning-info off flex text-warning flex-alignCenter text-left p-y-10x">
+                                    @{{ if $value.isPutOn != 1 || $value.status != 100 }}
+                                    <i class="iconfont icon-caveat icon-size-md p-r-5x"></i>
+                                    <span class="font-size-xs">Not Available</span>
+                                    @{{ else }}
                                     <i class="iconfont icon-caveat icon-size-md p-r-5x"></i>
                                     <span class="font-size-xs">Sold Out</span>
+                                    @{{ /if }}
                                 </div>
-                                @{{ /if }}
+                                <div class="btn btn-primary btn-block btn-md disabled">Move to Bag
+                                </div>
+                                @{{ else }}
                                 <div class="btn btn-primary btn-block btn-md btn-moveToBag"
                                      data-spu="@{{ $value.spu }}">Move to Bag
                                 </div>
+                                @{{ /if }}
                             </div>
                         </aside>
                     </div>
@@ -109,13 +129,14 @@
             </a>
         </div>
         <div class="product-img">
-            <img class="img-thumbnail img-lazy" id="productImg" src="{{env('CDN_Static')}}/images/product/bg-product@140.png"
-                 data-original="https://s3-us-west-1.amazonaws.com/emimagetest/n1/product/motif/6118/800X800/ea4bc0f0e2796542048f14ceba7260a4.jpg" width="100" height="100">
+            <img class="img-thumbnail img-lazy" id="productImg"
+                 src="{{env('CDN_Static')}}/images/product/bg-product@140.png"
+                 data-original="" width="100" height="100">
         </div>
         <fieldset class="text-primary p-x-15x p-t-20x text-left">
             <div class="font-size-base">
-                <span class="font-size-lx text-red" id="skuNewPrice">$68</span>
-                <span class="font-size-sm text-throughLine text-common" id="productPrice">$90</span>
+                <span class="font-size-lx text-red" id="skuNewPrice"></span>
+                <span class="font-size-sm text-throughLine text-common" id="productPrice"></span>
             </div>
         </fieldset>
         <div class="warning-info off flex text-warning flex-alignCenter text-left p-x-15x" id="Product-prompt">
@@ -146,7 +167,8 @@
 
         <fieldset class="container-fluid p-a-15x">
             <!-- 添加 购物车 控制按钮显示 -->
-            <div class="btn btn-primary btn-block" data-control="continue" data-role="continue" data-action="PATCH">Move To Bag
+            <div class="btn btn-primary btn-block" data-control="continue" data-role="continue" data-action="PATCH">Move
+                To Bag
             </div>
         </fieldset>
     </form>
@@ -163,7 +185,14 @@
             <div class="row">
                 @{{ each $value.skuAttrValues as value index }}
                 <div class="p-t-10x p-x-5x">
-                    <div class="btn btn-itemProperty btn-sm skarow" id="@{{ value.attr_value_id }}" data-image="@{{ value.img_path }}" data-spa="@{{ $value.attr_type }}" data-ska="@{{ value.attr_value_id }}">@{{ value.attr_value }}</div>
+                    @{{ if value.stock }}
+                    <div class="btn btn-itemProperty btn-sm skarow" id="@{{ value.attr_value_id }}"
+                         data-spa="@{{ $value.attr_type }}"
+                         data-ska="@{{ value.attr_value_id }}">@{{ value.attr_value }}</div>
+                    @{{ else }}
+                    <div class="btn btn-itemProperty btn-sm skarow"
+                         id="@{{ value.attr_value_id }}">@{{ value.attr_value }}</div>
+                    @{{ /if }}
                 </div>
                 @{{ /each }}
             </div>
