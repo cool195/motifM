@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Shopping;
 
 use Illuminate\Http\Request;
-
+use Cache;
 use App\Http\Controllers\ApiController;
 use Illuminate\Support\Facades\Session;
 
@@ -17,14 +17,30 @@ class CartController extends ApiController
      * */
     public function index(Request $request)
     {
-        $cartList = $this->getCartList($request);
-        $saveList = $this->getCartSaveList($request);
-        return View('shopping.cart', [
-            'cartData' => $cartList['data'],
-            'saveData' => $saveList['data']
-        ]);
+        if (Session::get('user.pin')) {
+            $cartList = $this->getCartList($request);
+            $saveList = $this->getCartSaveList($request);
+            return View('shopping.cart', [
+                'cartData' => $cartList['data'],
+                'saveData' => $saveList['data']
+            ]);
+        } else {
+            $cartCache = Cache::get('CartCache' . $_COOKIE['uid']);
+            $params = array(
+                'cmd' => 'cartinfo',
+                'token' => 'eeec7a32dcb6115abfe4a871c6b08b47',
+                'operate' => json_encode($cartCache)
+            );
+
+            $cartList = $this->request('openapi', '', 'cart', $params);
+
+            return View('shopping.cart', [
+                'cartData' => $cartList['data']
+            ]);
+        }
+
     }
-    
+
     /*
      * 订单确认接口
      *
@@ -38,13 +54,13 @@ class CartController extends ApiController
         $bindid = $request->input('bindid');
         $address = $this->getUserAddrByAid($request->input('aid', 0));
 
-        if(empty($address)){
+        if (empty($address)) {
             return redirect('cart/addradd?first=1');
         }
 
-        $_result = $this->getCartAccountList($request,-1, $bindid,'',$address['receiving_id']);
-        $defaultMethod = $this->getShippingMethodByStypeOrDefault($stype,$address['country_name_sn'],$_result['data']['total_amount']+$_result['data']['vas_amount']);
-        $result = $this->getCartAccountList($request, $defaultMethod['logistics_type'], $bindid,'',$address['receiving_id']);
+        $_result = $this->getCartAccountList($request, -1, $bindid, '', $address['receiving_id']);
+        $defaultMethod = $this->getShippingMethodByStypeOrDefault($stype, $address['country_name_sn'], $_result['data']['total_amount'] + $_result['data']['vas_amount']);
+        $result = $this->getCartAccountList($request, $defaultMethod['logistics_type'], $bindid, '', $address['receiving_id']);
 
         if (empty($result['data']) || empty($result['success']) || !$result['success']) {
             return redirect('cart/ordercheckout');
@@ -59,7 +75,7 @@ class CartController extends ApiController
             //'methodtoken' => $request->input('methodtoken', !empty($defaultPayMethod['data']['token']) ? $defaultPayMethod['data']['token'] : "" ),
             //'showName' => $request->input('showName', !empty($defaultPayMethod['data']['showName']) ? $defaultPayMethod['data']['showName'] : "" ),
             'showName' => $request->input('showName', 'PayPal'),
-            'shipMethodList' => $this->getShippingMethod($address['country_name_sn'],$_result['data']['total_amount']+$_result['data']['vas_amount']),
+            'shipMethodList' => $this->getShippingMethod($address['country_name_sn'], $_result['data']['total_amount'] + $_result['data']['vas_amount']),
             'defaultMethod' => $defaultMethod,
             'bindid' => $bindid,
             'remark' => $request->input('remark', ""),
@@ -143,12 +159,12 @@ class CartController extends ApiController
 
     public function addrAdd(Request $request)
     {
-        $defaultCountry = array('country_id' => 1, 'child_label' => "State", 'child_type' => 2, 'country_name_cn' => '美国', 'country_name_sn'=>'US','country_name_en' => "United States", 'iDnumberReq' => 0, 'isFreq' => 1, 'sort_no' => 100, 'zipcode_label' => 'Zip code');
-        $country = json_decode(base64_decode($request->input('countryState',$request->input('country', base64_encode(json_encode($defaultCountry))))), true);
+        $defaultCountry = array('country_id' => 1, 'child_label' => "State", 'child_type' => 2, 'country_name_cn' => '美国', 'country_name_sn' => 'US', 'country_name_en' => "United States", 'iDnumberReq' => 0, 'isFreq' => 1, 'sort_no' => 100, 'zipcode_label' => 'Zip code');
+        $country = json_decode(base64_decode($request->input('countryState', $request->input('country', base64_encode(json_encode($defaultCountry))))), true);
         $state = json_decode(base64_decode($request->input('state')), true);
         $input = $request->except('country');
         $checkout = $request->except('email', 'name', 'addr1', 'addr2', 'state', 'city', 'zip', 'tel', 'idnum', 'country', 'isd', 'route');
-        return View('shopping.ordercheckout_addaddress', ['input' => $input,'state'=>$state, 'checkout' => $checkout, 'country' => $country, 'first' => $request->input('first')]);
+        return View('shopping.ordercheckout_addaddress', ['input' => $input, 'state' => $state, 'checkout' => $checkout, 'country' => $country, 'first' => $request->input('first')]);
     }
 
     public function addrModify(Request $request)
@@ -163,27 +179,27 @@ class CartController extends ApiController
             //$input['iDnumber'] = $input['idnum'];
             $input['isDefault'] = $input['isd'];
             $input['receiving_id'] = $input['aid'];
-            $country = json_decode(base64_decode($request->input('countryState',$request->input('country'))), true);
+            $country = json_decode(base64_decode($request->input('countryState', $request->input('country'))), true);
             $input['country'] = $country['country_name_en'];
         } else {
             $eid = $request->input('eid', 0);
             $input = $this->getUserAddrByAid($eid);
-            $state = $state ? $state : array('state_name_sn'=>$input['state']);
+            $state = $state ? $state : array('state_name_sn' => $input['state']);
             $params = array(
                 'cmd' => 'country',
                 'token' => Session::get('user.token'),
                 'pin' => Session::get('user.pin')
             );
             $countrylist = $this->request('openapi', '', 'addr', $params);
-            foreach ($countrylist['data']['list'] as $value){
-                if($value['country_name_en']==trim($input['country'])){
+            foreach ($countrylist['data']['list'] as $value) {
+                if ($value['country_name_en'] == trim($input['country'])) {
                     $country = $value;
                     break;
                 }
             }
         }
 
-        return View('shopping.ordercheckout_modaddress', ['country'=>$country,'state'=>$state,'input' => $input, 'checkout' => $checkout]);
+        return View('shopping.ordercheckout_modaddress', ['country' => $country, 'state' => $state, 'input' => $input, 'checkout' => $checkout]);
     }
 
     public function countryList(Request $request)
@@ -327,7 +343,7 @@ class CartController extends ApiController
      * @return Array
      *
      * */
-    public function getCartAccountList(Request $request, $logisticstype = 1, $bindid = "", $paytype = "",$aid)
+    public function getCartAccountList(Request $request, $logisticstype = 1, $bindid = "", $paytype = "", $aid)
     {
 
         $params = array(
@@ -390,19 +406,43 @@ class CartController extends ApiController
             'token' => Session::get('user.token'),
             'pin' => Session::get('user.pin'),
         );
-        $system = "";
-        $service = "cart";
-        $result = $this->request('openapi', $system, $service, $params);
-        if (empty($result)) {
-            $result['success'] = false;
-            $result['error_msg'] = "Data access failed";
-            $result['data'] = array();
-        } else {
-            if ($result['success']) {
-                $result['redirectUrl'] = "";
+        if (Session::get('user.pin')) {
+            $system = "";
+            $service = "cart";
+            $result = $this->request('openapi', $system, $service, $params);
+            if (empty($result)) {
+                $result['success'] = false;
+                $result['error_msg'] = "Data access failed";
+                $result['data'] = array();
+            } else {
+                if ($result['success']) {
+                    $result['redirectUrl'] = "";
+                }
             }
+            return $result;
+        } else {
+            if ($cartCache = Cache::get('CartCache' . $_COOKIE['uid'])) {
+                $selectSku = false;
+                foreach ($cartCache as &$value) {
+                    if ($value['sku'] == $request->input('operate')['sku']) {
+                        $selectSku = true;
+                        $value['sale_qtty'] = intval($value['sale_qtty']) + intval($request->input('operate')['sale_qtty']);
+                        if ($request->input('operate')['VAList']) {
+                            $value['VAList'] = $request->input('operate')['VAList'];
+                        }
+                    }
+                }
+                if (!$selectSku) {
+                    $cartCache[] = $request->input('operate');
+                }
+                $operate = $cartCache;
+            } else {
+                $operate = [$request->input('operate')];
+            }
+            Cache::put('CartCache' . $_COOKIE['uid'], $operate, 1440 * 30);
+            return array('success' => true, 'redirectUrl' => '');
         }
-        return $result;
+
     }
 
     public function addBatchCart(Request $request)
@@ -431,17 +471,30 @@ class CartController extends ApiController
      * */
     public function alterCartProQtty(Request $request)
     {
-        $params = array(
-            'cmd' => 'alterqtty',
-            'sku' => $request->input('sku'),
-            'qtty' => $request->input('qtty'),
-            'token' => Session::get('user.token'),
-            'pin' => Session::get('user.pin'),
-        );
-        $system = "";
-        $service = "cart";
-        $result = $this->request('openapi', $system, $service, $params);
-        return $result;
+        if(Session::get('user.pin')){
+            $params = array(
+                'cmd' => 'alterqtty',
+                'sku' => $request->input('sku'),
+                'qtty' => $request->input('qtty'),
+                'token' => Session::get('user.token'),
+                'pin' => Session::get('user.pin'),
+            );
+            $system = "";
+            $service = "cart";
+            $result = $this->request('openapi', $system, $service, $params);
+            return $result;
+        }else{
+            $cartCache = Cache::get('CartCache' . $_COOKIE['uid']);
+            foreach ($cartCache as &$value) {
+                if ($value['sku'] == $request->input('sku')) {
+                    $value['sale_qtty'] = $request->input('qtty');
+                    break;
+                }
+            }
+            Cache::put('CartCache' . $_COOKIE['uid'], $cartCache, 1440 * 30);
+            return ['success' => true];
+        }
+
     }
 
     /*
@@ -482,17 +535,30 @@ class CartController extends ApiController
         $cmd = $request->input('cmd');
         $result = "";
         if (in_array($cmd, $cmdSelector)) {
-            $params = array(
-                'cmd' => $cmd,
-                'sku' => $request->input('sku'),
-                'token' => Session::get('user.token'),
-                'pin' => Session::get('user.pin'),
-            );
-            $system = "";
-            $service = "cart";
-            $result = $this->request('openapi', $system, $service, $params);
-            if (!empty($result) && $result['success']) {
-                return $result;
+            if (Session::get('user.pin')) {
+                $params = array(
+                    'cmd' => $cmd,
+                    'sku' => $request->input('sku'),
+                    'token' => Session::get('user.token'),
+                    'pin' => Session::get('user.pin'),
+                );
+                $system = "";
+                $service = "cart";
+                $result = $this->request('openapi', $system, $service, $params);
+                if (!empty($result) && $result['success']) {
+                    return $result;
+                }
+            } else {
+                if ($cmd == 'delsku') {
+                    $cartCache = Cache::get('CartCache' . $_COOKIE['uid']);
+                    foreach ($cartCache as $k => $value) {
+                        if ($value['sku'] == $request->input('sku')) {
+                            array_splice($cartCache, $k, 1);
+                            Cache::put('CartCache' . $_COOKIE['uid'], $cartCache, 1440 * 30);
+                            return ['success' => true];
+                        }
+                    }
+                }
             }
         }
     }
@@ -518,10 +584,10 @@ class CartController extends ApiController
         return $result;
     }
 
-    public function getShippingMethodByStypeOrDefault($stype,$country=0,$price=0)
+    public function getShippingMethodByStypeOrDefault($stype, $country = 0, $price = 0)
     {
         $method = array();
-        $methodList = $this->getShippingMethod($country,$price);
+        $methodList = $this->getShippingMethod($country, $price);
         if (!empty($methodList)) {
             $method = current($methodList);
             if (isset($methodList[$stype])) {
@@ -531,13 +597,13 @@ class CartController extends ApiController
         return $method;
     }
 
-    public function getShippingMethod($country=0,$price=0)
+    public function getShippingMethod($country = 0, $price = 0)
     {
         $params = array(
             'cmd' => 'logis',
             'token' => Session::get('user.token')
         );
-        if($price != 0){
+        if ($price != 0) {
             $params['amount'] = $price;
             $params['country'] = $country;
         }

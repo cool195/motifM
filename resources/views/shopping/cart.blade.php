@@ -119,8 +119,10 @@
                                         <a class="btn btn-cartUpdate btn-sm btn-inBag" data-remodal-target="modal"
                                            data-sku="{{$showSku['sku']}}" data-action="delsku" data-title="{{$showSku['main_title']}}" data-price="{{number_format(($showSku['sale_price'] / 100), 2)}}"
                                         data-qtty="{{$showSku['sale_qtty']}}" data-spu="{{$showSku['spu']}}">Remove</a>
+                                        @if(Session::get('user.pin'))
                                         <a href="#" class="btn btn-cartUpdate btn-sm btn-inBag" data-product-move="save"
                                            data-sku="{{$showSku['sku']}}">Save for Later</a>
+                                        @endif
                                     </div>
                                     <div class="flex flex-alignCenter">
                                         <span class="text-primary font-size-sm m-r-5x">Qty:</span>
@@ -176,7 +178,7 @@
             </script>
         @endif
 
-        @if(!empty($saveData['showSkus']))
+        @if(Session::get('user.pin') && !empty($saveData['showSkus']))
             <!-- 暂存商品列表 -->
                 <hr class="hr-base m-a-0">
                 <article class="font-size-md text-main p-a-10x bg-title"><strong>Saved</strong></article>
