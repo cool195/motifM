@@ -88,11 +88,19 @@
                                 </span>
                             </div>
                             @{{ if $value.isPutOn !=1 || $value.stockStatus!=1 }}
-                            <div class="text-common font-size-sm">
-                                <strong>$@{{ ($value.skuPrice.sale_price/100).toFixed(2) }}</strong></div>
+                                @{{ if $value.skuPrice.price != $value.skuPrice.sale_price }}
+                                    <span class="font-size-md text-common">$@{{ ($value.skuPrice.sale_price/100).toFixed(2) }}</span>
+                                    <span class="font-size-sm text-throughLine text-common">$@{{ ($value.skuPrice.price/100).toFixed(2) }}</span>
+                                @{{ else }}
+                                    <span class="font-size-md text-common">$@{{ ($value.skuPrice.sale_price/100).toFixed(2) }}</span>
+                                @{{ /if }}
                             @{{ else }}
-                            <div class="text-primary font-size-sm">
-                                <strong>$@{{ ($value.skuPrice.sale_price/100).toFixed(2) }}</strong></div>
+                                @{{ if $value.skuPrice.price != $value.skuPrice.sale_price }}
+                                    <span class="font-size-md text-red">$@{{ ($value.skuPrice.sale_price/100).toFixed(2) }}</span>
+                                    <span class="font-size-sm text-throughLine text-common">$@{{ ($value.skuPrice.price/100).toFixed(2) }}</span>
+                                @{{ else }}
+                                    <span class="font-size-md text-primary">$@{{ ($value.skuPrice.sale_price/100).toFixed(2) }}</span>
+                                @{{ /if }}
                             @{{ /if }}
                         </article>
                         <aside class="moveToBag">
@@ -174,7 +182,7 @@
         <fieldset class="container-fluid p-a-15x">
             <!-- 添加 购物车 控制按钮显示 -->
             <div class="btn btn-primary btn-block" data-control="continue" data-role="continue" data-action="PATCH">Move
-                To Bag
+                to Bag
             </div>
         </fieldset>
     </form>
