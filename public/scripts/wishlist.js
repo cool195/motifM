@@ -110,6 +110,7 @@
             })
             .done(function (data) {
                 if (data.success) {
+                    console.info(data.data);
                     $('[data-wishspu="' + WishId + '"]').remove();
                 } else {
                     $('#error-info').text(data.error_msg);
@@ -253,11 +254,17 @@
                 url: '/products/' + ProductSpu
             })
             .done(function (data) {
+                console.info(data.data);
+                console.info(data.data.vasBases);
+                var IsVasBases = false;
+                if (data.data.vasBases != '' && data.data.vasBases != undefined && data.data.vasBases != 'undefined') {
+                    if (data.data.vasBases.length > 0) {
+                        IsVasBases = true;
+                    }
+                }
                 if (data.success) {
-                    console.info(data.data);
-                    if (data.data.skus.length > 1 || data.data.vasBases.length > 0) {
+                    if (data.data.skus.length > 1 || IsVasBases === true) {
                         initProductDetail(data.data);
-
                         // 初始化
                         skuExps = data.data.skuExps;
                         var Inventory = tempInventory = inventoryNull(data.data.skuExps);
@@ -312,12 +319,12 @@
         }
         sale_price = (data.skuPrice.sale_price / 100).toFixed(2); //商品价格
         if (Price > promot_price) {
-            $('#skuNewPrice').html('$'+promot_price);
+            $('#skuNewPrice').html('$' + promot_price);
             $('#skuNewPrice').removeClass('text-primary');
             $('#skuNewPrice').addClass('text-red');
-            $('#productPrice').html('$'+Price);
+            $('#productPrice').html('$' + Price);
         } else {
-            $('#skuNewPrice').html('$'+sale_price);
+            $('#skuNewPrice').html('$' + sale_price);
             $('#skuNewPrice').removeClass('text-red');
             $('#skuNewPrice').addClass('text-primary');
             $('#productPrice').html('');
