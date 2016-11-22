@@ -5852,17 +5852,29 @@ footer .links-group {
   z-index: 200;
 }
 
-.wishlist-item + .wishlist-item {
+/*.wishlist-item + .wishlist-item {
   border-top: 1px solid #e2e5ed;
-}
-
-.wishlist-item img {
-  max-width: none;
-}
+}*/
 
 .wishlist-title {
-  min-height: 3rem;
+  min-height: 4.5rem;
 }
+
+.wishlist-item .moveToBag{
+  min-height: 5.5rem;
+  position: relative;
+}
+.wishlist-item .moveToBag .moveToBag-itme{
+  position: absolute;
+  bottom: .3125rem;
+  width: 100%;
+}
+
+.wishlist-item .preorder-info{
+  top: 20px;
+  right: 20px;
+}
+
 
 .followlist-item + .followlist-item{
   border-top: 1px solid #e2e5ed;

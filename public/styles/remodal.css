@@ -102,7 +102,7 @@ html.remodal-is-locked {
 
 /* Default theme styles of the wrapper */
 .remodal-wrapper {
-  padding: 10px 10px 0;
+  padding: 0!important;
 }
 
 /* Default theme styles of the modal dialog */
