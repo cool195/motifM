@@ -255,7 +255,7 @@
             .done(function (data) {
                 if (data.success) {
                     console.info(data.data);
-                    if (data.data.skus.length > 1) {
+                    if (data.data.skus.length > 1 || data.data.vasBases.length > 0) {
                         initProductDetail(data.data);
 
                         // 初始化
@@ -273,6 +273,14 @@
                         // 所有增值服务
                         newVas(data.data.vasBases, Vas);
 
+
+                        //唯一属性
+                        if ([$('.sparow').length == 1 && $('.skarow').length] == 1) {
+                            $('.sparow').data('click', true);
+                            $('.skarow').addClass('active');
+                            ResultSkus[0] = data.data.skus[0];
+                            $('[data-select]').text('Selected:');
+                        }
 
                         $('#modalDialog').data('spu', ProductSpu);
                         $('#modalDialog').data('status', data.data.status_code);
@@ -293,8 +301,8 @@
     function initProductDetail(data) {
         // 加载商品图片
         var ProductImg = data.main_image_url;
-        $('#productImg').attr('data-original', 'https://s3-us-west-1.amazonaws.com/emimagetest/n1/' + ProductImg);
-        $('#productImg').attr('src', 'https://s3-us-west-1.amazonaws.com/emimagetest/n1/' + ProductImg);
+        $('#productImg').attr('data-original', 'https://s3-us-west-1.amazonaws.com/emimagetest/n3/' + ProductImg);
+        $('#productImg').attr('src', 'https://s3-us-west-1.amazonaws.com/emimagetest/n3/' + ProductImg);
 
         // 加载商品价格
         var Price = 0, promot_price = 0, sale_price;
@@ -304,12 +312,12 @@
         }
         sale_price = (data.skuPrice.sale_price / 100).toFixed(2); //商品价格
         if (Price > promot_price) {
-            $('#skuNewPrice').html(promot_price);
+            $('#skuNewPrice').html('$'+promot_price);
             $('#skuNewPrice').removeClass('text-primary');
             $('#skuNewPrice').addClass('text-red');
-            $('#productPrice').html(Price);
+            $('#productPrice').html('$'+Price);
         } else {
-            $('#skuNewPrice').html(sale_price);
+            $('#skuNewPrice').html('$'+sale_price);
             $('#skuNewPrice').removeClass('text-red');
             $('#skuNewPrice').addClass('text-primary');
             $('#productPrice').html('');
@@ -408,6 +416,13 @@
     // 为所有选项绑定事件
     $('#product-skuAttr').on('click', '.btn-itemProperty', function (e) {
 
+        // 更新显示图片
+        var ImgPath = $(this).data('image');
+        if (ImgPath != undefined && ImgPath != '') {
+            $('#productImg').attr('data-original', 'https://s3-us-west-1.amazonaws.com/emimagetest/n3/' + ImgPath);
+            $('#productImg').attr('src', 'https://s3-us-west-1.amazonaws.com/emimagetest/n3/' + ImgPath);
+        }
+
         var $WarningInfo = $('.warning-info');
         if (!$WarningInfo.hasClass('off')) {
             $WarningInfo.addClass('off');
@@ -472,13 +487,6 @@
         if (ResultSkus[0] != undefined) {
             $('#addToCart-sku').val(ResultSkus[0]);
             getNewPrice(ResultSkus[0]);
-        }
-
-        // 更新显示图片
-        var ImgPath = $(this).data('image');
-        if (ImgPath != undefined && ImgPath != '') {
-            $('#productImg').attr('data-original', 'https://s3-us-west-1.amazonaws.com/emimagetest/n1/' + ImgPath);
-            $('#productImg').attr('src', 'https://s3-us-west-1.amazonaws.com/emimagetest/n1/' + ImgPath);
         }
     });
 
@@ -1118,9 +1126,12 @@
     }
 
     // 验证增值服务输入内容
-    $('#product-vasBases').on('keyup blur','.input-engraving', function () {
+    $('#product-vasBases').on('keyup blur', '.input-engraving', function () {
         validateVas($(this));
     });
 
+    $('#close-movetobagmodal').on('click', function () {
+        moveToBagModal.close();
+    })
 
 })(jQuery);

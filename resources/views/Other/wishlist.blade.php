@@ -130,7 +130,7 @@
 <div class="remodal modal-content" data-remodal-id="movetobagmodal" id="moveToBagDialog" data-spu="" data-sku="">
     <form action="">
         <div class="p-x-15x p-t-15x text-right">
-            <a data-remodal-action="close"><i class="iconfont icon-cross text-common icon-size-lg"></i>
+            <a id="close-movetobagmodal"><i class="iconfont icon-cross text-common icon-size-lg"></i>
             </a>
         </div>
         <div class="product-img">
@@ -193,7 +193,7 @@
                 @{{ each $value.skuAttrValues as value index }}
                 <div class="p-t-10x p-x-5x">
                     @{{ if value.stock }}
-                    <div class="btn btn-itemProperty btn-sm skarow" id="@{{ value.attr_value_id }}"
+                    <div class="btn btn-itemProperty btn-sm skarow" data-image="@{{ value.img_path }}" id="@{{ value.attr_value_id }}"
                          data-spa="@{{ $value.attr_type }}"
                          data-ska="@{{ value.attr_value_id }}">@{{ value.attr_value }}</div>
                     @{{ else }}
