@@ -1,4 +1,9 @@
 @charset "UTF-8";
+#modalDialog{
+  max-height: 45vh;
+  overflow: scroll;
+}
+
 .input-engraving {
   background-color: white;
   border-color: #007afc;
