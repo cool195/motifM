@@ -74,7 +74,7 @@
                         <article class="wishlist-title">
                             <div class="flex flex-fullJustified">
                                 @{{ if $value.isPutOn !=1 || $value.stockStatus!=1 }}
-                                    <h6 class="text-main font-size-sm p-r-5x p-t-15x">
+                                    <h6 class="text-common font-size-sm p-r-5x p-t-15x">
                                     <strong>@{{ $value.main_title }}</strong></h6>
                                 @{{ else }}
                                     <a href="/detail/@{{ $value.spu }}">
@@ -85,10 +85,15 @@
                                 <span class="text-primary font-size-sm flex-fixedShrink">
                                 <i class="iconfont icon-cross icon-size-md text-common delwish"
                                    data-spu="@{{ $value.spu }}"></i>
-                            </span>
+                                </span>
                             </div>
+                            @{{ if $value.isPutOn !=1 || $value.stockStatus!=1 }}
+                            <div class="text-common font-size-sm">
+                                <strong>$@{{ ($value.skuPrice.sale_price/100).toFixed(2) }}</strong></div>
+                            @{{ else }}
                             <div class="text-primary font-size-sm">
                                 <strong>$@{{ ($value.skuPrice.sale_price/100).toFixed(2) }}</strong></div>
+                            @{{ /if }}
                         </article>
                         <aside class="moveToBag">
                             <div class="moveToBag-itme">
