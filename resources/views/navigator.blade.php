@@ -22,7 +22,7 @@
                     <a href="/cart" class="head-cart">
                         <span class="nav-shoppingCart" data-login="true">
                                 <img class="nav-tap" src="{{env('CDN_Static')}}/images/icon/icon-bag.png" srcset="{{env('CDN_Static')}}/images/icon/icon-bag@2x.png 2x,{{env('CDN_Static')}}/images/icon/icon-bag@3x.png 3x">
-                                <span class="shoppingCart-number">0</span>
+                                <span class="shoppingCart-number" style="display: none">0</span>
                         </span>
                     </a>
                 </div>
