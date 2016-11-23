@@ -170,11 +170,11 @@ $app->group(['middleware' => 'pcguide', 'namespace' => 'App\Http\Controllers\Sho
     $app->get('/detail/{spu}', 'ProductController@index');
 
     $app->post('/rsyncLogin', 'UserController@rsyncLogin');
-    $app->get('/register', 'UserController@login');
+    $app->get('/login', 'UserController@login');
     $app->patch('/login', 'UserController@login');
     $app->get('/user/logincheck', 'UserController@loginCheck');
     $app->post('/user/logincheck', 'UserController@loginCheck');
-    $app->get('/login', 'UserController@register');
+    $app->get('/register', 'UserController@register');
     $app->get('/user/signup', 'UserController@signup');
     $app->post('/user/signup', 'UserController@signup');
     $app->get('/reset', 'UserController@reset');
