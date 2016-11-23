@@ -309,10 +309,16 @@ class CartController extends ApiController
             }
         } else {
             $skusAmout = 0;
-            $cartCache = Cache::get('CartCache' . $_COOKIE['uid']);
-            foreach ($cartCache as $value) {
-                $skusAmout += $value['sale_qtty'];
+            if ($cartCache = Cache::get('CartCache' . $_COOKIE['uid'])) {
+                $params = array(
+                    'cmd' => 'cartinfo',
+                    'token' => 'eeec7a32dcb6115abfe4a871c6b08b47',
+                    'operate' => json_encode($cartCache)
+                );
+                $cartList = $this->request('openapi', '', 'cart', $params);
+                $skusAmout = $cartList['data']['total_sku_qtty'];
             }
+
             $result = array('success' => true, 'data' => array('skusAmout' => $skusAmout));
         }
 
