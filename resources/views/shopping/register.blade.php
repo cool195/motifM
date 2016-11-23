@@ -62,7 +62,7 @@
             <div href="#" class="iconfont icon-facebook btn-facebook" id="facebookLogin"></div>
             <div href="#" class="iconfont icon-google btn-google" id="googleLogin"></div>
         </div>
-        <div class="m-t-10x text-primary text-center font-size-sm">Already have an account? <a class="text-primary text-underLine font-size-base" href="/login">SIGN IN</a></div>
+        <div class="m-t-10x text-primary text-center font-size-sm">Already have an account? <a class="text-primary text-underLine font-size-base" href="/register">SIGN IN</a></div>
         <div class="m-t-15x text-primary text-center font-size-sm">
         By registering, you’ve accepted our<br>
         <a class="text-primary text-underLine" href="/termsconditions">Terms & Conditions</a>

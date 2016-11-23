@@ -52,7 +52,7 @@
     </section>
 
     <!-- 退出登录 -->
-    <a class="exit-login" href="/register">
+    <a class="exit-login" href="/login">
         <i class="iconfont icon-cross icon-size-md text-common"></i>
     </a>
 </div>
