@@ -126,6 +126,7 @@ class Publicfun
                 'pin' => Session::get('user.pin'),
             );
             self::request('', 'cart', $params);
+            Cache::forget('CartCache' . $_COOKIE['uid']);
         }
     }
 }
