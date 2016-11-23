@@ -74,6 +74,7 @@ class UserController extends ApiController
             if($_COOKIE['wishSpu']){
                 Publicfun::addWishProduct($_COOKIE['wishSpu']);
             }
+            Publicfun::mergeCartSkus();
             $result['redirectUrl'] = ($request->input('referer') && !strstr($request->input('referer'), 'login')) ? $request->input('referer') : "/daily";
         } else {
             $result['prompt_msg'] = $result['error_msg'];
@@ -127,6 +128,7 @@ class UserController extends ApiController
                 if($_COOKIE['wishSpu']){
                     Publicfun::addWishProduct($_COOKIE['wishSpu']);
                 }
+                Publicfun::mergeCartSkus();
             }
         }
 

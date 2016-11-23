@@ -284,28 +284,38 @@ class CartController extends ApiController
      * */
     public function getCartAmount(Request $request)
     {
-        $params = array(
-            'cmd' => 'amount',
-            'token' => Session::get('user.token'),
-            'pin' => Session::get('user.pin'),
-        );
-        $system = "";
-        $service = "cart";
-        $result = $this->request('openapi', $system, $service, $params);
-        if (empty($result)) {
-            $result['success'] = false;
-            $result['error_msg'] = "Data access failed";
-            $result['data'] = array();
-        } else {
-            if ($result['success']) {
-                if (empty($result['data']['saveAmout'])) {
-                    $result['data']['saveAmout'] = 0;
-                }
-                if (empty($result['data']['skusAmout'])) {
-                    $result['data']['skusAmout'] = 0;
+        if (Session::get('user.pin')) {
+            $params = array(
+                'cmd' => 'amount',
+                'token' => Session::get('user.token'),
+                'pin' => Session::get('user.pin'),
+            );
+            $system = "";
+            $service = "cart";
+            $result = $this->request('openapi', $system, $service, $params);
+            if (empty($result)) {
+                $result['success'] = false;
+                $result['error_msg'] = "Data access failed";
+                $result['data'] = array();
+            } else {
+                if ($result['success']) {
+                    if (empty($result['data']['saveAmout'])) {
+                        $result['data']['saveAmout'] = 0;
+                    }
+                    if (empty($result['data']['skusAmout'])) {
+                        $result['data']['skusAmout'] = 0;
+                    }
                 }
             }
+        } else {
+            $skusAmout = 0;
+            $cartCache = Cache::get('CartCache' . $_COOKIE['uid']);
+            foreach ($cartCache as $value) {
+                $skusAmout += $value['sale_qtty'];
+            }
+            $result = array('success' => true, 'data' => array('skusAmout' => $skusAmout));
         }
+
         return $result;
     }
 
@@ -471,7 +481,7 @@ class CartController extends ApiController
      * */
     public function alterCartProQtty(Request $request)
     {
-        if(Session::get('user.pin')){
+        if (Session::get('user.pin')) {
             $params = array(
                 'cmd' => 'alterqtty',
                 'sku' => $request->input('sku'),
@@ -483,7 +493,7 @@ class CartController extends ApiController
             $service = "cart";
             $result = $this->request('openapi', $system, $service, $params);
             return $result;
-        }else{
+        } else {
             $cartCache = Cache::get('CartCache' . $_COOKIE['uid']);
             foreach ($cartCache as &$value) {
                 if ($value['sku'] == $request->input('sku')) {

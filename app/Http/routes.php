@@ -38,6 +38,7 @@ $app->group(['middleware' => 'pcguide', 'namespace' => 'App\Http\Controllers'], 
     $app->patch('/cart', 'Shopping\CartController@addCart');
     $app->post('/cart/operate', 'Shopping\CartController@operateCartProduct');
     $app->post('/cart/alterQtty', 'Shopping\CartController@alterCartProQtty');
+    $app->get('/cart/amount', 'Shopping\CartController@getCartAmount');
 });
 
 
@@ -73,7 +74,7 @@ $app->group(['middleware' => 'pcguide|logincheck', 'namespace' => 'App\Http\Cont
     $app->get('/shopping/cart/coupon', 'CartController@coupon');
     $app->get('/shopping/cart/message', 'CartController@message');
 
-    $app->get('/cart/amount', 'CartController@getCartAmount');
+
     $app->get('/cart/list', 'CartController@getCartList');
     $app->get('/cart/accountlist', 'CartController@getCartAccountList');
     $app->get('/cart/savelist', 'CartController@getCartSaveList');

@@ -21,7 +21,7 @@ class Publicfun
     ];
 
     //收藏商品操作
-    public static function addWishProduct($spu,$action = false)
+    public static function addWishProduct($spu, $action = false)
     {
         if ($action) {
             $params = array(
@@ -49,7 +49,7 @@ class Publicfun
     }
 
     //关注设计师服务
-    public static function addFollowDesigner($id,$action = false)
+    public static function addFollowDesigner($id, $action = false)
     {
         if ($action) {
             $followParams = array(
@@ -95,15 +95,17 @@ class Publicfun
     }
 
     //时间转换英文
-    public static function getMyDate($d){
-        $marr=array('January','February','March','April','May','June','July','August','September','October','November','December');
+    public static function getMyDate($d)
+    {
+        $marr = array('January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December');
         $stamp = strtotime($d);
-        $m = date('m',$stamp);
-        return substr($marr[$m-1], 0,3).' '.date('d',$stamp).', '.date('Y',$stamp);
+        $m = date('m', $stamp);
+        return substr($marr[$m - 1], 0, 3) . ' ' . date('d', $stamp) . ', ' . date('Y', $stamp);
     }
 
     //字典表
-    public function configMap(){
+    public function configMap()
+    {
 
         $params = array(
             'cmd' => 'config',
@@ -111,5 +113,19 @@ class Publicfun
         $config = self::request('', 'general', $params);
 
         return $config['data']['cart_checkout_top_notification'];
+    }
+
+    //登录后合并购物车
+    public static function mergeCartSkus()
+    {
+        if ($operate = Cache::get('CartCache' . $_COOKIE['uid'])) {
+            $params = array(
+                'cmd' => 'batchaddskus',
+                'operate' => json_encode($operate),
+                'token' => Session::get('user.token'),
+                'pin' => Session::get('user.pin'),
+            );
+            self::request('', 'cart', $params);
+        }
     }
 }
