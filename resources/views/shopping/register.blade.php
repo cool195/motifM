@@ -51,6 +51,11 @@
             <a href="/reset" class="text-primary">Forgot password?</a>
         </div>
     </section>
+
+    <!-- 退出登录 -->
+    <a class="exit-login" href="{{'/login?path=1&url='.$referer}}">
+        <i class="iconfont icon-cross icon-size-md text-common"></i>
+    </a>
 </div>
 <!-- loading 效果 -->
 <div class="loading loading-screen loading-switch loading-hidden">

@@ -95,7 +95,7 @@ class UserController extends ApiController
 
         $referer = $request->input('url') ? $request->input('url') : $request->header('referer');
         Session::put('redirectUrl', $referer);
-        return view('shopping.login', ['referer' => $referer]);
+        return view('shopping.login', ['referer' => $referer,'path'=>$request->get('path')]);
     }
 
     /*

@@ -16,7 +16,8 @@
     <section class="register-content p-y-20x">
         <!-- 顶部 logo -->
         <a href="/daily">
-            <img class="img-fluid m-x-auto m-b-20x p-b-10x motif-logo" src="{{env('CDN_Static')}}/images/login/login-logo.png"
+            <img class="img-fluid m-x-auto m-b-20x p-b-10x motif-logo"
+                 src="{{env('CDN_Static')}}/images/login/login-logo.png"
                  srcset="{{env('CDN_Static')}}/images/login/login-logo@2x.png 2x,{{env('CDN_Static')}}/images/login/login-logo@3x.png 3x">
         </a>
 
@@ -62,12 +63,26 @@
             <div href="#" class="iconfont icon-facebook btn-facebook" id="facebookLogin"></div>
             <div href="#" class="iconfont icon-google btn-google" id="googleLogin"></div>
         </div>
-        <div class="m-t-10x text-primary text-center font-size-sm">Already have an account? <a class="text-primary text-underLine font-size-base" href="/register">SIGN IN</a></div>
+        <div class="m-t-10x text-primary text-center font-size-sm">Already have an account? <a
+                    class="text-primary text-underLine font-size-base" href="{{'/register?referer='.$referer}}">SIGN
+                IN</a></div>
         <div class="m-t-15x text-primary text-center font-size-sm">
             By registering, you’ve accepted our<br>
             <a class="text-primary text-underLine" href="/termsconditions">Terms & Conditions</a>
         </div>
     </section>
+
+    <!-- 退出注册 -->
+    @if($path==1)
+        <a class="exit-register" href="/daily">
+            <i class="iconfont icon-cross icon-size-md text-common"></i>
+        </a>
+    @else
+        <a class="exit-register" href="javascript:;" onClick="javascript :history.go(-1);">
+            <i class="iconfont icon-cross icon-size-md text-common"></i>
+        </a>
+    @endif
+
 </div>
 <!-- 提示注册成功 -->
 <div class="remodal remodal-lg modal-content" data-remodal-id="changePwd-modal" id="successDialog">
