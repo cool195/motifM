@@ -23,9 +23,54 @@
 }
 
 .register-input .input-register {
-  background-color: #f8f8f8;
-  border: none;
-  padding: 10px 15px;
+  /*background-color: #f8f8f8;*/
+  /*border: none;*/
+  /*padding: 10px 15px;*/
+  background-color: rgba(255, 255, 255, 0.7);
+  padding: 15px 0px 2px;
+  border-bottom: solid 2px #070e29;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  border-radius: 0;
+}
+
+.register-input .register-title {
+  position: absolute;
+  bottom: 8px;
+  left: 0;
+  transform: scale(1);
+  transform-origin: 0 0;
+  transition: all .5s;
+  margin-bottom: 0px;
+}
+.register-input .register-title.active {
+  transform: scale(.7);
+  bottom: 18px;
+}
+
+.login-or {
+   position: relative;
+}
+.login-or .hr-login {
+  position: absolute;
+  top: 50%;
+  left: 25%;
+  width: 50%;
+  display: block;
+  z-index: 10;
+  border-color: #8f9096;
+}
+.login-or span {
+  z-index: 100;
+  position: relative;
+  background-color: #ffffff;
+}
+
+.exit-register{
+  position: fixed;
+  top: 20px;
+  right: 20px;
 }
 
 .register-input .input-clear, .register-input .input-show {

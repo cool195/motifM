@@ -26,10 +26,10 @@
     function loginUser() {
         openLoading();
         $.ajax({
-            url: '/user/logincheck',
-            type: 'POST',
-            data: $('#login').serialize()
-        })
+                url: '/user/logincheck',
+                type: 'POST',
+                data: $('#login').serialize()
+            })
             .done(function (data) {
                 if (data.success) {
                     window.location.href = data.redirectUrl;
@@ -135,6 +135,7 @@
     // 清除输入
     $('.input-clear').on('click', function (e) {
         $(e.target).siblings('input').val('');
+        $(e.target).siblings('.login-title').removeClass('active');
         $(this).addClass('hidden');
     });
 
@@ -150,5 +151,24 @@
             $(e.target).addClass('off');
         }
     });
+
+    $(function () {
+        var timeIsText = setTimeout(function () {
+            if ($('.input-login').val() != '') {
+                $('.input-login').siblings('.login-title').addClass('active');
+                clearTimeout(timeIsText);
+            }
+        }, 1000)
+    });
+
+    $('.input-login').on('focus', function () {
+        $(this).siblings('.login-title').addClass('active');
+    });
+    $('.input-login').on('blur', function () {
+        if ($(this).val() === '') {
+            $(this).siblings('.login-title').removeClass('active');
+        }
+    });
+
 })(jQuery);
 

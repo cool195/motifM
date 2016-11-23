@@ -23,52 +23,38 @@
                  srcset="{{env('CDN_Static')}}/images/login/login-logo@2x.png 2x,{{env('CDN_Static')}}/images/login/login-logo@3x.png 3x">
             </a>
         </div>
-        <form id="login">
+        <form id="login" autocomplete="off">
             <div class="warning-info off flex text-warning flex-alignCenter text-left m-b-5x">
                 <i class="iconfont icon-caveat icon-size-md p-r-5x"></i>
                 <span class="font-size-xs"></span>
             </div>
-            <fieldset class="m-t-10x login-text">
-                <input class="input-login form-control font-size-sm" name="email" placeholder="Email"
-                       type="text" maxlength="60">
+            <fieldset class="m-t-15x login-text">
+                <label class="text-main font-size-md login-title">Email</label>
+                <input class="input-login form-control font-size-sm" name="email"
+                       type="text" maxlength="60" autocomplete="off">
                 <i class="iconfont icon-delete icon-size-md input-clear text-common hidden"></i>
             </fieldset>
-            <fieldset class="m-t-10x login-text">
-                <input class="input-login form-control font-size-sm" name="pw" placeholder="Password"
-                       type="password" maxlength="32">
+            <fieldset class="m-t-15x login-text">
+                <label class="text-main font-size-md login-title">Password</label>
+                <input class="input-login form-control font-size-sm" name="pw"
+                       type="password" maxlength="32" autocomplete="off">
                 <i class="iconfont icon-show icon-size-lg input-show text-common off"></i>
             </fieldset>
             <input type="hidden" name="referer" value="{{$referer}}">
         </form>
+        <div class="container-fluid p-a-0 m-t-20x p-t-15x">
+            <div class="btn btn-primary btn-lg btn-block" data-role="submit" id="login">SIGN IN</div>
+        </div>
+
         <div class="m-t-15x text-primary text-center font-size-sm">
             <a href="/reset" class="text-primary">Forgot password?</a>
         </div>
-        <div class="container-fluid p-a-0 m-t-20x">
-            <div class="row">
-                <div class="col-xs-6">
-                    <a class="btn btn-primary-outline btn-lg btn-block" href="{{'/register?referer='.$referer}}" id="register">Register</a>
-                </div>
-                <div class="col-xs-6">
-                    <div class="btn btn-primary btn-lg btn-block" data-role="submit" id="login">Sign in</div>
-                </div>
-            </div>
-        </div>
-        <div class="m-t-20x flex flex-justifyCenter">
-            <hr class="hr-login m-a-0">
-        </div>
-        <div class="m-t-20x p-b-20x">
-            <div class="btn btn-block btn-lg btn-facebook" id="facebookLogin">
-                <i class="iconfont icon-facebook-o icon-size-md"></i>
-                Sign in with Facebook
-            </div>
-            <div class="btn btn-block btn-lg btn-google m-l-0 m-t-10x" id="googleLogin">
-                <i class="iconfont icon-google-o icon-size-md"></i>
-                Sign in with Google
-            </div>
-        </div>
-        <div class="m-t-20x text-center font-size-sm"><a href="/contactus">Contact Us</a></div>
     </section>
 
+    <!-- 退出登录 -->
+    <a class="exit-login" href="/register">
+        <i class="iconfont icon-cross icon-size-md text-common"></i>
+    </a>
 </div>
 <!-- loading 效果 -->
 <div class="loading loading-screen loading-switch loading-hidden">

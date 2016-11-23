@@ -1,6 +1,6 @@
 'use strict';
 /*global jQuery*/
-(function($) {
+(function ($) {
     // 初始化模态框
     var $Modal = $('#successDialog').remodal({
         closeOnOutsideClick: false,
@@ -9,7 +9,7 @@
     // loading 打开
     function openLoading() {
         $('.loading').toggleClass('loading-hidden');
-        setTimeout(function() {
+        setTimeout(function () {
             $('.loading').toggleClass('loading-open');
         }, 25);
     }
@@ -17,7 +17,7 @@
     // loading 隐藏
     function closeLoading() {
         $('.loading').addClass('loading-close');
-        setTimeout(function() {
+        setTimeout(function () {
             $('.loading').toggleClass('loading-hidden loading-open').removeClass('loading-close');
         }, 500);
     }
@@ -95,6 +95,7 @@
             return true;
         }
     }
+
     // 验证昵称、邮箱、密码格式
     function validateInfo() {
         var $Nick = $('input[name="nick"]'),
@@ -104,8 +105,9 @@
             $('div[data-role="submit"]').removeClass('disabled');
         }
     }
+
     // 输入注册信息时 进行验证
-    $('.input-register').on('keyup', function() {
+    $('.input-register').on('keyup', function () {
         var InputText = $(this).val();
         if (InputText === '' || InputText === undefined) {
             $(this).siblings('.input-clear').addClass('hidden');
@@ -124,7 +126,7 @@
                 type: 'POST',
                 data: $('#register').serialize()
             })
-            .done(function(data) {
+            .done(function (data) {
                 if (data.success) {
                     $Modal.open();
                     $('#confirm').attr('href', data.redirectUrl);
@@ -133,26 +135,27 @@
                     $('.warning-info').children('span').html(data.prompt_msg);
                 }
             })
-            .always(function() {
+            .always(function () {
                 closeLoading();
             });
     }
 
     // 提交注册用户请求
-    $('div[data-role="submit"]').on('click', function(e) {
+    $('div[data-role="submit"]').on('click', function (e) {
         if (!($(e.target).hasClass('disabled'))) {
             registerUser();
         }
     });
     // 清除输入
-    $('.input-clear').on('click', function(e) {
+    $('.input-clear').on('click', function (e) {
         $(e.target).siblings('input').val('');
+        $(e.target).siblings('.register-title').removeClass('active');
         $(this).addClass('hidden');
         validateInfo();
     });
 
     // 查看密码
-    $('.input-show').on('click', function(e) {
+    $('.input-show').on('click', function (e) {
         var $Password = $(e.target).siblings('input');
 
         if ($(e.target).hasClass('off')) {
@@ -161,6 +164,25 @@
         } else {
             $Password.attr('type', 'password');
             $(e.target).addClass('off');
+        }
+    });
+
+    $(function () {
+        var timeIsText = setTimeout(function () {
+            if ($('[name="email"]').val != '') {
+                $('[name="email"]').siblings('.register-title').addClass('active');
+                $('[name="pw"]').siblings('.register-title').addClass('active');
+                clearTimeout(timeIsText);
+            }
+        }, 1000)
+    });
+
+    $('.input-register').on('focus', function () {
+        $(this).siblings('.register-title').addClass('active');
+    });
+    $('.input-register').on('blur', function () {
+        if ($(this).val() === '') {
+            $(this).siblings('.register-title').removeClass('active');
         }
     });
 })(jQuery);
