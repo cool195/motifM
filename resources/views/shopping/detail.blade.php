@@ -277,9 +277,11 @@
                                 @endif
                             @endif
                         </div>
-                        <div class="hr-between"></div>
                     </section>
                 @endif
+            @endif
+            @if($data['skuPrice']['skuPromotion']['pre_exp_descs'])
+                <div class="hr-between"></div>
                 @foreach($data['skuPrice']['skuPromotion']['pre_exp_descs'] as $value)
                     <section class="limited">
                         <div class="bg-white">
