@@ -181,7 +181,7 @@
 
         <fieldset class="container-fluid p-a-15x">
             <!-- 添加 购物车 控制按钮显示 -->
-            <div class="btn btn-primary btn-block" data-control="continue" data-role="continue" data-action="PATCH">Move
+            <div class="btn btn-primary btn-block" id="modal-addtobag" data-control="continue" data-role="continue" data-action="PATCH">Move
                 to Bag
             </div>
         </fieldset>
