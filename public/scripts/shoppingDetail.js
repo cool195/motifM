@@ -917,6 +917,11 @@
         if (submit) {
             return true;
         } else {
+            var spuAttrTop = $("#modalDialog").offset().top;
+            $("html, body").animate({
+                "scroll-top": spuAttrTop - 85
+            }, "fast");
+
             $('#selectspa').html(msg.substring(0, msg.length - 1) + ' not selected');
             $('#selectmsg').removeClass('loading-hidden');
             setTimeout(function () {
