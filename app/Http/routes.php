@@ -33,6 +33,12 @@ $app->group(['middleware' => 'pcguide', 'namespace' => 'App\Http\Controllers'], 
     $app->get('/facebookstatus/{trdid}', 'Auth\AuthController@faceBookAuthStatus');
     $app->get('methodlist', 'Shopping\BraintreeController@methodlist');
 
+    //未登录购物车功能
+    $app->get('/cart', 'Shopping\CartController@index');
+    $app->patch('/cart', 'Shopping\CartController@addCart');
+    $app->post('/cart/operate', 'Shopping\CartController@operateCartProduct');
+    $app->post('/cart/alterQtty', 'Shopping\CartController@alterCartProQtty');
+    $app->get('/cart/amount', 'Shopping\CartController@getCartAmount');
 });
 
 
@@ -56,7 +62,7 @@ $app->group(['middleware' => 'pcguide|logincheck', 'namespace' => 'App\Http\Cont
     $app->get('/feedback', 'ShoppingController@addSupport');
     $app->get('/feedbacklist', 'ShoppingController@getFeedbackList');
 
-    $app->get('/cart', 'CartController@index');
+
     $app->get('/cart/ordercheckout', 'CartController@orderCheckout');
     $app->get('/cart/addresslist', 'CartController@addressList');
     $app->get('/cart/coupon', 'CartController@coupon');
@@ -68,17 +74,14 @@ $app->group(['middleware' => 'pcguide|logincheck', 'namespace' => 'App\Http\Cont
     $app->get('/shopping/cart/coupon', 'CartController@coupon');
     $app->get('/shopping/cart/message', 'CartController@message');
 
-    $app->get('/cart/amount', 'CartController@getCartAmount');
+
     $app->get('/cart/list', 'CartController@getCartList');
     $app->get('/cart/accountlist', 'CartController@getCartAccountList');
     $app->get('/cart/savelist', 'CartController@getCartSaveList');
-    $app->patch('/cart', 'CartController@addCart');
     $app->put('/cart', 'CartController@promptlyBuy');
     $app->post('/cart/addBatchCart', 'CartController@addBatchCart');
     $app->get('/cart/alterQtty', 'CartController@alterCartProQtty');
-    $app->post('/cart/alterQtty', 'CartController@alterCartProQtty');
     $app->get('/cart/operate', 'CartController@operateCartProduct');
-    $app->post('/cart/operate', 'CartController@operateCartProduct');
     $app->post('/cart/verifycoupon', 'CartController@verifyCoupon');
     $app->get('/cart/addradd', 'CartController@addrAdd');
     $app->get('/cart/addrmod', 'CartController@addrModify');

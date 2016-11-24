@@ -6,7 +6,7 @@ use App\Services\Net;
 
 error_reporting(0);
 
-abstract class ApiController extends Controller
+class ApiController extends Controller
 {
     /**
      * 接口地址数组

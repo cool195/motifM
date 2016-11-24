@@ -37,6 +37,7 @@ class AuthController extends ApiController
             if ($_COOKIE['wishSpu']) {
                 Publicfun::addWishProduct($_COOKIE['wishSpu']);
             }
+            Publicfun::mergeCartSkus();
         }
         return $result;
     }
@@ -67,6 +68,7 @@ class AuthController extends ApiController
             if ($_COOKIE['wishSpu']) {
                 Publicfun::addWishProduct($_COOKIE['wishSpu']);
             }
+            Publicfun::mergeCartSkus();
         }
         return $result;
     }

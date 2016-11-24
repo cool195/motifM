@@ -197,6 +197,25 @@
   background: #000;
   opacity: 0.2;
 }
+.productList-swiper .swiper-pagination-bullets{
+  bottom: -6px!important;
+  opacity: 1;
+}
+.productList-swiper .swiper-pagination-bullet {
+  height: 3px;
+  display: inline-block;
+  border-radius: 0;
+  background: none;
+  opacity: 0.2;
+  margin:0!important;
+  -webkit-transition: opacity 0.5s;
+      transition: opacity 0.5s;
+}
+.productList-swiper .swiper-pagination-bullet-active{
+  opacity: 0;
+  background: #949caf;
+}
+
 button.swiper-pagination-bullet {
   border: none;
   margin: 0;
@@ -5833,17 +5852,29 @@ footer .links-group {
   z-index: 200;
 }
 
-.wishlist-item + .wishlist-item {
+/*.wishlist-item + .wishlist-item {
   border-top: 1px solid #e2e5ed;
-}
-
-.wishlist-item img {
-  max-width: none;
-}
+}*/
 
 .wishlist-title {
-  min-height: 3rem;
+  min-height: 4.5rem;
 }
+
+.wishlist-item .moveToBag{
+  min-height: 5.5rem;
+  position: relative;
+}
+.wishlist-item .moveToBag .moveToBag-itme{
+  position: absolute;
+  bottom: .3125rem;
+  width: 100%;
+}
+
+.wishlist-item .preorder-info{
+  top: 20px;
+  right: 20px;
+}
+
 
 .followlist-item + .followlist-item{
   border-top: 1px solid #e2e5ed;
@@ -5939,6 +5970,7 @@ footer .links-group {
     border: solid 1px #171a2b;
     color: #171a2b;
     font-style: italic;
+    z-index: 10;
 }
 
 .preorderSold-info{

@@ -71,9 +71,8 @@
                 <section class="cartList bg-white">
                     @if(isset($cartData['showSkus']))
                         @foreach($cartData['showSkus'] as $showSku)
-                            {{-- TODO 需要添加 商品是否上架的判断 --}}
                             <div class="cartList-item p-a-10x @if(!$showSku['stock_status'] || 1 != $showSku['isPutOn']) disabled @endif">
-                                <a @if(1 == $showSku['stock_status'] && 1 == $showSku['isPutOn']) href="/detail/{{$showSku['spu']}}" @endif class="inBag">
+                                <a @if(0 != $showSku['stock_status'] && 1 == $showSku['isPutOn']) href="/detail/{{$showSku['spu']}}" @endif class="inBag">
                                     <div class="productInfo flex">
                                         <div class="flex-fixedShrink">
                                             <img class="img-thumbnail img-lazy"
@@ -120,12 +119,13 @@
                                         <a class="btn btn-cartUpdate btn-sm btn-inBag" data-remodal-target="modal"
                                            data-sku="{{$showSku['sku']}}" data-action="delsku" data-title="{{$showSku['main_title']}}" data-price="{{number_format(($showSku['sale_price'] / 100), 2)}}"
                                         data-qtty="{{$showSku['sale_qtty']}}" data-spu="{{$showSku['spu']}}">Remove</a>
+                                        @if(Session::get('user.pin'))
                                         <a href="#" class="btn btn-cartUpdate btn-sm btn-inBag" data-product-move="save"
                                            data-sku="{{$showSku['sku']}}">Save for Later</a>
+                                        @endif
                                     </div>
                                     <div class="flex flex-alignCenter">
                                         <span class="text-primary font-size-sm m-r-5x">Qty:</span>
-                                        {{-- TODO 需要添加 商品是否上架的判断 --}}
                                         <div class="btn-group flex item-count" data-sku="{{$showSku['sku']}}">
                                             <div class="btn btn-cartCount btn-sm btn-minus @if($showSku['sale_qtty'] <=1 || !$showSku['stock_status'] || 1 != $showSku['isPutOn']) disabled @endif"
                                                  data-item="minus">
@@ -168,9 +168,14 @@
                 <hr class="hr-base m-a-0">
                 <!-- 购买按钮 -->
                 <section class="bg-white p-a-10x">
-                    <a href="/checkout/shipping" data-clk='{{ config('app.clk_url') }}/log.gif?time={{time()}}&t=check.100002&m=H5_M2016-1&pin={{Session::get('user.pin')}}&uuid={{Session::get('user.uuid')}}&ref=&v={"skipType":"processedcheckout","skipId":"","version":"1.0.1","ver":"9.2","src":"H5"}'
+                    @if(Session::get('user.pin'))
+                        <a href="/checkout/shipping" data-clk='{{ config('app.clk_url') }}/log.gif?time={{time()}}&t=check.100002&m=H5_M2016-1&pin={{Session::get('user.pin')}}&uuid={{Session::get('user.uuid')}}&ref=&v={"skipType":"processedcheckout","skipId":"","version":"1.0.1","ver":"9.2","src":"H5"}'
                        class="btn btn-primary btn-block @if($cartData['pay_amount'] <= 0) disabled @endif" type="submit">Proceed to
                         Checkout</a>
+                    @else
+                        <a href="/login" class="btn btn-primary btn-block @if($cartData['pay_amount'] <= 0) disabled @endif" type="submit">Proceed toCheckout</a>
+                    @endif
+
                 </section>
             <script>
                 var content_ids = [@foreach($cartData['showSkus'] as $key => $product) @if(0 == $key)'{{$product['spu']}}' @else ,'{{$product['spu']}}' @endif @endforeach];
@@ -178,7 +183,7 @@
             </script>
         @endif
 
-        @if(!empty($saveData['showSkus']))
+        @if(Session::get('user.pin') && !empty($saveData['showSkus']))
             <!-- 暂存商品列表 -->
                 <hr class="hr-base m-a-0">
                 <article class="font-size-md text-main p-a-10x bg-title"><strong>Saved</strong></article>

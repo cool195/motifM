@@ -72,16 +72,26 @@
         lazyLoading: true,
         lazyLoadingInPrevNext: true
     });
+    //推荐商品
+    var recommendProductsSwiper = new Swiper('#recommend-productList', {
+        slidesPerView: 2.5,
+        paginationClickable: true,
+        spaceBetween: 1,
+        freeMode: true,
+        lazyLoading: true,
+        lazyLoadingInPrevNext: true
+    });
+
     // 暂存 根据所选项所筛选出的 Skus 的结果
     var ResultSkus = [];
 
     //唯一属性
-    if([$('.sparow').length==1 && $('.skarow').length]==1){
-        $('.sparow').data('click',true);
+    if ([$('.sparow').length == 1 && $('.skarow').length] == 1) {
+        $('.sparow').data('click', true);
         $('.skarow').addClass('active');
         ResultSkus[0] = $('[data-onlysku]').data('onlysku');
         $('[data-select]').text('Selected:');
-        $('[data-select-options]').text($('.skarow').html());
+        //$('[data-select-options]').text($('.skarow').html());
     }
     // 临时是否可用的SKU数组
     var tempSkusStatic = [];
@@ -111,10 +121,11 @@
     function onPlayerReady(event) {
         event.target.playVideo();
     }
+
     // 视频播放-- 控制显示隐藏
-    $('.btn-productPlayer').on('click',function(){
-        var PlayerId=$(this).data('ytbid');
-        $('#ytplayer').data('playid',PlayerId);
+    $('.btn-productPlayer').on('click', function () {
+        var PlayerId = $(this).data('ytbid');
+        $('#ytplayer').data('playid', PlayerId);
         $('.product-detailPlay').addClass('in');
         $('body').addClass('no-scroll');
 
@@ -123,7 +134,7 @@
         var MediaScale = 9 / 16;
         var Width = $(window).width(),
             MediaHeight = Width * MediaScale;
-        $('.play-content').css('height',MediaHeight);
+        $('.play-content').css('height', MediaHeight);
         var player;
 
         var $Player = $('#ytplayer');
@@ -139,7 +150,7 @@
         });
     });
 
-    $('.product-detailPlay').on('click',function(){
+    $('.product-detailPlay').on('click', function () {
         $(this).removeClass('in');
         $('body').removeClass('no-scroll');
         $('.product-detailImg').removeClass('in');
@@ -246,6 +257,7 @@
             objCache[vasId] = vasType;
         });
     }
+
     var skuExps;
     // 初始化 赋值
     (function initOptions() {
@@ -520,10 +532,10 @@
                 }
             });
             $('[data-select]').text('Selected:');
-            $('[data-select-options]').text(TextOptions);
+            //$('[data-select-options]').text(TextOptions);
         } else {
             $('[data-select]').text('Select');
-            $('[data-select-options]').text('');
+            //$('[data-select-options]').text('');
         }
 
     }
@@ -542,17 +554,15 @@
         if ($(e.target).hasClass('disabled')) {
             return;
         } else if ($(e.target).hasClass('active')) {
-            $('#spa'+SpaId).data('click','false');
+            $('#spa' + SpaId).data('click', 'false');
             $(e.target).removeClass('active');
         } else {
             $(e.target).parents('.row').find('.btn-itemProperty').removeClass('active');
-            $('#spa'+SpaId).data('click','true');
+            $('#spa' + SpaId).data('click', 'true');
             $(e.target).addClass('active');
         }
 
         selectOptionsText();
-
-
 
 
         // RadioList 选中的选项数量
@@ -594,16 +604,45 @@
         }
 
         //更新SKU价格
-        if(ResultSkus[0] != undefined){
+        if (ResultSkus[0] != undefined) {
+            $('#addToCart-sku').val(ResultSkus[0]);
             getNewPrice(ResultSkus[0]);
+        }
+
+        // 更新显示图片
+        var ImgPath = $(this).data('image');
+        var IsHave = false;
+        if (ImgPath != undefined && ImgPath != '') {
+            $.each($('#baseImg-swiper img.swiper-lazy'), function (index, val) {
+                var CurrentImg = $(this).attr('src');
+                if (CurrentImg === ImgPath) {
+                    BaseImgSwiper.slideTo(index, 1000, false);
+                    DetailImgSwiper.slideTo(index, 1000, false);
+                    IsHave = true;
+                    return false;
+                }
+            });
+            if (IsHave === false) {
+                if ((BaseImgSwiper.slides[1].className).indexOf('replace-img') > 0) {
+                    $('.img-replace').attr('src', ImgPath);
+                    BaseImgSwiper.slideTo(1, 1000, false);
+                    DetailImgSwiper.slideTo(1, 1000, false);
+                } else {
+                    BaseImgSwiper.prependSlide('<div class="swiper-slide replace-img"><img class="img-fluid swiper-lazy img-replace" data-src="' + ImgPath + '" alt=""><img class="img-fluid preloader" src="/images/product/bg-product@750.png" alt=""></div>');
+                    BaseImgSwiper.slideTo(1, 1000, false);
+
+                    DetailImgSwiper.prependSlide('<div class="swiper-slide replace-img"><img class="img-fluid swiper-lazy img-replace" data-src="' + ImgPath + '" alt=""><img class="img-fluid preloader" src="/images/product/bg-product@750.png" alt=""></div>');
+                    DetailImgSwiper.slideTo(1, 1000, false);
+                }
+            }
         }
     });
 
     //更新SKU价格
     function getNewPrice(sku) {
-        $.each(skuExps,function (index,val) {
-            if(sku==val.sku){
-                $('#skuNewPrice').html('$'+(val.skuPrice.sale_price/100).toFixed(2));
+        $.each(skuExps, function (index, val) {
+            if (sku == val.sku) {
+                $('#skuNewPrice').html('$' + (val.skuPrice.sale_price / 100).toFixed(2));
                 return false;
             }
         });
@@ -650,7 +689,7 @@
     // 绑定计数事件,商品数量
     // 需要添加库存验证
     $('#item-count').on('click', '[data-item]', function (e) {
-        if(!showmsg()){
+        if (!showmsg()) {
             return false;
         }
         var $WarningInfo = $('.warning-info');
@@ -758,6 +797,9 @@
      * @param Action
      */
     function initCart(Action) {
+        if ($('#addToCart-sku').val() != 1) {
+            ResultSkus[0] = $('#addToCart-sku').val();
+        }
         var Qtty = $('#item-count').children('[data-num]').html();
         // ajax 请求的参数
         var Operate = {
@@ -815,7 +857,7 @@
                     if (data.redirectUrl !== '') {
                         window.location.href = data.redirectUrl;
                     }
-                    Modal.close();
+                    //Modal.close();
                     if (Action === 'PATCH') {
                         openAddSuccess();
                         setTimeout(function () {
@@ -840,17 +882,24 @@
 
     // 添加购物车 购买商品
     $('[data-role="continue"]').on('click', function (e) {
-        if($('#modalDialog').data('status') != 100){
+        if ($('#modalDialog').data('status') != 100) {
             $('#error-info').text('not invalid');
             openAddError();
             setTimeout(function () {
                 closeAddError();
             }, 1500);
+            return false;
         }
-        if(showmsg()){
-            var Action = $(e.target).data('action');
-            initCart(Action);
+
+        if ($('#addToCart-sku').val() != 1 && $('#modalDialog').data('login') != 1) {
+            initCart('PATCH');
+        } else {
+            if (showmsg()) {
+                var Action = $(e.target).data('action');
+                initCart(Action);
+            }
         }
+
 
     });
 
@@ -859,16 +908,21 @@
         var submit = true;
         var msg = '';
         $('.sparow').each(function (index) {
-            if($(this).data('click')==false || $(this).data('click')=='false'){
+            if ($(this).data('click') == false || $(this).data('click') == 'false') {
                 submit = false;
                 msg += $(this).data('msg') + ',';
             }
         })
 
-        if(submit){
+        if (submit) {
             return true;
-        }else{
-            $('#selectspa').html(msg.substring(0,msg.length-1)+' not selected');
+        } else {
+            var spuAttrTop = $("#modalDialog").offset().top;
+            $("html, body").animate({
+                "scroll-top": spuAttrTop - 85
+            }, "fast");
+
+            $('#selectspa').html(msg.substring(0, msg.length - 1) + ' not selected');
             $('#selectmsg').removeClass('loading-hidden');
             setTimeout(function () {
                 $('#selectmsg').addClass('loading-hidden');
@@ -1033,8 +1087,8 @@
 
         }, 1000);
     }
-    
-    if(leftNum != -1){
+
+    if (leftNum != -1) {
         $(function () {
             timer(leftNum / 1000);
         });

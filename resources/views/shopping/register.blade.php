@@ -1,81 +1,69 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Register</title>
+
+    <title>Sign in</title>
     @include('head')
-    <link rel="stylesheet" href="{{env('CDN_Static')}}/styles/register.css{{'?v='.config('app.version')}}">
+
+    <link rel="stylesheet" href="{{env('CDN_Static')}}/styles/login.css{{'?v='.config('app.version')}}">
+
     <link rel="stylesheet" href="{{env('CDN_Static')}}/styles/remodal.css{{'?v='.config('app.version')}}">
+
     <script src="{{env('CDN_Static')}}/scripts/vendor/template-native.js{{'?v='.config('app.version')}}"></script>
 
 </head>
-
 <body>
 @include('check.tagmanager')
 <!-- 主体内容 -->
-<div class="register-container">
-    <section class="register-content p-y-20x">
-        <!-- 顶部 logo -->
-        <a href="/daily"><img class="img-fluid m-x-auto m-b-20x motif-logo" src="{{env('CDN_Static')}}/images/login/register-logo.png"
-                              srcset="{{env('CDN_Static')}}/images/login/register-logo@2x.png 2x,{{env('CDN_Static')}}/images/login/register-logo@3x.png 3x"></a>
-        <div class="text-main text-center p-t-10x m-b-20x p-b-5x"><strong>Create Your Account</strong></div>
-
-        <form id="register">
-            <input type="hidden" name="referer" value="{{$referer}}">
-            <div class="warning-info off flex text-warning flex-alignCenter text-left m-b-10x">
+<div class="login-container">
+    <section class="login-content p-y-20x">
+        <div class="m-x-auto m-b-20x text-center p-b-20x">
+            <a href="/daily">
+                <img class="motif-logo" src="{{env('CDN_Static')}}/images/login/login-logo.png"
+                     srcset="{{env('CDN_Static')}}/images/login/login-logo@2x.png 2x,{{env('CDN_Static')}}/images/login/login-logo@3x.png 3x">
+            </a>
+        </div>
+        <form id="login" autocomplete="off">
+            <div class="warning-info off flex text-warning flex-alignCenter text-left m-b-5x">
                 <i class="iconfont icon-caveat icon-size-md p-r-5x"></i>
                 <span class="font-size-xs"></span>
             </div>
-            <fieldset class="register-input m-b-10x">
-                <input class="input-register form-control font-size-sm" name="nick"
-                       placeholder="Your Name" type="text" maxlength="32">
+            <fieldset class="m-t-15x login-text">
+                <label class="font-size-sm login-title">Email</label>
+                <input class="input-login form-control font-size-sm" name="email"
+                       type="text" maxlength="60" autocomplete="off">
                 <i class="iconfont icon-delete icon-size-md input-clear text-common hidden"></i>
             </fieldset>
-            <fieldset class="register-input m-b-10x">
-                <input class="input-register form-control font-size-sm" name="email"
-                       placeholder="Email" type="text" maxlength="60">
-                <i class="iconfont icon-delete icon-size-md input-clear text-common hidden"></i>
+            <fieldset class="m-t-15x login-text">
+                <label class="font-size-sm login-title">Password</label>
+                <input class="input-login form-control font-size-sm" name="pw"
+                       type="password" maxlength="32" autocomplete="off">
+                <i class="iconfont icon-show icon-size-lg input-show text-common off"></i>
             </fieldset>
-            <fieldset class="register-input m-b-10x">
-                <input class="input-register form-control font-size-sm" name="pw"
-                       placeholder="Password" type="password" maxlength="32">
-                <i class="iconfont icon-show icon-size-md input-show text-common off"></i>
-            </fieldset>
+            <input type="hidden" name="referer" value="{{$referer}}">
         </form>
+        <div class="container-fluid p-a-0 m-t-20x p-t-15x">
+            <div class="btn btn-primary btn-lg btn-block" data-role="submit" id="login">SIGN IN</div>
+        </div>
+
         <div class="m-t-15x text-primary text-center font-size-sm">
-            By registering, you’ve accepted our<br>
-            <a class="text-primary text-underLine" href="/termsconditions">Terms & Conditions</a>
+            <a href="/reset" class="text-primary">Forgot password?</a>
         </div>
-        <div class="m-t-20x">
-            <!-- TODO 需要加disabled 样式 -->
-            <div class="btn btn-primary btn-block btn-lg disabled" data-role="submit">Create Account</div>
-        </div>
-        <div class="m-t-20x font-size-sm text-center">or sign up with:</div>
-        <div class="p-a-20x flex flex-spaceAround">
-            <div href="#" class="iconfont icon-facebook btn-facebook" id="facebookLogin"></div>
-            <div href="#" class="iconfont icon-google btn-google" id="googleLogin"></div>
-        </div>
-        <div class="m-t-20x text-primary text-center font-size-sm"><a href="/contactus">Contact Us</a></div>
     </section>
-</div>
-<!-- 提示注册成功 -->
-<div class="remodal remodal-lg modal-content" data-remodal-id="changePwd-modal" id="successDialog">
-    <div class="font-size-sm p-t-20x p-x-15x p-b-15x">
-        <div class="font-size-base">Congratulation！</div>
-        <span>Account Created Successfully</span>
-    </div>
-    <hr class="hr-base m-a-0">
-    <div class="btn-group flex">
-        <a href="" class="btn remodal-btn flex-width text-primary" id="confirm">OK</a>
-    </div>
+
+    <!-- 退出登录 -->
+    <a class="exit-login" href="{{'/login?path=1&url='.$referer}}">
+        <i class="iconfont icon-cross icon-size-md text-common"></i>
+    </a>
 </div>
 <!-- loading 效果 -->
 <div class="loading loading-screen loading-switch loading-hidden">
     <div class="loader loader-screen"></div>
 </div>
 </body>
-
 <script src="{{env('CDN_Static')}}/scripts/vendor.js{{'?v='.config('app.version')}}"></script>
-<script src="{{env('CDN_Static')}}/scripts/register.js{{'?v='.config('app.version')}}"></script>
+<script src="{{env('CDN_Static')}}/scripts/login.js{{'?v='.config('app.version')}}"></script>
 <meta name="csrf-token" content="{{ csrf_token() }}"/>
 <script>
     $.ajaxSetup({
@@ -86,5 +74,6 @@
 </script>
 <script src="https://apis.google.com/js/api:client.js"></script>
 <script src="{{env('CDN_Static')}}/scripts/signWith.js{{'?v='.config('app.version')}}"></script>
+
 @include('global')
 </html>

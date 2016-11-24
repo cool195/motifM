@@ -187,7 +187,7 @@ class ShoppingController extends ApiController
     {
         if (Session::get('user.pin')) {
 
-            $value = Cache::rememberForever(Session::get('user.pin') . 'wishlist', function () {
+            $value = Cache::remember(Session::get('user.pin') . 'wishlist',600, function () {
                 $params = array(
                     'cmd' => 'list',
                     'num' => 1,
