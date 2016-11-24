@@ -39,7 +39,7 @@
                 <i class="iconfont icon-delete icon-size-md input-clear text-common hidden"></i>
             </fieldset>
             <fieldset class="register-input m-b-10x">
-                <label class="font-size-sm register-title">Your Email</label>
+                <label class="font-size-sm register-title">Email</label>
                 <input class="input-register form-control font-size-sm" name="email"
                        placeholder="" type="text" maxlength="60">
                 <i class="iconfont icon-delete icon-size-md input-clear text-common hidden"></i>
