@@ -202,96 +202,6 @@
                      data-impr='{{ config('app.clk_url') }}/log.gif?time={{time()}}&t=rec.100002&m=OPEN_M2016-1&pin={{ Session::get('user.pin') }}&uuid={{Session::has('user') ? Session::get('user.uuid') : $_COOKIE['uid']}}&v={" action ":0,"cspus ":"{{ $data['skus']}}","expid ":0,"index ":1,"rec_type ":1,"spu":{{ $data['spu'] }},"ver ":"9.00 "}&sig=2291a58454115c8136169111738de65696add43d'>{{ $data['prompt_words'] }}</div>
             </article>
 
-
-            <section data-spu="{{$data['spu']}}" id="modalDialog" data-login="1" data-status="{{$data['status_code']}}">
-                    <div class="warning-info off flex text-warning flex-alignCenter text-left p-x-15x p-b-10x">
-                        <i class="iconfont icon-caveat icon-size-md p-r-5x"></i>
-                        <span class="font-size-xs"></span>
-                    </div>
-                    <hr class="hr-base m-a-0" data-onlysku="@if(count($data['skus'])==1){{$data['skus'][0]}}@endif">
-                    @if(isset($data['spuAttrs']))
-                        @foreach($data['spuAttrs'] as $value)
-                            <fieldset class="p-x-15x p-y-10x text-left">
-                                <div class="container-fluid p-a-0">
-                                    <div class="text-primary font-size-sm sparow" id="{{'spa'.$value['attr_type']}}"
-                                         data-click="false"
-                                         data-msg="{{$value['attr_type_value']}}">{{$value['attr_type_value']}}</div>
-                                    <div class="row">
-                                        @if(isset($value['skuAttrValues']))
-                                            @foreach($value['skuAttrValues'] as $skuValue)
-                                                <div class="p-t-10x p-x-5x">
-                                                    <div class="btn btn-itemProperty btn-sm skarow @if(!$skuValue['stock']) disabled @endif"
-                                                         id="{{$skuValue['attr_value_id']}}"
-                                                         @if($skuValue['img_path'])
-                                                            data-image="{{env('APP_Api_Image').'/n1/'.$skuValue['img_path']}}"
-                                                         @endif
-                                                         @if($skuValue['stock'])
-                                                            data-spa="{{$value['attr_type']}}"
-                                                            data-ska="{{$skuValue['attr_value_id']}}"
-                                                         @endif
-                                                    >
-                                                        {{$skuValue['attr_value']}}
-                                                    </div>
-                                                </div>
-                                            @endforeach
-                                        @endif
-                                    </div>
-                                </div>
-                            </fieldset>
-                            <hr class="hr-base m-a-0">
-                        @endforeach
-                    @endif
-
-                    @if(isset($data['vasBases']))
-                        @foreach($data['vasBases'] as $vas)
-                            @if(1 == $vas['vas_type'])
-                                <fieldset class="p-x-15x p-y-10x text-left" data-vas-type="{{$vas['vas_type']}}">
-                                    <div class="text-primary font-size-sm m-b-10x">{{ $vas['vas_describe'] }} +
-                                        ${{number_format(($vas['vas_price'] / 100), 2)}}</div>
-                                    <div class="flex flex-fullJustified flex-alignCenter">
-                                        <input class="input-engraving form-control font-size-sm disabled" type="text"
-                                               maxlength="20" placeholder="20 characters max"
-                                               data-vas-type="{{$vas['vas_type']}}">
-                                        {{--<input type="radio" name="vas_name" id="{{$vas['vas_id']}}" hidden>--}}
-                                        <div class="iconfont icon-checkcircle text-common m-b-0 p-l-20x"
-                                             id="{{$vas['vas_id']}}" data-vas-type="{{$vas['vas_type']}}"></div>
-                                    </div>
-                                </fieldset>
-                                <hr class="hr-base m-a-0">
-                            @else
-                                <fieldset class="p-x-15x p-y-10x text-left" data-vas-type="$vas['vas_type']">
-                                    <div class="flex flex-fullJustified flex-alignCenter">
-                                        <div class="text-primary font-size-sm">{{ $vas['vas_describe'] }}+
-                                            $4.5(optional)
-                                        </div>
-                                        {{--<input type="radio" name="vas_name2" id="{{$vas['vas_id']}}" hidden>--}}
-                                        <div class="iconfont icon-checkcircle text-common m-b-0 p-l-20x"
-                                             id="{{$vas['vas_id']}}" data-vas-type="$vas['vas_type']"></div>
-                                    </div>
-                                </fieldset>
-                                <hr class="hr-base m-a-0">
-                            @endif
-                        @endforeach
-                    @endif
-                    <fieldset class="p-x-15x p-y-10x">
-                        <div class="flex flex-fullJustified flex-alignCenter">
-                            <span class="text-primary font-size-sm">Qty:</span>
-                            <div class="btn-group flex" id="item-count">
-                                <div class="btn btn-cartCount btn-sm disabled" data-item="minus">
-                                    <i class="iconfont icon-minus"></i>
-                                </div>
-                                <div class="btn btn-cartCount btn-sm" data-num="num">1</div>
-
-                                <div class="btn btn-cartCount btn-sm"
-                                     data-item="add">
-                                    <i class="iconfont icon-add"></i>
-                                </div>
-                            </div>
-                        </div>
-                    </fieldset>
-            </section>
-            <div class="hr-between"></div>
-
             <!-- 产品 预售信息 -->
             @if(1 == $data['sale_type'])
                 @if($data['skuPrice']['skuPromotion']['remain_time'] >= 0 || !empty($data['spuStock']))
@@ -384,6 +294,95 @@
                     </section>
                 @endforeach
             @endif
+
+            <section data-spu="{{$data['spu']}}" id="modalDialog" data-login="1" data-status="{{$data['status_code']}}">
+                <div class="warning-info off flex text-warning flex-alignCenter text-left p-x-15x p-b-10x">
+                    <i class="iconfont icon-caveat icon-size-md p-r-5x"></i>
+                    <span class="font-size-xs"></span>
+                </div>
+                <hr class="hr-base m-a-0" data-onlysku="@if(count($data['skus'])==1){{$data['skus'][0]}}@endif">
+                @if(isset($data['spuAttrs']))
+                    @foreach($data['spuAttrs'] as $value)
+                        <fieldset class="p-x-15x p-y-10x text-left">
+                            <div class="container-fluid p-a-0">
+                                <div class="text-primary font-size-sm sparow" id="{{'spa'.$value['attr_type']}}"
+                                     data-click="false"
+                                     data-msg="{{$value['attr_type_value']}}">{{$value['attr_type_value']}}</div>
+                                <div class="row">
+                                    @if(isset($value['skuAttrValues']))
+                                        @foreach($value['skuAttrValues'] as $skuValue)
+                                            <div class="p-t-10x p-x-5x">
+                                                <div class="btn btn-itemProperty btn-sm skarow @if(!$skuValue['stock']) disabled @endif"
+                                                     id="{{$skuValue['attr_value_id']}}"
+                                                     @if($skuValue['img_path'])
+                                                     data-image="{{env('APP_Api_Image').'/n1/'.$skuValue['img_path']}}"
+                                                     @endif
+                                                     @if($skuValue['stock'])
+                                                     data-spa="{{$value['attr_type']}}"
+                                                     data-ska="{{$skuValue['attr_value_id']}}"
+                                                        @endif
+                                                >
+                                                    {{$skuValue['attr_value']}}
+                                                </div>
+                                            </div>
+                                        @endforeach
+                                    @endif
+                                </div>
+                            </div>
+                        </fieldset>
+                        <hr class="hr-base m-a-0">
+                    @endforeach
+                @endif
+
+                @if(isset($data['vasBases']))
+                    @foreach($data['vasBases'] as $vas)
+                        @if(1 == $vas['vas_type'])
+                            <fieldset class="p-x-15x p-y-10x text-left" data-vas-type="{{$vas['vas_type']}}">
+                                <div class="text-primary font-size-sm m-b-10x">{{ $vas['vas_describe'] }} +
+                                    ${{number_format(($vas['vas_price'] / 100), 2)}}</div>
+                                <div class="flex flex-fullJustified flex-alignCenter">
+                                    <input class="input-engraving form-control font-size-sm disabled" type="text"
+                                           maxlength="20" placeholder="20 characters max"
+                                           data-vas-type="{{$vas['vas_type']}}">
+                                    {{--<input type="radio" name="vas_name" id="{{$vas['vas_id']}}" hidden>--}}
+                                    <div class="iconfont icon-checkcircle text-common m-b-0 p-l-20x"
+                                         id="{{$vas['vas_id']}}" data-vas-type="{{$vas['vas_type']}}"></div>
+                                </div>
+                            </fieldset>
+                            <hr class="hr-base m-a-0">
+                        @else
+                            <fieldset class="p-x-15x p-y-10x text-left" data-vas-type="$vas['vas_type']">
+                                <div class="flex flex-fullJustified flex-alignCenter">
+                                    <div class="text-primary font-size-sm">{{ $vas['vas_describe'] }}+
+                                        $4.5(optional)
+                                    </div>
+                                    {{--<input type="radio" name="vas_name2" id="{{$vas['vas_id']}}" hidden>--}}
+                                    <div class="iconfont icon-checkcircle text-common m-b-0 p-l-20x"
+                                         id="{{$vas['vas_id']}}" data-vas-type="$vas['vas_type']"></div>
+                                </div>
+                            </fieldset>
+                            <hr class="hr-base m-a-0">
+                        @endif
+                    @endforeach
+                @endif
+                <fieldset class="p-x-15x p-y-10x">
+                    <div class="flex flex-fullJustified flex-alignCenter">
+                        <span class="text-primary font-size-sm">Qty:</span>
+                        <div class="btn-group flex" id="item-count">
+                            <div class="btn btn-cartCount btn-sm disabled" data-item="minus">
+                                <i class="iconfont icon-minus"></i>
+                            </div>
+                            <div class="btn btn-cartCount btn-sm" data-num="num">1</div>
+
+                            <div class="btn btn-cartCount btn-sm"
+                                 data-item="add">
+                                <i class="iconfont icon-add"></i>
+                            </div>
+                        </div>
+                    </div>
+                </fieldset>
+            </section>
+            <div class="hr-between"></div>
 
             <!-- Add to Bag 按钮 -->
             <section>
