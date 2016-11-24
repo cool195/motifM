@@ -294,7 +294,7 @@
                     </section>
                 @endforeach
             @endif
-
+            <div class="hr-between"></div>
             <section data-spu="{{$data['spu']}}" id="modalDialog" data-login="1" data-status="{{$data['status_code']}}">
                 <div class="warning-info off flex text-warning flex-alignCenter text-left p-x-15x p-b-10x">
                     <i class="iconfont icon-caveat icon-size-md p-r-5x"></i>
