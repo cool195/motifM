@@ -53,7 +53,7 @@ class ProductController extends ApiController
     public function recommended($spu,$cid,$designerId)
     {
         $params = array(
-            'recid' => '100002',
+            'recid' => '100012',
             'uuid' => $_COOKIE['uid'],
             'pagenum' => 1,
             'pagesize' => 8,
