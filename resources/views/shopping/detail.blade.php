@@ -102,7 +102,7 @@
     <!-- 展开的汉堡菜单 -->
 @include('nav')
 <!-- 主体内容 -->
-    <div class="body-container">
+    <div class="body-container productDetail-container">
     @inject('wishlist', 'App\Http\Controllers\Shopping\ShoppingController')
     @include('navigator')
     <!-- 图片详情 --><!-- 弹出图片轮播 -->
@@ -385,7 +385,8 @@
             <div class="hr-between"></div>
 
             <!-- Add to Bag 按钮 -->
-            <section>
+            <section class="addToBag-info">
+                <hr class="hr-base m-a-0">
                 <fieldset class="container-fluid p-a-15x">
                     <!-- 添加 购物车 控制按钮显示 -->
                     {{--@if(Session::has('user'))--}}
@@ -404,7 +405,6 @@
 
             <!-- 产品 其他信息 -->
             <section>
-                <hr class="hr-base m-a-0">
                 <!-- 产品描述 -->
                 <aside class="bg-white p-x-15x p-y-10x">
                     <p class="font-size-md text-main"><strong>Description</strong></p>
