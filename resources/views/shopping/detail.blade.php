@@ -204,6 +204,7 @@
 
             <!-- 产品 预售信息 -->
             @if(1 == $data['sale_type'])
+                <div class="hr-between"></div>
                 @if($data['skuPrice']['skuPromotion']['remain_time'] >= 0 || !empty($data['spuStock']))
                     <section class="limited-content"
                              data-begintime="{{  $data['skuPrice']['skuPromotion']['start_time'] }}"
@@ -276,9 +277,11 @@
                                 @endif
                             @endif
                         </div>
-                        <div class="hr-between"></div>
                     </section>
                 @endif
+            @endif
+            @if($data['skuPrice']['skuPromotion']['pre_exp_descs'])
+                <div class="hr-between"></div>
                 @foreach($data['skuPrice']['skuPromotion']['pre_exp_descs'] as $value)
                     <section class="limited">
                         <div class="bg-white">
@@ -290,17 +293,15 @@
                                 {{$value['desc_value']}}
                             </div>
                         </div>
-                        <div class="hr-between"></div>
                     </section>
                 @endforeach
             @endif
             <div class="hr-between"></div>
-            <section data-spu="{{$data['spu']}}" id="modalDialog" data-login="1" data-status="{{$data['status_code']}}">
+            <section data-spu="{{$data['spu']}}" id="modalDialog" data-login="1" data-status="{{$data['status_code']}}" data-onlysku="@if(count($data['skus'])==1){{$data['skus'][0]}}@endif">
                 <div class="warning-info off flex text-warning flex-alignCenter text-left p-x-15x p-b-10x">
                     <i class="iconfont icon-caveat icon-size-md p-r-5x"></i>
                     <span class="font-size-xs"></span>
                 </div>
-                <hr class="hr-base m-a-0" data-onlysku="@if(count($data['skus'])==1){{$data['skus'][0]}}@endif">
                 @if(isset($data['spuAttrs']))
                     @foreach($data['spuAttrs'] as $value)
                         <fieldset class="p-x-15x p-y-10x text-left">
