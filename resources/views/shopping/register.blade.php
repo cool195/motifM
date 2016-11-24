@@ -30,13 +30,13 @@
                 <span class="font-size-xs"></span>
             </div>
             <fieldset class="m-t-15x login-text">
-                <label class="text-main font-size-md login-title">Email</label>
+                <label class="font-size-sm login-title">Email</label>
                 <input class="input-login form-control font-size-sm" name="email"
                        type="text" maxlength="60" autocomplete="off">
                 <i class="iconfont icon-delete icon-size-md input-clear text-common hidden"></i>
             </fieldset>
             <fieldset class="m-t-15x login-text">
-                <label class="text-main font-size-md login-title">Password</label>
+                <label class="font-size-sm login-title">Password</label>
                 <input class="input-login form-control font-size-sm" name="pw"
                        type="password" maxlength="32" autocomplete="off">
                 <i class="iconfont icon-show icon-size-lg input-show text-common off"></i>

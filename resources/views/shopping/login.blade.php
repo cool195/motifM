@@ -33,19 +33,19 @@
                 <span class="font-size-xs"></span>
             </div>
             <fieldset class="register-input m-b-10x">
-                <label class="text-main font-size-md register-title">Your Name</label>
+                <label class="font-size-sm register-title">Your Name</label>
                 <input class="input-register form-control font-size-sm" name="nick"
                        placeholder="" type="text" maxlength="32">
                 <i class="iconfont icon-delete icon-size-md input-clear text-common hidden"></i>
             </fieldset>
             <fieldset class="register-input m-b-10x">
-                <label class="text-main font-size-md register-title">Email</label>
+                <label class="font-size-sm register-title">Your Email</label>
                 <input class="input-register form-control font-size-sm" name="email"
                        placeholder="" type="text" maxlength="60">
                 <i class="iconfont icon-delete icon-size-md input-clear text-common hidden"></i>
             </fieldset>
             <fieldset class="register-input m-b-10x">
-                <label class="text-main font-size-md register-title">Password</label>
+                <label class="font-size-sm register-title">Password(6 characters min)</label>
                 <input class="input-register form-control font-size-sm" name="pw"
                        placeholder="" type="password" maxlength="32">
                 <i class="iconfont icon-show icon-size-md input-show text-common off"></i>
