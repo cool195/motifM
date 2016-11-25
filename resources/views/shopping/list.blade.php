@@ -65,7 +65,7 @@
             <section class="bg-white search-container">
                 @if(isset($categories))
                     @foreach($categories as $key => $c)
-                        <button style="width:100%;border: none;background-color: white" class="p-a-15x flex flex-alignCenter flex-fullJustified search-item {{ 'cateClick'.$c['category_id'] }}"
+                        <button style="width:100%;border: none;background-color: white" class="p-a-15x search-item {{ 'cateClick'.$c['category_id'] }}"
                                 data-categoryid="{{ $c['category_id'] }}" data-categoryname="{{ $c['category_name'] }}">
                             <span class="text-primary font-size-sm text-right">{{ $c['category_name'] }}</span>
                             <i class="iconfont icon-check icon-size-md text-common"></i>
@@ -228,8 +228,8 @@
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
         }
     });
-    @if($categories['selectCid'] != 0)
-        var selectCid = '{{'.cateClick'.$categories['selectCid']}}';
+    @if($selectCid != 0)
+        var selectCid = '{{'.cateClick'.$selectCid}}';
         $(selectCid).click();
         $('#nav-categoryTit').click();
     @endif

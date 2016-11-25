@@ -33,9 +33,13 @@
     width: 100%;
     display: none;
 }
+.search-item span{
+    float: left;
+}
 
 .search-item i {
     opacity: 0;
+    float: right;
 }
 
 .search-item.active i {

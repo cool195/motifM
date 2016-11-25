@@ -17,8 +17,8 @@ class ShoppingController extends ApiController
         $search = $this->request('openapi', '', 'sea', $params);
 
         $result = $this->getShoppingCategoryList($request);
-        $result['data']['list']['selectCid'] = $request->get('cid',0);
-        return View('shopping.list', ['categories' => $result['data']['list'],'search'=>$search['data'],'NavShowShop'=>true]);
+        $selectCid = $request->get('cid', 0);
+        return View('shopping.list', ['selectCid' => $selectCid, 'categories' => $result['data']['list'], 'search' => $search['data'], 'NavShowShop' => true]);
     }
 
     public function getShoppingCategoryList(Request $request)
@@ -60,9 +60,9 @@ class ShoppingController extends ApiController
         if (!empty($result['data']['list'])) {
             $wishlist = $this->wishlist();
             $list = array();
-            foreach($result['data']['list'] as $value){
+            foreach ($result['data']['list'] as $value) {
                 $value['isWished'] = 0;
-                if(in_array($value['spu'], $wishlist)){
+                if (in_array($value['spu'], $wishlist)) {
                     $value['isWished'] = 1;
                 }
                 $list[] = $value;
@@ -177,7 +177,7 @@ class ShoppingController extends ApiController
             'token' => Session::get('user.token')
         );
         $result = $this->request('openapi', '', 'wishlist', $params);
-        if($request->input('ajax')){
+        if ($request->input('ajax')) {
             return $result;
         }
         return view('Other.wishlist', ['data' => $result['data']]);
@@ -185,7 +185,7 @@ class ShoppingController extends ApiController
 
     public function wishlist()
     {
-        if ( Session::get('user.pin')){
+        if (Session::get('user.pin')) {
 
             $value = Cache::remember(Session::get('user.pin') . 'wishlist',600, function () {
                 $params = array(
@@ -237,7 +237,6 @@ class ShoppingController extends ApiController
     }
 
     //Wishlist End
-
 
 
 }
