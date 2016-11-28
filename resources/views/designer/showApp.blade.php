@@ -213,11 +213,11 @@
 
             {{--预售信息--}}
             @if($designer['prompt_info']['datePrompt'])
-                @if($designer['prompt_info']['datePrompt']['endDate']/1000>time())
+                @if($designer['prompt_info']['datePrompt']['endDate'] > time()*1000)
                     <section class="limited limited-data"
-                             data-begintime="{{$designer['prompt_info']['datePrompt']['startDate']/1000}}"
-                             data-endtime="{{$designer['prompt_info']['datePrompt']['endDate']/1000}}"
-                             data-lefttime="{{$designer['prompt_info']['datePrompt']['endDate']/1000-time()}}">
+                             data-begintime="{{$designer['prompt_info']['datePrompt']['startDate']}}"
+                             data-endtime="{{$designer['prompt_info']['datePrompt']['endDate']}}"
+                             data-lefttime="{{$designer['prompt_info']['datePrompt']['endDate']-time()*1000}}">
                         <div class="hr-between"></div>
                         <div class="bg-white">
                             <div class="limited-subtitle"><span
