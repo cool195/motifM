@@ -558,7 +558,7 @@
     $('#btn-submitEditorAddress').on('click', function () {
         openLoading();
         var Aid = $('#shipping-editorAddress').data('aid');
-        if (Aid == '' || Aid === undefined) {
+        if (Aid == '' || Aid == undefined) {
             // 添加地址
             $.ajax({
                 url: '/checkout/address',
@@ -582,7 +582,7 @@
                     }
                 })
         }
-        window.location.href = $('#addressFrom').data('url');
+        //window.location.href = $('#addressFrom').data('url');
     });
 
     // 取消修改国家
