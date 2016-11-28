@@ -582,7 +582,7 @@
                     }
                 })
         }
-        window.location.href = $('#addressFrom').data('url');
+        //window.location.href = $('#addressFrom').data('url');
     });
 
     // 取消修改国家

@@ -561,7 +561,7 @@
     </div>
 </div>
 
-<img src='{{ config('app.clk_url') }}/log.gif?time={{time()}}&t=pv.100001&m=H5_M2016-1&pin={{ Session::get('user.pin') }}&uuid={{Session::has('user') ? Session::get('user.uuid') : $_COOKIE['uid']}}&v={"spu":{{$data['spu']}},"main_sku":{{$data['skuPrice']['sku']}},"price":{{ number_format(($data['skuPrice']['sale_price'] / 100), 2) }},"version":"1.0.1","ver":"9.2","src":"H5"}' hidden>
+<img src='{{ config('app.clk_url') }}/log.gif?time={{time()}}&t=pv.100001&m=H5_M2016-1&pin={{ Session::get('user.pin') }}&uuid={{Session::has('user') ? Session::get('user.uuid') : $_COOKIE['uid']}}&ref={{$_SERVER['HTTP_REFERER']}}&v={"spu":{{$data['spu']}},"main_sku":{{$data['skuPrice']['sku']}},"price":{{ number_format(($data['skuPrice']['sale_price'] / 100), 2) }},"version":"1.0.1","ver":"9.2","src":"H5"}' hidden>
 
 </body>
 <script src="{{env('CDN_Static')}}/scripts/vendor.js{{'?v='.config('app.version')}}"></script>
