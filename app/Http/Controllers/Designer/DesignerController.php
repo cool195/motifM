@@ -67,13 +67,6 @@ class DesignerController extends ApiController
             );
             $product = $this->request('openapi', '', 'designer', $params);
 
-            foreach ($product['data']['infos'] as $value) {
-                if ($value['type'] == 'product' && isset($value['spus'])) {
-                    $_spu = $value['spus'][0];
-                    break;
-                }
-            }
-
             //设计师推荐商品
             $params = array(
                 'recid' => '100004',
