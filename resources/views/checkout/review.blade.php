@@ -36,6 +36,9 @@
             },
         });
     }
+
+    var content_ids = [@foreach($checkInfo['showSkus'] as $key => $product) @if(0 == $key)'{{$product['spu']}}' @else , '{{$product['spu']}}' @endif @endforeach];
+    var totalPrice = "{{ number_format($checkInfo['pay_amount'] / 100, 2)}}";
 </script>
 
 @include('check.tagmanager')
