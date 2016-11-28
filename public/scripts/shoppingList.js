@@ -57,11 +57,12 @@
     });
 
     //加载动画显示
-    function loadingShow(){
+    function loadingShow() {
         $('.loading').show();
     }
+
     //加载动画隐藏
-    function loadingHide(){
+    function loadingHide() {
         $('.loading').hide();
     }
 
@@ -95,7 +96,7 @@
 
         // 选择 产品类别
         categoryType = $(this).data('categoryid');
-        $('#productList-container').data('pagenum',0);
+        $('#productList-container').data('pagenum', 0);
         $('#productList-container').data('loading', false);
 
         //改变显示的分类标题
@@ -104,10 +105,38 @@
         getProductList(2);
     });
 
+    // 获取url 地址中的锚点值（搜索条件）
+    var SortById;
 
     // 页面初始化
     (function initBody() {
-        getProductList(1);
+        SortById = location.hash.substring(1);
+        var IsSearchItem = false,
+            SearchText = '',
+            OptionId = 0;
+        $.each($('[data-search]'), function (index, val) {
+            if ($(this).data('search') === parseInt(SortById)) {
+                IsSearchItem = true;
+                SearchText = $(this).data('searchtext');
+                OptionId = index + 1;
+                return false;
+            }
+        });
+        if (!IsSearchItem) {
+            SortById = '';
+        }
+        if (SortById != '') {
+            $('#productList-container').data('pagenum', 0);
+            $('#productList-container').data('loading', false);
+
+            $('#sortBy option:eq(' + OptionId + ')').attr('selected', 'selected');
+
+            $('.lowTo-info').html(SearchText);
+            $('.lowTo').removeClass('disabled');
+            getProductList(2);
+        } else {
+            getProductList(1);
+        }
     })();
 
     /**
@@ -116,7 +145,7 @@
      * type 加载方式 1:继续加载  2:重新加载(新的搜索条件)
      */
 
-    function getProductList(type){
+    function getProductList(type) {
         var $ProductListontainer = $('#productList-container'),
             Size = 20;
 
@@ -134,7 +163,7 @@
         }
 
         //判断是否还有数据要加载
-        if (PageNum === -1){
+        if (PageNum === -1) {
             return;
         }
 
@@ -153,7 +182,11 @@
             //console.log('SearchType==='+SearchType);
             Url = '/products?extra_kv=sea:' + SearchType;
         } else {
-            Url = '/products';
+            if (SortById != '') {
+                Url = '/products?extra_kv=sea:' + SortById;
+            } else {
+                Url = '/products';
+            }
         }
 
         // ajax 请求加载数据
@@ -195,11 +228,11 @@
                         paginationType: 'bullets',
                         lazyLoading: true,
                         lazyLoadingInPrevNext: true,
-                        onSlideChangeStart: function(swiper){
+                        onSlideChangeStart: function (swiper) {
                             //console.info(swiper.bullets);
-                            $(swiper.bullets).css('opacity','0.6');
+                            $(swiper.bullets).css('opacity', '0.6');
                             setTimeout(function () {
-                                $(swiper.bullets).css('opacity','0');
+                                $(swiper.bullets).css('opacity', '0');
                             }, 2000);
                         },
                     });
@@ -239,9 +272,9 @@
     function appendProductsList(ProductsList, type) {
         var TplHtml = template('tpl-product', ProductsList);
         var StageCache = $.parseHTML(TplHtml);
-        if (type === 1){
+        if (type === 1) {
             $('#productList-container').find('.row').append(StageCache);
-        }else if (type === 2){
+        } else if (type === 2) {
             $('.productList').each(function () {
                 $(this).html('');
             });
@@ -265,13 +298,13 @@
         //}else{
         //    $(".btn-sortBy option").attr("selected",false);
         //}
-        if ( $currentOption.data('searchtext') == 'reset'){
+        if ($currentOption.data('searchtext') == 'reset') {
             // 重置
             SearchType = '';
             // 隐藏搜索条件
             $('.lowTo-info').html(SearchType);
             $('.lowTo').addClass('disabled');
-        }else{
+        } else {
             //console.log($(this).val());
             // 搜索条件
             SearchType = $currentOption.data('search');
@@ -286,7 +319,7 @@
         //$("#sortBy").prepend("<option value='0'>Sort By</option>");
         //$("#sortBy").val('0');
     });
-    $('.btn-sortBy').on('click',function(){
+    $('.btn-sortBy').on('click', function () {
         //$('option[value="0"]').remove();
         //$("#sortBy").val('-1');
         //$('.falseSortBy').css('display','block');
