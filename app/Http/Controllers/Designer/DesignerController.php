@@ -67,21 +67,6 @@ class DesignerController extends ApiController
             );
             $product = $this->request('openapi', '', 'designer', $params);
 
-            foreach ($product['data']['infos'] as $value) {
-                if ($value['type'] == 'product' && isset($value['spus'])) {
-                    $_spu = $value['spus'][0];
-                    break;
-                }
-            }
-
-            if (isset($_spu) && $product['data']['spuInfos'][$_spu]['spuBase']['sale_type'] == 1 && $product['data']['spuInfos'][$_spu]['spuBase']['isPutOn'] == 1 && $product['data']['spuInfos'][$_spu]['stockStatus'] == 'YES') {
-                $params = array(
-                    'cmd' => 'productdetail',
-                    'spu' => $_spu,
-                );
-                $pre_product = $this->request('openapi', '', 'product', $params);
-            }
-
             //设计师推荐商品
             $params = array(
                 'recid' => '100004',
@@ -164,7 +149,7 @@ class DesignerController extends ApiController
             $maidian['uuid'] = $_COOKIE['UUID'] ? $_COOKIE['UUID'] : $_COOKIE['uid'];
             $maidian['utm_medium'] = $request->get('utm_medium');
             $maidian['utm_source'] = $request->get('utm_source');
-            return View($view, ['maidian' => $maidian, 'NavShowDesigner' => $NavShow, 'pre_product' => $pre_product['data'], 'designer' => $result['data'], 'productAll' => $productAll, 'product' => $product['data']]);
+            return View($view, ['maidian' => $maidian, 'NavShowDesigner' => $NavShow,'designer' => $result['data'], 'productAll' => $productAll, 'product' => $product['data']]);
         }
 
     }

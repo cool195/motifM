@@ -83,16 +83,16 @@
 @include('check.tagmanager')
 {{--外层容器--}}
 <div id="body-content">
-    <!-- 展开的汉堡菜单 -->
-@include('nav')
-<!-- 主体内容 -->
+    {{--展开的汉堡菜单--}}
+    @include('nav')
+    {{--主体内容--}}
     <div class="body-container"
          data-impr='{{ config('app.clk_url') }}/log.gif?time={{time()}}&t=page.100001&m=H5_M2016-1&pin={{Session::get('user.pin')}}&uuid={{$maidian['uuid']}}&ref=&v={"skipType":2,"skipId":"{{$designer['designer_id']}}","expid":"0","version":"1.0.1","ver":"9.2","src":"H5","utm_medium":"{{$maidian['utm_medium']}}","utm_source":"{{$maidian['utm_source']}}","mdeviceid":"{{$maidian['uuid']}}"}'>
-    @include('navigator')
-    <!-- designerDetail 设计师详情 -->
+        @include('navigator')
+        {{--designerDetail 设计师详情--}}
         <section class="reserve-height">
-        @if(isset($designer['detailVideoPath']))
-            <!-- 视频 -->
+            @if(isset($designer['detailVideoPath']))
+                {{--视频--}}
                 <div class="designer-media bg-white">
                     <div class="player-item" data-playid="{{$designer['detailVideoPath']}}"
                          data-designerid="{{$designer['designer_id']}}">
@@ -111,8 +111,8 @@
                         <div class="youtube_mask"></div>
                     </div>
                 </div>
-        @else
-            <!-- 图片-->
+            @else
+                {{--图片--}}
                 <div class="designer-media flex flex-justifyCenter flex-alignCenter">
                     <img class="designer-placeImg" src="{{env('CDN_Static')}}/images/designer/placeholder.jpg" alt=""
                          hidden>
@@ -122,27 +122,12 @@
                          data-original="{{env('APP_Api_Image')}}/n2/{{$designer['img_video_path']}}"
                          src="{{env('CDN_Static')}}/images/designer/bg-designer@750x550.png" alt="">
                 </div>
-        @endif
-        <!-- 设计师 文字信息 -->
+            @endif
+            {{--设计师 文字信息--}}
             <div class="bg-white">
                 <div class="flex flex-alignCenter flex-fullJustified p-x-10x p-t-10x"
                      data-impr='{{ config('app.clk_url') }}/log.gif?time={{time()}}&t=page.100001&m=H5_M2016-1&pin={{Session::get('user.pin')}}&uuid={{Session::get('user.uuid')}}&ref=&v={"action":0,"skipType":2,"skipId":"{{$designer['designer_id']}}","expid":0,"version":"1.0.1","ver":"9.2","src":"H5"}'>
                     <div class="font-size-base text-main"><strong>{{$designer['nickname']}}</strong></div>
-                    {{--<div class="flex flex-alignCenter">--}}
-                    {{--<span class="">--}}
-                    {{--@if(Session::get('user.pin'))--}}
-                    {{--@if($designer['followStatus'])--}}
-                    {{--<a href="#" class="btn btn-sm btn-primary" id="follow"--}}
-                    {{--data-followid="{{$designer['designer_id']}}">Following</a>--}}
-                    {{--@else--}}
-                    {{--<a href="#" class="btn btn-sm btn-follow active" id="follow"--}}
-                    {{--data-followid="{{$designer['designer_id']}}">Follow</a>--}}
-                    {{--@endif--}}
-                    {{--@else--}}
-                    {{--<a href="/login" class="btn btn-sm btn-follow active upFollow sendLogin">Follow</a>--}}
-                    {{--@endif--}}
-                    {{--</span>--}}
-                    {{--</div>--}}
                 </div>
                 <div class="font-size-sm text-primary p-y-10x p-x-15x">
                     <div class="message-info">
@@ -194,97 +179,72 @@
                 @endif
 
             </div>
-            <!-- 预售信息 -->
-            @if(!empty($pre_product) && $designer['designer_id'] !=99)
-                @if($pre_product['skuPrice']['skuPromotion']['remain_time'] >= 0 || !empty($pre_product['spuStock']))
-                    <section class="limited limited-data"
-                             data-begintime="{{$pre_product['skuPrice']['skuPromotion']['start_time']}}"
-                             data-endtime="{{$pre_product['skuPrice']['skuPromotion']['end_time']}}"
-                             data-lefttime="@if($pre_product['skuPrice']['skuPromotion']['remain_time']>0){{$pre_product['skuPrice']['skuPromotion']['remain_time']}}@else{{'0'}}@endif">
-                        <div class="hr-between"></div>
-                        <div class="bg-white">
-                            <div class="limited-subtitle"><span class="p-l-15x p-r-10x bg-limited"><strong>LIMITED EDITION</strong></span>
+            {{--预售信息--}}
+            @if($designer['prompt_info']['datePrompt'])
+                    @if($designer['prompt_info']['datePrompt']['endDate'] > time()*1000)
+                        <section class="limited limited-data"
+                                 data-begintime="{{$designer['prompt_info']['datePrompt']['startDate']}}"
+                                 data-endtime="{{$designer['prompt_info']['datePrompt']['endDate']}}"
+                                 data-lefttime="{{$designer['prompt_info']['datePrompt']['endDate']-time()*1000}}">
+                    <div class="hr-between"></div>
+                    <div class="bg-white">
+                        <div class="limited-subtitle"><span
+                                    class="p-l-15x p-r-10x bg-limited"><strong>{{$designer['prompt_info']['datePrompt']['title']}}</strong></span>
+                        </div>
+
+                        <div>
+                            <div class="p-x-15x p-t-5x">
+                                <img src="{{env('CDN_Static')}}/images/icon/icon-limited.png"
+                                     srcset="{{env('CDN_Static')}}/images/icon/icon-limited@2x.png 2x, {{env('CDN_Static')}}/images/icon/icon-limited@3x.png 3x"
+                                     alt="">
+                                            <span class="text-primary font-size-sm">Orders Close <span
+                                                        class="time_show"></span></span>
                             </div>
-                            @if($pre_product['isPutOn'] !=1)
-                                <div class="p-x-15x p-t-10x">
-                                    <img src="{{env('CDN_Static')}}/images/icon/icon-limited.png"
-                                         srcset="{{env('CDN_Static')}}/images/icon/icon-limited@2x.png 2x, {{env('CDN_Static')}}/images/icon/icon-limited@3x.png 3x"
-                                         alt="">
-                                    <span class="text-primary font-size-sm stock-qtty">
-                                            Sold Out
-                                    </span>
+                            <div class="p-x-15x p-y-5x m-x-15x">
+                                <progress class="progress progress-primary" id="limited-progress" value="" max="10000">
+                                    0%
+                                </progress>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="hr-between"></div>
+                </section>
+                    @else
+                        <section class="limited">
+                            <div class="hr-between"></div>
+                            <div class="bg-white">
+                                <div class="limited-subtitle"><span
+                                            class="p-l-15x p-r-10x bg-limited"><strong>{{$designer['prompt_info']['datePrompt']['title']}}</strong></span>
                                 </div>
-                                <div class="p-x-15x p-t-10x">
-                                    <img src="{{env('CDN_Static')}}/images/icon/icon-limited.png"
-                                         srcset="{{env('CDN_Static')}}/images/icon/icon-limited@2x.png 2x, {{env('CDN_Static')}}/images/icon/icon-limited@3x.png 3x"
-                                         alt="">
-                                    <span class="text-primary font-size-sm">Orders Closed</span>
-                                </div>
-                            @else
-                                @if(!empty($pre_product['spuStock']))
-                                    <div class="p-x-15x p-t-10x">
+                                <div>
+                                    <div class="p-x-15x p-t-5x">
                                         <img src="{{env('CDN_Static')}}/images/icon/icon-limited.png"
                                              srcset="{{env('CDN_Static')}}/images/icon/icon-limited@2x.png 2x, {{env('CDN_Static')}}/images/icon/icon-limited@3x.png 3x"
                                              alt="">
-                                    <span class="text-primary font-size-sm stock-qtty">
-                                        @if(($pre_product['spuStock']['stock_qtty'] - $pre_product['spuStock']['saled_qtty']) > 0)
-                                            Only {{$pre_product['spuStock']['stock_qtty'] - $pre_product['spuStock']['saled_qtty']}}
-                                            Left
-                                        @else
-                                            Sold Out
-                                        @endif
-                                    </span>
-                                    </div>
-                                @endif
-
-                                @if($pre_product['skuPrice']['skuPromotion']['remain_time'] >= 0)
-                                    @if($pre_product['skuPrice']['skuPromotion']['remain_time']>0)
-                                        <div>
-                                            <div class="p-x-15x p-t-5x">
-                                                <img src="{{env('CDN_Static')}}/images/icon/icon-limited.png"
-                                                     srcset="{{env('CDN_Static')}}/images/icon/icon-limited@2x.png 2x, {{env('CDN_Static')}}/images/icon/icon-limited@3x.png 3x"
-                                                     alt="">
-                                            <span class="text-primary font-size-sm">Orders Close <span
-                                                        class="time_show"></span></span>
-                                            </div>
-                                            <div class="p-x-15x p-y-5x m-x-15x">
-                                                <progress class="progress progress-primary" id="limited-progress"
-                                                          value=""
-                                                          max="10000">0%
-                                                </progress>
-                                            </div>
-                                        </div>
-                                    @else
-                                        <div class="p-x-15x p-t-10x">
-                                            <img src="{{env('CDN_Static')}}/images/icon/icon-limited.png"
-                                                 srcset="{{env('CDN_Static')}}/images/icon/icon-limited@2x.png 2x, {{env('CDN_Static')}}/images/icon/icon-limited@3x.png 3x"
-                                                 alt="">
                                             <span class="text-primary font-size-sm">Orders Closed</span>
-                                        </div>
-                                    @endif
-                                @endif
-                            @endif
-                        </div>
-                        <div class="hr-between"></div>
-                    </section>
-                @endif
-                @if($designer['designer_id'] !=103)
-                    @foreach($pre_product['skuPrice']['skuPromotion']['pre_exp_descs'] as $value)
-                        <section class="limited">
-                            <div class="bg-white">
-                                <div class="limited-subtitle">
-                                    <span class="p-l-15x p-r-10x bg-limited">
-                                    <strong>{{$value['desc_title']}}</strong></span></div>
-                                <div class="p-x-15x p-t-10x p-b-15x text-primary font-size-sm">
-                                    {{$value['desc_value']}}
+                                    </div>
                                 </div>
                             </div>
                             <div class="hr-between"></div>
                         </section>
-                    @endforeach
-                @endif
+                    @endif
             @endif
-        <!-- 设计师 对应模版商品 -->
+            @if($designer['prompt_info']['textPrompt'])
+                <div class="hr-between"></div>
+                <section class="limited">
+                    <div class="bg-white">
+                        <div class="limited-subtitle">
+                                    <span class="p-l-15x p-r-10x bg-limited">
+                                    <strong>{{$designer['prompt_info']['textPrompt']['title']}}</strong></span></div>
+                        <div class="p-x-15x p-t-10x p-b-15x text-primary font-size-sm">
+                            {{$designer['prompt_info']['textPrompt']['content']}}
+                        </div>
+                    </div>
+                    <div class="hr-between"></div>
+                </section>
+            @endif
+            {{--设计师 对应模版商品--}}
             <aside class="bg-white">
             @inject('wishlist', 'App\Http\Controllers\Shopping\ShoppingController')
             @if(isset($product['infos']))
@@ -365,7 +325,8 @@
                                                                     <div class="topic-product-item productList-item">
                                                                         <a data-link="/detail/{{$spu}}"
                                                                            data-clk='{{ config('app.clk_url') }}/log.gif?time={{time()}}&t=designer.400001&m=H5_M2016-1&pin={{ Session::get('user.pin') }}&uuid={{Session::has('user') ? Session::get('user.uuid') : $_COOKIE['uid']}}&v={"action":1,"skipType":1,"skipId":"{{$spu}}","expid":0,"index":"{{$key}}","version":"1.0.1","ver":"9.2","src":"H5"}'
-                                                                           href="javascript:void(0)" data-spu="{{$spu}}">
+                                                                           href="javascript:void(0)"
+                                                                           data-spu="{{$spu}}">
                                                                             <div class="image-container">
                                                                                 <img class="img-fluid img-lazy"
                                                                                      src="{{env('CDN_Static')}}/images/product/bg-product@336.png"
