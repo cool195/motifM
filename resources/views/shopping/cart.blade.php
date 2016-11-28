@@ -170,10 +170,9 @@
                 <section class="bg-white p-a-10x">
                     @if(Session::get('user.pin'))
                         <a href="/checkout/shipping" data-clk='{{ config('app.clk_url') }}/log.gif?time={{time()}}&t=check.100002&m=H5_M2016-1&pin={{Session::get('user.pin')}}&uuid={{Session::get('user.uuid')}}&ref=&v={"skipType":"processedcheckout","skipId":"","version":"1.0.1","ver":"9.2","src":"H5"}'
-                       class="btn btn-primary btn-block @if($cartData['pay_amount'] <= 0) disabled @endif" type="submit">Proceed to
-                        Checkout</a>
+                       class="btn btn-primary btn-block @if($cartData['pay_amount'] <= 0) disabled @endif" type="submit">Proceed to Checkout</a>
                     @else
-                        <a href="/login" class="btn btn-primary btn-block @if($cartData['pay_amount'] <= 0) disabled @endif" type="submit">Proceed toCheckout</a>
+                        <a href="/login" class="btn btn-primary btn-block @if($cartData['pay_amount'] <= 0) disabled @endif" type="submit">Proceed to Checkout</a>
                     @endif
 
                 </section>
