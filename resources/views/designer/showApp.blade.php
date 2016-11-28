@@ -213,34 +213,55 @@
 
             {{--预售信息--}}
             @if($designer['prompt_info']['datePrompt'])
-                <section class="limited limited-data"
-                         data-begintime="{{$designer['prompt_info']['datePrompt']['startDate']}}"
-                         data-endtime="{{$designer['prompt_info']['datePrompt']['endDate']}}"
-                         data-lefttime="@if(($designer['prompt_info']['datePrompt']['endDate']-$designer['prompt_info']['datePrompt']['startDate'])>0){{$designer['prompt_info']['datePrompt']['endDate']-$designer['prompt_info']['datePrompt']['startDate']}}@else{{'0'}}@endif">
-                    <div class="hr-between"></div>
-                    <div class="bg-white">
-                        <div class="limited-subtitle"><span
-                                    class="p-l-15x p-r-10x bg-limited"><strong>{{$designer['prompt_info']['datePrompt']['title']}}</strong></span>
-                        </div>
+                @if($designer['prompt_info']['datePrompt']['endDate']/1000>time())
+                    <section class="limited limited-data"
+                             data-begintime="{{$designer['prompt_info']['datePrompt']['startDate']/1000}}"
+                             data-endtime="{{$designer['prompt_info']['datePrompt']['endDate']/1000}}"
+                             data-lefttime="{{$designer['prompt_info']['datePrompt']['endDate']/1000-time()}}">
+                        <div class="hr-between"></div>
+                        <div class="bg-white">
+                            <div class="limited-subtitle"><span
+                                        class="p-l-15x p-r-10x bg-limited"><strong>{{$designer['prompt_info']['datePrompt']['title']}}</strong></span>
+                            </div>
 
-                        <div>
-                            <div class="p-x-15x p-t-5x">
-                                <img src="{{env('CDN_Static')}}/images/icon/icon-limited.png"
-                                     srcset="{{env('CDN_Static')}}/images/icon/icon-limited@2x.png 2x, {{env('CDN_Static')}}/images/icon/icon-limited@3x.png 3x"
-                                     alt="">
+                            <div>
+                                <div class="p-x-15x p-t-5x">
+                                    <img src="{{env('CDN_Static')}}/images/icon/icon-limited.png"
+                                         srcset="{{env('CDN_Static')}}/images/icon/icon-limited@2x.png 2x, {{env('CDN_Static')}}/images/icon/icon-limited@3x.png 3x"
+                                         alt="">
                                             <span class="text-primary font-size-sm">Orders Close <span
                                                         class="time_show"></span></span>
+                                </div>
+                                <div class="p-x-15x p-y-5x m-x-15x">
+                                    <progress class="progress progress-primary" id="limited-progress" value=""
+                                              max="10000">
+                                        0%
+                                    </progress>
+                                </div>
                             </div>
-                            <div class="p-x-15x p-y-5x m-x-15x">
-                                <progress class="progress progress-primary" id="limited-progress" value="" max="10000">
-                                    0%
-                                </progress>
+
+                        </div>
+                        <div class="hr-between"></div>
+                    </section>
+                @else
+                    <section class="limited">
+                        <div class="hr-between"></div>
+                        <div class="bg-white">
+                            <div class="limited-subtitle"><span
+                                        class="p-l-15x p-r-10x bg-limited"><strong>{{$designer['prompt_info']['datePrompt']['title']}}</strong></span>
+                            </div>
+                            <div>
+                                <div class="p-x-15x p-t-5x">
+                                    <img src="{{env('CDN_Static')}}/images/icon/icon-limited.png"
+                                         srcset="{{env('CDN_Static')}}/images/icon/icon-limited@2x.png 2x, {{env('CDN_Static')}}/images/icon/icon-limited@3x.png 3x"
+                                         alt="">
+                                    <span class="text-primary font-size-sm">Orders Closed</span>
+                                </div>
                             </div>
                         </div>
-
-                    </div>
-                    <div class="hr-between"></div>
-                </section>
+                        <div class="hr-between"></div>
+                    </section>
+                @endif
             @endif
             @if($designer['prompt_info']['textPrompt'])
                 <div class="hr-between"></div>
