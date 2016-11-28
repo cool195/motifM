@@ -19,6 +19,7 @@ $app->group(['middleware' => 'pcguide', 'namespace' => 'App\Http\Controllers'], 
     $app->get('/topic/{id}', 'Daily\DailyController@show');
     $app->get('/template/{id}', 'Daily\DailyController@staticShow');
     $app->get('/shopping', 'Shopping\ShoppingController@index');
+    $app->get('/shopping/{id}', 'Shopping\ShoppingController@index');
 
     $app->get('/designer', 'Designer\DesignerController@index');
     $app->get('/designer/{id}', 'Designer\DesignerController@show');
@@ -67,13 +68,6 @@ $app->group(['middleware' => 'pcguide|logincheck', 'namespace' => 'App\Http\Cont
     $app->get('/cart/addresslist', 'CartController@addressList');
     $app->get('/cart/coupon', 'CartController@coupon');
     $app->get('/cart/message', 'CartController@message');
-    //todo
-    $app->get('/shopping/cart', 'CartController@index');
-    $app->get('/shopping/ordercheckout', 'CartController@orderCheckout');
-    $app->get('/shopping/cart/addresslist', 'CartController@addressList');
-    $app->get('/shopping/cart/coupon', 'CartController@coupon');
-    $app->get('/shopping/cart/message', 'CartController@message');
-
 
     $app->get('/cart/list', 'CartController@getCartList');
     $app->get('/cart/accountlist', 'CartController@getCartAccountList');
@@ -120,8 +114,6 @@ $app->group(['middleware' => 'pcguide|logincheck', 'namespace' => 'App\Http\Cont
     $app->put('/user/uuid', 'UserController@saveUUID');
 
     $app->post('/useraddr/addUserAddress', 'AddressController@addUserAddr');
-
-    $app->get('/shopping/orderlist', 'OrderController@index');
     $app->get('/order/orderlist', 'OrderController@index');
     $app->get('/orders', 'OrderController@getOrderList');
     $app->get('/order/orderdetail/{subno}', 'OrderController@orderDetail');

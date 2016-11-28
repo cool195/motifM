@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Session;
 
 class ShoppingController extends ApiController
 {
-    public function index(Request $request)
+    public function index(Request $request,$id)
     {
         $params = array(
             'cmd' => 'list',
@@ -17,7 +17,7 @@ class ShoppingController extends ApiController
         $search = $this->request('openapi', '', 'sea', $params);
 
         $result = $this->getShoppingCategoryList($request);
-        $selectCid = $request->get('cid', 0);
+        $selectCid = $request->get('cid', $id);
         return View('shopping.list', ['selectCid' => $selectCid, 'categories' => $result['data']['list'], 'search' => $search['data'], 'NavShowShop' => true]);
     }
 
