@@ -442,7 +442,7 @@
                                                                 </div>
                                                             </a>
                                                             <div class="font-size-sm product-title text-main">
-                                                                {{$product['spuInfos'][$spu]['spuBase']['main_title']}}
+                                                                {{$value['main_title']}}
                                                             </div>
                                                             <div class="price-caption">
                                             <span>
