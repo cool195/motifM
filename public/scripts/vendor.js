@@ -16663,14 +16663,14 @@ else if (typeof define === 'function' && define.amd) {
         }
         return null;
     }
-    $(function(){
-        if (getCookieAd('dailydownloadAd')){
-            $('#allDownload-container').remove();
-        }else {
-            $('#allDownload-container').removeAttr('hidden');
-
-        }
-    });
+    // $(function(){
+    //     if (getCookieAd('dailydownloadAd')){
+    //         $('#allDownload-container').remove();
+    //     }else {
+    //         $('#allDownload-container').removeAttr('hidden');
+    //
+    //     }
+    // });
     $('.btn-closeAd').on('click',function(){
         setCookieAd('dailydownloadAd', 'true');
         $('#allDownload-container').remove();
