@@ -112,15 +112,15 @@
 {{--</nav>--}}
 
 <!-- 弹出广告 -->
-<div class="allDownload-container bg-white flex flex-alignCenter" id="allDownload-container" hidden>
-    <div>
-        <div class="p-a-15x ">
-            <span><img src="{{env('CDN_Static')}}/images/login/login-logo.png" srcset="{{env('CDN_Static')}}/images/login/login-logo@2x.png 2x, {{env('CDN_Static')}}/images/login/login-logo@3x.png 3x" alt="" width="100"></span>
-            <span class="text-common font-size-xs pull-right p-t-15x btn-closeAd">GO TO THE MOBILE SITE ></span>
-        </div>
-        <a href="/downapp"><img class="img-fluid" id="allDownload-img" src="{{env('CDN_Static')}}/images/daily/h5-ad.png" srcset="{{env('CDN_Static')}}/images/daily/h5-ad@2x.png 2x, {{env('CDN_Static')}}/images/daily/h5-ad@3x.png 3x" alt=""></a>
-        <div class="text-main font-size-xs text-center p-a-15x btn-closeAd">
-            <strong>NO THANKS, JUST SHOW ME THE GOODS >></strong>
-        </div>
-    </div>
-</div>
+{{--<div class="allDownload-container bg-white flex flex-alignCenter" id="allDownload-container" hidden>--}}
+    {{--<div>--}}
+        {{--<div class="p-a-15x ">--}}
+            {{--<span><img src="{{env('CDN_Static')}}/images/login/login-logo.png" srcset="{{env('CDN_Static')}}/images/login/login-logo@2x.png 2x, {{env('CDN_Static')}}/images/login/login-logo@3x.png 3x" alt="" width="100"></span>--}}
+            {{--<span class="text-common font-size-xs pull-right p-t-15x btn-closeAd">GO TO THE MOBILE SITE ></span>--}}
+        {{--</div>--}}
+        {{--<a href="/downapp"><img class="img-fluid" id="allDownload-img" src="{{env('CDN_Static')}}/images/daily/h5-ad.png" srcset="{{env('CDN_Static')}}/images/daily/h5-ad@2x.png 2x, {{env('CDN_Static')}}/images/daily/h5-ad@3x.png 3x" alt=""></a>--}}
+        {{--<div class="text-main font-size-xs text-center p-a-15x btn-closeAd">--}}
+            {{--<strong>NO THANKS, JUST SHOW ME THE GOODS >></strong>--}}
+        {{--</div>--}}
+    {{--</div>--}}
+{{--</div>--}}
