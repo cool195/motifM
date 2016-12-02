@@ -97,7 +97,13 @@ class DailyController extends ApiController
         } else {
             $view = 'daily.topic';
         }
-
+        //设置topic分享主图
+        foreach ($result['data']['infos'] as $value){
+            if($value['imgPath']){
+                $result['data']['mainImg'] = $value['imgPath'];
+                break;
+            }
+        }
         return View($view, ['NavShowDaily'=>$NavShow,'topic' => $result['data'], 'topicID' => $id, 'shareFlag' => true]);
     }
 

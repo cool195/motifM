@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
+    <meta property="og:type" content="article"/>
+    <meta property="og:image" content="{{ env('APP_Api_Image').'/n1/'.$topic['mainImg'] }}"/>
+    <meta property="og:title" content="{{$topic['title']}}"/>
     <title>{{$topic['title']}}</title>
     @include('head')
 </head>
