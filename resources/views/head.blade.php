@@ -23,7 +23,6 @@
             a.appendChild(r);
         })(window,document,'//static.hotjar.com/c/hotjar-','.js?sv=');
     </script>
-@else
     <script type='text/javascript'>
         var _vwo_code=(function(){
             var account_id=266886,
