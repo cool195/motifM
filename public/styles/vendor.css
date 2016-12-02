@@ -3763,16 +3763,16 @@ input[type="button"].btn-block {
 */
 @font-face {
   font-family: "DIN Rundschrift Eng";
-  src: url("//cdn.m.motif.me/fonts/DINRundschriftEng.eot?") format("eot"), url("//cdn.m.motif.me/fonts/DINRundschriftEng.woff") format("woff"), url("//cdn.m.motif.me/fonts/DINRundschriftEng.ttf") format("truetype"), url("//cdn.m.motif.me/fonts/DINRundschriftEng.svg#DINRundschriftEng") format("svg");
+  src: url("/fonts/DINRundschriftEng.eot?") format("eot"), url("/fonts/DINRundschriftEng.woff") format("woff"), url("/fonts/DINRundschriftEng.ttf") format("truetype"), url("/fonts/DINRundschriftEng.svg#DINRundschriftEng") format("svg");
   font-weight: normal;
   font-style: normal;
 }
 
 @font-face {
   font-family: "iconfont";
-  src: url("//cdn.m.motif.me/fonts/iconfont.eot?t=1463649380");
+  src: url("/fonts/iconfont.eot?t=1463649380");
   /* IE9*/
-  src: url("//cdn.m.motif.me/fonts/iconfont.eot?t=1463649123#iefix") format("embedded-opentype"), url("//cdn.m.motif.me/fonts/iconfont.woff?t=1463649123") format("woff"), url("//cdn.m.motif.me/fonts/iconfont.ttf?t=1463649123") format("truetype"), url("//cdn.m.motif.me/fonts/iconfont.svg?t=1463649123#iconfont") format("svg");
+  src: url("/fonts/iconfont.eot?t=1463649123#iefix") format("embedded-opentype"), url("/fonts/iconfont.woff?t=1463649123") format("woff"), url("/fonts/iconfont.ttf?t=1463649123") format("truetype"), url("/fonts/iconfont.svg?t=1463649123#iconfont") format("svg");
   /* iOS 4.1- */
 }
 
@@ -4402,9 +4402,9 @@ html.remodal-is-locked {
   background-repeat: no-repeat;
   text-indent: -999em;
   background-size: 100%;
-  background-image: url("//cdn.m.motif.me/images/payment/icon-Paypal-inactive.png");
-  background-image: -webkit-image-set(url("//cdn.m.motif.me/images/payment/icon-Paypal-inactive.png") 1x, url("//cdn.m.motif.me/images/payment/icon-Paypal-inactive@2x.png") 2x, url("//cdn.m.motif.me/images/payment/icon-Paypal-inactive@3x.png") 3x);
-  background-image: image-set(url("//cdn.m.motif.me/images/payment/icon-Paypal-inactive.png") 1x, url("//cdn.m.motif.me/images/payment/icon-Paypal-inactive@2x.png") 2x, url("//cdn.m.motif.me/images/payment/icon-Paypal-inactive@3x.png") 3x);
+  background-image: url("/images/payment/icon-Paypal-inactive.png");
+  background-image: -webkit-image-set(url("/images/payment/icon-Paypal-inactive.png") 1x, url("/images/payment/icon-Paypal-inactive@2x.png") 2x, url("/images/payment/icon-Paypal-inactive@3x.png") 3x);
+  background-image: image-set(url("/images/payment/icon-Paypal-inactive.png") 1x, url("/images/payment/icon-Paypal-inactive@2x.png") 2x, url("/images/payment/icon-Paypal-inactive@3x.png") 3x);
 }
 
 .cardImage-inline.unPaypal {
@@ -4412,9 +4412,9 @@ html.remodal-is-locked {
   background-repeat: no-repeat;
   text-indent: -999em;
   background-size: 100%;
-  background-image: url("//cdn.m.motif.me/images/payment/icon-Paypal-inactive.png");
-  background-image: -webkit-image-set(url("//cdn.m.motif.me/images/payment/icon-Paypal-inactive.png") 1x, url("//cdn.m.motif.me/images/payment/icon-Paypal-inactive@2x.png") 2x, url("//cdn.m.motif.me/images/payment/icon-Paypal-inactive@3x.png") 3x);
-  background-image: image-set(url("//cdn.m.motif.me/images/payment/icon-Paypal-inactive.png") 1x, url("//cdn.m.motif.me/images/payment/icon-Paypal-inactive@2x.png") 2x, url("//cdn.m.motif.me/images/payment/icon-Paypal-inactive@3x.png") 3x);
+  background-image: url("/images/payment/icon-Paypal-inactive.png");
+  background-image: -webkit-image-set(url("/images/payment/icon-Paypal-inactive.png") 1x, url("/images/payment/icon-Paypal-inactive@2x.png") 2x, url("/images/payment/icon-Paypal-inactive@3x.png") 3x);
+  background-image: image-set(url("/images/payment/icon-Paypal-inactive.png") 1x, url("/images/payment/icon-Paypal-inactive@2x.png") 2x, url("/images/payment/icon-Paypal-inactive@3x.png") 3x);
 }
 
 .card-image.cardCredit {
@@ -4422,9 +4422,9 @@ html.remodal-is-locked {
   background-repeat: no-repeat;
   text-indent: -999em;
   background-size: 100%;
-  background-image: url("//cdn.m.motif.me/images/payment/icon-cardCredit.png");
-  background-image: -webkit-image-set(url("//cdn.m.motif.me/images/payment/icon-cardCredit.png") 1x, url("//cdn.m.motif.me/images/payment/icon-cardCredit@2x.png") 2x, url("//cdn.m.motif.me/images/payment/icon-cardCredit@3x.png") 3x);
-  background-image: image-set(url("//cdn.m.motif.me/images/payment/icon-cardCredit.png") 1x, url("//cdn.m.motif.me/images/payment/icon-cardCredit@2x.png") 2x, url("//cdn.m.motif.me/images/payment/icon-cardCredit@3x.png") 3x);
+  background-image: url("/images/payment/icon-cardCredit.png");
+  background-image: -webkit-image-set(url("/images/payment/icon-cardCredit.png") 1x, url("/images/payment/icon-cardCredit@2x.png") 2x, url("/images/payment/icon-cardCredit@3x.png") 3x);
+  background-image: image-set(url("/images/payment/icon-cardCredit.png") 1x, url("/images/payment/icon-cardCredit@2x.png") 2x, url("/images/payment/icon-cardCredit@3x.png") 3x);
 }
 
 .cardImage-inline.cardCredit {
@@ -4432,9 +4432,9 @@ html.remodal-is-locked {
   background-repeat: no-repeat;
   text-indent: -999em;
   background-size: 100%;
-  background-image: url("//cdn.m.motif.me/images/payment/icon-cardCredit.png");
-  background-image: -webkit-image-set(url("//cdn.m.motif.me/images/payment/icon-cardCredit.png") 1x, url("//cdn.m.motif.me/images/payment/icon-cardCredit@2x.png") 2x, url("//cdn.m.motif.me/images/payment/icon-cardCredit@3x.png") 3x);
-  background-image: image-set(url("//cdn.m.motif.me/images/payment/icon-cardCredit.png") 1x, url("//cdn.m.motif.me/images/payment/icon-cardCredit@2x.png") 2x, url("//cdn.m.motif.me/images/payment/icon-cardCredit@3x.png") 3x);
+  background-image: url("/images/payment/icon-cardCredit.png");
+  background-image: -webkit-image-set(url("/images/payment/icon-cardCredit.png") 1x, url("/images/payment/icon-cardCredit@2x.png") 2x, url("/images/payment/icon-cardCredit@3x.png") 3x);
+  background-image: image-set(url("/images/payment/icon-cardCredit.png") 1x, url("/images/payment/icon-cardCredit@2x.png") 2x, url("/images/payment/icon-cardCredit@3x.png") 3x);
 }
 
 .card-image.paypal {
@@ -4442,9 +4442,9 @@ html.remodal-is-locked {
   background-repeat: no-repeat;
   text-indent: -999em;
   background-size: 100%;
-  background-image: url("//cdn.m.motif.me/images/payment/icon-Paypal.png");
-  background-image: -webkit-image-set(url("//cdn.m.motif.me/images/payment/icon-Paypal.png") 1x, url("//cdn.m.motif.me/images/payment/icon-Paypal@2x.png") 2x, url("//cdn.m.motif.me/images/payment/icon-Paypal@3x.png") 3x);
-  background-image: image-set(url("//cdn.m.motif.me/images/payment/icon-Paypal.png") 1x, url("//cdn.m.motif.me/images/payment/icon-Paypal@2x.png") 2x, url("//cdn.m.motif.me/images/payment/icon-Paypal@3x.png") 3x);
+  background-image: url("/images/payment/icon-Paypal.png");
+  background-image: -webkit-image-set(url("/images/payment/icon-Paypal.png") 1x, url("/images/payment/icon-Paypal@2x.png") 2x, url("/images/payment/icon-Paypal@3x.png") 3x);
+  background-image: image-set(url("/images/payment/icon-Paypal.png") 1x, url("/images/payment/icon-Paypal@2x.png") 2x, url("/images/payment/icon-Paypal@3x.png") 3x);
 }
 
 .cardImage-inline.paypal {
@@ -4452,9 +4452,9 @@ html.remodal-is-locked {
   background-repeat: no-repeat;
   text-indent: -999em;
   background-size: 100%;
-  background-image: url("//cdn.m.motif.me/images/payment/icon-Paypal.png");
-  background-image: -webkit-image-set(url("//cdn.m.motif.me/images/payment/icon-Paypal.png") 1x, url("//cdn.m.motif.me/images/payment/icon-Paypal@2x.png") 2x, url("//cdn.m.motif.me/images/payment/icon-Paypal@3x.png") 3x);
-  background-image: image-set(url("//cdn.m.motif.me/images/payment/icon-Paypal.png") 1x, url("//cdn.m.motif.me/images/payment/icon-Paypal@2x.png") 2x, url("//cdn.m.motif.me/images/payment/icon-Paypal@3x.png") 3x);
+  background-image: url("/images/payment/icon-Paypal.png");
+  background-image: -webkit-image-set(url("/images/payment/icon-Paypal.png") 1x, url("/images/payment/icon-Paypal@2x.png") 2x, url("/images/payment/icon-Paypal@3x.png") 3x);
+  background-image: image-set(url("/images/payment/icon-Paypal.png") 1x, url("/images/payment/icon-Paypal@2x.png") 2x, url("/images/payment/icon-Paypal@3x.png") 3x);
 }
 
 .card-image.visa {
@@ -4462,9 +4462,9 @@ html.remodal-is-locked {
   background-repeat: no-repeat;
   text-indent: -999em;
   background-size: 100%;
-  background-image: url("//cdn.m.motif.me/images/payment/icon-visa.png");
-  background-image: -webkit-image-set(url("//cdn.m.motif.me/images/payment/icon-visa.png") 1x, url("//cdn.m.motif.me/images/payment/icon-visa@2x.png") 2x, url("//cdn.m.motif.me/images/payment/icon-visa@3x.png") 3x);
-  background-image: image-set(url("//cdn.m.motif.me/images/payment/icon-visa.png") 1x, url("//cdn.m.motif.me/images/payment/icon-visa@2x.png") 2x, url("//cdn.m.motif.me/images/payment/icon-visa@3x.png") 3x);
+  background-image: url("/images/payment/icon-visa.png");
+  background-image: -webkit-image-set(url("/images/payment/icon-visa.png") 1x, url("/images/payment/icon-visa@2x.png") 2x, url("/images/payment/icon-visa@3x.png") 3x);
+  background-image: image-set(url("/images/payment/icon-visa.png") 1x, url("/images/payment/icon-visa@2x.png") 2x, url("/images/payment/icon-visa@3x.png") 3x);
 }
 
 .cardImage-inline.visa {
@@ -4472,9 +4472,9 @@ html.remodal-is-locked {
   background-repeat: no-repeat;
   text-indent: -999em;
   background-size: 100%;
-  background-image: url("//cdn.m.motif.me/images/payment/icon-visa.png");
-  background-image: -webkit-image-set(url("//cdn.m.motif.me/images/payment/icon-visa.png") 1x, url("//cdn.m.motif.me/images/payment/icon-visa@2x.png") 2x, url("//cdn.m.motif.me/images/payment/icon-visa@3x.png") 3x);
-  background-image: image-set(url("//cdn.m.motif.me/images/payment/icon-visa.png") 1x, url("//cdn.m.motif.me/images/payment/icon-visa@2x.png") 2x, url("//cdn.m.motif.me/images/payment/icon-visa@3x.png") 3x);
+  background-image: url("/images/payment/icon-visa.png");
+  background-image: -webkit-image-set(url("/images/payment/icon-visa.png") 1x, url("/images/payment/icon-visa@2x.png") 2x, url("/images/payment/icon-visa@3x.png") 3x);
+  background-image: image-set(url("/images/payment/icon-visa.png") 1x, url("/images/payment/icon-visa@2x.png") 2x, url("/images/payment/icon-visa@3x.png") 3x);
 }
 
 .card-image.american-express {
@@ -4482,9 +4482,9 @@ html.remodal-is-locked {
   background-repeat: no-repeat;
   text-indent: -999em;
   background-size: 100%;
-  background-image: url("//cdn.m.motif.me/images/payment/icon-americanexpress.png");
-  background-image: -webkit-image-set(url("//cdn.m.motif.me/images/payment/icon-americanexpress.png") 1x, url("//cdn.m.motif.me/images/payment/icon-americanexpress@2x.png") 2x, url("//cdn.m.motif.me/images/payment/icon-americanexpress@3x.png") 3x);
-  background-image: image-set(url("//cdn.m.motif.me/images/payment/icon-americanexpress.png") 1x, url("//cdn.m.motif.me/images/payment/icon-americanexpress@2x.png") 2x, url("//cdn.m.motif.me/images/payment/icon-americanexpress@3x.png") 3x);
+  background-image: url("/images/payment/icon-americanexpress.png");
+  background-image: -webkit-image-set(url("/images/payment/icon-americanexpress.png") 1x, url("/images/payment/icon-americanexpress@2x.png") 2x, url("/images/payment/icon-americanexpress@3x.png") 3x);
+  background-image: image-set(url("/images/payment/icon-americanexpress.png") 1x, url("/images/payment/icon-americanexpress@2x.png") 2x, url("/images/payment/icon-americanexpress@3x.png") 3x);
 }
 
 .cardImage-inline.american-express {
@@ -4492,9 +4492,9 @@ html.remodal-is-locked {
   background-repeat: no-repeat;
   text-indent: -999em;
   background-size: 100%;
-  background-image: url("//cdn.m.motif.me/images/payment/icon-americanexpress.png");
-  background-image: -webkit-image-set(url("//cdn.m.motif.me/images/payment/icon-americanexpress.png") 1x, url("//cdn.m.motif.me/images/payment/icon-americanexpress@2x.png") 2x, url("//cdn.m.motif.me/images/payment/icon-americanexpress@3x.png") 3x);
-  background-image: image-set(url("//cdn.m.motif.me/images/payment/icon-americanexpress.png") 1x, url("//cdn.m.motif.me/images/payment/icon-americanexpress@2x.png") 2x, url("//cdn.m.motif.me/images/payment/icon-americanexpress@3x.png") 3x);
+  background-image: url("/images/payment/icon-americanexpress.png");
+  background-image: -webkit-image-set(url("/images/payment/icon-americanexpress.png") 1x, url("/images/payment/icon-americanexpress@2x.png") 2x, url("/images/payment/icon-americanexpress@3x.png") 3x);
+  background-image: image-set(url("/images/payment/icon-americanexpress.png") 1x, url("/images/payment/icon-americanexpress@2x.png") 2x, url("/images/payment/icon-americanexpress@3x.png") 3x);
 }
 
 .card-image.master-card {
@@ -4502,9 +4502,9 @@ html.remodal-is-locked {
   background-repeat: no-repeat;
   text-indent: -999em;
   background-size: 100%;
-  background-image: url("//cdn.m.motif.me/images/payment/icon-mastercard.png");
-  background-image: -webkit-image-set(url("//cdn.m.motif.me/images/payment/icon-mastercard.png") 1x, url("//cdn.m.motif.me/images/payment/icon-mastercard@2x.png") 2x, url("//cdn.m.motif.me/images/payment/icon-mastercard@3x.png") 3x);
-  background-image: image-set(url("//cdn.m.motif.me/images/payment/icon-mastercard.png") 1x, url("//cdn.m.motif.me/images/payment/icon-mastercard@2x.png") 2x, url("//cdn.m.motif.me/images/payment/icon-mastercard@3x.png") 3x);
+  background-image: url("/images/payment/icon-mastercard.png");
+  background-image: -webkit-image-set(url("/images/payment/icon-mastercard.png") 1x, url("/images/payment/icon-mastercard@2x.png") 2x, url("/images/payment/icon-mastercard@3x.png") 3x);
+  background-image: image-set(url("/images/payment/icon-mastercard.png") 1x, url("/images/payment/icon-mastercard@2x.png") 2x, url("/images/payment/icon-mastercard@3x.png") 3x);
 }
 
 .cardImage-inline.master-card {
@@ -4512,9 +4512,9 @@ html.remodal-is-locked {
   background-repeat: no-repeat;
   text-indent: -999em;
   background-size: 100%;
-  background-image: url("//cdn.m.motif.me/images/payment/icon-mastercard.png");
-  background-image: -webkit-image-set(url("//cdn.m.motif.me/images/payment/icon-mastercard.png") 1x, url("//cdn.m.motif.me/images/payment/icon-mastercard@2x.png") 2x, url("//cdn.m.motif.me/images/payment/icon-mastercard@3x.png") 3x);
-  background-image: image-set(url("//cdn.m.motif.me/images/payment/icon-mastercard.png") 1x, url("//cdn.m.motif.me/images/payment/icon-mastercard@2x.png") 2x, url("//cdn.m.motif.me/images/payment/icon-mastercard@3x.png") 3x);
+  background-image: url("/images/payment/icon-mastercard.png");
+  background-image: -webkit-image-set(url("/images/payment/icon-mastercard.png") 1x, url("/images/payment/icon-mastercard@2x.png") 2x, url("/images/payment/icon-mastercard@3x.png") 3x);
+  background-image: image-set(url("/images/payment/icon-mastercard.png") 1x, url("/images/payment/icon-mastercard@2x.png") 2x, url("/images/payment/icon-mastercard@3x.png") 3x);
 }
 
 .card-image.maestro {
@@ -4522,9 +4522,9 @@ html.remodal-is-locked {
   background-repeat: no-repeat;
   text-indent: -999em;
   background-size: 100%;
-  background-image: url("//cdn.m.motif.me/images/payment/icon-maestro.png");
-  background-image: -webkit-image-set(url("//cdn.m.motif.me/images/payment/icon-maestro.png") 1x, url("//cdn.m.motif.me/images/payment/icon-maestro@2x.png") 2x, url("//cdn.m.motif.me/images/payment/icon-maestro@3x.png") 3x);
-  background-image: image-set(url("//cdn.m.motif.me/images/payment/icon-maestro.png") 1x, url("//cdn.m.motif.me/images/payment/icon-maestro@2x.png") 2x, url("//cdn.m.motif.me/images/payment/icon-maestro@3x.png") 3x);
+  background-image: url("/images/payment/icon-maestro.png");
+  background-image: -webkit-image-set(url("/images/payment/icon-maestro.png") 1x, url("/images/payment/icon-maestro@2x.png") 2x, url("/images/payment/icon-maestro@3x.png") 3x);
+  background-image: image-set(url("/images/payment/icon-maestro.png") 1x, url("/images/payment/icon-maestro@2x.png") 2x, url("/images/payment/icon-maestro@3x.png") 3x);
 }
 
 .cardImage-inline.maestro {
@@ -4532,9 +4532,9 @@ html.remodal-is-locked {
   background-repeat: no-repeat;
   text-indent: -999em;
   background-size: 100%;
-  background-image: url("//cdn.m.motif.me/images/payment/icon-maestro.png");
-  background-image: -webkit-image-set(url("//cdn.m.motif.me/images/payment/icon-maestro.png") 1x, url("//cdn.m.motif.me/images/payment/icon-maestro@2x.png") 2x, url("//cdn.m.motif.me/images/payment/icon-maestro@3x.png") 3x);
-  background-image: image-set(url("//cdn.m.motif.me/images/payment/icon-maestro.png") 1x, url("//cdn.m.motif.me/images/payment/icon-maestro@2x.png") 2x, url("//cdn.m.motif.me/images/payment/icon-maestro@3x.png") 3x);
+  background-image: url("/images/payment/icon-maestro.png");
+  background-image: -webkit-image-set(url("/images/payment/icon-maestro.png") 1x, url("/images/payment/icon-maestro@2x.png") 2x, url("/images/payment/icon-maestro@3x.png") 3x);
+  background-image: image-set(url("/images/payment/icon-maestro.png") 1x, url("/images/payment/icon-maestro@2x.png") 2x, url("/images/payment/icon-maestro@3x.png") 3x);
 }
 
 .card-image.discover {
@@ -4542,9 +4542,9 @@ html.remodal-is-locked {
   background-repeat: no-repeat;
   text-indent: -999em;
   background-size: 100%;
-  background-image: url("//cdn.m.motif.me/images/payment/icon-discover.png");
-  background-image: -webkit-image-set(url("//cdn.m.motif.me/images/payment/icon-discover.png") 1x, url("//cdn.m.motif.me/images/payment/icon-discover@2x.png") 2x, url("//cdn.m.motif.me/images/payment/icon-discover@3x.png") 3x);
-  background-image: image-set(url("//cdn.m.motif.me/images/payment/icon-discover.png") 1x, url("//cdn.m.motif.me/images/payment/icon-discover@2x.png") 2x, url("//cdn.m.motif.me/images/payment/icon-discover@3x.png") 3x);
+  background-image: url("/images/payment/icon-discover.png");
+  background-image: -webkit-image-set(url("/images/payment/icon-discover.png") 1x, url("/images/payment/icon-discover@2x.png") 2x, url("/images/payment/icon-discover@3x.png") 3x);
+  background-image: image-set(url("/images/payment/icon-discover.png") 1x, url("/images/payment/icon-discover@2x.png") 2x, url("/images/payment/icon-discover@3x.png") 3x);
 }
 
 .cardImage-inline.discover {
@@ -4552,9 +4552,9 @@ html.remodal-is-locked {
   background-repeat: no-repeat;
   text-indent: -999em;
   background-size: 100%;
-  background-image: url("//cdn.m.motif.me/images/payment/icon-discover.png");
-  background-image: -webkit-image-set(url("//cdn.m.motif.me/images/payment/icon-discover.png") 1x, url("//cdn.m.motif.me/images/payment/icon-discover@2x.png") 2x, url("//cdn.m.motif.me/images/payment/icon-discover@3x.png") 3x);
-  background-image: image-set(url("//cdn.m.motif.me/images/payment/icon-discover.png") 1x, url("//cdn.m.motif.me/images/payment/icon-discover@2x.png") 2x, url("//cdn.m.motif.me/images/payment/icon-discover@3x.png") 3x);
+  background-image: url("/images/payment/icon-discover.png");
+  background-image: -webkit-image-set(url("/images/payment/icon-discover.png") 1x, url("/images/payment/icon-discover@2x.png") 2x, url("/images/payment/icon-discover@3x.png") 3x);
+  background-image: image-set(url("/images/payment/icon-discover.png") 1x, url("/images/payment/icon-discover@2x.png") 2x, url("/images/payment/icon-discover@3x.png") 3x);
 }
 
 .card-image.jcb {
@@ -4562,9 +4562,9 @@ html.remodal-is-locked {
   background-repeat: no-repeat;
   text-indent: -999em;
   background-size: 100%;
-  background-image: url("//cdn.m.motif.me/images/payment/icon-jcb.png");
-  background-image: -webkit-image-set(url("//cdn.m.motif.me/images/payment/icon-jcb.png") 1x, url("//cdn.m.motif.me/images/payment/icon-jcb@2x.png") 2x, url("//cdn.m.motif.me/images/payment/icon-jcb@3x.png") 3x);
-  background-image: image-set(url("//cdn.m.motif.me/images/payment/icon-jcb.png") 1x, url("//cdn.m.motif.me/images/payment/icon-jcb@2x.png") 2x, url("//cdn.m.motif.me/images/payment/icon-jcb@3x.png") 3x);
+  background-image: url("/images/payment/icon-jcb.png");
+  background-image: -webkit-image-set(url("/images/payment/icon-jcb.png") 1x, url("/images/payment/icon-jcb@2x.png") 2x, url("/images/payment/icon-jcb@3x.png") 3x);
+  background-image: image-set(url("/images/payment/icon-jcb.png") 1x, url("/images/payment/icon-jcb@2x.png") 2x, url("/images/payment/icon-jcb@3x.png") 3x);
 }
 
 .cardImage-inline.jcb {
@@ -4572,9 +4572,9 @@ html.remodal-is-locked {
   background-repeat: no-repeat;
   text-indent: -999em;
   background-size: 100%;
-  background-image: url("//cdn.m.motif.me/images/payment/icon-jcb.png");
-  background-image: -webkit-image-set(url("//cdn.m.motif.me/images/payment/icon-jcb.png") 1x, url("//cdn.m.motif.me/images/payment/icon-jcb@2x.png") 2x, url("//cdn.m.motif.me/images/payment/icon-jcb@3x.png") 3x);
-  background-image: image-set(url("//cdn.m.motif.me/images/payment/icon-jcb.png") 1x, url("//cdn.m.motif.me/images/payment/icon-jcb@2x.png") 2x, url("//cdn.m.motif.me/images/payment/icon-jcb@3x.png") 3x);
+  background-image: url("/images/payment/icon-jcb.png");
+  background-image: -webkit-image-set(url("/images/payment/icon-jcb.png") 1x, url("/images/payment/icon-jcb@2x.png") 2x, url("/images/payment/icon-jcb@3x.png") 3x);
+  background-image: image-set(url("/images/payment/icon-jcb.png") 1x, url("/images/payment/icon-jcb@2x.png") 2x, url("/images/payment/icon-jcb@3x.png") 3x);
 }
 
 .card-image.diners-club {
@@ -4582,9 +4582,9 @@ html.remodal-is-locked {
   background-repeat: no-repeat;
   text-indent: -999em;
   background-size: 100%;
-  background-image: url("//cdn.m.motif.me/images/payment/icon-duversclub.png");
-  background-image: -webkit-image-set(url("//cdn.m.motif.me/images/payment/icon-duversclub.png") 1x, url("//cdn.m.motif.me/images/payment/icon-duversclub@2x.png") 2x, url("//cdn.m.motif.me/images/payment/icon-duversclub@3x.png") 3x);
-  background-image: image-set(url("//cdn.m.motif.me/images/payment/icon-duversclub.png") 1x, url("//cdn.m.motif.me/images/payment/icon-duversclub@2x.png") 2x, url("//cdn.m.motif.me/images/payment/icon-duversclub@3x.png") 3x);
+  background-image: url("/images/payment/icon-duversclub.png");
+  background-image: -webkit-image-set(url("/images/payment/icon-duversclub.png") 1x, url("/images/payment/icon-duversclub@2x.png") 2x, url("/images/payment/icon-duversclub@3x.png") 3x);
+  background-image: image-set(url("/images/payment/icon-duversclub.png") 1x, url("/images/payment/icon-duversclub@2x.png") 2x, url("/images/payment/icon-duversclub@3x.png") 3x);
 }
 
 .cardImage-inline.diners-club {
@@ -4592,9 +4592,9 @@ html.remodal-is-locked {
   background-repeat: no-repeat;
   text-indent: -999em;
   background-size: 100%;
-  background-image: url("//cdn.m.motif.me/images/payment/icon-duversclub.png");
-  background-image: -webkit-image-set(url("//cdn.m.motif.me/images/payment/icon-duversclub.png") 1x, url("//cdn.m.motif.me/images/payment/icon-duversclub@2x.png") 2x, url("//cdn.m.motif.me/images/payment/icon-duversclub@3x.png") 3x);
-  background-image: image-set(url("//cdn.m.motif.me/images/payment/icon-duversclub.png") 1x, url("//cdn.m.motif.me/images/payment/icon-duversclub@2x.png") 2x, url("//cdn.m.motif.me/images/payment/icon-duversclub@3x.png") 3x);
+  background-image: url("/images/payment/icon-duversclub.png");
+  background-image: -webkit-image-set(url("/images/payment/icon-duversclub.png") 1x, url("/images/payment/icon-duversclub@2x.png") 2x, url("/images/payment/icon-duversclub@3x.png") 3x);
+  background-image: image-set(url("/images/payment/icon-duversclub.png") 1x, url("/images/payment/icon-duversclub@2x.png") 2x, url("/images/payment/icon-duversclub@3x.png") 3x);
 }
 
 .card-image.unionpay {
@@ -4602,9 +4602,9 @@ html.remodal-is-locked {
   background-repeat: no-repeat;
   text-indent: -999em;
   background-size: 100%;
-  background-image: url("//cdn.m.motif.me/images/payment/icon-Union.png");
-  background-image: -webkit-image-set(url("//cdn.m.motif.me/images/payment/icon-Union.png") 1x, url("//cdn.m.motif.me/images/payment/icon-Union@2x.png") 2x, url("//cdn.m.motif.me/images/payment/icon-Union@3x.png") 3x);
-  background-image: image-set(url("//cdn.m.motif.me/images/payment/icon-Union.png") 1x, url("//cdn.m.motif.me/images/payment/icon-Union@2x.png") 2x, url("//cdn.m.motif.me/images/payment/icon-Union@3x.png") 3x);
+  background-image: url("/images/payment/icon-Union.png");
+  background-image: -webkit-image-set(url("/images/payment/icon-Union.png") 1x, url("/images/payment/icon-Union@2x.png") 2x, url("/images/payment/icon-Union@3x.png") 3x);
+  background-image: image-set(url("/images/payment/icon-Union.png") 1x, url("/images/payment/icon-Union@2x.png") 2x, url("/images/payment/icon-Union@3x.png") 3x);
 }
 
 .cardImage-inline.unionpay {
@@ -4612,9 +4612,9 @@ html.remodal-is-locked {
   background-repeat: no-repeat;
   text-indent: -999em;
   background-size: 100%;
-  background-image: url("//cdn.m.motif.me/images/payment/icon-Union.png");
-  background-image: -webkit-image-set(url("//cdn.m.motif.me/images/payment/icon-Union.png") 1x, url("//cdn.m.motif.me/images/payment/icon-Union@2x.png") 2x, url("//cdn.m.motif.me/images/payment/icon-Union@3x.png") 3x);
-  background-image: image-set(url("//cdn.m.motif.me/images/payment/icon-Union.png") 1x, url("//cdn.m.motif.me/images/payment/icon-Union@2x.png") 2x, url("//cdn.m.motif.me/images/payment/icon-Union@3x.png") 3x);
+  background-image: url("/images/payment/icon-Union.png");
+  background-image: -webkit-image-set(url("/images/payment/icon-Union.png") 1x, url("/images/payment/icon-Union@2x.png") 2x, url("/images/payment/icon-Union@3x.png") 3x);
+  background-image: image-set(url("/images/payment/icon-Union.png") 1x, url("/images/payment/icon-Union@2x.png") 2x, url("/images/payment/icon-Union@3x.png") 3x);
 }
 
 .flex {
@@ -5802,7 +5802,7 @@ footer .links-group {
 }
 
 .bg-download {
-  /* background: url("//cdn.m.motif.me/images/background/bg-download.jpg"); */
+  /* background: url("/images/background/bg-download.jpg"); */
   background-color: #fad3d8;
   border-top:solid #efefef 1px;
 }
