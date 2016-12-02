@@ -26,7 +26,7 @@
     } else if (Device === 0) {
         url = "https://c89mm.app.goo.gl/0XdJ";
     } else {
-        url = "http://m.motif.me/designer/99";
+        url = "https://m.motif.me/designer/99";
     }
     window.location.href = url
 

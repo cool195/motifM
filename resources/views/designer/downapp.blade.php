@@ -23,7 +23,7 @@
     } else if (Device === 0) {
         window.location.href = "https://play.google.com/store/apps/details?id=me.motif.motif";
     } else {
-        window.location.href = "http://m.motif.me";
+        window.location.href = "https://m.motif.me";
     }
 
 </script>

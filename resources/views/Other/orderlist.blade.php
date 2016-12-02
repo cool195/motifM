@@ -23,7 +23,7 @@
     } else if (Device === 0) {
         window.location.href = "https://c89mm.app.goo.gl/9D6W";
     } else {
-        window.location.href = "http://m.motif.me/order/orderlist";
+        window.location.href = "https://m.motif.me/order/orderlist";
     }
 
 </script>

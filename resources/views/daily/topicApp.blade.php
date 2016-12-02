@@ -268,7 +268,7 @@
                                 "title": "Look at this on Motif:",
                                 "content": "{{$topic['title']}}",
                                 "image": "",
-                                "url": "http://m.motif.me/topic/{{$topicID}}"
+                                "url": "https://m.motif.me/topic/{{$topicID}}"
                             }
                         });
                     } else if (actionName.name == "addWish") {

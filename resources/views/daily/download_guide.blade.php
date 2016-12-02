@@ -76,7 +76,7 @@
   <div class="container">
     <div class="row">
       <div class="col-xs-2">
-        <a href="http://m.motif.me"><img src="{{env('CDN_Static')}}/images/guide/logo-white.png"></a>
+        <a href="//m.motif.me"><img src="{{env('CDN_Static')}}/images/guide/logo-white.png"></a>
       </div>
       <div class="col-xs-7 text-white font-size-lg text-center">
         <div class="p-t-10x">Exclusive accessory designs from your favorite Instagrammers & YouTubers</div>

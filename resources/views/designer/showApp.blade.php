@@ -619,7 +619,7 @@
                 "title": "Look at this on MOTIF:",
                 "content": "{{ $designer['nickname'] }}",
                 "image": "{{env('APP_Api_Image')}}/n2/{{$designer['main_img_path']}}",
-                "url": "http://m.motif.me/designer/{{$designer['designer_id']}}"
+                "url": "https://m.motif.me/designer/{{$designer['designer_id']}}"
             }
         });
     });
