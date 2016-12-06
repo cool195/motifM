@@ -83,7 +83,7 @@
     {{--主体内容--}}
     <div class="body-container" style="padding-top:0px">
         {{--designerDetail 设计师详情--}}
-        <section class="reserve-height">
+        <section class="reserve-height" id="gaProductClick">
             @if(isset($designer['detailVideoPath']))
                 {{--视频--}}
                 <div class="designer-media bg-white">

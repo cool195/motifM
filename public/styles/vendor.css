@@ -2510,6 +2510,19 @@ fieldset[disabled] a.btn {
   border-color: #374146;
 }
 
+.btn-red{
+  color: #fff;
+  background-color: #ff2dff;
+  border-color: #ff2dff;
+}
+
+.btn-red.disabled, .btn-red:disabled {
+  cursor: not-allowed;
+  opacity: .5;
+  background-color: #374146;
+  border-color: #374146;
+}
+
 .btn-white {
   color: #36405b;
   background-color: #ffffff;

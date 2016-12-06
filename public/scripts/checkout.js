@@ -37,6 +37,21 @@
         }, 500);
     }
 
+    $(document).ready(function () {
+        if ($('#shipping-editorAddress').length > 0) {
+            onCheckoutOption(1, 'address(ship to)');
+        }
+        if($('#shipping-shipTo').length > 0) {
+            onCheckoutOption(2, 'shipping method');
+        }
+        if($('#shipping-payment').length > 0) {
+            onCheckoutOption(3, 'payment method');
+        }
+        if($('#shipping-review').length > 0) {
+            onCheckoutOption(5, 'request');
+        }
+    });
+
     // 公共方法 跳转到某页面
     function toPage($pageview) {
         $('.pageview').removeClass('active');
@@ -50,9 +65,9 @@
         $(this).addClass('active');
         //更新选择配送方式
         $.ajax({
-            url: '/checkout/selShip/' + $(this).data('type'),
-            type: 'GET',
-        })
+                url: '/checkout/selShip/' + $(this).data('type'),
+                type: 'GET',
+            })
             .done(function () {
                 if ($('#shipping-shipTo').data('ref') == 'review') {
                     window.location.href = '/checkout/review';
@@ -167,12 +182,12 @@
         openLoading();
 
         $.ajax({
-            url: '/addresses',
-            type: 'DELETE',
-            data: {
-                aid: AddressID
-            }
-        })
+                url: '/addresses',
+                type: 'DELETE',
+                data: {
+                    aid: AddressID
+                }
+            })
             .done(function () {
                 location.reload();
             })
@@ -199,9 +214,9 @@
             $('input[name="aid"]').val(Aid); // 需要提交的项
             //更新选择地址
             $.ajax({
-                url: '/checkout/selAddr/' + Aid,
-                type: 'GET',
-            })
+                    url: '/checkout/selAddr/' + Aid,
+                    type: 'GET',
+                })
 
                 .done(function (data) {
                     if (data.receiving_id == Aid) {
@@ -293,9 +308,9 @@
         } else {
             // 修改地址
             $.ajax({
-                url: '/address/' + AddressId,
-                type: 'GET'
-            })
+                    url: '/address/' + AddressId,
+                    type: 'GET'
+                })
                 .done(function (data) {
                     //初始化 修改地址 from 表单
                     $('input[name="name"]').val(data.name);
@@ -377,9 +392,9 @@
             var StateNameEn = '',
                 StateNameSn = '';
             $.ajax({
-                url: '/statelist/' + CountryId,
-                type: 'GET'
-            })
+                    url: '/statelist/' + CountryId,
+                    type: 'GET'
+                })
                 .done(function (data) {
                     // 添加选项
                     $.each(data, function (n, value) {
@@ -561,10 +576,10 @@
         if (Aid == '' || Aid == undefined) {
             // 添加地址
             $.ajax({
-                url: '/checkout/address',
-                type: 'POST',
-                data: $('#addAddressForm').serialize()
-            })
+                    url: '/checkout/address',
+                    type: 'POST',
+                    data: $('#addAddressForm').serialize()
+                })
                 .done(function (data) {
                     if (data.success) {
                         window.location.href = $('#addressFrom').data('url');
@@ -572,10 +587,10 @@
                 })
         } else {
             $.ajax({
-                url: '/updateUserAddr/' + Aid,
-                type: 'POST',
-                data: $('#addAddressForm').serialize()
-            })
+                    url: '/updateUserAddr/' + Aid,
+                    type: 'POST',
+                    data: $('#addAddressForm').serialize()
+                })
                 .done(function (data) {
                     if (data.success) {
                         window.location.href = $('#addressFrom').data('url');
@@ -602,12 +617,12 @@
         toPage($('.shipping-addCard'));
         var CountryName = $('#btn-toCountryList').data('oldcountry');
         var StateName = $('.state-info').data('oldstate');
-        if($(this).data('method')=='Oceanpay'){
-            $('#img-amex').css('display','none');
-            $('#img-jcb').css('display','none');
-        }else{
-            $('#img-amex').css('display','inline-flex');
-            $('#img-jcb').css('display','inline-flex');
+        if ($(this).data('method') == 'Oceanpay') {
+            $('#img-amex').css('display', 'none');
+            $('#img-jcb').css('display', 'none');
+        } else {
+            $('#img-amex').css('display', 'inline-flex');
+            $('#img-jcb').css('display', 'inline-flex');
         }
         // 初始化 国家,洲
         initCityState(CountryName, StateName);
@@ -621,13 +636,14 @@
     // promotion code
     $('#btn-toPromotionCode').on('click', function () {
         toPage($('.shipping-promotion'));
+        onCheckoutOption(3, 'code');
     });
 
     // 取消添加 promotion code
     $('#btn-cancelPromoCode').on('click', function () {
-        if($('#shipping-payment').data('ref')=='editcode'){
+        if ($('#shipping-payment').data('ref') == 'editcode') {
             window.location.href = '/checkout/review';
-        }else{
+        } else {
             toPage($('.shipping-payment'));
         }
     });
@@ -699,13 +715,13 @@
     $('.btn-submitAddCard').on('click', function () {
         openLoading();
         $.ajax({
-            url: '/checkout/addcard',
-            type: 'POST',
-            data: $('#card-container').serialize()
-        })
+                url: '/checkout/addcard',
+                type: 'POST',
+                data: $('#card-container').serialize()
+            })
             .done(function (data) {
                 if (data.success) {
-                    window.location.href = '/checkout/payment?from='+$('#shipping-payment').data('ref');
+                    window.location.href = '/checkout/payment?from=' + $('#shipping-payment').data('ref');
                 } else {
                     $('.warning-info').removeClass('hidden-xs-up');
                     $('.warning-info').children('span').html(data.prompt_msg);
@@ -720,9 +736,9 @@
         $('.clickPayWith').removeClass('active');
         $(this).addClass('active');
         $.ajax({
-            url: '/checkout/paywith/' + $(this).data('type') + '/' + $(this).data('card'),
-            type: 'GET',
-        })
+                url: '/checkout/paywith/' + $(this).data('type') + '/' + $(this).data('card'),
+                type: 'GET',
+            })
             .done(function () {
                 closeLoading();
             })
@@ -735,7 +751,7 @@
             setTimeout(function () {
                 closeFail()
             }, 3000);
-        }else if($('.alertMesssage').data('message')){
+        } else if ($('.alertMesssage').data('message')) {
             $('.alertMesssage').html($('.alertMesssage').data('message'));
             openFail();
             setTimeout(function () {
@@ -761,12 +777,12 @@
         openLoading();
         var clkurl = $(this).data('clkurl');
         $.ajax({
-            url: '/payorder',
-            type: 'POST',
-            data: {
-                'remark': $('textarea[name="remark"]').val()
-            }
-        })
+                url: '/payorder',
+                type: 'POST',
+                data: {
+                    'remark': $('textarea[name="remark"]').val()
+                }
+            })
             .done(function (data) {
                 //结算埋点
                 $.ajax({
@@ -846,14 +862,14 @@
     $('.bindidcode').on('click', function (e) {
         openLoading();
         $.ajax({
-            url: '/checkout/selCode/' + $(this).data('bindid'),
-            type: 'GET',
-        })
+                url: '/checkout/selCode/' + $(this).data('bindid'),
+                type: 'GET',
+            })
             .always(function () {
-                if($('#shipping-payment').data('ref')=='editcode'){
+                if ($('#shipping-payment').data('ref') == 'editcode') {
                     window.location.href = '/checkout/review';
-                }else{
-                    window.location.href = '/checkout/payment?from='+$('#shipping-payment').data('ref');
+                } else {
+                    window.location.href = '/checkout/payment?from=' + $('#shipping-payment').data('ref');
                 }
 
             });
@@ -863,23 +879,23 @@
         if (!$(this).hasClass('disabled')) {
 
             $.ajax({
-                url: '/cart/verifycoupon',
-                type: 'POST',
-                data: {
-                    couponcode: $('input[name="coupon"]').val()
-                }
-            })
+                    url: '/cart/verifycoupon',
+                    type: 'POST',
+                    data: {
+                        couponcode: $('input[name="coupon"]').val()
+                    }
+                })
                 .done(function (data) {
                     if (data.code == 0) {
                         $.ajax({
-                            url: '/checkout/selCode/' + data.data.bind_id,
-                            type: 'GET',
-                        })
+                                url: '/checkout/selCode/' + data.data.bind_id,
+                                type: 'GET',
+                            })
                             .always(function () {
-                                if($('#shipping-payment').data('ref')=='editcode'){
+                                if ($('#shipping-payment').data('ref') == 'editcode') {
                                     window.location.href = '/checkout/review';
-                                }else{
-                                    window.location.href = '/checkout/payment?from='+$('#shipping-payment').data('ref');
+                                } else {
+                                    window.location.href = '/checkout/payment?from=' + $('#shipping-payment').data('ref');
                                 }
                             });
                     } else {
@@ -913,9 +929,9 @@
     function deleteCard(CardID) {
         openLoading();
         $.ajax({
-            url: '/delcard/' + CardID,
-            type: 'POST'
-        })
+                url: '/delcard/' + CardID,
+                type: 'POST'
+            })
             .done(function () {
                 location.reload();
             })

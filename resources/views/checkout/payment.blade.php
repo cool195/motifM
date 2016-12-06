@@ -10,6 +10,18 @@
 
 </head>
 <body>
+<script type="text/javascript">
+    function onCheckoutOption(step, checkoutOption) {
+        dataLayer.push({
+            'event': 'checkoutOption',
+            'ecommerce': {
+                'checkout_option': {
+                    'actionField': {'step': step, 'option': checkoutOption}
+                }
+            }
+        });
+    }
+</script>
 @include('check.tagmanager')
 
 <!-- 外层容器 -->

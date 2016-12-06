@@ -391,7 +391,7 @@
                 <fieldset class="container-fluid p-a-15x">
                     <!-- 添加 购物车 控制按钮显示 -->
                     {{--@if(Session::has('user'))--}}
-                        <button class="btn btn-primary btn-block up-btn-addToBag"
+                        <button class="btn btn-red btn-block up-btn-addToBag"
                                 @if(!$data['sale_status'] || $data['isPutOn']==0) disabled
                                 @endif data-control="continue" data-role="continue" data-action="PATCH">Add to Bag
                         </button>

@@ -245,6 +245,15 @@
     $(function () {
         getHotSpot();
     });
+
+    $('[data-clk]').on('click',function(){
+        var $this = $(this);
+        $('#productClick-name').val($this.data('title'));
+        $('#productClick-spu').val($this.data('spu'));
+        $('#productClick-price').val($this.data('price'));
+
+        onProductClick();
+    });
 </script>
 @if($shareFlag)
     <script>
@@ -326,7 +335,6 @@
                 data: {"spu": spuStr, "callback": 'addWish'}
             });
         @endif
-
 
     </script>
 @endif

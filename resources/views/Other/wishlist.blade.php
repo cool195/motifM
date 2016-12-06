@@ -116,10 +116,10 @@
                                     <span class="font-size-xs">Sold Out</span>
                                     @{{ /if }}
                                 </div>
-                                <div class="btn btn-primary btn-block btn-md disabled">Move to Bag
+                                <div class="btn btn-red btn-block btn-md disabled">Move to Bag
                                 </div>
                                 @{{ else }}
-                                <div class="btn btn-primary btn-block btn-md btn-moveToBag"
+                                <div class="btn btn-red btn-block btn-md btn-moveToBag"
                                      data-spu="@{{ $value.spu }}">Move to Bag
                                 </div>
                                 @{{ /if }}

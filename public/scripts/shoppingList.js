@@ -199,7 +199,7 @@
             }
         }).done(function (data) {
             if (data.success) {
-                //onImpressProduct(data.data.list);
+                onImpressProduct(data.data.list);
                 if (data.data === null || data.data === '' || data.data.list.length === 0) {
                     $ProductListontainer.data('pagenum', -1);
                 } else {
@@ -246,7 +246,7 @@
                         $('#productClick-spu').val($this.data('spu'));
                         $('#productClick-price').val($this.data('price'));
 
-                        //onProductClick();
+                        onProductClick();
 
                         if (undefined !== $this.data('link')) {
                             $.ajax({

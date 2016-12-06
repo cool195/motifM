@@ -255,6 +255,16 @@
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
         }
     });
+
+    $('[data-clk]').on('click',function(){
+        var $this = $(this);
+        $('#productClick-name').val($this.data('title'));
+        $('#productClick-spu').val($this.data('spu'));
+        $('#productClick-price').val($this.data('price'));
+
+        onProductClick();
+    });
+
 </script>
 @include('global')
 </html>

@@ -90,7 +90,7 @@
          data-impr='{{ config('app.clk_url') }}/log.gif?time={{time()}}&t=page.100001&m=H5_M2016-1&pin={{Session::get('user.pin')}}&uuid={{$maidian['uuid']}}&ref=&v={"skipType":2,"skipId":"{{$designer['designer_id']}}","expid":"0","version":"1.0.1","ver":"9.2","src":"H5","utm_medium":"{{$maidian['utm_medium']}}","utm_source":"{{$maidian['utm_source']}}","mdeviceid":"{{$maidian['uuid']}}"}'>
         @include('navigator')
         {{--designerDetail 设计师详情--}}
-        <section class="reserve-height">
+        <section class="reserve-height" id="gaProductClick">
             @if(isset($designer['detailVideoPath']))
                 {{--视频--}}
                 <div class="designer-media bg-white">
@@ -326,7 +326,7 @@
                                                                         <a data-link="/detail/{{$spu}}"
                                                                            data-clk='{{ config('app.clk_url') }}/log.gif?time={{time()}}&t=designer.400001&m=H5_M2016-1&pin={{ Session::get('user.pin') }}&uuid={{Session::has('user') ? Session::get('user.uuid') : $_COOKIE['uid']}}&v={"action":1,"skipType":1,"skipId":"{{$spu}}","expid":0,"index":"{{$key}}","version":"1.0.1","ver":"9.2","src":"H5"}'
                                                                            href="javascript:void(0)"
-                                                                           data-spu="{{$spu}}">
+                                                                           data-spu="{{$spu}}" data-title="{{$product['spuInfos'][$spu]['spuBase']['main_title']}}" data-price="{{number_format($product['spuInfos'][$spu]['skuPrice']['sale_price']/100,2)}}">
                                                                             <div class="image-container">
                                                                                 <img class="img-fluid img-lazy"
                                                                                      src="{{env('CDN_Static')}}/images/product/bg-product@336.png"
@@ -393,7 +393,7 @@
                                                             <a data-link="/detail/{{$value['spu']}}"
                                                                data-clk="{{ $value['clk'] }}"
                                                                data-impr="{{ $value['impr'] }}"
-                                                               href="javascript:void(0)" data-spu="{{$value['spu']}}">
+                                                               href="javascript:void(0)" data-spu="{{$value['spu']}}" data-title="{{$value['main_title']}}" data-price="{{number_format($value['skuPrice']['sale_price']/100,2)}}">
                                                                 <div class="image-container">
                                                                     <img class="img-fluid img-lazy"
                                                                          src="{{env('CDN_Static')}}/images/product/bg-product@336.png"

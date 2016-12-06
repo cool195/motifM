@@ -52,6 +52,20 @@
         mediainit();
     });
 
+    $(document).ready(function () {
+        $('[data-clk]').click(function () {
+            var $this = $(this);
+
+            $('#productClick-name').val($this.data('title'));
+            $('#productClick-spu').val($this.data('spu'));
+            $('#productClick-price').val($this.data('price'));
+
+            if ($('#gaProductClick').length > 0) {
+                onProductClick();
+            }
+        })
+    })
+
     // 得到图片的实际尺寸比例
     function getRealImg() {
         var $Img = $('.designer-realImg');
