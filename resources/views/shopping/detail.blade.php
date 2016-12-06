@@ -66,6 +66,23 @@
         });
     }
 
+    // 商品详情
+    dataLayer.push({
+        'ecommerce': {
+            'detail': {
+                'actionField': {'list': '{{'shopping Detail_'.$data['main_title'].'_'.$data['spu']}}'},
+                'products': [{
+                    'name': '{{$data['main_title']}}',
+                    'id': '{{ $data['spu'] }}',
+                    'price': '{{ number_format(($data['skuPrice']['sale_price'] / 100), 2) }}',
+                    'brand': 'Motif',
+                    'category': '',
+                    'variant': ''
+                }]
+            }
+        }
+    });
+
     // detail 推荐商品列表 埋点
     dataLayer.push({
         'ecommerce': {
