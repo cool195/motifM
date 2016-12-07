@@ -110,7 +110,6 @@
             })
             .done(function (data) {
                 if (data.success) {
-                    console.info(data.data);
                     $('[data-wishspu="' + WishId + '"]').remove();
                 } else {
                     $('#error-info').text(data.error_msg);
@@ -190,7 +189,6 @@
                     }
                     // 遍历模板 插入页面
                     appendWishList('tpl-wishlist', data.data);
-                    console.info(data.data);
                     // 页数 +1
                     $wishContainer.data('wishpagenum', Wishpagenum);
 
@@ -248,14 +246,17 @@
     // 移动到购物车
     var skuExps;
     $('#wishContainer').on('click', '.btn-moveToBag', function () {
+
+        $('#addToCart-name').val($(this).data('name'));
+        $('#addToCart-spu').val($(this).data('spu'));
+        $('#addToCart-price').val($(this).data('price'));
+
         //openLoading();
         var ProductSpu = $(this).data('spu');
         $.ajax({
                 url: '/products/' + ProductSpu
             })
             .done(function (data) {
-                console.info(data.data);
-                console.info(data.data.vasBases);
                 var IsVasBases = false;
                 if (data.data.vasBases != '' && data.data.vasBases != undefined && data.data.vasBases != 'undefined') {
                     if (data.data.vasBases.length > 0) {
@@ -297,6 +298,7 @@
                         // 商品添加到购物车
                         addToCart(ProductSpu, sku, 1);
                     }
+                    onAddToCart();
                 }
             })
             .always(function () {
@@ -1042,7 +1044,6 @@
             }
         });
 
-        //onAddToCart();
 
         Operate.VAList = VarList;
         openLoading();

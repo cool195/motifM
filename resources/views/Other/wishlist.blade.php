@@ -11,6 +11,35 @@
 </head>
 <body>
 <input type="text" id="addToCart-sku" value="1" hidden>
+
+<!-- 添加购物车 -->
+<input type="text" id="addToCart-name" value="name" hidden>
+<input type="text" id="addToCart-spu" value="1" hidden>
+<input type="text" id="addToCart-price" value="1" hidden>
+<script type="text/javascript">
+    function onAddToCart() {
+        var name = document.getElementById('addToCart-name').value;
+        var spu = document.getElementById('addToCart-spu').value;
+        var price = document.getElementById('addToCart-price').value;
+        dataLayer.push({
+            'event': 'wishAddToCart',
+            'ecommerce': {
+                'currencyCode': 'EUR',
+                'add': {
+                    'products': [{
+                        'name': name,
+                        'id': spu,
+                        'price': price,
+                        'brand': 'Motif',
+                        'category': '',
+                        'variant': '',
+                        'quantity': 1
+                    }]
+                }
+            }
+        });
+    }
+</script>
 @include('check.tagmanager')
 <!-- 外层容器 -->
 <div id="body-content">
@@ -120,7 +149,7 @@
                                 </div>
                                 @{{ else }}
                                 <div class="btn btn-red btn-block btn-md btn-moveToBag"
-                                     data-spu="@{{ $value.spu }}">Move to Bag
+                                     data-spu="@{{ $value.spu }}" data-name="@{{ $value.main_title }}" data-price="@{{ ($value.skuPrice.sale_price/100).toFixed(2) }}">Move to Bag
                                 </div>
                                 @{{ /if }}
                             </div>
