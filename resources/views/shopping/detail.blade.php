@@ -84,29 +84,29 @@
     });
 
     // detail 推荐商品列表 埋点
-    dataLayer.push({
-        'ecommerce': {
-            'currencyCode': 'EUR',                       // Local currency is optional.
-            'impressions': [
-                    @if(isset($recommended['list']))
-                    @foreach($recommended['list'] as $key => $value)
-                    @if($key < 20)
-                {
-                    'name': '{{ $value['main_title'] }}',       // Name or ID is required.
-                    'id': '{{ $value['spu'] }}',
-                    'price': '{{ number_format(($value['skuPrice']['sale_price'] / 100), 2) }}',
-                    'brand': 'Motif',
-                    'category': '',
-                    'variant': '',
-                    'list': '{{'shopping Detail_'.$data['main_title'].'_'.$data['spu']}}',
-                    'position': ''
-                },
-                @endif
-                @endforeach
-                @endif
-            ]
-        }
-    });
+    {{--dataLayer.push({--}}
+        {{--'ecommerce': {--}}
+            {{--'currencyCode': 'EUR',                       // Local currency is optional.--}}
+            {{--'impressions': [--}}
+                    {{--@if(isset($recommended['list']))--}}
+                    {{--@foreach($recommended['list'] as $key => $value)--}}
+                    {{--@if($key < 20)--}}
+                {{--{--}}
+                    {{--'name': '{{ $value['main_title'] }}',       // Name or ID is required.--}}
+                    {{--'id': '{{ $value['spu'] }}',--}}
+                    {{--'price': '{{ number_format(($value['skuPrice']['sale_price'] / 100), 2) }}',--}}
+                    {{--'brand': 'Motif',--}}
+                    {{--'category': '',--}}
+                    {{--'variant': '',--}}
+                    {{--'list': '{{'shopping Detail_'.$data['main_title'].'_'.$data['spu']}}',--}}
+                    {{--'position': ''--}}
+                {{--},--}}
+                {{--@endif--}}
+                {{--@endforeach--}}
+                {{--@endif--}}
+            {{--]--}}
+        {{--}--}}
+    {{--});--}}
     var content_name = '{{$data['main_title']}}';
     var content_category = '{{ $data['category_name'] }}';
     var content_ids = ['{{$data['spu']}}'];
