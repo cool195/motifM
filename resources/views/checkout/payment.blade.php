@@ -333,8 +333,12 @@
                         </div>
                     </div>
 
+                    @if(Session::get('user.checkout.couponInfo.bind_id'))
+                        <p class="m-b-5x p-x-10x font-size-sm text-red">You also have the following coupons.</p>
+                    @endif
+
                     <!-- 优惠券列表 -->
-                    <div class="p-a-15x">
+                    <div class="p-x-15x p-b-15x">
                         @foreach($coupon['list'] as $value)
                             <div class="promotion-item @if($value['usable']){{'bindidcode'}}@endif"
                                  data-bindid="{{$value['bind_id']}}">
