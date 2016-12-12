@@ -161,13 +161,15 @@
                                                                         <img class="img-fluid preloader"
                                                                              src="{{env('CDN_Static')}}/images/product/bg-product@336.png" alt="">
                                                                     </div>
-                                                                    <!-- 循环图片 begin -->
-                                                                    <div class="swiper-slide">
-                                                                        <img class="img-fluid img-lazy"
-                                                                             src="{{env('APP_Api_Image')}}/n2/{{$topic['spuInfos'][$spu]['spuBase']['main_image_url']}}"
-                                                                             alt="">
-                                                                    </div>
-                                                                    <!-- 循环图片 begin -->
+                                                                    {{--循环图片 begin--}}
+                                                                    @foreach($topic['spuInfos'][$spu]['image_paths'] as $swiperImage)
+                                                                        <div class="swiper-slide">
+                                                                            <img class="img-fluid img-lazy"
+                                                                                 src="{{env('APP_Api_Image')}}/n2/{{$swiperImage}}"
+                                                                                 alt="">
+                                                                        </div>
+                                                                    @endforeach
+                                                                    {{--循环图片 begin--}}
                                                                 </div>
                                                                 <div class="swiper-pagination"></div>
                                                             </div>
