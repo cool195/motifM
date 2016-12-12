@@ -180,7 +180,6 @@
                                                         <div class="swiper-pagination"></div>
                                                     </div>
                                                     @if(1 == $topic['spuInfos'][$spu]['spuBase']['sale_type'])
-                                                        预售产品 预定信息
                                                         <span class="preorder-info font-size-xs">Limited Edition</span>
                                                     @endif
                                                 </div>
