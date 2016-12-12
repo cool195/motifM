@@ -140,16 +140,43 @@
                                                 <div class="topic-product-item productList-item">
                                                     <a data-clk='{{ config('app.clk_url') }}/log.gif?time={{time()}}&t=daily.200001&m=H5_M2016-1&pin={{Session::get('user.pin')}}&uuid={{Session::has('user') ? Session::get('user.uuid') : $_COOKIE['uid']}}&v={"action":1,"skipType":1,"skipId":"{{$spu}}","topicId":"{{$topicID}}","expid":0,"ver":"1.0.1","src":"H5"}'
                                                        data-link="motif://o.c?from=topic_detail&from_id={{$topicID}}&a=pd&spu={{$spu}}" href="javascript:void(0)" data-spu="{{$spu}}" data-title="{{$topic['spuInfos'][$spu]['spuBase']['main_title']}}" data-price="{{number_format($topic['spuInfos'][$spu]['skuPrice']['sale_price']/100,2)}}">
-                                                        <div class="image-container">
-                                                            <img class="img-fluid img-lazy"
-                                                                 data-original="{{env('APP_Api_Image')}}/n2/{{$topic['spuInfos'][$spu]['spuBase']['main_image_url']}}"
-                                                                 src="{{env('CDN_Static')}}/images/product/bg-product@336.png"
-                                                                 alt="{{$topic['spuInfos'][$spu]['spuBase']['main_title']}}">
-                                                            @if(1 == $topic['spuInfos'][$spu]['spuBase']['sale_type'])
+                                                        {{--<div class="image-container">--}}
+                                                            {{--<img class="img-fluid img-lazy"--}}
+                                                                 {{--data-original="{{env('APP_Api_Image')}}/n2/{{$topic['spuInfos'][$spu]['spuBase']['main_image_url']}}"--}}
+                                                                 {{--src="{{env('CDN_Static')}}/images/product/bg-product@336.png"--}}
+                                                                 {{--alt="{{$topic['spuInfos'][$spu]['spuBase']['main_title']}}">--}}
+                                                            {{--@if(1 == $topic['spuInfos'][$spu]['spuBase']['sale_type'])--}}
                                                                 {{--预售产品 预定信息--}}
+                                                                {{--<span class="preorder-info font-size-xs">Limited Edition</span>--}}
+                                                            {{--@endif--}}
+                                                        {{--</div>--}}
+
+                                                        <div class="image-container">
+                                                            <div class="swiper-container productList-swiper">
+                                                                <div class="swiper-wrapper">
+                                                                    <div class="swiper-slide">
+                                                                        <img class="img-fluid swiper-lazy"
+                                                                             data-src="{{env('APP_Api_Image')}}/n2/{{$topic['spuInfos'][$spu]['spuBase']['main_image_url']}}"
+                                                                             alt="">
+                                                                        <img class="img-fluid preloader"
+                                                                             src="{{env('CDN_Static')}}/images/product/bg-product@336.png" alt="">
+                                                                    </div>
+                                                                    <!-- 循环图片 begin -->
+                                                                    <div class="swiper-slide">
+                                                                        <img class="img-fluid img-lazy"
+                                                                             src="{{env('APP_Api_Image')}}/n2/{{$topic['spuInfos'][$spu]['spuBase']['main_image_url']}}"
+                                                                             alt="">
+                                                                    </div>
+                                                                    <!-- 循环图片 begin -->
+                                                                </div>
+                                                                <div class="swiper-pagination"></div>
+                                                            </div>
+                                                            @if(1 == $topic['spuInfos'][$spu]['spuBase']['sale_type'])
+                                                                预售产品 预定信息
                                                                 <span class="preorder-info font-size-xs">Limited Edition</span>
                                                             @endif
                                                         </div>
+
                                                     </a>
                                                     <div class="font-size-sm product-title text-main">
                                                         {{$topic['spuInfos'][$spu]['spuBase']['main_title']}}
@@ -194,6 +221,21 @@
             threshold: 200,
             effect: 'fadeIn'
         });
+    });
+
+    // swiper
+    var swiper = new Swiper('.swiper-container', {
+        pagination: '.swiper-pagination',
+        paginationClickable: true,
+        paginationType: 'bullets',
+        lazyLoading: true,
+        lazyLoadingInPrevNext: true,
+        onSlideChangeStart: function (swiper) {
+            $(swiper.bullets).css('opacity', '0.6');
+            setTimeout(function () {
+                $(swiper.bullets).css('opacity', '0');
+            }, 2000);
+        },
     });
 
     // 锚点图
