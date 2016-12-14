@@ -16,4 +16,5 @@
             f.parentNode.insertBefore(j, f);
         })(window, document, 'script', 'dataLayer', 'GTM-M54JN5');</script>
     {{--End Google Tag Manager--}}
+    ga('set', 'userId', "{{$_COOKIE['uid']}}");
 @endif
