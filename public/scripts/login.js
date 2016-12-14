@@ -169,6 +169,11 @@
             $(this).siblings('.login-title').removeClass('active');
         }
     });
-
+    $('.login-title').on('click',function(){
+        if(!$(this).hasClass('active')){
+            $(this).addClass('active');
+            $(this).siblings('.input-login').focus();
+        }
+    });
 })(jQuery);
 

@@ -128,6 +128,21 @@
             effect: 'fadeIn'
         });
 
+        // swiper
+        var swiper = new Swiper('.swiper-container', {
+            pagination: '.swiper-pagination',
+            paginationClickable: true,
+            paginationType: 'bullets',
+            lazyLoading: true,
+            lazyLoadingInPrevNext: true,
+            onSlideChangeStart: function (swiper) {
+                $(swiper.bullets).css('opacity', '0.6');
+                setTimeout(function () {
+                    $(swiper.bullets).css('opacity', '0');
+                }, 2000);
+            },
+        });
+
         if ($('.message-info').children('p').height() <= 144) {
             $('.btn-showMore').hide();
         }

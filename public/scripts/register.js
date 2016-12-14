@@ -185,4 +185,10 @@
             $(this).siblings('.register-title').removeClass('active');
         }
     });
+    $('.register-title').on('click',function(){
+        if(!$(this).hasClass('active')){
+            $(this).addClass('active');
+            $(this).siblings('.input-register').focus();
+        }
+    });
 })(jQuery);

@@ -328,16 +328,39 @@
                                                                            href="javascript:void(0)"
                                                                            data-spu="{{$spu}}" data-title="{{$product['spuInfos'][$spu]['spuBase']['main_title']}}" data-price="{{number_format($product['spuInfos'][$spu]['skuPrice']['sale_price']/100,2)}}">
                                                                             <div class="image-container">
-                                                                                <img class="img-fluid img-lazy"
-                                                                                     src="{{env('CDN_Static')}}/images/product/bg-product@336.png"
-                                                                                     data-original="{{env('APP_Api_Image')}}/n2/{{$product['spuInfos'][$spu]['spuBase']['main_image_url']}}"
-                                                                                     alt="{{$product['spuInfos'][$spu]['spuBase']['main_title']}}">
+                                                                                {{--<img class="img-fluid img-lazy"--}}
+                                                                                     {{--src="{{env('CDN_Static')}}/images/product/bg-product@336.png"--}}
+                                                                                     {{--data-original="{{env('APP_Api_Image')}}/n2/{{$product['spuInfos'][$spu]['spuBase']['main_image_url']}}"--}}
+                                                                                     {{--alt="{{$product['spuInfos'][$spu]['spuBase']['main_title']}}">--}}
+
+                                                                                <div class="swiper-container productList-swiper">
+                                                                                    <div class="swiper-wrapper">
+                                                                                        <div class="swiper-slide">
+                                                                                            <img class="img-fluid swiper-lazy"
+                                                                                                 data-src="{{env('APP_Api_Image')}}/n2/{{$product['spuInfos'][$spu]['spuBase']['main_image_url']}}"
+                                                                                                 alt="">
+                                                                                            <img class="img-fluid preloader"
+                                                                                                 src="{{env('CDN_Static')}}/images/product/bg-product@336.png" alt="">
+                                                                                        </div>
+                                                                                        {{--循环图片 begin--}}
+                                                                                        @foreach($product['spuInfos'][$spu]['image_paths'] as $swiperImage)
+                                                                                            <div class="swiper-slide">
+                                                                                                <img class="img-fluid img-lazy"
+                                                                                                     src="{{env('APP_Api_Image')}}/n2/{{$swiperImage}}"
+                                                                                                     alt="">
+                                                                                            </div>
+                                                                                        @endforeach
+                                                                                        {{--循环图片 begin--}}
+                                                                                    </div>
+                                                                                    <div class="swiper-pagination"></div>
+                                                                                </div>
+
                                                                                 @if(1 == $product['spuInfos'][$spu]['spuBase']['sale_type'])
                                                                                     @if($product['spuInfos'][$spu]['stockStatus']=='NO' || $product['spuInfos'][$spu]['spuBase']['isPutOn']==0)
                                                                                         <a data-link="/detail/{{$spu}}"
                                                                                            data-clk='{{ config('app.clk_url') }}/log.gif?time={{time()}}&t=designer.400001&m=H5_M2016-1&pin={{ Session::get('user.pin') }}&uuid={{Session::has('user') ? Session::get('user.uuid') : $_COOKIE['uid']}}&v={"action":1,"skipType":1,"skipId":"{{$spu}}","expid":0,"index":"{{$key}}","version":"1.0.1","ver":"9.2","src":"H5"}'
                                                                                            href="javascript:void(0)">
-                                                                                            <div class="preorderSold-info">
+                                                                                            <div class="preorderSold-info" style="z-index: 100">
                                                                                                 <span class="font-size-xs">SOLD OUT</span>
                                                                                             </div>
                                                                                         </a>
@@ -395,10 +418,34 @@
                                                                data-impr="{{ $value['impr'] }}"
                                                                href="javascript:void(0)" data-spu="{{$value['spu']}}" data-title="{{$value['main_title']}}" data-price="{{number_format($value['skuPrice']['sale_price']/100,2)}}">
                                                                 <div class="image-container">
-                                                                    <img class="img-fluid img-lazy"
-                                                                         src="{{env('CDN_Static')}}/images/product/bg-product@336.png"
-                                                                         data-original="{{env('APP_Api_Image')}}/n2/{{$value['main_image_url']}}"
-                                                                         alt="{{$value['main_title']}}">
+                                                                    {{--<img class="img-fluid img-lazy"--}}
+                                                                         {{--src="{{env('CDN_Static')}}/images/product/bg-product@336.png"--}}
+                                                                         {{--data-original="{{env('APP_Api_Image')}}/n2/{{$value['main_image_url']}}"--}}
+                                                                         {{--alt="{{$value['main_title']}}">--}}
+
+                                                                    <div class="swiper-container productList-swiper">
+                                                                        <div class="swiper-wrapper">
+                                                                            <div class="swiper-slide">
+                                                                                <img class="img-fluid swiper-lazy"
+                                                                                     data-src="{{env('APP_Api_Image')}}/n2/{{$value['main_image_url']}}"
+                                                                                     alt="">
+                                                                                <img class="img-fluid preloader"
+                                                                                     src="{{env('CDN_Static')}}/images/product/bg-product@336.png" alt="">
+                                                                            </div>
+                                                                            {{--循环图片 begin--}}
+                                                                            @foreach($value['image_paths'] as $swiperImage)
+                                                                                <div class="swiper-slide">
+                                                                                    <img class="img-fluid img-lazy"
+                                                                                         src="{{env('APP_Api_Image')}}/n2/{{$swiperImage}}"
+                                                                                         alt="">
+                                                                                </div>
+                                                                            @endforeach
+                                                                            {{--循环图片 begin--}}
+                                                                        </div>
+                                                                        <div class="swiper-pagination"></div>
+                                                                    </div>
+
+
                                                                     @if(1 == $value['sale_type'])
                                                                         {{--预售产品 预定信息--}}
                                                                         <span class="preorder-info font-size-xs">Limited Edition</span>
