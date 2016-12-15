@@ -5,6 +5,7 @@
     } else{
         $clk_url = '//clk.motif.me';
     }
+
 return [
 
     /*
@@ -18,7 +19,7 @@ return [
     |
     */
 
-    'version' => '2.0',
+    'version' => 'v'.time(),
     'key' => env('APP_KEY', 'SomeRandomString!!!'),
 
     'cipher' => 'AES-256-CBC',
