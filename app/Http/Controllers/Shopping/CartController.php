@@ -335,19 +335,31 @@ class CartController extends ApiController
      * */
     public function getCartList(Request $request)
     {
-        $params = array(
-            'cmd' => "cartlist",
-            'token' => Session::get('user.token'),
-            'pin' => Session::get('user.pin'),
-        );
-        $system = "";
-        $service = "cart";
-        $result = $this->request('openapi', $system, $service, $params);
-        if (empty($result)) {
-            $result['success'] = false;
-            $result['error_msg'] = "Data access failed";
-            $result['data'] = array();
+        if(Session::get('user.token')){
+            $params = array(
+                'cmd' => "cartlist",
+                'token' => Session::get('user.token'),
+                'pin' => Session::get('user.pin'),
+            );
+            $system = "";
+            $service = "cart";
+            $result = $this->request('openapi', $system, $service, $params);
+            if (empty($result)) {
+                $result['success'] = false;
+                $result['error_msg'] = "Data access failed";
+                $result['data'] = array();
+            }
+        }else{
+            $cartCache = Cache::get('CartCache' . $_COOKIE['uid']);
+            $params = array(
+                'cmd' => 'cartinfo',
+                'token' => 'eeec7a32dcb6115abfe4a871c6b08b47',
+                'operate' => json_encode($cartCache)
+            );
+
+            $result = $this->request('openapi', '', 'cart', $params);
         }
+
         return $result;
     }
 
