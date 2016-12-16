@@ -1,5 +1,5 @@
 <header class="navbar-fixed-top" id="header">
-    <nav class="navbar navbar-full bg-primary">
+    <nav class="navbar navbar-full">
         <ul class="nav navbar-primary nav-top">
             <li class="nav-item nav-logo">
                 <a  href="/daily">
@@ -32,7 +32,7 @@
     </nav>
     @if($NavShowDaily || $NavShowDesigner || $NavShowShop)
         <hr class="hr-dark m-a-0">
-        <nav class="navbar navbar-full bg-primary">
+        <nav class="navbar navbar-full">
             <ul class="nav navbar-primary nav-top p-y-10x font-size-sm text-center nav-menuList">
                 <li class="nav-item col-xs-4">
                     <a href="/daily" @if($NavShowDaily) class="active" @endif>DAILY</a>
@@ -47,3 +47,4 @@
         </nav>
     @endif
 </header>
+
