@@ -864,6 +864,12 @@
                             closeAddSuccess();
                         }, 1500);
                     }
+
+                    initHeaderBag();
+                    $('.header-shoppingBag').addClass('active');
+                    setTimeout(function () {
+                        $('.header-shoppingBag').removeClass('active');
+                    }, 1500);
                 } else {
                     //$('.warning-info').removeClass('off');
                     //$('.warning-info').children('span').text(data.error_msg);
@@ -878,6 +884,38 @@
                 closeLoading();
             });
 
+    }
+
+    // 头部购物车 获取数据
+    function initHeaderBag() {
+        $.ajax({
+                url: '/cart/list'
+            })
+            .done(function (data) {
+                appendHeaderBagList(data.data);
+
+                var BagPrice=(data.data.total_amount/100).toFixed(2),
+                    BagItem=data.data.total_sku_qtty;
+                $('#headerBag-subTotal').html(BagPrice);
+                $('#itemNum').html(BagItem);
+            })
+    }
+
+    function appendHeaderBagList(BagList) {
+        var TplHtml = template('tpl-headerBag', BagList);
+        var StageCache = $.parseHTML(TplHtml);
+        $('.headerBag-list').html(StageCache);
+
+        // 图片延迟加载
+        $('img.img-lazy').lazyload({
+            threshold: 200,
+            container: $('.headerBag-list'),
+            effect: 'fadeIn'
+        });
+
+        if($('.headerCartList').length <=0){
+            $('.headerBag-list').html('<div class="text-center">Your bag is empty. Fill it up</div>')
+        }
     }
 
     // 添加购物车 购买商品
