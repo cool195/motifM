@@ -6153,3 +6153,8 @@ footer .links-group {
 .pull-right{
     float: right;
 }
+
+#header{
+    background: url(../images/background/bg-christmas.png) no-repeat top;
+    background-size: cover;
+}
