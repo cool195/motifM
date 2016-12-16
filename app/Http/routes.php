@@ -40,7 +40,7 @@ $app->group(['middleware' => 'pcguide', 'namespace' => 'App\Http\Controllers'], 
     $app->post('/cart/operate', 'Shopping\CartController@operateCartProduct');
     $app->post('/cart/alterQtty', 'Shopping\CartController@alterCartProQtty');
     $app->get('/cart/amount', 'Shopping\CartController@getCartAmount');
-    $app->get('/cart/list', 'CartController@getCartList');
+    $app->get('/cart/list', 'Shopping\CartController@getCartList');
 });
 
 
