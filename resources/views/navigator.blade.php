@@ -46,20 +46,20 @@
             </ul>
         </nav>
     @endif
-</header>
-
-<!-- 购物车列表 -->
-<div class="header-shoppingBag bg-white">
-    <section class="cartList bg-white headerBag-list">
-    </section>
-    <hr class="hr-base m-b-0">
-    <section class="shoppingBag-price bg-white p-a-10x">
-        <div class="flex flex-fullJustified text-primary font-size-sm">
-            <span class="p-r-5x text-left"><strong>Bag Subtotal: </strong></span><span class="text-right"><strong id="headerBag-subTotal"></strong></span>
+            
+        <!-- 购物车列表 -->
+        <div class="header-shoppingBag bg-white">
+            <section class="cartList bg-white headerBag-list">
+            </section>
+            <hr class="hr-base m-b-0">
+            <section class="shoppingBag-price bg-white p-a-10x">
+                <div class="flex flex-fullJustified text-primary font-size-sm">
+                    <span class="p-r-5x text-left"><strong>Bag Subtotal: </strong></span><span class="text-right"><strong id="headerBag-subTotal"></strong></span>
+                </div>
+                <a href="/cart" class="btn btn-red btn-block m-y-5x">View Shopping Bag(<span id="itemNum"></span> items)</a>
+            </section>
         </div>
-        <a href="/cart" class="btn btn-red btn-block m-y-5x">View Shopping Bag(<span id="itemNum"></span> items)</a>
-    </section>
-</div>
+</header>
 
 <template id="tpl-headerBag">
     @{{ each showSkus }}
