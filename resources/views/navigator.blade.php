@@ -1,4 +1,4 @@
-<header class="navbar-fixed-top" id="header">
+<header class="navbar-fixed-top detail-header" id="header">
     <nav class="navbar navbar-full">
         <ul class="nav navbar-primary nav-top">
             <li class="nav-item nav-logo">
@@ -46,7 +46,7 @@
             </ul>
         </nav>
     @endif
-            
+
         <!-- 购物车列表 -->
         <div class="header-shoppingBag bg-white">
             <section class="cartList bg-white headerBag-list">
