@@ -425,10 +425,11 @@
             <!-- 产品 其他信息 -->
             <section>
                 <!-- 包邮提示 -->
-                <aside class="p-a-15x">
-                    <div class="font-size-sm text-primary">Free expedited shipping for $79+ US orders</div>
+                <aside class="p-x-15x p-y-5x bg-free">
+                    <div class="font-size-sm text-white text-center">
+                        <img src="/images/icon/icon-car.png" srcset="/images/icon/icon-car@2x.png 2x,/images/icon/icon-car@3x.png 3x">
+                        <span class="p-l-5x">Free expedited shipping for $79+ US orders.</span></div>
                 </aside>
-                <div class="hr-between"></div>
 
                 <!-- 产品描述 -->
                 <aside class="bg-white p-x-15x p-y-10x">
