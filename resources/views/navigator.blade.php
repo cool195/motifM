@@ -8,7 +8,7 @@
             </li>
             <li class="nav-item nav-hamburger">
                 <div class="nav-icon">
-                    <i class="nav-tap iconfont icon-hamburger icon-size-lg" id="nav-menu-control"></i>
+                    <i class="nav-tap iconfont icon-hamburger icon-size-lg text-white" id="nav-menu-control"></i>
                 </div>
             </li>
             @if(!isset($pageScope))
