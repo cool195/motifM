@@ -16554,10 +16554,10 @@ else if (typeof define === 'function' && define.amd) {
     }
 
     // 导航条自动隐藏
-    var isDetailUnpinned = 'slideOutUp';
-    if($('#detailImg-swiper').length > 0){
-        isDetailUnpinned = 'slideInDown';
-    }
+    //var isDetailUnpinned = 'slideOutUp';
+    //if($('#detailImg-swiper').length > 0){
+    //    isDetailUnpinned = 'slideInDown';
+    //}
     $('#header').headroom({
         'tolerance': .5,
         'offset': 44,
@@ -16575,7 +16575,7 @@ else if (typeof define === 'function' && define.amd) {
             // when scrolling up
             pinned: 'slideInDown',
             // when scrolling down
-            unpinned: isDetailUnpinned
+            unpinned: 'slideInDown'
         }
     });
     // 汉堡菜单打开
