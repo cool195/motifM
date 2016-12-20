@@ -16554,6 +16554,10 @@ else if (typeof define === 'function' && define.amd) {
     }
 
     // 导航条自动隐藏
+    var isDetailUnpinned = 'slideOutUp';
+    if($('#detailImg-swiper').length > 0){
+        isDetailUnpinned = 'slideInDown';
+    }
     $('#header').headroom({
         'tolerance': .5,
         'offset': 44,
@@ -16571,7 +16575,7 @@ else if (typeof define === 'function' && define.amd) {
             // when scrolling up
             pinned: 'slideInDown',
             // when scrolling down
-            unpinned: 'slideOutUp'
+            unpinned: isDetailUnpinned
         }
     });
     // 汉堡菜单打开
@@ -16676,6 +16680,47 @@ else if (typeof define === 'function' && define.amd) {
         $('#allDownload-container').remove();
     });
     // 关闭广告 end
+
+    $('.head-cart').on('click',function(){
+        if($('.header-shoppingBag').hasClass('active')){
+            $('.header-shoppingBag').removeClass('active');
+        } else {
+            $('.header-shoppingBag').addClass('active');
+            initHeaderBag();
+        }
+    });
+
+    // 获取购物车数据
+    function initHeaderBag() {
+        $.ajax({
+                url: '/cart/list'
+            })
+            .done(function (data) {
+                appendHeaderBagList(data.data);
+
+                var BagPrice=(data.data.total_amount/100).toFixed(2),
+                    BagItem=data.data.total_sku_qtty;
+                $('#headerBag-subTotal').html(BagPrice === 'NaN' ? '0' : BagPrice);
+                $('#itemNum').html(BagItem);
+            })
+    }
+
+    function appendHeaderBagList(BagList) {
+        var TplHtml = template('tpl-headerBag', BagList);
+        var StageCache = $.parseHTML(TplHtml);
+        $('.headerBag-list').html(StageCache);
+
+        // 图片延迟加载
+        $('img.img-lazy').lazyload({
+            threshold: 200,
+            container: $('.headerBag-list'),
+            effect: 'fadeIn'
+        });
+
+        if($('.headerCartList').length <=0){
+            $('.headerBag-list').html('<div class="text-center text-primary font-size-sm p-y-15x"><strong>Your bag is empty. Fill it up</strong></div>');
+        }
+    }
 
 })(jQuery);
 

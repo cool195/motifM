@@ -6154,6 +6154,41 @@ footer .links-group {
     float: right;
 }
 
+.header-shoppingBag{
+    position: absolute;
+    width: 80%;
+    right: .875rem;
+    box-shadow: 0 0 8px rgba(0,0,0,.5);
+    z-index: 1999;
+    top: 44px;
+    display: none;
+}
+.header-shoppingBag.active{
+    display: block;
+}
+
+.headerBag-list{
+    max-height: 240px;
+    overflow: scroll;
+}
+
+.cartList-item + .cartList-item {
+  border-top: 1px solid #e2e5ed;
+}
+
+.cartList-item.disabled .productInfo {
+  position: relative;
+}
+
+.cartList-item.disabled .productInfo .mask {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(255, 255, 255, 0.5);
+}
+
 #header{
     background: url(../images/background/bg-christmas.png) no-repeat top;
     background-size: cover;

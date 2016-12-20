@@ -408,6 +408,7 @@
                 <fieldset class="container-fluid p-a-15x">
                     <!-- 添加 购物车 控制按钮显示 -->
                     {{--@if(Session::has('user'))--}}
+                    <div class="text-center m-b-5x font-size-sm">This item is available for immediate shipping</div>
                         <button class="btn btn-red btn-block up-btn-addToBag"
                                 @if(!$data['sale_status'] || $data['isPutOn']==0) disabled
                                 @endif data-control="continue" data-role="continue" data-action="PATCH">Add to Bag
@@ -423,6 +424,13 @@
 
             <!-- 产品 其他信息 -->
             <section>
+                <!-- 包邮提示 -->
+                <aside class="p-x-15x p-y-5x bg-free">
+                    <div class="font-size-sm text-white text-center">
+                        <img src="/images/icon/icon-car.png" srcset="/images/icon/icon-car@2x.png 2x,/images/icon/icon-car@3x.png 3x">
+                        <span class="p-l-5x">Free expedited shipping for $79+ US orders.</span></div>
+                </aside>
+
                 <!-- 产品描述 -->
                 <aside class="bg-white p-x-15x p-y-10x">
                     <p class="font-size-md text-main"><strong>Description</strong></p>

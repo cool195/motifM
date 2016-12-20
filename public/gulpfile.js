@@ -57,6 +57,6 @@ gulp.task('jstwo', function() {
 
 // 默认任务
 gulp.task('default', function(){
-    gulp.start('css');
+    gulp.start('css','js','img');
     //gulp.start('js','jstwo','css','img','imgfile');
 });
