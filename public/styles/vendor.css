@@ -5793,15 +5793,15 @@ footer .links-group {
 
 .nav-shoppingCart .shoppingCart-number {
   position: absolute;
-  height: 12px;
-  min-width: 12px;
+  height: 13px;
+  min-width: 13px;
   font-size: 0.5rem;
   bottom: 0.5rem;
   right: 0.2rem;
   padding-left: 3px;
   padding-right: 3px;
-  background-color: #fff;
-  color: #171a2b;
+  background-color: #ff2dff;
+  color: #fff;
   border-radius: 6px;
   display: -webkit-box;
   display: -ms-flexbox;
