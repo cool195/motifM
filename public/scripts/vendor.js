@@ -16685,26 +16685,30 @@ else if (typeof define === 'function' && define.amd) {
         if($('.header-shoppingBag').hasClass('active')){
             $('.header-shoppingBag').removeClass('active');
         } else {
-            $('.header-shoppingBag').addClass('active');
             initHeaderBag();
+            $('.header-shoppingBag').addClass('active');
         }
     });
 
     // 获取购物车数据
     function initHeaderBag() {
+        if($('.shoppingCart-number').html() === '0'){
+            $('.headerBag-list').html('<div class="text-center text-primary font-size-sm p-y-15x"><strong>Your bag is empty. Fill it up</strong></div>');
+            $('#headerBag-subTotal').html('0');
+        }
         $.ajax({
                 url: '/cart/list'
             })
             .done(function (data) {
-                appendHeaderBagList(data.data);
-
-                var BagPrice=(data.data.total_amount/100).toFixed(2),
-                    BagItem=data.data.total_sku_qtty;
-                $('#headerBag-subTotal').html(BagPrice === 'NaN' ? '0' : BagPrice);
-                $('#itemNum').html(BagItem);
+                if(data.data != ''){
+                    appendHeaderBagList(data.data);
+                    var BagPrice=(data.data.total_amount/100).toFixed(2),
+                        BagItem=data.data.total_sku_qtty;
+                    $('#headerBag-subTotal').html(BagPrice === 'NaN' ? '0' : BagPrice);
+                    $('#itemNum').html(BagItem);
+                }
             })
     }
-
     function appendHeaderBagList(BagList) {
         var TplHtml = template('tpl-headerBag', BagList);
         var StageCache = $.parseHTML(TplHtml);
@@ -16717,9 +16721,9 @@ else if (typeof define === 'function' && define.amd) {
             effect: 'fadeIn'
         });
 
-        if($('.headerCartList').length <=0){
-            $('.headerBag-list').html('<div class="text-center text-primary font-size-sm p-y-15x"><strong>Your bag is empty. Fill it up</strong></div>');
-        }
+        //if($('.headerCartList').length <=0){
+        //    $('.headerBag-list').html('<div class="text-center text-primary font-size-sm p-y-15x"><strong>Your bag is empty. Fill it up</strong></div>');
+        //}
     }
 
 })(jQuery);
