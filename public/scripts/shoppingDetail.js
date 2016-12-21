@@ -869,7 +869,7 @@
                     $('.header-shoppingBag').addClass('active');
                     setTimeout(function () {
                         $('.header-shoppingBag').removeClass('active');
-                    }, 1500);
+                    },3000);
                 } else {
                     //$('.warning-info').removeClass('off');
                     //$('.warning-info').children('span').text(data.error_msg);
