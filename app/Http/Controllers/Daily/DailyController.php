@@ -12,6 +12,9 @@ class DailyController extends ApiController
     //Daily首页列表
     public function index(Request $request)
     {
+        if (strstr($_SERVER['HTTP_USER_AGENT'], 'motif-android') || strstr($_SERVER['HTTP_USER_AGENT'], 'motif-ios')){
+            return redirect('motif://o.c?a=daily');
+        }
         $params = array(
             'cmd' => $request->input('cmd'),
             'token' => Session::get('user.token'),
