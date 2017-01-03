@@ -9,6 +9,11 @@ use App\Services\Publicfun;
 
 class DailyController extends ApiController
 {
+
+    public function home(Request $request)
+    {
+        return redirect('/');
+    }
     //Daily首页列表
     public function index(Request $request)
     {
