@@ -9,6 +9,31 @@ use App\Services\Publicfun;
 
 class DailyController extends ApiController
 {
+
+    public function home(Request $request)
+    {
+        if (strstr($_SERVER['HTTP_USER_AGENT'], 'motif-android') || strstr($_SERVER['HTTP_USER_AGENT'], 'motif-ios')){
+            return redirect('motif://o.c?a=daily');
+        }
+        $params = array(
+            'cmd' => $request->input('cmd'),
+            'token' => Session::get('user.token'),
+            'pagesize' => $request->input('pagesize', 10),
+            'pagenum' => $request->input('pagenum', 1),
+            'puton' => $request->input('puton', 1),
+        );
+        if (empty($params['cmd'])) {
+            return redirect('/');
+        } else {
+            $result = $this->request('openapi', '', 'daily', $params);
+            if (empty($result)) {
+                $result['success'] = false;
+                $result['error_msg'] = "Data access failed";
+                $result['data']['list'] = array();
+            }
+            return $result;
+        }
+    }
     //Daily首页列表
     public function index(Request $request)
     {

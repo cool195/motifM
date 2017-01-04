@@ -1,6 +1,6 @@
 <meta charset="UTF-8">
-<meta name="keywords" content="fashion,style,shop,accessory,jewelry,watch,blogger,Instagram,designer,limited,edition,ecommerce,buy">
-<meta name="description" content="Your style is unique and cutting edge - your fashion should be too.Exclusive, limited edition accessories designed by the world’s top fashion bloggers, Instagrammers and digital influencers.">
+<meta name="keywords" content="Motif | fashion,style,shop,accessory,jewelry,watch,blogger,Instagram,designer,limited,edition,ecommerce,buy">
+<meta name="description" content="Motif | Your style is unique and cutting edge - your fashion should be too.Exclusive, limited edition accessories designed by the world’s top fashion bloggers, Instagrammers and digital influencers.">
 <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
 {{--<meta name="apple-itunes-app" content="app-id=1125850409">--}}
 <meta http-equiv="Access-Control-Allow-Origin" content="*">

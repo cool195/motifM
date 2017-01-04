@@ -12,6 +12,19 @@ class ProductController extends ApiController
     const API_SYSTEM = "";
     const API_SERVICE = "product";
 
+
+    //seo商品详情302永久重定向
+    public function detail(Request $request, $spu)
+    {
+        $result = $this->getProductDetail($request, $spu);
+        if ($request->input('ajax')) {
+            return $result;
+        }
+        $url = "/detail/".$spu."/".$result['data']['main_title'];
+        return redirect($url);
+    }
+
+
     /*
      * 跳转至商品详情页面
      * @author zhangtao@evermarker.net
@@ -19,7 +32,7 @@ class ProductController extends ApiController
      * @return View
      *
      * */
-    public function index(Request $request, $spu)
+    public function index(Request $request, $spu, $title)
     {
         $result = $this->getProductDetail($request, $spu);
         if(!$result['success']){

@@ -67,7 +67,7 @@
             <hr class="hr-base m-y-0 m-l-15x">
             @if(isset($data['lineOrderList']))
                 @foreach($data['lineOrderList'] as $lineOrder)
-                    <a href="/detail/{{ $lineOrder['spu'] }}" class="btn-orderDetail">
+                    <a href="/detail/{{ $lineOrder['spu'] }}/{{$lineOrder['main_title']}}" class="btn-orderDetail">
                         <div class="flex p-y-10x p-x-15x">
                             <div class="flex-fixedShrink">
                                 <img class="img-thumbnail"

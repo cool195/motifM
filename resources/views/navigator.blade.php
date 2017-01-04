@@ -2,9 +2,10 @@
     <nav class="navbar navbar-full bg-primary">
         <ul class="nav navbar-primary nav-top">
             <li class="nav-item nav-logo">
-                <a  href="/daily">
-                    <img class="motif-logo" src="{{env('CDN_Static')}}/images/logo/logo.png"
-                         srcset="{{env('CDN_Static')}}/images/logo/logo@2x.png 2x,{{env('CDN_Static')}}/images/logo/logo@3x.png 3x"></a>
+                <a href="/">
+                    <H1 style="line-height: 0;">
+                    <img class="motif-logo" src="{{env('CDN_Static')}}/images/logo/logo.png" alt="Motif"
+                         srcset="{{env('CDN_Static')}}/images/logo/logo@2x.png 2x,{{env('CDN_Static')}}/images/logo/logo@3x.png 3x"></H1></a>
             </li>
             <li class="nav-item nav-hamburger">
                 <div class="nav-icon">

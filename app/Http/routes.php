@@ -14,7 +14,7 @@
 $app->group(['middleware' => 'pcguide', 'namespace' => 'App\Http\Controllers'], function ($app) {
 
     $app->get('/', 'Daily\DailyController@index');
-    $app->get('/daily', 'Daily\DailyController@index');
+    $app->get('/daily', 'Daily\DailyController@home');
     $app->get('/recdata', 'Daily\DailyController@recData');
     $app->get('/topic/{id}', 'Daily\DailyController@show');
     $app->get('/template/{id}', 'Daily\DailyController@staticShow');
@@ -160,7 +160,8 @@ $app->group(['middleware' => 'pcguide', 'namespace' => 'App\Http\Controllers\Sho
 
     $app->get('/wish/{spu}', 'ProductController@wishProduct');
     $app->get('/products/{spu}', 'ProductController@getProductDetail');
-    $app->get('/detail/{spu}', 'ProductController@index');
+    $app->get('/detail/{spu}', 'ProductController@detail');
+    $app->get('/detail/{spu}/{title}', 'ProductController@index');
 
     $app->post('/rsyncLogin', 'UserController@rsyncLogin');
     $app->get('/login', 'UserController@login');
