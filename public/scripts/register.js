@@ -121,6 +121,7 @@
     // ajax
     function registerUser() {
         openLoading();
+        var Email=$('input[name="email"]').val();
         $.ajax({
                 url: '/user/signup',
                 type: 'POST',
@@ -129,6 +130,7 @@
             .done(function (data) {
                 if (data.success) {
                     $Modal.open();
+                    trackRegister(Email);
                     $('#confirm').attr('href', data.redirectUrl);
                 } else {
                     $('.warning-info').removeClass('off');
@@ -138,6 +140,15 @@
             .always(function () {
                 closeLoading();
             });
+    }
+
+    // 注册埋点 --- KLAVIYO
+    function trackRegister(Email){
+        var _learnq = _learnq || [];
+        _learnq.push(['identify', {
+            '$email' : Email
+        }]);
+        userKlaviyoRegister();
     }
 
     // 提交注册用户请求

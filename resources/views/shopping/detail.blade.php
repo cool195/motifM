@@ -635,5 +635,41 @@
         $('#modalDialog').data('login',1);
     }
 </script>
+
+<!-- Viewed Product 埋点 -->
+<script>
+    var _learnq = _learnq || [];
+    _learnq.push(['track', 'Viewed Product(h5)', {
+        Title: '{{$data['main_title']}}',
+        ItemId: '{{ $data['spu'] }}',
+        Categories: '{{ $data['category_name'] }}', // The list of categories is an array of strings.
+        ImageUrl: '{{config('runtime.CDN_URL')}}/n0/{{ $data['main_image_url'] }}',
+        Url: 'https://m.motif.me{{ $_SERVER['REQUEST_URI'] }}',
+        Metadata: {
+            Brand: 'Motif h5',
+            Price: '{{ number_format(($data['skuPrice']['sale_price'] / 100), 2) }}'
+        }
+    }]);
+</script>
+
+<script>
+    var _learnq = _learnq || [];
+    var trackAddToBag = function () {
+        _learnq.push(['track', 'Add to Bag Successfully(h5)', {
+            'SPU' : '{{$data['spu']}}',
+            'Name' : '{{$data['main_title']}}',
+            'productUrl' : '{{config('runtime.CDN_URL')}}/n0/{{ $data['main_image_url'] }}',
+            'Url': 'https://m.motif.me{{ $_SERVER['REQUEST_URI'] }}',
+            'ItemPrice' : '{{ number_format(($data['skuPrice']['sale_price'] / 100), 2) }}',
+            'Categories' : '{{ $data['category_name'] }}',
+            'Brand' : 'Motif h5'
+        }]);
+    };
+
+    @if(Session::has('user'))
+       $('#userEmail').val('{{Session::get('user.login_email')}}');
+    @endif
+</script>
+
 @include('global')
 </html>

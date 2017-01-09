@@ -113,5 +113,16 @@
 </script>
 <script src="https://apis.google.com/js/api:client.js"></script>
 <script src="{{env('CDN_Static')}}/scripts/signWith.js{{'?v='.config('app.version')}}"></script>
+
+<script>
+    var _learnq = _learnq || [];
+    var userKlaviyoRegister = function () {
+        var Email= $('input[name="email"]').val();
+        _learnq.push(['track', 'Register(h5)', {
+            'email' : Email
+        }]);
+    };
+</script>
+
 @include('global')
 </html>

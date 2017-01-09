@@ -170,7 +170,7 @@
                 <section class="bg-white p-a-10x">
                     @if(Session::get('user.pin'))
                         <a href="/checkout/shipping" data-clk='{{ config('app.clk_url') }}/log.gif?time={{time()}}&t=check.100002&m=H5_M2016-1&pin={{Session::get('user.pin')}}&uuid={{Session::get('user.uuid')}}&ref=&v={"skipType":"processedcheckout","skipId":"","version":"1.0.1","ver":"9.2","src":"H5"}'
-                       class="btn btn-primary btn-block @if($cartData['pay_amount'] <= 0) disabled @endif" type="submit">Proceed to Checkout</a>
+                       class="btn btn-primary btn-block cartKlaviyo @if($cartData['pay_amount'] <= 0) disabled @endif" type="submit">Proceed to Checkout</a>
                     @else
                         <a href="/login" class="btn btn-primary btn-block @if($cartData['pay_amount'] <= 0) disabled @endif" type="submit">Proceed to Checkout</a>
                     @endif
@@ -288,6 +288,33 @@
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
         }
     });
+</script>
+
+<script>
+    var _learnq = _learnq || [];
+    var trackProceedToCheckout = function () {
+        _learnq.push(['track', 'Proceed to Checkout(h5)', {
+            'value' : totalPrice ,
+            'ItemNames' : [@foreach($cartData['showSkus'] as $product) @if(0 == $key)'{{$product['main_title']}}' @else , '{{$product['main_title']}}' @endif @endforeach],
+            'Items' : [
+                    @foreach($cartData['showSkus'] as $product)
+                {
+                    'SPU' : '{{$product['spu']}}',
+                    'Name' : '{{$product['main_title']}}',
+                    'Quantity' : '{{$product['sale_qtty']}}',
+                    'ItemPrice' : '{{number_format($product['sale_price'] / 100, 2)}}',
+                    'ProductURL' : 'https://m.motif.me/detail/{{$product['spu']}}/{{$product['main_title']}}',
+                    'ImageURL' : '{{$product['main_image_Url']}}'
+                },
+                @endforeach
+            ]
+
+        }]);
+    };
+
+    @if(Session::has('user'))
+       $('#userEmail').val('{{Session::get('user.login_email')}}');
+    @endif
 </script>
 @include('global')
 </html>

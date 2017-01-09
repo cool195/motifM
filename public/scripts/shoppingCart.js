@@ -213,5 +213,19 @@
         }
         changeQtty(Sku, Qtty);
     });
+
+    $('.cartKlaviyo').on('click', function(){
+        sendTrackProceedToCheckout();
+    });
+
+    // 去往支付埋点 --- KLAVIYO
+    function sendTrackProceedToCheckout(){
+        var email=$('#userEmail').val();
+        var _learnq = _learnq || [];
+        _learnq.push(['identify', {
+            '$email' : email
+        }]);
+        trackProceedToCheckout();
+    }
 })(jQuery);
 

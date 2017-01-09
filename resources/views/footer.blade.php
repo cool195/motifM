@@ -70,6 +70,7 @@
     </div>
     <div class="text-common text-center font-size-xs">Copyright © 2016 Motif Group LLC. All rights reserved.</div>
 </footer>
+<input type="text" id="userEmail" value="" hidden>
 <!-- App 下载提示 -->
 {{--<nav class="navbar-fixed-bottom bg-download p-y-5x p-x-10x" hidden>--}}
     {{--<div class="row flex flex-alignCenter">--}}

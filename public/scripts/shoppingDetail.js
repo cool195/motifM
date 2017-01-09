@@ -866,6 +866,8 @@
                     }
 
                     initHeaderBag();
+                    sendTrackAddToBag();
+
                     $('.header-shoppingBag').addClass('active');
                     setTimeout(function () {
                         $('.header-shoppingBag').removeClass('active');
@@ -884,6 +886,16 @@
                 closeLoading();
             });
 
+    }
+
+    // 添加购物车埋点 --- KLAVIYO
+    function sendTrackAddToBag(){
+        var email=$('#userEmail').val();
+        var _learnq = _learnq || [];
+        _learnq.push(['identify', {
+            '$email' : email
+        }]);
+        trackAddToBag();
     }
 
     // 头部购物车 获取数据
