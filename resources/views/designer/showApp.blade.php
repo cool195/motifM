@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>DESIGNER</title>
+    <title>@if(2 == $designer['designer_type']){{'Designer'}}@else{{'The Edit'}}@endif</title>
     @include('head')
     <link rel="stylesheet" href="{{env('CDN_Static')}}/styles/designerDetail.css{{'?v='.config('app.version')}}">
 
