@@ -170,7 +170,7 @@
                                                             {{--循环图片 begin--}}
                                                             @foreach($topic['spuInfos'][$spu]['image_paths'] as $swiperImage)
                                                                 <div class="swiper-slide">
-                                                                    <img class="img-fluid img-lazy"
+                                                                    <img class="img-fluid"
                                                                          src="{{env('APP_Api_Image')}}/n2/{{$swiperImage}}"
                                                                          alt="">
                                                                 </div>
