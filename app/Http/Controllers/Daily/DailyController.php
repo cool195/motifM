@@ -83,6 +83,11 @@ class DailyController extends ApiController
         );
 
         $result = $this->request('openapi', '', "topicf", $params);
+        foreach($result['data']['spuInfos'] as &$product){
+            $titleArray = explode(" ", $product['spuBase']['main_title']);
+            $titleArray[] = $product['spuBase']['spu'];
+            $product['spuBase']['seo_link'] = implode("-", $titleArray);
+        }
         $view = '';
         $NavShow = true;
         if ($request->input('test') || strstr($_SERVER['HTTP_USER_AGENT'], 'motif-android') || strstr($_SERVER['HTTP_USER_AGENT'], 'motif-ios')) {
