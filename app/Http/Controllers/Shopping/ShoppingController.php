@@ -65,6 +65,11 @@ class ShoppingController extends ApiController
                 if (in_array($value['spu'], $wishlist)) {
                     $value['isWished'] = 1;
                 }
+
+                $titleArray = explode(" ", $value['main_title']);
+                $titleArray[] = $value['spu'];
+                $value['seo_link'] = implode("-", $titleArray);
+
                 $list[] = $value;
             }
             $result['data']['list'] = $list;

@@ -14,7 +14,7 @@ class ProductController extends ApiController
 
 
     //seo商品详情302永久重定向
-    public function detail(Request $request, $spu)
+    /*public function detail(Request $request, $spu)
     {
         $result = $this->getProductDetail($request, $spu);
         if ($request->input('ajax')) {
@@ -22,7 +22,7 @@ class ProductController extends ApiController
         }
         $url = "/detail/".$spu."/".$result['data']['main_title'];
         return redirect($url);
-    }
+    }*/
 
 
     /*
@@ -32,8 +32,16 @@ class ProductController extends ApiController
      * @return View
      *
      * */
-    public function index(Request $request, $spu, $title)
+    public function index(Request $request, $spuTitle)
     {
+        $spu = "";
+        if(is_numeric($spuTitle)){
+            $spu = $spuTitle;
+        }else{
+            $titleArray = explode("-", $spuTitle);
+            end($titleArray);
+            $spu = current($titleArray);
+        }
         $result = $this->getProductDetail($request, $spu);
         if(!$result['success']){
             abort(404);
@@ -74,7 +82,15 @@ class ProductController extends ApiController
             'extra_kv'=>!empty($designerId) ? "designerId:".$designerId : "designerId:-1"
         );
         $params['cid'] = isset($cid) ? $cid : -1;
-        return $this->request('openapi', '', "rec", $params,0);
+        $result = $this->request('openapi', '', "rec", $params,0);
+        if($result['success']){
+            foreach($result['data']['list'] as &$product){
+                $titleArray = explode(" ", $product['main_title']);
+                $titleArray[] = $product['spu'];
+                $product['seo_link'] = implode("-", $titleArray);
+            }
+        }
+        return $result;
     }
 
     /*
@@ -104,6 +120,10 @@ class ProductController extends ApiController
                 Session::put('referer', "/detail/$spu");
                 $result['data']['sale_status'] = $this->getSaleStatus($result['data']);
             }
+
+            $titleArray = explode(" ", $result['data']['main_title']);
+            $titleArray[] = $result['data']['spu'];
+            $result['data']['seo_link'] = implode("-", $titleArray);
         }
         return $result;
     }

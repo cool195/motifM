@@ -487,7 +487,7 @@
                                                             <div class="image-bg">
                                                                 <div class="image-container">
                                                                     <a href="javascript:void(0)"
-                                                                       data-link="/detail/{{ $value['spu'] }}/{{ $value['main_title'] }}"
+                                                                       data-link="/detail/{{ $value['seo_link'] }}"
                                                                        data-impr="{{ $value['impr'] }}"
                                                                        data-clk="{{ $value['clk'] }}"
                                                                        data-spu="{{ $value['spu'] }}"
