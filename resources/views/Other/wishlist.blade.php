@@ -86,7 +86,7 @@
                              src="{{env('CDN_Static')}}/images/product/bg-product@336.png"
                              data-original="{{env('APP_Api_Image')}}/n1/@{{ $value.main_image_url }}">
                         @{{ else }}
-                        <a href="/detail/@{{ $value.spu }}">
+                        <a href="/detail/@{{ $value.seo_link }}">
                             <img class="img-fluid img-lazy"
                                  src="{{env('CDN_Static')}}/images/product/bg-product@336.png"
                                  data-original="{{env('APP_Api_Image')}}/n1/@{{ $value.main_image_url }}">
@@ -106,7 +106,7 @@
                                     <h6 class="text-common font-size-sm p-r-5x p-t-15x">
                                     <strong>@{{ $value.main_title }}</strong></h6>
                                 @{{ else }}
-                                    <a href="/detail/@{{ $value.spu }}">
+                                    <a href="/detail/@{{ $value.seo_link }}">
                                         <h6 class="text-main font-size-sm p-r-5x p-t-15x">
                                             <strong>@{{ $value.main_title }}</strong></h6>
                                     </a>

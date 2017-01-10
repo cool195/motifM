@@ -34,6 +34,14 @@ class CartController extends ApiController
 
             $cartList = $this->request('openapi', '', 'cart', $params);
 
+            if($cartList['success']){
+                foreach($cartList['data']['showSkus'] as &$product){
+                    $titleArray = explode(" ", $product['main_title']);
+                    $titleArray[] = $product['spu'];
+                    $product['seo_link'] = implode("-", $titleArray);
+                }
+            }
+
             return View('shopping.cart', [
                 'cartData' => $cartList['data']
             ]);
@@ -344,10 +352,12 @@ class CartController extends ApiController
             $system = "";
             $service = "cart";
             $result = $this->request('openapi', $system, $service, $params);
-            if (empty($result)) {
-                $result['success'] = false;
-                $result['error_msg'] = "Data access failed";
-                $result['data'] = array();
+            if($result['success']){
+                foreach($result['data']['showSkus'] as &$product){
+                    $titleArray = explode(" ", $product['main_title']);
+                    $titleArray[] = $product['spu'];
+                    $product['seo_link'] = implode("-", $titleArray);
+                }
             }
         }else{
             $cartCache = Cache::get('CartCache' . $_COOKIE['uid']);
@@ -358,6 +368,13 @@ class CartController extends ApiController
             );
 
             $result = $this->request('openapi', '', 'cart', $params);
+            if($result['success']){
+                foreach($result['data']['showSkus'] as &$product){
+                    $titleArray = explode(" ", $product['main_title']);
+                    $titleArray[] = $product['spu'];
+                    $product['seo_link'] = implode("-", $titleArray);
+                }
+            }
         }
 
         return $result;
