@@ -639,7 +639,7 @@
 <!-- Viewed Product 埋点 -->
 <script>
     var _learnq = _learnq || [];
-    _learnq.push(['track', 'Viewed Product(h5)', {
+    _learnq.push(['track', 'Viewed Product', {
         Title: '{{$data['main_title']}}',
         ItemId: '{{ $data['spu'] }}',
         Categories: '{{ $data['category_name'] }}', // The list of categories is an array of strings.
@@ -655,7 +655,7 @@
 <script>
     var _learnq = _learnq || [];
     var trackAddToBag = function () {
-        _learnq.push(['track', 'Add to Bag Successfully(h5)', {
+        _learnq.push(['track', 'Add to Bag Successfully', {
             'SPU' : '{{$data['spu']}}',
             'Name' : '{{$data['main_title']}}',
             'productUrl' : '{{config('runtime.CDN_URL')}}/n0/{{ $data['main_image_url'] }}',

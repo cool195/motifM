@@ -293,7 +293,7 @@
 <script>
     var _learnq = _learnq || [];
     var trackProceedToCheckout = function () {
-        _learnq.push(['track', 'Proceed to Checkout(h5)', {
+        _learnq.push(['track', 'Proceed to Checkout', {
             'value' : totalPrice ,
             'ItemNames' : [@foreach($cartData['showSkus'] as $product) @if(0 == $key)'{{$product['main_title']}}' @else , '{{$product['main_title']}}' @endif @endforeach],
             'Items' : [
