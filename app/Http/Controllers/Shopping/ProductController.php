@@ -36,7 +36,16 @@ class ProductController extends ApiController
     {
         $spu = "";
         if(is_numeric($spuTitle)){
-            $spu = $spuTitle;
+            $result = $this->getProductDetail($request, $spuTitle);
+            if ($request->input('ajax')) {
+                return $result;
+            }
+            $params = $request->all();
+            $url = "/detail/".$result['data']['seo_link'];
+            if(!empty($params)){
+                $url = "/detail/".$result['data']['seo_link']."?".http_build_query($params);
+            }
+            return redirect($url);
         }else{
             $titleArray = explode("-", $spuTitle);
             end($titleArray);
