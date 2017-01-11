@@ -294,7 +294,7 @@
                                                     <div data-impr='{{ config('app.clk_url') }}/log.gif?time={{time()}}&t=designer.400001&m=H5_M2016-1&pin={{ Session::get('user.pin') }}&uuid={{Session::has('user') ? Session::get('user.uuid') : $_COOKIE['uid']}}&v={"action":0,"skipType":1,"skipId":"{{ implode("_", $value['spus']) }}","expid":0,"index":"{{$key}}","version":"1.0.1","ver":"9.2","src":"H5"}'></div>
                                                     @foreach($value['spus'] as $spu)
                                                         <div class="p-x-15x p-y-10x">
-                                                            <a data-link="/detail/{{$spu}}"
+                                                            <a data-link="/detail/{{$product['spuInfos'][$spu]['spuBase']['seo_link']}}"
                                                                data-clk='{{ config('app.clk_url') }}/log.gif?time={{time()}}&t=designer.400001&m=H5_M2016-1&pin={{ Session::get('user.pin') }}&uuid={{Session::has('user') ? Session::get('user.uuid') : $_COOKIE['uid']}}&v={"action":1,"skipType":1,"skipId":"{{$spu}}","expid":0,"index":"{{$key}}","version":"1.0.1","ver":"9.2","src":"H5"}'
                                                                href="javascript:void(0)" data-spu="{{$spu}}">
                                                                 <img class="img-fluid img-lazy"
@@ -323,7 +323,7 @@
                                                             @foreach($value['spus'] as $key => $spu)
                                                                 <div class="col-xs-6 p-a-0">
                                                                     <div class="topic-product-item productList-item">
-                                                                        <a data-link="/detail/{{$spu}}"
+                                                                        <a data-link="/detail/{{$product['spuInfos'][$spu]['spuBase']['seo_link']}}"
                                                                            data-clk='{{ config('app.clk_url') }}/log.gif?time={{time()}}&t=designer.400001&m=H5_M2016-1&pin={{ Session::get('user.pin') }}&uuid={{Session::has('user') ? Session::get('user.uuid') : $_COOKIE['uid']}}&v={"action":1,"skipType":1,"skipId":"{{$spu}}","expid":0,"index":"{{$key}}","version":"1.0.1","ver":"9.2","src":"H5"}'
                                                                            href="javascript:void(0)"
                                                                            data-spu="{{$spu}}" data-title="{{$product['spuInfos'][$spu]['spuBase']['main_title']}}" data-price="{{number_format($product['spuInfos'][$spu]['skuPrice']['sale_price']/100,2)}}">
@@ -357,7 +357,7 @@
 
                                                                                 @if(1 == $product['spuInfos'][$spu]['spuBase']['sale_type'])
                                                                                     @if($product['spuInfos'][$spu]['stockStatus']=='NO' || $product['spuInfos'][$spu]['spuBase']['isPutOn']==0)
-                                                                                        <a data-link="/detail/{{$spu}}"
+                                                                                        <a data-link="/detail/{{$product['spuInfos'][$spu]['spuBase']['seo_link']}}"
                                                                                            data-clk='{{ config('app.clk_url') }}/log.gif?time={{time()}}&t=designer.400001&m=H5_M2016-1&pin={{ Session::get('user.pin') }}&uuid={{Session::has('user') ? Session::get('user.uuid') : $_COOKIE['uid']}}&v={"action":1,"skipType":1,"skipId":"{{$spu}}","expid":0,"index":"{{$key}}","version":"1.0.1","ver":"9.2","src":"H5"}'
                                                                                            href="javascript:void(0)">
                                                                                             <div class="preorderSold-info" style="z-index: 100">

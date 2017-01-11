@@ -62,6 +62,11 @@ class OrderController extends ApiController
                         if (!empty($lineOrder['vas_info'])) {
                             $lineOrder['vas_info'] = json_decode($lineOrder['vas_info'], true);
                         }
+
+                        $titleArray = explode(" ", $lineOrder['main_title']);
+                        $titleArray[] = $lineOrder['spu'];
+                        $lineOrder['seo_link'] = implode("-", $titleArray);
+
                         $lineOrderList[] = $lineOrder;
                     }
                     $subOrder['lineOrderList'] = $lineOrderList;
@@ -126,6 +131,11 @@ class OrderController extends ApiController
                 if (isset($lineOrder['vas_info'])) {
                     $lineOrder['vas_info'] = json_decode($lineOrder['vas_info'], true);
                 }
+
+                $titleArray = explode(" ", $lineOrder['main_title']);
+                $titleArray[] = $lineOrder['spu'];
+                $lineOrder['seo_link'] = implode("-", $titleArray);
+
                 $lineOrderList[] = $lineOrder;
             }
             $result['data']['lineOrderList'] = $lineOrderList;

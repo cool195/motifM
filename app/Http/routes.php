@@ -160,8 +160,9 @@ $app->group(['middleware' => 'pcguide', 'namespace' => 'App\Http\Controllers\Sho
 
     $app->get('/wish/{spu}', 'ProductController@wishProduct');
     $app->get('/products/{spu}', 'ProductController@getProductDetail');
-    $app->get('/detail/{spu}', 'ProductController@detail');
-    $app->get('/detail/{spu}/{title}', 'ProductController@index');
+
+    //$app->get('/detail/{spu}', 'ProductController@detail');
+    $app->get('/detail/{spuTitle}', 'ProductController@index');
 
     $app->post('/rsyncLogin', 'UserController@rsyncLogin');
     $app->get('/login', 'UserController@login');

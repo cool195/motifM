@@ -115,7 +115,7 @@
                         @foreach($value['spus'] as $spu)
                             <div class="p-x-15x p-y-10x">
                                 <a data-clk='{{ config('app.clk_url') }}/log.gif?time={{time()}}&t=daily.200001&m=H5_M2016-1&pin={{Session::get('user.pin')}}&uuid={{Session::has('user') ? Session::get('user.uuid') : $_COOKIE['uid']}}&v={"action":1,"skipType":1,"skipId":"{{$spu}}","topicId":{{$topicID}},"expid":0,"ver":"1.0.1","src":"H5"}'
-                                   data-link="/detail/{{$spu}}/{{$topic['spuInfos'][$spu]['spuBase']['main_title']}}" data-spu="{{$spu}}" data-title="{{$topic['spuInfos'][$spu]['spuBase']['main_title']}}" data-price="{{number_format($topic['spuInfos'][$spu]['skuPrice']['sale_price']/100,2)}}" href="javascript:void(0)">
+                                   data-link="/detail/{{$topic['spuInfos'][$spu]['spuBase']['seo_link']}}" data-spu="{{$spu}}" data-title="{{$topic['spuInfos'][$spu]['spuBase']['main_title']}}" data-price="{{number_format($topic['spuInfos'][$spu]['skuPrice']['sale_price']/100,2)}}" href="javascript:void(0)">
                                     <img class="img-fluid img-lazy"
                                          data-original="{{env('APP_Api_Image')}}/n1/{{$topic['spuInfos'][$spu]['spuBase']['main_image_url']}}"
                                          src="{{env('CDN_Static')}}/images/product/bg-product@750.png"
@@ -144,7 +144,7 @@
                                     <div class="col-xs-6 p-a-0">
                                         <div class="topic-product-item productList-item">
                                             <a data-clk='{{ config('app.clk_url') }}/log.gif?time={{time()}}&t=daily.200001&m=H5_M2016-1&pin={{Session::get('user.pin')}}&uuid={{Session::has('user') ? Session::get('user.uuid') : $_COOKIE['uid']}}&v={"action":1,"skipType":1,"skipId":"{{$spu}}","topicId":{{$topicID}},"expid":0,"ver":"1.0.1","src":"H5"}'
-                                               data-link="/detail/{{$spu}}/{{$topic['spuInfos'][$spu]['spuBase']['main_title']}}" data-spu="{{$spu}}" data-title="{{$topic['spuInfos'][$spu]['spuBase']['main_title']}}" data-price="{{number_format($topic['spuInfos'][$spu]['skuPrice']['sale_price']/100,2)}}" href="javascript:void(0)">
+                                               data-link="/detail/{{$topic['spuInfos'][$spu]['spuBase']['seo_link']}}" data-spu="{{$spu}}" data-title="{{$topic['spuInfos'][$spu]['spuBase']['main_title']}}" data-price="{{number_format($topic['spuInfos'][$spu]['skuPrice']['sale_price']/100,2)}}" href="javascript:void(0)">
 
                                                 {{--<div class="image-container">--}}
                                                     {{--<img class="img-fluid img-lazy"--}}

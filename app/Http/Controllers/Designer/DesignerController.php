@@ -66,6 +66,13 @@ class DesignerController extends ApiController
                 'id' => $id,
             );
             $product = $this->request('openapi', '', 'designer', $params);
+            if($product['success']){
+                foreach($product['data']['spuInfos'] as &$pro){
+                    $titleArray = explode(" ", $pro['spuBase']['main_title']);
+                    $titleArray[] = $pro['spuBase']['spu'];
+                    $pro['spuBase']['seo_link'] = implode("-", $titleArray);
+                }
+            }
 
             //设计师推荐商品
             $params = array(
