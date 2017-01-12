@@ -36,6 +36,7 @@ class ProductController extends ApiController
     {
         $spu = "";
         $result = array();
+        $spuTitle = urldecode($spuTitle);
         if(is_numeric($spuTitle)){
             $result = $this->getProductDetail($request, $spuTitle);
             if ($request->input('ajax')) {
