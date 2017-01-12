@@ -35,6 +35,7 @@ class ProductController extends ApiController
     public function index(Request $request, $spuTitle)
     {
         $spu = "";
+        $result = array();
         if(is_numeric($spuTitle)){
             $result = $this->getProductDetail($request, $spuTitle);
             if ($request->input('ajax')) {
@@ -50,8 +51,17 @@ class ProductController extends ApiController
             $titleArray = explode("-", $spuTitle);
             end($titleArray);
             $spu = current($titleArray);
+            $result = $this->getProductDetail($request, $spu);
+            if($spuTitle !== $result['data']['seo_link']){
+                $params = $request->all();
+                $url = "/detail/".$result['data']['seo_link'];
+                if(!empty($params)){
+                    $url = "/detail/".$result['data']['seo_link']."?".http_build_query($params);
+                }
+                return redirect($url);
+            }
         }
-        $result = $this->getProductDetail($request, $spu);
+
         if(!$result['success']){
             abort(404);
         } else {
