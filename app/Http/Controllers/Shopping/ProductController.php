@@ -52,7 +52,7 @@ class ProductController extends ApiController
             end($titleArray);
             $spu = current($titleArray);
             $result = $this->getProductDetail($request, $spu);
-            if($spuTitle !== $result['data']['seo_link']){
+            if($spuTitle != $result['data']['seo_link']){
                 $params = $request->all();
                 $url = "/detail/".$result['data']['seo_link'];
                 if(!empty($params)){
