@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>404</title>
+    <title>MOTIF | Page Not Found 404 error</title>
     @include('head')
     <link rel="stylesheet" href="{{env('CDN_Static')}}/styles/404.css">
 </head>
