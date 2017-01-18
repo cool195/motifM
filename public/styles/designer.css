@@ -55,7 +55,7 @@
 }
 
 .btn-follow {
-  color: #36405b;
+  color: #000000;
   background-color: transparent;
   border-color: #e2e5ed;
 }
@@ -65,8 +65,8 @@
 }
 
 /*#ytplayer .loading.loading-screen {*/
-  /*background: -webkit-radial-gradient(#36405b, #171a2b);*/
-  /*background: radial-gradient(#36405b, #171a2b);*/
+  /*background: -webkit-radial-gradient(#000000, #000000);*/
+  /*background: radial-gradient(#000000, #000000);*/
 /*}*/
 
 /*.loading-play{*/
@@ -89,7 +89,7 @@
   /*border-top: 4px solid rgba(255, 255, 255, 0.8);*/
   /*border-right: 4px solid rgba(255, 255, 255, 0.8);*/
   /*border-bottom: 4px solid rgba(255, 255, 255, 0.8);*/
-  /*border-left: 4px solid #171a2b;*/
+  /*border-left: 4px solid #000000;*/
 /*}*/
 
 .designer-media {

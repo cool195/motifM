@@ -185,17 +185,17 @@
             </div>
             @if(Session::has('user'))
                 <span class="wish-item p-r-10x p-t-10x"><i
-                            class="iconfont text-common btn-wish btn-wished @if(in_array($data['spu'], $wishlist->wishlist())){{'active'}}@endif"
+                            class="iconfont1 text-primary btn-wish btn-wished @if(in_array($data['spu'], $wishlist->wishlist())){{'active'}}@endif"
                             data-spu="{{$data['spu']}}"></i></span>
             @else
                 <a class="wish-item p-r-10x p-t-10x" href="javascript:;"><i
-                            class="iconfont text-common btn-wish btn-wished" data-actionspu="{{$data['spu']}}"></i></a>
+                            class="iconfont1 text-primary btn-wish btn-wished" data-actionspu="{{$data['spu']}}"></i></a>
             @endif
 
             <!-- 产品 标题 简介 价格 基本信息 -->
             <article class="product-baseInfo bg-white">
                 <div class="product-text">
-                    <h6 class="text-main font-size-base">{{$data['main_title']}}</h6>
+                    <h6 class="text-main font-size-base avenirBold">{{$data['main_title']}}</h6>
                     <p class="text-primary font-size-sm">{{ $data['sub_title'] }} @if(isset($data['skuPrice']['skuPromotion']['promo_words'])){{$data['skuPrice']['skuPromotion']['promo_words']}}@endif</p>
                     @if(!empty($data['designer']))
                         <p class="text-primary font-size-sm">
@@ -518,11 +518,11 @@
                                                                 @endif
                                                                 @if(Session::has('user'))
                                                                     <span class="wish-item p-r-5x"><i
-                                                                                class="iconfont text-common btn-wish btn-wished @if(in_array($value['spu'], $wishlist->wishlist())){{'active'}}@endif"
+                                                                                class="iconfont1 text-primary btn-wish btn-wished @if(in_array($value['spu'], $wishlist->wishlist())){{'active'}}@endif"
                                                                                 data-spu="{{$value['spu']}}"></i></span>
                                                                 @else
                                                                     <a class="wish-item p-r-5x" href="javascript:;"><i
-                                                                                class="iconfont text-common btn-wish btn-wished"
+                                                                                class="iconfont1 text-primary btn-wish btn-wished"
                                                                                 data-actionspu="{{$value['spu']}}"></i></a>
                                                                 @endif
                                                             </div>

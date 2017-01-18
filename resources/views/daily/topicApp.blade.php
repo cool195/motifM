@@ -193,9 +193,9 @@
                                                         </span>
 
                                                         @if(Session::has('user'))
-                                                            <span class="wish-item p-r-10x" data-id="{{$spu}}" id="{{'wish'.$spu}}"><i class="iconfont text-common btn-wish" data-spu="{{$spu}}"></i></span>
+                                                            <span class="wish-item p-r-10x" data-id="{{$spu}}" id="{{'wish'.$spu}}"><i class="iconfont1 text-primary btn-wish" data-spu="{{$spu}}"></i></span>
                                                         @else
-                                                            <a class="wish-item p-r-10x" href="javascript:;"><i class="iconfont text-common btn-wish sendLogin" data-id="{{$spu}}"></i></a>
+                                                            <a class="wish-item p-r-10x" href="javascript:;"><i class="iconfont1 text-primary btn-wish sendLogin" data-id="{{$spu}}"></i></a>
                                                         @endif
                                                     </div>
                                                 </div>
@@ -329,7 +329,7 @@
                     } else if (actionName.name == "addWish") {
                         var spus = actionName.data.spu.split(',');
                         $.each(spus, function (n, value) {
-                            $('#wish' + value).html('<i class="iconfont text-common btn-wish active"></i>');
+                            $('#wish' + value).html('<i class="iconfont1 text-primary btn-wish active"></i>');
                         });
                     } else if (actionName.name == "authInfo") {
                         var f = '{{strstr($_SERVER['HTTP_USER_AGENT'], 'motif-android') ? 'f=android' : 'f=ios'}}';
@@ -352,10 +352,10 @@
             var cmd = true;
             if($this.find('i').hasClass('active')){
                 cmd = false;
-                $this.html('<i class="iconfont text-common btn-wish"></i>');
+                $this.html('<i class="iconfont1 text-primary btn-wish"></i>');
             }else{
                 if(!$this.find('i').hasClass('sendLogin')){
-                    $this.html('<i class="iconfont text-common btn-wish active"></i>');
+                    $this.html('<i class="iconfont1 text-primary btn-wish active"></i>');
                 }
             }
             Jockey.send("action", {

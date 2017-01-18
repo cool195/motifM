@@ -1835,8 +1835,8 @@ fieldset[disabled] a.btn {
 
 .btn-secondary {
     color: #373a3c;
-    background-color: #171a2b;
-    border-color: #171a2b;
+    background-color: #000000;
+    border-color: #000000;
 }
 
 .btn-secondary:hover {
@@ -1869,13 +1869,13 @@ fieldset[disabled] a.btn {
 }
 
 .btn-secondary.disabled:focus, .btn-secondary.disabled.focus, .btn-secondary:disabled:focus, .btn-secondary:disabled.focus {
-    background-color: #171a2b;
-    border-color: #171a2b;
+    background-color: #000000;
+    border-color: #000000;
 }
 
 .btn-secondary.disabled:hover, .btn-secondary:disabled:hover {
-    background-color: #171a2b;
-    border-color: #171a2b;
+    background-color: #000000;
+    border-color: #000000;
 }
 
 .m-x-auto {
@@ -2188,11 +2188,11 @@ fieldset[disabled] a.btn {
 }
 
 .text-main {
-    color: #171a2b;
+    color: #000000;
 }
 
 .text-common {
-    color: #36405b;
+    color: #000000;
 }
 
 .text-white {
@@ -2240,7 +2240,7 @@ fieldset[disabled] a.btn {
 
 .btn-copy {
     font-size: .875rem;
-    color: #171a2b;
+    color: #000000;
     background-color: #e2e5ed;
     padding: .125rem .5rem;
     margin-left: 1.5rem;

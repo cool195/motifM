@@ -122,9 +122,9 @@
                                          alt="{{$topic['spuInfos'][$spu]['spuBase']['main_title']}}">
                                 </a>
                                 @if(Session::has('user'))
-                                    <span class="wish-item p-r-10x"><i class="iconfont text-common btn-wish btn-wished @if(in_array($spu, $wishlist->wishlist())){{'active'}}@endif" data-spu="{{$spu}}"></i></span>
+                                    <span class="wish-item p-r-10x"><i class="iconfont1 text-primary btn-wish btn-wished @if(in_array($spu, $wishlist->wishlist())){{'active'}}@endif" data-spu="{{$spu}}"></i></span>
                                 @else
-                                    <a class="wish-item p-r-10x" href="javascript:;"><i class="iconfont text-common btn-wish btn-wished" data-actionspu="{{$spu}}"></i></a>
+                                    <a class="wish-item p-r-10x" href="javascript:;"><i class="iconfont1 text-primary btn-wish btn-wished" data-actionspu="{{$spu}}"></i></a>
                                 @endif
                             </div>
                         @endforeach
@@ -199,9 +199,9 @@
                                                     @endif
                                                 </span>
                                                 @if(Session::has('user'))
-                                                    <span class="wish-item p-r-10x"><i class="iconfont text-common btn-wish btn-wished @if(in_array($spu, $wishlist->wishlist())){{'active'}}@endif" data-spu="{{$spu}}"></i></span>
+                                                    <span class="wish-item p-r-10x"><i class="iconfont1 text-primary btn-wish btn-wished @if(in_array($spu, $wishlist->wishlist())){{'active'}}@endif" data-spu="{{$spu}}"></i></span>
                                                 @else
-                                                    <a class="wish-item p-r-10x" href="javascript:;"><i class="iconfont text-common btn-wish btn-wished" data-actionspu="{{$spu}}"></i></a>
+                                                    <a class="wish-item p-r-10x" href="javascript:;"><i class="iconfont1 text-primary btn-wish btn-wished" data-actionspu="{{$spu}}"></i></a>
                                                 @endif
                                             </div>
                                         </div>

@@ -418,11 +418,11 @@
                                                                                 <span class="wish-item p-r-10x"
                                                                                       data-id="{{$spu}}"
                                                                                       id="{{'wish'.$spu}}"><i
-                                                                                            class="iconfont text-common btn-wish"></i></span>
+                                                                                            class="iconfont1 text-primary btn-wish"></i></span>
                                                                             @else
                                                                                 <a class="wish-item p-r-10x"
                                                                                    href="javascript:;"><i
-                                                                                            class="iconfont text-common btn-wish sendLogin"
+                                                                                            class="iconfont1 text-primary btn-wish sendLogin"
                                                                                             data-id="{{$spu}}"></i></a>
                                                                             @endif
 
@@ -503,10 +503,10 @@
                                                                     <span class="wish-item p-r-10x"
                                                                           data-id="{{$value['spu']}}"
                                                                           id="{{'wish'.$value['spu']}}"><i
-                                                                                class="iconfont text-common btn-wish"></i></span>
+                                                                                class="iconfont1 text-primary btn-wish"></i></span>
                                                                 @else
                                                                     <a class="wish-item p-r-10x" href="javascript:;"><i
-                                                                                class="iconfont text-common btn-wish sendLogin"
+                                                                                class="iconfont1 text-primary btn-wish sendLogin"
                                                                                 data-id="{{$value['spu']}}"></i></a>
                                                                 @endif
                                                             </div>
@@ -642,7 +642,7 @@
         else if (action.name == "addWish") {
             var spus = action.data.spu.split(',');
             $.each(spus, function (n, value) {
-                $('#wish' + value).html('<i class="iconfont text-common btn-wish active"></i>');
+                $('#wish' + value).html('<i class="iconfont1 text-primary btn-wish active"></i>');
             });
         }
     });
@@ -675,10 +675,10 @@
         var cmd = true;
         if ($this.find('i').hasClass('active')) {
             cmd = false;
-            $this.html('<i class="iconfont text-common btn-wish"></i>');
+            $this.html('<i class="iconfont1 text-primary btn-wish"></i>');
         } else {
             if (!$this.find('i').hasClass('sendLogin')) {
-                $this.html('<i class="iconfont text-common btn-wish active"></i>');
+                $this.html('<i class="iconfont1 text-primary btn-wish active"></i>');
             }
         }
         Jockey.send("action", {

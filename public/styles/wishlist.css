@@ -14,19 +14,19 @@
   border: 1px solid #f8f8f8;
 }
 .btn-itemProperty {
-  color: #36405b;
+  color: #000000;
   background-color: transparent;
   border-color: #e2e5ed;
 }
 
 .btn-itemProperty:hover {
-  color: #36405b;
+  color: #000000;
   background-color: transparent;
   border-color: #e2e5ed;
 }
 
 .btn-itemProperty:focus, .btn-itemProperty.focus {
-  color: #36405b;
+  color: #000000;
   background-color: transparent;
   border-color: #e2e5ed;
 }
@@ -48,30 +48,30 @@
 
 .btn-itemProperty.active {
   color: #fff;
-  background-color: #374146;
-  border-color: #374146;
+  background-color: #000000;
+  border-color: #000000;
 }
 
 .btn-itemProperty.active:hover {
   color: #fff;
-  background-color: #374146;
-  border-color: #374146;
+  background-color: #000000;
+  border-color: #000000;
 }
 
 .btn-itemProperty.active:focus, .btn-itemProperty.active.focus {
   color: #fff;
-  background-color: #374146;
-  border-color: #374146;
+  background-color: #000000;
+  border-color: #000000;
 }
 
 .btn-itemProperty.active.disabled:focus, .btn-itemProperty.active.disabled.focus, .btn-itemProperty.active:disabled:focus, .btn-itemProperty.active:disabled.focus {
-  background-color: #374146;
-  border-color: #374146;
+  background-color: #000000;
+  border-color: #000000;
 }
 
 .btn-itemProperty.active.disabled:hover, .btn-itemProperty.active:disabled:hover {
-  background-color: #374146;
-  border-color: #374146;
+  background-color: #000000;
+  border-color: #000000;
 }
 
 .icon-checkcircle.active {
