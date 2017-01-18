@@ -36,10 +36,10 @@
         <nav class="navbar navbar-full bg-primary">
             <ul class="nav navbar-primary nav-top p-y-10x font-size-sm text-center nav-menuList">
                 <li class="nav-item col-xs-4">
-                    <a href="/daily" @if($NavShowDaily) class="active" @endif>DAILY</a>
+                    <a href="/daily" @if($NavShowDaily) class="active" @endif>TRENDING</a>
                 </li>
                 <li class="nav-item col-xs-4">
-                    <a href="/designer" @if($NavShowDesigner) class="active" @endif>DESIGNER</a>
+                    <a href="/designer" @if($NavShowDesigner) class="active" @endif>COLLECTIONS</a>
                 </li>
                 <li class="nav-item col-xs-4">
                     <a href="/shopping" @if($NavShowShop) class="active" @endif>SHOP</a>
