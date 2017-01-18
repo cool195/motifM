@@ -1,6 +1,5 @@
 
 <nav class="nav-menu">
-    <div class="hr-between"></div>
     <ul class="nav bg-white">
         <li class="nav-item">
             <a href="/daily" class="flex flex-alignCenter flex-fullJustified p-a-15x menu">
@@ -10,7 +9,6 @@
             </a>
         </li>
     </ul>
-    <div class="hr-between"></div>
     <ul class="nav bg-white">
         @if(!Session::has('user'))
             <li class="nav-item">
@@ -21,7 +19,6 @@
                     </div>
                     <span class="text-common"><i class="iconfont icon-arrow-right icon-size-sm"></i></span>
                 </a>
-                <hr class="hr-base m-a-0">
             </li>
         @endif
         <li class="nav-item">
@@ -30,7 +27,6 @@
                             class="iconfont icon-book icon-size-md p-r-15x"></i><span>Orders</span></div>
                 <span class="text-common"><i class="iconfont icon-arrow-right icon-size-sm"></i></span>
             </a>
-            <hr class="hr-base m-a-0">
         </li>
             <li class="nav-item">
                 <a href="#" class="flex flex-alignCenter flex-fullJustified p-a-15x menu" data-remodal-target="download-modal" id="menu-following">
@@ -38,7 +34,6 @@
                                 class="iconfont icon-follow icon-size-md p-r-15x"></i><span>Following</span></div>
                     <span class="text-common"><i class="iconfont icon-arrow-right icon-size-sm"></i></span>
                 </a>
-                <hr class="hr-base m-a-0">
             </li>
         <li class="nav-item">
             <a href="/promocode" class="flex flex-alignCenter flex-fullJustified p-a-15x menu">
@@ -47,7 +42,6 @@
                     <span class="p-l-15x">Coupons and Promotions</span></div>
                 <span class="text-common"><i class="iconfont icon-arrow-right icon-size-sm"></i></span>
             </a>
-            <hr class="hr-base m-a-0">
         </li>
         <li class="nav-item">
             <a href="/invitefriends" class="flex flex-alignCenter flex-fullJustified p-a-15x menu">
@@ -56,7 +50,6 @@
                     <span class="p-l-15x">Get $20 Off</span></div>
                 <span class="text-common"><i class="iconfont icon-arrow-right icon-size-sm"></i></span>
             </a>
-            <hr class="hr-base m-a-0">
         </li>
         <li class="nav-item">
             <a href="/user/setting" class="flex flex-alignCenter flex-fullJustified p-a-15x menu">
@@ -65,7 +58,6 @@
                 <span class="text-common"><i class="iconfont icon-arrow-right icon-size-sm"></i></span>
             </a>
             @if(Session::has('user'))
-            <hr class="hr-base m-a-0">
             @endif
         </li>
         @if(Session::has('user'))
@@ -80,7 +72,6 @@
             </li>
         @endif
     </ul>
-    <div class="hr-between"></div>
     <ul class="nav bg-white">
         <li class="nav-item">
             <a href="#" class="flex flex-alignCenter flex-fullJustified p-a-15x menu" data-remodal-target="download-modal" id="downloadingApp" data-role="downloading">
@@ -90,7 +81,6 @@
             </a>
         </li>
     </ul>
-    <div class="hr-between"></div>
     <ul class="nav bg-white m-b-10x">
         <li class="nav-item">
             <a href="/faq" class="flex flex-alignCenter flex-fullJustified p-a-15x menu">
@@ -98,7 +88,6 @@
                             class="iconfont icon-help icon-size-md p-r-15x"></i><span>FAQ & Help</span></div>
                 <span class="text-common"><i class="iconfont icon-arrow-right icon-size-sm"></i></span>
             </a>
-            <hr class="hr-base m-a-0">
         </li>
         <li class="nav-item">
             <a href="/feed" class="flex flex-alignCenter flex-fullJustified p-a-15x menu">
@@ -106,7 +95,6 @@
                             class="iconfont icon-talks icon-size-md p-r-15x"></i><span>Customer Support</span></div>
                 <span class="text-common"><i class="iconfont icon-arrow-right icon-size-sm"></i></span>
             </a>
-            <hr class="hr-base m-a-0">
         </li>
     </ul>
 </nav>

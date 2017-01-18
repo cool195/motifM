@@ -221,7 +221,6 @@
 
             <!-- 产品 预售信息 -->
             @if(1 == $data['sale_type'])
-                <div class="hr-between"></div>
                 @if($data['skuPrice']['skuPromotion']['remain_time'] >= 0 || !empty($data['spuStock']))
                     <section class="limited-content"
                              data-begintime="{{  $data['skuPrice']['skuPromotion']['start_time'] }}"
@@ -298,7 +297,6 @@
                 @endif
             @endif
             @if($data['skuPrice']['skuPromotion']['pre_exp_descs'])
-                <div class="hr-between"></div>
                 @foreach($data['skuPrice']['skuPromotion']['pre_exp_descs'] as $value)
                     <section class="limited">
                         <div class="bg-white">
@@ -313,7 +311,6 @@
                     </section>
                 @endforeach
             @endif
-            <div class="hr-between"></div>
             <section data-spu="{{$data['spu']}}" id="modalDialog" data-login="1" data-status="{{$data['status_code']}}" data-onlysku="@if(count($data['skus'])==1){{$data['skus'][0]}}@endif">
                 <div class="warning-info off flex text-warning flex-alignCenter text-left p-x-15x p-b-10x">
                     <i class="iconfont icon-caveat icon-size-md p-r-5x"></i>
@@ -348,7 +345,6 @@
                                 </div>
                             </div>
                         </fieldset>
-                        <hr class="hr-base m-a-0">
                     @endforeach
                 @endif
 
@@ -367,7 +363,6 @@
                                          id="{{$vas['vas_id']}}" data-vas-type="{{$vas['vas_type']}}"></div>
                                 </div>
                             </fieldset>
-                            <hr class="hr-base m-a-0">
                         @else
                             <fieldset class="p-x-15x p-y-10x text-left" data-vas-type="$vas['vas_type']">
                                 <div class="flex flex-fullJustified flex-alignCenter">
@@ -379,7 +374,6 @@
                                          id="{{$vas['vas_id']}}" data-vas-type="$vas['vas_type']"></div>
                                 </div>
                             </fieldset>
-                            <hr class="hr-base m-a-0">
                         @endif
                     @endforeach
                 @endif
@@ -400,11 +394,9 @@
                     </div>
                 </fieldset>
             </section>
-            <div class="hr-between"></div>
 
             <!-- Add to Bag 按钮 -->
             <section class="addToBag-info">
-                <hr class="hr-base m-a-0">
                 <fieldset class="container-fluid p-a-15x">
                     <!-- 添加 购物车 控制按钮显示 -->
                     {{--@if(Session::has('user'))--}}
@@ -444,7 +436,6 @@
                         </a>
                     </div>
                 </aside>
-                <div class="hr-between"></div>
                 <aside class="product-secondaryInfo">
                     <a class="flex flex-alignCenter flex-fullJustified font-size-sm text-primary p-a-15x"
                        href="/askshopping?skiptype=3&id={{$data['spu']}}">
@@ -452,7 +443,6 @@
                         <i class="iconfont icon-arrow-right icon-size-xm text-common"></i>
                     </a>
                 </aside>
-                <div class="hr-between"></div>
                 <aside class="product-secondaryInfo">
                     @if(isset($data['templates']) && !empty($data['templates']))
                         @foreach($data['templates'] as $template)
@@ -461,7 +451,6 @@
                                 {{ $template['template_title'] }}
                                 <i class="iconfont icon-arrow-right icon-size-xm text-common"></i>
                             </a>
-                            <hr class="hr-base m-a-0">
                         @endforeach
                     @endif
                 </aside>
@@ -472,7 +461,6 @@
                     <aside class="m-b-20x">
                         <article class="font-size-md text-primary p-x-15x p-y-10x bg-title"><strong>You May Also
                                 Like</strong></article>
-                        <hr class="hr-base m-a-0">
                         <div class="p-t-10x" id="recommend"
                              data-impr="{{ $recommended['impr'] }}">
                             <div class="productList">
