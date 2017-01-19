@@ -234,3 +234,5 @@ $app->get('404','Other\PageController@error404');
 
 $app->get('aes','Other\PageController@aes');
 
+$app->get('/testSession', 'Other\PageController@test');
+

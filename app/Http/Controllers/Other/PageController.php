@@ -20,6 +20,11 @@ class PageController extends ApiController
         return [$randomKey, $str, $aesStr];
     }
 
+    public function test()
+    {
+        return Session::get('user');
+    }
+
     //aboutMotif
     public function error()
     {
