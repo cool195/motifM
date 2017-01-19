@@ -187,7 +187,7 @@ class DesignerController extends ApiController
     {
         $preg = '/^http:/';
         if(!preg_match($preg, $url)){
-            $url = '//'.$url;
+            $url = 'http://'.$url;
         }
         return $url;
     }
