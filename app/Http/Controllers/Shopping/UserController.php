@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\ApiController;
 use Illuminate\Support\Facades\Session;
 use App\Services\Publicfun;
+use Cache;
 
 class UserController extends ApiController
 {
@@ -71,6 +72,8 @@ class UserController extends ApiController
         if ($result['success']) {
             Session::forget('user');
             Session::put('user', $result['data']);
+            Cache::forget($result['data']['token']);
+            Cache::put($result['data']['token'], $result['data'], ($result['data']['tokenTtl'] / 60));
             if($_COOKIE['wishSpu']){
                 Publicfun::addWishProduct($_COOKIE['wishSpu']);
             }
@@ -125,6 +128,8 @@ class UserController extends ApiController
                 $result['redirectUrl'] = ($request->input('referer') && !strstr($request->input('referer'), 'register')) ? $request->input('referer') : "/daily";
                 Session::forget('user');
                 Session::put('user', $result['data']);
+                Cache::forget($result['data']['token']);
+                Cache::put($result['data']['token'], $result['data'], ($result['data']['tokenTtl'] / 60));
                 if($_COOKIE['wishSpu']){
                     Publicfun::addWishProduct($_COOKIE['wishSpu']);
                 }
@@ -144,6 +149,7 @@ class UserController extends ApiController
      * */
     public function signout()
     {
+        Cache::forget(Session::get('user.token'));
         Session::forget('user');
         return redirect('/login');
     }

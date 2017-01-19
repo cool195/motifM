@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Services\Net;
+use Cache;
+use Illuminate\Support\Facades\Session;
 
 error_reporting(0);
 
@@ -18,6 +20,15 @@ class ApiController extends Controller
         'openapi_test' => array('api' => 'http://54.222.233.255', 'rec' => 'http://54.222.233.255'),//预发布
         'openapi' => array('api' => 'https://api.motif.me', 'rec' => 'https://rec.motif.me'),//生产
     ];
+
+    function __construct()
+    {
+        if(Session::has('user')){
+            if(!Cache::has(Session::get('user.token'))){
+                Session::forget('user');
+            }
+        }
+    }
 
     protected function request($ApiName, $system, $service, array $params)
     {

@@ -29,7 +29,7 @@ return [
     |
     */
 
-    'lifetime' => env('SESSION_LIFETIME', 43200),//最长支持一个月的保存时间
+    'lifetime' => env('SESSION_LIFETIME', 21600),//15天最长支持一个月的保存时间
 
     'expire_on_close' => env('SESSION_EXPIRE_ON_CLOSE', false),//是否是关闭浏览器就清除session
 
