@@ -880,6 +880,9 @@
                     setTimeout(function () {
                         closeAddError();
                     }, 1500);
+                    if(data.code = 1707){
+                        window.location.href = '/login';
+                    }
                 }
             })
             .always(function () {
