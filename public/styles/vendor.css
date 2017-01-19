@@ -5026,8 +5026,10 @@ html.remodal-is-locked {
 
 .btn-cartCount {
   color: #000000;
-  background-color: #f3f4f6;
+  /*background-color: #f3f4f6;*/
   border-color: transparent;
+  padding: 0.375rem;
+  font-size: 0.75rem;
 }
 
 .btn-cartCount:hover {

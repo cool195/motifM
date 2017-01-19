@@ -382,13 +382,14 @@
                         <span class="text-primary font-size-sm">Qty:</span>
                         <div class="btn-group flex" id="item-count">
                             <div class="btn btn-cartCount btn-sm disabled" data-item="minus">
-                                <i class="iconfont icon-minus"></i>
+                                {{--<i class="iconfont icon-minus"></i>--}}
+                                <i class="iconfont1 icon-arrow-bottom1 icon-size-sm"></i>
                             </div>
                             <div class="btn btn-cartCount btn-sm" data-num="num">1</div>
 
-                            <div class="btn btn-cartCount btn-sm"
-                                 data-item="add">
-                                <i class="iconfont icon-add"></i>
+                            <div class="btn btn-cartCount btn-sm" data-item="add">
+                                {{--<i class="iconfont icon-add"></i>--}}
+                                <i class="iconfont1 icon-arrow-up1 icon-size-sm"></i>
                             </div>
                         </div>
                     </div>
