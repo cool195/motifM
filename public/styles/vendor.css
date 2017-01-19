@@ -6522,7 +6522,7 @@ footer .links-group {
 }
 
 .cartList-item + .cartList-item {
-  /*border-top: 1px solid #e2e5ed;*/
+  border-top: 1px solid #e2e5ed;
 }
 
 .cartList-item.disabled .productInfo {
