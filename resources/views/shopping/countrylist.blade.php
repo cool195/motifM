@@ -30,8 +30,8 @@
                     @endforeach
                 @endif
             </aside>
-            <div class="p-t-10x bg-title"></div>
-            <hr class="hr-base m-a-0">
+            {{--<div class="p-t-10x bg-title"></div>--}}
+            <hr class="hr-dark m-a-0">
             <aside class="bg-white">
                 @if(isset($list))
                     @foreach($list as $l)

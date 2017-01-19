@@ -36,7 +36,7 @@
                              data-aid="{{$addr['receiving_id']}}">
                             @if(1 !== $addr['isDefault'])
                                 <div class="addressList-delete switch" data-remodal-target="modal">
-                                    <i class="iconfont icon-delete icon-size-md text-warning"></i>
+                                    <i class="iconfont icon-delete icon-size-md text-primary"></i>
                                 </div>
                             @endif
                             <div class="addressItem-info text-primary m-l-15x p-r-15x p-y-10x" data-action="return"
@@ -63,7 +63,8 @@
                     @endforeach
                 @endif
             </aside>
-            <div class="hr-between"></div>
+            {{--<div class="hr-between"></div>--}}
+            <hr class="hr-dark m-a-0">
             <aside class="bg-white">
                 <a class="flex flex-alignCenter text-primary p-a-15x"
                    href="@if(empty($data['list'])){{'/user/addradd?first=1'}}@else{{'/user/addradd'}}@endif">

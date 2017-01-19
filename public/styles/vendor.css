@@ -589,13 +589,13 @@ button.swiper-pagination-bullet {
 */
 /*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */
 html {
-  font-family: 'AvenirNext-Regular';
+  font-family: 'AvenirNext-Regular','BigNoodleTitling';
   -ms-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
 }
 
 body {
-  font-family: 'AvenirNext-Regular';
+  font-family: 'AvenirNext-Regular','BigNoodleTitling';
   margin: 0;
 }
 
@@ -846,7 +846,7 @@ html {
 
 body {
   /*font-family: "Helvetica", "Helvetica Neue", Helvetica, Arial, sans-serif;*/
-  font-family: 'AvenirNext-Regular';
+  font-family: 'AvenirNext-Regular','BigNoodleTitling';
   font-size: 1.125rem;
   line-height: 1.5;
   color: #000000;
@@ -1077,7 +1077,7 @@ hr {
 }
 
 .hr-dark {
-  border-color: #959ab0;
+  border-color: #000000;
 }
 
 .hr-base {
@@ -1095,7 +1095,8 @@ hr {
   height:10px;
 }
 .bg-title{
-  background-color:#f9f9f9;
+  background-color:#ffffff;
+  font-family: "AvenirNext-Medium";
 }
 
 .list-unstyled {
@@ -4211,6 +4212,10 @@ html.remodal-is-locked {
   -moz-osx-font-smoothing: grayscale;
 }
 
+.icon-size-lx {
+  font-size: 1.625rem;
+}
+
 .icon-size-lg {
   font-size: 1.25rem;
 }
@@ -5952,7 +5957,8 @@ html.remodal-is-locked {
 }
 
 footer {
-  background-color: #f0f2f6;
+  background-color: #ffffff;
+  padding-top:40px!important;
 }
 
 footer .field-content {
@@ -5980,7 +5986,7 @@ footer .field-items {
 }
 
 footer .share-btn {
-  margin-right: 1.2rem;
+  margin-right: 1rem;
   text-align: center;
   line-height: 1;
 }
@@ -6514,7 +6520,7 @@ footer .links-group {
 }
 
 .cartList-item + .cartList-item {
-  border-top: 1px solid #e2e5ed;
+  /*border-top: 1px solid #e2e5ed;*/
 }
 
 .cartList-item.disabled .productInfo {

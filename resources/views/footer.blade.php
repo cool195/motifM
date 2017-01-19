@@ -1,4 +1,4 @@
-<footer class="p-y-20x">
+<footer class="p-b-20x">
     <div class="text-center font-size-sm p-y-5x">
         @if(Session::has('user'))
             <a href="/user/signout" class="text-primary">Sign Out</a>
@@ -12,16 +12,19 @@
         </div>
         <div class="p-l-15x">
             <a class="share-btn" href="https://www.facebook.com/motifme">
-                <img src="{{env('CDN_Static')}}/images/icon/facebook.png"
-                     srcset="{{env('CDN_Static')}}/images/icon/facebook@2x.png 2x,{{env('CDN_Static')}}/images/icon/facebook@3x.png 3x">
+                {{--<img src="{{env('CDN_Static')}}/images/icon/facebook.png"--}}
+                     {{--srcset="{{env('CDN_Static')}}/images/icon/facebook@2x.png 2x,{{env('CDN_Static')}}/images/icon/facebook@3x.png 3x">--}}
+                <i class="iconfont1 icon-facebook2 icon-size-lx text-primary"></i>
             </a>
             <a class="share-btn" href="https://www.instagram.com/motifme/">
-                <img src="{{env('CDN_Static')}}/images/icon/ins.png"
-                     srcset="{{env('CDN_Static')}}/images/icon/ins@2x.png 2x,{{env('CDN_Static')}}/images/icon/ins@3x.png 3x">
+                {{--<img src="{{env('CDN_Static')}}/images/icon/ins.png"--}}
+                     {{--srcset="{{env('CDN_Static')}}/images/icon/ins@2x.png 2x,{{env('CDN_Static')}}/images/icon/ins@3x.png 3x">--}}
+                <i class="iconfont1 icon-ins2 icon-size-lx text-primary"></i>
             </a>
             <a class="share-btn" href="https://www.pinterest.com/motifme/">
-                <img src="{{env('CDN_Static')}}/images/icon/pinterest.png"
-                     srcset="{{env('CDN_Static')}}/images/icon/pinterest@2x.png 2x,{{env('CDN_Static')}}/images/icon/pinterest@3x.png 3x">
+                {{--<img src="{{env('CDN_Static')}}/images/icon/pinterest.png"--}}
+                     {{--srcset="{{env('CDN_Static')}}/images/icon/pinterest@2x.png 2x,{{env('CDN_Static')}}/images/icon/pinterest@3x.png 3x">--}}
+                <i class="iconfont1 icon-pin2 icon-size-lx text-primary"></i>
             </a>
         </div>
     </div>

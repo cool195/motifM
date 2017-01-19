@@ -31,7 +31,8 @@
                 <span>${{number_format(($data['pay_amount'] / 100), 2)}}</span>
             </div>
         </article>
-        <div class="hr-between"></div>
+        {{--<div class="hr-between"></div>--}}
+        <hr class="hr-base m-a-0">
 
         <!-- 订单商品列表 -->
         <aside class="bg-white">
@@ -115,7 +116,8 @@
                 </div>
             @endif
         </aside>
-        <div class="hr-between"></div>
+        {{--<div class="hr-between"></div>--}}
+        {{--<hr class="hr-base m-a-0">--}}
 
         <!-- 订单地址、物流、支付 等信息 -->
         <aside class="bg-white">
@@ -185,7 +187,8 @@
                 </div>
             @endif
         </aside>
-        <div class="hr-between"></div>
+        {{--<div class="hr-between"></div>--}}
+        <hr class="hr-dark m-a-0">
 
         <!-- 订单金额 -->
         <aside class="bg-white">

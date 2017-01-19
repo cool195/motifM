@@ -205,7 +205,7 @@
                         </p>
                     @endif
                 </div>
-                <hr class="hr-light m-x-10x">
+                <hr class="hr-dark m-x-10x">
                 <div class="product-price">
                     @if(isset($data['skuPrice']['skuPromotion']) && ($data['skuPrice']['skuPromotion']['price']>$data['skuPrice']['skuPromotion']['promot_price']))
                         <span class="font-size-lx text-red" id="skuNewPrice">${{ number_format(($data['skuPrice']['skuPromotion']['promot_price'] / 100), 2) }}</span>
@@ -397,6 +397,7 @@
 
             <!-- Add to Bag 按钮 -->
             <section class="addToBag-info">
+                <hr class="hr-base m-a-0">
                 <fieldset class="container-fluid p-a-15x">
                     <!-- 添加 购物车 控制按钮显示 -->
                     {{--@if(Session::has('user'))--}}
@@ -459,7 +460,7 @@
                 <!-- 推荐商品 -->
                 @if(!empty($recommended['list']))
                     <aside class="m-b-20x">
-                        <article class="font-size-md text-primary p-x-15x p-y-10x bg-title"><strong>You May Also
+                        <article class="font-size-md text-primary p-x-15x p-b-10x p-t-20x bg-title"><strong>You May Also
                                 Like</strong></article>
                         <div class="p-t-10x" id="recommend"
                              data-impr="{{ $recommended['impr'] }}">

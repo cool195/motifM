@@ -68,11 +68,11 @@
                         <button style="width:100%;border: none;background-color: white" class="p-a-15x search-item {{ 'cateClick'.$c['category_id'] }}"
                                 data-categoryid="{{ $c['category_id'] }}" data-categoryname="{{ $c['category_name'] }}">
                             <span class="text-primary font-size-sm text-right">{{ $c['category_name'] }}</span>
-                            <i class="iconfont icon-check icon-size-md text-common"></i>
+                            <i class="iconfont icon-check icon-size-md text-primary"></i>
                         </button>
-                        <hr class="hr-base m-a-0">
                     @endforeach
                 @endif
+                    <hr class="hr-base m-a-0">
             </section>
 
             <select class="font-size-sm text-main btn-sortBy" id="sortBy">

@@ -139,7 +139,8 @@
             </div>
         </div>
     </div>
-    <div class="hr-between"></div>
+    {{--<div class="hr-between"></div>--}}
+    <hr class="hr-dark m-a-0">
     @{{ /if }}
     @{{ /each }}
     @{{ /each }}

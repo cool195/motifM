@@ -164,7 +164,7 @@
                                  data-aid="{{$value['receiving_id']}}">
                                 @if(1 !== $value['isDefault'])
                                     <div class="addressList-delete switch" data-remodal-target="modal">
-                                        <i class="iconfont icon-delete icon-size-md text-warning"></i>
+                                        <i class="iconfont icon-delete icon-size-md text-primary"></i>
                                     </div>
                                 @endif
                                 <div class="addressItem-info text-primary m-l-15x p-r-15x p-y-10x" data-action="return"
@@ -181,23 +181,24 @@
                                     </div>
                                     <div class="flex flex-alignCenter">
                                         @if($value['isDefault']==1)
-                                            <span class="text-common p-r-10x">Default</span>
+                                            <span class="text-primary p-r-10x">Default</span>
                                         @endif
-                                        <i class="iconfont icon-radio icon-size-sm text-common @if(Session::get('user.checkout.address.receiving_id')==$value['receiving_id']) active @endif"></i>
+                                        <i class="iconfont icon-radio icon-size-sm text-primary @if(Session::get('user.checkout.address.receiving_id')==$value['receiving_id']) active @endif"></i>
                                     </div>
 
                                 </div>
                             </div>
                         @endforeach
                     </aside>
-                    <div class="hr-between"></div>
+                    {{--<div class="hr-between"></div>--}}
+                    <hr class="hr-dark m-a-0">
                     <aside class="bg-white">
                         <div class="flex flex-alignCenter text-primary p-a-15x" id="btn-toAddAddress">
                             <i class="iconfont icon-add icon-size-sm p-r-10x"></i>
                             <span class="font-size-sm">Add New Address</span>
                         </div>
                     </aside>
-                    <hr class="hr-base m-a-0">
+                    {{--<hr class="hr-base m-a-0">--}}
                     {{--<aside class="p-a-15x">--}}
                         {{--<div class="btn btn-block btn-primary" data-url="{{'/checkout/shipping'}}" id="submit-address">Continue</div>--}}
                     {{--</aside>--}}
@@ -231,14 +232,13 @@
                                  data-type="{{$value['child_type']}}" data-childlabel="{{$value['child_label']}}"
                                  data-zipcode="{{$value['zipcode_label']}}">
                                 <span>{{$value['country_name_en']}}</span>
-                                <i class="iconfont icon-check icon-size-sm text-common"></i>
+                                <i class="iconfont icon-check icon-size-sm text-primary"></i>
                             </div>
                             <hr class="hr-base m-a-0">
                         @endforeach
 
                     </aside>
-                    <div class="p-t-10x bg-title"></div>
-                    <hr class="hr-base m-a-0">
+                    <hr class="hr-dark m-a-0">
                     <aside class="bg-white">
 
                         @foreach($country['list'] as $value)
@@ -247,7 +247,7 @@
                                  data-type="{{$value['child_type']}}" data-childlabel="{{$value['child_label']}}"
                                  data-zipcode="{{$value['zipcode_label']}}">
                                 <span>{{ $value['country_name_en'] }}</span>
-                                <i class="iconfont icon-check icon-size-sm text-common"></i>
+                                <i class="iconfont icon-check icon-size-sm text-primary"></i>
                             </div>
                             <hr class="hr-base">
                         @endforeach

@@ -94,7 +94,7 @@
             @elseif($value['type']=='title')
                     <!-- 标题 -->
             <a href="@if($value['skipType']=='1')/detail/@elseif($value['skipType']=='2')/designer/@elseif($value['skipType']=='3')/topic/@elseif($value['skipType']=='4')/shopping#@endif{{$value['skipId']}}">
-                <div class="p-x-15x p-y-10x text-primary">
+                <div class="p-x-15x p-b-10x p-t-20x text-primary">
                     <strong>{{$value['value']}}</strong>
                 </div>
             </a>

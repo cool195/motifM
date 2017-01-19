@@ -32,8 +32,8 @@
             @endif
         </ul>
     </nav>
+    <hr class="hr-dark m-a-0">
     @if($NavShowDaily || $NavShowDesigner || $NavShowShop)
-        <hr class="hr-dark m-a-0">
         <nav class="navbar navbar-full bg-white">
             <ul class="nav navbar-primary nav-top p-t-10x p-b-5x font-size-sm text-center nav-menuList">
                 <li class="nav-item col-xs-4">
@@ -73,14 +73,14 @@
         <a href="/detail/@{{ $value.spu }}" class="inBag">
             <div class="productInfo flex">
                 <div class="flex-fixedShrink">
-                    <img class="img-thumbnail img-lazy"
+                    <img class="img-fluid img-lazy"
                          src="{{env('CDN_Static')}}/images/product/bg-product@70.png"
                          data-original="{{env('APP_Api_Image')}}/n2/@{{ $value.main_image_url }}"
                          width="70px" height="70px">
                 </div>
                 <div class="p-l-10x flex-width">
                     <article class="flex flex-fullJustified">
-                        <h6 class="text-main font-size-sm p-r-10x">
+                        <h6 class="text-main font-size-sm p-r-10x avenirMedium">
                             <strong>@{{ $value.main_title }}</strong></h6>
                         <span class="text-primary font-size-sm flex-fixedShrink">$@{{ ($value.sale_price/100).toFixed(2) }}</span>
                     </article>

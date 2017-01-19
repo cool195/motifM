@@ -145,32 +145,37 @@
                         @endif
                         @if(!empty($designer['instagram_link']))
                             <a href="{{$designer['instagram_link']}}" target="_blank" class="p-r-20x SocialMedia">
-                                <img src="{{env('CDN_Static')}}/images/designer/ins.png"
-                                     srcset="{{env('CDN_Static')}}/images/designer/ins@2x.png 2x,{{env('CDN_Static')}}/images/designer/ins@3x.png 3x">
+                                {{--<img src="{{env('CDN_Static')}}/images/designer/ins.png"--}}
+                                     {{--srcset="{{env('CDN_Static')}}/images/designer/ins@2x.png 2x,{{env('CDN_Static')}}/images/designer/ins@3x.png 3x">--}}
+                                <i class="iconfont1 icon-instagram1 text-primary icon-size-lg"></i>
                             </a>
                         @endif
                         @if(!empty($designer['snapchat_link']))
                             <a href="{{$designer['snapchat_link']}}" target="_blank" class="p-r-20x SocialMedia">
-                                <img src="{{env('CDN_Static')}}/images/designer/snapchat.png"
-                                     srcset="{{env('CDN_Static')}}/images/designer/snapchat@2x.png 2x,{{env('CDN_Static')}}/images/designer/snapchat@3x.png 3x">
+                                {{--<img src="{{env('CDN_Static')}}/images/designer/snapchat.png"--}}
+                                     {{--srcset="{{env('CDN_Static')}}/images/designer/snapchat@2x.png 2x,{{env('CDN_Static')}}/images/designer/snapchat@3x.png 3x">--}}
+                                <i class="iconfont1 icon-snapchat1 text-primary icon-size-lg"></i>
                             </a>
                         @endif
                         @if(!empty($designer['youtube_link']))
                             <a href="{{$designer['youtube_link']}}" target="_blank" class="p-r-20x SocialMedia">
-                                <img src="{{env('CDN_Static')}}/images/designer/youtube.png"
-                                     srcset="{{env('CDN_Static')}}/images/designer/youtube@2x.png 2x,{{env('CDN_Static')}}/images/designer/youtube@3x.png 3x">
+                                {{--<img src="{{env('CDN_Static')}}/images/designer/youtube.png"--}}
+                                     {{--srcset="{{env('CDN_Static')}}/images/designer/youtube@2x.png 2x,{{env('CDN_Static')}}/images/designer/youtube@3x.png 3x">--}}
+                                <i class="iconfont1 icon-youtube1 text-primary icon-size-lg"></i>
                             </a>
                         @endif
                         @if(!empty($designer['facebook_link']))
                             <a href="{{$designer['facebook_link']}}" target="_blank" class="p-r-20x SocialMedia">
-                                <img src="{{env('CDN_Static')}}/images/designer/facebook.png"
-                                     srcset="{{env('CDN_Static')}}/images/designer/facebook@2x.png 2x,{{env('CDN_Static')}}/images/designer/facebook@3x.png 3x">
+                                {{--<img src="{{env('CDN_Static')}}/images/designer/facebook.png"--}}
+                                     {{--srcset="{{env('CDN_Static')}}/images/designer/facebook@2x.png 2x,{{env('CDN_Static')}}/images/designer/facebook@3x.png 3x">--}}
+                                <i class="iconfont1 icon-facebook1 text-primary icon-size-lg"></i>
                             </a>
                         @endif
                         @if(!empty($designer['blog_link']))
                             <a href="{{$designer['blog_link']}}" target="_blank" class="p-r-20x SocialMedia">
-                                <img src="{{env('CDN_Static')}}/images/designer/blog.png"
-                                     srcset="{{env('CDN_Static')}}/images/designer/blog@2x.png 2x,{{env('CDN_Static')}}/images/designer/blog@3x.png 3x">
+                                {{--<img src="{{env('CDN_Static')}}/images/designer/blog.png"--}}
+                                     {{--srcset="{{env('CDN_Static')}}/images/designer/blog@2x.png 2x,{{env('CDN_Static')}}/images/designer/blog@3x.png 3x">--}}
+                                <i class="iconfont1 icon-blog1 text-primary icon-size-lg"></i>
                             </a>
                         @endif
 
@@ -186,7 +191,6 @@
                                  data-begintime="{{$designer['prompt_info']['datePrompt']['startDate']}}"
                                  data-endtime="{{$designer['prompt_info']['datePrompt']['endDate']}}"
                                  data-lefttime="{{$designer['prompt_info']['datePrompt']['endDate']-time()*1000}}">
-                    <div class="hr-between"></div>
                     <div class="bg-white">
                         <div class="limited-subtitle"><span
                                     class="p-l-15x p-r-10x bg-limited"><strong>{{$designer['prompt_info']['datePrompt']['title']}}</strong></span>
@@ -208,11 +212,9 @@
                         </div>
 
                     </div>
-                    <div class="hr-between"></div>
                 </section>
                     @else
                         <section class="limited">
-                            <div class="hr-between"></div>
                             <div class="bg-white">
                                 <div class="limited-subtitle"><span
                                             class="p-l-15x p-r-10x bg-limited"><strong>{{$designer['prompt_info']['datePrompt']['title']}}</strong></span>
@@ -226,12 +228,10 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="hr-between"></div>
                         </section>
                     @endif
             @endif
             @if($designer['prompt_info']['textPrompt'])
-                <div class="hr-between"></div>
                 <section class="limited">
                     <div class="bg-white">
                         <div class="limited-subtitle">
@@ -241,7 +241,6 @@
                             {{$designer['prompt_info']['textPrompt']['content']}}
                         </div>
                     </div>
-                    <div class="hr-between"></div>
                 </section>
             @endif
             {{--设计师 对应模版商品--}}

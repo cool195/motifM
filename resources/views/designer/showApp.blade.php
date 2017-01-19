@@ -218,7 +218,6 @@
                              data-begintime="{{$designer['prompt_info']['datePrompt']['startDate']}}"
                              data-endtime="{{$designer['prompt_info']['datePrompt']['endDate']}}"
                              data-lefttime="{{$designer['prompt_info']['datePrompt']['endDate']-time()*1000}}">
-                        <div class="hr-between"></div>
                         <div class="bg-white">
                             <div class="limited-subtitle"><span
                                         class="p-l-15x p-r-10x bg-limited"><strong>{{$designer['prompt_info']['datePrompt']['title']}}</strong></span>
@@ -241,11 +240,9 @@
                             </div>
 
                         </div>
-                        <div class="hr-between"></div>
                     </section>
                 @else
                     <section class="limited">
-                        <div class="hr-between"></div>
                         <div class="bg-white">
                             <div class="limited-subtitle"><span
                                         class="p-l-15x p-r-10x bg-limited"><strong>{{$designer['prompt_info']['datePrompt']['title']}}</strong></span>
@@ -259,12 +256,10 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="hr-between"></div>
                     </section>
                 @endif
             @endif
             @if($designer['prompt_info']['textPrompt'])
-                <div class="hr-between"></div>
                 <section class="limited">
                     <div class="bg-white">
                         <div class="limited-subtitle">
@@ -274,7 +269,6 @@
                             {{$designer['prompt_info']['textPrompt']['content']}}
                         </div>
                     </div>
-                    <div class="hr-between"></div>
                 </section>
             @endif
             {{--设计师 对应商品--}}
