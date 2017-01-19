@@ -60,6 +60,8 @@ class DesignerController extends ApiController
             );
 
             $result = $this->request('openapi', '', 'designer', $params);
+
+            $result = $this->pregDesignerUrl($result);
             //设计师商品动态模版
             $params = array(
                 'cmd' => 'dmodel',
@@ -159,6 +161,35 @@ class DesignerController extends ApiController
             return View($view, ['maidian' => $maidian, 'NavShowDesigner' => $NavShow,'designer' => $result['data'], 'productAll' => $productAll, 'product' => $product['data']]);
         }
 
+    }
+
+    private function pregDesignerUrl($result)
+    {
+        if(!empty($result['data']['instagram_link'])){
+            $result['data']['instagram_link'] = $this->pregUrl($result['data']['instagram_link']);
+        }
+        if(!empty($data['data']['facebook_link'])){
+            $result['data']['facebook_link'] = $this->pregUrl($result['data']['facebook_link']);
+        }
+        if(!empty($result['data']['youtube_link'])){
+            $result['data']['youtube_link'] = $this->pregUrl($result['data']['youtube_link']);
+        }
+        if(!empty($result['data']['blog_link'])){
+            $result['data']['blog_link'] = $this->pregUrl($result['data']['blog_link']);
+        }
+        if(!empty($result['data']['snapchat_link'])){
+            $result['data']['snapchat_link'] = $this->pregUrl($result['data']['snapchat_link']);
+        }
+        return $result;
+    }
+
+    private function pregUrl($url)
+    {
+        $preg = '/^http:/';
+        if(!preg_match($preg, $url)){
+            $url = '//'.$url;
+        }
+        return $url;
     }
 
     //关注或取消设计师
