@@ -58,7 +58,7 @@
                 <div class="flex flex-fullJustified text-primary font-size-sm">
                     <span class="p-r-5x text-left"><strong>Bag Subtotal: </strong></span><span class="text-right"><strong id="headerBag-subTotal"></strong></span>
                 </div>
-                <a href="/cart" class="btn btn-red btn-block m-y-5x">View Shopping Bag(<span id="itemNum"></span> items)</a>
+                <a href="/cart" class="btn btn-red btn-block m-y-5x">View Shopping Bag<span id="itemNum"></span></a>
             </section>
         </div>
 </header>
