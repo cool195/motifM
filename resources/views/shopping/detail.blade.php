@@ -208,8 +208,8 @@
                 <hr class="hr-dark m-x-10x">
                 <div class="product-price">
                     @if(isset($data['skuPrice']['skuPromotion']) && ($data['skuPrice']['skuPromotion']['price']>$data['skuPrice']['skuPromotion']['promot_price']))
-                        <span class="font-size-lx text-red" id="skuNewPrice">${{ number_format(($data['skuPrice']['skuPromotion']['promot_price'] / 100), 2) }}</span>
-                        <span class="font-size-sm text-throughLine text-common">${{ number_format(($data['skuPrice']['skuPromotion']['price'] /100), 2) }}</span>
+                        <span class="font-size-lx text-primary" id="skuNewPrice">${{ number_format(($data['skuPrice']['skuPromotion']['promot_price'] / 100), 2) }}</span>
+                        <span class="font-size-sm text-throughLine text-green">${{ number_format(($data['skuPrice']['skuPromotion']['price'] /100), 2) }}</span>
                     @else
                         <span class="font-size-lx text-primary" id="skuNewPrice">${{ number_format(($data['skuPrice']['sale_price'] / 100), 2) }}</span>
                     @endif
@@ -501,8 +501,8 @@
                                                             <div class="price-caption">
 
                                                                 @if($value['skuPrice']['sale_price'] != $value['skuPrice']['price'])
-                                                                    <span class="font-size-sm m-l-5x text-red"><strong>${{ number_format(($value['skuPrice']['sale_price'] / 100), 2) }}</strong></span>
-                                                                    <span class="font-size-xs text-common text-throughLine">${{ number_format(($value['skuPrice']['price'] / 100), 2) }}</span>
+                                                                    <span class="font-size-sm m-l-5x text-primary"><strong>${{ number_format(($value['skuPrice']['sale_price'] / 100), 2) }}</strong></span>
+                                                                    <span class="font-size-xs text-green text-throughLine">${{ number_format(($value['skuPrice']['price'] / 100), 2) }}</span>
                                                                 @else
                                                                     <span class="font-size-sm m-l-5x"><strong>${{ number_format(($value['skuPrice']['sale_price'] / 100), 2) }}</strong></span>
                                                                 @endif

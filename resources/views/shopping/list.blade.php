@@ -197,10 +197,10 @@
             <div class="price-caption">
 
                 @{{ if $value.skuPrice.sale_price != $value.skuPrice.price }}
-                <span class="font-size-sm m-l-5x text-red">
+                <span class="font-size-sm m-l-5x text-primary">
                     <strong>$@{{ ($value.skuPrice.sale_price/100).toFixed(2) }}</strong>
                 </span>
-                <span class="font-size-xs text-common text-throughLine">$@{{ ($value.skuPrice.skuPromotion.price/100).toFixed(2) }}</span>
+                <span class="font-size-xs text-green text-throughLine">$@{{ ($value.skuPrice.skuPromotion.price/100).toFixed(2) }}</span>
                 @{{ else }}
                 <span class="font-size-sm m-l-5x">
                     <strong>$@{{ ($value.skuPrice.sale_price/100).toFixed(2) }}</strong>
