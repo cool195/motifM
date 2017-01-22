@@ -294,8 +294,9 @@
     var _learnq = _learnq || [];
     var trackProceedToCheckout = function () {
         _learnq.push(['track', 'Proceed to Checkout', {
-            'value' : totalPrice ,
+            'Value' : totalPrice ,
             'ItemNames' : [@foreach($cartData['showSkus'] as $product) @if(0 == $key)'{{$product['main_title']}}' @else , '{{$product['main_title']}}' @endif @endforeach],
+            'Brand' : 'Motif h5',
             'Items' : [
                     @foreach($cartData['showSkus'] as $product)
                 {
@@ -303,8 +304,8 @@
                     'Name' : '{{$product['main_title']}}',
                     'Quantity' : '{{$product['sale_qtty']}}',
                     'ItemPrice' : '{{number_format($product['sale_price'] / 100, 2)}}',
-                    'ProductURL' : 'https://m.motif.me/detail/{{$product['spu']}}/{{$product['main_title']}}',
-                    'ImageURL' : '{{$product['main_image_Url']}}'
+                    'ProductURL' : 'https://m.motif.me/detail/{{$product['main_title']}}-{{$product['spu']}}',
+                    'ImageURL' : '{{ env('APP_Api_Image')}}/n2/{{$product['main_image_url'] }}'
                 },
                 @endforeach
             ]

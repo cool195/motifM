@@ -645,10 +645,8 @@
         Categories: '{{ $data['category_name'] }}', // The list of categories is an array of strings.
         ImageUrl: '{{config('runtime.CDN_URL')}}/n0/{{ $data['main_image_url'] }}',
         Url: 'https://m.motif.me{{ $_SERVER['REQUEST_URI'] }}',
-        Metadata: {
-            Brand: 'Motif h5',
-            Price: '{{ number_format(($data['skuPrice']['sale_price'] / 100), 2) }}'
-        }
+        Price: '{{ number_format(($data['skuPrice']['sale_price'] / 100), 2) }}',
+        Brand: 'Motif h5'
     }]);
 </script>
 
@@ -658,7 +656,7 @@
         _learnq.push(['track', 'Add to Bag Successfully', {
             'SPU' : '{{$data['spu']}}',
             'Name' : '{{$data['main_title']}}',
-            'productUrl' : '{{config('runtime.CDN_URL')}}/n0/{{ $data['main_image_url'] }}',
+            'ImageUrl' : '{{config('runtime.CDN_URL')}}/n0/{{ $data['main_image_url'] }}',
             'Url': 'https://m.motif.me{{ $_SERVER['REQUEST_URI'] }}',
             'ItemPrice' : '{{ number_format(($data['skuPrice']['sale_price'] / 100), 2) }}',
             'Categories' : '{{ $data['category_name'] }}',
