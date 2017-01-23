@@ -88,7 +88,7 @@
         @include('footer')
     </div>
 </div>
-<img src="@if(!empty($order))https://shareasale.com/sale.cfm?amount={{ number_format($order['total_amount'] / 100, 2) }}&tracking={{ $order['sub_order_no'] }}&transtype=sale&merchantID=69783 @endif" width="1" height="1" hidden>
+<img src="@if(!empty($order))https://shareasale.com/sale.cfm?amount={{ number_format($order['pay_amount'] / 100, 2) }}&tracking={{ $order['sub_order_no'] }}&transtype=sale&merchantID=69783 @endif" width="1" height="1" hidden>
 </body>
 <script src="{{env('CDN_Static')}}/scripts/vendor.js{{'?v='.config('app.version')}}"></script>
 @if(!empty($order['sub_order_no']))
