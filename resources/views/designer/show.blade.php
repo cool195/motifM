@@ -183,6 +183,31 @@
                     </div>
                 @endif
 
+                @if($designer['designer_id']==114)
+                    <div class="font-size-sm text-primary p-y-15x p-x-15x">
+                        <div class="text-center">
+                            <div class="font-size-md">Follow Michaela to be notified when<br> this collection is available</div>
+                            <div class="p-t-15x">
+                            @if(Session::get('user.pin'))
+                                @if($designer['followStatus'])
+                                    <div class="btn btn-sm btn-primary btn-designerFollow" id="followapp"
+                                    data-followid="{{$designer['designer_id']}}">Following
+                                    </div>
+                                @else
+                                    <div class="btn btn-sm btn-follow active btn-designerFollow" id="followapp"
+                                    data-followid="{{$designer['designer_id']}}">Follow
+                                    </div>
+                                @endif
+                            @else
+                                <div class="btn btn-sm btn-follow sendLogin active downFollow btn-designerFollow"
+                                data-followid="{{$designer['designer_id']}}">Follow
+                                </div>
+                            @endif
+                            </div>
+                        </div>
+                    </div>
+                @endif
+
             </div>
             {{--预售信息--}}
             @if($designer['prompt_info']['datePrompt'])
@@ -526,11 +551,33 @@
                 })
     });
 
+    $('#followapp').on('click', function () {
+        $this = $(this)
+        $.ajax({
+                    url: '/followDesigner/' + $this.data('followid'),
+                    type: 'GET'
+                })
+                .done(function (data) {
+                    if (data.success) {
+                        if ($this.hasClass('active')) {
+                            $this.html('Following');
+                            $this.toggleClass('active');
+                            $this.addClass('btn-primary').removeClass('btn-follow');
+                        } else {
+                            $this.html('Follow');
+                            $this.toggleClass('active');
+                            $this.addClass('btn-follow').removeClass('btn-primary');
+                        }
+                    }
+                })
+    });
+
     $.ajaxSetup({
         headers: {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
         }
     });
+
 </script>
 
 @include('global')
