@@ -73,6 +73,8 @@ class UserController extends ApiController
             Session::put('user', $result['data']);
             if($_COOKIE['wishSpu']){
                 Publicfun::addWishProduct($_COOKIE['wishSpu']);
+            } elseif($_COOKIE['followDid']){
+                Publicfun::addFollowDesigner($_COOKIE['followDid']);
             }
             Publicfun::mergeCartSkus();
             $result['redirectUrl'] = ($request->input('referer') && !strstr($request->input('referer'), 'login')) ? $request->input('referer') : "/daily";
