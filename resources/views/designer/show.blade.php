@@ -199,8 +199,8 @@
                                     </div>
                                 @endif
                             @else
-                                <div class="btn btn-sm btn-follow sendLogin active downFollow btn-designerFollow"
-                                data-followid="{{$designer['designer_id']}}">Follow
+                                <div class="btn btn-sm btn-follow sendLogin active downFollow btn-designerFollow" id="followapp"
+                                data-actionid="{{$designer['designer_id']}}" data-referer="{{$_SERVER['REQUEST_URI']}}">Follow
                                 </div>
                             @endif
                             </div>
@@ -553,23 +553,40 @@
 
     $('#followapp').on('click', function () {
         $this = $(this)
-        $.ajax({
-                    url: '/followDesigner/' + $this.data('followid'),
-                    type: 'GET'
-                })
-                .done(function (data) {
-                    if (data.success) {
-                        if ($this.hasClass('active')) {
-                            $this.html('Following');
-                            $this.toggleClass('active');
-                            $this.addClass('btn-primary').removeClass('btn-follow');
-                        } else {
-                            $this.html('Follow');
-                            $this.toggleClass('active');
-                            $this.addClass('btn-follow').removeClass('btn-primary');
+        var did = $this.data('followid');
+        if(did != undefined) {
+            $.ajax({
+                        url: '/followDesigner/' + did,
+                        type: 'GET'
+                    })
+                    .done(function (data) {
+                        if (data.success) {
+                            if ($this.hasClass('active')) {
+                                $this.html('Following');
+                                $this.toggleClass('active');
+                                $this.addClass('btn-primary').removeClass('btn-follow');
+                            } else {
+                                $this.html('Follow');
+                                $this.toggleClass('active');
+                                $this.addClass('btn-follow').removeClass('btn-primary');
+                            }
                         }
-                    }
-                })
+            });
+        } else {
+            did = $this.data('actionid')
+            $.ajax({
+                url: '/notesaction',
+                type: 'get',
+                data: {
+                    action: 'follow',
+                    did: did
+                }
+            })
+            .done(function (data) {
+                window.location.href = '/login';
+            })
+        }
+
     });
 
     $.ajaxSetup({

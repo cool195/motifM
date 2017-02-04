@@ -127,6 +127,8 @@ class UserController extends ApiController
                 Session::put('user', $result['data']);
                 if($_COOKIE['wishSpu']){
                     Publicfun::addWishProduct($_COOKIE['wishSpu']);
+                } elseif($_COOKIE['followDid']){
+                    Publicfun::addFollowDesigner($_COOKIE['followDid']);
                 }
                 Publicfun::mergeCartSkus();
             }
@@ -507,6 +509,8 @@ class UserController extends ApiController
     public function notesAction(Request $request){
         if($request->input('action') == 'wish'){
             setcookie("wishSpu",$request->input('spu'),time() + 300,'/');
+        } elseif ($request->input('action') == 'follow') {
+            setcookie("followDid", $request->input('did'), time() + 300, '/');
         }
     }
 
