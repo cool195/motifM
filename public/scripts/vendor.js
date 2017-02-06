@@ -16700,7 +16700,7 @@ else if (typeof define === 'function' && define.amd) {
                 url: '/cart/list'
             })
             .done(function (data) {
-                if(data.data != ''){
+                if(data.data != '' && data.data.showSkus != null){
                     appendHeaderBagList(data.data);
                     var BagPrice=(data.data.total_amount/100).toFixed(2),
                         BagItem=data.data.total_sku_qtty;
