@@ -23,11 +23,11 @@ class ApiController extends Controller
 
     function __construct()
     {
-        if(Session::has('user')){
+/*        if(Session::has('user')){
             if(!Cache::has(Session::get('user.token'))){
                 Session::forget('user');
             }
-        }
+        }*/
     }
 
     protected function request($ApiName, $system, $service, array $params)
