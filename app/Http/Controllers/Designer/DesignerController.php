@@ -185,7 +185,7 @@ class DesignerController extends ApiController
 
     private function pregUrl($url)
     {
-        $preg = '/^http:/';
+        $preg = '/^http/';
         if(!preg_match($preg, $url)){
             $url = 'http://'.$url;
         }
