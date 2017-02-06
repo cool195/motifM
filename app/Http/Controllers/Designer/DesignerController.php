@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Designer;
 use Illuminate\Http\Request;
 use App\Http\Controllers\ApiController;
 use Illuminate\Support\Facades\Session;
+use Cache;
 use App\Services\Publicfun;
 
 class DesignerController extends ApiController
