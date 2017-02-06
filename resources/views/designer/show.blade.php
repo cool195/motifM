@@ -124,8 +124,8 @@
                 </div>
             @endif
             {{--设计师 文字信息--}}
-            <div class="bg-white">
-                <div class="flex flex-alignCenter flex-fullJustified p-x-15x p-t-10x"
+            <div class="bg-white" style="text-align: center;">
+                <div class="p-x-15x p-t-10x"
                      data-impr='{{ config('app.clk_url') }}/log.gif?time={{time()}}&t=page.100001&m=H5_M2016-1&pin={{Session::get('user.pin')}}&uuid={{Session::get('user.uuid')}}&ref=&v={"action":0,"skipType":2,"skipId":"{{$designer['designer_id']}}","expid":0,"version":"1.0.1","ver":"9.2","src":"H5"}'>
                     <div class="text-main bigNoodle font-size-lg"><strong>{{$designer['nickname']}}</strong></div>
                 </div>
@@ -133,7 +133,7 @@
                     <div class="message-info">
                         <p class="m-b-0">{{$designer['describe']}}</p>
                     </div>
-                    <a class="flex flex-alignCenter flex-fullJustified font-size-sm p-t-5x text-common btn-showMore">
+                    <a class="font-size-sm p-t-5x text-common btn-showMore">
                         <span class="showMore">Show More</span>
                         <i class="iconfont icon-arrow-bottom icon-size-xm text-common"></i>
                     </a>
