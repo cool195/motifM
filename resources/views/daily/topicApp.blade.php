@@ -66,7 +66,7 @@
 <!-- 外层容器 -->
 <div id="body-content">
     <!-- 主体内容 -->
-    <div class="body-container" style="padding-top:0px">
+    <div class="body-container app-container" style="padding-top:0px">
         <!-- daily 详细内容 -->
         <section class="bg-white reserve-height">
         @if(isset($topic['infos']))

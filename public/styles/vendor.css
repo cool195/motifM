@@ -6551,3 +6551,19 @@ footer .links-group {
     border-bottom: 5px solid #46d593;
     padding-bottom: 5px;
 }
+
+.app-container{
+    font-family: "Helvetica", "Helvetica Neue", Helvetica, Arial, sans-serif !important;
+}
+
+.app-container .bg-limited{
+    background-color: #36405b;
+}
+
+.app-container .bg-limited::before{
+    border-bottom: 41px solid #36405b;
+}
+
+.app-container .text-primary{
+    color: #36405b !important
+}

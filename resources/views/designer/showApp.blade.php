@@ -81,7 +81,7 @@
 <div id="body-content"
      data-impr='{{ config('app.clk_url') }}/log.gif?time={{time()}}&t=page.100001&m=H5_M2016-1&pin={{Session::get('user.pin')}}&uuid={{$maidian['uuid']}}&ref=&v={"skipType":2,"skipId":"{{$designer['designer_id']}}","expid":"0","version":"1.0.1","ver":"9.2","src":"H5","utm_medium":"{{$maidian['utm_medium']}}","utm_source":"{{$maidian['utm_source']}}","mdeviceid":"{{$maidian['uuid']}}"}'>
     {{--主体内容--}}
-    <div class="body-container" style="padding-top:0px">
+    <div class="body-container app-container" style="padding-top:0px">
         {{--designerDetail 设计师详情--}}
         <section class="reserve-height" id="gaProductClick">
             @if(isset($designer['detailVideoPath']))
@@ -119,6 +119,14 @@
 
             {{--设计师 文字信息--}}
             <div class="bg-white p-a-5x">
+                @if($designer['designer_id']==103)
+                    <div class="font-size-sm text-primary p-t-10x p-b-15x p-x-15x" style="border-bottom: solid 1px #ccc;">
+                        <div class="text-center">
+                            <div class="font-size-md">Follow Michaela to be notified when<br> this collection is available</div>
+                        </div>
+                    </div>
+                @endif
+
                 <div class="flex flex-alignCenter flex-fullJustified p-x-10x p-t-10x">
                     <div class="font-size-base text-main"><strong>{{$designer['nickname']}}</strong></div>
                     <div class="flex flex-alignCenter">
@@ -206,14 +214,6 @@
                         @endif
 
                         @if(!empty($designer['instagram_link']) || !empty($designer['snapchat_link']) || !empty($designer['youtube_link']) || !empty($designer['facebook_link']) || !empty($designer['blog_link']))
-                    </div>
-                @endif
-
-                @if($designer['designer_id']==103)
-                    <div class="font-size-sm text-primary p-t-10x p-b-15x p-x-15x">
-                        <div class="text-center">
-                            <div class="font-size-md">Follow Michaela to be notified when<br> this collection is available</div>
-                        </div>
                     </div>
                 @endif
             </div>
