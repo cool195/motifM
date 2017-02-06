@@ -101,6 +101,13 @@ class DesignerController extends ApiController
                             'token' => $request->input('token'),
                             'uuid' => $_COOKIE['uid'],
                         ));
+                        Cache::put($request->input('token'), array(
+                            'login_email' => $request->input('email'),
+                            'nickname' => $request->input('name'),
+                            'pin' => $request->input('pin'),
+                            'token' => $request->input('token'),
+                            'uuid' => $_COOKIE['uid'],
+                        ));
                     } else {
                         Session::put('user', array(
                             'login_email' => $_COOKIE['EMAIL'],
@@ -108,6 +115,13 @@ class DesignerController extends ApiController
                             'pin' => $_COOKIE['PIN'],
                             'token' => $_COOKIE['TOKEN'],
                             'uuid' => $_COOKIE['UUID'],
+                        ));
+                        Cache::put($request->input('token'), array(
+                            'login_email' => $request->input('email'),
+                            'nickname' => $request->input('name'),
+                            'pin' => $request->input('pin'),
+                            'token' => $request->input('token'),
+                            'uuid' => $_COOKIE['uid'],
                         ));
                     }
 
@@ -138,6 +152,7 @@ class DesignerController extends ApiController
                     }
 
                 } else {
+                    Cache::forget(Session::get('user.token'));
                     Session::forget('user');
                 }
                 $view = 'designer.showApp';
