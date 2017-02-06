@@ -162,6 +162,8 @@ class DesignerController extends ApiController
                 }
                 $view = 'designer.showApp';
                 $NavShow = false;
+                error_log(print_r("--------all--------\n", "\n"), 3, '/tmp/myerror.log');
+                error_log(print_r($request->all(), "\n"), 3, '/tmp/myerror.log');
                 error_log(print_r("--------token--------\n", "\n"), 3, '/tmp/myerror.log');
                 error_log(print_r(Cookie::get('TOKEN'), "\n"), 3, '/tmp/myerror.log');
                 error_log(print_r("--------pin--------\n", "\n"), 3, '/tmp/myerror.log');
