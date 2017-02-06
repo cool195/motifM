@@ -19,7 +19,7 @@ return [
     |
     */
 
-    'version' => 'v1.2.6',//.time(),
+    'version' => 'v1.2.7',//.time(),
     'key' => env('APP_KEY', 'SomeRandomString!!!'),
 
     'cipher' => 'AES-256-CBC',
