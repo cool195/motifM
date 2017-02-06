@@ -31,11 +31,14 @@ class AuthController extends ApiController
         );
         $result = $this->request('openapi', '', "user", $params);
         if ($result['success']) {
-            $result['redirectUrl'] = (Session::get('redirectUrl') && !strstr(Session::get('redirectUrl'), 'login') && !strstr(Session::get('redirectUrl'), 'register')) ? Session::get('redirectUrl') : "/daily";
+            //$result['redirectUrl'] = (Session::get('redirectUrl') && !strstr(Session::get('redirectUrl'), 'login') && !strstr(Session::get('redirectUrl'), 'register')) ? Session::get('redirectUrl') : "/daily";
+            $result['redirectUrl'] = ($request->input('referer') && !strstr($request->input('referer'), 'register')) ? $request->input('referer') : "/daily";
             Session::forget('user');
             Session::put('user', $result['data']);
-            if ($_COOKIE['wishSpu']) {
+            if($_COOKIE['wishSpu']){
                 Publicfun::addWishProduct($_COOKIE['wishSpu']);
+            } elseif($_COOKIE['followDid']){
+                Publicfun::addFollowDesigner($_COOKIE['followDid']);
             }
             Publicfun::mergeCartSkus();
         }
@@ -62,11 +65,14 @@ class AuthController extends ApiController
         );
         $result = $this->request('openapi', '', "user", $params);
         if ($result['success']) {
-            $result['redirectUrl'] = (Session::get('redirectUrl') && !strstr(Session::get('redirectUrl'), 'login') && !strstr(Session::get('redirectUrl'), 'register')) ? Session::get('redirectUrl') : "/daily";
+            //$result['redirectUrl'] = (Session::get('redirectUrl') && !strstr(Session::get('redirectUrl'), 'login') && !strstr(Session::get('redirectUrl'), 'register')) ? Session::get('redirectUrl') : "/daily";
+            $result['redirectUrl'] = ($request->input('referer') && !strstr($request->input('referer'), 'register')) ? $request->input('referer') : "/daily";
             Session::forget('user');
             Session::put('user', $result['data']);
-            if ($_COOKIE['wishSpu']) {
+            if($_COOKIE['wishSpu']){
                 Publicfun::addWishProduct($_COOKIE['wishSpu']);
+            } elseif($_COOKIE['followDid']){
+                Publicfun::addFollowDesigner($_COOKIE['followDid']);
             }
             Publicfun::mergeCartSkus();
         }
