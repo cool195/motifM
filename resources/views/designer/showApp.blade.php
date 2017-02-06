@@ -119,7 +119,7 @@
 
             {{--设计师 文字信息--}}
             <div class="bg-white p-a-5x">
-                @if($designer['designer_id']==103)
+                @if($designer['designer_id']==114)
                     <div class="font-size-sm text-primary p-t-10x p-b-15x p-x-15x" style="border-bottom: solid 1px #ccc;">
                         <div class="text-center">
                             <div class="font-size-md">Follow Michaela to be notified when<br> this collection is available</div>
