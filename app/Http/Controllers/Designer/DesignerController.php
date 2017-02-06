@@ -147,6 +147,9 @@ class DesignerController extends ApiController
                     }
 
                     foreach ($productAll['data']['list'] as $value) {
+
+
+
                         if (isset($value['spu'])) {
                             $spuArray = array_merge([$value['spu']], $spuArray);
                         }
@@ -159,7 +162,7 @@ class DesignerController extends ApiController
                 $view = 'designer.showApp';
                 $NavShow = false;
                 error_log(print_r("--------token--------\n", "\n"), 3, '/tmp/myerror.log');
-                error_log(print_r($request->input('token'), "\n"), 3, '/tmp/myerror.log');
+                error_log(print_r($_COOKIE['TOKEN'], "\n"), 3, '/tmp/myerror.log');
                 error_log(print_r("--------pin--------\n", "\n"), 3, '/tmp/myerror.log');
                 error_log(print_r($_COOKIE['PIN'], "\n"), 3, '/tmp/myerror.log');
                 error_log(print_r("--------user--------\n", "\n"), 3, '/tmp/myerror.log');
