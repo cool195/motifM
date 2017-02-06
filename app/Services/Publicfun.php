@@ -71,8 +71,8 @@ class Publicfun
             'did' => $id,
         );
         $follow = self::request('', 'follow', $followParams);
-        $follow['cmd'] = $cmd == 'add' ? true : false;
-        Cache::forget(Session::get('user.pin') . 'followlist');
+        //$follow['cmd'] = $cmd == 'add' ? true : false;
+        //Cache::forget(Session::get('user.pin') . 'followlist');
         return $follow;
     }
 

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Designer;
 use Illuminate\Http\Request;
 use App\Http\Controllers\ApiController;
 use Illuminate\Support\Facades\Session;
+use Cache;
 use App\Services\Publicfun;
 
 class DesignerController extends ApiController
@@ -101,6 +102,13 @@ class DesignerController extends ApiController
                             'token' => $request->input('token'),
                             'uuid' => $_COOKIE['uid'],
                         ));
+                        Cache::put($request->input('token'), array(
+                            'login_email' => $request->input('email'),
+                            'nickname' => $request->input('name'),
+                            'pin' => $request->input('pin'),
+                            'token' => $request->input('token'),
+                            'uuid' => $_COOKIE['uid'],
+                        ));
                     } else {
                         Session::put('user', array(
                             'login_email' => $_COOKIE['EMAIL'],
@@ -108,6 +116,13 @@ class DesignerController extends ApiController
                             'pin' => $_COOKIE['PIN'],
                             'token' => $_COOKIE['TOKEN'],
                             'uuid' => $_COOKIE['UUID'],
+                        ));
+                        Cache::put($request->input('token'), array(
+                            'login_email' => $request->input('email'),
+                            'nickname' => $request->input('name'),
+                            'pin' => $request->input('pin'),
+                            'token' => $request->input('token'),
+                            'uuid' => $_COOKIE['uid'],
                         ));
                     }
 
@@ -138,10 +153,17 @@ class DesignerController extends ApiController
                     }
 
                 } else {
+                    Cache::forget(Session::get('user.token'));
                     Session::forget('user');
                 }
                 $view = 'designer.showApp';
                 $NavShow = false;
+                error_log(print_r("--------token--------\n", "\n"), 3, '/tmp/myerror.log');
+                error_log(print_r($request->input('token'), "\n"), 3, '/tmp/myerror.log');
+                error_log(print_r("--------pin--------\n", "\n"), 3, '/tmp/myerror.log');
+                error_log(print_r($_COOKIE['PIN'], "\n"), 3, '/tmp/myerror.log');
+                error_log(print_r("--------user--------\n", "\n"), 3, '/tmp/myerror.log');
+                error_log(print_r(Session::get('user'), "\n"), 3, '/tmp/myerror.log');
             } else {
                 $view = 'designer.show';
             }
