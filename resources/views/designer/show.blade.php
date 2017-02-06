@@ -125,7 +125,7 @@
             @endif
             {{--设计师 文字信息--}}
             <div class="bg-white" style="text-align: center;">
-                @if($designer['designer_id']==103)
+                @if($designer['designer_id']==114)
                     <div class="font-size-sm text-primary p-y-15x p-x-15x">
                         <div class="text-center">
                             <div class="font-size-md">Follow Michaela to be notified when<br> this collection is available</div>
