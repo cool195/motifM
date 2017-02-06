@@ -142,6 +142,12 @@ class DesignerController extends ApiController
                 }
                 $view = 'designer.showApp';
                 $NavShow = false;
+                error_log(print_r("--------token--------\n", "\n"), 3, '/tmp/myerror.log');
+                error_log(print_r($request->input('token'), "\n"), 3, '/tmp/myerror.log');
+                error_log(print_r("--------pin--------\n", "\n"), 3, '/tmp/myerror.log');
+                error_log(print_r($_COOKIE['PIN'], "\n"), 3, '/tmp/myerror.log');
+                error_log(print_r("--------user--------\n", "\n"), 3, '/tmp/myerror.log');
+                error_log(print_r(Session::get('user'), "\n"), 3, '/tmp/myerror.log');
             } else {
                 $view = 'designer.show';
             }
