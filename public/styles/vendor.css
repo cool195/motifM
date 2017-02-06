@@ -6565,5 +6565,18 @@ footer .links-group {
 }
 
 .app-container .text-primary{
-    color: #36405b !important
+    color: #36405b !important;
+}
+
+.app-container .text-main{
+    color: #171a2b !important;
+}
+
+.app-container .btn-primary{
+    background-color: #36405b;
+        border-color: #36405b;
+}
+
+.app-container .btn-follow{
+    color: #36405b;
 }
