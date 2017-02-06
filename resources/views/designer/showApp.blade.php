@@ -81,7 +81,7 @@
 <div id="body-content"
      data-impr='{{ config('app.clk_url') }}/log.gif?time={{time()}}&t=page.100001&m=H5_M2016-1&pin={{Session::get('user.pin')}}&uuid={{$maidian['uuid']}}&ref=&v={"skipType":2,"skipId":"{{$designer['designer_id']}}","expid":"0","version":"1.0.1","ver":"9.2","src":"H5","utm_medium":"{{$maidian['utm_medium']}}","utm_source":"{{$maidian['utm_source']}}","mdeviceid":"{{$maidian['uuid']}}"}'>
     {{--主体内容--}}
-    <div class="body-container" style="padding-top:0px">
+    <div class="body-container app-container" style="padding-top:0px">
         {{--designerDetail 设计师详情--}}
         <section class="reserve-height" id="gaProductClick">
             @if(isset($designer['detailVideoPath']))
@@ -119,6 +119,14 @@
 
             {{--设计师 文字信息--}}
             <div class="bg-white p-a-5x">
+                @if($designer['designer_id']==103)
+                    <div class="font-size-sm text-primary p-t-10x p-b-15x p-x-15x" style="border-bottom: solid 1px #ccc;">
+                        <div class="text-center">
+                            <div class="font-size-md">Follow Michaela to be notified when<br> this collection is available</div>
+                        </div>
+                    </div>
+                @endif
+
                 <div class="flex flex-alignCenter flex-fullJustified p-x-10x p-t-10x">
                     <div class="font-size-base text-main"><strong>{{$designer['nickname']}}</strong></div>
                     <div class="flex flex-alignCenter">
@@ -208,7 +216,6 @@
                         @if(!empty($designer['instagram_link']) || !empty($designer['snapchat_link']) || !empty($designer['youtube_link']) || !empty($designer['facebook_link']) || !empty($designer['blog_link']))
                     </div>
                 @endif
-
             </div>
 
             {{--预售信息--}}
@@ -218,7 +225,6 @@
                              data-begintime="{{$designer['prompt_info']['datePrompt']['startDate']}}"
                              data-endtime="{{$designer['prompt_info']['datePrompt']['endDate']}}"
                              data-lefttime="{{$designer['prompt_info']['datePrompt']['endDate']-time()*1000}}">
-                        <div class="hr-between"></div>
                         <div class="bg-white">
                             <div class="limited-subtitle"><span
                                         class="p-l-15x p-r-10x bg-limited"><strong>{{$designer['prompt_info']['datePrompt']['title']}}</strong></span>
@@ -241,11 +247,9 @@
                             </div>
 
                         </div>
-                        <div class="hr-between"></div>
                     </section>
                 @else
                     <section class="limited">
-                        <div class="hr-between"></div>
                         <div class="bg-white">
                             <div class="limited-subtitle"><span
                                         class="p-l-15x p-r-10x bg-limited"><strong>{{$designer['prompt_info']['datePrompt']['title']}}</strong></span>
@@ -259,12 +263,10 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="hr-between"></div>
                     </section>
                 @endif
             @endif
             @if($designer['prompt_info']['textPrompt'])
-                <div class="hr-between"></div>
                 <section class="limited">
                     <div class="bg-white">
                         <div class="limited-subtitle">
@@ -274,7 +276,6 @@
                             {{$designer['prompt_info']['textPrompt']['content']}}
                         </div>
                     </div>
-                    <div class="hr-between"></div>
                 </section>
             @endif
             {{--设计师 对应商品--}}
@@ -418,11 +419,11 @@
                                                                                 <span class="wish-item p-r-10x"
                                                                                       data-id="{{$spu}}"
                                                                                       id="{{'wish'.$spu}}"><i
-                                                                                            class="iconfont text-common btn-wish"></i></span>
+                                                                                            class="iconfont1 text-primary btn-wish"></i></span>
                                                                             @else
                                                                                 <a class="wish-item p-r-10x"
                                                                                    href="javascript:;"><i
-                                                                                            class="iconfont text-common btn-wish sendLogin"
+                                                                                            class="iconfont1 text-primary btn-wish sendLogin"
                                                                                             data-id="{{$spu}}"></i></a>
                                                                             @endif
 
@@ -503,10 +504,10 @@
                                                                     <span class="wish-item p-r-10x"
                                                                           data-id="{{$value['spu']}}"
                                                                           id="{{'wish'.$value['spu']}}"><i
-                                                                                class="iconfont text-common btn-wish"></i></span>
+                                                                                class="iconfont1 text-primary btn-wish"></i></span>
                                                                 @else
                                                                     <a class="wish-item p-r-10x" href="javascript:;"><i
-                                                                                class="iconfont text-common btn-wish sendLogin"
+                                                                                class="iconfont1 text-primary btn-wish sendLogin"
                                                                                 data-id="{{$value['spu']}}"></i></a>
                                                                 @endif
                                                             </div>
@@ -642,7 +643,7 @@
         else if (action.name == "addWish") {
             var spus = action.data.spu.split(',');
             $.each(spus, function (n, value) {
-                $('#wish' + value).html('<i class="iconfont text-common btn-wish active"></i>');
+                $('#wish' + value).html('<i class="iconfont1 text-primary btn-wish active"></i>');
             });
         }
     });
@@ -675,10 +676,10 @@
         var cmd = true;
         if ($this.find('i').hasClass('active')) {
             cmd = false;
-            $this.html('<i class="iconfont text-common btn-wish"></i>');
+            $this.html('<i class="iconfont1 text-primary btn-wish"></i>');
         } else {
             if (!$this.find('i').hasClass('sendLogin')) {
-                $this.html('<i class="iconfont text-common btn-wish active"></i>');
+                $this.html('<i class="iconfont1 text-primary btn-wish active"></i>');
             }
         }
         Jockey.send("action", {

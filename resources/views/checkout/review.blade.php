@@ -100,8 +100,8 @@
                         <span>{{Session::get('user.checkout.address.telephone')}}</span>
                     </div>
                 </div>
-                <div class="hr-between"></div>
-
+                {{--<div class="hr-between"></div>--}}
+                <hr class="hr-base m-a-0">
                 <!-- shipping method -->
                 <div class="p-y-10x p-x-15x font-size-sm text-primary">
                     <div class="p-b-5x">
@@ -116,7 +116,8 @@
                             ${{number_format((Session::get('user.checkout.selship.pay_price') / 100), 2)}}@endif
                     </div>
                 </div>
-                <div class="hr-between"></div>
+                {{--<div class="hr-between"></div>--}}
+                <hr class="hr-base m-a-0">
 
                 <!-- payment method -->
                 <div class="p-y-10x p-x-15x font-size-sm text-primary">
@@ -162,7 +163,8 @@
                         @endif
                     </div>
                 </div>
-                <div class="hr-between"></div>
+                {{--<div class="hr-between"></div>--}}
+                <hr class="hr-base m-a-0">
                 <div class="p-y-10x p-x-15x font-size-sm text-primary">
                     <div class="p-b-5x">
                         <span><strong>PROMOTION CODE</strong></span>
@@ -185,7 +187,8 @@
                         </div>
                     </a>
                 </div>
-                <div class="hr-between"></div>
+                {{--<div class="hr-between"></div>--}}
+                <hr class="hr-base m-a-0">
                 <!-- special request -->
                 <div class="p-y-10x p-x-15x font-size-sm text-primary">
                     <div class="p-b-5x">
@@ -197,7 +200,8 @@
                                     class="iconfont icon-arrow-right icon-size-xm text-common"></i></span>
                     </div>
                 </div>
-                <div class="hr-between"></div>
+                {{--<div class="hr-between"></div>--}}
+                <hr class="hr-base m-a-0">
 
                 <!-- 价格汇总 -->
                 <div class="p-y-10x p-x-15x font-size-sm text-primary">

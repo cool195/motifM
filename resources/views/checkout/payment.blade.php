@@ -46,7 +46,7 @@
                     </div>
                     <hr class="hr-light m-a-0">
                 @endif
-                <div class="p-y-15x p-x-15x font-size-sm bg-title"><strong>PAYMENT METHOD</strong></div>
+                <div class="p-y-10x p-x-15x font-size-sm bg-title"><strong>PAYMENT METHOD</strong></div>
                 <hr class="hr-base m-a-0">
             <!-- 选择支付方式 -->
                 <div class="text-primary">
@@ -55,7 +55,7 @@
                         <div class="@if(Session::get('user.checkout.paywith.pay_type')==$value['pay_type']) active @endif flex flex-alignCenter flex-fullJustified font-size-sm p-a-15x @if(isset($value['creditCards'])) btn-toAddCard @else clickPayWith @endif"
                              data-type="{{$value['pay_type']}}" data-card="0" data-method="{{$value['pay_method']}}">
                             <span>{{$value['pay_name']}}</span>
-                            <i class="iconfont @if(isset($value['creditCards'])) icon-arrow-right @else icon-check @endif icon-size-md text-common"></i>
+                            <i class="iconfont @if(isset($value['creditCards'])) icon-arrow-right @else icon-check @endif icon-size-md text-primary"></i>
                         </div>
                         @foreach($value['creditCards'] as $card)
                             <div class="card-item">
@@ -87,7 +87,7 @@
                                         <br>Exp <span>{{$card['month']}}/{{$card['year']}}</span>
                                         <br><span>&nbsp;</span>
                                     </div>
-                                    <i class="iconfont icon-check icon-size-md text-common"></i>
+                                    <i class="iconfont icon-check icon-size-md text-primary"></i>
                                 </div>
                                 <span class="p-l-20x font-size-sm text-common text-underLine btn-deleteCard"
                                       data-remodal-target="deletecardmodal"
@@ -97,7 +97,7 @@
                         <hr class="hr-base m-a-0">
                     @endforeach
                     @if($from!='review')
-                        <div class="p-y-15x p-x-15x font-size-sm bg-title"><strong>PROMOTION CODE</strong></div>
+                        <div class="p-y-10x p-x-15x font-size-sm bg-title"><strong>PROMOTION CODE</strong></div>
                         <hr class="hr-base m-a-0">
                         <div class="flex flex-alignCenter flex-fullJustified font-size-sm p-a-15x"
                              id="btn-toPromotionCode">
@@ -112,7 +112,7 @@
 
                 <!-- Coutinue 按钮 -->
                 <div class="text-primary">
-                    <hr class="hr-base m-a-0">
+                    {{--<hr class="hr-base m-a-0">--}}
                     <!-- Continue 按钮 -->
                     <div class="p-a-15x submit-payment">
                         <div class="btn btn-primary btn-block submit-paymentbutton" data-url="{{'/checkout/review'}}">
@@ -426,14 +426,14 @@
                                  data-type="{{$value['child_type']}}" data-childlabel="{{$value['child_label']}}"
                                  data-zipcode="{{$value['zipcode_label']}}" data-csn="{{$value['country_name_sn']}}">
                                 <span>{{$value['country_name_en']}}</span>
-                                <i class="iconfont icon-check icon-size-sm text-common"></i>
+                                <i class="iconfont icon-check icon-size-sm text-primary"></i>
                             </div>
                             <hr class="hr-base m-a-0">
                         @endforeach
 
                     </aside>
-                    <div class="p-t-10x bg-title"></div>
-                    <hr class="hr-base m-a-0">
+                    {{--<div class="p-t-10x bg-title"></div>--}}
+                    <hr class="hr-dark m-a-0">
                     <aside class="bg-white">
 
                         @foreach($country['list'] as $value)
@@ -442,7 +442,7 @@
                                  data-type="{{$value['child_type']}}" data-childlabel="{{$value['child_label']}}"
                                  data-zipcode="{{$value['zipcode_label']}}" data-csn="{{$value['country_name_sn']}}">
                                 <span>{{ $value['country_name_en'] }}</span>
-                                <i class="iconfont icon-check icon-size-sm text-common"></i>
+                                <i class="iconfont icon-check icon-size-sm text-primary"></i>
                             </div>
                             <hr class="hr-base">
                         @endforeach

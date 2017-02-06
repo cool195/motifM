@@ -912,7 +912,7 @@
                 var BagPrice=(data.data.total_amount/100).toFixed(2),
                     BagItem=data.data.total_sku_qtty;
                 $('#headerBag-subTotal').html(BagPrice);
-                $('#itemNum').html(BagItem);
+                $('#itemNum').html(' (' + BagItem + ' items)');
             })
     }
 

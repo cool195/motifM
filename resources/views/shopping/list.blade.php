@@ -68,11 +68,11 @@
                         <button style="width:100%;border: none;background-color: white" class="p-a-15x search-item {{ 'cateClick'.$c['category_id'] }}"
                                 data-categoryid="{{ $c['category_id'] }}" data-categoryname="{{ $c['category_name'] }}">
                             <span class="text-primary font-size-sm text-right">{{ $c['category_name'] }}</span>
-                            <i class="iconfont icon-check icon-size-md text-common"></i>
+                            <i class="iconfont icon-check icon-size-md text-primary"></i>
                         </button>
-                        <hr class="hr-base m-a-0">
                     @endforeach
                 @endif
+                    <hr class="hr-base m-a-0">
             </section>
 
             <select class="font-size-sm text-main btn-sortBy" id="sortBy">
@@ -197,10 +197,10 @@
             <div class="price-caption">
 
                 @{{ if $value.skuPrice.sale_price != $value.skuPrice.price }}
-                <span class="font-size-sm m-l-5x text-red">
+                <span class="font-size-sm m-l-5x text-primary">
                     <strong>$@{{ ($value.skuPrice.sale_price/100).toFixed(2) }}</strong>
                 </span>
-                <span class="font-size-xs text-common text-throughLine">$@{{ ($value.skuPrice.skuPromotion.price/100).toFixed(2) }}</span>
+                <span class="font-size-xs text-green text-throughLine">$@{{ ($value.skuPrice.skuPromotion.price/100).toFixed(2) }}</span>
                 @{{ else }}
                 <span class="font-size-sm m-l-5x">
                     <strong>$@{{ ($value.skuPrice.sale_price/100).toFixed(2) }}</strong>
@@ -208,10 +208,10 @@
                 @{{ /if }}
                 @if(Session::has('user'))
                     <span class="wish-item p-r-10x" ><i
-                                class="iconfont text-common btn-wish @{{ if $value.isWished == 1  }} active @{{ /if }}"
+                                class="iconfont1 text-primary btn-wish @{{ if $value.isWished == 1  }} active @{{ /if }}"
                                 data-spu="@{{ $value.spu }}"></i></span>
                 @else
-                    <a class="wish-item p-r-10x" href="javascript:;"><i class="iconfont text-common btn-wish" data-actionspu="@{{ $value.spu }}"></i></a>
+                    <a class="wish-item p-r-10x" href="javascript:;"><i class="iconfont1 text-primary btn-wish" data-actionspu="@{{ $value.spu }}"></i></a>
                 @endif
             </div>
         </div>

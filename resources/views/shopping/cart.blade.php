@@ -47,7 +47,7 @@
     <div class="body-container">
     @include('navigator')
     <!-- 购物袋 商品列表 -->
-        <section class="p-b-20x reserve-height">
+        <section class="reserve-height">
             <!-- 满额包邮 -->
             @inject('getDate', 'App\Services\Publicfun')
             @if(!empty($getDate->configMap()))
@@ -75,7 +75,7 @@
                                 <a @if(0 != $showSku['stock_status'] && 1 == $showSku['isPutOn']) href="/detail/{{$showSku['seo_link']}}" @endif class="inBag">
                                     <div class="productInfo flex">
                                         <div class="flex-fixedShrink">
-                                            <img class="img-thumbnail img-lazy"
+                                            <img class="img-fluid img-lazy"
                                                  src="{{env('CDN_Static')}}/images/product/bg-product@70.png"
                                                  data-original="{{ env('APP_Api_Image').'/n2/'.$showSku['main_image_url'] }}"
                                                  width="70px" height="70px">
@@ -149,7 +149,7 @@
                         @endforeach
                     @endif
                 </section>
-                <div class="hr-between"></div>
+                {{--<div class="hr-between"></div>--}}
                 <!-- 商品总价 -->
                 <section class="bg-white p-a-10x">
                     <div class="flex flex-rightJustify text-primary font-size-sm">
@@ -165,7 +165,7 @@
                         <span class="p-r-5x">Bag Subtotal: </span><strong>${{ number_format($cartData['pay_amount'] / 100, 2)}}</strong>
                     </div>
                 </section>
-                <hr class="hr-base m-a-0">
+                {{--<hr class="hr-base m-a-0">--}}
                 <!-- 购买按钮 -->
                 <section class="bg-white p-a-10x">
                     @if(Session::get('user.pin'))
@@ -196,7 +196,7 @@
                                 <a @if(1 == $showSku['stock_status'] && 1 == $showSku['isPutOn']) href="/detail/{{$showSku['seo_link']}}" @endif class="inSaved">
                                     <div class="productInfo flex">
                                         <div class="flex-fixedShrink">
-                                            <img class="img-thumbnail img-lazy"
+                                            <img class="img-fluid img-lazy"
                                                  src="{{env('CDN_Static')}}/images/product/bg-product@70.png"
                                                  data-original="{{ env('APP_Api_Image').'/n2/'.$showSku['main_image_url'] }}"
                                                  width="70px" height="70px">

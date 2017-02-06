@@ -76,6 +76,8 @@ class UserController extends ApiController
             Cache::put($result['data']['token'], $result['data'], ($result['data']['tokenTtl'] / 60));
             if($_COOKIE['wishSpu']){
                 Publicfun::addWishProduct($_COOKIE['wishSpu']);
+            } elseif($_COOKIE['followDid']){
+                Publicfun::addFollowDesigner($_COOKIE['followDid']);
             }
             Publicfun::mergeCartSkus();
             $result['redirectUrl'] = ($request->input('referer') && !strstr($request->input('referer'), 'login')) ? $request->input('referer') : "/daily";
@@ -132,6 +134,8 @@ class UserController extends ApiController
                 Cache::put($result['data']['token'], $result['data'], ($result['data']['tokenTtl'] / 60));
                 if($_COOKIE['wishSpu']){
                     Publicfun::addWishProduct($_COOKIE['wishSpu']);
+                } elseif($_COOKIE['followDid']){
+                    Publicfun::addFollowDesigner($_COOKIE['followDid']);
                 }
                 Publicfun::mergeCartSkus();
             }
@@ -513,6 +517,8 @@ class UserController extends ApiController
     public function notesAction(Request $request){
         if($request->input('action') == 'wish'){
             setcookie("wishSpu",$request->input('spu'),time() + 300,'/');
+        } elseif ($request->input('action') == 'follow') {
+            setcookie("followDid", $request->input('did'), time() + 300, '/');
         }
     }
 

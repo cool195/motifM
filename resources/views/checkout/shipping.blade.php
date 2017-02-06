@@ -48,7 +48,7 @@
                     <hr class="hr-light m-a-0">
                     <!-- ship to -->
                     <div class="text-primary">
-                        <div class="p-y-10x p-x-15x font-size-sm"><strong>SHIP TO</strong></div>
+                        <div class="p-y-10x p-x-15x font-size-sm bg-title"><strong>SHIP TO</strong></div>
                         <hr class="hr-base m-a-0">
                         <div class="p-y-10x p-x-15x font-size-sm flex flex-alignCenter flex-fullJustified">
                             <div class="">
@@ -62,11 +62,12 @@
                                id="edit-shipTp">Edit</a>
                         </div>
                     </div>
-                    <div class="hr-between"></div>
+                    {{--<div class="hr-between"></div>--}}
+                    <hr class="hr-dark m-a-0">
             @endif
             <!-- shipping method -->
                 <div class="text-primary">
-                    <div class="p-y-15x p-x-15x font-size-sm @if($from=='review'){{'bg-title'}}@endif"><strong>SHIPPING METHOD</strong></div>
+                    <div class="p-y-10x p-x-15x font-size-sm bg-title @if($from=='review'){{'bg-title'}}@endif"><strong>SHIPPING METHOD</strong></div>
                     <hr class="hr-base m-a-0">
                     <div>
                         @foreach(Session::get('user.checkout.shipping') as $value)

@@ -124,16 +124,41 @@
                 </div>
             @endif
             {{--设计师 文字信息--}}
-            <div class="bg-white">
-                <div class="flex flex-alignCenter flex-fullJustified p-x-10x p-t-10x"
+            <div class="bg-white" style="text-align: center;">
+                @if($designer['designer_id']==114)
+                    <div class="font-size-sm text-primary p-y-15x p-x-15x">
+                        <div class="text-center">
+                            <div class="font-size-md">Follow Michaela to be notified when<br> this collection is available</div>
+                            <div class="p-t-15x">
+                                @if(Session::get('user.pin'))
+                                    @if($designer['followStatus'])
+                                        <div class="btn btn-sm btn-primary btn-designerFollow" id="followapp"
+                                             data-followid="{{$designer['designer_id']}}">Following
+                                        </div>
+                                    @else
+                                        <div class="btn btn-sm btn-follow active btn-designerFollow" id="followapp"
+                                             data-followid="{{$designer['designer_id']}}">Follow
+                                        </div>
+                                    @endif
+                                @else
+                                    <div class="btn btn-sm btn-follow sendLogin active downFollow btn-designerFollow" id="followapp"
+                                         data-actionid="{{$designer['designer_id']}}" data-referer="{{$_SERVER['REQUEST_URI']}}">Follow
+                                    </div>
+                                @endif
+                            </div>
+                        </div>
+                    </div>
+                @endif
+
+                <div class="p-x-15x p-t-10x"
                      data-impr='{{ config('app.clk_url') }}/log.gif?time={{time()}}&t=page.100001&m=H5_M2016-1&pin={{Session::get('user.pin')}}&uuid={{Session::get('user.uuid')}}&ref=&v={"action":0,"skipType":2,"skipId":"{{$designer['designer_id']}}","expid":0,"version":"1.0.1","ver":"9.2","src":"H5"}'>
-                    <div class="font-size-base text-main"><strong>{{$designer['nickname']}}</strong></div>
+                    <div class="text-main bigNoodle font-size-lg"><strong>{{$designer['nickname']}}</strong></div>
                 </div>
                 <div class="font-size-sm text-primary p-y-10x p-x-15x">
                     <div class="message-info">
                         <p class="m-b-0">{{$designer['describe']}}</p>
                     </div>
-                    <a class="flex flex-alignCenter flex-fullJustified font-size-sm p-t-5x text-common btn-showMore">
+                    <a class="font-size-sm p-t-5x text-common btn-showMore">
                         <span class="showMore">Show More</span>
                         <i class="iconfont icon-arrow-bottom icon-size-xm text-common"></i>
                     </a>
@@ -145,32 +170,37 @@
                         @endif
                         @if(!empty($designer['instagram_link']))
                             <a href="{{$designer['instagram_link']}}" target="_blank" class="p-r-20x SocialMedia">
-                                <img src="{{env('CDN_Static')}}/images/designer/ins.png"
-                                     srcset="{{env('CDN_Static')}}/images/designer/ins@2x.png 2x,{{env('CDN_Static')}}/images/designer/ins@3x.png 3x">
+                                {{--<img src="{{env('CDN_Static')}}/images/designer/ins.png"--}}
+                                     {{--srcset="{{env('CDN_Static')}}/images/designer/ins@2x.png 2x,{{env('CDN_Static')}}/images/designer/ins@3x.png 3x">--}}
+                                <i class="iconfont1 icon-instagram1 text-primary icon-size-lg"></i>
                             </a>
                         @endif
                         @if(!empty($designer['snapchat_link']))
                             <a href="{{$designer['snapchat_link']}}" target="_blank" class="p-r-20x SocialMedia">
-                                <img src="{{env('CDN_Static')}}/images/designer/snapchat.png"
-                                     srcset="{{env('CDN_Static')}}/images/designer/snapchat@2x.png 2x,{{env('CDN_Static')}}/images/designer/snapchat@3x.png 3x">
+                                {{--<img src="{{env('CDN_Static')}}/images/designer/snapchat.png"--}}
+                                     {{--srcset="{{env('CDN_Static')}}/images/designer/snapchat@2x.png 2x,{{env('CDN_Static')}}/images/designer/snapchat@3x.png 3x">--}}
+                                <i class="iconfont1 icon-snapchat1 text-primary icon-size-lg"></i>
                             </a>
                         @endif
                         @if(!empty($designer['youtube_link']))
                             <a href="{{$designer['youtube_link']}}" target="_blank" class="p-r-20x SocialMedia">
-                                <img src="{{env('CDN_Static')}}/images/designer/youtube.png"
-                                     srcset="{{env('CDN_Static')}}/images/designer/youtube@2x.png 2x,{{env('CDN_Static')}}/images/designer/youtube@3x.png 3x">
+                                {{--<img src="{{env('CDN_Static')}}/images/designer/youtube.png"--}}
+                                     {{--srcset="{{env('CDN_Static')}}/images/designer/youtube@2x.png 2x,{{env('CDN_Static')}}/images/designer/youtube@3x.png 3x">--}}
+                                <i class="iconfont1 icon-youtube1 text-primary icon-size-lg"></i>
                             </a>
                         @endif
                         @if(!empty($designer['facebook_link']))
                             <a href="{{$designer['facebook_link']}}" target="_blank" class="p-r-20x SocialMedia">
-                                <img src="{{env('CDN_Static')}}/images/designer/facebook.png"
-                                     srcset="{{env('CDN_Static')}}/images/designer/facebook@2x.png 2x,{{env('CDN_Static')}}/images/designer/facebook@3x.png 3x">
+                                {{--<img src="{{env('CDN_Static')}}/images/designer/facebook.png"--}}
+                                     {{--srcset="{{env('CDN_Static')}}/images/designer/facebook@2x.png 2x,{{env('CDN_Static')}}/images/designer/facebook@3x.png 3x">--}}
+                                <i class="iconfont1 icon-facebook1 text-primary icon-size-lg"></i>
                             </a>
                         @endif
                         @if(!empty($designer['blog_link']))
                             <a href="{{$designer['blog_link']}}" target="_blank" class="p-r-20x SocialMedia">
-                                <img src="{{env('CDN_Static')}}/images/designer/blog.png"
-                                     srcset="{{env('CDN_Static')}}/images/designer/blog@2x.png 2x,{{env('CDN_Static')}}/images/designer/blog@3x.png 3x">
+                                {{--<img src="{{env('CDN_Static')}}/images/designer/blog.png"--}}
+                                     {{--srcset="{{env('CDN_Static')}}/images/designer/blog@2x.png 2x,{{env('CDN_Static')}}/images/designer/blog@3x.png 3x">--}}
+                                <i class="iconfont1 icon-blog1 text-primary icon-size-lg"></i>
                             </a>
                         @endif
 
@@ -186,7 +216,6 @@
                                  data-begintime="{{$designer['prompt_info']['datePrompt']['startDate']}}"
                                  data-endtime="{{$designer['prompt_info']['datePrompt']['endDate']}}"
                                  data-lefttime="{{$designer['prompt_info']['datePrompt']['endDate']-time()*1000}}">
-                    <div class="hr-between"></div>
                     <div class="bg-white">
                         <div class="limited-subtitle"><span
                                     class="p-l-15x p-r-10x bg-limited"><strong>{{$designer['prompt_info']['datePrompt']['title']}}</strong></span>
@@ -208,11 +237,9 @@
                         </div>
 
                     </div>
-                    <div class="hr-between"></div>
                 </section>
                     @else
                         <section class="limited">
-                            <div class="hr-between"></div>
                             <div class="bg-white">
                                 <div class="limited-subtitle"><span
                                             class="p-l-15x p-r-10x bg-limited"><strong>{{$designer['prompt_info']['datePrompt']['title']}}</strong></span>
@@ -226,12 +253,10 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="hr-between"></div>
                         </section>
                     @endif
             @endif
             @if($designer['prompt_info']['textPrompt'])
-                <div class="hr-between"></div>
                 <section class="limited">
                     <div class="bg-white">
                         <div class="limited-subtitle">
@@ -241,7 +266,6 @@
                             {{$designer['prompt_info']['textPrompt']['content']}}
                         </div>
                     </div>
-                    <div class="hr-between"></div>
                 </section>
             @endif
             {{--设计师 对应模版商品--}}
@@ -304,11 +328,11 @@
                                                             </a>
                                                             @if(Session::has('user'))
                                                                 <span class="wish-item p-r-10x"><i
-                                                                            class="iconfont text-common btn-wish btn-wished @if(in_array($spu, $wishlist->wishlist())) {{'active'}} @endif"
+                                                                            class="iconfont1 text-primary btn-wish btn-wished @if(in_array($spu, $wishlist->wishlist())) {{'active'}} @endif"
                                                                             data-spu="{{$spu}}"></i></span>
                                                             @else
                                                                 <a class="wish-item p-r-10x" href="javascript:;"><i
-                                                                            class="iconfont text-common btn-wish btn-wished"
+                                                                            class="iconfont1 text-primary btn-wish btn-wished"
                                                                             data-actionspu="{{$spu}}"></i></a>
                                                             @endif
                                                         </div>
@@ -377,20 +401,20 @@
                                                                         <div class="price-caption">
                                                                     <span>
                                                                         @if($product['spuInfos'][$spu]['skuPrice']['sale_price'] != $product['spuInfos'][$spu]['skuPrice']['price'])
-                                                                            <span class="text-red font-size-sm m-l-5x"><strong>${{number_format($product['spuInfos'][$spu]['skuPrice']['sale_price']/100,2)}}</strong></span>
-                                                                            <span class="font-size-xs text-common text-throughLine">${{number_format($product['spuInfos'][$spu]['skuPrice']['price']/100,2)}}</span>
+                                                                            <span class="text-primary font-size-sm m-l-5x"><strong>${{number_format($product['spuInfos'][$spu]['skuPrice']['sale_price']/100,2)}}</strong></span>
+                                                                            <span class="font-size-xs text-green text-throughLine">${{number_format($product['spuInfos'][$spu]['skuPrice']['price']/100,2)}}</span>
                                                                         @else
                                                                             <span class="text-primary font-size-sm m-l-5x"><strong>${{number_format($product['spuInfos'][$spu]['skuPrice']['sale_price']/100,2)}}</strong></span>
                                                                         @endif
                                                                     </span>
                                                                             @if(Session::has('user'))
                                                                                 <span class="wish-item p-r-10x"><i
-                                                                                            class="iconfont text-common btn-wish btn-wished @if(in_array($spu, $wishlist->wishlist())){{'active'}}@endif"
+                                                                                            class="iconfont1 text-primary btn-wish btn-wished @if(in_array($spu, $wishlist->wishlist())){{'active'}}@endif"
                                                                                             data-spu="{{$spu}}"></i></span>
                                                                             @else
                                                                                 <a class="wish-item p-r-10x"
                                                                                    href="javascript:;"><i
-                                                                                            class="iconfont text-common btn-wish btn-wished"
+                                                                                            class="iconfont1 text-primary btn-wish btn-wished"
                                                                                             data-actionspu="{{$spu}}"></i></a>
                                                                             @endif
                                                                         </div>
@@ -458,19 +482,19 @@
                                                             <div class="price-caption">
                                                     <span>
                                                         @if($value['skuPrice']['sale_price'] != $value['skuPrice']['price'])
-                                                            <span class="text-red font-size-sm m-l-5x"><strong>${{number_format($value['skuPrice']['sale_price']/100,2)}}</strong></span>
-                                                            <span class="font-size-xs text-common text-throughLine">${{number_format($value['skuPrice']['price']/100,2)}}</span>
+                                                            <span class="text-primary font-size-sm m-l-5x"><strong>${{number_format($value['skuPrice']['sale_price']/100,2)}}</strong></span>
+                                                            <span class="font-size-xs text-green text-throughLine">${{number_format($value['skuPrice']['price']/100,2)}}</span>
                                                         @else
                                                             <span class="text-primary font-size-sm m-l-5x"><strong>${{number_format($value['skuPrice']['sale_price']/100,2)}}</strong></span>
                                                         @endif
                                                     </span>
                                                                 @if(Session::has('user'))
                                                                     <span class="wish-item p-r-10x"><i
-                                                                                class="iconfont text-common btn-wish btn-wished @if(in_array($value['spu'], $wishlist->wishlist())){{'active'}}@endif"
+                                                                                class="iconfont1 text-primary btn-wish btn-wished @if(in_array($value['spu'], $wishlist->wishlist())){{'active'}}@endif"
                                                                                 data-spu="{{$value['spu']}}"></i></span>
                                                                 @else
                                                                     <a class="wish-item p-r-10x" href="javascript:;"><i
-                                                                                class="iconfont text-common btn-wish btn-wished"
+                                                                                class="iconfont1 text-primary btn-wish btn-wished"
                                                                                 data-actionspu="{{$value['spu']}}"></i></a>
                                                                 @endif
                                                             </div>
@@ -527,11 +551,50 @@
                 })
     });
 
+    $('#followapp').on('click', function () {
+        $this = $(this)
+        var did = $this.data('followid');
+        if(did != undefined) {
+            $.ajax({
+                        url: '/followDesigner/' + did,
+                        type: 'GET'
+                    })
+                    .done(function (data) {
+                        if (data.success) {
+                            if ($this.hasClass('active')) {
+                                $this.html('Following');
+                                $this.toggleClass('active');
+                                $this.addClass('btn-primary').removeClass('btn-follow');
+                            } else {
+                                $this.html('Follow');
+                                $this.toggleClass('active');
+                                $this.addClass('btn-follow').removeClass('btn-primary');
+                            }
+                        }
+            });
+        } else {
+            did = $this.data('actionid')
+            $.ajax({
+                url: '/notesaction',
+                type: 'get',
+                data: {
+                    action: 'follow',
+                    did: did
+                }
+            })
+            .done(function (data) {
+                window.location.href = '/login';
+            })
+        }
+
+    });
+
     $.ajaxSetup({
         headers: {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
         }
     });
+
 </script>
 
 @include('global')

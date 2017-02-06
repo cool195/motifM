@@ -33,7 +33,7 @@
                     <div class="addressList-container font-size-sm" id="primaryItem" data-address="{{ $addr['receiving_id'] }}">
                         @if(1 !== $addr['isDefault'])
                         <div class="addressList-delete switch" data-remodal-target="modal">
-                            <i class="iconfont icon-delete icon-size-md text-warning"></i>
+                            <i class="iconfont icon-delete icon-size-md text-primary"></i>
                         </div>
                         @endif
                         <div class="addressItem-info text-primary m-l-15x p-r-15x p-y-10x" data-action="return" data-url-return="return" data-url-edit="edit">

@@ -185,17 +185,17 @@
             </div>
             @if(Session::has('user'))
                 <span class="wish-item p-r-10x p-t-10x"><i
-                            class="iconfont text-common btn-wish btn-wished @if(in_array($data['spu'], $wishlist->wishlist())){{'active'}}@endif"
+                            class="iconfont1 text-primary btn-wish btn-wished @if(in_array($data['spu'], $wishlist->wishlist())){{'active'}}@endif"
                             data-spu="{{$data['spu']}}"></i></span>
             @else
                 <a class="wish-item p-r-10x p-t-10x" href="javascript:;"><i
-                            class="iconfont text-common btn-wish btn-wished" data-actionspu="{{$data['spu']}}"></i></a>
+                            class="iconfont1 text-primary btn-wish btn-wished" data-actionspu="{{$data['spu']}}"></i></a>
             @endif
 
             <!-- 产品 标题 简介 价格 基本信息 -->
             <article class="product-baseInfo bg-white">
                 <div class="product-text">
-                    <h6 class="text-main font-size-base">{{$data['main_title']}}</h6>
+                    <h6 class="text-main font-size-base avenirBold">{{$data['main_title']}}</h6>
                     <p class="text-primary font-size-sm">{{ $data['sub_title'] }} @if(isset($data['skuPrice']['skuPromotion']['promo_words'])){{$data['skuPrice']['skuPromotion']['promo_words']}}@endif</p>
                     @if(!empty($data['designer']))
                         <p class="text-primary font-size-sm">
@@ -205,11 +205,11 @@
                         </p>
                     @endif
                 </div>
-                <hr class="hr-light m-x-10x">
+                <hr class="hr-dark m-x-10x">
                 <div class="product-price">
                     @if(isset($data['skuPrice']['skuPromotion']) && ($data['skuPrice']['skuPromotion']['price']>$data['skuPrice']['skuPromotion']['promot_price']))
-                        <span class="font-size-lx text-red" id="skuNewPrice">${{ number_format(($data['skuPrice']['skuPromotion']['promot_price'] / 100), 2) }}</span>
-                        <span class="font-size-sm text-throughLine text-common">${{ number_format(($data['skuPrice']['skuPromotion']['price'] /100), 2) }}</span>
+                        <span class="font-size-lx text-primary" id="skuNewPrice">${{ number_format(($data['skuPrice']['skuPromotion']['promot_price'] / 100), 2) }}</span>
+                        <span class="font-size-sm text-throughLine text-green">${{ number_format(($data['skuPrice']['skuPromotion']['price'] /100), 2) }}</span>
                     @else
                         <span class="font-size-lx text-primary" id="skuNewPrice">${{ number_format(($data['skuPrice']['sale_price'] / 100), 2) }}</span>
                     @endif
@@ -221,7 +221,6 @@
 
             <!-- 产品 预售信息 -->
             @if(1 == $data['sale_type'])
-                <div class="hr-between"></div>
                 @if($data['skuPrice']['skuPromotion']['remain_time'] >= 0 || !empty($data['spuStock']))
                     <section class="limited-content"
                              data-begintime="{{  $data['skuPrice']['skuPromotion']['start_time'] }}"
@@ -298,7 +297,6 @@
                 @endif
             @endif
             @if($data['skuPrice']['skuPromotion']['pre_exp_descs'])
-                <div class="hr-between"></div>
                 @foreach($data['skuPrice']['skuPromotion']['pre_exp_descs'] as $value)
                     <section class="limited">
                         <div class="bg-white">
@@ -313,7 +311,6 @@
                     </section>
                 @endforeach
             @endif
-            <div class="hr-between"></div>
             <section data-spu="{{$data['spu']}}" id="modalDialog" data-login="1" data-status="{{$data['status_code']}}" data-onlysku="@if(count($data['skus'])==1){{$data['skus'][0]}}@endif">
                 <div class="warning-info off flex text-warning flex-alignCenter text-left p-x-15x p-b-10x">
                     <i class="iconfont icon-caveat icon-size-md p-r-5x"></i>
@@ -348,7 +345,6 @@
                                 </div>
                             </div>
                         </fieldset>
-                        <hr class="hr-base m-a-0">
                     @endforeach
                 @endif
 
@@ -367,7 +363,6 @@
                                          id="{{$vas['vas_id']}}" data-vas-type="{{$vas['vas_type']}}"></div>
                                 </div>
                             </fieldset>
-                            <hr class="hr-base m-a-0">
                         @else
                             <fieldset class="p-x-15x p-y-10x text-left" data-vas-type="$vas['vas_type']">
                                 <div class="flex flex-fullJustified flex-alignCenter">
@@ -379,7 +374,6 @@
                                          id="{{$vas['vas_id']}}" data-vas-type="$vas['vas_type']"></div>
                                 </div>
                             </fieldset>
-                            <hr class="hr-base m-a-0">
                         @endif
                     @endforeach
                 @endif
@@ -388,19 +382,19 @@
                         <span class="text-primary font-size-sm">Qty:</span>
                         <div class="btn-group flex" id="item-count">
                             <div class="btn btn-cartCount btn-sm disabled" data-item="minus">
-                                <i class="iconfont icon-minus"></i>
+                                {{--<i class="iconfont icon-minus"></i>--}}
+                                <i class="iconfont1 icon-arrow-bottom1 icon-size-sm"></i>
                             </div>
                             <div class="btn btn-cartCount btn-sm" data-num="num">1</div>
 
-                            <div class="btn btn-cartCount btn-sm"
-                                 data-item="add">
-                                <i class="iconfont icon-add"></i>
+                            <div class="btn btn-cartCount btn-sm" data-item="add">
+                                {{--<i class="iconfont icon-add"></i>--}}
+                                <i class="iconfont1 icon-arrow-up1 icon-size-sm"></i>
                             </div>
                         </div>
                     </div>
                 </fieldset>
             </section>
-            <div class="hr-between"></div>
 
             <!-- Add to Bag 按钮 -->
             <section class="addToBag-info">
@@ -444,7 +438,6 @@
                         </a>
                     </div>
                 </aside>
-                <div class="hr-between"></div>
                 <aside class="product-secondaryInfo">
                     <a class="flex flex-alignCenter flex-fullJustified font-size-sm text-primary p-a-15x"
                        href="/askshopping?skiptype=3&id={{$data['spu']}}">
@@ -452,7 +445,6 @@
                         <i class="iconfont icon-arrow-right icon-size-xm text-common"></i>
                     </a>
                 </aside>
-                <div class="hr-between"></div>
                 <aside class="product-secondaryInfo">
                     @if(isset($data['templates']) && !empty($data['templates']))
                         @foreach($data['templates'] as $template)
@@ -461,7 +453,6 @@
                                 {{ $template['template_title'] }}
                                 <i class="iconfont icon-arrow-right icon-size-xm text-common"></i>
                             </a>
-                            <hr class="hr-base m-a-0">
                         @endforeach
                     @endif
                 </aside>
@@ -470,9 +461,8 @@
                 <!-- 推荐商品 -->
                 @if(!empty($recommended['list']))
                     <aside class="m-b-20x">
-                        <article class="font-size-md text-primary p-x-15x p-y-10x bg-title"><strong>You May Also
+                        <article class="font-size-md text-primary p-x-15x p-b-10x p-t-20x bg-title"><strong>You May Also
                                 Like</strong></article>
-                        <hr class="hr-base m-a-0">
                         <div class="p-t-10x" id="recommend"
                              data-impr="{{ $recommended['impr'] }}">
                             <div class="productList">
@@ -511,18 +501,18 @@
                                                             <div class="price-caption">
 
                                                                 @if($value['skuPrice']['sale_price'] != $value['skuPrice']['price'])
-                                                                    <span class="font-size-sm m-l-5x text-red"><strong>${{ number_format(($value['skuPrice']['sale_price'] / 100), 2) }}</strong></span>
-                                                                    <span class="font-size-xs text-common text-throughLine">${{ number_format(($value['skuPrice']['price'] / 100), 2) }}</span>
+                                                                    <span class="font-size-sm m-l-5x text-primary"><strong>${{ number_format(($value['skuPrice']['sale_price'] / 100), 2) }}</strong></span>
+                                                                    <span class="font-size-xs text-green text-throughLine">${{ number_format(($value['skuPrice']['price'] / 100), 2) }}</span>
                                                                 @else
                                                                     <span class="font-size-sm m-l-5x"><strong>${{ number_format(($value['skuPrice']['sale_price'] / 100), 2) }}</strong></span>
                                                                 @endif
                                                                 @if(Session::has('user'))
                                                                     <span class="wish-item p-r-5x"><i
-                                                                                class="iconfont text-common btn-wish btn-wished @if(in_array($value['spu'], $wishlist->wishlist())){{'active'}}@endif"
+                                                                                class="iconfont1 text-primary btn-wish btn-wished @if(in_array($value['spu'], $wishlist->wishlist())){{'active'}}@endif"
                                                                                 data-spu="{{$value['spu']}}"></i></span>
                                                                 @else
                                                                     <a class="wish-item p-r-5x" href="javascript:;"><i
-                                                                                class="iconfont text-common btn-wish btn-wished"
+                                                                                class="iconfont1 text-primary btn-wish btn-wished"
                                                                                 data-actionspu="{{$value['spu']}}"></i></a>
                                                                 @endif
                                                             </div>

@@ -94,7 +94,7 @@
             @elseif($value['type']=='title')
                     <!-- 标题 -->
             <a href="@if($value['skipType']=='1')/detail/@elseif($value['skipType']=='2')/designer/@elseif($value['skipType']=='3')/topic/@elseif($value['skipType']=='4')/shopping#@endif{{$value['skipId']}}">
-                <div class="p-x-15x p-y-10x text-primary">
+                <div class="p-x-15x p-b-10x p-t-20x text-primary">
                     <strong>{{$value['value']}}</strong>
                 </div>
             </a>
@@ -122,9 +122,9 @@
                                          alt="{{$topic['spuInfos'][$spu]['spuBase']['main_title']}}">
                                 </a>
                                 @if(Session::has('user'))
-                                    <span class="wish-item p-r-10x"><i class="iconfont text-common btn-wish btn-wished @if(in_array($spu, $wishlist->wishlist())){{'active'}}@endif" data-spu="{{$spu}}"></i></span>
+                                    <span class="wish-item p-r-10x"><i class="iconfont1 text-primary btn-wish btn-wished @if(in_array($spu, $wishlist->wishlist())){{'active'}}@endif" data-spu="{{$spu}}"></i></span>
                                 @else
-                                    <a class="wish-item p-r-10x" href="javascript:;"><i class="iconfont text-common btn-wish btn-wished" data-actionspu="{{$spu}}"></i></a>
+                                    <a class="wish-item p-r-10x" href="javascript:;"><i class="iconfont1 text-primary btn-wish btn-wished" data-actionspu="{{$spu}}"></i></a>
                                 @endif
                             </div>
                         @endforeach
@@ -192,16 +192,16 @@
                                             <div class="price-caption">
                                                 <span>
                                                     @if($topic['spuInfos'][$spu]['skuPrice']['price'] != $topic['spuInfos'][$spu]['skuPrice']['sale_price'])
-                                                        <span class="text-red font-size-sm m-l-5x"><strong>${{number_format($topic['spuInfos'][$spu]['skuPrice']['sale_price']/100,2)}}</strong></span>
-                                                        <span class="font-size-xs text-common text-throughLine">${{number_format($topic['spuInfos'][$spu]['skuPrice']['price']/100,2)}}</span>
+                                                        <span class="text-primary font-size-sm m-l-5x"><strong>${{number_format($topic['spuInfos'][$spu]['skuPrice']['sale_price']/100,2)}}</strong></span>
+                                                        <span class="font-size-xs text-green text-throughLine">${{number_format($topic['spuInfos'][$spu]['skuPrice']['price']/100,2)}}</span>
                                                     @else
                                                         <span class="text-primary font-size-sm m-l-5x"><strong>${{number_format($topic['spuInfos'][$spu]['skuPrice']['sale_price']/100,2)}}</strong></span>
                                                     @endif
                                                 </span>
                                                 @if(Session::has('user'))
-                                                    <span class="wish-item p-r-10x"><i class="iconfont text-common btn-wish btn-wished @if(in_array($spu, $wishlist->wishlist())){{'active'}}@endif" data-spu="{{$spu}}"></i></span>
+                                                    <span class="wish-item p-r-10x"><i class="iconfont1 text-primary btn-wish btn-wished @if(in_array($spu, $wishlist->wishlist())){{'active'}}@endif" data-spu="{{$spu}}"></i></span>
                                                 @else
-                                                    <a class="wish-item p-r-10x" href="javascript:;"><i class="iconfont text-common btn-wish btn-wished" data-actionspu="{{$spu}}"></i></a>
+                                                    <a class="wish-item p-r-10x" href="javascript:;"><i class="iconfont1 text-primary btn-wish btn-wished" data-actionspu="{{$spu}}"></i></a>
                                                 @endif
                                             </div>
                                         </div>

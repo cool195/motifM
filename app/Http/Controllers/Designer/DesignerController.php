@@ -228,6 +228,30 @@ class DesignerController extends ApiController
         return View('designer.followlist', ['followlist' => $result['data']['list']]);
     }
 
+    public function followList()
+    {
+        if (Session::get('user.pin')) {
+            $value = Cache::remember(Session::get('user.pin') . 'followlist',60, function () {
+                $params = array(
+                    'cmd' => 'list',
+                    'pin' => Session::get('user.pin'),
+                    'token' => Session::get('user.token'),
+                    'num' => 1,
+                    'size' => 500
+                );
+                $result = $this->request('follow', $params);
+                if ($result['success'] && $result['data']['amount'] > 0) {
+                    foreach ($result['data']['list'] as $value) {
+                        $result['cacheList'][] = $value['userId'];
+                    }
+                }
+                return $result['cacheList'];
+            });
+            return $value;
+        }
+        return false;
+    }
+
     private function isMobile()
     {
         if (isset($_SERVER['HTTP_X_WAP_PROFILE'])) {

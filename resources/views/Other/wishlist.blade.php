@@ -125,8 +125,8 @@
                                 @{{ /if }}
                             @{{ else }}
                                 @{{ if $value.skuPrice.price != $value.skuPrice.sale_price }}
-                                    <span class="font-size-md text-red">$@{{ ($value.skuPrice.sale_price/100).toFixed(2) }}</span>
-                                    <span class="font-size-sm text-throughLine text-common">$@{{ ($value.skuPrice.price/100).toFixed(2) }}</span>
+                                    <span class="font-size-md text-primary">$@{{ ($value.skuPrice.sale_price/100).toFixed(2) }}</span>
+                                    <span class="font-size-sm text-throughLine text-green">$@{{ ($value.skuPrice.price/100).toFixed(2) }}</span>
                                 @{{ else }}
                                     <span class="font-size-md text-primary">$@{{ ($value.skuPrice.sale_price/100).toFixed(2) }}</span>
                                 @{{ /if }}
@@ -177,8 +177,8 @@
         </div>
         <fieldset class="text-primary p-x-15x p-t-20x text-left">
             <div class="font-size-base">
-                <span class="font-size-lx text-red" id="skuNewPrice"></span>
-                <span class="font-size-sm text-throughLine text-common" id="productPrice"></span>
+                <span class="font-size-lx text-primary" id="skuNewPrice"></span>
+                <span class="font-size-sm text-throughLine text-green" id="productPrice"></span>
             </div>
         </fieldset>
         {{--<div class="warning-info off flex text-warning flex-alignCenter text-left p-x-15x" id="Product-prompt">--}}
