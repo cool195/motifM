@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\ApiController;
 use Illuminate\Support\Facades\Session;
 use Cache;
+use Cookie;
 use App\Services\Publicfun;
 
 class DesignerController extends ApiController
@@ -162,9 +163,9 @@ class DesignerController extends ApiController
                 $view = 'designer.showApp';
                 $NavShow = false;
                 error_log(print_r("--------token--------\n", "\n"), 3, '/tmp/myerror.log');
-                error_log(print_r($_COOKIE['TOKEN'], "\n"), 3, '/tmp/myerror.log');
+                error_log(print_r(Cookie::get('TOKEN'), "\n"), 3, '/tmp/myerror.log');
                 error_log(print_r("--------pin--------\n", "\n"), 3, '/tmp/myerror.log');
-                error_log(print_r($_COOKIE['PIN'], "\n"), 3, '/tmp/myerror.log');
+                error_log(print_r(Cookie::get('PIN'), "\n"), 3, '/tmp/myerror.log');
                 error_log(print_r("--------user--------\n", "\n"), 3, '/tmp/myerror.log');
                 error_log(print_r(Session::get('user'), "\n"), 3, '/tmp/myerror.log');
             } else {
