@@ -129,9 +129,9 @@
             })
             .done(function (data) {
                 if (data.success) {
+                    $('#confirm').attr('href', data.redirectUrl);
                     $Modal.open();
                     trackRegister(Email);
-                    $('#confirm').attr('href', data.redirectUrl);
                 } else {
                     $('.warning-info').removeClass('off');
                     $('.warning-info').children('span').html(data.prompt_msg);
