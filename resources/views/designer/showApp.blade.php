@@ -526,18 +526,18 @@
                                                 <div class="p-t-15x">
                                                     @if(Session::get('user.pin'))
                                                         @if($designer['followStatus'])
-                                                            {{--<div class="btn btn-sm btn-primary" id="followapp"
+                                                            <div class="btn btn-sm btn-primary" id="followapp"
                                                                  data-followid="{{$designer['designer_id']}}">Following
-                                                            </div>--}}
+                                                            </div>
                                                         @else
-                                                            {{--<div class="btn btn-sm btn-follow active" id="followapp"
+                                                            <div class="btn btn-sm btn-follow active" id="followapp"
                                                                  data-followid="{{$designer['designer_id']}}">Follow
-                                                            </div>--}}
+                                                            </div>
                                                         @endif
                                                     @else
-                                                        {{--<div class="btn btn-sm btn-follow active sendLogin downFollow"
+                                                        <div class="btn btn-sm btn-follow active sendLogin downFollow"
                                                              data-des="{{$designer['designer_id']}}">Follow
-                                                        </div>--}}
+                                                        </div>
                                                     @endif
                                                 </div>
                                             </div>
