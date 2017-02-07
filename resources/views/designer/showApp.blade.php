@@ -635,12 +635,8 @@
     });
 
     Jockey.on("action", function (action) {
-        alert('进入页面');
-        alert(action.name);
         //login
         if (action.name == "authInfo") {
-            alert('进入 authInfo');
-            alert("token:"+ action.data.token +"-----pin:"+action.data.pin+"-----email:"+action.data.email);
             var f = '{{strstr($_SERVER['HTTP_USER_AGENT'], 'motif-android') ? 'f=android' : 'f=ios'}}';
             window.location.href = "/designer/{{$designer['designer_id']}}?f=" + f + "&des=" + $('#followDes').val() + "&wishspu=" + $('#wishspu').val() + "&token=" + action.data.token + "&pin=" + action.data.pin + "&email=" + action.data.email + "&name=" + decodeURIComponent(action.data.name)
         }

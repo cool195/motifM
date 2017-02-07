@@ -94,8 +94,11 @@ class DesignerController extends ApiController
             $result['data']['osType'] = strstr($_SERVER['HTTP_USER_AGENT'], 'motif-ios') ? 'ios' : 'android';
             if ($_GET['test'] || strstr($_SERVER['HTTP_USER_AGENT'], 'motif-android') || strstr($_SERVER['HTTP_USER_AGENT'], 'motif-ios')) {
 
-                error_log(print_r("--------header--------\n", "\n"), 3, '/tmp/myerror.log');
-                error_log(print_r($request->header(), "\n"), 3, '/tmp/myerror.log');
+                error_log(print_r("--------header cookie--------\n", "\n"), 3, '/tmp/myerror.log');
+                error_log(print_r($request->header('cookie'), "\n"), 3, '/tmp/myerror.log');
+
+                error_log(print_r("-------request token-------\n", "\n"), 3, '/tmp/myerror.log');
+                error_log(print_r($request->input('token'), "\n"), 3, '/tmp/myerror.log');
 
                 if ($request->input('token') || !empty($_COOKIE['PIN'])) {
                     if ($request->input('token')) {
@@ -166,7 +169,7 @@ class DesignerController extends ApiController
                 $view = 'designer.showApp';
                 $NavShow = false;
 
-                error_log(print_r("--------token--------\n", "\n"), 3, '/tmp/myerror.log');
+                error_log(print_r("--------cookie token--------\n", "\n"), 3, '/tmp/myerror.log');
                 error_log(print_r(Cookie::get('TOKEN'), "\n"), 3, '/tmp/myerror.log');
                 error_log(print_r("--------pin--------\n", "\n"), 3, '/tmp/myerror.log');
                 error_log(print_r(Cookie::get('PIN'), "\n"), 3, '/tmp/myerror.log');
