@@ -95,10 +95,10 @@ class DesignerController extends ApiController
             if ($_GET['test'] || strstr($_SERVER['HTTP_USER_AGENT'], 'motif-android') || strstr($_SERVER['HTTP_USER_AGENT'], 'motif-ios')) {
 
                 error_log(print_r("--------header cookie--------\n", "\n"), 3, '/tmp/myerror.log');
-                error_log(print_r($request->header('cookie'), "\n"), 3, '/tmp/myerror.log');
+                error_log(print_r($request->header(), "\n"), 3, '/tmp/myerror.log');
 
-                error_log(print_r("-------request token-------\n", "\n"), 3, '/tmp/myerror.log');
-                error_log(print_r($request->input('token'), "\n"), 3, '/tmp/myerror.log');
+                error_log(print_r("-------request all-------\n", "\n"), 3, '/tmp/myerror.log');
+                error_log(print_r($request->all(), "\n"), 3, '/tmp/myerror.log');
 
                 if ($request->input('token') || !empty($_COOKIE['PIN'])) {
                     if ($request->input('token')) {
