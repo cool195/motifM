@@ -417,6 +417,7 @@
                                                                     <span class="text-primary font-size-sm m-l-5x"><strong>${{number_format($product['spuInfos'][$spu]['skuPrice']['sale_price']/100,2)}}</strong></span>
                                                                 @endif
                                                             </span>
+                                                                       @if($designer['osType'] == 'android' || Session::get('VERSION') >= 164)
                                                                             @if(Session::has('user'))
                                                                                 <span class="wish-item p-r-10x"
                                                                                       data-id="{{$spu}}"
@@ -428,7 +429,7 @@
                                                                                             class="iconfont1 text-primary btn-wish sendLogin"
                                                                                             data-id="{{$spu}}"></i></a>
                                                                             @endif
-
+                                                                        @endif
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -502,6 +503,7 @@
                                                     <span class="text-primary font-size-sm m-l-5x"><strong>${{number_format($value['skuPrice']['sale_price']/100,2)}}</strong></span>
                                                 @endif
                                             </span>
+                                                            @if($designer['osType'] == 'android' || Session::get('VERSION') >= 164)
                                                                 @if(Session::has('user'))
                                                                     <span class="wish-item p-r-10x"
                                                                           data-id="{{$value['spu']}}"
@@ -512,6 +514,7 @@
                                                                                 class="iconfont1 text-primary btn-wish sendLogin"
                                                                                 data-id="{{$value['spu']}}"></i></a>
                                                                 @endif
+                                                            @endif
                                                             </div>
                                                         </div>
                                                     </div>
