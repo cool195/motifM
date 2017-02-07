@@ -119,7 +119,7 @@
 
             {{--设计师 文字信息--}}
             <div class="bg-white p-a-5x">
-                @if($designer['designer_id']==114)
+                @if($designer['designer_id']==114 && ($designer['osType'] == 'android' || Session::get('VERSION') >= 164 ))
                     <div class="font-size-sm text-primary p-t-10x p-b-15x p-x-15x" style="border-bottom: solid 1px #ccc;">
                         <div class="text-center">
                             <div class="font-size-md">Follow Michaela to be notified when<br> this collection is available</div>
@@ -131,17 +131,19 @@
                     <div class="font-size-base text-main"><strong>{{$designer['nickname']}}</strong></div>
                     <div class="flex flex-alignCenter">
                         <span class="p-r-15x">
-                            @if(Session::get('user.pin'))
-                                @if($designer['followStatus'])
-                                    <div class="btn btn-sm btn-primary" id="follow"
-                                         data-followid="{{$designer['designer_id']}}">Following</div>
+                            @if($designer['osType'] == 'android' || Session::get('VERSION') >= 164 )
+                                @if(Session::get('user.pin'))
+                                    @if($designer['followStatus'])
+                                        <div class="btn btn-sm btn-primary" id="follow"
+                                            data-followid="{{$designer['designer_id']}}">Following</div>
+                                    @else
+                                        <div class="btn btn-sm btn-follow active" id="follow"
+                                            data-followid="{{$designer['designer_id']}}">Follow</div>
+                                    @endif
                                 @else
-                                    <div class="btn btn-sm btn-follow active" id="follow"
-                                         data-followid="{{$designer['designer_id']}}">Follow</div>
+                                    <div class="btn btn-sm btn-follow active sendLogin upFollow"
+                                        data-des="{{$designer['designer_id']}}">Follow</div>
                                 @endif
-                            @else
-                                <div class="btn btn-sm btn-follow active sendLogin upFollow"
-                                     data-des="{{$designer['designer_id']}}">Follow</div>
                             @endif
                         </span>
                         <span>
@@ -517,7 +519,7 @@
                                             </div>
                                         </div>
                                     @endif
-                                    @if($designer['designer_id']==99)
+                                    @if($designer['designer_id']==99 && ($designer['osType'] == 'android' || Session::get('VERSION') >= 164) )
                                         <div class="font-size-sm text-primary p-y-15x p-x-15x">
                                             <div class="text-center">
                                                 <div>Love this collection? Follow Rae for early access to shop future

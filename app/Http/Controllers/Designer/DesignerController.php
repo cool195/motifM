@@ -100,6 +100,8 @@ class DesignerController extends ApiController
                 error_log(print_r("-------request all-------\n", "\n"), 3, '/tmp/myerror.log');
                 error_log(print_r($request->all(), "\n"), 3, '/tmp/myerror.log');
 
+                !empty($_COOKIE['VERSION']) ? Session::put('VERSION', implode("", explode("." ,$_COOKIE['VERSION']))) : "";
+
                 if ($request->input('token') || !empty($_COOKIE['PIN'])) {
                     if ($request->input('token')) {
                         Session::put('user', array(
@@ -163,7 +165,7 @@ class DesignerController extends ApiController
                     }
 
                 } else {
-                    Cache::forget(Session::get('user.token'));
+                    //Cache::forget(Session::get('user.token'));
                     Session::forget('user');
                 }
                 $view = 'designer.showApp';
