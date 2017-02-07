@@ -50,7 +50,7 @@
 
     $('.clickcode').on('click',function () {
         setCookie('sharecode', $(this).data('code'));
-        window.location.href = '/register?url=%2Fpromocode';
+        window.location.href = '/login?url=%2Fpromocode';
     })
 
     function setCookie(name, value) {
