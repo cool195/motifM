@@ -133,15 +133,15 @@
                         <span class="p-r-15x">
                             @if(Session::get('user.pin'))
                                 @if($designer['followStatus'])
-                                    {{--<div class="btn btn-sm btn-primary" id="follow"
-                                         data-followid="{{$designer['designer_id']}}">Following</div>--}}
+                                    <div class="btn btn-sm btn-primary" id="follow"
+                                         data-followid="{{$designer['designer_id']}}">Following</div>
                                 @else
-                                    {{--<div class="btn btn-sm btn-follow active" id="follow"
-                                         data-followid="{{$designer['designer_id']}}">Follow</div>--}}
+                                    <div class="btn btn-sm btn-follow active" id="follow"
+                                         data-followid="{{$designer['designer_id']}}">Follow</div>
                                 @endif
                             @else
-                                {{--<div class="btn btn-sm btn-follow active sendLogin upFollow"
-                                     data-des="{{$designer['designer_id']}}">Follow</div>--}}
+                                <div class="btn btn-sm btn-follow active sendLogin upFollow"
+                                     data-des="{{$designer['designer_id']}}">Follow</div>
                             @endif
                         </span>
                         <span>
