@@ -636,6 +636,7 @@
 
     Jockey.on("action", function (action) {
         alert('进入页面');
+        alert(action.name);
         //login
         if (action.name == "authInfo") {
             alert('进入 authInfo');
