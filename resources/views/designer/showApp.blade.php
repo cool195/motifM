@@ -522,7 +522,7 @@
                                             </div>
                                         </div>
                                     @endif
-                                    @if($designer['designer_id']==99 && ($designer['osType'] == 'android' || Session::get('VERSION') >= 164) )
+                                    @if( in_array($designer['designer_id'], array(99, 114)) && ($designer['osType'] == 'android' || Session::get('VERSION') >= 164) )
                                         <div class="font-size-sm text-primary p-y-15x p-x-15x">
                                             <div class="text-center">
                                                 <div>Love this collection? Follow Rae for early access to shop future
