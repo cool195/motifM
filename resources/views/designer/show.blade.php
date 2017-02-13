@@ -125,30 +125,6 @@
             @endif
             {{--设计师 文字信息--}}
             <div class="bg-white" style="text-align: center;">
-                @if($designer['designer_id']==114)
-                    <div class="font-size-sm text-primary p-y-15x p-x-15x">
-                        <div class="text-center">
-                            <div class="font-size-md">Follow Michaela to be notified when<br> this collection is available</div>
-                            <div class="p-t-15x">
-                                @if(Session::get('user.pin'))
-                                    @if($designer['followStatus'])
-                                        <div class="btn btn-sm btn-primary btn-designerFollow" id="followapp"
-                                             data-followid="{{$designer['designer_id']}}">Following
-                                        </div>
-                                    @else
-                                        <div class="btn btn-sm btn-follow active btn-designerFollow" id="followapp"
-                                             data-followid="{{$designer['designer_id']}}">Follow
-                                        </div>
-                                    @endif
-                                @else
-                                    <div class="btn btn-sm btn-follow sendLogin active downFollow btn-designerFollow" id="followapp"
-                                         data-actionid="{{$designer['designer_id']}}" data-referer="{{$_SERVER['REQUEST_URI']}}">Follow
-                                    </div>
-                                @endif
-                            </div>
-                        </div>
-                    </div>
-                @endif
 
                 <div class="p-x-15x p-t-10x"
                      data-impr='{{ config('app.clk_url') }}/log.gif?time={{time()}}&t=page.100001&m=H5_M2016-1&pin={{Session::get('user.pin')}}&uuid={{Session::get('user.uuid')}}&ref=&v={"action":0,"skipType":2,"skipId":"{{$designer['designer_id']}}","expid":0,"version":"1.0.1","ver":"9.2","src":"H5"}'>
@@ -517,30 +493,6 @@
                                             </div>
                                         </div>
                             @endif
-                                        @if($designer['designer_id']==114)
-                                            <div class="font-size-sm text-primary p-y-15x p-x-15x">
-                                                <div class="text-center">
-                                                    <div class="font-size-md">Follow Michaela to be notified when<br> this collection is available</div>
-                                                    <div class="p-t-15x">
-                                                        @if(Session::get('user.pin'))
-                                                            @if($designer['followStatus'])
-                                                                <div class="btn btn-sm btn-primary btn-designerFollow" id="follow"
-                                                                     data-followid="{{$designer['designer_id']}}">Following
-                                                                </div>
-                                                            @else
-                                                                <div class="btn btn-sm btn-follow active btn-designerFollow" id="follow"
-                                                                     data-followid="{{$designer['designer_id']}}">Follow
-                                                                </div>
-                                                            @endif
-                                                        @else
-                                                            <div class="btn btn-sm btn-follow sendLogin active downFollow btn-designerFollow" id="follow"
-                                                                 data-actionid="{{$designer['designer_id']}}" data-referer="{{$_SERVER['REQUEST_URI']}}">Follow
-                                                            </div>
-                                                        @endif
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        @endif
             </aside>
         </section>
         <!-- 页脚 功能链接 -->
