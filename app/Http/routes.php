@@ -23,6 +23,9 @@ $app->group(['middleware' => 'pcguide', 'namespace' => 'App\Http\Controllers'], 
 
     $app->get('/designer', 'Designer\DesignerController@index');
     $app->get('/designer/{id}', 'Designer\DesignerController@show');
+    $app->get('/designer/redsquare', 'Designer\DesignerController@redSquare');
+    $app->get('/designer/redselected', 'Designer\DesignerController@redSelected');
+    
 
     $app->post('/googlelogin', 'Auth\AuthController@googleLogin');
     $app->post('/facebooklogin', 'Auth\AuthController@facebookLogin');

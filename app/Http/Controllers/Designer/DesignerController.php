@@ -287,6 +287,17 @@ class DesignerController extends ApiController
         return false;
     }
 
+    public function redSquare(Request $request)
+    {
+        return view('designer.redsquare');
+    }
+
+    public function redSelected(Request $request)
+    {
+        return view('designer.redselected');
+    }
+
+
     private function isMobile()
     {
         if (isset($_SERVER['HTTP_X_WAP_PROFILE'])) {
