@@ -22,9 +22,10 @@ $app->group(['middleware' => 'pcguide', 'namespace' => 'App\Http\Controllers'], 
     $app->get('/shopping/{id}', 'Shopping\ShoppingController@index');
 
     $app->get('/designer', 'Designer\DesignerController@index');
-    $app->get('/designer/{id}', 'Designer\DesignerController@show');
+    //$app->get('/designer/{id}', 'Designer\DesignerController@show');
     $app->get('/designer/redsquare', 'Designer\DesignerController@redSquare');
     $app->get('/designer/redselected', 'Designer\DesignerController@redSelected');
+    $app->get('/designer/{id}', 'Designer\DesignerController@show');
     
 
     $app->post('/googlelogin', 'Auth\AuthController@googleLogin');
