@@ -59,7 +59,7 @@
         <div class="productList-item">
             <div class="image-bg">
                 <div class="image-container">
-                    <a data-link="/savedetail/@{{ $value.seo_link }}" data-impr="@{{ $value.impr }}" data-clk="@{{ $value.clk }}"
+                    <a data-link="/savedetail/@{{ $value.spu }}" data-impr="@{{ $value.impr }}" data-clk="@{{ $value.clk }}"
                        href="javascript:void(0)" data-spu="@{{ $value.spu }}" data-title="@{{ $value.main_title }}"
                        data-price="@{{ ($value.skuPrice.sale_price/100).toFixed(2) }}">
                         <div class="swiper-container productList-swiper">
