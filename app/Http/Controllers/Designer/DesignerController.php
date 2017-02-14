@@ -287,16 +287,20 @@ class DesignerController extends ApiController
         return false;
     }
 
-    public function redSquare(Request $request)
+    public function store(Request $request)
     {
-        return view('designer.redsquare');
+        return view('designer.store');
     }
 
-    public function redSelected(Request $request)
+    public function saved(Request $request)
     {
-        return view('designer.redselected');
+        return view('designer.store');
     }
 
+    public function savedetail($spu)
+    {
+        return view('designer.savedetail');
+    }
 
     private function isMobile()
     {

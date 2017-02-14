@@ -23,8 +23,9 @@ $app->group(['middleware' => 'pcguide', 'namespace' => 'App\Http\Controllers'], 
 
     $app->get('/designer', 'Designer\DesignerController@index');
     //$app->get('/designer/{id}', 'Designer\DesignerController@show');
-    $app->get('/designer/redsquare', 'Designer\DesignerController@redSquare');
-    $app->get('/designer/redselected', 'Designer\DesignerController@redSelected');
+    $app->get('/designer/store', 'Designer\DesignerController@store');
+    $app->get('/designer/saved', 'Designer\DesignerController@saved');
+    $app->get('/savedetail/{spu}', 'Designer\DesignerController@savedetail');
     $app->get('/designer/{id}', 'Designer\DesignerController@show');
     
 

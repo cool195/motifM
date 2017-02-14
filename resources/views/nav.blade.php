@@ -99,7 +99,7 @@
         </li>
         <!--网红专有入口-->
         <li class="nav-item">
-            <a href="/designer/redsquare" class="flex flex-alignCenter flex-fullJustified p-a-15x menu">
+            <a href="/designer/store" class="flex flex-alignCenter flex-fullJustified p-a-15x menu">
                 <div class="font-size-sm text-primary flex flex-alignCenter">
                     {{--<i class="iconfont icon-talks icon-size-md p-r-15x"></i>--}}
                     <span>Products Store</span></div>
@@ -107,7 +107,7 @@
             </a>
         </li>
         <li class="nav-item">
-            <a href="/designer/redselected" class="flex flex-alignCenter flex-fullJustified p-a-15x menu">
+            <a href="/designer/saved" class="flex flex-alignCenter flex-fullJustified p-a-15x menu">
                 <div class="font-size-sm text-primary flex flex-alignCenter">
                     {{--<i class="iconfont icon-talks icon-size-md p-r-15x"></i>--}}
                     <span>Saved</span></div>
