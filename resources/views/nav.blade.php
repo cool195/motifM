@@ -97,20 +97,12 @@
                 <span class="text-common"><i class="iconfont icon-arrow-right icon-size-sm"></i></span>
             </a>
         </li>
-        <li class="nav-item">
-            <a href="/feed" class="flex flex-alignCenter flex-fullJustified p-a-15x menu">
-                <div class="font-size-sm text-primary flex flex-alignCenter">
-                    {{--<i class="iconfont icon-talks icon-size-md p-r-15x"></i>--}}
-                    <span>Customer Support</span></div>
-                <span class="text-common"><i class="iconfont icon-arrow-right icon-size-sm"></i></span>
-            </a>
-        </li>
         <!--网红专有入口-->
         <li class="nav-item">
             <a href="/designer/redsquare" class="flex flex-alignCenter flex-fullJustified p-a-15x menu">
                 <div class="font-size-sm text-primary flex flex-alignCenter">
                     {{--<i class="iconfont icon-talks icon-size-md p-r-15x"></i>--}}
-                    <span>Square</span></div>
+                    <span>Products Store</span></div>
                 <span class="text-common"><i class="iconfont icon-arrow-right icon-size-sm"></i></span>
             </a>
         </li>
@@ -118,7 +110,16 @@
             <a href="/designer/redselected" class="flex flex-alignCenter flex-fullJustified p-a-15x menu">
                 <div class="font-size-sm text-primary flex flex-alignCenter">
                     {{--<i class="iconfont icon-talks icon-size-md p-r-15x"></i>--}}
-                    <span>Selected</span></div>
+                    <span>Saved</span></div>
+                <span class="text-common"><i class="iconfont icon-arrow-right icon-size-sm"></i></span>
+            </a>
+        </li>
+
+        <li class="nav-item">
+            <a href="/feed" class="flex flex-alignCenter flex-fullJustified p-a-15x menu">
+                <div class="font-size-sm text-primary flex flex-alignCenter">
+                    {{--<i class="iconfont icon-talks icon-size-md p-r-15x"></i>--}}
+                    <span>Customer Support</span></div>
                 <span class="text-common"><i class="iconfont icon-arrow-right icon-size-sm"></i></span>
             </a>
         </li>
