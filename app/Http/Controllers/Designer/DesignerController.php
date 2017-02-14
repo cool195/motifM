@@ -328,7 +328,7 @@ class DesignerController extends ApiController
         }
 
         $recommended = $this->recommended($spu,$result['data']['front_category_ids'][0],$result['data']['designer']['designer_id']);
-        return view('designer.savedetail', ['data' => $result['data'], 'recommended' => $recommended['data'],'NavShowShop'=>true]);
+        return view('designer.savedetail', ['data' => $result['data'], 'recommended' => $recommended['data']]);
     }
 
     private function getShoppingCategoryList()
