@@ -27,11 +27,6 @@
                         </button>
                     @endforeach
                 @endif
-                    <button style="width:100%;border: none;background-color: white" class="p-a-15x search-item {{ 'cateClick'.$c['category_id'] }}"
-                            data-categoryid="{{ $c['category_id'] }}" data-categoryname="{{ $c['category_name'] }}">
-                        <span class="text-primary font-size-sm text-right">category_name</span>
-                        <i class="iconfont icon-check icon-size-md text-primary"></i>
-                    </button>
                 <hr class="hr-base m-a-0">
             </section>
 
@@ -64,7 +59,7 @@
         <div class="productList-item">
             <div class="image-bg">
                 <div class="image-container">
-                    <a data-link="/detail/@{{ $value.seo_link }}" data-impr="@{{ $value.impr }}" data-clk="@{{ $value.clk }}"
+                    <a data-link="/savedetail/@{{ $value.seo_link }}" data-impr="@{{ $value.impr }}" data-clk="@{{ $value.clk }}"
                        href="javascript:void(0)" data-spu="@{{ $value.spu }}" data-title="@{{ $value.main_title }}"
                        data-price="@{{ ($value.skuPrice.sale_price/100).toFixed(2) }}">
                         <div class="swiper-container productList-swiper">
