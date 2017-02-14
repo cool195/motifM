@@ -299,9 +299,36 @@ class DesignerController extends ApiController
         return view('designer.store', ['categories'=>$categories['data']['list']]);
     }
 
-    public function savedetail($spu)
+    public function savedetail(Request $request, $spu)
     {
-        return view('designer.savedetail');
+
+        $result = $this->getProductDetail($request, $spu);
+
+        if(!$result['success']){
+            abort(404);
+        } else {
+            $category = Cache::remember('category', 60, function () {
+                $params = array(
+                    'cmd' => 'categorylist',
+                );
+                return $this->request('openapi', "", "product", $params);
+            });
+            $categoryName = '';
+            foreach ($category['data']['list'] as $value) {
+                if ($value['category_id'] == $result['data']['front_category_ids'][0]) {
+                    $categoryName = $value['category_name'];
+                    $result['data']['category_id'] = $result['data']['front_category_ids'][0];
+                    break;
+                }
+            }
+            $result['data']['category_name'] = $categoryName;
+        }
+        if ($request->input('ajax')){
+            return $result;
+        }
+
+        $recommended = $this->recommended($spu,$result['data']['front_category_ids'][0],$result['data']['designer']['designer_id']);
+        return view('designer.savedetail', ['data' => $result['data'], 'recommended' => $recommended['data'],'NavShowShop'=>true]);
     }
 
     private function getShoppingCategoryList()
@@ -318,6 +345,107 @@ class DesignerController extends ApiController
             $result['data']['list'] = array();
         }
         return $result;
+    }
+
+    public function recommended($spu,$cid,$designerId)
+    {
+        $params = array(
+            'recid' => '100012',
+            'uuid' => $_COOKIE['uid'],
+            'pagenum' => 1,
+            'pagesize' => 8,
+            'spu' => $spu,
+            'extra_kv'=>!empty($designerId) ? "designerId:".$designerId : "designerId:-1"
+        );
+        $params['cid'] = isset($cid) ? $cid : -1;
+        $result = $this->request('openapi', '', "rec", $params,0);
+        if($result['success']){
+            foreach($result['data']['list'] as &$product){
+                $titleArray = explode(" ", $product['main_title']);
+                $titleArray[] = $product['spu'];
+                $product['seo_link'] = implode("-", $titleArray);
+            }
+        }
+        return $result;
+    }
+
+    public function getProductDetail(Request $request, $spu)
+    {
+        $params = array(
+            'cmd' => 'productdetail',
+            'spu' => $spu,
+        );
+        $result = $this->request('openapi', "", "product", $params,0);
+        if (empty($result)) {
+            $result['success'] = false;
+            $result['data'] = array();
+            $result['error_msg'] = "Data access failed";
+        } else {
+            if (isset($result['data']['spuAttrs'])) {
+                $result['data']['spuAttrs'] = $this->getSpuAttrsStockStatus($result['data']['spuAttrs'], $result['data']['skuExps']);
+            }
+            $result['data']['sale_status'] = true;
+            if(1 == $result['data']['sale_type']){
+                Session::put('referer', "/detail/$spu");
+                $result['data']['sale_status'] = $this->getSaleStatus($result['data']);
+            }
+
+            $titleArray = explode(" ", $result['data']['main_title']);
+            $titleArray[] = $result['data']['spu'];
+            $result['data']['seo_link'] = implode("-", $titleArray);
+        }
+        return $result;
+    }
+
+    private function getSaleStatus(Array $data)
+    {
+        $flag = true;
+        if(1 == $data['sale_type'] && !isset($data['skuPrice']['skuPromotion']))
+        {
+            $flag = false;
+        }
+        elseif(!empty($data['spuStock']) && $data['spuStock']['stock_qtty'] == $data['spuStock']['saled_qtty'] )
+        {
+            $flag = false;
+        }
+        elseif(0 == $data['skuPrice']['skuPromotion']['remain_time'])
+        {
+            $flag = false;
+        }else{
+
+        }
+        return $flag;
+    }
+
+    private function getSpuAttrsStockStatus(Array $spuAttrs, Array $skuExps)
+    {
+        $spuAttrsCopy = array();
+        foreach ($spuAttrs as $spuAttr) {
+            $skuAttrsValues = array();
+            foreach ($spuAttr['skuAttrValues'] as $skuAttrValue) {
+                $skuAttrValue['stock'] = $this->getSkuStockStatus($skuAttrValue['skus'], $skuExps);
+                $skuAttrsValues[] = $skuAttrValue;
+            }
+            $spuAttr['skuAttrValues'] = $skuAttrsValues;
+            $spuAttrsCopy[] = $spuAttr;
+        }
+        return $spuAttrsCopy;
+    }
+
+    private function getSkuStockStatus($skus, $skuExps)
+    {
+        $flag = false;
+        foreach ($skus as $sku) {
+            foreach ($skuExps as $skuExp) {
+                if ($sku == $skuExp['sku']) {
+                    if ($skuExp['stock_qtty'] > 0) {
+                        $flag = true;
+                        break;
+                    }
+                }
+            }
+        }
+        return $flag;
     }
 
     private function isMobile()
