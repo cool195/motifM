@@ -289,17 +289,35 @@ class DesignerController extends ApiController
 
     public function store(Request $request)
     {
-        return view('designer.store');
+        $categories = $this->getShoppingCategoryList();
+        return view('designer.store', ['categories'=>$categories['data']['list']]);
     }
 
     public function saved(Request $request)
     {
-        return view('designer.store');
+        $categories = $this->getShoppingCategoryList();
+        return view('designer.store', ['categories'=>$categories['data']['list']]);
     }
 
     public function savedetail($spu)
     {
         return view('designer.savedetail');
+    }
+
+    private function getShoppingCategoryList()
+    {
+        $params = array(
+            'cmd' => 'categorylist',
+        );
+        $system = "";
+        $service = "product";
+        $result = $this->request('openapi', $system, $service, $params);
+        if (empty($result['success'])) {
+            $result['success'] = false;
+            $result['error_msg'] = "Data access failed";
+            $result['data']['list'] = array();
+        }
+        return $result;
     }
 
     private function isMobile()
