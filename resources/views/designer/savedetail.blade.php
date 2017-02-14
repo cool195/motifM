@@ -298,10 +298,7 @@
                         <!-- 添加 购物车 控制按钮显示 -->
                         {{--@if(Session::has('user'))--}}
                         <div class="text-center m-b-5x font-size-sm">This item is available for immediate shipping</div>
-                        <button class="btn btn-red btn-block up-btn-addToBag"
-                                @if(!$data['sale_status'] || $data['isPutOn']==0) disabled
-                                @endif data-control="continue" data-role="continue" data-action="PATCH">SAVE
-                        </button>
+                        <button class="btn btn-red btn-block btn-addToSave" data-text="save">SAVE</button>
                         {{--@else--}}
                         {{--<a href="javascript:;" class="notesLogin btn btn-primary btn-block"--}}
                         {{--@if(!$data['sale_status'] || $data['isPutOn']==0) disabled--}}
@@ -429,7 +426,7 @@
         return null;
     }
     {{--未登录添加购物车操作--}}
-    $('.notesLogin').on('click', function () {
+    /*$('.notesLogin').on('click', function () {
         setCookie('notesLogin', 'AddBagAction');
         if ($('#addToCart-sku').val() != 1) {
             setCookie('AddBagSku', $('#addToCart-sku').val());
@@ -446,7 +443,7 @@
         setCookie('notesLogin', '');
         setCookie('AddBagSku', '');
         $('#modalDialog').data('login',1);
-    }
+    }*/
 </script>
 
 @include('global')

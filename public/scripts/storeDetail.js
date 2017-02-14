@@ -997,6 +997,10 @@
         $('[data-control="continue"]').addClass('hidden-xs-up');
         $('[data-control="modalButton"]').removeClass('hidden-xs-up');
     });
+
+
+
+*/
     // 增值服务是否选中
     $('fieldset[data-vas-type]').on('click', function (e) {
         // 判断增值服务类型
@@ -1035,7 +1039,7 @@
         return InputText;
     }
 
-    /!* 验证增值服务 只能输入数字和字母 '_' '-' '/' 空格 *!/
+    /* 验证增值服务 只能输入数字和字母 '_' '-' '/' 空格 */
     function validateVas($Vas) {
         var InputText = validateChinese($Vas.val());
         var Reg = /^([a-z_A-Z-/+0-9+\s]+)$/i;
@@ -1053,8 +1057,6 @@
         validateVas($(this));
     });
 
-
-*/
     // 显示隐藏 message 更多内容
     $('.btn-showMore').on('click', function () {
         var $Message = $(this).siblings('.message-info');
@@ -1106,7 +1108,7 @@
                 $('.limited-title').html('<strong>Pre Sale has ended</strong>');
                 $('.stock-qtty').html('Sold Out');
                 $('#limited-progress').attr('value', '0');
-                $('.up-btn-addToBag').addClass('disabled');
+                //$('.up-btn-addToBag').addClass('disabled');
                 $('.down-btn-addToBag').addClass('disabled');
                 clearInterval(timer);
             }
@@ -1139,5 +1141,22 @@
             timer(leftNum / 1000);
         });
     }
+
+
+    // add to save
+    $('.btn-addToSave').on('click', function(){
+
+        var text = $(this).data('text');
+        alert(text);
+        if (text == 'save'){
+            $(this).data('text', 'saved');
+            $('.btn-addToSave').html('SAVED')
+        }else{
+            $(this).data('text', 'save');
+            $('.btn-addToSave').html('SAVE')
+        }
+    });
+
+
 })(jQuery, Swiper);
 
