@@ -837,13 +837,13 @@
             }
         });
 
-        onAddToCart();
+        //onAddToCart();
 
         Operate.VAList = VarList;
         openLoading();
         // PUT 立即购买
         // PATCH 添加购物车
-        $.ajax({
+        /*$.ajax({
                 url: '/cart',
                 type: Action,
                 data: {
@@ -887,22 +887,13 @@
             })
             .always(function () {
                 closeLoading();
-            });
-
+            });*/
     }
 
-    // 添加购物车埋点 --- KLAVIYO
-    function sendTrackAddToBag(){
-        var email=$('#userEmail').val();
-        var _learnq = _learnq || [];
-        _learnq.push(['identify', {
-            '$email' : email
-        }]);
-        trackAddToBag();
-    }
+
 
     // 头部购物车 获取数据
-    function initHeaderBag() {
+    /*function initHeaderBag() {
         $.ajax({
                 url: '/cart/list'
             })
@@ -914,9 +905,9 @@
                 $('#headerBag-subTotal').html(BagPrice);
                 $('#itemNum').html(' (' + BagItem + ' items)');
             })
-    }
+    }*/
 
-    function appendHeaderBagList(BagList) {
+   /* function appendHeaderBagList(BagList) {
         var TplHtml = template('tpl-headerBag', BagList);
         var StageCache = $.parseHTML(TplHtml);
         $('.headerBag-list').html(StageCache);
@@ -1044,7 +1035,7 @@
         return InputText;
     }
 
-    /* 验证增值服务 只能输入数字和字母 '_' '-' '/' 空格 */
+    /!* 验证增值服务 只能输入数字和字母 '_' '-' '/' 空格 *!/
     function validateVas($Vas) {
         var InputText = validateChinese($Vas.val());
         var Reg = /^([a-z_A-Z-/+0-9+\s]+)$/i;
@@ -1062,6 +1053,8 @@
         validateVas($(this));
     });
 
+
+*/
     // 显示隐藏 message 更多内容
     $('.btn-showMore').on('click', function () {
         var $Message = $(this).siblings('.message-info');

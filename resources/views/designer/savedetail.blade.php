@@ -78,14 +78,14 @@
                     <div class="swiper-pagination text-right p-r-20x font-size-sm" id="baseImg-pagination"></div>
                 </div>
             </div>
-            @if(Session::has('user'))
+        {{--    @if(Session::has('user'))
                 <span class="wish-item p-r-10x p-t-10x"><i
                             class="iconfont1 text-primary btn-wish btn-wished @if(in_array($data['spu'], $wishlist->wishlist())){{'active'}}@endif"
                             data-spu="{{$data['spu']}}"></i></span>
             @else
                 <a class="wish-item p-r-10x p-t-10x" href="javascript:;"><i
                             class="iconfont1 text-primary btn-wish btn-wished" data-actionspu="{{$data['spu']}}"></i></a>
-                @endif
+                @endif--}}
 
                         <!-- 产品 标题 简介 价格 基本信息 -->
                 <article class="product-baseInfo bg-white">
@@ -272,23 +272,23 @@
                             @endif
                         @endforeach
                     @endif
-                    <fieldset class="p-x-15x p-y-10x">
+                    {{--<fieldset class="p-x-15x p-y-10x">
                         <div class="flex flex-fullJustified flex-alignCenter">
                             <span class="text-primary font-size-sm">Qty:</span>
                             <div class="btn-group flex" id="item-count">
                                 <div class="btn btn-cartCount btn-sm disabled" data-item="minus">
-                                    {{--<i class="iconfont icon-minus"></i>--}}
+                                    --}}{{--<i class="iconfont icon-minus"></i>--}}{{--
                                     <i class="iconfont1 icon-arrow-bottom1 icon-size-sm"></i>
                                 </div>
                                 <div class="btn btn-cartCount btn-sm" data-num="num">1</div>
 
                                 <div class="btn btn-cartCount btn-sm" data-item="add">
-                                    {{--<i class="iconfont icon-add"></i>--}}
+                                    --}}{{--<i class="iconfont icon-add"></i>--}}{{--
                                     <i class="iconfont1 icon-arrow-up1 icon-size-sm"></i>
                                 </div>
                             </div>
                         </div>
-                    </fieldset>
+                    </fieldset>--}}
                 </section>
 
                 <!-- Add to Bag 按钮 -->
@@ -300,7 +300,7 @@
                         <div class="text-center m-b-5x font-size-sm">This item is available for immediate shipping</div>
                         <button class="btn btn-red btn-block up-btn-addToBag"
                                 @if(!$data['sale_status'] || $data['isPutOn']==0) disabled
-                                @endif data-control="continue" data-role="continue" data-action="PATCH">Add to Bag
+                                @endif data-control="continue" data-role="continue" data-action="PATCH">SAVE
                         </button>
                         {{--@else--}}
                         {{--<a href="javascript:;" class="notesLogin btn btn-primary btn-block"--}}
@@ -312,7 +312,7 @@
                 </section>
 
                 <!-- 产品 其他信息 -->
-                <section>
+                <section class="m-b-20x">
                     <!-- 包邮提示 -->
                     <aside class="p-x-15x p-y-5x bg-free">
                         <div class="font-size-sm text-white text-center">
@@ -333,13 +333,13 @@
                             </a>
                         </div>
                     </aside>
-                    <aside class="product-secondaryInfo">
+                   {{-- <aside class="product-secondaryInfo">
                         <a class="flex flex-alignCenter flex-fullJustified font-size-sm text-primary p-a-15x"
                            href="/askshopping?skiptype=3&id={{$data['spu']}}">
                             Inquiries
                             <i class="iconfont icon-arrow-right icon-size-xm text-common"></i>
                         </a>
-                    </aside>
+                    </aside>--}}
                     <aside class="product-secondaryInfo">
                         @if(isset($data['templates']) && !empty($data['templates']))
                             @foreach($data['templates'] as $template)
@@ -351,78 +351,6 @@
                             @endforeach
                         @endif
                     </aside>
-
-
-                    <!-- 推荐商品 -->
-                    @if(!empty($recommended['list']))
-                        <aside class="m-b-20x">
-                            <article class="font-size-md text-primary p-x-15x p-b-10x p-t-20x bg-title"><strong>You May Also
-                                    Like</strong></article>
-                            <div class="p-t-10x" id="recommend"
-                                 data-impr="{{ $recommended['impr'] }}">
-                                <div class="productList">
-
-                                    <div class="swiper-container" id="recommend-productList">
-                                        <div class="swiper-wrapper">
-                                            @foreach($recommended['list'] as $key => $value)
-                                                @if($key < 20)
-                                                    <div class="swiper-slide">
-                                                        <div class="p-a-0 recommend-itme">
-                                                            <div class="productList-item">
-                                                                <div class="image-bg">
-                                                                    <div class="image-container">
-                                                                        <a href="javascript:void(0)"
-                                                                           data-link="/detail/{{ $value['seo_link'] }}"
-                                                                           data-impr="{{ $value['impr'] }}"
-                                                                           data-clk="{{ $value['clk'] }}"
-                                                                           data-spu="{{ $value['spu'] }}"
-                                                                           data-title="{{ $value['main_title'] }}"
-                                                                           data-price="{{ number_format(($value['skuPrice']['sale_price'] / 100), 2) }}">
-                                                                            <img class="img-fluid swiper-lazy"
-                                                                                 data-src="{{env('APP_Api_Image')}}/n1/{{ $value['main_image_url'] }}"
-                                                                                 alt="">
-                                                                            <img class="img-fluid preloader"
-                                                                                 src="{{env('CDN_Static')}}/images/product/bg-product@336.png">
-                                                                        </a>
-                                                                        @if(1 == $value['sale_type'])
-                                                                            {{--预售产品 预定信息--}}
-                                                                            <span class="preorder-info font-size-xs">Limited Edition</span>
-                                                                        @endif
-                                                                    </div>
-                                                                </div>
-                                                                <div class="font-size-sm product-title text-main">
-                                                                    {{ $value['main_title'] }}
-                                                                </div>
-                                                                <div class="price-caption">
-
-                                                                    @if($value['skuPrice']['sale_price'] != $value['skuPrice']['price'])
-                                                                        <span class="font-size-sm m-l-5x text-primary"><strong>${{ number_format(($value['skuPrice']['sale_price'] / 100), 2) }}</strong></span>
-                                                                        <span class="font-size-xs text-green text-throughLine">${{ number_format(($value['skuPrice']['price'] / 100), 2) }}</span>
-                                                                    @else
-                                                                        <span class="font-size-sm m-l-5x"><strong>${{ number_format(($value['skuPrice']['sale_price'] / 100), 2) }}</strong></span>
-                                                                    @endif
-                                                                    @if(Session::has('user'))
-                                                                        <span class="wish-item p-r-5x"><i
-                                                                                    class="iconfont1 text-primary btn-wish btn-wished @if(in_array($value['spu'], $wishlist->wishlist())){{'active'}}@endif"
-                                                                                    data-spu="{{$value['spu']}}"></i></span>
-                                                                    @else
-                                                                        <a class="wish-item p-r-5x" href="javascript:;"><i
-                                                                                    class="iconfont1 text-primary btn-wish btn-wished"
-                                                                                    data-actionspu="{{$value['spu']}}"></i></a>
-                                                                    @endif
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                @endif
-                                            @endforeach
-                                        </div>
-                                    </div>
-
-                                </div>
-                            </div>
-                        </aside>
-                    @endif
                 </section>
         </section>
 
