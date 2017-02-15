@@ -184,6 +184,28 @@
                     </div>
                 @endif
 
+                    <div class="font-size-sm text-primary p-y-15x p-x-15x">
+                        <div class="text-center">
+                            <div class="p-t-15x">
+                                @if(Session::get('user.pin'))
+                                    @if($designer['followStatus'])
+                                        <div class="btn btn-sm btn-primary btn-designerFollow" id="followapp"
+                                             data-followid="{{$designer['designer_id']}}">Following
+                                        </div>
+                                    @else
+                                        <div class="btn btn-sm btn-follow active btn-designerFollow" id="followapp"
+                                             data-followid="{{$designer['designer_id']}}">Follow
+                                        </div>
+                                    @endif
+                                @else
+                                    <div class="btn btn-sm btn-follow sendLogin active downFollow btn-designerFollow" id="followapp"
+                                         data-actionid="{{$designer['designer_id']}}" data-referer="{{$_SERVER['REQUEST_URI']}}">Follow
+                                    </div>
+                                @endif
+                            </div>
+                        </div>
+                    </div>
+
             </div>
             {{--预售信息--}}
             @if($designer['prompt_info']['datePrompt'])
@@ -493,6 +515,7 @@
                                             </div>
                                         </div>
                             @endif
+
             </aside>
         </section>
         <!-- 页脚 功能链接 -->
