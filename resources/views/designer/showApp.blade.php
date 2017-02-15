@@ -119,29 +119,24 @@
 
             {{--设计师 文字信息--}}
             <div class="bg-white p-a-5x">
-                @if($designer['designer_id']==114)
-                    <div class="font-size-sm text-primary p-t-10x p-b-15x p-x-15x" style="border-bottom: solid 1px #ccc;">
-                        <div class="text-center">
-                            <div class="font-size-md">Follow Michaela to be notified when<br> this collection is available</div>
-                        </div>
-                    </div>
-                @endif
 
                 <div class="flex flex-alignCenter flex-fullJustified p-x-10x p-t-10x">
                     <div class="font-size-base text-main"><strong>{{$designer['nickname']}}</strong></div>
                     <div class="flex flex-alignCenter">
                         <span class="p-r-15x">
-                            @if(Session::get('user.pin'))
-                                @if($designer['followStatus'])
-                                    <div class="btn btn-sm btn-primary" id="follow"
-                                         data-followid="{{$designer['designer_id']}}">Following</div>
+                            @if($designer['osType'] == 'android' || Session::get('VERSION') >= 164 )
+                                @if(Session::get('user.pin'))
+                                    @if($designer['followStatus'])
+                                        <div class="btn btn-sm btn-primary" id="follow"
+                                            data-followid="{{$designer['designer_id']}}">Following</div>
+                                    @else
+                                        <div class="btn btn-sm btn-follow active" id="follow"
+                                            data-followid="{{$designer['designer_id']}}">Follow</div>
+                                    @endif
                                 @else
-                                    <div class="btn btn-sm btn-follow active" id="follow"
-                                         data-followid="{{$designer['designer_id']}}">Follow</div>
+                                    <div class="btn btn-sm btn-follow active sendLogin upFollow"
+                                        data-des="{{$designer['designer_id']}}">Follow</div>
                                 @endif
-                            @else
-                                <div class="btn btn-sm btn-follow active sendLogin upFollow"
-                                     data-des="{{$designer['designer_id']}}">Follow</div>
                             @endif
                         </span>
                         <span>
@@ -415,6 +410,7 @@
                                                                     <span class="text-primary font-size-sm m-l-5x"><strong>${{number_format($product['spuInfos'][$spu]['skuPrice']['sale_price']/100,2)}}</strong></span>
                                                                 @endif
                                                             </span>
+                                                                       @if($designer['osType'] == 'android' || Session::get('VERSION') >= 164)
                                                                             @if(Session::has('user'))
                                                                                 <span class="wish-item p-r-10x"
                                                                                       data-id="{{$spu}}"
@@ -426,7 +422,7 @@
                                                                                             class="iconfont1 text-primary btn-wish sendLogin"
                                                                                             data-id="{{$spu}}"></i></a>
                                                                             @endif
-
+                                                                        @endif
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -500,6 +496,7 @@
                                                     <span class="text-primary font-size-sm m-l-5x"><strong>${{number_format($value['skuPrice']['sale_price']/100,2)}}</strong></span>
                                                 @endif
                                             </span>
+                                                            @if($designer['osType'] == 'android' || Session::get('VERSION') >= 164)
                                                                 @if(Session::has('user'))
                                                                     <span class="wish-item p-r-10x"
                                                                           data-id="{{$value['spu']}}"
@@ -510,6 +507,7 @@
                                                                                 class="iconfont1 text-primary btn-wish sendLogin"
                                                                                 data-id="{{$value['spu']}}"></i></a>
                                                                 @endif
+                                                            @endif
                                                             </div>
                                                         </div>
                                                     </div>
@@ -517,7 +515,7 @@
                                             </div>
                                         </div>
                                     @endif
-                                    @if($designer['designer_id']==99)
+                                    @if( $designer['designer_id'] == 99 && ($designer['osType'] == 'android' || Session::get('VERSION') >= 164) )
                                         <div class="font-size-sm text-primary p-y-15x p-x-15x">
                                             <div class="text-center">
                                                 <div>Love this collection? Follow Rae for early access to shop future
