@@ -169,35 +169,35 @@
                     <div class="p-x-15x p-t-5x p-b-15x">
                         @endif
                         @if(!empty($designer['instagram_link']))
-                            <a href="{{$designer['instagram_link']}}" target="_blank" class="p-r-20x SocialMedia">
+                            <a href="{{$designer['instagram_link']}}" target="_blank" class="p-x-10x SocialMedia">
                                 {{--<img src="{{env('CDN_Static')}}/images/designer/ins.png"--}}
                                      {{--srcset="{{env('CDN_Static')}}/images/designer/ins@2x.png 2x,{{env('CDN_Static')}}/images/designer/ins@3x.png 3x">--}}
                                 <i class="iconfont1 icon-instagram1 text-primary icon-size-lg"></i>
                             </a>
                         @endif
                         @if(!empty($designer['snapchat_link']))
-                            <a href="{{$designer['snapchat_link']}}" target="_blank" class="p-r-20x SocialMedia">
+                            <a href="{{$designer['snapchat_link']}}" target="_blank" class="p-x-10x SocialMedia">
                                 {{--<img src="{{env('CDN_Static')}}/images/designer/snapchat.png"--}}
                                      {{--srcset="{{env('CDN_Static')}}/images/designer/snapchat@2x.png 2x,{{env('CDN_Static')}}/images/designer/snapchat@3x.png 3x">--}}
                                 <i class="iconfont1 icon-snapchat1 text-primary icon-size-lg"></i>
                             </a>
                         @endif
                         @if(!empty($designer['youtube_link']))
-                            <a href="{{$designer['youtube_link']}}" target="_blank" class="p-r-20x SocialMedia">
+                            <a href="{{$designer['youtube_link']}}" target="_blank" class="p-x-10x SocialMedia">
                                 {{--<img src="{{env('CDN_Static')}}/images/designer/youtube.png"--}}
                                      {{--srcset="{{env('CDN_Static')}}/images/designer/youtube@2x.png 2x,{{env('CDN_Static')}}/images/designer/youtube@3x.png 3x">--}}
                                 <i class="iconfont1 icon-youtube1 text-primary icon-size-lg"></i>
                             </a>
                         @endif
                         @if(!empty($designer['facebook_link']))
-                            <a href="{{$designer['facebook_link']}}" target="_blank" class="p-r-20x SocialMedia">
+                            <a href="{{$designer['facebook_link']}}" target="_blank" class="p-x-10x SocialMedia">
                                 {{--<img src="{{env('CDN_Static')}}/images/designer/facebook.png"--}}
                                      {{--srcset="{{env('CDN_Static')}}/images/designer/facebook@2x.png 2x,{{env('CDN_Static')}}/images/designer/facebook@3x.png 3x">--}}
                                 <i class="iconfont1 icon-facebook1 text-primary icon-size-lg"></i>
                             </a>
                         @endif
                         @if(!empty($designer['blog_link']))
-                            <a href="{{$designer['blog_link']}}" target="_blank" class="p-r-20x SocialMedia">
+                            <a href="{{$designer['blog_link']}}" target="_blank" class="p-x-10x SocialMedia">
                                 {{--<img src="{{env('CDN_Static')}}/images/designer/blog.png"--}}
                                      {{--srcset="{{env('CDN_Static')}}/images/designer/blog@2x.png 2x,{{env('CDN_Static')}}/images/designer/blog@3x.png 3x">--}}
                                 <i class="iconfont1 icon-blog1 text-primary icon-size-lg"></i>
