@@ -11,7 +11,7 @@
     @include('nav')
     <div class="body-container" style="padding-top: 44px">
         <!-- 头部导航 -->
-        @include('navigator')
+        @include('navigator', ['pageScope'=>'store'])
         <nav class="bg-white nav-category">
             <div class="text-center p-t-15x p-b-10x titDiv">
                 <button style="border: none;background-color: white" class="text-main font-size-lg" id="nav-categoryTit">All</button>

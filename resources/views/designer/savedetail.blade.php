@@ -16,7 +16,7 @@
             <!-- 主体内容 -->
     <div class="body-container productDetail-container">
         @inject('wishlist', 'App\Http\Controllers\Shopping\ShoppingController')
-        @include('navigator')
+        @include('navigator', ['pageScope'=>'store'])
                 <!-- 图片详情 --><!-- 弹出图片轮播 -->
         <div class="product-detailImg fade">
             <div class="swiper-container p-b-20x" id="detailImg-swiper">
