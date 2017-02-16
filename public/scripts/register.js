@@ -12,7 +12,7 @@
         setTimeout(function () {
             $('.loading').toggleClass('loading-open');
         }, 25);
-    }s
+    }
 
     // loading 隐藏
     function closeLoading() {
