@@ -23,6 +23,9 @@ $app->group(['middleware' => 'pcguide', 'namespace' => 'App\Http\Controllers'], 
 
     $app->get('/designer', 'Designer\DesignerController@index');
     //$app->get('/designer/{id}', 'Designer\DesignerController@show');
+    $app->get('/designer/eprodcancel', 'Designer\DesignerController@editCancel');
+    $app->get('/designer/eprodsave', 'Designer\DesignerController@editSave');
+    $app->get('/designer/editget', 'Designer\DesignerController@editGet');
     $app->get('/designer/editlist', 'Designer\DesignerController@getEditorProductList');
     $app->get('/designer/store', 'Designer\DesignerController@store');
     $app->get('/designer/saved', 'Designer\DesignerController@saved');

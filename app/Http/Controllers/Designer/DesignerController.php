@@ -275,6 +275,42 @@ class DesignerController extends ApiController
         return false;
     }
 
+    public function editCancel(Request $request)
+    {
+        $params = array(
+            'cmd' => 'eprodsave',
+            'pin' => Session::get('user.pin'),
+            'token' => Session::get('user.token'),
+            'spus' => $request->input('spu')
+        );
+        $result = $this->request('openapi', '', 'designer', $params);
+        return $result;
+    }
+
+    public function editSave(Request $request)
+    {
+        $params = array(
+            'cmd' => 'eprodsave',
+            'pin' => Session::get('user.pin'),
+            'token' => Session::get('user.token'),
+            'spus' => $request->input('spu')
+        );
+        $result = $this->request('openapi', '', 'designer', $params);
+        return $result;
+    }
+
+    public function editGet(Request $request)
+    {
+        $params = array(
+            'cmd' => 'eprodget',
+            'token' => Session::get('user.token'),
+            'pin' => Session::get('user.pin'),
+            'uuid'=> $_COOKIE['uid']
+        );
+        $result = $this->request('openapi', '', 'designer', $params);
+        return $result;
+    }
+    
     public function getEditorProductList(Request $request)
     {
         $params = array(
