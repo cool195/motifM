@@ -298,7 +298,7 @@
                         <!-- 添加 购物车 控制按钮显示 -->
                         {{--@if(Session::has('user'))--}}
                         <div class="text-center m-b-5x font-size-sm">This item is available for immediate shipping</div>
-                        <button class="btn btn-red btn-block btn-addToSave" data-text="save">SAVE</button>
+                        <button class="btn btn-red btn-block btn-addToSave" data-spu="{{$data['spu']}}" data-saved="false">SAVE</button>
                         {{--@else--}}
                         {{--<a href="javascript:;" class="notesLogin btn btn-primary btn-block"--}}
                         {{--@if(!$data['sale_status'] || $data['isPutOn']==0) disabled--}}

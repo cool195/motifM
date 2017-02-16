@@ -199,12 +199,9 @@
             }
         }).done(function (data) {
             if (data.success) {
-                //onImpressProduct(data.data.list);
                 if (data.data === null || data.data === '' || data.data.list.length === 0) {
                     ProductListContainer.data('pagenum', -1);
                 } else {
-                    //console.log(categoryType);
-                    //console.log(Url);
                     // 遍历模板 插入页面
                     appendProductsList(data.data, type);
                     ProductListContainer.data('pagenum', NextPage);

@@ -1142,18 +1142,44 @@
         });
     }
 
-
     // add to save
     $('.btn-addToSave').on('click', function(){
+        var spusId = $(this).data('spu');
+        var isSaved = $(this).data('saved');
+        var $this = $(this);
 
-        var text = $(this).data('text');
-        alert(text);
-        if (text == 'save'){
-            $(this).data('text', 'saved');
-            $('.btn-addToSave').html('SAVED')
+        if (isSaved == false){
+            // 执行保存动作
+            $.ajax({
+                type: 'GET',
+                url: '/designer/editsave',
+                data: {
+                    spus: spusId
+                }
+            }).done(function(data){
+                if (data.success) {
+                    $this.data('saved', 'true');
+                    $('.btn-addToSave').html('SAVED')
+                }else {
+                    alert('save error!')
+                }
+            });
         }else{
-            $(this).data('text', 'save');
-            $('.btn-addToSave').html('SAVE')
+           // 取消保存
+            $.ajax({
+                type: 'GET',
+                url: '/designer/editcancel',
+                data: {
+                    spus: spusId
+                }
+            }).done(function(data){
+                if (data.success) {
+                    $this.data('saved', false);
+                    $('.btn-addToSave').html('SAVE')
+                }else {
+                    alert('cancel saved error!')
+                }
+            });
         }
     });
 
