@@ -177,12 +177,15 @@
         var Url;
         if (SearchType != '') {
             //console.log('SearchType==='+SearchType);
-            Url = '/products?extra_kv=sea:' + SearchType;
+            //Url = '/products?extra_kv=sea:' + SearchType;
+            Url = '/designer/editlist?extra_kv=sea:&sort=' + SearchType;
         } else {
             if (SortById != '') {
-                Url = '/products?extra_kv=sea:' + SortById;
+                //Url = '/products?extra_kv=sea:' + SortById;
+                Url = '/designer/editlist?extra_kv=sea:&sort' + SortById;
             } else {
-                Url = '/products';
+                //Url = '/products';
+                Url = '/designer/editlist';
             }
         }
 

@@ -285,6 +285,7 @@ class DesignerController extends ApiController
             //'cid' => $request->input('cid', '0'),
             'pagenum' => $request->input('pagenum', 1),
             'pagesize' => $request->input('pagesize', 32),
+            'sort'=>$request->input('sort')
         );
         $result = $this->request('openapi', '', 'designer', $params);
         return $result;
