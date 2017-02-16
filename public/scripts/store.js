@@ -143,18 +143,18 @@
      */
 
     function getProductList(type) {
-        var $ProductListontainer = $('#productList-container'),
+        var ProductListContainer = $('#productList-container'),
             Size = 20;
 
         // 判断当前选项卡是否在加载中
-        if ($ProductListontainer.data('loading') === true) {
+        if (ProductListContainer.data('loading') === true) {
             return;
         } else {
-            $ProductListontainer.data('loading', true);
+            ProductListContainer.data('loading', true);
         }
         //  PageNum 当前页码数
         if (type === 1) {
-            var PageNum = $ProductListontainer.data('pagenum');
+            var PageNum = ProductListContainer.data('pagenum');
         } else {
             var PageNum = 0;
         }
@@ -198,13 +198,13 @@
             if (data.success) {
                 //onImpressProduct(data.data.list);
                 if (data.data === null || data.data === '' || data.data.list.length === 0) {
-                    $ProductListontainer.data('pagenum', -1);
+                    ProductListContainer.data('pagenum', -1);
                 } else {
                     //console.log(categoryType);
                     //console.log(Url);
                     // 遍历模板 插入页面
                     appendProductsList(data.data, type);
-                    $ProductListontainer.data('pagenum', NextPage);
+                    ProductListContainer.data('pagenum', NextPage);
 
                     //console.info(data.data);
                     $.ajax({
@@ -261,7 +261,7 @@
             // 隐藏加载动画
             loadingHide();
             // 请求结束, loading = false
-            $ProductListontainer.data('loading', false);
+            ProductListContainer.data('loading', false);
         })
     }
 
@@ -282,19 +282,9 @@
 
     // 选中 筛选条件
     $('.btn-sortBy').on('change', function () {
-        //$('option[value="0"]').removeAttr('disabled');
-        //$('.btn-sortBy').children('option').first().hide();
-        //$('.btn-sortBy').children('option').eq(1).attr("selected", "selected");
-
+      
         var $currentOption = $(".btn-sortBy option:selected");
-        //$currentOption.text('Sort By');
-
-        //改变选中的文本
-        //if ( $('.btn-sortBy option').value === 0){
-        //    $(".btn-sortBy option").attr("selected",true);
-        //}else{
-        //    $(".btn-sortBy option").attr("selected",false);
-        //}
+     
         if ($currentOption.data('searchtext') == 'reset') {
             // 重置
             SearchType = '';
@@ -313,17 +303,8 @@
         $('#productList-container').data('loading', false);
         getProductList(2);
 
-        //$("#sortBy").prepend("<option value='0'>Sort By</option>");
-        //$("#sortBy").val('0');
     });
-    $('.btn-sortBy').on('click', function () {
-        //$('option[value="0"]').remove();
-        //$("#sortBy").val('-1');
-        //$('.falseSortBy').css('display','block');
-
-
-    });
-
+  
     // 下拉加载
     function pullLoading() {
         // scrollCurrent    当前滚动距离
@@ -350,35 +331,4 @@
         });
     });
 
-    // 点击 wish
-   /* $('#productList-container').on('click', '.btn-wish', function (e) {
-        var $this = $(e.target);
-        var spu = $(e.target).data('spu');
-        if (spu != undefined) {
-            if (!$this.hasClass('active')) {
-                $this.addClass('active');
-            } else {
-                $this.removeClass('active');
-            }
-            $.ajax({
-                url: '/updateWish',
-                type: 'post',
-                data: {spu: spu}
-            });
-        } else {
-            spu = $this.data('actionspu');
-            $.ajax({
-                    url: '/notesaction',
-                    type: 'get',
-                    data: {
-                        action: 'wish',
-                        spu: spu
-                    }
-                })
-                .done(function (data) {
-                    window.location.href = '/login';
-                });
-        }
-    });
-*/
 })(jQuery, Swiper);

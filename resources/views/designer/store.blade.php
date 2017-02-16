@@ -29,7 +29,16 @@
                 @endif
                 <hr class="hr-base m-a-0">
             </section>
-
+            <!--排序-->
+            <select class="font-size-sm text-main btn-sortBy" id="sortBy">
+                <option data-searchtext="reset">Reset</option>
+                @foreach($search['list'] as $value)
+                    @if($value['attr_type']==1)
+                        <option data-search="{{$value['attr_id']}}" data-searchtext="{{$value['attr_label']}}">{{$value['attr_label']}}</option>
+                    @endif
+                @endforeach
+            </select>
+            <span class="falseSortBy text-primary font-size-sm">Sort By</span>
         </nav>
         <!-- 商品列表-->
         <div class="lowTo p-y-15x bg-white disabled">{{--disabled--}}
@@ -110,7 +119,7 @@
 </template>
 <script src="{{env('CDN_Static')}}/scripts/vendor.js{{'?v='.config('app.version')}}"></script>
 
-<script src="{{env('CDN_Static')}}/scripts/red.js{{'?v='.config('app.version')}}"></script>
+<script src="{{env('CDN_Static')}}/scripts/store.js{{'?v='.config('app.version')}}"></script>
 <meta name="csrf-token" content="{{ csrf_token() }}"/>
 <script>
     $.ajaxSetup({
