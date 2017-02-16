@@ -14,7 +14,7 @@
     <!-- 展开的汉堡菜单 -->
     @include('nav')
             <!-- 主体内容 -->
-    <div class="body-container productDetail-container">
+    <div class="body-container productDetail-container" style="padding-top: 44px">
         @inject('wishlist', 'App\Http\Controllers\Shopping\ShoppingController')
         @include('navigator', ['pageScope'=>'store'])
                 <!-- 图片详情 --><!-- 弹出图片轮播 -->
