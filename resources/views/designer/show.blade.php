@@ -142,7 +142,7 @@
 
 
                 @if(!empty($designer['instagram_link']) || !empty($designer['snapchat_link']) || !empty($designer['youtube_link']) || !empty($designer['facebook_link']) || !empty($designer['blog_link']))
-                    <div class="p-x-15x p-t-5x p-b-15x">
+                    <div class="p-x-15x p-t-5x">
                         @endif
                         @if(!empty($designer['instagram_link']))
                             <a href="{{$designer['instagram_link']}}" target="_blank" class="p-x-10x SocialMedia">
@@ -184,25 +184,23 @@
                     </div>
                 @endif
 
-                    <div class="font-size-sm text-primary p-y-15x p-x-15x">
+                    <div class="font-size-sm text-primary p-a-15x">
                         <div class="text-center">
-                            <div class="p-t-15x">
-                                @if(Session::get('user.pin'))
-                                    @if($designer['followStatus'])
-                                        <div class="btn btn-sm btn-primary btn-designerFollow" id="followapp"
-                                             data-followid="{{$designer['designer_id']}}">Following
-                                        </div>
-                                    @else
-                                        <div class="btn btn-sm btn-follow active btn-designerFollow" id="followapp"
-                                             data-followid="{{$designer['designer_id']}}">Follow
-                                        </div>
-                                    @endif
+                            @if(Session::get('user.pin'))
+                                @if($designer['followStatus'])
+                                    <div class="btn btn-sm btn-primary btn-designerFollow" id="followapp"
+                                         data-followid="{{$designer['designer_id']}}">Following
+                                    </div>
                                 @else
-                                    <div class="btn btn-sm btn-follow sendLogin active downFollow btn-designerFollow" id="followapp"
-                                         data-actionid="{{$designer['designer_id']}}" data-referer="{{$_SERVER['REQUEST_URI']}}">Follow
+                                    <div class="btn btn-sm btn-follow active btn-designerFollow" id="followapp"
+                                         data-followid="{{$designer['designer_id']}}">Follow
                                     </div>
                                 @endif
-                            </div>
+                            @else
+                                <div class="btn btn-sm btn-follow sendLogin active downFollow btn-designerFollow" id="followapp"
+                                     data-actionid="{{$designer['designer_id']}}" data-referer="{{$_SERVER['REQUEST_URI']}}">Follow
+                                </div>
+                            @endif
                         </div>
                     </div>
 
