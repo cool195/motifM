@@ -281,7 +281,7 @@ class DesignerController extends ApiController
             'cmd' => 'eprodsave',
             'pin' => Session::get('user.pin'),
             'token' => Session::get('user.token'),
-            'spus' => $request->input('spu')
+            'spus' => $request->input('spus')
         );
         $result = $this->request('openapi', '', 'designer', $params);
         return $result;
@@ -293,7 +293,7 @@ class DesignerController extends ApiController
             'cmd' => 'eprodsave',
             'pin' => Session::get('user.pin'),
             'token' => Session::get('user.token'),
-            'spus' => $request->input('spu')
+            'spus' => $request->input('spus')
         );
         $result = $this->request('openapi', '', 'designer', $params);
         return $result;
@@ -335,7 +335,7 @@ class DesignerController extends ApiController
         $categories = $this->getShoppingCategoryList();
         $search = $this->request('openapi', '', 'sea', $params);
         //$selectCid = $request->get('cid', $id);
-        return view('designer.store', ['categories'=>$categories['data']['list'], 'search' => $search['data']]);
+        return view('designer.store', ['categories'=>$categories['data']['list'], 'search' => $search['data'], 'cmd'=>'eprodlist']);
     }
 
     public function saved(Request $request)
@@ -345,7 +345,7 @@ class DesignerController extends ApiController
         );
         $categories = $this->getShoppingCategoryList();
         $search = $this->request('openapi', '', 'sea', $params);
-        return view('designer.store', ['categories'=>$categories['data']['list'], 'search' => $search['data']]);
+        return view('designer.store', ['categories'=>$categories['data']['list'], 'search' => $search['data'], 'cmd'=>'eprodget']);
     }
 
     public function savedetail(Request $request, $spu)
