@@ -275,6 +275,21 @@ class DesignerController extends ApiController
         return false;
     }
 
+    public function getEditorProductList(Request $request)
+    {
+        $params = array(
+            'cmd' => 'eprodlist',
+            'token' => Session::get('user.token'),
+            'pin' => Session::get('user.pin'),
+            'uuid' => $_COOKIE['uid'],
+            //'cid' => $request->input('cid', '0'),
+            'pagenum' => $request->input('pagenum', 1),
+            'pagesize' => $request->input('pagesize', 32),
+        );
+        $result = $this->request('openapi', '', 'designer', $params);
+        return $result;
+    }
+
     public function store(Request $request)
     {
         $params = array(
