@@ -94,12 +94,6 @@ class DesignerController extends ApiController
             $result['data']['osType'] = strstr($_SERVER['HTTP_USER_AGENT'], 'motif-ios') ? 'ios' : 'android';
             if ($_GET['test'] || strstr($_SERVER['HTTP_USER_AGENT'], 'motif-android') || strstr($_SERVER['HTTP_USER_AGENT'], 'motif-ios')) {
 
-                error_log(print_r("--------header cookie--------\n", "\n"), 3, '/tmp/myerror.log');
-                error_log(print_r($request->header(), "\n"), 3, '/tmp/myerror.log');
-
-                error_log(print_r("-------request all-------\n", "\n"), 3, '/tmp/myerror.log');
-                error_log(print_r($request->all(), "\n"), 3, '/tmp/myerror.log');
-
                 !empty($_COOKIE['VERSION']) ? Session::put('VERSION', implode("", explode("." ,$_COOKIE['VERSION']))) : "";
 
                 if ($request->input('token') || !empty($_COOKIE['PIN'])) {
@@ -171,12 +165,6 @@ class DesignerController extends ApiController
                 $view = 'designer.showApp';
                 $NavShow = false;
 
-                error_log(print_r("--------cookie token--------\n", "\n"), 3, '/tmp/myerror.log');
-                error_log(print_r(Cookie::get('TOKEN'), "\n"), 3, '/tmp/myerror.log');
-                error_log(print_r("--------pin--------\n", "\n"), 3, '/tmp/myerror.log');
-                error_log(print_r(Cookie::get('PIN'), "\n"), 3, '/tmp/myerror.log');
-                error_log(print_r("--------user--------\n", "\n"), 3, '/tmp/myerror.log');
-                error_log(print_r(Session::get('user'), "\n"), 3, '/tmp/myerror.log');
             } else {
                 $view = 'designer.show';
             }
@@ -289,14 +277,23 @@ class DesignerController extends ApiController
 
     public function store(Request $request)
     {
+        $params = array(
+            'cmd' => 'list',
+        );
         $categories = $this->getShoppingCategoryList();
-        return view('designer.store', ['categories'=>$categories['data']['list']]);
+        $search = $this->request('openapi', '', 'sea', $params);
+        //$selectCid = $request->get('cid', $id);
+        return view('designer.store', ['categories'=>$categories['data']['list'], 'search' => $search['data']]);
     }
 
     public function saved(Request $request)
     {
+        $params = array(
+            'cmd' => 'list',
+        );
         $categories = $this->getShoppingCategoryList();
-        return view('designer.store', ['categories'=>$categories['data']['list']]);
+        $search = $this->request('openapi', '', 'sea', $params);
+        return view('designer.store', ['categories'=>$categories['data']['list'], 'search' => $search['data']]);
     }
 
     public function savedetail(Request $request, $spu)
