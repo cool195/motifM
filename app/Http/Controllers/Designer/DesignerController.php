@@ -278,12 +278,15 @@ class DesignerController extends ApiController
     public function editCancel(Request $request)
     {
         $params = array(
-            'cmd' => 'eprodsave',
+            'cmd' => 'eprodcancel',
             'pin' => Session::get('user.pin'),
             'token' => Session::get('user.token'),
             'spus' => $request->input('spus')
         );
         $result = $this->request('openapi', '', 'designer', $params);
+        if($result['success']){
+            Cache::forget(Session::get('user.pin') . 'editsavelist');
+        }
         return $result;
     }
 
@@ -296,18 +299,34 @@ class DesignerController extends ApiController
             'spus' => $request->input('spus')
         );
         $result = $this->request('openapi', '', 'designer', $params);
+        if($result['success']){
+            Cache::forget(Session::get('user.pin') . 'editsavelist');
+        }
         return $result;
     }
 
     public function editSaveList()
     {
-        
+        if (Session::get('user.pin')) {
+            $value = Cache::remember(Session::get('user.pin')  . 'editsavelist', 60, function () {
+                $params = array(
+                    'cmd' => 'eprodget',
+                    'token' => Session::get('user.token'),
+                    'pin' => Session::get('user.pin'),
+                    'uuid'=> $_COOKIE['uid']
+                );
+                $result = $this->request('openapi', '', 'designer', $params);
+                return $result['data']['list'];
+            });
+            return $value;
+        }
+        return false;
     }
 
-    public function editGet(Request $request)
+    public function editGetList(Request $request)
     {
         $params = array(
-            'cmd' => 'eprodget',
+            'cmd' => 'eproddetail',
             'token' => Session::get('user.token'),
             'pin' => Session::get('user.pin'),
             'uuid'=> $_COOKIE['uid']

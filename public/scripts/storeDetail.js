@@ -1148,7 +1148,8 @@
         var isSaved = $(this).data('saved');
         var $this = $(this);
 
-        if (isSaved == false){
+        console.log(isSaved);
+        if ('unsaved' == isSaved ){
             // 执行保存动作
             $.ajax({
                 type: 'GET',
@@ -1158,10 +1159,10 @@
                 }
             }).done(function(data){
                 if (data.success) {
-                    $this.data('saved', 'true');
-                    $('.btn-addToSave').html('SAVED')
+                    $this.attr('data-saved', 'saved');
+                    $('.btn-addToSave').html('SAVED');
                 }else {
-                    alert('save error!')
+                    alert('save error!');
                 }
             });
         }else{
@@ -1174,10 +1175,10 @@
                 }
             }).done(function(data){
                 if (data.success) {
-                    $this.data('saved', false);
-                    $('.btn-addToSave').html('SAVE')
+                    $this.attr('data-saved', 'unsaved');
+                    $('.btn-addToSave').html('SAVE');
                 }else {
-                    alert('cancel saved error!')
+                    alert('cancel saved error!');
                 }
             });
         }

@@ -292,15 +292,16 @@
                 </section>
 
                 <!-- Add to Bag 按钮 -->
+                @inject('editsavelist', 'App\Http\Controllers\Designer\DesignerController')
                 <section class="addToBag-info">
                     <hr class="hr-base m-a-0">
                     <fieldset class="container-fluid p-a-15x">
                         <!-- 添加 购物车 控制按钮显示 -->
-                        {{--@if(Session::has('user'))--}}
                         <div class="text-center m-b-5x font-size-sm">This item is available for immediate shipping</div>
-                        <button class="btn btn-red btn-block btn-addToSave" data-spu="{{$data['spu']}}" data-saved="false">SAVE</button>
-                        {{--@else--}}
-                        {{--<a href="javascript:;" class="notesLogin btn btn-primary btn-block"--}}
+                        <button class="btn btn-red btn-block btn-addToSave"
+                                data-spu="{{$data['spu']}}"
+                                data-saved="@if(in_array($data['spu'], $editsavelist->editSaveList())){{'saved'}}@else{{'unsaved'}}@endif">@if(in_array($data['spu'], $editsavelist->editSaveList())){{'SAVED'}}@else{{'SAVE'}}@endif</button>
+                        {{--<a href=javascript:;" class="notesLogin btn btn-primary btn-block"--}}
                         {{--@if(!$data['sale_status'] || $data['isPutOn']==0) disabled--}}
                         {{--@endif>Add to Bag--}}
                         {{--</a>--}}
