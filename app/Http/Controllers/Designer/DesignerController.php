@@ -342,11 +342,13 @@ class DesignerController extends ApiController
             'token' => Session::get('user.token'),
             'pin' => Session::get('user.pin'),
             'uuid' => $_COOKIE['uid'],
-            //'cid' => $request->input('cid', '0'),
             'pagenum' => $request->input('pagenum', 1),
             'pagesize' => $request->input('pagesize', 32),
             'sort'=>$request->input('sort')
         );
+        if($request->input('cid') != 0){
+            $params['cid'] = $request->input('cid');
+        }
         $result = $this->request('openapi', '', 'designer', $params);
         return $result;
     }
@@ -358,6 +360,8 @@ class DesignerController extends ApiController
         );
         $categories = $this->getShoppingCategoryList();
         $search = $this->request('openapi', '', 'sea', $params);
+        array_shift($search['data']['list']);
+        array_shift($search['data']['list']);
         //$selectCid = $request->get('cid', $id);
         return view('designer.store', ['categories'=>$categories['data']['list'], 'search' => $search['data'], 'cmd'=>'eprodlist']);
     }
