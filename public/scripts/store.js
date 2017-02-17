@@ -208,6 +208,9 @@
                 if (data.data === null || data.data === '' || data.data.list.length === 0) {
                     ProductListContainer.data('pagenum', -1);
                 } else {
+                    if($('input[name="cmd"]').val() == 'eprodget'){
+                        ProductListContainer.data('pagenum', -1);
+                    }
                     // 遍历模板 插入页面
                     appendProductsList(data.data, type);
                     ProductListContainer.data('pagenum', NextPage);
