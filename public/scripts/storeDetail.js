@@ -772,26 +772,6 @@
         $QtyCount.siblings('[data-num]').html(Qtty);
     });
 
-    function updateCartCount() {
-        $.ajax({
-                url: ' /cart/amount',
-                type: 'GET'
-            })
-            .done(function (data) {
-                if (data.success) {
-                    if (data.data.skusAmout > 0 && data.data.skusAmout <= 99) {
-                        $('.nav-shoppingCart').children('span').show();
-                        $('.nav-shoppingCart').children('span').html(data.data.skusAmout);
-                    } else if (data.data.skusAmout > 99) {
-                        $('.nav-shoppingCart').children('span').show();
-                        $('.nav-shoppingCart').children('span').html('99+');
-                    } else {
-                        $('.nav-shoppingCart').children('span').hide();
-                    }
-                }
-            });
-    }
-    
     // 增值服务是否选中
     $('fieldset[data-vas-type]').on('click', function (e) {
         // 判断增值服务类型
@@ -951,7 +931,7 @@
                     $this.data('issaved', 1);
                     $('.btn-addToSave').html('SAVED');
                 }else {
-                    $('#error-info').text('Save Failed, Please Try Again!');
+                    $('#error-info').html('The operation failed,' + '<br>'+ 'Please try again!');
                     openAddError();
                     setTimeout(function () {
                         closeAddError();
@@ -971,7 +951,7 @@
                     $this.data('issaved', 0);
                     $('.btn-addToSave').html('SAVE');
                 }else {
-                    $('#error-info').text('Cancel Save Failed!');
+                    $('#error-info').html('The operation failed,' + '<br>'+ 'Please try again!');
                     openAddError();
                     setTimeout(function () {
                         closeAddError();
