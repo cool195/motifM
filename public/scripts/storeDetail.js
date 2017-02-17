@@ -1152,7 +1152,7 @@
         if (!isSaved ){
             // 执行保存动作
             $.ajax({
-                type: 'GET',
+                type: 'POST',
                 url: '/designer/editsave',
                 data: {
                     spus: spusId
@@ -1168,7 +1168,7 @@
         }else{
            // 取消保存
             $.ajax({
-                type: 'GET',
+                type: 'POST',
                 url: '/designer/editcancel',
                 data: {
                     spus: spusId

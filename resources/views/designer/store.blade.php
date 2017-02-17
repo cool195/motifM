@@ -12,6 +12,7 @@
     <div class="body-container" style="padding-top: 44px">
         <!-- 头部导航 -->
         @include('navigator', ['pageScope'=>'store'])
+        @if('eprodlist' == $cmd)
         <nav class="bg-white nav-category">
             <div class="text-center p-t-15x p-b-10x titDiv">
                 <button style="border: none;background-color: white" class="text-main font-size-lg" id="nav-categoryTit">All</button>
@@ -40,6 +41,7 @@
             </select>
             <span class="falseSortBy text-primary font-size-sm">Sort By</span>
         </nav>
+        @endif
         <!-- 商品列表-->
         <div class="lowTo p-y-15x bg-white disabled">{{--disabled--}}
             <hr class="hr-base m-a-0">
