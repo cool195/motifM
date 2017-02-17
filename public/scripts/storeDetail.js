@@ -1147,8 +1147,6 @@
         var spusId = $(this).data('spu');
         var isSaved = $(this).data('issaved');
         var $this = $(this);
-
-        console.log(isSaved);
         if (!isSaved ){
             // 执行保存动作
             $.ajax({

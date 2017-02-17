@@ -63,7 +63,7 @@
             console.log('error');
         }).always(function () {
             closeLoading();
-            console.log('complete');
+            //console.log('complete');
         });
     }
 

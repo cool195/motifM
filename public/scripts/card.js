@@ -563,7 +563,7 @@ Card = (function() {
     $.extend(this.options.messages, $.card.messages);
     this.$el = $(el);
     if (!this.options.container) {
-      console.log("Please provide a container");
+      //console.log("Please provide a container");
       return;
     }
     this.$container = $(this.options.container);

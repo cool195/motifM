@@ -195,6 +195,7 @@
             }
         }
 
+
         // ajax 请求加载数据
         $.ajax({
             url: Url,
@@ -274,6 +275,12 @@
             loadingHide();
             // 请求结束, loading = false
             ProductListContainer.data('loading', false);
+
+            if ($('.productList-item').length <= 0) {
+                $('#emptySaveList').removeClass('hidden-xs-up');
+            }
+
+
         })
     }
 

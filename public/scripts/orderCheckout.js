@@ -94,11 +94,11 @@
                     }
                 })
                 .fail(function () {
-                    console.log('error');
+                    //console.log('error');
                 })
                 .always(function () {
                     closeLoading();
-                    console.log('complete');
+                    //console.log('complete');
                 });
         }
     });

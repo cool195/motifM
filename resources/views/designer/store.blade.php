@@ -43,10 +43,18 @@
         </nav>
         @endif
         <!-- 商品列表-->
-        <div class="lowTo p-y-15x bg-white disabled">{{--disabled--}}
+        <div class="lowTo p-y-15x bg-white disabled">
             <hr class="hr-base m-a-0">
             <span class="p-x-15x text-common font-size-sm lowTo-info">Low to High</span>
         </div>
+        <!-- 空 saved 提示信息 -->
+        <div class="save-empty-content p-x-10x hidden-xs-up" id="emptySaveList">
+            <div class="container">
+                <div class="m-b-20x p-b-5x"><i class="btn-saveEmpty iconfont icon-like"></i></div>
+                <p class="text-primary font-size-sm m-b-20x p-b-20x">Your Saved List is empty!</p>
+            </div>
+        </div>
+
         <div class="container-fluid" id="productList-container" data-loading="false" data-pagenum="0">
             <div class="loading m-y-10x" style="display: none;">
                 <div class="loader"></div>
