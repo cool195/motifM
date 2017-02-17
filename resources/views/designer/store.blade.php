@@ -51,7 +51,11 @@
         <div class="save-empty-content p-x-10x hidden-xs-up" id="emptySaveList">
             <div class="container">
                 <div class="m-b-20x p-b-5x"><i class="btn-saveEmpty iconfont icon-like"></i></div>
-                <p class="text-primary font-size-sm m-b-20x p-b-20x">Your Saved List is empty!</p>
+                @if('eprodget' == $cmd)
+                    <p class="text-primary font-size-sm m-b-20x p-b-20x">Your Saved List is empty!</p>
+                @else
+                    <p class="text-primary font-size-sm m-b-20x p-b-20x">Your Store List is empty!</p>
+                @endif
             </div>
         </div>
 
