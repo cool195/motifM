@@ -389,11 +389,7 @@
 <!-- 失败 loading 效果 -->
 <div class="loading loading-screen loading-transprant loading-hidden" id="error">
     <div class="loading-modal">
-        <div class="">
-            <img class="img-fluid m-x-auto" src="{{env('CDN_Static')}}/images/icon-success.png"
-                 srcset="{{env('CDN_Static')}}/images/icon-success@2x.png 2x, {{env('CDN_Static')}}/images/icon-success@3x.png 3x">
-        </div>
-        <div class="text-white font-size-md text-center m-t-10x" id="error-info"></div>
+        <div class="text-white font-size-md text-center" id="error-info"></div>
     </div>
 </div>
 
@@ -426,25 +422,7 @@
         }
         return null;
     }
-    {{--未登录添加购物车操作--}}
-    /*$('.notesLogin').on('click', function () {
-        setCookie('notesLogin', 'AddBagAction');
-        if ($('#addToCart-sku').val() != 1) {
-            setCookie('AddBagSku', $('#addToCart-sku').val());
-        }
-        window.location.href = '/login';
-    });
 
-    if (getCookie('notesLogin') == 'AddBagAction' && !$('.notesLogin').hasClass('btn')) {
-        if(getCookie('AddBagSku') != undefined && getCookie('AddBagSku') != ''){
-            $('#modalDialog').data('login',2);
-            $('#addToCart-sku').val(getCookie('AddBagSku'));
-        }
-        $('.up-btn-addToBag').click();
-        setCookie('notesLogin', '');
-        setCookie('AddBagSku', '');
-        $('#modalDialog').data('login',1);
-    }*/
 </script>
 
 @include('global')
