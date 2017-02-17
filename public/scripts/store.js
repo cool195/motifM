@@ -175,17 +175,23 @@
 
         // 筛选搜索条件
         var Url;
+        var preUrl;
+        if($('input[name="cmd"]').val() == 'eprodlist'){
+            preUrl = '/designer/editlist';
+        }else{
+            preUrl = '/designer/editget';
+        }
         if (SearchType != '') {
             //console.log('SearchType==='+SearchType);
             //Url = '/products?extra_kv=sea:' + SearchType;
-            Url = '/designer/editlist?extra_kv=sea:&sort=' + SearchType;
+            Url = preUrl + '?extra_kv=sea:&sort=' + SearchType;
         } else {
             if (SortById != '') {
                 //Url = '/products?extra_kv=sea:' + SortById;
-                Url = '/designer/editlist?extra_kv=sea:&sort' + SortById;
+                Url = preUrl + '?extra_kv=sea:&sort' + SortById;
             } else {
                 //Url = '/products';
-                Url = '/designer/editlist';
+                Url = preUrl;
             }
         }
 

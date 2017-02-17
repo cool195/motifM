@@ -299,6 +299,11 @@ class DesignerController extends ApiController
         return $result;
     }
 
+    public function editSaveList()
+    {
+        
+    }
+
     public function editGet(Request $request)
     {
         $params = array(
@@ -372,12 +377,8 @@ class DesignerController extends ApiController
             }
             $result['data']['category_name'] = $categoryName;
         }
-        if ($request->input('ajax')){
-            return $result;
-        }
 
-        $recommended = $this->recommended($spu,$result['data']['front_category_ids'][0],$result['data']['designer']['designer_id']);
-        return view('designer.savedetail', ['data' => $result['data'], 'recommended' => $recommended['data']]);
+        return view('designer.savedetail', ['data' => $result['data']]);
     }
 
     private function getShoppingCategoryList()
@@ -425,7 +426,7 @@ class DesignerController extends ApiController
             'spu' => $spu,
         );
         $result = $this->request('openapi', "", "product", $params,0);
-        if (empty($result)) {
+/*        if (empty($result)) {
             $result['success'] = false;
             $result['data'] = array();
             $result['error_msg'] = "Data access failed";
@@ -442,7 +443,7 @@ class DesignerController extends ApiController
             $titleArray = explode(" ", $result['data']['main_title']);
             $titleArray[] = $result['data']['spu'];
             $result['data']['seo_link'] = implode("-", $titleArray);
-        }
+        }*/
         return $result;
     }
 

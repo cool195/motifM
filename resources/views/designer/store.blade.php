@@ -53,6 +53,7 @@
 
             </div>
         </div>
+        <input hidden name="cmd" value="{{$cmd}}" />
         <!-- 页脚 功能链接 -->
         @include('footer')
     </div>
@@ -127,7 +128,7 @@
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
         }
     });
-    @if($selectCid != 0)
+    @if($selectCid != 0 && 'eprodlist' == $cmd)
         var selectCid = '{{'.cateClick'.$selectCid}}';
         $(selectCid).click();
         $('#nav-categoryTit').click();
