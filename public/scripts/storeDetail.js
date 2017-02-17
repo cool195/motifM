@@ -1145,11 +1145,11 @@
     // add to save
     $('.btn-addToSave').on('click', function(){
         var spusId = $(this).data('spu');
-        var isSaved = $(this).data('saved');
+        var isSaved = $(this).data('issaved');
         var $this = $(this);
 
         console.log(isSaved);
-        if ('unsaved' == isSaved ){
+        if (!isSaved ){
             // 执行保存动作
             $.ajax({
                 type: 'GET',
@@ -1159,7 +1159,7 @@
                 }
             }).done(function(data){
                 if (data.success) {
-                    $this.attr('data-saved', 'saved');
+                    $this.data('issaved', 1);
                     $('.btn-addToSave').html('SAVED');
                 }else {
                     alert('save error!');
@@ -1175,7 +1175,7 @@
                 }
             }).done(function(data){
                 if (data.success) {
-                    $this.attr('data-saved', 'unsaved');
+                    $this.data('issaved', 0);
                     $('.btn-addToSave').html('SAVE');
                 }else {
                     alert('cancel saved error!');
