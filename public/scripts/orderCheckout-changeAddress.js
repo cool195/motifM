@@ -42,7 +42,7 @@
                 type: 'POST',
                 data: $('#addressInfo').serialize()
             }).done(function (data) {
-            console.log(data);
+            //console.log(data);
             if (data.success) {
                 window.location.href = '/cart/ordercheckout?aid='+data.data.receiving_id;
             }

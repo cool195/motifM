@@ -201,7 +201,6 @@
     });
 
     function loadYoutube() {
-        console.log('load true');
         var $PlayerItem = $('.player-item');
         if ($PlayerItem.length !== 0) {
             $.each($PlayerItem, function (index, element) {

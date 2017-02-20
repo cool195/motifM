@@ -94,12 +94,6 @@ class DesignerController extends ApiController
             $result['data']['osType'] = strstr($_SERVER['HTTP_USER_AGENT'], 'motif-ios') ? 'ios' : 'android';
             if ($_GET['test'] || strstr($_SERVER['HTTP_USER_AGENT'], 'motif-android') || strstr($_SERVER['HTTP_USER_AGENT'], 'motif-ios')) {
 
-                error_log(print_r("--------header cookie--------\n", "\n"), 3, '/tmp/myerror.log');
-                error_log(print_r($request->header(), "\n"), 3, '/tmp/myerror.log');
-
-                error_log(print_r("-------request all-------\n", "\n"), 3, '/tmp/myerror.log');
-                error_log(print_r($request->all(), "\n"), 3, '/tmp/myerror.log');
-
                 !empty($_COOKIE['VERSION']) ? Session::put('VERSION', implode("", explode("." ,$_COOKIE['VERSION']))) : "";
 
                 if ($request->input('token') || !empty($_COOKIE['PIN'])) {
@@ -171,12 +165,6 @@ class DesignerController extends ApiController
                 $view = 'designer.showApp';
                 $NavShow = false;
 
-                error_log(print_r("--------cookie token--------\n", "\n"), 3, '/tmp/myerror.log');
-                error_log(print_r(Cookie::get('TOKEN'), "\n"), 3, '/tmp/myerror.log');
-                error_log(print_r("--------pin--------\n", "\n"), 3, '/tmp/myerror.log');
-                error_log(print_r(Cookie::get('PIN'), "\n"), 3, '/tmp/myerror.log');
-                error_log(print_r("--------user--------\n", "\n"), 3, '/tmp/myerror.log');
-                error_log(print_r(Session::get('user'), "\n"), 3, '/tmp/myerror.log');
             } else {
                 $view = 'designer.show';
             }
@@ -285,6 +273,252 @@ class DesignerController extends ApiController
             return $value;
         }
         return false;
+    }
+
+    public function editCancel(Request $request)
+    {
+        $params = array(
+            'cmd' => 'eprodcancel',
+            'pin' => Session::get('user.pin'),
+            'token' => Session::get('user.token'),
+            'spus' => $request->input('spus')
+        );
+        $result = $this->request('openapi', '', 'designer', $params);
+        if($result['success']){
+            Cache::forget(Session::get('user.pin') . 'editsavelist');
+        }
+        return $result;
+    }
+
+    public function editSave(Request $request)
+    {
+        $params = array(
+            'cmd' => 'eprodsave',
+            'pin' => Session::get('user.pin'),
+            'token' => Session::get('user.token'),
+            'spus' => $request->input('spus')
+        );
+        $result = $this->request('openapi', '', 'designer', $params);
+        if($result['success']){
+            Cache::forget(Session::get('user.pin') . 'editsavelist');
+        }
+        return $result;
+    }
+
+    public function editSaveList()
+    {
+        if (Session::get('user.pin')) {
+            $value = Cache::remember(Session::get('user.pin')  . 'editsavelist', 60, function () {
+                $params = array(
+                    'cmd' => 'eprodget',
+                    'token' => Session::get('user.token'),
+                    'pin' => Session::get('user.pin'),
+                    'uuid'=> $_COOKIE['uid']
+                );
+                $result = $this->request('openapi', '', 'designer', $params);
+                return $result['data']['list'];
+            });
+            return $value;
+        }
+        return false;
+    }
+
+    public function editGetList(Request $request)
+    {
+        $params = array(
+            'cmd' => 'eproddetail',
+            'token' => Session::get('user.token'),
+            'pin' => Session::get('user.pin'),
+            'uuid'=> $_COOKIE['uid']
+        );
+        $result = $this->request('openapi', '', 'designer', $params);
+        return $result;
+    }
+    
+    public function getEditorProductList(Request $request)
+    {
+        $params = array(
+            'cmd' => 'eprodlist',
+            'token' => Session::get('user.token'),
+            'pin' => Session::get('user.pin'),
+            'uuid' => $_COOKIE['uid'],
+            'pagenum' => $request->input('pagenum', 1),
+            'pagesize' => $request->input('pagesize', 32),
+            'sort'=>$request->input('sort')
+        );
+        if($request->input('cid') != 0){
+            $params['cid'] = $request->input('cid');
+        }
+        $result = $this->request('openapi', '', 'designer', $params);
+        return $result;
+    }
+
+    public function store(Request $request)
+    {
+        $params = array(
+            'cmd' => 'list',
+        );
+        $categories = $this->getShoppingCategoryList();
+        $search = $this->request('openapi', '', 'sea', $params);
+        array_shift($search['data']['list']);
+        array_shift($search['data']['list']);
+        //$selectCid = $request->get('cid', $id);
+        return view('designer.store', ['categories'=>$categories['data']['list'], 'search' => $search['data'], 'cmd'=>'eprodlist']);
+    }
+
+    public function saved(Request $request)
+    {
+        $params = array(
+            'cmd' => 'list',
+        );
+        $categories = $this->getShoppingCategoryList();
+        $search = $this->request('openapi', '', 'sea', $params);
+        return view('designer.store', ['categories'=>$categories['data']['list'], 'search' => $search['data'], 'cmd'=>'eprodget']);
+    }
+
+    public function savedetail(Request $request, $spu)
+    {
+
+        $result = $this->getProductDetail($request, $spu);
+
+        if(!$result['success']){
+            abort(404);
+        } else {
+            $category = Cache::remember('category', 60, function () {
+                $params = array(
+                    'cmd' => 'categorylist',
+                );
+                return $this->request('openapi', "", "product", $params);
+            });
+            $categoryName = '';
+            foreach ($category['data']['list'] as $value) {
+                if ($value['category_id'] == $result['data']['front_category_ids'][0]) {
+                    $categoryName = $value['category_name'];
+                    $result['data']['category_id'] = $result['data']['front_category_ids'][0];
+                    break;
+                }
+            }
+            $result['data']['category_name'] = $categoryName;
+        }
+
+        return view('designer.savedetail', ['data' => $result['data']]);
+    }
+
+    private function getShoppingCategoryList()
+    {
+        $params = array(
+            'cmd' => 'categorylist',
+        );
+        $system = "";
+        $service = "product";
+        $result = $this->request('openapi', $system, $service, $params);
+        if (empty($result['success'])) {
+            $result['success'] = false;
+            $result['error_msg'] = "Data access failed";
+            $result['data']['list'] = array();
+        }
+        return $result;
+    }
+
+    public function recommended($spu,$cid,$designerId)
+    {
+        $params = array(
+            'recid' => '100012',
+            'uuid' => $_COOKIE['uid'],
+            'pagenum' => 1,
+            'pagesize' => 8,
+            'spu' => $spu,
+            'extra_kv'=>!empty($designerId) ? "designerId:".$designerId : "designerId:-1"
+        );
+        $params['cid'] = isset($cid) ? $cid : -1;
+        $result = $this->request('openapi', '', "rec", $params,0);
+        if($result['success']){
+            foreach($result['data']['list'] as &$product){
+                $titleArray = explode(" ", $product['main_title']);
+                $titleArray[] = $product['spu'];
+                $product['seo_link'] = implode("-", $titleArray);
+            }
+        }
+        return $result;
+    }
+
+    public function getProductDetail(Request $request, $spu)
+    {
+        $params = array(
+            'cmd' => 'productdetail',
+            'spu' => $spu,
+        );
+        $result = $this->request('openapi', "", "product", $params,0);
+/*        if (empty($result)) {
+            $result['success'] = false;
+            $result['data'] = array();
+            $result['error_msg'] = "Data access failed";
+        } else {
+            if (isset($result['data']['spuAttrs'])) {
+                $result['data']['spuAttrs'] = $this->getSpuAttrsStockStatus($result['data']['spuAttrs'], $result['data']['skuExps']);
+            }
+            $result['data']['sale_status'] = true;
+            if(1 == $result['data']['sale_type']){
+                Session::put('referer', "/detail/$spu");
+                $result['data']['sale_status'] = $this->getSaleStatus($result['data']);
+            }
+
+            $titleArray = explode(" ", $result['data']['main_title']);
+            $titleArray[] = $result['data']['spu'];
+            $result['data']['seo_link'] = implode("-", $titleArray);
+        }*/
+        return $result;
+    }
+
+    private function getSaleStatus(Array $data)
+    {
+        $flag = true;
+        if(1 == $data['sale_type'] && !isset($data['skuPrice']['skuPromotion']))
+        {
+            $flag = false;
+        }
+        elseif(!empty($data['spuStock']) && $data['spuStock']['stock_qtty'] == $data['spuStock']['saled_qtty'] )
+        {
+            $flag = false;
+        }
+        elseif(0 == $data['skuPrice']['skuPromotion']['remain_time'])
+        {
+            $flag = false;
+        }else{
+
+        }
+        return $flag;
+    }
+
+    private function getSpuAttrsStockStatus(Array $spuAttrs, Array $skuExps)
+    {
+        $spuAttrsCopy = array();
+        foreach ($spuAttrs as $spuAttr) {
+            $skuAttrsValues = array();
+            foreach ($spuAttr['skuAttrValues'] as $skuAttrValue) {
+                $skuAttrValue['stock'] = $this->getSkuStockStatus($skuAttrValue['skus'], $skuExps);
+                $skuAttrsValues[] = $skuAttrValue;
+            }
+            $spuAttr['skuAttrValues'] = $skuAttrsValues;
+            $spuAttrsCopy[] = $spuAttr;
+        }
+        return $spuAttrsCopy;
+    }
+
+    private function getSkuStockStatus($skus, $skuExps)
+    {
+        $flag = false;
+        foreach ($skus as $sku) {
+            foreach ($skuExps as $skuExp) {
+                if ($sku == $skuExp['sku']) {
+                    if ($skuExp['stock_qtty'] > 0) {
+                        $flag = true;
+                        break;
+                    }
+                }
+            }
+        }
+        return $flag;
     }
 
     private function isMobile()

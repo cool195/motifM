@@ -20,7 +20,6 @@
     }
     // google 第三方登录
     function attachSignin(element) {
-        console.log(element.id);
         auth2.attachClickHandler(element, {},
             function(googleUser) {
                 var profile = googleUser.getBasicProfile();
@@ -36,7 +35,6 @@
                         }
                     })
                     .done(function(data) {
-                        console.log("success");
                         if (data.success) {
                             window.location.href = data.redirectUrl;
                         } else {
@@ -79,8 +77,6 @@
 
     // This is called with the results from from FB.getLoginStatus().
     function statusChangeCallback(response) {
-        console.log('statusChangeCallback');
-        console.log(response);
         // The response object is returned with a status field that lets the
         // app know the current login status of the person.
         // Full docs on the response object can be found in the documentation

@@ -33,7 +33,6 @@
         var sku = $('#cartDialog').data('sku'),
             action = $('#cartDialog').data('action');
         if (sku === undefined || action === undefined || sku === '' || action === '' || sku === null || action === null) {
-            console.log('sku||action 为空');
             return;
         }
         openLoading();
@@ -44,7 +43,6 @@
             })
             .done(function (data) {
                 if (data.success) {
-                    console.log('success');
                     location.reload();
                 }
             })
@@ -76,7 +74,6 @@
                 data: {cmd: action, sku: sku}
             })
             .done(function (data) {
-                console.log('success');
                 // 操作成功刷新页面
                 if (data.success) {
                     location.reload();
@@ -87,7 +84,7 @@
             })
             .always(function () {
                 closeLoading();
-                console.log('complete');
+                //console.log('complete');
             });
     }
 
@@ -116,7 +113,7 @@
                 console.log('error');
             })
             .always(function () {
-                console.log('complete');
+                //console.log('complete');
                 closeLoading();
             });
     }
@@ -163,7 +160,6 @@
         $('#removeFromCart-spu').val($(this).data('spu'));
         $('#removeFromCart-price').val($(this).data('price'));
         $('#removeFromCart-quantity').val($(this).data('qtty'));
-        console.log('open');
     });
 
     // 初始化 模态框
@@ -174,7 +170,6 @@
 
     $('#cartDialog').on('closed', function () {
         $(this).removeData('sku').removeData('action');
-        console.log('close');
     });
     $('#cartDialog').on('confirmation', function () {
         deleteCart();

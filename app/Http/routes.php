@@ -22,7 +22,16 @@ $app->group(['middleware' => 'pcguide', 'namespace' => 'App\Http\Controllers'], 
     $app->get('/shopping/{id}', 'Shopping\ShoppingController@index');
 
     $app->get('/designer', 'Designer\DesignerController@index');
+    //$app->get('/designer/{id}', 'Designer\DesignerController@show');
+    $app->post('/designer/editcancel', 'Designer\DesignerController@editCancel');
+    $app->post('/designer/editsave', 'Designer\DesignerController@editSave');
+    $app->get('/designer/editget', 'Designer\DesignerController@editGetList');
+    $app->get('/designer/editlist', 'Designer\DesignerController@getEditorProductList');
+    $app->get('/designer/store', 'Designer\DesignerController@store');
+    $app->get('/designer/saved', 'Designer\DesignerController@saved');
+    $app->get('/savedetail/{spu}', 'Designer\DesignerController@savedetail');
     $app->get('/designer/{id}', 'Designer\DesignerController@show');
+    
 
     $app->post('/googlelogin', 'Auth\AuthController@googleLogin');
     $app->post('/facebooklogin', 'Auth\AuthController@facebookLogin');

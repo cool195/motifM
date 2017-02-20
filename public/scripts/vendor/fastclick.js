@@ -846,6 +846,6 @@
 
 document.addEventListener('DOMContentLoaded', function () {
     FastClick.attach(document.body);
-    console.log('FastClick');
+    //console.log('FastClick');
 }, false);
 

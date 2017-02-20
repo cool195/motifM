@@ -140,7 +140,6 @@ class UserController extends ApiController
                 Publicfun::mergeCartSkus();
             }
         }
-
         return $result;
     }
 
