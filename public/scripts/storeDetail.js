@@ -915,6 +915,9 @@
 
     // add to save
     $('.btn-addToSave').on('click', function(){
+        if($(this).hasClass('disabled')){
+            return;
+        }
         var spusId = $(this).data('spu');
         var isSaved = $(this).data('issaved');
         var $this = $(this);
