@@ -298,7 +298,7 @@
                     <fieldset class="container-fluid p-a-15x">
                         <!-- 添加 购物车 控制按钮显示 -->
                         <div class="text-center m-b-5x font-size-sm">This item is available for immediate shipping</div>
-                        <button class="btn btn-red btn-block btn-addToSave @if(0 == $data['isNetRed']) disabled @endif"
+                        <button class="btn btn-red btn-block btn-addToSave @if(0 == $data['isNetRed'] && !in_array($data['spu'], $editsavelist->editSaveList())) disabled @endif"
                                 data-spu="{{$data['spu']}}"
                                 data-issaved="@if(in_array($data['spu'], $editsavelist->editSaveList())){{1}}@else{{0}}@endif">@if(in_array($data['spu'], $editsavelist->editSaveList())){{'SAVED'}}@else{{'SAVE'}}@endif</button>
                         {{--<a href=javascript:;" class="notesLogin btn btn-primary btn-block"--}}
