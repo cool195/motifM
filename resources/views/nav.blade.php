@@ -103,7 +103,7 @@
             <a href="/designer/store" class="flex flex-alignCenter flex-fullJustified p-a-15x menu">
                 <div class="font-size-sm text-primary flex flex-alignCenter">
                     {{--<i class="iconfont icon-talks icon-size-md p-r-15x"></i>--}}
-                    <span>Products Store</span></div>
+                    <span>Create New Collection</span></div>
                 <span class="text-common"><i class="iconfont icon-arrow-right icon-size-sm"></i></span>
             </a>
         </li>
@@ -111,7 +111,7 @@
             <a href="/designer/saved" class="flex flex-alignCenter flex-fullJustified p-a-15x menu">
                 <div class="font-size-sm text-primary flex flex-alignCenter">
                     {{--<i class="iconfont icon-talks icon-size-md p-r-15x"></i>--}}
-                    <span>Saved</span></div>
+                    <span>Manage Saved Collection</span></div>
                 <span class="text-common"><i class="iconfont icon-arrow-right icon-size-sm"></i></span>
             </a>
         </li>
