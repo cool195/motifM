@@ -38,7 +38,7 @@
 
         loadingShow();
         $.ajax({
-                url: '/daily',
+                url: '/trending',
                 data: {
                     cmd: 'list',
                     pagenum: NextNum,

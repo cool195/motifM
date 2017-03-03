@@ -37,13 +37,13 @@
         <nav class="navbar navbar-full bg-white">
             <ul class="nav navbar-primary nav-top p-t-10x p-b-5x font-size-sm text-center nav-menuList">
                 <li class="nav-item col-xs-4">
-                    <a href="/daily" class=" @if($NavShowDaily) active @endif text-primary bigNoodle font-size-lg">TRENDING</a>
+                    <a href="/trending" class=" @if($NavShowDaily) active @endif text-primary bigNoodle font-size-lg">TRENDING</a>
                 </li>
                 <li class="nav-item col-xs-4">
-                    <a href="/designer" class="@if($NavShowDesigner) active @endif text-primary bigNoodle font-size-lg">COLLECTIONS</a>
+                    <a href="/collection" class="@if($NavShowDesigner) active @endif text-primary bigNoodle font-size-lg">COLLECTIONS</a>
                 </li>
                 <li class="nav-item col-xs-4">
-                    <a href="/shopping" class="@if($NavShowShop) active @endif text-primary bigNoodle font-size-lg">SHOP</a>
+                    <a href="/shop" class="@if($NavShowShop) active @endif text-primary bigNoodle font-size-lg">SHOP</a>
                 </li>
             </ul>
         </nav>

@@ -36,7 +36,7 @@
                         <div class="followlist-item bg-white p-a-15x" data-followingdid="{{$value['userId']}}">
                             <div class="flex">
                                 <div class="flex-fixedShrink">
-                                    <a href="/designer/{{$value['userId']}}">
+                                    <a href="/collection/{{$value['userId']}}">
                                         <img class="img-thumbnail img-lazy"
                                              src="{{env('CDN_Static')}}/images/product/bg-product@70.png"
                                              data-original="{{env('APP_Api_Image')}}/n2/{{$value['avatar']}}"
@@ -45,14 +45,14 @@
                                 </div>
                                 <div class="p-l-10x flex-width">
                                     <article class="flex flex-fullJustified followlist-title">
-                                        <a href="/designer/{{$value['userId']}}"><h6 class="text-main font-size-md p-r-20x"><strong>{{$value['nickname']}}</strong>
+                                        <a href="/collection/{{$value['userId']}}"><h6 class="text-main font-size-md p-r-20x"><strong>{{$value['nickname']}}</strong>
                                             </h6></a>
                                 <span class="text-primary font-size-sm flex-fixedShrink @if(empty($value['description'])){{'middle'}}@else{{'top'}}@endif">
                                     <a class="btn btn-primary btn-sm updateFollow" data-did="{{$value['userId']}}">Following</a>
                                 </span>
                                     </article>
                                     <aside class="text-primary font-size-xs followlist-info">
-                                        <a href="/designer/{{$value['userId']}}" class="text-primary">{{$value['description']}}</a>
+                                        <a href="/collection/{{$value['userId']}}" class="text-primary">{{$value['description']}}</a>
                                     </aside>
                                 </div>
                             </div>

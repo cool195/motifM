@@ -33,7 +33,7 @@ class AuthController extends ApiController
         $result = $this->request('openapi', '', "user", $params);
         if ($result['success']) {
             //$result['redirectUrl'] = (Session::get('redirectUrl') && !strstr(Session::get('redirectUrl'), 'login') && !strstr(Session::get('redirectUrl'), 'register')) ? Session::get('redirectUrl') : "/daily";
-            $result['redirectUrl'] = ($request->input('referer') && !strstr($request->input('referer'), 'register')) ? $request->input('referer') : "/daily";
+            $result['redirectUrl'] = ($request->input('referer') && !strstr($request->input('referer'), 'register')) ? $request->input('referer') : "/trending";
             Session::forget('user');
             Session::put('user', $result['data']);
             Cache::forget($result['data']['token']);
@@ -69,7 +69,7 @@ class AuthController extends ApiController
         $result = $this->request('openapi', '', "user", $params);
         if ($result['success']) {
             //$result['redirectUrl'] = (Session::get('redirectUrl') && !strstr(Session::get('redirectUrl'), 'login') && !strstr(Session::get('redirectUrl'), 'register')) ? Session::get('redirectUrl') : "/daily";
-            $result['redirectUrl'] = ($request->input('referer') && !strstr($request->input('referer'), 'register')) ? $request->input('referer') : "/daily";
+            $result['redirectUrl'] = ($request->input('referer') && !strstr($request->input('referer'), 'register')) ? $request->input('referer') : "/trending";
             Session::forget('user');
             Session::put('user', $result['data']);
             Cache::forget($result['data']['token']);

@@ -19,7 +19,7 @@
 <div class="login-container">
     <section class="login-content p-y-20x">
         <div class="m-x-auto m-b-20x text-center p-b-20x">
-            <a href="/daily">
+            <a href="/trending">
                 <img class="motif-logo" src="{{env('CDN_Static')}}/images/login/login-logo.png"
                      srcset="{{env('CDN_Static')}}/images/login/login-logo@2x.png 2x,{{env('CDN_Static')}}/images/login/login-logo@3x.png 3x">
             </a>

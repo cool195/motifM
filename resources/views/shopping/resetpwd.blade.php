@@ -16,7 +16,7 @@
     <section class="resetPwd-content m-t-10x p-y-20x">
         <form id="reset">
             <fieldset>
-                <a href="/daily">
+                <a href="/trending">
                     <div class="p-b-20x"><img src="{{env('CDN_Static')}}/images/login/register-logo.png" srcset="{{env('CDN_Static')}}/images/login/register-logo@2x.png 2x,{{env('CDN_Static')}}/images/login/register-logo@3x.png 3x"></div>
                 </a>
                 <div class="text-main m-t-10x"><strong>Forgot Password</strong></div>

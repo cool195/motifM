@@ -74,7 +74,7 @@
                 <div class="container-fluid p-x-10x p-y-20x">
                     <div class="row">
                         <div class="col-xs-6">
-                            <a href="/daily" class="btn btn-common btn-block">Ignore</a>
+                            <a href="/trending" class="btn btn-common btn-block">Ignore</a>
                         </div>
                         <div class="col-xs-6">
                             <a href="/invitefriends" class="btn btn-primary btn-block">Invite Friends</a>

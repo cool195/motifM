@@ -19,7 +19,7 @@ class AskController extends ApiController
     {
         if(isset($_SERVER['HTTP_REFERER'])) {
             if(empty($_SERVER['PHP_SELF']) || $_SERVER['PHP_SELF'] !== $_SERVER['HTTP_REFERER']) {
-                $referer = !empty($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : "/daily";
+                $referer = !empty($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : "/trending";
                 Session::put('referer', $referer);
             }
         }

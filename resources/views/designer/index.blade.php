@@ -40,7 +40,7 @@
     <aside class="bg-white p-b-10x">
         <div class="">
             @{{ if $value.listVideoId == undefined }}
-                <a data-link="/designer/@{{$value.designerId}}"
+                <a data-link="/collection/@{{$value.designerId}}"
                    data-impr='{{ config('app.clk_url') }}/log.gif?time={{time()}}&t=designer.200001&m=H5_M2016-1&pin={{ Session::get('user.pin') }}&uuid={{Session::has('user') ? Session::get('user.uuid') : $_COOKIE['uid']}}&v={"action":"0","skiptype":2,"skipid":"@{{ $value.designerId }}","expid":0,"version":"1.0.1", "ver":"9.2","src":"h5"}'
                    data-clk='{{ config('app.clk_url') }}/log.gif?time={{time()}}&t=designer.200001&m=H5_M2016-1&pin={{ Session::get('user.pin') }}&uuid={{Session::has('user') ? Session::get('user.uuid') : $_COOKIE['uid']}}&v={"action":"1","skiptype":2,"skipid":"@{{ $value.designerId }}","expid":0,"version":"1.0.1", "ver":"9.2","src":"h5"}'
                    href="javascript:void(0)">
@@ -65,7 +65,7 @@
                         </div>
                         <div class="youtube_mask"></div>
                         <div class="btn-morePlayer">
-                            <a class="text-white font-size-sm video-formore" data-link="/designer/@{{$value.designerId}}"
+                            <a class="text-white font-size-sm video-formore" data-link="/collection/@{{$value.designerId}}"
                                data-impr='{{ config('app.clk_url') }}/log.gif?time={{time()}}&t=designer.200001&m=H5_M2016-1&pin={{ Session::get('user.pin') }}&uuid={{Session::has('user') ? Session::get('user.uuid') : $_COOKIE['uid']}}&v={"action":"0","skiptype":2,"skipid":"@{{ $value.designerId }}","expid":0,"version":"1.0.1", "ver":"9.2","src":"h5"}'
                                data-clk='{{ config('app.clk_url') }}/log.gif?time={{time()}}&t=designer.200001&m=H5_M2016-1&pin={{ Session::get('user.pin') }}&uuid={{Session::has('user') ? Session::get('user.uuid') : $_COOKIE['uid']}}&v={"action":"1","skiptype":2,"skipid":"@{{ $value.designerId }}","expid":0,"version":"1.0.1", "ver":"9.2","src":"h5"}'
                                href="javascript:void(0)"><strong>Click for More</strong></a>

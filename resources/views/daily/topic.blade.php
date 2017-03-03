@@ -77,7 +77,7 @@
             @if($value['type']=='banner')
                     <!-- 第一个 banner 图 -->
             <div @if($k!=0)class="p-y-10x"@endif>
-                <a href="@if(!isset($value['skipId']))javascript:;@elseif($value['skipType']=='1')/detail/@elseif($value['skipType']=='2')/designer/@elseif($value['skipType']=='3')/topic/@elseif($value['skipType']=='4')/shopping#@endif{{$value['skipId']}}">
+                <a href="@if(!isset($value['skipId']))javascript:;@elseif($value['skipType']=='1')/detail/@elseif($value['skipType']=='2')/collection/@elseif($value['skipType']=='3')/topic/@elseif($value['skipType']=='4')/shop#@endif{{$value['skipId']}}">
                     <img class="img-fluid img-lazy"
                          data-original="{{env('APP_Api_Image')}}/n1/{{$value['imgPath']}}"
                          src="{{env('CDN_Static')}}/images/product/bg-product@750.png" alt="">
@@ -93,7 +93,7 @@
             </div>
             @elseif($value['type']=='title')
                     <!-- 标题 -->
-            <a href="@if($value['skipType']=='1')/detail/@elseif($value['skipType']=='2')/designer/@elseif($value['skipType']=='3')/topic/@elseif($value['skipType']=='4')/shopping#@endif{{$value['skipId']}}">
+            <a href="@if($value['skipType']=='1')/detail/@elseif($value['skipType']=='2')/collection/@elseif($value['skipType']=='3')/topic/@elseif($value['skipType']=='4')/shop#@endif{{$value['skipId']}}">
                 <div class="p-x-15x p-b-10x p-t-20x text-primary">
                     <strong>{{$value['value']}}</strong>
                 </div>
@@ -102,7 +102,7 @@
                 <hr class="hr-base m-x-5x m-y-0">
                 @elseif($value['type']=='context')
                         <!-- 描述 -->
-                <a href="@if($value['skipType']=='1')/detail/@elseif($value['skipType']=='2')/designer/@elseif($value['skipType']=='3')/topic/@elseif($value['skipType']=='4')/shopping#@endif{{$value['skipId']}}">
+                <a href="@if($value['skipType']=='1')/detail/@elseif($value['skipType']=='2')/collection/@elseif($value['skipType']=='3')/topic/@elseif($value['skipType']=='4')/shop#@endif{{$value['skipId']}}">
                     <div class="p-x-15x p-y-10x text-primary font-size-sm">
                         {{$value['value']}}
                     </div>
@@ -129,7 +129,7 @@
                             </div>
                         @endforeach
                     @else
-                        <a href="@if(!isset($value['skipId']))javascript:;@elseif($value['skipType']=='1')/detail/@elseif($value['skipType']=='2')/designer/@elseif($value['skipType']=='3')/topic/@elseif($value['skipType']=='4')/shopping#@endif{{$value['skipId']}}">
+                        <a href="@if(!isset($value['skipId']))javascript:;@elseif($value['skipType']=='1')/detail/@elseif($value['skipType']=='2')/collection/@elseif($value['skipType']=='3')/topic/@elseif($value['skipType']=='4')/shop#@endif{{$value['skipId']}}">
                             <img class="img-fluid img-lazy"
                                  data-original="{{env('APP_Api_Image')}}/n1/{{$value['imgPath']}}"
                                  src="{{env('CDN_Static')}}/images/product/bg-product@750.png" alt="">
@@ -252,13 +252,13 @@
                         url = '/detail/';
                         break;
                     case '2':
-                        url = '/designer/';
+                        url = '/collection/';
                         break;
                     case '3':
                         url = '/topic/';
                         break;
                     case '4':
-                        url = '/shopping#';
+                        url = '/shop#';
                         break;
                 }
                 url += value.skipId;

@@ -15,7 +15,7 @@
 <div class="register-container">
     <section class="register-content p-y-20x">
         <!-- 顶部 logo -->
-        <a href="/daily">
+        <a href="/trending">
             <img class="img-fluid m-x-auto m-b-20x p-b-10x motif-logo"
                  src="{{env('CDN_Static')}}/images/login/login-logo.png"
                  srcset="{{env('CDN_Static')}}/images/login/login-logo@2x.png 2x,{{env('CDN_Static')}}/images/login/login-logo@3x.png 3x">
@@ -74,7 +74,7 @@
 
     <!-- 退出注册 -->
     @if($path==1)
-        <a class="exit-register" href="/daily">
+        <a class="exit-register" href="/trending">
             <i class="iconfont icon-cross icon-size-md text-common"></i>
         </a>
     @else

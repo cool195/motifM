@@ -46,7 +46,7 @@
 
         loadingShow();
         $.ajax({
-            url: '/designer',
+            url: '/collection',
             data: {cmd: 'designerinfolist', start: Start, size: Size}
         }).done(function (data) {
             if (data.data === null || data.data === '') {

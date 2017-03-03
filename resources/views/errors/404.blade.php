@@ -31,7 +31,7 @@
                     <div class="text-primary font-size-sm">Your requested URL was not found</div>
                     <div class="text-primary font-size-sm p-t-20x p-b-10x">You may want to</div>
                     @if(!strstr($_SERVER['HTTP_USER_AGENT'], 'motif-android') && !strstr($_SERVER['HTTP_USER_AGENT'], 'motif-ios'))
-                        <div><a href="/daily" class="btn btn-primary btn-block btn-goHome">Go Home</a></div>
+                        <div><a href="/trending" class="btn btn-primary btn-block btn-goHome">Go Home</a></div>
                     @else
                         <div><a href="motif://o.c?a=daily" class="btn btn-primary btn-block btn-goHome">Go Home</a></div>
                     @endif

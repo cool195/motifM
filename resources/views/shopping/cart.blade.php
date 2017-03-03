@@ -63,7 +63,7 @@
                     <div class="container shopbag-emptyInfo">
                         <div class="m-b-20x p-b-5x"><i class="btn-shopbagEmpty iconfont icon-shopbag"></i></div>
                         <p class="text-primary font-size-sm m-b-20x p-b-20x">Your bag is empty. Fill it up</p>
-                        <a href="/daily" class="btn btn-primary btn-block">Go Shopping</a>
+                        <a href="/trending" class="btn btn-primary btn-block">Go Shopping</a>
                     </div>
                 </div>
         @else

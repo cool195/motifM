@@ -80,7 +80,7 @@ class UserController extends ApiController
                 Publicfun::addFollowDesigner($_COOKIE['followDid']);
             }
             Publicfun::mergeCartSkus();
-            $result['redirectUrl'] = ($request->input('referer') && !strstr($request->input('referer'), 'login')) ? $request->input('referer') : "/daily";
+            $result['redirectUrl'] = ($request->input('referer') && !strstr($request->input('referer'), 'login')) ? $request->input('referer') : "/trending";
         } else {
             $result['prompt_msg'] = $result['error_msg'];
         }
@@ -95,7 +95,7 @@ class UserController extends ApiController
     public function login(Request $request)
     {
         if (Session::has('user')) {
-            return redirect('/daily');
+            return redirect('/trending');
         }
 
         $referer = $request->input('url') ? $request->input('url') : $request->header('referer');
@@ -127,7 +127,7 @@ class UserController extends ApiController
             $result['data'] = array();
         } else {
             if ($result['success']) {
-                $result['redirectUrl'] = ($request->input('referer') && !strstr($request->input('referer'), 'register')) ? $request->input('referer') : "/daily";
+                $result['redirectUrl'] = ($request->input('referer') && !strstr($request->input('referer'), 'register')) ? $request->input('referer') : "/trending";
                 Session::forget('user');
                 Session::put('user', $result['data']);
                 Cache::forget($result['data']['token']);

@@ -85,7 +85,7 @@ class OrderController extends ApiController
     {
         $result = $this->getOrderDetail($subno);
         if (!$result['success']) {
-            return redirect('/daily');
+            return redirect('/trending');
         }
         $result['data']['cardlist'] = array('Diners' => 'diners-club', 'Discover' => 'discover', 'JCB' => 'jcb', 'Maestro' => 'maestro', 'AmericanExpress' => 'american-express', 'Visa' => 'visa', 'MasterCard' => 'master-card');
 
@@ -171,7 +171,7 @@ class OrderController extends ApiController
                 $result['redirectUrl'] = "/paypalorder?orderid=" . $result['data']['orderID'] . "&orderDetail=" . $result['data']['shortInfo'] . "&totalPrice=" . $result['data']['pay_amount'] / 100;
             }
         } else {
-            $result['redirectUrl'] = Session::has('referer') ? Session::get('referer') : '/shopping';
+            $result['redirectUrl'] = Session::has('referer') ? Session::get('referer') : '/shop';
         }
         return $result;
     }
