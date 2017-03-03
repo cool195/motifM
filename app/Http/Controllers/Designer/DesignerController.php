@@ -50,9 +50,18 @@ class DesignerController extends ApiController
     }
 
     //设计师详情
-    public function show(Request $request, $id)
+    public function show(Request $request, $idTitle)
     {
-        if (is_numeric($id)) {
+        $id = "";
+        $params = array();
+        if(!is_numeric($idTitle)){
+            $titleArray = explode("-", $idTitle);
+            end($titleArray);
+            $id = current($titleArray);
+        }else{
+            $id = $idTitle;
+        }
+
             //设计师详情
             $params = array(
                 'cmd' => 'designerdetail',
@@ -166,6 +175,19 @@ class DesignerController extends ApiController
                 $NavShow = false;
 
             } else {
+                $titleArray = explode(" ", $result['data']['nickname']);
+                $titleArray[] = $id;
+                $result['data']['seo_link'] = implode("-", $titleArray);
+
+                if(is_numeric($idTitle)) {
+                    $params = $request->all();
+                    $url = "/collection/" . $result['data']['seo_link'];
+                    if (!empty($params)) {
+                        $url = "/collection/" . $result['data']['seo_link'] . "?" . http_build_query($params);
+                    }
+                    return redirect($url);
+                }
+
                 $view = 'designer.show';
             }
             $result['data']['spuArray'] = json_encode($spuArray);
@@ -182,7 +204,7 @@ class DesignerController extends ApiController
             $maidian['utm_medium'] = $request->get('utm_medium');
             $maidian['utm_source'] = $request->get('utm_source');
             return View($view, ['maidian' => $maidian, 'NavShowDesigner' => $NavShow,'designer' => $result['data'], 'productAll' => $productAll, 'product' => $product['data']]);
-        }
+
 
     }
 

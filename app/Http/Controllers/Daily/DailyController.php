@@ -75,8 +75,18 @@ class DailyController extends ApiController
     }
 
     //动态模版专题详情
-    public function show(Request $request, $id)
+    public function show(Request $request, $idTitle)
     {
+        $id = "";
+        $params = array();
+        if(!is_numeric($idTitle)){
+            $titleArray = explode("-", $idTitle);
+            end($titleArray);
+            $id = current($titleArray);
+        }else{
+            $id = $idTitle;
+        }
+
         $params = array(
             'cmd' => 'topic',
             'id' => $id
@@ -128,6 +138,19 @@ class DailyController extends ApiController
 
             $view = 'daily.topicApp';
         } else {
+            $titleArray = explode(" ", $result['data']['title']);
+            $titleArray[] = $id;
+            $result['data']['seo_link'] = implode("-", $titleArray);
+
+            if(is_numeric($idTitle)) {
+                $params = $request->all();
+                $url = "/topic/" . $result['data']['seo_link'];
+                if (!empty($params)) {
+                    $url = "/topic/" . $result['data']['seo_link'] . "?" . http_build_query($params);
+                }
+                return redirect($url);
+            }
+
             $view = 'daily.topic';
         }
         //设置topic分享主图
