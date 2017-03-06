@@ -574,6 +574,9 @@
 
     // 提交表单（新增/修改地址）
     $('#btn-submitEditorAddress').on('click', function () {
+        if($(this).hasClass('disabled')){
+            return;
+        }
         openLoading();
         var Aid = $('#shipping-editorAddress').data('aid');
         if (Aid == '' || Aid == undefined) {
