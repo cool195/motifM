@@ -4,7 +4,7 @@
     <meta property="og:type" content="article"/>
     <meta property="og:image" content="{{ env('APP_Api_Image').'/n1/'.$designer['img_video_path'] }}"/>
     <meta property="og:title" content="{{$designer['nickname']}}"/>
-    <title>Designer Detail</title>
+    <title>Collection Detail</title>
     @include('head')
     <link rel="stylesheet" href="{{env('CDN_Static')}}/styles/designerDetail.css{{'?v='.config('app.version')}}">
 </head>

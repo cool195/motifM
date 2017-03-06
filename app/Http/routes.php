@@ -13,8 +13,8 @@
 
 $app->group(['middleware' => 'pcguide', 'namespace' => 'App\Http\Controllers'], function ($app) {
 
-    $app->get('/', 'Daily\DailyController@index');
-    $app->get('/trending', 'Daily\DailyController@home');
+    $app->get('/', 'Daily\DailyController@home');
+    $app->get('/trending', 'Daily\DailyController@index');
     $app->get('/recdata', 'Daily\DailyController@recData');
     $app->get('/topic/{id}', 'Daily\DailyController@show');
     $app->get('/template/{id}', 'Daily\DailyController@staticShow');

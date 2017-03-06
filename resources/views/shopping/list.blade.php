@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>shopping</title>
+    <title>shop</title>
     @include('head')
     <link rel="stylesheet" href="{{env('CDN_Static')}}/styles/shoppingList.css{{'?v='.config('app.version')}}">
 </head>

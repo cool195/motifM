@@ -23,7 +23,7 @@ class DailyController extends ApiController
             'puton' => $request->input('puton', 1),
         );
         if (empty($params['cmd'])) {
-            return redirect('/');
+            return redirect('/trending');
         } else {
             $result = $this->request('openapi', '', 'daily', $params);
             if (empty($result)) {
