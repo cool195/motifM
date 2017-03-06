@@ -11,6 +11,11 @@ use App\Services\Publicfun;
 
 class DesignerController extends ApiController
 {
+    public function designer()
+    {
+        return redirect('/collection');
+    }
+
     //设计师首页
     public function index(Request $request)
     {

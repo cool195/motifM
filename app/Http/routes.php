@@ -15,13 +15,21 @@ $app->group(['middleware' => 'pcguide', 'namespace' => 'App\Http\Controllers'], 
 
     $app->get('/', 'Daily\DailyController@home');
     $app->get('/trending', 'Daily\DailyController@index');
+    $app->get('/daily', 'Daily\DailyController@home');
+
     $app->get('/recdata', 'Daily\DailyController@recData');
     $app->get('/topic/{id}', 'Daily\DailyController@show');
     $app->get('/template/{id}', 'Daily\DailyController@staticShow');
+
     $app->get('/shop', 'Shopping\ShoppingController@index');
+    $app->get('/shopping', 'Shopping\ShoppingController@index');
+
     $app->get('/shop/{id}', 'Shopping\ShoppingController@index');
+    $app->get('/shopping/{id}', 'Shopping\ShoppingController@index');
 
     $app->get('/collection', 'Designer\DesignerController@index');
+    $app->get('/designer', 'Designer\DesignerController@designer');
+    
     $app->post('/designer/editcancel', 'Designer\DesignerController@editCancel');
     $app->post('/designer/editsave', 'Designer\DesignerController@editSave');
     $app->get('/designer/editget', 'Designer\DesignerController@editGetList');
@@ -30,6 +38,7 @@ $app->group(['middleware' => 'pcguide', 'namespace' => 'App\Http\Controllers'], 
     $app->get('/designer/saved', 'Designer\DesignerController@saved');
     $app->get('/savedetail/{spu}', 'Designer\DesignerController@savedetail');
     $app->get('/collection/{id}', 'Designer\DesignerController@show');
+    $app->get('/designer/{id}', 'Designer\DesignerController@show');
     
 
     $app->post('/googlelogin', 'Auth\AuthController@googleLogin');
