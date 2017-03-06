@@ -21,9 +21,8 @@
                  srcset="{{env('CDN_Static')}}/images/login/login-logo@2x.png 2x,{{env('CDN_Static')}}/images/login/login-logo@3x.png 3x">
         </a>
 
-        <div class="text-left p-t-20x m-b-20x p-b-5x">
-            <img class="img-fluid m-x-auto m-b-20x" src="{{env('CDN_Static')}}/images/login/register-gg.png"
-                 srcset="{{env('CDN_Static')}}/images/login/register-gg@2x.png 2x,{{env('CDN_Static')}}/images/login/register-gg@3x.png 3x">
+        <div class="text-left p-t-20x m-b-20x p-b-5x bigNoodleOblique register_titleTxt">
+            Register Now to Enjoy 15% OFF Your First Order
         </div>
 
         <form id="register">
