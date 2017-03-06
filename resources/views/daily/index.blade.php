@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Trending</title>
+    <title>trending</title>
 
     @include('head')
     <meta property="og:image" content="{{env('CDN_Static')}}/apple-touch-icon.png" />
