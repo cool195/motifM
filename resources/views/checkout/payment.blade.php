@@ -197,10 +197,10 @@
                     </div>
                     <hr class="hr-base m-a-0">
 
-                    <!-- BILLING ADRESS -->
+                    <!-- BILLING ADDRESS -->
                     <div class="text-primary">
                         <section class="p-b-20x reserve-height" id="cardAddress">
-                            <div class="p-y-10x p-x-15x font-size-sm bg-title"><strong>BILLING ADRESS</strong></div>
+                            <div class="p-y-10x p-x-15x font-size-sm bg-title"><strong>BILLING ADDRESS</strong></div>
                             <hr class="hr-base m-a-0">
                             {{--<div class="warning-info off flex text-warning flex-alignCenter text-left p-x-15x p-y-10x hidden-xs-up">--}}
                             {{--<i class="iconfont icon-caveat icon-size-md p-r-5x"></i>--}}
