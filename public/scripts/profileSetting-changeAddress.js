@@ -7,6 +7,9 @@
 (function ($) {
     // 设置默认地址 开关按钮
     $('.radio-checkBox').on('click', function () {
+        if($(this).hasClass('disabled')){
+            return;
+        }
         $(this).toggleClass('open');
 
         if ($(this).hasClass('open')) {

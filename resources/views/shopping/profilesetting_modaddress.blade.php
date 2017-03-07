@@ -96,7 +96,7 @@
                     <fieldset>
                         <div class="flex flex-alignCenter flex-fullJustified font-size-sm text-primary p-a-15x" href="#">
                             <span>Make Default</span>
-                            <div class="@if(1 == $input['isDefault']) open @else radio-checkBox @endif">
+                            <div class="@if(1 == $input['isDefault']) open radio-checkBox disabled @else radio-checkBox @endif">
                                 <div class="radio-checkItem"></div>
                                 @if(1 == $input['isDefault'])
                                     <input type="radio" name="isd" id="address-default" hidden value="0">
