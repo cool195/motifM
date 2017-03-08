@@ -140,6 +140,7 @@
         // 3. Evaluate the result and update the image
 
         var img_warpper = document.getElementById('detail-productImgs');
+        console.log(variation)
         if ( variation == 1) {
             img_warpper.style.display = "block"
         }else {
