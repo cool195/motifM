@@ -495,9 +495,13 @@
                 <div id="detail-productImgs" style="display: none;">
                     {{-- 10002492 --}}
                     @if($data['spu'] == 10002492)
-                        <img class="img-fluid" src="https://image.motif.me/n1/product/motif/6825/1200X1200/27c41f8ddd5d2ed089e345eb6dfd5979.jpg">
+                        <img class="img-fluid" src="https://image.motif.me/n1/topic/motif/6825/1200X880/0e6e2ca54e5e2b35cdc82b2835a88a4e.jpg">
+                        <img class="img-fluid" src="https://image.motif.me/n1/topic/motif/6825/1200X800/5655b0d9fe5947ed0dc0daa6ddafe78c.jpg">
+                        <img class="img-fluid" src="https://image.motif.me/n1/topic/motif/6825/1200X800/7b1f192532da627d7d251526be7945ec.jpg">
+
+                       {{-- <img class="img-fluid" src="https://image.motif.me/n1/product/motif/6825/1200X1200/27c41f8ddd5d2ed089e345eb6dfd5979.jpg">
                         <img class="img-fluid" src="https://image.motif.me/n1/product/motif/6825/1200X1200/1fd835cc6da25d24ea140dc295660b47.jpg">
-                        <img class="img-fluid" src="https://image.motif.me/n1/product/motif/6825/1200X1200/db9962c48526a895ef0e8762ef98e543.jpg">
+                        <img class="img-fluid" src="https://image.motif.me/n1/product/motif/6825/1200X1200/db9962c48526a895ef0e8762ef98e543.jpg">--}}
                     @endif
                 </div>
 
