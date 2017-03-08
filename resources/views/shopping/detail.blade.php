@@ -180,7 +180,7 @@
                         @endif
                     </div>
                     <!-- 分页器 -->
-                    <div class="swiper-pagination text-right p-r-20x font-size-sm" id="baseImg-pagination"></div>
+                    <div class="swiper-pagination" id="baseImg-pagination"></div>
                 </div>
             </div>
             @if(Session::has('user'))

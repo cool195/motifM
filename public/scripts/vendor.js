@@ -11542,7 +11542,8 @@ return jQuery;
                             paginationHTML += s.params.paginationBulletRender(i, s.params.bulletClass);
                         }
                         else {
-                            paginationHTML += '<' + s.params.paginationElement+' class="' + s.params.bulletClass + '" style="width:' + baifen + '%"></' + s.params.paginationElement + '>';
+                            //paginationHTML += '<' + s.params.paginationElement+' class="' + s.params.bulletClass + '" style="width:' + baifen + '%"></' + s.params.paginationElement + '>';
+                            paginationHTML += '<' + s.params.paginationElement+' class="' + s.params.bulletClass + '"></' + s.params.paginationElement + '>';
                         }
                     }
                     s.paginationContainer.html(paginationHTML);

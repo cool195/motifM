@@ -59,11 +59,18 @@
     // 图片轮播
     var BaseImgSwiper = new Swiper('#baseImg-swiper', {
         pagination: '#baseImg-pagination',
-        paginationType: 'fraction',
+        paginationClickable :true,
         loop: true,
         lazyLoading: true,
-        lazyLoadingInPrevNext: true
+        lazyLoadingInPrevNext: true,
+        //autoplay : 3000,
     });
+    // 阻止点击指示器的 事件冒泡
+    $('#baseImg-pagination').click(function (e) {
+        var e = e || event;
+        e.stopPropagation();
+    });
+    
     // 全屏图片轮播
     var DetailImgSwiper = new Swiper('#detailImg-swiper', {
         pagination: '#detailImg-pagination',
