@@ -404,7 +404,7 @@
                     {{--@if(Session::has('user'))--}}
                     <div class="text-center m-b-5x font-size-sm">This item is available for immediate shipping</div>
                         <button class="btn btn-red btn-block up-btn-addToBag"
-                                @if(!$data['sale_status'] || $data['isPutOn']==0) disabled
+                                @if(!$data['sale_status'] || $data['isPutOn'] != 1 || $data['status_code'] != 100) disabled
                                 @endif data-control="continue" data-role="continue" data-action="PATCH">Add to Bag
                         </button>
                     {{--@else--}}
