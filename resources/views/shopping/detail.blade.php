@@ -7,6 +7,21 @@
     <title>{{$data['main_title']}}</title>
     @include('head')
     <link rel="stylesheet" href="{{env('CDN_Static')}}/styles/shoppingDetail.css{{'?v='.config('app.version')}}">
+    <!-- Google Analytics Content Experiment code -->
+    <script>function utmx_section(){}function utmx(){}(function(){var
+                k='124706515-1',d=document,l=d.location,c=d.cookie;
+            if(l.search.indexOf('utm_expid='+k)>0)return;
+            function f(n){if(c){var i=c.indexOf(n+'=');if(i>-1){var j=c.
+            indexOf(';',i);return escape(c.substring(i+n.length+1,j<0?c.
+                    length:j))}}}var x=f('__utmx'),xx=f('__utmxx'),h=l.hash;d.write(
+                    '<sc'+'ript src="'+'http'+(l.protocol=='https:'?'s://ssl':
+                            '://www')+'.google-analytics.com/ga_exp.js?'+'utmxkey='+k+
+                    '&utmx='+(x?x:'')+'&utmxx='+(xx?xx:'')+'&utmxtime='+new Date().
+                    valueOf()+(h?'&utmxhash='+escape(h.substr(1)):'')+
+                    '" type="text/javascript" charset="utf-8"><\/sc'+'ript>')})();
+    </script><script>utmx('url','A/B');</script>
+    <!-- End of Google Analytics Content Experiment code -->
+
 </head>
 <body>
 <!-- 添加购物车 -->
@@ -112,8 +127,42 @@
     var content_ids = ['{{$data['spu']}}'];
     var totalPrice = '{{number_format(($data['skuPrice']['sale_price'] / 100), 2)}}';
 </script>
-
 @include('check.tagmanager')
+
+<!-- 1. Load the Content Experiments JavaScript Client -->
+<script src="//www.google-analytics.com/cx/api.js?experiment=YByMKfprRCStcMvK8zh1yw"></script>
+
+<script>
+    // 2. Choose the Variation for the Visitor
+    var variation = cxApi.chooseVariation();
+
+    window.onload = function(){
+        // 3. Evaluate the result and update the image
+
+        var img_warpper = document.getElementById('detail-productImgs');
+        if ( variation == 1) {
+            img_warpper.style.display = "block"
+        }else {
+            img_warpper.style.display = "none"
+        }
+
+    }
+</script>
+
+<!-- 4. Load ga.js and send a hit to Google Analytics -->
+<script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-78914929-6']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+
+</script>
+
 <!-- 外层容器 -->
 <div id="body-content">
     <!-- 展开的汉堡菜单 -->
@@ -439,7 +488,7 @@
                     </div>
                 </aside>
                 {{--详情图片--}}
-                <div class="detail-productImgs">
+                <div id="detail-productImgs">
                     {{-- 10002492 --}}
                     @if($data['spu'] == 10001621)
                         <img class="img-fluid" src="https://image.motif.me/n1/product/motif/6825/1200X1200/27c41f8ddd5d2ed089e345eb6dfd5979.jpg">
