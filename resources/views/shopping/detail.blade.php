@@ -441,7 +441,7 @@
                 {{--详情图片--}}
                 <div class="detail-productImgs">
                     {{-- 10002492 --}}
-                    @if($data['spu'] == 10002492)
+                    @if($data['spu'] == 10001621)
                         <img class="img-fluid" src="https://image.motif.me/n1/product/motif/6825/1200X1200/27c41f8ddd5d2ed089e345eb6dfd5979.jpg">
                         <img class="img-fluid" src="https://image.motif.me/n1/product/motif/6825/1200X1200/1fd835cc6da25d24ea140dc295660b47.jpg">
                         <img class="img-fluid" src="https://image.motif.me/n1/product/motif/6825/1200X1200/db9962c48526a895ef0e8762ef98e543.jpg">
