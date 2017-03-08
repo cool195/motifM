@@ -120,7 +120,7 @@
                                          data-original="{{env('APP_Api_Image')}}/n1/{{$topic['spuInfos'][$spu]['spuBase']['main_image_url']}}"
                                          src="{{env('CDN_Static')}}/images/product/bg-product@750.png"
                                          alt="{{$topic['spuInfos'][$spu]['spuBase']['main_title']}}">
-                                        @if( 0 == $topic['spuInfos'][$spu]['spuBase']['isPutOn'])
+                                        @if( $topic['spuInfos'][$spu]['spuBase']['isPutOn'] != 1)
                                             <div class="preorderSold-info" style="z-index: 100">
                                                 <span class="font-size-xs">SOLD OUT</span>
                                             </div>
@@ -161,7 +161,7 @@
                                                         {{--<span class="preorder-info font-size-xs">Limited Edition</span>--}}
                                                     {{--@endif--}}
                                                 {{--</div>--}}
-                                                @if( 0 == $topic['spuInfos'][$spu]['spuBase']['isPutOn'])
+                                                @if( $topic['spuInfos'][$spu]['spuBase']['isPutOn'] != 1)
                                                 <div class="preorderSold-info" style="z-index: 100">
                                                     <span class="font-size-xs">SOLD OUT</span>
                                                 </div>

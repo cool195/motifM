@@ -150,7 +150,11 @@
                                                                 {{--<span class="preorder-info font-size-xs">Limited Edition</span>--}}
                                                             {{--@endif--}}
                                                         {{--</div>--}}
-
+                                                        @if( $topic['spuInfos'][$spu]['spuBase']['isPutOn'] != 1)
+                                                            <div class="preorderSold-info" style="z-index: 100">
+                                                                <span class="font-size-xs">SOLD OUT</span>
+                                                            </div>
+                                                        @endif
                                                         <div class="image-container">
                                                             <div class="swiper-container productList-swiper">
                                                                 <div class="swiper-wrapper">
