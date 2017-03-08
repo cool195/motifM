@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="{{env('CDN_Static')}}/styles/shoppingDetail.css{{'?v='.config('app.version')}}">
     <!-- Google Analytics Content Experiment code -->
     <script>function utmx_section(){}function utmx(){}(function(){var
-                k='124706515-1',d=document,l=d.location,c=d.cookie;
+                k='130800691-8',d=document,l=d.location,c=d.cookie;
             if(l.search.indexOf('utm_expid='+k)>0)return;
             function f(n){if(c){var i=c.indexOf(n+'=');if(i>-1){var j=c.
             indexOf(';',i);return escape(c.substring(i+n.length+1,j<0?c.
@@ -130,7 +130,7 @@
 @include('check.tagmanager')
 
 <!-- 1. Load the Content Experiments JavaScript Client -->
-<script src="//www.google-analytics.com/cx/api.js?experiment=YByMKfprRCStcMvK8zh1yw"></script>
+<script src="//www.google-analytics.com/cx/api.js?experiment=CeMmd90pSMiYI6tJFmvv8A"></script>
 
 <script>
     // 2. Choose the Variation for the Visitor
@@ -142,9 +142,9 @@
         var img_warpper = document.getElementById('detail-productImgs');
         console.log(variation)
         if ( variation == 1) {
-            img_warpper.style.display = "block"
+            img_warpper.style.display = "block";
         }else {
-            img_warpper.style.display = "none"
+            img_warpper.style.display = "none";
         }
 
     }
@@ -152,13 +152,15 @@
 
 <!-- 4. Load ga.js and send a hit to Google Analytics -->
 <script type="text/javascript">
-    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-                (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-78914929-6']);
+    _gaq.push(['_trackPageview']);
 
-    ga('create', 'UA-78914929-6', 'auto');
-    ga('send', 'pageview');
+    (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
 
 </script>
 
@@ -489,7 +491,7 @@
                 {{--详情图片--}}
                 <div id="detail-productImgs">
                     {{-- 10002492 --}}
-                    @if($data['spu'] == 10001621)
+                    @if($data['spu'] == 10002492)
                         <img class="img-fluid" src="https://image.motif.me/n1/product/motif/6825/1200X1200/27c41f8ddd5d2ed089e345eb6dfd5979.jpg">
                         <img class="img-fluid" src="https://image.motif.me/n1/product/motif/6825/1200X1200/1fd835cc6da25d24ea140dc295660b47.jpg">
                         <img class="img-fluid" src="https://image.motif.me/n1/product/motif/6825/1200X1200/db9962c48526a895ef0e8762ef98e543.jpg">
