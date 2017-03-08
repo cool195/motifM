@@ -7,6 +7,20 @@
     <title>{{$data['main_title']}}</title>
     @include('head')
     <link rel="stylesheet" href="{{env('CDN_Static')}}/styles/shoppingDetail.css{{'?v='.config('app.version')}}">
+    <!-- Google Analytics Content Experiment code -->
+    <script>function utmx_section(){}function utmx(){}(function(){var
+                k='130800691-8',d=document,l=d.location,c=d.cookie;
+            if(l.search.indexOf('utm_expid='+k)>0)return;
+            function f(n){if(c){var i=c.indexOf(n+'=');if(i>-1){var j=c.
+            indexOf(';',i);return escape(c.substring(i+n.length+1,j<0?c.
+                    length:j))}}}var x=f('__utmx'),xx=f('__utmxx'),h=l.hash;d.write(
+                    '<sc'+'ript src="'+'http'+(l.protocol=='https:'?'s://ssl':
+                            '://www')+'.google-analytics.com/ga_exp.js?'+'utmxkey='+k+
+                    '&utmx='+(x?x:'')+'&utmxx='+(xx?xx:'')+'&utmxtime='+new Date().
+                    valueOf()+(h?'&utmxhash='+escape(h.substr(1)):'')+
+                    '" type="text/javascript" charset="utf-8"><\/sc'+'ript>')})();
+    </script><script>utmx('url','A/B');</script>
+    <!-- End of Google Analytics Content Experiment code -->
 
 </head>
 <body>
@@ -33,7 +47,7 @@
 </script>
 
 <!-- 4. Load ga.js and send a hit to Google Analytics -->
-<script>
+{{--<script>
     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
                 (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
             m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
@@ -42,9 +56,8 @@
     ga('create', 'UA-78914929-6', 'auto');
     ga('send', 'pageview');
 
-</script>
-{{--
-<script type="text/javascript">
+</script>--}}
+<script>
 
     var _gaq = _gaq || [];
     _gaq.push(['_setAccount', 'UA-78914929-6']);
@@ -56,9 +69,9 @@
         var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
     })();
 
-</script>--}}
+</script>
 
-        
+
 <!-- 添加购物车 -->
 <input type="text" id="addToCart-quantity" value="1" hidden>
 <input type="text" id="addToCart-sku" value="1" hidden>
