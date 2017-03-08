@@ -399,10 +399,10 @@
             <!-- Add to Bag 按钮 -->
             <section class="addToBag-info">
                 <hr class="hr-base m-a-0">
-                <fieldset class="container-fluid p-a-15x">
+                <fieldset class="container-fluid p-a-10x">
                     <!-- 添加 购物车 控制按钮显示 -->
                     {{--@if(Session::has('user'))--}}
-                    <div class="text-center m-b-5x font-size-sm">This item is available for immediate shipping</div>
+                    {{--<div class="text-center m-b-5x font-size-sm">This item is available for immediate shipping</div>--}}
                         <button class="btn btn-red btn-block up-btn-addToBag"
                                 @if(!$data['sale_status'] || $data['isPutOn'] != 1 || $data['status_code'] != 100) disabled
                                 @endif data-control="continue" data-role="continue" data-action="PATCH">Add to Bag
@@ -438,6 +438,14 @@
                         </a>
                     </div>
                 </aside>
+                {{--详情图片--}}
+                <div class="detail-productImgs">
+                    {{-- 10002492 --}}
+                    <img class="img-fluid" src="https://image.motif.me/n1/product/motif/6825/1200X1200/27c41f8ddd5d2ed089e345eb6dfd5979.jpg">
+                    <img class="img-fluid" src="https://image.motif.me/n1/product/motif/6825/1200X1200/1fd835cc6da25d24ea140dc295660b47.jpg">
+                    <img class="img-fluid" src="https://image.motif.me/n1/product/motif/6825/1200X1200/db9962c48526a895ef0e8762ef98e543.jpg">
+                </div>
+
                 <aside class="product-secondaryInfo">
                     <a class="flex flex-alignCenter flex-fullJustified font-size-sm text-primary p-a-15x"
                        href="/askshopping?skiptype=3&id={{$data['spu']}}">
