@@ -33,7 +33,7 @@
 </script>
 
 <!-- 4. Load ga.js and send a hit to Google Analytics -->
-<script>
+{{--<script>
     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
                 (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
             m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
@@ -42,8 +42,7 @@
     ga('create', 'UA-78914929-6', 'auto');
     ga('send', 'pageview');
 
-</script>
-{{--
+</script>--}}
 <script type="text/javascript">
 
     var _gaq = _gaq || [];
@@ -56,9 +55,9 @@
         var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
     })();
 
-</script>--}}
+</script>
 
-        
+
 <!-- 添加购物车 -->
 <input type="text" id="addToCart-quantity" value="1" hidden>
 <input type="text" id="addToCart-sku" value="1" hidden>
