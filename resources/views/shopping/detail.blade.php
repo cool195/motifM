@@ -501,15 +501,15 @@
                         <img class="img-fluid" src="https://image.motif.me/n1/product/motif/6825/1200X1200/27c41f8ddd5d2ed089e345eb6dfd5979.jpg">
                     @elseif($data['spu'] == 10000457)
                         <img class="img-fluid" src="https://image.motif.me/n1/topic/motif/6735/1200X800/55d26e644d0779d2be4602cf988b5e9b.jpg">
-                        <img class="img-fluid" src="/images/product/detail_10000457_1.jpg">
+                        <img class="img-fluid" src="{{env('CDN_Static')}}/images/product/detail_10000457_1.jpg">
                         <img class="img-fluid" src="https://image.motif.me/n2/topic/motif/6628/1200X930/92684be525059bb5e334640343b654b5.jpg">
                         <img class="img-fluid" src="https://image.motif.me/n2/topic/motif/6628/1200X1200/a42e5b17a49b067470c0b18e385f7948.jpg">
                     @elseif($data['spu'] == 10001594)
-                        <img class="img-fluid" src="/images/product/detail_10001594_1.jpg">
+                        <img class="img-fluid" src="{{env('CDN_Static')}}/images/product/detail_10001594_1.jpg">
                     @elseif($data['spu'] == 10001593)
-                        <img class="img-fluid" src="/images/product/datail_10001593_1.jpg">
+                        <img class="img-fluid" src="{{env('CDN_Static')}}/images/product/datail_10001593_1.jpg">
                     @elseif($data['spu'] == 10001043)
-                        <img class="img-fluid" src="/images/product/datail_10001043_1.jpg">
+                        <img class="img-fluid" src="{{env('CDN_Static')}}/images/product/datail_10001043_1.jpg">
                     @elseif($data['spu'] == 10001740)
                         <img class="img-fluid" src="https://image.motif.me/n1/topic/motif/6721/1200X900/1bf95c7524797ca2e8bc2b14afab34c9.jpg">
                     @elseif($data['spu'] == 10000789)
