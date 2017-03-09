@@ -91,10 +91,10 @@
             <span class="p-x-15x text-common font-size-sm lowTo-info">Low to High</span>
         </div>
         <div class="container-fluid" id="productList-container" data-loading="false" data-pagenum="0">
-            <div class="loading m-y-10x" style="display: none;">
-                <div class="loader"></div>
+            <div class="row productList clearfix">
             </div>
-            <div class="row productList">
+            <div class="loading p-y-10x" style="display: none">
+                <div class="loader"></div>
             </div>
         </div>
         <!-- 页脚 功能链接 -->

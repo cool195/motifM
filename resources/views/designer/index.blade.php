@@ -23,7 +23,7 @@
             <div id="designerContainer" data-pagenum="0" data-loading="false">
                 <div class="designer-content">
                 </div>
-                <div class="loading" style="display: none">
+                <div class="loading p-y-10x" style="display: none">
                     <div class="loader"></div>
                 </div>
             </div>
