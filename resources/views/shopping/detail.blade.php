@@ -492,32 +492,32 @@
                 <div id="detail-productImgs" style="display: none;">
                     {{-- 10002492 --}}
                     @if($data['spu'] == 10002492)
-                        <img class="img-fluid" src="https://image.motif.me/n1/topic/motif/6825/1200X880/0e6e2ca54e5e2b35cdc82b2835a88a4e.jpg">
-                        <img class="img-fluid" src="https://image.motif.me/n1/topic/motif/6825/1200X800/5655b0d9fe5947ed0dc0daa6ddafe78c.jpg">
-                        <img class="img-fluid" src="https://image.motif.me/n1/topic/motif/6825/1200X800/7b1f192532da627d7d251526be7945ec.jpg">
+                        <img class="img-fluid img-lazy" data-original="https://image.motif.me/n1/topic/motif/6825/1200X880/0e6e2ca54e5e2b35cdc82b2835a88a4e.jpg" src="{{env('CDN_Static')}}/images/product/bg-product@750.png">
+                        <img class="img-fluid img-lazy" data-original="https://image.motif.me/n1/topic/motif/6825/1200X800/5655b0d9fe5947ed0dc0daa6ddafe78c.jpg" src="{{env('CDN_Static')}}/images/product/bg-product@750.png">
+                        <img class="img-fluid img-lazy" data-original="https://image.motif.me/n1/topic/motif/6825/1200X800/7b1f192532da627d7d251526be7945ec.jpg" src="{{env('CDN_Static')}}/images/product/bg-product@750.png">
                     @elseif($data['spu'] == 10002493)
-                        <img class="img-fluid" src="https://image.motif.me/n1/topic/motif/6825/1200X880/0e6e2ca54e5e2b35cdc82b2835a88a4e.jpg">
-                        <img class="img-fluid" src="https://image.motif.me/n1/topic/motif/6825/1200X800/5655b0d9fe5947ed0dc0daa6ddafe78c.jpg">
-                        <img class="img-fluid" src="https://image.motif.me/n1/topic/motif/6825/1200X800/7b1f192532da627d7d251526be7945ec.jpg">
+                        <img class="img-fluid img-lazy" data-original="https://image.motif.me/n1/topic/motif/6825/1200X880/0e6e2ca54e5e2b35cdc82b2835a88a4e.jpg" src="{{env('CDN_Static')}}/images/product/bg-product@750.png">
+                        <img class="img-fluid img-lazy" data-original="https://image.motif.me/n1/topic/motif/6825/1200X800/5655b0d9fe5947ed0dc0daa6ddafe78c.jpg" src="{{env('CDN_Static')}}/images/product/bg-product@750.png">
+                        <img class="img-fluid img-lazy" data-original="https://image.motif.me/n1/topic/motif/6825/1200X800/7b1f192532da627d7d251526be7945ec.jpg" src="{{env('CDN_Static')}}/images/product/bg-product@750.png">
                     @elseif($data['spu'] == 10000457)
-                        <img class="img-fluid" src="https://image.motif.me/n1/topic/motif/6735/1200X800/55d26e644d0779d2be4602cf988b5e9b.jpg">
-                        <img class="img-fluid" src="{{env('CDN_Static')}}/images/product/detail_10000457_1.jpg">
-                        <img class="img-fluid" src="https://image.motif.me/n2/topic/motif/6628/1200X930/92684be525059bb5e334640343b654b5.jpg">
-                        <img class="img-fluid" src="https://image.motif.me/n2/topic/motif/6628/1200X1200/a42e5b17a49b067470c0b18e385f7948.jpg">
+                        <img class="img-fluid img-lazy" data-original="https://image.motif.me/n1/topic/motif/6735/1200X800/55d26e644d0779d2be4602cf988b5e9b.jpg" src="{{env('CDN_Static')}}/images/product/bg-product@750.png">
+                        <img class="img-fluid img-lazy" data-original="{{env('CDN_Static')}}/images/product/detail_10000457_1.jpg" src="{{env('CDN_Static')}}/images/product/bg-product@750.png">
+                        <img class="img-fluid img-lazy" data-original="https://image.motif.me/n2/topic/motif/6628/1200X930/92684be525059bb5e334640343b654b5.jpg" src="{{env('CDN_Static')}}/images/product/bg-product@750.png">
+                        <img class="img-fluid img-lazy" data-original="https://image.motif.me/n2/topic/motif/6628/1200X1200/a42e5b17a49b067470c0b18e385f7948.jpg" src="{{env('CDN_Static')}}/images/product/bg-product@750.png">
                     @elseif($data['spu'] == 10001594)
-                        <img class="img-fluid" src="{{env('CDN_Static')}}/images/product/detail_10001594_1.jpg">
+                        <img class="img-fluid img-lazy" data-original="{{env('CDN_Static')}}/images/product/detail_10001594_1.jpg" src="{{env('CDN_Static')}}/images/product/bg-product@750.png">
                     @elseif($data['spu'] == 10001593)
-                        <img class="img-fluid" src="{{env('CDN_Static')}}/images/product/datail_10001593_1.jpg">
+                        <img class="img-fluid img-lazy" data-original="{{env('CDN_Static')}}/images/product/detail_10001593_1.jpg" src="{{env('CDN_Static')}}/images/product/bg-product@750.png">
                     @elseif($data['spu'] == 10001043)
-                        <img class="img-fluid" src="{{env('CDN_Static')}}/images/product/datail_10001043_1.jpg">
+                        <img class="img-fluid img-lazy" data-original="{{env('CDN_Static')}}/images/product/detail_10001043_1.jpg" src="{{env('CDN_Static')}}/images/product/bg-product@750.png">
                     @elseif($data['spu'] == 10001740)
-                        <img class="img-fluid" src="https://image.motif.me/n1/topic/motif/6721/1200X900/1bf95c7524797ca2e8bc2b14afab34c9.jpg">
+                        <img class="img-fluid img-lazy" data-original="https://image.motif.me/n1/topic/motif/6721/1200X900/1bf95c7524797ca2e8bc2b14afab34c9.jpg" src="{{env('CDN_Static')}}/images/product/bg-product@750.png">
                     @elseif($data['spu'] == 10000789)
-                        <img class="img-fluid" src="https://image.motif.me/n1/topic/motif/6721/1200X900/1bf95c7524797ca2e8bc2b14afab34c9.jpg">
+                        <img class="img-fluid img-lazy" data-original="https://image.motif.me/n1/topic/motif/6721/1200X900/1bf95c7524797ca2e8bc2b14afab34c9.jpg" src="{{env('CDN_Static')}}/images/product/bg-product@750.png">
                     @elseif($data['spu'] == 10001698)
-                        <img class="img-fluid" src="https://image.motif.me/n1/topic/motif/6634/1200X1430/d61a2410f33ae9c1368d2891970d92f1.jpg">
+                        <img class="img-fluid img-lazy" data-original="https://image.motif.me/n1/topic/motif/6634/1200X1430/d61a2410f33ae9c1368d2891970d92f1.jpg" src="{{env('CDN_Static')}}/images/product/bg-product@750.png">
                     @elseif($data['spu'] == 10001778)   
-                        <img class="img-fluid" src="https://image.motif.me/n1/topic/motif/6630/1200X1600/afad53812f8d8e9c5cecafc865f63327.jpg">
+                        <img class="img-fluid img-lazy" data-original="https://image.motif.me/n1/topic/motif/6630/1200X1600/afad53812f8d8e9c5cecafc865f63327.jpg" src="{{env('CDN_Static')}}/images/product/bg-product@750.png">
                     @endif
                 </div>
 
