@@ -47,7 +47,6 @@
                 }
             })
             .done(function (data) {
-                console.info(data);
                 if (data.data === null || data.data === '') {
                     $DailyContainer.data('pagenum', -1);
                 } else if (data.data.list === null || data.data.list === '' || data.data.list === undefined) {
@@ -157,7 +156,6 @@
                 }
             })
             .done(function (data) {
-                console.info(data);
                 if (data.data === null || data.data === '') {
                     $DailyContainer.data('productpagenum', -1);
                 } else if (data.data.list === null || data.data.list === '' || data.data.list === undefined) {
@@ -236,7 +234,6 @@
     });
 
     function loadYoutube() {
-        //console.log('load true');
         var $PlayerItem = $('.player-item');
         if ($PlayerItem.length !== 0) {
             $.each($PlayerItem, function (index, element) {
