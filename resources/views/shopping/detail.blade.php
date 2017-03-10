@@ -518,6 +518,12 @@
                         <img class="img-fluid img-lazy" data-original="https://image.motif.me/n1/topic/motif/6634/1200X1430/d61a2410f33ae9c1368d2891970d92f1.jpg" src="{{env('CDN_Static')}}/images/product/bg-product@750.png">
                     @elseif($data['spu'] == 10001778)   
                         <img class="img-fluid img-lazy" data-original="https://image.motif.me/n1/topic/motif/6630/1200X1600/afad53812f8d8e9c5cecafc865f63327.jpg" src="{{env('CDN_Static')}}/images/product/bg-product@750.png">
+                    @else
+                        @foreach($data['productImages'] as $image)
+                            @if($image['useness_type'] == 1)
+                                <img class="img-fluid img-lazy" data-original="{{ env('APP_Api_Image').'/n1/'.$image['img_path'] }}" src="{{env('CDN_Static')}}/images/product/bg-product@750.png">
+                            @endif
+                        @endforeach
                     @endif
                 </div>
 
