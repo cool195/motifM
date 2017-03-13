@@ -40,9 +40,8 @@
             img_warpper.style.display = "block";
         }else if (variation == 2){
             img_warpper.style.display = "block";
-
-            swiperImgsA.style.display = "block";
             swiperImgsB.style.display = "none";
+            swiperImgsA.style.display = "block";
         }else {
             img_warpper.style.display = "none";
         }
@@ -186,7 +185,7 @@
                     @if(isset($data['productImages']))
                         @foreach($data['productImages'] as $image)
                             <div class="swiper-slide">
-                                <!--去掉穿戴图-->
+                                <!--去掉穿戴图, 只显示产品图-->
                                 <div class="swiperImgs-A" style="display:none">
                                     @if($image['useness_type'] == 2)
                                         <img class="img-fluid swiper-lazy"
