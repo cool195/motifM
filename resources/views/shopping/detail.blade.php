@@ -525,7 +525,7 @@
                             @endif
                         @endforeach
                         @foreach($data['productImages'] as $image)
-                                @if($image['useness_type'] == 2)
+                                @if($image['useness_type'] == 1)
                                     <img class="img-fluid img-lazy" data-original="{{ env('APP_Api_Image').'/n1/'.$image['img_path'] }}" src="{{env('CDN_Static')}}/images/product/bg-product@750.png">
                                 @endif
                         @endforeach
