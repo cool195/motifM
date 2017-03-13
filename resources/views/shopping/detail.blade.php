@@ -197,11 +197,13 @@
                                     @endif
                                 </div>
                                 <div class="swiperImgs-B">
+                                    @if($image['useness_type'] != 7)
                                     <img class="img-fluid swiper-lazy"
                                          data-src="{{ env('APP_Api_Image').'/n1/'.$image['img_path'] }}"
                                          alt="">
                                     <img class="img-fluid preloader"
                                          src="{{env('CDN_Static')}}/images/product/bg-product@750.png" alt="">
+                                    @endif
                                 </div>
                                 {{--视频--}}
                                 @if(!empty($image['video_path']))
@@ -237,10 +239,12 @@
                                         @endif
                                     </div>
                                     <div class="swiperImgs-B">
+                                        @if($image['useness_type'] != 7)
                                         <img class="img-fluid swiper-lazy"
                                              data-src="{{ env('APP_Api_Image').'/n1/'.$image['img_path'] }}">
                                         <img class="img-fluid preloader"
                                              src="{{env('CDN_Static')}}/images/product/bg-product@750.png" alt="">
+                                        @if($image['useness_type'] != 7)
                                     </div>
                                     {{--视频--}}
                                     @if(!empty($image['video_path']))
