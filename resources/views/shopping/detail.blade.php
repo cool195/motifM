@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="{{env('CDN_Static')}}/styles/shoppingDetail.css{{'?v='.config('app.version')}}">
     <!-- Google Analytics Content Experiment code -->
     <script>function utmx_section(){}function utmx(){}(function(){var
-                k='130800691-8',d=document,l=d.location,c=d.cookie;
+                k='130800691-10',d=document,l=d.location,c=d.cookie;
             if(l.search.indexOf('utm_expid='+k)>0)return;
             function f(n){if(c){var i=c.indexOf(n+'=');if(i>-1){var j=c.
             indexOf(';',i);return escape(c.substring(i+n.length+1,j<0?c.
@@ -21,12 +21,11 @@
                     '" type="text/javascript" charset="utf-8"><\/sc'+'ript>')})();
     </script><script>utmx('url','A/B');</script>
     <!-- End of Google Analytics Content Experiment code -->
-
 </head>
 <body>
 
 <!-- 1. Load the Content Experiments JavaScript Client -->
-<script src="//www.google-analytics.com/cx/api.js?experiment=CeMmd90pSMiYI6tJFmvv8A"></script>
+<script src="//www.google-analytics.com/cx/api.js?experiment=l_ymgFAvSr--l8p-GSWnyQ"></script>
 
 <script>
     // 2. Choose the Variation for the Visitor
@@ -34,8 +33,16 @@
     window.onload = function(){
         // 3. Evaluate the result and update the image
         var img_warpper = document.getElementById('detail-productImgs');
+        var swiperImgsA = document.getElementsByClassName('swiperImgs-A');
+        var swiperImgsB = document.getElementsByClassName('swiperImgs-B');
+        // variation=1:  添加详情图    variation=2:添加详情图,并去掉轮播的穿戴图
         if ( variation == 1) {
             img_warpper.style.display = "block";
+        }else if (variation == 2){
+            img_warpper.style.display = "block";
+
+            swiperImgsA.style.display = "block";
+            swiperImgsB.style.display = "none";
         }else {
             img_warpper.style.display = "none";
         }
@@ -179,13 +186,23 @@
                     @if(isset($data['productImages']))
                         @foreach($data['productImages'] as $image)
                             <div class="swiper-slide">
-                                @if($image['useness_type'] == 2)
+                                <!--去掉穿戴图-->
+                                <div class="swiperImgs-A" style="display:none">
+                                    @if($image['useness_type'] == 2)
+                                        <img class="img-fluid swiper-lazy"
+                                             data-src="{{ env('APP_Api_Image').'/n1/'.$image['img_path'] }}"
+                                             alt="">
+                                        <img class="img-fluid preloader"
+                                             src="{{env('CDN_Static')}}/images/product/bg-product@750.png" alt="">
+                                    @endif
+                                </div>
+                                <div class="swiperImgs-B">
                                     <img class="img-fluid swiper-lazy"
-                                        data-src="{{ env('APP_Api_Image').'/n1/'.$image['img_path'] }}"
-                                        alt="">
+                                         data-src="{{ env('APP_Api_Image').'/n1/'.$image['img_path'] }}"
+                                         alt="">
                                     <img class="img-fluid preloader"
-                                        src="{{env('CDN_Static')}}/images/product/bg-product@750.png" alt="">
-                                @endif
+                                         src="{{env('CDN_Static')}}/images/product/bg-product@750.png" alt="">
+                                </div>
                                 {{--视频--}}
                                 @if(!empty($image['video_path']))
                                     <div class="bg-productPlayer flex flex-alignCenter flex-justifyCenter btn-productPlayer"
@@ -211,15 +228,20 @@
                         @if(isset($data['productImages']))
                             @foreach($data['productImages'] as $image)
                                 <div class="swiper-slide">
-                                    @if($image['useness_type'] == 2)
-                                    <img src="{{ env('APP_Api_Image').'/n1/'.$image['img_path'] }}"
-                                         style="display: none">
-                                    <img class="img-fluid swiper-lazy"
-                                         data-src="{{ env('APP_Api_Image').'/n1/'.$image['img_path'] }}"
-                                         alt="">
-                                    <img class="img-fluid preloader"
-                                         src="{{env('CDN_Static')}}/images/product/bg-product@750.png" alt="">
-                                    @endif
+                                    <div class="swiperImgs-A" style="display:none">
+                                        @if($image['useness_type'] == 2)
+                                        <img class="img-fluid swiper-lazy"
+                                             data-src="{{ env('APP_Api_Image').'/n1/'.$image['img_path'] }}">
+                                        <img class="img-fluid preloader"
+                                             src="{{env('CDN_Static')}}/images/product/bg-product@750.png" alt="">
+                                        @endif
+                                    </div>
+                                    <div class="swiperImgs-B">
+                                        <img class="img-fluid swiper-lazy"
+                                             data-src="{{ env('APP_Api_Image').'/n1/'.$image['img_path'] }}">
+                                        <img class="img-fluid preloader"
+                                             src="{{env('CDN_Static')}}/images/product/bg-product@750.png" alt="">
+                                    </div>
                                     {{--视频--}}
                                     @if(!empty($image['video_path']))
                                         <div class="bg-productPlayer flex flex-alignCenter flex-justifyCenter btn-productPlayer"
