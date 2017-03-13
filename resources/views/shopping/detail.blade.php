@@ -184,34 +184,34 @@
                 <div class="swiper-wrapper p-b-20x">
                     @if(isset($data['productImages']))
                         @foreach($data['productImages'] as $image)
-                            <div class="swiper-slide">
-                                <!--去掉穿戴图, 只显示产品图-->
-                                <div class="swiperImgs-A" style="display:none">
-                                    @if($image['useness_type'] == 2)
+                            @if($image['useness_type'] != 7)
+                                <div class="swiper-slide">
+                                    <!--去掉穿戴图, 只显示产品图-->
+                                    <div class="swiperImgs-A" style="display:none">
+                                        @if($image['useness_type'] == 2)
+                                            <img class="img-fluid swiper-lazy"
+                                                 data-src="{{ env('APP_Api_Image').'/n1/'.$image['img_path'] }}"
+                                                 alt="">
+                                            <img class="img-fluid preloader"
+                                                 src="{{env('CDN_Static')}}/images/product/bg-product@750.png" alt="">
+                                        @endif
+                                    </div>
+                                    <div class="swiperImgs-B">
                                         <img class="img-fluid swiper-lazy"
                                              data-src="{{ env('APP_Api_Image').'/n1/'.$image['img_path'] }}"
                                              alt="">
                                         <img class="img-fluid preloader"
                                              src="{{env('CDN_Static')}}/images/product/bg-product@750.png" alt="">
-                                    @endif
-                                </div>
-                                <div class="swiperImgs-B">
-                                    @if($image['useness_type'] != 7)
-                                    <img class="img-fluid swiper-lazy"
-                                         data-src="{{ env('APP_Api_Image').'/n1/'.$image['img_path'] }}"
-                                         alt="">
-                                    <img class="img-fluid preloader"
-                                         src="{{env('CDN_Static')}}/images/product/bg-product@750.png" alt="">
-                                    @endif
-                                </div>
-                                {{--视频--}}
-                                @if(!empty($image['video_path']))
-                                    <div class="bg-productPlayer flex flex-alignCenter flex-justifyCenter btn-productPlayer"
-                                         data-ytbid="{{$image['video_path']}}">
-                                        <img class="" src="{{env('CDN_Static')}}/images/daily/icon-player.png" alt="">
                                     </div>
-                                @endif
-                            </div>
+                                    {{--视频--}}
+                                    @if(!empty($image['video_path']))
+                                        <div class="bg-productPlayer flex flex-alignCenter flex-justifyCenter btn-productPlayer"
+                                             data-ytbid="{{$image['video_path']}}">
+                                            <img class="" src="{{env('CDN_Static')}}/images/daily/icon-player.png" alt="">
+                                        </div>
+                                    @endif
+                                </div>
+                            @endif
                         @endforeach
                     @endif
                 </div>
@@ -228,6 +228,7 @@
                     <div class="swiper-wrapper">
                         @if(isset($data['productImages']))
                             @foreach($data['productImages'] as $image)
+                                @if($image['useness_type'] != 7)
                                 <div class="swiper-slide">
                                     <div class="swiperImgs-A" style="display:none">
                                         @if($image['useness_type'] == 2)
@@ -238,12 +239,10 @@
                                         @endif
                                     </div>
                                     <div class="swiperImgs-B">
-                                        @if($image['useness_type'] != 7)
                                         <img class="img-fluid swiper-lazy"
                                              data-src="{{ env('APP_Api_Image').'/n1/'.$image['img_path'] }}">
                                         <img class="img-fluid preloader"
                                              src="{{env('CDN_Static')}}/images/product/bg-product@750.png" alt="">
-                                        @endif
                                     </div>
                                     {{--视频--}}
                                     @if(!empty($image['video_path']))
@@ -253,6 +252,7 @@
                                         </div>
                                     @endif
                                 </div>
+                                @endif
                             @endforeach
                         @else
                             <div class="swiper-slide"></div>
