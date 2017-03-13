@@ -179,11 +179,13 @@
                     @if(isset($data['productImages']))
                         @foreach($data['productImages'] as $image)
                             <div class="swiper-slide">
-                                <img class="img-fluid swiper-lazy"
-                                     data-src="{{ env('APP_Api_Image').'/n1/'.$image['img_path'] }}"
-                                     alt="">
-                                <img class="img-fluid preloader"
-                                     src="{{env('CDN_Static')}}/images/product/bg-product@750.png" alt="">
+                                @if($image['useness_type'] == 2)
+                                    <img class="img-fluid swiper-lazy"
+                                        data-src="{{ env('APP_Api_Image').'/n1/'.$image['img_path'] }}"
+                                        alt="">
+                                    <img class="img-fluid preloader"
+                                        src="{{env('CDN_Static')}}/images/product/bg-product@750.png" alt="">
+                                @endif
                                 {{--视频--}}
                                 @if(!empty($image['video_path']))
                                     <div class="bg-productPlayer flex flex-alignCenter flex-justifyCenter btn-productPlayer"
@@ -209,6 +211,7 @@
                         @if(isset($data['productImages']))
                             @foreach($data['productImages'] as $image)
                                 <div class="swiper-slide">
+                                    @if($image['useness_type'] == 2)
                                     <img src="{{ env('APP_Api_Image').'/n1/'.$image['img_path'] }}"
                                          style="display: none">
                                     <img class="img-fluid swiper-lazy"
@@ -216,6 +219,7 @@
                                          alt="">
                                     <img class="img-fluid preloader"
                                          src="{{env('CDN_Static')}}/images/product/bg-product@750.png" alt="">
+                                    @endif
                                     {{--视频--}}
                                     @if(!empty($image['video_path']))
                                         <div class="bg-productPlayer flex flex-alignCenter flex-justifyCenter btn-productPlayer"
