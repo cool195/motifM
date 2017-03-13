@@ -32,18 +32,18 @@
     var variation = cxApi.chooseVariation();
     window.onload = function(){
         // 3. Evaluate the result and update the image
-        var img_warpper = document.getElementById('detail-productImgs');
-        var swiperImgsA = document.getElementsByClassName('swiperImgs-A');
-        var swiperImgsB = document.getElementsByClassName('swiperImgs-B');
+        var img_warpper = $('#detail-productImgs');
+
         // variation=1:  添加详情图    variation=2:添加详情图,并去掉轮播的穿戴图
         if ( variation == 1) {
-            img_warpper.style.display = "block";
+            img_warpper.removeClass('hidden');
         }else if (variation == 2){
-            img_warpper.style.display = "block";
-            swiperImgsB.style.display = "none";
-            swiperImgsA.style.display = "block";
+            img_warpper.removeClass('hidden');
+
+            $('.test-a').removeClass('hidden');
+            $('.test-b').addClass('hidden');
         }else {
-            img_warpper.style.display = "none";
+            img_warpper.addClass('hidden');
         }
 
     }
@@ -187,7 +187,7 @@
                             @if($image['useness_type'] != 7)
                                 <div class="swiper-slide">
                                     <!--去掉穿戴图, 只显示产品图-->
-                                    <div class="swiperImgs-A" style="display:none">
+                                    <div class="test-a hidden">
                                         @if($image['useness_type'] == 2)
                                             <img class="img-fluid swiper-lazy"
                                                  data-src="{{ env('APP_Api_Image').'/n1/'.$image['img_path'] }}"
@@ -196,7 +196,7 @@
                                                  src="{{env('CDN_Static')}}/images/product/bg-product@750.png" alt="">
                                         @endif
                                     </div>
-                                    <div class="swiperImgs-B">
+                                    <div class="test-b">
                                         <img class="img-fluid swiper-lazy"
                                              data-src="{{ env('APP_Api_Image').'/n1/'.$image['img_path'] }}"
                                              alt="">
@@ -230,7 +230,8 @@
                             @foreach($data['productImages'] as $image)
                                 @if($image['useness_type'] != 7)
                                 <div class="swiper-slide">
-                                    <div class="swiperImgs-A" style="display:none">
+                                    <!--去掉穿戴图, 只显示产品图-->
+                                    <div class="test-a hidden">
                                         @if($image['useness_type'] == 2)
                                         <img class="img-fluid swiper-lazy"
                                              data-src="{{ env('APP_Api_Image').'/n1/'.$image['img_path'] }}">
@@ -238,7 +239,7 @@
                                              src="{{env('CDN_Static')}}/images/product/bg-product@750.png" alt="">
                                         @endif
                                     </div>
-                                    <div class="swiperImgs-B">
+                                    <div class="test-b">
                                         <img class="img-fluid swiper-lazy"
                                              data-src="{{ env('APP_Api_Image').'/n1/'.$image['img_path'] }}">
                                         <img class="img-fluid preloader"
@@ -518,7 +519,7 @@
                     </div>
                 </aside>
                 {{--详情图片--}}
-                <div id="detail-productImgs" style="display: none;">
+                <div id="detail-productImgs">
                         @foreach($data['productImages'] as $image)
                             @if($image['useness_type'] == 7)
                                 <img class="img-fluid img-lazy" data-original="{{ env('APP_Api_Image').'/n1/'.$image['img_path'] }}" src="{{env('CDN_Static')}}/images/product/bg-product@750.png">
