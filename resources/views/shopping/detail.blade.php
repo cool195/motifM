@@ -42,9 +42,6 @@
             img_warpper.removeClass('hidden');
 
             $('.slideImg-test').addClass('test-a');
-
-        }else {
-            img_warpper.addClass('hidden');
         }
 
     }
@@ -506,7 +503,7 @@
                     </div>
                 </aside>
                 {{--详情图片--}}
-                <div class="detail-productImgs">
+                <div class="detail-productImgs hidden">
                         @foreach($data['productImages'] as $image)
                             @if($image['useness_type'] == 7)
                                 <img class="img-fluid img-lazy" data-original="{{ env('APP_Api_Image').'/n1/'.$image['img_path'] }}" src="{{env('CDN_Static')}}/images/product/bg-product@750.png">
