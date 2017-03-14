@@ -62,7 +62,7 @@
         paginationClickable :true,
         loop: true,
         lazyLoading: true,
-        lazyLoadingInPrevNext: true,
+        lazyLoadingInPrevNext: true
         //autoplay : 3000,
     });
     // 阻止点击指示器的 事件冒泡
@@ -79,6 +79,25 @@
         lazyLoading: true,
         lazyLoadingInPrevNext: true
     });
+
+
+    $('.slideImg-test').each(function () {
+        var $slideImg = $(this).find('.slide-imgs');
+        var slideFlag = $slideImg.data('flag');
+        if ( $(this).hasClass('test-a') && slideFlag !== 2){
+            console.log('AAAAAAA')
+            // A版本 去掉穿戴图
+            $slideImg.parent().remove();
+
+            BaseImgSwiper.updateSlidesSize();
+            BaseImgSwiper.updatePagination();
+
+            DetailImgSwiper.updateSlidesSize();
+            DetailImgSwiper.updatePagination();
+        }
+    });
+
+
     //推荐商品
     var recommendProductsSwiper = new Swiper('#recommend-productList', {
         slidesPerView: 2.5,
