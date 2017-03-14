@@ -4,6 +4,8 @@
 /*global jQuery Swiper*/
 
 'use strict';
+var BaseImgSwiper;
+var DetailImgSwiper;
 
 (function ($, Swiper) {
 
@@ -57,12 +59,13 @@
     }
 
     // 图片轮播
-    var BaseImgSwiper = new Swiper('#baseImg-swiper', {
+    BaseImgSwiper = new Swiper('#baseImg-swiper', {
         pagination: '#baseImg-pagination',
         paginationClickable :true,
         loop: true,
         lazyLoading: true,
-        lazyLoadingInPrevNext: true
+        lazyLoadingInPrevNext: true,
+        observer:true
         //autoplay : 3000,
     });
     // 阻止点击指示器的 事件冒泡
@@ -70,33 +73,16 @@
         var e = e || event;
         e.stopPropagation();
     });
-    
+
     // 全屏图片轮播
-    var DetailImgSwiper = new Swiper('#detailImg-swiper', {
+    DetailImgSwiper = new Swiper('#detailImg-swiper', {
         pagination: '#detailImg-pagination',
         paginationType: 'fraction',
         loop: true,
         lazyLoading: true,
-        lazyLoadingInPrevNext: true
+        lazyLoadingInPrevNext: true,
+        observer:true
     });
-
-
-    $('.slideImg-test').each(function () {
-        var $slideImg = $(this).find('.slide-imgs');
-        var slideFlag = $slideImg.data('flag');
-        if ( $(this).hasClass('test-a') && slideFlag !== 2){
-            console.log('AAAAAAA')
-            // A版本 去掉穿戴图
-            $slideImg.parent().remove();
-
-            BaseImgSwiper.updateSlidesSize();
-            BaseImgSwiper.updatePagination();
-
-            DetailImgSwiper.updateSlidesSize();
-            DetailImgSwiper.updatePagination();
-        }
-    });
-
 
     //推荐商品
     var recommendProductsSwiper = new Swiper('#recommend-productList', {
