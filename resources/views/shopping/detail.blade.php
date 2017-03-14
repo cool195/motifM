@@ -32,7 +32,7 @@
     var variation = cxApi.chooseVariation();
     window.onload = function(){
         // 3. Evaluate the result and update the image
-        var img_warpper = $('#detail-productImgs');
+        var img_warpper = $('.detail-productImgs');
 
         // variation=1:  添加详情图    variation=2:添加详情图,并去掉轮播的穿戴图
         if ( variation == 1) {
@@ -519,7 +519,7 @@
                     </div>
                 </aside>
                 {{--详情图片--}}
-                <div id="detail-productImgs">
+                <div class="detail-productImgs">
                         @foreach($data['productImages'] as $image)
                             @if($image['useness_type'] == 7)
                                 <img class="img-fluid img-lazy" data-original="{{ env('APP_Api_Image').'/n1/'.$image['img_path'] }}" src="{{env('CDN_Static')}}/images/product/bg-product@750.png">
