@@ -36,6 +36,8 @@
         // variation=1:  添加详情图    variation=2:添加详情图,并去掉轮播的穿戴图
         if ( variation == 1) {
             img_warpper.removeClass('hidden');
+        }else if (variation == 2){
+            img_warpper.removeClass('hidden');
 
             // A 去掉穿戴图
             $('.slideImg-test').addClass('test-a');
@@ -44,24 +46,9 @@
                 var $slideImg = $(this).find('.slide-imgs');
                 var slideFlag = $slideImg.data('flag');
                 if ( $(this).hasClass('test-a') && slideFlag !== 2){
-
                     $slideImg.parent().remove();
-/*
-                    BaseImgSwiper.updateSlidesSize();
-                    BaseImgSwiper.updatePagination();
-                    BaseImgSwiper.updateClasses();
-
-                    DetailImgSwiper.updateSlidesSize();
-                    DetailImgSwiper.updatePagination();
-                    DetailImgSwiper.updateClasses();*/
                 }
             });
-
-
-        }else if (variation == 2){
-            img_warpper.removeClass('hidden');
-
-
         }else {
             img_warpper.addClass('hidden');
         }
