@@ -203,33 +203,6 @@
                                         </div>
                                     @endif
                                 </div>
-                            {{--
-                                <div class="swiper-slide">
-                                    <!--去掉穿戴图, 只显示产品图-->
-                                    <div class="test-a hidden">
-                                        @if($image['useness_type'] == 2)
-                                            <img class="img-fluid swiper-lazy"
-                                                 data-src="{{ env('APP_Api_Image').'/n1/'.$image['img_path'] }}"
-                                                 alt="">
-                                            <img class="img-fluid preloader"
-                                                 src="{{env('CDN_Static')}}/images/product/bg-product@750.png" alt="">
-                                        @endif
-                                    </div>
-                                    <div class="test-b">
-                                        <img class="img-fluid swiper-lazy"
-                                             data-src="{{ env('APP_Api_Image').'/n1/'.$image['img_path'] }}"
-                                             alt="">
-                                        <img class="img-fluid preloader"
-                                             src="{{env('CDN_Static')}}/images/product/bg-product@750.png" alt="">
-                                    </div>
-                                    --}}{{--视频--}}{{--
-                                    @if(!empty($image['video_path']))
-                                        <div class="bg-productPlayer flex flex-alignCenter flex-justifyCenter btn-productPlayer"
-                                             data-ytbid="{{$image['video_path']}}">
-                                            <img class="" src="{{env('CDN_Static')}}/images/daily/icon-player.png" alt="">
-                                        </div>
-                                    @endif
-                                </div>--}}
                             @endif
                         @endforeach
                     @endif
