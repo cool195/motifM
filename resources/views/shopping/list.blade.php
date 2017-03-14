@@ -157,6 +157,7 @@
 <!-- 模板 -->
 <template id="tpl-product">
     @{{ each list }}
+    @{{ if $value.useness_type != 7 }}
     <div class="col-xs-6 p-a-0">
         <div class="productList-item">
             <div class="image-bg">
@@ -216,6 +217,7 @@
             </div>
         </div>
     </div>
+    @{{ /if }}
     @{{ /each }}
 </template>
 <script src="{{env('CDN_Static')}}/scripts/vendor.js{{'?v='.config('app.version')}}"></script>

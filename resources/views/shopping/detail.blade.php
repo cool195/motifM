@@ -37,10 +37,8 @@
         // variation=1:  添加详情图    variation=2:添加详情图,并去掉轮播的穿戴图
         if ( variation == 1) {
             img_warpper.removeClass('hidden');
-
         }else if (variation == 2){
             img_warpper.removeClass('hidden');
-
             $('.slideImg-test').addClass('test-a');
         }
 
@@ -218,7 +216,6 @@
                         @if(isset($data['productImages']))
                             @foreach($data['productImages'] as $image)
                                 @if($image['useness_type'] != 7)
-
                                 <div class="swiper-slide slideImg-test">
                                     <!--去掉穿戴图, 只显示产品图-->
                                     <div class="slide-imgs" data-flag="{{$image['useness_type']}}">
@@ -236,7 +233,6 @@
                                         </div>
                                     @endif
                                 </div>
-
                                 @endif
                             @endforeach
                         @else
