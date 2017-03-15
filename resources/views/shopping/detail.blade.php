@@ -38,6 +38,7 @@
             img_warpper.removeClass('hidden');
         }else if (variation == 2){
             img_warpper.removeClass('hidden');
+            $('.wearImg').removeClass('hidden');
 
             // A 去掉穿戴图
             $('.slideImg-test').addClass('test-a');
@@ -192,33 +193,6 @@
                     @if(isset($data['productImages']))
                         @foreach($data['productImages'] as $image)
                             @if($image['useness_type'] != 7)
-                               {{-- <div class="swiper-slide slideImg-test">
-                                    <!--去掉穿戴图, 只显示产品图-->
-                                    <div class="test-a hidden">
-                                        @if($image['useness_type'] == 2)
-                                        <img class="img-fluid swiper-lazy"
-                                             data-src="{{ env('APP_Api_Image').'/n1/'.$image['img_path'] }}">
-                                        <img class="img-fluid preloader"
-                                             src="{{env('CDN_Static')}}/images/product/bg-product@750.png" alt="">
-                                        @endif
-                                    </div>
-                                    <div class="test-b">
-                                        <img class="img-fluid swiper-lazy"
-                                             data-src="{{ env('APP_Api_Image').'/n1/'.$image['img_path'] }}">
-                                        <img class="img-fluid preloader"
-                                             src="{{env('CDN_Static')}}/images/product/bg-product@750.png" alt="">
-                                    </div>
-
-                                    --}}{{--视频--}}{{--
-                                    @if(!empty($image['video_path']))
-                                        <div class="bg-productPlayer flex flex-alignCenter flex-justifyCenter btn-productPlayer"
-                                             data-ytbid="{{$image['video_path']}}">
-                                            <img class="" src="{{env('CDN_Static')}}/images/daily/icon-player.png">
-                                        </div>
-                                    @endif
-                                </div>
---}}
-
                                 <div class="swiper-slide slideImg-test">
                                     <!--去掉穿戴图, 只显示产品图-->
                                     <div class="slide-imgs" data-flag="{{$image['useness_type']}}">
@@ -567,11 +541,13 @@
                                 <img class="img-fluid img-lazy" data-original="{{ env('APP_Api_Image').'/n1/'.$image['img_path'] }}" src="{{env('CDN_Static')}}/images/product/bg-product@750.png">
                             @endif
                         @endforeach
-                        @foreach($data['productImages'] as $image)
+                        <div class="wearImg hidden">
+                            @foreach($data['productImages'] as $image)
                                 @if($image['useness_type'] == 1)
                                     <img class="img-fluid img-lazy" data-original="{{ env('APP_Api_Image').'/n1/'.$image['img_path'] }}" src="{{env('CDN_Static')}}/images/product/bg-product@750.png">
                                 @endif
-                        @endforeach
+                            @endforeach
+                        </div>
                 </div>
 
                 <aside class="product-secondaryInfo">
