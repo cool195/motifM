@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="{{env('CDN_Static')}}/styles/shoppingDetail.css{{'?v='.config('app.version')}}">
     <!-- Google Analytics Content Experiment code -->
     <script>function utmx_section(){}function utmx(){}(function(){var
-                k='130800691-10',d=document,l=d.location,c=d.cookie;
+                k='130800691-11',d=document,l=d.location,c=d.cookie;
             if(l.search.indexOf('utm_expid='+k)>0)return;
             function f(n){if(c){var i=c.indexOf(n+'=');if(i>-1){var j=c.
             indexOf(';',i);return escape(c.substring(i+n.length+1,j<0?c.
@@ -25,7 +25,7 @@
 <body>
 
 <!-- 1. Load the Content Experiments JavaScript Client -->
-<script src="//www.google-analytics.com/cx/api.js?experiment=l_ymgFAvSr--l8p-GSWnyQ"></script>
+<script src="//www.google-analytics.com/cx/api.js?experiment=3kstd2SETWC8c8aaSXLYmg"></script>
 
 <script>
     // 2. Choose the Variation for the Visitor
