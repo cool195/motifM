@@ -7,72 +7,8 @@
     <title>{{$data['main_title']}}</title>
     @include('head')
     <link rel="stylesheet" href="{{env('CDN_Static')}}/styles/shoppingDetail.css{{'?v='.config('app.version')}}">
-    <!-- Google Analytics Content Experiment code -->
-    <script>function utmx_section(){}function utmx(){}(function(){var
-                k='130800691-11',d=document,l=d.location,c=d.cookie;
-            if(l.search.indexOf('utm_expid='+k)>0)return;
-            function f(n){if(c){var i=c.indexOf(n+'=');if(i>-1){var j=c.
-            indexOf(';',i);return escape(c.substring(i+n.length+1,j<0?c.
-                    length:j))}}}var x=f('__utmx'),xx=f('__utmxx'),h=l.hash;d.write(
-                    '<sc'+'ript src="'+'http'+(l.protocol=='https:'?'s://ssl':
-                            '://www')+'.google-analytics.com/ga_exp.js?'+'utmxkey='+k+
-                    '&utmx='+(x?x:'')+'&utmxx='+(xx?xx:'')+'&utmxtime='+new Date().
-                    valueOf()+(h?'&utmxhash='+escape(h.substr(1)):'')+
-                    '" type="text/javascript" charset="utf-8"><\/sc'+'ript>')})();
-    </script><script>utmx('url','A/B');</script>
-    <!-- End of Google Analytics Content Experiment code -->
 </head>
 <body>
-
-<!-- 1. Load the Content Experiments JavaScript Client -->
-<script src="//www.google-analytics.com/cx/api.js?experiment=3kstd2SETWC8c8aaSXLYmg"></script>
-
-<script>
-    // 2. Choose the Variation for the Visitor
-    var variation = cxApi.chooseVariation();
-    window.onload = function(){
-        // 3. Evaluate the result and update the image
-        var img_warpper = $('.detail-productImgs');
-        // variation=1:  添加详情图    variation=2:添加详情图,并去掉轮播的穿戴图
-        if ( variation == 1) {
-            img_warpper.removeClass('hidden');
-        }else if (variation == 2){
-            img_warpper.removeClass('hidden');
-            $('.wearImg').removeClass('hidden');
-
-            // A 去掉穿戴图
-            $('.slideImg-test').addClass('test-a');
-
-            $('.slideImg-test').each(function () {
-                var $slideImg = $(this).find('.slide-imgs');
-                var slideFlag = $slideImg.data('flag');
-                if ( $(this).hasClass('test-a') && slideFlag !== 2){
-                    $slideImg.parent().remove();
-                }
-            });
-        }else {
-            img_warpper.addClass('hidden');
-        }
-
-    }
-</script>
-
-<!-- 4. Load ga.js and send a hit to Google Analytics -->
-<script>
-
-    var _gaq = _gaq || [];
-    _gaq.push(['_setAccount', 'UA-78914929-6']);
-    _gaq.push(['_trackPageview']);
-
-    (function() {
-        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-    })();
-
-</script>
-
-
 <!-- 添加购物车 -->
 <input type="text" id="addToCart-quantity" value="1" hidden>
 <input type="text" id="addToCart-sku" value="1" hidden>
@@ -193,7 +129,7 @@
                     @if(isset($data['productImages']))
                         @foreach($data['productImages'] as $image)
                             @if($image['useness_type'] != 7)
-                                <div class="swiper-slide slideImg-test">
+                                <div class="swiper-slide">
                                     <!--去掉穿戴图, 只显示产品图-->
                                     <div class="slide-imgs" data-flag="{{$image['useness_type']}}">
                                         <img class="img-fluid swiper-lazy"
@@ -227,7 +163,7 @@
                         @if(isset($data['productImages']))
                             @foreach($data['productImages'] as $image)
                                 @if($image['useness_type'] != 7)
-                                    <div class="swiper-slide slideImg-test">
+                                    <div class="swiper-slide">
                                         <!--去掉穿戴图, 只显示产品图-->
                                         <div class="slide-imgs" data-flag="{{$image['useness_type']}}">
                                             <img class="img-fluid swiper-lazy"
@@ -243,32 +179,6 @@
                                             </div>
                                         @endif
                                     </div>
-                                {{--<div class="swiper-slide">
-                                    <!--去掉穿戴图, 只显示产品图-->
-
-                                    <div class="test-a hidden">
-                                        @if($image['useness_type'] == 2)
-                                        <img class="img-fluid swiper-lazy"
-                                             data-src="{{ env('APP_Api_Image').'/n1/'.$image['img_path'] }}">
-                                        <img class="img-fluid preloader"
-                                             src="{{env('CDN_Static')}}/images/product/bg-product@750.png" alt="">
-                                        @endif
-                                    </div>
-                                    <div class="test-b">
-                                        <img class="img-fluid swiper-lazy"
-                                             data-src="{{ env('APP_Api_Image').'/n1/'.$image['img_path'] }}">
-                                        <img class="img-fluid preloader"
-                                             src="{{env('CDN_Static')}}/images/product/bg-product@750.png" alt="">
-                                    </div>
-
-                                    --}}{{--视频--}}{{--
-                                    @if(!empty($image['video_path']))
-                                        <div class="bg-productPlayer flex flex-alignCenter flex-justifyCenter btn-productPlayer"
-                                             data-ytbid="{{$image['video_path']}}">
-                                            <img class="" src="{{env('CDN_Static')}}/images/daily/icon-player.png">
-                                        </div>
-                                    @endif
-                                </div>--}}
                                 @endif
                             @endforeach
                         @else
@@ -535,19 +445,12 @@
                     </div>
                 </aside>
                 {{--详情图片--}}
-                <div class="detail-productImgs hidden">
-                        @foreach($data['productImages'] as $image)
-                            @if($image['useness_type'] == 7)
-                                <img class="img-fluid img-lazy" data-original="{{ env('APP_Api_Image').'/n1/'.$image['img_path'] }}" src="{{env('CDN_Static')}}/images/product/bg-product@750.png">
-                            @endif
-                        @endforeach
-                        <div class="wearImg hidden">
-                            @foreach($data['productImages'] as $image)
-                                @if($image['useness_type'] == 1)
-                                    <img class="img-fluid img-lazy" data-original="{{ env('APP_Api_Image').'/n1/'.$image['img_path'] }}" src="{{env('CDN_Static')}}/images/product/bg-product@750.png">
-                                @endif
-                            @endforeach
-                        </div>
+                <div class="detail-productImgs">
+                    @foreach($data['productImages'] as $image)
+                        @if($image['useness_type'] == 7)
+                            <img class="img-fluid img-lazy" data-original="{{ env('APP_Api_Image').'/n1/'.$image['img_path'] }}" src="{{env('CDN_Static')}}/images/product/bg-product@750.png">
+                        @endif
+                    @endforeach
                 </div>
 
                 <aside class="product-secondaryInfo">

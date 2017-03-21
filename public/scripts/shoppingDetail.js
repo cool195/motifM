@@ -64,8 +64,7 @@ var DetailImgSwiper;
         paginationClickable :true,
         loop: true,
         lazyLoading: true,
-        lazyLoadingInPrevNext: true,
-        observer:true
+        lazyLoadingInPrevNext: true
         //autoplay : 3000,
     });
     // 阻止点击指示器的 事件冒泡
@@ -80,8 +79,7 @@ var DetailImgSwiper;
         paginationType: 'fraction',
         loop: true,
         lazyLoading: true,
-        lazyLoadingInPrevNext: true,
-        observer:true
+        lazyLoadingInPrevNext: true
     });
 
     //推荐商品
