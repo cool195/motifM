@@ -13,7 +13,7 @@
 @include('check.tagmanager')
 <!-- 主体内容 -->
 <div class="register-container">
-    <section class="register-content p-y-20x">
+    <section class="register-content p-b-20x">
         <!-- 顶部 logo -->
         <a href="/trending">
             <img class="img-fluid m-x-auto m-b-20x p-b-10x motif-logo"
@@ -21,9 +21,9 @@
                  srcset="{{env('CDN_Static')}}/images/login/login-logo@2x.png 2x,{{env('CDN_Static')}}/images/login/login-logo@3x.png 3x">
         </a>
 
-        <div class="text-left p-t-20x m-b-20x p-b-5x bigNoodleOblique register_titleTxt">
+        {{--<div class="text-left p-t-20x m-b-20x p-b-5x bigNoodleOblique register_titleTxt">
             Register Now to Enjoy 15% OFF Your First Order
-        </div>
+        </div>--}}
 
         <form id="register">
             <input type="hidden" name="referer" value="{{$referer}}">
